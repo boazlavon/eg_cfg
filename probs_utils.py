@@ -2,6 +2,7 @@ import torch.nn.functional as F
 from scipy.stats import entropy
 from torch.nn.functional import cosine_similarity
 
+
 def get_probabilities(model, tokenizer, prompt: str, device):
     inputs = tokenizer(prompt, return_tensors="pt").to(device)
     with torch.no_grad():
