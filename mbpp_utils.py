@@ -106,10 +106,7 @@ def evaluate_mbpp_from_dict(task_functions, timeout=10):
     failed_tests = {}
     passed_tests = []
 
-    dataset = load_dataset("mbpp")
-    problems = {
-        example["task_id"]: example for _, example in enumerate(dataset["test"])
-    }
+    problems = read_problems()
 
     for task_id, code in task_functions.items():
         task = problems[task_id]
@@ -203,3 +200,11 @@ def format_mbpp_prompt(problem):
     )
 
     return prompt, function_signature
+
+
+def read_problems():
+    dataset = load_dataset("mbpp")
+    problems = {
+        example["task_id"]: example for _, example in enumerate(dataset["test"])
+    }
+    return problems
