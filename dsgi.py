@@ -45,12 +45,16 @@ def generate_solutions(k=2):
             prompt, function_signature = format_mbpp_prompt(problem)
             # print(function_signature)
             # print(prompt)
-            new_tokens = generate_solution(prompt, model, tokenizer, device)
+            new_tokens = generate_solution(
+                prompt, function_signature, model, tokenizer, device
+            )
             solution = f"{function_signature}\n{new_tokens}"
 
             assert is_valid_python(solution)
             solution = black.format_str(solution, mode=black.FileMode(line_length=1024))
             print(solution)
+        except KeyboardInterrupt:
+            exit(0)
         except:
             print("Invalid solution")
             continue
