@@ -12,43 +12,35 @@ INSTRUCTION_TEXT = """\
 Write a Python function that satisfies the following test cases:
 {test_cases}
 
-Your solution must follow this function signature:
-{function_signature}
-
-Your solution should be written in **as many lines as possible**.
-This ensures that **prefixes of your function remain valid Python programs**, 
-allowing incremental execution and debugging.
+Your solution should be written in as many lines as possible.
+This ensures that prefixes of your function remain valid Python programs.
+Allowing **incremental execution and debugging**.
 
 Write the function **step by step**, progressively introducing variables and logic.
-For example:
-- First, define the function.
-- Then, initialize variables.
-- Finally, implement logic in separate steps.
-
-**Avoid using list comprehensions, lambda functions, or overly compact one-liners.**
+Avoid using list comprehensions, lambda functions, or overly compact one-liners.
 Instead, follow these guidelines:**
 
 Avoid list comprehensions, use loops instead:
 Incorrect:
 def square_numbers(lst):
-    return [x ** 2 for x in lst]  # One-liner comprehension
+    return [x ** 2 for x in lst]
 
 Correct:
 def square_numbers(lst):
-    squares = []  # Use a variable to store results
+    squares = []
     for num in lst:
-        squared_value = num ** 2  # Assign intermediate results
+        squared_value = num ** 2
         squares.append(squared_value)
     return squares
 
 Avoid inline expressions, use variables instead
 Incorrect:
 def calculate_area(length, width):
-    return (length * width) / 2  # Inline expression
+    return (length * width) / 2
 
 Correct:
 def calculate_area(length, width):
-    product = length * width  # Store intermediate result
+    product = length * width
     area = product / 2
     return area
 
@@ -61,21 +53,58 @@ result.append(z)
 
 Incorrect:
 def compute_value(a, b, c):
-    return (a + b) * (c / (a - b) + (a * c) / (b + c))  # Too complex to read
+    return (a + b) * (c / (a - b) + (a * c) / (b + c))
 
 Correct:
 def compute_value(a, b, c):
-    term1 = a + b  # Compute first term separately
-    term2 = a - b  # Store denominator separately
-    term3 = c / term2  # Compute first fraction
-    term4 = a * c / (b + c)  # Compute second fraction
-    result = term1 * (term3 + term4)  # Combine step by step
+    term1 = a + b 
+    term2 = a - b 
+    term3 = c / term2 
+    term4 = a * c / (b + c)
+    result = term1 * (term3 + term4)
     return result
 
 ### Response:
 {function_signature}
-
 """
+
+
+def evaluate_solution(code, test_case, timeout=10):
+    test_passed = False
+    error = None
+    test_code = f"{code}\n{test_case}"
+    test_code = black.format_str(test_code, mode=black.FileMode(line_length=1024))
+
+    with tempfile.NamedTemporaryFile(suffix=".py", mode="w") as temp_file:
+        temp_file.write(test_code)
+        temp_file.flush()
+
+        start_time = time.time()
+        try:
+            result = subprocess.run(
+                ["python", temp_file.name],
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+            )
+
+            if result.returncode == 0 and not "Traceback" in result.stderr:
+                test_passed = True
+
+        except subprocess.TimeoutExpired:
+            # print('Timeout')
+            error = "Timeout"
+            pass
+        except Exception as e:
+            # print(f"Error executing test for task")
+            error = "Exception"
+            pass
+        finally:
+            end_time = time.time()
+            delta_time = end_time - start_time
+
+    result_entry = {"result": test_passed, "time": delta_time, "error": error}
+    return result_entry
 
 
 def evaluate_mbpp_from_dict(task_functions, timeout=10):
@@ -98,83 +127,53 @@ def evaluate_mbpp_from_dict(task_functions, timeout=10):
               - 'failed_tests': A dictionary where keys are task IDs and values are lists of failed test case indices.
     """
 
-    correct = 0
-    incorrect = 0
-    total = 0
     errors = []
     timeouts = []
-    failed_tests = {}
-    passed_tests = []
-
     problems = read_problems()
+    results = {}
+    # correct = 0
+    # incorrect = 0
+    # total = 0
+    # failed_tests = {}
+    # passed_tests = []
 
-    for task_id, code in task_functions.items():
+    for (task_id, gamma), code in task_functions.items():
         task = problems[task_id]
         test_cases = task["test_list"]
 
-        all_passed = True
-        failed_tests_task = []
+        all_tests_passed = True
+        results[(task_id, gamma)] = {}
 
         for i, test_case in enumerate(test_cases):
-            test_code = f"{code}\n{test_case}"
-            test_code = black.format_str(
-                test_code, mode=black.FileMode(line_length=1024)
-            )
+            result_entry = evaluate_solution(code, test_case)
+            results[(task_id, gamma)] = result_entry
+            # all_tests_passed &= test_passed
 
-            with tempfile.NamedTemporaryFile(suffix=".py", mode="w") as temp_file:
-                temp_file.write(test_code)
-                temp_file.flush()
+        # if all_tests_passed:
+        #     correct += 1
+        #     passed_tests.append(task_id)
+        # elif failed_tests_task:
+        #     incorrect += 1
+        #     failed_tests[task_id] = failed_tests_task
+        # total += 1
 
-                # start_time = time.time()
-                try:
-                    result = subprocess.run(
-                        ["python", temp_file.name],
-                        capture_output=True,
-                        text=True,
-                        timeout=timeout,
-                    )
-                    # end_time = time.time()
+        # accuracy = correct / total if total > 0 else 0
+        # results_dict = {
+        #     "total": total,
+        #     "correct": correct,
+        #     "incorrect": incorrect,
+        #     "accuracy": accuracy,
+        #     "errors": errors,
+        #     "timeouts": timeouts,
+        #     "failed_tests": failed_tests,
+        #     "passed_tests": passed_tests,
+        #     "code", code,
+        #     "test_case", test_case
+        # }
+        # print(task_id)
+        # print(results_dict)
 
-                    if result.returncode != 0:
-                        all_passed = False
-                        failed_tests_task.append(i)
-                    elif "Traceback" in result.stderr:
-                        all_passed = False
-                        failed_tests_task.append(i)
-
-                except subprocess.TimeoutExpired:
-                    all_passed = False
-                    timeouts.append(task_id)
-                    break  # No need to test further if it timed out.
-                except Exception as e:
-                    all_passed = False
-                    errors.append(task_id)
-                    print(f"Error executing test for task {task_id}: {e}")
-                    break
-
-        if all_passed:
-            correct += 1
-            passed_tests.append(task_id)
-        elif failed_tests_task:
-            incorrect += 1
-            failed_tests[task_id] = failed_tests_task
-        total += 1
-
-        accuracy = correct / total if total > 0 else 0
-        results_dict = {
-            "total": total,
-            "correct": correct,
-            "incorrect": incorrect,
-            "accuracy": accuracy,
-            "errors": errors,
-            "timeouts": timeouts,
-            "failed_tests": failed_tests,
-            "passed_tests": passed_tests,
-        }
-        print(task_id)
-        print(results_dict)
-
-    return results_dict
+    return results
 
 
 def extract_function_signature(code):

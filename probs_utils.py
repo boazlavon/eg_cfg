@@ -1,3 +1,4 @@
+import torch
 import torch.nn.functional as F
 from scipy.stats import entropy
 from torch.nn.functional import cosine_similarity
@@ -10,7 +11,7 @@ def get_probabilities(model, tokenizer, prompt: str, device):
     return F.softmax(logits, dim=-1)
 
 
-def analyze_probability_changes(p1, p2, tokenizer, top_n=20, k=5):
+def analyze_probability_changes(p1, p2, tokenizer, top_n=20, k=3):
     top_p1_vals, top_p1_idx = torch.topk(p1, top_n)
     top_p2_vals, top_p2_idx = torch.topk(p2, top_n)
 
