@@ -1,10 +1,113 @@
+import re
+import torch
+import black
 import tempfile
 import subprocess
 import os
 from traces_dumper.program_execution import ProgramExecution
+from code_generation import remove_comments_and_docstrings, is_valid_python
+from model_utils import extract_new_tokens
+from mbpp_utils import parse_mbpp_assert_statement
 
 
 class ExecutionManager:
+    def __init__(
+        self,
+        tokenizer,
+        function_signature,
+    ):
+        self.tokenizer = tokenizer
+        self.function_signature = function_signature
+
+    def execute_test_cases(self, executable_partial_program_code, test_cases):
+        executions = {}
+        for test_case in test_cases:
+            try:
+                function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
+                innvocation = f"{function_name}{args_str}"
+                test_case_code = f"{executable_partial_program_code}\n{innvocation}"
+                test_case_code = black.format_str(
+                    test_case_code, mode=black.FileMode(line_length=1024)
+                )
+                assert is_valid_python(
+                    test_case_code
+                ), f"Invalid Test Case: {test_case}"
+            except:
+                print("Could not generate test code")
+                continue
+
+            try:
+                program_execution = self.execute(test_case_code)
+            except:
+                print("Problem on program execution")
+                continue
+            executions[test_case] = program_execution
+        return executions
+
+    def extract_partial_executable_program(
+        self, input_ids: torch.Tensor, initial_prompt_input_ids_len
+    ) -> str:
+        new_code, _ = extract_new_tokens(
+            self.tokenizer, input_ids, initial_prompt_input_ids_len
+        )
+        partial_program_code = f"{self.function_signature}\n{new_code}"
+        executable_partial_program_code = self.make_executable(partial_program_code)
+        executable_partial_program_code = remove_comments_and_docstrings(
+            executable_partial_program_code
+        )
+        return executable_partial_program_code
+
+    def make_executable(
+        self, partial_program_code: str, fallback_to_prompt: bool = True
+    ) -> str:
+        function_signature = self.function_signature
+        lines = partial_program_code.split("\n")
+        executable_code = ""
+
+        while lines:
+            executable_code = "\n".join(lines)
+            if is_valid_python(executable_code) and executable_code.startswith(
+                function_signature
+            ):
+                break
+
+            # Remove last line and try again
+            last_line = lines.pop()
+            if not lines:
+                break  # Stop if there are no lines left
+
+            executable_code = "\n".join(lines)
+            if is_valid_python(executable_code) and executable_code.startswith(
+                function_signature
+            ):
+                break
+
+            # If removing doesn't work, replace last line with 'pass' (preserving indentation)
+            indent = re.match(r"\s*", last_line).group(0)
+            lines.append(f"{indent}pass")
+            executable_code = "\n".join(lines)
+            if is_valid_python(executable_code) and executable_code.startswith(
+                function_signature
+            ):
+                break
+            lines.pop()  # Remove the pass if it's still invalid
+
+        if (
+            not is_valid_python(executable_code)
+            or not executable_code.startswith(function_signature)
+        ) and fallback_to_prompt:
+            prompt_lines = function_signature.split("\n")
+            last_line = prompt_lines[-1]
+            indent = re.match(r"\s*", last_line).group(0)
+            if not indent:
+                indent = "   "
+            executable_code = f"{function_signature}\n{indent}pass"
+            executable_code = black.format_str(
+                executable_code, mode=black.FileMode(line_length=1024)
+            )
+
+        return executable_code
+
     def execute(self, code: str):
         original_cwd = os.getcwd()
         traces_dumper_dir = os.path.join(original_cwd, "traces_dumper")
@@ -55,7 +158,7 @@ class ExecutionManager:
             # Step 7: Create and return a ProgramExecution object
             program_execution = ProgramExecution(formatted_trace_path, program_path)
 
-            return program_execution, raw_trace_content, formatted_trace_content
+            return program_execution
 
         finally:
             # Optional: Cleanup logic if needed

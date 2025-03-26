@@ -85,6 +85,29 @@ PROMPT_TEMPLATE = """{task_header}
 """
 
 
+def run_tests(solution, test_cases):
+    results = {}
+    for test_case in test_cases:
+        if solution is None:
+            results[test_case] = {
+                "result": False,
+                "time": -1,
+                "error": "GenerationError",
+            }
+            continue
+
+        try:
+            results[test_case] = evaluate_solution(solution, test_case)
+        except:
+            results[test_case] = {
+                "result": False,
+                "time": -1,
+                "error": "Unknown",
+            }
+            print(f"Problem executing test case: {test_case}")
+    return results
+
+
 def evaluate_solution(code, test_case, timeout=10):
     test_passed = False
     error = None
@@ -122,7 +145,8 @@ def evaluate_solution(code, test_case, timeout=10):
 
 
 def extract_function_signature(code):
-    match = re.search(r"def\s+\w+\s*\(.*\):", code)
+    # match = re.search(r"def\s+\w+\s*\(.*\):", code)
+    match = re.search(r"def\s+\w+\s*\(.*\)\s*:", code)
     return match.group(0) if match else None
 
 
@@ -182,7 +206,7 @@ def format_custom_mbpp_prompt(problem, function_signature):
         test_cases=formatted_test_cases,
     )
 
-    return prompt, function_signature
+    return prompt
 
 
 def format_mbpp_prompt(problem, simple_prompt=False):

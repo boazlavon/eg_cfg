@@ -9,6 +9,7 @@ from mbpp_utils import (
     format_mbpp_prompt,
     load_mbpp_problems,
     evaluate_solution,
+    run_tests,
 )
 from code_generation import generate_code_solution, is_valid_python
 from dsgi_manager import DsgiManager
@@ -54,39 +55,19 @@ def try_generate_code_solution(model, tokenizer, device, problem, gamma):
     return solution
 
 
-def run_tests(solution, test_cases):
-    results = {}
-    for test_case in test_cases:
-        if solution is None:
-            results[test_case] = {
-                "result": False,
-                "time": -1,
-                "error": "GenerationError",
-            }
-            continue
-
-        try:
-            results[test_case] = evaluate_solution(solution, test_case)
-        except:
-            results[test_case] = {
-                "result": False,
-                "time": -1,
-                "error": "Unknown",
-            }
-            print(f"Problem executing test case: {test_case}")
-    return results
-
-
-def format_results(solution, results):
+def format_results(solution, results, general_error):
     passed = all(r["result"] for r in results.values())
     correct = sum(int(r["result"]) for r in results.values())
     total = len(results)
     accuracy = correct / total if total else 0.0
+    has_testcase_error = all([bool(result["error"]) for result in results.values()])
     return {
         "code": solution,
         "results": results,
         "passed": passed,
         "accuracy": accuracy,
+        "general_error": general_error,
+        "has_testcase_error": has_testcase_error,
     }
 
 
@@ -117,6 +98,7 @@ def generate_mbpp_solutions(results_dir, start=0, end=None, gammas=GAMMAS):
         print()
 
         for gamma in gammas:
+            general_error = None
             if should_skip(results_dir, task_id, gamma):
                 continue
 
@@ -127,12 +109,18 @@ def generate_mbpp_solutions(results_dir, start=0, end=None, gammas=GAMMAS):
                 print(solution)
             except KeyboardInterrupt:
                 exit(1)
-            except:
+            except AssertionError as e:
                 solution = None
+                general_error = str(type(e))
+                raise e
+            except Exception as e:
+                solution = None
+                general_error = str(type(e))
+                raise e
 
             print()
             solution_results = run_tests(solution, test_cases)
-            solution_entry = format_results(solution, solution_results)
+            solution_entry = format_results(solution, solution_results, general_error)
             filepath = get_solution_filepath(results_dir, task_id, gamma)
             with open(filepath, "w") as f:
                 json.dump(solution_entry, f, indent=2)

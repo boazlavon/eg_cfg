@@ -108,27 +108,26 @@ class CodeGenStopCriteria(torch.utils.data.Dataset):
         return False
 
 
-def generate_code_solution(model, tokenizer, device, prompt, dsgi_manager):
+MAX_NEW_TOKENS = 512
+
+
+def generate_code_solution(
+    model, tokenizer, device, prompt, dsgi_manager, max_new_tokens=MAX_NEW_TOKENS
+):
     inputs = tokenizer(prompt, return_tensors="pt").to(device)
     stop_criteria = CodeGenStopCriteria(tokenizer)
 
     with torch.no_grad():
         # /a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/transformers/generation/utils.py
-        try:
-            _ = model.generate(
-                **inputs,
-                max_new_tokens=512,
-                eos_token_id=tokenizer.eos_token_id,
-                pad_token_id=tokenizer.eos_token_id,
-                stopping_criteria=[stop_criteria],
-                dsgi_manager=dsgi_manager,
-                do_sample=False,
-            )
-        except:
-            import traceback
-
-            print("An error occurred:")
-            traceback.print_exc()
+        model.generate(
+            **inputs,
+            max_new_tokens=max_new_tokens,
+            eos_token_id=tokenizer.eos_token_id,
+            pad_token_id=tokenizer.eos_token_id,
+            stopping_criteria=[stop_criteria],
+            dsgi_manager=dsgi_manager,
+            do_sample=False,
+        )
 
     # _ = tokenizer.decode(outputs[0], skip_special_tokens=True)
     new_tokens = stop_criteria.generated_text
