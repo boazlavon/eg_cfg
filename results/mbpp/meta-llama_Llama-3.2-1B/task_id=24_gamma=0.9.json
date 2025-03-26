@@ -1,0 +1,22 @@
+{
+  "code": "def binary_to_decimal(binary):\n    \"\"\"Converts a binary number to its decimal equivalent.\"\"\"\n    decimal = 0\n    for bit in binary:\n        decimal += int(bit) * (2 ** (len(binary) - 1 - len(str(bit))))\n    return decimal\n",
+  "results": {
+    "assert binary_to_decimal(100) == 4": {
+      "result": false,
+      "time": 0.15111374855041504,
+      "error": null
+    },
+    "assert binary_to_decimal(1011) == 11": {
+      "result": false,
+      "time": 0.13076472282409668,
+      "error": null
+    },
+    "assert binary_to_decimal(1101101) == 109": {
+      "result": false,
+      "time": 0.1226968765258789,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

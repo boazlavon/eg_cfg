@@ -1,0 +1,22 @@
+{
+  "code": "def find_first_duplicate(nums):\n    nums.sort()\n    for i in range(len(nums) - 1):\n        if nums[i] == nums[i + 1]:\n            return nums[i]\n    return -1\n",
+  "results": {
+    "assert find_first_duplicate(([1, 2, 3, 4, 4, 5]))==4": {
+      "result": true,
+      "time": 0.12605690956115723,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 2, 3, 4])==-1": {
+      "result": true,
+      "time": 0.12387895584106445,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 1, 2, 3, 3, 2, 2])==1": {
+      "result": true,
+      "time": 0.11858153343200684,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

@@ -1,0 +1,22 @@
+{
+  "code": "def is_Monotonic(A):\n\n    if len(A) == 0:\n        return True\n    if len(A) == 1:\n        return True\n    if A[0] > A[1]:\n        return False\n    if A[0] < A[1]:\n        return False\n    if A[0] == A[1]:\n        return False\n    return is_Monotonic(A[1:])\n",
+  "results": {
+    "assert is_Monotonic([6, 5, 4, 4]) == True": {
+      "result": false,
+      "time": 0.11177396774291992,
+      "error": null
+    },
+    "assert is_Monotonic([1, 2, 2, 3]) == True": {
+      "result": false,
+      "time": 0.10817313194274902,
+      "error": null
+    },
+    "assert is_Monotonic([1, 3, 2]) == False": {
+      "result": true,
+      "time": 0.13835358619689941,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333
+}

@@ -1,0 +1,22 @@
+{
+  "code": "def find_tuples(test_list, K):\n    \"\"\"Return a list of tuples that have all elements divisible by K from the given list of tuples.\"\"\"\n    result = []\n    for tup in test_list:\n        if all(x % K == 0 for x in tup):\n            result.append(tup)\n    return result\n",
+  "results": {
+    "assert find_tuples([(6, 24, 12), (7, 9, 6), (12, 18, 21)], 6) == '[(6, 24, 12)]'": {
+      "result": false,
+      "time": 0.15871810913085938,
+      "error": null
+    },
+    "assert find_tuples([(5, 25, 30), (4, 2, 3), (7, 8, 9)], 5) == '[(5, 25, 30)]'": {
+      "result": false,
+      "time": 0.16590380668640137,
+      "error": null
+    },
+    "assert find_tuples([(7, 9, 16), (8, 16, 4), (19, 17, 18)], 4) == '[(8, 16, 4)]'": {
+      "result": false,
+      "time": 0.1659862995147705,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

@@ -1,0 +1,22 @@
+{
+  "code": "def text_lowercase_underscore(text):\n    result = []\n    for i in range(len(text)):\n        if text[i] == \" \":\n            result.append(\"_\")\n        else:\n            result.append(text[i])\n    return \"\".join(result)\n",
+  "results": {
+    "assert text_lowercase_underscore(\"aab_cbbbc\")==('Found a match!')": {
+      "result": false,
+      "time": 0.17554330825805664,
+      "error": null
+    },
+    "assert text_lowercase_underscore(\"aab_Abbbc\")==('Not matched!')": {
+      "result": false,
+      "time": 0.16470789909362793,
+      "error": null
+    },
+    "assert text_lowercase_underscore(\"Aaab_abbbc\")==('Not matched!')": {
+      "result": false,
+      "time": 0.3849184513092041,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

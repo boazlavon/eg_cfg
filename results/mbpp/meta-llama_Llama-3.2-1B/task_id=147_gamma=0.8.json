@@ -1,0 +1,22 @@
+{
+  "code": "def max_path_sum(tri, m, n):\n    max_sum = 0\n    for i in range(m):\n        for j in range(n):\n            if i == 0 or j == 0:\n                max_sum = max(max_sum, tri[i][j])\n            else:\n                max_sum = max(max_sum, tri[i][j] + max_path_sum(tri, m, n))\n    return max_sum\n",
+  "results": {
+    "assert max_path_sum([[1, 0, 0], [4, 8, 0], [1, 5, 3]], 2, 2) == 14": {
+      "result": false,
+      "time": 0.15630149841308594,
+      "error": null
+    },
+    "assert max_path_sum([[13, 0, 0], [7, 4, 0], [2, 4, 6]], 2, 2) == 24 ": {
+      "result": false,
+      "time": 0.13554167747497559,
+      "error": null
+    },
+    "assert max_path_sum([[2, 0, 0], [11, 18, 0], [21, 25, 33]], 2, 2) == 53": {
+      "result": false,
+      "time": 0.14156270027160645,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

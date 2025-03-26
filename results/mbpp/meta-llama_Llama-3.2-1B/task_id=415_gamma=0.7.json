@@ -1,0 +1,22 @@
+{
+  "code": "def max_Product(arr):\n    max_product = 0\n    for i in range(len(arr)):\n        for j in range(i + 1, len(arr)):\n            product = arr[i] * arr[j]\n            if product > max_product:\n                max_product = product\n    return max_product\n",
+  "results": {
+    "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)": {
+      "result": false,
+      "time": 0.17492437362670898,
+      "error": null
+    },
+    "assert max_Product([0,-1,-2,-4,5,0,-6]) == (-4,-6)": {
+      "result": false,
+      "time": 0.12853312492370605,
+      "error": null
+    },
+    "assert max_Product([1,2,3]) == (2,3)": {
+      "result": false,
+      "time": 0.1296217441558838,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

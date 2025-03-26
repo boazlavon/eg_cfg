@@ -1,0 +1,22 @@
+{
+  "code": "def smallest_missing(A, left_element, right_element):\n    if left_element == right_element:\n        return left_element\n    if left_element < right_element:\n        return smallest_missing(A, left_element, right_element - 1)\n    else:\n        return smallest_missing(A, left_element + 1, right_element)\n",
+  "results": {
+    "assert smallest_missing([0, 1, 2, 3, 4, 5, 6], 0, 6) == 7": {
+      "result": false,
+      "time": 0.10894966125488281,
+      "error": null
+    },
+    "assert smallest_missing([0, 1, 2, 6, 9, 11, 15], 0, 6) == 3": {
+      "result": false,
+      "time": 0.1126551628112793,
+      "error": null
+    },
+    "assert smallest_missing([1, 2, 3, 4, 6, 9, 11, 15], 0, 7) == 0": {
+      "result": true,
+      "time": 0.1129767894744873,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333
+}

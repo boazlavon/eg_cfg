@@ -1,0 +1,22 @@
+{
+  "code": "def babylonian_squareroot(number):\n    \"\"\"\n    This function computes the square root of a number using the Babylonian method.\n    \"\"\"\n    # Initialize the square root to 0\n    square_root = 0\n    # Initialize the number of iterations to 0\n    iterations = 0\n    # Initialize the current number to the number\n    current_number = number\n    # While the current number is greater than 0\n    while current_number > 0:\n        # Add the current number to the square root\n        square_root += current_number\n        # Subtract the square root from the current number\n        current_number -= square_root\n        # Increment the number of iterations\n        iterations += 1\n    # Return the square root\n    return square_root / iterations\n",
+  "results": {
+    "assert babylonian_squareroot(10)==3.162277660168379": {
+      "result": false,
+      "time": 0.10980820655822754,
+      "error": null
+    },
+    "assert babylonian_squareroot(2)==1.414213562373095": {
+      "result": false,
+      "time": 0.10733413696289062,
+      "error": null
+    },
+    "assert babylonian_squareroot(9)==3.0": {
+      "result": false,
+      "time": 0.10524439811706543,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

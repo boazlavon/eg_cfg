@@ -1,0 +1,22 @@
+{
+  "code": "def remove_splchar(text):\n    result = []\n    for char in text:\n        if char.isalnum():\n            result.append(char)\n    return \"\".join(result)\n",
+  "results": {
+    "assert remove_splchar('python  @#&^%$*program123')==('pythonprogram123')": {
+      "result": true,
+      "time": 0.12684202194213867,
+      "error": null
+    },
+    "assert remove_splchar('python %^$@!^&*()  programming24%$^^()    language')==('pythonprogramming24language')": {
+      "result": true,
+      "time": 0.1352832317352295,
+      "error": null
+    },
+    "assert remove_splchar('python   ^%&^()(+_)(_^&67)                  program')==('python67program')": {
+      "result": true,
+      "time": 0.1339268684387207,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

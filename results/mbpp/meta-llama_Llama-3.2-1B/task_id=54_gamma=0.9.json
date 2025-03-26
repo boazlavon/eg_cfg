@@ -1,0 +1,22 @@
+{
+  "code": "def counting_sort(my_list):\n    \"\"\"Sorts the given array by using counting sort.\"\"\"\n    count = [0] * (max(my_list) + 1)\n    for num in my_list:\n        count[num] += 1\n    return [num for num in range(max(my_list) + 1) if count[num] > 0]\n",
+  "results": {
+    "assert counting_sort([1,23,4,5,6,7,8]) == [1, 4, 5, 6, 7, 8, 23]": {
+      "result": true,
+      "time": 0.13289666175842285,
+      "error": null
+    },
+    "assert counting_sort([12, 9, 28, 33, 69, 45]) == [9, 12, 28, 33, 45, 69]": {
+      "result": true,
+      "time": 0.17488574981689453,
+      "error": null
+    },
+    "assert counting_sort([8, 4, 14, 3, 2, 1]) == [1, 2, 3, 4, 8, 14]": {
+      "result": true,
+      "time": 0.1720426082611084,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

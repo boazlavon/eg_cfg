@@ -1,0 +1,22 @@
+{
+  "code": "def parabola_focus(a, b, c):\n    \"\"\"Return the focus of a parabola with the given coefficients.\"\"\"\n    # Calculate the discriminant\n    discriminant = b**2 - 4 * a * c\n    # Check if the discriminant is positive\n    if discriminant > 0:\n        # Calculate the roots of the quadratic equation\n        root1 = (-b + math.sqrt(discriminant)) / (2 * a)\n        root2 = (-b - math.sqrt(discriminant)) / (2 * a)\n        # Return the focus\n        return (-root1, root2)\n    else:\n        # The discriminant is negative, so the parabola has no focus\n        return (-0.0, -0.0)\n",
+  "results": {
+    "assert parabola_focus(5,3,2)==(-0.3, 1.6)": {
+      "result": false,
+      "time": 0.12461423873901367,
+      "error": null
+    },
+    "assert parabola_focus(9,8,4)==(-0.4444444444444444, 2.25)": {
+      "result": false,
+      "time": 0.13867521286010742,
+      "error": null
+    },
+    "assert parabola_focus(2,4,6)==(-1.0, 4.125)": {
+      "result": false,
+      "time": 0.12003183364868164,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

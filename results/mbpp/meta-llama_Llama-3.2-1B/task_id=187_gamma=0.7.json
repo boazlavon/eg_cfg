@@ -1,0 +1,22 @@
+{
+  "code": "def longest_common_subsequence(X, Y, m, n):\n    if m == 0 or n == 0:\n        return 0\n    if X == Y:\n        return 1\n    if X[0] == Y[0]:\n        return 1 + longest_common_subsequence(X[1:], Y[1:], m - 1, n - 1)\n    return 1\n",
+  "results": {
+    "assert longest_common_subsequence(\"AGGTAB\" , \"GXTXAYB\", 6, 7) == 4": {
+      "result": false,
+      "time": 0.15259528160095215,
+      "error": null
+    },
+    "assert longest_common_subsequence(\"ABCDGH\" , \"AEDFHR\", 6, 6) == 3": {
+      "result": false,
+      "time": 0.10730433464050293,
+      "error": null
+    },
+    "assert longest_common_subsequence(\"AXYT\" , \"AYZX\", 4, 4) == 2": {
+      "result": true,
+      "time": 0.13555240631103516,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333
+}

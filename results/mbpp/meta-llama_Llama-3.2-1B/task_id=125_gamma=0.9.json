@@ -1,0 +1,22 @@
+{
+  "code": "def find_length(string, n):\n    \"\"\"Return the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.\"\"\"\n    # Initialize variables\n    count_0 = 0\n    count_1 = 0\n    # Iterate over the string\n    for i in range(len(string)):\n        # Increment count_0 if the current character is a 0\n        if string[i] == \"0\":\n            count_0 += 1\n        # Increment count_1 if the current character is a 1\n        elif string[i] == \"1\":\n            count_1 += 1\n        # If the current character is a 0, increment count_0\n        if string[i] == \"0\":\n            count_0 += 1\n        # If the current character is a 1, increment count_1\n        if string[i] == \"1\":\n            count_1 += 1\n    # Return the maximum difference between count_0 and count_1\n    return max(count_0 - count_1, 0)\n",
+  "results": {
+    "assert find_length(\"11000010001\", 11) == 6": {
+      "result": true,
+      "time": 0.10038399696350098,
+      "error": null
+    },
+    "assert find_length(\"10111\", 5) == 1": {
+      "result": false,
+      "time": 0.09090542793273926,
+      "error": null
+    },
+    "assert find_length(\"11011101100101\", 14) == 2 ": {
+      "result": false,
+      "time": 0.09589266777038574,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333
+}

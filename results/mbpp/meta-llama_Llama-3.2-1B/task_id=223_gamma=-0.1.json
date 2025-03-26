@@ -1,0 +1,22 @@
+{
+  "code": "def is_majority(arr, n, x):\n\n    # Write your code here\n    count = 0\n    for i in range(n):\n        if arr[i] == x:\n            count += 1\n        if count > (n - 1) // 2:\n            return True\n        count -= 1\n    return False\n",
+  "results": {
+    "assert is_majority([1, 2, 3, 3, 3, 3, 10], 7, 3) == True": {
+      "result": false,
+      "time": 0.10257101058959961,
+      "error": null
+    },
+    "assert is_majority([1, 1, 2, 4, 4, 4, 6, 6], 8, 4) == False": {
+      "result": true,
+      "time": 0.11380887031555176,
+      "error": null
+    },
+    "assert is_majority([1, 1, 1, 2, 2], 5, 1) == True": {
+      "result": false,
+      "time": 0.11890888214111328,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333
+}

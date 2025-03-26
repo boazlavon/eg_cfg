@@ -1,0 +1,22 @@
+{
+  "code": "def remove_replica(test_tup):\n    result = []\n    for num in test_tup:\n        if num not in result:\n            result.append(num)\n    return result\n",
+  "results": {
+    "assert remove_replica((1, 1, 4, 4, 4, 5, 5, 6, 7, 7)) == (1, 'MSP', 4, 'MSP', 'MSP', 5, 'MSP', 6, 7, 'MSP')": {
+      "result": false,
+      "time": 0.12945032119750977,
+      "error": null
+    },
+    "assert remove_replica((2, 3, 4, 4, 5, 6, 6, 7, 8, 9, 9)) == (2, 3, 4, 'MSP', 5, 6, 'MSP', 7, 8, 9, 'MSP')": {
+      "result": false,
+      "time": 0.10694670677185059,
+      "error": null
+    },
+    "assert remove_replica((2, 2, 5, 4, 5, 7, 5, 6, 7, 7)) == (2, 'MSP', 5, 4, 'MSP', 7, 'MSP', 6, 'MSP', 'MSP')": {
+      "result": false,
+      "time": 0.10805249214172363,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

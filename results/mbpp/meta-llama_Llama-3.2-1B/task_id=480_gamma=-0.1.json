@@ -1,0 +1,22 @@
+{
+  "code": "def get_max_occuring_char(str1):\n\n    # Initialize a dictionary to store the count of each character\n    char_count = {}\n    # Iterate over each character in the string\n    for char in str1:\n        # If the character is not in the dictionary, add it with count = 1\n        if char not in char_count:\n            char_count[char] = 1\n        # If the character is already in the dictionary, increment its count\n        else:\n            char_count[char] += 1\n    # Find the character with the maximum count\n    max_char = max(char_count, key=char_count.get)\n    # Return the character\n    return max_char\n",
+  "results": {
+    "assert get_max_occuring_char(\"data\") == \"a\"": {
+      "result": true,
+      "time": 0.1543412208557129,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"create\") == \"e\"": {
+      "result": true,
+      "time": 0.1497955322265625,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"brilliant girl\") == \"i\"": {
+      "result": true,
+      "time": 0.15849661827087402,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

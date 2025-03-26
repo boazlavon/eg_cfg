@@ -1,0 +1,22 @@
+{
+  "code": "def ncr_modp(n, r, p):\n    if r == 0:\n        return 1\n    else:\n        return n * ncr_modp(n - 1, r - 1, p) % p\n",
+  "results": {
+    "assert ncr_modp(10,2,13)==6": {
+      "result": false,
+      "time": 0.1056663990020752,
+      "error": null
+    },
+    "assert ncr_modp(15,12,43)==25": {
+      "result": false,
+      "time": 0.14413881301879883,
+      "error": null
+    },
+    "assert ncr_modp(17,9,18)==10": {
+      "result": false,
+      "time": 0.10664582252502441,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

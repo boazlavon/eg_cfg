@@ -1,0 +1,22 @@
+{
+  "code": "def is_allowed_specific_char(string):\n    \"\"\"Checks if the given string contains only a certain set of characters(in this case a-z, a-z and 0-9) by using regex.\"\"\"\n    regex = re.compile(r\"[a-z0-9]\")\n    return regex.search(string) is not None\n",
+  "results": {
+    "assert is_allowed_specific_char(\"ABCDEFabcdef123450\") == True": {
+      "result": false,
+      "time": 0.1464226245880127,
+      "error": null
+    },
+    "assert is_allowed_specific_char(\"*&%@#!}{\") == False": {
+      "result": false,
+      "time": 0.15218019485473633,
+      "error": null
+    },
+    "assert is_allowed_specific_char(\"HELLOhowareyou98765\") == True": {
+      "result": false,
+      "time": 0.16189789772033691,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

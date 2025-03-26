@@ -1,0 +1,22 @@
+{
+  "code": "def permute_string(str):\n\n    if len(str) == 1:\n        return [str]\n    else:\n        res = []\n        for i in range(len(str)):\n            for j in permute_string(str[:i] + str[i + 1 :]):\n                res.append(str[i] + j)\n        return res\n",
+  "results": {
+    "assert permute_string('ab')==['ab', 'ba']": {
+      "result": true,
+      "time": 1.8039765357971191,
+      "error": null
+    },
+    "assert permute_string('abc')==['abc', 'bac', 'bca', 'acb', 'cab', 'cba']": {
+      "result": false,
+      "time": 0.8038928508758545,
+      "error": null
+    },
+    "assert permute_string('abcd')==['abcd', 'bacd', 'bcad', 'bcda', 'acbd', 'cabd', 'cbad', 'cbda', 'acdb', 'cadb', 'cdab', 'cdba', 'abdc', 'badc', 'bdac', 'bdca', 'adbc', 'dabc', 'dbac', 'dbca', 'adcb', 'dacb', 'dcab', 'dcba']": {
+      "result": false,
+      "time": 1.6215908527374268,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333
+}

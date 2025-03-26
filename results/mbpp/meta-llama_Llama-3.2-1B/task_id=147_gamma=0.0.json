@@ -1,0 +1,22 @@
+{
+  "code": "def max_path_sum(tri, m, n):\n    if len(tri) == 0:\n        return 0\n    if len(tri) == 1:\n        return tri[0][0]\n    if len(tri) == 2:\n        return max(tri[0][0], tri[1][0])\n    if m == 0:\n        return max_path_sum(tri[1:], n, n)\n    if n == 0:\n        return max_path_sum(tri[1:], m, m)\n    if m == n:\n        return max(tri[0][0], tri[1][0])\n    if m > n:\n        return max_path_sum(tri[1:], m, n)\n    if n > m:\n        return max_path_sum(tri[1:], m, n)\n    return max(tri[0][0], max_path_sum(tri[1:], m - 1, n - 1) + tri[1][0], max_path_sum(tri[1:], m, n - 1) + tri[0][0])\n",
+  "results": {
+    "assert max_path_sum([[1, 0, 0], [4, 8, 0], [1, 5, 3]], 2, 2) == 14": {
+      "result": false,
+      "time": 0.12639141082763672,
+      "error": null
+    },
+    "assert max_path_sum([[13, 0, 0], [7, 4, 0], [2, 4, 6]], 2, 2) == 24 ": {
+      "result": false,
+      "time": 0.1468353271484375,
+      "error": null
+    },
+    "assert max_path_sum([[2, 0, 0], [11, 18, 0], [21, 25, 33]], 2, 2) == 53": {
+      "result": false,
+      "time": 0.15783452987670898,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

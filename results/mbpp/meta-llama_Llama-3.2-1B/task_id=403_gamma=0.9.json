@@ -1,0 +1,22 @@
+{
+  "code": "def is_valid_URL(str):\n    return re.match(r\"https?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\", str)\n",
+  "results": {
+    "assert is_valid_URL(\"https://www.google.com\") == True": {
+      "result": false,
+      "time": 0.1163022518157959,
+      "error": null
+    },
+    "assert is_valid_URL(\"https:/www.gmail.com\") == False": {
+      "result": false,
+      "time": 0.1250002384185791,
+      "error": null
+    },
+    "assert is_valid_URL(\"https:// www.redit.com\") == False": {
+      "result": false,
+      "time": 0.14341282844543457,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

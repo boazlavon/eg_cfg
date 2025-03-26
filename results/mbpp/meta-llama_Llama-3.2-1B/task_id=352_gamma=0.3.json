@@ -1,0 +1,22 @@
+{
+  "code": "def unique_Characters(str):\n    if len(str) == 0:\n        return True\n    if str[0] in str[1:]:\n        return False\n    return unique_Characters(str[1:])\n",
+  "results": {
+    "assert unique_Characters('aba') == False": {
+      "result": true,
+      "time": 0.24661040306091309,
+      "error": null
+    },
+    "assert unique_Characters('abc') == True": {
+      "result": true,
+      "time": 0.11017823219299316,
+      "error": null
+    },
+    "assert unique_Characters('abab') == False": {
+      "result": true,
+      "time": 0.10698986053466797,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

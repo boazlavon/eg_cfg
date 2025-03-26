@@ -1,0 +1,22 @@
+{
+  "code": "def lps(str):\n    n = len(str)\n    dp = [[0] * (n + 1) for _ in range(n + 1)]\n    for i in range(n):\n        dp[i][i] = 1\n    for i in range(n - 1, -1, -1):\n        for j in range(i + 1, n):\n            if str[i] == str[j]:\n                dp[i][j] = dp[i + 1][j - 1] + 1\n            else:\n                dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])\n    return dp[0][n - 1]\n",
+  "results": {
+    "assert lps(\"TENS FOR TENS\") == 5 ": {
+      "result": false,
+      "time": 0.1358487606048584,
+      "error": null
+    },
+    "assert lps(\"CARDIO FOR CARDS\") == 7": {
+      "result": false,
+      "time": 0.13089776039123535,
+      "error": null
+    },
+    "assert lps(\"PART OF THE JOURNEY IS PART\") == 9 ": {
+      "result": false,
+      "time": 0.13797664642333984,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

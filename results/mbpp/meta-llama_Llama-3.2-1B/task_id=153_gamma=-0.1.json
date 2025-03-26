@@ -1,0 +1,22 @@
+{
+  "code": "def parabola_vertex(a, b, c):\n    \"\"\"\n    This function takes in the coefficients of a parabola and returns the vertex of the parabola.\n    \"\"\"\n    # Calculate the discriminant\n    discriminant = b**2 - 4 * a * c\n    # If the discriminant is negative, the parabola is not a parabola\n    if discriminant < 0:\n        return None\n    # If the discriminant is positive, the parabola is a parabola\n    else:\n        # Calculate the roots of the quadratic equation\n        root1 = (-b + discriminant**0.5) / (2 * a)\n        root2 = (-b - discriminant**0.5) / (2 * a)\n        # Return the vertex of the parabola\n        return (-root1, root2)\n",
+  "results": {
+    "assert parabola_vertex(5,3,2)==(-0.3, 1.55)": {
+      "result": false,
+      "time": 0.12283849716186523,
+      "error": null
+    },
+    "assert parabola_vertex(9,8,4)==(-0.4444444444444444, 2.2222222222222223)": {
+      "result": false,
+      "time": 0.11540818214416504,
+      "error": null
+    },
+    "assert parabola_vertex(2,4,6)==(-1.0, 4.0)": {
+      "result": false,
+      "time": 0.11787056922912598,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

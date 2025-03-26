@@ -1,0 +1,22 @@
+{
+  "code": "def magic_square_test(my_matrix):\n    \"\"\"Return True if the matrix is a magic square, False otherwise.\"\"\"\n    # Check if the matrix is square\n    if len(my_matrix) != len(my_matrix[0]):\n        return False\n\n    # Check if the matrix is symmetric\n    if my_matrix[0][0] != my_matrix[-1][-1]:\n        return False\n\n    # Check if the matrix is filled with numbers\n    for row in my_matrix:\n        if not all(num in row for num in range(1, 10)):\n            return False\n\n    # Check if the matrix is filled with numbers in the correct order\n    for row in my_matrix:\n        if not all(num == row[0] for num in row[1:]):\n            return False\n\n    # Check if the matrix is filled with numbers in the correct order\n    for col in range(len(my_matrix[0])):\n        if not all(num == my_matrix[0][col] for num in my_matrix[1:]):\n            return False\n\n    return True\n",
+  "results": {
+    "assert magic_square_test([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]])==True": {
+      "result": false,
+      "time": 0.11060070991516113,
+      "error": null
+    },
+    "assert magic_square_test([[2, 7, 6], [9, 5, 1], [4, 3, 8]])==True": {
+      "result": false,
+      "time": 0.10510110855102539,
+      "error": null
+    },
+    "assert magic_square_test([[2, 7, 6], [9, 5, 1], [4, 3, 7]])==False": {
+      "result": true,
+      "time": 0.10294771194458008,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333
+}

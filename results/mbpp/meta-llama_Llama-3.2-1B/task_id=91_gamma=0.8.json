@@ -1,0 +1,22 @@
+{
+  "code": "def find_substring(str1, sub_str):\n    str1 = str1.lower()\n    result = []\n    for i in range(len(str1)):\n        if str1[i] == sub_str[0]:\n            for j in range(i + 1, len(str1)):\n                if str1[j] == sub_str[1]:\n                    result.append(str1[i : j + 1])\n    return result\n",
+  "results": {
+    "assert find_substring([\"red\", \"black\", \"white\", \"green\", \"orange\"],\"ack\")==True": {
+      "result": false,
+      "time": 0.11690235137939453,
+      "error": null
+    },
+    "assert find_substring([\"red\", \"black\", \"white\", \"green\", \"orange\"],\"abc\")==False": {
+      "result": false,
+      "time": 0.11747097969055176,
+      "error": null
+    },
+    "assert find_substring([\"red\", \"black\", \"white\", \"green\", \"orange\"],\"ange\")==True": {
+      "result": false,
+      "time": 0.13844966888427734,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

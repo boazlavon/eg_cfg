@@ -1,0 +1,22 @@
+{
+  "code": "def find_lists(Input):\n    result = []\n    for i in Input:\n        if len(i) == 1:\n            result.append(i)\n        else:\n            for j in i:\n                if j not in result:\n                    result.append(j)\n    return result\n",
+  "results": {
+    "assert find_lists(([1, 2, 3, 4], [5, 6, 7, 8])) == 2": {
+      "result": false,
+      "time": 0.15534472465515137,
+      "error": null
+    },
+    "assert find_lists(([1, 2], [3, 4], [5, 6]))  == 3": {
+      "result": false,
+      "time": 0.1542208194732666,
+      "error": null
+    },
+    "assert find_lists(([9, 8, 7, 6, 5, 4, 3, 2, 1])) == 1": {
+      "result": false,
+      "time": 0.1519627571105957,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

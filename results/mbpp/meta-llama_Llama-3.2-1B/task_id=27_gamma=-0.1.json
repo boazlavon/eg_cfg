@@ -1,0 +1,22 @@
+{
+  "code": "def remove(list):\n    \"\"\"Remove all digits from a list of strings.\"\"\"\n    new_list = []\n    for word in list:\n        new_word = \"\"\n        for char in word:\n            if char.isdigit():\n                new_word = new_word + char\n        new_list.append(new_word)\n    return new_list\n",
+  "results": {
+    "assert remove(['4words', '3letters', '4digits']) == ['words', 'letters', 'digits']": {
+      "result": false,
+      "time": 0.11322784423828125,
+      "error": null
+    },
+    "assert remove(['28Jan','12Jan','11Jan']) == ['Jan','Jan','Jan']": {
+      "result": false,
+      "time": 0.11365056037902832,
+      "error": null
+    },
+    "assert remove(['wonder1','wonder2','wonder3']) == ['wonder','wonder','wonder']": {
+      "result": false,
+      "time": 0.10807180404663086,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

@@ -1,0 +1,22 @@
+{
+  "code": "def move_first(test_list):\n    if len(test_list) == 0:\n        return test_list\n    else:\n        return [test_list[-1]] + move_first(test_list[:-1])\n",
+  "results": {
+    "assert move_first([1,2,3,4]) == [4,1,2,3]": {
+      "result": false,
+      "time": 0.1274092197418213,
+      "error": null
+    },
+    "assert move_first([0,1,2,3]) == [3,0,1,2]": {
+      "result": false,
+      "time": 0.12009310722351074,
+      "error": null
+    },
+    "assert move_first([9,8,7,1]) == [1,9,8,7]": {
+      "result": false,
+      "time": 0.11966109275817871,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

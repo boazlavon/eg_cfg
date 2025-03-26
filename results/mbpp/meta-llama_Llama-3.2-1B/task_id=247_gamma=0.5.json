@@ -1,0 +1,22 @@
+{
+  "code": "def lps(str):\n    if len(str) <= 1:\n        return str\n    else:\n        lps = lps(str[1:])\n        lps += lps[1:]\n        return lps\n",
+  "results": {
+    "assert lps(\"TENS FOR TENS\") == 5 ": {
+      "result": false,
+      "time": 0.11971712112426758,
+      "error": null
+    },
+    "assert lps(\"CARDIO FOR CARDS\") == 7": {
+      "result": false,
+      "time": 0.11967015266418457,
+      "error": null
+    },
+    "assert lps(\"PART OF THE JOURNEY IS PART\") == 9 ": {
+      "result": false,
+      "time": 0.1259474754333496,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

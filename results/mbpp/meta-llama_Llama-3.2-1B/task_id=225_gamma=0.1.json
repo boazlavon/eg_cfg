@@ -1,0 +1,22 @@
+{
+  "code": "def find_Min(arr, low, high):\n    if low > high:\n        return -1\n    mid = (low + high) // 2\n    if arr[mid] == arr[high]:\n        return find_Min(arr, low, mid - 1)\n    elif arr[mid] == arr[low]:\n        return find_Min(arr, mid + 1, high)\n    else:\n        if arr[mid] < arr[high]:\n            return find_Min(arr, mid + 1, high)\n        else:\n            return find_Min(arr, low, mid - 1)\n",
+  "results": {
+    "assert find_Min([1,2,3,4,5],0,4) == 1": {
+      "result": false,
+      "time": 0.1147456169128418,
+      "error": null
+    },
+    "assert find_Min([4,6,8],0,2) == 4": {
+      "result": false,
+      "time": 0.11098814010620117,
+      "error": null
+    },
+    "assert find_Min([2,3,5,7,9],0,4) == 2": {
+      "result": false,
+      "time": 0.1056363582611084,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

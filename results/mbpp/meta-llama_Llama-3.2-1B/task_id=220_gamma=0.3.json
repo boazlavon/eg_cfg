@@ -1,0 +1,22 @@
+{
+  "code": "def replace_max_specialchar(text, n):\n    result = \"\"\n    for i in range(len(text)):\n        if text[i] == \" \":\n            result += \" \"\n        elif text[i] == \",\":\n            result += \",\"\n        elif text[i] == \".\":\n            result += \".\"\n\n    return result\n",
+  "results": {
+    "assert replace_max_specialchar('Python language, Programming language.',2)==('Python:language: Programming language.')": {
+      "result": false,
+      "time": 0.11057829856872559,
+      "error": null
+    },
+    "assert replace_max_specialchar('a b c,d e f',3)==('a:b:c:d e f')": {
+      "result": false,
+      "time": 0.10856461524963379,
+      "error": null
+    },
+    "assert replace_max_specialchar('ram reshma,ram rahim',1)==('ram:reshma,ram rahim')": {
+      "result": false,
+      "time": 0.10923171043395996,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

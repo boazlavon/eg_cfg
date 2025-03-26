@@ -1,0 +1,22 @@
+{
+  "code": "def multiple_split(text):\n    \"\"\"Split a string with multiple delimiters by using regex.\"\"\"\n    regex = r\"(\\w+)(?:\\s+|\\Z)\"\n    return [text.split(regex)[0], text.split(regex)[1]]\n",
+  "results": {
+    "assert multiple_split('Forces of the \\ndarkness*are coming into the play.') == ['Forces of the ', 'darkness', 'are coming into the play.']": {
+      "result": false,
+      "time": 0.11161947250366211,
+      "error": null
+    },
+    "assert multiple_split('Mi Box runs on the \\n Latest android*which has google assistance and chromecast.') == ['Mi Box runs on the ', ' Latest android', 'which has google assistance and chromecast.']": {
+      "result": false,
+      "time": 0.11442732810974121,
+      "error": null
+    },
+    "assert multiple_split('Certain services\\nare subjected to change*over the seperate subscriptions.') == ['Certain services', 'are subjected to change', 'over the seperate subscriptions.']": {
+      "result": false,
+      "time": 0.11821198463439941,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

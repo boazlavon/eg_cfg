@@ -1,0 +1,22 @@
+{
+  "code": "def find_longest_repeating_subseq(str):\n    # Initialize a dictionary to store the count of each character\n    char_count = {}\n    # Initialize a variable to store the maximum length of the longest repeating subsequence\n    max_length = 0\n    # Iterate through the string\n    for i in range(len(str)):\n        # If the current character is not in the dictionary, add it with a count of 1\n        if str[i] not in char_count:\n            char_count[str[i]] = 1\n        # If the current character is already in the dictionary, increment its count\n        else:\n            char_count[str[i]] += 1\n        # If the current character is the last character in the string, check if the count of the character is greater than the maximum length\n        if i == len(str) - 1:\n            # If it is, update the maximum length\n            if char_count[str[i]] > max_length:\n                max_length = char_count[str[i]]\n    # Return the maximum length\n    return max_length\n",
+  "results": {
+    "assert find_longest_repeating_subseq(\"AABEBCDD\") == 3": {
+      "result": false,
+      "time": 0.12014222145080566,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"aabb\") == 2": {
+      "result": true,
+      "time": 0.14529800415039062,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"aab\") == 1": {
+      "result": true,
+      "time": 0.12334680557250977,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666
+}

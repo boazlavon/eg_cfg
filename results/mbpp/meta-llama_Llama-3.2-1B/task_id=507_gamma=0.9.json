@@ -1,0 +1,22 @@
+{
+  "code": "def remove_words(list1, removewords):\n    \"\"\"Remove specific words from a given list.\"\"\"\n    for word in removewords:\n        if word in list1:\n            list1.remove(word)\n    return list1\n",
+  "results": {
+    "assert remove_words(['red', 'green', 'blue', 'white', 'black', 'orange'],['white', 'orange'])==['red', 'green', 'blue', 'black']": {
+      "result": true,
+      "time": 0.10946393013000488,
+      "error": null
+    },
+    "assert remove_words(['red', 'green', 'blue', 'white', 'black', 'orange'],['black', 'orange'])==['red', 'green', 'blue', 'white']": {
+      "result": true,
+      "time": 0.1153116226196289,
+      "error": null
+    },
+    "assert remove_words(['red', 'green', 'blue', 'white', 'black', 'orange'],['blue', 'white'])==['red', 'green', 'black', 'orange']": {
+      "result": true,
+      "time": 0.1131143569946289,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

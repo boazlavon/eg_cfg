@@ -1,0 +1,22 @@
+{
+  "code": "def remove_tuples(test_list, K):\n    \"\"\"\n    Remove all tuples with length K from the list test_list.\n    \"\"\"\n    for i in range(len(test_list)):\n        if len(test_list[i]) == K:\n            test_list.pop(i)\n    return test_list\n",
+  "results": {
+    "assert remove_tuples([(4, 5), (4, ), (8, 6, 7), (1, ), (3, 4, 6, 7)] , 1) == [(4, 5), (8, 6, 7), (3, 4, 6, 7)]": {
+      "result": false,
+      "time": 0.11162590980529785,
+      "error": null
+    },
+    "assert remove_tuples([(4, 5), (4,5), (6, 7), (1, 2, 3), (3, 4, 6, 7)] ,2) == [(1, 2, 3), (3, 4, 6, 7)]": {
+      "result": false,
+      "time": 0.12610912322998047,
+      "error": null
+    },
+    "assert remove_tuples([(1, 4, 4), (4, 3), (8, 6, 7), (1, ), (3, 6, 7)] , 3) == [(4, 3), (1,)]": {
+      "result": false,
+      "time": 0.12994027137756348,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

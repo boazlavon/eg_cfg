@@ -1,0 +1,22 @@
+{
+  "code": "def find_long_word(text):\n    \"\"\"Find all five characters long word in the given string by using regex.\"\"\"\n    import re\n\n    regex = re.compile(r\"\\b\\w{5}\\b\")\n    return [word for word in regex.findall(text) if len(word) == 5]\n",
+  "results": {
+    "assert find_long_word('Please move back to strem') == ['strem']": {
+      "result": true,
+      "time": 0.13564276695251465,
+      "error": null
+    },
+    "assert find_long_word('4K Ultra HD streaming player') == ['Ultra']": {
+      "result": true,
+      "time": 0.12969636917114258,
+      "error": null
+    },
+    "assert find_long_word('Streaming Media Player') == ['Media']": {
+      "result": true,
+      "time": 0.13109064102172852,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

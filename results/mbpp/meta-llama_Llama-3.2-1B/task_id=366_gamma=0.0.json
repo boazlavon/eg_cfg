@@ -1,0 +1,22 @@
+{
+  "code": "def adjacent_num_product(list_nums):\n    max_product = 0\n    for i in range(len(list_nums) - 1):\n        product = list_nums[i] * list_nums[i + 1]\n        if product > max_product:\n            max_product = product\n    return max_product\n",
+  "results": {
+    "assert adjacent_num_product([1,2,3,4,5,6]) == 30": {
+      "result": true,
+      "time": 0.10444283485412598,
+      "error": null
+    },
+    "assert adjacent_num_product([1,2,3,4,5]) == 20": {
+      "result": true,
+      "time": 0.10221266746520996,
+      "error": null
+    },
+    "assert adjacent_num_product([2,3]) == 6": {
+      "result": true,
+      "time": 0.10402441024780273,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

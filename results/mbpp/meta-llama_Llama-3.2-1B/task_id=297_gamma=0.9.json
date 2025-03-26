@@ -1,0 +1,22 @@
+{
+  "code": "def flatten_list(list1):\n    result = []\n    for item in list1:\n        if isinstance(item, list):\n            result.extend(flatten_list(item))\n        else:\n            result.append(item)\n    return result\n",
+  "results": {
+    "assert flatten_list([0, 10, [20, 30], 40, 50, [60, 70, 80], [90, 100, 110, 120]])==[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]": {
+      "result": true,
+      "time": 0.1312878131866455,
+      "error": null
+    },
+    "assert flatten_list([[10, 20], [40], [30, 56, 25], [10, 20], [33], [40]])==[10, 20, 40, 30, 56, 25, 10, 20, 33, 40]": {
+      "result": true,
+      "time": 0.15289974212646484,
+      "error": null
+    },
+    "assert flatten_list([[1,2,3], [4,5,6], [10,11,12], [7,8,9]])==[1, 2, 3, 4, 5, 6, 10, 11, 12, 7, 8, 9]": {
+      "result": true,
+      "time": 0.14568662643432617,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

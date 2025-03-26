@@ -1,0 +1,22 @@
+{
+  "code": "def max_sum_increasing_subseq(a, n, index, k):\n    if index == n:\n        return a[index]\n    if index > n:\n        return max_sum_increasing_subseq(a, n, index, k)\n    if k == index:\n        return a[index]\n    return max_sum_increasing_subseq(a, n, index, k)\n",
+  "results": {
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 4, 6) == 11": {
+      "result": false,
+      "time": 0.13408112525939941,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 2, 5) == 7": {
+      "result": false,
+      "time": 0.10990548133850098,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([11, 15, 19, 21, 26, 28, 31], 7, 2, 4) == 71": {
+      "result": false,
+      "time": 0.13164472579956055,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

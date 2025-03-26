@@ -1,0 +1,22 @@
+{
+  "code": "def no_of_subsequences(arr, k):\n\n    # Initialize result and count\n    result = 0\n    count = 0\n    # Iterate through all possible subsequences\n    for i in range(len(arr)):\n        # Initialize a variable to store the product of the current subsequence\n        product = 1\n        # Iterate through all possible subsequences\n        for j in range(i, len(arr)):\n            # If the product of the current subsequence is less than k,\n            # increment the count\n            if product < k:\n                count += 1\n            # Update the product\n            product *= arr[j]\n        # Increment the result\n        result += count\n        # Reset the count\n        count = 0\n    return result\n",
+  "results": {
+    "assert no_of_subsequences([1,2,3,4], 10) == 11": {
+      "result": false,
+      "time": 0.14094042778015137,
+      "error": null
+    },
+    "assert no_of_subsequences([4,8,7,2], 50) == 9": {
+      "result": false,
+      "time": 0.10332202911376953,
+      "error": null
+    },
+    "assert no_of_subsequences([5,6,7,8], 15) == 4": {
+      "result": false,
+      "time": 0.11280488967895508,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

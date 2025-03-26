@@ -1,0 +1,22 @@
+{
+  "code": "def max_sum(arr, n):\n    dp = [[0 for _ in range(n + 1)] for _ in range(n + 1)]\n    for i in range(n):\n        for j in range(i + 1):\n            if i == 0:\n                dp[i][j] = arr[j]\n            elif j == 0:\n                dp[i][j] = arr[i]\n            else:\n                dp[i][j] = max(dp[i][j - 1], dp[i - 1][j], arr[i] + dp[i - 1][j - 1])\n    return dp[n - 1][n - 1]\n",
+  "results": {
+    "assert max_sum([1, 15, 51, 45, 33, 100, 12, 18, 9], 9) == 194": {
+      "result": false,
+      "time": 0.13327836990356445,
+      "error": null
+    },
+    "assert max_sum([80, 60, 30, 40, 20, 10], 6) == 210": {
+      "result": false,
+      "time": 0.13726043701171875,
+      "error": null
+    },
+    "assert max_sum([2, 3 ,14, 16, 21, 23, 29, 30], 8) == 138": {
+      "result": true,
+      "time": 0.13272309303283691,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333
+}

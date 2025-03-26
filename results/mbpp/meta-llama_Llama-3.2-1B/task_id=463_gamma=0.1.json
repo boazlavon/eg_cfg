@@ -1,0 +1,22 @@
+{
+  "code": "def max_subarray_product(arr):\n    max_product = 0\n    current_product = 0\n    for i in range(len(arr)):\n        current_product = arr[i]\n        if current_product > max_product:\n            max_product = current_product\n        elif current_product < 0:\n            current_product = 0\n        else:\n            current_product = current_product * arr[i]\n    return max_product\n",
+  "results": {
+    "assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112": {
+      "result": false,
+      "time": 0.13696885108947754,
+      "error": null
+    },
+    "assert max_subarray_product([6, -3, -10, 0, 2]) == 180 ": {
+      "result": false,
+      "time": 0.11510729789733887,
+      "error": null
+    },
+    "assert max_subarray_product([-2, -40, 0, -2, -3]) == 80": {
+      "result": false,
+      "time": 0.11185455322265625,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

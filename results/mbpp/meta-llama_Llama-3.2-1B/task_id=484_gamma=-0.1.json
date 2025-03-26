@@ -1,0 +1,22 @@
+{
+  "code": "def remove_matching_tuple(test_list1, test_list2):\n    \"\"\"Remove the matching tuples from the given two tuples.\"\"\"\n    result = []\n    for i in test_list1:\n        for j in test_list2:\n            if i == j:\n                result.append(i)\n    return result\n",
+  "results": {
+    "assert remove_matching_tuple([('Hello', 'dude'), ('How', 'are'), ('you', '?')], [('Hello', 'dude'), ('How', 'are')]) == [('you', '?')]": {
+      "result": false,
+      "time": 0.11934065818786621,
+      "error": null
+    },
+    "assert remove_matching_tuple([('Part', 'of'), ('the', 'journey'), ('is ', 'end')], [('Journey', 'the'), ('is', 'end')]) == [('Part', 'of'), ('the', 'journey'), ('is ', 'end')]": {
+      "result": false,
+      "time": 0.12246203422546387,
+      "error": null
+    },
+    "assert remove_matching_tuple([('Its', 'been'), ('a', 'long'), ('day', 'without')], [('a', 'long'), ('my', 'friend')]) == [('Its', 'been'), ('day', 'without')]": {
+      "result": false,
+      "time": 0.12994647026062012,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

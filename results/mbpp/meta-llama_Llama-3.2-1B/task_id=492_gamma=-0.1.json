@@ -1,0 +1,22 @@
+{
+  "code": "def binary_search(item_list, item):\n\n    if len(item_list) == 0:\n        return False\n    else:\n        mid = len(item_list) // 2\n        if item == item_list[mid]:\n            return True\n        elif item > item_list[mid]:\n            return binary_search(item_list[mid + 1 :], item)\n        else:\n            return binary_search(item_list[:mid], item)\n",
+  "results": {
+    "assert binary_search([1,2,3,5,8], 6) == False": {
+      "result": true,
+      "time": 0.12186670303344727,
+      "error": null
+    },
+    "assert binary_search([7, 8, 9, 10, 13], 10) == True": {
+      "result": true,
+      "time": 0.12540030479431152,
+      "error": null
+    },
+    "assert binary_search([11, 13, 14, 19, 22, 36], 23) == False": {
+      "result": true,
+      "time": 0.11882615089416504,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

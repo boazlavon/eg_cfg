@@ -1,0 +1,22 @@
+{
+  "code": "def Find_Min(lst):\n    \"\"\"Find the sublist having minimum length.\"\"\"\n    min_length = len(lst[0])\n    for sublist in lst:\n        if len(sublist) < min_length:\n            min_length = len(sublist)\n            sublist = sublist\n    return sublist\n",
+  "results": {
+    "assert Find_Min([[1],[1,2],[1,2,3]]) == [1]": {
+      "result": false,
+      "time": 0.11754608154296875,
+      "error": null
+    },
+    "assert Find_Min([[1,1],[1,1,1],[1,2,7,8]]) == [1,1]": {
+      "result": false,
+      "time": 0.11926674842834473,
+      "error": null
+    },
+    "assert Find_Min([['x'],['x','y'],['x','y','z']]) == ['x']": {
+      "result": false,
+      "time": 0.11741447448730469,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

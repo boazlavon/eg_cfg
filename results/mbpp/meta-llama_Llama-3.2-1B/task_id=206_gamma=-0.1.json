@@ -1,0 +1,22 @@
+{
+  "code": "def concatenate_elements(test_tup):\n    \"\"\"\n    This function takes a tuple as input and returns a new tuple with the elements concatenated.\n    The elements are concatenated in the order they appear in the input tuple.\n    \"\"\"\n    new_tup = []\n    for i in range(len(test_tup)):\n        new_tup.append(test_tup[i] + test_tup[i + 1])\n    return tuple(new_tup)\n",
+  "results": {
+    "assert concatenate_elements((\"DSP \", \"IS \", \"BEST \", \"FOR \", \"ALL \", \"UTS\")) == ('DSP IS ', 'IS BEST ', 'BEST FOR ', 'FOR ALL ', 'ALL UTS')": {
+      "result": false,
+      "time": 0.125474214553833,
+      "error": null
+    },
+    "assert concatenate_elements((\"RES \", \"IS \", \"BEST \", \"FOR \", \"ALL \", \"QESR\")) == ('RES IS ', 'IS BEST ', 'BEST FOR ', 'FOR ALL ', 'ALL QESR')": {
+      "result": false,
+      "time": 0.12147068977355957,
+      "error": null
+    },
+    "assert concatenate_elements((\"MSAM\", \"IS \", \"BEST \", \"FOR \", \"ALL \", \"SKD\")) == ('MSAMIS ', 'IS BEST ', 'BEST FOR ', 'FOR ALL ', 'ALL SKD')": {
+      "result": false,
+      "time": 0.11404061317443848,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

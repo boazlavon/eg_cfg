@@ -1,0 +1,22 @@
+{
+  "code": "def most_occurrences(test_list):\n    \"\"\"Return the word with most number of occurrences in the given strings list.\"\"\"\n    # Initialize a dictionary to store the count of each word\n    word_count = {}\n    # Iterate over each string in the list\n    for string in test_list:\n        # Split the string into individual words\n        words = string.split()\n        # Iterate over each word in the list\n        for word in words:\n            # If the word is not in the dictionary, add it with a count of 1\n            if word not in word_count:\n                word_count[word] = 1\n            # If the word is already in the dictionary, increment its count\n            else:\n                word_count[word] += 1\n    # Return the word with the highest count\n    return max(word_count, key=word_count.get)\n",
+  "results": {
+    "assert most_occurrences([\"UTS is best for RTF\", \"RTF love UTS\", \"UTS is best\"] ) == 'UTS'": {
+      "result": true,
+      "time": 0.1174311637878418,
+      "error": null
+    },
+    "assert most_occurrences([\"Its been a great year\", \"this year is so worse\", \"this year is okay\"] ) == 'year'": {
+      "result": true,
+      "time": 0.1113882064819336,
+      "error": null
+    },
+    "assert most_occurrences([\"Families can be reunited\", \"people can be reunited\", \"Tasks can be achieved \"] ) == 'can'": {
+      "result": true,
+      "time": 0.1259903907775879,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

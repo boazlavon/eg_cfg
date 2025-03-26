@@ -1,0 +1,22 @@
+{
+  "code": "def max_profit(price, k):\n\n    # Initialize variables\n    max_profit = 0\n    min_price = price[0]\n    for i in range(1, len(price)):\n        if price[i] < min_price:\n            min_price = price[i]\n        else:\n            max_profit = max(max_profit, price[i] - min_price)\n    return max_profit\n",
+  "results": {
+    "assert max_profit([1, 5, 2, 3, 7, 6, 4, 5], 3) == 10": {
+      "result": false,
+      "time": 0.12415385246276855,
+      "error": null
+    },
+    "assert max_profit([2, 4, 7, 5, 4, 3, 5], 2) == 7": {
+      "result": false,
+      "time": 0.11396074295043945,
+      "error": null
+    },
+    "assert max_profit([10, 6, 8, 4, 2], 2) == 2": {
+      "result": true,
+      "time": 0.11229944229125977,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333
+}

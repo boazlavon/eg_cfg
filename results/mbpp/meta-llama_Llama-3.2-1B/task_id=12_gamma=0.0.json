@@ -1,0 +1,22 @@
+{
+  "code": "def sort_matrix(M):\n    for i in range(len(M)):\n        for j in range(len(M[i])):\n            M[i][j] = M[i][j] + M[i][j - 1]\n    return M\n",
+  "results": {
+    "assert sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]])==[[1, 1, 1], [1, 2, 3], [2, 4, 5]]": {
+      "result": false,
+      "time": 0.12152552604675293,
+      "error": null
+    },
+    "assert sort_matrix([[1, 2, 3], [-2, 4, -5], [1, -1, 1]])==[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]": {
+      "result": false,
+      "time": 0.10980105400085449,
+      "error": null
+    },
+    "assert sort_matrix([[5,8,9],[6,4,3],[2,1,4]])==[[2, 1, 4], [6, 4, 3], [5, 8, 9]]": {
+      "result": false,
+      "time": 0.1157693862915039,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

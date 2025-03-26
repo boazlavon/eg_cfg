@@ -1,0 +1,22 @@
+{
+  "code": "def max_product_tuple(list1):\n    max_product = 0\n    for i in range(len(list1)):\n        for j in range(i + 1, len(list1)):\n            product = list1[i][0] * list1[j][1]\n            if product > max_product:\n                max_product = product\n    return max_product\n",
+  "results": {
+    "assert max_product_tuple([(2, 7), (2, 6), (1, 8), (4, 9)] )==36": {
+      "result": false,
+      "time": 0.1124413013458252,
+      "error": null
+    },
+    "assert max_product_tuple([(10,20), (15,2), (5,10)] )==200": {
+      "result": false,
+      "time": 0.1072540283203125,
+      "error": null
+    },
+    "assert max_product_tuple([(11,44), (10,15), (20,5), (12, 9)] )==484": {
+      "result": false,
+      "time": 0.1123046875,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

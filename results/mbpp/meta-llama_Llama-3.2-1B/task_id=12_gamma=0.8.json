@@ -1,0 +1,22 @@
+{
+  "code": "def sort_matrix(M):\n    \"\"\"Sort a given matrix in ascending order according to the sum of its rows.\"\"\"\n    M = np.array(M)\n    M = M.reshape(-1)\n    M = np.sort(M, axis=0)\n    return M.reshape(M.shape[0], -1).tolist()\n",
+  "results": {
+    "assert sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]])==[[1, 1, 1], [1, 2, 3], [2, 4, 5]]": {
+      "result": false,
+      "time": 0.12192082405090332,
+      "error": null
+    },
+    "assert sort_matrix([[1, 2, 3], [-2, 4, -5], [1, -1, 1]])==[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]": {
+      "result": false,
+      "time": 0.12365245819091797,
+      "error": null
+    },
+    "assert sort_matrix([[5,8,9],[6,4,3],[2,1,4]])==[[2, 1, 4], [6, 4, 3], [5, 8, 9]]": {
+      "result": false,
+      "time": 0.1597437858581543,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}

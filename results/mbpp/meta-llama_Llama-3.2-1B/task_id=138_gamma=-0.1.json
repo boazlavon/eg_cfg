@@ -1,0 +1,22 @@
+{
+  "code": "def is_Sum_Of_Powers_Of_Two(n):\n    \"\"\"\n    Checks whether the given number can be represented as sum of non-zero powers of 2 or not.\n    \"\"\"\n    if n == 0:\n        return False\n    if n == 1:\n        return True\n    if n % 2 == 0:\n        return is_Sum_Of_Powers_Of_Two(n // 2)\n    else:\n        return is_Sum_Of_Powers_Of_Two(n // 2) and is_Sum_Of_Powers_Of_Two(n // 4)\n",
+  "results": {
+    "assert is_Sum_Of_Powers_Of_Two(10) == True": {
+      "result": true,
+      "time": 0.11556553840637207,
+      "error": null
+    },
+    "assert is_Sum_Of_Powers_Of_Two(7) == False": {
+      "result": true,
+      "time": 0.11974024772644043,
+      "error": null
+    },
+    "assert is_Sum_Of_Powers_Of_Two(14) == True": {
+      "result": false,
+      "time": 0.11853146553039551,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666
+}

@@ -1,0 +1,22 @@
+{
+  "code": "def group_keyvalue(l):\n    result = {}\n    for k, v in l:\n        if k not in result:\n            result[k] = [v]\n        else:\n            result[k].append(v)\n    return result\n",
+  "results": {
+    "assert group_keyvalue([('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)])=={'yellow': [1, 3], 'blue': [2, 4], 'red': [1]}": {
+      "result": true,
+      "time": 0.13590121269226074,
+      "error": null
+    },
+    "assert group_keyvalue([('python', 1), ('python', 2), ('python', 3), ('python', 4), ('python', 5)])=={'python': [1,2,3,4,5]}": {
+      "result": true,
+      "time": 0.1300654411315918,
+      "error": null
+    },
+    "assert group_keyvalue([('yellow',100), ('blue', 200), ('yellow', 300), ('blue', 400), ('red', 100)])=={'yellow': [100, 300], 'blue': [200, 400], 'red': [100]}": {
+      "result": true,
+      "time": 0.1634385585784912,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0
+}

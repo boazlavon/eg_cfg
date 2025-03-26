@@ -1,0 +1,22 @@
+{
+  "code": "def extract_min_max(test_tup, K):\n    \"\"\"\n    Extracts the minimum and maximum values from a tuple of integers.\n    :param test_tup: A tuple of integers.\n    :param K: The number of elements to extract.\n    :return: A tuple of integers containing the minimum and maximum values.\n    \"\"\"\n    min_val = test_tup[0]\n    max_val = test_tup[0]\n    for i in range(1, K):\n        if test_tup[i] < min_val:\n            min_val = test_tup[i]\n        if test_tup[i] > max_val:\n            max_val = test_tup[i]\n    return (min_val, max_val)\n",
+  "results": {
+    "assert extract_min_max((5, 20, 3, 7, 6, 8), 2) == (3, 5, 8, 20)": {
+      "result": false,
+      "time": 0.14756178855895996,
+      "error": null
+    },
+    "assert extract_min_max((4, 5, 6, 1, 2, 7), 3) == (1, 2, 4, 5, 6, 7)": {
+      "result": false,
+      "time": 0.14318585395812988,
+      "error": null
+    },
+    "assert extract_min_max((2, 3, 4, 8, 9, 11, 7), 4) == (2, 3, 4, 7, 8, 9, 11)": {
+      "result": false,
+      "time": 0.12119603157043457,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0
+}
