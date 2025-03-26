@@ -10,8 +10,6 @@ model_name=$(echo $MODEL_NAME | sed 's_/_\__g')
 export RUN="${model_name}_${GPUS_COUNT}_gpus"
 export PYTHONPATH=$PYTHONPATH:/home/ai_center/ai_users/boazlavon/data/code/dsgi
 export PYTHONUNBUFFERED=1
-export START_IDX=0
-export END_IDX=499
 export OUTPUT_FILE_PATH="output/inference.$RUN.$PARTITION.out"
 sbatch \
 -c $CPUS_COUNT \
