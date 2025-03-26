@@ -5,7 +5,7 @@ import time
 import black
 from datasets import load_dataset
 
-INSTRUCTION_TEXT = """\
+CUSTOM_INSTRUCTION_TEXT = """\
 ### Instruction:
 {problem_text}
 
@@ -69,6 +69,22 @@ def compute_value(a, b, c):
 """
 
 
+TASK_HEADER = "### Task"
+GOAL_INSTRUCTION = (
+    "### Your goal is to write a Python function that solves the problem above."
+)
+EXAMPLES_HEADER = "### Here are some examples:"
+
+PROMPT_TEMPLATE = """{task_header}
+{text}
+
+{goal_instruction}
+{examples_block}
+
+{function_signature}
+"""
+
+
 def evaluate_solution(code, test_case, timeout=10):
     test_passed = False
     error = None
@@ -92,11 +108,9 @@ def evaluate_solution(code, test_case, timeout=10):
                 test_passed = True
 
         except subprocess.TimeoutExpired:
-            # print('Timeout')
             error = "Timeout"
             pass
         except Exception as e:
-            # print(f"Error executing test for task")
             error = "Exception"
             pass
         finally:
@@ -107,92 +121,62 @@ def evaluate_solution(code, test_case, timeout=10):
     return result_entry
 
 
-def evaluate_mbpp_from_dict(task_functions, timeout=10):
-    """
-    Evaluates LLM predictions on the MBPP benchmark directly from a dictionary,
-    using the Hugging Face datasets library.
-
-    Args:
-        task_functions (dict): A dictionary where keys are task IDs and values are
-                               Python function code strings.
-        timeout (int): Timeout in seconds for each test case.
-
-    Returns:
-        dict: A dictionary containing evaluation results, including:
-              - 'total': Total number of tasks.
-              - 'correct': Number of tasks where all test cases passed.
-              - 'accuracy': Accuracy (correct / total).
-              - 'errors': A list of task IDs where errors occurred.
-              - 'timeouts': A list of task IDs where timeouts occurred.
-              - 'failed_tests': A dictionary where keys are task IDs and values are lists of failed test case indices.
-    """
-
-    errors = []
-    timeouts = []
-    problems = read_problems()
-    results = {}
-    # correct = 0
-    # incorrect = 0
-    # total = 0
-    # failed_tests = {}
-    # passed_tests = []
-
-    for (task_id, gamma), code in task_functions.items():
-        task = problems[task_id]
-        test_cases = task["test_list"]
-
-        all_tests_passed = True
-        results[(task_id, gamma)] = {}
-
-        for i, test_case in enumerate(test_cases):
-            result_entry = evaluate_solution(code, test_case)
-            results[(task_id, gamma)] = result_entry
-            # all_tests_passed &= test_passed
-
-        # if all_tests_passed:
-        #     correct += 1
-        #     passed_tests.append(task_id)
-        # elif failed_tests_task:
-        #     incorrect += 1
-        #     failed_tests[task_id] = failed_tests_task
-        # total += 1
-
-        # accuracy = correct / total if total > 0 else 0
-        # results_dict = {
-        #     "total": total,
-        #     "correct": correct,
-        #     "incorrect": incorrect,
-        #     "accuracy": accuracy,
-        #     "errors": errors,
-        #     "timeouts": timeouts,
-        #     "failed_tests": failed_tests,
-        #     "passed_tests": passed_tests,
-        #     "code", code,
-        #     "test_case", test_case
-        # }
-        # print(task_id)
-        # print(results_dict)
-
-    return results
-
-
 def extract_function_signature(code):
     match = re.search(r"def\s+\w+\s*\(.*\):", code)
     return match.group(0) if match else None
 
 
-def format_mbpp_prompt(problem):
-    function_signature = extract_function_signature(problem["code"])
-    assert function_signature, "Function signature could not be extracted."
+def parse_mbpp_assert_statement(assert_statement):
+    ASSERT_PATTERN = r"^assert\s*\(*\s*(\w+)\s*\((.*)\)\s*\)*\s*==\s*(.+)$"
+    match = re.match(ASSERT_PATTERN, assert_statement.strip())
+    if not match:
+        print(assert_statement)
+        raise ValueError(f"Invalid assert statement format. {assert_statement}")
 
-    # Extract and format test cases using Black
+    function_name = match.group(1)
+    args_str = match.group(2)
+    args_str = f"({args_str})"
+    expected_result_str = match.group(3)
+    return (function_name, args_str, expected_result_str)
+
+
+def format_simple_mbpp_prompt(problem, function_signature):
+    task_description = problem["text"].strip()
+    test_list = problem["test_list"]
+
+    examples = []
+    function_name = None
+
+    for test in test_list:
+        try:
+            fn_name, args_str, expected = parse_mbpp_assert_statement(test)
+            function_name = function_name or fn_name
+            examples.append(
+                f"# Example {len(examples)+1}:\n# Input: {function_name}{args_str}\n# Output: {expected}"
+            )
+        except ValueError:
+            continue
+
+    examples_body = "\n".join(examples) if examples else ""
+    examples_block = f"\n{EXAMPLES_HEADER}\n{examples_body}" if examples_body else ""
+
+    return PROMPT_TEMPLATE.format(
+        task_header=TASK_HEADER,
+        text=task_description,
+        goal_instruction=GOAL_INSTRUCTION,
+        examples_block=examples_block,
+        function_signature=function_signature,
+    ).strip()
+
+
+def format_custom_mbpp_prompt(problem, function_signature):
     formatted_test_cases = ""
     for test in problem["test_list"]:
         formatted_test_cases += black.format_str(
             test, mode=black.FileMode(line_length=1024)
         )
 
-    prompt = INSTRUCTION_TEXT.format(
+    prompt = CUSTOM_INSTRUCTION_TEXT.format(
         problem_text=problem["text"],
         function_signature=function_signature,
         test_cases=formatted_test_cases,
@@ -201,7 +185,17 @@ def format_mbpp_prompt(problem):
     return prompt, function_signature
 
 
-def read_problems():
+def format_mbpp_prompt(problem, simple_prompt=False):
+    function_signature = extract_function_signature(problem["code"])
+    assert function_signature, "Function signature could not be extracted."
+    if simple_prompt:
+        prompt = format_simple_mbpp_prompt(problem, function_signature)
+    else:
+        prompt = format_custom_mbpp_prompt(problem, function_signature)
+    return (prompt, function_signature)
+
+
+def load_mbpp_problems():
     dataset = load_dataset("mbpp")
     problems = {
         example["task_id"]: example for _, example in enumerate(dataset["test"])
