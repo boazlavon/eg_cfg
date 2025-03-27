@@ -41,9 +41,6 @@ def try_generate_code_solution(model, tokenizer, device, problem, gamma):
 
     dsgi_manager = None
     if not simple_prompt:
-        import ipdb
-
-        ipdb.set_trace()
         task_kwargs = {
             "tokenizer": tokenizer,
             "device": device,
