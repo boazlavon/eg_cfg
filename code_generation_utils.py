@@ -67,11 +67,13 @@ def is_valid_python(code: str) -> bool:
 
 
 class CodeGenStopCriteria(torch.utils.data.Dataset):
-    def __init__(self, tokenizer):
+    def __init__(self, tokenizer, max_lines=None):
         self.tokenizer = tokenizer
         self.generated_text = ""
         self.previous_newline_index = -1
         self.remove_last_newline = False
+        self.max_lines = max_lines
+        self.newline_count = 0
 
     def __call__(
         self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs
@@ -84,6 +86,8 @@ class CodeGenStopCriteria(torch.utils.data.Dataset):
 
         self.generated_text += new_token
         if "\n" in new_token:
+            if new_token.count("\n"):
+                self.newline_count += 1
             if self.previous_newline_index != -1:
                 current_newline_index = len(self.generated_text) - 1
                 substring = self.generated_text[
@@ -92,6 +96,11 @@ class CodeGenStopCriteria(torch.utils.data.Dataset):
 
                 if substring.startswith(" ") or substring.startswith("\t"):
                     self.previous_newline_index = current_newline_index
+                    if (
+                        self.max_lines is not None
+                        and self.newline_count >= self.max_lines
+                    ):
+                        return True
                     return False
                 else:
                     # print(self.previous_newline_index, current_newline_index, substring)
@@ -103,7 +112,8 @@ class CodeGenStopCriteria(torch.utils.data.Dataset):
                     return True
             else:
                 self.previous_newline_index = len(self.generated_text) - 1
-            return False
+                if self.max_lines is not None and self.newline_count >= self.max_lines:
+                    return True
 
         return False
 
@@ -111,24 +121,60 @@ class CodeGenStopCriteria(torch.utils.data.Dataset):
 MAX_NEW_TOKENS = 512
 
 
-def generate_code_solution(
-    model, tokenizer, device, prompt, dsgi_manager, max_new_tokens=MAX_NEW_TOKENS
+def generate_code_solutions(
+    model,
+    tokenizer,
+    device,
+    prompt,
+    dsgi_manager,
+    max_new_tokens=MAX_NEW_TOKENS,
+    num_return_sequences=1,
+    num_beams=None,
+    inputs=None,
+    nearest_future_lines=None,
+    do_sample=False,
+    return_full=False,
 ):
-    inputs = tokenizer(prompt, return_tensors="pt").to(device)
-    stop_criteria = CodeGenStopCriteria(tokenizer)
+    if inputs is None:
+        inputs = tokenizer(prompt, return_tensors="pt").to(device)
+
+    # Use beam search if asking for multiple completions
+    if num_return_sequences > 1:
+        num_beams = num_beams or num_return_sequences
+        stop_criteria_list = [
+            CodeGenStopCriteria(tokenizer, max_lines=nearest_future_lines)
+            for _ in range(num_return_sequences)
+        ]
+    else:
+        num_beams = 1
+        stop_criteria_list = [
+            CodeGenStopCriteria(tokenizer, max_lines=nearest_future_lines)
+        ]
 
     with torch.no_grad():
         # /a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/transformers/generation/utils.py
-        model.generate(
+        outputs = model.generate(
             **inputs,
             max_new_tokens=max_new_tokens,
             eos_token_id=tokenizer.eos_token_id,
             pad_token_id=tokenizer.eos_token_id,
-            stopping_criteria=[stop_criteria],
+            num_beams=num_beams,
+            num_return_sequences=num_return_sequences,
+            stopping_criteria=stop_criteria_list,
             dsgi_manager=dsgi_manager,
-            do_sample=False,
+            do_sample=do_sample,  # Deterministic
         )
 
-    # _ = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    new_tokens = stop_criteria.generated_text
-    return new_tokens
+    # Collect generated texts
+    generated = []
+    generated_full = []
+    for i, output in enumerate(outputs):
+        generated_full.append(output)
+        generated.append(stop_criteria_list[i].generated_text)
+        # generated_full.append(tokenizer.decode(output, skip_special_tokens=True))
+
+    # Return a list always, or a single string if only one result
+    if return_full:
+        return generated_full if num_return_sequences > 1 else generated_full[0]
+    else:
+        return generated if num_return_sequences > 1 else generated[0]

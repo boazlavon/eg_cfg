@@ -44,12 +44,7 @@ class ExecutionManager:
             executions[test_case] = program_execution
         return executions
 
-    def extract_partial_executable_program(
-        self, input_ids: torch.Tensor, initial_prompt_input_ids_len
-    ) -> str:
-        new_code, _ = extract_new_tokens(
-            self.tokenizer, input_ids, initial_prompt_input_ids_len
-        )
+    def extract_partial_executable_program(self, new_code) -> str:
         partial_program_code = f"{self.function_signature}\n{new_code}"
         executable_partial_program_code = self.make_executable(partial_program_code)
         executable_partial_program_code = remove_comments_and_docstrings(

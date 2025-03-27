@@ -11,10 +11,13 @@ from mbpp_utils import (
     evaluate_solution,
     run_tests,
 )
-from code_generation_utils import generate_code_solution, is_valid_python
+from code_generation_utils import generate_code_solutions, is_valid_python
 from dsgi_manager import DsgiManager, TASK__CODE_GENERATION
-from model_utils import setup_device, load_model, calculate_tokens_length
-from code_generation_adapter import DYNAMIC_SIGNAL__PARTIAL_EXECUTION
+from model_utils import setup_device, load_model
+from code_generation_adapter import (
+    DYNAMIC_SIGNAL__PARTIAL_EXECUTION,
+    DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION,
+)
 
 MODEL_NAME = "meta-llama/Llama-3.2-1B"
 # MODEL_NAME = "google/gemma-3-1b-it"
@@ -35,7 +38,7 @@ def should_skip(results_dir, task_id, gamma):
     return False
 
 
-def try_generate_code_solution(model, tokenizer, device, problem, gamma):
+def try_generate_code_solutions(model, tokenizer, device, problem, gamma):
     simple_prompt = gamma == NO_GUIDANCE_SIMPLE_PROMPT_GAMMA
     prompt, function_signature = format_mbpp_prompt(problem, simple_prompt)
     test_cases = problem["test_list"]
@@ -43,17 +46,23 @@ def try_generate_code_solution(model, tokenizer, device, problem, gamma):
     dsgi_manager = None
     if not simple_prompt:
         task_kwargs = {
+            "model": model,
             "tokenizer": tokenizer,
             "device": device,
             "function_signature": function_signature,
             "test_cases": test_cases,
             "initial_prompt": prompt,
-            "dynamic_signals": (DYNAMIC_SIGNAL__PARTIAL_EXECUTION,),
+            "dynamic_signals": (
+                DYNAMIC_SIGNAL__PARTIAL_EXECUTION,
+                DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION,
+            ),
+            "nearest_future_samples": 5,
+            "nearest_future_lines": 3,
         }
         task = TASK__CODE_GENERATION
         dsgi_manager = DsgiManager(tokenizer, task, task_kwargs, gamma)
 
-    function_code = generate_code_solution(
+    function_code = generate_code_solutions(
         model, tokenizer, device, prompt, dsgi_manager
     )
     solution = f"{function_signature}\n{function_code}"
@@ -116,7 +125,7 @@ def generate_mbpp_solutions(results_dir, start=0, end=None, gammas=GAMMAS):
                 continue
 
             try:
-                solution = try_generate_code_solution(
+                solution = try_generate_code_solutions(
                     model, tokenizer, device, problem, gamma
                 )
                 print(solution)
