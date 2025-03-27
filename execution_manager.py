@@ -5,7 +5,7 @@ import tempfile
 import subprocess
 import os
 from traces_dumper.program_execution import ProgramExecution
-from code_generation import remove_comments_and_docstrings, is_valid_python
+from code_generation_utils import remove_comments_and_docstrings, is_valid_python
 from model_utils import extract_new_tokens
 from mbpp_utils import parse_mbpp_assert_statement
 

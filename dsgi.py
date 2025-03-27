@@ -11,9 +11,9 @@ from mbpp_utils import (
     evaluate_solution,
     run_tests,
 )
-from code_generation import generate_code_solution, is_valid_python
-from dsgi_manager import DsgiManager
-from model_utils import setup_device, load_model
+from code_generation_utils import generate_code_solution, is_valid_python
+from dsgi_manager import DsgiManager, TASK__CODE_GENERATION
+from model_utils import setup_device, load_model, calculate_tokens_length
 
 MODEL_NAME = "meta-llama/Llama-3.2-1B"
 # MODEL_NAME = "google/gemma-3-1b-it"
@@ -41,9 +41,18 @@ def try_generate_code_solution(model, tokenizer, device, problem, gamma):
 
     dsgi_manager = None
     if not simple_prompt:
-        dsgi_manager = DsgiManager(
-            prompt, function_signature, test_cases, tokenizer, device, gamma
-        )
+        import ipdb
+
+        ipdb.set_trace()
+        task_kwargs = {
+            "tokenizer": tokenizer,
+            "device": device,
+            "function_signature": function_signature,
+            "test_cases": test_cases,
+            "initial_prompt": prompt,
+        }
+        task = TASK__CODE_GENERATION
+        dsgi_manager = DsgiManager(tokenizer, task, task_kwargs, gamma)
 
     function_code = generate_code_solution(
         model, tokenizer, device, prompt, dsgi_manager
