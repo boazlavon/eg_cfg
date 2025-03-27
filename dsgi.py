@@ -96,6 +96,7 @@ def generate_mbpp_solutions(results_dir, start=0, end=None, gammas=GAMMAS):
     random.shuffle(problems)
 
     for _, problem in problems:
+        problem_solved = False
         task_id = problem["task_id"]
         test_cases = problem["test_list"]
 
@@ -104,6 +105,10 @@ def generate_mbpp_solutions(results_dir, start=0, end=None, gammas=GAMMAS):
         print()
 
         for gamma in gammas:
+            if gamma > 0 and problem_solved:
+                print(f"Skip gamma={gamma} problem is solved")
+                continue
+
             general_error = None
             if should_skip(results_dir, task_id, gamma):
                 continue
@@ -131,6 +136,8 @@ def generate_mbpp_solutions(results_dir, start=0, end=None, gammas=GAMMAS):
             with open(filepath, "w") as f:
                 json.dump(solution_entry, f, indent=2)
             solutions[(task_id, gamma)] = solution_entry
+            if solution_entry["passed"]:
+                problem_solved = True
 
     return solutions
 
