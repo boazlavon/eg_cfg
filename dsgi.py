@@ -14,6 +14,7 @@ from mbpp_utils import (
 from code_generation_utils import generate_code_solution, is_valid_python
 from dsgi_manager import DsgiManager, TASK__CODE_GENERATION
 from model_utils import setup_device, load_model, calculate_tokens_length
+from code_generation_adapter import DYNAMIC_SIGNAL__PARTIAL_EXECUTION
 
 MODEL_NAME = "meta-llama/Llama-3.2-1B"
 # MODEL_NAME = "google/gemma-3-1b-it"
@@ -47,6 +48,7 @@ def try_generate_code_solution(model, tokenizer, device, problem, gamma):
             "function_signature": function_signature,
             "test_cases": test_cases,
             "initial_prompt": prompt,
+            "dynamic_signals": (DYNAMIC_SIGNAL__PARTIAL_EXECUTION,),
         }
         task = TASK__CODE_GENERATION
         dsgi_manager = DsgiManager(tokenizer, task, task_kwargs, gamma)
