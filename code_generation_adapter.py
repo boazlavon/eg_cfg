@@ -50,13 +50,41 @@ Use this information to better understand how the partial function performs so f
 {dynamic_signals}
 """
 
+BACKWARD_DYNAMIC_SIGNAL_PROMPT = """
+### Runtime Behavior of Invalid Solutions
+The following examples show complete function solutions that failed to pass validation. These solutions were tested using assertions, and at least one assertion failed during execution—typically resulting in an AssertionError.
+
+Each entry includes:
+- A full function solution that failed at least one test
+- A specific test case (assertion) that triggered the failure
+- The resulting execution trace
+
+Use this information to recognize and avoid common mistakes in incorrect solutions, and to guide your next attempt toward correct and robust behavior.
+
+{dynamic_signals}
+"""
+
+BACKWARD_DYNAMIC_SIGNAL_PATTERN = """
+# Invalid Solution:
+{function_code}
+
+# Test Case (Assertion):
+{test_case}
+
+# Execution Trace:
+{trace}
+"""
+
 DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING = "### Response:"
 
 DYNAMIC_SIGNAL__PARTIAL_EXECUTION = "PartialExecution"
 DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION = "NearestFutureExecution"
+DYNAMIC_SIGNAL__BACKWARD = "Backward"
+
 SUPPORTED_DYNAMIC_SIGNALS = (
     DYNAMIC_SIGNAL__PARTIAL_EXECUTION,
     DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION,
+    DYNAMIC_SIGNAL__BACKWARD,
 )
 
 
@@ -72,6 +100,7 @@ class CodeGenerationAdapter:
         dynamic_signals,
         nearest_future_samples=None,
         nearest_future_lines=None,
+        backward_signals=(),
     ):
         self.model = model
         self.tokenizer = tokenizer
@@ -86,6 +115,7 @@ class CodeGenerationAdapter:
         self.execution_manager = ExecutionManager(tokenizer, function_signature)
         self.nearest_future_samples = nearest_future_samples
         self.nearest_future_lines = nearest_future_lines
+        self.backward_signals = backward_signals
 
         assert dynamic_signals
         for dynamic_signal in dynamic_signals:
@@ -98,7 +128,18 @@ class CodeGenerationAdapter:
         return {
             DYNAMIC_SIGNAL__PARTIAL_EXECUTION: CodeGenerationAdapter._extract_partial_execution_dynamic_signals,
             DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION: CodeGenerationAdapter._extract_nearest_future_execution_dynamic_signals,
+            DYNAMIC_SIGNAL__BACKWARD: CodeGenerationAdapter._extract_backward_dynamic_signals,
         }
+
+    def _extract_backward_dynamic_signals(self, input_ids):
+        dynamic_signal_text = ""
+        if self.backward_signals:
+            dynamic_signals = "\n".join(self.backward_signals)
+            dynamic_signal_text = BACKWARD_DYNAMIC_SIGNAL_PROMPT.format(
+                dynamic_signals=dynamic_signals
+            )
+            print(dynamic_signal_text)
+        return dynamic_signal_text, ()
 
     def _extract_nearest_future_execution_dynamic_signals(self, input_ids):
         attention_mask = (input_ids != 0).long()
@@ -198,7 +239,7 @@ class CodeGenerationAdapter:
         )
 
         unified_dynamic_signal_text = ""
-        for dynamic_signal in SUPPORTED_DYNAMIC_SIGNALS:
+        for dynamic_signal in self.dynamic_signals:
             unified_dynamic_signal_text += dynamic_signals_text[dynamic_signal]
         unified_dynamic_signal_text += f"\n{DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING}"
 

@@ -11,21 +11,19 @@ from mbpp_utils import parse_mbpp_assert_statement
 
 
 class ExecutionManager:
-    def __init__(
-        self,
-        tokenizer,
-        function_signature,
-    ):
+    def __init__(self, tokenizer, function_signature=None):
         self.tokenizer = tokenizer
         self.function_signature = function_signature
 
-    def execute_test_cases(self, executable_partial_program_code, test_cases):
+    def execute_test_cases(self, executable_code, test_cases, use_assert=False):
         executions = {}
         for test_case in test_cases:
             try:
-                function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
-                innvocation = f"{function_name}{args_str}"
-                test_case_code = f"{executable_partial_program_code}\n{innvocation}"
+                innvocation = test_case
+                if not use_assert:
+                    function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
+                    innvocation = f"{function_name}{args_str}"
+                test_case_code = f"{executable_code}\n{innvocation}"
                 test_case_code = black.format_str(
                     test_case_code, mode=black.FileMode(line_length=1024)
                 )
