@@ -25,11 +25,11 @@ MODEL_NAME = "meta-llama/Llama-3.2-1B"
 # MODEL_NAME = "google/gemma-3-1b-it"
 # MODEL_NAME = "meta-llama/Llama-3.1-8B"
 NO_GUIDANCE_SIMPLE_PROMPT_GAMMA = -0.1
-# GAMMAS = (NO_GUIDANCE_SIMPLE_PROMPT_GAMMA, 0.0, 0.1, 0.3, 0.5, 0.7, 0.8, 0.9)
-GAMMAS = (
-    0.0,
-    0.8,
-)
+GAMMAS = (NO_GUIDANCE_SIMPLE_PROMPT_GAMMA, 0.0, 0.1, 0.3, 0.5, 0.7, 0.8, 0.9)
+# GAMMAS = (
+#     0.0,
+#     0.8,
+# )
 FILENAME_TEMPLATE = "task_id={task_id}_gamma={gamma}.json"
 FILENAME_TEMPLATE_BACKWARD_SIGNAL = (
     "task_id={task_id}_gamma={gamma}_b={backward_signals_iteration}.json"
