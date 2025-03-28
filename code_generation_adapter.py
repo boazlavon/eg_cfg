@@ -147,7 +147,6 @@ class CodeGenerationAdapter:
             "input_ids": input_ids.clone().to(self.device),
             "attention_mask": attention_mask.to(self.device),
         }
-        print(input_ids.shape)
         solutions = generate_code_solutions(
             self.model,
             self.tokenizer,
@@ -278,6 +277,7 @@ class CodeGenerationAdapter:
         new_code, _ = extract_new_tokens(
             self.tokenizer, input_ids.clone(), self.initial_prompt_input_ids_len
         )
+
         executable_partial_program_code = (
             self.execution_manager.extract_partial_executable_program(new_code)
         )

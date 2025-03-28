@@ -166,8 +166,6 @@ def generate_mbpp_solutions(
     for _, problem in problems:
         problem_solved = False
         task_id = problem["task_id"]
-        if 11 == int(task_id):
-            continue
         test_cases = problem["test_list"]
         backward_signals = []
 

@@ -8,6 +8,7 @@ from traces_dumper.program_execution import ProgramExecution
 from code_generation_utils import remove_comments_and_docstrings, is_valid_python
 from model_utils import extract_new_tokens
 from mbpp_utils import parse_mbpp_assert_statement
+import traceback
 
 
 class ExecutionManager:
@@ -31,13 +32,19 @@ class ExecutionManager:
                     test_case_code
                 ), f"Invalid Test Case: {test_case}"
             except:
+                traceback.print_exc()
+                tb = traceback.format_exc()
                 print("Could not generate test code")
+                print(tb)
                 continue
 
             try:
                 program_execution = self.execute(test_case_code)
-            except:
+            except Exception as e:
+                traceback.print_exc()
+                tb = traceback.format_exc()
                 print("Problem on program execution")
+                print(tb)
                 continue
             executions[test_case] = program_execution
         return executions
