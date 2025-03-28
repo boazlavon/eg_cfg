@@ -99,7 +99,7 @@ def format_results(solution, results, general_error):
     }
 
 
-def get_solution_filepath(results_dir, task_id, gamma, backward_signals_iteration):
+def get_solution_filepath(results_dir, task_id, gamma, backward_signals_iteration=0):
     filename = FILENAME_TEMPLATE.format(task_id=task_id, gamma=gamma)
     if backward_signals_iteration > 0:
         filename = FILENAME_TEMPLATE_BACKWARD_SIGNAL.format(
