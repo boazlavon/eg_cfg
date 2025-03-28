@@ -177,6 +177,8 @@ def generate_mbpp_solutions(
 
         # The first iteration is always happening without a backward signal
         # so we count from the second loop of all gammas
+        if DYNAMIC_SIGNAL__BACKWARD not in dynamic_signals:
+            backward_signals_iterations = 0
         backward_signals_iteration = 0
         while backward_signals_iteration <= backward_signals_iterations and (
             not problem_solved
@@ -227,7 +229,6 @@ def generate_mbpp_solutions(
             backward_signals_iteration += 1
             if not problem_solved and DYNAMIC_SIGNAL__BACKWARD in dynamic_signals:
                 # should have some counter on how many backward iterations we want. like 3 is ok
-
                 # "general_error": general_error, "has_testcase_error": has_testcase_error,
                 # For the backward pass I have a threshold of 2-3 tries.
                 # I dont inject failure with errors (only failures without errors).
@@ -281,8 +282,15 @@ def main():
     )
     # results_dir = os.path.join("results", "mbpp", sanitized_model_name)
     os.makedirs(results_dir, exist_ok=True)
+    backward_signals_iterations = 0
+    if DYNAMIC_SIGNAL__BACKWARD in dynamic_signals:
+        backward_signals_iterations = 2
 
-    generate_mbpp_solutions(results_dir, dynamic_signals, backward_signals_iterations=2)
+    generate_mbpp_solutions(
+        results_dir,
+        dynamic_signals,
+        backward_signals_iterations=backward_signals_iterations,
+    )
 
 
 if __name__ == "__main__":
