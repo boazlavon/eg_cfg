@@ -38,7 +38,9 @@ def should_skip(results_dir, task_id, gamma):
     return False
 
 
-def try_generate_code_solutions(model, tokenizer, device, problem, gamma):
+def try_generate_code_solutions(
+    model, tokenizer, device, problem, gamma, dynamic_signals
+):
     simple_prompt = gamma == NO_GUIDANCE_SIMPLE_PROMPT_GAMMA
     prompt, function_signature = format_mbpp_prompt(problem, simple_prompt)
     test_cases = problem["test_list"]
@@ -52,10 +54,7 @@ def try_generate_code_solutions(model, tokenizer, device, problem, gamma):
             "function_signature": function_signature,
             "test_cases": test_cases,
             "initial_prompt": prompt,
-            "dynamic_signals": (
-                DYNAMIC_SIGNAL__PARTIAL_EXECUTION,
-                DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION,
-            ),
+            "dynamic_signals": dynamic_signals,
             "nearest_future_samples": 5,
             "nearest_future_lines": 3,
         }
@@ -93,7 +92,9 @@ def get_solution_filepath(results_dir, task_id, gamma):
     return os.path.join(results_dir, filename)
 
 
-def generate_mbpp_solutions(results_dir, start=0, end=None, gammas=GAMMAS):
+def generate_mbpp_solutions(
+    results_dir, dynamic_signals, start=0, end=None, gammas=GAMMAS
+):
     device = setup_device()
     model, tokenizer = load_model(MODEL_NAME, device)
     solutions = {}
@@ -126,7 +127,7 @@ def generate_mbpp_solutions(results_dir, start=0, end=None, gammas=GAMMAS):
 
             try:
                 solution = try_generate_code_solutions(
-                    model, tokenizer, device, problem, gamma
+                    model, tokenizer, device, problem, gamma, dynamic_signals
                 )
                 print(solution)
             except KeyboardInterrupt:
@@ -153,21 +154,46 @@ def generate_mbpp_solutions(results_dir, start=0, end=None, gammas=GAMMAS):
     return solutions
 
 
+def get_dynamic_signals(args):
+    dynamic_signals_str = []
+    dynamic_signals = []
+    if args.p:
+        dynamic_signals_str.append("p")
+        dynamic_signals.append(DYNAMIC_SIGNAL__PARTIAL_EXECUTION)
+    if args.n:
+        dynamic_signals_str.append("n")
+        dynamic_signals.append(DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION)
+    # if args.b:
+    #     signals_str.append("b")
+    dynamic_signals_str = "".join(dynamic_signals_str)
+    dynamic_signals = tuple(dynamic_signals)
+    return dynamic_signals, dynamic_signals_str
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--start", type=int, default=0, help="Start index of problems")
-    parser.add_argument("--end", type=int, default=None, help="End index of problems")
     parser.add_argument(
         "--model-name", type=str, default=MODEL_NAME, help="Name of the model used"
     )
+    # parser.add_argument("--b", action="store_true", help="Enable backward signal")
+    parser.add_argument("--n", action="store_true", help="Enable nearest future signal")
+    parser.add_argument(
+        "--p",
+        action="store_true",
+        default=True,
+        help="Enable partial execution signal (default: enabled)",
+    )
+
     args = parser.parse_args()
 
-    # Create results directory if it doesn't exist
+    # Create results directory
     sanitized_model_name = args.model_name.replace("/", "_")
+    dynamic_signals, dynamic_signals_str = get_dynamic_signals(args)
+    # results_dir = os.path.join("results", "mbpp", sanitized_model_name, signal_str)
     results_dir = os.path.join("results", "mbpp", sanitized_model_name)
     os.makedirs(results_dir, exist_ok=True)
 
-    generate_mbpp_solutions(results_dir, start=args.start, end=args.end)
+    generate_mbpp_solutions(results_dir, dynamic_signals)
 
 
 if __name__ == "__main__":
