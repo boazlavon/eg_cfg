@@ -1,0 +1,24 @@
+{
+  "code": "def min_Operations(A, B):\n    if A == B:\n        return 0\n    elif A > B:\n        return 1 + min_Operations(A - B, B)\n    else:\n        return 1 + min_Operations(A, B - A)\n",
+  "results": {
+    "assert min_Operations(2,4) == 1": {
+      "result": true,
+      "time": 0.12796878814697266,
+      "error": null
+    },
+    "assert min_Operations(4,10) == 4": {
+      "result": false,
+      "time": 0.12063193321228027,
+      "error": null
+    },
+    "assert min_Operations(1,4) == 3": {
+      "result": true,
+      "time": 0.12263107299804688,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

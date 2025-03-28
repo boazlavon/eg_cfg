@@ -1,0 +1,24 @@
+{
+  "code": "def get_Inv_Count(arr, n):\n    count = 0\n    for i in range(len(arr) - 1):\n        for j in range(i + 1, len(arr)):\n            if arr[i] > arr[j]:\n                count += 1\n    return count\n",
+  "results": {
+    "assert get_Inv_Count([1,20,6,4,5],5) == 5": {
+      "result": true,
+      "time": 0.1298530101776123,
+      "error": null
+    },
+    "assert get_Inv_Count([1,2,1],3) == 1": {
+      "result": true,
+      "time": 0.12769412994384766,
+      "error": null
+    },
+    "assert get_Inv_Count([1,2,5,6,1],5) == 3": {
+      "result": true,
+      "time": 0.13262104988098145,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

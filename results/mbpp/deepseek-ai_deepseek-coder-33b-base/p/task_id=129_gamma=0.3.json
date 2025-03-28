@@ -1,0 +1,24 @@
+{
+  "code": "def magic_square_test(my_matrix):\n    \"\"\"Return True if the matrix is a magic square, False otherwise.\"\"\"\n    # Check if the matrix is square\n    if len(my_matrix) != len(my_matrix[0]):\n        return False\n\n    # Check if the matrix is symmetric\n    if my_matrix[0][0] != my_matrix[1][1]:\n        return False\n\n    # Check if the matrix is a magic square\n    for i in range(len(my_matrix)):\n        for j in range(len(my_matrix[0])):\n            if my_matrix[i][j] != my_matrix[i][len(my_matrix[0]) - j - 1]:\n                return False\n\n    return True\n",
+  "results": {
+    "assert magic_square_test([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]])==True": {
+      "result": false,
+      "time": 0.12993645668029785,
+      "error": null
+    },
+    "assert magic_square_test([[2, 7, 6], [9, 5, 1], [4, 3, 8]])==True": {
+      "result": false,
+      "time": 0.11859512329101562,
+      "error": null
+    },
+    "assert magic_square_test([[2, 7, 6], [9, 5, 1], [4, 3, 7]])==False": {
+      "result": true,
+      "time": 0.12929701805114746,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def number_of_substrings(str):\n\n    count = 0\n    for i in range(len(str)):\n        for j in range(i + 1, len(str) + 1):\n            if str[i:j] != \"\":\n                count += 1\n    return count\n",
+  "results": {
+    "assert number_of_substrings(\"abc\") == 6": {
+      "result": true,
+      "time": 0.11778402328491211,
+      "error": null
+    },
+    "assert number_of_substrings(\"abcd\") == 10": {
+      "result": true,
+      "time": 0.11561274528503418,
+      "error": null
+    },
+    "assert number_of_substrings(\"abcde\") == 15": {
+      "result": true,
+      "time": 0.11352777481079102,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

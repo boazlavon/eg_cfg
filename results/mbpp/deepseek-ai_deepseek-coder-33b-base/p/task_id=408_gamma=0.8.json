@@ -1,0 +1,24 @@
+{
+  "code": "def k_smallest_pairs(nums1, nums2, k):\n    result = []\n    for i in range(len(nums1)):\n        for j in range(len(nums2)):\n            if nums1[i] + nums2[j] == k:\n                result.append([nums1[i], nums2[j]])\n    return result\n",
+  "results": {
+    "assert k_smallest_pairs([1,3,7],[2,4,6],2)==[[1, 2], [1, 4]]": {
+      "result": false,
+      "time": 0.12743544578552246,
+      "error": null
+    },
+    "assert k_smallest_pairs([1,3,7],[2,4,6],1)==[[1, 2]]": {
+      "result": false,
+      "time": 0.13015460968017578,
+      "error": null
+    },
+    "assert k_smallest_pairs([1,3,7],[2,4,6],7)==[[1, 2], [1, 4], [3, 2], [1, 6], [3, 4], [3, 6], [7, 2]]": {
+      "result": false,
+      "time": 0.12157464027404785,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

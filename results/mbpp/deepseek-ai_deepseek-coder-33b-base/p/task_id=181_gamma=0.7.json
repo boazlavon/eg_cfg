@@ -1,0 +1,24 @@
+{
+  "code": "def common_prefix_util(str1, str2):\n    if len(str1) == 0 or len(str2) == 0:\n        return str1 or str2\n    if str1[0] == str2[0]:\n        return common_prefix_util(str1[1:], str2[1:])\n    return str1 or str2\n",
+  "results": {
+    "assert common_prefix([\"tablets\", \"tables\", \"taxi\", \"tamarind\"], 4) == 'ta'": {
+      "result": false,
+      "time": 0.12853193283081055,
+      "error": null
+    },
+    "assert common_prefix([\"apples\", \"ape\", \"april\"], 3) == 'ap'": {
+      "result": false,
+      "time": 0.13599228858947754,
+      "error": null
+    },
+    "assert common_prefix([\"teens\", \"teenager\", \"teenmar\"], 3) == 'teen'": {
+      "result": false,
+      "time": 0.12453818321228027,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

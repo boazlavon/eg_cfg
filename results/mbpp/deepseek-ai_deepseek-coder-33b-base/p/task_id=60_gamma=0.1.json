@@ -1,0 +1,24 @@
+{
+  "code": "def max_len_sub(arr, n):\n    max_len = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            if arr[i] - arr[j] == 1:\n                max_len = max(max_len, j - i)\n    return max_len\n",
+  "results": {
+    "assert max_len_sub([2, 5, 6, 3, 7, 6, 5, 8], 8) == 5": {
+      "result": false,
+      "time": 0.15554523468017578,
+      "error": null
+    },
+    "assert max_len_sub([-2, -1, 5, -1, 4, 0, 3], 7) == 4": {
+      "result": false,
+      "time": 0.12744998931884766,
+      "error": null
+    },
+    "assert max_len_sub([9, 11, 13, 15, 18], 5) == 1": {
+      "result": false,
+      "time": 0.12391448020935059,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

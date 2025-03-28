@@ -1,0 +1,24 @@
+{
+  "code": "def dict_depth(d):\n    depth = 0\n    for key, value in d.items():\n        if isinstance(value, dict):\n            depth += 1\n            dict_depth(value)\n        else:\n            depth += 1\n            return depth\n",
+  "results": {
+    "assert dict_depth({'a':1, 'b': {'c': {'d': {}}}})==4": {
+      "result": false,
+      "time": 0.13158631324768066,
+      "error": null
+    },
+    "assert dict_depth({'a':1, 'b': {'c':'python'}})==2": {
+      "result": false,
+      "time": 0.12580251693725586,
+      "error": null
+    },
+    "assert dict_depth({1: 'Sun', 2: {3: {4:'Mon'}}})==3": {
+      "result": false,
+      "time": 0.12092232704162598,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

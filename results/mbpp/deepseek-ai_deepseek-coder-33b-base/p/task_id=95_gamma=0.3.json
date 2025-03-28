@@ -1,0 +1,24 @@
+{
+  "code": "def Find_Min_Length(lst):\n    min_length = 0\n    for i in range(len(lst)):\n        for j in range(i + 1, len(lst)):\n            if lst[i] < lst[j]:\n                min_length = lst[j]\n                break\n    return min_length\n",
+  "results": {
+    "assert Find_Min_Length([[1],[1,2]]) == 1": {
+      "result": false,
+      "time": 0.12842750549316406,
+      "error": null
+    },
+    "assert Find_Min_Length([[1,2],[1,2,3],[1,2,3,4]]) == 2": {
+      "result": false,
+      "time": 0.11480021476745605,
+      "error": null
+    },
+    "assert Find_Min_Length([[3,3,3],[4,4,4,4]]) == 3": {
+      "result": false,
+      "time": 0.1303575038909912,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

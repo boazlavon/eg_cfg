@@ -1,0 +1,24 @@
+{
+  "code": "def max_sum(arr, n):\n\n    # Initialize max_sum and max_sum_i\n    max_sum = 0\n    max_sum_i = 0\n    # Iterate through the array\n    for i in range(n):\n        # Initialize max_sum_i and max_sum\n        max_sum_i = 0\n        max_sum = 0\n        # Iterate through the array\n        for j in range(i, n):\n            # Update max_sum_i and max_sum\n            max_sum_i = max(max_sum_i, arr[j])\n            max_sum = max(max_sum, max_sum_i + arr[j])\n        # Update max_sum\n        max_sum = max(max_sum, max_sum_i)\n    return max_sum\n",
+  "results": {
+    "assert max_sum([1, 15, 51, 45, 33, 100, 12, 18, 9], 9) == 194": {
+      "result": false,
+      "time": 0.10550880432128906,
+      "error": null
+    },
+    "assert max_sum([80, 60, 30, 40, 20, 10], 6) == 210": {
+      "result": false,
+      "time": 0.10136532783508301,
+      "error": null
+    },
+    "assert max_sum([2, 3 ,14, 16, 21, 23, 29, 30], 8) == 138": {
+      "result": false,
+      "time": 0.10646247863769531,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

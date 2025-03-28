@@ -1,0 +1,24 @@
+{
+  "code": "def max_subarray_product(arr):\n\n    # Initialize max_product and current_product\n    max_product = arr[0]\n    current_product = arr[0]\n    # Iterate through the array\n    for i in range(1, len(arr)):\n        # Update max_product if current_product is greater\n        if current_product < 0:\n            current_product = arr[i]\n        else:\n            current_product = max(current_product, arr[i])\n        # Update max_product if current_product is greater\n        if current_product > max_product:\n            max_product = current_product\n    return max_product\n",
+  "results": {
+    "assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112": {
+      "result": false,
+      "time": 0.12871575355529785,
+      "error": null
+    },
+    "assert max_subarray_product([6, -3, -10, 0, 2]) == 180 ": {
+      "result": false,
+      "time": 0.12325644493103027,
+      "error": null
+    },
+    "assert max_subarray_product([-2, -40, 0, -2, -3]) == 80": {
+      "result": false,
+      "time": 0.1458907127380371,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def amicable_numbers_sum(limit):\n    \"\"\"Return the sum of all amicable numbers up to the specified limit.\"\"\"\n    # Initialize a list to store the amicable numbers\n    amicable_numbers = []\n    # Initialize a variable to store the sum of the amicable numbers\n    sum = 0\n    # Iterate from 1 to the specified limit\n    for num in range(1, limit + 1):\n        # Check if the number is amicable\n        if is_amicable(num):\n            # Add the number to the list of amicable numbers\n            amicable_numbers.append(num)\n            # Add the sum of the amicable numbers to the sum\n            sum += num\n    # Return the sum of the amicable numbers\n    return sum\n",
+  "results": {
+    "assert amicable_numbers_sum(999)==504": {
+      "result": false,
+      "time": 0.11516666412353516,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9999)==31626": {
+      "result": false,
+      "time": 0.11121511459350586,
+      "error": null
+    },
+    "assert amicable_numbers_sum(99)==0": {
+      "result": false,
+      "time": 0.1158440113067627,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

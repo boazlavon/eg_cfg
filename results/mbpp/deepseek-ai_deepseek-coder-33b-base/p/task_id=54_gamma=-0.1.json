@@ -1,0 +1,24 @@
+{
+  "code": "def counting_sort(my_list):\n    \"\"\"\n    Sorts the given array by using counting sort.\n    \"\"\"\n    # Create a dictionary to store the count of each element\n    count = {}\n    for num in my_list:\n        if num not in count:\n            count[num] = 0\n        count[num] += 1\n    # Create a new list to store the sorted elements\n    sorted_list = []\n    # Iterate through the dictionary and add the count to the sorted list\n    for num, count in count.items():\n        for i in range(count):\n            sorted_list.append(num)\n    return sorted_list\n",
+  "results": {
+    "assert counting_sort([1,23,4,5,6,7,8]) == [1, 4, 5, 6, 7, 8, 23]": {
+      "result": false,
+      "time": 0.11886119842529297,
+      "error": null
+    },
+    "assert counting_sort([12, 9, 28, 33, 69, 45]) == [9, 12, 28, 33, 45, 69]": {
+      "result": false,
+      "time": 0.11504864692687988,
+      "error": null
+    },
+    "assert counting_sort([8, 4, 14, 3, 2, 1]) == [1, 2, 3, 4, 8, 14]": {
+      "result": false,
+      "time": 0.10978913307189941,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

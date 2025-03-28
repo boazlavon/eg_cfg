@@ -1,0 +1,24 @@
+{
+  "code": "def permutation_coefficient(n, k):\n    \"\"\"Calculate the permutation coefficient of given p(n, k).\n    Write a function to calculate the permutation coefficient of given p(n, k).\n    Write a Python function that satisfies the following test cases:\n    assert permutation_coefficient(10, 2) == 90\n    assert permutation_coefficient(10, 3) == 720\n    assert permutation_coefficient(10, 1) == 10\n    Your solution should be written in as many lines as possible.\n    This ensures that prefixes of your function remain valid Python programs.\n    Allowing **incremental execution and debugging**.\n    Write the function **step by step**, progressively introducing variables and logic.\n    Avoid using list comprehensions, lambda functions, or overly compact one-liners.\n    Instead, follow these guidelines:**\n    Avoid list comprehensions, use loops instead:\n    Incorrect:\n    def square_numbers(lst):\n        return [x ** 2 for x in lst]\n    Correct:\n    def square_numbers(lst):\n        squares = []\n        for num in lst:\n            squared_value = num ** 2\n            squares.append(squared_value)\n        return squares\n    Avoid inline expressions, use variables instead\n    Incorrect:\n    def calculate_area(length, width):\n        return (length * width) / 2\n    Correct:\n    def calculate_area(length, width):\n        product = length * width\n        area = product / 2\n        return area\n    Incorrect:\n    result.append(x + y)\n    Correct:\n    z = x + y\n    result.append(z)\n    Incorrect:\n    def compute_value(a, b, c):\n        return (a + b) * (c / (a - b) + (a * c) / (b + c))\n    Correct:\n    def compute_value(a, b, c):\n        term1 = a + b\n        term2 = a - b\n        term3 = c / term2\n        term4 = a * c / (b + c)\n        result = term1 * (term3 + term4)\n        return result\n    \"\"\"\n    if n == 0:\n        return 1\n    else:\n        return n * permutation_coefficient(n - 1, k)\n",
+  "results": {
+    "assert permutation_coefficient(10, 2) == 90": {
+      "result": false,
+      "time": 0.12805795669555664,
+      "error": null
+    },
+    "assert permutation_coefficient(10, 3) == 720": {
+      "result": false,
+      "time": 0.15153074264526367,
+      "error": null
+    },
+    "assert permutation_coefficient(10, 1) == 10": {
+      "result": false,
+      "time": 0.1369154453277588,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

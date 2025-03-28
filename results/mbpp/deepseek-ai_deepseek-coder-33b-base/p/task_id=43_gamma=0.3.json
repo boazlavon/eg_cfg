@@ -1,0 +1,24 @@
+{
+  "code": "def text_match(text):\n    \"\"\"Find sequences of lowercase letters joined with an underscore using regex.\"\"\"\n    # Regex pattern to match sequences of lowercase letters joined with an underscore\n    pattern = r\"(\\w+)_(\\w+)\"\n    # Initialize an empty list to store the matches\n    matches = []\n    # Iterate over each character in the input string\n    for i, char in enumerate(text):\n        # Check if the current character is a letter\n        if char.isalpha():\n            # If it is a letter, check if the next character is also a letter\n            if i + 1 < len(text) and text[i + 1].isalpha():\n                # If it is, add the current character and the next character to the list of matches\n                matches.append(char + text[i + 1])\n            # If it is not, add the current character to the list of matches\n            else:\n                matches.append(char)\n    # Return the list of matches\n    return matches\n",
+  "results": {
+    "assert text_match(\"aab_cbbbc\") == 'Found a match!'": {
+      "result": false,
+      "time": 0.10587000846862793,
+      "error": null
+    },
+    "assert text_match(\"aab_Abbbc\") == 'Not matched!'": {
+      "result": false,
+      "time": 0.10887956619262695,
+      "error": null
+    },
+    "assert text_match(\"Aaab_abbbc\") == 'Not matched!'": {
+      "result": false,
+      "time": 0.10769033432006836,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

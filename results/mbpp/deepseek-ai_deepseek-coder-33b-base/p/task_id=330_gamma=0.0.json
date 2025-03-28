@@ -1,0 +1,24 @@
+{
+  "code": "def find_char(text):\n    \"\"\"Find all three, four, five characters long words in the given string by using regex.\"\"\"\n    words = re.findall(r\"\\b\\w{3,4,5}\\b\", text)\n    return words\n",
+  "results": {
+    "assert find_char('For the four consumer complaints contact manager AKR reddy') == ['For', 'the', 'four', 'AKR', 'reddy']": {
+      "result": false,
+      "time": 0.14188838005065918,
+      "error": null
+    },
+    "assert find_char('Certain service are subject to change MSR') == ['are', 'MSR']": {
+      "result": false,
+      "time": 0.13957905769348145,
+      "error": null
+    },
+    "assert find_char('Third party legal desclaimers') == ['Third', 'party', 'legal']": {
+      "result": false,
+      "time": 0.13310551643371582,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def next_Perfect_Square(N):\n    \"\"\"Return the next perfect square greater than N.\"\"\"\n    # Base case: if N is 0 or 1, return N\n    if N == 0 or N == 1:\n        return N\n    # Recursive case: find the next perfect square greater than N\n    for i in range(2, int(N**0.5) + 1):\n        if N % i == 0:\n            return N // i\n    # If we reach this point, N is not a perfect square\n    return None\n",
+  "results": {
+    "assert next_Perfect_Square(35) == 36": {
+      "result": false,
+      "time": 0.13162708282470703,
+      "error": null
+    },
+    "assert next_Perfect_Square(6) == 9": {
+      "result": false,
+      "time": 0.12641119956970215,
+      "error": null
+    },
+    "assert next_Perfect_Square(9) == 16": {
+      "result": false,
+      "time": 0.12715458869934082,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def count_binary_seq(n):\n    count = 0\n    for i in range(2**n):\n        if (i & (1 << (n - 1))) == (1 << (n - 1)):\n            count += 1\n    return count\n",
+  "results": {
+    "assert count_binary_seq(1) == 2.0": {
+      "result": false,
+      "time": 0.12413907051086426,
+      "error": null
+    },
+    "assert count_binary_seq(2) == 6.0": {
+      "result": false,
+      "time": 0.1411600112915039,
+      "error": null
+    },
+    "assert count_binary_seq(3) == 20.0": {
+      "result": false,
+      "time": 0.13779211044311523,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

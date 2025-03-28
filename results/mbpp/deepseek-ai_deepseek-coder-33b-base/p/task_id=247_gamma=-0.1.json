@@ -1,0 +1,24 @@
+{
+  "code": "def lps(str):\n\n    # Initialize a 2D array dp to store the longest palindromic subsequence of each length\n    dp = [[0 for x in range(len(str) + 1)] for y in range(len(str) + 1)]\n    # Initialize the first and last elements of the dp array to 1\n    dp[0][0] = 1\n    # Iterate through the string\n    for i in range(1, len(str) + 1):\n        # Iterate through the string again\n        for j in range(i):\n            # If the characters at the current position and the previous position are the same, then the current character is part of the longest palindromic subsequence\n            if str[i - 1] == str[j - 1]:\n                # Update the dp array by adding 1 to the current element\n                dp[i][j] = dp[i - 1][j - 1] + 1\n            else:\n                # If the characters are not the same, then the current character is not part of the longest palindromic subsequence\n                dp[i][j] = 0\n    # Return the length of the longest palindromic subsequence\n    return dp[len(str)][len(str)]\n",
+  "results": {
+    "assert lps(\"TENS FOR TENS\") == 5 ": {
+      "result": false,
+      "time": 0.18945860862731934,
+      "error": null
+    },
+    "assert lps(\"CARDIO FOR CARDS\") == 7": {
+      "result": false,
+      "time": 0.18070387840270996,
+      "error": null
+    },
+    "assert lps(\"PART OF THE JOURNEY IS PART\") == 9 ": {
+      "result": false,
+      "time": 0.12760210037231445,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

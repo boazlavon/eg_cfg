@@ -1,0 +1,24 @@
+{
+  "code": "def find_last_occurrence(A, x):\n    \"\"\"\n    This function finds the index of the last occurrence of a given number in a sorted array.\n    It uses a binary search to find the index of the last occurrence of the given number.\n    It returns the index of the last occurrence of the given number in the array.\n    If the given number is not found in the array, it returns -1.\n    \"\"\"\n    # Find the middle index of the array\n    middle = len(A) // 2\n    # If the middle index is greater than the length of the array, return -1\n    if middle > len(A):\n        return -1\n    # If the middle index is less than or equal to the length of the array, return the index of the middle element\n    elif middle == len(A):\n        return middle\n    # If the middle element is greater than the given number, return the index of the middle element\n    elif A[middle] > x:\n        return find_last_occurrence(A, x)\n    # If the middle element is less than or equal to the given number, return the index of the middle element\n    else:\n        return find_last_occurrence(A[:middle], x) + middle\n",
+  "results": {
+    "assert find_last_occurrence([2, 5, 5, 5, 6, 6, 8, 9, 9, 9], 5) == 3": {
+      "result": false,
+      "time": 0.142927885055542,
+      "error": null
+    },
+    "assert find_last_occurrence([2, 3, 5, 8, 6, 6, 8, 9, 9, 9], 9) == 9": {
+      "result": false,
+      "time": 0.12698149681091309,
+      "error": null
+    },
+    "assert find_last_occurrence([2, 2, 1, 5, 6, 6, 6, 9, 9, 9], 6) == 6": {
+      "result": false,
+      "time": 0.13408541679382324,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

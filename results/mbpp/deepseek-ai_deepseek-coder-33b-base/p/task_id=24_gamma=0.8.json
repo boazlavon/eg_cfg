@@ -1,0 +1,24 @@
+{
+  "code": "def binary_to_decimal(binary):\n    result = 0\n    for digit in binary:\n        result += int(digit) * (2 ** (len(binary) - 1 - len(str(digit))))\n    return result\n",
+  "results": {
+    "assert binary_to_decimal(100) == 4": {
+      "result": false,
+      "time": 0.10486602783203125,
+      "error": null
+    },
+    "assert binary_to_decimal(1011) == 11": {
+      "result": false,
+      "time": 0.11466860771179199,
+      "error": null
+    },
+    "assert binary_to_decimal(1101101) == 109": {
+      "result": false,
+      "time": 0.11596918106079102,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

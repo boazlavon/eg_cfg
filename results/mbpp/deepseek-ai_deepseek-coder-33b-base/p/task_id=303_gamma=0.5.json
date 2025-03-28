@@ -1,0 +1,24 @@
+{
+  "code": "def solve(a, n):\n    if n == 0:\n        return True\n    if n == 1:\n        return False\n    if a[0] == 0:\n        return False\n    return solve(a[1:], n - 1)\n",
+  "results": {
+    "assert solve([1,0,2],3) == True": {
+      "result": false,
+      "time": 0.10663342475891113,
+      "error": null
+    },
+    "assert solve([1,2,0],3) == False": {
+      "result": true,
+      "time": 0.11083745956420898,
+      "error": null
+    },
+    "assert solve([1,2,1],3) == True": {
+      "result": false,
+      "time": 0.11282706260681152,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def merge(a, b):\n    n = len(a)\n    m = len(b)\n    c = []\n    i = 0\n    j = 0\n    while i < n and j < m:\n        if a[i] < b[j]:\n            c.append(a[i])\n            i += 1\n        else:\n            c.append(b[j])\n            j += 1\n    while i < n:\n        c.append(a[i])\n        i += 1\n    while j < m:\n        c.append(b[j])\n        j += 1\n    return c\n",
+  "results": {
+    "assert merge_sort([3, 4, 2, 6, 5, 7, 1, 9]) == [1, 2, 3, 4, 5, 6, 7, 9]": {
+      "result": false,
+      "time": 0.1118767261505127,
+      "error": null
+    },
+    "assert merge_sort([7, 25, 45, 78, 11, 33, 19]) == [7, 11, 19, 25, 33, 45, 78]": {
+      "result": false,
+      "time": 0.1070406436920166,
+      "error": null
+    },
+    "assert merge_sort([3, 1, 4, 9, 8]) == [1, 3, 4, 8, 9]": {
+      "result": false,
+      "time": 0.11169767379760742,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

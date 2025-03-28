@@ -1,0 +1,24 @@
+{
+  "code": "def remove_Occ(s, ch):\n    if s == \"\":\n        return \"\"\n    if s[0] == ch:\n        return s[1:]\n    else:\n        return s[0:1] + remove_Occ(s[1:], ch) + s[1:]\n",
+  "results": {
+    "assert remove_Occ(\"hello\",\"l\") == \"heo\"": {
+      "result": false,
+      "time": 1.573634147644043,
+      "error": null
+    },
+    "assert remove_Occ(\"abcda\",\"a\") == \"bcd\"": {
+      "result": false,
+      "time": 1.5243592262268066,
+      "error": null
+    },
+    "assert remove_Occ(\"PHP\",\"P\") == \"H\"": {
+      "result": false,
+      "time": 1.7114145755767822,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

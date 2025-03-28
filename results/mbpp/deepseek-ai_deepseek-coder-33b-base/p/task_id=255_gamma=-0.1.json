@@ -1,0 +1,24 @@
+{
+  "code": "def combinations_colors(l, n):\n    \"\"\"Return all combinations of n colors from l.\"\"\"\n    if n == 0:\n        return [[]]\n    elif n == 1:\n        return [l]\n    else:\n        return [c + [l[i]] for i in range(len(l)) for c in combinations_colors(l, n - 1)]\n",
+  "results": {
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],1)==[('Red',), ('Green',), ('Blue',)]": {
+      "result": false,
+      "time": 0.11155104637145996,
+      "error": null
+    },
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],2)==[('Red', 'Red'), ('Red', 'Green'), ('Red', 'Blue'), ('Green', 'Green'), ('Green', 'Blue'), ('Blue', 'Blue')]": {
+      "result": false,
+      "time": 0.11472558975219727,
+      "error": null
+    },
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],3)==[('Red', 'Red', 'Red'), ('Red', 'Red', 'Green'), ('Red', 'Red', 'Blue'), ('Red', 'Green', 'Green'), ('Red', 'Green', 'Blue'), ('Red', 'Blue', 'Blue'), ('Green', 'Green', 'Green'), ('Green', 'Green', 'Blue'), ('Green', 'Blue', 'Blue'), ('Blue', 'Blue', 'Blue')]": {
+      "result": false,
+      "time": 0.11949872970581055,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

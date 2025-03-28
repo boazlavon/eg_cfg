@@ -1,0 +1,24 @@
+{
+  "code": "def find_character(string):\n    \"\"\"\n    This function takes a string as input and returns a list of characters in the string,\n    along with their count, special characters, and numeric values.\n    \"\"\"\n    # Initialize an empty list to store the results\n    result = []\n\n    # Iterate over each character in the string\n    for char in string:\n        # Check if the character is a letter\n        if char.isalpha():\n            # If it is a letter, add it to the list of characters\n            result.append(char)\n        # Check if the character is a digit\n        elif char.isdigit():\n            # If it is a digit, add it to the list of digits\n            result.append(char)\n        # Check if the character is a special character\n        elif char in string.punctuation:\n            # If it is a special character, add it to the list of special characters\n            result.append(char)\n        # Check if the character is a numeric value\n        elif char.isdigit():\n            # If it is a numeric value, add it to the list of numeric values\n            result.append(char)\n\n    # Return the list of characters, their count, special characters, and numeric values\n    return result\n",
+  "results": {
+    "assert find_character(\"ThisIsGeeksforGeeks\") == (['T', 'I', 'G', 'G'], ['h', 'i', 's', 's', 'e', 'e', 'k', 's', 'f', 'o', 'r', 'e', 'e', 'k', 's'], [], [])": {
+      "result": false,
+      "time": 0.1372849941253662,
+      "error": null
+    },
+    "assert find_character(\"Hithere2\") == (['H'], ['i', 't', 'h', 'e', 'r', 'e'], ['2'], [])": {
+      "result": false,
+      "time": 0.13876605033874512,
+      "error": null
+    },
+    "assert find_character(\"HeyFolks32\") == (['H', 'F'], ['e', 'y', 'o', 'l', 'k', 's'], ['3', '2'], [])": {
+      "result": false,
+      "time": 0.12875771522521973,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

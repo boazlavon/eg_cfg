@@ -1,0 +1,24 @@
+{
+  "code": "def replace_max_specialchar(text, n):\n    \"\"\"\n    Replace maximum n occurrences of spaces, commas, or dots with a colon.\n    \"\"\"\n    text = text.replace(\" \", \":\")\n    text = text.replace(\",\", \":\")\n    text = text.replace(\".\", \":\")\n    return text\n",
+  "results": {
+    "assert replace_max_specialchar('Python language, Programming language.',2)==('Python:language: Programming language.')": {
+      "result": false,
+      "time": 0.10290813446044922,
+      "error": null
+    },
+    "assert replace_max_specialchar('a b c,d e f',3)==('a:b:c:d e f')": {
+      "result": false,
+      "time": 0.10403633117675781,
+      "error": null
+    },
+    "assert replace_max_specialchar('ram reshma,ram rahim',1)==('ram:reshma,ram rahim')": {
+      "result": false,
+      "time": 0.09788775444030762,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def find_tuples(test_list, K):\n    result = []\n    for i in range(len(test_list)):\n        for j in range(i + 1, len(test_list)):\n            if test_list[i][0] % K == 0 and test_list[j][0] % K == 0:\n                result.append(test_list[i])\n                result.append(test_list[j])\n    return result\n",
+  "results": {
+    "assert find_tuples([(6, 24, 12), (7, 9, 6), (12, 18, 21)], 6) == '[(6, 24, 12)]'": {
+      "result": false,
+      "time": 0.12563276290893555,
+      "error": null
+    },
+    "assert find_tuples([(5, 25, 30), (4, 2, 3), (7, 8, 9)], 5) == '[(5, 25, 30)]'": {
+      "result": false,
+      "time": 0.11816239356994629,
+      "error": null
+    },
+    "assert find_tuples([(7, 9, 16), (8, 16, 4), (19, 17, 18)], 4) == '[(8, 16, 4)]'": {
+      "result": false,
+      "time": 0.12112569808959961,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

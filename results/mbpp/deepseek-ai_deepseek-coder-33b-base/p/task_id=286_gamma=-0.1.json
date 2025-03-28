@@ -1,0 +1,24 @@
+{
+  "code": "def max_sub_array_sum_repeated(a, n, k):\n\n    # Initialize result and sum\n    result = 0\n    sum = 0\n    # Iterate through the array\n    for i in range(n):\n        # If the current element is greater than the previous element,\n        # add the current element to the sum\n        if a[i] > sum:\n            sum += a[i]\n        # If the current element is less than the previous element,\n        # subtract the current element from the sum\n        else:\n            sum -= a[i]\n        # If the sum is greater than k,\n        # update the result\n        if sum > k:\n            result = max(result, sum)\n            # Reset the sum\n            sum = 0\n    # Return the result\n    return result\n",
+  "results": {
+    "assert max_sub_array_sum_repeated([10, 20, -30, -1], 4, 3) == 30": {
+      "result": true,
+      "time": 0.11663413047790527,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, 10, 20], 3, 2) == 59": {
+      "result": false,
+      "time": 0.1122736930847168,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, -2, -3], 3, 3) == -1": {
+      "result": false,
+      "time": 0.15252923965454102,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

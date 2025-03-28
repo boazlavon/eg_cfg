@@ -1,0 +1,24 @@
+{
+  "code": "def re_arrange_array(arr, n):\n    \"\"\"Re-arrange the elements of the given array so that all negative elements appear before positive ones.\"\"\"\n    # Sort the array in ascending order\n    arr.sort()\n    # Create a new list to store the sorted elements\n    result = []\n    # Iterate over the sorted array\n    for i in range(len(arr)):\n        # If the current element is negative, append it to the result list\n        if arr[i] < 0:\n            result.append(arr[i])\n        # If the current element is positive, append it to the result list\n        else:\n            result.append(arr[i])\n    # Return the result list\n    return result\n",
+  "results": {
+    "assert re_arrange_array([-1, 2, -3, 4, 5, 6, -7, 8, 9], 9) == [-1, -3, -7, 4, 5, 6, 2, 8, 9]": {
+      "result": false,
+      "time": 0.1256101131439209,
+      "error": null
+    },
+    "assert re_arrange_array([12, -14, -26, 13, 15], 5) == [-14, -26, 12, 13, 15]": {
+      "result": false,
+      "time": 0.12269377708435059,
+      "error": null
+    },
+    "assert re_arrange_array([10, 24, 36, -42, -39, -78, 85], 7) == [-42, -39, -78, 10, 24, 36, 85]": {
+      "result": false,
+      "time": 0.12345576286315918,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

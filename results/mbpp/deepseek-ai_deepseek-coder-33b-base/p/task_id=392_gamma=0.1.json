@@ -1,0 +1,24 @@
+{
+  "code": "def get_max_sum(n):\n    if n == 1:\n        return 1\n    elif n == 2:\n        return 2\n    else:\n        return max(get_max_sum(n // 2) + get_max_sum(n // 3) + get_max_sum(n // 4) + get_max_sum(n // 5), n)\n",
+  "results": {
+    "assert get_max_sum(60) == 106": {
+      "result": false,
+      "time": 0.12967228889465332,
+      "error": null
+    },
+    "assert get_max_sum(10) == 12": {
+      "result": false,
+      "time": 0.12735199928283691,
+      "error": null
+    },
+    "assert get_max_sum(2) == 2": {
+      "result": true,
+      "time": 0.12743854522705078,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

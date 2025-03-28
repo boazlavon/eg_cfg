@@ -1,0 +1,24 @@
+{
+  "code": "def drop_empty(dict1):\n    \"\"\"Drop empty items from a given dictionary.\"\"\"\n    for key, value in dict1.items():\n        if value == None:\n            del dict1[key]\n    return dict1\n",
+  "results": {
+    "assert drop_empty({'c1': 'Red', 'c2': 'Green', 'c3':None})=={'c1': 'Red', 'c2': 'Green'}": {
+      "result": false,
+      "time": 0.10689091682434082,
+      "error": null
+    },
+    "assert drop_empty({'c1': 'Red', 'c2': None, 'c3':None})=={'c1': 'Red'}": {
+      "result": false,
+      "time": 0.1205298900604248,
+      "error": null
+    },
+    "assert drop_empty({'c1': None, 'c2': 'Green', 'c3':None})=={ 'c2': 'Green'}": {
+      "result": false,
+      "time": 0.10546469688415527,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

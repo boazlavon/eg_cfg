@@ -1,0 +1,24 @@
+{
+  "code": "def count_Primes_nums(n):\n    \"\"\"\n    Count the number of prime numbers less than a given non-negative number.\n    \"\"\"\n    count = 0\n    for i in range(2, n + 1):\n        if i > 1:\n            for j in range(2, i):\n                if (i % j) == 0:\n                    break\n            else:\n                count += 1\n    return count\n",
+  "results": {
+    "assert count_Primes_nums(5) == 2": {
+      "result": false,
+      "time": 0.1517777442932129,
+      "error": null
+    },
+    "assert count_Primes_nums(10) == 4": {
+      "result": true,
+      "time": 0.1531221866607666,
+      "error": null
+    },
+    "assert count_Primes_nums(100) == 25": {
+      "result": true,
+      "time": 0.15193414688110352,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}
