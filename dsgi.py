@@ -212,12 +212,12 @@ def generate_mbpp_solutions(
                     solution = None
                     general_error = str(type(e))
                     tb = traceback.format_exc()
-                    raise e
+                    # raise e
                 except Exception as e:
                     solution = None
                     general_error = str(type(e))
                     tb = traceback.format_exc()
-                    raise e
+                    # raise e
 
                 print()
                 solution_results = run_tests(solution, test_cases)
