@@ -246,6 +246,7 @@ class CodeGenerationAdapter:
         unified_dynamic_signal_prompt = self.initial_prompt.replace(
             DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING, unified_dynamic_signal_text
         )
+        print(unified_dynamic_signal_prompt)
 
         unified_dynamic_signal_prompt_tokens = self.tokenizer(
             unified_dynamic_signal_prompt, return_tensors="pt"

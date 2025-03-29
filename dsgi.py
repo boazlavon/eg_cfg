@@ -4,6 +4,7 @@ import black
 import argparse
 import os
 import json
+import traceback
 
 from mbpp_utils import (
     format_mbpp_prompt,
@@ -83,13 +84,13 @@ def try_generate_code_solutions(
     return solution
 
 
-def format_results(solution, results, general_error):
+def format_results(solution, results, general_error, tb=None):
     passed = all(r["result"] for r in results.values())
     correct = sum(int(r["result"]) for r in results.values())
     total = len(results)
     accuracy = correct / total if total else 0.0
     has_testcase_error = all([bool(result["error"]) for result in results.values()])
-    return {
+    entry = {
         "code": solution,
         "results": results,
         "passed": passed,
@@ -97,6 +98,9 @@ def format_results(solution, results, general_error):
         "general_error": general_error,
         "has_testcase_error": has_testcase_error,
     }
+    if tb is not None:
+        entry["tb"] = tb
+    return entry
 
 
 def get_solution_filepath(results_dir, task_id, gamma, backward_signals_iteration=0):
@@ -187,6 +191,7 @@ def generate_mbpp_solutions(
                     continue
 
                 general_error = None
+                tb = None
                 if should_skip(results_dir, task_id, gamma, backward_signals_iteration):
                     continue
 
@@ -206,16 +211,18 @@ def generate_mbpp_solutions(
                 except AssertionError as e:
                     solution = None
                     general_error = str(type(e))
+                    tb = traceback.format_exc()
                     raise e
                 except Exception as e:
                     solution = None
                     general_error = str(type(e))
+                    tb = traceback.format_exc()
                     raise e
 
                 print()
                 solution_results = run_tests(solution, test_cases)
                 solution_entry = format_results(
-                    solution, solution_results, general_error
+                    solution, solution_results, general_error, tb
                 )
                 filepath = get_solution_filepath(results_dir, task_id, gamma)
                 with open(filepath, "w") as f:
