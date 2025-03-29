@@ -3,6 +3,7 @@ import subprocess
 import tempfile
 import time
 import black
+import traceback
 from datasets import load_dataset
 
 CUSTOM_INSTRUCTION_TEXT = """\
@@ -98,11 +99,13 @@ def run_tests(solution, test_cases):
 
         try:
             results[test_case] = evaluate_solution(solution, test_case)
-        except:
+        except Exception as e:
+            tb = traceback.format_exc()
             results[test_case] = {
                 "result": False,
                 "time": -1,
-                "error": "Unknown",
+                "error": str(type(e)),
+                "tb": tb,
             }
             print(f"Problem executing test case: {test_case}")
     return results

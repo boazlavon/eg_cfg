@@ -131,7 +131,7 @@ class ExecutionManager:
                     ["python", "runner.py", program_path],
                     stdout=raw_out,
                     check=True,
-                    timeout=60,
+                    timeout=15,
                 )
 
             # Step 4: Create a temporary file for the formatted trace
