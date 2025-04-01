@@ -2,9 +2,7 @@ import re
 from code_generation_adapter import CodeGenerationAdapter
 from probs_utils import apply_guidance
 from model_utils import extract_new_tokens
-
-TASK__CODE_GENERATION = "CodeGeneration"
-SUPPORTED_TASKS = (TASK__CODE_GENERATION,)
+from consts import *
 
 TASKS_ADAPTERS = {TASK__CODE_GENERATION: CodeGenerationAdapter}
 

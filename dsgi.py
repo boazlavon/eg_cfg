@@ -18,30 +18,10 @@ from code_generation_utils import (
     is_valid_python,
     raw_outputs_to_new_code,
 )
-from dsgi_manager import DsgiManager, TASK__CODE_GENERATION
+from dsgi_manager import DsgiManager
 from model_utils import setup_device, load_model
-from code_generation_adapter import (
-    DYNAMIC_SIGNAL__PARTIAL_EXECUTION,
-    DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION,
-    BACKWARD_DYNAMIC_SIGNAL_PATTERN,
-    DYNAMIC_SIGNAL__BACKWARD,
-    VALID_PROMPT_TYPES,
-    PROMPT_TYPE__DEEPSEEK_BASE,
-    PROMPT_TYPE__DEEPSEEK_INSTRUCT,
-    PROMPT_TYPE__CUSTOM_PROMPT_COMPLEX,
-    PROMPT_TYPE__CUSTOM_PROMPT_SIMPLE,
-)
 from execution_manager import ExecutionManager
-
-MODEL_NAME = "deepseek-ai/deepseek-coder-1.3b-base"
-# MODEL_NAME = "meta-llama/Llama-3.2-1B"
-# MODEL_NAME = "google/gemma-3-1b-it"
-# MODEL_NAME = "meta-llama/Llama-3.1-8B"
-GAMMAS = (0.0, 0.1, 0.3, 0.5, 0.7, 0.8, 0.9)
-FILENAME_TEMPLATE = "task_id={task_id}_gamma={gamma}.json"
-FILENAME_TEMPLATE_BACKWARD_SIGNAL = (
-    "task_id={task_id}_gamma={gamma}_b={backward_signals_iteration}.json"
-)
+from consts import *
 
 
 def should_skip(results_dir, task_id, gamma, backward_signals_iteration):
@@ -229,6 +209,7 @@ def generate_mbpp_solutions(
     end=None,
     gammas=GAMMAS,
     backward_signals_iterations=0,
+    prod=False,
 ):
     device = setup_device()
     model, tokenizer = load_model(model_name, device)
@@ -312,12 +293,14 @@ def generate_mbpp_solutions(
                     solution = None
                     general_error = str(type(e))
                     tb = traceback.format_exc()
-                    raise e
+                    if not prod:
+                        raise e
                 except Exception as e:
                     solution = None
                     general_error = str(type(e))
                     tb = traceback.format_exc()
-                    raise e
+                    if not prod:
+                        raise e
 
                 solution_results = run_tests(solution, test_cases)
                 solution_entry = format_results(
@@ -386,6 +369,7 @@ def main():
         choices=VALID_PROMPT_TYPES,
         help="Type of prompt to use. Must be one of: " + ", ".join(VALID_PROMPT_TYPES),
     )
+    parser.add_argument("--prod", type=bool, default=False)
 
     args = parser.parse_args()
 
@@ -409,6 +393,7 @@ def main():
         dynamic_signals,
         prompt_type,
         backward_signals_iterations=backward_signals_iterations,
+        prod=args.prod,
     )
 
 
