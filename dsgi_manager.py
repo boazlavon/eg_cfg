@@ -1,6 +1,7 @@
-import torch
+import re
 from code_generation_adapter import CodeGenerationAdapter
 from probs_utils import apply_guidance
+from model_utils import extract_new_tokens
 
 TASK__CODE_GENERATION = "CodeGeneration"
 SUPPORTED_TASKS = (TASK__CODE_GENERATION,)
@@ -8,12 +9,89 @@ SUPPORTED_TASKS = (TASK__CODE_GENERATION,)
 TASKS_ADAPTERS = {TASK__CODE_GENERATION: CodeGenerationAdapter}
 
 
+class DsgiDetector:
+    def __init__(self, tokenizer, initial_prompt_input_ids_len):
+        self.tokenizer = tokenizer
+        self.initial_prompt_input_ids_len = initial_prompt_input_ids_len
+        self.dsgi_enabled = False
+        self.start_detected = 0
+        self.end_detected = 0
+        self.dsgi_count = 0
+
+    def is_dsgi_enabled(self, input_ids):
+        if not self.dsgi_enabled:
+            if self.detect_start(input_ids):
+                self.start_detected += 1
+                self.dsgi_enabled = True
+        else:
+            if self.detect_end(input_ids):
+                self.end_detected += 1
+                self.dsgi_enabled = False
+        return self.dsgi_enabled
+
+    def detect_start(self, input_ids):
+        raise NotImplementedError()
+
+    def detect_end(self, input_ids):
+        raise NotImplementedError()
+
+
+class FunctinoSigDsgiDetector(DsgiDetector):
+    def __init__(
+        self, tokenizer, initial_prompt_input_ids_len, function_name, end_string
+    ):
+        super().__init__(tokenizer, initial_prompt_input_ids_len)
+        self.function_name = function_name
+        self.end_string = end_string
+        self.function_start_idx = None
+
+    def detect_start(self, input_ids):
+        new_text, new_text_tokens = extract_new_tokens(
+            self.tokenizer, input_ids, self.initial_prompt_input_ids_len
+        )
+        new_text_lines = new_text.split("\n")
+        last_line = new_text_lines[-1]
+
+        pattern = rf"^def\s+{self.function_name}\s*\("
+        result = bool(re.search(pattern, last_line))
+        if result:
+            # Backward iterate through input_ids[0]
+            for tok_idx in reversed(range(input_ids.shape[1])):
+                token_id = input_ids[0, tok_idx].item()  # get int value
+                tok = self.tokenizer.decode([token_id])
+                if tok.startswith("def"):
+                    if self.function_start_idx is None:
+                        self.function_start_idx = tok_idx
+                    break
+        return result
+
+    def detect_end(self, input_ids):
+        new_text, new_text_tokens = extract_new_tokens(
+            self.tokenizer, input_ids, self.initial_prompt_input_ids_len
+        )
+        new_text_lines = new_text.split("\n")
+        last_line = new_text_lines[-1]
+        result = last_line.startswith(self.end_string)
+        return result
+
+
+TASKS_DETECDORS = {TASK__CODE_GENERATION: FunctinoSigDsgiDetector}
+
+
 class DsgiManager:
-    def __init__(self, tokenizer, task, task_kwargs, gamma):
+    def __init__(
+        self, tokenizer, task, task_kwargs, gamma, detector_kwargs, use_detector=False
+    ):
         self.tokenizer = tokenizer
         self.gamma = gamma
         assert task in TASKS_ADAPTERS
         self.adapter = TASKS_ADAPTERS[task](**task_kwargs)
+        if use_detector:
+            self.detector = TASKS_DETECDORS[task](**detector_kwargs)
+            self.adapter.detector = self.detector
+
+    def is_dsgi_enabled(self, input_ids):
+        return self.detector.is_dsgi_enabled(input_ids)
 
     def extract_dynamic_signal_input_ids(self, input_ids):
         return self.adapter.extract_dynamic_signal_input_ids(input_ids)

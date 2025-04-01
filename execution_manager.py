@@ -50,7 +50,9 @@ class ExecutionManager:
         return executions
 
     def extract_partial_executable_program(self, new_code) -> str:
-        partial_program_code = f"{self.function_signature}\n{new_code}"
+        partial_program_code = new_code
+        if self.function_signature:
+            partial_program_code = f"{self.function_signature}\n{new_code}"
         executable_partial_program_code = self.make_executable(partial_program_code)
         executable_partial_program_code = remove_comments_and_docstrings(
             executable_partial_program_code
@@ -66,46 +68,71 @@ class ExecutionManager:
 
         while lines:
             executable_code = "\n".join(lines)
-            if is_valid_python(executable_code) and executable_code.startswith(
-                function_signature
-            ):
+            is_valid_code = is_valid_python(executable_code) and (
+                function_signature is None
+                or (executable_code.startswith(function_signature))
+            )
+            if is_valid_code:
                 break
 
-            # Remove last line and try again
+            # Try inserting a pass maybe it will help
+            last_line = lines[-1]
+            indent = re.match(r"\s*", last_line).group(0)
+            lines.append(f"{indent}pass")
+
+            executable_code = "\n".join(lines)
+            is_valid_code = is_valid_python(executable_code) and (
+                function_signature is None
+                or (executable_code.startswith(function_signature))
+            )
+            if is_valid_code:
+                break
+
+            lines.pop()  # remove the pass we added
+
+            # Maybe the last line is problematic.
             last_line = lines.pop()
             if not lines:
                 break  # Stop if there are no lines left
 
             executable_code = "\n".join(lines)
-            if is_valid_python(executable_code) and executable_code.startswith(
-                function_signature
-            ):
+            is_valid_code = is_valid_python(executable_code) and (
+                function_signature is None
+                or (executable_code.startswith(function_signature))
+            )
+            if is_valid_code:
                 break
 
             # If removing doesn't work, replace last line with 'pass' (preserving indentation)
             indent = re.match(r"\s*", last_line).group(0)
             lines.append(f"{indent}pass")
+
             executable_code = "\n".join(lines)
-            if is_valid_python(executable_code) and executable_code.startswith(
-                function_signature
-            ):
+            is_valid_code = is_valid_python(executable_code) and (
+                function_signature is None
+                or (executable_code.startswith(function_signature))
+            )
+            if is_valid_code:
                 break
             lines.pop()  # Remove the pass if it's still invalid
 
-        if (
-            not is_valid_python(executable_code)
-            or not executable_code.startswith(function_signature)
-        ) and fallback_to_prompt:
-            prompt_lines = function_signature.split("\n")
-            last_line = prompt_lines[-1]
-            indent = re.match(r"\s*", last_line).group(0)
-            if not indent:
-                indent = "   "
-            executable_code = f"{function_signature}\n{indent}pass"
-            executable_code = black.format_str(
-                executable_code, mode=black.FileMode(line_length=1024)
-            )
-
+        is_valid_code = is_valid_python(executable_code) and (
+            function_signature is None
+            or (executable_code.startswith(function_signature))
+        )
+        if (not is_valid_code) and fallback_to_prompt:
+            if function_signature is not None:
+                prompt_lines = function_signature.split("\n")
+                last_line = prompt_lines[-1]
+                indent = re.match(r"\s*", last_line).group(0)
+                if not indent:
+                    indent = "   "
+                executable_code = f"{function_signature}\n{indent}pass"
+                executable_code = black.format_str(
+                    executable_code, mode=black.FileMode(line_length=1024)
+                )
+            else:
+                raise ValueError("Not Executable Code to extract")
         return executable_code
 
     def execute(self, code: str):
