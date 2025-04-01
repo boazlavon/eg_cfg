@@ -353,9 +353,7 @@ def get_dynamic_signals(args):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--model-name", type=str, default=MODEL_NAME, help="Name of the model used"
-    )
+    parser.add_argument("--model-name", type=str, help="Name of the model used")
     parser.add_argument("--b", action="store_true", help="Enable backward signal")
     parser.add_argument("--n", action="store_true", help="Enable nearest future signal")
     parser.add_argument(
