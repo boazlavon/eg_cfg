@@ -84,6 +84,7 @@ class CodeGenerationAdapter:
             inputs=inputs,
             max_function_body_lines=self.max_function_body_lines,
             do_sample=True,
+            prompt_type=self.prompt_type,
         )
         new_codes = raw_outputs_to_new_code(
             outputs,

@@ -133,7 +133,13 @@ def try_generate_code_solution(
     )
 
     outputs = generate_code_solutions(
-        model, tokenizer, device, prompt, dsgi_manager, num_return_sequences=1
+        model,
+        tokenizer,
+        device,
+        prompt,
+        dsgi_manager,
+        num_return_sequences=1,
+        prompt_type=prompt_type,
     )
     new_codes = raw_outputs_to_new_code(
         outputs, tokenizer, initial_prompt_input_ids_len, prompt_type

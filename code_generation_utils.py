@@ -198,6 +198,7 @@ def generate_code_solutions(
     inputs=None,
     max_function_body_lines=None,
     do_sample=False,
+    prompt_type=None,
 ):
     if inputs is None:
         inputs = tokenizer(prompt, return_tensors="pt").to(device)
@@ -207,8 +208,8 @@ def generate_code_solutions(
         for _ in range(num_return_sequences)
     ]
     stopping_criteria = StoppingCriteriaList(stop_criteria_list)
-    assert dsgi_manager.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE
-    if dsgi_manager.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
+    assert prompt_type == PROMPT_TYPE__DEEPSEEK_BASE
+    if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
         prime_stopping_criteria(
             tokenizer,
             inputs,
