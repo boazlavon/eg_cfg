@@ -359,7 +359,7 @@ def main():
     parser.add_argument(
         "--p",
         action="store_true",
-        help="Enable partial execution signal (default: enabled)",
+        help="Enable partial execution signal",
     )
     parser.add_argument(
         "--prompt-type",
@@ -368,7 +368,7 @@ def main():
         choices=VALID_PROMPT_TYPES,
         help="Type of prompt to use. Must be one of: " + ", ".join(VALID_PROMPT_TYPES),
     )
-    parser.add_argument("--prod", type=bool, default=False)
+    parser.add_argument("--prod", action="store_true")
 
     args = parser.parse_args()
 
