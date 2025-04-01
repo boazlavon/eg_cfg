@@ -89,6 +89,8 @@ class DsgiManager:
             self.adapter.detector = self.detector
 
     def is_dsgi_enabled(self, input_ids):
+        if self.gamma == 0:
+            return False
         return self.detector.is_dsgi_enabled(input_ids)
 
     def extract_dynamic_signal_input_ids(self, input_ids):

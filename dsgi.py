@@ -221,7 +221,8 @@ def generate_mbpp_solutions(
     if end is None:
         end = len(problems)
     problems = problems[start:end]
-    random.shuffle(problems)
+    if prod:
+        random.shuffle(problems)
 
     for _, problem in problems:
         problem_solved = False

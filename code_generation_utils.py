@@ -151,11 +151,17 @@ def raw_outputs_to_new_code(
     for output in outputs:
         try:
             output = output.unsqueeze(0)
-            new_code, _ = extract_new_tokens(
+            new_code, new_tokens = extract_new_tokens(
                 tokenizer, output, initial_prompt_input_ids_len
             )
             if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
-                new_code = new_code.replace("[DONE]", "").strip()
+                new_code = new_code.replace(
+                    DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_END, ""
+                ).strip()
+            if prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
+                new_code = new_code.split(INSTRUCT_MODEL_PYTHON_CODE_START, 1)[
+                    1
+                ].rstrip()
             if validate:
                 assert is_valid_python(new_code)
                 new_code = black.format_str(
@@ -167,24 +173,43 @@ def raw_outputs_to_new_code(
     return new_codes
 
 
-def prime_stopping_criteria(tokenizer, inputs, stop_criteria_list, marker="[BEGIN]"):
+def slice_prompt_after_markers(text: str, marker: str, marker2: str = None) -> str:
+    result = ""
+
+    if marker in text:
+        result = text.rsplit(marker, 1)[-1]
+        if not result.strip():
+            result = ""
+    if marker2 is not None and result:
+        if marker2 in result:
+            result = result.rsplit(marker2, 1)[-1]
+            if not result.strip():
+                result = ""
+        else:
+            result = ""
+
+    return result
+
+
+def prime_stopping_criteria(
+    tokenizer, inputs, stop_criteria_list, marker, marker2=None
+):
     # Decode full prompt text
     prompt_text = tokenizer.decode(inputs["input_ids"][0], skip_special_tokens=True)
 
     # Slice from the last [BEGIN] marker
-    if marker in prompt_text:
-        prompt_text = prompt_text.rsplit(marker, 1)[-1]
+    prompt_text = slice_prompt_after_markers(prompt_text, marker, marker2)
+    if not prompt_text:
+        return
 
-        # Tokenize and decode each token
-        prompt_tokens = tokenizer.tokenize(prompt_text)
-        decoded_tokens = [
-            tokenizer.convert_tokens_to_string([t]) for t in prompt_tokens
-        ]
+    # Tokenize and decode each token
+    prompt_tokens = tokenizer.tokenize(prompt_text)
+    decoded_tokens = [tokenizer.convert_tokens_to_string([t]) for t in prompt_tokens]
 
-        # Feed each token into all stopping criteria with count_lines=False
-        for criteria in stop_criteria_list:
-            for token in decoded_tokens:
-                criteria.check_stop(token, count_lines=False)
+    # Feed each token into all stopping criteria with count_lines=False
+    for criteria in stop_criteria_list:
+        for token in decoded_tokens:
+            criteria.check_stop(token, count_lines=False)
 
 
 def generate_code_solutions(
@@ -208,14 +233,27 @@ def generate_code_solutions(
         for _ in range(num_return_sequences)
     ]
     stopping_criteria = StoppingCriteriaList(stop_criteria_list)
-    assert prompt_type == PROMPT_TYPE__DEEPSEEK_BASE
     if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
         prime_stopping_criteria(
             tokenizer,
             inputs,
             stop_criteria_list,
-            marker=DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BEGIN,
+            marker=DYNAMIC_SIGNAL_PROMPT_BASE_MODEL_START_FUNCTION_MARKER,
         )
+        eos_token_id = tokenizer.eos_token_id
+        pad_token_id = tokenizer.eos_token_id
+    if prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
+        prime_stopping_criteria(
+            tokenizer,
+            inputs,
+            stop_criteria_list,
+            marker=DYNAMIC_SIGNAL_PROMPT_INSTRUCT_MODEL_START_FUNCTION_MARKER,
+            marker2=INSTRUCT_MODEL_PYTHON_CODE_START,
+        )
+        stop_id = tokenizer.convert_tokens_to_ids("<|EOT|>")
+        assert isinstance(stop_id, int), "Invalid tokenizer, EOT id not found"
+        eos_token_id = stop_id
+        pad_token_id = stop_id
 
     if do_sample:
         sampling_kwargs = {
@@ -235,8 +273,8 @@ def generate_code_solutions(
         outputs = model.generate(
             **inputs,
             max_new_tokens=max_new_tokens,
-            eos_token_id=tokenizer.eos_token_id,
-            pad_token_id=tokenizer.eos_token_id,
+            eos_token_id=eos_token_id,
+            pad_token_id=pad_token_id,
             num_beams=1,
             stopping_criteria=stopping_criteria,
             dsgi_manager=dsgi_manager,

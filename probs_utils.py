@@ -35,5 +35,6 @@ def apply_guidance(P, P_c, gamma, eps=1e-8, tokenizer=None, debug=False):
     P_guided = P * R**gamma
     P_guided = P_guided / P_guided.sum(dim=-1, keepdim=True)  # normalize across vocab
     if debug:
+        print(f"gamma={gamma}")
         print_top_k_token_probs(tokenizer, P, P_guided, k=3)
     return P_guided

@@ -6,7 +6,11 @@ from collections import OrderedDict
 from execution_manager import ExecutionManager
 from model_utils import extract_new_tokens, calculate_tokens_length
 from mbpp_utils import parse_mbpp_assert_statement
-from code_generation_utils import generate_code_solutions, raw_outputs_to_new_code
+from code_generation_utils import (
+    generate_code_solutions,
+    raw_outputs_to_new_code,
+    slice_prompt_after_markers,
+)
 from consts import *
 
 
@@ -191,15 +195,15 @@ class CodeGenerationAdapter:
         if unified_dynamic_signal_text:
             if self.prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
                 unified_dynamic_signal_text += (
-                    f"\n{DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_INSTRUCT}"
+                    f"\n{DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_INSTRUCT_BEGIN}"
                 )
                 unified_dynamic_signal_prompt = self.initial_prompt.replace(
-                    DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_INSTRUCT,
+                    DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_INSTRUCT_BEGIN,
                     unified_dynamic_signal_text,
                 )
             if self.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
                 begin_idx = self.initial_prompt.find(
-                    DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BEGIN
+                    DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_BEGIN
                 )
                 if begin_idx != -1:
                     injection = unified_dynamic_signal_text
@@ -211,7 +215,6 @@ class CodeGenerationAdapter:
                 else:
                     modified_prompt = self.initial_prompt
                 unified_dynamic_signal_prompt = modified_prompt
-                pass
 
         unified_dynamic_signal_prompt_tokens = self.tokenizer(
             unified_dynamic_signal_prompt, return_tensors="pt"
@@ -243,14 +246,23 @@ class CodeGenerationAdapter:
 
     def _extract_partial_executions(self, input_ids: torch.Tensor) -> str:
         crop_idx = self.initial_prompt_input_ids_len
-        if self.detector is not None:
-            crop_idx = self.detector.function_start_idx
         new_code, _ = extract_new_tokens(self.tokenizer, input_ids.clone(), crop_idx)
+        if self.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
+            # Nothing to do, everything after [BEGIN] should be code
+            pass
+        if self.prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
+            new_code = slice_prompt_after_markers(
+                new_code, marker=INSTRUCT_MODEL_PYTHON_CODE_START
+            )
 
         executable_partial_program_code = (
             self.execution_manager.extract_partial_executable_program(new_code)
         )
-        if executable_partial_program_code not in self.program_executions:
+        if (
+            executable_partial_program_code
+            and executable_partial_program_code not in self.program_executions
+        ):
+            print(f"Executing:\n {executable_partial_program_code}")
             self.program_executions[executable_partial_program_code] = (
                 self.execution_manager.execute_test_cases(
                     executable_partial_program_code, self.test_cases
