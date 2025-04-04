@@ -1,0 +1,24 @@
+{
+  "code": "def rearange_string(string):\n    string = sorted(string)\n    result = \"\"\n    for i in range(len(string) - 1):\n        if string[i] != string[i + 1]:\n            result += string[i]\n    result += string[-1]\n    return result\n",
+  "results": {
+    "assert rearange_string(\"aab\")==('aba')": {
+      "result": false,
+      "time": 0.18091988563537598,
+      "error": null
+    },
+    "assert rearange_string(\"aabb\")==('abab')": {
+      "result": false,
+      "time": 0.19238567352294922,
+      "error": null
+    },
+    "assert rearange_string(\"abccdd\")==('cdabcd')": {
+      "result": false,
+      "time": 0.18223977088928223,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def get_total_number_of_sequences(n, m):\n    count = 0\n    for i in range(1, n + 1):\n        for j in range(i + 1, n + 1):\n            if j >= i * 2 and j <= m:\n                count += 1\n    return count\n",
+  "results": {
+    "assert get_total_number_of_sequences(10, 4) == 4": {
+      "result": true,
+      "time": 0.08394742012023926,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(5, 2) == 6": {
+      "result": false,
+      "time": 0.07486462593078613,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(16, 3) == 84": {
+      "result": false,
+      "time": 0.06946039199829102,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

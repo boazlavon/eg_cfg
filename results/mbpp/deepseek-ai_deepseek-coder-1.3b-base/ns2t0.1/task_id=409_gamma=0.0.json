@@ -1,0 +1,24 @@
+{
+  "code": "def min_product_tuple(tuples):\n    min_product = 1\n    for i in range(len(tuples)):\n        for j in range(i + 1, len(tuples)):\n            if tuples[i][0] * tuples[j][1] < tuples[i][1] * tuples[j][0]:\n                min_product = tuples[i][0] * tuples[j][1]\n            else:\n                min_product = tuples[i][1] * tuples[j][0]\n    return min_product\n",
+  "results": {
+    "assert min_product_tuple([(2, 7), (2, 6), (1, 8), (4, 9)] )==8": {
+      "result": false,
+      "time": 0.21000933647155762,
+      "error": null
+    },
+    "assert min_product_tuple([(10,20), (15,2), (5,10)] )==30": {
+      "result": false,
+      "time": 0.20786571502685547,
+      "error": null
+    },
+    "assert min_product_tuple([(11,44), (10,15), (20,5), (12, 9)] )==100": {
+      "result": false,
+      "time": 0.20661544799804688,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

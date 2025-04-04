@@ -1,0 +1,24 @@
+{
+  "code": "def sum_digits_twoparts(n):\n    sum_1 = 0\n    sum_2 = 0\n    while n > 0:\n        sum_1 += n % 10\n        n = n // 10\n    for i in str(n):\n        sum_2 += int(i)\n    return max(sum_1, sum_2)\n",
+  "results": {
+    "assert sum_digits_twoparts(35)==17": {
+      "result": false,
+      "time": 0.18451571464538574,
+      "error": null
+    },
+    "assert sum_digits_twoparts(7)==7": {
+      "result": true,
+      "time": 0.17862796783447266,
+      "error": null
+    },
+    "assert sum_digits_twoparts(100)==19": {
+      "result": false,
+      "time": 0.17821526527404785,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

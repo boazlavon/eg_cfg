@@ -1,0 +1,24 @@
+{
+  "code": "def combinations_colors(colors, n):\n    res = []\n    for i in range(len(colors)):\n        for j in range(i + 1, len(colors)):\n            for k in range(j + 1, len(colors)):\n                res.append((colors[i], colors[j], colors[k]))\n    return res\n",
+  "results": {
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],1)==[('Red',), ('Green',), ('Blue',)]": {
+      "result": false,
+      "time": 0.06777596473693848,
+      "error": null
+    },
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],2)==[('Red', 'Red'), ('Red', 'Green'), ('Red', 'Blue'), ('Green', 'Green'), ('Green', 'Blue'), ('Blue', 'Blue')]": {
+      "result": false,
+      "time": 0.06605172157287598,
+      "error": null
+    },
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],3)==[('Red', 'Red', 'Red'), ('Red', 'Red', 'Green'), ('Red', 'Red', 'Blue'), ('Red', 'Green', 'Green'), ('Red', 'Green', 'Blue'), ('Red', 'Blue', 'Blue'), ('Green', 'Green', 'Green'), ('Green', 'Green', 'Blue'), ('Green', 'Blue', 'Blue'), ('Blue', 'Blue', 'Blue')]": {
+      "result": false,
+      "time": 0.06884241104125977,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def get_gcd(nums):\n    gcd = 1\n    for i in range(1, max(nums) + 1):\n        if all(map(lambda x: x % i == 0, nums)):\n            gcd = i\n    return gcd\n",
+  "results": {
+    "assert get_gcd([2, 4, 6, 8, 16]) == 2": {
+      "result": true,
+      "time": 0.18355584144592285,
+      "error": null
+    },
+    "assert get_gcd([1, 2, 3]) == 1": {
+      "result": true,
+      "time": 0.17846035957336426,
+      "error": null
+    },
+    "assert get_gcd([2, 4, 6, 8]) == 2 ": {
+      "result": true,
+      "time": 0.19321465492248535,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

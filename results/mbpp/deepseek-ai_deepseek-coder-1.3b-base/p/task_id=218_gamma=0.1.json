@@ -1,0 +1,24 @@
+{
+  "code": "def min_Operations(n1, n2):\n    if n1 == n2:\n        return 0\n    else:\n        if n1 > n2:\n            return min_Operations(n1 - n2, n2) + 1\n        else:\n            return min_Operations(n1, n2 - n1) + 1\n",
+  "results": {
+    "assert min_Operations(2,4) == 1": {
+      "result": true,
+      "time": 0.07988190650939941,
+      "error": null
+    },
+    "assert min_Operations(4,10) == 4": {
+      "result": false,
+      "time": 0.07759594917297363,
+      "error": null
+    },
+    "assert min_Operations(1,4) == 3": {
+      "result": true,
+      "time": 0.07744884490966797,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

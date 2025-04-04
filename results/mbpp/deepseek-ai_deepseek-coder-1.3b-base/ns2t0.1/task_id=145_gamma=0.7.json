@@ -1,0 +1,24 @@
+{
+  "code": "def max_Abs_Diff(arr, n):\n    arr.sort()\n    max_diff = arr[n - 1] - arr[0]\n    for i in range(1, n):\n        if arr[i] - arr[i - 1] > max_diff:\n            max_diff = arr[i] - arr[i - 1]\n    return max_diff\n",
+  "results": {
+    "assert max_Abs_Diff((2,1,5,3),4) == 4": {
+      "result": false,
+      "time": 0.17780470848083496,
+      "error": null
+    },
+    "assert max_Abs_Diff((9,3,2,5,1),5) == 8": {
+      "result": false,
+      "time": 0.17626070976257324,
+      "error": null
+    },
+    "assert max_Abs_Diff((3,2,1),3) == 2": {
+      "result": false,
+      "time": 0.178297758102417,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef is_decimal(num):\n    pattern = r\"^[+-]?\\d+\\.\\d+$\"\n    if re.match(pattern, num):\n        return True\n    else:\n        return False\n",
+  "results": {
+    "assert is_decimal('123.11') == True": {
+      "result": true,
+      "time": 0.07312178611755371,
+      "error": null
+    },
+    "assert is_decimal('0.21') == True": {
+      "result": true,
+      "time": 0.0697317123413086,
+      "error": null
+    },
+    "assert is_decimal('123.1214') == False": {
+      "result": false,
+      "time": 0.0686028003692627,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

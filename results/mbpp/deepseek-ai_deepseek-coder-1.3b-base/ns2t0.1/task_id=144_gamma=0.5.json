@@ -1,0 +1,24 @@
+{
+  "code": "def sum_Pairs(nums, n):\n    sum_pairs = 0\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            if abs(nums[i] - nums[j]) == n:\n                sum_pairs += abs(nums[i] - nums[j])\n    return sum_pairs\n",
+  "results": {
+    "assert sum_Pairs([1,8,9,15,16],5) == 74": {
+      "result": false,
+      "time": 0.20377087593078613,
+      "error": null
+    },
+    "assert sum_Pairs([1,2,3,4],4) == 10": {
+      "result": false,
+      "time": 0.19986987113952637,
+      "error": null
+    },
+    "assert sum_Pairs([1,2,3,4,5,7,9,11,14],9) == 188": {
+      "result": false,
+      "time": 0.19973063468933105,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def solution(a, b, n):\n    if a == 0 and b == 0:\n        return \"No solution\"\n    elif a == 0:\n        return (\"x = \", n // b, \", y = \", 0)\n    elif b == 0:\n        return (\"x = \", 0, \", y = \", n // a)\n    else:\n        x = (n - b) // a\n        y = n - a * x\n        return (\"x = \", x, \", y = \", y)\n",
+  "results": {
+    "assert solution(2, 3, 7) == ('x = ', 2, ', y = ', 1)": {
+      "result": false,
+      "time": 0.20946645736694336,
+      "error": null
+    },
+    "assert solution(4, 2, 7) == 'No solution'": {
+      "result": false,
+      "time": 0.21271610260009766,
+      "error": null
+    },
+    "assert solution(1, 13, 17) == ('x = ', 4, ', y = ', 1)": {
+      "result": false,
+      "time": 0.2112271785736084,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def is_tree_balanced(root):\n    if root is None:\n        return True\n    else:\n        left_height = height(root.left)\n        right_height = height(root.right)\n        if abs(left_height - right_height) <= 1 and is_tree_balanced(root.left) and is_tree_balanced(root.right):\n            return True\n        else:\n            return False\n",
+  "results": {
+    "assert is_tree_balanced(root) == False": {
+      "result": false,
+      "time": 0.20485377311706543,
+      "error": null
+    },
+    "assert is_tree_balanced(root1) == True": {
+      "result": false,
+      "time": 0.20367193222045898,
+      "error": null
+    },
+    "assert is_tree_balanced(root2) == False ": {
+      "result": false,
+      "time": 0.20546913146972656,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

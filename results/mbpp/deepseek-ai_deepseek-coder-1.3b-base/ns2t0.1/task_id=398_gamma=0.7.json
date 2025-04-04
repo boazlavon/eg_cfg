@@ -1,0 +1,24 @@
+{
+  "code": "def sum_of_digits(nums):\n    sum_of_digits = 0\n    for i in nums:\n        if type(i) == int:\n            sum_of_digits += sum(map(int, str(i)))\n        elif type(i) == list:\n            sum_of_digits += sum_of_digits(i)\n    return sum_of_digits\n",
+  "results": {
+    "assert sum_of_digits([10,2,56])==14": {
+      "result": true,
+      "time": 0.17902660369873047,
+      "error": null
+    },
+    "assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19": {
+      "result": false,
+      "time": 0.1730654239654541,
+      "error": null
+    },
+    "assert sum_of_digits([10,20,-4,5,-70])==19": {
+      "result": false,
+      "time": 0.18389201164245605,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

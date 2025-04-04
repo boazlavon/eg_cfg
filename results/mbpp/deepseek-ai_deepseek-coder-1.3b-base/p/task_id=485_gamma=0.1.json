@@ -1,0 +1,24 @@
+{
+  "code": "def largest_palindrome(nums, n):\n    largest_nums = []\n    for i in nums:\n        if str(i) == str(i)[::-1] and len(str(i)) == n:\n            largest_nums.append(i)\n    return max(largest_nums)\n",
+  "results": {
+    "assert largest_palindrome([1, 232, 54545, 999991], 4) == 54545": {
+      "result": false,
+      "time": 0.07910323143005371,
+      "error": null
+    },
+    "assert largest_palindrome([1, 2, 3, 4, 5, 50], 6) == 5": {
+      "result": false,
+      "time": 0.08599090576171875,
+      "error": null
+    },
+    "assert largest_palindrome([1, 3, 7, 9, 45], 5)  == 9": {
+      "result": false,
+      "time": 0.08289074897766113,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

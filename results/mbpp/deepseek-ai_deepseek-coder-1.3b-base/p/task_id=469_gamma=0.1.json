@@ -1,0 +1,24 @@
+{
+  "code": "def max_profit(prices, k):\n    if k >= len(prices) // 2:\n        return sum(prices)\n    max_profit = 0\n    for i in range(k):\n        min_price = prices[i]\n        for j in range(i, len(prices)):\n            min_price = min(min_price, prices[j])\n            max_profit = max(max_profit, prices[j] - min_price)\n    return max_profit\n",
+  "results": {
+    "assert max_profit([1, 5, 2, 3, 7, 6, 4, 5], 3) == 10": {
+      "result": false,
+      "time": 0.21177196502685547,
+      "error": null
+    },
+    "assert max_profit([2, 4, 7, 5, 4, 3, 5], 2) == 7": {
+      "result": false,
+      "time": 0.2065744400024414,
+      "error": null
+    },
+    "assert max_profit([10, 6, 8, 4, 2], 2) == 2": {
+      "result": false,
+      "time": 0.19943809509277344,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

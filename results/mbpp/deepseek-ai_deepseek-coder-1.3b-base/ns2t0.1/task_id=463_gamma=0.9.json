@@ -1,0 +1,24 @@
+{
+  "code": "def max_subarray_product(nums):\n    max_product = 0\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums) + 1):\n            product = nums[i:j]\n            if len(product) > 1:\n                if max_product < math.prod(product):\n                    max_product = math.prod(product)\n    return max_product\n",
+  "results": {
+    "assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112": {
+      "result": false,
+      "time": 0.21744894981384277,
+      "error": null
+    },
+    "assert max_subarray_product([6, -3, -10, 0, 2]) == 180 ": {
+      "result": false,
+      "time": 0.21183323860168457,
+      "error": null
+    },
+    "assert max_subarray_product([-2, -40, 0, -2, -3]) == 80": {
+      "result": false,
+      "time": 0.21134233474731445,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

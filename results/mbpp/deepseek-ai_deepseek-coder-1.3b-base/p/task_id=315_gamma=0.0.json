@@ -1,0 +1,24 @@
+{
+  "code": "def find_Max_Len_Even(str):\n    even_words = []\n    for word in str.split():\n        if len(word) % 2 == 0:\n            even_words.append(word)\n    if len(even_words) == 0:\n        return \"-1\"\n    else:\n        return max(even_words, key=len)\n",
+  "results": {
+    "assert find_Max_Len_Even(\"python language\") == \"language\"": {
+      "result": true,
+      "time": 0.08060240745544434,
+      "error": null
+    },
+    "assert find_Max_Len_Even(\"maximum even length\") == \"length\"": {
+      "result": true,
+      "time": 0.08800315856933594,
+      "error": null
+    },
+    "assert find_Max_Len_Even(\"eve\") == \"-1\"": {
+      "result": true,
+      "time": 0.0779879093170166,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

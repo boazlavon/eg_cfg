@@ -1,0 +1,24 @@
+{
+  "code": "def min_val(lst):\n    min_val = lst[0]\n    for i in lst:\n        if type(i) == int:\n            if i < min_val:\n                min_val = i\n        elif type(i) == str:\n            if len(i) < len(min_val):\n                min_val = i\n    return min_val\n",
+  "results": {
+    "assert min_val(['Python', 3, 2, 4, 5, 'version'])==2": {
+      "result": false,
+      "time": 0.0789482593536377,
+      "error": null
+    },
+    "assert min_val(['Python', 15, 20, 25])==15": {
+      "result": false,
+      "time": 0.07165026664733887,
+      "error": null
+    },
+    "assert min_val(['Python', 30, 20, 40, 50, 'version'])==20": {
+      "result": false,
+      "time": 0.07145237922668457,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

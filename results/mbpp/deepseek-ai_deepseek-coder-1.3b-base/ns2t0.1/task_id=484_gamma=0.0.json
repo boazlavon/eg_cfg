@@ -1,0 +1,24 @@
+{
+  "code": "def remove_matching_tuple(test_tup1, test_tup2):\n    res = []\n    for i in test_tup1:\n        if i not in test_tup2:\n            res.append(i)\n    return res\n",
+  "results": {
+    "assert remove_matching_tuple([('Hello', 'dude'), ('How', 'are'), ('you', '?')], [('Hello', 'dude'), ('How', 'are')]) == [('you', '?')]": {
+      "result": true,
+      "time": 0.1934525966644287,
+      "error": null
+    },
+    "assert remove_matching_tuple([('Part', 'of'), ('the', 'journey'), ('is ', 'end')], [('Journey', 'the'), ('is', 'end')]) == [('Part', 'of'), ('the', 'journey'), ('is ', 'end')]": {
+      "result": true,
+      "time": 0.18207073211669922,
+      "error": null
+    },
+    "assert remove_matching_tuple([('Its', 'been'), ('a', 'long'), ('day', 'without')], [('a', 'long'), ('my', 'friend')]) == [('Its', 'been'), ('day', 'without')]": {
+      "result": true,
+      "time": 0.19884896278381348,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

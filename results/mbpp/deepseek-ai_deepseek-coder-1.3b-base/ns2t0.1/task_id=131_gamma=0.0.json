@@ -1,0 +1,24 @@
+{
+  "code": "def reverse_vowels(s):\n    vowels = \"aeiouAEIOU\"\n    s = list(s)\n    i, j = 0, len(s) - 1\n    while i < j:\n        if s[i] not in vowels:\n            i += 1\n        elif s[j] not in vowels:\n            j -= 1\n        else:\n            s[i], s[j] = s[j], s[i]\n            i += 1\n            j -= 1\n    return \"\".join(s)\n",
+  "results": {
+    "assert reverse_vowels(\"Python\") == \"Python\"": {
+      "result": true,
+      "time": 0.18666934967041016,
+      "error": null
+    },
+    "assert reverse_vowels(\"USA\") == \"ASU\"": {
+      "result": true,
+      "time": 0.1708526611328125,
+      "error": null
+    },
+    "assert reverse_vowels(\"ab\") == \"ab\"": {
+      "result": true,
+      "time": 0.19433164596557617,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

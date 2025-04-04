@@ -1,0 +1,24 @@
+{
+  "code": "def longest_subseq_with_diff_one(nums, n):\n    nums.sort()\n    max_len = 1\n    curr_len = 1\n    for i in range(1, n):\n        if nums[i] - nums[i - 1] == 1:\n            curr_len += 1\n            max_len = max(max_len, curr_len)\n        else:\n            curr_len = 1\n    return max_len\n",
+  "results": {
+    "assert longest_subseq_with_diff_one([1, 2, 3, 4, 5, 3, 2], 7) == 6": {
+      "result": false,
+      "time": 0.18248534202575684,
+      "error": null
+    },
+    "assert longest_subseq_with_diff_one([10, 9, 4, 5, 4, 8, 6], 7) == 3": {
+      "result": true,
+      "time": 0.16857576370239258,
+      "error": null
+    },
+    "assert longest_subseq_with_diff_one([1, 2, 3, 2, 3, 7, 2, 1], 8) == 7": {
+      "result": false,
+      "time": 0.17184090614318848,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

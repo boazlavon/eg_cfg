@@ -1,0 +1,24 @@
+{
+  "code": "def is_coprime(a, b):\n    if a == 1 or b == 1:\n        return False\n    if a == b:\n        return True\n    if a > b:\n        a, b = b, a\n    if a == 2:\n        return True\n    if a % 2 == 0:\n        return False\n    for i in range(3, int(a**0.5) + 1, 2):\n        if a % i == 0:\n            return False\n    return True\n",
+  "results": {
+    "assert is_coprime(17,13) == True": {
+      "result": true,
+      "time": 0.07893776893615723,
+      "error": null
+    },
+    "assert is_coprime(15,21) == False": {
+      "result": true,
+      "time": 0.08484029769897461,
+      "error": null
+    },
+    "assert is_coprime(25,45) == False": {
+      "result": true,
+      "time": 0.08441710472106934,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

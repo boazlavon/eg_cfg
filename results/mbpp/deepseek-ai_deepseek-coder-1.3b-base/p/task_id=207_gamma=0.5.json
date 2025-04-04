@@ -1,0 +1,24 @@
+{
+  "code": "def find_longest_repeating_subseq(s):\n    n = len(s)\n    dp = [[0] * n for _ in range(n)]\n    for i in range(n):\n        dp[i][i] = 1\n    for i in range(n - 1):\n        if s[i] == s[i + 1]:\n            dp[i][i + 1] = 1\n    for i in range(n - 2):\n        for j in range(i + 2, n):\n            if s[i] == s[j]:\n                dp[i][j] = dp[i + 1][j - 1]\n    return max(max(row) for row in dp)\n",
+  "results": {
+    "assert find_longest_repeating_subseq(\"AABEBCDD\") == 3": {
+      "result": false,
+      "time": 0.07351231575012207,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"aabb\") == 2": {
+      "result": false,
+      "time": 0.0745398998260498,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"aab\") == 1": {
+      "result": true,
+      "time": 0.07085490226745605,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

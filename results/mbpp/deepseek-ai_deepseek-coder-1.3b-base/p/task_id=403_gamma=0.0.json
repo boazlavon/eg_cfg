@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef is_valid_URL(url):\n    regex = r\"^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$\"\n    if re.match(regex, url):\n        return True\n    else:\n        return False\n",
+  "results": {
+    "assert is_valid_URL(\"https://www.google.com\") == True": {
+      "result": true,
+      "time": 0.07067608833312988,
+      "error": null
+    },
+    "assert is_valid_URL(\"https:/www.gmail.com\") == False": {
+      "result": true,
+      "time": 0.06738805770874023,
+      "error": null
+    },
+    "assert is_valid_URL(\"https:// www.redit.com\") == False": {
+      "result": true,
+      "time": 0.06900858879089355,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

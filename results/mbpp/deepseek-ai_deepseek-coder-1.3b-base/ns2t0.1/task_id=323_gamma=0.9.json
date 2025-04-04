@@ -1,0 +1,24 @@
+{
+  "code": "def re_arrange(nums, n):\n    pos_nums = []\n    neg_nums = []\n    for i in nums:\n        if i > 0:\n            pos_nums.append(i)\n        else:\n            neg_nums.append(i)\n    res = []\n    for i in range(n):\n        if i % 2 == 0:\n            res.append(pos_nums.pop(0))\n        else:\n            res.append(neg_nums.pop(0))\n    return res\n",
+  "results": {
+    "assert re_arrange([-5, -2, 5, 2, 4,\t7, 1, 8, 0, -8], 10) == [-5, 5, -2, 2, -8, 4, 7, 1, 8, 0]": {
+      "result": false,
+      "time": 0.2196800708770752,
+      "error": null
+    },
+    "assert re_arrange([1, 2, 3, -4, -1, 4], 6) == [-4, 1, -1, 2, 3, 4]": {
+      "result": false,
+      "time": 0.2162010669708252,
+      "error": null
+    },
+    "assert re_arrange([4, 7, 9, 77, -4, 5, -3, -9], 8) == [-4, 4, -3, 7, -9, 9, 77, 5]": {
+      "result": false,
+      "time": 0.17984580993652344,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

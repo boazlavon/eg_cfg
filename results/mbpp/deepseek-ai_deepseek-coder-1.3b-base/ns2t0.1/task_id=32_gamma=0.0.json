@@ -1,0 +1,24 @@
+{
+  "code": "def max_Prime_Factors(n):\n    i = 2\n    while i * i <= n:\n        if n % i == 0:\n            return max_Prime_Factors(n // i)\n        i += 1\n    return n\n",
+  "results": {
+    "assert max_Prime_Factors(15) == 5": {
+      "result": true,
+      "time": 0.20272135734558105,
+      "error": null
+    },
+    "assert max_Prime_Factors(6) == 3": {
+      "result": true,
+      "time": 0.19450736045837402,
+      "error": null
+    },
+    "assert max_Prime_Factors(2) == 2": {
+      "result": true,
+      "time": 0.18329167366027832,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

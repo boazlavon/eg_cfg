@@ -1,0 +1,24 @@
+{
+  "code": "def odd_Days(year):\n    count = 0\n    for i in range(1, 13):\n        if i in [1, 3, 5, 7, 8, 10, 12]:\n            count += 31\n        elif i in [4, 6, 9, 11]:\n            count += 30\n        elif i == 2:\n            if year % 4 == 0:\n                count += 29\n            else:\n                count += 28\n    return count\n",
+  "results": {
+    "assert odd_Days(100) == 5": {
+      "result": false,
+      "time": 0.25490689277648926,
+      "error": null
+    },
+    "assert odd_Days(50) ==6": {
+      "result": false,
+      "time": 0.22902297973632812,
+      "error": null
+    },
+    "assert odd_Days(75) == 2": {
+      "result": false,
+      "time": 0.212646484375,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

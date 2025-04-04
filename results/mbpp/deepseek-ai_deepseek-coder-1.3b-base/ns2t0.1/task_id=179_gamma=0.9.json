@@ -1,0 +1,24 @@
+{
+  "code": "def is_num_keith(n):\n    if n < 10:\n        return False\n    else:\n        sum_of_digits = 0\n        temp = n\n        while temp > 0:\n            digit = temp % 10\n            sum_of_digits += digit**3\n            temp //= 10\n        if sum_of_digits == n:\n            return True\n        else:\n            return False\n",
+  "results": {
+    "assert is_num_keith(14) == True": {
+      "result": false,
+      "time": 0.2047593593597412,
+      "error": null
+    },
+    "assert is_num_keith(12) == False": {
+      "result": true,
+      "time": 0.21870064735412598,
+      "error": null
+    },
+    "assert is_num_keith(197) == True": {
+      "result": false,
+      "time": 0.21307587623596191,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

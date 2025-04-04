@@ -1,0 +1,24 @@
+{
+  "code": "def check_triplet(nums, sum1, sum2, sum3):\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            for k in range(j + 1, len(nums)):\n                if nums[i] + nums[j] + nums[k] == sum1:\n                    return True\n                elif nums[i] + nums[j] + nums[k] == sum2:\n                    return True\n                elif nums[i] + nums[j] + nums[k] == sum3:\n                    return True\n    return False\n",
+  "results": {
+    "assert check_triplet([2, 7, 4, 0, 9, 5, 1, 3], 8, 6, 0) == True": {
+      "result": true,
+      "time": 0.08077239990234375,
+      "error": null
+    },
+    "assert check_triplet([1, 4, 5, 6, 7, 8, 5, 9], 8, 6, 0) == False": {
+      "result": true,
+      "time": 0.07711386680603027,
+      "error": null
+    },
+    "assert check_triplet([10, 4, 2, 3, 5], 5, 15, 0) == True": {
+      "result": true,
+      "time": 0.07817602157592773,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

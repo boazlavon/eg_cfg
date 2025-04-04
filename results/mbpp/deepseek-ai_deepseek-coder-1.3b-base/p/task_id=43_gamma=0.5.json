@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef text_match(text):\n    pattern = r\"aab_[a-z]+\"\n    if re.search(pattern, text):\n        return \"Found a match!\"\n    else:\n        return \"Not matched!\"\n",
+  "results": {
+    "assert text_match(\"aab_cbbbc\") == 'Found a match!'": {
+      "result": true,
+      "time": 0.06910896301269531,
+      "error": null
+    },
+    "assert text_match(\"aab_Abbbc\") == 'Not matched!'": {
+      "result": true,
+      "time": 0.06590533256530762,
+      "error": null
+    },
+    "assert text_match(\"Aaab_abbbc\") == 'Not matched!'": {
+      "result": false,
+      "time": 0.06644225120544434,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

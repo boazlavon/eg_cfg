@@ -1,0 +1,24 @@
+{
+  "code": "def dict_filter(dict_obj, value):\n    res = dict()\n    for key, val in dict_obj.items():\n        if val == value:\n            res[key] = val\n    return res\n",
+  "results": {
+    "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},170)=={'Cierra Vega': 175, 'Alden Cantrell': 180, 'Pierre Cox': 190}": {
+      "result": false,
+      "time": 0.06986713409423828,
+      "error": null
+    },
+    "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},180)=={ 'Alden Cantrell': 180, 'Pierre Cox': 190}": {
+      "result": false,
+      "time": 0.06865334510803223,
+      "error": null
+    },
+    "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},190)=={ 'Pierre Cox': 190}": {
+      "result": true,
+      "time": 0.06775188446044922,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def max_sum(nums, n):\n    nums.sort()\n    max_sum = 0\n    for i in range(len(nums) - n + 1):\n        sum = 0\n        for j in range(i, i + n):\n            sum += nums[j]\n        if sum > max_sum:\n            max_sum = sum\n    return max_sum\n",
+  "results": {
+    "assert max_sum([1, 15, 51, 45, 33, 100, 12, 18, 9], 9) == 194": {
+      "result": false,
+      "time": 0.19094085693359375,
+      "error": null
+    },
+    "assert max_sum([80, 60, 30, 40, 20, 10], 6) == 210": {
+      "result": false,
+      "time": 0.19129323959350586,
+      "error": null
+    },
+    "assert max_sum([2, 3 ,14, 16, 21, 23, 29, 30], 8) == 138": {
+      "result": true,
+      "time": 0.19281220436096191,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

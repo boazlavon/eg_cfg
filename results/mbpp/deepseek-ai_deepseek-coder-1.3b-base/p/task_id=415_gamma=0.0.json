@@ -1,0 +1,24 @@
+{
+  "code": "def max_Product(nums):\n    max_product = max(nums)\n    second_max_product = max(nums)\n    for i in nums:\n        if i > max_product:\n            second_max_product = max_product\n            max_product = i\n        elif i > second_max_product:\n            second_max_product = i\n    return (max_product, second_max_product)\n",
+  "results": {
+    "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)": {
+      "result": false,
+      "time": 0.07352566719055176,
+      "error": null
+    },
+    "assert max_Product([0,-1,-2,-4,5,0,-6]) == (-4,-6)": {
+      "result": false,
+      "time": 0.07159805297851562,
+      "error": null
+    },
+    "assert max_Product([1,2,3]) == (2,3)": {
+      "result": false,
+      "time": 0.07632756233215332,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def encode_list(lst):\n    res = []\n    for i in lst:\n        if i not in res:\n            res.append(i)\n    return [[lst.count(i), i] for i in res]\n",
+  "results": {
+    "assert encode_list([1,1,2,3,4,4.3,5,1])==[[2, 1], [1, 2], [1, 3], [1, 4], [1, 4.3], [1, 5], [1, 1]]": {
+      "result": false,
+      "time": 0.17612314224243164,
+      "error": null
+    },
+    "assert encode_list('automatically')==[[1, 'a'], [1, 'u'], [1, 't'], [1, 'o'], [1, 'm'], [1, 'a'], [1, 't'], [1, 'i'], [1, 'c'], [1, 'a'], [2, 'l'], [1, 'y']]": {
+      "result": false,
+      "time": 0.20357537269592285,
+      "error": null
+    },
+    "assert encode_list('python')==[[1, 'p'], [1, 'y'], [1, 't'], [1, 'h'], [1, 'o'], [1, 'n']]": {
+      "result": true,
+      "time": 0.18740630149841309,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

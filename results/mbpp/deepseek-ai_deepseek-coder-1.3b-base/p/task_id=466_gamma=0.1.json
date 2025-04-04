@@ -1,0 +1,24 @@
+{
+  "code": "def find_peak(arr, n):\n    if n == 1:\n        return arr[0]\n    if arr[0] >= arr[1]:\n        return arr[0]\n    if arr[n - 1] >= arr[n - 2]:\n        return arr[n - 1]\n    for i in range(1, n - 1):\n        if arr[i] >= arr[i - 1] and arr[i] >= arr[i + 1]:\n            return arr[i]\n",
+  "results": {
+    "assert find_peak([1, 3, 20, 4, 1, 0], 6) == 2": {
+      "result": false,
+      "time": 0.07744693756103516,
+      "error": null
+    },
+    "assert find_peak([2, 3, 4, 5, 6], 5) == 4": {
+      "result": false,
+      "time": 0.07496285438537598,
+      "error": null
+    },
+    "assert find_peak([8, 9, 11, 12, 14, 15], 6) == 5 ": {
+      "result": false,
+      "time": 0.06922602653503418,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}
