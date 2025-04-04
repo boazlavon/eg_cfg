@@ -1,0 +1,24 @@
+{
+  "code": "def check_k_elements(test_list, k):\n    count = 0\n    for tup in test_list:\n        if len(tup) == k:\n            count += 1\n    if count == len(test_list):\n        return True\n    else:\n        return False\n",
+  "results": {
+    "assert check_k_elements([(4, 4), (4, 4, 4), (4, 4), (4, 4, 4, 4), (4, )], 4) == True": {
+      "result": false,
+      "time": 0.27285313606262207,
+      "error": null
+    },
+    "assert check_k_elements([(7, 7, 7), (7, 7)], 7) == True": {
+      "result": false,
+      "time": 0.26839447021484375,
+      "error": null
+    },
+    "assert check_k_elements([(9, 9), (9, 9, 9, 9)], 7) == False": {
+      "result": true,
+      "time": 0.2629110813140869,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

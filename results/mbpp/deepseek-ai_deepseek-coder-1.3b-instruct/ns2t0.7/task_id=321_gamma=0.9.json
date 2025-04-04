@@ -1,0 +1,24 @@
+{
+  "code": "def find_demlo(s):\n    n = len(s)\n    dp = [0] * n\n    st = []\n    for i in range(n):\n        while st and s[i] > s[st[-1]]:\n            dp[st.pop()] = i - st[-1] - 1\n        st.append(i)\n    return \"\".join((s[i] * dp[i] for i in range(n)))\n",
+  "results": {
+    "assert find_demlo(\"111111\") == '12345654321'": {
+      "result": false,
+      "time": 0.600792407989502,
+      "error": null
+    },
+    "assert find_demlo(\"1111\") == '1234321'": {
+      "result": false,
+      "time": 0.5421082973480225,
+      "error": null
+    },
+    "assert find_demlo(\"13333122222\") == '123456789101110987654321'": {
+      "result": false,
+      "time": 0.3719344139099121,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

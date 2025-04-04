@@ -1,0 +1,24 @@
+{
+  "code": "def merge_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    mid = len(arr) // 2\n    left_half = arr[:mid]\n    right_half = arr[mid:]\n    return merge(merge_sort(left_half), merge_sort(right_half))\n",
+  "results": {
+    "assert merge_sort([3, 4, 2, 6, 5, 7, 1, 9]) == [1, 2, 3, 4, 5, 6, 7, 9]": {
+      "result": false,
+      "time": 0.2731964588165283,
+      "error": null
+    },
+    "assert merge_sort([7, 25, 45, 78, 11, 33, 19]) == [7, 11, 19, 25, 33, 45, 78]": {
+      "result": false,
+      "time": 0.3164408206939697,
+      "error": null
+    },
+    "assert merge_sort([3, 1, 4, 9, 8]) == [1, 3, 4, 8, 9]": {
+      "result": false,
+      "time": 0.21697258949279785,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

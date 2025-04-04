@@ -1,0 +1,24 @@
+{
+  "code": "def max_path_sum(triangle, r, c):\n    if r == len(triangle) - 1:\n        return triangle[r][c]\n    else:\n        return triangle[r][c] + max(max_path_sum(triangle, r + 1, c), max_path_sum(triangle, r + 1, c + 1))\n",
+  "results": {
+    "assert max_path_sum([[1, 0, 0], [4, 8, 0], [1, 5, 3]], 2, 2) == 14": {
+      "result": false,
+      "time": 0.2382347583770752,
+      "error": null
+    },
+    "assert max_path_sum([[13, 0, 0], [7, 4, 0], [2, 4, 6]], 2, 2) == 24 ": {
+      "result": false,
+      "time": 0.23872137069702148,
+      "error": null
+    },
+    "assert max_path_sum([[2, 0, 0], [11, 18, 0], [21, 25, 33]], 2, 2) == 53": {
+      "result": false,
+      "time": 0.25209951400756836,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

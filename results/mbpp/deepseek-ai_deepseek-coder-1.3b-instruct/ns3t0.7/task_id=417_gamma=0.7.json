@@ -1,0 +1,24 @@
+{
+  "code": "def group_tuples(lst):\n    first_elements = set((x[0] for x in lst))\n    result = []\n    for element in first_elements:\n        group = [(x, y) for (x, y) in lst if x == element]\n        result.append(tuple(set((x[0] for x in group)) | set((x[1] for x in group))))\n    return result\n",
+  "results": {
+    "assert group_tuples([('x', 'y'), ('x', 'z'), ('w', 't')]) == [('x', 'y', 'z'), ('w', 't')]": {
+      "result": false,
+      "time": 0.22645139694213867,
+      "error": null
+    },
+    "assert group_tuples([('a', 'b'), ('a', 'c'), ('d', 'e')]) == [('a', 'b', 'c'), ('d', 'e')]": {
+      "result": false,
+      "time": 0.21455645561218262,
+      "error": null
+    },
+    "assert group_tuples([('f', 'g'), ('f', 'g'), ('h', 'i')]) == [('f', 'g', 'g'), ('h', 'i')]": {
+      "result": false,
+      "time": 0.20743608474731445,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

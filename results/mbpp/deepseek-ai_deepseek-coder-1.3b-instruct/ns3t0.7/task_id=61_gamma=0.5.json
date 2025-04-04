@@ -1,0 +1,24 @@
+{
+  "code": "def count_Substrings(s, n):\n    count = 0\n    for i in range(len(s)):\n        for j in range(i + n, len(s) + 1):\n            substr = s[i:j]\n            if sum(int(digit) for digit in substr) == len(substr):\n                count += 1\n    return count\n",
+  "results": {
+    "assert count_Substrings('112112',6) == 6": {
+      "result": false,
+      "time": 0.2691497802734375,
+      "error": null
+    },
+    "assert count_Substrings('111',3) == 6": {
+      "result": false,
+      "time": 0.2591221332550049,
+      "error": null
+    },
+    "assert count_Substrings('1101112',7) == 12": {
+      "result": false,
+      "time": 0.2425081729888916,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

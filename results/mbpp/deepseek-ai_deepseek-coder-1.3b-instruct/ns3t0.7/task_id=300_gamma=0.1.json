@@ -1,0 +1,24 @@
+{
+  "code": "def count_binary_seq(n):\n    total_seq = 2**n\n    first_half_sum = sum([2**i for i in range(n)])\n    second_half_sum = sum([2 ** (n - i - 1) for i in range(n)])\n    same_sum_seq = [i for i in range(total_seq) if i % 5 == first_half_sum % second_half_sum]\n    return len(same_sum_seq) / total_seq\n",
+  "results": {
+    "assert count_binary_seq(1) == 2.0": {
+      "result": false,
+      "time": 0.22946906089782715,
+      "error": null
+    },
+    "assert count_binary_seq(2) == 6.0": {
+      "result": false,
+      "time": 0.23328280448913574,
+      "error": null
+    },
+    "assert count_binary_seq(3) == 20.0": {
+      "result": false,
+      "time": 0.24798035621643066,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def min_Ops(nums, k, x):\n    n = len(nums)\n    if k >= n or k < 0 or x < 0 or x >= n:\n        return -1\n    if k == 0:\n        return 0\n    freq = [0] * (n + 1)\n    for i in range(n):\n        freq[nums[i]] += 1\n    freq.sort(reverse=True)\n    operations = 0\n    for i in range(x, n - k + 1):\n        operations += freq[i]\n    return operations\n",
+  "results": {
+    "assert min_Ops([2,2,2,2],4,3) == 0": {
+      "result": false,
+      "time": 0.22890830039978027,
+      "error": null
+    },
+    "assert min_Ops([4,2,6,8],4,3) == -1": {
+      "result": true,
+      "time": 0.21703052520751953,
+      "error": null
+    },
+    "assert min_Ops([21,33,9,45,63],5,6) == 24": {
+      "result": false,
+      "time": 0.2794177532196045,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

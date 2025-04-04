@@ -1,0 +1,24 @@
+{
+  "code": "def rotate_left(lst, num, direction=\"left\"):\n    if direction == \"left\":\n        return lst[num:] + lst[:num]\n    elif direction == \"right\":\n        return lst[-num:] + lst[:-num]\n    else:\n        raise ValueError(\"Direction must be either 'left' or 'right'\")\n",
+  "results": {
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],3,4)==[4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4]": {
+      "result": false,
+      "time": 0.2653019428253174,
+      "error": null
+    },
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],2,2)==[3, 4, 5, 6, 7, 8, 9, 10, 1, 2]": {
+      "result": false,
+      "time": 0.26717305183410645,
+      "error": null
+    },
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],5,2)==[6, 7, 8, 9, 10, 1, 2]": {
+      "result": false,
+      "time": 0.2608520984649658,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

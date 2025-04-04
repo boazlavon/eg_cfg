@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef rearange_string(s):\n    counter = Counter(s)\n    odd_ch = [k * (v % 2) for k, v in counter.items()]\n    return odd_ch\n",
+  "results": {
+    "assert rearange_string(\"aab\")==('aba')": {
+      "result": false,
+      "time": 0.11086821556091309,
+      "error": null
+    },
+    "assert rearange_string(\"aabb\")==('abab')": {
+      "result": false,
+      "time": 0.11295580863952637,
+      "error": null
+    },
+    "assert rearange_string(\"abccdd\")==('cdabcd')": {
+      "result": false,
+      "time": 0.11223077774047852,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

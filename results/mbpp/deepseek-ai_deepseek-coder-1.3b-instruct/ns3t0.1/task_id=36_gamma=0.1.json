@@ -1,0 +1,24 @@
+{
+  "code": "def find_Nth_Digit(n, num1, num2):\n    # Convert the numbers to strings\n    str1 = str(num1)\n    str2 = str(num2)\n\n    # Find the length of the strings\n    len1 = len(str1)\n    len2 = len(str2)\n\n    # Find the maximum length\n    max_len = max(len1, len2)\n\n    # Find the proper fraction\n    fraction = n / max_len\n\n    # Find the index of the digit in the proper fraction\n    index = n % max_len\n\n    # Return the digit at the index\n    return int(str1[index]) if index < len1 else int(str2[index - len1])\n",
+  "results": {
+    "assert find_Nth_Digit(1,2,1) == 5": {
+      "result": false,
+      "time": 0.2679283618927002,
+      "error": null
+    },
+    "assert find_Nth_Digit(3,5,1) == 6": {
+      "result": false,
+      "time": 0.26845741271972656,
+      "error": null
+    },
+    "assert find_Nth_Digit(5,6,5) == 3": {
+      "result": false,
+      "time": 0.2685203552246094,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

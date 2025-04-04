@@ -1,0 +1,24 @@
+{
+  "code": "def text_lowercase_underscore(text):\n    if \"_\" in text:\n        if set(text.lower().split(\"_\")) == set(text.split(\"_\")):\n            return \"Found a match\"\n        else:\n            return \"Not matched\"\n    else:\n        return \"Not matched\"\n",
+  "results": {
+    "assert text_lowercase_underscore(\"aab_cbbbc\")==('Found a match!')": {
+      "result": false,
+      "time": 0.18578553199768066,
+      "error": null
+    },
+    "assert text_lowercase_underscore(\"aab_Abbbc\")==('Not matched!')": {
+      "result": false,
+      "time": 0.19323492050170898,
+      "error": null
+    },
+    "assert text_lowercase_underscore(\"Aaab_abbbc\")==('Not matched!')": {
+      "result": false,
+      "time": 0.18541455268859863,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

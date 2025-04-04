@@ -1,0 +1,24 @@
+{
+  "code": "def minimum_Length(s):\n    while len(set(s)) < len(s):\n        s = \"\".join([i for i in s if s.count(i) == 1])\n    return len(s)\n",
+  "results": {
+    "assert minimum_Length(\"mnm\") == 1": {
+      "result": true,
+      "time": 0.18497800827026367,
+      "error": null
+    },
+    "assert minimum_Length(\"abcda\") == 3": {
+      "result": true,
+      "time": 0.1852729320526123,
+      "error": null
+    },
+    "assert minimum_Length(\"abcb\") == 2": {
+      "result": true,
+      "time": 0.19005918502807617,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

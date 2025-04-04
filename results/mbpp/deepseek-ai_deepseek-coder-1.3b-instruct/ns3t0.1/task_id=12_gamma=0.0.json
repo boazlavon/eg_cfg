@@ -1,0 +1,24 @@
+{
+  "code": "def sort_matrix(matrix):\n    # Calculate the sum of each row\n    sums = [sum(row) for row in matrix]\n    # Create a tuple of the sum and row\n    tuples = list(zip(sums, matrix))\n    # Sort the tuples based on the sum\n    tuples.sort()\n    # Return the sorted matrix\n    return [row for _, row in tuples]\n",
+  "results": {
+    "assert sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]])==[[1, 1, 1], [1, 2, 3], [2, 4, 5]]": {
+      "result": true,
+      "time": 0.2560560703277588,
+      "error": null
+    },
+    "assert sort_matrix([[1, 2, 3], [-2, 4, -5], [1, -1, 1]])==[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]": {
+      "result": true,
+      "time": 0.260434627532959,
+      "error": null
+    },
+    "assert sort_matrix([[5,8,9],[6,4,3],[2,1,4]])==[[2, 1, 4], [6, 4, 3], [5, 8, 9]]": {
+      "result": true,
+      "time": 0.25217556953430176,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

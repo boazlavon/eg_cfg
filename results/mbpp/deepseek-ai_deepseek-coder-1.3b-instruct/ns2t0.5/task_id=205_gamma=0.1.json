@@ -1,0 +1,24 @@
+{
+  "code": "def inversion_elements(test_tup):\n    inverted_tup = tuple(sorted(test_tup, reverse=True))\n    inversion_list = []\n    for i in range(len(inverted_tup)):\n        for j in range(i + 1, len(inverted_tup)):\n            inversion_list.append(inverted_tup[i] * inverted_tup[j])\n    return tuple(inversion_list)\n",
+  "results": {
+    "assert inversion_elements((7, 8, 9, 1, 10, 7)) == (-8, -9, -10, -2, -11, -8)": {
+      "result": false,
+      "time": 0.23813509941101074,
+      "error": null
+    },
+    "assert inversion_elements((2, 4, 5, 6, 1, 7)) == (-3, -5, -6, -7, -2, -8)": {
+      "result": false,
+      "time": 0.23225951194763184,
+      "error": null
+    },
+    "assert inversion_elements((8, 9, 11, 14, 12, 13)) == (-9, -10, -12, -15, -13, -14)": {
+      "result": false,
+      "time": 0.22652268409729004,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

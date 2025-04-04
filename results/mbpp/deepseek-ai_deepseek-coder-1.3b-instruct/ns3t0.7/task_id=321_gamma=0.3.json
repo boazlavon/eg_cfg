@@ -1,0 +1,24 @@
+{
+  "code": "def find_demlo(num):\n    # Convert the number to a list of digits\n    digits = list(num)\n\n    # Find the index of the first '1' in the list\n    first_one_index = digits.index(\"1\")\n\n    # Create a new list that starts from the first '1' index and goes till the end of the list\n    demlo_list = digits[first_one_index:]\n\n    # Reverse the list to get the demlo number\n    demlo_list.reverse()\n\n    # Join the list elements into a string and return it\n    demlo_number = \"\".join(demlo_list)\n\n    return demlo_number\n",
+  "results": {
+    "assert find_demlo(\"111111\") == '12345654321'": {
+      "result": false,
+      "time": 0.31632423400878906,
+      "error": null
+    },
+    "assert find_demlo(\"1111\") == '1234321'": {
+      "result": false,
+      "time": 0.34702563285827637,
+      "error": null
+    },
+    "assert find_demlo(\"13333122222\") == '123456789101110987654321'": {
+      "result": false,
+      "time": 0.3312957286834717,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

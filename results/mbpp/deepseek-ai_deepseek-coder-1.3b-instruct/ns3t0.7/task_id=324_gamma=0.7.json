@@ -1,0 +1,24 @@
+{
+  "code": "def sum_of_alternates(tuples):\n    tuples = [i for i in tuples if isinstance(i, int)]\n    sum_first_half = sum([i for i in tuples[::2]])\n    sum_second_half = sum([i for i in tuples[1::2]])\n    return (sum_first_half, sum_second_half)\n",
+  "results": {
+    "assert sum_of_alternates((5, 6, 3, 6, 10, 34)) == (46, 18)": {
+      "result": false,
+      "time": 0.31398677825927734,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 2, 3, 4, 5)) == (6, 9)": {
+      "result": false,
+      "time": 0.2957031726837158,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 7, 8, 9, 4, 5)) == (21, 18)": {
+      "result": false,
+      "time": 0.42701005935668945,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def text_match_two_three(s):\n    if s.startswith(\"a\") and len(s) >= 5 and (s[3] == \"b\" or s[3] == \"c\" or s[3] == \"d\"):\n        for i in range(4, len(s) - 1):\n            if s[i] == \"b\" and s[i + 1] == \"b\" and (s[i + 2] == \"b\" or s[i + 2] == \"c\" or s[i + 2] == \"d\"):\n                return \"Found a match\"\n    return \"Not matched\"\n",
+  "results": {
+    "assert text_match_two_three(\"ac\")==('Not matched!')": {
+      "result": false,
+      "time": 0.24063515663146973,
+      "error": null
+    },
+    "assert text_match_two_three(\"dc\")==('Not matched!')": {
+      "result": false,
+      "time": 0.24998044967651367,
+      "error": null
+    },
+    "assert text_match_two_three(\"abbbba\")==('Found a match!')": {
+      "result": false,
+      "time": 0.25794148445129395,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

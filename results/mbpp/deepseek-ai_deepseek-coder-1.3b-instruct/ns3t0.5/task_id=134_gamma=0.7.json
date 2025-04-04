@@ -1,0 +1,24 @@
+{
+  "code": "def check_last(arr, p, operation):\n    last_element = arr[-1]\n    if operation == \"ADD\":\n        last_element += p\n    elif operation == \"SUB\":\n        last_element -= p\n    elif operation == \"MUL\":\n        last_element *= p\n    elif operation == \"DIV\":\n        if p != 0:\n            last_element /= p\n        else:\n            return \"Error: Division by zero\"\n    else:\n        return \"Error: Invalid operation\"\n    if last_element % 2 == 0:\n        return \"EVEN\"\n    else:\n        return \"ODD\"\n",
+  "results": {
+    "assert check_last([5,7,10],3,1) == \"ODD\"": {
+      "result": false,
+      "time": 0.26094651222229004,
+      "error": null
+    },
+    "assert check_last([2,3],2,3) == \"EVEN\"": {
+      "result": false,
+      "time": 0.23421478271484375,
+      "error": null
+    },
+    "assert check_last([1,2,3],3,1) == \"ODD\"": {
+      "result": false,
+      "time": 0.2634701728820801,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

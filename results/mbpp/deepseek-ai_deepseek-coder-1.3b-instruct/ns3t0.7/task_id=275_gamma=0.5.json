@@ -1,0 +1,24 @@
+{
+  "code": "def get_Position(arr, n, k):\n    queue = arr[:k]\n    queue.sort()\n    for i in range(k, n):\n        if arr[i] > queue[0]:\n            queue[0] = arr[i]\n            queue.sort()\n    return queue[-1]\n",
+  "results": {
+    "assert get_Position([2,5,4],3,2) == 2": {
+      "result": false,
+      "time": 0.22569823265075684,
+      "error": null
+    },
+    "assert get_Position([4,3],2,2) == 2": {
+      "result": false,
+      "time": 0.2197585105895996,
+      "error": null
+    },
+    "assert get_Position([1,2,3,4],4,1) == 4": {
+      "result": true,
+      "time": 0.24392271041870117,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

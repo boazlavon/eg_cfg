@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef find_character(s):\n    uppercase = re.findall(\"[A-Z]\", s)\n    lowercase = re.findall(\"[a-z]\", s)\n    special_char = re.findall(\"[^A-Za-z0-9]\", s)\n    numeric_values = re.findall(\"[0-9]\", s)\n    return uppercase, lowercase, special_char, numeric_values\n",
+  "results": {
+    "assert find_character(\"ThisIsGeeksforGeeks\") == (['T', 'I', 'G', 'G'], ['h', 'i', 's', 's', 'e', 'e', 'k', 's', 'f', 'o', 'r', 'e', 'e', 'k', 's'], [], [])": {
+      "result": true,
+      "time": 0.2847743034362793,
+      "error": null
+    },
+    "assert find_character(\"Hithere2\") == (['H'], ['i', 't', 'h', 'e', 'r', 'e'], ['2'], [])": {
+      "result": false,
+      "time": 0.5146567821502686,
+      "error": null
+    },
+    "assert find_character(\"HeyFolks32\") == (['H', 'F'], ['e', 'y', 'o', 'l', 'k', 's'], ['3', '2'], [])": {
+      "result": false,
+      "time": 0.27410435676574707,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

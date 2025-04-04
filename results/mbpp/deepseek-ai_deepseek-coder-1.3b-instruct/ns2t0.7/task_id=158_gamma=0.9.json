@@ -1,0 +1,24 @@
+{
+  "code": "def min_Ops(arr, n, k):\n    if n == 1:\n        return 0\n    elif n == k:\n        return 1\n    else:\n        arr.sort()\n        max_val = arr[-1]\n        min_val = arr[0]\n        diff = max_val - min_val\n        ops = diff // k\n        if diff % k != 0:\n            ops += 1\n        return ops\n",
+  "results": {
+    "assert min_Ops([2,2,2,2],4,3) == 0": {
+      "result": true,
+      "time": 0.370405912399292,
+      "error": null
+    },
+    "assert min_Ops([4,2,6,8],4,3) == -1": {
+      "result": false,
+      "time": 0.3094973564147949,
+      "error": null
+    },
+    "assert min_Ops([21,33,9,45,63],5,6) == 24": {
+      "result": false,
+      "time": 0.30637335777282715,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def max_val(lst):\n    max_value = None\n    for i in lst:\n        if isinstance(i, (int, float)):\n            if max_value is None or i > max_value:\n                max_value = i\n        elif isinstance(i, str):\n            continue\n        else:\n            raise ValueError(\"List contains unsupported data types\")\n    return max_value\n",
+  "results": {
+    "assert max_val(['Python', 3, 2, 4, 5, 'version'])==5": {
+      "result": true,
+      "time": 0.20740699768066406,
+      "error": null
+    },
+    "assert max_val(['Python', 15, 20, 25])==25": {
+      "result": true,
+      "time": 0.20076251029968262,
+      "error": null
+    },
+    "assert max_val(['Python', 30, 20, 40, 50, 'version'])==50": {
+      "result": true,
+      "time": 0.20123982429504395,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

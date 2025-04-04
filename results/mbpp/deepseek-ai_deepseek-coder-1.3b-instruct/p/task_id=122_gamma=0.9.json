@@ -1,0 +1,24 @@
+{
+  "code": "def smartNumber(n):\n    def is_smart(num):\n        product = 1\n        while num > 0:\n            digit = num % 10\n            if digit != 0 and num % digit == 0:\n                product *= digit\n            num = num // 10\n        return product == num\n",
+  "results": {
+    "assert smartNumber(1) == 30": {
+      "result": false,
+      "time": 0.11460566520690918,
+      "error": null
+    },
+    "assert smartNumber(50) == 273": {
+      "result": false,
+      "time": 0.11599016189575195,
+      "error": null
+    },
+    "assert smartNumber(1000) == 2664": {
+      "result": false,
+      "time": 0.12370872497558594,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

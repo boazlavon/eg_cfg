@@ -1,0 +1,24 @@
+{
+  "code": "def even_bit_toggle_number(num):\n    # Convert the number to binary and toggle the odd bits\n    binary = bin(num)[2:]\n    toggled = \"\"\n    for bit in binary:\n        if int(bit) % 2 == 0:  # If the bit is even\n            toggled += \"1\"  # Toggle it to 1\n        else:  # If the bit is odd\n            toggled += \"0\"  # Toggle it to 0\n    return int(toggled, 2)  # Convert the toggled binary back to an integer\n",
+  "results": {
+    "assert even_bit_toggle_number(10) == 15": {
+      "result": false,
+      "time": 0.12494134902954102,
+      "error": null
+    },
+    "assert even_bit_toggle_number(20) == 1": {
+      "result": false,
+      "time": 0.10707831382751465,
+      "error": null
+    },
+    "assert even_bit_toggle_number(30) == 11": {
+      "result": false,
+      "time": 0.10082030296325684,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

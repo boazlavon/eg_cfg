@@ -1,0 +1,24 @@
+{
+  "code": "def minimum_Length(string):\n    count = [string.count(char) for char in set(string)]\n    return len(string) - max(count) if max(count) > 1 else len(string)\n",
+  "results": {
+    "assert minimum_Length(\"mnm\") == 1": {
+      "result": true,
+      "time": 0.3187904357910156,
+      "error": null
+    },
+    "assert minimum_Length(\"abcda\") == 3": {
+      "result": true,
+      "time": 0.31783366203308105,
+      "error": null
+    },
+    "assert minimum_Length(\"abcb\") == 2": {
+      "result": true,
+      "time": 0.32059335708618164,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

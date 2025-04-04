@@ -1,0 +1,24 @@
+{
+  "code": "def find_rotation_count(arr):\n    count = 0\n    for i in range(len(arr)):\n        if arr[i] < arr[(i + 1) % len(arr)]:\n            count += 1\n    return count\n",
+  "results": {
+    "assert find_rotation_count([8, 9, 10, 1, 2, 3, 4, 5, 6, 7]) == 3": {
+      "result": false,
+      "time": 0.35131096839904785,
+      "error": null
+    },
+    "assert find_rotation_count([8, 9, 10,2, 5, 6]) == 3": {
+      "result": false,
+      "time": 0.26583123207092285,
+      "error": null
+    },
+    "assert find_rotation_count([2, 5, 6, 8, 9, 10]) == 0": {
+      "result": false,
+      "time": 0.27877044677734375,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

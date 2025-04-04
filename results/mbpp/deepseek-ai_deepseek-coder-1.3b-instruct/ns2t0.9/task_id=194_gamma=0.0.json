@@ -1,0 +1,24 @@
+{
+  "code": "def octal_To_Decimal(octal_num):\n    decimal_num = 0\n    base = 1\n    while octal_num != 0:\n        last_digit = octal_num % 10\n        octal_num = int(octal_num / 10)\n        decimal_num += last_digit * base\n        base = base * 8\n    return decimal_num\n",
+  "results": {
+    "assert octal_To_Decimal(25) == 21": {
+      "result": true,
+      "time": 0.1810758113861084,
+      "error": null
+    },
+    "assert octal_To_Decimal(30) == 24": {
+      "result": true,
+      "time": 0.17618680000305176,
+      "error": null
+    },
+    "assert octal_To_Decimal(40) == 32": {
+      "result": true,
+      "time": 0.18824338912963867,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

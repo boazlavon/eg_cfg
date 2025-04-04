@@ -1,0 +1,24 @@
+{
+  "code": "def group_tuples(tuples):\n    common_elements = []\n    first_element = tuples[0][0]\n    for tup in tuples:\n        if tup[0] == first_element:\n            common_elements.append(tup)\n        else:\n            break\n    return common_elements\n",
+  "results": {
+    "assert group_tuples([('x', 'y'), ('x', 'z'), ('w', 't')]) == [('x', 'y', 'z'), ('w', 't')]": {
+      "result": false,
+      "time": 0.12618589401245117,
+      "error": null
+    },
+    "assert group_tuples([('a', 'b'), ('a', 'c'), ('d', 'e')]) == [('a', 'b', 'c'), ('d', 'e')]": {
+      "result": false,
+      "time": 0.12257647514343262,
+      "error": null
+    },
+    "assert group_tuples([('f', 'g'), ('f', 'g'), ('h', 'i')]) == [('f', 'g', 'g'), ('h', 'i')]": {
+      "result": false,
+      "time": 0.1234750747680664,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

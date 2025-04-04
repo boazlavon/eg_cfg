@@ -1,0 +1,25 @@
+{
+  "code": null,
+  "results": {
+    "assert max_aggregate([('Juan Whelan',90),('Sabah Colley',88),('Peter Nichols',7),('Juan Whelan',122),('Sabah Colley',84)])==('Juan Whelan', 212)": {
+      "result": false,
+      "time": -1,
+      "error": "GenerationError"
+    },
+    "assert max_aggregate([('Juan Whelan',50),('Sabah Colley',48),('Peter Nichols',37),('Juan Whelan',22),('Sabah Colley',14)])==('Juan Whelan', 72)": {
+      "result": false,
+      "time": -1,
+      "error": "GenerationError"
+    },
+    "assert max_aggregate([('Juan Whelan',10),('Sabah Colley',20),('Peter Nichols',30),('Juan Whelan',40),('Sabah Colley',50)])==('Sabah Colley', 70)": {
+      "result": false,
+      "time": -1,
+      "error": "GenerationError"
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "<class 'torch.OutOfMemoryError'>",
+  "has_testcase_error": true,
+  "tb": "Traceback (most recent call last):\n  File \"/home/ai_center/ai_users/boazlavon/data/code/prod/dsgi/dsgi.py\", line 285, in generate_mbpp_solutions\n    solution = try_generate_code_solution(\n  File \"/home/ai_center/ai_users/boazlavon/data/code/prod/dsgi/dsgi.py\", line 118, in try_generate_code_solution\n    outputs = generate_code_solutions(\n  File \"/home/ai_center/ai_users/boazlavon/data/code/prod/dsgi/code_generation_utils.py\", line 274, in generate_code_solutions\n    outputs = model.generate(\n  File \"/a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/torch/utils/_contextlib.py\", line 116, in decorate_context\n    return func(*args, **kwargs)\n  File \"/a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/transformers/generation/utils.py\", line 2225, in generate\n    result = self._dsgi_sample(\n  File \"/a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/transformers/generation/utils.py\", line 3297, in _dsgi_sample\n    dyn_outputs = model_forward(**model_dynamic_inputs, return_dict=True)\n  File \"/a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/torch/nn/modules/module.py\", line 1739, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"/a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/torch/nn/modules/module.py\", line 1750, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"/a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/transformers/utils/deprecation.py\", line 172, in wrapped_func\n    return func(*args, **kwargs)\n  File \"/a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/transformers/models/llama/modeling_llama.py\", line 859, in forward\n    logits = self.lm_head(hidden_states[:, slice_indices, :])\n  File \"/a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/torch/nn/modules/module.py\", line 1739, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"/a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/torch/nn/modules/module.py\", line 1750, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"/a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/torch/nn/modules/linear.py\", line 125, in forward\n    return F.linear(input, self.weight, self.bias)\ntorch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.90 GiB. GPU 0 has a total capacity of 23.68 GiB of which 67.81 MiB is free. Including non-PyTorch memory, this process has 23.61 GiB memory in use. Of the allocated memory 18.74 GiB is allocated by PyTorch, and 4.57 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n"
+}

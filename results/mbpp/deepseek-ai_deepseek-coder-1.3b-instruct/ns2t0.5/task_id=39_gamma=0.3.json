@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef rearange_string(s):\n    count = Counter(s)\n    values = sorted(count.values())\n    res = []\n    for i in values:\n        res.append(sorted(list(count.keys())))\n        for _ in range(i - 1):\n            for k, v in count.items():\n                if v > 0:\n                    count[k] -= 1\n                    res[-1].append(k)\n                    break\n    return \"\".join(res)\n",
+  "results": {
+    "assert rearange_string(\"aab\")==('aba')": {
+      "result": false,
+      "time": 0.25161218643188477,
+      "error": null
+    },
+    "assert rearange_string(\"aabb\")==('abab')": {
+      "result": false,
+      "time": 0.2491602897644043,
+      "error": null
+    },
+    "assert rearange_string(\"abccdd\")==('cdabcd')": {
+      "result": false,
+      "time": 0.25019073486328125,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

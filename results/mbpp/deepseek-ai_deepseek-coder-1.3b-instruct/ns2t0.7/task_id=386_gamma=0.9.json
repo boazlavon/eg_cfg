@@ -1,0 +1,24 @@
+{
+  "code": "def swap_count(s: str) -> int:\n    stack = []\n    for bracket in s:\n        if bracket == \"[\":\n            stack.append(bracket)\n        elif bracket == \"]\":\n            if stack and stack[-1] == \"[\":\n                stack.pop()\n            else:\n                stack.append(bracket)\n    return len(stack)\n",
+  "results": {
+    "assert swap_count(\"[]][][\") == 2": {
+      "result": true,
+      "time": 0.29839468002319336,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]\") == 0": {
+      "result": true,
+      "time": 0.556882381439209,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]][\") == 1": {
+      "result": false,
+      "time": 0.48265671730041504,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

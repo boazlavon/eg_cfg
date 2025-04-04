@@ -1,0 +1,24 @@
+{
+  "code": "def check_last(arr, p, operation):\n    for _ in range(p):\n        if operation == \"even\":\n            if arr[-1] % 2 == 0:\n                return \"EVEN\"\n            else:\n                arr[-1] += 1\n        elif operation == \"odd\":\n            if arr[-1] % 2 != 0:\n                return \"ODD\"\n            else:\n                arr[-1] += 1\n    return \"EVEN\" if arr[-1] % 2 == 0 else \"ODD\"\n",
+  "results": {
+    "assert check_last([5,7,10],3,1) == \"ODD\"": {
+      "result": false,
+      "time": 0.26202845573425293,
+      "error": null
+    },
+    "assert check_last([2,3],2,3) == \"EVEN\"": {
+      "result": false,
+      "time": 0.26629137992858887,
+      "error": null
+    },
+    "assert check_last([1,2,3],3,1) == \"ODD\"": {
+      "result": true,
+      "time": 0.7486782073974609,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

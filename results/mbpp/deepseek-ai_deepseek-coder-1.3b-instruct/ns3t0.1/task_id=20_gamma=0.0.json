@@ -1,0 +1,24 @@
+{
+  "code": "def is_woodall(n):\n    # Convert the number to a string to easily access each digit\n    str_n = str(n)\n\n    # Check if the number is a palindrome\n    if str_n != str_n[::-1]:\n        return False\n\n    # Check if the number is a prime number\n    if is_not_prime(n):\n        return False\n\n    # If the number is a palindrome and a prime number, it is a woodall number\n    return True\n",
+  "results": {
+    "assert is_woodall(383) == True": {
+      "result": false,
+      "time": 0.9467635154724121,
+      "error": null
+    },
+    "assert is_woodall(254) == False": {
+      "result": true,
+      "time": 0.43935227394104004,
+      "error": null
+    },
+    "assert is_woodall(200) == False": {
+      "result": true,
+      "time": 0.24663829803466797,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def find_length(binary_string, length):\n    max_difference = 0\n    count_0 = 0\n    count_1 = 0\n    for i in range(length):\n        if binary_string[i] == \"0\":\n            count_0 += 1\n        else:\n            count_1 += 1\n        if count_0 == count_1:\n            max_difference = max(max_difference, count_1)\n        else:\n            count_0 = count_1 = 0\n    return max_difference\n",
+  "results": {
+    "assert find_length(\"11000010001\", 11) == 6": {
+      "result": false,
+      "time": 0.24663186073303223,
+      "error": null
+    },
+    "assert find_length(\"10111\", 5) == 1": {
+      "result": false,
+      "time": 0.23882651329040527,
+      "error": null
+    },
+    "assert find_length(\"11011101100101\", 14) == 2 ": {
+      "result": false,
+      "time": 0.25052714347839355,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

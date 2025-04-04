@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef change_date_format(date):\n    return re.sub(r\"(\\d{2})(\\d{2})(\\d{2})\", r\"\\2-\\3-\\1\", date)\n",
+  "results": {
+    "assert change_date_format(\"2026-01-02\") == '02-01-2026'": {
+      "result": false,
+      "time": 0.1778697967529297,
+      "error": null
+    },
+    "assert change_date_format(\"2020-11-13\") == '13-11-2020'": {
+      "result": false,
+      "time": 0.19226884841918945,
+      "error": null
+    },
+    "assert change_date_format(\"2021-04-26\") == '26-04-2021'": {
+      "result": false,
+      "time": 0.20979905128479004,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def find_demlo(num):\n    # Convert the number to a list of digits\n    digits = list(num)\n\n    # Find the index of the first non-9 digit\n    non_9_index = -1\n    for i in range(len(digits)):\n        if digits[i] != \"9\":\n            non_9_index = i\n            break\n\n    # If there is no non-9 digit, return the original number\n    if non_9_index == -1:\n        return num\n\n    # Replace the non-9 digit with a 9 and return the result\n    digits[non_9_index] = \"9\"\n    return \"\".join(digits)\n",
+  "results": {
+    "assert find_demlo(\"111111\") == '12345654321'": {
+      "result": false,
+      "time": 0.21988248825073242,
+      "error": null
+    },
+    "assert find_demlo(\"1111\") == '1234321'": {
+      "result": false,
+      "time": 0.24728727340698242,
+      "error": null
+    },
+    "assert find_demlo(\"13333122222\") == '123456789101110987654321'": {
+      "result": false,
+      "time": 0.25036025047302246,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def rearrange_bigger(num):\n    num_str = str(num)\n    sorted_str = \"\".join(sorted(num_str, reverse=True))\n    for i in range(len(sorted_str)):\n        if sorted_str[i] < sorted_str[i + 1]:\n            new_num = int(num_str.replace(sorted_str[i], \"\"))\n            new_num += int(num_str.replace(sorted_str[i + 1], \"\"))\n            new_num = int(new_num)\n            if new_num > num:\n                return new_num\n    return False\n",
+  "results": {
+    "assert rearrange_bigger(12)==21": {
+      "result": false,
+      "time": 0.27699923515319824,
+      "error": null
+    },
+    "assert rearrange_bigger(10)==False": {
+      "result": false,
+      "time": 0.3067643642425537,
+      "error": null
+    },
+    "assert rearrange_bigger(102)==120": {
+      "result": false,
+      "time": 0.2697932720184326,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

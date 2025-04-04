@@ -1,0 +1,24 @@
+{
+  "code": "def count_first_elements(input_tuple):\n    count = 0\n    for i in input_tuple:\n        if isinstance(i, tuple):\n            count += len(i)\n        else:\n            count += 1\n    return count\n",
+  "results": {
+    "assert count_first_elements((1, 5, 7, (4, 6), 10) ) == 3": {
+      "result": false,
+      "time": 0.23977279663085938,
+      "error": null
+    },
+    "assert count_first_elements((2, 9, (5, 7), 11) ) == 2": {
+      "result": false,
+      "time": 0.23600172996520996,
+      "error": null
+    },
+    "assert count_first_elements((11, 15, 5, 8, (2, 3), 8) ) == 4": {
+      "result": false,
+      "time": 0.23549342155456543,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

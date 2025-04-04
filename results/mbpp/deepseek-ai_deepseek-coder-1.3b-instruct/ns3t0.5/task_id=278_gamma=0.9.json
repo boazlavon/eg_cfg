@@ -1,0 +1,24 @@
+{
+  "code": "def count_first_elements(test_tup):\n    count = 0\n    for item in test_tup:\n        if isinstance(item, tuple):\n            count += sum((isinstance(i, int) for i in item))\n        else:\n            count += 1\n    return count\n",
+  "results": {
+    "assert count_first_elements((1, 5, 7, (4, 6), 10) ) == 3": {
+      "result": false,
+      "time": 0.22292733192443848,
+      "error": null
+    },
+    "assert count_first_elements((2, 9, (5, 7), 11) ) == 2": {
+      "result": false,
+      "time": 0.2283775806427002,
+      "error": null
+    },
+    "assert count_first_elements((11, 15, 5, 8, (2, 3), 8) ) == 4": {
+      "result": false,
+      "time": 0.24033379554748535,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

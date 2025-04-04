@@ -1,0 +1,24 @@
+{
+  "code": "def min_Ops(nums, k, x):\n    nums.sort()\n    ops = 0\n    for num in nums:\n        if num < x:\n            ops += x - num\n        elif ops > 0 and num > x:\n            ops -= 1\n    return ops\n",
+  "results": {
+    "assert min_Ops([2,2,2,2],4,3) == 0": {
+      "result": false,
+      "time": 0.2507336139678955,
+      "error": null
+    },
+    "assert min_Ops([4,2,6,8],4,3) == -1": {
+      "result": false,
+      "time": 0.24353647232055664,
+      "error": null
+    },
+    "assert min_Ops([21,33,9,45,63],5,6) == 24": {
+      "result": false,
+      "time": 0.2372753620147705,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

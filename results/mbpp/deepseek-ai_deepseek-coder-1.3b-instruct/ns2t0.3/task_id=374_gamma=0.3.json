@@ -1,0 +1,24 @@
+{
+  "code": "from itertools import permutations\n\n\ndef permute_string(s):\n    perm_list = [\"\".join(p) for p in permutations(s)]\n    return perm_list\n",
+  "results": {
+    "assert permute_string('ab')==['ab', 'ba']": {
+      "result": true,
+      "time": 0.14687132835388184,
+      "error": null
+    },
+    "assert permute_string('abc')==['abc', 'bac', 'bca', 'acb', 'cab', 'cba']": {
+      "result": false,
+      "time": 0.17479467391967773,
+      "error": null
+    },
+    "assert permute_string('abcd')==['abcd', 'bacd', 'bcad', 'bcda', 'acbd', 'cabd', 'cbad', 'cbda', 'acdb', 'cadb', 'cdab', 'cdba', 'abdc', 'badc', 'bdac', 'bdca', 'adbc', 'dabc', 'dbac', 'dbca', 'adcb', 'dacb', 'dcab', 'dcba']": {
+      "result": false,
+      "time": 0.16640758514404297,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

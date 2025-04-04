@@ -1,0 +1,24 @@
+{
+  "code": "def remove_Occ(string, char):\n    first_occurrence = string.find(char)\n    if first_occurrence == -1:\n        return string\n    last_occurrence = string.rfind(char)\n    if first_occurrence == last_occurrence:\n        return string[:-1]\n    else:\n        return string[first_occurrence + 1 : last_occurrence]\n",
+  "results": {
+    "assert remove_Occ(\"hello\",\"l\") == \"heo\"": {
+      "result": false,
+      "time": 0.6230337619781494,
+      "error": null
+    },
+    "assert remove_Occ(\"abcda\",\"a\") == \"bcd\"": {
+      "result": true,
+      "time": 0.2751004695892334,
+      "error": null
+    },
+    "assert remove_Occ(\"PHP\",\"P\") == \"H\"": {
+      "result": true,
+      "time": 0.2856779098510742,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

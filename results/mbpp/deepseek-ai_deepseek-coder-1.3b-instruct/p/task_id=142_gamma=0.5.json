@@ -1,0 +1,24 @@
+{
+  "code": "def count_samepair(list1, list2, list3):\n    count = 0\n    for i in list1:\n        for j in list2:\n            if i == j:\n                count += 1\n            for k in list3:\n                if i == k:\n                    count += 1\n    return count\n",
+  "results": {
+    "assert count_samepair([1,2,3,4,5,6,7,8],[2,2,3,1,2,6,7,9],[2,1,3,1,2,6,7,9])==3": {
+      "result": false,
+      "time": 0.15671634674072266,
+      "error": null
+    },
+    "assert count_samepair([1,2,3,4,5,6,7,8],[2,2,3,1,2,6,7,8],[2,1,3,1,2,6,7,8])==4": {
+      "result": false,
+      "time": 0.16196322441101074,
+      "error": null
+    },
+    "assert count_samepair([1,2,3,4,2,6,7,8],[2,2,3,1,2,6,7,8],[2,1,3,1,2,6,7,8])==5": {
+      "result": false,
+      "time": 0.12444424629211426,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

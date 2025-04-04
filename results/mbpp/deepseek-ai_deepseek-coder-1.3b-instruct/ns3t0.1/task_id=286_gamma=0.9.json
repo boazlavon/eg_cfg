@@ -1,0 +1,24 @@
+{
+  "code": "def max_sub_array_sum_repeated(arr, n, k):\n    first_part = sum(arr[:n])\n    remaining = sum(arr[n:])\n    total_sum = first_part + remaining * (k - 1)\n    return total_sum\n",
+  "results": {
+    "assert max_sub_array_sum_repeated([10, 20, -30, -1], 4, 3) == 30": {
+      "result": false,
+      "time": 0.2502453327178955,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, 10, 20], 3, 2) == 59": {
+      "result": false,
+      "time": 0.25235509872436523,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, -2, -3], 3, 3) == -1": {
+      "result": false,
+      "time": 0.26036596298217773,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

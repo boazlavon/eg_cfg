@@ -1,0 +1,24 @@
+{
+  "code": "def rotate_left(lst, n, d=0):\n    n = n % len(lst)\n    d = d % len(lst)\n    rotated_lst = lst[n:] + lst[:d]\n    return rotated_lst\n",
+  "results": {
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],3,4)==[4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4]": {
+      "result": true,
+      "time": 0.12451410293579102,
+      "error": null
+    },
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],2,2)==[3, 4, 5, 6, 7, 8, 9, 10, 1, 2]": {
+      "result": true,
+      "time": 0.1215822696685791,
+      "error": null
+    },
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],5,2)==[6, 7, 8, 9, 10, 1, 2]": {
+      "result": true,
+      "time": 0.11990714073181152,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

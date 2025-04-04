@@ -1,0 +1,24 @@
+{
+  "code": "def min_val(lst):\n    if not lst:\n        return None\n    if isinstance(lst[0], (int, float)):\n        return min(lst)\n    else:\n        return min(lst, key=str.lower)\n",
+  "results": {
+    "assert min_val(['Python', 3, 2, 4, 5, 'version'])==2": {
+      "result": false,
+      "time": 0.22531604766845703,
+      "error": null
+    },
+    "assert min_val(['Python', 15, 20, 25])==15": {
+      "result": false,
+      "time": 0.23106145858764648,
+      "error": null
+    },
+    "assert min_val(['Python', 30, 20, 40, 50, 'version'])==20": {
+      "result": false,
+      "time": 0.23180747032165527,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

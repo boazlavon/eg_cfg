@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef multiple_split(s):\n    pattern = re.compile(\"(.*?)(?=[*])\")\n    return [match.group(1) for match in pattern.finditer(s)]\n",
+  "results": {
+    "assert multiple_split('Forces of the \\ndarkness*are coming into the play.') == ['Forces of the ', 'darkness', 'are coming into the play.']": {
+      "result": false,
+      "time": 0.2713742256164551,
+      "error": null
+    },
+    "assert multiple_split('Mi Box runs on the \\n Latest android*which has google assistance and chromecast.') == ['Mi Box runs on the ', ' Latest android', 'which has google assistance and chromecast.']": {
+      "result": false,
+      "time": 0.28197479248046875,
+      "error": null
+    },
+    "assert multiple_split('Certain services\\nare subjected to change*over the seperate subscriptions.') == ['Certain services', 'are subjected to change', 'over the seperate subscriptions.']": {
+      "result": false,
+      "time": 0.2806699275970459,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

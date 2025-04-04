@@ -1,0 +1,24 @@
+{
+  "code": "def odd_bit_set_number(num):\n    odd_bits = bin(num)[2:]\n    odd_bits = list(odd_bits)\n    for i in range(len(odd_bits)):\n        if odd_bits[i] == \"1\":\n            odd_bits[i] = \"0\"\n        else:\n            odd_bits[i] = \"1\"\n    return int(\"\".join(odd_bits), 2)\n",
+  "results": {
+    "assert odd_bit_set_number(10) == 15": {
+      "result": false,
+      "time": 0.29221391677856445,
+      "error": null
+    },
+    "assert odd_bit_set_number(20) == 21": {
+      "result": false,
+      "time": 0.3257319927215576,
+      "error": null
+    },
+    "assert odd_bit_set_number(30) == 31": {
+      "result": false,
+      "time": 0.34168291091918945,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def areEquivalent(num1, num2):\n    def sum_of_divisors(n):\n        divisors = [1]\n        for i in range(2, int(n**0.5) + 1):\n            if n % i == 0:\n                if n / i == i:\n                    divisors.append(i)\n                else:\n                    divisors.extend([i, n // i])\n        return sum(divisors)\n",
+  "results": {
+    "assert areEquivalent(36,57) == False": {
+      "result": false,
+      "time": 0.12977099418640137,
+      "error": null
+    },
+    "assert areEquivalent(2,4) == False": {
+      "result": false,
+      "time": 0.12767863273620605,
+      "error": null
+    },
+    "assert areEquivalent(23,47) == True": {
+      "result": false,
+      "time": 0.1277148723602295,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def set_left_most_unset_bit(n):\n    binary = bin(n)[2:]\n    for i in range(len(binary) - 1, -1, -1):\n        if binary[i] == \"0\":\n            binary = binary[:i] + \"1\" + binary[i + 1 :]\n            return int(binary, 2)\n    return n\n",
+  "results": {
+    "assert set_left_most_unset_bit(10) == 14": {
+      "result": false,
+      "time": 0.13737988471984863,
+      "error": null
+    },
+    "assert set_left_most_unset_bit(12) == 14": {
+      "result": false,
+      "time": 0.13947176933288574,
+      "error": null
+    },
+    "assert set_left_most_unset_bit(15) == 15": {
+      "result": true,
+      "time": 0.13279342651367188,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

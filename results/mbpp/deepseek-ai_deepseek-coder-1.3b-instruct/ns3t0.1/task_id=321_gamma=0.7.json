@@ -1,0 +1,24 @@
+{
+  "code": "def find_demlo(num):\n    digits = [str(i) for i in range(10)]\n    result = \"\"\n    for i in range(len(num)):\n        if num[i] == \"1\":\n            result += digits[int(num[i]) - 1]\n        else:\n            result += digits[int(num[i])]\n    return result\n",
+  "results": {
+    "assert find_demlo(\"111111\") == '12345654321'": {
+      "result": false,
+      "time": 0.24214553833007812,
+      "error": null
+    },
+    "assert find_demlo(\"1111\") == '1234321'": {
+      "result": false,
+      "time": 0.7215988636016846,
+      "error": null
+    },
+    "assert find_demlo(\"13333122222\") == '123456789101110987654321'": {
+      "result": false,
+      "time": 0.2488236427307129,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

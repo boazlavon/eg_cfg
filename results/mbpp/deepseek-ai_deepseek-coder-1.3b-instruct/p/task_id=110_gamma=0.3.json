@@ -1,0 +1,24 @@
+{
+  "code": "def extract_missing(ranges, start, end):\n    result = []\n    for i in range(start, end + 1):\n        found = False\n        for j in ranges:\n            if i >= j[0] and i <= j[1]:\n                found = True\n                break\n        if not found:\n            result.append((i, i))\n    return result\n",
+  "results": {
+    "assert extract_missing([(6, 9), (15, 34), (48, 70)], 2, 100) == [(2, 6), (9, 100), (9, 15), (34, 100), (34, 48), (70, 100)]": {
+      "result": false,
+      "time": 0.4778633117675781,
+      "error": null
+    },
+    "assert extract_missing([(7, 2), (15, 19), (38, 50)], 5, 60) == [(5, 7), (2, 60), (2, 15), (19, 60), (19, 38), (50, 60)]": {
+      "result": false,
+      "time": 0.2652149200439453,
+      "error": null
+    },
+    "assert extract_missing([(7, 2), (15, 19), (38, 50)], 1, 52) == [(1, 7), (2, 52), (2, 15), (19, 52), (19, 38), (50, 52)]": {
+      "result": false,
+      "time": 0.49662303924560547,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

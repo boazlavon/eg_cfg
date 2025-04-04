@@ -1,0 +1,24 @@
+{
+  "code": "def count_Num(n):\n    count = 0\n    for i in range(1, n + 1):\n        oth = bin(i).count(\"1\")\n        nth = bin(i >> 1)[2:].count(\"1\")\n        if oth == nth:\n            count += 1\n    return count\n",
+  "results": {
+    "assert count_Num(2) == 1": {
+      "result": true,
+      "time": 0.23903870582580566,
+      "error": null
+    },
+    "assert count_Num(3) == 2": {
+      "result": false,
+      "time": 0.24484729766845703,
+      "error": null
+    },
+    "assert count_Num(1) == 1": {
+      "result": false,
+      "time": 0.23923540115356445,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

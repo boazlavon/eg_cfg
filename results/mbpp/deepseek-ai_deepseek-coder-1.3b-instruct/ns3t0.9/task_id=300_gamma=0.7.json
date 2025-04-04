@@ -1,0 +1,24 @@
+{
+  "code": "def count_binary_seq(n):\n    count = 0\n    for i in range(2**n):\n        binary = bin(i)[2:]\n        first_half = sum(int(digit) for digit in binary[:n])\n        second_half = sum(int(digit) for digit in binary[n:])\n        if first_half == second_half:\n            count += 1\n    return count\n",
+  "results": {
+    "assert count_binary_seq(1) == 2.0": {
+      "result": false,
+      "time": 0.14244484901428223,
+      "error": null
+    },
+    "assert count_binary_seq(2) == 6.0": {
+      "result": false,
+      "time": 0.14838910102844238,
+      "error": null
+    },
+    "assert count_binary_seq(3) == 20.0": {
+      "result": false,
+      "time": 0.1433122158050537,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

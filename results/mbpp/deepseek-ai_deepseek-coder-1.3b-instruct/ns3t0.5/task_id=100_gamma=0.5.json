@@ -1,0 +1,24 @@
+{
+  "code": "def next_smallest_palindrome(n):\n    n = str(n)\n    length = len(n)\n    half = length // 2\n    first_half = n[:half]\n    if length % 2 == 0:\n        second_half = n[half - 1 :: -1]\n    else:\n        second_half = n[half:][::-1]\n    next_number = int(first_half + second_half)\n    next_number = int(str(next_number + 1) + second_half[::-1])\n    return int(next_number)\n",
+  "results": {
+    "assert next_smallest_palindrome(99)==101": {
+      "result": false,
+      "time": 0.24086332321166992,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1221)==1331": {
+      "result": false,
+      "time": 0.27112698554992676,
+      "error": null
+    },
+    "assert next_smallest_palindrome(120)==121": {
+      "result": false,
+      "time": 0.28005266189575195,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

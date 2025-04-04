@@ -1,0 +1,24 @@
+{
+  "code": "def common_prefix(strs, n):\n    prefix = strs[0]\n    for i in range(1, n):\n        while strs[i].startswith(prefix) == False:\n            prefix = prefix[:-1]\n    return prefix\n",
+  "results": {
+    "assert common_prefix([\"tablets\", \"tables\", \"taxi\", \"tamarind\"], 4) == 'ta'": {
+      "result": true,
+      "time": 0.25339794158935547,
+      "error": null
+    },
+    "assert common_prefix([\"apples\", \"ape\", \"april\"], 3) == 'ap'": {
+      "result": true,
+      "time": 0.25475215911865234,
+      "error": null
+    },
+    "assert common_prefix([\"teens\", \"teenager\", \"teenmar\"], 3) == 'teen'": {
+      "result": true,
+      "time": 0.26502513885498047,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

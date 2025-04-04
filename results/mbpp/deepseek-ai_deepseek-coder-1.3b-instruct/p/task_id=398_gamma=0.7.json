@@ -1,0 +1,24 @@
+{
+  "code": "def sum_of_digits(nums):\n    if isinstance(nums, list):\n        return sum(sum(int(digit) for digit in str(num)) for num in nums)\n    else:\n        return sum(sum(int(digit) for digit in str(nums)) for nums in nums)\n",
+  "results": {
+    "assert sum_of_digits([10,2,56])==14": {
+      "result": true,
+      "time": 0.4912874698638916,
+      "error": null
+    },
+    "assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19": {
+      "result": false,
+      "time": 0.2624228000640869,
+      "error": null
+    },
+    "assert sum_of_digits([10,20,-4,5,-70])==19": {
+      "result": false,
+      "time": 0.2608950138092041,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

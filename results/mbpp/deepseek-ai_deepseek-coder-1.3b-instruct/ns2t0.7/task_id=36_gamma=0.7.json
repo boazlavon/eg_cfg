@@ -1,0 +1,24 @@
+{
+  "code": "def find_Nth_Digit(n, num1, num2):\n    num = num1 / num2\n    base = len(str(num))\n    start = 1\n    end = num\n    while start <= end:\n        mid = (start + end) / 2\n        if mid * base < num:\n            start = mid\n        elif mid * base > num:\n            end = mid\n        else:\n            start = mid\n    return int(str(start)[(n - 1) % base])\n",
+  "results": {
+    "assert find_Nth_Digit(1,2,1) == 5": {
+      "result": false,
+      "time": 10.184682130813599,
+      "error": "Timeout"
+    },
+    "assert find_Nth_Digit(3,5,1) == 6": {
+      "result": false,
+      "time": 10.176867961883545,
+      "error": "Timeout"
+    },
+    "assert find_Nth_Digit(5,6,5) == 3": {
+      "result": false,
+      "time": 10.17642879486084,
+      "error": "Timeout"
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": true
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def max_product(nums, k):\n    import heapq\n\n    n = len(nums)\n    nums = [-1 * num for num in nums]\n    heapq.heapify(nums)\n    product = 1\n    for _ in range(k):\n        product *= -1 * heapq.heappop(nums)\n    return product\n",
+  "results": {
+    "assert max_product([3, 100, 4, 5, 150, 6], 6) == 45000 ": {
+      "result": false,
+      "time": 0.18429350852966309,
+      "error": null
+    },
+    "assert max_product([4, 42, 55, 68, 80], 5) == 50265600": {
+      "result": true,
+      "time": 0.18173003196716309,
+      "error": null
+    },
+    "assert max_product([10, 22, 9, 33, 21, 50, 41, 60], 8) == 21780000 ": {
+      "result": false,
+      "time": 0.18549013137817383,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def max_subarray_product(nums):\n    if not nums:\n        return 0\n    max_product = curr_max = curr_min = nums[0]\n    for i in range(1, len(nums)):\n        if nums[i] < 0:\n            curr_max, curr_min = curr_min, curr_max\n        curr_max = max(nums[i], curr_max * nums[i])\n        curr_min = min(nums[i], curr_min * nums[i])\n        max_product = max(max_product, curr_max)\n    return max_product\n",
+  "results": {
+    "assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112": {
+      "result": true,
+      "time": 0.24022865295410156,
+      "error": null
+    },
+    "assert max_subarray_product([6, -3, -10, 0, 2]) == 180 ": {
+      "result": true,
+      "time": 0.22819256782531738,
+      "error": null
+    },
+    "assert max_subarray_product([-2, -40, 0, -2, -3]) == 80": {
+      "result": true,
+      "time": 0.22896265983581543,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

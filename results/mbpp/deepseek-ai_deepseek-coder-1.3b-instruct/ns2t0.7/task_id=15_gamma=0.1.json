@@ -1,0 +1,24 @@
+{
+  "code": "def split_lowerstring(s):\n    return [s[i:j] for i, j in zip([0] + [x.start for x in s[1:] if x.islower()], [x.start for x in s] + [len(s)])]\n",
+  "results": {
+    "assert split_lowerstring(\"AbCd\")==['bC','d']": {
+      "result": false,
+      "time": 0.1778700351715088,
+      "error": null
+    },
+    "assert split_lowerstring(\"Python\")==['y', 't', 'h', 'o', 'n']": {
+      "result": false,
+      "time": 0.20482683181762695,
+      "error": null
+    },
+    "assert split_lowerstring(\"Programming\")==['r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']": {
+      "result": false,
+      "time": 0.17940735816955566,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

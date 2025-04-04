@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef multiple_split(s):\n    return re.split(\"\\n|\\*\", s)\n",
+  "results": {
+    "assert multiple_split('Forces of the \\ndarkness*are coming into the play.') == ['Forces of the ', 'darkness', 'are coming into the play.']": {
+      "result": true,
+      "time": 0.24712872505187988,
+      "error": null
+    },
+    "assert multiple_split('Mi Box runs on the \\n Latest android*which has google assistance and chromecast.') == ['Mi Box runs on the ', ' Latest android', 'which has google assistance and chromecast.']": {
+      "result": true,
+      "time": 0.26131343841552734,
+      "error": null
+    },
+    "assert multiple_split('Certain services\\nare subjected to change*over the seperate subscriptions.') == ['Certain services', 'are subjected to change', 'over the seperate subscriptions.']": {
+      "result": true,
+      "time": 0.26096177101135254,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

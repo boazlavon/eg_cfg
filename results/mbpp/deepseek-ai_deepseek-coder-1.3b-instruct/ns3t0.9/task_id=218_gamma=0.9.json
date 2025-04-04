@@ -1,0 +1,24 @@
+{
+  "code": "def min_Operations(a, b):\n    if a == b:\n        return 0\n    else:\n        max_val = max(a, b)\n        min_val = min(a, b)\n        if max_val % 2 == 0 and min_val % 2 == 0:\n            return (max_val - min_val) // 2\n        elif max_val % 2 == 0:\n            return (max_val - min_val) // 2 + 1\n        elif min_val % 2 == 0:\n            return (max_val - min_val) // 2\n        else:\n            return (max_val - min_val) // 2 + 1\n",
+  "results": {
+    "assert min_Operations(2,4) == 1": {
+      "result": true,
+      "time": 0.13125348091125488,
+      "error": null
+    },
+    "assert min_Operations(4,10) == 4": {
+      "result": false,
+      "time": 0.12754487991333008,
+      "error": null
+    },
+    "assert min_Operations(1,4) == 3": {
+      "result": false,
+      "time": 0.12804007530212402,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

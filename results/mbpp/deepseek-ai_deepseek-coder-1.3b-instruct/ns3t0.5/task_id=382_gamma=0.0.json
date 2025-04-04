@@ -1,0 +1,24 @@
+{
+  "code": "def find_rotation_count(arr):\n    # If the array is not sorted, find the index of the first element that is greater than its next element\n    # This is the rotation point\n    rotation_point = next((i for i, val in enumerate(arr) if val > arr[i + 1 % len(arr)]), None)\n",
+  "results": {
+    "assert find_rotation_count([8, 9, 10, 1, 2, 3, 4, 5, 6, 7]) == 3": {
+      "result": false,
+      "time": 0.22658109664916992,
+      "error": null
+    },
+    "assert find_rotation_count([8, 9, 10,2, 5, 6]) == 3": {
+      "result": false,
+      "time": 0.225325345993042,
+      "error": null
+    },
+    "assert find_rotation_count([2, 5, 6, 8, 9, 10]) == 0": {
+      "result": false,
+      "time": 0.22977781295776367,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

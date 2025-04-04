@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef modular_inverse(arr, p, mod):\n    counter = Counter(arr)\n    result = 0\n    for num, freq in counter.items():\n        if (p - num) % p == 0 and freq == freq:\n            result += freq\n    return result // 2\n",
+  "results": {
+    "assert modular_inverse([ 1, 6, 4, 5 ], 4, 7) == 2": {
+      "result": false,
+      "time": 0.3431992530822754,
+      "error": null
+    },
+    "assert modular_inverse([1, 3, 8, 12, 12], 5, 13) == 3": {
+      "result": false,
+      "time": 0.2759568691253662,
+      "error": null
+    },
+    "assert modular_inverse([2, 3, 4, 5], 4, 6) == 1": {
+      "result": false,
+      "time": 0.2527134418487549,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

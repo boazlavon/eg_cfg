@@ -1,0 +1,24 @@
+{
+  "code": "def text_lowercase_underscore(text):\n    if \"_\" not in text:\n        return \"Not matched!\"\n    else:\n        sequences = text.split(\"_\")\n        lowercase_sequences = [sequence.replace(\"_\", \"\") for sequence in sequences]\n        if all(sequence.islower() for sequence in lowercase_sequences):\n            return \"Found a match!\"\n        else:\n            return \"Not matched!\"\n",
+  "results": {
+    "assert text_lowercase_underscore(\"aab_cbbbc\")==('Found a match!')": {
+      "result": true,
+      "time": 0.39328932762145996,
+      "error": null
+    },
+    "assert text_lowercase_underscore(\"aab_Abbbc\")==('Not matched!')": {
+      "result": true,
+      "time": 0.30837249755859375,
+      "error": null
+    },
+    "assert text_lowercase_underscore(\"Aaab_abbbc\")==('Not matched!')": {
+      "result": true,
+      "time": 0.34934258460998535,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

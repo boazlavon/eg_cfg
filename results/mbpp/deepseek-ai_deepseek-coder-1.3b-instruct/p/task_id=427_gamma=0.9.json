@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef change_date_format(date):\n    # The regular expression pattern for the date format\n    pattern = r\"(\\d{2})-(\\d{2})-(\\d{4})\"\n\n    # Find all matches in the date string\n    matches = re.findall(pattern, date)\n\n    # If there are matches, rearrange the matches to the dd-mm-yyyy format\n    if matches:\n        date = \"-\".join(matches[0])\n\n    return date\n",
+  "results": {
+    "assert change_date_format(\"2026-01-02\") == '02-01-2026'": {
+      "result": false,
+      "time": 0.09901189804077148,
+      "error": null
+    },
+    "assert change_date_format(\"2020-11-13\") == '13-11-2020'": {
+      "result": false,
+      "time": 0.09674358367919922,
+      "error": null
+    },
+    "assert change_date_format(\"2021-04-26\") == '26-04-2021'": {
+      "result": false,
+      "time": 0.10340213775634766,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

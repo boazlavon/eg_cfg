@@ -1,0 +1,24 @@
+{
+  "code": "def max_aggregate(list_of_tuples):\n    aggregate_dict = {}\n    for tuple_item in list_of_tuples:\n        if tuple_item[0] not in aggregate_dict:\n            aggregate_dict[tuple_item[0]] = tuple_item[1]\n        else:\n            aggregate_dict[tuple_item[0]] += tuple_item[1]\n    max_aggregate_tuple = max(aggregate_dict.items(), key=lambda x: x[1])\n    return max_aggregate_tuple\n",
+  "results": {
+    "assert max_aggregate([('Juan Whelan',90),('Sabah Colley',88),('Peter Nichols',7),('Juan Whelan',122),('Sabah Colley',84)])==('Juan Whelan', 212)": {
+      "result": true,
+      "time": 0.12176227569580078,
+      "error": null
+    },
+    "assert max_aggregate([('Juan Whelan',50),('Sabah Colley',48),('Peter Nichols',37),('Juan Whelan',22),('Sabah Colley',14)])==('Juan Whelan', 72)": {
+      "result": true,
+      "time": 0.11851024627685547,
+      "error": null
+    },
+    "assert max_aggregate([('Juan Whelan',10),('Sabah Colley',20),('Peter Nichols',30),('Juan Whelan',40),('Sabah Colley',50)])==('Sabah Colley', 70)": {
+      "result": true,
+      "time": 0.12515592575073242,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

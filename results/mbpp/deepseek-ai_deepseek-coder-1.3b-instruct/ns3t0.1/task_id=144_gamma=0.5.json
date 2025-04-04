@@ -1,0 +1,24 @@
+{
+  "code": "def sum_Pairs(arr, k):\n    arr.sort()\n    n = len(arr)\n    res = float(\"inf\")\n    for i in range(n - 1):\n        diff = abs(arr[i] - arr[i + 1])\n        if i >= k - 1 and diff < res:\n            res = diff\n    return res\n",
+  "results": {
+    "assert sum_Pairs([1,8,9,15,16],5) == 74": {
+      "result": false,
+      "time": 0.2320859432220459,
+      "error": null
+    },
+    "assert sum_Pairs([1,2,3,4],4) == 10": {
+      "result": false,
+      "time": 0.24651575088500977,
+      "error": null
+    },
+    "assert sum_Pairs([1,2,3,4,5,7,9,11,14],9) == 188": {
+      "result": false,
+      "time": 0.243499755859375,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

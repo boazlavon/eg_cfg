@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef get_Odd_Occurrence(nums, size):\n    count = Counter(nums)\n    for num in count:\n        if count[num] % 2 != 0:\n            return num\n    return None\n",
+  "results": {
+    "assert get_Odd_Occurrence([1,2,3,1,2,3,1],7) == 1": {
+      "result": true,
+      "time": 0.1675262451171875,
+      "error": null
+    },
+    "assert get_Odd_Occurrence([1,2,3,2,3,1,3],7) == 3": {
+      "result": true,
+      "time": 0.18470478057861328,
+      "error": null
+    },
+    "assert get_Odd_Occurrence([2,3,5,4,5,2,4,3,5,2,4,4,2],13) == 5": {
+      "result": true,
+      "time": 0.22983908653259277,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

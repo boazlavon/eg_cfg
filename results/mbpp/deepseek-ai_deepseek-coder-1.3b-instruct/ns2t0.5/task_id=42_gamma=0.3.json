@@ -1,0 +1,24 @@
+{
+  "code": "def find_Sum(arr, sum_val):\n    count_dict = {}\n    for i in arr:\n        if i in count_dict:\n            count_dict[i] += 1\n        else:\n            count_dict[i] = 1\n    repeated_sum = 0\n    for key, value in count_dict.items():\n        if value > 1:\n            repeated_sum += key * (value // 2)\n    return repeated_sum\n",
+  "results": {
+    "assert find_Sum([1,2,3,1,1,4,5,6],8) == 3": {
+      "result": false,
+      "time": 0.24564027786254883,
+      "error": null
+    },
+    "assert find_Sum([1,2,3,1,1],5) == 3": {
+      "result": false,
+      "time": 0.23281407356262207,
+      "error": null
+    },
+    "assert find_Sum([1,1,2],3) == 2": {
+      "result": false,
+      "time": 0.23958992958068848,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

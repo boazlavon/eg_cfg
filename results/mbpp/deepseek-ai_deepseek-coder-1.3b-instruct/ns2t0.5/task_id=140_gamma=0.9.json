@@ -1,0 +1,24 @@
+{
+  "code": "def extract_singly(tuples):\n    singly_elements = set()\n    for tup in tuples:\n        for elem in tup:\n            singly_elements.add(elem)\n    return list(singly_elements)\n",
+  "results": {
+    "assert extract_singly([(3, 4, 5), (4, 5, 7), (1, 4)]) == [3, 4, 5, 7, 1]": {
+      "result": false,
+      "time": 0.3454558849334717,
+      "error": null
+    },
+    "assert extract_singly([(1, 2, 3), (4, 2, 3), (7, 8)]) == [1, 2, 3, 4, 7, 8]": {
+      "result": true,
+      "time": 0.4433441162109375,
+      "error": null
+    },
+    "assert extract_singly([(7, 8, 9), (10, 11, 12), (10, 11)]) == [7, 8, 9, 10, 11, 12]": {
+      "result": true,
+      "time": 0.4295079708099365,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def get_carol(n):\n    if n <= 0:\n        raise ValueError(\"n must be a positive integer\")\n    elif n == 1:\n        return 1\n    elif n == 2:\n        return 2\n    else:\n        sequence = [1, 2]\n        for _ in range(2, n):\n            sequence.append(sequence[-1] + sequence[-2])\n        return sequence[-1]\n",
+  "results": {
+    "assert get_carol(2) == 7": {
+      "result": false,
+      "time": 0.2411823272705078,
+      "error": null
+    },
+    "assert get_carol(4) == 223": {
+      "result": false,
+      "time": 0.2503952980041504,
+      "error": null
+    },
+    "assert get_carol(5) == 959": {
+      "result": false,
+      "time": 0.2606031894683838,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

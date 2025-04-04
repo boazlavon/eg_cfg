@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef find_char(string):\n    pattern = r\"\\b\\w{3,5}\\b\"\n    words = re.findall(pattern, string)\n    return words\n",
+  "results": {
+    "assert find_char('For the four consumer complaints contact manager AKR reddy') == ['For', 'the', 'four', 'AKR', 'reddy']": {
+      "result": true,
+      "time": 0.2310793399810791,
+      "error": null
+    },
+    "assert find_char('Certain service are subject to change MSR') == ['are', 'MSR']": {
+      "result": true,
+      "time": 0.24193429946899414,
+      "error": null
+    },
+    "assert find_char('Third party legal desclaimers') == ['Third', 'party', 'legal']": {
+      "result": true,
+      "time": 0.263751745223999,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

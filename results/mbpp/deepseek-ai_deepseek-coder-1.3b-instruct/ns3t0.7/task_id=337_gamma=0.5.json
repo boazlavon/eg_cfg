@@ -1,0 +1,19 @@
+{
+  "code": "import re\n\n\ndef text_match_word(text):\n    pattern = r\".*[.!?]$\"\n    match = re.fullmatch(pattern, text)\n    if match:\n        return \"Not matched!\"\n    else:\n        return \"Found a match!\"\n",
+  "results": {
+    "assert text_match_word(\"python.\")==('Found a match!')": {
+      "result": false,
+      "time": 0.21587371826171875,
+      "error": null
+    },
+    "assert text_match_word(\"  lang  .\")==('Not matched!')": {
+      "result": true,
+      "time": 0.2129523754119873,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.5,
+  "general_error": null,
+  "has_testcase_error": false
+}

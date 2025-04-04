@@ -1,0 +1,24 @@
+{
+  "code": "def pancake_sort(arr):\n    n = len(arr)\n    res = []\n    for i in range(n, 0, -1):\n        max_idx = 0\n        for j in range(1, i + 1):\n            if arr[j] > arr[max_idx]:\n                max_idx = j\n        if max_idx != i - 1:\n            arr[max_idx], arr[i - 1] = arr[i - 1], arr[max_idx]\n            res.append((max_idx + 1, i))\n        if i % 2 == 1:\n            arr[0], arr[i // 2] = arr[i // 2], arr[0]\n            res.append((1, i // 2 + 1))\n    return res\n",
+  "results": {
+    "assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]": {
+      "result": false,
+      "time": 0.20450115203857422,
+      "error": null
+    },
+    "assert pancake_sort([98, 12, 54, 36, 85]) == [12, 36, 54, 85, 98]": {
+      "result": false,
+      "time": 0.21911048889160156,
+      "error": null
+    },
+    "assert pancake_sort([41, 42, 32, 12, 23]) == [12, 23, 32, 41, 42]": {
+      "result": false,
+      "time": 0.20895886421203613,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

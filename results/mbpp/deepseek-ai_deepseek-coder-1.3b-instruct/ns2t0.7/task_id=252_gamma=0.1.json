@@ -1,0 +1,24 @@
+{
+  "code": "import cmath\n\n\ndef convert(num):\n    if isinstance(num, complex):\n        r = cmath.polar(num)[0]\n        theta = cmath.polar(num)[1]\n        return (r, theta)\n    else:\n        return \"Input should be a complex number\"\n",
+  "results": {
+    "assert convert(1) == (1.0, 0.0)": {
+      "result": false,
+      "time": 0.19811129570007324,
+      "error": null
+    },
+    "assert convert(4) == (4.0,0.0)": {
+      "result": false,
+      "time": 0.1999528408050537,
+      "error": null
+    },
+    "assert convert(5) == (5.0,0.0)": {
+      "result": false,
+      "time": 0.22294259071350098,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

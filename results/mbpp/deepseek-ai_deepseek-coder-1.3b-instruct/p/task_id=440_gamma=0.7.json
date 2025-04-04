@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef find_adverb_position(sentence):\n    pattern = r\"\\badv\\b\"\n    matches = re.finditer(pattern, sentence)\n    results = []\n    for match in matches:\n        start = match.start()\n        end = match.end()\n        adverb = sentence[start:end]\n        results.append((start, end, adverb))\n    return results\n",
+  "results": {
+    "assert find_adverb_position(\"clearly!! we can see the sky\")==(0, 7, 'clearly')": {
+      "result": false,
+      "time": 0.7302286624908447,
+      "error": null
+    },
+    "assert find_adverb_position(\"seriously!! there are many roses\")==(0, 9, 'seriously')": {
+      "result": false,
+      "time": 0.4334230422973633,
+      "error": null
+    },
+    "assert find_adverb_position(\"unfortunately!! sita is going to home\")==(0, 13, 'unfortunately')": {
+      "result": false,
+      "time": 0.2568814754486084,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

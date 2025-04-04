@@ -1,0 +1,24 @@
+{
+  "code": "def even_bit_set_number(num):\n    binary_num = bin(num)[2:]\n    binary_num = list(binary_num)\n    for i in range(len(binary_num)):\n        if i % 2 == 0 and binary_num[i] == \"1\":\n            binary_num[i] = \"0\"\n    return int(\"\".join(binary_num), 2)\n",
+  "results": {
+    "assert even_bit_set_number(10) == 10": {
+      "result": false,
+      "time": 0.520880937576294,
+      "error": null
+    },
+    "assert even_bit_set_number(20) == 30": {
+      "result": false,
+      "time": 0.25568461418151855,
+      "error": null
+    },
+    "assert even_bit_set_number(30) == 30": {
+      "result": false,
+      "time": 0.5545828342437744,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

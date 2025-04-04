@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef assign_freq(tuples):\n    counter = Counter(tuples)\n    result = [tuple(item) + (count,) for (item, count) in counter.items()]\n    return result\n",
+  "results": {
+    "assert assign_freq([(6, 5, 8), (2, 7), (6, 5, 8), (6, 5, 8), (9, ), (2, 7)] ) == '[(6, 5, 8, 3), (2, 7, 2), (9, 1)]'": {
+      "result": false,
+      "time": 0.262221097946167,
+      "error": null
+    },
+    "assert assign_freq([(4, 2, 4), (7, 1), (4, 8), (4, 2, 4), (9, 2), (7, 1)] ) == '[(4, 2, 4, 2), (7, 1, 2), (4, 8, 1), (9, 2, 1)]'": {
+      "result": false,
+      "time": 0.25134730339050293,
+      "error": null
+    },
+    "assert assign_freq([(11, 13, 10), (17, 21), (4, 2, 3), (17, 21), (9, 2), (4, 2, 3)] ) == '[(11, 13, 10, 1), (17, 21, 2), (4, 2, 3, 2), (9, 2, 1)]'": {
+      "result": false,
+      "time": 0.24443411827087402,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

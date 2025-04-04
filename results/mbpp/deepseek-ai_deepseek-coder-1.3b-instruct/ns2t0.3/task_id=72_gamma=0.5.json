@@ -1,0 +1,24 @@
+{
+  "code": "import math\n\n\ndef dif_Square(n):\n    if n < 0:\n        return False\n    if n == 0 or n == 1:\n        return True\n    lower_bound = math.isqrt(n)\n    upper_bound = math.isqrt(n // 2)\n    for i in range(lower_bound, upper_bound + 1):\n        if i * i == n:\n            return True\n    return False\n",
+  "results": {
+    "assert dif_Square(5) == True": {
+      "result": false,
+      "time": 0.16910123825073242,
+      "error": null
+    },
+    "assert dif_Square(10) == False": {
+      "result": true,
+      "time": 0.20903515815734863,
+      "error": null
+    },
+    "assert dif_Square(15) == True": {
+      "result": false,
+      "time": 0.16016125679016113,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def replace_max_specialchar(text, n):\n    special_chars = [\" \", \",\", \".\"]\n    max_occurrences = [(char, text.count(char)) for char in special_chars if text.count(char) > n]\n    if max_occurrences:\n        max_count = max(max_occurrences, key=lambda x: x[1])\n        text = text.replace(max_count[0], \":\")\n    return text\n",
+  "results": {
+    "assert replace_max_specialchar('Python language, Programming language.',2)==('Python:language: Programming language.')": {
+      "result": false,
+      "time": 0.31502294540405273,
+      "error": null
+    },
+    "assert replace_max_specialchar('a b c,d e f',3)==('a:b:c:d e f')": {
+      "result": false,
+      "time": 0.3130216598510742,
+      "error": null
+    },
+    "assert replace_max_specialchar('ram reshma,ram rahim',1)==('ram:reshma,ram rahim')": {
+      "result": false,
+      "time": 0.4065272808074951,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def get_total_number_of_sequences(n, m):\n    if n <= 0 or m <= 0:\n        return 0\n    if n == 1:\n        return m\n    dp = [0] * (n + 1)\n    dp[1] = min(m, 2 * m)\n    for i in range(2, n + 1):\n        dp[i] = min(m * m, dp[i - 1] * 2, m + dp[i - 1])\n    return dp[n]\n",
+  "results": {
+    "assert get_total_number_of_sequences(10, 4) == 4": {
+      "result": false,
+      "time": 0.22634339332580566,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(5, 2) == 6": {
+      "result": false,
+      "time": 0.21788573265075684,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(16, 3) == 84": {
+      "result": false,
+      "time": 0.21222662925720215,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

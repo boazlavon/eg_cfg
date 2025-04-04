@@ -1,0 +1,24 @@
+{
+  "code": "def check_triplet(arr, sum_val, product_val, index):\n    arr.sort()\n    n = len(arr)\n    for i in range(0, n - 2):\n        left = i + 1\n        right = n - 1\n        while left < right:\n            if arr[i] + arr[left] + arr[right] == sum_val and arr[i] * arr[left] * arr[right] == product_val and index == i:\n                return True\n            elif arr[i] + arr[left] + arr[right] == sum_val and arr[i] * arr[left] * arr[right] == product_val:\n                left += 1\n                right -= 1\n            elif arr[i] + arr[left] + arr[right] > sum_val:\n                right -= 1\n            else:\n                left += 1\n    return False\n",
+  "results": {
+    "assert check_triplet([2, 7, 4, 0, 9, 5, 1, 3], 8, 6, 0) == True": {
+      "result": false,
+      "time": 0.30231308937072754,
+      "error": null
+    },
+    "assert check_triplet([1, 4, 5, 6, 7, 8, 5, 9], 8, 6, 0) == False": {
+      "result": true,
+      "time": 0.5511898994445801,
+      "error": null
+    },
+    "assert check_triplet([10, 4, 2, 3, 5], 5, 15, 0) == True": {
+      "result": false,
+      "time": 0.3046090602874756,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

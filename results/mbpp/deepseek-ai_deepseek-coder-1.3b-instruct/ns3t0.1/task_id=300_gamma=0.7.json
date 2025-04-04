@@ -1,0 +1,24 @@
+{
+  "code": "def count_binary_seq(n):\n    total_seq = 2**n\n    first_half_sum = sum(range(n))\n    second_half_sum = n - 1\n    first_half_seq = total_seq // 2\n    second_half_seq = total_seq // 2\n    first_half_seq = min(first_half_seq, first_half_sum)\n    second_half_seq = min(second_half_seq, second_half_sum)\n    return first_half_seq * second_half_seq\n",
+  "results": {
+    "assert count_binary_seq(1) == 2.0": {
+      "result": false,
+      "time": 0.3143644332885742,
+      "error": null
+    },
+    "assert count_binary_seq(2) == 6.0": {
+      "result": false,
+      "time": 0.5036635398864746,
+      "error": null
+    },
+    "assert count_binary_seq(3) == 20.0": {
+      "result": false,
+      "time": 0.6799883842468262,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

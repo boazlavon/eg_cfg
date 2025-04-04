@@ -1,0 +1,24 @@
+{
+  "code": "def minimum_Length(string):\n    count = {}\n    for char in string:\n        if char in count:\n            count[char] += 1\n        else:\n            count[char] = 1\n    result = []\n    for char in string:\n        if count[char] > 1:\n            result.append(char)\n    return len(result)\n",
+  "results": {
+    "assert minimum_Length(\"mnm\") == 1": {
+      "result": false,
+      "time": 0.5063350200653076,
+      "error": null
+    },
+    "assert minimum_Length(\"abcda\") == 3": {
+      "result": false,
+      "time": 0.5056116580963135,
+      "error": null
+    },
+    "assert minimum_Length(\"abcb\") == 2": {
+      "result": true,
+      "time": 0.25543904304504395,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def find_Element(arr, indexes, k, rotation):\n    arr = arr[indexes[rotation][0] : indexes[rotation][1]] + arr[: indexes[rotation][0]]\n    return arr[k - indexes[rotation][0] - 1]\n",
+  "results": {
+    "assert find_Element([1,2,3,4,5],[[0,2],[0,3]],2,1) == 3": {
+      "result": false,
+      "time": 0.21633243560791016,
+      "error": null
+    },
+    "assert find_Element([1,2,3,4],[[0,1],[0,2]],1,2) == 3": {
+      "result": false,
+      "time": 0.23569703102111816,
+      "error": null
+    },
+    "assert find_Element([1,2,3,4,5,6],[[0,1],[0,2]],1,1) == 1": {
+      "result": true,
+      "time": 0.24246978759765625,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

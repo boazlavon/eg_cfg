@@ -1,0 +1,24 @@
+{
+  "code": "def max_sub_array_sum_repeated(arr, n, k):\n    total_sum = sum(arr)\n    total_rep = n * (n + 1) // 2\n    total_rep *= total_sum\n    if total_rep > total_sum:\n        return total_rep // n\n    else:\n        return total_sum\n",
+  "results": {
+    "assert max_sub_array_sum_repeated([10, 20, -30, -1], 4, 3) == 30": {
+      "result": false,
+      "time": 0.2680795192718506,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, 10, 20], 3, 2) == 59": {
+      "result": false,
+      "time": 0.2723965644836426,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, -2, -3], 3, 3) == -1": {
+      "result": false,
+      "time": 0.5649120807647705,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

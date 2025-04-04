@@ -1,0 +1,24 @@
+{
+  "code": "import math\n\n\ndef first_Factorial_Divisible_Number(x):\n    factorial = 1\n    for i in range(1, x + 1):\n        factorial *= i\n    for i in range(x, 0, -1):\n        if factorial % i == 0:\n            return i\n",
+  "results": {
+    "assert first_Factorial_Divisible_Number(10) == 5": {
+      "result": false,
+      "time": 0.13160347938537598,
+      "error": null
+    },
+    "assert first_Factorial_Divisible_Number(15) == 5": {
+      "result": false,
+      "time": 0.13321948051452637,
+      "error": null
+    },
+    "assert first_Factorial_Divisible_Number(5) == 4": {
+      "result": false,
+      "time": 0.12837982177734375,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

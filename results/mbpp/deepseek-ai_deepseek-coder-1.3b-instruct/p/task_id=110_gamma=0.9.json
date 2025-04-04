@@ -1,0 +1,24 @@
+{
+  "code": "def extract_missing(ranges, start, end):\n    missing_ranges = []\n    for i in range(start, end + 1):\n        if i not in [x[0] for x in ranges] and i not in [x[1] for x in ranges]:\n            missing_ranges.append((i, i))\n        elif i in [x[0] for x in ranges]:\n            for j in range(i, len(ranges) + 1):\n                if j in [x[1] for x in ranges]:\n                    missing_ranges.append((i, j - 1))\n                    i = j\n                else:\n                    missing_ranges.append((i, i))\n                    i = j\n        else:\n            for j in range(len(ranges) - 1, -1, -1):\n                if i < ranges[j][0]:\n                    missing_ranges.append((i, i))\n                    break\n                elif i > ranges[j][1]:\n                    missing_ranges.append((ranges[j][1] + 1, i))\n                    ranges.pop(j)\n                else:\n                    i = ranges[j][1] + 1\n                    ranges.pop(j)\n    return missing_ranges\n",
+  "results": {
+    "assert extract_missing([(6, 9), (15, 34), (48, 70)], 2, 100) == [(2, 6), (9, 100), (9, 15), (34, 100), (34, 48), (70, 100)]": {
+      "result": false,
+      "time": 0.2712531089782715,
+      "error": null
+    },
+    "assert extract_missing([(7, 2), (15, 19), (38, 50)], 5, 60) == [(5, 7), (2, 60), (2, 15), (19, 60), (19, 38), (50, 60)]": {
+      "result": false,
+      "time": 0.4774744510650635,
+      "error": null
+    },
+    "assert extract_missing([(7, 2), (15, 19), (38, 50)], 1, 52) == [(1, 7), (2, 52), (2, 15), (19, 52), (19, 38), (50, 52)]": {
+      "result": false,
+      "time": 0.27326154708862305,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

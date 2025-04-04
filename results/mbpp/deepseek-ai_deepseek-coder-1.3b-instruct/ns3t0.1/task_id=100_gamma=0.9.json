@@ -1,0 +1,24 @@
+{
+  "code": "def next_smallest_palindrome(n):\n    n = str(n)\n    length = len(n)\n    if length == 1:\n        return int(n + n)\n    elif length == 2:\n        if n[0] == \"9\":\n            return int(n + \"0\" + n[::-1])\n        else:\n            return int(n + \"1\" + n[::-1])\n    elif length > 2:\n        if n[0] == \"9\":\n            return int(n[:-1] + \"0\" + n[:-1][::-1])\n        else:\n            last_digit = int(n[-1])\n            if last_digit < 4:\n                return int(n + str(last_digit + 1) + n[::-1])\n            else:\n                return int(n + \"9\" + n[::-1])\n",
+  "results": {
+    "assert next_smallest_palindrome(99)==101": {
+      "result": false,
+      "time": 0.24231624603271484,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1221)==1331": {
+      "result": false,
+      "time": 0.27625036239624023,
+      "error": null
+    },
+    "assert next_smallest_palindrome(120)==121": {
+      "result": false,
+      "time": 0.28499436378479004,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

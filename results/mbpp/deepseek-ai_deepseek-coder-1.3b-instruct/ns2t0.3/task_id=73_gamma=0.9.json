@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef multiple_split(text):\n    pattern = re.compile(\"([^*]+)|(\\\\*([^*]+))\")\n    matches = pattern.findall(text)\n    return [match[0] if match[1] is None else match[0] + \"*\" + match[2] for match in matches]\n",
+  "results": {
+    "assert multiple_split('Forces of the \\ndarkness*are coming into the play.') == ['Forces of the ', 'darkness', 'are coming into the play.']": {
+      "result": false,
+      "time": 0.16161561012268066,
+      "error": null
+    },
+    "assert multiple_split('Mi Box runs on the \\n Latest android*which has google assistance and chromecast.') == ['Mi Box runs on the ', ' Latest android', 'which has google assistance and chromecast.']": {
+      "result": false,
+      "time": 0.15632104873657227,
+      "error": null
+    },
+    "assert multiple_split('Certain services\\nare subjected to change*over the seperate subscriptions.') == ['Certain services', 'are subjected to change', 'over the seperate subscriptions.']": {
+      "result": false,
+      "time": 0.15787816047668457,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

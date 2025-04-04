@@ -1,0 +1,24 @@
+{
+  "code": "def median_trapezium(a, b, c):\n    sides = sorted([a, b, c])\n    if sides[2] >= sides[0] + sides[1]:\n        raise ValueError(\"The given sides do not form a valid trapezium\")\n    else:\n        s = (a + b + c) / 2\n        area = (s * (s - a) * (s - b) * (s - c)) ** 0.5\n        return s - area\n",
+  "results": {
+    "assert median_trapezium(15,25,35)==20": {
+      "result": false,
+      "time": 0.2357954978942871,
+      "error": null
+    },
+    "assert median_trapezium(10,20,30)==15": {
+      "result": false,
+      "time": 0.23932385444641113,
+      "error": null
+    },
+    "assert median_trapezium(6,9,4)==7.5": {
+      "result": false,
+      "time": 0.23789095878601074,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

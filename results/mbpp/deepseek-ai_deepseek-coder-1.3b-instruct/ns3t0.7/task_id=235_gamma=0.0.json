@@ -1,0 +1,24 @@
+{
+  "code": "def even_bit_set_number(num):\n    # Convert the number to binary and split into bits\n    binary = bin(num)[2:]\n\n    # Convert the binary string into a list of bits\n    bits = list(binary)\n\n    # Set all even bits to 1\n    for i in range(1, len(bits), 2):\n        bits[i] = \"1\"\n\n    # Join the bits back into a number\n    result = int(\"\".join(bits), 2)\n\n    return result\n",
+  "results": {
+    "assert even_bit_set_number(10) == 10": {
+      "result": false,
+      "time": 0.261033296585083,
+      "error": null
+    },
+    "assert even_bit_set_number(20) == 30": {
+      "result": true,
+      "time": 0.26544761657714844,
+      "error": null
+    },
+    "assert even_bit_set_number(30) == 30": {
+      "result": true,
+      "time": 0.2876920700073242,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

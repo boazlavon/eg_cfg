@@ -1,0 +1,24 @@
+{
+  "code": "def ncr_modp(n, r, p):\n    if r > n or r < 0:\n        return 0\n    numerator = 1\n    for i in range(r):\n        numerator = (numerator * (n - i)) % p\n    denominator = 1\n    for i in range(r):\n        denominator = (denominator * (i + 1)) % p\n    return (numerator * pow(denominator, p - 2, p)) % p\n",
+  "results": {
+    "assert ncr_modp(10,2,13)==6": {
+      "result": true,
+      "time": 0.17940092086791992,
+      "error": null
+    },
+    "assert ncr_modp(15,12,43)==25": {
+      "result": true,
+      "time": 0.15827488899230957,
+      "error": null
+    },
+    "assert ncr_modp(17,9,18)==10": {
+      "result": false,
+      "time": 0.15281128883361816,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

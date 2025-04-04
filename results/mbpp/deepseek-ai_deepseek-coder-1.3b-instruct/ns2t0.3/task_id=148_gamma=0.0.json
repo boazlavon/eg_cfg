@@ -1,0 +1,24 @@
+{
+  "code": "def sum_digits_twoparts(n):\n    # Convert the number to a string to easily access each digit\n    str_n = str(n)\n    # Calculate the length of the string\n    length = len(str_n)\n    # If the length is even, divide the number in half\n    if length % 2 == 0:\n        half = length // 2\n        part1 = int(str_n[:half])\n        part2 = int(str_n[half:])\n    # If the length is odd, divide the number in half and add one digit to the first part\n    else:\n        half = length // 2\n        part1 = int(str_n[:half])\n        part2 = int(str_n[half : half + 1])\n    # Calculate the sum of the digits in each part\n    sum1 = sum(int(digit) for digit in str(part1))\n    sum2 = sum(int(digit) for digit in str(part2))\n    # Return the maximum sum\n    return max(sum1, sum2)\n",
+  "results": {
+    "assert sum_digits_twoparts(35)==17": {
+      "result": false,
+      "time": 0.1658337116241455,
+      "error": null
+    },
+    "assert sum_digits_twoparts(7)==7": {
+      "result": false,
+      "time": 0.20691394805908203,
+      "error": null
+    },
+    "assert sum_digits_twoparts(100)==19": {
+      "result": false,
+      "time": 0.1994032859802246,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

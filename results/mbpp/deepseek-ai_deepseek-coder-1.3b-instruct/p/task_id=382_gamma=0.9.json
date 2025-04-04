@@ -1,0 +1,24 @@
+{
+  "code": "def find_rotation_count(arr):\n    # If the array is not sorted, find the index of the first element that is greater than its next element\n    for i in range(len(arr) - 1):\n        if arr[i] > arr[i + 1]:\n            return i\n    # If the array is sorted, it means it is a circularly sorted array, so the number of rotations is the length of the array\n    return len(arr)\n",
+  "results": {
+    "assert find_rotation_count([8, 9, 10, 1, 2, 3, 4, 5, 6, 7]) == 3": {
+      "result": false,
+      "time": 0.10409927368164062,
+      "error": null
+    },
+    "assert find_rotation_count([8, 9, 10,2, 5, 6]) == 3": {
+      "result": false,
+      "time": 0.09739804267883301,
+      "error": null
+    },
+    "assert find_rotation_count([2, 5, 6, 8, 9, 10]) == 0": {
+      "result": false,
+      "time": 0.09817147254943848,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def max_sum(arr, k):\n    n = len(arr)\n    if n < k:\n        return -1\n    window_sum = sum([arr[i] for i in range(k)])\n    max_sum = window_sum\n    for i in range(n - k):\n        window_sum = window_sum - arr[i] + arr[i + k]\n        max_sum = max(window_sum, max_sum)\n    return max_sum\n",
+  "results": {
+    "assert max_sum([1, 15, 51, 45, 33, 100, 12, 18, 9], 9) == 194": {
+      "result": false,
+      "time": 0.31803035736083984,
+      "error": null
+    },
+    "assert max_sum([80, 60, 30, 40, 20, 10], 6) == 210": {
+      "result": false,
+      "time": 0.31604552268981934,
+      "error": null
+    },
+    "assert max_sum([2, 3 ,14, 16, 21, 23, 29, 30], 8) == 138": {
+      "result": true,
+      "time": 0.3115708827972412,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

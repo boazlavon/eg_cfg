@@ -1,0 +1,24 @@
+{
+  "code": "def find_length(s, k):\n    counts = [0] * k\n    for i in range(len(s)):\n        if s[i] == \"0\":\n            counts[i % k] += 1\n        else:\n            counts[i % k] = 0\n    max_difference = max(counts)\n    return max_difference\n",
+  "results": {
+    "assert find_length(\"11000010001\", 11) == 6": {
+      "result": false,
+      "time": 0.24137020111083984,
+      "error": null
+    },
+    "assert find_length(\"10111\", 5) == 1": {
+      "result": true,
+      "time": 0.21748089790344238,
+      "error": null
+    },
+    "assert find_length(\"11011101100101\", 14) == 2 ": {
+      "result": false,
+      "time": 0.21772980690002441,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def rearrange_bigger(num):\n    digits = [int(d) for d in str(num)]\n    n = len(digits)\n    for i in range(n - 1, 0, -1):\n        if digits[i] > digits[i - 1]:\n            for j in range(n - 1, i - 1, -1):\n                if digits[j] > digits[i - 1]:\n                    digits[i - 1], digits[j] = digits[j], digits[i - 1]\n                    digits[i:] = sorted(digits[i:])\n                    return int(\"\".join(map(str, digits)))\n    return False\n",
+  "results": {
+    "assert rearrange_bigger(12)==21": {
+      "result": true,
+      "time": 0.3380415439605713,
+      "error": null
+    },
+    "assert rearrange_bigger(10)==False": {
+      "result": true,
+      "time": 0.5599009990692139,
+      "error": null
+    },
+    "assert rearrange_bigger(102)==120": {
+      "result": true,
+      "time": 0.5234200954437256,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

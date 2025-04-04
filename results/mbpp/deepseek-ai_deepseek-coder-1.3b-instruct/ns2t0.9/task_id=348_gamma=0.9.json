@@ -1,0 +1,24 @@
+{
+  "code": "def find_ways(n):\n    if n < 0:\n        return 0\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    for i in range(1, n + 1):\n        dp[i] = dp[i - 1] + i\n    return dp[n]\n",
+  "results": {
+    "assert find_ways(4) == 2": {
+      "result": false,
+      "time": 0.1979963779449463,
+      "error": null
+    },
+    "assert find_ways(6) == 5": {
+      "result": false,
+      "time": 0.19101452827453613,
+      "error": null
+    },
+    "assert find_ways(8) == 14": {
+      "result": false,
+      "time": 0.21639776229858398,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

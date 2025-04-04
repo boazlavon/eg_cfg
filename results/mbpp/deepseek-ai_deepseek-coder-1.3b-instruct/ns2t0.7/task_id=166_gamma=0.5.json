@@ -1,0 +1,24 @@
+{
+  "code": "def find_even_Pair(arr, xor):\n    count = 0\n    for i in range(len(arr)):\n        for j in range(i + 1, len(arr)):\n            if arr[i] ^ arr[j] == xor:\n                count += 1\n    return count\n",
+  "results": {
+    "assert find_even_Pair([5,4,7,2,1],5) == 4": {
+      "result": false,
+      "time": 0.38356518745422363,
+      "error": null
+    },
+    "assert find_even_Pair([7,2,8,1,0,5,11],7) == 9": {
+      "result": false,
+      "time": 0.30640745162963867,
+      "error": null
+    },
+    "assert find_even_Pair([1,2,3],3) == 1": {
+      "result": true,
+      "time": 0.3123195171356201,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def count_binary_seq(n):\n    # Calculate the total number of binary sequences of length 2n\n    total_seq = 2 ** (2 * n)\n\n    # Calculate the number of binary sequences where the sum of first n bits is same as the sum of last n bits\n    same_sum_seq = 0\n    for i in range(n):\n        # For each bit position, calculate the number of sequences where the sum of first i bits is same as the sum of last (2*n-i) bits\n        same_sum_seq += 2 ** (2 * n - 2 * i)\n\n    # The total number of binary sequences where the sum of first n bits is same as the sum of last n bits is the sum of the above\n    total_same_sum = same_sum_seq * 2**n\n\n    # The number of binary sequences of length 2n such that sum of first n bits is same as sum of last n bits is the total number of sequences minus the total number of sequences where the sum of first n bits is same as the sum of last n bits\n    total_same_sum_seq = total_seq - total_same_sum\n\n    return total_same_sum_seq\n",
+  "results": {
+    "assert count_binary_seq(1) == 2.0": {
+      "result": false,
+      "time": 0.2186427116394043,
+      "error": null
+    },
+    "assert count_binary_seq(2) == 6.0": {
+      "result": false,
+      "time": 0.2769942283630371,
+      "error": null
+    },
+    "assert count_binary_seq(3) == 20.0": {
+      "result": false,
+      "time": 0.2771623134613037,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}
