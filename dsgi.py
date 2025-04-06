@@ -1,10 +1,12 @@
 import random
 import pprint
 import black
+import time
 import argparse
 import os
 import json
 import traceback
+import random
 
 from mbpp_utils import (
     format_mbpp_prompt,
@@ -52,6 +54,8 @@ def try_generate_code_solution(
     dynamic_signals,
     backward_signals,
     prompt_type,
+    nearest_future_samples,
+    temperature,
 ):
     test_cases = problem["test_list"]
     if prompt_type in (
@@ -91,7 +95,8 @@ def try_generate_code_solution(
             "test_cases": test_cases,
             "initial_prompt": prompt,
             "dynamic_signals": dynamic_signals,
-            "nearest_future_samples": 2,
+            "nearest_future_samples": nearest_future_samples,
+            "temperature": temperature,
             "max_function_body_lines": 3,
             "backward_signals": backward_signals,
             "prompt_type": prompt_type,
@@ -210,6 +215,9 @@ def generate_mbpp_solutions(
     gammas=GAMMAS,
     backward_signals_iterations=0,
     prod=False,
+    nearest_future_samples=None,
+    temperature=None,
+    attemps_count=1,
 ):
     device = setup_device()
     model, tokenizer = load_model(model_name, device)
@@ -242,76 +250,92 @@ def generate_mbpp_solutions(
         while backward_signals_iteration <= backward_signals_iterations and (
             not problem_solved
         ):
-            for gamma in gammas:
-                if gamma > 0 and problem_solved:
-                    print(f"Skip gamma={gamma} problem is solved")
-                    continue
+            attempt_idx = 0
+            while attempt_idx < attemps_count and (not problem_solved):
+                gamma_idx = 0
+                while (gamma_idx < len(gammas)) and (not problem_solved):
+                    if DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION in dynamic_signals:
+                        random.seed(40 + attempt_idx)
+                    gamma = gammas[gamma_idx]
+                    if gamma > 0 and problem_solved:
+                        print(f"🟡 Skip gamma={gamma} problem is solved")
+                        continue
 
-                general_error = None
-                tb = None
-                solution_entry_path = get_solution_filepath(
-                    results_dir, task_id, gamma, backward_signals_iteration
-                )
-                if os.path.exists(solution_entry_path):
-                    if backward_signals_iteration:
-                        print(
-                            f"🟡 Solution exists: task_id={task_id}, gamma={gamma} backward_iterations={backward_signals_iteration}"
-                        )
-                    else:
-                        print(f"🟡 Solution exists: task_id={task_id}, gamma={gamma}")
-                    # load solution if invalid
-                    with open(solution_entry_path, "r") as f:
-                        try:
-                            solution_entry = json.load(f)
-                        except:
-                            pass
-                        else:
-                            solutions[(task_id, gamma, backward_signals_iteration)] = (
-                                solution_entry
-                            )
-                            problem_solved = solution_entry["passed"]
-                    continue
-
-                # touch the file to reserve it
-                with open(solution_entry_path, "a"):
-                    pass
-
-                try:
-                    solution = try_generate_code_solution(
-                        model,
-                        tokenizer,
-                        device,
-                        problem,
-                        gamma,
-                        dynamic_signals,
-                        backward_signals,
-                        prompt_type,
+                    general_error = None
+                    tb = None
+                    solution_entry_path = get_solution_filepath(
+                        results_dir, task_id, gamma, backward_signals_iteration
                     )
-                    print(solution)
-                except KeyboardInterrupt:
-                    exit(1)
-                except AssertionError as e:
-                    solution = None
-                    general_error = str(type(e))
-                    tb = traceback.format_exc()
-                    if not prod:
-                        raise e
-                except Exception as e:
-                    solution = None
-                    general_error = str(type(e))
-                    tb = traceback.format_exc()
-                    if not prod:
-                        raise e
 
-                solution_results = run_tests(solution, test_cases)
-                solution_entry = format_results(
-                    solution, solution_results, general_error, tb
-                )
-                with open(solution_entry_path, "w") as f:
-                    json.dump(solution_entry, f, indent=2)
-                solutions[(task_id, gamma, backward_signals_iteration)] = solution_entry
-                if solution_entry["passed"]:
-                    problem_solved = True
+                    if os.path.exists(solution_entry_path):
+                        if backward_signals_iteration:
+                            print(
+                                f"🟡 Solution exists: task_id={task_id}, gamma={gamma} backward_iterations={backward_signals_iteration}"
+                            )
+                        else:
+                            print(
+                                f"🟡 Solution exists: task_id={task_id}, gamma={gamma}"
+                            )
+                        # load solution if invalid
+                        with open(solution_entry_path, "r") as f:
+                            try:
+                                solution_entry = json.load(f)
+                            except:
+                                pass
+                            else:
+                                solutions[
+                                    (task_id, gamma, backward_signals_iteration)
+                                ] = solution_entry
+                                problem_solved = solution_entry["passed"]
+                        gamma_idx += 1
+                        continue
+
+                    # touch the file to reserve it
+                    with open(solution_entry_path, "a"):
+                        pass
+
+                    try:
+                        solution = try_generate_code_solution(
+                            model,
+                            tokenizer,
+                            device,
+                            problem,
+                            gamma,
+                            dynamic_signals,
+                            backward_signals,
+                            prompt_type,
+                            nearest_future_samples,
+                            temperature,
+                        )
+                        print(solution)
+                    except KeyboardInterrupt:
+                        exit(1)
+                    except AssertionError as e:
+                        solution = None
+                        general_error = str(type(e))
+                        tb = traceback.format_exc()
+                        if not prod:
+                            raise e
+                    except Exception as e:
+                        solution = None
+                        general_error = str(type(e))
+                        tb = traceback.format_exc()
+                        if not prod:
+                            raise e
+
+                    solution_results = run_tests(solution, test_cases)
+                    solution_entry = format_results(
+                        solution, solution_results, general_error, tb
+                    )
+                    with open(solution_entry_path, "w") as f:
+                        json.dump(solution_entry, f, indent=2)
+                    solutions[(task_id, gamma, backward_signals_iteration)] = (
+                        solution_entry
+                    )
+                    if solution_entry["passed"]:
+                        problem_solved = True
+                    gamma_idx += 1
+                attempt_idx += 1
 
             if not problem_solved and DYNAMIC_SIGNAL__BACKWARD in dynamic_signals:
                 # should have some counter on how many backward iterations we want. like 3 is ok
@@ -340,7 +364,7 @@ def get_dynamic_signals(args):
         dynamic_signals_str.append("p")
         dynamic_signals.append(DYNAMIC_SIGNAL__PARTIAL_EXECUTION)
     if args.n:
-        dynamic_signals_str.append("n")
+        dynamic_signals_str.append(f"ns{args.s}t{args.t}")
         dynamic_signals.append(DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION)
     if args.b:
         dynamic_signals_str.append("b")
@@ -369,6 +393,9 @@ def main():
         help="Type of prompt to use. Must be one of: " + ", ".join(VALID_PROMPT_TYPES),
     )
     parser.add_argument("--prod", action="store_true")
+    parser.add_argument("--s", type=int, default=2, help="Nearest Future Sequences")
+    parser.add_argument("--t", type=float, default=0.1, help="Temp")
+    parser.add_argument("--r", type=int, default=1, help="Retries")
 
     args = parser.parse_args()
 
@@ -378,7 +405,6 @@ def main():
     results_dir = os.path.join(
         "results", "mbpp", sanitized_model_name, dynamic_signals_str
     )
-    # results_dir = os.path.join("results", "mbpp", sanitized_model_name)
     os.makedirs(results_dir, exist_ok=True)
     backward_signals_iterations = 0
     if DYNAMIC_SIGNAL__BACKWARD in dynamic_signals:
@@ -393,6 +419,9 @@ def main():
         prompt_type,
         backward_signals_iterations=backward_signals_iterations,
         prod=args.prod,
+        nearest_future_samples=args.s,
+        temperature=args.t,
+        attemps_count=args.r,
     )
 
 

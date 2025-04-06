@@ -26,6 +26,7 @@ class CodeGenerationAdapter:
         dynamic_signals,
         prompt_type,
         nearest_future_samples=None,
+        temperature=None,
         max_function_body_lines=None,
         backward_signals=(),
     ):
@@ -42,6 +43,7 @@ class CodeGenerationAdapter:
         self.program_executions = OrderedDict()
         self.execution_manager = ExecutionManager(tokenizer, function_signature)
         self.nearest_future_samples = nearest_future_samples
+        self.temperature = temperature
         self.max_function_body_lines = max_function_body_lines
         self.backward_signals = backward_signals
 
@@ -78,6 +80,7 @@ class CodeGenerationAdapter:
             "input_ids": input_ids.clone().to(self.device),
             "attention_mask": attention_mask.to(self.device),
         }
+        function_name, args_str, _ = parse_mbpp_assert_statement(self.test_case[0])
         outputs = generate_code_solutions(
             self.model,
             self.tokenizer,
@@ -85,8 +88,10 @@ class CodeGenerationAdapter:
             prompt=None,
             dsgi_manager=None,
             num_return_sequences=self.nearest_future_samples,
+            temperature=self.temperature,
             inputs=inputs,
             max_function_body_lines=self.max_function_body_lines,
+            function_name=function_name,
             do_sample=True,
             prompt_type=self.prompt_type,
         )

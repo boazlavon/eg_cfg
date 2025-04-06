@@ -1,4 +1,5 @@
 import torch
+import re
 import ast
 import black
 import tokenize
@@ -73,10 +74,25 @@ def is_valid_python(code: str) -> bool:
         return False
 
 
+def has_function_definition(code, function_name):
+    pattern = rf"def\s+.*{re.escape(function_name)}\s*\("
+    return re.search(pattern, code) is not None
+
+
 class CodeGenStopCriteria(StoppingCriteria):
-    def __init__(self, tokenizer, max_function_body_lines=None):
+    def __init__(
+        self,
+        tokenizer,
+        max_function_body_lines=None,
+        function_name=None,
+        is_instruct=True,
+    ):
         self.tokenizer = tokenizer
         self.max_function_body_lines = max_function_body_lines
+        self.function_name = function_name
+        self.is_instruct = is_instruct
+        self.code_started = False
+        self.code_ended = False
 
         self.def_reached = False
         self.inside_function_body = False
@@ -94,6 +110,67 @@ class CodeGenStopCriteria(StoppingCriteria):
         self.stopped = False
         self.discard_last_token = False
 
+    def check_stop_instruct(
+        self, token: str, count_lines: bool = True
+    ) -> tuple[bool, bool]:
+        should_stop = False
+        discard_token = False
+
+        self.generated_text += token
+        if token == "<|endoftext|>":
+            should_stop = True
+
+        if not self.code_started and "```" in token:
+            self.code_started = True
+            return should_stop, discard_token
+
+        if self.code_started and not self.code_ended and "```" in token:
+            self.code_ended = True
+            should_stop = True
+            discard_token = True
+            return should_stop, discard_token
+
+        def_count = self.generated_text.count("def")
+        if (
+            self.code_started
+            and not self.def_reached
+            and self.function_name is not None
+        ):
+            self.def_reached = has_function_definition(
+                self.generated_text, self.function_name
+            )
+
+        elif self.def_reached and "\n" in self.previous_token:
+            if (
+                token.startswith(" ")
+                or token.startswith("\t")
+                or token.startswith("\n")
+            ):
+                if not self.inside_function_body:
+                    self.inside_function_body = True
+                    if count_lines:
+                        self.function_body_line_count = 1
+                else:
+                    if count_lines:
+                        self.function_body_line_count += 1
+
+                if (
+                    count_lines
+                    and self.max_function_body_lines is not None
+                    and self.function_body_line_count >= self.max_function_body_lines
+                ):
+                    should_stop = True
+                    discard_token = True
+
+            elif self.inside_function_body:
+                pass
+                # We've exited the function body
+                # should_stop = True
+                # discard_token = True
+
+        self.previous_token = token
+        return should_stop, discard_token
+
     def check_stop(self, token: str, count_lines: bool = True) -> tuple[bool, bool]:
         should_stop = False
         discard_token = False
@@ -106,9 +183,13 @@ class CodeGenStopCriteria(StoppingCriteria):
             self.def_reached = True
 
         if self.def_reached and "\n" in self.previous_token:
-            stripped = token.lstrip("\n")
-
-            if stripped.startswith(" ") or stripped.startswith("\t"):
+            # stripped = token.lstrip("\n")
+            # if stripped.startswith(" ") or stripped.startswith("\t"):
+            if (
+                token.startswith(" ")
+                or token.startswith("\t")
+                or token.startswith("\n")
+            ):
                 if not self.inside_function_body:
                     self.inside_function_body = True
                     if count_lines:
@@ -138,7 +219,10 @@ class CodeGenStopCriteria(StoppingCriteria):
     ) -> bool:
         last_token_id = input_ids[0, -1]
         token_str = self.tokenizer.decode([last_token_id])
-        should_stop, discard_token = self.check_stop(token_str)
+        if self.is_instruct:
+            should_stop, discard_token = self.check_stop_instruct(token_str)
+        else:
+            should_stop, discard_token = self.check_stop(token_str)
 
         self.discard_last_token = discard_token
         return should_stop
@@ -164,9 +248,9 @@ def raw_outputs_to_new_code(
                 ].rstrip()
             if validate:
                 assert is_valid_python(new_code)
-                new_code = black.format_str(
-                    new_code, mode=black.FileMode(line_length=1024)
-                )
+                # new_code = black.format_str(
+                #     new_code, mode=black.FileMode(line_length=1024)
+                # )
         except:
             continue
         new_codes.append(new_code)
@@ -220,8 +304,10 @@ def generate_code_solutions(
     dsgi_manager,
     max_new_tokens=MAX_NEW_TOKENS,
     num_return_sequences=1,
+    temperature=0.1,
     inputs=None,
     max_function_body_lines=None,
+    function_name=None,
     do_sample=False,
     prompt_type=None,
 ):
@@ -229,7 +315,11 @@ def generate_code_solutions(
         inputs = tokenizer(prompt, return_tensors="pt").to(device)
 
     stop_criteria_list = [
-        CodeGenStopCriteria(tokenizer, max_function_body_lines=max_function_body_lines)
+        CodeGenStopCriteria(
+            tokenizer,
+            max_function_body_lines=max_function_body_lines,
+            function_name=function_name,
+        )
         for _ in range(num_return_sequences)
     ]
     stopping_criteria = StoppingCriteriaList(stop_criteria_list)
@@ -260,27 +350,27 @@ def generate_code_solutions(
             "do_sample": True,
             "num_return_sequences": num_return_sequences,
             "top_p": 0.95,
-            "temperature": 0.8,
+            "temperature": temperature,
         }
     else:
         sampling_kwargs = {
             "do_sample": False,
-            "num_return_sequences": 1,
+            # "num_return_sequences": 1,
         }
 
     with torch.no_grad():
         # /a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/transformers/generation/utils.py
         outputs = model.generate(
             **inputs,
+            # inputs['input_ids'],
             max_new_tokens=max_new_tokens,
             eos_token_id=eos_token_id,
             pad_token_id=pad_token_id,
             num_beams=1,
             stopping_criteria=stopping_criteria,
             dsgi_manager=dsgi_manager,
-            **sampling_kwargs
+            **sampling_kwargs,
         )
-
     processed_outputs = []
     for i, output_ids in enumerate(outputs):
         criteria = stop_criteria_list[i]
