@@ -1,0 +1,24 @@
+{
+  "code": "def max_occurrences(lst):\n    count_dict = {}\n    for num in lst:\n        if num in count_dict:\n            count_dict[num] += 1\n        else:\n            count_dict[num] = 1\n    max_freq = max(count_dict.values())\n    max_freq_num = [num for num, freq in count_dict.items() if freq == max_freq]\n    return (max_freq_num[0], max_freq)\n",
+  "results": {
+    "assert max_occurrences([2,3,8,4,7,9,8,2,6,5,1,6,1,2,3,2,4,6,9,1,2])==(2, 5)": {
+      "result": true,
+      "time": 0.1754617691040039,
+      "error": null
+    },
+    "assert max_occurrences([2,3,8,4,7,9,8,7,9,15,14,10,12,13,16,16,18])==(8, 2)": {
+      "result": true,
+      "time": 0.1778697967529297,
+      "error": null
+    },
+    "assert max_occurrences([10,20,20,30,40,90,80,50,30,20,50,10])==(20, 3)": {
+      "result": true,
+      "time": 0.1841738224029541,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

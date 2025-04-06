@@ -1,0 +1,24 @@
+{
+  "code": "def remove_Occ(s, ch):\n    first_index = s.find(ch)\n    if first_index != -1:\n        last_index = s.rfind(ch)\n        return s[:first_index] + s[first_index + 1 : last_index] + s[last_index + 1 :]\n    return s\n",
+  "results": {
+    "assert remove_Occ(\"hello\",\"l\") == \"heo\"": {
+      "result": true,
+      "time": 0.18106794357299805,
+      "error": null
+    },
+    "assert remove_Occ(\"abcda\",\"a\") == \"bcd\"": {
+      "result": true,
+      "time": 0.17385220527648926,
+      "error": null
+    },
+    "assert remove_Occ(\"PHP\",\"P\") == \"H\"": {
+      "result": true,
+      "time": 0.18160271644592285,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

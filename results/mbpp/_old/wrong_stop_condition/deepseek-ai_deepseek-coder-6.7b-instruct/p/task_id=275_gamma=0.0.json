@@ -1,0 +1,24 @@
+{
+  "code": "def get_Position(arr, n, m):\n    # Remove the mth element from the array\n    arr.pop(m - 1)\n    # Subtract 1 from n as the array index starts from 0\n    n -= 1\n    # Find the position of the last removed element\n    pos = n - arr[::-1].index(m)\n    return pos\n",
+  "results": {
+    "assert get_Position([2,5,4],3,2) == 2": {
+      "result": false,
+      "time": 0.19077086448669434,
+      "error": null
+    },
+    "assert get_Position([4,3],2,2) == 2": {
+      "result": false,
+      "time": 0.19632744789123535,
+      "error": null
+    },
+    "assert get_Position([1,2,3,4],4,1) == 4": {
+      "result": false,
+      "time": 0.20766997337341309,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

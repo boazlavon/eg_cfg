@@ -1,0 +1,24 @@
+{
+  "code": "import heapq as hq\n\n\ndef large_product(list1, list2, k):\n    products = []\n    for i in list1:\n        for j in list2:\n            products.append(i * j)\n    largest_products = hq.nlargest(k, products)\n    return largest_products\n",
+  "results": {
+    "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],3)==[60, 54, 50]": {
+      "result": true,
+      "time": 0.2792069911956787,
+      "error": null
+    },
+    "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],4)==[60, 54, 50, 48]": {
+      "result": true,
+      "time": 0.26748156547546387,
+      "error": null
+    },
+    "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],5)==[60, 54, 50, 48, 45]": {
+      "result": true,
+      "time": 0.38681578636169434,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

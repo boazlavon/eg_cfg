@@ -1,0 +1,24 @@
+{
+  "code": "import nltk\nfrom nltk.tokenize import word_tokenize\n\n\ndef find_adverb_position(sentence):\n    words = word_tokenize(sentence)\n    pos_tags = nltk.pos_tag(words)\n    adverbs = [(i, word[0]) for i, word in enumerate(pos_tags) if word[1] in [\"RB\", \"RBR\", \"RBS\"]]\n    if adverbs:\n        return adverbs[0]\n    else:\n        return None\n",
+  "results": {
+    "assert find_adverb_position(\"clearly!! we can see the sky\")==(0, 7, 'clearly')": {
+      "result": false,
+      "time": 0.5950412750244141,
+      "error": null
+    },
+    "assert find_adverb_position(\"seriously!! there are many roses\")==(0, 9, 'seriously')": {
+      "result": false,
+      "time": 0.5904016494750977,
+      "error": null
+    },
+    "assert find_adverb_position(\"unfortunately!! sita is going to home\")==(0, 13, 'unfortunately')": {
+      "result": false,
+      "time": 0.6130211353302002,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def find_lucas(n):\n    if n == 0:\n        return 2\n    if n == 1:\n        return 1\n    lucas_0 = 2\n    lucas_1 = 1\n    for _ in range(2, n + 1):\n        lucas_n = lucas_0 + lucas_1\n        lucas_0 = lucas_1\n        lucas_1 = lucas_n\n    return lucas_1\n",
+  "results": {
+    "assert find_lucas(9) == 76": {
+      "result": true,
+      "time": 0.0999143123626709,
+      "error": null
+    },
+    "assert find_lucas(4) == 7": {
+      "result": true,
+      "time": 0.10196948051452637,
+      "error": null
+    },
+    "assert find_lucas(3) == 4": {
+      "result": true,
+      "time": 0.10277867317199707,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

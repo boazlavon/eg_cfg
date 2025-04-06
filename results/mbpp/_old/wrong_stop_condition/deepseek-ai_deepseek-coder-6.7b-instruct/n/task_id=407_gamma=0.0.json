@@ -1,0 +1,24 @@
+{
+  "code": "def rearrange_bigger(num):\n    num_str = str(num)\n    num_list = list(num_str)\n    num_list.sort(reverse=True)\n    if num_list[-1] == \"0\":\n        return False\n    else:\n        return int(\"\".join(num_list))\n",
+  "results": {
+    "assert rearrange_bigger(12)==21": {
+      "result": true,
+      "time": 0.17273235321044922,
+      "error": null
+    },
+    "assert rearrange_bigger(10)==False": {
+      "result": true,
+      "time": 0.1697373390197754,
+      "error": null
+    },
+    "assert rearrange_bigger(102)==120": {
+      "result": false,
+      "time": 0.16653132438659668,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

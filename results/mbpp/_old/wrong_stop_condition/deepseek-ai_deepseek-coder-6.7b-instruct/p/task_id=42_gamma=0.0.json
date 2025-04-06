@@ -1,0 +1,24 @@
+{
+  "code": "def find_Sum(arr, n):\n    freq = {}\n    for items in arr:\n        freq[items] = freq.get(items, 0) + 1\n    repeated_elements = {key: value for key, value in freq.items() if value > 1}\n    sum_repeated_elements = sum(repeated_elements.keys())\n    return sum_repeated_elements\n",
+  "results": {
+    "assert find_Sum([1,2,3,1,1,4,5,6],8) == 3": {
+      "result": false,
+      "time": 0.20210862159729004,
+      "error": null
+    },
+    "assert find_Sum([1,2,3,1,1],5) == 3": {
+      "result": false,
+      "time": 0.18938875198364258,
+      "error": null
+    },
+    "assert find_Sum([1,1,2],3) == 2": {
+      "result": false,
+      "time": 0.20465087890625,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

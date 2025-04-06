@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef is_decimal(s):\n    match = re.fullmatch(r\"\\d+\\.\\d{2}\", s)\n    return match is not None\n",
+  "results": {
+    "assert is_decimal('123.11') == True": {
+      "result": true,
+      "time": 0.2092888355255127,
+      "error": null
+    },
+    "assert is_decimal('0.21') == True": {
+      "result": true,
+      "time": 0.19340157508850098,
+      "error": null
+    },
+    "assert is_decimal('123.1214') == False": {
+      "result": true,
+      "time": 0.18871641159057617,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

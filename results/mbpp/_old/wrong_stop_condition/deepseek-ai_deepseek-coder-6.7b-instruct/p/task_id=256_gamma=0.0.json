@@ -1,0 +1,24 @@
+{
+  "code": "def count_Primes_nums(n):\n    if n < 2:\n        return 0\n    primes = [True] * n\n    p = 2\n    while p * p <= n:\n        if primes[p]:\n            for i in range(p * p, n, p):\n                primes[i] = False\n        p += 1\n    return sum(primes) - 2  # Subtract 2 to exclude 0 and 1\n",
+  "results": {
+    "assert count_Primes_nums(5) == 2": {
+      "result": true,
+      "time": 0.1679224967956543,
+      "error": null
+    },
+    "assert count_Primes_nums(10) == 4": {
+      "result": true,
+      "time": 0.16476750373840332,
+      "error": null
+    },
+    "assert count_Primes_nums(100) == 25": {
+      "result": true,
+      "time": 0.16039013862609863,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

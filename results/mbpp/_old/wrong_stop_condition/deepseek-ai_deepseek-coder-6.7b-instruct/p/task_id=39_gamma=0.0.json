@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\nfrom heapq import heappop, heappush\n\n\ndef rearange_string(s):\n    char_counts = Counter(s)\n    max_heap = []\n    for char, count in char_counts.items():\n        heappush(max_heap, (-count, char))\n    prev_count, prev_char = 0, \"\"\n    result = []\n    while max_heap:\n        count, char = heappop(max_heap)\n        result.append(char)\n        if prev_count < 0:\n            heappush(max_heap, (prev_count, prev_char))\n        count += 1\n        prev_count, prev_char = count, char\n    return \"\".join(result) if len(result) == len(s) else \"\"\n",
+  "results": {
+    "assert rearange_string(\"aab\")==('aba')": {
+      "result": true,
+      "time": 0.1706399917602539,
+      "error": null
+    },
+    "assert rearange_string(\"aabb\")==('abab')": {
+      "result": true,
+      "time": 0.15886163711547852,
+      "error": null
+    },
+    "assert rearange_string(\"abccdd\")==('cdabcd')": {
+      "result": true,
+      "time": 0.16169404983520508,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

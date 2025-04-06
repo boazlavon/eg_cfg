@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef check_occurences(tuples):\n    # Create a list of second elements of tuples\n    second_elements = [i[1] for i in tuples]\n    # Count the occurrences of each element in the list\n    count_dict = dict(Counter(second_elements))\n    # Create a new dictionary with tuples as keys and their counts as values\n    new_dict = {(i[0], i[1]): count_dict[i[1]] for i in tuples if i[1] in count_dict}\n    return new_dict\n",
+  "results": {
+    "assert check_occurences([(3, 1), (1, 3), (2, 5), (5, 2), (6, 3)] ) == {(1, 3): 2, (2, 5): 2, (3, 6): 1}": {
+      "result": false,
+      "time": 0.18928194046020508,
+      "error": null
+    },
+    "assert check_occurences([(4, 2), (2, 4), (3, 6), (6, 3), (7, 4)] ) == {(2, 4): 2, (3, 6): 2, (4, 7): 1}": {
+      "result": false,
+      "time": 0.18719816207885742,
+      "error": null
+    },
+    "assert check_occurences([(13, 2), (11, 23), (12, 25), (25, 12), (16, 23)] ) == {(2, 13): 1, (11, 23): 1, (12, 25): 2, (16, 23): 1}": {
+      "result": false,
+      "time": 0.1967792510986328,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

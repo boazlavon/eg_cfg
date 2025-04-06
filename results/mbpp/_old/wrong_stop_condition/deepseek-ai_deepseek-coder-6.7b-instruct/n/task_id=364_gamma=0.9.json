@@ -1,0 +1,24 @@
+{
+  "code": "def min_flip_to_make_string_alternate(s):\n    zero_start = sum((i % 2 == 0) != (c == \"0\") for i, c in enumerate(s))\n    one_start = sum((i % 2 == 0) != (c == \"1\") for i, c in enumerate(s))\n    return min(zero_start, one_start)\n",
+  "results": {
+    "assert min_flip_to_make_string_alternate(\"0001010111\") == 2": {
+      "result": true,
+      "time": 3.3521945476531982,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"001\") == 1": {
+      "result": true,
+      "time": 1.4119226932525635,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"010111011\") == 2 ": {
+      "result": true,
+      "time": 1.1292023658752441,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

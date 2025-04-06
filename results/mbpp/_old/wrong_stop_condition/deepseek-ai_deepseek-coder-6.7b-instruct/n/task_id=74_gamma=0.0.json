@@ -1,0 +1,24 @@
+{
+  "code": "def is_samepatterns(colors, patterns):\n    if len(colors) != len(patterns):\n        return False\n    color_pattern = {}\n    pattern_color = {}\n    for color, pattern in zip(colors, patterns):\n        if color not in color_pattern:\n            color_pattern[color] = pattern\n        if pattern not in pattern_color:\n            pattern_color[pattern] = color\n        if color_pattern[color] != pattern or pattern_color[pattern] != color:\n            return False\n    return True\n",
+  "results": {
+    "assert is_samepatterns([\"red\",\"green\",\"green\"], [\"a\", \"b\", \"b\"])==True ": {
+      "result": true,
+      "time": 0.10797739028930664,
+      "error": null
+    },
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\",\"b\"])==False ": {
+      "result": true,
+      "time": 0.09735608100891113,
+      "error": null
+    },
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\"])==False ": {
+      "result": true,
+      "time": 0.08569788932800293,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

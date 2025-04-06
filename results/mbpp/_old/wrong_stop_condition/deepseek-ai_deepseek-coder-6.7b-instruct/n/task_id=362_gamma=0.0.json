@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef max_occurrences(lst):\n    count = Counter(lst)\n    max_count = max(count.values())\n    max_items = [item for item, freq in count.items() if freq == max_count]\n    return max_items\n",
+  "results": {
+    "assert max_occurrences([1,2,3,1,2,3,12,4,2]) ==  2": {
+      "result": false,
+      "time": 0.21223163604736328,
+      "error": null
+    },
+    "assert max_occurrences([1,2,6,7,0,1,0,1,0]) == 1,0": {
+      "result": false,
+      "time": 0.19399666786193848,
+      "error": null
+    },
+    "assert max_occurrences([1,2,3,1,2,4,1]) == 1": {
+      "result": false,
+      "time": 0.1877293586730957,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

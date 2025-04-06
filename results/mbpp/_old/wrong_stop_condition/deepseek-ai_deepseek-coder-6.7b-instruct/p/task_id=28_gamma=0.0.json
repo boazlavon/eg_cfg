@@ -1,0 +1,24 @@
+{
+  "code": "def binomial_Coeff(n, k):\n    if k > n:\n        return 0\n    if k > n // 2:\n        k = n - k\n    res = 1\n    for i in range(k):\n        res = res * (n - i) // (i + 1)\n    return res\n",
+  "results": {
+    "assert binomial_Coeff(5,2) == 10": {
+      "result": true,
+      "time": 0.19135642051696777,
+      "error": null
+    },
+    "assert binomial_Coeff(4,3) == 4": {
+      "result": true,
+      "time": 0.18050527572631836,
+      "error": null
+    },
+    "assert binomial_Coeff(3,2) == 3": {
+      "result": true,
+      "time": 0.1858348846435547,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

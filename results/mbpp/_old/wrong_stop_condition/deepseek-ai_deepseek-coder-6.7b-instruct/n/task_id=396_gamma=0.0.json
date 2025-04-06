@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef check_char(s):\n    if re.match(r\"^(.).*\\1$\", s):\n        return \"Valid\"\n    else:\n        return \"Invalid\"\n",
+  "results": {
+    "assert check_char(\"abba\") == \"Valid\"": {
+      "result": true,
+      "time": 0.8481488227844238,
+      "error": null
+    },
+    "assert check_char(\"a\") == \"Valid\"": {
+      "result": false,
+      "time": 3.1227099895477295,
+      "error": null
+    },
+    "assert check_char(\"abcd\") == \"Invalid\"": {
+      "result": true,
+      "time": 2.1090123653411865,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

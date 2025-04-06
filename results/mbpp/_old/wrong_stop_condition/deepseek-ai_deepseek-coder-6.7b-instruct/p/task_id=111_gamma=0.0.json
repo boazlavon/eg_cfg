@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef common_in_nested_lists(nested_list):\n    # Flatten the nested list\n    flat_list = [item for sublist in nested_list for item in sublist]\n\n    # Count the frequency of each element\n    counter = Counter(flat_list)\n\n    # Find the common elements\n    common_elements = [item for item, count in counter.items() if count == len(nested_list)]\n\n    return sorted(common_elements)\n",
+  "results": {
+    "assert common_in_nested_lists([[12, 18, 23, 25, 45], [7, 12, 18, 24, 28], [1, 5, 8, 12, 15, 16, 18]])==[18, 12]": {
+      "result": false,
+      "time": 0.2648775577545166,
+      "error": null
+    },
+    "assert common_in_nested_lists([[12, 5, 23, 25, 45], [7, 11, 5, 23, 28], [1, 5, 8, 18, 23, 16]])==[5,23]": {
+      "result": true,
+      "time": 0.2652091979980469,
+      "error": null
+    },
+    "assert common_in_nested_lists([[2, 3,4, 1], [4, 5], [6,4, 8],[4, 5], [6, 8,4]])==[4]": {
+      "result": true,
+      "time": 0.24292659759521484,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

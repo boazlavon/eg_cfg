@@ -1,0 +1,24 @@
+{
+  "code": "def start_withp(words):\n    pair = ()\n    for word in words:\n        if word.startswith(\"P\"):\n            if not pair:\n                pair += (word,)\n            else:\n                pair += (word.split()[1],)\n                break\n    return pair\n",
+  "results": {
+    "assert start_withp([\"Python PHP\", \"Java JavaScript\", \"c c++\"])==('Python', 'PHP')": {
+      "result": false,
+      "time": 0.1844477653503418,
+      "error": null
+    },
+    "assert start_withp([\"Python Programming\",\"Java Programming\"])==('Python','Programming')": {
+      "result": false,
+      "time": 0.18024134635925293,
+      "error": null
+    },
+    "assert start_withp([\"Pqrst Pqr\",\"qrstuv\"])==('Pqrst','Pqr')": {
+      "result": false,
+      "time": 0.18179678916931152,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

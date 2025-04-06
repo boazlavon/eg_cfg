@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef find_Product(arr, n):\n    freq = Counter(arr)\n    product = 1\n    for key, value in freq.items():\n        if value == 1:\n            product *= key\n    return product\n",
+  "results": {
+    "assert find_Product([1,1,2,3],4) == 6": {
+      "result": true,
+      "time": 0.0785071849822998,
+      "error": null
+    },
+    "assert find_Product([1,2,3,1,1],5) == 6": {
+      "result": true,
+      "time": 0.07438111305236816,
+      "error": null
+    },
+    "assert find_Product([1,1,4,5,6],5) == 120": {
+      "result": true,
+      "time": 0.07785964012145996,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

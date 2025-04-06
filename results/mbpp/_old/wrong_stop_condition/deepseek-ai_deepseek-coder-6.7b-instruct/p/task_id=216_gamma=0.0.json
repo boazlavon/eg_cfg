@@ -1,0 +1,24 @@
+{
+  "code": "def check_subset_list(main_list, sub_list):\n    flattened_main_list = [item for sublist in main_list for item in sublist]\n    for sub in sub_list:\n        if not set(sub).issubset(set(flattened_main_list)):\n            return False\n    return True\n",
+  "results": {
+    "assert check_subset_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],[[12, 18, 23, 25, 45], [7, 11, 19, 24, 28], [1, 5, 8, 18, 15, 16]])==False": {
+      "result": false,
+      "time": 0.24233698844909668,
+      "error": null
+    },
+    "assert check_subset_list([[2, 3, 1], [4, 5], [6, 8]],[[4, 5], [6, 8]])==True": {
+      "result": true,
+      "time": 0.21683120727539062,
+      "error": null
+    },
+    "assert check_subset_list([['a', 'b'], ['e'], ['c', 'd']],[['g']])==False": {
+      "result": true,
+      "time": 0.22275018692016602,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

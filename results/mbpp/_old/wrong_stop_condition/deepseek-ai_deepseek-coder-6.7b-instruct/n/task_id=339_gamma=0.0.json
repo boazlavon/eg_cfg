@@ -1,0 +1,24 @@
+{
+  "code": "def find_Divisor(start, end):\n    divisors = []\n    for i in range(start, end + 1):\n        for j in range(1, i + 1):\n            if i % j == 0:\n                divisors.append(j)\n    max_divisor = max(set(divisors), key=divisors.count)\n    return max_divisor\n",
+  "results": {
+    "assert find_Divisor(2,2) == 2": {
+      "result": false,
+      "time": 0.17024898529052734,
+      "error": null
+    },
+    "assert find_Divisor(2,5) == 2": {
+      "result": false,
+      "time": 0.17258310317993164,
+      "error": null
+    },
+    "assert find_Divisor(5,10) == 2": {
+      "result": false,
+      "time": 0.17199087142944336,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

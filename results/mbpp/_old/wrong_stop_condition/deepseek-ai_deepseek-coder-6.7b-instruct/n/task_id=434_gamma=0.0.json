@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef text_match_one(text):\n    pattern = \"ab+\"\n    if re.search(pattern, text):\n        return \"Found a match!\"\n    else:\n        return \"Not matched!\"\n",
+  "results": {
+    "assert text_match_one(\"ac\")==('Not matched!')": {
+      "result": true,
+      "time": 0.1747438907623291,
+      "error": null
+    },
+    "assert text_match_one(\"dc\")==('Not matched!')": {
+      "result": true,
+      "time": 0.17366433143615723,
+      "error": null
+    },
+    "assert text_match_one(\"abba\")==('Found a match!')": {
+      "result": true,
+      "time": 0.17156147956848145,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

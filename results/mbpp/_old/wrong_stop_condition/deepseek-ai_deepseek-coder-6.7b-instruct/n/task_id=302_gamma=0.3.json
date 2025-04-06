@@ -1,0 +1,24 @@
+{
+  "code": "def set_Bit_Number(n):\n    binary = bin(n)[2:]  # Convert to binary and remove the '0b' prefix\n    binary = binary[::-1]  # Reverse the binary string\n    for i in range(len(binary)):\n        if binary[i] == \"1\":\n            return 2**i  # Return the 2 raised to the power of the index\n",
+  "results": {
+    "assert set_Bit_Number(6) == 4": {
+      "result": false,
+      "time": 0.07781147956848145,
+      "error": null
+    },
+    "assert set_Bit_Number(10) == 8": {
+      "result": false,
+      "time": 0.09954452514648438,
+      "error": null
+    },
+    "assert set_Bit_Number(18) == 16": {
+      "result": false,
+      "time": 0.11092615127563477,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def is_valid_parenthese(s):\n    stack = []\n    mapping = {\")\": \"(\", \"}\": \"{\", \"]\": \"[\"}\n    for char in s:\n        if char in mapping:\n            top_element = stack.pop() if stack else \"#\"\n            if mapping[char] != top_element:\n                return False\n        else:\n            stack.append(char)\n    return not stack\n",
+  "results": {
+    "assert is_valid_parenthese(\"(){}[]\")==True": {
+      "result": true,
+      "time": 0.17442989349365234,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"()[{)}\")==False": {
+      "result": true,
+      "time": 0.17251205444335938,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"()\")==True": {
+      "result": true,
+      "time": 0.16941452026367188,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

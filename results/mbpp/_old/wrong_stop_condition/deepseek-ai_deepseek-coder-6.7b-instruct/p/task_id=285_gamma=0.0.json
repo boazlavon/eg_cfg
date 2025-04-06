@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef text_match_two_three(text):\n    pattern = \"ab{2,3}\"\n    if re.search(pattern, text):\n        return \"Found a match!\"\n    else:\n        return \"Not matched!\"\n",
+  "results": {
+    "assert text_match_two_three(\"ac\")==('Not matched!')": {
+      "result": true,
+      "time": 0.1728072166442871,
+      "error": null
+    },
+    "assert text_match_two_three(\"dc\")==('Not matched!')": {
+      "result": true,
+      "time": 0.1652231216430664,
+      "error": null
+    },
+    "assert text_match_two_three(\"abbbba\")==('Found a match!')": {
+      "result": true,
+      "time": 0.17041516304016113,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

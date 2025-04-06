@@ -1,0 +1,24 @@
+{
+  "code": "def first_non_repeating_character(s):\n    count = {}\n    for char in s:\n        if char in count:\n            count[char] += 1\n        else:\n            count[char] = 1\n    for char in s:\n        if count[char] == 1:\n            return char\n    return None\n",
+  "results": {
+    "assert first_non_repeating_character(\"abcabc\") == None": {
+      "result": true,
+      "time": 0.18121647834777832,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"abc\") == \"a\"": {
+      "result": true,
+      "time": 0.17326688766479492,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ababc\") == \"c\"": {
+      "result": true,
+      "time": 0.17490196228027344,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def find_demlo(num):\n    num = str(num)\n    length = len(num)\n    half = length // 2\n    left = num[:half]\n    right = num[half:][::-1]\n    if length % 2 == 0:\n        return left + right\n    else:\n        mid = num[half]\n        return left + mid + right\n",
+  "results": {
+    "assert find_demlo(\"111111\") == '12345654321'": {
+      "result": false,
+      "time": 0.10260653495788574,
+      "error": null
+    },
+    "assert find_demlo(\"1111\") == '1234321'": {
+      "result": false,
+      "time": 0.08795475959777832,
+      "error": null
+    },
+    "assert find_demlo(\"13333122222\") == '123456789101110987654321'": {
+      "result": false,
+      "time": 0.08468365669250488,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

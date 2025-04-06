@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef most_occurrences(strings):\n    words = \" \".join(strings).split()\n    counts = Counter(words)\n    return counts.most_common(1)[0][0]\n",
+  "results": {
+    "assert most_occurrences([\"UTS is best for RTF\", \"RTF love UTS\", \"UTS is best\"] ) == 'UTS'": {
+      "result": true,
+      "time": 0.17819547653198242,
+      "error": null
+    },
+    "assert most_occurrences([\"Its been a great year\", \"this year is so worse\", \"this year is okay\"] ) == 'year'": {
+      "result": true,
+      "time": 0.17316055297851562,
+      "error": null
+    },
+    "assert most_occurrences([\"Families can be reunited\", \"people can be reunited\", \"Tasks can be achieved \"] ) == 'can'": {
+      "result": true,
+      "time": 0.1814098358154297,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}
