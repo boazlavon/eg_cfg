@@ -250,49 +250,47 @@ def generate_mbpp_solutions(
         while backward_signals_iteration <= backward_signals_iterations and (
             not problem_solved
         ):
-            attempt_idx = 0
-            while attempt_idx < attemps_count and (not problem_solved):
-                gamma_idx = 0
-                while (gamma_idx < len(gammas)) and (not problem_solved):
+            for gamma in gammas:
+                print(f"gamma={gamma}")
+                if gamma > 0 and problem_solved:
+                    print(f"Skip gamma={gamma} problem is solved")
+                    continue
+                solution_entry_path = get_solution_filepath(
+                    results_dir, task_id, gamma, backward_signals_iteration
+                )
+                if os.path.exists(solution_entry_path):
+                    continue
+                    # if backward_signals_iteration:
+                    #     print(
+                    #         f"🟡 Solution exists: task_id={task_id}, gamma={gamma} backward_iterations={backward_signals_iteration}"
+                    #     )
+                    # else:
+                    #     print(
+                    #         f"🟡 Solution exists: task_id={task_id}, gamma={gamma}"
+                    #     )
+                    # load solution if invalid
+                    # with open(solution_entry_path, "r") as f:
+                    #     try:
+                    #         solution_entry = json.load(f)
+                    #     except:
+                    #         pass
+                    #     else:
+                    #         solutions[
+                    #             (task_id, gamma, backward_signals_iteration)
+                    #         ] = solution_entry
+                    #         problem_solved = solution_entry["passed"]
+
+                # touch the file to reserve it
+                with open(solution_entry_path, "a"):
+                    pass
+
+                for attempt_idx in range(attemps_count):
+                    print(f"Attemp #{attempt_idx + 1}")
                     if DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION in dynamic_signals:
                         random.seed(40 + attempt_idx)
-                    gamma = gammas[gamma_idx]
-                    if gamma > 0 and problem_solved:
-                        print(f"🟡 Skip gamma={gamma} problem is solved")
-                        continue
 
                     general_error = None
                     tb = None
-                    solution_entry_path = get_solution_filepath(
-                        results_dir, task_id, gamma, backward_signals_iteration
-                    )
-
-                    if os.path.exists(solution_entry_path) and False:
-                        if backward_signals_iteration:
-                            print(
-                                f"🟡 Solution exists: task_id={task_id}, gamma={gamma} backward_iterations={backward_signals_iteration}"
-                            )
-                        else:
-                            print(
-                                f"🟡 Solution exists: task_id={task_id}, gamma={gamma}"
-                            )
-                        # load solution if invalid
-                        with open(solution_entry_path, "r") as f:
-                            try:
-                                solution_entry = json.load(f)
-                            except:
-                                pass
-                            else:
-                                solutions[
-                                    (task_id, gamma, backward_signals_iteration)
-                                ] = solution_entry
-                                problem_solved = solution_entry["passed"]
-                        gamma_idx += 1
-                        continue
-
-                    # touch the file to reserve it
-                    with open(solution_entry_path, "a"):
-                        pass
 
                     try:
                         solution = try_generate_code_solution(
@@ -327,15 +325,15 @@ def generate_mbpp_solutions(
                     solution_entry = format_results(
                         solution, solution_results, general_error, tb
                     )
-                    with open(solution_entry_path, "w") as f:
-                        json.dump(solution_entry, f, indent=2)
                     solutions[(task_id, gamma, backward_signals_iteration)] = (
                         solution_entry
                     )
                     if solution_entry["passed"]:
                         problem_solved = True
-                    gamma_idx += 1
-                attempt_idx += 1
+                        break
+
+                with open(solution_entry_path, "w") as f:
+                    json.dump(solution_entry, f, indent=2)
 
             if not problem_solved and DYNAMIC_SIGNAL__BACKWARD in dynamic_signals:
                 # should have some counter on how many backward iterations we want. like 3 is ok

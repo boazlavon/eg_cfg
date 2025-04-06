@@ -100,8 +100,7 @@ SUPPORTED_DYNAMIC_SIGNALS = (
     DYNAMIC_SIGNAL__BACKWARD,
 )
 
-GAMMAS = (0.0, 0.1, 0.3, 0.5, 0.7, 0.9)
-# GAMMAS = (0.0, 0.9)
+GAMMAS = (0.0, 0.1, 0.3, 0.5, 0.7, 0.9, 1)
 FILENAME_TEMPLATE = "task_id={task_id}_gamma={gamma}.json"
 FILENAME_TEMPLATE_BACKWARD_SIGNAL = (
     "task_id={task_id}_gamma={gamma}_b={backward_signals_iteration}.json"
