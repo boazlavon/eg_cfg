@@ -1,11 +1,26 @@
 #!/bin/sh -x
 #export PARTITION=gpu-h100-killable
-export PARTITION=gpu-ai
+#export PARTITION=gpu-ai
+export PARTITION=killable
 export GPUS_COUNT=1
 export CPUS_COUNT=1
 export TOKENIZERS_PARALLELISM=false
-export MODEL_NAME=meta-llama/Llama-3.2-1B
-#export MODEL_NAME=google/gemma-3-1b-it
+
+export MODEL_NAME=deepseek-ai/deepseek-coder-1.3b-instruct
+export PROMPT_TYPE=deepseek_instruct
+
+#export MODEL_NAME=deepseek-ai/deepseek-coder-6.7b-instruct
+#export PROMPT_TYPE=deepseek_instruct
+
+#export MODEL_NAME=deepseek-ai/deepseek-coder-1.3b-base
+#export PROMPT_TYPE=deepseek_base
+
+#export MODEL_NAME=deepseek-ai/deepseek-coder-6.7b-base
+#export PROMPT_TYPE=deepseek_base
+
+#export MODEL_NAME=Qwen/CodeQwen1.5-7B-Chat
+#export PROMPT_TYPE=deepseek_instruct
+
 model_name=$(echo $MODEL_NAME | sed 's_/_\__g')
 export RUN="${model_name}_${GPUS_COUNT}_gpus"
 export PYTHONPATH=$PYTHONPATH:/home/ai_center/ai_users/boazlavon/data/code/dsgi
