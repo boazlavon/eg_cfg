@@ -267,7 +267,7 @@ def generate_mbpp_solutions(
                         results_dir, task_id, gamma, backward_signals_iteration
                     )
 
-                    if os.path.exists(solution_entry_path):
+                    if os.path.exists(solution_entry_path) and False:
                         if backward_signals_iteration:
                             print(
                                 f"🟡 Solution exists: task_id={task_id}, gamma={gamma} backward_iterations={backward_signals_iteration}"

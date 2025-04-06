@@ -80,7 +80,7 @@ class CodeGenerationAdapter:
             "input_ids": input_ids.clone().to(self.device),
             "attention_mask": attention_mask.to(self.device),
         }
-        function_name, args_str, _ = parse_mbpp_assert_statement(self.test_case[0])
+        function_name, args_str, _ = parse_mbpp_assert_statement(self.test_cases[0])
         outputs = generate_code_solutions(
             self.model,
             self.tokenizer,
@@ -104,7 +104,7 @@ class CodeGenerationAdapter:
         )
         new_codes = list(set(new_codes))
         executable_partial_programs = []
-        for new_code in new_codes:
+        for idx, new_code in enumerate(new_codes):
             try:
                 executable_partial_program_code = (
                     self.execution_manager.extract_partial_executable_program(new_code)
