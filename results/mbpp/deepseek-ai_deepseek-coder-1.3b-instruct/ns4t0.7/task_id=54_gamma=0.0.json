@@ -1,0 +1,24 @@
+{
+  "code": "def counting_sort(arr):\n    max_val = max(arr)\n    count = [0] * (max_val + 1)\n    for num in arr:\n        count[num] += 1\n    sorted_arr = []\n    for i, frequency in enumerate(count):\n        sorted_arr.extend([i] * frequency)\n    return sorted_arr\n",
+  "results": {
+    "assert counting_sort([1,23,4,5,6,7,8]) == [1, 4, 5, 6, 7, 8, 23]": {
+      "result": true,
+      "time": 0.20791840553283691,
+      "error": null
+    },
+    "assert counting_sort([12, 9, 28, 33, 69, 45]) == [9, 12, 28, 33, 45, 69]": {
+      "result": true,
+      "time": 0.18112516403198242,
+      "error": null
+    },
+    "assert counting_sort([8, 4, 14, 3, 2, 1]) == [1, 2, 3, 4, 8, 14]": {
+      "result": true,
+      "time": 0.17063117027282715,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

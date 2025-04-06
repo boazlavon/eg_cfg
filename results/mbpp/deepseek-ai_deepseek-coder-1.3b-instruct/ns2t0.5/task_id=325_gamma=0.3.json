@@ -1,0 +1,24 @@
+{
+  "code": "import math\n\n\ndef get_Min_Squares(n):\n    count = 0\n    while n > 0:\n        square_root = math.sqrt(n)\n        if square_root.is_integer():\n            n -= square_root**2\n            count += 1\n        else:\n            n -= 1\n            count += 1\n    return count\n",
+  "results": {
+    "assert get_Min_Squares(6) == 3": {
+      "result": false,
+      "time": 13.266105890274048,
+      "error": "Timeout"
+    },
+    "assert get_Min_Squares(2) == 2": {
+      "result": false,
+      "time": 11.852466583251953,
+      "error": "Timeout"
+    },
+    "assert get_Min_Squares(4) == 1": {
+      "result": false,
+      "time": 12.84063172340393,
+      "error": "Timeout"
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": true
+}

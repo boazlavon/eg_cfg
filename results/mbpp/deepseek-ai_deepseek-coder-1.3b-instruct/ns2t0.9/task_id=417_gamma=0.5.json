@@ -1,0 +1,24 @@
+{
+  "code": "def group_tuples(tuples):\n    first_elements = [t[0] for t in tuples]\n    groups = []\n    current_group = []\n    for i, element in enumerate(first_elements):\n        if i == 0 or first_elements[i - 1] == element:\n            current_group.append(tuples[i])\n        else:\n            groups.append(tuple(current_group))\n            current_group = [tuples[i]]\n    groups.append(tuple(current_group))\n    return groups\n",
+  "results": {
+    "assert group_tuples([('x', 'y'), ('x', 'z'), ('w', 't')]) == [('x', 'y', 'z'), ('w', 't')]": {
+      "result": false,
+      "time": 0.23683500289916992,
+      "error": null
+    },
+    "assert group_tuples([('a', 'b'), ('a', 'c'), ('d', 'e')]) == [('a', 'b', 'c'), ('d', 'e')]": {
+      "result": false,
+      "time": 0.24214935302734375,
+      "error": null
+    },
+    "assert group_tuples([('f', 'g'), ('f', 'g'), ('h', 'i')]) == [('f', 'g', 'g'), ('h', 'i')]": {
+      "result": false,
+      "time": 0.24125003814697266,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

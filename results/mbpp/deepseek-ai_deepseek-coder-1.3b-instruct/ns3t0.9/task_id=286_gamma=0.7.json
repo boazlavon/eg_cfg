@@ -1,0 +1,24 @@
+{
+  "code": "def max_sub_array_sum_repeated(nums, k, m):\n    n = len(nums)\n    prefix_sum = [0] * (n + 1)\n    for i in range(n):\n        prefix_sum[i + 1] = prefix_sum[i] + nums[i]\n    max_sum = float(\"-inf\")\n    for i in range(n):\n        cur_sum = prefix_sum[i + 1] - prefix_sum[i + 1 - m]\n        max_sum = max(max_sum, cur_sum)\n    return max_sum\n",
+  "results": {
+    "assert max_sub_array_sum_repeated([10, 20, -30, -1], 4, 3) == 30": {
+      "result": false,
+      "time": 0.12873625755310059,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, 10, 20], 3, 2) == 59": {
+      "result": false,
+      "time": 0.14687395095825195,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, -2, -3], 3, 3) == -1": {
+      "result": false,
+      "time": 0.14980626106262207,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

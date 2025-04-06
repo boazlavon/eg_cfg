@@ -1,0 +1,24 @@
+{
+  "code": "def colon_tuplex(tup, index, value):\n    tup_list = list(tup)\n    if index < len(tup_list):\n        tup_list[index] = value\n    else:\n        raise IndexError(\"Index out of range\")\n    return tuple(tup_list)\n",
+  "results": {
+    "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True) ": {
+      "result": false,
+      "time": 0.20941781997680664,
+      "error": null
+    },
+    "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,100)==((\"HELLO\", 5, [100],True))": {
+      "result": false,
+      "time": 0.2047736644744873,
+      "error": null
+    },
+    "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,500)==(\"HELLO\", 5, [500], True)": {
+      "result": false,
+      "time": 0.20386600494384766,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

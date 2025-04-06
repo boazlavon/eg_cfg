@@ -1,0 +1,24 @@
+{
+  "code": "def sum_of_alternates(tup):\n    alternates = [x for i, x in enumerate(tup) if i % 2 == 0]\n    return tuple(sum(alternates), sum(tup) - sum(alternates))\n",
+  "results": {
+    "assert sum_of_alternates((5, 6, 3, 6, 10, 34)) == (46, 18)": {
+      "result": false,
+      "time": 0.19442033767700195,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 2, 3, 4, 5)) == (6, 9)": {
+      "result": false,
+      "time": 0.17670941352844238,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 7, 8, 9, 4, 5)) == (21, 18)": {
+      "result": false,
+      "time": 0.19968342781066895,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

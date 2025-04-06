@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef change_date_format(date):\n    # The regular expression pattern for the date format\n    pattern = r\"(\\d{2})-(\\d{2})-(\\d{4})\"\n\n    # The replacement string for the date format\n    replacement = r\"\\2-\\1-\\3\"\n\n    # Use the re.sub function to replace the date\n    new_date = re.sub(pattern, replacement, date)\n\n    return new_date\n",
+  "results": {
+    "assert change_date_format(\"2026-01-02\") == '02-01-2026'": {
+      "result": false,
+      "time": 0.2023468017578125,
+      "error": null
+    },
+    "assert change_date_format(\"2020-11-13\") == '13-11-2020'": {
+      "result": false,
+      "time": 0.18883538246154785,
+      "error": null
+    },
+    "assert change_date_format(\"2021-04-26\") == '26-04-2021'": {
+      "result": false,
+      "time": 0.1791534423828125,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

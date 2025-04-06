@@ -1,0 +1,24 @@
+{
+  "code": "def rearrange_bigger(num):\n    num_list = list(str(num))\n    for i in range(len(num_list) - 1, 0, -1):\n        for j in range(i):\n            if num_list[j] < num_list[j + 1]:\n                num_list[j], num_list[j + 1] = num_list[j + 1], num_list[j]\n                return int(\"\".join(num_list))\n    return False\n",
+  "results": {
+    "assert rearrange_bigger(12)==21": {
+      "result": true,
+      "time": 0.23793911933898926,
+      "error": null
+    },
+    "assert rearrange_bigger(10)==False": {
+      "result": true,
+      "time": 0.2694985866546631,
+      "error": null
+    },
+    "assert rearrange_bigger(102)==120": {
+      "result": true,
+      "time": 0.22945261001586914,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

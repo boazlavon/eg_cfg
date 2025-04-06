@@ -1,0 +1,24 @@
+{
+  "code": "def is_undulating(string):\n    if len(string) <= 2:\n        return False\n    for i in range(len(string) - 2):\n        if string[i] == string[i + 1] == string[i + 2]:\n            return True\n    return False\n",
+  "results": {
+    "assert is_undulating(\"1212121\") == True": {
+      "result": false,
+      "time": 0.4613206386566162,
+      "error": null
+    },
+    "assert is_undulating(\"1991\") == False": {
+      "result": true,
+      "time": 0.4820549488067627,
+      "error": null
+    },
+    "assert is_undulating(\"121\") == True": {
+      "result": false,
+      "time": 0.5020685195922852,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

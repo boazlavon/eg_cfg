@@ -1,0 +1,24 @@
+{
+  "code": "def get_max_sum(n):\n    if n == 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        dp = [0] * (n + 1)\n        dp[1] = 1\n        for i in range(2, n + 1):\n            dp[i] = max(dp[i // 2] + dp[i // 3] + dp[i // 4] + dp[i // 5], i)\n        return dp[n]\n",
+  "results": {
+    "assert get_max_sum(60) == 106": {
+      "result": true,
+      "time": 0.17973971366882324,
+      "error": null
+    },
+    "assert get_max_sum(10) == 12": {
+      "result": true,
+      "time": 0.20452666282653809,
+      "error": null
+    },
+    "assert get_max_sum(2) == 2": {
+      "result": true,
+      "time": 0.19112706184387207,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef sort_on_occurence(lst):\n    counter = Counter(x[0] for x in lst)\n    return sorted(lst, key=lambda x: (counter[x[0]], x))\n",
+  "results": {
+    "assert sort_on_occurence([(1, 'Jake'), (2, 'Bob'), (1, 'Cara')]) == [(1, 'Jake', 'Cara', 2), (2, 'Bob', 1)]": {
+      "result": false,
+      "time": 0.12357306480407715,
+      "error": null
+    },
+    "assert sort_on_occurence([('b', 'ball'), ('a', 'arm'), ('b', 'b'), ('a', 'ant')]) == [('b', 'ball', 'b', 2), ('a', 'arm', 'ant', 2)]": {
+      "result": false,
+      "time": 0.12346291542053223,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'Mark'), (3, 'Maze'), (2, 'Sara')]) == [(2, 'Mark', 'Sara', 2), (3, 'Maze', 1)]": {
+      "result": false,
+      "time": 0.1280689239501953,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

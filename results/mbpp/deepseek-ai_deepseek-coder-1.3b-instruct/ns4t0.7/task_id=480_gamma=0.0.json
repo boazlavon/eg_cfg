@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef get_max_occuring_char(s):\n    counter = Counter(s)\n    max_count = 0\n    max_char = \"\"\n    for char, count in counter.items():\n        if count > max_count:\n            max_count = count\n            max_char = char\n    return max_char\n",
+  "results": {
+    "assert get_max_occuring_char(\"data\") == \"a\"": {
+      "result": true,
+      "time": 0.15904569625854492,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"create\") == \"e\"": {
+      "result": true,
+      "time": 0.17773985862731934,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"brilliant girl\") == \"i\"": {
+      "result": true,
+      "time": 0.17482900619506836,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

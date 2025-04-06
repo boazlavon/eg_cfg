@@ -1,0 +1,24 @@
+{
+  "code": "def cal_electbill(kwh):\n    if kwh <= 50:\n        return kwh * 0.3\n    elif 50 < kwh <= 100:\n        return 50 * 0.3 + (kwh - 50) * 0.4\n    elif 100 < kwh <= 200:\n        return 50 * 0.3 + 50 * 0.4 + (kwh - 100) * 0.5\n    else:\n        return 50 * 0.3 + 50 * 0.4 + 50 * 0.5 + (kwh - 200) * 0.6\n",
+  "results": {
+    "assert cal_electbill(75)==246.25": {
+      "result": false,
+      "time": 0.32503795623779297,
+      "error": null
+    },
+    "assert cal_electbill(265)==1442.75": {
+      "result": false,
+      "time": 0.4813711643218994,
+      "error": null
+    },
+    "assert cal_electbill(100)==327.5": {
+      "result": false,
+      "time": 0.30313849449157715,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def magic_square_test(square):\n    row_sum = sum(sum(row) for row in square)\n    col_sum = sum(sum(column) for column in zip(*square))\n    diag_sum = sum(square[i][i] for i in range(len(square)))\n    anti_diag_sum = sum(square[i][len(square) - i - 1] for i in range(len(square)))\n",
+  "results": {
+    "assert magic_square_test([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]])==True": {
+      "result": false,
+      "time": 0.23616313934326172,
+      "error": null
+    },
+    "assert magic_square_test([[2, 7, 6], [9, 5, 1], [4, 3, 8]])==True": {
+      "result": false,
+      "time": 0.30264997482299805,
+      "error": null
+    },
+    "assert magic_square_test([[2, 7, 6], [9, 5, 1], [4, 3, 7]])==False": {
+      "result": false,
+      "time": 0.2629072666168213,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

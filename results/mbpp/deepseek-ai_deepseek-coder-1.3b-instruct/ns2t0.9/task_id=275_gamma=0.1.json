@@ -1,0 +1,24 @@
+{
+  "code": "def get_Position(arr, n, k):\n    queue = arr[:n]\n    for i in range(n, len(arr)):\n        hq.heappush(queue, arr[i])\n        if i >= k:\n            hq.heappop(queue)\n    return queue[0]\n",
+  "results": {
+    "assert get_Position([2,5,4],3,2) == 2": {
+      "result": true,
+      "time": 1.0270969867706299,
+      "error": null
+    },
+    "assert get_Position([4,3],2,2) == 2": {
+      "result": false,
+      "time": 0.6031508445739746,
+      "error": null
+    },
+    "assert get_Position([1,2,3,4],4,1) == 4": {
+      "result": false,
+      "time": 0.5976300239562988,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

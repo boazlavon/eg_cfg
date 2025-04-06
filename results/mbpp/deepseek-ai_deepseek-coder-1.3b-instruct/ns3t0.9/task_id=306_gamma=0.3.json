@@ -1,0 +1,24 @@
+{
+  "code": "def max_sum_increasing_subseq(nums, n, k, i):\n    dp = [0] * n\n    dp[i] = nums[i]\n    max_sum = dp[i]\n    for j in range(i + 1, n):\n        if nums[j] > nums[i]:\n            dp[j] = max(dp[j], dp[i] + nums[j])\n            max_sum = max(max_sum, dp[j])\n        if j == k - 1:\n            break\n    return max_sum\n",
+  "results": {
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 4, 6) == 11": {
+      "result": false,
+      "time": 0.14755678176879883,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 2, 5) == 7": {
+      "result": false,
+      "time": 0.15027689933776855,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([11, 15, 19, 21, 26, 28, 31], 7, 2, 4) == 71": {
+      "result": false,
+      "time": 0.14510464668273926,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

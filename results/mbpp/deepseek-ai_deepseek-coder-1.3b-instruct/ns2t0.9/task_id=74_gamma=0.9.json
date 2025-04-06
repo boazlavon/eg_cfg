@@ -1,0 +1,24 @@
+{
+  "code": "def is_samepatterns(patterns, sequence):\n    pattern_len = len(patterns)\n    sequence_len = len(sequence)\n    if pattern_len > sequence_len:\n        return False\n    for i in range(pattern_len):\n        if patterns[i] != sequence[i]:\n            return False\n    return True\n",
+  "results": {
+    "assert is_samepatterns([\"red\",\"green\",\"green\"], [\"a\", \"b\", \"b\"])==True ": {
+      "result": false,
+      "time": 0.2491307258605957,
+      "error": null
+    },
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\",\"b\"])==False ": {
+      "result": true,
+      "time": 0.23247981071472168,
+      "error": null
+    },
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\"])==False ": {
+      "result": true,
+      "time": 0.23041129112243652,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

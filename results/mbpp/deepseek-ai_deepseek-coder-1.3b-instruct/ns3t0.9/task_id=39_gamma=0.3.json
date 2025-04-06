@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef rearange_string(s):\n    counter = Counter(s)\n    odd_count_chars = [char for char, count in counter.items() if count % 2 != 0]\n    if len(odd_count_chars) > 1:\n        return \"Cannot be rearranged\"\n    else:\n        result = \"\"\n        for char, count in counter.items():\n            result += char * (count // 2)\n        if len(odd_count_chars) == 1:\n            result += odd_count_chars[0] + result[::-1]\n        return result\n",
+  "results": {
+    "assert rearange_string(\"aab\")==('aba')": {
+      "result": true,
+      "time": 0.2646329402923584,
+      "error": null
+    },
+    "assert rearange_string(\"aabb\")==('abab')": {
+      "result": false,
+      "time": 0.5330018997192383,
+      "error": null
+    },
+    "assert rearange_string(\"abccdd\")==('cdabcd')": {
+      "result": false,
+      "time": 0.29822754859924316,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

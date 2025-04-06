@@ -1,0 +1,24 @@
+{
+  "code": "def decode_list(lst):\n    result = []\n    for item in lst:\n        if type(item) == list:\n            result.extend(item)\n        else:\n            result.append(item)\n    return result\n",
+  "results": {
+    "assert decode_list([[2, 1], 2, 3, [2, 4], 5,1])==[1,1,2,3,4,4,5,1]": {
+      "result": false,
+      "time": 0.23093771934509277,
+      "error": null
+    },
+    "assert decode_list(['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', [2, 'l'], 'y'])==['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', 'l', 'l', 'y']": {
+      "result": false,
+      "time": 0.21603131294250488,
+      "error": null
+    },
+    "assert decode_list(['p', 'y', 't', 'h', 'o', 'n'])==['p', 'y', 't', 'h', 'o', 'n']": {
+      "result": true,
+      "time": 0.2187199592590332,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

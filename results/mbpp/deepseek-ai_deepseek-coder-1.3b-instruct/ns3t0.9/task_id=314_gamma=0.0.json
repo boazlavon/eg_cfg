@@ -1,0 +1,24 @@
+{
+  "code": "def max_sum_rectangular_grid(grid, n):\n    m, p = len(grid), len(grid[0])\n    prefix = [[0] * (p + 1) for _ in range(m + 1)]\n    for i in range(m):\n        for j in range(p):\n            prefix[i + 1][j + 1] = prefix[i + 1][j] + prefix[i][j + 1] - prefix[i][j] + grid[i][j]\n",
+  "results": {
+    "assert max_sum_rectangular_grid([ [1, 4, 5], [2, 0, 0 ] ], 3) == 7": {
+      "result": false,
+      "time": 0.15396714210510254,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([ [ 1, 2, 3, 4, 5], [ 6, 7, 8, 9, 10] ], 5) == 24": {
+      "result": false,
+      "time": 0.14855623245239258,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([ [7, 9, 11, 15, 19], [21, 25, 28, 31, 32] ], 5) == 81": {
+      "result": false,
+      "time": 0.16013813018798828,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

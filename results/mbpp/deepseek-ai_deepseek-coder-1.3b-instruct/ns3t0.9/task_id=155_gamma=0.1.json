@@ -1,0 +1,24 @@
+{
+  "code": "def even_bit_toggle_number(num):\n    binary_num = bin(num)[2:]  # Convert the number to binary and remove the '0b' prefix\n    toggled_binary = \"\".join(\"1\" if i % 2 == 0 else \"0\" for i in binary_num)  # Toggle the even bits\n    toggled_num = int(toggled_binary, 2)  # Convert the toggled binary back to a number\n    return toggled_num\n",
+  "results": {
+    "assert even_bit_toggle_number(10) == 0": {
+      "result": false,
+      "time": 0.12378478050231934,
+      "error": null
+    },
+    "assert even_bit_toggle_number(20) == 30": {
+      "result": false,
+      "time": 0.1267409324645996,
+      "error": null
+    },
+    "assert even_bit_toggle_number(30) == 20": {
+      "result": false,
+      "time": 0.13355565071105957,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

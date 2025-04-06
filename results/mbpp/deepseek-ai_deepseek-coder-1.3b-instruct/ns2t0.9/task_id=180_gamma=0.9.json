@@ -1,0 +1,24 @@
+{
+  "code": "import math\n\n\ndef distance_lat_long(lat1, long1, lat2, long2):\n    (lat1, long1, lat2, long2) = map(math.radians, (lat1, long1, lat2, long2))\n    (dlon, dlat) = (long2 - long1, lat2 - lat1)\n    a = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2\n    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))\n    distance = 6371 * c\n    return distance\n",
+  "results": {
+    "assert distance_lat_long(23.5,67.5,25.5,69.5)==12179.372041317429": {
+      "result": false,
+      "time": 23.613309621810913,
+      "error": "Timeout"
+    },
+    "assert distance_lat_long(10.5,20.5,30.5,40.5)==6069.397933300514": {
+      "result": false,
+      "time": 23.82153058052063,
+      "error": "Timeout"
+    },
+    "assert distance_lat_long(10,20,30,40)==6783.751974994595": {
+      "result": false,
+      "time": 22.655535459518433,
+      "error": "Timeout"
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": true
+}

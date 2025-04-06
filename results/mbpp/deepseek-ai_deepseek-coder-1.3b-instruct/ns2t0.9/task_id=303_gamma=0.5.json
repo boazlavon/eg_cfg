@@ -1,0 +1,24 @@
+{
+  "code": "def solve(nums, total):\n    num_dict = {}\n    for num in nums:\n        if num in num_dict:\n            num_dict[num] += 1\n        else:\n            num_dict[num] = 1\n    inversions = 0\n    for count in num_dict.values():\n        inversions += count * (count - 1) // 2\n    return inversions == total\n",
+  "results": {
+    "assert solve([1,0,2],3) == True": {
+      "result": false,
+      "time": 0.5185084342956543,
+      "error": null
+    },
+    "assert solve([1,2,0],3) == False": {
+      "result": true,
+      "time": 0.26186251640319824,
+      "error": null
+    },
+    "assert solve([1,2,1],3) == True": {
+      "result": false,
+      "time": 0.23690533638000488,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

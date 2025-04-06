@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef change_date_format(date):\n    match = re.match(\"(\\\\d{4})-(\\\\d{2})-(\\\\d{2})\", date)\n    if match:\n        return f\"{match.group(2)}-{match.group(1)}-{match.group(3)}\"\n    else:\n        return \"Invalid date format\"\n",
+  "results": {
+    "assert change_date_format(\"2026-01-02\") == '02-01-2026'": {
+      "result": false,
+      "time": 0.20221734046936035,
+      "error": null
+    },
+    "assert change_date_format(\"2020-11-13\") == '13-11-2020'": {
+      "result": false,
+      "time": 0.21399235725402832,
+      "error": null
+    },
+    "assert change_date_format(\"2021-04-26\") == '26-04-2021'": {
+      "result": false,
+      "time": 0.23746085166931152,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

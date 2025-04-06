@@ -1,0 +1,24 @@
+{
+  "code": "def check_Validity(a, b, c):\n    # Check if any side is zero\n    if a <= 0 or b <= 0 or c <= 0:\n        return False\n    # Check if any side can form a triangle\n    if a + b <= c or a + c <= b or b + c <= a:\n        return False\n    # If all sides can form a triangle, then it is valid\n    return True\n",
+  "results": {
+    "assert check_Validity(1,2,3) == False": {
+      "result": true,
+      "time": 0.18189740180969238,
+      "error": null
+    },
+    "assert check_Validity(2,3,5) == False": {
+      "result": true,
+      "time": 0.17346477508544922,
+      "error": null
+    },
+    "assert check_Validity(7,10,5) == True": {
+      "result": true,
+      "time": 0.19475317001342773,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

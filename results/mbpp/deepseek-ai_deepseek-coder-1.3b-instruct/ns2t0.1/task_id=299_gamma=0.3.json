@@ -1,0 +1,24 @@
+{
+  "code": "def max_aggregate(lst):\n    aggregate_dict = {}\n    for name, score in lst:\n        if name in aggregate_dict:\n            aggregate_dict[name] += score\n        else:\n            aggregate_dict[name] = score\n    max_aggregate_name = max(aggregate_dict, key=aggregate_dict.get)\n    max_aggregate_score = aggregate_dict[max_aggregate_name]\n    return (max_aggregate_name, max_aggregate_score)\n",
+  "results": {
+    "assert max_aggregate([('Juan Whelan',90),('Sabah Colley',88),('Peter Nichols',7),('Juan Whelan',122),('Sabah Colley',84)])==('Juan Whelan', 212)": {
+      "result": true,
+      "time": 0.2217259407043457,
+      "error": null
+    },
+    "assert max_aggregate([('Juan Whelan',50),('Sabah Colley',48),('Peter Nichols',37),('Juan Whelan',22),('Sabah Colley',14)])==('Juan Whelan', 72)": {
+      "result": true,
+      "time": 0.215317964553833,
+      "error": null
+    },
+    "assert max_aggregate([('Juan Whelan',10),('Sabah Colley',20),('Peter Nichols',30),('Juan Whelan',40),('Sabah Colley',50)])==('Sabah Colley', 70)": {
+      "result": true,
+      "time": 0.21146368980407715,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

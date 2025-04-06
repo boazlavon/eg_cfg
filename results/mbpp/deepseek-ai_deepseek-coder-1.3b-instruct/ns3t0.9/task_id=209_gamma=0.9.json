@@ -1,0 +1,24 @@
+{
+  "code": "import heapq as hq\n\n\ndef heap_replace(nums, new_item):\n    hq.heapify(nums)\n    smallest_item = hq.heappop(nums)\n    nums.append(new_item)\n    hq.heapify(nums)\n    return nums\n",
+  "results": {
+    "assert heap_replace( [25, 44, 68, 21, 39, 23, 89],21)==[21, 25, 23, 44, 39, 68, 89]": {
+      "result": false,
+      "time": 0.1331787109375,
+      "error": null
+    },
+    "assert heap_replace([25, 44, 68, 21, 39, 23, 89],110)== [23, 25, 68, 44, 39, 110, 89]": {
+      "result": false,
+      "time": 0.137251615524292,
+      "error": null
+    },
+    "assert heap_replace([25, 44, 68, 21, 39, 23, 89],500)==[23, 25, 68, 44, 39, 500, 89]": {
+      "result": false,
+      "time": 0.14012551307678223,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def min_Ops(arr, n, k):\n    total_sum = sum(arr)\n    if total_sum % n != 0:\n        return -1\n    else:\n        target_sum = total_sum // n\n        ops = 0\n        for num in arr:\n            ops += num // target_sum\n        return ops // k\n",
+  "results": {
+    "assert min_Ops([2,2,2,2],4,3) == 0": {
+      "result": false,
+      "time": 0.2003164291381836,
+      "error": null
+    },
+    "assert min_Ops([4,2,6,8],4,3) == -1": {
+      "result": false,
+      "time": 0.1969432830810547,
+      "error": null
+    },
+    "assert min_Ops([21,33,9,45,63],5,6) == 24": {
+      "result": false,
+      "time": 0.19622373580932617,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def text_match_two_three(s):\n    pattern = \"a.*b{2,3}\"\n    if re.fullmatch(pattern, s):\n        return \"Found a match!\"\n    else:\n        return \"Not matched!\"\n",
+  "results": {
+    "assert text_match_two_three(\"ac\")==('Not matched!')": {
+      "result": false,
+      "time": 0.2439265251159668,
+      "error": null
+    },
+    "assert text_match_two_three(\"dc\")==('Not matched!')": {
+      "result": false,
+      "time": 0.22779512405395508,
+      "error": null
+    },
+    "assert text_match_two_three(\"abbbba\")==('Found a match!')": {
+      "result": false,
+      "time": 0.22580957412719727,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

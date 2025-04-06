@@ -1,0 +1,24 @@
+{
+  "code": "def get_total_number_of_sequences(n, m):\n    # Initialize the count to 1 as the first sequence is always valid\n    count = 1\n    # Iterate from 2 to n (inclusive)\n    for i in range(2, n + 1):\n        # For each element in the sequence, check if it is greater than or equal to twice the previous element but less than or equal to m\n        if i >= 2 * (i - 1) and i <= 2 * m:\n            # If it is, increment the count\n            count += 1\n    # Return the total count\n    return count\n",
+  "results": {
+    "assert get_total_number_of_sequences(10, 4) == 4": {
+      "result": false,
+      "time": 0.12487411499023438,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(5, 2) == 6": {
+      "result": false,
+      "time": 0.1217954158782959,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(16, 3) == 84": {
+      "result": false,
+      "time": 0.11905670166015625,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

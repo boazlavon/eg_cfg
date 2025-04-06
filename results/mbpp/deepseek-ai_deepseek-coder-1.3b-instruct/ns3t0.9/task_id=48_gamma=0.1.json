@@ -1,0 +1,24 @@
+{
+  "code": "def odd_bit_set_number(num):\n    odd_bits_mask = 0\n    binary_num = bin(num)[2:]\n    for bit in binary_num:\n        if bit == \"1\":\n            odd_bits_mask |= 2 ** int(bit)\n    return odd_bits_mask\n",
+  "results": {
+    "assert odd_bit_set_number(10) == 15": {
+      "result": false,
+      "time": 0.17039942741394043,
+      "error": null
+    },
+    "assert odd_bit_set_number(20) == 21": {
+      "result": false,
+      "time": 0.1658005714416504,
+      "error": null
+    },
+    "assert odd_bit_set_number(30) == 31": {
+      "result": false,
+      "time": 0.15734386444091797,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

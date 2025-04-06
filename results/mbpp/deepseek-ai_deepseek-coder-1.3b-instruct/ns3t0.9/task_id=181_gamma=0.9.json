@@ -1,0 +1,24 @@
+{
+  "code": "def common_prefix(lst, n):\n    if not lst:\n        return \"\"\n    shortest_str = min(lst, key=len)\n    for i, char in enumerate(shortest_str):\n        for other in lst:\n            if other[i] != char:\n                return shortest_str[:i]\n    return shortest_str\n",
+  "results": {
+    "assert common_prefix([\"tablets\", \"tables\", \"taxi\", \"tamarind\"], 4) == 'ta'": {
+      "result": true,
+      "time": 0.8193686008453369,
+      "error": null
+    },
+    "assert common_prefix([\"apples\", \"ape\", \"april\"], 3) == 'ap'": {
+      "result": true,
+      "time": 0.6625461578369141,
+      "error": null
+    },
+    "assert common_prefix([\"teens\", \"teenager\", \"teenmar\"], 3) == 'teen'": {
+      "result": true,
+      "time": 0.6478087902069092,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef check_char(s):\n    if re.match(\"^[a-zA-Z]\", s) and re.match(s, \"[a-zA-Z]$\"):\n        return \"Valid\"\n    else:\n        return \"Invalid\"\n",
+  "results": {
+    "assert check_char(\"abba\") == \"Valid\"": {
+      "result": false,
+      "time": 0.15433192253112793,
+      "error": null
+    },
+    "assert check_char(\"a\") == \"Valid\"": {
+      "result": false,
+      "time": 0.1365039348602295,
+      "error": null
+    },
+    "assert check_char(\"abcd\") == \"Invalid\"": {
+      "result": true,
+      "time": 0.15102934837341309,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

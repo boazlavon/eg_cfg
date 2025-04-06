@@ -1,0 +1,24 @@
+{
+  "code": "def solve(arr, k):\n    count_arr = arr.copy()\n    count_arr.sort()\n    count_odd = sum((x % 2 != 0 for x in count_arr))\n    count_even = sum((x % 2 == 0 for x in count_arr))\n    return count_odd - count_even == k\n",
+  "results": {
+    "assert solve([1,0,2],3) == True": {
+      "result": false,
+      "time": 0.127244234085083,
+      "error": null
+    },
+    "assert solve([1,2,0],3) == False": {
+      "result": true,
+      "time": 0.12902235984802246,
+      "error": null
+    },
+    "assert solve([1,2,1],3) == True": {
+      "result": false,
+      "time": 0.1296684741973877,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "def first(arr, target, n):\n    left, right = 0, n\n    while left < right:\n        mid = (left + right) // 2\n        if arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid\n    return left if left < n and arr[left] == target else -1\n",
+  "results": {
+    "assert first([1,2,3,4,5,6,6],6,6) == 5": {
+      "result": true,
+      "time": 0.19611763954162598,
+      "error": null
+    },
+    "assert first([1,2,2,2,3,2,2,4,2],2,9) == 1": {
+      "result": true,
+      "time": 0.18094229698181152,
+      "error": null
+    },
+    "assert first([1,2,3],1,3) == 0": {
+      "result": true,
+      "time": 0.18494248390197754,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

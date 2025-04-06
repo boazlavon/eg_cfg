@@ -1,0 +1,24 @@
+{
+  "code": "def minimum_Length(s):\n    while True:\n        count = s.count(\"0\") + s.count(\"1\") + s.count(\"2\") + s.count(\"3\") + s.count(\"4\") + s.count(\"5\") + s.count(\"6\") + s.count(\"7\") + s.count(\"8\") + s.count(\"9\")\n        if count == 0:\n            break\n        s = \"\".join(i for i in s if i not in \"0123456789\")\n    return len(s)\n",
+  "results": {
+    "assert minimum_Length(\"mnm\") == 1": {
+      "result": false,
+      "time": 0.2530510425567627,
+      "error": null
+    },
+    "assert minimum_Length(\"abcda\") == 3": {
+      "result": false,
+      "time": 0.2311413288116455,
+      "error": null
+    },
+    "assert minimum_Length(\"abcb\") == 2": {
+      "result": false,
+      "time": 0.23287415504455566,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

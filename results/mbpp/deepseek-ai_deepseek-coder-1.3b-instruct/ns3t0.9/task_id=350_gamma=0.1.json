@@ -1,0 +1,24 @@
+{
+  "code": "def minimum_Length(s):\n    while True:\n        s = \"\".join(set(s))\n        if len(s) == len(s[::2]) + len(s[1::2]):\n            return len(s)\n        elif len(s) == 1:\n            return 1\n        else:\n            s = s[::2] + s[1::2]\n",
+  "results": {
+    "assert minimum_Length(\"mnm\") == 1": {
+      "result": false,
+      "time": 0.244520902633667,
+      "error": null
+    },
+    "assert minimum_Length(\"abcda\") == 3": {
+      "result": false,
+      "time": 0.22525501251220703,
+      "error": null
+    },
+    "assert minimum_Length(\"abcb\") == 2": {
+      "result": false,
+      "time": 0.23435401916503906,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

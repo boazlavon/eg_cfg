@@ -1,0 +1,24 @@
+{
+  "code": "def count_char_position(s):\n    lower_alphabet = \"abcdefghijklmnopqrstuvwxyz\"\n    upper_alphabet = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"\n    count = 0\n    for i in range(len(s)):\n        if s[i] in lower_alphabet:\n            count += lower_alphabet.index(s[i]) + 1\n        elif s[i] in upper_alphabet:\n            count += upper_alphabet.index(s[i]) + 1\n    return count\n",
+  "results": {
+    "assert count_char_position(\"xbcefg\") == 2": {
+      "result": false,
+      "time": 0.24666500091552734,
+      "error": null
+    },
+    "assert count_char_position(\"ABcED\") == 3": {
+      "result": false,
+      "time": 0.2978847026824951,
+      "error": null
+    },
+    "assert count_char_position(\"AbgdeF\") == 5": {
+      "result": false,
+      "time": 0.257230281829834,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

@@ -1,0 +1,24 @@
+{
+  "code": "from itertools import combinations\n\n\ndef combinations_colors(colors, num):\n    result = []\n    for r in range(1, num + 1):\n        result.extend(combinations(colors, r))\n    return result\n",
+  "results": {
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],1)==[('Red',), ('Green',), ('Blue',)]": {
+      "result": true,
+      "time": 0.2271289825439453,
+      "error": null
+    },
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],2)==[('Red', 'Red'), ('Red', 'Green'), ('Red', 'Blue'), ('Green', 'Green'), ('Green', 'Blue'), ('Blue', 'Blue')]": {
+      "result": false,
+      "time": 0.21959686279296875,
+      "error": null
+    },
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],3)==[('Red', 'Red', 'Red'), ('Red', 'Red', 'Green'), ('Red', 'Red', 'Blue'), ('Red', 'Green', 'Green'), ('Red', 'Green', 'Blue'), ('Red', 'Blue', 'Blue'), ('Green', 'Green', 'Green'), ('Green', 'Green', 'Blue'), ('Green', 'Blue', 'Blue'), ('Blue', 'Blue', 'Blue')]": {
+      "result": false,
+      "time": 0.22861003875732422,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

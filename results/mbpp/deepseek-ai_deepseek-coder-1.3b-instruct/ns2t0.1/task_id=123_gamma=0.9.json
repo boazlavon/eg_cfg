@@ -1,0 +1,24 @@
+{
+  "code": "def amicable_numbers_sum(n):\n    def sum_divisors(num):\n        result = 1\n        i = 2\n        while i * i <= num:\n            if num % i:\n                i += 1\n            elif i * (num // i) == num:\n                result += i + num // i\n                i += 1\n            else:\n                result += i\n                i += 1\n        return result\n",
+  "results": {
+    "assert amicable_numbers_sum(999)==504": {
+      "result": false,
+      "time": 0.2551414966583252,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9999)==31626": {
+      "result": false,
+      "time": 0.26136159896850586,
+      "error": null
+    },
+    "assert amicable_numbers_sum(99)==0": {
+      "result": false,
+      "time": 0.36153340339660645,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

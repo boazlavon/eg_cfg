@@ -1,0 +1,24 @@
+{
+  "code": "def find_Element(arr, queries, m, n):\n    arr = arr[n:] + arr[:n]\n    for i, j in queries:\n        arr = arr[j:] + arr[:j]\n    return arr[m]\n",
+  "results": {
+    "assert find_Element([1,2,3,4,5],[[0,2],[0,3]],2,1) == 3": {
+      "result": false,
+      "time": 0.1720137596130371,
+      "error": null
+    },
+    "assert find_Element([1,2,3,4],[[0,1],[0,2]],1,2) == 3": {
+      "result": true,
+      "time": 0.17780637741088867,
+      "error": null
+    },
+    "assert find_Element([1,2,3,4,5,6],[[0,1],[0,2]],1,1) == 1": {
+      "result": false,
+      "time": 0.18944811820983887,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

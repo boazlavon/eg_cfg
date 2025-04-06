@@ -1,0 +1,24 @@
+{
+  "code": "def odd_Days(year):\n    # List of odd days in each month\n    odd_days_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]\n\n    # Check if the year is a leap year\n    if year % 4 == 0:\n        odd_days_month[1] = 29\n    else:\n        odd_days_month[1] = 28\n\n    # Calculate the total number of odd days\n    total_odd_days = sum(odd_days_month)\n\n    return total_odd_days\n",
+  "results": {
+    "assert odd_Days(100) == 5": {
+      "result": false,
+      "time": 0.13071179389953613,
+      "error": null
+    },
+    "assert odd_Days(50) ==6": {
+      "result": false,
+      "time": 0.1240084171295166,
+      "error": null
+    },
+    "assert odd_Days(75) == 2": {
+      "result": false,
+      "time": 0.1249244213104248,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

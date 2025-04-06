@@ -1,0 +1,24 @@
+{
+  "code": "def text_lowercase_underscore(text):\n    pattern = \"a-z_\"\n    if all((c in pattern for c in text)):\n        return \"Found a match!\"\n    else:\n        return \"Not matched\"\n",
+  "results": {
+    "assert text_lowercase_underscore(\"aab_cbbbc\")==('Found a match!')": {
+      "result": false,
+      "time": 0.12603402137756348,
+      "error": null
+    },
+    "assert text_lowercase_underscore(\"aab_Abbbc\")==('Not matched!')": {
+      "result": false,
+      "time": 0.12541699409484863,
+      "error": null
+    },
+    "assert text_lowercase_underscore(\"Aaab_abbbc\")==('Not matched!')": {
+      "result": false,
+      "time": 0.12231731414794922,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

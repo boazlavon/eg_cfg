@@ -1,0 +1,24 @@
+{
+  "code": "def max_product(nums, k):\n    k = min(k, len(nums))\n    product = 1\n    for i in range(k):\n        product *= nums[i]\n    max_product = product\n    for i in range(k, len(nums)):\n        if nums[i] > nums[i - k]:\n            product = product // nums[i - k] * nums[i]\n            max_product = max(max_product, product)\n        else:\n            product = nums[i]\n    return max_product\n",
+  "results": {
+    "assert max_product([3, 100, 4, 5, 150, 6], 6) == 45000 ": {
+      "result": false,
+      "time": 0.18714427947998047,
+      "error": null
+    },
+    "assert max_product([4, 42, 55, 68, 80], 5) == 50265600": {
+      "result": true,
+      "time": 0.18466544151306152,
+      "error": null
+    },
+    "assert max_product([10, 22, 9, 33, 21, 50, 41, 60], 8) == 21780000 ": {
+      "result": false,
+      "time": 0.20779728889465332,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

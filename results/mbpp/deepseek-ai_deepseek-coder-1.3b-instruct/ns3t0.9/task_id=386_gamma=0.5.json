@@ -1,0 +1,24 @@
+{
+  "code": "def swap_count(s):\n    count = 0\n    stack = []\n    for char in s:\n        if char == \"[\":\n            stack.append(char)\n        elif char == \"]\":\n            if stack:\n                stack.pop()\n            else:\n                count += 1\n    return count\n",
+  "results": {
+    "assert swap_count(\"[]][][\") == 2": {
+      "result": false,
+      "time": 0.13876891136169434,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]\") == 0": {
+      "result": true,
+      "time": 0.13067078590393066,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]][\") == 1": {
+      "result": true,
+      "time": 0.1296703815460205,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

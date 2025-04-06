@@ -1,0 +1,24 @@
+{
+  "code": "from collections import Counter\n\n\ndef rearange_string(s):\n    counter = Counter(s)\n    odd_count = sum((v % 2 for v in counter.values()))\n    if odd_count > 1:\n        return \"impossible\"\n    odd_keys = [k * (counter[k] % 2) for k in counter.keys()]\n    return \"\".join(sorted(odd_keys)) + \"\".join(sorted(odd_keys, reverse=True))\n",
+  "results": {
+    "assert rearange_string(\"aab\")==('aba')": {
+      "result": false,
+      "time": 0.2608802318572998,
+      "error": null
+    },
+    "assert rearange_string(\"aabb\")==('abab')": {
+      "result": false,
+      "time": 0.2624850273132324,
+      "error": null
+    },
+    "assert rearange_string(\"abccdd\")==('cdabcd')": {
+      "result": false,
+      "time": 0.2456963062286377,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

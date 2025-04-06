@@ -1,0 +1,24 @@
+{
+  "code": "def sum_of_digits(nums):\n    def sum_digits(n):\n        return sum(map(int, str(abs(n))))\n\n    return sum(map(sum_digits, nums))\n",
+  "results": {
+    "assert sum_of_digits([10,2,56])==14": {
+      "result": true,
+      "time": 0.2540440559387207,
+      "error": null
+    },
+    "assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19": {
+      "result": false,
+      "time": 0.23193836212158203,
+      "error": null
+    },
+    "assert sum_of_digits([10,20,-4,5,-70])==19": {
+      "result": true,
+      "time": 0.22156453132629395,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false
+}

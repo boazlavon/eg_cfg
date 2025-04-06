@@ -1,0 +1,24 @@
+{
+  "code": "def sum_digits_twoparts(num):\n    # Convert the number to a string to easily access each digit\n    num_str = str(num)\n    # Calculate the length of the string\n    n = len(num_str)\n    # If the length is odd, add a 0 to the left of the number to make it even\n    if n % 2 != 0:\n        num_str = \"0\" + num_str\n        n += 1\n    # Initialize the sum of the first half and the second half\n    sum1, sum2 = 0, 0\n    # Iterate over the first half of the number\n    for i in range(n // 2):\n        # Add the digit to the sum of the first half\n        sum1 += int(num_str[i])\n    # Iterate over the second half of the number\n    for i in range(n // 2, n):\n        # Add the digit to the sum of the second half\n        sum2 += int(num_str[i])\n    # Return the maximum sum\n    return max(sum1, sum2)\n",
+  "results": {
+    "assert sum_digits_twoparts(35)==17": {
+      "result": false,
+      "time": 0.1302938461303711,
+      "error": null
+    },
+    "assert sum_digits_twoparts(7)==7": {
+      "result": true,
+      "time": 0.11525106430053711,
+      "error": null
+    },
+    "assert sum_digits_twoparts(100)==19": {
+      "result": false,
+      "time": 0.1209712028503418,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

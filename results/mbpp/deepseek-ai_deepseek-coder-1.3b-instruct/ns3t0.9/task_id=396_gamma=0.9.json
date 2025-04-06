@@ -1,0 +1,24 @@
+{
+  "code": "import re\n\n\ndef check_char(s):\n    if re.fullmatch(\"^[a-zA-Z0-9]*$\", s) and s[0] == s[-1]:\n        return \"Valid\"\n    else:\n        return \"Invalid\"\n",
+  "results": {
+    "assert check_char(\"abba\") == \"Valid\"": {
+      "result": true,
+      "time": 0.14940571784973145,
+      "error": null
+    },
+    "assert check_char(\"a\") == \"Valid\"": {
+      "result": true,
+      "time": 0.1449446678161621,
+      "error": null
+    },
+    "assert check_char(\"abcd\") == \"Invalid\"": {
+      "result": true,
+      "time": 0.1353151798248291,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}

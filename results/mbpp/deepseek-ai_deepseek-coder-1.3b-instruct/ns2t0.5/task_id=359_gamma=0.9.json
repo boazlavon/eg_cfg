@@ -1,0 +1,24 @@
+{
+  "code": "import math\n\n\ndef Check_Solution(a, b, c):\n    discriminant = b**2 - 4 * a * c\n    if discriminant < 0:\n        return \"No\"\n    elif discriminant == 0:\n        root = -b / (2 * a)\n        return \"Yes\" if root == int(root) else \"No\"\n    else:\n        root1 = (-b + math.sqrt(discriminant)) / (2 * a)\n        root2 = (-b - math.sqrt(discriminant)) / (2 * a)\n        return \"Yes\" if root1 == int(root1) and root2 == int(root2) else \"No\"\n",
+  "results": {
+    "assert Check_Solution(1,3,2) == \"Yes\"": {
+      "result": false,
+      "time": 16.92510199546814,
+      "error": "Timeout"
+    },
+    "assert Check_Solution(1,2,3) == \"No\"": {
+      "result": false,
+      "time": 17.47284770011902,
+      "error": "Timeout"
+    },
+    "assert Check_Solution(1,-5,6) == \"No\"": {
+      "result": false,
+      "time": 15.675381660461426,
+      "error": "Timeout"
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": true
+}

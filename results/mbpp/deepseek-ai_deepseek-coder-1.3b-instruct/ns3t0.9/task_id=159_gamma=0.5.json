@@ -1,0 +1,24 @@
+{
+  "code": "def month_season(month, day):\n    if month in (\"January\", \"February\", \"December\"):\n        if day < 15:\n            return \"winter\"\n        elif 15 <= day < 31:\n            return \"spring\"\n        else:\n            return \"winter\"\n    elif month in (\"March\", \"April\", \"May\"):\n        if day < 15:\n            return \"spring\"\n        elif 15 <= day < 31:\n            return \"summer\"\n        else:\n            return \"spring\"\n    elif month in (\"June\", \"July\", \"August\"):\n        if day < 15:\n            return \"summer\"\n        elif 15 <= day < 31:\n            return \"fall\"\n        else:\n            return \"summer\"\n    elif month in (\"September\", \"October\", \"November\"):\n        if day < 15:\n            return \"fall\"\n        elif 15 <= day < 31:\n            return \"winter\"\n        else:\n            return \"fall\"\n    else:\n        return \"Invalid month\"\n",
+  "results": {
+    "assert month_season('January',4)==('winter')": {
+      "result": true,
+      "time": 0.12897586822509766,
+      "error": null
+    },
+    "assert month_season('October',28)==('autumn')": {
+      "result": false,
+      "time": 0.16073012351989746,
+      "error": null
+    },
+    "assert month_season('June',6)==('spring')": {
+      "result": false,
+      "time": 0.1630420684814453,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false
+}

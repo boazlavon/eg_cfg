@@ -1,0 +1,24 @@
+{
+  "code": "def max_Prime_Factors(n):\n    i = 2\n    prime_factors = []\n    while i * i <= n:\n        if n % i:\n            i += 1\n        else:\n            n //= i\n            prime_factors.append(i)\n    if n > 1:\n        prime_factors.append(n)\n    return max(prime_factors)\n",
+  "results": {
+    "assert max_Prime_Factors(15) == 5": {
+      "result": true,
+      "time": 0.24776244163513184,
+      "error": null
+    },
+    "assert max_Prime_Factors(6) == 3": {
+      "result": true,
+      "time": 0.23819184303283691,
+      "error": null
+    },
+    "assert max_Prime_Factors(2) == 2": {
+      "result": true,
+      "time": 0.2508983612060547,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false
+}
