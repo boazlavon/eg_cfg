@@ -37,6 +37,7 @@ def try_generate_code_solution(
     prompt_type,
     nearest_future_samples,
     temperature,
+    max_lines,
 ):
     test_cases = problem["test_list"]
     if prompt_type in (
@@ -78,7 +79,7 @@ def try_generate_code_solution(
             "dynamic_signals": dynamic_signals,
             "nearest_future_samples": nearest_future_samples,
             "temperature": temperature,
-            "max_function_body_lines": 3,
+            "max_function_body_lines": max_lines,
             "backward_signals": backward_signals,
             "prompt_type": prompt_type,
         }
@@ -198,6 +199,7 @@ def generate_mbpp_solutions(
     prod=False,
     nearest_future_samples=None,
     temperature=None,
+    max_lines=None,
     attemps_count=1,
 ):
     device = setup_device()
@@ -295,6 +297,7 @@ def generate_mbpp_solutions(
                                 prompt_type,
                                 nearest_future_samples,
                                 temperature,
+                                max_lines,
                             )
                             print(solution)
                         except KeyboardInterrupt:
@@ -351,7 +354,10 @@ def get_dynamic_signals(args):
         dynamic_signals_str.append("p")
         dynamic_signals.append(DYNAMIC_SIGNAL__PARTIAL_EXECUTION)
     if args.n:
-        dynamic_signals_str.append(f"ns{args.s}t{args.t}")
+        if args.d is None:
+            dynamic_signals_str.append(f"ns{args.s}t{args.t}dinf")
+        else:
+            dynamic_signals_str.append(f"ns{args.s}t{args.t}d{args.d}")
         dynamic_signals.append(DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION)
     if args.b:
         dynamic_signals_str.append("b")
@@ -382,7 +388,13 @@ def main():
     parser.add_argument("--prod", action="store_true")
     parser.add_argument("--s", type=int, default=2, help="Nearest Future Sequences")
     parser.add_argument("--t", type=float, default=0.1, help="Temp")
-    parser.add_argument("--r", type=int, default=1, help="Retries")
+    parser.add_argument(
+        "--r", type=int, default=1, help="Attempts Count for each gamma (retries)"
+    )
+    # parser.add_argument("--d", type=int, default=3, help="Max Lines for nearest future (deepness)")
+    parser.add_argument(
+        "--d", type=int, default=None, help="Max Lines for nearest future (deepness)"
+    )
 
     args = parser.parse_args()
 
@@ -409,6 +421,7 @@ def main():
         nearest_future_samples=args.s,
         temperature=args.t,
         attemps_count=args.r,
+        max_lines=args.d,
     )
 
 
