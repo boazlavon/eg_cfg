@@ -9,6 +9,7 @@ from code_generation_utils import remove_comments_and_docstrings, is_valid_pytho
 from model_utils import extract_new_tokens
 from mbpp_utils import parse_mbpp_assert_statement
 import traceback
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 class ExecutionManager:
@@ -18,35 +19,42 @@ class ExecutionManager:
 
     def execute_test_cases(self, executable_code, test_cases, use_assert=False):
         executions = {}
-        for test_case in test_cases:
+        futures = {}
+
+        def run_test_case(test_case):
             try:
-                innvocation = test_case
+                invocation = test_case
                 if not use_assert:
                     function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
-                    innvocation = f"{function_name}{args_str}"
-                test_case_code = f"{executable_code}\n{innvocation}"
+                    invocation = f"{function_name}{args_str}"
+                test_case_code = f"{executable_code}\n{invocation}"
                 test_case_code = black.format_str(
                     test_case_code, mode=black.FileMode(line_length=1024)
                 )
                 assert is_valid_python(
                     test_case_code
                 ), f"Invalid Test Case: {test_case}"
-            except:
-                traceback.print_exc()
-                tb = traceback.format_exc()
-                print("Could not generate test code")
-                print(tb)
-                continue
-
-            try:
-                program_execution = self.execute(test_case_code)
+                return test_case, self.execute(test_case_code)
             except Exception as e:
                 traceback.print_exc()
-                tb = traceback.format_exc()
-                print("Problem on program execution")
-                print(tb)
-                continue
-            executions[test_case] = program_execution
+                print(f"Error in test case: {test_case}")
+                return test_case, None
+
+        # Parallel execution using ThreadPoolExecutor
+        original_cwd = os.getcwd()
+        traces_dumper_dir = os.path.join(original_cwd, "traces_dumper")
+        os.chdir(traces_dumper_dir)
+
+        with ThreadPoolExecutor(max_workers=min(8, len(test_cases))) as executor:
+            for test_case in test_cases:
+                futures[executor.submit(run_test_case, test_case)] = test_case
+
+            for future in as_completed(futures):
+                test_case, program_execution = future.result()
+                if program_execution is not None:
+                    executions[test_case] = program_execution
+
+        os.chdir(original_cwd)
         return executions
 
     def extract_partial_executable_program(self, new_code) -> str:
@@ -136,10 +144,6 @@ class ExecutionManager:
         return executable_code
 
     def execute(self, code: str):
-        original_cwd = os.getcwd()
-        traces_dumper_dir = os.path.join(original_cwd, "traces_dumper")
-        os.chdir(traces_dumper_dir)
-
         # Step 1: Write the provided code to a temporary Python file
         with tempfile.NamedTemporaryFile(
             mode="w", suffix=".py", delete=False
@@ -197,4 +201,3 @@ class ExecutionManager:
                 os.remove(formatted_trace_path)
             except:
                 pass
-            os.chdir(original_cwd)

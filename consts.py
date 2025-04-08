@@ -108,3 +108,15 @@ FILENAME_TEMPLATE_BACKWARD_SIGNAL = (
 
 TASK__CODE_GENERATION = "CodeGeneration"
 SUPPORTED_TASKS = (TASK__CODE_GENERATION,)
+
+DEEPSEEK_13B_INSTRUCT_BASELINE_PASSED_PATH = "/home/ai_center/ai_users/boazlavon/data/code/DeepSeek-Coder/Evaluation/MBPP/tmp/deepseek-ai_deepseek-coder-1.3b-instruct_time1743422160_bs1_shot_log_python.json.task_ids.json"
+DEEPSEEK_13B_INSTRUCT_BASELINE_RESULTS_PATH = "/home/ai_center/ai_users/boazlavon/data/code/DeepSeek-Coder/Evaluation/MBPP/tmp/deepseek-ai_deepseek-coder-1.3b-instruct_time1743422160_bs1_shot_log_python.json"
+DEEPSEEK_13B_INSTRUCT_MODEL_NAME = "deepseek-ai/deepseek-coder-1.3b-instruct"
+OFFICIAL_PASSED_TASK_IDS_PATH = {
+    DEEPSEEK_13B_INSTRUCT_MODEL_NAME: DEEPSEEK_13B_INSTRUCT_BASELINE_PASSED_PATH
+}
+OFFICIAL_RESULT_PATH = {
+    DEEPSEEK_13B_INSTRUCT_MODEL_NAME: DEEPSEEK_13B_INSTRUCT_BASELINE_RESULTS_PATH
+}
+
+MBPP_SIZE = 500

@@ -1,10 +1,12 @@
 import re
+import json
 import subprocess
 import tempfile
 import time
 import black
 import traceback
 from datasets import load_dataset
+from consts import *
 
 CUSTOM_INSTRUCTION_TEXT = """\
 ### Instruction:
@@ -228,3 +230,47 @@ def load_mbpp_problems():
         example["task_id"]: example for _, example in enumerate(dataset["test"])
     }
     return problems
+
+
+def load_jsonl(file_path):
+    """Loads a JSON Lines file into a list of dictionaries."""
+    data = []
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            for line in f:
+                # Remove leading/trailing whitespace and parse
+                stripped_line = line.strip()
+                if stripped_line:  # Ensure line is not empty
+                    try:
+                        data.append(json.loads(stripped_line))
+                    except json.JSONDecodeError as e:
+                        print(
+                            f"Skipping line due to JSON decode error: {e} - Line: '{stripped_line}'"
+                        )
+    except FileNotFoundError:
+        print(f"Error: File not found at {file_path}")
+        return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+    return data
+
+
+def load_official_results(model_name):
+    official_passed_task_ids = set([])
+    official_results = {}
+    try:
+        official_results_path = OFFICIAL_RESULT_PATH[model_name]
+        official_passed_task_ids_path = OFFICIAL_PASSED_TASK_IDS_PATH[model_name]
+        with open(official_passed_task_ids_path, "r") as f:
+            official_passed_task_ids = set(json.load(f))
+        official_results_data = load_jsonl(official_results_path)
+        official_results = {}
+        for entry in official_results_data:
+            task_id = entry["task_id"]
+            official_results[task_id] = entry
+    except Exception as e:
+        print(f"Error loading baseline passed IDs: {e}")
+        official_passed_task_ids = set([])
+        official_results = {}
+    return official_passed_task_ids, official_results

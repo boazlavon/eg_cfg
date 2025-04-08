@@ -3,10 +3,12 @@ import os
 import json
 import csv
 from collections import defaultdict, Counter
-from consts import GAMMAS
-
-MBPP_SIZE = 500
-BASELINE_PASSED_PATH = "/home/ai_center/ai_users/boazlavon/data/code/DeepSeek-Coder/Evaluation/MBPP/tmp/deepseek-ai_deepseek-coder-1.3b-instruct_time1743422160_bs1_shot_log_python.json.task_ids.json"
+from consts import (
+    GAMMAS,
+    OFFICIAL_PASSED_TASK_IDS_PATH,
+    MBPP_SIZE,
+    DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
+)
 
 
 def load_json(path):
@@ -150,11 +152,15 @@ def load_official_passed_ids(json_path):
     }
 
 
-def analyze_trial(trial_dir, generate_csv=False):
+def analyze_trial(
+    trial_dir, generate_csv=False, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME
+):
     from consts import GAMMAS  # for CSV if needed
 
     samples = defaultdict(dict)
-    baseline_passed_ids = load_official_passed_ids(BASELINE_PASSED_PATH)
+    baseline_passed_ids = load_official_passed_ids(
+        OFFICIAL_PASSED_TASK_IDS_PATH[model_name]
+    )
 
     for fname in os.listdir(trial_dir):
         if not fname.startswith("task_id=") or not fname.endswith(".json"):
@@ -223,6 +229,8 @@ def analyze_trial(trial_dir, generate_csv=False):
     passed_without_improvement = len(passed_baseline)
     total_passed = len(passed_total)
     error_rate = failed_with_error / failed_samples if failed_samples else 0
+    if not total_clean:
+        total_clean += 1e-8
 
     print(f"Trial directory: {trial_dir}")
     print(f"Total samples: {total}")
@@ -268,6 +276,7 @@ def analyze_trial(trial_dir, generate_csv=False):
             csv.writer(f).writerows([header] + passed_rows)
 
         print(f"CSV files saved to {trial_dir}/accuracy.csv and passed.csv")
+        print()
 
     return {
         "dir": trial_dir,
@@ -285,15 +294,17 @@ def analyze_trial(trial_dir, generate_csv=False):
     }
 
 
-def aggregate_analysis(base_dir):
-    official_passed_ids = load_official_passed_ids(BASELINE_PASSED_PATH)
+def aggregate_analysis(base_dir, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME):
+    official_passed_ids = load_official_passed_ids(
+        OFFICIAL_PASSED_TASK_IDS_PATH[model_name]
+    )
     trial_results = {}
     base_passed = defaultdict(bool)
 
     for subdir in os.listdir(base_dir):
         path = os.path.join(base_dir, subdir)
         if os.path.isdir(path):
-            result = analyze_trial(path)
+            result = analyze_trial(path, generate_csv=True)
             trial_results[subdir] = result
             for task_id, gamma_map in result["samples"].items():
                 if gamma_map.get(0.0, {}).get("passed"):
@@ -321,6 +332,8 @@ def aggregate_analysis(base_dir):
         for tid in filtered_improved:
             improved_task_to_trials[tid].append(trial_name)
         all_improved_counter.update(filtered_improved)
+        if not result["total_samples"]:
+            result["total_samples"] = 1e-8
 
         score = (
             len(filtered_improved),  # improved count

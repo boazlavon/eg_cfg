@@ -14,7 +14,7 @@ from mbpp_utils import (
     run_tests,
 )
 from model_utils import calculate_tokens_length
-from mbpp_utils import parse_mbpp_assert_statement
+from mbpp_utils import parse_mbpp_assert_statement, load_official_results
 from code_generation_utils import (
     generate_code_solutions,
     is_valid_python,
@@ -24,25 +24,6 @@ from dsgi_manager import DsgiManager
 from model_utils import setup_device, load_model
 from execution_manager import ExecutionManager
 from consts import *
-
-
-def should_skip(results_dir, task_id, gamma, backward_signals_iteration):
-    filepath = get_solution_filepath(
-        results_dir, task_id, gamma, backward_signals_iteration
-    )
-    if os.path.exists(filepath):
-        if backward_signals_iteration:
-            print(
-                f"🟡 Solution exists: task_id={task_id}, gamma={gamma} backward_iterations={backward_signals_iteration}"
-            )
-        else:
-            print(f"🟡 Solution exists: task_id={task_id}, gamma={gamma}")
-        return True
-
-    # touch the file to reserve it
-    with open(filepath, "a"):
-        pass
-    return False
 
 
 def try_generate_code_solution(
@@ -222,6 +203,7 @@ def generate_mbpp_solutions(
     device = setup_device()
     model, tokenizer = load_model(model_name, device)
     solutions = {}
+    official_passed_task_ids, official_results = load_official_results(model_name)
 
     problems = load_mbpp_problems()
     problems = list(problems.items())
@@ -284,53 +266,60 @@ def generate_mbpp_solutions(
                 with open(solution_entry_path, "a"):
                     pass
 
-                for attempt_idx in range(attemps_count):
-                    print(f"Attemp #{attempt_idx + 1}")
-                    if DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION in dynamic_signals:
-                        random.seed(40 + attempt_idx)
+                solution = None
+                general_error = None
+                tb = None
+                if gamma == 0 and task_id in official_passed_task_ids:
+                    if model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME:
+                        solution = official_results[task_id]["generation"]
 
-                    general_error = None
-                    tb = None
+                if not solution:
+                    for attempt_idx in range(attemps_count):
+                        general_error = None
+                        tb = None
+                        print(f"Attemp #{attempt_idx + 1}")
+                        if gamma == 0 and attempt_idx > 0:
+                            break
+                        if DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION in dynamic_signals:
+                            random.seed(40 + attempt_idx)
 
-                    try:
-                        solution = try_generate_code_solution(
-                            model,
-                            tokenizer,
-                            device,
-                            problem,
-                            gamma,
-                            dynamic_signals,
-                            backward_signals,
-                            prompt_type,
-                            nearest_future_samples,
-                            temperature,
-                        )
-                        print(solution)
-                    except KeyboardInterrupt:
-                        exit(1)
-                    except AssertionError as e:
-                        solution = None
-                        general_error = str(type(e))
-                        tb = traceback.format_exc()
-                        if not prod:
-                            raise e
-                    except Exception as e:
-                        solution = None
-                        general_error = str(type(e))
-                        tb = traceback.format_exc()
-                        if not prod:
-                            raise e
+                        try:
+                            solution = try_generate_code_solution(
+                                model,
+                                tokenizer,
+                                device,
+                                problem,
+                                gamma,
+                                dynamic_signals,
+                                backward_signals,
+                                prompt_type,
+                                nearest_future_samples,
+                                temperature,
+                            )
+                            print(solution)
+                        except KeyboardInterrupt:
+                            exit(1)
+                        except AssertionError as e:
+                            solution = None
+                            general_error = str(type(e))
+                            tb = traceback.format_exc()
+                            if not prod:
+                                raise e
+                        except Exception as e:
+                            solution = None
+                            general_error = str(type(e))
+                            tb = traceback.format_exc()
+                            if not prod:
+                                raise e
 
-                    solution_results = run_tests(solution, test_cases)
-                    solution_entry = format_results(
-                        solution, solution_results, general_error, tb
-                    )
-                    solutions[(task_id, gamma, backward_signals_iteration)] = (
-                        solution_entry
-                    )
-                    if solution_entry["passed"]:
-                        problem_solved = True
-                        break
+                solution_results = run_tests(solution, test_cases)
+                solution_entry = format_results(
+                    solution, solution_results, general_error, tb
+                )
+                solutions[(task_id, gamma, backward_signals_iteration)] = solution_entry
+                if solution_entry["passed"]:
+                    problem_solved = True
+                    break
 
                 with open(solution_entry_path, "w") as f:
                     json.dump(solution_entry, f, indent=2)
