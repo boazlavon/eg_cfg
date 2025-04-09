@@ -42,12 +42,15 @@ def try_generate_code_solution(
     test_cases = problem["test_list"]
     if prompt_type in (
         PROMPT_TYPE__CUSTOM_PROMPT_SIMPLE,
-        PROMPT_TYPE__CUSTOM_PROMPT_COMPLEX,
+        PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
     ):
-        simple_prompt = PROMPT_TYPE__CUSTOM_PROMPT_SIMPLE == prompt_type
-        prompt, function_signature = format_mbpp_prompt(problem, simple_prompt)
-        use_dsgi = not simple_prompt
-        use_detector = False
+        assert (
+            prompt_type != PROMPT_TYPE__CUSTOM_PROMPT_SIMPLE
+        ), "Unsupported Prompt Type"
+        # prompt, function_signature = format_mbpp_prompt(problem, simple_prompt)
+        prompt, _ = format_mbpp_prompt(problem, False)
+        use_dsgi = True
+        use_detector = True
 
     if prompt_type in (PROMPT_TYPE__DEEPSEEK_BASE, PROMPT_TYPE__DEEPSEEK_INSTRUCT):
         if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
@@ -215,6 +218,42 @@ def generate_mbpp_solutions(
     problems = problems[start:end]
     if prod:
         random.shuffle(problems)
+        random.shuffle(official_passed_task_ids)
+
+    gamma = 0
+    backward_signals_iteration = 0
+    if official_passed_task_ids:
+        for task_id in official_passed_task_ids:
+            for _, problem in problems:
+                if problem["task_id"] != task_id:
+                    continue
+                solution_entry_path = get_solution_filepath(
+                    results_dir, task_id, gamma, backward_signals_iteration
+                )
+                if os.path.exists(solution_entry_path):
+                    continue
+                with open(solution_entry_path, "a"):
+                    pass
+                print(f"task_id: {task_id}")
+                pprint.pprint(problem)
+                test_cases = problem["test_list"]
+
+                solution = None
+                general_error = None
+                tb = None
+                solution_entry = None
+
+                if model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME:
+                    solution = official_results[task_id]["generation"]
+                    solution_results = run_tests(solution, test_cases)
+                    solution_entry = format_results(
+                        solution, solution_results, general_error, tb
+                    )
+                    solutions[(task_id, gamma, backward_signals_iteration)] = (
+                        solution_entry
+                    )
+                    with open(solution_entry_path, "w") as f:
+                        json.dump(solution_entry, f, indent=2)
 
     for _, problem in problems:
         problem_solved = False
@@ -268,62 +307,52 @@ def generate_mbpp_solutions(
                 with open(solution_entry_path, "a"):
                     pass
 
-                solution = None
-                general_error = None
-                tb = None
-                if gamma == 0 and task_id in official_passed_task_ids:
-                    if model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME:
-                        solution = official_results[task_id]["generation"]
+                for attempt_idx in range(attemps_count):
+                    general_error = None
+                    tb = None
+                    print(f"Attemp #{attempt_idx + 1}")
+                    if gamma == 0 and attempt_idx > 0:
+                        break
+                    if DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION in dynamic_signals:
+                        random.seed(40 + attempt_idx)
 
-                if not solution:
-                    for attempt_idx in range(attemps_count):
-                        general_error = None
-                        tb = None
-                        print(f"Attemp #{attempt_idx + 1}")
-                        if gamma == 0 and attempt_idx > 0:
-                            break
-                        if DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION in dynamic_signals:
-                            random.seed(40 + attempt_idx)
-
-                        try:
-                            solution = try_generate_code_solution(
-                                model,
-                                tokenizer,
-                                device,
-                                problem,
-                                gamma,
-                                dynamic_signals,
-                                backward_signals,
-                                prompt_type,
-                                nearest_future_samples,
-                                temperature,
-                                max_lines,
-                            )
-                            print(solution)
-                        except KeyboardInterrupt:
-                            exit(1)
-                        except AssertionError as e:
-                            solution = None
-                            general_error = str(type(e))
-                            tb = traceback.format_exc()
-                            if not prod:
-                                raise e
-                        except Exception as e:
-                            solution = None
-                            general_error = str(type(e))
-                            tb = traceback.format_exc()
-                            if not prod:
-                                raise e
-
-                solution_results = run_tests(solution, test_cases)
-                solution_entry = format_results(
-                    solution, solution_results, general_error, tb
-                )
+                    try:
+                        solution = try_generate_code_solution(
+                            model,
+                            tokenizer,
+                            device,
+                            problem,
+                            gamma,
+                            dynamic_signals,
+                            backward_signals,
+                            prompt_type,
+                            nearest_future_samples,
+                            temperature,
+                            max_lines,
+                        )
+                        print(solution)
+                    except KeyboardInterrupt:
+                        exit(1)
+                    except AssertionError as e:
+                        solution = None
+                        general_error = str(type(e))
+                        tb = traceback.format_exc()
+                        if not prod:
+                            raise e
+                    except Exception as e:
+                        solution = None
+                        general_error = str(type(e))
+                        tb = traceback.format_exc()
+                        if not prod:
+                            raise e
+                    solution_results = run_tests(solution, test_cases)
+                    solution_entry = format_results(
+                        solution, solution_results, general_error, tb
+                    )
+                    if solution_entry["passed"]:
+                        problem_solved = True
+                        break
                 solutions[(task_id, gamma, backward_signals_iteration)] = solution_entry
-                if solution_entry["passed"]:
-                    problem_solved = True
-                    break
-
                 with open(solution_entry_path, "w") as f:
                     json.dump(solution_entry, f, indent=2)
 
@@ -350,19 +379,29 @@ def generate_mbpp_solutions(
 def get_dynamic_signals(args):
     dynamic_signals_str = []
     dynamic_signals = []
+    prompt_type_prefix = None
+    if args.prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
+        prompt_type_prefix = "dsi"
+    if args.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
+        prompt_type_prefix = "dsb"
+    if args.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
+        prompt_type_prefix = "lci"
+    assert prompt_type_prefix is not None, "Invalid Prompt Type"
     if args.p:
         dynamic_signals_str.append("p")
         dynamic_signals.append(DYNAMIC_SIGNAL__PARTIAL_EXECUTION)
     if args.n:
-        if args.d is None:
-            dynamic_signals_str.append(f"ns{args.s}t{args.t}dinf")
-        else:
-            dynamic_signals_str.append(f"ns{args.s}t{args.t}d{args.d}")
+        d_arg = "inf"
+        if args.d is not None:
+            d_arg = str(args.d)
+        dynamic_signals_str.append(f"ns{args.s}t{args.t}d{d_arg}")
         dynamic_signals.append(DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION)
     if args.b:
         dynamic_signals_str.append("b")
         dynamic_signals.append(DYNAMIC_SIGNAL__BACKWARD)
     dynamic_signals_str = "".join(dynamic_signals_str)
+    if args.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
+        dynamic_signals_str = f"{prompt_type_prefix}_{dynamic_signals_str}"
     dynamic_signals = tuple(dynamic_signals)
     assert dynamic_signals
     return dynamic_signals, dynamic_signals_str
