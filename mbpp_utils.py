@@ -242,10 +242,8 @@ def format_mbpp_prompt(problem, simple_prompt=False):
 
 
 def load_mbpp_problems():
-    dataset = load_dataset("mbpp")
-    problems = {
-        example["task_id"]: example for _, example in enumerate(dataset["test"])
-    }
+    test_ds = load_dataset("google-research-datasets/mbpp", "full", split="test")
+    problems = {example["task_id"]: example for _, example in enumerate(test_ds)}
     return problems
 
 

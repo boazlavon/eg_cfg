@@ -28,6 +28,7 @@ class CodeGenerationAdapter:
         nearest_future_samples=None,
         temperature=None,
         max_function_body_lines=None,
+        guidance_strategy=None,
         backward_signals=(),
     ):
         self.model = model
@@ -46,11 +47,18 @@ class CodeGenerationAdapter:
         self.temperature = temperature
         self.max_function_body_lines = max_function_body_lines
         self.backward_signals = backward_signals
-
+        self.guidance_strategy = guidance_strategy
+        self.lines_count = 0
+        self.current_nearest_future_samples = []
+        self.current_dynamic_signal = {}
+        self.current_debug_data = {}
         assert dynamic_signals
-        for dynamic_signal in dynamic_signals:
-            assert dynamic_signal in SUPPORTED_DYNAMIC_SIGNALS
-            assert dynamic_signal in self.dynamic_signal_handlers()
+        for dynamic_signal_type in dynamic_signals:
+            assert dynamic_signal_type in SUPPORTED_DYNAMIC_SIGNALS
+            assert dynamic_signal_type in self.dynamic_signal_handlers()
+            self.current_dynamic_signal[dynamic_signal_type] = None
+            self.current_debug_data[dynamic_signal_type] = None
+
         self.dynamic_signals = dynamic_signals
         self.detector = None
 
@@ -62,7 +70,7 @@ class CodeGenerationAdapter:
             DYNAMIC_SIGNAL__BACKWARD: CodeGenerationAdapter._extract_backward_dynamic_signals,
         }
 
-    def _extract_backward_dynamic_signals(self, input_ids):
+    def _extract_backward_dynamic_signals(self, dynamic_signal_type, input_ids):
         dynamic_signal_text = ""
         if self.backward_signals:
             dynamic_signals = "\n".join(self.backward_signals)
@@ -71,9 +79,25 @@ class CodeGenerationAdapter:
             )
         return dynamic_signal_text, ()
 
-    def _extract_nearest_future_execution_dynamic_signals(self, input_ids):
+    def _extract_nearest_future_execution_dynamic_signals(
+        self, dynamic_signal_type, input_ids
+    ):
+        new_code = self._extract_new_code(input_ids)
+        generate_new_signal = self._do_generate_new_signal(
+            dynamic_signal_type, new_code
+        )
+        if not generate_new_signal:
+            return (
+                self.current_dynamic_signal[dynamic_signal_type],
+                self.current_debug_data[dynamic_signal_type],
+            )
         if self.detector.function_start_idx is None:
-            return "", ()
+            self.current_dynamic_signal[dynamic_signal_type] = ""
+            self.current_debug_data[dynamic_signal_type] = ()
+            return (
+                self.current_dynamic_signal[dynamic_signal_type],
+                self.current_debug_data[dynamic_signal_type],
+            )
 
         attention_mask = (input_ids != 0).long()
         inputs = {
@@ -113,6 +137,8 @@ class CodeGenerationAdapter:
                 continue
             executable_partial_programs.append(executable_partial_program_code)
         executable_partial_programs = list(set(executable_partial_programs))
+        if executable_partial_programs:
+            self.current_nearest_future_samples = executable_partial_programs
 
         for idx, executable_partial_program_code in enumerate(
             executable_partial_programs
@@ -148,16 +174,75 @@ class CodeGenerationAdapter:
             )
 
         # if the last line ends with : add a pass
-        return dynamic_signal_text, ()
+        self.current_dynamic_signal[dynamic_signal_type] = dynamic_signal_text
+        self.current_debug_data[dynamic_signal_type] = ()
+        return (
+            self.current_dynamic_signal[dynamic_signal_type],
+            self.current_debug_data[dynamic_signal_type],
+        )
 
-    def _extract_partial_execution_dynamic_signals(self, input_ids):
-        executable_partial_program_code = ""
-        try:
-            executable_partial_program_code = self._extract_partial_executions(
-                input_ids
-            )
-        except ValueError:
+    def _extract_new_code(self, input_ids):
+        crop_idx = self.initial_prompt_input_ids_len
+        new_code, _ = extract_new_tokens(self.tokenizer, input_ids.clone(), crop_idx)
+        if self.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
+            # Nothing to do, everything after [BEGIN] should be code
             pass
+        if self.prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
+            new_code = slice_prompt_after_markers(
+                new_code, marker=INSTRUCT_MODEL_PYTHON_CODE_START
+            )
+        return new_code
+
+    def _do_generate_new_signal(self, dynamic_signal_type, new_code):
+        guidance_strategy = self.guidance_strategy
+        if (guidance_strategy == GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE) and (
+            dynamic_signal_type != DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+        ):
+            guidance_strategy = GUIDANCE_STRATEGY__LINE_GUIDANCE
+
+        generate_new_signal = False
+        if guidance_strategy == GUIDANCE_STRATEGY__TOKEN_GUIDANCE:
+            generate_new_signal = True
+        if guidance_strategy == GUIDANCE_STRATEGY__LINE_GUIDANCE:
+            lines_count = new_code.count("\n")
+            if lines_count > self.lines_count:
+                self.lines_count = lines_count
+                generate_new_signal = True
+        if guidance_strategy == GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE:
+            assert (
+                dynamic_signal_type == DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+            ), f"Unsupported Signal Type: {dynamic_signal_type}"
+            # iterate over the new codes that were generated and check if new code is a prefix
+            if not self.current_nearest_future_samples:
+                generate_new_signal = True
+            for idx, current_new_code_sample in enumerate(
+                self.current_nearest_future_samples
+            ):
+                if not current_new_code_sample.startswith(new_code):
+                    print(f"New Code:\n{new_code}")
+                    print()
+                    print(f"#{idx} Sample:\n{current_new_code_sample}")
+                    generate_new_signal = True
+                    break
+
+        if not self.current_dynamic_signal[dynamic_signal_type]:
+            generate_new_signal = True
+        return generate_new_signal
+
+    def _extract_partial_execution_dynamic_signals(
+        self, dynamic_signal_type, input_ids
+    ):
+        new_code = self._extract_new_code(input_ids)
+        generate_new_signal = self._do_generate_new_signal(
+            dynamic_signal_type, new_code
+        )
+        if not generate_new_signal:
+            return (
+                self.current_dynamic_signal[dynamic_signal_type],
+                self.current_debug_data[dynamic_signal_type],
+            )
+
+        executable_partial_program_code = self._extract_partial_executions(new_code)
 
         dynamic_signals = []
         if executable_partial_program_code:
@@ -185,6 +270,8 @@ class CodeGenerationAdapter:
             crop_idx = self.detector.function_start_idx
         new_code, _ = extract_new_tokens(self.tokenizer, input_ids.clone(), crop_idx)
         debug_data = (executable_partial_program_code, new_code)
+        self.current_dynamic_signal[dynamic_signal_type] = dynamic_signal_text
+        self.current_debug_data[dynamic_signal_type] = debug_data
         return dynamic_signal_text, debug_data
 
     def unify_dynamic_signals(self, input_ids, dynamic_signals_text):
@@ -237,41 +324,39 @@ class CodeGenerationAdapter:
         dynamic_signals_text = {}
         debug_data = {}
 
-        for dynamic_signal in self.dynamic_signals:
-            dynamic_signals_text[dynamic_signal], debug_data[dynamic_signal] = (
-                self.dynamic_signal_handlers()[dynamic_signal](self, input_ids)
+        for dynamic_signal_type in self.dynamic_signals:
+            (
+                dynamic_signals_text[dynamic_signal_type],
+                debug_data[dynamic_signal_type],
+            ) = self.dynamic_signal_handlers()[dynamic_signal_type](
+                self, dynamic_signal_type, input_ids
             )
 
         dynamic_signal_input_ids = self.unify_dynamic_signals(
             input_ids, dynamic_signals_text
         )
-        return dynamic_signal_input_ids, debug_data.get(
-            DYNAMIC_SIGNAL__PARTIAL_EXECUTION, ("", "")
-        )
+        debug_data = debug_data.get(DYNAMIC_SIGNAL__PARTIAL_EXECUTION, ("", ""))
 
-    def _extract_partial_executions(self, input_ids: torch.Tensor) -> str:
-        crop_idx = self.initial_prompt_input_ids_len
-        new_code, _ = extract_new_tokens(self.tokenizer, input_ids.clone(), crop_idx)
-        if self.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
-            # Nothing to do, everything after [BEGIN] should be code
-            pass
-        if self.prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
-            new_code = slice_prompt_after_markers(
-                new_code, marker=INSTRUCT_MODEL_PYTHON_CODE_START
+        return dynamic_signal_input_ids, debug_data
+
+    def _extract_partial_executions(self, new_code) -> str:
+        executable_partial_program_code = ""
+        try:
+            executable_partial_program_code = (
+                self.execution_manager.extract_partial_executable_program(new_code)
             )
-
-        executable_partial_program_code = (
-            self.execution_manager.extract_partial_executable_program(new_code)
-        )
-        if (
-            executable_partial_program_code
-            and executable_partial_program_code not in self.program_executions
-        ):
-            print(f"Executing:\n {executable_partial_program_code}")
-            self.program_executions[executable_partial_program_code] = (
-                self.execution_manager.execute_test_cases(
-                    executable_partial_program_code, self.test_cases
+            if (
+                executable_partial_program_code
+                and executable_partial_program_code not in self.program_executions
+            ):
+                print(f"Executing:\n {executable_partial_program_code}")
+                self.program_executions[executable_partial_program_code] = (
+                    self.execution_manager.execute_test_cases(
+                        executable_partial_program_code, self.test_cases
+                    )
                 )
-            )
+        except ValueError:
+            executable_partial_program_code = ""
+            pass
 
         return executable_partial_program_code

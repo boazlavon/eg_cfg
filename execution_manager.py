@@ -59,12 +59,14 @@ class ExecutionManager:
 
     def extract_partial_executable_program(self, new_code) -> str:
         partial_program_code = new_code
+        partial_program_code = partial_program_code.replace("```", "")
         if self.function_signature:
             partial_program_code = f"{self.function_signature}\n{new_code}"
         executable_partial_program_code = self.make_executable(partial_program_code)
         executable_partial_program_code = remove_comments_and_docstrings(
             executable_partial_program_code
         )
+        executable_partial_program_code = executable_partial_program_code.strip()
         return executable_partial_program_code
 
     def make_executable(

@@ -38,6 +38,7 @@ def try_generate_code_solution(
     nearest_future_samples,
     temperature,
     max_lines,
+    guidance_strategy,
 ):
     test_cases = problem["test_list"]
     if prompt_type in (
@@ -85,6 +86,7 @@ def try_generate_code_solution(
             "max_function_body_lines": max_lines,
             "backward_signals": backward_signals,
             "prompt_type": prompt_type,
+            "guidance_strategy": guidance_strategy,
         }
 
         detector_kwargs = {}
@@ -204,6 +206,7 @@ def generate_mbpp_solutions(
     temperature=None,
     max_lines=None,
     attemps_count=1,
+    guidance_strategy=GUIDANCE_STRATEGY__TOKEN_GUIDANCE,
 ):
     device = setup_device()
     model, tokenizer = load_model(model_name, device)
@@ -310,9 +313,9 @@ def generate_mbpp_solutions(
                 for attempt_idx in range(attemps_count):
                     general_error = None
                     tb = None
-                    print(f"Attemp #{attempt_idx + 1}")
                     if gamma == 0 and attempt_idx > 0:
                         break
+                    print(f"Attemp #{attempt_idx + 1}")
                     if DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION in dynamic_signals:
                         random.seed(40 + attempt_idx)
 
@@ -329,6 +332,7 @@ def generate_mbpp_solutions(
                             nearest_future_samples,
                             temperature,
                             max_lines,
+                            guidance_strategy,
                         )
                         print(solution)
                     except KeyboardInterrupt:
@@ -380,6 +384,8 @@ def get_dynamic_signals(args):
     dynamic_signals_str = []
     dynamic_signals = []
     prompt_type_prefix = None
+    guidance_strategy_prefix = None
+
     if args.prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
         prompt_type_prefix = "dsi"
     if args.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
@@ -387,6 +393,14 @@ def get_dynamic_signals(args):
     if args.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
         prompt_type_prefix = "lci"
     assert prompt_type_prefix is not None, "Invalid Prompt Type"
+
+    if args.g == GUIDANCE_STRATEGY__TOKEN_GUIDANCE:
+        guidance_strategy_prefix = "tok"
+    if args.g == GUIDANCE_STRATEGY__LINE_GUIDANCE:
+        guidance_strategy_prefix = "ln"
+    if args.g == GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE:
+        guidance_strategy_prefix = "prf"
+
     if args.p:
         dynamic_signals_str.append("p")
         dynamic_signals.append(DYNAMIC_SIGNAL__PARTIAL_EXECUTION)
@@ -400,8 +414,10 @@ def get_dynamic_signals(args):
         dynamic_signals_str.append("b")
         dynamic_signals.append(DYNAMIC_SIGNAL__BACKWARD)
     dynamic_signals_str = "".join(dynamic_signals_str)
-    if args.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
-        dynamic_signals_str = f"{prompt_type_prefix}_{dynamic_signals_str}"
+    # if args.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
+    #     dynamic_signals_str = f"{prompt_type_prefix}_{dynamic_signals_str}"
+
+    dynamic_signals_str = f"{dynamic_signals_str}_{guidance_strategy_prefix}"
     dynamic_signals = tuple(dynamic_signals)
     assert dynamic_signals
     return dynamic_signals, dynamic_signals_str
@@ -434,7 +450,13 @@ def main():
     parser.add_argument(
         "--d", type=int, default=None, help="Max Lines for nearest future (deepness)"
     )
-
+    parser.add_argument(
+        "--g",
+        "--guidance",
+        choices=GUIDANCE_STRATEGIES,
+        default=GUIDANCE_STRATEGY__TOKEN_GUIDANCE,
+        help="Guidance strategy to use. Options: %(choices)s (default: %(default)s)",
+    )
     args = parser.parse_args()
 
     # Create results directory
@@ -461,6 +483,7 @@ def main():
         temperature=args.t,
         attemps_count=args.r,
         max_lines=args.d,
+        guidance_strategy=args.g,
     )
 
 
