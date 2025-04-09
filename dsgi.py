@@ -315,7 +315,7 @@ def generate_mbpp_solutions(
                     tb = None
                     if gamma == 0 and attempt_idx > 0:
                         break
-                    print(f"Attemp #{attempt_idx + 1}")
+                    print(f"Attempt #{attempt_idx + 1}")
                     if DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION in dynamic_signals:
                         random.seed(40 + attempt_idx)
 
@@ -341,12 +341,14 @@ def generate_mbpp_solutions(
                         solution = None
                         general_error = str(type(e))
                         tb = traceback.format_exc()
+                        print(tb)
                         if not prod:
                             raise e
                     except Exception as e:
                         solution = None
                         general_error = str(type(e))
                         tb = traceback.format_exc()
+                        print(tb)
                         if not prod:
                             raise e
                     solution_results = run_tests(solution, test_cases)
