@@ -1,6 +1,7 @@
 import argparse
 import os
 import json
+import pprint
 import csv
 from collections import defaultdict, Counter
 from consts import (
@@ -16,6 +17,7 @@ def load_json(path):
         with open(path, "r") as f:
             return json.load(f)
     except Exception as e:
+        print(f"Failed loading {path}")
         return None
 
 
@@ -155,7 +157,7 @@ def load_official_passed_ids(json_path):
 def analyze_trial(
     trial_dir, generate_csv=False, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME
 ):
-    from consts import GAMMAS  # for CSV if needed
+    invalid_samples = []
 
     samples = defaultdict(dict)
     baseline_passed_ids = load_official_passed_ids(
@@ -176,6 +178,7 @@ def analyze_trial(
 
         data = load_json(os.path.join(trial_dir, fname))
         if data is None:
+            invalid_samples.append(os.path.join(trial_dir, fname))
             continue
 
         samples[task_id][gamma] = data
@@ -243,6 +246,7 @@ def analyze_trial(
     if failed_samples:
         print(f"Error rate among failed samples: {error_rate * 100:.2f}%")
     print(f"Improved sample IDs: {sorted(improved_ids)}")
+    # pprint.pprint(f"Invalid Samples:\n{invalid_samples}")
 
     # CSV logic here if needed
     if generate_csv:

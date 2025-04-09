@@ -9,10 +9,12 @@ from datasets import load_dataset
 from consts import *
 
 CUSTOM_INSTRUCTION_TEXT = """\
+You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer
 ### Instruction:
 {problem_text}
 
 Write a Python function that satisfies the following test cases:
+>>> Test Cases:
 {test_cases}
 
 Your solution should be written in as many lines as possible.
@@ -25,40 +27,55 @@ Instead, follow these guidelines:**
 
 Avoid list comprehensions, use loops instead:
 Incorrect:
+```python
 def square_numbers(lst):
     return [x ** 2 for x in lst]
+```
 
 Correct:
+```python
 def square_numbers(lst):
     squares = []
     for num in lst:
         squared_value = num ** 2
         squares.append(squared_value)
     return squares
+```
 
 Avoid inline expressions, use variables instead
 Incorrect:
+```python
 def calculate_area(length, width):
     return (length * width) / 2
+```
 
 Correct:
+```python
 def calculate_area(length, width):
     product = length * width
     area = product / 2
     return area
+```
 
 Incorrect:
+```python
 result.append(x + y)
+```
 
 Correct:
+```python
 z = x + y
 result.append(z)
+```
 
 Incorrect:
+```python
 def compute_value(a, b, c):
     return (a + b) * (c / (a - b) + (a * c) / (b + c))
+```
 
 Correct:
+```python
 def compute_value(a, b, c):
     term1 = a + b 
     term2 = a - b 
@@ -66,9 +83,9 @@ def compute_value(a, b, c):
     term4 = a * c / (b + c)
     result = term1 * (term3 + term4)
     return result
+```
 
 ### Response:
-{function_signature}
 """
 
 
@@ -207,7 +224,7 @@ def format_custom_mbpp_prompt(problem, function_signature):
 
     prompt = CUSTOM_INSTRUCTION_TEXT.format(
         problem_text=problem["text"],
-        function_signature=function_signature,
+        # function_signature=function_signature,
         test_cases=formatted_test_cases,
     )
 
@@ -273,4 +290,5 @@ def load_official_results(model_name):
         print(f"Error loading baseline passed IDs: {e}")
         official_passed_task_ids = set([])
         official_results = {}
+    official_passed_task_ids = list(official_passed_task_ids)
     return official_passed_task_ids, official_results
