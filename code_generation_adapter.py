@@ -187,7 +187,10 @@ class CodeGenerationAdapter:
         if self.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
             # Nothing to do, everything after [BEGIN] should be code
             pass
-        if self.prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
+        if self.prompt_type in (
+            PROMPT_TYPE__DEEPSEEK_INSTRUCT,
+            PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
+        ):
             new_code = slice_prompt_after_markers(
                 new_code, marker=INSTRUCT_MODEL_PYTHON_CODE_START
             )
@@ -285,7 +288,10 @@ class CodeGenerationAdapter:
 
         unified_dynamic_signal_prompt = self.initial_prompt
         if unified_dynamic_signal_text:
-            if self.prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
+            if self.prompt_type in (
+                PROMPT_TYPE__DEEPSEEK_INSTRUCT,
+                PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
+            ):
                 unified_dynamic_signal_text += (
                     f"\n{DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_INSTRUCT_BEGIN}"
                 )

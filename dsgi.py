@@ -52,6 +52,8 @@ def try_generate_code_solution(
         prompt, _ = format_mbpp_prompt(problem, False)
         use_dsgi = True
         use_detector = True
+        function_signature = None
+        end_string = "```"
 
     if prompt_type in (PROMPT_TYPE__DEEPSEEK_BASE, PROMPT_TYPE__DEEPSEEK_INSTRUCT):
         if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
@@ -280,7 +282,7 @@ def generate_mbpp_solutions(
                 print(f"gamma={gamma}")
                 if gamma > 0 and problem_solved:
                     print(f"Skip gamma={gamma} problem is solved")
-                    continue
+                    break
                 solution_entry_path = get_solution_filepath(
                     results_dir, task_id, gamma, backward_signals_iteration
                 )
@@ -394,7 +396,7 @@ def get_dynamic_signals(args):
         prompt_type_prefix = "dsb"
     if args.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
         prompt_type_prefix = "lci"
-    assert prompt_type_prefix is not None, "Invalid Prompt Type"
+    assert prompt_type_prefix, "Invalid Prompt Type"
 
     if args.g == GUIDANCE_STRATEGY__TOKEN_GUIDANCE:
         guidance_strategy_prefix = "tok"
@@ -416,9 +418,8 @@ def get_dynamic_signals(args):
         dynamic_signals_str.append("b")
         dynamic_signals.append(DYNAMIC_SIGNAL__BACKWARD)
     dynamic_signals_str = "".join(dynamic_signals_str)
-    # if args.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
-    #     dynamic_signals_str = f"{prompt_type_prefix}_{dynamic_signals_str}"
-
+    if args.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
+        dynamic_signals_str = f"{dynamic_signals_str}_{prompt_type_prefix}"
     dynamic_signals_str = f"{dynamic_signals_str}_{guidance_strategy_prefix}"
     dynamic_signals = tuple(dynamic_signals)
     assert dynamic_signals

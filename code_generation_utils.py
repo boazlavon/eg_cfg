@@ -242,10 +242,14 @@ def raw_outputs_to_new_code(
                 new_code = new_code.replace(
                     DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_END, ""
                 ).strip()
-            if prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
+            if prompt_type in (
+                PROMPT_TYPE__DEEPSEEK_INSTRUCT,
+                PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
+            ):
                 new_code = new_code.split(INSTRUCT_MODEL_PYTHON_CODE_START, 1)[
                     1
                 ].rstrip()
+                # TODO: strip right ```
             if validate:
                 assert is_valid_python(new_code)
                 # new_code = black.format_str(
@@ -332,7 +336,10 @@ def generate_code_solutions(
         )
         eos_token_id = tokenizer.eos_token_id
         pad_token_id = tokenizer.eos_token_id
-    if prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
+    if prompt_type in (
+        PROMPT_TYPE__DEEPSEEK_INSTRUCT,
+        PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
+    ):
         prime_stopping_criteria(
             tokenizer,
             inputs,
