@@ -4,6 +4,7 @@ import json
 import pprint
 import csv
 from collections import defaultdict, Counter
+from concurrent.futures import ProcessPoolExecutor
 from consts import (
     GAMMAS,
     OFFICIAL_PASSED_TASK_IDS_PATH,
@@ -298,6 +299,11 @@ def analyze_trial(
     }
 
 
+def analyze_trial_wrapper(args):
+    trial_dir, generate_csv, model_name = args
+    return analyze_trial(trial_dir, generate_csv=generate_csv, model_name=model_name)
+
+
 def aggregate_analysis(base_dir, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME):
     official_passed_ids = load_official_passed_ids(
         OFFICIAL_PASSED_TASK_IDS_PATH[model_name]
@@ -305,14 +311,26 @@ def aggregate_analysis(base_dir, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME):
     trial_results = {}
     base_passed = defaultdict(bool)
 
-    for subdir in os.listdir(base_dir):
-        path = os.path.join(base_dir, subdir)
-        if os.path.isdir(path):
-            result = analyze_trial(path, generate_csv=True)
-            trial_results[subdir] = result
-            for task_id, gamma_map in result["samples"].items():
-                if gamma_map.get(0.0, {}).get("passed"):
-                    base_passed[task_id] = True
+    trial_dirs = [
+        os.path.join(base_dir, subdir)
+        for subdir in os.listdir(base_dir)
+        if os.path.isdir(os.path.join(base_dir, subdir))
+    ]
+
+    with ProcessPoolExecutor() as executor:
+        results = list(
+            executor.map(
+                analyze_trial_wrapper,
+                [(trial_dir, True, model_name) for trial_dir in trial_dirs],
+            )
+        )
+
+    for trial_dir, result in zip(trial_dirs, results):
+        subdir = os.path.basename(trial_dir)
+        trial_results[subdir] = result
+        for task_id, gamma_map in result["samples"].items():
+            if gamma_map.get(0.0, {}).get("passed"):
+                base_passed[task_id] = True
 
     all_improved_counter = Counter()
     improved_task_to_trials = defaultdict(list)
@@ -390,12 +408,7 @@ def aggregate_analysis(base_dir, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME):
         improved_ids,
     ) in complete_scores:
         cumulative |= improved_ids
-        print(
-            f"{name}: {pass_rate*100:.2f}% | improved: ({improved}/{total}) {improved/total*100:.2f}% | passed: ({passed}/{total}) {passed/total*100:.2f}% | passed w/o improvement: ({passed_wo_impr}/{total}) {passed_wo_impr/total*100:.2f}% | error%: {err_rate*100:.2f}% ({err_count}/{fail_count})"
-        )
-        print(
-            f"    Cimp: {len(cumulative)} / {MBPP_SIZE} = {len(cumulative)/MBPP_SIZE*100:.2f}%"
-        )
+        print(f"{name}: {pass_rate*100:.2f}% | improved: ({improved}/{total}) {improved/total*100:.2f}% | passed: ({passed}/{total}) {passed/total*100:.2f}% | passed w/o improvement: ({passed_wo_impr}/{total}) {passed_wo_impr/total*100:.2f}% | error%: {err_rate*100:.2f}% ({err_count}/{fail_count}) | Cimp: {len(cumulative)} / {MBPP_SIZE} = {len(cumulative)/MBPP_SIZE*100:.2f}%")
 
     print("\n--- Incomplete Trials (< 95% MBPP samples) ---")
     for (
