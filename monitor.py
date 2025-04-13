@@ -383,11 +383,6 @@ def aggregate_analysis(base_dir, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME):
         trial_names = ", ".join(sorted(improved_task_to_trials[task_id]))
         print(f"  task_id={task_id}: {count} trials | {trial_names}")
 
-    print(f"Total improved samples across all trials: {len(all_improved_counter)}")
-    print(
-        f"Improvement percentage over MBPP: {len(all_improved_counter) / MBPP_SIZE * 100:.2f}%"
-    )
-
     complete_scores.sort(key=lambda x: x[0], reverse=True)
     incomplete_scores.sort(key=lambda x: x[0], reverse=True)
 
@@ -408,7 +403,9 @@ def aggregate_analysis(base_dir, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME):
         improved_ids,
     ) in complete_scores:
         cumulative |= improved_ids
-        print(f"{name}: {pass_rate*100:.2f}% | improved: ({improved}/{total}) {improved/total*100:.2f}% | passed: ({passed}/{total}) {passed/total*100:.2f}% | passed w/o improvement: ({passed_wo_impr}/{total}) {passed_wo_impr/total*100:.2f}% | error%: {err_rate*100:.2f}% ({err_count}/{fail_count}) | Cimp: {len(cumulative)} / {MBPP_SIZE} = {len(cumulative)/MBPP_SIZE*100:.2f}%")
+        print(
+            f"{name}: {pass_rate*100:.2f}% | improved: ({improved}/{total}) {improved/total*100:.2f}% | passed: ({passed}/{total}) {passed/total*100:.2f}% | passed w/o improvement: ({passed_wo_impr}/{total}) {passed_wo_impr/total*100:.2f}% | error%: {err_rate*100:.2f}% ({err_count}/{fail_count}) | Cimp: {len(cumulative)} / {MBPP_SIZE} = {len(cumulative)/MBPP_SIZE*100:.2f}%"
+        )
 
     print("\n--- Incomplete Trials (< 95% MBPP samples) ---")
     for (
@@ -434,6 +431,15 @@ def aggregate_analysis(base_dir, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME):
     print("\n===== BASELINE-PASSED BUT NEVER SEEN PASSED IN TRIALS (gamma=0.0) =====")
     print(f"Count: {len(missing_base_ids)}")
     print(f"task_ids: {missing_base_ids}")
+
+    print("\n===== FINAL RESULTS =====")
+    print(f"Total improved samples across all trials: {len(all_improved_counter)}")
+    print(
+        f"Improvement percentage over MBPP: {len(all_improved_counter) / MBPP_SIZE * 100:.2f}%"
+    )
+    total_passed_counter = 257 + len(all_improved_counter)
+    print(f"Passed over MBPP (Count): {total_passed_counter} / {MBPP_SIZE}")
+    print(f"Passed over MBPP: {total_passed_counter / MBPP_SIZE * 100:.2f}%")
 
 
 def main():

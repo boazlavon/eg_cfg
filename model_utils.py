@@ -1,5 +1,6 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
+from consts import *
 
 
 def setup_device():
@@ -8,9 +9,23 @@ def setup_device():
     return device
 
 
+# In the model: deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct
+# https://huggingface.co/deepseek-ai/DeepSeek-V2-Lite-Chat/discussions/8
+# /a/home/cc/students/cs/boazlavon/.cache/huggingface/modules/transformers_modules/deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct/e434a23f91ba5b4923cf6c9d9a238eb4a08e3a11/modeling_deepseek.py
+# line 1728:
+# -- max_cache_length = past_key_values.get_max_length()
+# ++ max_cache_length = past_key_values.get_max_cache_shape()
+# model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True).to(device)
+
+
 def load_model(model_name: str, device):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name).to(device)
+    if model_name == DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME:
+        model = AutoModelForCausalLM.from_pretrained(
+            model_name, trust_remote_code=True
+        ).to(device)
+    else:
+        model = AutoModelForCausalLM.from_pretrained(model_name).to(device)
     return model, tokenizer
 
 

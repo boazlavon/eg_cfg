@@ -457,7 +457,7 @@ def main():
         "--g",
         "--guidance",
         choices=GUIDANCE_STRATEGIES,
-        default=GUIDANCE_STRATEGY__TOKEN_GUIDANCE,
+        default=GUIDANCE_STRATEGY__LINE_GUIDANCE,
         help="Guidance strategy to use. Options: %(choices)s (default: %(default)s)",
     )
     args = parser.parse_args()
