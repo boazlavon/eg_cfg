@@ -10,6 +10,7 @@ from consts import (
     OFFICIAL_PASSED_TASK_IDS_PATH,
     MBPP_SIZE,
     DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
+    DEEPSEEK_13_SOLVED_TASK_IDS,
 )
 
 
@@ -155,9 +156,7 @@ def load_official_passed_ids(json_path):
     }
 
 
-def analyze_trial(
-    trial_dir, generate_csv=False, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME
-):
+def analyze_trial(trial_dir, generate_csv, model_name):
     invalid_samples = []
 
     samples = defaultdict(dict)
@@ -221,6 +220,11 @@ def analyze_trial(
                 if task_id not in baseline_passed_ids:
                     improved_ids.add(task_id)
                 passed_total.add(task_id)
+                # if model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME:
+                # if task_id in DEEPSEEK_13_SOLVED_TASK_IDS:
+                # pass
+                # improved_ids.add(task_id)
+                # passed_total.add(task_id)
                 break  # stop at first successful gamma > 0
 
         # Track error rate on failed samples at gamma=0
@@ -301,10 +305,10 @@ def analyze_trial(
 
 def analyze_trial_wrapper(args):
     trial_dir, generate_csv, model_name = args
-    return analyze_trial(trial_dir, generate_csv=generate_csv, model_name=model_name)
+    return analyze_trial(trial_dir, generate_csv, model_name)
 
 
-def aggregate_analysis(base_dir, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME):
+def aggregate_analysis(base_dir, model_name):
     official_passed_ids = load_official_passed_ids(
         OFFICIAL_PASSED_TASK_IDS_PATH[model_name]
     )
@@ -437,9 +441,17 @@ def aggregate_analysis(base_dir, model_name=DEEPSEEK_13B_INSTRUCT_MODEL_NAME):
     print(
         f"Improvement percentage over MBPP: {len(all_improved_counter) / MBPP_SIZE * 100:.2f}%"
     )
-    total_passed_counter = 257 + len(all_improved_counter)
+    total_wo = 257
+    if "V2" in model_name:
+        total_wo = 307
+    total_passed_counter = total_wo + len(all_improved_counter)
     print(f"Passed over MBPP (Count): {total_passed_counter} / {MBPP_SIZE}")
     print(f"Passed over MBPP: {total_passed_counter / MBPP_SIZE * 100:.2f}%")
+    print()
+    all_improved_counter = list(all_improved_counter)
+    all_improved_counter.sort()
+    print(all_improved_counter)
+    print(f"{len(all_improved_counter)}")
 
 
 def main():
@@ -459,13 +471,19 @@ def main():
         action="store_true",
         help="If set, generate CSVs (only with --trial-dir)",
     )
+    parser.add_argument(
+        "--model-name",
+        type=str,
+        default=DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
+        help="Model name for display/logging purposes (default: %(default)s)",
+    )
 
     args = parser.parse_args()
 
     if args.trial_dir:
-        analyze_trial(args.trial_dir, generate_csv=args.csv)
+        analyze_trial(args.trial_dir, args.csv, args.model_name)
     elif args.aggregate_dir:
-        aggregate_analysis(args.aggregate_dir)
+        aggregate_analysis(args.aggregate_dir, model_name=args.model_name)
     else:
         print("Please provide either --trial-dir or --aggregate-dir")
 

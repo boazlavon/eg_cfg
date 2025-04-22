@@ -1,0 +1,1254 @@
+[
+    {
+        "task_id": 13,
+        "text": "Write a function to count the most common words in a dictionary.",
+        "code": "from collections import Counter\r\ndef count_common(words):\r\n  word_counts = Counter(words)\r\n  top_four = word_counts.most_common(4)\r\n  return (top_four)\r\n",
+        "test_list": [
+            "assert count_common(['red','green','black','pink','black','white','black','eyes','white','black','orange','pink','pink','red','red','white','orange','white',\"black\",'pink','green','green','pink','green','pink','white','orange',\"orange\",'red']) == [('pink', 6), ('black', 5), ('white', 5), ('red', 4)]",
+            "assert count_common(['one', 'two', 'three', 'four', 'five', 'one', 'two', 'one', 'three', 'one']) == [('one', 4), ('two', 2), ('three', 2), ('four', 1)]",
+            "assert count_common(['Facebook', 'Apple', 'Amazon', 'Netflix', 'Google', 'Apple', 'Netflix', 'Amazon']) == [('Apple', 2), ('Amazon', 2), ('Netflix', 2), ('Facebook', 1)]"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 15,
+        "text": "Write a function to split a string at lowercase letters.",
+        "code": "import re\r\ndef split_lowerstring(text):\r\n return (re.findall('[a-z][^a-z]*', text))",
+        "test_list": [
+            "assert split_lowerstring(\"AbCd\")==['bC','d']",
+            "assert split_lowerstring(\"Python\")==['y', 't', 'h', 'o', 'n']",
+            "assert split_lowerstring(\"Programming\")==['r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 31,
+        "text": "Write a function to find the top k integers that occur most frequently from given lists of sorted and distinct integers using heap queue algorithm.",
+        "code": "def func(nums, k):\r\n    import collections\r\n    d = collections.defaultdict(int)\r\n    for row in nums:\r\n        for i in row:\r\n            d[i] += 1\r\n    temp = []\r\n    import heapq\r\n    for key, v in d.items():\r\n        if len(temp) < k:\r\n            temp.append((v, key))\r\n            if len(temp) == k:\r\n                heapq.heapify(temp)\r\n        else:\r\n            if v > temp[0][0]:\r\n                heapq.heappop(temp)\r\n                heapq.heappush(temp, (v, key))\r\n    result = []\r\n    while temp:\r\n        v, key = heapq.heappop(temp)\r\n        result.append(key)\r\n    return result",
+        "test_list": [
+            "assert func([[1, 2, 6], [1, 3, 4, 5, 7, 8], [1, 3, 5, 6, 8, 9], [2, 5, 7, 11], [1, 4, 7, 8, 12]],3)==[5, 7, 1]",
+            "assert func([[1, 2, 6], [1, 3, 4, 5, 7, 8], [1, 3, 5, 6, 8, 9], [2, 5, 7, 11], [1, 4, 7, 8, 12]],1)==[1]",
+            "assert func([[1, 2, 6], [1, 3, 4, 5, 7, 8], [1, 3, 5, 6, 8, 9], [2, 5, 7, 11], [1, 4, 7, 8, 12]],5)==[6, 5, 7, 8, 1]"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 39,
+        "text": "Write a function to check if the letters of a given string can be rearranged so that two characters that are adjacent to each other are different.",
+        "code": "import heapq\r\nfrom collections import Counter\r\ndef rearange_string(S):\r\n    ctr = Counter(S)\r\n    heap = [(-value, key) for key, value in ctr.items()]\r\n    heapq.heapify(heap)\r\n    if (-heap[0][0]) * 2 > len(S) + 1: \r\n        return \"\"\r\n    ans = []\r\n    while len(heap) >= 2:\r\n        nct1, char1 = heapq.heappop(heap)\r\n        nct2, char2 = heapq.heappop(heap)\r\n        ans.extend([char1, char2])\r\n        if nct1 + 1: heapq.heappush(heap, (nct1 + 1, char1))\r\n        if nct2 + 1: heapq.heappush(heap, (nct2 + 1, char2))\r\n    return \"\".join(ans) + (heap[0][1] if heap else \"\")",
+        "test_list": [
+            "assert rearange_string(\"aab\")==('aba')",
+            "assert rearange_string(\"aabb\")==('abab')",
+            "assert rearange_string(\"abccdd\")==('cdabcd')"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 47,
+        "text": "Write a python function to find the last digit when factorial of a divides factorial of b.",
+        "code": "def compute_Last_Digit(A,B): \r\n    variable = 1\r\n    if (A == B): \r\n        return 1\r\n    elif ((B - A) >= 5):  \r\n        return 0\r\n    else:   \r\n        for i in range(A + 1,B + 1): \r\n            variable = (variable * (i % 10)) % 10\r\n        return variable % 10",
+        "test_list": [
+            "assert compute_Last_Digit(2,4) == 2",
+            "assert compute_Last_Digit(6,8) == 6",
+            "assert compute_Last_Digit(1,2) == 2"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": [
+            "assert compute_Last_Digit(3,7) == 0",
+            "assert compute_Last_Digit(20,23) == 6",
+            "assert compute_Last_Digit(1021,1024) == 4"
+        ]
+    },
+    {
+        "task_id": 55,
+        "text": "Write a function to find t-nth term of geometric series.",
+        "code": "import math\r\ndef tn_gp(a,n,r):\r\n  tn = a * (math.pow(r, n - 1))\r\n  return tn",
+        "test_list": [
+            "assert tn_gp(1,5,2)==16",
+            "assert tn_gp(1,5,4)==256",
+            "assert tn_gp(2,6,3)==486"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 59,
+        "text": "Write a function to find the nth octagonal number.",
+        "code": "def is_octagonal(n): \r\n\treturn 3 * n * n - 2 * n ",
+        "test_list": [
+            "assert is_octagonal(5) == 65",
+            "assert is_octagonal(10) == 280",
+            "assert is_octagonal(15) == 645"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 60,
+        "text": "Write a function to find the maximum length of the subsequence with difference between adjacent elements for the given array.",
+        "code": "def max_len_sub( arr, n): \r\n\tmls=[] \r\n\tmax = 0\r\n\tfor i in range(n): \r\n\t\tmls.append(1) \r\n\tfor i in range(n): \r\n\t\tfor j in range(i): \r\n\t\t\tif (abs(arr[i] - arr[j]) <= 1 and mls[i] < mls[j] + 1): \r\n\t\t\t\tmls[i] = mls[j] + 1\r\n\tfor i in range(n): \r\n\t\tif (max < mls[i]): \r\n\t\t\tmax = mls[i] \r\n\treturn max",
+        "test_list": [
+            "assert max_len_sub([2, 5, 6, 3, 7, 6, 5, 8], 8) == 5",
+            "assert max_len_sub([-2, -1, 5, -1, 4, 0, 3], 7) == 4",
+            "assert max_len_sub([9, 11, 13, 15, 18], 5) == 1"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 72,
+        "text": "Write a python function to check whether the given number can be represented as difference of two squares or not.",
+        "code": "def dif_Square(n): \r\n    if (n % 4 != 2): \r\n        return True\r\n    return False",
+        "test_list": [
+            "assert dif_Square(5) == True",
+            "assert dif_Square(10) == False",
+            "assert dif_Square(15) == True"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 74,
+        "text": "Write a function to check whether it follows the sequence given in the patterns array.",
+        "code": "def is_samepatterns(colors, patterns):    \r\n    if len(colors) != len(patterns):\r\n        return False    \r\n    sdict = {}\r\n    pset = set()\r\n    sset = set()    \r\n    for i in range(len(patterns)):\r\n        pset.add(patterns[i])\r\n        sset.add(colors[i])\r\n        if patterns[i] not in sdict.keys():\r\n            sdict[patterns[i]] = []\r\n\r\n        keys = sdict[patterns[i]]\r\n        keys.append(colors[i])\r\n        sdict[patterns[i]] = keys\r\n\r\n    if len(pset) != len(sset):\r\n        return False   \r\n\r\n    for values in sdict.values():\r\n\r\n        for i in range(len(values) - 1):\r\n            if values[i] != values[i+1]:\r\n                return False\r\n\r\n    return True",
+        "test_list": [
+            "assert is_samepatterns([\"red\",\"green\",\"green\"], [\"a\", \"b\", \"b\"])==True ",
+            "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\",\"b\"])==False ",
+            "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\"])==False "
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 76,
+        "text": "Write a python function to count the number of squares in a rectangle.",
+        "code": "def count_Squares(m,n):\r\n    if(n < m):\r\n        temp = m\r\n        m = n\r\n        n = temp\r\n    return ((m * (m + 1) * (2 * m + 1) / 6 + (n - m) * m * (m + 1) / 2))",
+        "test_list": [
+            "assert count_Squares(4,3) == 20",
+            "assert count_Squares(2,2) == 5",
+            "assert count_Squares(1,1) == 1"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 77,
+        "text": "Write a python function to find the difference between sum of even and odd digits.",
+        "code": "def is_Diff(n): \r\n    return (n % 11 == 0) ",
+        "test_list": [
+            "assert is_Diff (12345) == False",
+            "assert is_Diff(1212112) == True",
+            "assert is_Diff(1212) == False"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 81,
+        "text": "Write a function to zip the two given tuples.",
+        "code": "def zip_tuples(test_tup1, test_tup2):\r\n  res = []\r\n  for i, j in enumerate(test_tup1):\r\n    res.append((j, test_tup2[i % len(test_tup2)])) \r\n  return (res) ",
+        "test_list": [
+            "assert zip_tuples((7, 8, 4, 5, 9, 10),(1, 5, 6) ) == [(7, 1), (8, 5), (4, 6), (5, 1), (9, 5), (10, 6)]",
+            "assert zip_tuples((8, 9, 5, 6, 10, 11),(2, 6, 7) ) == [(8, 2), (9, 6), (5, 7), (6, 2), (10, 6), (11, 7)]",
+            "assert zip_tuples((9, 10, 6, 7, 11, 12),(3, 7, 8) ) == [(9, 3), (10, 7), (6, 8), (7, 3), (11, 7), (12, 8)]"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 83,
+        "text": "Write a python function to find the character made by adding all the characters of the given string.",
+        "code": "def get_Char(strr):  \r\n    summ = 0\r\n    for i in range(len(strr)): \r\n        summ += (ord(strr[i]) - ord('a') + 1)  \r\n    if (summ % 26 == 0): \r\n        return ord('z') \r\n    else: \r\n        summ = summ % 26\r\n        return chr(ord('a') + summ - 1)",
+        "test_list": [
+            "assert get_Char(\"abc\") == \"f\"",
+            "assert get_Char(\"gfg\") == \"t\"",
+            "assert get_Char(\"ab\") == \"c\""
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 86,
+        "text": "Write a function to find nth centered hexagonal number.",
+        "code": "def centered_hexagonal_number(n):\r\n  return 3 * n * (n - 1) + 1",
+        "test_list": [
+            "assert centered_hexagonal_number(10) == 271",
+            "assert centered_hexagonal_number(2) == 7",
+            "assert centered_hexagonal_number(9) == 217"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 87,
+        "text": "Write a function to merge three dictionaries into a single expression.",
+        "code": "import collections as ct\r\ndef merge_dictionaries_three(dict1,dict2, dict3):\r\n    merged_dict = dict(ct.ChainMap({},dict1,dict2,dict3))\r\n    return merged_dict",
+        "test_list": [
+            "assert merge_dictionaries_three({ \"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\" }, { \"G\": \"Green\", \"W\": \"White\" },{ \"O\": \"Orange\", \"W\": \"White\", \"B\": \"Black\" })=={'B': 'Black', 'R': 'Red', 'P': 'Pink', 'G': 'Green', 'W': 'White', 'O': 'Orange'}",
+            "assert merge_dictionaries_three({ \"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\" }, { \"G\": \"Green\", \"W\": \"White\" },{\"L\":\"lavender\",\"B\":\"Blue\"})=={'W': 'White', 'P': 'Pink', 'B': 'Black', 'R': 'Red', 'G': 'Green', 'L': 'lavender'}",
+            "assert merge_dictionaries_three({ \"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\" },{\"L\":\"lavender\",\"B\":\"Blue\"},{ \"G\": \"Green\", \"W\": \"White\" })=={'B': 'Black', 'P': 'Pink', 'R': 'Red', 'G': 'Green', 'L': 'lavender', 'W': 'White'}"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 101,
+        "text": "Write a function to find the kth element in the given array.",
+        "code": "def kth_element(arr, n, k):\r\n  for i in range(n):\r\n    for j in range(0, n-i-1):\r\n      if arr[j] > arr[j+1]:\r\n        arr[j], arr[j+1] == arr[j+1], arr[j]\r\n  return arr[k-1]",
+        "test_list": [
+            "assert kth_element([12,3,5,7,19], 5, 2) == 3",
+            "assert kth_element([17,24,8,23], 4, 3) == 8",
+            "assert kth_element([16,21,25,36,4], 5, 4) == 36"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 103,
+        "text": "Write a function to find eulerian number a(n, m).",
+        "code": "def eulerian_num(n, m): \r\n\tif (m >= n or n == 0): \r\n\t\treturn 0 \r\n\tif (m == 0): \r\n\t\treturn 1 \r\n\treturn ((n - m) * eulerian_num(n - 1, m - 1) +(m + 1) * eulerian_num(n - 1, m))",
+        "test_list": [
+            "assert eulerian_num(3, 1) == 4",
+            "assert eulerian_num(4, 1) == 11",
+            "assert eulerian_num(5, 3) == 26"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 110,
+        "text": "Write a function to extract the ranges that are missing from the given list with the given start range and end range values.",
+        "code": "def extract_missing(test_list, strt_val, stop_val):\r\n  res = []\r\n  for sub in test_list:\r\n    if sub[0] > strt_val:\r\n      res.append((strt_val, sub[0]))\r\n      strt_val = sub[1]\r\n    if strt_val < stop_val:\r\n      res.append((strt_val, stop_val))\r\n  return (res) ",
+        "test_list": [
+            "assert extract_missing([(6, 9), (15, 34), (48, 70)], 2, 100) == [(2, 6), (9, 100), (9, 15), (34, 100), (34, 48), (70, 100)]",
+            "assert extract_missing([(7, 2), (15, 19), (38, 50)], 5, 60) == [(5, 7), (2, 60), (2, 15), (19, 60), (19, 38), (50, 60)]",
+            "assert extract_missing([(7, 2), (15, 19), (38, 50)], 1, 52) == [(1, 7), (2, 52), (2, 15), (19, 52), (19, 38), (50, 52)]"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 112,
+        "text": "Write a python function to find the perimeter of a cylinder.",
+        "code": "def perimeter(diameter,height) : \r\n    return 2*(diameter+height)  ",
+        "test_list": [
+            "assert perimeter(2,4) == 12",
+            "assert perimeter(1,2) == 6",
+            "assert perimeter(3,1) == 8"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 114,
+        "text": "Write a function to assign frequency to each tuple in the given tuple list.",
+        "code": "from collections import Counter \r\ndef assign_freq(test_list):\r\n  res = [(*key, val) for key, val in Counter(test_list).items()]\r\n  return (str(res)) ",
+        "test_list": [
+            "assert assign_freq([(6, 5, 8), (2, 7), (6, 5, 8), (6, 5, 8), (9, ), (2, 7)] ) == '[(6, 5, 8, 3), (2, 7, 2), (9, 1)]'",
+            "assert assign_freq([(4, 2, 4), (7, 1), (4, 8), (4, 2, 4), (9, 2), (7, 1)] ) == '[(4, 2, 4, 2), (7, 1, 2), (4, 8, 1), (9, 2, 1)]'",
+            "assert assign_freq([(11, 13, 10), (17, 21), (4, 2, 3), (17, 21), (9, 2), (4, 2, 3)] ) == '[(11, 13, 10, 1), (17, 21, 2), (4, 2, 3, 2), (9, 2, 1)]'"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 115,
+        "text": "Write a function to check whether all dictionaries in a list are empty or not.",
+        "code": "def empty_dit(list1):\r\n empty_dit=all(not d for d in list1)\r\n return empty_dit",
+        "test_list": [
+            "assert empty_dit([{},{},{}])==True",
+            "assert empty_dit([{1,2},{},{}])==False",
+            "assert empty_dit({})==True"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 117,
+        "text": "Write a function to convert all possible convertible elements in the list to float.",
+        "code": "def list_to_float(test_list):\r\n  res = []\r\n  for tup in test_list:\r\n    temp = []\r\n    for ele in tup:\r\n      if ele.isalpha():\r\n        temp.append(ele)\r\n      else:\r\n        temp.append(float(ele))\r\n    res.append((temp[0],temp[1])) \r\n  return (str(res)) ",
+        "test_list": [
+            "assert list_to_float( [(\"3\", \"4\"), (\"1\", \"26.45\"), (\"7.32\", \"8\"), (\"4\", \"8\")] ) == '[(3.0, 4.0), (1.0, 26.45), (7.32, 8.0), (4.0, 8.0)]'",
+            "assert list_to_float( [(\"4\", \"4\"), (\"2\", \"27\"), (\"4.12\", \"9\"), (\"7\", \"11\")] ) == '[(4.0, 4.0), (2.0, 27.0), (4.12, 9.0), (7.0, 11.0)]'",
+            "assert list_to_float( [(\"6\", \"78\"), (\"5\", \"26.45\"), (\"1.33\", \"4\"), (\"82\", \"13\")] ) == '[(6.0, 78.0), (5.0, 26.45), (1.33, 4.0), (82.0, 13.0)]'"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 125,
+        "text": "Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.",
+        "code": "def find_length(string, n): \r\n\tcurrent_sum = 0\r\n\tmax_sum = 0\r\n\tfor i in range(n): \r\n\t\tcurrent_sum += (1 if string[i] == '0' else -1) \r\n\t\tif current_sum < 0: \r\n\t\t\tcurrent_sum = 0\r\n\t\tmax_sum = max(current_sum, max_sum) \r\n\treturn max_sum if max_sum else 0",
+        "test_list": [
+            "assert find_length(\"11000010001\", 11) == 6",
+            "assert find_length(\"10111\", 5) == 1",
+            "assert find_length(\"11011101100101\", 14) == 2 "
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 126,
+        "text": "Write a python function to find the sum of common divisors of two given numbers.",
+        "code": "def sum(a,b): \r\n    sum = 0\r\n    for i in range (1,min(a,b)): \r\n        if (a % i == 0 and b % i == 0): \r\n            sum += i \r\n    return sum",
+        "test_list": [
+            "assert sum(10,15) == 6",
+            "assert sum(100,150) == 93",
+            "assert sum(4,6) == 3"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 136,
+        "text": "Write a function to calculate electricity bill.",
+        "code": "def cal_electbill(units):\r\n if(units < 50):\r\n    amount = units * 2.60\r\n    surcharge = 25\r\n elif(units <= 100):\r\n    amount = 130 + ((units - 50) * 3.25)\r\n    surcharge = 35\r\n elif(units <= 200):\r\n    amount = 130 + 162.50 + ((units - 100) * 5.26)\r\n    surcharge = 45\r\n else:\r\n    amount = 130 + 162.50 + 526 + ((units - 200) * 8.45)\r\n    surcharge = 75\r\n total = amount + surcharge\r\n return total",
+        "test_list": [
+            "assert cal_electbill(75)==246.25",
+            "assert cal_electbill(265)==1442.75",
+            "assert cal_electbill(100)==327.5"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 138,
+        "text": "Write a python function to check whether the given number can be represented as sum of non-zero powers of 2 or not.",
+        "code": "def is_Sum_Of_Powers_Of_Two(n): \r\n    if (n % 2 == 1): \r\n        return False\r\n    else: \r\n        return True",
+        "test_list": [
+            "assert is_Sum_Of_Powers_Of_Two(10) == True",
+            "assert is_Sum_Of_Powers_Of_Two(7) == False",
+            "assert is_Sum_Of_Powers_Of_Two(14) == True"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 139,
+        "text": "Write a function to find the circumference of a circle.",
+        "code": "def circle_circumference(r):\r\n  perimeter=2*3.1415*r\r\n  return perimeter",
+        "test_list": [
+            "assert circle_circumference(10)==62.830000000000005",
+            "assert circle_circumference(5)==31.415000000000003",
+            "assert circle_circumference(4)==25.132"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 142,
+        "text": "Write a function to count the same pair in three given lists.",
+        "code": "def count_samepair(list1,list2,list3):\r\n    result = sum(m == n == o for m, n, o in zip(list1,list2,list3))\r\n    return result",
+        "test_list": [
+            "assert count_samepair([1,2,3,4,5,6,7,8],[2,2,3,1,2,6,7,9],[2,1,3,1,2,6,7,9])==3",
+            "assert count_samepair([1,2,3,4,5,6,7,8],[2,2,3,1,2,6,7,8],[2,1,3,1,2,6,7,8])==4",
+            "assert count_samepair([1,2,3,4,2,6,7,8],[2,2,3,1,2,6,7,8],[2,1,3,1,2,6,7,8])==5"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 143,
+        "text": "Write a function to find number of lists present in the given tuple.",
+        "code": "def find_lists(Input): \r\n\tif isinstance(Input, list): \r\n\t\treturn 1\r\n\telse: \r\n\t\treturn len(Input) ",
+        "test_list": [
+            "assert find_lists(([1, 2, 3, 4], [5, 6, 7, 8])) == 2",
+            "assert find_lists(([1, 2], [3, 4], [5, 6]))  == 3",
+            "assert find_lists(([9, 8, 7, 6, 5, 4, 3, 2, 1])) == 1"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 146,
+        "text": "Write a function to find the ascii value of total characters in a string.",
+        "code": "def ascii_value_string(str1):\r\n  for i in range(len(str1)):\r\n   return ord(str1[i])",
+        "test_list": [
+            "assert ascii_value_string(\"python\")==112",
+            "assert ascii_value_string(\"Program\")==80",
+            "assert ascii_value_string(\"Language\")==76"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 148,
+        "text": "Write a function to divide a number into two parts such that the sum of digits is maximum.",
+        "code": "def sum_digits_single(x) : \r\n    ans = 0\r\n    while x : \r\n        ans += x % 10\r\n        x //= 10  \r\n    return ans \r\ndef closest(x) : \r\n    ans = 0\r\n    while (ans * 10 + 9 <= x) : \r\n        ans = ans * 10 + 9  \r\n    return ans   \r\ndef sum_digits_twoparts(N) : \r\n    A = closest(N)  \r\n    return sum_digits_single(A) + sum_digits_single(N - A) ",
+        "test_list": [
+            "assert sum_digits_twoparts(35)==17",
+            "assert sum_digits_twoparts(7)==7",
+            "assert sum_digits_twoparts(100)==19"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 155,
+        "text": "Write a python function to toggle all even bits of a given number.",
+        "code": "def even_bit_toggle_number(n) : \r\n    res = 0; count = 0; temp = n \r\n    while (temp > 0) :     \r\n        if (count % 2 == 1) : \r\n            res = res | (1 << count)      \r\n        count = count + 1\r\n        temp >>= 1 \r\n    return n ^ res ",
+        "test_list": [
+            "assert even_bit_toggle_number(10) == 0",
+            "assert even_bit_toggle_number(20) == 30",
+            "assert even_bit_toggle_number(30) == 20"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 158,
+        "text": "Write a python function to find k number of operations required to make all elements equal.",
+        "code": "def min_Ops(arr,n,k): \r\n    max1 = max(arr) \r\n    res = 0\r\n    for i in range(0,n):  \r\n        if ((max1 - arr[i]) % k != 0): \r\n            return -1 \r\n        else: \r\n            res += (max1 - arr[i]) / k \r\n    return int(res) ",
+        "test_list": [
+            "assert min_Ops([2,2,2,2],4,3) == 0",
+            "assert min_Ops([4,2,6,8],4,3) == -1",
+            "assert min_Ops([21,33,9,45,63],5,6) == 24"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 179,
+        "text": "Write a function to find if the given number is a keith number or not.",
+        "code": "def is_num_keith(x): \r\n\tterms = [] \r\n\ttemp = x \r\n\tn = 0 \r\n\twhile (temp > 0): \r\n\t\tterms.append(temp % 10) \r\n\t\ttemp = int(temp / 10) \r\n\t\tn+=1 \r\n\tterms.reverse() \r\n\tnext_term = 0 \r\n\ti = n \r\n\twhile (next_term < x): \r\n\t\tnext_term = 0 \r\n\t\tfor j in range(1,n+1): \r\n\t\t\tnext_term += terms[i - j] \r\n\t\tterms.append(next_term) \r\n\t\ti+=1 \r\n\treturn (next_term == x) ",
+        "test_list": [
+            "assert is_num_keith(14) == True",
+            "assert is_num_keith(12) == False",
+            "assert is_num_keith(197) == True"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 180,
+        "text": "Write a function to calculate distance between two points using latitude and longitude.",
+        "code": "from math import radians, sin, cos, acos\r\ndef distance_lat_long(slat,slon,elat,elon):\r\n dist = 6371.01 * acos(sin(slat)*sin(elat) + cos(slat)*cos(elat)*cos(slon - elon))\r\n return dist",
+        "test_list": [
+            "assert distance_lat_long(23.5,67.5,25.5,69.5)==12179.372041317429",
+            "assert distance_lat_long(10.5,20.5,30.5,40.5)==6069.397933300514",
+            "assert distance_lat_long(10,20,30,40)==6783.751974994595"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 185,
+        "text": "Write a function to find the focus of a parabola.",
+        "code": "def parabola_focus(a, b, c): \r\n  focus= (((-b / (2 * a)),(((4 * a * c) - (b * b) + 1) / (4 * a))))\r\n  return focus",
+        "test_list": [
+            "assert parabola_focus(5,3,2)==(-0.3, 1.6)",
+            "assert parabola_focus(9,8,4)==(-0.4444444444444444, 2.25)",
+            "assert parabola_focus(2,4,6)==(-1.0, 4.125)"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 188,
+        "text": "Write a python function to check whether the given number can be represented by product of two squares or not.",
+        "code": "def prod_Square(n):\r\n    for i in range(2,(n) + 1):\r\n        if (i*i < (n+1)):\r\n            for j in range(2,n + 1):\r\n                if ((i*i*j*j) == n):\r\n                    return True;\r\n    return False;",
+        "test_list": [
+            "assert prod_Square(25) == False",
+            "assert prod_Square(30) == False",
+            "assert prod_Square(16) == True"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 190,
+        "text": "Write a python function to count the number of integral co-ordinates that lie inside a square.",
+        "code": "def count_Intgral_Points(x1,y1,x2,y2): \r\n    return ((y2 - y1 - 1) * (x2 - x1 - 1)) ",
+        "test_list": [
+            "assert count_Intgral_Points(1,1,4,4) == 4",
+            "assert count_Intgral_Points(1,2,1,2) == 1",
+            "assert count_Intgral_Points(4,2,6,4) == 1"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 198,
+        "text": "Write a function to find the largest triangle that can be inscribed in an ellipse.",
+        "code": "import math\r\ndef largest_triangle(a,b): \r\n    if (a < 0 or b < 0): \r\n        return -1 \r\n    area = (3 * math.sqrt(3) * pow(a, 2)) / (4 * b);  \r\n    return area ",
+        "test_list": [
+            "assert largest_triangle(4,2)==10.392304845413264",
+            "assert largest_triangle(5,7)==4.639421805988064",
+            "assert largest_triangle(9,1)==105.2220865598093"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 205,
+        "text": "Write a function to find the inversions of tuple elements in the given tuple list.",
+        "code": "def inversion_elements(test_tup):\r\n  res = tuple(list(map(lambda x: ~x, list(test_tup))))\r\n  return (res) ",
+        "test_list": [
+            "assert inversion_elements((7, 8, 9, 1, 10, 7)) == (-8, -9, -10, -2, -11, -8)",
+            "assert inversion_elements((2, 4, 5, 6, 1, 7)) == (-3, -5, -6, -7, -2, -8)",
+            "assert inversion_elements((8, 9, 11, 14, 12, 13)) == (-9, -10, -12, -15, -13, -14)"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 207,
+        "text": "Write a function to count the longest repeating subsequences such that the two subsequences don\u2019t have same string characters at same positions.",
+        "code": "def find_longest_repeating_subseq(str): \r\n\tn = len(str) \r\n\tdp = [[0 for k in range(n+1)] for l in range(n+1)] \r\n\tfor i in range(1, n+1): \r\n\t\tfor j in range(1, n+1): \r\n\t\t\tif (str[i-1] == str[j-1] and i != j): \r\n\t\t\t\tdp[i][j] = 1 + dp[i-1][j-1] \r\n\t\t\telse: \r\n\t\t\t\tdp[i][j] = max(dp[i][j-1], dp[i-1][j]) \r\n\treturn dp[n][n]",
+        "test_list": [
+            "assert find_longest_repeating_subseq(\"AABEBCDD\") == 3",
+            "assert find_longest_repeating_subseq(\"aabb\") == 2",
+            "assert find_longest_repeating_subseq(\"aab\") == 1"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 218,
+        "text": "Write a python function to find the minimum operations required to make two numbers equal.",
+        "code": "import math   \r\ndef min_Operations(A,B):  \r\n    if (A > B): \r\n        swap(A,B)  \r\n    B = B // math.gcd(A,B);  \r\n    return B - 1",
+        "test_list": [
+            "assert min_Operations(2,4) == 1",
+            "assert min_Operations(4,10) == 4",
+            "assert min_Operations(1,4) == 3"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 219,
+        "text": "Write a function to extract maximum and minimum k elements in the given tuple.",
+        "code": "\r\ndef extract_min_max(test_tup, K):\r\n  res = []\r\n  test_tup = list(test_tup)\r\n  temp = sorted(test_tup)\r\n  for idx, val in enumerate(temp):\r\n    if idx < K or idx >= len(temp) - K:\r\n      res.append(val)\r\n  res = tuple(res)\r\n  return (res) ",
+        "test_list": [
+            "assert extract_min_max((5, 20, 3, 7, 6, 8), 2) == (3, 5, 8, 20)",
+            "assert extract_min_max((4, 5, 6, 1, 2, 7), 3) == (1, 2, 4, 5, 6, 7)",
+            "assert extract_min_max((2, 3, 4, 8, 9, 11, 7), 4) == (2, 3, 4, 7, 8, 9, 11)"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 229,
+        "text": "Write a function to re-arrange the elements of the given array so that all negative elements appear before positive ones.",
+        "code": "def re_arrange_array(arr, n):\r\n  j=0\r\n  for i in range(0, n):\r\n    if (arr[i] < 0):\r\n      temp = arr[i]\r\n      arr[i] = arr[j]\r\n      arr[j] = temp\r\n      j = j + 1\r\n  return arr",
+        "test_list": [
+            "assert re_arrange_array([-1, 2, -3, 4, 5, 6, -7, 8, 9], 9) == [-1, -3, -7, 4, 5, 6, 2, 8, 9]",
+            "assert re_arrange_array([12, -14, -26, 13, 15], 5) == [-14, -26, 12, 13, 15]",
+            "assert re_arrange_array([10, 24, 36, -42, -39, -78, 85], 7) == [-42, -39, -78, 10, 24, 36, 85]"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 233,
+        "text": "Write a function to find the lateral surface area of a cylinder.",
+        "code": "def lateralsuface_cylinder(r,h):\r\n  lateralsurface= 2*3.1415*r*h\r\n  return lateralsurface",
+        "test_list": [
+            "assert lateralsuface_cylinder(10,5)==314.15000000000003",
+            "assert lateralsuface_cylinder(4,5)==125.66000000000001",
+            "assert lateralsuface_cylinder(4,10)==251.32000000000002"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 235,
+        "text": "Write a python function to set all even bits of a given number.",
+        "code": "def even_bit_set_number(n): \r\n    count = 0;res = 0;temp = n \r\n    while(temp > 0): \r\n        if (count % 2 == 1): \r\n            res |= (1 << count)\r\n        count+=1\r\n        temp >>= 1\r\n    return (n | res) ",
+        "test_list": [
+            "assert even_bit_set_number(10) == 10",
+            "assert even_bit_set_number(20) == 30",
+            "assert even_bit_set_number(30) == 30"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 236,
+        "text": "Write a python function to count the maximum number of equilateral triangles that can be formed within a given equilateral triangle.",
+        "code": "def No_of_Triangle(N,K):\r\n    if (N < K):\r\n        return -1;\r\n    else:\r\n        Tri_up = 0;\r\n        Tri_up = ((N - K + 1) *(N - K + 2)) // 2;\r\n        Tri_down = 0;\r\n        Tri_down = ((N - 2 * K + 1) *(N - 2 * K + 2)) // 2;\r\n        return Tri_up + Tri_down;",
+        "test_list": [
+            "assert No_of_Triangle(4,2) == 7",
+            "assert No_of_Triangle(4,3) == 3",
+            "assert No_of_Triangle(1,3) == -1"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 239,
+        "text": "Write a function to find the number of possible sequences of length n such that each of the next element is greater than or equal to twice of the previous element but less than or equal to m.",
+        "code": "def get_total_number_of_sequences(m,n): \r\n\tT=[[0 for i in range(n+1)] for i in range(m+1)] \r\n\tfor i in range(m+1): \r\n\t\tfor j in range(n+1): \r\n\t\t\tif i==0 or j==0: \r\n\t\t\t\tT[i][j]=0\r\n\t\t\telif i<j: \r\n\t\t\t\tT[i][j]=0\r\n\t\t\telif j==1: \r\n\t\t\t\tT[i][j]=i \r\n\t\t\telse: \r\n\t\t\t\tT[i][j]=T[i-1][j]+T[i//2][j-1] \r\n\treturn T[m][n]",
+        "test_list": [
+            "assert get_total_number_of_sequences(10, 4) == 4",
+            "assert get_total_number_of_sequences(5, 2) == 6",
+            "assert get_total_number_of_sequences(16, 3) == 84"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 243,
+        "text": "Write a function to sort the given list based on the occurrence of first element of tuples.",
+        "code": "def sort_on_occurence(lst): \r\n\tdct = {} \r\n\tfor i, j in lst: \r\n\t\tdct.setdefault(i, []).append(j) \r\n\treturn ([(i, *dict.fromkeys(j), len(j)) \r\n\t\t\t\tfor i, j in dct.items()]) ",
+        "test_list": [
+            "assert sort_on_occurence([(1, 'Jake'), (2, 'Bob'), (1, 'Cara')]) == [(1, 'Jake', 'Cara', 2), (2, 'Bob', 1)]",
+            "assert sort_on_occurence([('b', 'ball'), ('a', 'arm'), ('b', 'b'), ('a', 'ant')]) == [('b', 'ball', 'b', 2), ('a', 'arm', 'ant', 2)]",
+            "assert sort_on_occurence([(2, 'Mark'), (3, 'Maze'), (2, 'Sara')]) == [(2, 'Mark', 'Sara', 2), (3, 'Maze', 1)]"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 245,
+        "text": "Write a function to find the maximum sum of bi-tonic sub-sequence for the given array.",
+        "code": "def max_sum(arr, n): \r\n\tMSIBS = arr[:] \r\n\tfor i in range(n): \r\n\t\tfor j in range(0, i): \r\n\t\t\tif arr[i] > arr[j] and MSIBS[i] < MSIBS[j] + arr[i]: \r\n\t\t\t\tMSIBS[i] = MSIBS[j] + arr[i] \r\n\tMSDBS = arr[:] \r\n\tfor i in range(1, n + 1): \r\n\t\tfor j in range(1, i): \r\n\t\t\tif arr[-i] > arr[-j] and MSDBS[-i] < MSDBS[-j] + arr[-i]: \r\n\t\t\t\tMSDBS[-i] = MSDBS[-j] + arr[-i] \r\n\tmax_sum = float(\"-Inf\") \r\n\tfor i, j, k in zip(MSIBS, MSDBS, arr): \r\n\t\tmax_sum = max(max_sum, i + j - k) \r\n\treturn max_sum",
+        "test_list": [
+            "assert max_sum([1, 15, 51, 45, 33, 100, 12, 18, 9], 9) == 194",
+            "assert max_sum([80, 60, 30, 40, 20, 10], 6) == 210",
+            "assert max_sum([2, 3 ,14, 16, 21, 23, 29, 30], 8) == 138"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 254,
+        "text": "Write a function to find all words starting with 'a' or 'e' in a given string.",
+        "code": "import re\r\ndef words_ae(text):\r\n list = re.findall(\"[ae]\\w+\", text)\r\n return list",
+        "test_list": [
+            "assert words_ae(\"python programe\")==['ame']",
+            "assert words_ae(\"python programe language\")==['ame','anguage']",
+            "assert words_ae(\"assert statement\")==['assert', 'atement']"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 255,
+        "text": "Write a function to choose specified number of colours from three different colours and generate all the combinations with repetitions.",
+        "code": "from itertools import combinations_with_replacement \r\ndef combinations_colors(l, n):\r\n    return list(combinations_with_replacement(l,n))\r",
+        "test_list": [
+            "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],1)==[('Red',), ('Green',), ('Blue',)]",
+            "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],2)==[('Red', 'Red'), ('Red', 'Green'), ('Red', 'Blue'), ('Green', 'Green'), ('Green', 'Blue'), ('Blue', 'Blue')]",
+            "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],3)==[('Red', 'Red', 'Red'), ('Red', 'Red', 'Green'), ('Red', 'Red', 'Blue'), ('Red', 'Green', 'Green'), ('Red', 'Green', 'Blue'), ('Red', 'Blue', 'Blue'), ('Green', 'Green', 'Green'), ('Green', 'Green', 'Blue'), ('Green', 'Blue', 'Blue'), ('Blue', 'Blue', 'Blue')]"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 260,
+        "text": "Write a function to find the nth newman\u2013shanks\u2013williams prime number.",
+        "code": "def newman_prime(n): \r\n\tif n == 0 or n == 1: \r\n\t\treturn 1\r\n\treturn 2 * newman_prime(n - 1) + newman_prime(n - 2)",
+        "test_list": [
+            "assert newman_prime(3) == 7 ",
+            "assert newman_prime(4) == 17",
+            "assert newman_prime(5) == 41"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 266,
+        "text": "Write a function to find the lateral surface area of a cube.",
+        "code": "def lateralsurface_cube(l):\r\n  LSA = 4 * (l * l)\r\n  return LSA",
+        "test_list": [
+            "assert lateralsurface_cube(5)==100",
+            "assert lateralsurface_cube(9)==324",
+            "assert lateralsurface_cube(10)==400"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 268,
+        "text": "Write a function to find the n'th star number.",
+        "code": "def find_star_num(n): \r\n\treturn (6 * n * (n - 1) + 1) ",
+        "test_list": [
+            "assert find_star_num(3) == 37",
+            "assert find_star_num(4) == 73",
+            "assert find_star_num(5) == 121"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 275,
+        "text": "Write a python function to find the position of the last removed element from the given array.",
+        "code": "import math as mt \r\ndef get_Position(a,n,m): \r\n    for i in range(n): \r\n        a[i] = (a[i] // m + (a[i] % m != 0))  \r\n    result,maxx = -1,-1\r\n    for i in range(n - 1,-1,-1): \r\n        if (maxx < a[i]): \r\n            maxx = a[i] \r\n            result = i \r\n    return result + 1",
+        "test_list": [
+            "assert get_Position([2,5,4],3,2) == 2",
+            "assert get_Position([4,3],2,2) == 2",
+            "assert get_Position([1,2,3,4],4,1) == 4"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 276,
+        "text": "Write a function to find the volume of a cylinder.",
+        "code": "def volume_cylinder(r,h):\r\n  volume=3.1415*r*r*h\r\n  return volume",
+        "test_list": [
+            "assert volume_cylinder(10,5)==1570.7500000000002",
+            "assert volume_cylinder(4,5)==251.32000000000002",
+            "assert volume_cylinder(4,10)==502.64000000000004"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 279,
+        "text": "Write a function to find the nth decagonal number.",
+        "code": "def is_num_decagonal(n): \r\n\treturn 4 * n * n - 3 * n ",
+        "test_list": [
+            "assert is_num_decagonal(3) == 27",
+            "assert is_num_decagonal(7) == 175",
+            "assert is_num_decagonal(10) == 370"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 286,
+        "text": "Write a function to find the largest sum of contiguous array in the modified array which is formed by repeating the given array k times.",
+        "code": "def max_sub_array_sum_repeated(a, n, k): \r\n\tmax_so_far = -2147483648\r\n\tmax_ending_here = 0\r\n\tfor i in range(n*k): \r\n\t\tmax_ending_here = max_ending_here + a[i%n] \r\n\t\tif (max_so_far < max_ending_here): \r\n\t\t\tmax_so_far = max_ending_here \r\n\t\tif (max_ending_here < 0): \r\n\t\t\tmax_ending_here = 0\r\n\treturn max_so_far",
+        "test_list": [
+            "assert max_sub_array_sum_repeated([10, 20, -30, -1], 4, 3) == 30",
+            "assert max_sub_array_sum_repeated([-1, 10, 20], 3, 2) == 59",
+            "assert max_sub_array_sum_repeated([-1, -2, -3], 3, 3) == -1"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 288,
+        "text": "Write a function to count array elements having modular inverse under given prime number p equal to itself.",
+        "code": "def modular_inverse(arr, N, P):\r\n\tcurrent_element = 0\r\n\tfor i in range(0, N):\r\n\t\tif ((arr[i] * arr[i]) % P == 1):\r\n\t\t\tcurrent_element = current_element + 1\r\n\treturn current_element",
+        "test_list": [
+            "assert modular_inverse([ 1, 6, 4, 5 ], 4, 7) == 2",
+            "assert modular_inverse([1, 3, 8, 12, 12], 5, 13) == 3",
+            "assert modular_inverse([2, 3, 4, 5], 4, 6) == 1"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 289,
+        "text": "Write a python function to calculate the number of odd days in a given year.",
+        "code": "def odd_Days(N): \r\n    hund1 = N // 100\r\n    hund4 = N // 400\r\n    leap = N >> 2\r\n    ordd = N - leap \r\n    if (hund1): \r\n        ordd += hund1 \r\n        leap -= hund1 \r\n    if (hund4): \r\n        ordd -= hund4 \r\n        leap += hund4 \r\n    days = ordd + leap * 2\r\n    odd = days % 7\r\n    return odd ",
+        "test_list": [
+            "assert odd_Days(100) == 5",
+            "assert odd_Days(50) ==6",
+            "assert odd_Days(75) == 2"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 298,
+        "text": "Write a function to find the nested list elements which are present in another list.",
+        "code": "def intersection_nested_lists(l1, l2):\r\n    result = [[n for n in lst if n in l1] for lst in l2]\r\n    return result",
+        "test_list": [
+            "assert intersection_nested_lists( [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],[[12, 18, 23, 25, 45], [7, 11, 19, 24, 28], [1, 5, 8, 18, 15, 16]])==[[12], [7, 11], [1, 5, 8]]",
+            "assert intersection_nested_lists([[2, 3, 1], [4, 5], [6, 8]], [[4, 5], [6, 8]])==[[], []]",
+            "assert intersection_nested_lists(['john','amal','joel','george'],[['john'],['jack','john','mary'],['howard','john'],['jude']])==[['john'], ['john'], ['john'], []]"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 305,
+        "text": "Write a function to match two words from a list of words starting with letter 'p'.",
+        "code": "import re\r\ndef start_withp(words):\r\n for w in words:\r\n        m = re.match(\"(P\\w+)\\W(P\\w+)\", w)\r\n        if m:\r\n            return m.groups()",
+        "test_list": [
+            "assert start_withp([\"Python PHP\", \"Java JavaScript\", \"c c++\"])==('Python', 'PHP')",
+            "assert start_withp([\"Python Programming\",\"Java Programming\"])==('Python','Programming')",
+            "assert start_withp([\"Pqrst Pqr\",\"qrstuv\"])==('Pqrst','Pqr')"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 306,
+        "text": "Write a function to find the maximum sum of increasing subsequence from prefix till ith index and also including a given kth element which is after i, i.e., k > i .",
+        "code": "def max_sum_increasing_subseq(a, n, index, k):\r\n\tdp = [[0 for i in range(n)] \r\n\t\t\tfor i in range(n)]\r\n\tfor i in range(n):\r\n\t\tif a[i] > a[0]:\r\n\t\t\tdp[0][i] = a[i] + a[0]\r\n\t\telse:\r\n\t\t\tdp[0][i] = a[i]\r\n\tfor i in range(1, n):\r\n\t\tfor j in range(n):\r\n\t\t\tif a[j] > a[i] and j > i:\r\n\t\t\t\tif dp[i - 1][i] + a[j] > dp[i - 1][j]:\r\n\t\t\t\t\tdp[i][j] = dp[i - 1][i] + a[j]\r\n\t\t\t\telse:\r\n\t\t\t\t\tdp[i][j] = dp[i - 1][j]\r\n\t\t\telse:\r\n\t\t\t\tdp[i][j] = dp[i - 1][j]\r\n\treturn dp[index][k]",
+        "test_list": [
+            "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 4, 6) == 11",
+            "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 2, 5) == 7",
+            "assert max_sum_increasing_subseq([11, 15, 19, 21, 26, 28, 31], 7, 2, 4) == 71"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 313,
+        "text": "Write a python function to print positive numbers in a list.",
+        "code": "def pos_nos(list1):\r\n  for num in list1: \r\n    if num >= 0: \r\n       return num ",
+        "test_list": [
+            "assert pos_nos([-1,-2,1,2]) == 1,2",
+            "assert pos_nos([3,4,-5]) == 3,4",
+            "assert pos_nos([-2,-3,1]) == 1"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 314,
+        "text": "Write a function to find out the maximum sum such that no two chosen numbers are adjacent for the given rectangular grid of dimension 2 x n.",
+        "code": "def max_sum_rectangular_grid(grid, n) : \r\n\tincl = max(grid[0][0], grid[1][0]) \r\n\texcl = 0\r\n\tfor i in range(1, n) : \r\n\t\texcl_new = max(excl, incl) \r\n\t\tincl = excl + max(grid[0][i], grid[1][i]) \r\n\t\texcl = excl_new \r\n\treturn max(excl, incl)",
+        "test_list": [
+            "assert max_sum_rectangular_grid([ [1, 4, 5], [2, 0, 0 ] ], 3) == 7",
+            "assert max_sum_rectangular_grid([ [ 1, 2, 3, 4, 5], [ 6, 7, 8, 9, 10] ], 5) == 24",
+            "assert max_sum_rectangular_grid([ [7, 9, 11, 15, 19], [21, 25, 28, 31, 32] ], 5) == 81"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 317,
+        "text": "Write a function to reflect the modified run-length encoding from a list.",
+        "code": "from itertools import groupby\r\ndef modified_encode(alist):\r\n        def ctr_ele(el):\r\n            if len(el)>1: return [len(el), el[0]]\r\n            else: return el[0]\r\n        return [ctr_ele(list(group)) for key, group in groupby(alist)]",
+        "test_list": [
+            "assert modified_encode([1,1,2,3,4,4,5,1])==[[2, 1], 2, 3, [2, 4], 5, 1]",
+            "assert modified_encode('automatically')==['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', [2, 'l'], 'y']",
+            "assert modified_encode('python')==['p', 'y', 't', 'h', 'o', 'n']"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 318,
+        "text": "Write a python function to find the maximum volume of a cuboid with given sum of sides.",
+        "code": "def max_volume (s): \r\n    maxvalue = 0\r\n    i = 1\r\n    for i in range(s - 1): \r\n        j = 1\r\n        for j in range(s): \r\n            k = s - i - j \r\n            maxvalue = max(maxvalue, i * j * k)         \r\n    return maxvalue ",
+        "test_list": [
+            "assert max_volume(8) == 18",
+            "assert max_volume(4) == 2",
+            "assert max_volume(1) == 0"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 323,
+        "text": "Write a function to re-arrange the given array in alternating positive and negative items.",
+        "code": "def right_rotate(arr, n, out_of_place, cur):\r\n\ttemp = arr[cur]\r\n\tfor i in range(cur, out_of_place, -1):\r\n\t\tarr[i] = arr[i - 1]\r\n\tarr[out_of_place] = temp\r\n\treturn arr\r\ndef re_arrange(arr, n):\r\n\tout_of_place = -1\r\n\tfor index in range(n):\r\n\t\tif (out_of_place >= 0):\r\n\t\t\tif ((arr[index] >= 0 and arr[out_of_place] < 0) or\r\n\t\t\t(arr[index] < 0 and arr[out_of_place] >= 0)):\r\n\t\t\t\tarr = right_rotate(arr, n, out_of_place, index)\r\n\t\t\t\tif (index-out_of_place > 2):\r\n\t\t\t\t\tout_of_place += 2\r\n\t\t\t\telse:\r\n\t\t\t\t\tout_of_place = - 1\r\n\t\tif (out_of_place == -1):\r\n\t\t\tif ((arr[index] >= 0 and index % 2 == 0) or\r\n\t\t\t (arr[index] < 0 and index % 2 == 1)):\r\n\t\t\t\tout_of_place = index\r\n\treturn arr",
+        "test_list": [
+            "assert re_arrange([-5, -2, 5, 2, 4,\t7, 1, 8, 0, -8], 10) == [-5, 5, -2, 2, -8, 4, 7, 1, 8, 0]",
+            "assert re_arrange([1, 2, 3, -4, -1, 4], 6) == [-4, 1, -1, 2, 3, 4]",
+            "assert re_arrange([4, 7, 9, 77, -4, 5, -3, -9], 8) == [-4, 4, -3, 7, -9, 9, 77, 5]"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 342,
+        "text": "Write a function to find the smallest range that includes at-least one element from each of the given arrays.",
+        "code": "from heapq import heappop, heappush\r\nclass Node:\r\n    def __init__(self, value, list_num, index):\r\n        self.value = value\r\n        self.list_num = list_num\r\n        self.index = index\r\n    def __lt__(self, other):\r\n        return self.value < other.value\r\ndef find_minimum_range(list):\r\n    high = float('-inf')\r\n    p = (0, float('inf'))\r\n    pq = []\r\n    for i in range(len(list)):\r\n        heappush(pq, Node(list[i][0], i, 0))\r\n        high = max(high, list[i][0])\r\n    while True:\r\n        top = heappop(pq)\r\n        low = top.value\r\n        i = top.list_num\r\n        j = top.index\r\n        if high - low < p[1] - p[0]:\r\n            p = (low, high)\r\n        if j == len(list[i]) - 1:\r\n            return p\r\n        heappush(pq, Node(list[i][j + 1], i, j + 1))\r\n        high = max(high, list[i][j + 1])",
+        "test_list": [
+            "assert find_minimum_range([[3, 6, 8, 10, 15], [1, 5, 12], [4, 8, 15, 16], [2, 6]]) == (4, 6)",
+            "assert find_minimum_range([[ 2, 3, 4, 8, 10, 15 ], [1, 5, 12], [7, 8, 15, 16], [3, 6]]) == (4, 7)",
+            "assert find_minimum_range([[4, 7, 9, 11, 16], [2, 6, 13], [5, 9, 16, 17], [3, 7]]) == (5, 7)"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 343,
+        "text": "Write a function to calculate the number of digits and letters in a string.",
+        "code": "def dig_let(s):\r\n d=l=0\r\n for c in s:\r\n    if c.isdigit():\r\n        d=d+1\r\n    elif c.isalpha():\r\n        l=l+1\r\n    else:\r\n        pass\r\n return (l,d)",
+        "test_list": [
+            "assert dig_let(\"python\")==(6,0)",
+            "assert dig_let(\"program\")==(7,0)",
+            "assert dig_let(\"python3.0\")==(6,2)"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 347,
+        "text": "Write a python function to count the number of squares in a rectangle.",
+        "code": "def count_Squares(m,n): \r\n    if (n < m): \r\n        temp = m \r\n        m = n \r\n        n = temp \r\n    return n * (n + 1) * (3 * m - n + 1) // 6",
+        "test_list": [
+            "assert count_Squares(4,3) == 20",
+            "assert count_Squares(1,2) == 2",
+            "assert count_Squares(2,2) == 5"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 348,
+        "text": "Write a function to count sequences of given length having non-negative prefix sums that can be generated by given values.",
+        "code": "def bin_coff(n, r): \r\n\tval = 1\r\n\tif (r > (n - r)): \r\n\t\tr = (n - r) \r\n\tfor i in range(0, r): \r\n\t\tval *= (n - i) \r\n\t\tval //= (i + 1) \r\n\treturn val \r\ndef find_ways(M): \r\n\tn = M // 2\r\n\ta = bin_coff(2 * n, n) \r\n\tb = a // (n + 1) \r\n\treturn (b) ",
+        "test_list": [
+            "assert find_ways(4) == 2",
+            "assert find_ways(6) == 5",
+            "assert find_ways(8) == 14"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 355,
+        "text": "Write a python function to count the number of rectangles in a circle of radius r.",
+        "code": "def count_Rectangles(radius):  \r\n    rectangles = 0 \r\n    diameter = 2 * radius \r\n    diameterSquare = diameter * diameter \r\n    for a in range(1, 2 * radius):  \r\n        for b in range(1, 2 * radius): \r\n            diagnalLengthSquare = (a * a +  b * b)  \r\n            if (diagnalLengthSquare <= diameterSquare) : \r\n                rectangles += 1\r\n    return rectangles ",
+        "test_list": [
+            "assert count_Rectangles(2) == 8",
+            "assert count_Rectangles(1) == 1",
+            "assert count_Rectangles(0) == 0"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 360,
+        "text": "Write a function to find the n\u2019th carol number.",
+        "code": "def get_carol(n): \r\n\tresult = (2**n) - 1\r\n\treturn result * result - 2",
+        "test_list": [
+            "assert get_carol(2) == 7",
+            "assert get_carol(4) == 223",
+            "assert get_carol(5) == 959"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 367,
+        "text": "Write a function to check if a binary tree is balanced or not.",
+        "code": "class Node: \r\n\tdef __init__(self, data): \r\n\t\tself.data = data \r\n\t\tself.left = None\r\n\t\tself.right = None\r\ndef get_height(root): \r\n\tif root is None: \r\n\t\treturn 0\r\n\treturn max(get_height(root.left), get_height(root.right)) + 1\r\ndef is_tree_balanced(root): \r\n\tif root is None: \r\n\t\treturn True\r\n\tlh = get_height(root.left) \r\n\trh = get_height(root.right) \r\n\tif (abs(lh - rh) <= 1) and is_tree_balanced( \r\n\troot.left) is True and is_tree_balanced( root.right) is True: \r\n\t\treturn True\r\n\treturn False",
+        "test_list": [
+            "assert is_tree_balanced(root) == False",
+            "assert is_tree_balanced(root1) == True",
+            "assert is_tree_balanced(root2) == False "
+        ],
+        "test_setup_code": "root = Node(1) \r\nroot.left = Node(2) \r\nroot.right = Node(3) \r\nroot.left.left = Node(4) \r\nroot.left.right = Node(5) \r\nroot.left.left.left = Node(8) \r\nroot1 = Node(1) \r\nroot1.left = Node(2) \r\nroot1.right = Node(3) \r\nroot1.left.left = Node(4) \r\nroot1.left.right = Node(5) \r\nroot1.right.left = Node(6) \r\nroot1.left.left.left = Node(7)\r\nroot2 = Node(1) \r\nroot2.left = Node(2) \r\nroot2.right = Node(3) \r\nroot2.left.left = Node(4) \r\nroot2.left.right = Node(5)\r\nroot2.left.left.left = Node(7)",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 370,
+        "text": "Write a function to sort a tuple by its float element.",
+        "code": "def float_sort(price):\r\n  float_sort=sorted(price, key=lambda x: float(x[1]), reverse=True)\r\n  return float_sort",
+        "test_list": [
+            "assert float_sort([('item1', '12.20'), ('item2', '15.10'), ('item3', '24.5')])==[('item3', '24.5'), ('item2', '15.10'), ('item1', '12.20')] ",
+            "assert float_sort([('item1', '15'), ('item2', '10'), ('item3', '20')])==[('item3', '20'), ('item1', '15'), ('item2', '10')] ",
+            "assert float_sort([('item1', '5'), ('item2', '10'), ('item3', '14')])==[('item3', '14'), ('item2', '10'), ('item1', '5')] "
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 374,
+        "text": "Write a function to print all permutations of a given string including duplicates.",
+        "code": "def permute_string(str):\r\n    if len(str) == 0:\r\n        return ['']\r\n    prev_list = permute_string(str[1:len(str)])\r\n    next_list = []\r\n    for i in range(0,len(prev_list)):\r\n        for j in range(0,len(str)):\r\n            new_str = prev_list[i][0:j]+str[0]+prev_list[i][j:len(str)-1]\r\n            if new_str not in next_list:\r\n                next_list.append(new_str)\r\n    return next_list",
+        "test_list": [
+            "assert permute_string('ab')==['ab', 'ba']",
+            "assert permute_string('abc')==['abc', 'bac', 'bca', 'acb', 'cab', 'cba']",
+            "assert permute_string('abcd')==['abcd', 'bacd', 'bcad', 'bcda', 'acbd', 'cabd', 'cbad', 'cbda', 'acdb', 'cadb', 'cdab', 'cdba', 'abdc', 'badc', 'bdac', 'bdca', 'adbc', 'dabc', 'dbac', 'dbca', 'adcb', 'dacb', 'dcab', 'dcba']"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 375,
+        "text": "Write a function to round the given number to the nearest multiple of a specific number.",
+        "code": "def round_num(n,m):\r\n    a = (n //m) * m\r\n    b = a + m\r\n    return (b if n - a > b - n else a)",
+        "test_list": [
+            "assert round_num(4722,10)==4720",
+            "assert round_num(1111,5)==1110",
+            "assert round_num(219,2)==218"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 376,
+        "text": "Write a function to remove tuple elements that occur more than once and replace the duplicates with some custom value.",
+        "code": "def remove_replica(test_tup):\r\n  temp = set()\r\n  res = tuple(ele if ele not in temp and not temp.add(ele) \r\n\t\t\t\telse 'MSP' for ele in test_tup)\r\n  return (res)",
+        "test_list": [
+            "assert remove_replica((1, 1, 4, 4, 4, 5, 5, 6, 7, 7)) == (1, 'MSP', 4, 'MSP', 'MSP', 5, 'MSP', 6, 7, 'MSP')",
+            "assert remove_replica((2, 3, 4, 4, 5, 6, 6, 7, 8, 9, 9)) == (2, 3, 4, 'MSP', 5, 6, 'MSP', 7, 8, 9, 'MSP')",
+            "assert remove_replica((2, 2, 5, 4, 5, 7, 5, 6, 7, 7)) == (2, 'MSP', 5, 4, 'MSP', 7, 'MSP', 6, 'MSP', 'MSP')"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 383,
+        "text": "Write a python function to toggle all odd bits of a given number.",
+        "code": "def even_bit_toggle_number(n) : \r\n    res = 0; count = 0; temp = n    \r\n    while(temp > 0 ) : \r\n        if (count % 2 == 0) : \r\n            res = res | (1 << count)      \r\n        count = count + 1\r\n        temp >>= 1 \r\n    return n ^ res ",
+        "test_list": [
+            "assert even_bit_toggle_number(10) == 15",
+            "assert even_bit_toggle_number(20) == 1",
+            "assert even_bit_toggle_number(30) == 11"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 385,
+        "text": "Write a function to find the n'th perrin number using recursion.",
+        "code": "def get_perrin(n):\r\n  if (n == 0):\r\n    return 3\r\n  if (n == 1):\r\n    return 0\r\n  if (n == 2):\r\n    return 2 \r\n  return get_perrin(n - 2) + get_perrin(n - 3)",
+        "test_list": [
+            "assert get_perrin(9) == 12",
+            "assert get_perrin(4) == 2",
+            "assert get_perrin(6) == 5"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 416,
+        "text": "Write a function to find the maximum sum we can make by dividing number in three parts recursively and summing them up together for the given number.",
+        "code": "MAX = 1000000\r\ndef breakSum(n): \r\n\tdp = [0]*(n+1) \r\n\tdp[0] = 0\r\n\tdp[1] = 1\r\n\tfor i in range(2, n+1): \r\n\t\tdp[i] = max(dp[int(i/2)] + dp[int(i/3)] + dp[int(i/4)], i); \r\n\treturn dp[n]",
+        "test_list": [
+            "assert breakSum(12) == 13",
+            "assert breakSum(24) == 27",
+            "assert breakSum(23) == 23"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 423,
+        "text": "Write a function to solve gold mine problem.",
+        "code": "def get_maxgold(gold, m, n): \r\n    goldTable = [[0 for i in range(n)] \r\n                        for j in range(m)]   \r\n    for col in range(n-1, -1, -1): \r\n        for row in range(m):  \r\n            if (col == n-1): \r\n                right = 0\r\n            else: \r\n                right = goldTable[row][col+1] \r\n            if (row == 0 or col == n-1): \r\n                right_up = 0\r\n            else: \r\n                right_up = goldTable[row-1][col+1] \r\n            if (row == m-1 or col == n-1): \r\n                right_down = 0\r\n            else: \r\n                right_down = goldTable[row+1][col+1] \r\n            goldTable[row][col] = gold[row][col] + max(right, right_up, right_down) \r\n    res = goldTable[0][0] \r\n    for i in range(1, m): \r\n        res = max(res, goldTable[i][0])  \r\n    return res ",
+        "test_list": [
+            "assert get_maxgold([[1, 3, 1, 5],[2, 2, 4, 1],[5, 0, 2, 3],[0, 6, 1, 2]],4,4)==16",
+            "assert get_maxgold([[10,20],[30,40]],2,2)==70",
+            "assert get_maxgold([[4,9],[3,7]],2,2)==13"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 430,
+        "text": "Write a function to find the directrix of a parabola.",
+        "code": "def parabola_directrix(a, b, c): \r\n  directrix=((int)(c - ((b * b) + 1) * 4 * a ))\r\n  return directrix",
+        "test_list": [
+            "assert parabola_directrix(5,3,2)==-198",
+            "assert parabola_directrix(9,8,4)==-2336",
+            "assert parabola_directrix(2,4,6)==-130"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 436,
+        "text": "Write a python function to print negative numbers in a list.",
+        "code": "def neg_nos(list1):\r\n  for num in list1: \r\n    if num < 0: \r\n       return num ",
+        "test_list": [
+            "assert neg_nos([-1,4,5,-6]) == -1,-6",
+            "assert neg_nos([-1,-2,3,4]) == -1,-2",
+            "assert neg_nos([-7,-6,8,9]) == -7,-6"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 437,
+        "text": "Write a function to remove odd characters in a string.",
+        "code": "def remove_odd(str1):\r\n str2 = ''\r\n for i in range(1, len(str1) + 1):\r\n    if(i % 2 == 0):\r\n        str2 = str2 + str1[i - 1]\r\n return str2",
+        "test_list": [
+            "assert remove_odd(\"python\")==(\"yhn\")",
+            "assert remove_odd(\"program\")==(\"rga\")",
+            "assert remove_odd(\"language\")==(\"agae\")"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 438,
+        "text": "Write a function to count bidirectional tuple pairs.",
+        "code": "def count_bidirectional(test_list):\r\n  res = 0\r\n  for idx in range(0, len(test_list)):\r\n    for iidx in range(idx + 1, len(test_list)):\r\n      if test_list[iidx][0] == test_list[idx][1] and test_list[idx][1] == test_list[iidx][0]:\r\n        res += 1\r\n  return (str(res)) ",
+        "test_list": [
+            "assert count_bidirectional([(5, 6), (1, 2), (6, 5), (9, 1), (6, 5), (2, 1)] ) == '3'",
+            "assert count_bidirectional([(5, 6), (1, 3), (6, 5), (9, 1), (6, 5), (2, 1)] ) == '2'",
+            "assert count_bidirectional([(5, 6), (1, 2), (6, 5), (9, 2), (6, 5), (2, 1)] ) == '4'"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 440,
+        "text": "Write a function to find all adverbs and their positions in a given sentence.",
+        "code": "import re\r\ndef find_adverb_position(text):\r\n for m in re.finditer(r\"\\w+ly\", text):\r\n    return (m.start(), m.end(), m.group(0))",
+        "test_list": [
+            "assert find_adverb_position(\"clearly!! we can see the sky\")==(0, 7, 'clearly')",
+            "assert find_adverb_position(\"seriously!! there are many roses\")==(0, 9, 'seriously')",
+            "assert find_adverb_position(\"unfortunately!! sita is going to home\")==(0, 13, 'unfortunately')"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 444,
+        "text": "Write a function to trim each tuple by k in the given tuple list.",
+        "code": "def trim_tuple(test_list, K):\r\n  res = []\r\n  for ele in test_list:\r\n    N = len(ele)\r\n    res.append(tuple(list(ele)[K: N - K]))\r\n  return (str(res)) ",
+        "test_list": [
+            "assert trim_tuple([(5, 3, 2, 1, 4), (3, 4, 9, 2, 1),(9, 1, 2, 3, 5), (4, 8, 2, 1, 7)], 2) == '[(2,), (9,), (2,), (2,)]'",
+            "assert trim_tuple([(5, 3, 2, 1, 4), (3, 4, 9, 2, 1), (9, 1, 2, 3, 5), (4, 8, 2, 1, 7)], 1) == '[(3, 2, 1), (4, 9, 2), (1, 2, 3), (8, 2, 1)]'",
+            "assert trim_tuple([(7, 8, 4, 9), (11, 8, 12, 4),(4, 1, 7, 8), (3, 6, 9, 7)], 1) == '[(8, 4), (8, 12), (1, 7), (6, 9)]'"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 448,
+        "text": "Write a function to calculate the sum of perrin numbers.",
+        "code": "def cal_sum(n): \r\n\ta = 3\r\n\tb = 0\r\n\tc = 2\r\n\tif (n == 0): \r\n\t\treturn 3\r\n\tif (n == 1): \r\n\t\treturn 3\r\n\tif (n == 2): \r\n\t\treturn 5\r\n\tsum = 5\r\n\twhile (n > 2): \r\n\t\td = a + b \r\n\t\tsum = sum + d \r\n\t\ta = b \r\n\t\tb = c \r\n\t\tc = d \r\n\t\tn = n-1\r\n\treturn sum",
+        "test_list": [
+            "assert cal_sum(9) == 49",
+            "assert cal_sum(10) == 66",
+            "assert cal_sum(11) == 88"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 461,
+        "text": "Write a python function to count the upper case characters in a given string.",
+        "code": "def upper_ctr(str):\r\n    upper_ctr = 0\r\n    for i in range(len(str)):\r\n          if str[i] >= 'A' and str[i] <= 'Z': upper_ctr += 1\r\n          return upper_ctr",
+        "test_list": [
+            "assert upper_ctr('PYthon') == 1",
+            "assert upper_ctr('BigData') == 1",
+            "assert upper_ctr('program') == 0"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 462,
+        "text": "Write a function to find all possible combinations of the elements of a given list.",
+        "code": "def combinations_list(list1):\r\n    if len(list1) == 0:\r\n        return [[]]\r\n    result = []\r\n    for el in combinations_list(list1[1:]):\r\n        result += [el, el+[list1[0]]]\r\n    return result",
+        "test_list": [
+            "assert combinations_list(['orange', 'red', 'green', 'blue'])==[[], ['orange'], ['red'], ['red', 'orange'], ['green'], ['green', 'orange'], ['green', 'red'], ['green', 'red', 'orange'], ['blue'], ['blue', 'orange'], ['blue', 'red'], ['blue', 'red', 'orange'], ['blue', 'green'], ['blue', 'green', 'orange'], ['blue', 'green', 'red'], ['blue', 'green', 'red', 'orange']]",
+            "assert combinations_list(['red', 'green', 'blue', 'white', 'black', 'orange'])==[[], ['red'], ['green'], ['green', 'red'], ['blue'], ['blue', 'red'], ['blue', 'green'], ['blue', 'green', 'red'], ['white'], ['white', 'red'], ['white', 'green'], ['white', 'green', 'red'], ['white', 'blue'], ['white', 'blue', 'red'], ['white', 'blue', 'green'], ['white', 'blue', 'green', 'red'], ['black'], ['black', 'red'], ['black', 'green'], ['black', 'green', 'red'], ['black', 'blue'], ['black', 'blue', 'red'], ['black', 'blue', 'green'], ['black', 'blue', 'green', 'red'], ['black', 'white'], ['black', 'white', 'red'], ['black', 'white', 'green'], ['black', 'white', 'green', 'red'], ['black', 'white', 'blue'], ['black', 'white', 'blue', 'red'], ['black', 'white', 'blue', 'green'], ['black', 'white', 'blue', 'green', 'red'], ['orange'], ['orange', 'red'], ['orange', 'green'], ['orange', 'green', 'red'], ['orange', 'blue'], ['orange', 'blue', 'red'], ['orange', 'blue', 'green'], ['orange', 'blue', 'green', 'red'], ['orange', 'white'], ['orange', 'white', 'red'], ['orange', 'white', 'green'], ['orange', 'white', 'green', 'red'], ['orange', 'white', 'blue'], ['orange', 'white', 'blue', 'red'], ['orange', 'white', 'blue', 'green'], ['orange', 'white', 'blue', 'green', 'red'], ['orange', 'black'], ['orange', 'black', 'red'], ['orange', 'black', 'green'], ['orange', 'black', 'green', 'red'], ['orange', 'black', 'blue'], ['orange', 'black', 'blue', 'red'], ['orange', 'black', 'blue', 'green'], ['orange', 'black', 'blue', 'green', 'red'], ['orange', 'black', 'white'], ['orange', 'black', 'white', 'red'], ['orange', 'black', 'white', 'green'], ['orange', 'black', 'white', 'green', 'red'], ['orange', 'black', 'white', 'blue'], ['orange', 'black', 'white', 'blue', 'red'], ['orange', 'black', 'white', 'blue', 'green'], ['orange', 'black', 'white', 'blue', 'green', 'red']]",
+            "assert combinations_list(['red', 'green', 'black', 'orange'])==[[], ['red'], ['green'], ['green', 'red'], ['black'], ['black', 'red'], ['black', 'green'], ['black', 'green', 'red'], ['orange'], ['orange', 'red'], ['orange', 'green'], ['orange', 'green', 'red'], ['orange', 'black'], ['orange', 'black', 'red'], ['orange', 'black', 'green'], ['orange', 'black', 'green', 'red']]"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 468,
+        "text": "Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.",
+        "code": "def max_product(arr, n ): \r\n\tmpis =[0] * (n) \r\n\tfor i in range(n): \r\n\t\tmpis[i] = arr[i] \r\n\tfor i in range(1, n): \r\n\t\tfor j in range(i): \r\n\t\t\tif (arr[i] > arr[j] and\r\n\t\t\t\t\tmpis[i] < (mpis[j] * arr[i])): \r\n\t\t\t\t\t\tmpis[i] = mpis[j] * arr[i] \r\n\treturn max(mpis)",
+        "test_list": [
+            "assert max_product([3, 100, 4, 5, 150, 6], 6) == 45000 ",
+            "assert max_product([4, 42, 55, 68, 80], 5) == 50265600",
+            "assert max_product([10, 22, 9, 33, 21, 50, 41, 60], 8) == 21780000 "
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 469,
+        "text": "Write a function to find the maximum profit earned from a maximum of k stock transactions",
+        "code": "def max_profit(price, k):\r\n    n = len(price)\r\n    final_profit = [[None for x in range(n)] for y in range(k + 1)]\r\n    for i in range(k + 1):\r\n        for j in range(n):\r\n            if i == 0 or j == 0:\r\n                final_profit[i][j] = 0\r\n            else:\r\n                max_so_far = 0\r\n                for x in range(j):\r\n                    curr_price = price[j] - price[x] + final_profit[i-1][x]\r\n                    if max_so_far < curr_price:\r\n                        max_so_far = curr_price\r\n                final_profit[i][j] = max(final_profit[i][j-1], max_so_far)\r\n    return final_profit[k][n-1]",
+        "test_list": [
+            "assert max_profit([1, 5, 2, 3, 7, 6, 4, 5], 3) == 10",
+            "assert max_profit([2, 4, 7, 5, 4, 3, 5], 2) == 7",
+            "assert max_profit([10, 6, 8, 4, 2], 2) == 2"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 473,
+        "text": "Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.",
+        "code": "def tuple_intersection(test_list1, test_list2):\r\n  res = set([tuple(sorted(ele)) for ele in test_list1]) & set([tuple(sorted(ele)) for ele in test_list2])\r\n  return (res)",
+        "test_list": [
+            "assert tuple_intersection([(3, 4), (5, 6), (9, 10), (4, 5)] , [(5, 4), (3, 4), (6, 5), (9, 11)]) == {(4, 5), (3, 4), (5, 6)}",
+            "assert tuple_intersection([(4, 1), (7, 4), (11, 13), (17, 14)] , [(1, 4), (7, 4), (16, 12), (10, 13)]) == {(4, 7), (1, 4)}",
+            "assert tuple_intersection([(2, 1), (3, 2), (1, 3), (1, 4)] , [(11, 2), (2, 3), (6, 2), (1, 3)]) == {(1, 3), (2, 3)}"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 483,
+        "text": "Write a python function to find the first natural number whose factorial is divisible by x.",
+        "code": "def first_Factorial_Divisible_Number(x): \r\n    i = 1;\r\n    fact = 1; \r\n    for i in range(1,x): \r\n        fact = fact * i \r\n        if (fact % x == 0): \r\n            break\r\n    return i ",
+        "test_list": [
+            "assert first_Factorial_Divisible_Number(10) == 5",
+            "assert first_Factorial_Divisible_Number(15) == 5",
+            "assert first_Factorial_Divisible_Number(5) == 4"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 490,
+        "text": "Write a function to extract all the pairs which are symmetric in the given tuple list.",
+        "code": "def extract_symmetric(test_list):\r\n  temp = set(test_list) & {(b, a) for a, b in test_list}\r\n  res = {(a, b) for a, b in temp if a < b}\r\n  return (res) ",
+        "test_list": [
+            "assert extract_symmetric([(6, 7), (2, 3), (7, 6), (9, 8), (10, 2), (8, 9)] ) == {(8, 9), (6, 7)}",
+            "assert extract_symmetric([(7, 8), (3, 4), (8, 7), (10, 9), (11, 3), (9, 10)] ) == {(9, 10), (7, 8)}",
+            "assert extract_symmetric([(8, 9), (4, 5), (9, 8), (11, 10), (12, 4), (10, 11)] ) == {(8, 9), (10, 11)}"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 491,
+        "text": "Write a function to find the sum of geometric progression series.",
+        "code": "import math\r\ndef sum_gp(a,n,r):\r\n total = (a * (1 - math.pow(r, n ))) / (1- r)\r\n return total",
+        "test_list": [
+            "assert sum_gp(1,5,2)==31",
+            "assert sum_gp(1,5,4)==341",
+            "assert sum_gp(2,6,3)==728"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 493,
+        "text": "Write a function to calculate a grid of hexagon coordinates where function returns a list of lists containing 6 tuples of x, y point coordinates.",
+        "code": "import math\r\ndef calculate_polygons(startx, starty, endx, endy, radius):\r\n    sl = (2 * radius) * math.tan(math.pi / 6)\r\n    p = sl * 0.5\r\n    b = sl * math.cos(math.radians(30))\r\n    w = b * 2\r\n    h = 2 * sl   \r\n    startx = startx - w\r\n    starty = starty - h\r\n    endx = endx + w\r\n    endy = endy + h\r\n    origx = startx\r\n    origy = starty\r\n    xoffset = b\r\n    yoffset = 3 * p\r\n    polygons = []\r\n    row = 1\r\n    counter = 0\r\n    while starty < endy:\r\n        if row % 2 == 0:\r\n            startx = origx + xoffset\r\n        else:\r\n            startx = origx\r\n        while startx < endx:\r\n            p1x = startx\r\n            p1y = starty + p\r\n            p2x = startx\r\n            p2y = starty + (3 * p)\r\n            p3x = startx + b\r\n            p3y = starty + h\r\n            p4x = startx + w\r\n            p4y = starty + (3 * p)\r\n            p5x = startx + w\r\n            p5y = starty + p\r\n            p6x = startx + b\r\n            p6y = starty\r\n            poly = [\r\n                (p1x, p1y),\r\n                (p2x, p2y),\r\n                (p3x, p3y),\r\n                (p4x, p4y),\r\n                (p5x, p5y),\r\n                (p6x, p6y),\r\n                (p1x, p1y)]\r\n            polygons.append(poly)\r\n            counter += 1\r\n            startx += w\r\n        starty += yoffset\r\n        row += 1\r\n    return polygons",
+        "test_list": [
+            "assert calculate_polygons(1,1, 4, 4, 3)==[[(-5.0, -4.196152422706632), (-5.0, -0.7320508075688767), (-2.0, 1.0), (1.0, -0.7320508075688767), (1.0, -4.196152422706632), (-2.0, -5.928203230275509), (-5.0, -4.196152422706632)], [(1.0, -4.196152422706632), (1.0, -0.7320508075688767), (4.0, 1.0), (7.0, -0.7320508075688767), (7.0, -4.196152422706632), (4.0, -5.928203230275509), (1.0, -4.196152422706632)], [(7.0, -4.196152422706632), (7.0, -0.7320508075688767), (10.0, 1.0), (13.0, -0.7320508075688767), (13.0, -4.196152422706632), (10.0, -5.928203230275509), (7.0, -4.196152422706632)], [(-2.0, 1.0000000000000004), (-2.0, 4.464101615137755), (1.0, 6.196152422706632), (4.0, 4.464101615137755), (4.0, 1.0000000000000004), (1.0, -0.7320508075688767), (-2.0, 1.0000000000000004)], [(4.0, 1.0000000000000004), (4.0, 4.464101615137755), (7.0, 6.196152422706632), (10.0, 4.464101615137755), (10.0, 1.0000000000000004), (7.0, -0.7320508075688767), (4.0, 1.0000000000000004)], [(-5.0, 6.196152422706632), (-5.0, 9.660254037844387), (-2.0, 11.392304845413264), (1.0, 9.660254037844387), (1.0, 6.196152422706632), (-2.0, 4.464101615137755), (-5.0, 6.196152422706632)], [(1.0, 6.196152422706632), (1.0, 9.660254037844387), (4.0, 11.392304845413264), (7.0, 9.660254037844387), (7.0, 6.196152422706632), (4.0, 4.464101615137755), (1.0, 6.196152422706632)], [(7.0, 6.196152422706632), (7.0, 9.660254037844387), (10.0, 11.392304845413264), (13.0, 9.660254037844387), (13.0, 6.196152422706632), (10.0, 4.464101615137755), (7.0, 6.196152422706632)], [(-2.0, 11.392304845413264), (-2.0, 14.85640646055102), (1.0, 16.588457268119896), (4.0, 14.85640646055102), (4.0, 11.392304845413264), (1.0, 9.660254037844387), (-2.0, 11.392304845413264)], [(4.0, 11.392304845413264), (4.0, 14.85640646055102), (7.0, 16.588457268119896), (10.0, 14.85640646055102), (10.0, 11.392304845413264), (7.0, 9.660254037844387), (4.0, 11.392304845413264)]]",
+            "assert calculate_polygons(5,4,7,9,8)==[[(-11.0, -9.856406460551018), (-11.0, -0.6188021535170058), (-3.0, 4.0), (5.0, -0.6188021535170058), (5.0, -9.856406460551018), (-3.0, -14.475208614068023), (-11.0, -9.856406460551018)], [(5.0, -9.856406460551018), (5.0, -0.6188021535170058), (13.0, 4.0), (21.0, -0.6188021535170058), (21.0, -9.856406460551018), (13.0, -14.475208614068023), (5.0, -9.856406460551018)], [(21.0, -9.856406460551018), (21.0, -0.6188021535170058), (29.0, 4.0), (37.0, -0.6188021535170058), (37.0, -9.856406460551018), (29.0, -14.475208614068023), (21.0, -9.856406460551018)], [(-3.0, 4.0), (-3.0, 13.237604307034012), (5.0, 17.856406460551018), (13.0, 13.237604307034012), (13.0, 4.0), (5.0, -0.6188021535170058), (-3.0, 4.0)], [(13.0, 4.0), (13.0, 13.237604307034012), (21.0, 17.856406460551018), (29.0, 13.237604307034012), (29.0, 4.0), (21.0, -0.6188021535170058), (13.0, 4.0)], [(-11.0, 17.856406460551018), (-11.0, 27.09401076758503), (-3.0, 31.712812921102035), (5.0, 27.09401076758503), (5.0, 17.856406460551018), (-3.0, 13.237604307034012), (-11.0, 17.856406460551018)], [(5.0, 17.856406460551018), (5.0, 27.09401076758503), (13.0, 31.712812921102035), (21.0, 27.09401076758503), (21.0, 17.856406460551018), (13.0, 13.237604307034012), (5.0, 17.856406460551018)], [(21.0, 17.856406460551018), (21.0, 27.09401076758503), (29.0, 31.712812921102035), (37.0, 27.09401076758503), (37.0, 17.856406460551018), (29.0, 13.237604307034012), (21.0, 17.856406460551018)], [(-3.0, 31.712812921102035), (-3.0, 40.95041722813605), (5.0, 45.569219381653056), (13.0, 40.95041722813605), (13.0, 31.712812921102035), (5.0, 27.09401076758503), (-3.0, 31.712812921102035)], [(13.0, 31.712812921102035), (13.0, 40.95041722813605), (21.0, 45.569219381653056), (29.0, 40.95041722813605), (29.0, 31.712812921102035), (21.0, 27.09401076758503), (13.0, 31.712812921102035)]]",
+            "assert calculate_polygons(9,6,4,3,2)==[[(5.0, 2.5358983848622456), (5.0, 4.8452994616207485), (7.0, 6.0), (9.0, 4.8452994616207485), (9.0, 2.5358983848622456), (7.0, 1.3811978464829942), (5.0, 2.5358983848622456)], [(7.0, 6.0), (7.0, 8.309401076758503), (9.0, 9.464101615137753), (11.0, 8.309401076758503), (11.0, 6.0), (9.0, 4.8452994616207485), (7.0, 6.0)]]"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 501,
+        "text": "Write a python function to find common divisor between two numbers in a given pair.",
+        "code": "def ngcd(x,y):\r\n    i=1\r\n    while(i<=x and i<=y):\r\n        if(x%i==0 and y%i == 0):\r\n            gcd=i;\r\n        i+=1\r\n    return gcd;\r\ndef num_comm_div(x,y):\r\n  n = ngcd(x,y)\r\n  result = 0\r\n  z = int(n**0.5)\r\n  i = 1\r\n  while(i <= z):\r\n    if(n % i == 0):\r\n      result += 2 \r\n      if(i == n/i):\r\n        result-=1\r\n    i+=1\r\n  return result",
+        "test_list": [
+            "assert num_comm_div(2,4) == 2",
+            "assert num_comm_div(2,8) == 2",
+            "assert num_comm_div(12,24) == 6"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 508,
+        "text": "Write a function to check if the common elements between two given lists are in the same order or not.",
+        "code": "def same_order(l1, l2):\r\n    common_elements = set(l1) & set(l2)\r\n    l1 = [e for e in l1 if e in common_elements]\r\n    l2 = [e for e in l2 if e in common_elements]\r\n    return l1 == l2",
+        "test_list": [
+            "assert same_order([\"red\",\"green\",\"black\",\"orange\"],[\"red\",\"pink\",\"green\",\"white\",\"black\"])==True",
+            "assert same_order([\"red\",\"pink\",\"green\",\"white\",\"black\"],[\"white\",\"orange\",\"pink\",\"black\"])==False",
+            "assert same_order([\"red\",\"green\",\"black\",\"orange\"],[\"red\",\"pink\",\"green\",\"white\",\"black\"])==True"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    },
+    {
+        "task_id": 510,
+        "text": "Write a function to find the number of subsequences having product smaller than k for the given non negative array.",
+        "code": "def no_of_subsequences(arr, k): \r\n\tn = len(arr) \r\n\tdp = [[0 for i in range(n + 1)] \r\n\t\t\tfor j in range(k + 1)] \r\n\tfor i in range(1, k + 1): \r\n\t\tfor j in range(1, n + 1): \r\n\t\t\tdp[i][j] = dp[i][j - 1] \r\n\t\t\tif arr[j - 1] <= i and arr[j - 1] > 0: \r\n\t\t\t\tdp[i][j] += dp[i // arr[j - 1]][j - 1] + 1\r\n\treturn dp[k][n]",
+        "test_list": [
+            "assert no_of_subsequences([1,2,3,4], 10) == 11",
+            "assert no_of_subsequences([4,8,7,2], 50) == 9",
+            "assert no_of_subsequences([5,6,7,8], 15) == 4"
+        ],
+        "test_setup_code": "",
+        "challenge_test_list": []
+    }
+]
