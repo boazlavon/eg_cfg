@@ -5,6 +5,13 @@ import pprint
 import csv
 from collections import defaultdict, Counter
 from concurrent.futures import ProcessPoolExecutor
+import sys
+import os
+
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
+
 from consts import (
     GAMMAS,
     OFFICIAL_PASSED_TASK_IDS_PATH,
