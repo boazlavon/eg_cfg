@@ -25,7 +25,10 @@ def load_model(model_name: str, device):
             model_name, trust_remote_code=True
         ).to(device)
     else:
-        model = AutoModelForCausalLM.from_pretrained(model_name).to(device)
+        model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype="auto").to(
+            device
+        )
+    model = torch.compile(model)
     return model, tokenizer
 
 

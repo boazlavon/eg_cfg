@@ -10,12 +10,14 @@ from model_utils import extract_new_tokens
 from mbpp_utils import parse_mbpp_assert_statement
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from consts import *
 
 
 class ExecutionManager:
     def __init__(self, tokenizer, function_signature=None):
         self.tokenizer = tokenizer
         self.function_signature = function_signature
+        self.timeouts = 0
 
     def execute_test_cases(self, executable_code, test_cases, use_assert=False):
         executions = {}
@@ -35,6 +37,11 @@ class ExecutionManager:
                     test_case_code
                 ), f"Invalid Test Case: {test_case}"
                 return test_case, self.execute(test_case_code)
+            except subprocess.TimeoutExpired:
+                self.timeouts += 1
+                traceback.print_exc()
+                print(f"Timeout Error in test case: {test_case}")
+                return test_case, None
             except Exception as e:
                 traceback.print_exc()
                 print(f"Error in test case: {test_case}")
@@ -164,7 +171,7 @@ class ExecutionManager:
                     ["python", "runner.py", program_path],
                     stdout=raw_out,
                     check=True,
-                    timeout=15,
+                    timeout=EXECUTION_TIMEOUT_SEC,
                 )
 
             # Step 4: Create a temporary file for the formatted trace
@@ -182,15 +189,14 @@ class ExecutionManager:
                 )
 
             # Step 6: Read the contents of both output files
-            with open(raw_trace_path, "r") as f:
-                raw_trace_content = f.read()
+            # with open(raw_trace_path, "r") as f:
+            #     raw_trace_content = f.read()
 
-            with open(formatted_trace_path, "r") as f:
-                formatted_trace_content = f.read()
+            # with open(formatted_trace_path, "r") as f:
+            #     formatted_trace_content = f.read()
 
             # Step 7: Create and return a ProgramExecution object
             program_execution = ProgramExecution(formatted_trace_path, program_path)
-
             return program_execution
 
         finally:

@@ -83,12 +83,12 @@ class CodeGenStopCriteria(StoppingCriteria):
     def __init__(
         self,
         tokenizer,
-        max_function_body_lines=None,
+        nf_samples_depth=None,
         function_name=None,
         is_instruct=True,
     ):
         self.tokenizer = tokenizer
-        self.max_function_body_lines = max_function_body_lines
+        self.nf_samples_depth = nf_samples_depth
         self.function_name = function_name
         self.is_instruct = is_instruct
         self.code_started = False
@@ -156,8 +156,8 @@ class CodeGenStopCriteria(StoppingCriteria):
 
                 if (
                     count_lines
-                    and self.max_function_body_lines is not None
-                    and self.function_body_line_count >= self.max_function_body_lines
+                    and self.nf_samples_depth is not None
+                    and self.function_body_line_count >= self.nf_samples_depth
                 ):
                     should_stop = True
                     discard_token = True
@@ -200,8 +200,8 @@ class CodeGenStopCriteria(StoppingCriteria):
 
                 if (
                     count_lines
-                    and self.max_function_body_lines is not None
-                    and self.function_body_line_count >= self.max_function_body_lines
+                    and self.nf_samples_depth is not None
+                    and self.function_body_line_count >= self.nf_samples_depth
                 ):
                     should_stop = True
                     discard_token = True
@@ -310,7 +310,7 @@ def generate_code_solutions(
     num_return_sequences=1,
     temperature=0.1,
     inputs=None,
-    max_function_body_lines=None,
+    nf_samples_depth=None,
     function_name=None,
     do_sample=False,
     prompt_type=None,
@@ -321,7 +321,7 @@ def generate_code_solutions(
     stop_criteria_list = [
         CodeGenStopCriteria(
             tokenizer,
-            max_function_body_lines=max_function_body_lines,
+            nf_samples_depth=nf_samples_depth,
             function_name=function_name,
         )
         for _ in range(num_return_sequences)
@@ -365,7 +365,8 @@ def generate_code_solutions(
             # "num_return_sequences": 1,
         }
 
-    with torch.no_grad():
+    model.eval()
+    with torch.inference_mode():
         # /a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/transformers/generation/utils.py
         outputs = model.generate(
             **inputs,
@@ -376,6 +377,7 @@ def generate_code_solutions(
             num_beams=1,
             stopping_criteria=stopping_criteria,
             dsgi_manager=dsgi_manager,
+            use_cache=True,
             **sampling_kwargs,
         )
     processed_outputs = []

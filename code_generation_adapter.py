@@ -25,9 +25,9 @@ class CodeGenerationAdapter:
         initial_prompt,
         dynamic_signals,
         prompt_type,
-        nearest_future_samples=None,
+        nf_samples_count=None,
         temperature=None,
-        max_function_body_lines=None,
+        nf_samples_depth=None,
         guidance_strategy=None,
         backward_signals=(),
     ):
@@ -43,13 +43,13 @@ class CodeGenerationAdapter:
         self.prompt_type = prompt_type
         self.program_executions = OrderedDict()
         self.execution_manager = ExecutionManager(tokenizer, function_signature)
-        self.nearest_future_samples = nearest_future_samples
+        self.nf_samples_count = nf_samples_count
         self.temperature = temperature
-        self.max_function_body_lines = max_function_body_lines
+        self.nf_samples_depth = nf_samples_depth
         self.backward_signals = backward_signals
         self.guidance_strategy = guidance_strategy
         self.lines_count = 0
-        self.current_nearest_future_samples = []
+        self.current_nf_samples_count = []
         self.current_dynamic_signal = {}
         self.current_debug_data = {}
         assert dynamic_signals
@@ -111,10 +111,10 @@ class CodeGenerationAdapter:
             self.device,
             prompt=None,
             dsgi_manager=None,
-            num_return_sequences=self.nearest_future_samples,
+            num_return_sequences=self.nf_samples_count,
             temperature=self.temperature,
             inputs=inputs,
-            max_function_body_lines=self.max_function_body_lines,
+            nf_samples_depth=self.nf_samples_depth,
             function_name=function_name,
             do_sample=True,
             prompt_type=self.prompt_type,
@@ -138,7 +138,7 @@ class CodeGenerationAdapter:
             executable_partial_programs.append(executable_partial_program_code)
         executable_partial_programs = list(set(executable_partial_programs))
         if executable_partial_programs:
-            self.current_nearest_future_samples = executable_partial_programs
+            self.current_nf_samples_count = executable_partial_programs
 
         for idx, executable_partial_program_code in enumerate(
             executable_partial_programs
@@ -216,10 +216,10 @@ class CodeGenerationAdapter:
                 dynamic_signal_type == DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
             ), f"Unsupported Signal Type: {dynamic_signal_type}"
             # iterate over the new codes that were generated and check if new code is a prefix
-            if not self.current_nearest_future_samples:
+            if not self.current_nf_samples_count:
                 generate_new_signal = True
             for idx, current_new_code_sample in enumerate(
-                self.current_nearest_future_samples
+                self.current_nf_samples_count
             ):
                 if not current_new_code_sample.startswith(new_code):
                     print(f"New Code:\n{new_code}")
