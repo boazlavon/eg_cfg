@@ -76,7 +76,7 @@ class FunctinoSigDsgiDetector(DsgiDetector):
 TASKS_DETECDORS = {TASK__CODE_GENERATION: FunctinoSigDsgiDetector}
 
 
-class DsgiManager:
+class DsgiInjectionManager:
     def __init__(
         self, tokenizer, task, task_kwargs, gamma, detector_kwargs, use_detector=False
     ):

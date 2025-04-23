@@ -19,7 +19,7 @@ from code_generation_utils import (
     is_valid_python,
     raw_outputs_to_new_code,
 )
-from dsgi_manager import DsgiManager
+from dsgi_injection_manager import DsgiInjectionManager
 from model_utils import setup_device, load_model
 from execution_manager import ExecutionManager
 from dsgi_session_manager import (
@@ -79,7 +79,7 @@ def try_generate_code_solution(
         function_signature = None
 
     if use_dsgi:
-        dsgi_manager = None
+        dsgi_injection_manager = None
         task_kwargs = {
             "model": model,
             "tokenizer": tokenizer,
@@ -107,7 +107,7 @@ def try_generate_code_solution(
                 "end_string": end_string,
             }
     task = TASK__CODE_GENERATION
-    dsgi_manager = DsgiManager(
+    dsgi_injection_manager = DsgiInjectionManager(
         tokenizer, task, task_kwargs, gamma, detector_kwargs, use_detector=use_detector
     )
 
@@ -116,7 +116,7 @@ def try_generate_code_solution(
         tokenizer,
         device,
         prompt,
-        dsgi_manager,
+        dsgi_injection_manager,
         num_return_sequences=1,
         prompt_type=prompt_type,
     )
@@ -127,7 +127,7 @@ def try_generate_code_solution(
     if function_signature:
         solution = f"{function_signature}\n{solution}"
         assert is_valid_python(solution)
-    # assert dsgi_manager.detector.start_detected == 1, f"Assertion for {problem['task_id']}"
+    # assert dsgi_injection_manager.detector.start_detected == 1, f"Assertion for {problem['task_id']}"
     return solution
 
 

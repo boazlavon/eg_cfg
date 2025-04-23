@@ -305,7 +305,7 @@ def generate_code_solutions(
     tokenizer,
     device,
     prompt,
-    dsgi_manager,
+    dsgi_injection_manager,
     max_new_tokens=MAX_NEW_TOKENS,
     num_return_sequences=1,
     temperature=0.1,
@@ -376,7 +376,7 @@ def generate_code_solutions(
             pad_token_id=pad_token_id,
             num_beams=1,
             stopping_criteria=stopping_criteria,
-            dsgi_manager=dsgi_manager,
+            dsgi_injection_manager=dsgi_injection_manager,
             use_cache=True,
             **sampling_kwargs,
         )

@@ -110,7 +110,7 @@ class CodeGenerationAdapter:
             self.tokenizer,
             self.device,
             prompt=None,
-            dsgi_manager=None,
+            dsgi_injection_manager=None,
             num_return_sequences=self.nf_samples_count,
             temperature=self.temperature,
             inputs=inputs,

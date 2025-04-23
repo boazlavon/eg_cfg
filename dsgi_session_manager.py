@@ -18,7 +18,7 @@ from code_generation_utils import (
     is_valid_python,
     raw_outputs_to_new_code,
 )
-from dsgi_manager import DsgiManager
+from dsgi_injection_manager import DsgiInjectionManager
 from model_utils import setup_device, load_model
 from consts import *
 
@@ -171,7 +171,7 @@ class DsgiSessionManager:
                     with open(solution_entry_path, "w") as f:
                         json.dump(solution_entry, f, indent=2)
 
-    def build_dsgi_manager(self, problem, gamma, function_signature=None):
+    def build_dsgi_injection_manager(self, problem, gamma, function_signature=None):
         test_cases = problem["test_list"]
         use_dsgi = True
         use_detector = True
@@ -197,7 +197,7 @@ class DsgiSessionManager:
                 prompt = prompts[str(problem["task_id"])]
 
         if use_dsgi:
-            dsgi_manager = None
+            dsgi_injection_manager = None
             task_kwargs = {
                 "model": self.model,
                 "tokenizer": self.tokenizer,
@@ -233,7 +233,7 @@ class DsgiSessionManager:
                     "end_string": end_string,
                 }
         task = TASK__CODE_GENERATION
-        dsgi_manager = DsgiManager(
+        dsgi_injection_manager = DsgiInjectionManager(
             self.tokenizer,
             task,
             task_kwargs,
@@ -241,7 +241,7 @@ class DsgiSessionManager:
             detector_kwargs,
             use_detector=use_detector,
         )
-        return dsgi_manager, prompt
+        return dsgi_injection_manager, prompt
 
     def solve_problem_with_dsgi(
         self,
@@ -249,7 +249,7 @@ class DsgiSessionManager:
         gamma,
     ):
         function_signature = None
-        dsgi_manager, prompt = self.build_dsgi_manager(
+        dsgi_injection_manager, prompt = self.build_dsgi_injection_manager(
             problem, gamma, function_signature
         )
         outputs = generate_code_solutions(
@@ -257,7 +257,7 @@ class DsgiSessionManager:
             self.tokenizer,
             self.device,
             prompt,
-            dsgi_manager,
+            dsgi_injection_manager,
             num_return_sequences=1,
             prompt_type=self.session_args.prompt_type,
         )
