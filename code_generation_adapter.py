@@ -23,13 +23,13 @@ class CodeGenerationAdapter:
         function_signature,
         test_cases,
         initial_prompt,
-        dynamic_signals,
+        dynamic_signals_types,
         prompt_type,
         nf_samples_count=None,
         temperature=None,
         nf_samples_depth=None,
         guidance_strategy=None,
-        backward_signals=(),
+        execution_manager=None,
     ):
         self.model = model
         self.tokenizer = tokenizer
@@ -42,24 +42,24 @@ class CodeGenerationAdapter:
         )
         self.prompt_type = prompt_type
         self.program_executions = OrderedDict()
-        self.execution_manager = ExecutionManager(tokenizer, function_signature)
+        self.execution_manager = execution_manager
         self.nf_samples_count = nf_samples_count
         self.temperature = temperature
         self.nf_samples_depth = nf_samples_depth
-        self.backward_signals = backward_signals
         self.guidance_strategy = guidance_strategy
         self.lines_count = 0
         self.current_nf_samples_count = []
         self.current_dynamic_signal = {}
         self.current_debug_data = {}
-        assert dynamic_signals
-        for dynamic_signal_type in dynamic_signals:
+        assert dynamic_signals_types
+        for dynamic_signal_type in dynamic_signals_types:
             assert dynamic_signal_type in SUPPORTED_DYNAMIC_SIGNALS
             assert dynamic_signal_type in self.dynamic_signal_handlers()
             self.current_dynamic_signal[dynamic_signal_type] = None
             self.current_debug_data[dynamic_signal_type] = None
+        self.backward_signals = []
 
-        self.dynamic_signals = dynamic_signals
+        self.dynamic_signals_types = dynamic_signals_types
         self.detector = None
 
     @staticmethod
@@ -283,7 +283,7 @@ class CodeGenerationAdapter:
         )
 
         unified_dynamic_signal_text = ""
-        for dynamic_signal in self.dynamic_signals:
+        for dynamic_signal in self.dynamic_signals_types:
             unified_dynamic_signal_text += dynamic_signals_text[dynamic_signal]
 
         unified_dynamic_signal_prompt = self.initial_prompt
@@ -330,7 +330,7 @@ class CodeGenerationAdapter:
         dynamic_signals_text = {}
         debug_data = {}
 
-        for dynamic_signal_type in self.dynamic_signals:
+        for dynamic_signal_type in self.dynamic_signals_types:
             (
                 dynamic_signals_text[dynamic_signal_type],
                 debug_data[dynamic_signal_type],

@@ -20,6 +20,8 @@ from code_generation_utils import (
 )
 from dsgi_injection_manager import DsgiInjectionManager
 from model_utils import setup_device, load_model
+from execution_manager import ExecutionManager
+from args_utils import get_dynamic_signals_str
 from consts import *
 
 
@@ -54,15 +56,11 @@ def get_solution_filepath(results_dir, task_id, gamma, backward_signals_iteratio
 
 
 class DsgiSessionManager:
-    def __init__(
-        self,
-        session_args,
-        guidance_args,
-        dynamic_signals_args,
-    ):
-        self.session_args = session_args
-        self.guidance_args = guidance_args
-        self.dynamic_signals_args = dynamic_signals_args
+    def __init__(self, dsgi_session_manager_args):
+        self.dsgi_session_manager_args = dsgi_session_manager_args
+        self.session_args = dsgi_session_manager_args.session_args
+        self.guidance_args = dsgi_session_manager_args.guidance_args
+        self.dynamic_signals_args = dsgi_session_manager_args.dynamic_signals_args
         self.validate_args()
 
     def validate_args(self):
@@ -78,15 +76,17 @@ class DsgiSessionManager:
         self.model, self.tokenizer = load_model(
             self.session_args.model_name, self.device
         )
+        self.execution_manager = ExecutionManager(
+            self.tokenizer, function_signature=None
+        )
         self.problems = load_mbpp_problems()
         self.problems = list(self.problems.items())
-        # if end is None:
-        #     end = len(problems)
-        # problems = problems[start:end]
         if self.session_args.is_prod:
             random.shuffle(self.problems)
 
     def resolve_official_evaluation_solved_entries(self):
+        results_dir = self.create_results_dir(self.self.dsgi_session_manager_args)
+        os.makedirs(results_dir, exist_ok=True)
         gamma = 0
         official_passed_task_ids, official_results = load_official_results(
             self.session_args.model_name
@@ -99,9 +99,7 @@ class DsgiSessionManager:
             for _, problem in self.problems:
                 if problem["task_id"] != task_id:
                     continue
-                solution_entry_path = get_solution_filepath(
-                    self.session_args.results_dir, task_id, gamma
-                )
+                solution_entry_path = get_solution_filepath(results_dir, task_id, gamma)
                 if os.path.exists(solution_entry_path):
                     continue
                 with open(solution_entry_path, "a"):
@@ -130,13 +128,13 @@ class DsgiSessionManager:
                         json.dump(solution_entry, f, indent=2)
 
     def resolve_cache_entries(self):
+        results_dir = self.create_results_dir(self.self.dsgi_session_manager_args)
         if not (
             self.session_args.use_cache
             and self.session_args.model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME
         ):
             return
 
-        backward_signals_iteration = 0
         solved_list = DEEPSEEK_13_SOLVED_TASK_IDS
         random.shuffle(solved_list)
         time.sleep(random.randint(1, 10))
@@ -147,10 +145,9 @@ class DsgiSessionManager:
                 print(f"Task {task_id}: Continue, Already Solved")
                 for gamma in GAMMAS:
                     solution_entry_path = get_solution_filepath(
-                        self.session_args.results_dir,
+                        results_dir,
                         task_id,
                         gamma,
-                        backward_signals_iteration,
                     )
                     if os.path.exists(solution_entry_path):
                         continue
@@ -165,9 +162,7 @@ class DsgiSessionManager:
                         "has_testcase_error": False,
                         "cached": True,
                     }
-                    self.solutions[(task_id, gamma, backward_signals_iteration)] = (
-                        solution_entry
-                    )
+                    self.solutions[(task_id, gamma)] = solution_entry
                     with open(solution_entry_path, "w") as f:
                         json.dump(solution_entry, f, indent=2)
 
@@ -205,7 +200,7 @@ class DsgiSessionManager:
                 "function_signature": function_signature,
                 "test_cases": test_cases,
                 "initial_prompt": prompt,
-                "dynamic_signals": self.guidance_args.dynamic_signals_types,
+                "dynamic_signals_types": self.guidance_args.dynamic_signals_types,
                 "nf_samples_count": self.dynamic_signals_args[
                     DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
                 ].nf_samples_count,
@@ -214,10 +209,10 @@ class DsgiSessionManager:
                 ].temperature,
                 "nf_samples_depth": self.dynamic_signals_args[
                     DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
-                ].max_lines,
-                "backward_signals": [],
+                ].nf_samples_depth,
                 "prompt_type": self.session_args.prompt_type,
                 "guidance_strategy": self.guidance_args.guidance_strategy,
+                "execution_manager": self.execution_manager,
             }
 
             detector_kwargs = {}
@@ -318,7 +313,23 @@ class DsgiSessionManager:
                 break
         return solution_entry
 
+    def create_results_dir(self, dsgi_session_manager_args):
+        session_args, guidance_args, dynamic_signals_args = (
+            dsgi_session_manager_args.session_args,
+            dsgi_session_manager_args.guidance_args,
+            dsgi_session_manager_args.dynamic_signals_args,
+        )
+        dynamic_signals_str = get_dynamic_signals_str(dsgi_session_manager_args)
+        results_dir = os.path.join(
+            "results",
+            "mbpp",
+            session_args.model_name.replace("/", "_"),
+            dynamic_signals_str,
+        )
+        return results_dir
+
     def solve_single_problem(self, problem):
+        results_dir = self.create_results_dir(self.dsgi_session_manager_args)
         task_id = problem["task_id"]
         print(f"task_id: {task_id}")
         pprint.pprint(problem)
@@ -326,9 +337,7 @@ class DsgiSessionManager:
 
         for gamma in self.guidance_args.gammas:
             print(f"task_id={task_id}, gamma={gamma}")
-            solution_entry_path = get_solution_filepath(
-                self.session_args.results_dir, task_id, gamma
-            )
+            solution_entry_path = get_solution_filepath(results_dir, task_id, gamma)
             if os.path.exists(solution_entry_path):
                 print(
                     f"Solution Exists for task_id={task_id}, gamma={gamma} - continue"
@@ -353,9 +362,13 @@ class DsgiSessionManager:
             self.solutions[(task_id, gamma)] = solution_entry
             with open(solution_entry_path, "w") as f:
                 json.dump(solution_entry, f, indent=2)
+            if solution_entry["passed"]:
+                print(f"Problem task_id={task_id} is solved (gamma={gamma})")
+                break
 
     def solve(self):
         self.resolve_cache_entries()
         self.resolve_official_evaluation_solved_entries()
         for _, problem in self.problems:
+            # choose configuration
             self.solve_single_problem(problem)

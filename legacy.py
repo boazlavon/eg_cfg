@@ -42,7 +42,7 @@ def try_generate_code_solution(
     prompt_type,
     nf_samples_count,
     temperature,
-    max_lines,
+    nf_samples_depth,
     guidance_strategy,
 ):
     test_cases = problem["test_list"]
@@ -90,7 +90,7 @@ def try_generate_code_solution(
             "dynamic_signals": dynamic_signals,
             "nf_samples_count": nf_samples_count,
             "temperature": temperature,
-            "nf_samples_depth": max_lines,
+            "nf_samples_depth": nf_samples_depth,
             "backward_signals": backward_signals,
             "prompt_type": prompt_type,
             "guidance_strategy": guidance_strategy,
