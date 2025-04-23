@@ -1,6 +1,6 @@
 import random
 import pprint
-import re
+from argparse import Namespace
 import time
 import os
 import json
@@ -56,11 +56,10 @@ def get_solution_filepath(results_dir, task_id, gamma, backward_signals_iteratio
 
 
 class DsgiSessionManager:
-    def __init__(self, dsgi_session_manager_config):
-        self.dsgi_session_manager_config = dsgi_session_manager_config
-        self.session_config = dsgi_session_manager_config.session_config
-        self.guidance_config = dsgi_session_manager_config.guidance_config
-        self.dynamic_signals_config = dsgi_session_manager_config.dynamic_signals_config
+    def __init__(self, session_config, inference_sessions_configs):
+        self.session_config = session_config
+        self.inference_sessions_configs = inference_sessions_configs
+        self.inference_session = None
         self.validate_args()
 
     def validate_args(self):
@@ -83,10 +82,38 @@ class DsgiSessionManager:
         self.problems = list(self.problems.items())
         if self.session_config.is_prod:
             random.shuffle(self.problems)
+            random.shuffle(self.inference_sessions_configs)
+
+    def create_results_dir(
+        self, session_config, guidance_config, dynamic_signals_config
+    ):
+        dynamic_signals_str = get_dynamic_signals_str(
+            session_config, guidance_config, dynamic_signals_config
+        )
+        results_dir = os.path.join(
+            "results",
+            "mbpp",
+            session_config.model_name.replace("/", "_"),
+            dynamic_signals_str,
+        )
+        return results_dir
+
+    def setup_inference_session(
+        self, session_config, guidance_config, dynamic_signals_config
+    ):
+        results_dir = self.create_results_dir(
+            session_config, guidance_config, dynamic_signals_config
+        )
+        os.makedirs(results_dir, exist_ok=True)
+        self.inference_sesssion = Namespace(
+            **{
+                "dynamic_signals_config": dynamic_signals_config,
+                "guidance_config": guidance_config,
+                "results_dir": results_dir,
+            }
+        )
 
     def resolve_official_evaluation_solved_entries(self):
-        results_dir = self.create_results_dir(self.dsgi_session_manager_config)
-        os.makedirs(results_dir, exist_ok=True)
         gamma = 0
         official_passed_task_ids, official_results = load_official_results(
             self.session_config.model_name
@@ -99,7 +126,9 @@ class DsgiSessionManager:
             for _, problem in self.problems:
                 if problem["task_id"] != task_id:
                     continue
-                solution_entry_path = get_solution_filepath(results_dir, task_id, gamma)
+                solution_entry_path = get_solution_filepath(
+                    self.inference_sesssion.results_dir, task_id, gamma
+                )
                 if os.path.exists(solution_entry_path):
                     continue
                 with open(solution_entry_path, "a"):
@@ -128,7 +157,6 @@ class DsgiSessionManager:
                         json.dump(solution_entry, f, indent=2)
 
     def resolve_cache_entries(self):
-        results_dir = self.create_results_dir(self.dsgi_session_manager_config)
         if not (
             self.session_config.use_cache
             and self.session_config.model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME
@@ -145,7 +173,7 @@ class DsgiSessionManager:
                 print(f"Task {task_id}: Continue, Already Solved")
                 for gamma in GAMMAS:
                     solution_entry_path = get_solution_filepath(
-                        results_dir,
+                        self.inference_sesssion.results_dir,
                         task_id,
                         gamma,
                     )
@@ -193,8 +221,10 @@ class DsgiSessionManager:
 
         dynamic_signals_types = [
             dynamic_signal_type
-            for dynamic_signal_type in self.dynamic_signals_config
-            if self.dynamic_signals_config[dynamic_signal_type].is_enabled
+            for dynamic_signal_type in self.inference_session.dynamic_signals_config
+            if self.inference_session.dynamic_signals_config[
+                dynamic_signal_type
+            ].is_enabled
         ]
         if use_dsgi:
             dsgi_injection_manager = None
@@ -206,17 +236,17 @@ class DsgiSessionManager:
                 "test_cases": test_cases,
                 "initial_prompt": prompt,
                 "dynamic_signals_types": dynamic_signals_types,
-                "nf_samples_count": self.dynamic_signals_config[
+                "nf_samples_count": self.inference_session.dynamic_signals_config[
                     DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
                 ].nf_samples_count,
-                "temperature": self.dynamic_signals_config[
+                "temperature": self.inference_session.dynamic_signals_config[
                     DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
                 ].temperature,
-                "nf_samples_depth": self.dynamic_signals_config[
+                "nf_samples_depth": self.inference_session.dynamic_signals_config[
                     DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
                 ].nf_samples_depth,
                 "prompt_type": self.session_config.prompt_type,
-                "guidance_strategy": self.guidance_config.guidance_strategy,
+                "guidance_strategy": self.inference_session.guidance_config.guidance_strategy,
                 "execution_manager": self.execution_manager,
             }
 
@@ -277,14 +307,14 @@ class DsgiSessionManager:
     def solve_problem_with_dsgi_wrapper(self, problem, gamma):
         task_id = problem["task_id"]
         test_cases = problem["test_list"]
-        for retry_idx in range(self.guidance_config.retries_count):
+        for retry_idx in range(self.inference_session.guidance_config.retries_count):
             general_error = None
             tb = None
             # no need to solve gamma = 0 multiple times
             if gamma == 0 and retry_idx > 0:
                 break
             print(f"Retry #{retry_idx + 1}")
-            if self.dynamic_signals_config[
+            if self.inference_session.dynamic_signals_config[
                 DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
             ].is_enabled:
                 random.seed(40 + retry_idx)
@@ -318,31 +348,17 @@ class DsgiSessionManager:
                 break
         return solution_entry
 
-    def create_results_dir(self, dsgi_session_manager_config):
-        session_config, guidance_config, dynamic_signals_config = (
-            dsgi_session_manager_config.session_config,
-            dsgi_session_manager_config.guidance_config,
-            dsgi_session_manager_config.dynamic_signals_config,
-        )
-        dynamic_signals_str = get_dynamic_signals_str(dsgi_session_manager_config)
-        results_dir = os.path.join(
-            "results",
-            "mbpp",
-            session_config.model_name.replace("/", "_"),
-            dynamic_signals_str,
-        )
-        return results_dir
-
     def solve_single_problem(self, problem):
-        results_dir = self.create_results_dir(self.dsgi_session_manager_config)
         task_id = problem["task_id"]
         print(f"task_id: {task_id}")
         pprint.pprint(problem)
         print()
 
-        for gamma in self.guidance_config.gammas:
+        for gamma in self.inference_session.guidance_config.gammas:
             print(f"task_id={task_id}, gamma={gamma}")
-            solution_entry_path = get_solution_filepath(results_dir, task_id, gamma)
+            solution_entry_path = get_solution_filepath(
+                self.inference_sesssion.results_dir, task_id, gamma
+            )
             if os.path.exists(solution_entry_path):
                 print(
                     f"Solution Exists for task_id={task_id}, gamma={gamma} - continue"
@@ -372,8 +388,13 @@ class DsgiSessionManager:
                 break
 
     def solve(self):
-        self.resolve_cache_entries()
-        self.resolve_official_evaluation_solved_entries()
-        for _, problem in self.problems:
-            # choose configuration
-            self.solve_single_problem(problem)
+        for guidance_config, dynamic_signals_config in self.inference_sessions_configs:
+            self.setup_inference_session(
+                self.session_config,
+                guidance_config,
+                dynamic_signals_config,
+            )
+            self.resolve_cache_entries()
+            self.resolve_official_evaluation_solved_entries()
+            for _, problem in self.problems:
+                self.solve_single_problem(problem)

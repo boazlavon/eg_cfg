@@ -4,12 +4,7 @@ from argparse import Namespace
 from consts import *
 
 
-def get_dynamic_signals_str(dsgi_session_manager_config):
-    session_config, guidance_config, dynamic_signals_config = (
-        dsgi_session_manager_config.session_config,
-        dsgi_session_manager_config.guidance_config,
-        dsgi_session_manager_config.dynamic_signals_config,
-    )
+def get_dynamic_signals_str(session_config, guidance_config, dynamic_signals_config):
     dynamic_signals_str = []
     prompt_type = None
     guidance_strategy = None
@@ -47,7 +42,10 @@ def get_dynamic_signals_str(dsgi_session_manager_config):
         guidance_strategy = "tok"
     if guidance_config.guidance_strategy == GUIDANCE_STRATEGY__LINE_GUIDANCE:
         guidance_strategy = "ln"
-    if guidance_config.guidance_strategy == GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE:
+    if (
+        guidance_config.guidance_strategy
+        == GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE
+    ):
         guidance_strategy = "prf"
     dynamic_signals_str = f"{dynamic_signals_str}_{guidance_strategy}"
     return dynamic_signals_str
