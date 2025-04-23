@@ -130,13 +130,7 @@ def build_dsgi_session_manager_config(args):
         "use_cache": args.cache,
     }
     session_config = Namespace(**session_config)
-
-    dsgi_session_manager_config = {
-        "session_config": session_config,
-        "guidance_config": guidance_config,
-        "dynamic_signals_config": dynamic_signals_config,
-    }
-    return Namespace(**dsgi_session_manager_config)
+    return session_config, guidance_config, dynamic_signals_config
 
 
 def get_cmdline_args():

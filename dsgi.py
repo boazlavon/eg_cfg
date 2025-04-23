@@ -4,15 +4,15 @@ from dsgi_session_manager import DsgiSessionManager
 
 def main():
     cmdline_args = get_cmdline_args()
-    dsgi_session_manager_config = build_dsgi_session_manager_config(cmdline_args)
+    session_config, guidance_config, dynamic_signals_config = build_dsgi_session_manager_config(cmdline_args)
     inference_sessions_config = [
         (
-            dsgi_session_manager_config.guidance_config,
-            dsgi_session_manager_config.dynamic_signals_config,
+            guidance_config,
+            dynamic_signals_config,
         )
     ]
     dsgi_session_manager = DsgiSessionManager(
-        dsgi_session_manager_config.session_config, inference_sessions_config
+        session_config, inference_sessions_config
     )
     dsgi_session_manager.setup()
     dsgi_session_manager.solve()
