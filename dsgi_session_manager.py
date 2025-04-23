@@ -60,14 +60,14 @@ class DsgiSessionManager:
         self.session_config = session_config
         self.inference_sessions_configs = inference_sessions_configs
         self.inference_session = None
-        self.validate_args()
 
     def validate_args(self):
-        assert self.session_config.prompt_type in (
-            PROMPT_TYPE__DEEPSEEK_BASE,
-            PROMPT_TYPE__DEEPSEEK_INSTRUCT,
-            PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
-        )
+        for inference_session_config in self.inference_sessions_configs:
+            assert inference_session_config["prompt_type"] in (
+                PROMPT_TYPE__DEEPSEEK_BASE,
+                PROMPT_TYPE__DEEPSEEK_INSTRUCT,
+                PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
+            )
 
     def setup(self):
         self.solutions = {}
@@ -80,14 +80,16 @@ class DsgiSessionManager:
         )
         self.problems = load_mbpp_problems()
         self.problems = list(self.problems.items())
+        if self.session_config.start_idx and self.session_config.end_idx:
+            self.problems = self.problems[
+                self.session_config.start_idx : self.session_config.end_idx
+            ]
         if self.session_config.is_prod:
             random.shuffle(self.problems)
             random.shuffle(self.inference_sessions_configs)
 
     def create_results_dir(self, session_config, inference_session_config):
-        dynamic_signals_str = get_dynamic_signals_str(
-            session_config, inference_session_config
-        )
+        dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
         results_dir = os.path.join(
             "results",
             "mbpp",
@@ -107,6 +109,8 @@ class DsgiSessionManager:
                 "results_dir": results_dir,
             }
         )
+        print("Setting inference session config:")
+        pprint.pprint(self.inference_session)
 
     def resolve_official_evaluation_solved_entries(self):
         gamma = 0
@@ -125,7 +129,17 @@ class DsgiSessionManager:
                     self.inference_session.results_dir, task_id, gamma
                 )
                 if os.path.exists(solution_entry_path):
-                    continue
+                    with open(solution_entry_path, "r") as f:
+                        solution_entry = json.load(f)
+                    if solution_entry["passed"]:
+                        print(f"Problem task_id={task_id} is solved (gamma={gamma})")
+                        break
+                    else:
+                        print(
+                            f"Failed solve for task_id={task_id}, gamma={gamma} - continue"
+                        )
+                        continue
+
                 with open(solution_entry_path, "a"):
                     pass
                 print(f"task_id: {task_id}")
@@ -193,19 +207,28 @@ class DsgiSessionManager:
         test_cases = problem["test_list"]
         use_dsgi = True
         use_detector = True
-        if self.session_config.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
+        if (
+            self.inference_session.inference_session_config["prompt_type"]
+            == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT
+        ):
             prompt, _ = format_mbpp_prompt(problem, False)
             end_string = "```"
-        elif self.session_config.prompt_type in (
+        elif self.inference_session.inference_session_config["prompt_type"] in (
             PROMPT_TYPE__DEEPSEEK_BASE,
             PROMPT_TYPE__DEEPSEEK_INSTRUCT,
         ):
-            if self.session_config.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
+            if (
+                self.inference_session.inference_session_config["prompt_type"]
+                == PROMPT_TYPE__DEEPSEEK_BASE
+            ):
                 prompts_path = os.path.join(
                     "deepseek_mbpp_prompts", "mbpp_base_prompts.json"
                 )
                 end_string = "[DONE]"
-            if self.session_config.prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
+            if (
+                self.inference_session.inference_session_config["prompt_type"]
+                == PROMPT_TYPE__DEEPSEEK_INSTRUCT
+            ):
                 prompts_path = os.path.join(
                     "deepseek_mbpp_prompts", "mbpp_instruct_prompts.json"
                 )
@@ -240,8 +263,12 @@ class DsgiSessionManager:
                 "nf_samples_depth": self.inference_session.inference_session_config[
                     DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
                 ].nf_samples_depth,
-                "prompt_type": self.session_config.prompt_type,
-                "guidance_strategy": self.session_config.guidance_strategy,
+                "prompt_type": self.inference_session.inference_session_config[
+                    "prompt_type"
+                ],
+                "guidance_strategy": self.inference_session.inference_session_config[
+                    "guidance_strategy"
+                ],
                 "execution_manager": self.execution_manager,
             }
 
@@ -284,14 +311,14 @@ class DsgiSessionManager:
             prompt,
             dsgi_injection_manager,
             num_return_sequences=1,
-            prompt_type=self.session_config.prompt_type,
+            prompt_type=self.inference_session.inference_session_config["prompt_type"],
         )
         initial_prompt_input_ids_len = calculate_tokens_length(self.tokenizer, prompt)
         new_codes = raw_outputs_to_new_code(
             outputs,
             self.tokenizer,
             initial_prompt_input_ids_len,
-            self.session_config.prompt_type,
+            self.inference_session.inference_session_config["prompt_type"],
         )
         solution = new_codes[0]
         if function_signature:
@@ -355,20 +382,31 @@ class DsgiSessionManager:
                 self.inference_session.results_dir, task_id, gamma
             )
             if os.path.exists(solution_entry_path):
-                print(
-                    f"Solution Exists for task_id={task_id}, gamma={gamma} - continue"
-                )
-                continue
+                with open(solution_entry_path, "r") as f:
+                    solution_entry = json.load(f)
+                if solution_entry["passed"]:
+                    print(f"Problem task_id={task_id} is solved (gamma={gamma})")
+                    break
+                else:
+                    print(
+                        f"Failed solve for task_id={task_id}, gamma={gamma} - continue"
+                    )
+                    continue
 
             if (task_id, gamma) in self.solutions:
                 solution_entry = self.solutions[(task_id, gamma)]
                 if "cached" in solution_entry and solution_entry["cached"]:
                     print("Problem task_id={task_id} is solved, cached")
                     break
-                print(
-                    f"Solution Exists for task_id={task_id}, gamma={gamma} - continue"
-                )
-                continue
+
+                if solution_entry["passed"]:
+                    print(f"Problem task_id={task_id} is solved (gamma={gamma})")
+                    break
+                else:
+                    print(
+                        f"Failed solve for task_id={task_id}, gamma={gamma} - continue"
+                    )
+                    continue
 
             # touch the file to reserve it
             with open(solution_entry_path, "a"):
@@ -383,13 +421,18 @@ class DsgiSessionManager:
                 break
 
     def solve(self):
+        # First resolve all inference sessions cache & officail evaluation entries
         for inference_session_config in self.inference_sessions_configs:
             self.setup_inference_session(
                 inference_session_config,
             )
-            assert self.inference_session is not None
-
             self.resolve_cache_entries()
             self.resolve_official_evaluation_solved_entries()
-            for _, problem in self.problems:
+
+        # Then, for every problem use all the configs to maximize caching
+        for _, problem in self.problems:
+            for inference_session_config in self.inference_sessions_configs:
+                self.setup_inference_session(
+                    inference_session_config,
+                )
                 self.solve_single_problem(problem)

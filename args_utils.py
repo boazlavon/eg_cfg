@@ -6,7 +6,7 @@ from consts import *
 from sklearn.model_selection import ParameterGrid
 
 
-def get_dynamic_signals_str(session_config, inference_session_config):
+def get_dynamic_signals_str(inference_session_config):
     dynamic_signals_str = []
     prompt_type = None
     guidance_strategy = None
@@ -38,16 +38,25 @@ def get_dynamic_signals_str(session_config, inference_session_config):
         dynamic_signals_str.append("b")
     dynamic_signals_str = "".join(dynamic_signals_str)
 
-    if session_config.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
+    if (
+        inference_session_config["prompt_type"]
+        == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT
+    ):
         prompt_type = "lci"
         dynamic_signals_str = f"{dynamic_signals_str}_{prompt_type}"
 
-    if session_config.guidance_strategy == GUIDANCE_STRATEGY__TOKEN_GUIDANCE:
+    if (
+        inference_session_config["guidance_strategy"]
+        == GUIDANCE_STRATEGY__TOKEN_GUIDANCE
+    ):
         guidance_strategy = "tok"
-    if session_config.guidance_strategy == GUIDANCE_STRATEGY__LINE_GUIDANCE:
+    if (
+        inference_session_config["guidance_strategy"]
+        == GUIDANCE_STRATEGY__LINE_GUIDANCE
+    ):
         guidance_strategy = "ln"
     if (
-        session_config.guidance_strategy
+        inference_session_config["guidance_strategy"]
         == GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE
     ):
         guidance_strategy = "prf"
@@ -104,28 +113,34 @@ def dynamis_sigansl_str_to_cmdline_args(dynamic_signals_str):
 
 
 def build_inference_session_config(args):
+    if args["d"] == "inf":
+        args["d"] = None
+    if args["prompt_type"] is None:
+        args["prompt_type"] = "deepseek_instruct"
     inference_session_config = {
         DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION: Namespace(
-            **{
-                "is_enabled": bool(args.n),
-                "temperature": args.t,
-                "nf_samples_count": args.s,
-                "nf_samples_depth": args.d,
-            }
+            is_enabled=args["n"],
+            temperature=args["t"] if args["n"] else None,
+            nf_samples_count=args["s"] if args["n"] else None,
+            nf_samples_depth=args["d"] if args["n"] else None,
         ),
         DYNAMIC_SIGNAL__PARTIAL_EXECUTION: Namespace(
-            **{
-                "is_enabled": bool(args.p),
-            }
+            is_enabled=args["p"],
         ),
-        DYNAMIC_SIGNAL__BACKWARD: Namespace(**{"is_enabled": False}),
+        DYNAMIC_SIGNAL__BACKWARD: Namespace(is_enabled=False),
+        "guidance_strategy": args["g"],
+        "prompt_type": args["prompt_type"],
     }
+
+    return inference_session_config
+
+
+def build_session_config(args):
+    inference_session_config = build_inference_session_config(args)
     session_config = {
-        "guidance_strategy": args.g,
         "retries_count": args.r,
         "gammas": GAMMAS,
         "model_name": args.model_name,
-        "prompt_type": args.prompt_type,
         "is_prod": args.prod,
         "use_cache": args.cache,
     }
@@ -198,33 +213,48 @@ def get_grid_cmdline_args():
     return args
 
 
-def build_inference_session_config(inference_args):
-    inference_session_config = {
-        DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION: Namespace(
-            is_enabled=inference_args["n"],
-            temperature=inference_args["t"] if inference_args["n"] else None,
-            nf_samples_count=inference_args["s"] if inference_args["n"] else None,
-            nf_samples_depth=inference_args["d"] if inference_args["n"] else None,
-        ),
-        DYNAMIC_SIGNAL__PARTIAL_EXECUTION: Namespace(
-            is_enabled=inference_args["p"],
-        ),
-        DYNAMIC_SIGNAL__BACKWARD: Namespace(is_enabled=False),
-    }
-
-    return inference_session_config
-
-
 def generate_grid_configs(inference_session_grid_json, session_config_json):
-    with open(inference_session_grid_json, "r") as file:
-        inference_param_grid = json.load(file)
+    with open(inference_session_grid_json, "r") as f:
+        inference_param_grid = json.load(f)
 
-    with open(session_config_json, "r") as file:
-        session_config = json.load(file)
+    with open(session_config_json, "r") as f:
+        session_config = json.load(f)
 
     inference_sessions_configs = [
         build_inference_session_config(inference_args)
         for inference_args in ParameterGrid(inference_param_grid)
     ]
     session_config = Namespace(**session_config)
+    return session_config, inference_sessions_configs
+
+
+def get_trials_cmdline_args():
+    parser = argparse.ArgumentParser(
+        description="Load list of trial names from a JSON file."
+    )
+    parser.add_argument(
+        "--trials-json",
+        required=True,
+        help="Path to a JSON file containing a list of trial names.",
+    )
+    parser.add_argument(
+        "--session-config-json",
+        required=True,
+        help="Path to session configuration JSON file.",
+    )
+    args = parser.parse_args()
+    return args
+
+
+def convert_trials_to_configs(trials_json, session_config_json):
+    with open(trials_json, "r") as f:
+        trials_list = json.load(f)
+    with open(session_config_json, "r") as f:
+        session_config = json.load(f)
+        session_config = Namespace(**session_config)
+    inference_sessions_configs = []
+    for trial in trials_list:
+        cmdline_args = dynamis_sigansl_str_to_cmdline_args(trial)
+        inference_session_config = build_inference_session_config(cmdline_args)
+        inference_sessions_configs.append(inference_session_config)
     return session_config, inference_sessions_configs
