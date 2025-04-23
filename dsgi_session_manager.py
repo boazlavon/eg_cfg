@@ -56,15 +56,15 @@ def get_solution_filepath(results_dir, task_id, gamma, backward_signals_iteratio
 
 
 class DsgiSessionManager:
-    def __init__(self, dsgi_session_manager_args):
-        self.dsgi_session_manager_args = dsgi_session_manager_args
-        self.session_args = dsgi_session_manager_args.session_args
-        self.guidance_args = dsgi_session_manager_args.guidance_args
-        self.dynamic_signals_args = dsgi_session_manager_args.dynamic_signals_args
+    def __init__(self, dsgi_session_manager_config):
+        self.dsgi_session_manager_config = dsgi_session_manager_config
+        self.session_config = dsgi_session_manager_config.session_config
+        self.guidance_config = dsgi_session_manager_config.guidance_config
+        self.dynamic_signals_config = dsgi_session_manager_config.dynamic_signals_config
         self.validate_args()
 
     def validate_args(self):
-        assert self.session_args.prompt_type in (
+        assert self.session_config.prompt_type in (
             PROMPT_TYPE__DEEPSEEK_BASE,
             PROMPT_TYPE__DEEPSEEK_INSTRUCT,
             PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
@@ -74,26 +74,26 @@ class DsgiSessionManager:
         self.solutions = {}
         self.device = setup_device()
         self.model, self.tokenizer = load_model(
-            self.session_args.model_name, self.device
+            self.session_config.model_name, self.device
         )
         self.execution_manager = ExecutionManager(
             self.tokenizer, function_signature=None
         )
         self.problems = load_mbpp_problems()
         self.problems = list(self.problems.items())
-        if self.session_args.is_prod:
+        if self.session_config.is_prod:
             random.shuffle(self.problems)
 
     def resolve_official_evaluation_solved_entries(self):
-        results_dir = self.create_results_dir(self.self.dsgi_session_manager_args)
+        results_dir = self.create_results_dir(self.dsgi_session_manager_config)
         os.makedirs(results_dir, exist_ok=True)
         gamma = 0
         official_passed_task_ids, official_results = load_official_results(
-            self.session_args.model_name
+            self.session_config.model_name
         )
         if not official_passed_task_ids:
             return
-        if self.session_args.is_prod:
+        if self.session_config.is_prod:
             random.shuffle(official_passed_task_ids)
         for task_id in official_passed_task_ids:
             for _, problem in self.problems:
@@ -113,7 +113,7 @@ class DsgiSessionManager:
                 tb = None
                 solution_entry = None
 
-                if self.session_args.model_name in (
+                if self.session_config.model_name in (
                     DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
                     DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME,
                 ):
@@ -128,10 +128,10 @@ class DsgiSessionManager:
                         json.dump(solution_entry, f, indent=2)
 
     def resolve_cache_entries(self):
-        results_dir = self.create_results_dir(self.self.dsgi_session_manager_args)
+        results_dir = self.create_results_dir(self.dsgi_session_manager_config)
         if not (
-            self.session_args.use_cache
-            and self.session_args.model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME
+            self.session_config.use_cache
+            and self.session_config.model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME
         ):
             return
 
@@ -170,19 +170,19 @@ class DsgiSessionManager:
         test_cases = problem["test_list"]
         use_dsgi = True
         use_detector = True
-        if self.session_args.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
+        if self.session_config.prompt_type == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT:
             prompt, _ = format_mbpp_prompt(problem, False)
             end_string = "```"
-        elif self.session_args.prompt_type in (
+        elif self.session_config.prompt_type in (
             PROMPT_TYPE__DEEPSEEK_BASE,
             PROMPT_TYPE__DEEPSEEK_INSTRUCT,
         ):
-            if self.session_args.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
+            if self.session_config.prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
                 prompts_path = os.path.join(
                     "deepseek_mbpp_prompts", "mbpp_base_prompts.json"
                 )
                 end_string = "[DONE]"
-            if self.session_args.prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
+            if self.session_config.prompt_type == PROMPT_TYPE__DEEPSEEK_INSTRUCT:
                 prompts_path = os.path.join(
                     "deepseek_mbpp_prompts", "mbpp_instruct_prompts.json"
                 )
@@ -191,6 +191,11 @@ class DsgiSessionManager:
                 prompts = json.load(f)
                 prompt = prompts[str(problem["task_id"])]
 
+        dynamic_signals_types = [
+            dynamic_signal_type
+            for dynamic_signal_type in self.dynamic_signals_config
+            if self.dynamic_signals_config[dynamic_signal_type].is_enabled
+        ]
         if use_dsgi:
             dsgi_injection_manager = None
             task_kwargs = {
@@ -200,18 +205,18 @@ class DsgiSessionManager:
                 "function_signature": function_signature,
                 "test_cases": test_cases,
                 "initial_prompt": prompt,
-                "dynamic_signals_types": self.guidance_args.dynamic_signals_types,
-                "nf_samples_count": self.dynamic_signals_args[
+                "dynamic_signals_types": dynamic_signals_types,
+                "nf_samples_count": self.dynamic_signals_config[
                     DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
                 ].nf_samples_count,
-                "temperature": self.dynamic_signals_args[
+                "temperature": self.dynamic_signals_config[
                     DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
                 ].temperature,
-                "nf_samples_depth": self.dynamic_signals_args[
+                "nf_samples_depth": self.dynamic_signals_config[
                     DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
                 ].nf_samples_depth,
-                "prompt_type": self.session_args.prompt_type,
-                "guidance_strategy": self.guidance_args.guidance_strategy,
+                "prompt_type": self.session_config.prompt_type,
+                "guidance_strategy": self.guidance_config.guidance_strategy,
                 "execution_manager": self.execution_manager,
             }
 
@@ -254,14 +259,14 @@ class DsgiSessionManager:
             prompt,
             dsgi_injection_manager,
             num_return_sequences=1,
-            prompt_type=self.session_args.prompt_type,
+            prompt_type=self.session_config.prompt_type,
         )
         initial_prompt_input_ids_len = calculate_tokens_length(self.tokenizer, prompt)
         new_codes = raw_outputs_to_new_code(
             outputs,
             self.tokenizer,
             initial_prompt_input_ids_len,
-            self.session_args.prompt_type,
+            self.session_config.prompt_type,
         )
         solution = new_codes[0]
         if function_signature:
@@ -272,14 +277,14 @@ class DsgiSessionManager:
     def solve_problem_with_dsgi_wrapper(self, problem, gamma):
         task_id = problem["task_id"]
         test_cases = problem["test_list"]
-        for retry_idx in range(self.guidance_args.retries_count):
+        for retry_idx in range(self.guidance_config.retries_count):
             general_error = None
             tb = None
             # no need to solve gamma = 0 multiple times
             if gamma == 0 and retry_idx > 0:
                 break
             print(f"Retry #{retry_idx + 1}")
-            if self.dynamic_signals_args[
+            if self.dynamic_signals_config[
                 DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
             ].is_enabled:
                 random.seed(40 + retry_idx)
@@ -294,14 +299,14 @@ class DsgiSessionManager:
                 general_error = str(type(e))
                 tb = traceback.format_exc()
                 print(tb)
-                if not self.session_args.is_prod:
+                if not self.session_config.is_prod:
                     raise e
             except Exception as e:
                 solution = None
                 general_error = str(type(e))
                 tb = traceback.format_exc()
                 print(tb)
-                if not self.session_args.is_prod:
+                if not self.session_config.is_prod:
                     raise e
 
             solution_results = run_tests(solution, test_cases)
@@ -313,29 +318,29 @@ class DsgiSessionManager:
                 break
         return solution_entry
 
-    def create_results_dir(self, dsgi_session_manager_args):
-        session_args, guidance_args, dynamic_signals_args = (
-            dsgi_session_manager_args.session_args,
-            dsgi_session_manager_args.guidance_args,
-            dsgi_session_manager_args.dynamic_signals_args,
+    def create_results_dir(self, dsgi_session_manager_config):
+        session_config, guidance_config, dynamic_signals_config = (
+            dsgi_session_manager_config.session_config,
+            dsgi_session_manager_config.guidance_config,
+            dsgi_session_manager_config.dynamic_signals_config,
         )
-        dynamic_signals_str = get_dynamic_signals_str(dsgi_session_manager_args)
+        dynamic_signals_str = get_dynamic_signals_str(dsgi_session_manager_config)
         results_dir = os.path.join(
             "results",
             "mbpp",
-            session_args.model_name.replace("/", "_"),
+            session_config.model_name.replace("/", "_"),
             dynamic_signals_str,
         )
         return results_dir
 
     def solve_single_problem(self, problem):
-        results_dir = self.create_results_dir(self.dsgi_session_manager_args)
+        results_dir = self.create_results_dir(self.dsgi_session_manager_config)
         task_id = problem["task_id"]
         print(f"task_id: {task_id}")
         pprint.pprint(problem)
         print()
 
-        for gamma in self.guidance_args.gammas:
+        for gamma in self.guidance_config.gammas:
             print(f"task_id={task_id}, gamma={gamma}")
             solution_entry_path = get_solution_filepath(results_dir, task_id, gamma)
             if os.path.exists(solution_entry_path):
