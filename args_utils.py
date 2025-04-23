@@ -4,33 +4,35 @@ from argparse import Namespace
 from consts import *
 
 
-def get_dynamic_signals_str(session_config, guidance_config, dynamic_signals_config):
+def get_dynamic_signals_str(session_config, inference_session_config):
     dynamic_signals_str = []
     prompt_type = None
     guidance_strategy = None
 
-    if dynamic_signals_config[DYNAMIC_SIGNAL__PARTIAL_EXECUTION].is_enabled:
+    if inference_session_config[DYNAMIC_SIGNAL__PARTIAL_EXECUTION].is_enabled:
         dynamic_signals_str.append("p")
-    if dynamic_signals_config[DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION].is_enabled:
+    if inference_session_config[DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION].is_enabled:
         if (
-            dynamic_signals_config[
+            inference_session_config[
                 DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
             ].nf_samples_depth
             is not None
         ):
             d_arg = str(
-                dynamic_signals_config[
+                inference_session_config[
                     DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
                 ].nf_samples_depth
             )
         else:
             d_arg = "inf"
-        s = dynamic_signals_config[
+        s = inference_session_config[
             DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
         ].nf_samples_count
-        t = dynamic_signals_config[DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION].temperature
+        t = inference_session_config[
+            DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+        ].temperature
         dynamic_signals_str.append(f"ns{s}t{t}d{d_arg}")
-    if dynamic_signals_config[DYNAMIC_SIGNAL__BACKWARD].is_enabled:
+    if inference_session_config[DYNAMIC_SIGNAL__BACKWARD].is_enabled:
         dynamic_signals_str.append("b")
     dynamic_signals_str = "".join(dynamic_signals_str)
 
@@ -38,12 +40,12 @@ def get_dynamic_signals_str(session_config, guidance_config, dynamic_signals_con
         prompt_type = "lci"
         dynamic_signals_str = f"{dynamic_signals_str}_{prompt_type}"
 
-    if guidance_config.guidance_strategy == GUIDANCE_STRATEGY__TOKEN_GUIDANCE:
+    if session_config.guidance_strategy == GUIDANCE_STRATEGY__TOKEN_GUIDANCE:
         guidance_strategy = "tok"
-    if guidance_config.guidance_strategy == GUIDANCE_STRATEGY__LINE_GUIDANCE:
+    if session_config.guidance_strategy == GUIDANCE_STRATEGY__LINE_GUIDANCE:
         guidance_strategy = "ln"
     if (
-        guidance_config.guidance_strategy
+        session_config.guidance_strategy
         == GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE
     ):
         guidance_strategy = "prf"
@@ -100,7 +102,7 @@ def dynamis_sigansl_str_to_cmdline_args(dynamic_signals_str):
 
 
 def build_dsgi_session_manager_config(args):
-    dynamic_signals_config = {
+    inference_session_config = {
         DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION: Namespace(
             **{
                 "is_enabled": bool(args.n),
@@ -116,21 +118,17 @@ def build_dsgi_session_manager_config(args):
         ),
         DYNAMIC_SIGNAL__BACKWARD: Namespace(**{"is_enabled": False}),
     }
-    guidance_config = {
+    session_config = {
         "guidance_strategy": args.g,
         "retries_count": args.r,
         "gammas": GAMMAS,
-    }
-    guidance_config = Namespace(**guidance_config)
-
-    session_config = {
         "model_name": args.model_name,
         "prompt_type": args.prompt_type,
         "is_prod": args.prod,
         "use_cache": args.cache,
     }
     session_config = Namespace(**session_config)
-    return session_config, guidance_config, dynamic_signals_config
+    return session_config, inference_session_config
 
 
 def get_cmdline_args():
