@@ -1,7 +1,9 @@
 import argparse
+import json
 import re
 from argparse import Namespace
 from consts import *
+from sklearn.model_selection import ParameterGrid
 
 
 def get_dynamic_signals_str(session_config, inference_session_config):
@@ -101,7 +103,7 @@ def dynamis_sigansl_str_to_cmdline_args(dynamic_signals_str):
     return args
 
 
-def build_dsgi_session_manager_config(args):
+def build_inference_session_config(args):
     inference_session_config = {
         DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION: Namespace(
             **{
@@ -176,3 +178,53 @@ def get_cmdline_args():
         args2 = Namespace(**parsed_args)
         args = args2
     return args
+
+
+def get_grid_cmdline_args():
+    parser = argparse.ArgumentParser(
+        description="Generate DSGI inference sessions configs."
+    )
+    parser.add_argument(
+        "--inference-session-grid-json",
+        required=True,
+        help="Path to inference session parameter grid JSON file.",
+    )
+    parser.add_argument(
+        "--session-config-json",
+        required=True,
+        help="Path to session configuration JSON file.",
+    )
+    args = parser.parse_args()
+    return args
+
+
+def build_inference_session_config(inference_args):
+    inference_session_config = {
+        DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION: Namespace(
+            is_enabled=inference_args["n"],
+            temperature=inference_args["t"] if inference_args["n"] else None,
+            nf_samples_count=inference_args["s"] if inference_args["n"] else None,
+            nf_samples_depth=inference_args["d"] if inference_args["n"] else None,
+        ),
+        DYNAMIC_SIGNAL__PARTIAL_EXECUTION: Namespace(
+            is_enabled=inference_args["p"],
+        ),
+        DYNAMIC_SIGNAL__BACKWARD: Namespace(is_enabled=False),
+    }
+
+    return inference_session_config
+
+
+def generate_grid_configs(inference_session_grid_json, session_config_json):
+    with open(inference_session_grid_json, "r") as file:
+        inference_param_grid = json.load(file)
+
+    with open(session_config_json, "r") as file:
+        session_config = json.load(file)
+
+    inference_sessions_configs = [
+        build_inference_session_config(inference_args)
+        for inference_args in ParameterGrid(inference_param_grid)
+    ]
+    session_config = Namespace(**session_config)
+    return session_config, inference_sessions_configs

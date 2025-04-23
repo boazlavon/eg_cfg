@@ -5,7 +5,7 @@ import os
 import json
 import traceback
 import random
-from args_utils import get_cmdline_args, build_dsgi_session_manager_config
+from args_utils import get_cmdline_args, build_inference_session_config
 
 from mbpp_utils import (
     format_mbpp_prompt,
