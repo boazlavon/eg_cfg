@@ -1,27 +1,32 @@
 import os
-import json
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
-root_dir = "/home/ai_center/ai_users/boazlavon/data/code/prod/dsgi/results/mbpp/deepseek-ai_deepseek-coder-1.3b-instruct"
-for dir_name in os.listdir(root_dir):
-    if not dir_name.endswith("lci_ln"):
-        continue
+root_dir = "results/mbpp/deepseek-ai_deepseek-coder-1.3b-instruct"
+max_workers = 8
 
-    dir_path = os.path.join(root_dir, dir_name)
+def process_directory(dir_path):
+    print(dir_path)
+    try:
+        for file_name in os.listdir(dir_path):
+            file_path = os.path.join(dir_path, file_name)
+            if not os.path.isfile(file_path):
+                continue
 
-    if not os.path.isdir(dir_path):
-        continue
-
-    for file_name in os.listdir(dir_path):
-        file_path = os.path.join(dir_path, file_name)
-
-        if not os.path.isfile(file_path):
-            continue
-
-        try:
             with open(file_path, "r") as f:
                 content = f.read()
-                if '"cached": true' in content:
+                if 'cached' in content:
                     print(f"Deleting {file_path}")
                     os.remove(file_path)
-        except Exception as e:
-            print(f"Error processing {file_path}: {e}")
+    except Exception as e:
+        print(f"Error processing directory {dir_path}: {e}")
+
+if __name__ == "__main__":
+    dir_paths = [
+        os.path.join(root_dir, dir_name)
+        for dir_name in os.listdir(root_dir)
+        # if dir_name.endswith("lci_ln") and os.path.isdir(os.path.join(root_dir, dir_name))
+    ]
+    with ProcessPoolExecutor(max_workers=max_workers) as executor:
+        futures = [executor.submit(process_directory, path) for path in dir_paths]
+        for future in as_completed(futures):
+            future.result()  # to raise any exceptions

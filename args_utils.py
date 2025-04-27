@@ -138,11 +138,15 @@ def build_inference_session_config(args):
 def build_session_config(args):
     inference_session_config = build_inference_session_config(args)
     session_config = {
-        "retries_count": args.r,
+        "retries_count": args["r"],
         "gammas": GAMMAS,
-        "model_name": args.model_name,
-        "is_prod": args.prod,
-        "use_cache": args.cache,
+        "model_name": args["model_name"],
+        "is_prod": args["prod"],
+        "use_cache": args["cache"],
+        "start_idx": args["start_idx"],
+        "end_idx": args["end_idx"],
+        "results_dir": args.get(["results_dir"], "results"),
+        "use_global_cache": args["global_cache"],
     }
     session_config = Namespace(**session_config)
     return session_config, inference_session_config
@@ -167,11 +171,14 @@ def get_cmdline_args():
     )
     parser.add_argument("--prod", action="store_true")
     parser.add_argument("--cache", action="store_true")
+    parser.add_argument("--global-cache", action="store_true")
     parser.add_argument("--s", type=int, default=2, help="nf samples count")
     parser.add_argument("--t", type=float, default=0.1, help="nf temp")
     parser.add_argument(
         "--r", type=int, default=1, help="Attempts Count for each gamma (retries)"
     )
+    parser.add_argument("--start-idx", type=int, default=0, help="start idx")
+    parser.add_argument("--end-idx", type=int, default=-1, help="end idx")
     # parser.add_argument("--d", type=int, default=3, help="Max Lines for nearest future (deepness)")
     parser.add_argument("--d", type=int, default=None, help="nf samples depth")
     parser.add_argument(
@@ -190,6 +197,8 @@ def get_cmdline_args():
         parsed_args["prod"] = args.prod
         parsed_args["cache"] = args.cache
         parsed_args["r"] = args.r
+        parsed_args["start_idx"] = 0
+        parsed_args["end_idx"] = None
         args2 = Namespace(**parsed_args)
         args = args2
     return args

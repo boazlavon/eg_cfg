@@ -30,13 +30,14 @@ class ExecutionManager:
                     function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
                     invocation = f"{function_name}{args_str}"
                 test_case_code = f"{executable_code}\n{invocation}"
-                test_case_code = black.format_str(
-                    test_case_code, mode=black.FileMode(line_length=1024)
-                )
+                # test_case_code = black.format_str(
+                #     test_case_code, mode=black.FileMode(line_length=1024)
+                # )
                 assert is_valid_python(
                     test_case_code
                 ), f"Invalid Test Case: {test_case}"
-                return test_case, self.execute(test_case_code)
+                program_execution = self.execute_compact(test_case_code)
+                return test_case, program_execution
             except subprocess.TimeoutExpired:
                 self.timeouts += 1
                 traceback.print_exc()
@@ -145,12 +146,35 @@ class ExecutionManager:
                 if not indent:
                     indent = "   "
                 executable_code = f"{function_signature}\n{indent}pass"
-                executable_code = black.format_str(
-                    executable_code, mode=black.FileMode(line_length=1024)
-                )
+                # executable_code = black.format_str(
+                #     executable_code, mode=black.FileMode(line_length=1024)
+                # )
             else:
                 raise ValueError("Not Executable Code to extract")
         return executable_code
+
+    def execute_compact(self, code: str):
+        # Step 1: Write the provided code to a temporary Python file
+        try:
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".py", delete=False
+            ) as program_file:
+                program_file.write(code)
+                program_path = program_file.name
+
+            # Step 2: Run trepan-xpy, capture stderr directly into memory
+            result = subprocess.run(
+                ["trepan-xpy", program_path],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.PIPE,
+                text=True,
+                timeout=EXECUTION_TIMEOUT_SEC,
+                check=True,
+            )
+            return result.stderr
+        finally:
+            if program_path and os.path.exists(program_path):
+                os.remove(program_path)
 
     def execute(self, code: str):
         # Step 1: Write the provided code to a temporary Python file

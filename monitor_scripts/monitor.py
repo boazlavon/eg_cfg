@@ -325,7 +325,7 @@ def aggregate_analysis(base_dir, model_name):
     trial_dirs = [
         os.path.join(base_dir, subdir)
         for subdir in os.listdir(base_dir)
-        if os.path.isdir(os.path.join(base_dir, subdir))
+        if os.path.isdir(os.path.join(base_dir, subdir)) and not subdir.startswith('.')
     ]
 
     with ProcessPoolExecutor() as executor:
@@ -399,6 +399,7 @@ def aggregate_analysis(base_dir, model_name):
 
     print("\n===== TRIAL RANKING BY PASS RATE =====")
     print("\n--- Complete Trials (>= 95% MBPP samples) ---")
+    grid_search_entries = []
     cumulative = set()
     for (
         improved,
@@ -417,6 +418,14 @@ def aggregate_analysis(base_dir, model_name):
         print(
             f"{name}: {pass_rate*100:.2f}% | improved: ({improved}/{total}) {improved/total*100:.2f}% | passed: ({passed}/{total}) {passed/total*100:.2f}% | passed w/o improvement: ({passed_wo_impr}/{total}) {passed_wo_impr/total*100:.2f}% | error%: {err_rate*100:.2f}% ({err_count}/{fail_count}) | Cimp: {len(cumulative)} / {MBPP_SIZE} = {len(cumulative)/MBPP_SIZE*100:.2f}%"
         )
+        cumulative_list = list(improved_ids)
+        cumulative_list.sort()
+        grid_search_entry = {"name": name, "task_ids": cumulative_list}
+        grid_search_entries.append(grid_search_entry)
+
+    cumulative_path = os.path.join(base_dir, "cumulative.json")
+    with open(cumulative_path, "w") as f:
+        json.dump(grid_search_entries, f)
 
     print("\n--- Incomplete Trials (< 95% MBPP samples) ---")
     for (
@@ -459,6 +468,7 @@ def aggregate_analysis(base_dir, model_name):
     all_improved_counter.sort()
     print(all_improved_counter)
     print(f"{len(all_improved_counter)}")
+    print(cumulative_path)
 
 
 def main():

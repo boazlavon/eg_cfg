@@ -156,7 +156,8 @@ class CodeGenerationAdapter:
             for test_case, program_execution in self.program_executions[
                 executable_partial_program_code
             ].items():
-                trace = program_execution.to_compact_json()
+                # trace = program_execution.to_compact_json()
+                trace = program_execution
                 function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
                 innvocation = f"{function_name}{args_str}"
                 dynamic_signal = NEAREST_FUTURE_DYNAMIC_SIGNAL_PATTERN.format(
@@ -252,7 +253,8 @@ class CodeGenerationAdapter:
             for test_case, program_execution in self.program_executions[
                 executable_partial_program_code
             ].items():
-                trace = program_execution.to_compact_json()
+                # trace = program_execution.to_compact_json()
+                trace = program_execution
                 function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
                 innvocation = f"{function_name}{args_str}"
                 dynamic_signal = SINGLE_DYNAMIC_SIGNAL_PATTERN.format(

@@ -17,6 +17,7 @@ def start_dsgi_session_manager(session_config, inference_sessions_configs):
 
 def main():
     cmdline_args = get_cmdline_args()
+    cmdline_args = vars(cmdline_args)
     session_config, inference_session_config = build_session_config(cmdline_args)
     start_dsgi_session_manager(session_config, [inference_session_config])
 

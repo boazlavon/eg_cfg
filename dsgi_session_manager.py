@@ -91,7 +91,7 @@ class DsgiSessionManager:
     def create_results_dir(self, session_config, inference_session_config):
         dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
         results_dir = os.path.join(
-            "results",
+            self.session_config.results_dir,
             "mbpp",
             session_config.model_name.replace("/", "_"),
             dynamic_signals_str,
@@ -102,11 +102,19 @@ class DsgiSessionManager:
         results_dir = self.create_results_dir(
             self.session_config, inference_session_config
         )
+        solved_tasks_cache_dir = os.path.join(
+            self.session_config.results_dir,
+            "mbpp",
+            self.session_config.model_name.replace("/", "_"),
+            ".solved_tasks_cache",
+        )
         os.makedirs(results_dir, exist_ok=True)
+        os.makedirs(solved_tasks_cache_dir, exist_ok=True)
         self.inference_session = Namespace(
             **{
                 "inference_session_config": inference_session_config,
                 "results_dir": results_dir,
+                "solved_tasks_cache_dir": solved_tasks_cache_dir,
             }
         )
         print("Setting inference session config:")
@@ -129,16 +137,7 @@ class DsgiSessionManager:
                     self.inference_session.results_dir, task_id, gamma
                 )
                 if os.path.exists(solution_entry_path):
-                    with open(solution_entry_path, "r") as f:
-                        solution_entry = json.load(f)
-                    if solution_entry["passed"]:
-                        print(f"Problem task_id={task_id} is solved (gamma={gamma})")
-                        break
-                    else:
-                        print(
-                            f"Failed solve for task_id={task_id}, gamma={gamma} - continue"
-                        )
-                        continue
+                    continue
 
                 with open(solution_entry_path, "a"):
                     pass
@@ -175,6 +174,7 @@ class DsgiSessionManager:
         solved_list = DEEPSEEK_13_SOLVED_TASK_IDS
         random.shuffle(solved_list)
         time.sleep(random.randint(1, 10))
+        print("Perform Caching resolution")
         for task_id in solved_list:
             for _, problem in self.problems:
                 if problem["task_id"] != task_id:
@@ -237,9 +237,10 @@ class DsgiSessionManager:
                 prompts = json.load(f)
                 prompt = prompts[str(problem["task_id"])]
 
+        print(self.inference_session.inference_session_config)
         dynamic_signals_types = [
             dynamic_signal_type
-            for dynamic_signal_type in self.inference_session.inference_session_config
+            for dynamic_signal_type in SUPPORTED_DYNAMIC_SIGNALS
             if self.inference_session.inference_session_config[
                 dynamic_signal_type
             ].is_enabled
@@ -376,22 +377,55 @@ class DsgiSessionManager:
         pprint.pprint(problem)
         print()
 
+        global_cache_solved_task_id_path = os.path.join(
+            self.inference_session.solved_tasks_cache_dir, f"{task_id}"
+        )
         for gamma in self.session_config.gammas:
             print(f"task_id={task_id}, gamma={gamma}")
             solution_entry_path = get_solution_filepath(
                 self.inference_session.results_dir, task_id, gamma
             )
+
+            if self.session_config.use_global_cache and os.path.exists(
+                global_cache_solved_task_id_path
+            ):
+                print("Problem is solved: Gloabl cache")
+                with open(solution_entry_path, "a"):
+                    pass
+                solution_entry = {
+                    "code": "",
+                    "results": {},
+                    "passed": 1,
+                    "accuracy": 1,
+                    "general_error": None,
+                    "has_testcase_error": False,
+                    "global_cached": True,
+                }
+                self.solutions[(task_id, gamma)] = solution_entry
+                with open(solution_entry_path, "w") as f:
+                    json.dump(solution_entry, f, indent=2)
+                break
+
             if os.path.exists(solution_entry_path):
                 with open(solution_entry_path, "r") as f:
-                    solution_entry = json.load(f)
-                if solution_entry["passed"]:
-                    print(f"Problem task_id={task_id} is solved (gamma={gamma})")
-                    break
+                    try:
+                        load_error = False
+                        solution_entry = json.load(f)
+                        if solution_entry and solution_entry["passed"]:
+                            print(
+                                f"Problem task_id={task_id} is solved (gamma={gamma})"
+                            )
+                            break
+                    except:
+                        load_error = True
+                        pass
+                if load_error:
+                    print(f"Failed load task_id={task_id}, gamma={gamma} - continue")
                 else:
                     print(
                         f"Failed solve for task_id={task_id}, gamma={gamma} - continue"
                     )
-                    continue
+                continue
 
             if (task_id, gamma) in self.solutions:
                 solution_entry = self.solutions[(task_id, gamma)]
@@ -418,6 +452,15 @@ class DsgiSessionManager:
                 json.dump(solution_entry, f, indent=2)
             if solution_entry["passed"]:
                 print(f"Problem task_id={task_id} is solved (gamma={gamma})")
+                if not os.path.exists(global_cache_solved_task_id_path):
+                    with open(global_cache_solved_task_id_path, "a"):
+                        pass
+                    with open(global_cache_solved_task_id_path, "w") as f:
+                        entry = {
+                            "config": self.inference_session.inference_session_config,
+                            "gamma": gamma,
+                        }
+                        f.write(json.dumps(entry))
                 break
 
     def solve(self):
