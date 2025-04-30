@@ -145,10 +145,10 @@ def build_session_config(args):
         "use_cache": args["cache"],
         "start_idx": args["start_idx"],
         "end_idx": args["end_idx"],
-        "results_dir": args.get(["results_dir"], "results"),
+        "results_dir": args.get("results_dir", "results"),
         "use_global_cache": args["global_cache"],
         "top_probs": args["top_probs"],
-        "random_seed": args["random_seed"],
+        "random_seed": args.get("random_seed", None),
     }
     session_config = Namespace(**session_config)
     return session_config, inference_session_config

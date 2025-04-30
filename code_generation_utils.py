@@ -229,7 +229,12 @@ class CodeGenStopCriteria(StoppingCriteria):
 
 
 def raw_outputs_to_new_code(
-    outputs, tokenizer, initial_prompt_input_ids_len, prompt_type=None, validate=True
+    outputs,
+    tokenizer,
+    initial_prompt_input_ids_len,
+    prompt_type=None,
+    validate=True,
+    stats_manager=None,
 ):
     new_codes = []
     for output in outputs:
@@ -238,6 +243,9 @@ def raw_outputs_to_new_code(
             new_code, new_tokens = extract_new_tokens(
                 tokenizer, output, initial_prompt_input_ids_len
             )
+            if stats_manager is not None:
+                stats_manager.increate_counter(new_tokens.shape[1])
+
             if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
                 new_code = new_code.replace(
                     DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_END, ""

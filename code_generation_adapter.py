@@ -1,8 +1,7 @@
 import torch
 import re
 
-from collections import OrderedDict
-from execution_manager import ExecutionManager
+from collections import OrderedDict, defaultdict
 from model_utils import extract_new_tokens, calculate_tokens_length
 from mbpp_utils import parse_mbpp_assert_statement
 from code_generation_utils import (
@@ -29,6 +28,7 @@ class CodeGenerationAdapter:
         nf_samples_depth=None,
         guidance_strategy=None,
         execution_manager=None,
+        stats_manager=None,
     ):
         self.model = model
         self.tokenizer = tokenizer
@@ -60,6 +60,7 @@ class CodeGenerationAdapter:
 
         self.dynamic_signals_types = dynamic_signals_types
         self.detector = None
+        self.stats_manager = stats_manager
 
     @staticmethod
     def dynamic_signal_handlers():
@@ -124,6 +125,7 @@ class CodeGenerationAdapter:
             self.initial_prompt_input_ids_len,
             self.prompt_type,
             validate=False,
+            stats_manager=self.stats_manager,
         )
         new_codes = list(set(new_codes))
         executable_partial_programs = []

@@ -24,6 +24,7 @@ from model_utils import setup_device, load_model
 from execution_manager import ExecutionManager
 from args_utils import get_dynamic_signals_str
 from probs_utils import stable_hash
+from collections import defaultdict
 from consts import *
 
 
@@ -57,6 +58,18 @@ def get_solution_filepath(results_dir, task_id, gamma, backward_signals_iteratio
     return os.path.join(results_dir, filename)
 
 
+class StatisticsManager:
+    def __init__(self):
+        self.statistics = defaultdict(int)
+        self.current_key = None
+
+    def set_current_key(self, current_key):
+        self.current_key = current_key
+
+    def increate_counter(self, count):
+        self.statistics[self.current_key] += count
+
+
 class DsgiSessionManager:
     def __init__(self, session_config, inference_sessions_configs):
         self.session_config = session_config
@@ -80,6 +93,7 @@ class DsgiSessionManager:
         self.execution_manager = ExecutionManager(
             self.tokenizer, function_signature=None
         )
+        self.stats_manager = StatisticsManager()
         self.problems = load_mbpp_problems()
         self.problems = list(self.problems.items())
         if self.session_config.start_idx and self.session_config.end_idx:
@@ -274,6 +288,7 @@ class DsgiSessionManager:
                     "guidance_strategy"
                 ],
                 "execution_manager": self.execution_manager,
+                "stats_manager": self.stats_manager,
             }
 
             detector_kwargs = {}
@@ -324,6 +339,7 @@ class DsgiSessionManager:
             self.tokenizer,
             initial_prompt_input_ids_len,
             self.inference_session.inference_session_config["prompt_type"],
+            stats_manager=self.stats_manager,
         )
         solution = new_codes[0]
         if function_signature:
@@ -334,6 +350,7 @@ class DsgiSessionManager:
     def solve_problem_with_dsgi_wrapper(self, problem, gamma):
         task_id = problem["task_id"]
         test_cases = problem["test_list"]
+        self.stats_manager.set_current_key((task_id, gamma))
         for retry_idx in range(self.session_config.retries_count):
             general_error = None
             tb = None
@@ -397,10 +414,14 @@ class DsgiSessionManager:
             solution_entry = format_results(
                 solution, solution_results, general_error, tb
             )
+            solution_entry["tokens_count"] = self.stats_manager.statistics[
+                (task_id, gamma)
+            ]
             if solution_entry["passed"]:
                 solution_entry["random_seed"] = random_seed
                 print(f"Problem task_id={task_id} is solved")
                 break
+
         return solution_entry
 
     def solve_single_problem(self, problem):
