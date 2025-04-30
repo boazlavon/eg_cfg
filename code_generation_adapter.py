@@ -1,5 +1,4 @@
 import torch
-import black
 import re
 
 from collections import OrderedDict
@@ -223,9 +222,9 @@ class CodeGenerationAdapter:
                 self.current_nf_samples_count
             ):
                 if not current_new_code_sample.startswith(new_code):
-                    print(f"New Code:\n{new_code}")
-                    print()
-                    print(f"#{idx} Sample:\n{current_new_code_sample}")
+                    # print(f"New Code:\n{new_code}")
+                    # print()
+                    # print(f"#{idx} Sample:\n{current_new_code_sample}")
                     generate_new_signal = True
                     break
 

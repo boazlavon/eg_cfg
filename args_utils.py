@@ -147,6 +147,8 @@ def build_session_config(args):
         "end_idx": args["end_idx"],
         "results_dir": args.get(["results_dir"], "results"),
         "use_global_cache": args["global_cache"],
+        "top_probs": args["top_probs"],
+        "random_seed": args["random_seed"],
     }
     session_config = Namespace(**session_config)
     return session_config, inference_session_config
@@ -172,6 +174,7 @@ def get_cmdline_args():
     parser.add_argument("--prod", action="store_true")
     parser.add_argument("--cache", action="store_true")
     parser.add_argument("--global-cache", action="store_true")
+    parser.add_argument("--top-probs", type=int, default=0, help="top probs")
     parser.add_argument("--s", type=int, default=2, help="nf samples count")
     parser.add_argument("--t", type=float, default=0.1, help="nf temp")
     parser.add_argument(

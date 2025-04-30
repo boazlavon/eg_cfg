@@ -1,12 +1,14 @@
 #!/bin/bash
 
 # Set the maximum number of jobs you want in the queue
-N=50  # Change this to your desired limit
+N=25  # Change this to your desired limit
 TIME_LOG_FILE="max_job_time_seconds.txt"  # File to track the maximum time
+RUN_NAME=$1
+echo $RUN_NAME
 
 while true; do
     # Get the current number of jobs (excluding the header line)
-    n=$(squeue --me | tail -n +2 | wc -l)
+    n=$(squeue --me | tail -n +2 | grep $RUN_NAME | wc -l)
 
     echo "[$(date)] Current jobs: $n / $N"
 
@@ -28,7 +30,7 @@ while true; do
 
     while read -r line; do
         job_name=$(echo "$line" | awk '{print $3}')
-        if [[ "$job_name" != "deepseek" ]]; then
+        if [[ "$job_name" != $RUN_NAME ]]; then
             continue
         fi
 

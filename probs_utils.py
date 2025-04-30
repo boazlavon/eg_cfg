@@ -38,3 +38,15 @@ def apply_guidance(P, P_c, gamma, eps=1e-8, tokenizer=None, debug=False):
         print(f"gamma={gamma}")
         print_top_k_token_probs(tokenizer, P, P_guided, k=3)
     return P_guided
+
+
+LOG_STABLE_EPS = 1e-10  # ln(1e-10) ~ -23
+
+
+def mask_topk_probs_log_stable(
+    probs: torch.Tensor, k: int, epsilon: float = LOG_STABLE_EPS
+):
+    topk_vals, topk_indices = torch.topk(probs, k, dim=-1)
+    masked_probs = torch.full_like(probs, epsilon)
+    masked_probs.scatter_(dim=-1, index=topk_indices, src=topk_vals)
+    return masked_probs

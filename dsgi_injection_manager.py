@@ -1,6 +1,7 @@
+import torch
 import re
 from code_generation_adapter import CodeGenerationAdapter
-from probs_utils import apply_guidance
+from probs_utils import apply_guidance, mask_topk_probs_log_stable
 from model_utils import extract_new_tokens
 from consts import *
 
@@ -78,7 +79,14 @@ TASKS_DETECDORS = {TASK__CODE_GENERATION: FunctinoSigDsgiDetector}
 
 class DsgiInjectionManager:
     def __init__(
-        self, tokenizer, task, task_kwargs, gamma, detector_kwargs, use_detector=False
+        self,
+        tokenizer,
+        task,
+        task_kwargs,
+        gamma,
+        detector_kwargs,
+        use_detector=False,
+        top_probs_count=0,
     ):
         self.tokenizer = tokenizer
         self.gamma = gamma
@@ -87,11 +95,19 @@ class DsgiInjectionManager:
         if use_detector:
             self.detector = TASKS_DETECDORS[task](**detector_kwargs)
             self.adapter.detector = self.detector
+        self.top_probs_count = top_probs_count
 
     def is_dsgi_enabled(self, input_ids):
         if self.gamma == 0:
             return False
         return self.detector.is_dsgi_enabled(input_ids)
+
+    def is_top_probs_enabled(self):
+        return self.top_probs_count > 0
+
+    def mask_top_probs(self, probs: torch.Tensor):
+        assert self.is_top_probs_enabled()
+        return mask_topk_probs_log_stable(probs, self.top_probs_count)
 
     def extract_dynamic_signal_input_ids(self, input_ids):
         return self.adapter.extract_dynamic_signal_input_ids(input_ids)

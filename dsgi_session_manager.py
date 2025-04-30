@@ -1,4 +1,5 @@
 import random
+import torch
 import pprint
 from argparse import Namespace
 import time
@@ -293,6 +294,7 @@ class DsgiSessionManager:
             gamma,
             detector_kwargs,
             use_detector=use_detector,
+            top_probs_count=self.session_config.top_probs,
         )
         return dsgi_injection_manager, prompt
 
@@ -340,7 +342,10 @@ class DsgiSessionManager:
             if self.inference_session.inference_session_config[
                 DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
             ].is_enabled:
-                random.seed(40 + retry_idx)
+                random_seed = self.session_config.random_seed + retry_idx
+                random.seed(random_seed)
+                torch.manual_seed(random_seed)
+                torch.cuda.manual_seed_all(random_seed)
 
             try:
                 solution = self.solve_problem_with_dsgi(problem, gamma)
@@ -367,6 +372,7 @@ class DsgiSessionManager:
                 solution, solution_results, general_error, tb
             )
             if solution_entry["passed"]:
+                solution_entry["random_seed"] = random_seed
                 print(f"Problem task_id={task_id} is solved")
                 break
         return solution_entry
@@ -409,22 +415,21 @@ class DsgiSessionManager:
             if os.path.exists(solution_entry_path):
                 with open(solution_entry_path, "r") as f:
                     try:
-                        load_error = False
                         solution_entry = json.load(f)
                         if solution_entry and solution_entry["passed"]:
                             print(
                                 f"Problem task_id={task_id} is solved (gamma={gamma})"
                             )
                             break
+                        elif solution_entry and not solution_entry["passed"]:
+                            print(
+                                f"Failed solve for task_id={task_id}, gamma={gamma} - continue"
+                            )
                     except:
-                        load_error = True
+                        print(
+                            f"Failed load task_id={task_id}, gamma={gamma} - continue"
+                        )
                         pass
-                if load_error:
-                    print(f"Failed load task_id={task_id}, gamma={gamma} - continue")
-                else:
-                    print(
-                        f"Failed solve for task_id={task_id}, gamma={gamma} - continue"
-                    )
                 continue
 
             if (task_id, gamma) in self.solutions:
@@ -438,11 +443,12 @@ class DsgiSessionManager:
                     break
                 else:
                     print(
-                        f"Failed solve for task_id={task_id}, gamma={gamma} - continue"
+                        f"Solution exist - problem task_id={task_id} is unsolved (gamma={gamma})"
                     )
                     continue
 
             # touch the file to reserve it
+            print(f"Try solve task_id={task_id}, gamma={gamma}")
             with open(solution_entry_path, "a"):
                 pass
 
@@ -452,16 +458,20 @@ class DsgiSessionManager:
                 json.dump(solution_entry, f, indent=2)
             if solution_entry["passed"]:
                 print(f"Problem task_id={task_id} is solved (gamma={gamma})")
-                if not os.path.exists(global_cache_solved_task_id_path):
+                if self.session_config.use_global_cache and not os.path.exists(
+                    global_cache_solved_task_id_path
+                ):
                     with open(global_cache_solved_task_id_path, "a"):
                         pass
                     with open(global_cache_solved_task_id_path, "w") as f:
                         entry = {
-                            "config": self.inference_session.inference_session_config,
                             "gamma": gamma,
+                            "random_seed": self.session_config.random_seed,
                         }
                         f.write(json.dumps(entry))
                 break
+            else:
+                print(f"Failed Solving Problem task_id={task_id} (gamma={gamma})")
 
     def solve(self):
         # First resolve all inference sessions cache & officail evaluation entries

@@ -193,6 +193,7 @@ def analyze_trial(trial_dir, generate_csv, model_name):
     improved_ids = set()
     passed_baseline = set()
     passed_total = set()
+    gammas_stats = defaultdict(set)
 
     total = 0
     total_clean = 0
@@ -227,6 +228,7 @@ def analyze_trial(trial_dir, generate_csv, model_name):
                 if task_id not in baseline_passed_ids:
                     improved_ids.add(task_id)
                 passed_total.add(task_id)
+                gammas_stats[gamma].add(task_id)
                 # if model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME:
                 # if task_id in DEEPSEEK_13_SOLVED_TASK_IDS:
                 # pass
@@ -307,6 +309,7 @@ def analyze_trial(trial_dir, generate_csv, model_name):
         "failed_samples": failed_samples,
         "failed_with_error": failed_with_error,
         "total_samples": total,
+        "gamma_stats": gammas_stats,
     }
 
 
@@ -325,7 +328,7 @@ def aggregate_analysis(base_dir, model_name):
     trial_dirs = [
         os.path.join(base_dir, subdir)
         for subdir in os.listdir(base_dir)
-        if os.path.isdir(os.path.join(base_dir, subdir)) and not subdir.startswith('.')
+        if os.path.isdir(os.path.join(base_dir, subdir)) and not subdir.startswith(".")
     ]
 
     with ProcessPoolExecutor() as executor:
@@ -336,12 +339,27 @@ def aggregate_analysis(base_dir, model_name):
             )
         )
 
+    aggregated_gamma_stats_count = defaultdict(int)
+    aggregated_gamma_stats_set = defaultdict(set)
     for trial_dir, result in zip(trial_dirs, results):
+        gamma_stats = result["gamma_stats"]
+        for key, value in gamma_stats.items():
+            aggregated_gamma_stats_count[key] += len(value)
+            aggregated_gamma_stats_set[key].update(value)
         subdir = os.path.basename(trial_dir)
         trial_results[subdir] = result
         for task_id, gamma_map in result["samples"].items():
             if gamma_map.get(0.0, {}).get("passed"):
                 base_passed[task_id] = True
+    total = sum(aggregated_gamma_stats_count.values())
+    if total == 0:
+        aggregated_gamma_stats_count_norm = {
+            k: 0.0 for k in aggregated_gamma_stats_count
+        }  # Avoid division by zero
+    else:
+        aggregated_gamma_stats_count_norm = {
+            k: v / total for k, v in aggregated_gamma_stats_count.items()
+        }
 
     all_improved_counter = Counter()
     improved_task_to_trials = defaultdict(list)
