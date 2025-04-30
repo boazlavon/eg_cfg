@@ -23,6 +23,7 @@ from dsgi_injection_manager import DsgiInjectionManager
 from model_utils import setup_device, load_model
 from execution_manager import ExecutionManager
 from args_utils import get_dynamic_signals_str
+from probs_utils import stable_hash
 from consts import *
 
 
@@ -87,7 +88,8 @@ class DsgiSessionManager:
             ]
         if self.session_config.is_prod:
             random.shuffle(self.problems)
-            random.shuffle(self.inference_sessions_configs)
+            # if I use trials list its better not to shuffle as they are decreasing in the effectivness.
+            # random.shuffle(self.inference_sessions_configs)
 
     def create_results_dir(self, session_config, inference_session_config):
         dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
@@ -342,7 +344,30 @@ class DsgiSessionManager:
             if self.inference_session.inference_session_config[
                 DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
             ].is_enabled:
-                random_seed = self.session_config.random_seed + retry_idx
+                if self.session_config.random_seed is not None:
+                    random_seed = self.session_config.random_seed + retry_idx
+                else:
+                    iid_arg = (
+                        self.inference_session.inference_session_config[
+                            DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                        ].temperature,
+                        self.inference_session.inference_session_config[
+                            DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                        ].nf_samples_count,
+                        self.inference_session.inference_session_config[
+                            DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                        ].nf_samples_depth,
+                        self.inference_session.inference_session_config[
+                            DYNAMIC_SIGNAL__PARTIAL_EXECUTION
+                        ].is_enabled,
+                        # self.inference_session.inference_session_config[
+                        #     "guidance_strategy"
+                        # ],
+                        # self.inference_session.inference_session_config["prompt_type"],
+                    )
+                    random_seed = stable_hash(iid_arg)
+                    random_seed = random_seed % 1000
+                    random_seed += 40
                 random.seed(random_seed)
                 torch.manual_seed(random_seed)
                 torch.cuda.manual_seed_all(random_seed)

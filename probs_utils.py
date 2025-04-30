@@ -1,8 +1,16 @@
 import torch
+import json
+import hashlib
+import argparse
 
 
 def format_token(tokenizer, idx):
     return tokenizer.decode(idx).strip() or repr(tokenizer.decode(idx))
+
+
+def stable_hash(obj):
+    s = json.dumps(obj)
+    return int(hashlib.sha256(s.encode()).hexdigest(), 16)
 
 
 def print_top_k_token_probs(tokenizer, p1, p2, k=5):
