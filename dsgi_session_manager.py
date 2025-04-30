@@ -345,7 +345,7 @@ class DsgiSessionManager:
                 DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
             ].is_enabled:
                 if self.session_config.random_seed is not None:
-                    random_seed = self.session_config.random_seed + retry_idx
+                    random_seed = self.session_config.random_seed
                 else:
                     iid_arg = (
                         self.inference_session.inference_session_config[
@@ -368,6 +368,7 @@ class DsgiSessionManager:
                     random_seed = stable_hash(iid_arg)
                     random_seed = random_seed % 1000
                     random_seed += 40
+                random_seed += retry_idx
                 random.seed(random_seed)
                 torch.manual_seed(random_seed)
                 torch.cuda.manual_seed_all(random_seed)
