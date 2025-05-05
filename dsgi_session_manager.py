@@ -119,14 +119,15 @@ class DsgiSessionManager:
         results_dir = self.create_results_dir(
             self.session_config, inference_session_config
         )
+        os.makedirs(results_dir, exist_ok=True)
         solved_tasks_cache_dir = os.path.join(
             self.session_config.results_dir,
             "mbpp",
             self.session_config.model_name.replace("/", "_"),
             ".solved_tasks_cache",
         )
-        os.makedirs(results_dir, exist_ok=True)
-        os.makedirs(solved_tasks_cache_dir, exist_ok=True)
+        if self.session_config.use_global_cache:
+            os.makedirs(solved_tasks_cache_dir, exist_ok=True)
         self.inference_session = Namespace(
             **{
                 "inference_session_config": inference_session_config,
@@ -176,6 +177,9 @@ class DsgiSessionManager:
                     solution_entry = format_results(
                         solution, solution_results, general_error, tb
                     )
+                    solution_entry["tokens_count"] = -1
+                    solution_entry["retry"] = -1
+                    solution_entry["random_seed"] = -1
                     self.solutions[(task_id, gamma)] = solution_entry
                     print(solution_entry_path)
                     with open(solution_entry_path, "w") as f:
@@ -216,6 +220,9 @@ class DsgiSessionManager:
                         "has_testcase_error": False,
                         "cached": True,
                     }
+                    solution_entry["tokens_count"] = -1
+                    solution_entry["retry"] = -1
+                    solution_entry["random_seed"] = -1
                     self.solutions[(task_id, gamma)] = solution_entry
                     with open(solution_entry_path, "w") as f:
                         json.dump(solution_entry, f, indent=2)
@@ -417,8 +424,9 @@ class DsgiSessionManager:
             solution_entry["tokens_count"] = self.stats_manager.statistics[
                 (task_id, gamma)
             ]
+            solution_entry["retry"] = retry_idx
+            solution_entry["random_seed"] = random_seed
             if solution_entry["passed"]:
-                solution_entry["random_seed"] = random_seed
                 print(f"Problem task_id={task_id} is solved")
                 break
 

@@ -1,3 +1,9 @@
+import sys
+import os
+
+# Add parent directory to sys.path for module import
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import argparse
 import json
 import re
@@ -146,7 +152,7 @@ def build_session_config(args):
         "start_idx": args["start_idx"],
         "end_idx": args["end_idx"],
         "results_dir": args.get("results_dir", "results"),
-        "use_global_cache": args["global_cache"],
+        "use_global_cache": args.get("global_cache", False),
         "top_probs": args["top_probs"],
         "random_seed": args.get("random_seed", None),
     }
@@ -191,6 +197,8 @@ def get_cmdline_args():
         default=GUIDANCE_STRATEGY__LINE_GUIDANCE,
         help="Guidance strategy to use. Options: %(choices)s (default: %(default)s)",
     )
+    parser.add_argument("--results-dir", type=str, help="Name of the model used")
+    parser.add_argument("--random-seed", type=int, help="Name of the model used")
     parser.add_argument("--from-string", default=None)
     args = parser.parse_args()
     if args.from_string:
