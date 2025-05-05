@@ -1,6 +1,7 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from consts import *
+import math
 
 
 def setup_device():
@@ -46,3 +47,16 @@ def calculate_tokens_length(tokenizer, prompt):
     prompt_input_ids = prompt_token_ids["input_ids"]  # shape: (1, prompt_len)
     prompt_input_ids_len = prompt_input_ids.shape[1]
     return prompt_input_ids_len
+
+
+def convert_logprobs_dist_dict_to_tokenizer_prob_dist(tokenizer, logprob_dist_dict):
+    prob_dist_dict = {
+        token_idx: math.exp(logprob) for token_idx, logprob in logprob_dist_dict.items()
+    }
+    vocab_size = tokenizer.vocab_size
+    prob_dist = torch.zeros(vocab_size)
+
+    for token_idx, prob in prob_dist_dict.items():
+        prob_dist[token_idx] = prob
+
+    return prob_dist
