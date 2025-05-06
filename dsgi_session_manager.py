@@ -25,7 +25,7 @@ from execution_manager import ExecutionManager
 from args_utils import get_dynamic_signals_str
 from probs_utils import stable_hash
 from collections import defaultdict
-from fw_utils import inference_endpoint_dsgi
+from fw_utils import inference_endpoint_dsgi, PostRequestTimeoutError
 from consts import *
 
 
@@ -155,7 +155,7 @@ class DsgiSessionManager:
         pprint.pprint(self.inference_session)
 
     def resolve_official_evaluation_solved_entries(self):
-        gamma = 0
+        gamma = 0.0
         official_passed_task_ids, official_results = load_official_results(
             self.session_config.model_name
         )
@@ -430,12 +430,20 @@ class DsgiSessionManager:
                 torch.manual_seed(random_seed)
                 torch.cuda.manual_seed_all(random_seed)
 
-            ## TODO: HANDLE REQUEST TIMEOUT
             try:
                 solution = self.solve_problem_with_dsgi(problem, gamma)
                 print(solution)
             except KeyboardInterrupt:
                 exit(1)
+            except PostRequestTimeoutError:
+                general_error = str(type(e))
+                tb = traceback.format_exc()
+                print(tb)
+                if not self.session_config.is_prod:
+                    raise e
+                else:
+                    print("Avoid Server DDoS")
+                    time.sleep(random.uniform(30, 60))
             except AssertionError as e:
                 solution = None
                 general_error = str(type(e))
@@ -461,7 +469,7 @@ class DsgiSessionManager:
             solution_entry["retry"] = retry_idx
             solution_entry["random_seed"] = random_seed
             if solution_entry["passed"]:
-                print(f"Problem task_id={task_id} is solved")
+                print(f"Problem task_id={task_id} is solved. (gamma={gamma})")
                 break
 
         return solution_entry

@@ -161,7 +161,7 @@ GUIDANCE_STRATEGIES = (
 ## FW Inference API
 LOGPROBS_COUNT = 5
 HTTP_REQUEST_TO_LLM_RETRIES_COUNT = 3
-REQUEST_TIMEOUT_SEC = 30
+REQUEST_TIMEOUT_SEC = 15
 FW_KEY = "fw_3ZkWSyAu3Z41GcwKkSM3pAax"
 DEEPSEEK_0324_MODEL_NAME_FW = "accounts/fireworks/models/deepseek-v3-0324"
 FW_ENDPOINT_URL = "https://api.fireworks.ai/inference/v1/completions"

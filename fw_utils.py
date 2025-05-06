@@ -21,6 +21,10 @@ count_vowels("bcd") => 0
 """
 
 
+class PostRequestTimeoutError(RuntimeError):
+    pass
+
+
 def extract_python_code(text):
     match = re.search(r"```python\n(.*?)```", text, re.DOTALL)
     return match.group(1).strip() if match else None
@@ -51,6 +55,7 @@ def pseudo_beam_search_batch(
     batch_size,
     crop_idx,
     top_p=0.95,
+    post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
 ):
     unique_codes = set()
     unique_executable_codes = set()
@@ -61,98 +66,119 @@ def pseudo_beam_search_batch(
         "Content-Type": "application/json",
         "Authorization": f"Bearer {FW_KEY}",
     }
-    print(
-        f"[INFO] Starting pseudo beam search for {unique_samples_count} unique completions"
+    # print(
+    #     f"[INFO] Starting pseudo beam search for {unique_samples_count} unique completions"
+    # )
+    # print(f"[INFO] Using batch size = {batch_size}, temperature = {temperature}")
+    payload = {
+        "model": model_name,
+        "n": batch_size,
+        "prompt": prompt,
+        "max_tokens": max_tokens,
+        "temperature": temperature,
+        "top_p": top_p,
+        "stop": END_OF_CODE_STOP_SEQUENCE,
+    }
+    response = fw_utils__post_request_retries(
+        url,
+        headers,
+        json.dumps(payload),
+        timeout=REQUEST_TIMEOUT_SEC,
+        post_requests_retries=post_requests_retries,
     )
-
     while (
         len(unique_codes) < unique_samples_count and total_requests < max_total_requests
     ):
-        print(f"[INFO] Using batch size = {batch_size}, temperature = {temperature}")
-        payload = {
-            "model": model_name,
-            "n": batch_size,
-            "prompt": prompt,
-            "max_tokens": max_tokens,
-            "temperature": temperature,
-            "top_p": top_p,
-            "stop": END_OF_CODE_STOP_SEQUENCE,
-        }
+        data = response.json()
+        prompt_input_ids = tokenizer(prompt, return_tensors="pt")["input_ids"]
+        prompt_new_text, _ = extract_new_tokens(tokenizer, prompt_input_ids, crop_idx)
+        prompt_code = extract_prompt_python_code(prompt_new_text)
+        prompt_code_lines_count = len(prompt_code.splitlines())
+        for i, choice in enumerate(data["choices"]):
+            raw_text = choice["text"]
+            raw_text += END_OF_CODE_STOP_SEQUENCE
+            full_answer = prompt + raw_text
 
-        try:
-            print(f"[INFO] Sending request #{total_requests + 1}...")
-            response = requests.post(
-                url,
-                headers=headers,
-                data=json.dumps(payload),
-                timeout=REQUEST_TIMEOUT_SEC,
+            input_ids = tokenizer(full_answer, return_tensors="pt")["input_ids"]
+            new_text, _ = extract_new_tokens(tokenizer, input_ids, crop_idx)
+            full_code = extract_python_code(new_text)
+            if not full_code:
+                continue
+            full_code = "\n".join(
+                full_code.splitlines()[: (prompt_code_lines_count + nf_samples_depth)]
             )
-            if response.status_code != 200:
-                raise RuntimeError(
-                    f"Request failed: {response.status_code} - {response.text}"
+            try:
+                executable_partial_program_code = (
+                    execution_manager.extract_partial_executable_program(full_code)
                 )
+            except ValueError:
+                continue
+            if (
+                full_code
+                and full_code not in unique_codes
+                and executable_partial_program_code
+                and executable_partial_program_code not in unique_executable_codes
+            ):
+                unique_codes.add(full_code)
+                unique_executable_codes.add(executable_partial_program_code)
+                # print(f"[SUCCESS] Added candidate #{len(unique_codes)}")
+                # elif executable_partial_program_code:
+                # print(f"[DUPLICATE] Skipping already seen completion #{i + 1}")
+                # else:
+                #     pass
+                # print(f"[WARN] No valid code block in completion #{i + 1}")
+            if len(unique_codes) >= unique_samples_count:
+                break
+        total_requests += 1
+        temperature = temperature * (1.02**total_requests)
 
-            data = response.json()
-            prompt_input_ids = tokenizer(prompt, return_tensors="pt")["input_ids"]
-            prompt_new_text, _ = extract_new_tokens(
-                tokenizer, prompt_input_ids, crop_idx
-            )
-            prompt_code = extract_prompt_python_code(prompt_new_text)
-            prompt_code_lines_count = len(prompt_code.splitlines())
-            for i, choice in enumerate(data["choices"]):
-                raw_text = choice["text"]
-                raw_text += END_OF_CODE_STOP_SEQUENCE
-                full_answer = prompt + raw_text
-
-                input_ids = tokenizer(full_answer, return_tensors="pt")["input_ids"]
-                new_text, _ = extract_new_tokens(tokenizer, input_ids, crop_idx)
-                full_code = extract_python_code(new_text)
-                if not full_code:
-                    continue
-                full_code = "\n".join(
-                    full_code.splitlines()[
-                        : (prompt_code_lines_count + nf_samples_depth)
-                    ]
-                )
-                try:
-                    executable_partial_program_code = (
-                        execution_manager.extract_partial_executable_program(full_code)
-                    )
-                except ValueError:
-                    continue
-                if (
-                    full_code
-                    and full_code not in unique_codes
-                    and executable_partial_program_code
-                    and executable_partial_program_code not in unique_executable_codes
-                ):
-                    unique_codes.add(full_code)
-                    unique_executable_codes.add(executable_partial_program_code)
-                    print(f"[SUCCESS] Added candidate #{len(unique_codes)}")
-                elif executable_partial_program_code:
-                    print(f"[DUPLICATE] Skipping already seen completion #{i + 1}")
-                else:
-                    print(f"[WARN] No valid code block in completion #{i + 1}")
-                if len(unique_codes) >= unique_samples_count:
-                    break
-            total_requests += 1
-            temperature = temperature * (1.02**total_requests)
-
-        except Exception as e:
-            print(f"[ERROR] Exception on request #{total_requests + 1}: {e}")
-            total_requests += 1
-            continue
-
-    print(f"[INFO] Completed with {len(unique_codes)} unique completions")
+    # print(f"[INFO] Completed with {len(unique_codes)} unique completions")
     unique_codes = list(unique_codes)
     return unique_codes
 
 
 HF_MODEL_TO_FW_MODEL = {DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_0324_MODEL_NAME_FW}
 
+HTTP_SUCCESS_CODE = 200
+
+
+def fw_utils__post_request_retries(url, headers, data, timeout, post_requests_retries):
+    for retry_idx in range(post_requests_retries):
+        err = None
+        response = None
+        try:
+            # print(f"[INFO] Sending request #{retry_idx + 1}")
+            response = requests.post(
+                url,
+                headers=headers,
+                data=data,
+                timeout=REQUEST_TIMEOUT_SEC,
+            )
+            if response.status_code != HTTP_SUCCESS_CODE:
+                print(
+                    f"[ERROR] Exception on request #{retry_idx + 1}:\nCode: {response.status_code}: {response.text}"
+                )
+                continue
+            # Success
+            break
+        except Exception as e:
+            err = e
+            print(f"[ERROR] Exception on request #{retry_idx + 1}: {e}")
+            continue
+    if err or (response and response.status_code != HTTP_SUCCESS_CODE):
+        raise PostRequestTimeoutError(
+            f"Request failed after {post_requests_retries} times"
+        )
+    return response
+
 
 def fw_utils__get_next_token_top_logprob_dist(
-    prompt, model_name, url, headers, logprobs_count=LOGPROBS_COUNT
+    prompt,
+    model_name,
+    url,
+    headers,
+    logprobs_count=LOGPROBS_COUNT,
+    post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
 ):
     max_tokens = 1  ## should not be changed
     mapped_model_name = HF_MODEL_TO_FW_MODEL[model_name]
@@ -164,24 +190,13 @@ def fw_utils__get_next_token_top_logprob_dist(
         "logprobs": logprobs_count,
         "raw_output": True,
     }
-
-    for _ in range(HTTP_REQUEST_TO_LLM_RETRIES_COUNT):
-        try:
-            response = requests.post(
-                url,
-                headers=headers,
-                data=json.dumps(payload),
-                timeout=REQUEST_TIMEOUT_SEC,
-            )
-            if response.status_code != 200:
-                raise RuntimeError(
-                    f"Request failed: {response.status_code} - {response.text}"
-                )
-            break
-        except Exception as e:
-            print(e)
-            continue
-
+    response = fw_utils__post_request_retries(
+        url,
+        headers,
+        json.dumps(payload),
+        timeout=REQUEST_TIMEOUT_SEC,
+        post_requests_retries=post_requests_retries,
+    )
     data = response.json()
     completion_tokens = data["usage"]["completion_tokens"]
     assert completion_tokens == max_tokens
@@ -280,13 +295,17 @@ def inference_endpoint_dsgi(
                 is_dsgi_enabled = False
             if debug:
                 executable_partial_program_code, new_code = debug_data
-                if new_code:
-                    print(new_code)
-                    print()
                 if (
                     previous_executable_partial_program_code
                     != executable_partial_program_code
                 ):
+                    print("#" * 10)
+                    # print(new_code)
+                    # print()
+                    # print("$" * 10)
+                    print(new_text)
+                    print("#" * 10)
+                    # print()
                     previous_executable_partial_program_code = (
                         executable_partial_program_code
                     )
@@ -313,7 +332,6 @@ def inference_endpoint_dsgi(
         next_token_text = tokenizer.decode(next_token)
         new_text += next_token_text
         # print(next_token, next_token_text, code_borders_tokens_count)
-        # print(new_text)
         if CODE_BORDER_TOKEN in next_token_text:
             code_borders_tokens_count += 1
         if code_borders_tokens_count >= 2:

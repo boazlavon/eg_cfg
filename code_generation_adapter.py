@@ -149,20 +149,20 @@ class CodeGenerationAdapter:
         new_codes = list(set(new_codes))
         executable_partial_programs = []
 
-        print(f"New Codes: {len(new_codes)}")
+        # print(f"New Codes: {len(new_codes)}")
         for idx, new_code in enumerate(new_codes):
             try:
-                print(f"#{idx + 1} Extracting Partial Executable")
+                # print(f"#{idx + 1} Extracting Partial Executable")
                 executable_partial_program_code = (
                     self.execution_manager.extract_partial_executable_program(new_code)
                 )
             except ValueError:
-                print(f"#{idx + 1} Error Extracting Partial Executable")
+                # print(f"#{idx + 1} Error Extracting Partial Executable")
                 continue
             executable_partial_programs.append(executable_partial_program_code)
         executable_partial_programs = list(set(executable_partial_programs))
 
-        print(f"Executable Program: {len(executable_partial_programs)}")
+        print(f"Executable Programs: {len(executable_partial_programs)}")
         if executable_partial_programs:
             self.current_nf_samples_count = executable_partial_programs
 
