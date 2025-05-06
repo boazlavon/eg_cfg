@@ -27,6 +27,7 @@ from probs_utils import stable_hash
 from collections import defaultdict
 from fw_utils import inference_endpoint_dsgi, PostRequestTimeoutError
 from consts import *
+from datetime import datetime
 
 
 def format_results(solution, results, general_error, tb=None):
@@ -71,6 +72,11 @@ class StatisticsManager:
         if self.current_key not in self.statistics:
             self.statistics[self.current_key] = defaultdict(int)
         self.statistics[self.current_key][counter_key] += count
+
+    def set_value(self, counter_key, value):
+        if self.current_key not in self.statistics:
+            self.statistics[self.current_key] = defaultdict(int)
+        self.statistics[self.current_key][counter_key] = value
 
 
 class DsgiSessionManager:
@@ -393,6 +399,11 @@ class DsgiSessionManager:
         task_id = problem["task_id"]
         test_cases = problem["test_list"]
         self.stats_manager.set_current_key((task_id, gamma))
+        start_time = datetime.now()
+        start_time_str = start_time.strftime('%Y-%m-%d %H:%M:%S')
+        if self.stats_manager is not None:
+            self.stats_manager.set_value("start_time", start_time_str)
+        print(f"[START] {start_time_str}")
         for retry_idx in range(self.session_config.retries_count):
             general_error = None
             tb = None
@@ -465,9 +476,19 @@ class DsgiSessionManager:
             solution_entry = format_results(
                 solution, solution_results, general_error, tb
             )
+
+            end_time = datetime.now()
+            duration = end_time - start_time
+            end_time_str = end_time.strftime('%Y-%m-%d %H:%M:%S')
+            if self.stats_manager is not None:
+                self.stats_manager.set_value("end_time", end_time_str)
+                self.stats_manager.set_value("duration", str(duration))
+            print(f"[END] {end_time_str}")
+            print(f"[DURATION] {duration}")
             solution_entry["stats"] = dict(
                 self.stats_manager.statistics[(task_id, gamma)]
             )
+            print(solution_entry["stats"])
             solution_entry["retry"] = retry_idx
             solution_entry["random_seed"] = random_seed
             if solution_entry["passed"]:

@@ -163,7 +163,7 @@ class CodeGenerationAdapter:
             executable_partial_programs.append(executable_partial_program_code)
         executable_partial_programs = list(set(executable_partial_programs))
 
-        print(f"Executable Programs: {len(executable_partial_programs)}")
+        # print(f"Executable Programs: {len(executable_partial_programs)}")
         if executable_partial_programs:
             self.current_nf_samples_count = executable_partial_programs
 

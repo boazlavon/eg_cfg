@@ -140,9 +140,6 @@ def pseudo_beam_search_batch(
     return unique_codes, total_completion_tokens
 
 
-HF_MODEL_TO_FW_MODEL = {DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_0324_MODEL_NAME_FW}
-
-HTTP_SUCCESS_CODE = 200
 
 
 def fw_utils__post_request_retries(url, headers, data, timeout, post_requests_retries):
@@ -309,12 +306,12 @@ def inference_endpoint_dsgi(
                     previous_executable_partial_program_code
                     != executable_partial_program_code
                 ):
-                    print("#" * 10)
+                    # print("#" * 10)
                     # print(new_code)
                     # print()
                     # print("$" * 10)
-                    print(new_text)
-                    print("#" * 10)
+                    # print(new_text)
+                    # print("#" * 10)
                     # print()
                     previous_executable_partial_program_code = (
                         executable_partial_program_code
