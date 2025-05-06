@@ -1,12 +1,16 @@
 import requests
 import pprint
 import json
-import sys
 import re
+import torch
 from model_utils import convert_logprobs_dist_dict_to_tokenizer_prob_dist
+from model_utils import extract_new_tokens, calculate_tokens_length
+from code_generation_utils import CodeGenStopCriteria, prime_stopping_criteria
 from transformers import AutoTokenizer
+from transformers import StoppingCriteriaList
 
-FW_KEY = "fw_3ZkWSyAu3Z41GcwKkSM3pAax"
+from consts import *
+
 PROBLEM_PROMPT = """Write a function `count_vowels(s)` that takes a string `s` and returns the number of vowels (`a`, `e`, `i`, `o`, `u`) in the string. The function should be case-insensitive.
 
 Examples:
@@ -15,50 +19,41 @@ count_vowels("OpenAI") => 3
 count_vowels("bcd") => 0
 
 """
-LOGPROBS_COUNT = 5
-HTTP_REQUEST_TO_LLM_RETRIES_COUNT = 3
-REQUEST_TIMEOUT_SEC = 30
-HF_DEEPSEEK_0324_MODEL_NAME = "deepseek-ai/DeepSeek-V3-0324"
-FW_DEEPSEEK_0324_MODEL_NAME = "accounts/fireworks/models/deepseek-v3-0324"
-FW_ENDPOINT_URL = "https://api.fireworks.ai/inference/v1/completions"
 
 
 def extract_python_code(text):
-    import re
-
     match = re.search(r"```python\n(.*?)```", text, re.DOTALL)
     return match.group(1).strip() if match else None
 
 
+def extract_prompt_python_code(text):
+    python_code = extract_python_code(text)
+    if python_code is not None:
+        return python_code
+    return text.split("```python\n")[1]
+
+
+END_OF_CODE_STOP_SEQUENCE = "```\n"
+
+
 def pseudo_beam_search_batch(
     prompt,
-    s,
-    model,
+    tokenizer,
+    execution_manager,
+    unique_samples_count,
+    nf_samples_depth,
+    model_name,
     url,
     headers,
-    max_tokens=256,
-    temperature=0.8,
-    max_total_requests=10,
-    batch_size=5,
+    max_tokens,
+    temperature,
+    max_total_requests,
+    batch_size,
+    crop_idx,
+    top_p=0.95,
 ):
-    """
-    Collects s unique code completions by calling the API in batches of n completions per request.
-
-    Args:
-        prompt (str): The generation prompt.
-        s (int): Number of unique completions to gather.
-        model (str): Model identifier.
-        url (str): API endpoint.
-        headers (dict): Authorization + content headers.
-        max_tokens (int): Max tokens per completion.
-        temperature (float): Sampling temperature.
-        max_total_requests (int): Retry limit.
-        batch_size (int): Number of completions per API call (n).
-
-    Returns:
-        List[str]: List of unique code completions (up to s).
-    """
-    seen = set()
+    unique_codes = set()
+    unique_executable_codes = set()
     total_requests = 0
 
     headers = {
@@ -66,17 +61,22 @@ def pseudo_beam_search_batch(
         "Content-Type": "application/json",
         "Authorization": f"Bearer {FW_KEY}",
     }
-    print(f"[INFO] Starting pseudo beam search for {s} unique completions")
+    print(
+        f"[INFO] Starting pseudo beam search for {unique_samples_count} unique completions"
+    )
 
-    while len(seen) < s and total_requests < max_total_requests:
-        temperature = temperature * (1.02**total_requests)
+    while (
+        len(unique_codes) < unique_samples_count and total_requests < max_total_requests
+    ):
         print(f"[INFO] Using batch size = {batch_size}, temperature = {temperature}")
         payload = {
-            "model": model,
+            "model": model_name,
             "n": batch_size,
             "prompt": prompt,
             "max_tokens": max_tokens,
             "temperature": temperature,
+            "top_p": top_p,
+            "stop": END_OF_CODE_STOP_SEQUENCE,
         }
 
         try:
@@ -93,34 +93,71 @@ def pseudo_beam_search_batch(
                 )
 
             data = response.json()
+            prompt_input_ids = tokenizer(prompt, return_tensors="pt")["input_ids"]
+            prompt_new_text, _ = extract_new_tokens(
+                tokenizer, prompt_input_ids, crop_idx
+            )
+            prompt_code = extract_prompt_python_code(prompt_new_text)
+            prompt_code_lines_count = len(prompt_code.splitlines())
             for i, choice in enumerate(data["choices"]):
                 raw_text = choice["text"]
-                code = extract_python_code(raw_text)
-                if code and code not in seen:
-                    seen.add(code)
-                    print(f"[SUCCESS] Added candidate #{len(seen)}")
-                elif code:
+                raw_text += END_OF_CODE_STOP_SEQUENCE
+                full_answer = prompt + raw_text
+
+                input_ids = tokenizer(full_answer, return_tensors="pt")["input_ids"]
+                new_text, _ = extract_new_tokens(tokenizer, input_ids, crop_idx)
+                full_code = extract_python_code(new_text)
+                if not full_code:
+                    continue
+                full_code = "\n".join(
+                    full_code.splitlines()[
+                        : (prompt_code_lines_count + nf_samples_depth)
+                    ]
+                )
+                try:
+                    executable_partial_program_code = (
+                        execution_manager.extract_partial_executable_program(full_code)
+                    )
+                except ValueError:
+                    continue
+                if (
+                    full_code
+                    and full_code not in unique_codes
+                    and executable_partial_program_code
+                    and executable_partial_program_code not in unique_executable_codes
+                ):
+                    unique_codes.add(full_code)
+                    unique_executable_codes.add(executable_partial_program_code)
+                    print(f"[SUCCESS] Added candidate #{len(unique_codes)}")
+                elif executable_partial_program_code:
                     print(f"[DUPLICATE] Skipping already seen completion #{i + 1}")
                 else:
                     print(f"[WARN] No valid code block in completion #{i + 1}")
-
+                if len(unique_codes) >= unique_samples_count:
+                    break
             total_requests += 1
+            temperature = temperature * (1.02**total_requests)
 
         except Exception as e:
             print(f"[ERROR] Exception on request #{total_requests + 1}: {e}")
             total_requests += 1
             continue
 
-    print(f"[INFO] Completed with {len(seen)} unique completions")
-    return list(seen)
+    print(f"[INFO] Completed with {len(unique_codes)} unique completions")
+    unique_codes = list(unique_codes)
+    return unique_codes
 
 
-def get_next_token_top_logprob_dist(
-    prompt, model, url, headers, logprobs_count=LOGPROBS_COUNT
+HF_MODEL_TO_FW_MODEL = {DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_0324_MODEL_NAME_FW}
+
+
+def fw_utils__get_next_token_top_logprob_dist(
+    prompt, model_name, url, headers, logprobs_count=LOGPROBS_COUNT
 ):
     max_tokens = 1  ## should not be changed
+    mapped_model_name = HF_MODEL_TO_FW_MODEL[model_name]
     payload = {
-        "model": model,
+        "model": mapped_model_name,
         "prompt": prompt,
         "max_tokens": max_tokens,
         "temperature": 0.0,
@@ -158,23 +195,177 @@ def get_next_token_top_logprob_dist(
     return top_logprobs
 
 
+def fw_utils__sample_code_pseudo_beam_search(
+    input_ids,
+    tokenizer,
+    execution_manager,
+    samples_count,
+    temperature,
+    nf_samples_depth,
+    crop_idx,
+    model_name=DEEPSEEK_0324_MODEL_NAME_FW,
+    url=FW_ENDPOINT_URL,
+    fw_key=FW_KEY,
+    max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
+    max_total_requests=PSEUDO_BEAM_SEARCH_MAX_TOTAL_REQUESTS,
+):
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {fw_key}",
+    }
+    prompt = tokenizer.batch_decode(input_ids, skip_special_tokens=True)[0]
+    unique_codes = pseudo_beam_search_batch(
+        prompt,
+        tokenizer,
+        execution_manager,
+        samples_count,
+        nf_samples_depth,
+        model_name,
+        url,
+        headers,
+        max_tokens,
+        temperature,
+        max_total_requests,
+        samples_count,
+        crop_idx,
+    )
+    return unique_codes
+
+
+CODE_BORDER_TOKEN = "```"
+END_OF_SENTENCE_TOKEN = "<__end_of_sentence__>"
+
+
+def inference_endpoint_dsgi(
+    prompt,
+    tokenizer,
+    model_name,
+    dsgi_injection_manager,
+    max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
+    debug=True,
+    do_sample=False,
+):
+    inputs = tokenizer(prompt, return_tensors="pt")
+    input_ids = inputs["input_ids"]
+    new_text = ""
+    code_borders_tokens_count = 0
+    is_dsgi_enabled = False
+    end_of_sentence_token_id = tokenizer.encode(
+        END_OF_SENTENCE_TOKEN, add_special_tokens=False
+    )[0]
+    previous_executable_partial_program_code = None
+    executable_partial_program_code, new_code = None, None
+    for _ in range(max_tokens):
+        # current_prompt = tokenizer.decode(input_ids[0], skip_special_tokens=True)
+        # print(current_prompt)
+        # print()
+        original_probs = fw_utils__get_next_token_prob_dist(
+            input_ids, tokenizer, model_name
+        )
+        probs = original_probs
+
+        #### Extract Dynamic Signal  ####
+        is_dsgi_enabled = (dsgi_injection_manager is not None) and (
+            dsgi_injection_manager.is_dsgi_enabled(input_ids.clone())
+        )
+        if is_dsgi_enabled:
+            dynamic_signal_input_ids, debug_data = (
+                dsgi_injection_manager.extract_dynamic_signal_input_ids(
+                    input_ids.clone()
+                )
+            )
+            # no dynamic signals were extracted, no need for guidance
+            if torch.equal(dynamic_signal_input_ids, input_ids):
+                is_dsgi_enabled = False
+            if debug:
+                executable_partial_program_code, new_code = debug_data
+                if new_code:
+                    print(new_code)
+                    print()
+                if (
+                    previous_executable_partial_program_code
+                    != executable_partial_program_code
+                ):
+                    previous_executable_partial_program_code = (
+                        executable_partial_program_code
+                    )
+        ###########
+        if is_dsgi_enabled:
+            #### Calculate Dynamic Signal conditional distibution ####
+            dyn_probs = fw_utils__get_next_token_prob_dist(
+                dynamic_signal_input_ids, tokenizer, model_name
+            )
+
+            #### Apply Dynamic Signal Guidance ####
+            probs_guided = dsgi_injection_manager.apply_guidance(
+                original_probs, dyn_probs, debug=False
+            )
+            probs = probs_guided
+        #########################
+
+        # Next Token Selection
+        if do_sample:
+            next_token = torch.multinomial(probs, num_samples=1).squeeze(1)
+        else:
+            next_token = torch.argmax(probs, dim=-1)
+
+        next_token_text = tokenizer.decode(next_token)
+        new_text += next_token_text
+        # print(next_token, next_token_text, code_borders_tokens_count)
+        # print(new_text)
+        if CODE_BORDER_TOKEN in next_token_text:
+            code_borders_tokens_count += 1
+        if code_borders_tokens_count >= 2:
+            break
+        if next_token.item() == end_of_sentence_token_id:
+            break
+        input_ids = torch.cat([input_ids, next_token[:, None]], dim=-1)
+
+    input_ids = input_ids.squeeze(0)
+    outputs = [input_ids]
+    return outputs
+
+
+def fw_utils__get_next_token_prob_dist(
+    input_ids, tokenizer, model_name, fw_key=FW_KEY, url=FW_ENDPOINT_URL
+):
+    prompt = tokenizer.decode(input_ids[0], skip_special_tokens=True)
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {fw_key}",
+    }
+    next_token_logprob_dist_dict = fw_utils__get_next_token_top_logprob_dist(
+        prompt,
+        model_name,
+        url=url,
+        headers=headers,
+    )
+    next_token_prob_dist = convert_logprobs_dist_dict_to_tokenizer_prob_dist(
+        tokenizer, next_token_logprob_dist_dict
+    )
+    next_token_prob_dist = next_token_prob_dist.unsqueeze(0)
+    return next_token_prob_dist
+
+
 def main():
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
         "Authorization": f"Bearer {FW_KEY}",
     }
-    model = FW_DEEPSEEK_0324_MODEL_NAME
+    model = DEEPSEEK_0324_MODEL_NAME_FW
     url = FW_ENDPOINT_URL
 
-    next_token_logprob_dist_dict = get_next_token_top_logprob_dist(
+    next_token_logprob_dist_dict = fw_utils__get_next_token_top_logprob_dist(
         prompt=PROBLEM_PROMPT,
-        model=model,
+        model_name=model,
         url=url,
         headers=headers,
     )
     tokenizer = AutoTokenizer.from_pretrained(
-        HF_DEEPSEEK_0324_MODEL_NAME, trust_remote_code=True
+        DEEPSEEK_V3_0324_MODEL_NAME_HF, trust_remote_code=True
     )
     next_token_prob_dist = convert_logprobs_dist_dict_to_tokenizer_prob_dist(
         tokenizer, next_token_logprob_dist_dict
@@ -182,20 +373,16 @@ def main():
     pprint.pprint(next_token_logprob_dist_dict)
     pprint.pprint(next_token_prob_dist)
     pprint.pprint(next_token_prob_dist.sum())
-    return
     unique_codes = pseudo_beam_search_batch(
         prompt=PROBLEM_PROMPT,
-        s=5,
-        model=model,
+        unique_samples_count=5,
+        model_name=model,
         url=url,
         headers=headers,
         max_tokens=1024,
         temperature=0.9,
-        max_total_requests=10,
+        max_total_requests=5,
         batch_size=5,
     )
     for i, code in enumerate(unique_codes):
         print(f"\n--- Candidate {i+1} ---\n{code}\n")
-
-
-main()

@@ -20,11 +20,12 @@ from code_generation_utils import (
     raw_outputs_to_new_code,
 )
 from dsgi_injection_manager import DsgiInjectionManager
-from model_utils import setup_device, load_model
+from model_utils import setup_device, load_model, load_tokenizer
 from execution_manager import ExecutionManager
 from args_utils import get_dynamic_signals_str
 from probs_utils import stable_hash
 from collections import defaultdict
+from fw_utils import inference_endpoint_dsgi
 from consts import *
 
 
@@ -71,10 +72,19 @@ class StatisticsManager:
 
 
 class DsgiSessionManager:
-    def __init__(self, session_config, inference_sessions_configs):
+    def __init__(
+        self,
+        session_config,
+        inference_sessions_configs,
+        use_hf_model=False,
+        use_inference_endpoint=True,
+    ):
         self.session_config = session_config
         self.inference_sessions_configs = inference_sessions_configs
         self.inference_session = None
+        assert int(use_hf_model) + int(use_inference_endpoint) == 1
+        self.use_hf_model = use_hf_model
+        self.use_inference_endpoint = use_inference_endpoint
 
     def validate_args(self):
         for inference_session_config in self.inference_sessions_configs:
@@ -86,10 +96,16 @@ class DsgiSessionManager:
 
     def setup(self):
         self.solutions = {}
-        self.device = setup_device()
-        self.model, self.tokenizer = load_model(
-            self.session_config.model_name, self.device
-        )
+        if self.use_hf_model:
+            self.device = setup_device()
+            self.model, self.tokenizer = load_model(
+                self.session_config.model_name, self.device
+            )
+        elif self.use_inference_endpoint:
+            self.device = None
+            self.model = None
+            self.tokenizer = load_tokenizer(self.session_config.model_name)
+
         self.execution_manager = ExecutionManager(
             self.tokenizer, function_signature=None
         )
@@ -171,6 +187,7 @@ class DsgiSessionManager:
                 if self.session_config.model_name in (
                     DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
                     DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME,
+                    DEEPSEEK_V3_0324_MODEL_NAME_HF,
                 ):
                     solution = official_results[task_id]["generation"]
                     solution_results = run_tests(solution, test_cases)
@@ -227,7 +244,9 @@ class DsgiSessionManager:
                     with open(solution_entry_path, "w") as f:
                         json.dump(solution_entry, f, indent=2)
 
-    def build_dsgi_injection_manager(self, problem, gamma, function_signature=None):
+    def build_dsgi_injection_manager_and_prompt(
+        self, problem, gamma, function_signature=None
+    ):
         test_cases = problem["test_list"]
         use_dsgi = True
         use_detector = True
@@ -296,6 +315,8 @@ class DsgiSessionManager:
                 ],
                 "execution_manager": self.execution_manager,
                 "stats_manager": self.stats_manager,
+                "use_hf_model": self.use_hf_model,
+                "use_inference_endpoint": self.use_inference_endpoint,
             }
 
             detector_kwargs = {}
@@ -328,19 +349,31 @@ class DsgiSessionManager:
         gamma,
     ):
         function_signature = None
-        dsgi_injection_manager, prompt = self.build_dsgi_injection_manager(
+        dsgi_injection_manager, prompt = self.build_dsgi_injection_manager_and_prompt(
             problem, gamma, function_signature
         )
-        outputs = generate_code_solutions(
-            self.model,
-            self.tokenizer,
-            self.device,
-            prompt,
-            dsgi_injection_manager,
-            num_return_sequences=1,
-            prompt_type=self.inference_session.inference_session_config["prompt_type"],
-        )
         initial_prompt_input_ids_len = calculate_tokens_length(self.tokenizer, prompt)
+        if self.use_hf_model:
+            inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
+            outputs = generate_code_solutions(
+                self.model,
+                self.tokenizer,
+                dsgi_injection_manager,
+                inputs,
+                num_return_sequences=1,
+                prompt_type=self.inference_session.inference_session_config[
+                    "prompt_type"
+                ],
+            )
+        elif self.use_inference_endpoint:
+            ###### HERE IS MY CODE ######
+            outputs = inference_endpoint_dsgi(
+                prompt,
+                self.tokenizer,
+                self.session_config.model_name,
+                dsgi_injection_manager,
+            )
+            #############################
         new_codes = raw_outputs_to_new_code(
             outputs,
             self.tokenizer,
@@ -397,6 +430,7 @@ class DsgiSessionManager:
                 torch.manual_seed(random_seed)
                 torch.cuda.manual_seed_all(random_seed)
 
+            ## TODO: HANDLE REQUEST TIMEOUT
             try:
                 solution = self.solve_problem_with_dsgi(problem, gamma)
                 print(solution)

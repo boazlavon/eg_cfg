@@ -9,6 +9,7 @@ from code_generation_utils import (
     raw_outputs_to_new_code,
     slice_prompt_after_markers,
 )
+from fw_utils import fw_utils__sample_code_pseudo_beam_search
 from consts import *
 
 
@@ -29,10 +30,19 @@ class CodeGenerationAdapter:
         guidance_strategy=None,
         execution_manager=None,
         stats_manager=None,
+        use_hf_model=False,
+        use_inference_endpoint=True,
     ):
-        self.model = model
+        assert int(use_hf_model) + int(use_inference_endpoint) == 1
+        self.use_hf_model = use_hf_model
+        self.use_inference_endpoint = use_inference_endpoint
+        if self.use_hf_model:
+            self.device = device
+            self.model = model
+        elif self.use_inference_endpoint:
+            self.device = None
+            self.model = None
         self.tokenizer = tokenizer
-        self.device = device
         self.function_signature = function_signature
         self.test_cases = test_cases
         self.initial_prompt = initial_prompt
@@ -99,45 +109,60 @@ class CodeGenerationAdapter:
                 self.current_debug_data[dynamic_signal_type],
             )
 
-        attention_mask = (input_ids != 0).long()
-        inputs = {
-            "input_ids": input_ids.clone().to(self.device),
-            "attention_mask": attention_mask.to(self.device),
-        }
         function_name, args_str, _ = parse_mbpp_assert_statement(self.test_cases[0])
-        outputs = generate_code_solutions(
-            self.model,
-            self.tokenizer,
-            self.device,
-            prompt=None,
-            dsgi_injection_manager=None,
-            num_return_sequences=self.nf_samples_count,
-            temperature=self.temperature,
-            inputs=inputs,
-            nf_samples_depth=self.nf_samples_depth,
-            function_name=function_name,
-            do_sample=True,
-            prompt_type=self.prompt_type,
-        )
-        new_codes = raw_outputs_to_new_code(
-            outputs,
-            self.tokenizer,
-            self.initial_prompt_input_ids_len,
-            self.prompt_type,
-            validate=False,
-            stats_manager=self.stats_manager,
-        )
+        if self.use_hf_model:
+            attention_mask = (input_ids != 0).long()
+            inputs = {
+                "input_ids": input_ids.clone().to(self.device),
+                "attention_mask": attention_mask.to(self.device),
+            }
+            outputs = generate_code_solutions(
+                self.model,
+                self.tokenizer,
+                None,
+                inputs,
+                num_return_sequences=self.nf_samples_count,
+                temperature=self.temperature,
+                nf_samples_depth=self.nf_samples_depth,
+                function_name=function_name,
+                do_sample=True,
+                prompt_type=self.prompt_type,
+            )
+            new_codes = raw_outputs_to_new_code(
+                outputs,
+                self.tokenizer,
+                self.initial_prompt_input_ids_len,
+                self.prompt_type,
+                validate=False,
+                stats_manager=self.stats_manager,
+            )
+        elif self.use_inference_endpoint:
+            new_codes = fw_utils__sample_code_pseudo_beam_search(
+                input_ids,
+                tokenizer=self.tokenizer,
+                execution_manager=self.execution_manager,
+                samples_count=self.nf_samples_count,
+                temperature=self.temperature,
+                nf_samples_depth=self.nf_samples_depth,
+                crop_idx=self.initial_prompt_input_ids_len,
+            )
         new_codes = list(set(new_codes))
         executable_partial_programs = []
+
+        print(f"New Codes: {len(new_codes)}")
         for idx, new_code in enumerate(new_codes):
             try:
+                print(f"#{idx + 1} Extracting Partial Executable")
                 executable_partial_program_code = (
                     self.execution_manager.extract_partial_executable_program(new_code)
                 )
             except ValueError:
+                print(f"#{idx + 1} Error Extracting Partial Executable")
                 continue
             executable_partial_programs.append(executable_partial_program_code)
         executable_partial_programs = list(set(executable_partial_programs))
+
+        print(f"Executable Program: {len(executable_partial_programs)}")
         if executable_partial_programs:
             self.current_nf_samples_count = executable_partial_programs
 
@@ -177,7 +202,11 @@ class CodeGenerationAdapter:
 
         # if the last line ends with : add a pass
         self.current_dynamic_signal[dynamic_signal_type] = dynamic_signal_text
-        self.current_debug_data[dynamic_signal_type] = ()
+        executable_partial_program_code = self._extract_partial_executions(new_code)
+        self.current_debug_data[dynamic_signal_type] = (
+            executable_partial_program_code,
+            new_code,
+        )
         return (
             self.current_dynamic_signal[dynamic_signal_type],
             self.current_debug_data[dynamic_signal_type],
@@ -320,13 +349,22 @@ class CodeGenerationAdapter:
         unified_dynamic_signal_prompt_tokens = self.tokenizer(
             unified_dynamic_signal_prompt, return_tensors="pt"
         )
-        dynamic_signal_input_ids = torch.cat(
-            [
-                unified_dynamic_signal_prompt_tokens["input_ids"].to(self.device),
-                new_code_tokens.clone(),
-            ],
-            dim=1,
-        )
+        if self.use_hf_model and self.device:
+            dynamic_signal_input_ids = torch.cat(
+                [
+                    unified_dynamic_signal_prompt_tokens["input_ids"].to(self.device),
+                    new_code_tokens.clone(),
+                ],
+                dim=1,
+            )
+        elif self.use_inference_endpoint:
+            dynamic_signal_input_ids = torch.cat(
+                [
+                    unified_dynamic_signal_prompt_tokens["input_ids"],
+                    new_code_tokens.clone(),
+                ],
+                dim=1,
+            )
         return dynamic_signal_input_ids
 
     def extract_dynamic_signal_input_ids(self, input_ids):
@@ -344,7 +382,7 @@ class CodeGenerationAdapter:
         dynamic_signal_input_ids = self.unify_dynamic_signals(
             input_ids, dynamic_signals_text
         )
-        debug_data = debug_data.get(DYNAMIC_SIGNAL__PARTIAL_EXECUTION, ("", ""))
+        debug_data = debug_data.get(DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION, ("", ""))
 
         return dynamic_signal_input_ids, debug_data
 
@@ -358,7 +396,7 @@ class CodeGenerationAdapter:
                 executable_partial_program_code
                 and executable_partial_program_code not in self.program_executions
             ):
-                print(f"Executing:\n {executable_partial_program_code}")
+                print(f"Executing:\n {executable_partial_program_code}\n")
                 self.program_executions[executable_partial_program_code] = (
                     self.execution_manager.execute_test_cases(
                         executable_partial_program_code, self.test_cases

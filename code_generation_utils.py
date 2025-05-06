@@ -305,27 +305,22 @@ def prime_stopping_criteria(
     # Feed each token into all stopping criteria with count_lines=False
     for criteria in stop_criteria_list:
         for token in decoded_tokens:
-            criteria.check_stop(token, count_lines=False)
+            criteria.check_stop_instruct(token, count_lines=False)
 
 
 def generate_code_solutions(
     model,
     tokenizer,
-    device,
-    prompt,
     dsgi_injection_manager,
+    inputs,
     max_new_tokens=MAX_NEW_TOKENS,
     num_return_sequences=1,
     temperature=0.1,
-    inputs=None,
     nf_samples_depth=None,
     function_name=None,
     do_sample=False,
     prompt_type=None,
 ):
-    if inputs is None:
-        inputs = tokenizer(prompt, return_tensors="pt").to(device)
-
     stop_criteria_list = [
         CodeGenStopCriteria(
             tokenizer,

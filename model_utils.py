@@ -33,6 +33,11 @@ def load_model(model_name: str, device):
     return model, tokenizer
 
 
+def load_tokenizer(model_name):
+    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+    return tokenizer
+
+
 def extract_new_tokens(tokenizer, input_ids: torch.Tensor, prompt_input_ids_len) -> str:
     if input_ids.dim() != 2 or input_ids.size(0) != 1:
         raise ValueError("Expected input_ids to have shape (1, sequence_length)")
