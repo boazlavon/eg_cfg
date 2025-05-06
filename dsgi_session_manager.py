@@ -25,7 +25,7 @@ from execution_manager import ExecutionManager
 from args_utils import get_dynamic_signals_str
 from probs_utils import stable_hash
 from collections import defaultdict
-from fw_utils import inference_endpoint_dsgi, PostRequestTimeoutError
+from fw_utils import inference_endpoint_dsgi, PostRequestTimeoutError, simple_query
 from consts import *
 from datetime import datetime
 
@@ -374,14 +374,27 @@ class DsgiSessionManager:
                 ],
             )
         elif self.use_inference_endpoint:
-            ###### HERE IS MY CODE ######
+            if not gamma:
+                prompt_input_ids = self.tokenizer(prompt, return_tensors="pt")[
+                    "input_ids"
+                ]
+                solution, completion_tokens = simple_query(
+                    prompt, self.session_config.model_name
+                )
+                if self.stats_manager is not None:
+                    self.stats_manager.increate_counter(
+                        "guidance_input_tokens", prompt_input_ids.shape[1]
+                    )
+                    self.stats_manager.increate_counter(
+                        "guidance_output_tokens", completion_tokens
+                    )
+                return solution
             outputs = inference_endpoint_dsgi(
                 prompt,
                 self.tokenizer,
                 self.session_config.model_name,
                 dsgi_injection_manager,
             )
-            #############################
         new_codes = raw_outputs_to_new_code(
             outputs,
             self.tokenizer,
@@ -400,7 +413,7 @@ class DsgiSessionManager:
         test_cases = problem["test_list"]
         self.stats_manager.set_current_key((task_id, gamma))
         start_time = datetime.now()
-        start_time_str = start_time.strftime('%Y-%m-%d %H:%M:%S')
+        start_time_str = start_time.strftime("%Y-%m-%d %H:%M:%S")
         if self.stats_manager is not None:
             self.stats_manager.set_value("start_time", start_time_str)
         print(f"[START] {start_time_str}")
@@ -479,7 +492,7 @@ class DsgiSessionManager:
 
             end_time = datetime.now()
             duration = end_time - start_time
-            end_time_str = end_time.strftime('%Y-%m-%d %H:%M:%S')
+            end_time_str = end_time.strftime("%Y-%m-%d %H:%M:%S")
             if self.stats_manager is not None:
                 self.stats_manager.set_value("end_time", end_time_str)
                 self.stats_manager.set_value("duration", str(duration))

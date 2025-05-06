@@ -38,6 +38,44 @@ def extract_prompt_python_code(text):
 
 
 END_OF_CODE_STOP_SEQUENCE = "```\n"
+FW_UTILS__DEFAULT_TOP_P = 0.95
+
+
+def simple_query(
+    prompt,
+    model_name,
+    top_p=FW_UTILS__DEFAULT_TOP_P,
+    max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
+    post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
+    url=FW_ENDPOINT_URL,
+):
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {FW_KEY}",
+    }
+    model_name = HF_MODEL_TO_FW_MODEL[model_name]
+    payload = {
+        "model": model_name,
+        "prompt": prompt,
+        "max_tokens": max_tokens,
+        "temperature": 0.0,
+        "top_p": top_p,
+        "stop": END_OF_CODE_STOP_SEQUENCE,
+    }
+    response = fw_utils__post_request_retries(
+        url,
+        headers,
+        json.dumps(payload),
+        timeout=REQUEST_TIMEOUT_SEC,
+        post_requests_retries=post_requests_retries,
+    )
+    data = response.json()
+    completion_tokens = data["usage"]["completion_tokens"]
+    raw_text = data["choices"][0]["text"]
+    raw_text += END_OF_CODE_STOP_SEQUENCE
+    full_code = extract_python_code(raw_text)
+    return full_code, completion_tokens
 
 
 def pseudo_beam_search_batch(
@@ -54,7 +92,7 @@ def pseudo_beam_search_batch(
     max_total_requests,
     batch_size,
     crop_idx,
-    top_p=0.95,
+    top_p=FW_UTILS__DEFAULT_TOP_P,
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
 ):
     unique_codes = set()
@@ -138,8 +176,6 @@ def pseudo_beam_search_batch(
     # print(f"[INFO] Completed with {len(unique_codes)} unique completions")
     unique_codes = list(unique_codes)
     return unique_codes, total_completion_tokens
-
-
 
 
 def fw_utils__post_request_retries(url, headers, data, timeout, post_requests_retries):
