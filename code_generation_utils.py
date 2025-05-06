@@ -243,8 +243,8 @@ def raw_outputs_to_new_code(
             new_code, new_tokens = extract_new_tokens(
                 tokenizer, output, initial_prompt_input_ids_len
             )
-            if stats_manager is not None:
-                stats_manager.increate_counter(new_tokens.shape[1])
+            # if stats_manager is not None:
+            #     stats_manager.increate_counter('guidance_tokens', new_tokens.shape[1])
 
             if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
                 new_code = new_code.replace(

@@ -141,6 +141,7 @@ class CodeGenerationAdapter:
                 input_ids,
                 tokenizer=self.tokenizer,
                 execution_manager=self.execution_manager,
+                stats_manager=self.stats_manager,
                 samples_count=self.nf_samples_count,
                 temperature=self.temperature,
                 nf_samples_depth=self.nf_samples_depth,

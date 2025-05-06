@@ -79,17 +79,20 @@ def pseudo_beam_search_batch(
         "top_p": top_p,
         "stop": END_OF_CODE_STOP_SEQUENCE,
     }
-    response = fw_utils__post_request_retries(
-        url,
-        headers,
-        json.dumps(payload),
-        timeout=REQUEST_TIMEOUT_SEC,
-        post_requests_retries=post_requests_retries,
-    )
+    total_completion_tokens = 0
     while (
         len(unique_codes) < unique_samples_count and total_requests < max_total_requests
     ):
+        response = fw_utils__post_request_retries(
+            url,
+            headers,
+            json.dumps(payload),
+            timeout=REQUEST_TIMEOUT_SEC,
+            post_requests_retries=post_requests_retries,
+        )
         data = response.json()
+        completion_tokens = data["usage"]["completion_tokens"]
+        total_completion_tokens += completion_tokens
         prompt_input_ids = tokenizer(prompt, return_tensors="pt")["input_ids"]
         prompt_new_text, _ = extract_new_tokens(tokenizer, prompt_input_ids, crop_idx)
         prompt_code = extract_prompt_python_code(prompt_new_text)
@@ -134,7 +137,7 @@ def pseudo_beam_search_batch(
 
     # print(f"[INFO] Completed with {len(unique_codes)} unique completions")
     unique_codes = list(unique_codes)
-    return unique_codes
+    return unique_codes, total_completion_tokens
 
 
 HF_MODEL_TO_FW_MODEL = {DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_0324_MODEL_NAME_FW}
@@ -207,13 +210,14 @@ def fw_utils__get_next_token_top_logprob_dist(
     top_logprobs = raw_output_entry["content"][0]["top_logprobs"]
     assert len(top_logprobs) == logprobs_count
     top_logprobs = {entry["token_id"]: entry["logprob"] for entry in top_logprobs}
-    return top_logprobs
+    return top_logprobs, completion_tokens
 
 
 def fw_utils__sample_code_pseudo_beam_search(
     input_ids,
     tokenizer,
     execution_manager,
+    stats_manager,
     samples_count,
     temperature,
     nf_samples_depth,
@@ -230,7 +234,7 @@ def fw_utils__sample_code_pseudo_beam_search(
         "Authorization": f"Bearer {fw_key}",
     }
     prompt = tokenizer.batch_decode(input_ids, skip_special_tokens=True)[0]
-    unique_codes = pseudo_beam_search_batch(
+    unique_codes, total_completion_tokens = pseudo_beam_search_batch(
         prompt,
         tokenizer,
         execution_manager,
@@ -245,6 +249,11 @@ def fw_utils__sample_code_pseudo_beam_search(
         samples_count,
         crop_idx,
     )
+    if stats_manager is not None:
+        stats_manager.increate_counter("beam_search_input_tokens", input_ids.shape[1])
+        stats_manager.increate_counter(
+            "beam_search_output_tokens", total_completion_tokens
+        )
     return unique_codes
 
 
@@ -261,6 +270,7 @@ def inference_endpoint_dsgi(
     debug=True,
     do_sample=False,
 ):
+    stats_manager = dsgi_injection_manager.adapter.stats_manager
     inputs = tokenizer(prompt, return_tensors="pt")
     input_ids = inputs["input_ids"]
     new_text = ""
@@ -276,7 +286,7 @@ def inference_endpoint_dsgi(
         # print(current_prompt)
         # print()
         original_probs = fw_utils__get_next_token_prob_dist(
-            input_ids, tokenizer, model_name
+            input_ids, tokenizer, model_name, stats_manager=stats_manager
         )
         probs = original_probs
 
@@ -313,7 +323,10 @@ def inference_endpoint_dsgi(
         if is_dsgi_enabled:
             #### Calculate Dynamic Signal conditional distibution ####
             dyn_probs = fw_utils__get_next_token_prob_dist(
-                dynamic_signal_input_ids, tokenizer, model_name
+                dynamic_signal_input_ids,
+                tokenizer,
+                model_name,
+                stats_manager=stats_manager,
             )
 
             #### Apply Dynamic Signal Guidance ####
@@ -346,7 +359,12 @@ def inference_endpoint_dsgi(
 
 
 def fw_utils__get_next_token_prob_dist(
-    input_ids, tokenizer, model_name, fw_key=FW_KEY, url=FW_ENDPOINT_URL
+    input_ids,
+    tokenizer,
+    model_name,
+    fw_key=FW_KEY,
+    url=FW_ENDPOINT_URL,
+    stats_manager=None,
 ):
     prompt = tokenizer.decode(input_ids[0], skip_special_tokens=True)
     headers = {
@@ -354,53 +372,17 @@ def fw_utils__get_next_token_prob_dist(
         "Content-Type": "application/json",
         "Authorization": f"Bearer {fw_key}",
     }
-    next_token_logprob_dist_dict = fw_utils__get_next_token_top_logprob_dist(
-        prompt,
-        model_name,
-        url=url,
-        headers=headers,
+    next_token_logprob_dist_dict, completion_tokens = (
+        fw_utils__get_next_token_top_logprob_dist(
+            prompt, model_name, url=url, headers=headers
+        )
     )
     next_token_prob_dist = convert_logprobs_dist_dict_to_tokenizer_prob_dist(
         tokenizer, next_token_logprob_dist_dict
     )
     next_token_prob_dist = next_token_prob_dist.unsqueeze(0)
+
+    if stats_manager is not None:
+        stats_manager.increate_counter("guidance_input_tokens", input_ids.shape[1])
+        stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
     return next_token_prob_dist
-
-
-def main():
-    headers = {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {FW_KEY}",
-    }
-    model = DEEPSEEK_0324_MODEL_NAME_FW
-    url = FW_ENDPOINT_URL
-
-    next_token_logprob_dist_dict = fw_utils__get_next_token_top_logprob_dist(
-        prompt=PROBLEM_PROMPT,
-        model_name=model,
-        url=url,
-        headers=headers,
-    )
-    tokenizer = AutoTokenizer.from_pretrained(
-        DEEPSEEK_V3_0324_MODEL_NAME_HF, trust_remote_code=True
-    )
-    next_token_prob_dist = convert_logprobs_dist_dict_to_tokenizer_prob_dist(
-        tokenizer, next_token_logprob_dist_dict
-    )
-    pprint.pprint(next_token_logprob_dist_dict)
-    pprint.pprint(next_token_prob_dist)
-    pprint.pprint(next_token_prob_dist.sum())
-    unique_codes = pseudo_beam_search_batch(
-        prompt=PROBLEM_PROMPT,
-        unique_samples_count=5,
-        model_name=model,
-        url=url,
-        headers=headers,
-        max_tokens=1024,
-        temperature=0.9,
-        max_total_requests=5,
-        batch_size=5,
-    )
-    for i, code in enumerate(unique_codes):
-        print(f"\n--- Candidate {i+1} ---\n{code}\n")

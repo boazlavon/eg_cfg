@@ -61,14 +61,16 @@ def get_solution_filepath(results_dir, task_id, gamma, backward_signals_iteratio
 
 class StatisticsManager:
     def __init__(self):
-        self.statistics = defaultdict(int)
+        self.statistics = {}
         self.current_key = None
 
     def set_current_key(self, current_key):
         self.current_key = current_key
 
-    def increate_counter(self, count):
-        self.statistics[self.current_key] += count
+    def increate_counter(self, counter_key, count):
+        if self.current_key not in self.statistics:
+            self.statistics[self.current_key] = defaultdict(int)
+        self.statistics[self.current_key][counter_key] += count
 
 
 class DsgiSessionManager:
@@ -463,9 +465,9 @@ class DsgiSessionManager:
             solution_entry = format_results(
                 solution, solution_results, general_error, tb
             )
-            solution_entry["tokens_count"] = self.stats_manager.statistics[
-                (task_id, gamma)
-            ]
+            solution_entry["stats"] = dict(
+                self.stats_manager.statistics[(task_id, gamma)]
+            )
             solution_entry["retry"] = retry_idx
             solution_entry["random_seed"] = random_seed
             if solution_entry["passed"]:
