@@ -25,7 +25,13 @@ from execution_manager import ExecutionManager
 from args_utils import get_dynamic_signals_str
 from probs_utils import stable_hash
 from collections import defaultdict
-from fw_utils import inference_endpoint_dsgi, PostRequestTimeoutError, simple_query
+from fw_utils import (
+    inference_endpoint_dsgi,
+    PostRequestTimeoutError,
+    simple_query,
+    END_OF_CODE_STOP_SEQUENCE,
+    START_OF_CODE_STOP_SEQUENCE,
+)
 from consts import *
 from datetime import datetime
 
@@ -164,9 +170,12 @@ class DsgiSessionManager:
 
     def resolve_official_evaluation_solved_entries(self):
         gamma = 0.0
-        official_passed_task_ids, official_results = load_official_results(
-            self.session_config.model_name
-        )
+        if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
+            official_passed_task_ids = DEEPSEEK_V3_0324_SOLVED_TASK_IDS
+        else:
+            official_passed_task_ids, official_results = load_official_results(
+                self.session_config.model_name
+            )
         if not official_passed_task_ids:
             return
         if self.session_config.is_prod:
@@ -195,20 +204,40 @@ class DsgiSessionManager:
                 if self.session_config.model_name in (
                     DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
                     DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME,
-                    DEEPSEEK_V3_0324_MODEL_NAME_HF,
                 ):
                     solution = official_results[task_id]["generation"]
                     solution_results = run_tests(solution, test_cases)
                     solution_entry = format_results(
                         solution, solution_results, general_error, tb
                     )
-                    solution_entry["tokens_count"] = -1
+                    solution_entry["stats"] = {}
                     solution_entry["retry"] = -1
                     solution_entry["random_seed"] = -1
                     self.solutions[(task_id, gamma)] = solution_entry
                     print(solution_entry_path)
                     with open(solution_entry_path, "w") as f:
                         json.dump(solution_entry, f, indent=2)
+
+                elif self.session_config.model_name in (
+                    DEEPSEEK_V3_0324_MODEL_NAME_HF,
+                ):
+                    baseline_trial_base = (
+                        "web_trials/baseline/mbpp/deepseek-ai_DeepSeek-V3-0324"
+                    )
+                    baseline_dirs = ["ns1t0.0d1_ln", "ns1t0.0d1_lci_ln"]
+                    for baseline_dir in baseline_dirs:
+                        results_dir = os.path.join(baseline_trial_base, baseline_dir)
+                        bs_solution_entry_path = get_solution_filepath(
+                            results_dir,
+                            task_id,
+                            gamma=0.0,
+                        )
+                        with open(bs_solution_entry_path) as f:
+                            bs_solution_entry = json.load(f)
+                        if not bs_solution_entry["passed"]:
+                            continue
+                        with open(solution_entry_path, "w") as f:
+                            json.dump(solution_entry, f, indent=2)
 
     def resolve_cache_entries(self):
         if not (
@@ -379,7 +408,9 @@ class DsgiSessionManager:
                     "input_ids"
                 ]
                 solution, completion_tokens = simple_query(
-                    prompt, self.session_config.model_name
+                    prompt,
+                    self.session_config.model_name,
+                    stop_condition=END_OF_CODE_STOP_SEQUENCE,
                 )
                 if self.stats_manager is not None:
                     self.stats_manager.increate_counter(
@@ -461,7 +492,7 @@ class DsgiSessionManager:
                 print(solution)
             except KeyboardInterrupt:
                 exit(1)
-            except PostRequestTimeoutError:
+            except PostRequestTimeoutError as e:
                 general_error = str(type(e))
                 tb = traceback.format_exc()
                 print(tb)

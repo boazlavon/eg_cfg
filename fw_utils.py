@@ -25,6 +25,12 @@ class PostRequestTimeoutError(RuntimeError):
     pass
 
 
+START_OF_CODE_STOP_SEQUENCE = "```python\n"
+START_OF_FUNCTION_SEQUENCE = "```python\ndef"
+END_OF_CODE_STOP_SEQUENCE = "```\n"
+FW_UTILS__DEFAULT_TOP_P = 0.95
+
+
 def extract_python_code(text):
     match = re.search(r"```python\n(.*?)```", text, re.DOTALL)
     return match.group(1).strip() if match else None
@@ -34,11 +40,7 @@ def extract_prompt_python_code(text):
     python_code = extract_python_code(text)
     if python_code is not None:
         return python_code
-    return text.split("```python\n")[1]
-
-
-END_OF_CODE_STOP_SEQUENCE = "```\n"
-FW_UTILS__DEFAULT_TOP_P = 0.95
+    return text.split(f"{START_OF_CODE_STOP_SEQUENCE}")[1]
 
 
 def simple_query(
@@ -48,6 +50,10 @@ def simple_query(
     max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
     url=FW_ENDPOINT_URL,
+    stop_condition=END_OF_CODE_STOP_SEQUENCE,
+    extract_code=True,
+    add_stop_condition=True,
+    temperture=0.0,
 ):
     headers = {
         "Accept": "application/json",
@@ -61,7 +67,7 @@ def simple_query(
         "max_tokens": max_tokens,
         "temperature": 0.0,
         "top_p": top_p,
-        "stop": END_OF_CODE_STOP_SEQUENCE,
+        "stop": stop_condition,
     }
     response = fw_utils__post_request_retries(
         url,
@@ -73,9 +79,12 @@ def simple_query(
     data = response.json()
     completion_tokens = data["usage"]["completion_tokens"]
     raw_text = data["choices"][0]["text"]
-    raw_text += END_OF_CODE_STOP_SEQUENCE
-    full_code = extract_python_code(raw_text)
-    return full_code, completion_tokens
+    if add_stop_condition:
+        raw_text += stop_condition
+    output = raw_text
+    if extract_code:
+        output = extract_python_code(raw_text)
+    return output, completion_tokens
 
 
 def pseudo_beam_search_batch(
@@ -173,7 +182,7 @@ def pseudo_beam_search_batch(
         total_requests += 1
         temperature = temperature * (1.02**total_requests)
 
-    # print(f"[INFO] Completed with {len(unique_codes)} unique completions")
+    print(f"[INFO] Completed with {len(unique_codes)} unique completions")
     unique_codes = list(unique_codes)
     return unique_codes, total_completion_tokens
 
@@ -192,7 +201,7 @@ def fw_utils__post_request_retries(url, headers, data, timeout, post_requests_re
             )
             if response.status_code != HTTP_SUCCESS_CODE:
                 print(
-                    f"[ERROR] Exception on request #{retry_idx + 1}:\nCode: {response.status_code}: {response.text}"
+                    f"[ERROR] Exception on request #{retry_idx + 1}:\nCode: {response.status_code}"
                 )
                 continue
             # Success
@@ -266,6 +275,7 @@ def fw_utils__sample_code_pseudo_beam_search(
         "Content-Type": "application/json",
         "Authorization": f"Bearer {fw_key}",
     }
+    batch_size = max(FW__MIN_BATCH_SIZE, max_total_requests)
     prompt = tokenizer.batch_decode(input_ids, skip_special_tokens=True)[0]
     unique_codes, total_completion_tokens = pseudo_beam_search_batch(
         prompt,
@@ -278,7 +288,7 @@ def fw_utils__sample_code_pseudo_beam_search(
         headers,
         max_tokens,
         temperature,
-        max_total_requests,
+        batch_size,
         samples_count,
         crop_idx,
     )
@@ -304,8 +314,6 @@ def inference_endpoint_dsgi(
     do_sample=False,
 ):
     stats_manager = dsgi_injection_manager.adapter.stats_manager
-    inputs = tokenizer(prompt, return_tensors="pt")
-    input_ids = inputs["input_ids"]
     new_text = ""
     code_borders_tokens_count = 0
     is_dsgi_enabled = False
@@ -314,6 +322,28 @@ def inference_endpoint_dsgi(
     )[0]
     previous_executable_partial_program_code = None
     executable_partial_program_code, new_code = None, None
+
+    answer_start_until_code, completion_tokens = simple_query(
+        prompt,
+        model_name,
+        stop_condition=START_OF_FUNCTION_SEQUENCE,
+        extract_code=False,
+        add_stop_condition=False,
+        temperture=dsgi_injection_manager.adapter.temperature,
+    )
+
+    inputs = tokenizer(prompt, return_tensors="pt")
+    input_ids = inputs["input_ids"]
+    if stats_manager is not None:
+        stats_manager.increate_counter("guidance_input_tokens", input_ids.shape[1])
+        stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
+
+    prompt += answer_start_until_code
+    print(f"Skipping (no guidance needed): {answer_start_until_code}")
+    prompt += START_OF_FUNCTION_SEQUENCE
+
+    inputs = tokenizer(prompt, return_tensors="pt")
+    input_ids = inputs["input_ids"]
     for _ in range(max_tokens):
         # current_prompt = tokenizer.decode(input_ids[0], skip_special_tokens=True)
         # print(current_prompt)
@@ -342,13 +372,8 @@ def inference_endpoint_dsgi(
                     previous_executable_partial_program_code
                     != executable_partial_program_code
                 ):
-                    # print("#" * 10)
-                    # print(new_code)
-                    # print()
-                    # print("$" * 10)
-                    # print(new_text)
-                    # print("#" * 10)
-                    # print()
+                    promp_without_signal = tokenizer.decode(input_ids[0])
+                    promp_with_signal = tokenizer.decode(dynamic_signal_input_ids[0])
                     previous_executable_partial_program_code = (
                         executable_partial_program_code
                     )

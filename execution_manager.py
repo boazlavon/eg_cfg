@@ -36,7 +36,8 @@ class ExecutionManager:
                 assert is_valid_python(
                     test_case_code
                 ), f"Invalid Test Case: {test_case}"
-                program_execution = self.execute_compact(test_case_code)
+                # program_execution = self.execute_compact(test_case_code)
+                program_execution = self.execute(test_case_code)
                 return test_case, program_execution
             except subprocess.TimeoutExpired:
                 self.timeouts += 1
@@ -60,7 +61,8 @@ class ExecutionManager:
             for future in as_completed(futures):
                 test_case, program_execution = future.result()
                 if program_execution is not None:
-                    executions[test_case] = program_execution
+                    # executions[test_case] = program_execution
+                    executions[test_case] = program_execution.to_compact_json()
 
         os.chdir(original_cwd)
         return executions
