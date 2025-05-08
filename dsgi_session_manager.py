@@ -11,6 +11,7 @@ from mbpp_utils import (
     format_mbpp_prompt,
     load_mbpp_problems,
     run_tests,
+    extract_function_signature,
 )
 from model_utils import calculate_tokens_length
 from mbpp_utils import parse_mbpp_assert_statement, load_official_results
@@ -29,6 +30,7 @@ from fw_utils import (
     inference_endpoint_dsgi,
     PostRequestTimeoutError,
     simple_query,
+    complex_qwen_query,
     END_OF_CODE_STOP_SEQUENCE,
     START_OF_CODE_STOP_SEQUENCE,
 )
@@ -413,30 +415,59 @@ class DsgiSessionManager:
                 ],
             )
         elif self.use_inference_endpoint:
-            if not gamma:
-                prompt_input_ids = self.tokenizer(prompt, return_tensors="pt")[
-                    "input_ids"
+            function_signature = extract_function_signature(problem["code"])
+            if self.session_config.model_name == QWEN3_253B_MODEL_NAME_HF:
+                # Qwen3 specific adaptations to the prompt
+                prompt = prompt.replace("Deepseek Coder", "Qwen3")
+                prompt = prompt.replace("Deepseek", "Qwen")
+                inserts = [
+                    "Allowing **incremental execution and debugging**", # long code prompt
+                    "Examples are listed as follows:", # deepseek instruct prompt
                 ]
-                solution, completion_tokens = simple_query(
-                    prompt,
-                    self.session_config.model_name,
-                    temperture=0,
-                    stop_condition=END_OF_CODE_STOP_SEQUENCE,
-                )
-                if self.stats_manager is not None:
-                    self.stats_manager.increate_counter(
-                        "guidance_input_tokens", prompt_input_ids.shape[1]
+                for s in inserts:
+                    if s in prompt:
+                        prompt = prompt.replace(s, f"{s}\n{PYTHON_CODE_TAGS_USAGE_INSTRUCTION}")
+                        # print(prompt)
+                        break
+
+            if not gamma:
+                solution = None
+                if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
+                    prompt_input_ids = self.tokenizer(prompt, return_tensors="pt")[
+                        "input_ids"
+                    ]
+                    solution, completion_tokens = simple_query(
+                        prompt,
+                        self.session_config.model_name,
+                        temperture=0,
+                        stop_condition=END_OF_CODE_STOP_SEQUENCE,
                     )
-                    self.stats_manager.increate_counter(
-                        "guidance_output_tokens", completion_tokens
+                    if self.stats_manager is not None:
+                        self.stats_manager.increate_counter(
+                            "guidance_input_tokens", prompt_input_ids.shape[1]
+                        )
+                        self.stats_manager.increate_counter(
+                            "guidance_output_tokens", completion_tokens
+                        )
+                elif self.session_config.model_name == QWEN3_253B_MODEL_NAME_HF:
+                    _, solution, completion_tokens = complex_qwen_query(
+                        prompt,
+                        function_signature,
+                        self.session_config.model_name,
+                        temperture=dsgi_injection_manager.adapter.temperature,
+                        max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
+                        verbose=True,
                     )
+                assert solution
                 return solution
-            outputs = inference_endpoint_dsgi(
-                prompt,
-                self.tokenizer,
-                self.session_config.model_name,
-                dsgi_injection_manager,
-            )
+            else: # gamma > 0
+                outputs = inference_endpoint_dsgi(
+                    prompt,
+                    self.tokenizer,
+                    self.session_config.model_name,
+                    dsgi_injection_manager,
+                    function_signature,
+                )
         new_codes = raw_outputs_to_new_code(
             outputs,
             self.tokenizer,
@@ -445,9 +476,9 @@ class DsgiSessionManager:
             stats_manager=self.stats_manager,
         )
         solution = new_codes[0]
-        if function_signature:
-            solution = f"{function_signature}\n{solution}"
-            assert is_valid_python(solution)
+        # if function_signature:
+        #     solution = f"{function_signature}\n{solution}"
+        #     assert is_valid_python(solution)
         return solution
 
     def solve_problem_with_dsgi_wrapper(self, problem, gamma):

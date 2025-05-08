@@ -1,7 +1,8 @@
 import requests
 import pprint
-import json
 import re
+from collections import defaultdict
+import json
 import torch
 from model_utils import convert_logprobs_dist_dict_to_tokenizer_prob_dist
 from model_utils import extract_new_tokens
@@ -40,6 +41,133 @@ def extract_prompt_python_code(text):
     return text.split(f"{START_OF_CODE_STOP_SEQUENCE}")[1]
 
 
+def extract_function_name(signature_line):
+    match = re.match(r"def\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(", signature_line)
+    return match.group(1) if match else None
+
+
+def extract_matching_blocks(text, verbose=False):
+    pattern = r"```python\n(.*?)```"
+    matches = list(re.finditer(pattern, text, re.DOTALL))
+    if verbose:
+        print(f"Found {len(matches)} code blocks.\n")
+    return matches
+
+
+def extract_matching_blocks_with_def_index(matches, target_func_name, verbose=False):
+    def_index_dict = defaultdict(list)  # block_str -> list of def_start_indices
+    last_block = None
+
+    # executable_partial_program_code = (
+    #     self.execution_manager.extract_partial_executable_program(new_code)
+    # )
+    for i, match in enumerate(matches):
+        block = match.group(1)
+        block_start_in_text = match.start(1)
+        lines = block.splitlines()
+
+        idx_sum = 0
+        for rel_line_idx, line in enumerate(lines):
+            print(f"{i}:{rel_line_idx}: {line}")
+            line_stripped = line.strip()
+            if (
+                not line_stripped
+                or line_stripped.startswith("#")
+                or line_stripped.startswith("import")
+                or line_stripped.startswith("from")
+            ):
+                idx_sum += len(line + "\n")
+                continue
+
+            if re.match(rf"^def\s+{target_func_name}\s*\(", line_stripped):
+                def_index = block_start_in_text + idx_sum
+                block_cleaned = block.strip()
+                def_index_dict[block_cleaned].append(def_index)
+                last_block = block_cleaned
+
+                print(
+                    f"Block {i} matched\n{block}\n`{target_func_name}` at index {def_index}."
+                )
+                break
+            else:
+                print(f"Block {i} not matched:\n{block}\n")
+                break
+
+    final_def_index = def_index_dict[last_block][-1] if last_block else None
+    if verbose:
+        print(
+            f"\n✔ First occurrence of last matching block starts at index {final_def_index}."
+        )
+        print(f"✔ Total unique blocks: {len(def_index_dict)}")
+
+    # return final_def_index, last_block, def_index_dict
+    return final_def_index, last_block
+
+
+def complex_qwen_query(
+    prompt,
+    function_signature,
+    model_name,
+    temperture,
+    max_tokens,
+    top_p=FW_UTILS__DEFAULT_TOP_P,
+    post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
+    url=FW_ENDPOINT_URL,
+    verbose=False,
+):
+    stop_condition = ["<endoftext>", "<im_end>"]
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {FW_KEY}",
+    }
+    payload = {
+        "model": HF_MODEL_TO_FW_MODEL[model_name],
+        "prompt": prompt,
+        "max_tokens": max_tokens,
+        "temperature": temperture,
+        "top_p": top_p,
+        "stop": stop_condition,
+    }
+    total_match_retries = 3
+    total_completion_tokens = 0
+    answer_start_until_code = None
+    for match_retry in range(total_match_retries):
+        print(f"Match Retry #{match_retry + 1}/{total_match_retries}")
+        response = fw_utils__post_request_retries(
+            url,
+            headers,
+            json.dumps(payload),
+            timeout=QWEN_REQUEST_TIMEOUT_SEC,
+            post_requests_retries=post_requests_retries,
+            verbose=verbose,
+        )
+        data = response.json()
+        completion_tokens = data["usage"]["completion_tokens"]
+        total_completion_tokens += completion_tokens
+        raw_text = data["choices"][0]["text"]
+        raw_text = raw_text.replace("<python>", "```python").replace("</python>", "```")
+        function_name = extract_function_name(function_signature)
+        matches = extract_matching_blocks(raw_text, verbose=True)
+        if not matches:
+            continue
+
+        answer_start_idx, last_block = extract_matching_blocks_with_def_index(
+            matches, function_name, verbose=True
+        )
+        if not answer_start_idx:
+            continue
+        answer_start_until_code = (
+            raw_text[:answer_start_idx] if answer_start_idx is not None else None
+        )
+        # print("\n=== Answer Until Code ===")
+        # print(answer_start_until_code)
+        break
+
+    assert answer_start_until_code
+    return answer_start_until_code, last_block, total_completion_tokens
+
+
 def simple_query(
     prompt,
     model_name,
@@ -58,9 +186,8 @@ def simple_query(
         "Content-Type": "application/json",
         "Authorization": f"Bearer {FW_KEY}",
     }
-    model_name = HF_MODEL_TO_FW_MODEL[model_name]
     payload = {
-        "model": model_name,
+        "model": HF_MODEL_TO_FW_MODEL[model_name],
         "prompt": prompt,
         "max_tokens": max_tokens,
         "temperature": temperture,
@@ -121,7 +248,7 @@ def pseudo_beam_search_batch(
     ):
         n = batch_size * (total_requests + 1)
         payload = {
-            "model": model_name,
+            "model": HF_MODEL_TO_FW_MODEL[model_name],
             "n": n,
             "prompt": prompt,
             "max_tokens": max_tokens,
@@ -146,7 +273,7 @@ def pseudo_beam_search_batch(
         prompt_code_lines_count = len(prompt_code.splitlines())
         data_choices_len = len(data["choices"])
         print(
-            f"[INFO] Using batch size = {batch_size}, temperature = {temperature}, uniqe_count={len(unique_codes)}/{unique_samples_count}, choices={data_choices_len}"
+            f"[INFO] Using batch size = {batch_size}, d={nf_samples_depth} t={temperature}, uniqe_count={len(unique_codes)}/{unique_samples_count}, choices={data_choices_len}"
         )
         lengths = []
         for i, choice in enumerate(data["choices"]):
@@ -168,13 +295,6 @@ def pseudo_beam_search_batch(
                 )
             except ValueError:
                 continue
-            print(f"#{i}")
-            print("#" * 20)
-            print(full_code)
-            print("#" * 20)
-            print(executable_partial_program_code)
-            print("#" * 20)
-            print()
             if (
                 full_code
                 and full_code not in unique_codes
@@ -189,6 +309,13 @@ def pseudo_beam_search_batch(
                 # else:
                 #     pass
                 # print(f"[WARN] No valid code block in completion #{i + 1}")
+                print(f"#{i}")
+                print("#" * 20)
+                print(full_code)
+                print("#" * 20)
+                print(executable_partial_program_code)
+                print("#" * 20)
+                print()
             if len(unique_codes) >= unique_samples_count:
                 break
         total_requests += 1
@@ -202,12 +329,18 @@ def pseudo_beam_search_batch(
 
 
 def fw_utils__post_request_retries(
-    url, headers, data, timeout, post_requests_retries, verbose=False
+    url,
+    headers,
+    data,
+    post_requests_retries,
+    verbose=False,
+    timeout=REQUEST_TIMEOUT_SEC,
 ):
+    initial_timeout = timeout
     for retry_idx in range(post_requests_retries):
         err = None
         response = None
-        timeout = REQUEST_TIMEOUT_SEC * (2 * retry_idx + 1)
+        timeout = initial_timeout * (2 * retry_idx + 1)
         try:
             if verbose:
                 print(
@@ -246,9 +379,8 @@ def fw_utils__get_next_token_top_logprob_dist(
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
 ):
     max_tokens = 1  ## should not be changed
-    mapped_model_name = HF_MODEL_TO_FW_MODEL[model_name]
     payload = {
-        "model": mapped_model_name,
+        "model": HF_MODEL_TO_FW_MODEL[model_name],
         "prompt": prompt,
         "max_tokens": max_tokens,
         "temperature": 0.0,
@@ -284,7 +416,7 @@ def fw_utils__sample_code_pseudo_beam_search(
     temperature,
     nf_samples_depth,
     crop_idx,
-    model_name=DEEPSEEK_0324_MODEL_NAME_FW,
+    model_name=DEEPSEEK_V3_0324_MODEL_NAME_FW,
     url=FW_ENDPOINT_URL,
     fw_key=FW_KEY,
     max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
@@ -323,11 +455,38 @@ CODE_BORDER_TOKEN = "```"
 END_OF_SENTENCE_TOKEN = "<__end_of_sentence__>"
 
 
+def extract_dsgi_start_prefix(
+    prompt, model_name, dsgi_injection_manager, function_signature
+):
+    assert model_name in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
+    if DEEPSEEK_V3_0324_MODEL_NAME_HF == model_name:
+        answer_start_until_code, completion_tokens = simple_query(
+            prompt,
+            model_name,
+            temperture=dsgi_injection_manager.adapter.temperature,
+            stop_condition=START_OF_FUNCTION_SEQUENCE,
+            extract_code=False,
+            add_stop_condition=False,
+            verbose=True,
+        )
+    elif QWEN3_253B_MODEL_NAME_HF == model_name:
+        answer_start_until_code, code_solution, completion_tokens = complex_qwen_query(
+            prompt,
+            function_signature,
+            model_name,
+            temperture=dsgi_injection_manager.adapter.temperature,
+            max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
+            verbose=True,
+        )
+    return answer_start_until_code, completion_tokens
+
+
 def inference_endpoint_dsgi(
     prompt,
     tokenizer,
     model_name,
     dsgi_injection_manager,
+    function_signature,
     max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
     debug=True,
     do_sample=False,
@@ -342,14 +501,8 @@ def inference_endpoint_dsgi(
     previous_executable_partial_program_code = None
     executable_partial_program_code, new_code = None, None
 
-    answer_start_until_code, completion_tokens = simple_query(
-        prompt,
-        model_name,
-        temperture=dsgi_injection_manager.adapter.temperature,
-        stop_condition=START_OF_FUNCTION_SEQUENCE,
-        extract_code=False,
-        add_stop_condition=False,
-        verbose=True,
+    answer_start_until_code, completion_tokens = extract_dsgi_start_prefix(
+        prompt, model_name, dsgi_injection_manager, function_signature
     )
 
     inputs = tokenizer(prompt, return_tensors="pt")
@@ -359,8 +512,12 @@ def inference_endpoint_dsgi(
         stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
 
     prompt += answer_start_until_code
-    # print(f"Skipping (no guidance needed): {answer_start_until_code}")
-    prompt += START_OF_FUNCTION_SEQUENCE
+    if model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
+        prompt += START_OF_FUNCTION_SEQUENCE
+    if model_name == QWEN3_253B_MODEL_NAME_HF:
+        function_name = extract_function_name(function_signature)
+        prompt += f'def {function_name}('
+        new_text += f'def {function_name}('
 
     inputs = tokenizer(prompt, return_tensors="pt")
     input_ids = inputs["input_ids"]

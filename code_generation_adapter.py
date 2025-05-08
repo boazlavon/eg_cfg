@@ -140,7 +140,6 @@ class CodeGenerationAdapter:
             )
         elif self.use_inference_endpoint:
             assert self.model_name
-            model_name_fw = HF_MODEL_TO_FW_MODEL[self.model_name]
             new_codes = fw_utils__sample_code_pseudo_beam_search(
                 input_ids,
                 tokenizer=self.tokenizer,
@@ -150,7 +149,7 @@ class CodeGenerationAdapter:
                 temperature=self.temperature,
                 nf_samples_depth=self.nf_samples_depth,
                 crop_idx=self.initial_prompt_input_ids_len,
-                model_name=model_name_fw,
+                model_name=self.model_name,
             )
         new_codes = list(set(new_codes))
         executable_partial_programs = []

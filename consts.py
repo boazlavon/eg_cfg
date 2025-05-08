@@ -119,7 +119,6 @@ DEEPSEEK_V3_0324_INSTRUCT_BASELINE_PASSED_PATH = (
     "official_eval_results/deepseek-ai_DeepSeek-V3-0324.task_ids.json"
 )
 DEEPSEEK_13B_INSTRUCT_MODEL_NAME = "deepseek-ai/deepseek-coder-1.3b-instruct"
-DEEPSEEK_V3_0324_MODEL_NAME_HF = "deepseek-ai/DeepSeek-V3-0324"
 
 DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME = (
     "deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct"
@@ -134,17 +133,6 @@ DEEPSEEK_V3_0324_INSTRUCT_BASELINE_RESULTS_PATH = (
     "official_eval_results/deepseek-ai_DeepSeek-V3-0324.json"
 )
 
-
-OFFICIAL_PASSED_TASK_IDS_PATH = {
-    DEEPSEEK_13B_INSTRUCT_MODEL_NAME: DEEPSEEK_13B_INSTRUCT_BASELINE_PASSED_PATH,
-    DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME: DEEPSEEK_CODER_V2_LITE_INSTRUCT_BASELINE_PASSED_PATH,
-    DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_V3_0324_INSTRUCT_BASELINE_PASSED_PATH,
-}
-OFFICIAL_RESULT_PATH = {
-    DEEPSEEK_13B_INSTRUCT_MODEL_NAME: DEEPSEEK_13B_INSTRUCT_BASELINE_RESULTS_PATH,
-    DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME: DEEPSEEK_CODER_V2_LITE_INSTRUCT_BASELINE_RESULTS_PATH,
-    DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_V3_0324_INSTRUCT_BASELINE_RESULTS_PATH,
-}
 
 EXECUTION_TIMEOUT_SEC = 10
 MBPP_SIZE = 500
@@ -163,19 +151,50 @@ FW__MIN_BATCH_SIZE = 5
 LOGPROBS_COUNT = 5
 HTTP_REQUEST_TO_LLM_RETRIES_COUNT = 3
 REQUEST_TIMEOUT_SEC = 15
+QWEN_REQUEST_TIMEOUT_SEC = REQUEST_TIMEOUT_SEC * 3
 FW_KEY = "fw_3ZkWSyAu3Z41GcwKkSM3pAax"
-DEEPSEEK_0324_MODEL_NAME_FW = "accounts/fireworks/models/deepseek-v3-0324"
-QWEN3_MODEL_NAME_FW = "accounts/fireworks/models/qwen3-235b-a22b"
-QWEN3_253B_MODEL_NAME_FW = "accounts/fireworks/models/qwen3-235b-a22b"
+
+DEEPSEEK_V3_0324_MODEL_NAME_HF = "deepseek-ai/DeepSeek-V3-0324"
+DEEPSEEK_V3_0324_MODEL_NAME_FW = "accounts/fireworks/models/deepseek-v3-0324"
 QWEN3_253B_MODEL_NAME_HF = "Qwen/Qwen3-235B-A22B"
+QWEN3_253B_MODEL_NAME_FW = "accounts/fireworks/models/qwen3-235b-a22b"
+
 FW_ENDPOINT_URL = "https://api.fireworks.ai/inference/v1/completions"
 PSEUDO_BEAM_SEARCH_MAX_TOKENS = MAX_NEW_TOKENS
+COMPLEX_QWEN_QUERY_MAX_TOKENS = 2048
 PSEUDO_BEAM_SEARCH_MAX_TOTAL_REQUESTS = 2
 HF_MODEL_TO_FW_MODEL = {
-    DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_0324_MODEL_NAME_FW,
+    DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_V3_0324_MODEL_NAME_FW,
     QWEN3_253B_MODEL_NAME_HF: QWEN3_253B_MODEL_NAME_FW,
 }
 HTTP_SUCCESS_CODE = 200
+PYTHON_CODE_TAGS_USAGE_INSTRUCTION = (
+    "# IMPORTANT: All generated Python code MUST be enclosed EXCLUSIVELY within "
+    "```python and ``` tags. No other formatting is acceptable.\n"
+    "# The FINAL answer MUST be the LAST code block in the output, written with NO comments or text after it. "
+    "It must be immediately followed by the <endoftext> token."
+)
+
+# EXECUTION_TRACE_USAGE_INSTRUCTION = (
+#     "# NOTE: You may receive runtime execution data before generating your final answer.\n"
+#     "# This data is optional and may include example inputs, outputs, or execution traces.\n"
+#     "# You are free to use it however you see fit — to improve your reasoning, confirm correctness,\n"
+#     "# or ignore it entirely if it's not helpful.\n"
+#     "# If the runtime data contradicts your initial reasoning, feel free to revise your code.\n"
+#     "# Your final code must be enclosed within ```python and ``` and must be the last block before <endoftext>.\n"
+# )
+
+OFFICIAL_PASSED_TASK_IDS_PATH = {
+    DEEPSEEK_13B_INSTRUCT_MODEL_NAME: DEEPSEEK_13B_INSTRUCT_BASELINE_PASSED_PATH,
+    DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME: DEEPSEEK_CODER_V2_LITE_INSTRUCT_BASELINE_PASSED_PATH,
+    DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_V3_0324_INSTRUCT_BASELINE_PASSED_PATH,
+}
+OFFICIAL_RESULT_PATH = {
+    DEEPSEEK_13B_INSTRUCT_MODEL_NAME: DEEPSEEK_13B_INSTRUCT_BASELINE_RESULTS_PATH,
+    DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME: DEEPSEEK_CODER_V2_LITE_INSTRUCT_BASELINE_RESULTS_PATH,
+    DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_V3_0324_INSTRUCT_BASELINE_RESULTS_PATH,
+}
+
 
 LLMA4_MAVERICK_SOLVED_TASK_IDS = [
     11,
