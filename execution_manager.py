@@ -14,10 +14,11 @@ from consts import *
 
 
 class ExecutionManager:
-    def __init__(self, tokenizer, function_signature=None):
+    def __init__(self, tokenizer, function_signature=None, minimal_trace=False):
         self.tokenizer = tokenizer
         self.function_signature = function_signature
         self.timeouts = 0
+        self.minimal_trace = minimal_trace
 
     def execute_test_cases(self, executable_code, test_cases, use_assert=False):
         executions = {}
@@ -62,7 +63,14 @@ class ExecutionManager:
                 test_case, program_execution = future.result()
                 if program_execution is not None:
                     # executions[test_case] = program_execution
-                    executions[test_case] = program_execution.to_compact_json()
+                    executions[test_case] = program_execution.to_compact_json(
+                        minimal_trace=self.minimal_trace
+                    )
+                    if self.minimal_trace:
+                        print(executable_code)
+                        print(test_case)
+                        print()
+                        print(executions[test_case])
 
         os.chdir(original_cwd)
         return executions

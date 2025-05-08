@@ -1,13 +1,12 @@
 import torch
 import re
 import ast
-import black
 import tokenize
 from io import StringIO
 from transformers import StoppingCriteria
 from typing import Optional
 from transformers import StoppingCriteriaList
-
+from fw_utils import extract_python_code
 from model_utils import extract_new_tokens
 from consts import *
 
@@ -240,32 +239,33 @@ def raw_outputs_to_new_code(
     for output in outputs:
         try:
             output = output.unsqueeze(0)
-            new_code, new_tokens = extract_new_tokens(
+            output_text, output_tokens = extract_new_tokens(
                 tokenizer, output, initial_prompt_input_ids_len
             )
-            # if stats_manager is not None:
-            #     stats_manager.increate_counter('guidance_tokens', new_tokens.shape[1])
-
             if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
-                new_code = new_code.replace(
+                output_text = output_text.replace(
                     DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_END, ""
                 ).strip()
             if prompt_type in (
                 PROMPT_TYPE__DEEPSEEK_INSTRUCT,
                 PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
             ):
-                new_code = new_code.split(INSTRUCT_MODEL_PYTHON_CODE_START, 1)[
-                    1
-                ].rstrip()
-                # TODO: strip right ```
+                extracted_code = extract_python_code(output_text)
+                if not extracted_code:
+                    extracted_code = output_text.split(
+                        INSTRUCT_MODEL_PYTHON_CODE_START, 1
+                    )[1].rstrip()
+                    if "```" in extracted_code:
+                        extracted_code = extracted_code.split("```")[0]
             if validate:
-                assert is_valid_python(new_code)
+                assert is_valid_python(extracted_code)
                 # new_code = black.format_str(
                 #     new_code, mode=black.FileMode(line_length=1024)
                 # )
         except:
             continue
-        new_codes.append(new_code)
+        new_codes.append(extracted_code)
+    assert new_codes
     return new_codes
 
 

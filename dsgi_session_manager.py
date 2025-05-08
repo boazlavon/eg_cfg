@@ -121,7 +121,9 @@ class DsgiSessionManager:
             self.tokenizer = load_tokenizer(self.session_config.model_name)
 
         self.execution_manager = ExecutionManager(
-            self.tokenizer, function_signature=None
+            self.tokenizer,
+            function_signature=None,
+            minimal_trace=self.session_config.minimal_trace,
         )
         self.stats_manager = StatisticsManager()
         self.problems = load_mbpp_problems()
@@ -180,64 +182,71 @@ class DsgiSessionManager:
             return
         if self.session_config.is_prod:
             random.shuffle(official_passed_task_ids)
-        for task_id in official_passed_task_ids:
-            for _, problem in self.problems:
-                if problem["task_id"] != task_id:
-                    continue
-                solution_entry_path = get_solution_filepath(
-                    self.inference_session.results_dir, task_id, gamma
+        for _, problem in self.problems:
+            task_id = problem["task_id"]
+            if (
+                not self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF
+            ) and (not task_id in official_passed_task_ids):
+                continue
+            solution_entry_path = get_solution_filepath(
+                self.inference_session.results_dir, task_id, gamma
+            )
+            if os.path.exists(solution_entry_path):
+                continue
+
+            with open(solution_entry_path, "a"):
+                pass
+            print(f"task_id: {task_id}")
+            pprint.pprint(problem)
+            test_cases = problem["test_list"]
+
+            solution = None
+            general_error = None
+            tb = None
+            solution_entry = None
+
+            if self.session_config.model_name in (
+                DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
+                DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME,
+            ):
+                solution = official_results[task_id]["generation"]
+                solution_results = run_tests(solution, test_cases)
+                solution_entry = format_results(
+                    solution, solution_results, general_error, tb
                 )
-                if os.path.exists(solution_entry_path):
-                    continue
+                solution_entry["stats"] = {}
+                solution_entry["retry"] = -1
+                solution_entry["random_seed"] = -1
+                self.solutions[(task_id, gamma)] = solution_entry
 
-                with open(solution_entry_path, "a"):
-                    pass
-                print(f"task_id: {task_id}")
-                pprint.pprint(problem)
-                test_cases = problem["test_list"]
+                print(solution_entry_path)
+                with open(solution_entry_path, "w") as f:
+                    json.dump(solution_entry, f, indent=2)
 
-                solution = None
-                general_error = None
-                tb = None
-                solution_entry = None
-
-                if self.session_config.model_name in (
-                    DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
-                    DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME,
-                ):
-                    solution = official_results[task_id]["generation"]
-                    solution_results = run_tests(solution, test_cases)
-                    solution_entry = format_results(
-                        solution, solution_results, general_error, tb
+            elif self.session_config.model_name in (DEEPSEEK_V3_0324_MODEL_NAME_HF,):
+                baseline_trial_base = (
+                    "web_trials/baseline/mbpp/deepseek-ai_DeepSeek-V3-0324"
+                )
+                baseline_dirs = ["ns1t0.0d1_ln", "ns1t0.0d1_lci_ln"]
+                for baseline_dir in baseline_dirs:
+                    results_dir = os.path.join(baseline_trial_base, baseline_dir)
+                    bs_solution_entry_path = get_solution_filepath(
+                        results_dir,
+                        task_id,
+                        gamma=0.0,
                     )
-                    solution_entry["stats"] = {}
-                    solution_entry["retry"] = -1
-                    solution_entry["random_seed"] = -1
-                    self.solutions[(task_id, gamma)] = solution_entry
-                    print(solution_entry_path)
-                    with open(solution_entry_path, "w") as f:
-                        json.dump(solution_entry, f, indent=2)
-
-                elif self.session_config.model_name in (
-                    DEEPSEEK_V3_0324_MODEL_NAME_HF,
-                ):
-                    baseline_trial_base = (
-                        "web_trials/baseline/mbpp/deepseek-ai_DeepSeek-V3-0324"
-                    )
-                    baseline_dirs = ["ns1t0.0d1_ln", "ns1t0.0d1_lci_ln"]
-                    for baseline_dir in baseline_dirs:
-                        results_dir = os.path.join(baseline_trial_base, baseline_dir)
-                        bs_solution_entry_path = get_solution_filepath(
-                            results_dir,
-                            task_id,
-                            gamma=0.0,
+                    if not os.path.exists(bs_solution_entry_path):
+                        continue
+                    with open(bs_solution_entry_path) as f:
+                        bs_solution_entry = json.load(f)
+                    for gamma in (0, 0.0):
+                        solution_entry_path = get_solution_filepath(
+                            self.inference_session.results_dir, task_id, gamma
                         )
-                        with open(bs_solution_entry_path) as f:
-                            bs_solution_entry = json.load(f)
-                        if not bs_solution_entry["passed"]:
-                            continue
                         with open(solution_entry_path, "w") as f:
-                            json.dump(solution_entry, f, indent=2)
+                            json.dump(bs_solution_entry, f, indent=2)
+                    if bs_solution_entry["passed"]:
+                        break
 
     def resolve_cache_entries(self):
         if not (
@@ -354,6 +363,7 @@ class DsgiSessionManager:
                 "stats_manager": self.stats_manager,
                 "use_hf_model": self.use_hf_model,
                 "use_inference_endpoint": self.use_inference_endpoint,
+                "model_name": self.session_config.model_name,
             }
 
             detector_kwargs = {}
@@ -410,6 +420,7 @@ class DsgiSessionManager:
                 solution, completion_tokens = simple_query(
                     prompt,
                     self.session_config.model_name,
+                    temperture=0,
                     stop_condition=END_OF_CODE_STOP_SEQUENCE,
                 )
                 if self.stats_manager is not None:

@@ -165,6 +165,7 @@ HTTP_REQUEST_TO_LLM_RETRIES_COUNT = 3
 REQUEST_TIMEOUT_SEC = 15
 FW_KEY = "fw_3ZkWSyAu3Z41GcwKkSM3pAax"
 DEEPSEEK_0324_MODEL_NAME_FW = "accounts/fireworks/models/deepseek-v3-0324"
+QWEN3_MODEL_NAME_FW = "accounts/fireworks/models/qwen3-235b-a22b"
 QWEN3_253B_MODEL_NAME_FW = "accounts/fireworks/models/qwen3-235b-a22b"
 QWEN3_253B_MODEL_NAME_HF = "Qwen/Qwen3-235B-A22B"
 FW_ENDPOINT_URL = "https://api.fireworks.ai/inference/v1/completions"

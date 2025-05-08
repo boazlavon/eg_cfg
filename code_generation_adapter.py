@@ -32,6 +32,7 @@ class CodeGenerationAdapter:
         stats_manager=None,
         use_hf_model=False,
         use_inference_endpoint=True,
+        model_name=None,
     ):
         assert int(use_hf_model) + int(use_inference_endpoint) == 1
         self.use_hf_model = use_hf_model
@@ -67,10 +68,11 @@ class CodeGenerationAdapter:
             self.current_dynamic_signal[dynamic_signal_type] = None
             self.current_debug_data[dynamic_signal_type] = None
         self.backward_signals = []
-
+        self.generate_new_signal = None
         self.dynamic_signals_types = dynamic_signals_types
         self.detector = None
         self.stats_manager = stats_manager
+        self.model_name = model_name
 
     @staticmethod
     def dynamic_signal_handlers():
@@ -137,6 +139,8 @@ class CodeGenerationAdapter:
                 stats_manager=self.stats_manager,
             )
         elif self.use_inference_endpoint:
+            assert self.model_name
+            model_name_fw = HF_MODEL_TO_FW_MODEL[self.model_name]
             new_codes = fw_utils__sample_code_pseudo_beam_search(
                 input_ids,
                 tokenizer=self.tokenizer,
@@ -146,6 +150,7 @@ class CodeGenerationAdapter:
                 temperature=self.temperature,
                 nf_samples_depth=self.nf_samples_depth,
                 crop_idx=self.initial_prompt_input_ids_len,
+                model_name=model_name_fw,
             )
         new_codes = list(set(new_codes))
         executable_partial_programs = []
@@ -170,7 +175,7 @@ class CodeGenerationAdapter:
         for idx, executable_partial_program_code in enumerate(
             executable_partial_programs
         ):
-            print(f"#{idx + 1} Executing:\n {executable_partial_program_code}")
+            print(f"#{idx + 1} Executing:\n {executable_partial_program_code}\n")
             if executable_partial_program_code not in self.program_executions:
                 self.program_executions[executable_partial_program_code] = (
                     self.execution_manager.execute_test_cases(
@@ -276,6 +281,7 @@ class CodeGenerationAdapter:
                 self.current_dynamic_signal[dynamic_signal_type],
                 self.current_debug_data[dynamic_signal_type],
             )
+        self.generate_new_signal = generate_new_signal
 
         executable_partial_program_code = self._extract_partial_executions(new_code)
 

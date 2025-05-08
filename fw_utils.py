@@ -4,10 +4,7 @@ import json
 import re
 import torch
 from model_utils import convert_logprobs_dist_dict_to_tokenizer_prob_dist
-from model_utils import extract_new_tokens, calculate_tokens_length
-from code_generation_utils import CodeGenStopCriteria, prime_stopping_criteria
-from transformers import AutoTokenizer
-from transformers import StoppingCriteriaList
+from model_utils import extract_new_tokens
 
 from consts import *
 
@@ -46,6 +43,7 @@ def extract_prompt_python_code(text):
 def simple_query(
     prompt,
     model_name,
+    temperture,
     top_p=FW_UTILS__DEFAULT_TOP_P,
     max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
@@ -53,7 +51,7 @@ def simple_query(
     stop_condition=END_OF_CODE_STOP_SEQUENCE,
     extract_code=True,
     add_stop_condition=True,
-    temperture=0.0,
+    verbose=False,
 ):
     headers = {
         "Accept": "application/json",
@@ -65,7 +63,7 @@ def simple_query(
         "model": model_name,
         "prompt": prompt,
         "max_tokens": max_tokens,
-        "temperature": 0.0,
+        "temperature": temperture,
         "top_p": top_p,
         "stop": stop_condition,
     }
@@ -75,6 +73,7 @@ def simple_query(
         json.dumps(payload),
         timeout=REQUEST_TIMEOUT_SEC,
         post_requests_retries=post_requests_retries,
+        verbose=verbose,
     )
     data = response.json()
     completion_tokens = data["usage"]["completion_tokens"]
@@ -98,9 +97,9 @@ def pseudo_beam_search_batch(
     headers,
     max_tokens,
     temperature,
-    max_total_requests,
     batch_size,
     crop_idx,
+    max_total_requests=PSEUDO_BEAM_SEARCH_MAX_TOTAL_REQUESTS,
     top_p=FW_UTILS__DEFAULT_TOP_P,
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
 ):
@@ -116,26 +115,27 @@ def pseudo_beam_search_batch(
     # print(
     #     f"[INFO] Starting pseudo beam search for {unique_samples_count} unique completions"
     # )
-    # print(f"[INFO] Using batch size = {batch_size}, temperature = {temperature}")
-    payload = {
-        "model": model_name,
-        "n": batch_size,
-        "prompt": prompt,
-        "max_tokens": max_tokens,
-        "temperature": temperature,
-        "top_p": top_p,
-        "stop": END_OF_CODE_STOP_SEQUENCE,
-    }
     total_completion_tokens = 0
     while (
         len(unique_codes) < unique_samples_count and total_requests < max_total_requests
     ):
+        n = batch_size * (total_requests + 1)
+        payload = {
+            "model": model_name,
+            "n": n,
+            "prompt": prompt,
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+            "top_p": top_p,
+            "stop": END_OF_CODE_STOP_SEQUENCE,
+        }
         response = fw_utils__post_request_retries(
             url,
             headers,
             json.dumps(payload),
             timeout=REQUEST_TIMEOUT_SEC,
             post_requests_retries=post_requests_retries,
+            verbose=True,
         )
         data = response.json()
         completion_tokens = data["usage"]["completion_tokens"]
@@ -144,6 +144,11 @@ def pseudo_beam_search_batch(
         prompt_new_text, _ = extract_new_tokens(tokenizer, prompt_input_ids, crop_idx)
         prompt_code = extract_prompt_python_code(prompt_new_text)
         prompt_code_lines_count = len(prompt_code.splitlines())
+        data_choices_len = len(data["choices"])
+        print(
+            f"[INFO] Using batch size = {batch_size}, temperature = {temperature}, uniqe_count={len(unique_codes)}/{unique_samples_count}, choices={data_choices_len}"
+        )
+        lengths = []
         for i, choice in enumerate(data["choices"]):
             raw_text = choice["text"]
             raw_text += END_OF_CODE_STOP_SEQUENCE
@@ -163,6 +168,13 @@ def pseudo_beam_search_batch(
                 )
             except ValueError:
                 continue
+            print(f"#{i}")
+            print("#" * 20)
+            print(full_code)
+            print("#" * 20)
+            print(executable_partial_program_code)
+            print("#" * 20)
+            print()
             if (
                 full_code
                 and full_code not in unique_codes
@@ -180,28 +192,36 @@ def pseudo_beam_search_batch(
             if len(unique_codes) >= unique_samples_count:
                 break
         total_requests += 1
-        temperature = temperature * (1.02**total_requests)
+        temperature = temperature * (1.2**total_requests)
 
-    print(f"[INFO] Completed with {len(unique_codes)} unique completions")
+    print(
+        f"[INFO] Completed with {len(unique_codes)}/{unique_samples_count} unique completions"
+    )
     unique_codes = list(unique_codes)
     return unique_codes, total_completion_tokens
 
 
-def fw_utils__post_request_retries(url, headers, data, timeout, post_requests_retries):
+def fw_utils__post_request_retries(
+    url, headers, data, timeout, post_requests_retries, verbose=False
+):
     for retry_idx in range(post_requests_retries):
         err = None
         response = None
+        timeout = REQUEST_TIMEOUT_SEC * (2 * retry_idx + 1)
         try:
-            # print(f"[INFO] Sending request #{retry_idx + 1}")
+            if verbose:
+                print(
+                    f"[INFO] Sending request #{retry_idx + 1}/{post_requests_retries} (timeout={timeout}sec)"
+                )
             response = requests.post(
                 url,
                 headers=headers,
                 data=data,
-                timeout=REQUEST_TIMEOUT_SEC,
+                timeout=timeout,
             )
             if response.status_code != HTTP_SUCCESS_CODE:
                 print(
-                    f"[ERROR] Exception on request #{retry_idx + 1}:\nCode: {response.status_code}"
+                    f"[ERROR] Exception on request #{retry_idx + 1}: Code: {response.status_code}"
                 )
                 continue
             # Success
@@ -268,29 +288,28 @@ def fw_utils__sample_code_pseudo_beam_search(
     url=FW_ENDPOINT_URL,
     fw_key=FW_KEY,
     max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
-    max_total_requests=PSEUDO_BEAM_SEARCH_MAX_TOTAL_REQUESTS,
 ):
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
         "Authorization": f"Bearer {fw_key}",
     }
-    batch_size = max(FW__MIN_BATCH_SIZE, max_total_requests)
+    batch_size = max(FW__MIN_BATCH_SIZE, samples_count)
     prompt = tokenizer.batch_decode(input_ids, skip_special_tokens=True)[0]
     unique_codes, total_completion_tokens = pseudo_beam_search_batch(
-        prompt,
-        tokenizer,
-        execution_manager,
-        samples_count,
-        nf_samples_depth,
-        model_name,
-        url,
-        headers,
-        max_tokens,
-        temperature,
-        batch_size,
-        samples_count,
-        crop_idx,
+        prompt=prompt,
+        tokenizer=tokenizer,
+        execution_manager=execution_manager,
+        unique_samples_count=samples_count,
+        nf_samples_depth=nf_samples_depth,
+        model_name=model_name,
+        url=url,
+        headers=headers,
+        max_tokens=max_tokens,
+        temperature=temperature,
+        max_total_requests=2,
+        batch_size=batch_size,
+        crop_idx=crop_idx,
     )
     if stats_manager is not None:
         stats_manager.increate_counter("beam_search_input_tokens", input_ids.shape[1])
@@ -326,10 +345,11 @@ def inference_endpoint_dsgi(
     answer_start_until_code, completion_tokens = simple_query(
         prompt,
         model_name,
+        temperture=dsgi_injection_manager.adapter.temperature,
         stop_condition=START_OF_FUNCTION_SEQUENCE,
         extract_code=False,
         add_stop_condition=False,
-        temperture=dsgi_injection_manager.adapter.temperature,
+        verbose=True,
     )
 
     inputs = tokenizer(prompt, return_tensors="pt")
@@ -339,7 +359,7 @@ def inference_endpoint_dsgi(
         stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
 
     prompt += answer_start_until_code
-    print(f"Skipping (no guidance needed): {answer_start_until_code}")
+    # print(f"Skipping (no guidance needed): {answer_start_until_code}")
     prompt += START_OF_FUNCTION_SEQUENCE
 
     inputs = tokenizer(prompt, return_tensors="pt")
@@ -377,6 +397,10 @@ def inference_endpoint_dsgi(
                     previous_executable_partial_program_code = (
                         executable_partial_program_code
                     )
+                    lines_count = len(new_text.splitlines())
+                    print(f"Current Code: {lines_count} lines")
+                    print(new_text)
+                    print()
         ###########
         if is_dsgi_enabled:
             #### Calculate Dynamic Signal conditional distibution ####
@@ -411,9 +435,7 @@ def inference_endpoint_dsgi(
             break
         input_ids = torch.cat([input_ids, next_token[:, None]], dim=-1)
 
-    input_ids = input_ids.squeeze(0)
-    outputs = [input_ids]
-    return outputs
+    return input_ids
 
 
 def fw_utils__get_next_token_prob_dist(
