@@ -1,0 +1,33 @@
+{
+  "code": "def count_With_Odd_SetBits(n):\n    count = 0\n    for num in range(1, n + 1):\n        set_bits = 0\n        temp = num\n        while temp > 0:\n            if temp % 2 == 1:\n                set_bits += 1\n            temp = temp // 2\n        if set_bits % 2 == 1:\n            count += 1\n    return count",
+  "results": {
+    "assert count_With_Odd_SetBits(5) == 3": {
+      "result": true,
+      "time": 0.14514803886413574,
+      "error": null
+    },
+    "assert count_With_Odd_SetBits(10) == 5": {
+      "result": true,
+      "time": 0.35354089736938477,
+      "error": null
+    },
+    "assert count_With_Odd_SetBits(15) == 8": {
+      "result": true,
+      "time": 0.2582056522369385,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:40:34",
+    "guidance_input_tokens": 490,
+    "guidance_output_tokens": 125,
+    "end_time": "2025-05-07 18:40:39",
+    "duration": "0:00:05.422343"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

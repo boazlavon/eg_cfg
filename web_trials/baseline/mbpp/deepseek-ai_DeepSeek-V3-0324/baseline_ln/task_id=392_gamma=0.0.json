@@ -1,0 +1,33 @@
+{
+  "code": "def get_max_sum(n):\n    if n == 0:\n        return 0\n    # Base case: if n is small, the maximum is n itself\n    if n < 12:\n        return n\n    # Recursive case: compute the sum of f(n/2) + f(n/3) + f(n/4) + f(n/5)\n    sum_parts = get_max_sum(n // 2) + get_max_sum(n // 3) + get_max_sum(n // 4) + get_max_sum(n // 5)\n    # Return the maximum between the sum and n\n    return max(sum_parts, n)",
+  "results": {
+    "assert get_max_sum(60) == 106": {
+      "result": false,
+      "time": 0.18456602096557617,
+      "error": null
+    },
+    "assert get_max_sum(10) == 12": {
+      "result": false,
+      "time": 0.1793053150177002,
+      "error": null
+    },
+    "assert get_max_sum(2) == 2": {
+      "result": true,
+      "time": 0.15298891067504883,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:41:25",
+    "guidance_input_tokens": 663,
+    "guidance_output_tokens": 143,
+    "end_time": "2025-05-07 18:41:28",
+    "duration": "0:00:02.655830"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

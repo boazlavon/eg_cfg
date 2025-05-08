@@ -1,0 +1,33 @@
+{
+  "code": "def cal_electbill(units):\n    # Initialize variables for different slabs\n    slab1_rate = 2.25\n    slab2_rate = 4.50\n    slab3_rate = 6.00\n    \n    # Initialize variables for slab limits\n    slab1_limit = 75\n    slab2_limit = 200\n    \n    # Initialize total bill\n    total_bill = 0.0\n    \n    # Calculate bill for slab1 (0-75 units)\n    if units > slab1_limit:\n        slab1_units = slab1_limit\n    else:\n        slab1_units = units\n    \n    slab1_cost = slab1_units * slab1_rate\n    total_bill = total_bill + slab1_cost\n    \n    # Calculate remaining units after slab1\n    remaining_units = units - slab1_units\n    \n    # If there are remaining units, calculate slab2 (76-200 units)\n    if remaining_units > 0:\n        if remaining_units > (slab2_limit - slab1_limit):\n            slab2_units = slab2_limit - slab1_limit\n        else:\n            slab2_units = remaining_units\n        \n        slab2_cost = slab2_units * slab2_rate\n        total_bill = total_bill + slab2_cost\n        \n        # Calculate remaining units after slab2\n        remaining_units = remaining_units - slab2_units\n        \n        # If there are remaining units, calculate slab3 (201+ units)\n        if remaining_units > 0:\n            slab3_units = remaining_units\n            slab3_cost = slab3_units * slab3_rate\n            total_bill = total_bill + slab3_cost\n    \n    return total_bill",
+  "results": {
+    "assert cal_electbill(75)==246.25": {
+      "result": false,
+      "time": 0.552931547164917,
+      "error": null
+    },
+    "assert cal_electbill(265)==1442.75": {
+      "result": false,
+      "time": 0.5262584686279297,
+      "error": null
+    },
+    "assert cal_electbill(100)==327.5": {
+      "result": false,
+      "time": 0.1296839714050293,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:43:52",
+    "guidance_input_tokens": 480,
+    "guidance_output_tokens": 384,
+    "end_time": "2025-05-07 18:44:00",
+    "duration": "0:00:08.682739"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

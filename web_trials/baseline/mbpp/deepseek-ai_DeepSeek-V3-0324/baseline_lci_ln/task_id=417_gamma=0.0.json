@@ -1,0 +1,33 @@
+{
+  "code": "def group_tuples(tuples_list):\n    # Create a dictionary to store the first elements and their corresponding values\n    groups = {}\n    \n    # Iterate through each tuple in the list\n    for t in tuples_list:\n        first_element = t[0]\n        remaining_elements = t[1:]\n        \n        # Check if the first element is already in the dictionary\n        if first_element in groups:\n            # If it is, extend the existing list with the remaining elements\n            existing_elements = groups[first_element]\n            for element in remaining_elements:\n                existing_elements.append(element)\n        else:\n            # If not, create a new entry with the first element and remaining elements\n            groups[first_element] = list(remaining_elements)\n    \n    # Prepare the result list by combining the first elements with their grouped values\n    result = []\n    for key in groups:\n        combined_tuple = (key,) + tuple(groups[key])\n        result.append(combined_tuple)\n    \n    return result",
+  "results": {
+    "assert group_tuples([('x', 'y'), ('x', 'z'), ('w', 't')]) == [('x', 'y', 'z'), ('w', 't')]": {
+      "result": true,
+      "time": 0.13699650764465332,
+      "error": null
+    },
+    "assert group_tuples([('a', 'b'), ('a', 'c'), ('d', 'e')]) == [('a', 'b', 'c'), ('d', 'e')]": {
+      "result": true,
+      "time": 0.1136784553527832,
+      "error": null
+    },
+    "assert group_tuples([('f', 'g'), ('f', 'g'), ('h', 'i')]) == [('f', 'g', 'g'), ('h', 'i')]": {
+      "result": true,
+      "time": 0.10768365859985352,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:58:03",
+    "guidance_input_tokens": 570,
+    "guidance_output_tokens": 238,
+    "end_time": "2025-05-07 18:58:07",
+    "duration": "0:00:03.823850"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

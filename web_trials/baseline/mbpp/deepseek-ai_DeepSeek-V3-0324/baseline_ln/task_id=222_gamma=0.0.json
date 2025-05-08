@@ -1,0 +1,33 @@
+{
+  "code": "def check_type(test_tup):\n    if not test_tup:\n        return True  # empty tuple is considered as having same type (no elements)\n    first_type = type(test_tup[0])\n    for element in test_tup[1:]:\n        if type(element) != first_type:\n            return False\n    return True",
+  "results": {
+    "assert check_type((5, 6, 7, 3, 5, 6) ) == True": {
+      "result": true,
+      "time": 0.12793850898742676,
+      "error": null
+    },
+    "assert check_type((1, 2, \"4\") ) == False": {
+      "result": true,
+      "time": 0.12320399284362793,
+      "error": null
+    },
+    "assert check_type((3, 2, 1, 4, 5) ) == True": {
+      "result": true,
+      "time": 0.1152639389038086,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:32:46",
+    "guidance_input_tokens": 665,
+    "guidance_output_tokens": 103,
+    "end_time": "2025-05-07 18:32:48",
+    "duration": "0:00:02.648831"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

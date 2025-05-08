@@ -1,0 +1,31 @@
+{
+  "code": "def check_monthnum(month_name):\n    # Define a list of months with 31 days\n    long_months = []\n    january = \"January\"\n    long_months.append(january)\n    march = \"March\"\n    long_months.append(march)\n    may = \"May\"\n    long_months.append(may)\n    july = \"July\"\n    long_months.append(july)\n    august = \"August\"\n    long_months.append(august)\n    october = \"October\"\n    long_months.append(october)\n    december = \"December\"\n    long_months.append(december)\n    \n    # Define a list of months with 30 days\n    short_months = []\n    april = \"April\"\n    short_months.append(april)\n    june = \"June\"\n    short_months.append(june)\n    september = \"September\"\n    short_months.append(september)\n    november = \"November\"\n    short_months.append(november)\n    \n    # Check if the given month is February\n    is_feb = (month_name == \"February\")\n    \n    # Check if the month is in the 31-day list\n    in_long_months = False\n    for m in long_months:\n        if m == month_name:\n            in_long_months = True\n    \n    # Check if the month is in the 30-day list\n    in_short_months = False\n    for s in short_months:\n        if s == month_name:\n            in_short_months = True\n    \n    # Determine if the month has 28 days\n    has_28_days = False\n    if is_feb:\n        has_28_days = True\n    elif in_long_months:\n        has_28_days = False\n    elif in_short_months:\n        has_28_days = False\n    \n    return has_28_days",
+  "results": {
+    "assert check_monthnum(\"February\")==True": {
+      "result": true,
+      "time": 0.07916975021362305,
+      "error": null
+    },
+    "assert check_monthnum(\"January\")==False": {
+      "result": true,
+      "time": 0.07520556449890137,
+      "error": null
+    },
+    "assert check_monthnum(\"March\")==False": {
+      "result": true,
+      "time": 0.0751960277557373,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:46:58",
+    "end_time": "2025-05-08 22:47:04",
+    "duration": "0:00:05.669491"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

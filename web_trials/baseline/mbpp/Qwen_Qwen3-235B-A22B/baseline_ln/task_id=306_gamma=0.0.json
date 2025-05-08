@@ -1,0 +1,31 @@
+{
+  "code": "def max_sum_increasing_subseq(arr, n, i, k):\n    dp = [0] * n\n    for j in range(n):\n        dp[j] = arr[j]\n        for m in range(j):\n            if arr[m] < arr[j] and dp[m] + arr[j] > dp[j] and (m < i or m >= k):\n                dp[j] = dp[m] + arr[j]\n    return dp[k-1]",
+  "results": {
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 4, 6) == 11": {
+      "result": false,
+      "time": 0.07913804054260254,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 2, 5) == 7": {
+      "result": false,
+      "time": 0.07799792289733887,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([11, 15, 19, 21, 26, 28, 31], 7, 2, 4) == 71": {
+      "result": false,
+      "time": 0.07646775245666504,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:43:04",
+    "end_time": "2025-05-08 22:43:06",
+    "duration": "0:00:02.766403"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

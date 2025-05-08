@@ -1,0 +1,31 @@
+{
+  "code": "def octal_To_Decimal(octal_number):\n    octal_str = str(octal_number)\n    decimal_value = 0\n    power = 0\n    for digit in reversed(octal_str):\n        digit_int = int(digit)\n        base = 8 ** power\n        contribution = digit_int * base\n        decimal_value += contribution\n        power += 1\n    return decimal_value",
+  "results": {
+    "assert octal_To_Decimal(25) == 21": {
+      "result": true,
+      "time": 0.07995247840881348,
+      "error": null
+    },
+    "assert octal_To_Decimal(30) == 24": {
+      "result": true,
+      "time": 0.07993793487548828,
+      "error": null
+    },
+    "assert octal_To_Decimal(40) == 32": {
+      "result": true,
+      "time": 0.08185148239135742,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:46:24",
+    "end_time": "2025-05-08 22:46:26",
+    "duration": "0:00:02.180988"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

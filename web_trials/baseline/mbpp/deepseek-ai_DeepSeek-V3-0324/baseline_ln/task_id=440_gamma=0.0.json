@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef find_adverb_position(sentence):\n    # Regular expression to find adverbs ending with 'ly' followed by optional punctuation\n    match = re.search(r'\\b\\w+ly\\b[^\\w]*', sentence)\n    if match:\n        start = match.start()\n        end = match.end()\n        adverb = match.group().strip()\n        # Remove any trailing punctuation from the adverb\n        adverb = re.sub(r'[^\\w\\s]', '', adverb)\n        return (start, end, adverb)\n    return None",
+  "results": {
+    "assert find_adverb_position(\"clearly!! we can see the sky\")==(0, 7, 'clearly')": {
+      "result": false,
+      "time": 0.1305217742919922,
+      "error": null
+    },
+    "assert find_adverb_position(\"seriously!! there are many roses\")==(0, 9, 'seriously')": {
+      "result": false,
+      "time": 0.12718462944030762,
+      "error": null
+    },
+    "assert find_adverb_position(\"unfortunately!! sita is going to home\")==(0, 13, 'unfortunately')": {
+      "result": false,
+      "time": 0.3434178829193115,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:43:35",
+    "guidance_input_tokens": 677,
+    "guidance_output_tokens": 117,
+    "end_time": "2025-05-07 18:43:39",
+    "duration": "0:00:04.467882"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

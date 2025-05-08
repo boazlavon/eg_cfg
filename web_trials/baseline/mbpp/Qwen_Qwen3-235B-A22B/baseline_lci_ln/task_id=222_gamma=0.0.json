@@ -1,0 +1,31 @@
+{
+  "code": "def check_type(input_tuple):\n    first_element = input_tuple[0]\n    first_type = type(first_element)\n    result = True\n    for element in input_tuple:\n        current_type = type(element)\n        if current_type != first_type:\n            result = False\n            break\n    return result",
+  "results": {
+    "assert check_type((5, 6, 7, 3, 5, 6) ) == True": {
+      "result": true,
+      "time": 0.08045005798339844,
+      "error": null
+    },
+    "assert check_type((1, 2, \"4\") ) == False": {
+      "result": true,
+      "time": 0.08164620399475098,
+      "error": null
+    },
+    "assert check_type((3, 2, 1, 4, 5) ) == True": {
+      "result": true,
+      "time": 0.08272099494934082,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:46:38",
+    "end_time": "2025-05-08 22:46:40",
+    "duration": "0:00:02.094792"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def count_Substring_With_Equal_Ends(s):\n    count = 0\n    n = len(s)\n    for i in range(n):\n        for j in range(i, n):\n            substring = s[i:j+1]\n            first_char = substring[0]\n            last_char = substring[-1]\n            if first_char == last_char:\n                count += 1\n    return count",
+  "results": {
+    "assert count_Substring_With_Equal_Ends(\"abc\") == 3": {
+      "result": true,
+      "time": 0.137373685836792,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"abcda\") == 6": {
+      "result": true,
+      "time": 0.14278912544250488,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ab\") == 2": {
+      "result": true,
+      "time": 0.133256196975708,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:38:02",
+    "guidance_input_tokens": 504,
+    "guidance_output_tokens": 113,
+    "end_time": "2025-05-07 18:38:04",
+    "duration": "0:00:02.761252"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

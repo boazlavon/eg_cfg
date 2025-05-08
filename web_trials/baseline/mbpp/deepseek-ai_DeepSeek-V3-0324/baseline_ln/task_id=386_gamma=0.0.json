@@ -1,0 +1,33 @@
+{
+  "code": "def swap_count(s):\n    balance = 0\n    swaps = 0\n    for char in s:\n        if char == '[':\n            balance += 1\n        else:\n            balance -= 1\n            if balance < 0:\n                swaps += -balance\n    return swaps",
+  "results": {
+    "assert swap_count(\"[]][][\") == 2": {
+      "result": true,
+      "time": 0.19494199752807617,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]\") == 0": {
+      "result": true,
+      "time": 0.15954995155334473,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]][\") == 1": {
+      "result": true,
+      "time": 0.16723060607910156,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:41:08",
+    "guidance_input_tokens": 641,
+    "guidance_output_tokens": 87,
+    "end_time": "2025-05-07 18:41:11",
+    "duration": "0:00:02.452019"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

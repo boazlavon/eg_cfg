@@ -1,0 +1,31 @@
+{
+  "code": "def prod_Square(n):\n    i = 2\n    while i * i <= n:\n        count = 0\n        while n % i == 0:\n            n = n // i\n            count += 1\n        if count % 2 != 0:\n            return False\n        i += 1\n    if n > 1:\n        return False\n    return True",
+  "results": {
+    "assert prod_Square(25) == False": {
+      "result": false,
+      "time": 0.08213591575622559,
+      "error": null
+    },
+    "assert prod_Square(30) == False": {
+      "result": true,
+      "time": 0.08265566825866699,
+      "error": null
+    },
+    "assert prod_Square(16) == True": {
+      "result": true,
+      "time": 0.0855708122253418,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:48:57",
+    "end_time": "2025-05-08 22:48:59",
+    "duration": "0:00:02.004058"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,31 @@
+{
+  "code": "def find_rotation_count(arr):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        if arr[left] <= arr[right]:\n            return left\n        mid = (left + right) // 2\n        next_index = (mid + 1) % len(arr)\n        prev_index = (mid - 1 + len(arr)) % len(arr)\n        if arr[mid] <= arr[next_index] and arr[mid] <= arr[prev_index]:\n            return mid\n        elif arr[mid] <= arr[right]:\n            right = mid - 1\n        else:\n            left = mid + 1\n    return 0",
+  "results": {
+    "assert find_rotation_count([8, 9, 10, 1, 2, 3, 4, 5, 6, 7]) == 3": {
+      "result": true,
+      "time": 0.08289718627929688,
+      "error": null
+    },
+    "assert find_rotation_count([8, 9, 10,2, 5, 6]) == 3": {
+      "result": true,
+      "time": 0.08030390739440918,
+      "error": null
+    },
+    "assert find_rotation_count([2, 5, 6, 8, 9, 10]) == 0": {
+      "result": true,
+      "time": 0.09427833557128906,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:48:33",
+    "end_time": "2025-05-08 22:48:36",
+    "duration": "0:00:03.080761"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

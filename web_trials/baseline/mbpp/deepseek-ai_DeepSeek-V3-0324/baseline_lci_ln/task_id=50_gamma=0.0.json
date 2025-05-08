@@ -1,0 +1,33 @@
+{
+  "code": "def min_length_list(list_of_lists):\n    if not list_of_lists:\n        return (0, [])\n    \n    min_len = len(list_of_lists[0])\n    min_list = list_of_lists[0]\n    \n    for lst in list_of_lists:\n        current_len = len(lst)\n        if current_len < min_len:\n            min_len = current_len\n            min_list = lst\n    \n    return (min_len, min_list)",
+  "results": {
+    "assert min_length_list([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]])==(1, [0])": {
+      "result": true,
+      "time": 0.11343717575073242,
+      "error": null
+    },
+    "assert min_length_list([[1,2,3,4,5],[1,2,3,4],[1,2,3],[1,2],[1]])==(1,[1])": {
+      "result": true,
+      "time": 0.11219263076782227,
+      "error": null
+    },
+    "assert min_length_list([[3,4,5],[6,7,8,9],[10,11,12],[1,2]])==(2,[1,2])": {
+      "result": true,
+      "time": 0.11260771751403809,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:39:17",
+    "guidance_input_tokens": 591,
+    "guidance_output_tokens": 122,
+    "end_time": "2025-05-07 18:39:19",
+    "duration": "0:00:02.040251"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

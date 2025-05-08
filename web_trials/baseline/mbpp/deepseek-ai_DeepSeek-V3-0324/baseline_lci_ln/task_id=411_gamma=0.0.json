@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef snake_to_camel(snake_str):\n    # Split the string into parts using underscore as delimiter\n    parts = re.split('_', snake_str)\n    \n    # Initialize an empty list to store the camel case parts\n    camel_parts = []\n    \n    # Iterate over each part\n    for part in parts:\n        # Capitalize the first letter of each part\n        if part:\n            first_char = part[0].upper()\n            rest_chars = part[1:]\n            camel_part = first_char + rest_chars\n            camel_parts.append(camel_part)\n    \n    # Join all parts into a single string\n    camel_str = ''.join(camel_parts)\n    \n    return camel_str",
+  "results": {
+    "assert snake_to_camel('android_tv') == 'AndroidTv'": {
+      "result": true,
+      "time": 0.1432020664215088,
+      "error": null
+    },
+    "assert snake_to_camel('google_pixel') == 'GooglePixel'": {
+      "result": true,
+      "time": 0.12027740478515625,
+      "error": null
+    },
+    "assert snake_to_camel('apple_watch') == 'AppleWatch'": {
+      "result": true,
+      "time": 0.11455512046813965,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:57:47",
+    "guidance_input_tokens": 493,
+    "guidance_output_tokens": 178,
+    "end_time": "2025-05-07 18:57:50",
+    "duration": "0:00:02.942547"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

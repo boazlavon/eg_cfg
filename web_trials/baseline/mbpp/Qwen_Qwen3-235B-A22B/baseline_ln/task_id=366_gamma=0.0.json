@@ -1,0 +1,31 @@
+{
+  "code": "def adjacent_num_product(nums):\n    max_product = 0\n    for i in range(len(nums) - 1):\n        product = nums[i] * nums[i+1]\n        if product > max_product:\n            max_product = product\n    return max_product",
+  "results": {
+    "assert adjacent_num_product([1,2,3,4,5,6]) == 30": {
+      "result": true,
+      "time": 0.10032057762145996,
+      "error": null
+    },
+    "assert adjacent_num_product([1,2,3,4,5]) == 20": {
+      "result": true,
+      "time": 0.09265899658203125,
+      "error": null
+    },
+    "assert adjacent_num_product([2,3]) == 6": {
+      "result": true,
+      "time": 0.09019207954406738,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:11:03",
+    "end_time": "2025-05-08 23:11:05",
+    "duration": "0:00:02.221626"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,33 @@
+{
+  "code": "import math\n\ndef distance_lat_long(lat1, lon1, lat2, lon2):\n    # Convert latitude and longitude from degrees to radians\n    lat1_rad = math.radians(lat1)\n    lon1_rad = math.radians(lon1)\n    lat2_rad = math.radians(lat2)\n    lon2_rad = math.radians(lon2)\n    \n    # Radius of the Earth in kilometers\n    R = 6371.0\n    \n    # Differences in coordinates\n    dlat = lat2_rad - lat1_rad\n    dlon = lon2_rad - lon1_rad\n    \n    # Haversine formula\n    a = math.sin(dlat / 2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon / 2)**2\n    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))\n    distance = R * c\n    \n    return distance",
+  "results": {
+    "assert distance_lat_long(23.5,67.5,25.5,69.5)==12179.372041317429": {
+      "result": false,
+      "time": 0.16320300102233887,
+      "error": null
+    },
+    "assert distance_lat_long(10.5,20.5,30.5,40.5)==6069.397933300514": {
+      "result": false,
+      "time": 0.13153815269470215,
+      "error": null
+    },
+    "assert distance_lat_long(10,20,30,40)==6783.751974994595": {
+      "result": false,
+      "time": 0.11195230484008789,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:30:48",
+    "guidance_input_tokens": 680,
+    "guidance_output_tokens": 261,
+    "end_time": "2025-05-07 18:30:54",
+    "duration": "0:00:06.177161"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

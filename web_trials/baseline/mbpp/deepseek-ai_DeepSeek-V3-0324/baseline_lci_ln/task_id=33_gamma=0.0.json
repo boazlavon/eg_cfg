@@ -1,0 +1,33 @@
+{
+  "code": "def decimal_To_Binary(n):\n    if n == 0:\n        return 0\n    binary = 0\n    place = 1\n    while n > 0:\n        remainder = n % 2\n        binary = binary + remainder * place\n        place = place * 10\n        n = n // 2\n    return binary",
+  "results": {
+    "assert decimal_To_Binary(10) == 1010": {
+      "result": true,
+      "time": 0.3411264419555664,
+      "error": null
+    },
+    "assert decimal_To_Binary(1) == 1": {
+      "result": true,
+      "time": 0.13289308547973633,
+      "error": null
+    },
+    "assert decimal_To_Binary(20) == 10100": {
+      "result": true,
+      "time": 0.11602139472961426,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:38:25",
+    "guidance_input_tokens": 483,
+    "guidance_output_tokens": 100,
+    "end_time": "2025-05-07 18:38:27",
+    "duration": "0:00:02.083163"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

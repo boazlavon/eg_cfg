@@ -1,0 +1,33 @@
+{
+  "code": "def max_length(list_of_lists):\n    if not list_of_lists:\n        return (0, [])\n    \n    max_len = 0\n    max_list = []\n    \n    for current_list in list_of_lists:\n        current_len = len(current_list)\n        if current_len > max_len:\n            max_len = current_len\n            max_list = current_list\n    \n    return (max_len, max_list)",
+  "results": {
+    "assert max_length([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]])==(3, [13, 15, 17])": {
+      "result": true,
+      "time": 0.1252448558807373,
+      "error": null
+    },
+    "assert max_length([[1], [5, 7], [10, 12, 14,15]])==(4, [10, 12, 14,15])": {
+      "result": true,
+      "time": 0.11367678642272949,
+      "error": null
+    },
+    "assert max_length([[5], [15,20,25]])==(3, [15,20,25])": {
+      "result": true,
+      "time": 0.10179901123046875,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:51:43",
+    "guidance_input_tokens": 557,
+    "guidance_output_tokens": 115,
+    "end_time": "2025-05-07 18:51:45",
+    "duration": "0:00:02.260826"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

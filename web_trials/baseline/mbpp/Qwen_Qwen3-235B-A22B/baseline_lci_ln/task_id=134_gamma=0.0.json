@@ -1,0 +1,31 @@
+{
+  "code": "def check_last(arr, p, q):\n    # Initialize a variable to store the result\n    result = \"\"\n    \n    # Loop p times\n    for i in range(p):\n        # Check if the last element is even or odd\n        last_element = arr[-1]\n        remainder = last_element % 2\n        \n        # If the last element is even, append q to the array\n        if remainder == 0:\n            arr.append(q)\n        # If the last element is odd, do not modify the array\n        else:\n            pass\n    \n    # Check the last element after p operations\n    final_last_element = arr[-1]\n    final_remainder = final_last_element % 2\n    \n    # Determine if the last element is even or odd\n    if final_remainder == 0:\n        result = \"EVEN\"\n    else:\n        result = \"ODD\"\n    \n    # Return the result\n    return result",
+  "results": {
+    "assert check_last([5,7,10],3,1) == \"ODD\"": {
+      "result": true,
+      "time": 0.08089351654052734,
+      "error": null
+    },
+    "assert check_last([2,3],2,3) == \"EVEN\"": {
+      "result": false,
+      "time": 0.07930493354797363,
+      "error": null
+    },
+    "assert check_last([1,2,3],3,1) == \"ODD\"": {
+      "result": true,
+      "time": 0.0776510238647461,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:38:37",
+    "end_time": "2025-05-08 22:38:41",
+    "duration": "0:00:04.468395"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

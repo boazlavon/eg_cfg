@@ -1,0 +1,31 @@
+{
+  "code": "def is_undulating(number_string):\n    if len(number_string) < 3:\n        return False\n    first_digit = number_string[0]\n    second_digit = number_string[1]\n    if first_digit == second_digit:\n        return False\n    for i in range(2, len(number_string)):\n        current_digit = number_string[i]\n        if i % 2 == 0:\n            expected_digit = first_digit\n        else:\n            expected_digit = second_digit\n        if current_digit != expected_digit:\n            return False\n    return True",
+  "results": {
+    "assert is_undulating(\"1212121\") == True": {
+      "result": true,
+      "time": 0.1103663444519043,
+      "error": null
+    },
+    "assert is_undulating(\"1991\") == False": {
+      "result": true,
+      "time": 0.10103607177734375,
+      "error": null
+    },
+    "assert is_undulating(\"121\") == True": {
+      "result": true,
+      "time": 0.10490250587463379,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:17:01",
+    "end_time": "2025-05-08 22:17:03",
+    "duration": "0:00:02.603738"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def is_subset_sum(set, n, sum):\n    if sum == 0:\n        return True\n    if n == 0:\n        return False\n    if set[n - 1] > sum:\n        return is_subset_sum(set, n - 1, sum)\n    option1 = is_subset_sum(set, n - 1, sum)\n    option2 = is_subset_sum(set, n - 1, sum - set[n - 1])\n    return option1 or option2",
+  "results": {
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 9) == True": {
+      "result": true,
+      "time": 0.12948250770568848,
+      "error": null
+    },
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 30) == False": {
+      "result": true,
+      "time": 0.12370681762695312,
+      "error": null
+    },
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 15) == True": {
+      "result": true,
+      "time": 0.129533052444458,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 19:01:23",
+    "guidance_input_tokens": 547,
+    "guidance_output_tokens": 131,
+    "end_time": "2025-05-07 19:01:27",
+    "duration": "0:00:03.824471"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

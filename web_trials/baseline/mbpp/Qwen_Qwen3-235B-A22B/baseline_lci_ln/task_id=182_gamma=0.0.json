@@ -1,0 +1,31 @@
+{
+  "code": "import re\n\ndef find_character(input_string):\n    uppercase_letters = []\n    lowercase_letters = []\n    numeric_digits = []\n    special_characters = []\n    \n    uppercase_pattern = \"[A-Z]\"\n    lowercase_pattern = \"[a-z]\"\n    numeric_pattern = \"[0-9]\"\n    special_char_pattern = \"[^A-Za-z0-9]\"\n    \n    uppercase_matches = re.findall(uppercase_pattern, input_string)\n    for match in uppercase_matches:\n        uppercase_letters.append(match)\n    \n    lowercase_matches = re.findall(lowercase_pattern, input_string)\n    for match in lowercase_matches:\n        lowercase_letters.append(match)\n    \n    numeric_matches = re.findall(numeric_pattern, input_string)\n    for match in numeric_matches:\n        numeric_digits.append(match)\n    \n    special_char_matches = re.findall(special_char_pattern, input_string)\n    for match in special_char_matches:\n        special_characters.append(match)\n    \n    return (uppercase_letters, lowercase_letters, numeric_digits, special_characters)",
+  "results": {
+    "assert find_character(\"ThisIsGeeksforGeeks\") == (['T', 'I', 'G', 'G'], ['h', 'i', 's', 's', 'e', 'e', 'k', 's', 'f', 'o', 'r', 'e', 'e', 'k', 's'], [], [])": {
+      "result": true,
+      "time": 0.0835576057434082,
+      "error": null
+    },
+    "assert find_character(\"Hithere2\") == (['H'], ['i', 't', 'h', 'e', 'r', 'e'], ['2'], [])": {
+      "result": true,
+      "time": 0.08136630058288574,
+      "error": null
+    },
+    "assert find_character(\"HeyFolks32\") == (['H', 'F'], ['e', 'y', 'o', 'l', 'k', 's'], ['3', '2'], [])": {
+      "result": true,
+      "time": 0.07847952842712402,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:35:16",
+    "end_time": "2025-05-08 22:35:23",
+    "duration": "0:00:06.265159"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

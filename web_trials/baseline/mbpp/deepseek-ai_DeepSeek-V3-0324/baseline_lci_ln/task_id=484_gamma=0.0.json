@@ -1,0 +1,33 @@
+{
+  "code": "def remove_matching_tuple(tuple1, tuple2):\n    result = []\n    for item in tuple1:\n        found = False\n        for match in tuple2:\n            if item == match:\n                found = True\n                break\n        if not found:\n            result.append(item)\n    return result",
+  "results": {
+    "assert remove_matching_tuple([('Hello', 'dude'), ('How', 'are'), ('you', '?')], [('Hello', 'dude'), ('How', 'are')]) == [('you', '?')]": {
+      "result": true,
+      "time": 0.14778566360473633,
+      "error": null
+    },
+    "assert remove_matching_tuple([('Part', 'of'), ('the', 'journey'), ('is ', 'end')], [('Journey', 'the'), ('is', 'end')]) == [('Part', 'of'), ('the', 'journey'), ('is ', 'end')]": {
+      "result": true,
+      "time": 0.35460615158081055,
+      "error": null
+    },
+    "assert remove_matching_tuple([('Its', 'been'), ('a', 'long'), ('day', 'without')], [('a', 'long'), ('my', 'friend')]) == [('Its', 'been'), ('day', 'without')]": {
+      "result": true,
+      "time": 0.12054586410522461,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 19:01:33",
+    "guidance_input_tokens": 608,
+    "guidance_output_tokens": 84,
+    "end_time": "2025-05-07 19:01:35",
+    "duration": "0:00:02.536252"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

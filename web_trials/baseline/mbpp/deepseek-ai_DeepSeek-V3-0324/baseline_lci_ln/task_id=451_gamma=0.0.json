@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef remove_whitespaces(input_string):\n    # Compile a regular expression pattern to match all whitespace characters\n    pattern = re.compile(r'\\s+')\n    # Use the compiled pattern to substitute all matches with an empty string\n    result = pattern.sub('', input_string)\n    # Return the resulting string with all whitespaces removed\n    return result",
+  "results": {
+    "assert remove_whitespaces(' Google    Flutter ') == 'GoogleFlutter'": {
+      "result": true,
+      "time": 0.10057187080383301,
+      "error": null
+    },
+    "assert remove_whitespaces(' Google    Dart ') == 'GoogleDart'": {
+      "result": true,
+      "time": 0.08891844749450684,
+      "error": null
+    },
+    "assert remove_whitespaces(' iOS    Swift ') == 'iOSSwift'": {
+      "result": true,
+      "time": 0.08486676216125488,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:59:56",
+    "guidance_input_tokens": 495,
+    "guidance_output_tokens": 104,
+    "end_time": "2025-05-07 19:00:01",
+    "duration": "0:00:04.915369"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

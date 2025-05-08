@@ -1,0 +1,33 @@
+{
+  "code": "def freq_count(lst):\n    frequency_dict = {}\n    for element in lst:\n        if element in frequency_dict:\n            current_count = frequency_dict[element]\n            new_count = current_count + 1\n            frequency_dict[element] = new_count\n        else:\n            frequency_dict[element] = 1\n    return frequency_dict",
+  "results": {
+    "assert freq_count([10,10,10,10,20,20,20,20,40,40,50,50,30])==({10: 4, 20: 4, 40: 2, 50: 2, 30: 1}) ": {
+      "result": true,
+      "time": 0.18496370315551758,
+      "error": null
+    },
+    "assert freq_count([1,2,3,4,3,2,4,1,3,1,4])==({1:3, 2:2,3:3,4:3}) ": {
+      "result": true,
+      "time": 0.16737627983093262,
+      "error": null
+    },
+    "assert freq_count([5,6,7,4,9,10,4,5,6,7,9,5])==({10:1,5:3,6:2,7:2,4:2,9:2}) ": {
+      "result": true,
+      "time": 0.18690776824951172,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:41:16",
+    "guidance_input_tokens": 654,
+    "guidance_output_tokens": 90,
+    "end_time": "2025-05-07 18:41:18",
+    "duration": "0:00:02.068241"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def remove_matching_tuple(tuple_list1, tuple_list2):\n    # Convert the list of tuples in tuple_list2 to a set for faster lookup\n    tuple_set = set(tuple_list2)\n    # Use list comprehension to filter out tuples present in tuple_set\n    result = [tup for tup in tuple_list1 if tup not in tuple_set]\n    return result",
+  "results": {
+    "assert remove_matching_tuple([('Hello', 'dude'), ('How', 'are'), ('you', '?')], [('Hello', 'dude'), ('How', 'are')]) == [('you', '?')]": {
+      "result": true,
+      "time": 0.12210226058959961,
+      "error": null
+    },
+    "assert remove_matching_tuple([('Part', 'of'), ('the', 'journey'), ('is ', 'end')], [('Journey', 'the'), ('is', 'end')]) == [('Part', 'of'), ('the', 'journey'), ('is ', 'end')]": {
+      "result": true,
+      "time": 0.11429071426391602,
+      "error": null
+    },
+    "assert remove_matching_tuple([('Its', 'been'), ('a', 'long'), ('day', 'without')], [('a', 'long'), ('my', 'friend')]) == [('Its', 'been'), ('day', 'without')]": {
+      "result": true,
+      "time": 0.11705660820007324,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:45:08",
+    "guidance_input_tokens": 765,
+    "guidance_output_tokens": 86,
+    "end_time": "2025-05-07 18:45:10",
+    "duration": "0:00:01.908170"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,31 @@
+{
+  "code": "def breakSum(n):\n    if n == 0:\n        return 0\n    max_sum = max(n, breakSum(n//2) + breakSum(n//3) + breakSum(n//4))\n    return max_sum",
+  "results": {
+    "assert breakSum(12) == 13": {
+      "result": true,
+      "time": 0.08287763595581055,
+      "error": null
+    },
+    "assert breakSum(24) == 27": {
+      "result": true,
+      "time": 0.10479974746704102,
+      "error": null
+    },
+    "assert breakSum(23) == 23": {
+      "result": true,
+      "time": 0.09047174453735352,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:09:58",
+    "end_time": "2025-05-08 23:10:00",
+    "duration": "0:00:02.060730"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

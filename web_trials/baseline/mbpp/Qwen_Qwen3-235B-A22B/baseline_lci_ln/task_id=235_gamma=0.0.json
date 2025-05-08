@@ -1,0 +1,31 @@
+{
+  "code": "def even_bit_set_number(n):\n    result = 0\n    bit_position = 0\n    while n > 0:\n        if bit_position % 2 == 0:\n            result |= (n % 2) << bit_position\n        else:\n            result |= 1 << bit_position\n        n = n >> 1\n        bit_position += 1\n    return result",
+  "results": {
+    "assert even_bit_set_number(10) == 10": {
+      "result": true,
+      "time": 0.12510132789611816,
+      "error": null
+    },
+    "assert even_bit_set_number(20) == 30": {
+      "result": true,
+      "time": 0.11628437042236328,
+      "error": null
+    },
+    "assert even_bit_set_number(30) == 30": {
+      "result": true,
+      "time": 0.1042032241821289,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:16:27",
+    "end_time": "2025-05-08 22:16:29",
+    "duration": "0:00:02.198175"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

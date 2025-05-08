@@ -1,0 +1,31 @@
+{
+  "code": "import heapq\n\ndef extract_min_max(tup, k):\n    min_k = heapq.nsmallest(k, tup)\n    max_k = heapq.nlargest(k, tup)\n    return tuple(sorted(set(min_k + max_k)))",
+  "results": {
+    "assert extract_min_max((5, 20, 3, 7, 6, 8), 2) == (3, 5, 8, 20)": {
+      "result": true,
+      "time": 0.0755929946899414,
+      "error": null
+    },
+    "assert extract_min_max((4, 5, 6, 1, 2, 7), 3) == (1, 2, 4, 5, 6, 7)": {
+      "result": true,
+      "time": 0.0760643482208252,
+      "error": null
+    },
+    "assert extract_min_max((2, 3, 4, 8, 9, 11, 7), 4) == (2, 3, 4, 7, 8, 9, 11)": {
+      "result": true,
+      "time": 0.07932734489440918,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:43:35",
+    "end_time": "2025-05-08 22:43:37",
+    "duration": "0:00:01.737735"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

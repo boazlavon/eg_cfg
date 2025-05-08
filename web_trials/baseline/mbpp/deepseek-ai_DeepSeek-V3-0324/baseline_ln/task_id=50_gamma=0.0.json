@@ -1,0 +1,33 @@
+{
+  "code": "def min_length_list(lst):\n    min_len = min(len(x) for x in lst)\n    min_list = next(x for x in lst if len(x) == min_len)\n    return (min_len, min_list)",
+  "results": {
+    "assert min_length_list([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]])==(1, [0])": {
+      "result": true,
+      "time": 0.0885777473449707,
+      "error": null
+    },
+    "assert min_length_list([[1,2,3,4,5],[1,2,3,4],[1,2,3],[1,2],[1]])==(1,[1])": {
+      "result": true,
+      "time": 0.0758509635925293,
+      "error": null
+    },
+    "assert min_length_list([[3,4,5],[6,7,8,9],[10,11,12],[1,2]])==(2,[1,2])": {
+      "result": true,
+      "time": 0.07408905029296875,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:24:56",
+    "guidance_input_tokens": 717,
+    "guidance_output_tokens": 78,
+    "end_time": "2025-05-07 18:24:58",
+    "duration": "0:00:01.657652"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

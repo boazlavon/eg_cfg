@@ -1,0 +1,33 @@
+{
+  "code": "def min_Ops(arr, n, k):\n    if n == 0:\n        return -1\n    \n    max_element = arr[0]\n    for num in arr:\n        if num > max_element:\n            max_element = num\n    \n    total_operations = 0\n    for num in arr:\n        difference = max_element - num\n        if difference % k != 0:\n            return -1\n        operations = difference // k\n        total_operations += operations\n    \n    return total_operations",
+  "results": {
+    "assert min_Ops([2,2,2,2],4,3) == 0": {
+      "result": true,
+      "time": 0.12191128730773926,
+      "error": null
+    },
+    "assert min_Ops([4,2,6,8],4,3) == -1": {
+      "result": true,
+      "time": 0.12165188789367676,
+      "error": null
+    },
+    "assert min_Ops([21,33,9,45,63],5,6) == 24": {
+      "result": true,
+      "time": 0.11845278739929199,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:44:58",
+    "guidance_input_tokens": 527,
+    "guidance_output_tokens": 136,
+    "end_time": "2025-05-07 18:45:02",
+    "duration": "0:00:03.141382"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

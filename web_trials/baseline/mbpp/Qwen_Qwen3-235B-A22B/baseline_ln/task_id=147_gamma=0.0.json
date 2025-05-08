@@ -1,0 +1,31 @@
+{
+  "code": "def max_path_sum(triangle, m, n):\n    for row in range(m-1, -1, -1):\n        for col in range(n):\n            triangle[row][col] += max(triangle[row+1][col], triangle[row+1][col+1])\n    return triangle[0][0]",
+  "results": {
+    "assert max_path_sum([[1, 0, 0], [4, 8, 0], [1, 5, 3]], 2, 2) == 14": {
+      "result": true,
+      "time": 0.07619881629943848,
+      "error": null
+    },
+    "assert max_path_sum([[13, 0, 0], [7, 4, 0], [2, 4, 6]], 2, 2) == 24 ": {
+      "result": true,
+      "time": 0.0708303451538086,
+      "error": null
+    },
+    "assert max_path_sum([[2, 0, 0], [11, 18, 0], [21, 25, 33]], 2, 2) == 53": {
+      "result": true,
+      "time": 0.07307839393615723,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:25:56",
+    "end_time": "2025-05-08 22:25:59",
+    "duration": "0:00:03.058781"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

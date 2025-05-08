@@ -1,0 +1,33 @@
+{
+  "code": "def eulerian_num(n, m):\n    if m == 0:\n        return 1\n    if m == n - 1:\n        return 1\n    if m < 0 or m >= n:\n        return 0\n    term1 = (n - m) * eulerian_num(n - 1, m - 1)\n    term2 = (m + 1) * eulerian_num(n - 1, m)\n    result = term1 + term2\n    return result",
+  "results": {
+    "assert eulerian_num(3, 1) == 4": {
+      "result": true,
+      "time": 0.12541842460632324,
+      "error": null
+    },
+    "assert eulerian_num(4, 1) == 11": {
+      "result": true,
+      "time": 0.1238701343536377,
+      "error": null
+    },
+    "assert eulerian_num(5, 3) == 26": {
+      "result": true,
+      "time": 0.11899018287658691,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:41:52",
+    "guidance_input_tokens": 488,
+    "guidance_output_tokens": 130,
+    "end_time": "2025-05-07 18:41:55",
+    "duration": "0:00:03.354416"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def sort_matrix(matrix):\n    # Create a list to store the sums of each row along with their original indices\n    row_sums = []\n    \n    # Calculate the sum for each row and store it with its index\n    for i in range(len(matrix)):\n        current_row = matrix[i]\n        sum_row = 0\n        for num in current_row:\n            sum_row = sum_row + num\n        row_sums.append((sum_row, i))\n    \n    # Sort the row_sums list based on the sum values\n    sorted_sums = []\n    for item in row_sums:\n        if not sorted_sums:\n            sorted_sums.append(item)\n        else:\n            inserted = False\n            for j in range(len(sorted_sums)):\n                if item[0] < sorted_sums[j][0]:\n                    sorted_sums.insert(j, item)\n                    inserted = True\n                    break\n            if not inserted:\n                sorted_sums.append(item)\n    \n    # Rebuild the matrix in the new order\n    sorted_matrix = []\n    for item in sorted_sums:\n        original_index = item[1]\n        sorted_matrix.append(matrix[original_index])\n    \n    return sorted_matrix",
+  "results": {
+    "assert sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]])==[[1, 1, 1], [1, 2, 3], [2, 4, 5]]": {
+      "result": true,
+      "time": 0.1389172077178955,
+      "error": null
+    },
+    "assert sort_matrix([[1, 2, 3], [-2, 4, -5], [1, -1, 1]])==[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]": {
+      "result": true,
+      "time": 0.1263413429260254,
+      "error": null
+    },
+    "assert sort_matrix([[5,8,9],[6,4,3],[2,1,4]])==[[2, 1, 4], [6, 4, 3], [5, 8, 9]]": {
+      "result": true,
+      "time": 0.12328219413757324,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:37:13",
+    "guidance_input_tokens": 624,
+    "guidance_output_tokens": 272,
+    "end_time": "2025-05-07 18:37:18",
+    "duration": "0:00:05.017626"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

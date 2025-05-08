@@ -1,0 +1,31 @@
+{
+  "code": "def odd_Days(year):\n    # Initialize variables for centuries and remaining years\n    centuries = 0\n    remaining_years = 0\n    # Calculate centuries and remaining years\n    centuries = year // 100\n    remaining_years = year % 100\n    # Initialize variables for leap years and ordinary years\n    leap_years = 0\n    ordinary_years = 0\n    # Calculate leap years and ordinary years\n    leap_years = remaining_years // 4\n    ordinary_years = remaining_years - leap_years\n    # Initialize variables for total days and odd days\n    total_days = 0\n    odd_days = 0\n    # Calculate total days contributed by centuries\n    centuries_days = centuries * 36525\n    total_days += centuries_days\n    # Calculate total days contributed by ordinary years\n    ordinary_days = ordinary_years * 365\n    total_days += ordinary_days\n    # Calculate total days contributed by leap years\n    leap_days = leap_years * 366\n    total_days += leap_days\n    # Calculate odd days\n    odd_days = total_days % 7\n    return odd_days",
+  "results": {
+    "assert odd_Days(100) == 5": {
+      "result": false,
+      "time": 0.10720133781433105,
+      "error": null
+    },
+    "assert odd_Days(50) ==6": {
+      "result": true,
+      "time": 0.10928583145141602,
+      "error": null
+    },
+    "assert odd_Days(75) == 2": {
+      "result": true,
+      "time": 0.11055302619934082,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:21:01",
+    "end_time": "2025-05-08 22:21:05",
+    "duration": "0:00:04.305005"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

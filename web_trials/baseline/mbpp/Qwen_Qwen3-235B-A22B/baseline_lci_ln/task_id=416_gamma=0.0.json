@@ -1,0 +1,31 @@
+{
+  "code": "def breakSum(n):\n    # Initialize a variable to store the maximum sum\n    max_sum = 0\n    # Check if the number is less than or equal to 0\n    if n <= 0:\n        # If yes, return 0\n        return 0\n    # Check if the number is already in the max_sum variable\n    if max_sum < n:\n        # Update max_sum with the current number\n        max_sum = n\n    # Calculate the sum by dividing the number into three parts\n    divide_sum = breakSum(n // 2) + breakSum(n // 3) + breakSum(n // 4)\n    # Check if divide_sum is greater than max_sum\n    if divide_sum > max_sum:\n        # Update max_sum with divide_sum\n        max_sum = divide_sum\n    # Return the maximum sum\n    return max_sum",
+  "results": {
+    "assert breakSum(12) == 13": {
+      "result": true,
+      "time": 0.0795450210571289,
+      "error": null
+    },
+    "assert breakSum(24) == 27": {
+      "result": true,
+      "time": 0.07856893539428711,
+      "error": null
+    },
+    "assert breakSum(23) == 23": {
+      "result": true,
+      "time": 0.07869982719421387,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:31:50",
+    "end_time": "2025-05-08 22:31:53",
+    "duration": "0:00:03.367996"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

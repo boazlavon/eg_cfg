@@ -1,0 +1,33 @@
+{
+  "code": "from collections import defaultdict\n\ndef sort_on_occurence(lst):\n    # Create a dictionary to group tuples by their first element\n    groups = defaultdict(list)\n    for item in lst:\n        key = item[0]\n        groups[key].append(item[1])\n    \n    # Prepare the result list\n    result = []\n    for key in groups:\n        # Combine the key, all values, and the count\n        new_tuple = (key,) + tuple(groups[key]) + (len(groups[key]),)\n        result.append(new_tuple)\n    \n    return result",
+  "results": {
+    "assert sort_on_occurence([(1, 'Jake'), (2, 'Bob'), (1, 'Cara')]) == [(1, 'Jake', 'Cara', 2), (2, 'Bob', 1)]": {
+      "result": true,
+      "time": 0.14659571647644043,
+      "error": null
+    },
+    "assert sort_on_occurence([('b', 'ball'), ('a', 'arm'), ('b', 'b'), ('a', 'ant')]) == [('b', 'ball', 'b', 2), ('a', 'arm', 'ant', 2)]": {
+      "result": true,
+      "time": 0.13976168632507324,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'Mark'), (3, 'Maze'), (2, 'Sara')]) == [(2, 'Mark', 'Sara', 2), (3, 'Maze', 1)]": {
+      "result": true,
+      "time": 0.1296985149383545,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:33:47",
+    "guidance_input_tokens": 767,
+    "guidance_output_tokens": 185,
+    "end_time": "2025-05-07 18:33:50",
+    "duration": "0:00:02.899207"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

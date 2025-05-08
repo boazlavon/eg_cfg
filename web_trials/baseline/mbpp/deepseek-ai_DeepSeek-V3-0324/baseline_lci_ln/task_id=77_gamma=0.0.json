@@ -1,0 +1,33 @@
+{
+  "code": "def is_Diff(n):\n    sum_even = 0\n    sum_odd = 0\n    num = abs(n)\n    while num > 0:\n        digit = num % 10\n        if digit % 2 == 0:\n            sum_even = sum_even + digit\n        else:\n            sum_odd = sum_odd + digit\n        num = num // 10\n    difference = sum_even - sum_odd\n    if difference % 11 == 0:\n        return True\n    else:\n        return False",
+  "results": {
+    "assert is_Diff (12345) == False": {
+      "result": true,
+      "time": 0.15390419960021973,
+      "error": null
+    },
+    "assert is_Diff(1212112) == True": {
+      "result": false,
+      "time": 0.16664743423461914,
+      "error": null
+    },
+    "assert is_Diff(1212) == False": {
+      "result": true,
+      "time": 0.16003918647766113,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:40:31",
+    "guidance_input_tokens": 479,
+    "guidance_output_tokens": 147,
+    "end_time": "2025-05-07 18:40:34",
+    "duration": "0:00:03.202769"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,31 @@
+{
+  "code": "def number_of_substrings(input_string):\n    total_substrings = 0\n    string_length = len(input_string)\n    for i in range(string_length):\n        current_position = i\n        for j in range(current_position, string_length):\n            substring_length = j - current_position + 1\n            total_substrings += substring_length\n    return total_substrings",
+  "results": {
+    "assert number_of_substrings(\"abc\") == 6": {
+      "result": false,
+      "time": 0.08098149299621582,
+      "error": null
+    },
+    "assert number_of_substrings(\"abcd\") == 10": {
+      "result": false,
+      "time": 0.07927227020263672,
+      "error": null
+    },
+    "assert number_of_substrings(\"abcde\") == 15": {
+      "result": false,
+      "time": 0.08150768280029297,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:41:59",
+    "end_time": "2025-05-08 22:42:01",
+    "duration": "0:00:01.924803"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

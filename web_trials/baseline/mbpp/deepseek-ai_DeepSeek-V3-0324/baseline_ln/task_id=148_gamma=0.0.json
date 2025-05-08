@@ -1,0 +1,33 @@
+{
+  "code": "def sum_digits_twoparts(n):\n    max_sum = 0\n    s = str(n)\n    for i in range(1, len(s)):\n        part1 = int(s[:i])\n        part2 = int(s[i:])\n        current_sum = sum(int(d) for d in str(part1)) + sum(int(d) for d in str(part2))\n        if current_sum > max_sum:\n            max_sum = current_sum\n    # Also consider the case where the number is not split (only one part)\n    single_part_sum = sum(int(d) for d in s)\n    return max(max_sum, single_part_sum)",
+  "results": {
+    "assert sum_digits_twoparts(35)==17": {
+      "result": false,
+      "time": 0.12651824951171875,
+      "error": null
+    },
+    "assert sum_digits_twoparts(7)==7": {
+      "result": true,
+      "time": 0.11224126815795898,
+      "error": null
+    },
+    "assert sum_digits_twoparts(100)==19": {
+      "result": false,
+      "time": 0.11681008338928223,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:29:01",
+    "guidance_input_tokens": 642,
+    "guidance_output_tokens": 142,
+    "end_time": "2025-05-07 18:29:03",
+    "duration": "0:00:02.498266"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

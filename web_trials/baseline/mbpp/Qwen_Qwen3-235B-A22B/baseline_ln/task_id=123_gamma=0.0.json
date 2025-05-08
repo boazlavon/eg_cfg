@@ -1,0 +1,31 @@
+{
+  "code": "def amicable_numbers_sum(limit):\n    def sum_of_divisors(n):\n        return sum(i for i in range(1, n) if n % i == 0)\n    \n    amicable_sum = 0\n    for num in range(2, limit + 1):\n        partner = sum_of_divisors(num)\n        if partner > num and partner <= limit and sum_of_divisors(partner) == num:\n            amicable_sum += num + partner\n    return amicable_sum",
+  "results": {
+    "assert amicable_numbers_sum(999)==504": {
+      "result": true,
+      "time": 0.10502052307128906,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9999)==31626": {
+      "result": true,
+      "time": 2.9034345149993896,
+      "error": null
+    },
+    "assert amicable_numbers_sum(99)==0": {
+      "result": true,
+      "time": 0.07205963134765625,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:44:13",
+    "end_time": "2025-05-08 22:44:19",
+    "duration": "0:00:05.562859"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

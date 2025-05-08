@@ -1,0 +1,31 @@
+{
+  "code": "def median_numbers(a, b, c):\n    numbers = []\n    numbers.append(a)\n    numbers.append(b)\n    numbers.append(c)\n    sorted_numbers = []\n    for number in numbers:\n        sorted_numbers.append(number)\n    for i in range(len(sorted_numbers)):\n        for j in range(i + 1, len(sorted_numbers)):\n            if sorted_numbers[i] > sorted_numbers[j]:\n                temp = sorted_numbers[i]\n                sorted_numbers[i] = sorted_numbers[j]\n                sorted_numbers[j] = temp\n    middle_index = len(sorted_numbers) // 2\n    median = sorted_numbers[middle_index]\n    return float(median)",
+  "results": {
+    "assert median_numbers(25,55,65)==55.0": {
+      "result": true,
+      "time": 0.08234000205993652,
+      "error": null
+    },
+    "assert median_numbers(20,10,30)==20.0": {
+      "result": true,
+      "time": 0.07881379127502441,
+      "error": null
+    },
+    "assert median_numbers(15,45,75)==45.0": {
+      "result": true,
+      "time": 0.0805063247680664,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:18:43",
+    "end_time": "2025-05-08 22:18:46",
+    "duration": "0:00:02.542976"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

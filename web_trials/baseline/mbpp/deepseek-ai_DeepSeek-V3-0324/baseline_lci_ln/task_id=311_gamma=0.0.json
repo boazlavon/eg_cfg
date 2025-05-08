@@ -1,0 +1,33 @@
+{
+  "code": "def set_left_most_unset_bit(n):\n    # Handle the case where all bits are set\n    if n == 0:\n        return 1\n    if (n & (n + 1)) == 0:\n        return n\n    \n    # Create a mask to find the leftmost unset bit\n    mask = 1\n    temp = n\n    while temp != 0:\n        mask = mask << 1\n        temp = temp >> 1\n    \n    # Find the leftmost unset bit\n    leftmost_unset = mask >> 1\n    while (n & leftmost_unset) != 0:\n        leftmost_unset = leftmost_unset >> 1\n    \n    # Set the leftmost unset bit\n    result = n | leftmost_unset\n    return result",
+  "results": {
+    "assert set_left_most_unset_bit(10) == 14": {
+      "result": true,
+      "time": 0.13116812705993652,
+      "error": null
+    },
+    "assert set_left_most_unset_bit(12) == 14": {
+      "result": true,
+      "time": 0.12014365196228027,
+      "error": null
+    },
+    "assert set_left_most_unset_bit(15) == 15": {
+      "result": true,
+      "time": 0.12831497192382812,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:52:46",
+    "guidance_input_tokens": 487,
+    "guidance_output_tokens": 198,
+    "end_time": "2025-05-07 18:52:50",
+    "duration": "0:00:03.839936"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

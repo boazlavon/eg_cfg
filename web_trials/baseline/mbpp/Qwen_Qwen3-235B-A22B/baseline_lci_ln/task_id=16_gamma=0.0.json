@@ -1,0 +1,31 @@
+{
+  "code": "def text_lowercase_underscore(input_string):\n    pattern = r'^[a-z]+(_[a-z]+)*$'\n    match = re.fullmatch(pattern, input_string)\n    if match:\n        return \"Found a match!\"\n    else:\n        return \"Not matched!\"",
+  "results": {
+    "assert text_lowercase_underscore(\"aab_cbbbc\")==('Found a match!')": {
+      "result": false,
+      "time": 0.07767701148986816,
+      "error": null
+    },
+    "assert text_lowercase_underscore(\"aab_Abbbc\")==('Not matched!')": {
+      "result": false,
+      "time": 0.07759594917297363,
+      "error": null
+    },
+    "assert text_lowercase_underscore(\"Aaab_abbbc\")==('Not matched!')": {
+      "result": false,
+      "time": 0.0825047492980957,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:11:31",
+    "end_time": "2025-05-08 22:11:33",
+    "duration": "0:00:01.682711"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

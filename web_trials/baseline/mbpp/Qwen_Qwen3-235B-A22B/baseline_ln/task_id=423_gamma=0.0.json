@@ -1,0 +1,31 @@
+{
+  "code": "def get_maxgold(grid, rows, cols):\n    dp = [[0]*cols for _ in range(rows)]\n    \n    for i in range(rows):\n        dp[i][0] = grid[i][0]\n        \n    for j in range(1, cols):\n        for i in range(rows):\n            dp[i][j] = grid[i][j]\n            max_gold = 0\n            for k in range(-1, 2):\n                ni = i + k\n                if ni >=0 and ni < rows:\n                    max_gold = max(max_gold, dp[ni][j-1])\n            dp[i][j] += max_gold\n            \n    max_gold = 0\n    for i in range(rows):\n        max_gold = max(max_gold, dp[i][cols-1])\n        \n    return max_gold",
+  "results": {
+    "assert get_maxgold([[1, 3, 1, 5],[2, 2, 4, 1],[5, 0, 2, 3],[0, 6, 1, 2]],4,4)==16": {
+      "result": true,
+      "time": 0.10311579704284668,
+      "error": null
+    },
+    "assert get_maxgold([[10,20],[30,40]],2,2)==70": {
+      "result": true,
+      "time": 0.10055160522460938,
+      "error": null
+    },
+    "assert get_maxgold([[4,9],[3,7]],2,2)==13": {
+      "result": true,
+      "time": 0.10528063774108887,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:20:50",
+    "end_time": "2025-05-08 22:20:57",
+    "duration": "0:00:07.401110"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

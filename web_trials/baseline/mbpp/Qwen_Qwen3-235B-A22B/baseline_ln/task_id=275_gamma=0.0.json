@@ -1,0 +1,31 @@
+{
+  "code": "def get_Position(arr, n, k):\n    count = 0\n    index = 0\n    while count < k:\n        index = (index + n - 1) % len(arr)\n        arr.pop(index)\n        count += 1\n    return index + 1",
+  "results": {
+    "assert get_Position([2,5,4],3,2) == 2": {
+      "result": false,
+      "time": 0.06998085975646973,
+      "error": null
+    },
+    "assert get_Position([4,3],2,2) == 2": {
+      "result": false,
+      "time": 0.07088589668273926,
+      "error": null
+    },
+    "assert get_Position([1,2,3,4],4,1) == 4": {
+      "result": true,
+      "time": 0.07310342788696289,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:34:14",
+    "end_time": "2025-05-08 22:34:16",
+    "duration": "0:00:01.999598"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

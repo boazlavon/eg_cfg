@@ -1,0 +1,33 @@
+{
+  "code": "def drop_empty(dictionary):\n    result = {}\n    for key in dictionary:\n        value = dictionary[key]\n        if value is not None:\n            result[key] = value\n    return result",
+  "results": {
+    "assert drop_empty({'c1': 'Red', 'c2': 'Green', 'c3':None})=={'c1': 'Red', 'c2': 'Green'}": {
+      "result": true,
+      "time": 0.12950444221496582,
+      "error": null
+    },
+    "assert drop_empty({'c1': 'Red', 'c2': None, 'c3':None})=={'c1': 'Red'}": {
+      "result": true,
+      "time": 0.10961461067199707,
+      "error": null
+    },
+    "assert drop_empty({'c1': None, 'c2': 'Green', 'c3':None})=={ 'c2': 'Green'}": {
+      "result": true,
+      "time": 0.1198728084564209,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 19:00:34",
+    "guidance_input_tokens": 540,
+    "guidance_output_tokens": 62,
+    "end_time": "2025-05-07 19:00:36",
+    "duration": "0:00:01.995623"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

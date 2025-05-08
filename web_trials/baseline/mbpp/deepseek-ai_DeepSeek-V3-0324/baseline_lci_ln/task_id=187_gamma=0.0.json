@@ -1,0 +1,33 @@
+{
+  "code": "def longest_common_subsequence(seq1, seq2, m, n):\n    # Create a table to store lengths of longest common subsequences\n    lcs_table = []\n    for i in range(m + 1):\n        row = []\n        for j in range(n + 1):\n            row.append(0)\n        lcs_table.append(row)\n    \n    # Fill the table in bottom-up manner\n    for i in range(m + 1):\n        for j in range(n + 1):\n            if i == 0 or j == 0:\n                lcs_table[i][j] = 0\n            elif seq1[i - 1] == seq2[j - 1]:\n                lcs_table[i][j] = lcs_table[i - 1][j - 1] + 1\n            else:\n                value1 = lcs_table[i - 1][j]\n                value2 = lcs_table[i][j - 1]\n                if value1 > value2:\n                    lcs_table[i][j] = value1\n                else:\n                    lcs_table[i][j] = value2\n    \n    # The value at lcs_table[m][n] contains the length of LCS\n    result = lcs_table[m][n]\n    return result",
+  "results": {
+    "assert longest_common_subsequence(\"AGGTAB\" , \"GXTXAYB\", 6, 7) == 4": {
+      "result": true,
+      "time": 0.13512325286865234,
+      "error": null
+    },
+    "assert longest_common_subsequence(\"ABCDGH\" , \"AEDFHR\", 6, 6) == 3": {
+      "result": true,
+      "time": 0.11707949638366699,
+      "error": null
+    },
+    "assert longest_common_subsequence(\"AXYT\" , \"AYZX\", 4, 4) == 2": {
+      "result": true,
+      "time": 0.1087641716003418,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:46:23",
+    "guidance_input_tokens": 522,
+    "guidance_output_tokens": 294,
+    "end_time": "2025-05-07 18:46:27",
+    "duration": "0:00:04.680738"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

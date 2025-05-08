@@ -1,0 +1,33 @@
+{
+  "code": "def count_Num(n):\n    count = 0\n    for num in range(1 << (n + 1)):  # Check all numbers up to 2^(n+1)\n        if (num & 1) and (num & (1 << n)):  # Check if both 0th and nth bits are set\n            count += 1\n    return count",
+  "results": {
+    "assert count_Num(2) == 1": {
+      "result": false,
+      "time": 0.14486312866210938,
+      "error": null
+    },
+    "assert count_Num(3) == 2": {
+      "result": false,
+      "time": 0.11872243881225586,
+      "error": null
+    },
+    "assert count_Num(1) == 1": {
+      "result": true,
+      "time": 0.09438538551330566,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:32:17",
+    "guidance_input_tokens": 633,
+    "guidance_output_tokens": 114,
+    "end_time": "2025-05-07 18:32:19",
+    "duration": "0:00:02.182548"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

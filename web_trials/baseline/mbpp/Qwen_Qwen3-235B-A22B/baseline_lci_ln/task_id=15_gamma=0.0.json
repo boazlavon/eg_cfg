@@ -1,0 +1,31 @@
+{
+  "code": "def split_lowerstring(s):\n    result = []\n    current_segment = \"\"\n    for char in s:\n        if char.islower():\n            current_segment += char\n        else:\n            if current_segment:\n                result.append(current_segment)\n                current_segment = \"\"\n    if current_segment:\n        result.append(current_segment)\n    return result",
+  "results": {
+    "assert split_lowerstring(\"AbCd\")==['bC','d']": {
+      "result": false,
+      "time": 0.08003902435302734,
+      "error": null
+    },
+    "assert split_lowerstring(\"Python\")==['y', 't', 'h', 'o', 'n']": {
+      "result": false,
+      "time": 0.07899045944213867,
+      "error": null
+    },
+    "assert split_lowerstring(\"Programming\")==['r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']": {
+      "result": false,
+      "time": 0.0798637866973877,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:11:29",
+    "end_time": "2025-05-08 22:11:31",
+    "duration": "0:00:01.970059"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

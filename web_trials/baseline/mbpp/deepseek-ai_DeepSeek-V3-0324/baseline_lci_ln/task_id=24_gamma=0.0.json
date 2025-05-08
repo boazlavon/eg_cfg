@@ -1,0 +1,33 @@
+{
+  "code": "def binary_to_decimal(binary_num):\n    decimal_value = 0\n    power = 0\n    while binary_num > 0:\n        last_digit = binary_num % 10\n        binary_num = binary_num // 10\n        decimal_value += last_digit * (2 ** power)\n        power += 1\n    return decimal_value",
+  "results": {
+    "assert binary_to_decimal(100) == 4": {
+      "result": true,
+      "time": 0.1255931854248047,
+      "error": null
+    },
+    "assert binary_to_decimal(1011) == 11": {
+      "result": true,
+      "time": 0.12833881378173828,
+      "error": null
+    },
+    "assert binary_to_decimal(1101101) == 109": {
+      "result": true,
+      "time": 0.11983418464660645,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:37:44",
+    "guidance_input_tokens": 482,
+    "guidance_output_tokens": 96,
+    "end_time": "2025-05-07 18:37:47",
+    "duration": "0:00:02.151067"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

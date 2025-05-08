@@ -1,0 +1,33 @@
+{
+  "code": "def extract_missing(ranges, start, end):\n    missing_ranges = []\n    current_start = start\n    \n    for range_tuple in ranges:\n        range_start = range_tuple[0]\n        range_end = range_tuple[1]\n        \n        if range_start < range_end:\n            lower = range_start\n            upper = range_end\n        else:\n            lower = range_end\n            upper = range_start\n        \n        if current_start < lower:\n            missing_range = (current_start, lower)\n            missing_ranges.append(missing_range)\n        \n        current_start = upper\n    \n    if current_start < end:\n        missing_range = (current_start, end)\n        missing_ranges.append(missing_range)\n    \n    return missing_ranges",
+  "results": {
+    "assert extract_missing([(6, 9), (15, 34), (48, 70)], 2, 100) == [(2, 6), (9, 100), (9, 15), (34, 100), (34, 48), (70, 100)]": {
+      "result": false,
+      "time": 0.11576676368713379,
+      "error": null
+    },
+    "assert extract_missing([(7, 2), (15, 19), (38, 50)], 5, 60) == [(5, 7), (2, 60), (2, 15), (19, 60), (19, 38), (50, 60)]": {
+      "result": false,
+      "time": 0.1177821159362793,
+      "error": null
+    },
+    "assert extract_missing([(7, 2), (15, 19), (38, 50)], 1, 52) == [(1, 7), (2, 52), (2, 15), (19, 52), (19, 38), (50, 52)]": {
+      "result": false,
+      "time": 0.10987067222595215,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:42:12",
+    "guidance_input_tokens": 652,
+    "guidance_output_tokens": 171,
+    "end_time": "2025-05-07 18:42:16",
+    "duration": "0:00:04.675870"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

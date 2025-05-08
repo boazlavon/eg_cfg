@@ -1,0 +1,33 @@
+{
+  "code": "def Sort(lst):\n    # Initialize an empty list to store the sorted result\n    sorted_list = []\n    \n    # Create a list of tuples containing the second element and the original sublist\n    temp_list = []\n    for sublist in lst:\n        second_element = sublist[1]\n        temp_tuple = (second_element, sublist)\n        temp_list.append(temp_tuple)\n    \n    # Sort the temporary list based on the first element of the tuple (the second element of the sublist)\n    sorted_temp = []\n    length = len(temp_list)\n    for i in range(length):\n        min_index = i\n        for j in range(i + 1, length):\n            if temp_list[j][0] < temp_list[min_index][0]:\n                min_index = j\n        sorted_temp.append(temp_list[min_index])\n        temp_list[i], temp_list[min_index] = temp_list[min_index], temp_list[i]\n    \n    # Extract the original sublists from the sorted tuples\n    for item in sorted_temp:\n        original_sublist = item[1]\n        sorted_list.append(original_sublist)\n    \n    return sorted_list",
+  "results": {
+    "assert Sort([['a', 10], ['b', 5], ['c', 20], ['d', 15]]) == [['b', 5], ['a', 10], ['d', 15], ['c', 20]]": {
+      "result": true,
+      "time": 0.10283041000366211,
+      "error": null
+    },
+    "assert Sort([['452', 10], ['256', 5], ['100', 20], ['135', 15]]) == [['256', 5], ['452', 10], ['135', 15], ['100', 20]]": {
+      "result": true,
+      "time": 0.09195709228515625,
+      "error": null
+    },
+    "assert Sort([['rishi', 10], ['akhil', 5], ['ramya', 20], ['gaur', 15]]) == [['akhil', 5], ['rishi', 10], ['gaur', 15], ['ramya', 20]]": {
+      "result": true,
+      "time": 0.08998775482177734,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:53:58",
+    "guidance_input_tokens": 614,
+    "guidance_output_tokens": 264,
+    "end_time": "2025-05-07 18:54:02",
+    "duration": "0:00:04.071424"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

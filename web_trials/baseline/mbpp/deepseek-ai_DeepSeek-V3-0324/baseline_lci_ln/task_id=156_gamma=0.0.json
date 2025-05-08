@@ -1,0 +1,33 @@
+{
+  "code": "def tuple_int_str(t):\n    # Initialize an empty tuple to store the converted inner tuples\n    converted_tuple = ()\n    \n    # Iterate over each inner tuple in the input tuple\n    for inner_tuple in t:\n        # Initialize an empty tuple to store the converted integers of the current inner tuple\n        converted_inner = ()\n        \n        # Iterate over each string in the current inner tuple\n        for s in inner_tuple:\n            # Convert the string to an integer\n            num = int(s)\n            # Add the converted integer to the converted_inner tuple\n            converted_inner += (num,)\n        \n        # Add the converted_inner tuple to the converted_tuple\n        converted_tuple += (converted_inner,)\n    \n    # Return the fully converted tuple\n    return converted_tuple",
+  "results": {
+    "assert tuple_int_str((('333', '33'), ('1416', '55')))==((333, 33), (1416, 55))": {
+      "result": true,
+      "time": 0.09938335418701172,
+      "error": null
+    },
+    "assert tuple_int_str((('999', '99'), ('1000', '500')))==((999, 99), (1000, 500))": {
+      "result": true,
+      "time": 0.09353399276733398,
+      "error": null
+    },
+    "assert tuple_int_str((('666', '66'), ('1500', '555')))==((666, 66), (1500, 555))": {
+      "result": true,
+      "time": 0.10495758056640625,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:44:53",
+    "guidance_input_tokens": 545,
+    "guidance_output_tokens": 198,
+    "end_time": "2025-05-07 18:44:56",
+    "duration": "0:00:02.843760"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

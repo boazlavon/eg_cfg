@@ -1,0 +1,33 @@
+{
+  "code": "def find_peak(arr, n):\n    for i in range(n):\n        # Check if the current element is a peak\n        if (i == 0 or arr[i] >= arr[i - 1]) and (i == n - 1 or arr[i] >= arr[i + 1]):\n            return i\n    return -1  # No peak found (shouldn't happen as per problem constraints)",
+  "results": {
+    "assert find_peak([1, 3, 20, 4, 1, 0], 6) == 2": {
+      "result": true,
+      "time": 0.13220453262329102,
+      "error": null
+    },
+    "assert find_peak([2, 3, 4, 5, 6], 5) == 4": {
+      "result": true,
+      "time": 0.11228060722351074,
+      "error": null
+    },
+    "assert find_peak([8, 9, 11, 12, 14, 15], 6) == 5 ": {
+      "result": true,
+      "time": 0.1171419620513916,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:44:33",
+    "guidance_input_tokens": 681,
+    "guidance_output_tokens": 90,
+    "end_time": "2025-05-07 18:44:35",
+    "duration": "0:00:01.779519"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

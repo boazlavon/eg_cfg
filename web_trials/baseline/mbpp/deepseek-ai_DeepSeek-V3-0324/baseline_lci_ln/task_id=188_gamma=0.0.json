@@ -1,0 +1,33 @@
+{
+  "code": "def prod_Square(n):\n    if n <= 0:\n        return False\n    max_divisor = int(n ** 0.5) + 1\n    for a in range(1, max_divisor):\n        if n % a == 0:\n            b = n // a\n            a_root = int(a ** 0.5)\n            b_root = int(b ** 0.5)\n            if a_root * a_root == a and b_root * b_root == b:\n                return True\n    return False",
+  "results": {
+    "assert prod_Square(25) == False": {
+      "result": false,
+      "time": 0.13377928733825684,
+      "error": null
+    },
+    "assert prod_Square(30) == False": {
+      "result": true,
+      "time": 0.13510918617248535,
+      "error": null
+    },
+    "assert prod_Square(16) == True": {
+      "result": true,
+      "time": 0.13109827041625977,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:46:28",
+    "guidance_input_tokens": 480,
+    "guidance_output_tokens": 144,
+    "end_time": "2025-05-07 18:46:30",
+    "duration": "0:00:02.623118"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

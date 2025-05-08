@@ -1,0 +1,31 @@
+{
+  "code": "from collections import Counter\ndef max_occurrences(lst):\n    counts = Counter(lst)\n    max_item, max_count = max(counts.items(), key=lambda x: x[1])\n    return (max_item, max_count)",
+  "results": {
+    "assert max_occurrences([2,3,8,4,7,9,8,2,6,5,1,6,1,2,3,2,4,6,9,1,2])==(2, 5)": {
+      "result": true,
+      "time": 0.07996034622192383,
+      "error": null
+    },
+    "assert max_occurrences([2,3,8,4,7,9,8,7,9,15,14,10,12,13,16,16,18])==(8, 2)": {
+      "result": true,
+      "time": 0.06841921806335449,
+      "error": null
+    },
+    "assert max_occurrences([10,20,20,30,40,90,80,50,30,20,50,10])==(20, 3)": {
+      "result": true,
+      "time": 0.07600045204162598,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:36:39",
+    "end_time": "2025-05-08 22:36:42",
+    "duration": "0:00:03.666498"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

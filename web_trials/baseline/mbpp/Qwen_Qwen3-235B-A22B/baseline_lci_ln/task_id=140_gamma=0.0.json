@@ -1,0 +1,31 @@
+{
+  "code": "def extract_singly(tuple_list):\n    count_dict = {}\n    for tuple in tuple_list:\n        for element in tuple:\n            if element in count_dict:\n                count_dict[element] += 1\n            else:\n                count_dict[element] = 1\n    result = []\n    for key in count_dict:\n        if count_dict[key] == 1:\n            result.append(key)\n    return result",
+  "results": {
+    "assert extract_singly([(3, 4, 5), (4, 5, 7), (1, 4)]) == [3, 4, 5, 7, 1]": {
+      "result": false,
+      "time": 0.10864090919494629,
+      "error": null
+    },
+    "assert extract_singly([(1, 2, 3), (4, 2, 3), (7, 8)]) == [1, 2, 3, 4, 7, 8]": {
+      "result": false,
+      "time": 0.10182023048400879,
+      "error": null
+    },
+    "assert extract_singly([(7, 8, 9), (10, 11, 12), (10, 11)]) == [7, 8, 9, 10, 11, 12]": {
+      "result": false,
+      "time": 0.10794448852539062,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:50:34",
+    "end_time": "2025-05-08 22:50:36",
+    "duration": "0:00:02.499385"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

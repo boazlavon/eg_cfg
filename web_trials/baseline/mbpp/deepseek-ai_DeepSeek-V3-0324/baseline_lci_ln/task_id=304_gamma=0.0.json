@@ -1,0 +1,33 @@
+{
+  "code": "def find_Element(arr, ranges, rotations, index):\n    # Create a copy of the original array to avoid modifying it\n    rotated_arr = arr.copy()\n    \n    # Perform each rotation\n    for i in range(rotations):\n        # Get the current rotation range\n        current_range = ranges[i % len(ranges)]\n        start = current_range[0]\n        end = current_range[1]\n        \n        # Extract the subarray to rotate\n        subarray = rotated_arr[start:end+1]\n        \n        # Rotate the subarray by moving the first element to the end\n        if len(subarray) > 0:\n            first_element = subarray[0]\n            rotated_subarray = subarray[1:]\n            rotated_subarray.append(first_element)\n            \n            # Update the original array with the rotated subarray\n            rotated_arr[start:end+1] = rotated_subarray\n    \n    # Return the element at the specified index after all rotations\n    return rotated_arr[index]",
+  "results": {
+    "assert find_Element([1,2,3,4,5],[[0,2],[0,3]],2,1) == 3": {
+      "result": false,
+      "time": 0.13851475715637207,
+      "error": null
+    },
+    "assert find_Element([1,2,3,4],[[0,1],[0,2]],1,2) == 3": {
+      "result": true,
+      "time": 0.10776948928833008,
+      "error": null
+    },
+    "assert find_Element([1,2,3,4,5,6],[[0,1],[0,2]],1,1) == 1": {
+      "result": true,
+      "time": 0.11403107643127441,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:52:23",
+    "guidance_input_tokens": 568,
+    "guidance_output_tokens": 233,
+    "end_time": "2025-05-07 18:52:27",
+    "duration": "0:00:04.287220"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

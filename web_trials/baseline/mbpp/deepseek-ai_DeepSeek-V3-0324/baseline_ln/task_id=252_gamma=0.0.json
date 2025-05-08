@@ -1,0 +1,33 @@
+{
+  "code": "import cmath\n\ndef convert(z):\n    if isinstance(z, (int, float)):\n        z = complex(z, 0)\n    r = abs(z)\n    theta = cmath.phase(z)\n    return (r, theta)",
+  "results": {
+    "assert convert(1) == (1.0, 0.0)": {
+      "result": true,
+      "time": 0.1487429141998291,
+      "error": null
+    },
+    "assert convert(4) == (4.0,0.0)": {
+      "result": true,
+      "time": 0.12398290634155273,
+      "error": null
+    },
+    "assert convert(5) == (5.0,0.0)": {
+      "result": true,
+      "time": 0.12421464920043945,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:34:14",
+    "guidance_input_tokens": 642,
+    "guidance_output_tokens": 102,
+    "end_time": "2025-05-07 18:34:17",
+    "duration": "0:00:02.639731"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

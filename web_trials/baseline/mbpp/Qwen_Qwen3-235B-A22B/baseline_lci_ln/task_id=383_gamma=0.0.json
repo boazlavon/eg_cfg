@@ -1,0 +1,31 @@
+{
+  "code": "def even_bit_toggle_number(number):\n    result = 0\n    bit_position = 0\n    while number >> bit_position:\n        current_bit = (number >> bit_position) & 1\n        if bit_position % 2 == 0:\n            toggled_bit = current_bit ^ 1\n        else:\n            toggled_bit = current_bit\n        result = result | (toggled_bit << bit_position)\n        bit_position += 1\n    return result",
+  "results": {
+    "assert even_bit_toggle_number(10) == 15": {
+      "result": true,
+      "time": 0.07901382446289062,
+      "error": null
+    },
+    "assert even_bit_toggle_number(20) == 1": {
+      "result": true,
+      "time": 0.07849884033203125,
+      "error": null
+    },
+    "assert even_bit_toggle_number(30) == 11": {
+      "result": true,
+      "time": 0.07917499542236328,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:54:23",
+    "end_time": "2025-05-08 22:54:25",
+    "duration": "0:00:02.429341"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

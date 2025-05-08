@@ -1,0 +1,33 @@
+{
+  "code": "def intersection_array(arr1, arr2):\n    # Initialize an empty list to store the intersection elements\n    intersection = []\n    \n    # Iterate over each element in the first array\n    for element in arr1:\n        # Check if the element is present in the second array\n        if element in arr2:\n            # Also check if the element is not already in the intersection list\n            if element not in intersection:\n                # Add the element to the intersection list\n                intersection.append(element)\n    \n    # Return the intersection list\n    return intersection",
+  "results": {
+    "assert intersection_array([1, 2, 3, 5, 7, 8, 9, 10],[1, 2, 4, 8, 9])==[1, 2, 8, 9]": {
+      "result": true,
+      "time": 0.09634542465209961,
+      "error": null
+    },
+    "assert intersection_array([1, 2, 3, 5, 7, 8, 9, 10],[3,5,7,9])==[3,5,7,9]": {
+      "result": true,
+      "time": 0.09135913848876953,
+      "error": null
+    },
+    "assert intersection_array([1, 2, 3, 5, 7, 8, 9, 10],[10,20,30,40])==[10]": {
+      "result": true,
+      "time": 0.09124279022216797,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:49:32",
+    "guidance_input_tokens": 593,
+    "guidance_output_tokens": 138,
+    "end_time": "2025-05-07 18:49:35",
+    "duration": "0:00:02.683845"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

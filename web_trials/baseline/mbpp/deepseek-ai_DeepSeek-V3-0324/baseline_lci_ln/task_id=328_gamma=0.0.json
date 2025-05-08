@@ -1,0 +1,33 @@
+{
+  "code": "def rotate_left(lst, n, m):\n    # Create a copy of the original list to avoid modifying it directly\n    rotated_list = lst.copy()\n    \n    # Calculate the effective rotation count by taking modulo with list length\n    effective_rotation = n % len(rotated_list)\n    \n    # Perform the rotation 'm' times\n    for _ in range(m):\n        # Slice the list into two parts: the part to move to the end and the rest\n        part_to_move = rotated_list[:effective_rotation]\n        remaining_part = rotated_list[effective_rotation:]\n        \n        # Combine the remaining part with the part to move\n        rotated_list = remaining_part + part_to_move\n    \n    return rotated_list",
+  "results": {
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],3,4)==[4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4]": {
+      "result": false,
+      "time": 0.3498044013977051,
+      "error": null
+    },
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],2,2)==[3, 4, 5, 6, 7, 8, 9, 10, 1, 2]": {
+      "result": false,
+      "time": 0.12399005889892578,
+      "error": null
+    },
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],5,2)==[6, 7, 8, 9, 10, 1, 2]": {
+      "result": false,
+      "time": 0.1202239990234375,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:53:46",
+    "guidance_input_tokens": 651,
+    "guidance_output_tokens": 169,
+    "end_time": "2025-05-07 18:53:49",
+    "duration": "0:00:02.960816"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

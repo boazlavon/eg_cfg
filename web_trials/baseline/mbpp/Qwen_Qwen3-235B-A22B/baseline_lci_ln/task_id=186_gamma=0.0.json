@@ -1,0 +1,31 @@
+{
+  "code": "# Final function implementation\nimport re\n\ndef check_literals(input_string, search_list):\n    found_match = False\n    for pattern in search_list:\n        match = re.search(pattern, input_string)\n        if match:\n            found_match = True\n            break\n    if found_match:\n        return \"Matched!\"\n    else:\n        return \"Not Matched!\"",
+  "results": {
+    "assert check_literals('The quick brown fox jumps over the lazy dog.',['fox']) == 'Matched!'": {
+      "result": true,
+      "time": 0.08006453514099121,
+      "error": null
+    },
+    "assert check_literals('The quick brown fox jumps over the lazy dog.',['horse']) == 'Not Matched!'": {
+      "result": true,
+      "time": 0.07940435409545898,
+      "error": null
+    },
+    "assert check_literals('The quick brown fox jumps over the lazy dog.',['lazy']) == 'Matched!'": {
+      "result": true,
+      "time": 0.0803673267364502,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:54:13",
+    "end_time": "2025-05-08 22:54:16",
+    "duration": "0:00:02.890352"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

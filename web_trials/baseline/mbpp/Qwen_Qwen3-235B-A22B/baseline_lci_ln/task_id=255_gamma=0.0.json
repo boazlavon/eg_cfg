@@ -1,0 +1,31 @@
+{
+  "code": "def combinations_colors(color_list, number_of_colors):\n    result = []\n    if number_of_colors == 0:\n        result.append(())\n        return result\n    for i in range(len(color_list)):\n        current_color = color_list[i]\n        remaining_colors = color_list[i:]\n        sub_combinations = combinations_colors(remaining_colors, number_of_colors - 1)\n        for sub in sub_combinations:\n            new_combination = (current_color,) + sub\n            result.append(new_combination)\n    return result",
+  "results": {
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],1)==[('Red',), ('Green',), ('Blue',)]": {
+      "result": true,
+      "time": 0.0789330005645752,
+      "error": null
+    },
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],2)==[('Red', 'Red'), ('Red', 'Green'), ('Red', 'Blue'), ('Green', 'Green'), ('Green', 'Blue'), ('Blue', 'Blue')]": {
+      "result": true,
+      "time": 0.07567238807678223,
+      "error": null
+    },
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],3)==[('Red', 'Red', 'Red'), ('Red', 'Red', 'Green'), ('Red', 'Red', 'Blue'), ('Red', 'Green', 'Green'), ('Red', 'Green', 'Blue'), ('Red', 'Blue', 'Blue'), ('Green', 'Green', 'Green'), ('Green', 'Green', 'Blue'), ('Green', 'Blue', 'Blue'), ('Blue', 'Blue', 'Blue')]": {
+      "result": true,
+      "time": 0.07705974578857422,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:38:57",
+    "end_time": "2025-05-08 22:39:11",
+    "duration": "0:00:14.324362"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

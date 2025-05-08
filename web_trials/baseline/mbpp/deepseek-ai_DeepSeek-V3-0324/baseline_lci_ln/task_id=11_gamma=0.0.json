@@ -1,0 +1,33 @@
+{
+  "code": "def remove_Occ(s, ch):\n    first_index = -1\n    last_index = -1\n    length = len(s)\n    \n    # Find the first occurrence of the character\n    for i in range(length):\n        if s[i] == ch:\n            first_index = i\n            break\n    \n    # Find the last occurrence of the character\n    for i in range(length - 1, -1, -1):\n        if s[i] == ch:\n            last_index = i\n            break\n    \n    # If the character is not found, return the original string\n    if first_index == -1:\n        return s\n    \n    # If there's only one occurrence, remove it\n    if first_index == last_index:\n        new_str = s[:first_index] + s[first_index + 1:]\n        return new_str\n    \n    # Remove both first and last occurrences\n    new_str = s[:first_index] + s[first_index + 1:last_index] + s[last_index + 1:]\n    return new_str",
+  "results": {
+    "assert remove_Occ(\"hello\",\"l\") == \"heo\"": {
+      "result": true,
+      "time": 0.1307370662689209,
+      "error": null
+    },
+    "assert remove_Occ(\"abcda\",\"a\") == \"bcd\"": {
+      "result": true,
+      "time": 0.11376285552978516,
+      "error": null
+    },
+    "assert remove_Occ(\"PHP\",\"P\") == \"H\"": {
+      "result": true,
+      "time": 0.11317968368530273,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:37:09",
+    "guidance_input_tokens": 492,
+    "guidance_output_tokens": 246,
+    "end_time": "2025-05-07 18:37:13",
+    "duration": "0:00:04.470834"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

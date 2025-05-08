@@ -1,0 +1,33 @@
+{
+  "code": "def is_valid_parenthese(s):\n    stack = []\n    mapping = {\n        ')': '(',\n        '}': '{',\n        ']': '['\n    }\n    \n    for char in s:\n        if char in mapping.values():\n            stack.append(char)\n        elif char in mapping.keys():\n            if not stack:\n                return False\n            top_element = stack.pop()\n            if mapping[char] != top_element:\n                return False\n        else:\n            return False\n    \n    return not stack",
+  "results": {
+    "assert is_valid_parenthese(\"(){}[]\")==True": {
+      "result": true,
+      "time": 0.12877583503723145,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"()[{)}\")==False": {
+      "result": true,
+      "time": 0.12100934982299805,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"()\")==True": {
+      "result": true,
+      "time": 0.11610555648803711,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:45:46",
+    "guidance_input_tokens": 478,
+    "guidance_output_tokens": 126,
+    "end_time": "2025-05-07 18:45:49",
+    "duration": "0:00:03.139329"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,31 @@
+{
+  "code": "import heapq\n\ndef heap_replace(heap, item):\n    heapq.heapify(heap)\n    heapq.heappop(heap)\n    heapq.heappush(heap, item)\n    return heap",
+  "results": {
+    "assert heap_replace( [25, 44, 68, 21, 39, 23, 89],21)==[21, 25, 23, 44, 39, 68, 89]": {
+      "result": false,
+      "time": 0.10414981842041016,
+      "error": null
+    },
+    "assert heap_replace([25, 44, 68, 21, 39, 23, 89],110)== [23, 25, 68, 44, 39, 110, 89]": {
+      "result": false,
+      "time": 0.08405733108520508,
+      "error": null
+    },
+    "assert heap_replace([25, 44, 68, 21, 39, 23, 89],500)==[23, 25, 68, 44, 39, 500, 89]": {
+      "result": false,
+      "time": 0.08634471893310547,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:05:47",
+    "end_time": "2025-05-08 23:05:49",
+    "duration": "0:00:01.968305"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

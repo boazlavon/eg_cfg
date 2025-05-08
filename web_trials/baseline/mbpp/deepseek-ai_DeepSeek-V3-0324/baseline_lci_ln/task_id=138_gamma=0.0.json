@@ -1,0 +1,33 @@
+{
+  "code": "def is_Sum_Of_Powers_Of_Two(n):\n    if n < 1:\n        return False\n    current_power = 1\n    sum_powers = 0\n    powers_used = []\n    while current_power <= n:\n        if (sum_powers + current_power) <= n:\n            sum_powers = sum_powers + current_power\n            powers_used.append(current_power)\n        current_power = current_power * 2\n    if sum_powers == n:\n        return True\n    else:\n        return False",
+  "results": {
+    "assert is_Sum_Of_Powers_Of_Two(10) == True": {
+      "result": false,
+      "time": 0.17261433601379395,
+      "error": null
+    },
+    "assert is_Sum_Of_Powers_Of_Two(7) == False": {
+      "result": false,
+      "time": 0.14258146286010742,
+      "error": null
+    },
+    "assert is_Sum_Of_Powers_Of_Two(14) == True": {
+      "result": false,
+      "time": 0.13161993026733398,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:44:03",
+    "guidance_input_tokens": 508,
+    "guidance_output_tokens": 158,
+    "end_time": "2025-05-07 18:44:06",
+    "duration": "0:00:02.911776"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

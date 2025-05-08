@@ -1,0 +1,31 @@
+{
+  "code": "def max_subarray_product(nums):\n    if not nums:\n        return 0\n    \n    max_product = nums[0]\n    current_max = nums[0]\n    current_min = nums[0]\n    \n    for i in range(1, len(nums)):\n        num = nums[i]\n        \n        if num == 0:\n            current_max = 0\n            current_min = 0\n        else:\n            temp_max = current_max * num\n            temp_min = current_min * num\n            \n            if num > 0:\n                new_current_max = temp_max\n                new_current_min = temp_min\n            else:\n                new_current_max = temp_min\n                new_current_min = temp_max\n            \n            if new_current_max > num:\n                current_max = new_current_max\n            else:\n                current_max = num\n            \n            if new_current_min < num:\n                current_min = new_current_min\n            else:\n                current_min = num\n        \n        if current_max > max_product:\n            max_product = current_max\n    \n    return max_product",
+  "results": {
+    "assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112": {
+      "result": true,
+      "time": 0.0805521011352539,
+      "error": null
+    },
+    "assert max_subarray_product([6, -3, -10, 0, 2]) == 180 ": {
+      "result": true,
+      "time": 0.07628226280212402,
+      "error": null
+    },
+    "assert max_subarray_product([-2, -40, 0, -2, -3]) == 80": {
+      "result": true,
+      "time": 0.07058310508728027,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:24:34",
+    "end_time": "2025-05-08 22:24:38",
+    "duration": "0:00:03.745649"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

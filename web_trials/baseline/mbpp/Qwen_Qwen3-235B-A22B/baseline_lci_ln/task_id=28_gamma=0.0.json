@@ -1,0 +1,31 @@
+{
+  "code": "def binomial_Coeff(n, k):\n    if k > n:\n        return 0\n    if k == 0 or k == n:\n        return 1\n    k = min(k, n - k)\n    result = 1\n    for i in range(1, k + 1):\n        result = result * (n - k + i) // i\n    return result",
+  "results": {
+    "assert binomial_Coeff(5,2) == 10": {
+      "result": true,
+      "time": 0.2339615821838379,
+      "error": null
+    },
+    "assert binomial_Coeff(4,3) == 4": {
+      "result": true,
+      "time": 0.08137655258178711,
+      "error": null
+    },
+    "assert binomial_Coeff(3,2) == 3": {
+      "result": true,
+      "time": 0.07945370674133301,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:13:23",
+    "end_time": "2025-05-08 22:13:26",
+    "duration": "0:00:02.323788"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

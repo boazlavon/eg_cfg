@@ -1,0 +1,31 @@
+{
+  "code": "def count_unset_bits(n):\n    if n == 0:\n        return 1\n    count = 0\n    bit_length = n.bit_length()\n    for i in range(bit_length):\n        if not (n >> i) & 1:\n            count += 1\n    return count",
+  "results": {
+    "assert count_unset_bits(2) == 1": {
+      "result": true,
+      "time": 0.11890506744384766,
+      "error": null
+    },
+    "assert count_unset_bits(4) == 2": {
+      "result": true,
+      "time": 0.11480140686035156,
+      "error": null
+    },
+    "assert count_unset_bits(6) == 1": {
+      "result": true,
+      "time": 0.11120414733886719,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:21:01",
+    "end_time": "2025-05-08 22:21:03",
+    "duration": "0:00:01.973849"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

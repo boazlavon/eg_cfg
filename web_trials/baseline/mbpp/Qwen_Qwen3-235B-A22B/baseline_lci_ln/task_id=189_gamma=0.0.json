@@ -1,0 +1,31 @@
+{
+  "code": "def first_Missing_Positive(nums, n):\n    # Step 1: Initialize a variable to track the minimum missing positive integer\n    min_missing = 1\n    \n    # Step 2: Sort the list of numbers in ascending order\n    nums.sort()\n    \n    # Step 3: Iterate through the sorted list of numbers\n    for num in nums:\n        # Step 4: Check if the current number is positive\n        if num > 0:\n            # Step 5: Check if the current number matches the expected minimum missing positive integer\n            if num == min_missing:\n                # Step 6: Increment the minimum missing positive integer since it was found\n                min_missing += 1\n                \n    # Step 7: Return the first missing positive integer\n    return min_missing",
+  "results": {
+    "assert first_Missing_Positive([1,2,3,-1,5],5) == 4": {
+      "result": true,
+      "time": 0.08176660537719727,
+      "error": null
+    },
+    "assert first_Missing_Positive([0,-1,-2,1,5,8],6) == 2": {
+      "result": true,
+      "time": 0.08029031753540039,
+      "error": null
+    },
+    "assert first_Missing_Positive([0,1,2,5,-8],5) == 3": {
+      "result": true,
+      "time": 0.07944869995117188,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:41:27",
+    "end_time": "2025-05-08 22:41:31",
+    "duration": "0:00:03.488256"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

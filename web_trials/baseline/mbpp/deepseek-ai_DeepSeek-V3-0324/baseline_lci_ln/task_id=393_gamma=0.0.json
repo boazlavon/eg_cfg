@@ -1,0 +1,33 @@
+{
+  "code": "def max_length_list(list_of_lists):\n    if not list_of_lists:\n        return (0, [])\n    \n    max_len = 0\n    max_list = []\n    \n    for current_list in list_of_lists:\n        current_len = len(current_list)\n        if current_len > max_len:\n            max_len = current_len\n            max_list = current_list\n    \n    return (max_len, max_list)",
+  "results": {
+    "assert max_length_list([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]])==(3, [13, 15, 17])": {
+      "result": true,
+      "time": 0.12570929527282715,
+      "error": null
+    },
+    "assert max_length_list([[1,2,3,4,5],[1,2,3,4],[1,2,3],[1,2],[1]])==(5,[1,2,3,4,5])": {
+      "result": true,
+      "time": 0.12946224212646484,
+      "error": null
+    },
+    "assert max_length_list([[3,4,5],[6,7,8,9],[10,11,12]])==(4,[6,7,8,9])": {
+      "result": true,
+      "time": 0.1214444637298584,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:56:59",
+    "guidance_input_tokens": 609,
+    "guidance_output_tokens": 113,
+    "end_time": "2025-05-07 18:57:01",
+    "duration": "0:00:02.113487"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

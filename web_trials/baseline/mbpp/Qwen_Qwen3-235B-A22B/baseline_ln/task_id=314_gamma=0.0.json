@@ -1,0 +1,31 @@
+{
+  "code": "def max_sum_rectangular_grid(grid, n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return max(grid[0][0], grid[1][0])\n    sum_prev = max(grid[0][0], grid[1][0])\n    sum_curr = max(sum_prev, grid[0][1] + grid[1][0], grid[1][1] + grid[0][0])\n    for i in range(2, n):\n        new_sum = max(sum_curr, sum_prev + max(grid[0][i], grid[1][i]))\n        sum_prev, sum_curr = sum_curr, new_sum\n    return sum_curr",
+  "results": {
+    "assert max_sum_rectangular_grid([ [1, 4, 5], [2, 0, 0 ] ], 3) == 7": {
+      "result": true,
+      "time": 0.0758359432220459,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([ [ 1, 2, 3, 4, 5], [ 6, 7, 8, 9, 10] ], 5) == 24": {
+      "result": true,
+      "time": 0.09844160079956055,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([ [7, 9, 11, 15, 19], [21, 25, 28, 31, 32] ], 5) == 81": {
+      "result": true,
+      "time": 0.07746005058288574,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:10:19",
+    "end_time": "2025-05-08 23:10:25",
+    "duration": "0:00:05.727691"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

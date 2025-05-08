@@ -1,0 +1,31 @@
+{
+  "code": "def sum_of_digits(input_list):\n    total_sum = 0\n    for element in input_list:\n        if isinstance(element, list):\n            nested_list = element\n            for nested_element in nested_list:\n                if isinstance(nested_element, int):\n                    number = nested_element\n                    absolute_value = abs(number)\n                    string_representation = str(absolute_value)\n                    for character in string_representation:\n                        digit = int(character)\n                        total_sum += digit\n        elif isinstance(element, int):\n            number = element\n            absolute_value = abs(number)\n            string_representation = str(absolute_value)\n            for character in string_representation:\n                digit = int(character)\n                total_sum += digit\n    return total_sum",
+  "results": {
+    "assert sum_of_digits([10,2,56])==14": {
+      "result": true,
+      "time": 0.07602930068969727,
+      "error": null
+    },
+    "assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19": {
+      "result": true,
+      "time": 0.0744481086730957,
+      "error": null
+    },
+    "assert sum_of_digits([10,20,-4,5,-70])==19": {
+      "result": true,
+      "time": 0.07439279556274414,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:44:37",
+    "end_time": "2025-05-08 22:44:40",
+    "duration": "0:00:03.189899"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef is_valid_URL(url):\n    # Define the regex pattern for a valid URL\n    pattern = r'^https?://[^\\s/$.?#].[^\\s]*$'\n    \n    # Compile the regex pattern\n    regex = re.compile(pattern)\n    \n    # Check if the url matches the pattern\n    match = regex.search(url)\n    \n    # Return True if there's a match, False otherwise\n    if match:\n        return True\n    else:\n        return False",
+  "results": {
+    "assert is_valid_URL(\"https://www.google.com\") == True": {
+      "result": true,
+      "time": 0.07752418518066406,
+      "error": null
+    },
+    "assert is_valid_URL(\"https:/www.gmail.com\") == False": {
+      "result": true,
+      "time": 0.07280850410461426,
+      "error": null
+    },
+    "assert is_valid_URL(\"https:// www.redit.com\") == False": {
+      "result": true,
+      "time": 0.07254886627197266,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:57:26",
+    "guidance_input_tokens": 488,
+    "guidance_output_tokens": 130,
+    "end_time": "2025-05-07 18:57:28",
+    "duration": "0:00:02.398876"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

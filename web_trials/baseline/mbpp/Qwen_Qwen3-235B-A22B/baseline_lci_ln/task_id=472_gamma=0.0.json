@@ -1,0 +1,31 @@
+{
+  "code": "def check_Consecutive(lst):\n    sorted_list = sorted(lst)\n    index = 0\n    while index < len(sorted_list) - 1:\n        current_number = sorted_list[index]\n        next_number = sorted_list[index + 1]\n        difference = next_number - current_number\n        if difference != 1:\n            return False\n        index += 1\n    return True",
+  "results": {
+    "assert check_Consecutive([1,2,3,4,5]) == True": {
+      "result": true,
+      "time": 0.11179304122924805,
+      "error": null
+    },
+    "assert check_Consecutive([1,2,3,5,6]) == False": {
+      "result": true,
+      "time": 0.11211848258972168,
+      "error": null
+    },
+    "assert check_Consecutive([1,2,1]) == False": {
+      "result": true,
+      "time": 0.10979318618774414,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:50:12",
+    "end_time": "2025-05-08 22:50:14",
+    "duration": "0:00:02.122911"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

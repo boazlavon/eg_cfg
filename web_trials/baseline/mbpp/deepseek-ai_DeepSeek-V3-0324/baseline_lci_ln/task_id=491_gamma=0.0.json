@@ -1,0 +1,33 @@
+{
+  "code": "def sum_gp(first_term, num_terms, common_ratio):\n    if common_ratio == 1:\n        sum_series = first_term * num_terms\n    else:\n        numerator = first_term * (1 - common_ratio ** num_terms)\n        denominator = 1 - common_ratio\n        sum_series = numerator / denominator\n    return sum_series",
+  "results": {
+    "assert sum_gp(1,5,2)==31": {
+      "result": true,
+      "time": 0.15272068977355957,
+      "error": null
+    },
+    "assert sum_gp(1,5,4)==341": {
+      "result": true,
+      "time": 0.11988210678100586,
+      "error": null
+    },
+    "assert sum_gp(2,6,3)==728": {
+      "result": true,
+      "time": 0.12675738334655762,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 19:01:53",
+    "guidance_input_tokens": 492,
+    "guidance_output_tokens": 105,
+    "end_time": "2025-05-07 19:01:55",
+    "duration": "0:00:02.066601"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

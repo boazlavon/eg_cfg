@@ -1,0 +1,33 @@
+{
+  "code": "def first_Missing_Positive(arr, n):\n    # Step 1: Separate positive and non-positive numbers\n    positive_numbers = []\n    for num in arr:\n        if num > 0:\n            positive_numbers.append(num)\n    \n    # Step 2: If there are no positive numbers, the first missing is 1\n    if not positive_numbers:\n        return 1\n    \n    # Step 3: Find the maximum positive number in the list\n    max_positive = positive_numbers[0]\n    for num in positive_numbers:\n        if num > max_positive:\n            max_positive = num\n    \n    # Step 4: Create a presence array to mark numbers from 1 to max_positive\n    presence = [False] * (max_positive + 1)\n    for num in positive_numbers:\n        if num <= max_positive:\n            presence[num] = True\n    \n    # Step 5: Find the first missing positive number\n    for i in range(1, max_positive + 1):\n        if not presence[i]:\n            return i\n    \n    # Step 6: If all numbers from 1 to max_positive are present, return max_positive + 1\n    return max_positive + 1",
+  "results": {
+    "assert first_Missing_Positive([1,2,3,-1,5],5) == 4": {
+      "result": true,
+      "time": 0.12145471572875977,
+      "error": null
+    },
+    "assert first_Missing_Positive([0,-1,-2,1,5,8],6) == 2": {
+      "result": true,
+      "time": 0.10912466049194336,
+      "error": null
+    },
+    "assert first_Missing_Positive([0,1,2,5,-8],5) == 3": {
+      "result": true,
+      "time": 0.10361933708190918,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:46:30",
+    "guidance_input_tokens": 531,
+    "guidance_output_tokens": 287,
+    "end_time": "2025-05-07 18:46:34",
+    "duration": "0:00:04.156417"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

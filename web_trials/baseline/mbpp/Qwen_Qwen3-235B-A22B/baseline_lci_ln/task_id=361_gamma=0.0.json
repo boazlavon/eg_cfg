@@ -1,0 +1,31 @@
+{
+  "code": "def remove_empty(list_of_lists):\n    result = []\n    for item in list_of_lists:\n        is_empty = item == []\n        if not is_empty:\n            result.append(item)\n    return result",
+  "results": {
+    "assert remove_empty([[], [], [], 'Red', 'Green', [1,2], 'Blue', [], []])==['Red', 'Green', [1, 2], 'Blue']": {
+      "result": true,
+      "time": 0.08287477493286133,
+      "error": null
+    },
+    "assert remove_empty([[], [], [],[],[], 'Green', [1,2], 'Blue', [], []])==[ 'Green', [1, 2], 'Blue']": {
+      "result": true,
+      "time": 0.07284355163574219,
+      "error": null
+    },
+    "assert remove_empty([[], [], [], 'Python',[],[], 'programming', 'language',[],[],[], [], []])==['Python', 'programming', 'language']": {
+      "result": true,
+      "time": 0.07848358154296875,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:16:06",
+    "end_time": "2025-05-08 22:16:08",
+    "duration": "0:00:01.831419"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

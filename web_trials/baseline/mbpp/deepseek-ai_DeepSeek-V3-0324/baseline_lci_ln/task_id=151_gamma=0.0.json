@@ -1,0 +1,33 @@
+{
+  "code": "def is_coprime(a, b):\n    # Find the smaller number between a and b\n    smaller = a if a < b else b\n    \n    # Initialize the greatest common divisor (GCD) to 1\n    gcd = 1\n    \n    # Iterate from 1 to the smaller number to find the GCD\n    for i in range(1, smaller + 1):\n        # Check if i divides both a and b\n        if a % i == 0 and b % i == 0:\n            # Update the GCD if i is a common divisor\n            gcd = i\n    \n    # Numbers are co-prime if GCD is 1\n    if gcd == 1:\n        return True\n    else:\n        return False",
+  "results": {
+    "assert is_coprime(17,13) == True": {
+      "result": true,
+      "time": 0.13001632690429688,
+      "error": null
+    },
+    "assert is_coprime(15,21) == False": {
+      "result": true,
+      "time": 0.12051796913146973,
+      "error": null
+    },
+    "assert is_coprime(25,45) == False": {
+      "result": true,
+      "time": 0.11046600341796875,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:44:39",
+    "guidance_input_tokens": 488,
+    "guidance_output_tokens": 177,
+    "end_time": "2025-05-07 18:44:43",
+    "duration": "0:00:03.490880"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

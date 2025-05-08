@@ -1,0 +1,33 @@
+{
+  "code": "import math\n\ndef convert(complex_num):\n    if isinstance(complex_num, (int, float)):\n        real_part = complex_num\n        imag_part = 0.0\n    else:\n        real_part = complex_num.real\n        imag_part = complex_num.imag\n    \n    magnitude = math.sqrt(real_part ** 2 + imag_part ** 2)\n    \n    if real_part == 0:\n        if imag_part > 0:\n            angle = math.pi / 2\n        elif imag_part < 0:\n            angle = -math.pi / 2\n        else:\n            angle = 0.0\n    else:\n        angle = math.atan2(imag_part, real_part)\n    \n    return (magnitude, angle)",
+  "results": {
+    "assert convert(1) == (1.0, 0.0)": {
+      "result": true,
+      "time": 0.09458780288696289,
+      "error": null
+    },
+    "assert convert(4) == (4.0,0.0)": {
+      "result": true,
+      "time": 0.09507608413696289,
+      "error": null
+    },
+    "assert convert(5) == (5.0,0.0)": {
+      "result": true,
+      "time": 0.08486175537109375,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:49:38",
+    "guidance_input_tokens": 489,
+    "guidance_output_tokens": 181,
+    "end_time": "2025-05-07 18:49:42",
+    "duration": "0:00:03.867576"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,31 @@
+{
+  "code": "def check_subset_list(main_list, subset_list):\n    is_subset = True\n    for subset_sublist in subset_list:\n        found = False\n        for main_sublist in main_list:\n            if subset_sublist == main_sublist:\n                found = True\n                break\n        if not found:\n            is_subset = False\n            break\n    return is_subset",
+  "results": {
+    "assert check_subset_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],[[12, 18, 23, 25, 45], [7, 11, 19, 24, 28], [1, 5, 8, 18, 15, 16]])==False": {
+      "result": true,
+      "time": 0.08261728286743164,
+      "error": null
+    },
+    "assert check_subset_list([[2, 3, 1], [4, 5], [6, 8]],[[4, 5], [6, 8]])==True": {
+      "result": true,
+      "time": 0.0800778865814209,
+      "error": null
+    },
+    "assert check_subset_list([['a', 'b'], ['e'], ['c', 'd']],[['g']])==False": {
+      "result": true,
+      "time": 0.07686114311218262,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:38:41",
+    "end_time": "2025-05-08 22:38:50",
+    "duration": "0:00:08.336215"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

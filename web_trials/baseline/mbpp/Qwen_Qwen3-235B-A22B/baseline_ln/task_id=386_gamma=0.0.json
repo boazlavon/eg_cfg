@@ -1,0 +1,31 @@
+{
+  "code": "def swap_count(s):\n    open_brackets = 0\n    close_brackets = 0\n    unbalanced = 0\n    swaps = 0\n\n    for char in s:\n        if char == '[':\n            open_brackets += 1\n            unbalanced += 1\n        elif char == ']':\n            close_brackets += 1\n            unbalanced -= 1\n\n        if unbalanced < 0:\n            swaps += 1\n            open_brackets += 1\n            unbalanced = 1\n\n    return swaps + (unbalanced // 2)",
+  "results": {
+    "assert swap_count(\"[]][][\") == 2": {
+      "result": true,
+      "time": 0.10711860656738281,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]\") == 0": {
+      "result": true,
+      "time": 0.11405634880065918,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]][\") == 1": {
+      "result": false,
+      "time": 0.12267398834228516,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:03:19",
+    "end_time": "2025-05-08 23:03:22",
+    "duration": "0:00:02.879679"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

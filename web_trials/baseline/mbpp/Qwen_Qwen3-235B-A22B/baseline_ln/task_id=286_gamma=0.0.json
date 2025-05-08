@@ -1,0 +1,31 @@
+{
+  "code": "def max_sub_array_sum_repeated(arr, n, k):\n    max_sum = float('-inf')\n    current_sum = 0\n    repeated_arr = arr * k\n    for num in repeated_arr:\n        current_sum = max(num, current_sum + num)\n        max_sum = max(max_sum, current_sum)\n    return max_sum",
+  "results": {
+    "assert max_sub_array_sum_repeated([10, 20, -30, -1], 4, 3) == 30": {
+      "result": true,
+      "time": 0.08013677597045898,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, 10, 20], 3, 2) == 59": {
+      "result": true,
+      "time": 0.07942914962768555,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, -2, -3], 3, 3) == -1": {
+      "result": true,
+      "time": 0.06897258758544922,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:24:20",
+    "end_time": "2025-05-08 22:24:23",
+    "duration": "0:00:02.908886"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def no_of_subsequences(arr, k):\n    n = len(arr)\n    dp = [[0] * (n + 1) for _ in range(k + 1)]\n    \n    for i in range(1, k + 1):\n        for j in range(1, n + 1):\n            dp[i][j] = dp[i][j - 1]\n            if arr[j - 1] <= i and arr[j - 1] > 0:\n                dp[i][j] += dp[i // arr[j - 1]][j - 1] + 1\n    return dp[k][n]",
+  "results": {
+    "assert no_of_subsequences([1,2,3,4], 10) == 11": {
+      "result": true,
+      "time": 0.11568951606750488,
+      "error": null
+    },
+    "assert no_of_subsequences([4,8,7,2], 50) == 9": {
+      "result": true,
+      "time": 0.12062311172485352,
+      "error": null
+    },
+    "assert no_of_subsequences([5,6,7,8], 15) == 4": {
+      "result": true,
+      "time": 0.10946941375732422,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:46:13",
+    "guidance_input_tokens": 669,
+    "guidance_output_tokens": 136,
+    "end_time": "2025-05-07 18:46:18",
+    "duration": "0:00:05.299343"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

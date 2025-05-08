@@ -1,0 +1,33 @@
+{
+  "code": "def find_tuples(tuples_list, k):\n    result = []\n    for current_tuple in tuples_list:\n        all_divisible = True\n        for num in current_tuple:\n            if num % k != 0:\n                all_divisible = False\n                break\n        if all_divisible:\n            result.append(current_tuple)\n    return str(result)",
+  "results": {
+    "assert find_tuples([(6, 24, 12), (7, 9, 6), (12, 18, 21)], 6) == '[(6, 24, 12)]'": {
+      "result": true,
+      "time": 0.12824726104736328,
+      "error": null
+    },
+    "assert find_tuples([(5, 25, 30), (4, 2, 3), (7, 8, 9)], 5) == '[(5, 25, 30)]'": {
+      "result": true,
+      "time": 0.12712979316711426,
+      "error": null
+    },
+    "assert find_tuples([(7, 9, 16), (8, 16, 4), (19, 17, 18)], 4) == '[(8, 16, 4)]'": {
+      "result": true,
+      "time": 0.11656332015991211,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:40:23",
+    "guidance_input_tokens": 593,
+    "guidance_output_tokens": 112,
+    "end_time": "2025-05-07 18:40:27",
+    "duration": "0:00:03.960831"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

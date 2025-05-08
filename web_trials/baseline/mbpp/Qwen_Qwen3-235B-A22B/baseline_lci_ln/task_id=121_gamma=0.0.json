@@ -1,0 +1,31 @@
+{
+  "code": "def check_triplet(arr, target_sum, threshold, limit):\n    n = len(arr)\n    i = 0\n    while i < n:\n        j = i + 1\n        while j < n:\n            k = j + 1\n            while k < n:\n                sum_val = arr[i] + arr[j] + arr[k]\n                if sum_val == target_sum:\n                    count = 0\n                    if arr[i] > threshold:\n                        count += 1\n                    if arr[j] > threshold:\n                        count += 1\n                    if arr[k] > threshold:\n                        count += 1\n                    if count >= limit:\n                        return True\n                k += 1\n            j += 1\n        i += 1\n    return False",
+  "results": {
+    "assert check_triplet([2, 7, 4, 0, 9, 5, 1, 3], 8, 6, 0) == True": {
+      "result": true,
+      "time": 0.08170127868652344,
+      "error": null
+    },
+    "assert check_triplet([1, 4, 5, 6, 7, 8, 5, 9], 8, 6, 0) == False": {
+      "result": true,
+      "time": 0.07720136642456055,
+      "error": null
+    },
+    "assert check_triplet([10, 4, 2, 3, 5], 5, 15, 0) == True": {
+      "result": false,
+      "time": 0.07679605484008789,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:46:52",
+    "end_time": "2025-05-08 22:46:55",
+    "duration": "0:00:03.541778"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

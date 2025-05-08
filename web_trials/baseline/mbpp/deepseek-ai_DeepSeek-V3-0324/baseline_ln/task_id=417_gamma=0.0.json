@@ -1,0 +1,33 @@
+{
+  "code": "def group_tuples(tuples_list):\n    groups = {}\n    for t in tuples_list:\n        key = t[0]\n        if key in groups:\n            groups[key].extend(t[1:])\n        else:\n            groups[key] = list(t[1:])\n    result = []\n    for key in groups:\n        result.append((key,) + tuple(groups[key]))\n    return result",
+  "results": {
+    "assert group_tuples([('x', 'y'), ('x', 'z'), ('w', 't')]) == [('x', 'y', 'z'), ('w', 't')]": {
+      "result": true,
+      "time": 0.11983942985534668,
+      "error": null
+    },
+    "assert group_tuples([('a', 'b'), ('a', 'c'), ('d', 'e')]) == [('a', 'b', 'c'), ('d', 'e')]": {
+      "result": true,
+      "time": 0.1285231113433838,
+      "error": null
+    },
+    "assert group_tuples([('f', 'g'), ('f', 'g'), ('h', 'i')]) == [('f', 'g', 'g'), ('h', 'i')]": {
+      "result": true,
+      "time": 0.1197965145111084,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:42:27",
+    "guidance_input_tokens": 727,
+    "guidance_output_tokens": 130,
+    "end_time": "2025-05-07 18:42:30",
+    "duration": "0:00:03.061636"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

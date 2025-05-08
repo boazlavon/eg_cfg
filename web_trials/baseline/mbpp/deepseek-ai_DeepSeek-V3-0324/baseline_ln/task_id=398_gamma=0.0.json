@@ -1,0 +1,33 @@
+{
+  "code": "def sum_of_digits(lst):\n    total = 0\n    for item in lst:\n        if isinstance(item, list):\n            total += sum_of_digits(item)\n        elif isinstance(item, int):\n            num = abs(item)\n            while num > 0:\n                total += num % 10\n                num = num // 10\n    return total",
+  "results": {
+    "assert sum_of_digits([10,2,56])==14": {
+      "result": true,
+      "time": 0.1710195541381836,
+      "error": null
+    },
+    "assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19": {
+      "result": true,
+      "time": 0.12028241157531738,
+      "error": null
+    },
+    "assert sum_of_digits([10,20,-4,5,-70])==19": {
+      "result": true,
+      "time": 0.13283920288085938,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:41:39",
+    "guidance_input_tokens": 659,
+    "guidance_output_tokens": 123,
+    "end_time": "2025-05-07 18:41:41",
+    "duration": "0:00:02.351497"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

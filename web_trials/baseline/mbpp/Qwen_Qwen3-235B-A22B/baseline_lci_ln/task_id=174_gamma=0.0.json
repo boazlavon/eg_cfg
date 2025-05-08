@@ -1,0 +1,31 @@
+{
+  "code": "def group_keyvalue(pairs):\n    result = {}\n    for pair in pairs:\n        key = pair[0]\n        value = pair[1]\n        if key in result:\n            result[key].append(value)\n        else:\n            result[key] = [value]\n    return result",
+  "results": {
+    "assert group_keyvalue([('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)])=={'yellow': [1, 3], 'blue': [2, 4], 'red': [1]}": {
+      "result": true,
+      "time": 0.11206817626953125,
+      "error": null
+    },
+    "assert group_keyvalue([('python', 1), ('python', 2), ('python', 3), ('python', 4), ('python', 5)])=={'python': [1,2,3,4,5]}": {
+      "result": true,
+      "time": 0.10800385475158691,
+      "error": null
+    },
+    "assert group_keyvalue([('yellow',100), ('blue', 200), ('yellow', 300), ('blue', 400), ('red', 100)])=={'yellow': [100, 300], 'blue': [200, 400], 'red': [100]}": {
+      "result": true,
+      "time": 0.1054995059967041,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:49:37",
+    "end_time": "2025-05-08 22:49:40",
+    "duration": "0:00:02.346004"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

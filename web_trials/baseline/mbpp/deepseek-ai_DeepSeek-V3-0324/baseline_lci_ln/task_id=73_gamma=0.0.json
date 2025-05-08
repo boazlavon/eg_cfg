@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef multiple_split(text):\n    # Define the pattern for splitting\n    pattern = r'[\\n*]'\n    \n    # Use re.split to split the text based on the pattern\n    split_result = re.split(pattern, text)\n    \n    # Initialize an empty list to store the cleaned results\n    cleaned_result = []\n    \n    # Iterate through each item in the split_result\n    for item in split_result:\n        # Append the item to cleaned_result if it's not empty\n        if item:\n            cleaned_result.append(item)\n    \n    # Return the cleaned result\n    return cleaned_result",
+  "results": {
+    "assert multiple_split('Forces of the \\ndarkness*are coming into the play.') == ['Forces of the ', 'darkness', 'are coming into the play.']": {
+      "result": true,
+      "time": 0.13279986381530762,
+      "error": null
+    },
+    "assert multiple_split('Mi Box runs on the \\n Latest android*which has google assistance and chromecast.') == ['Mi Box runs on the ', ' Latest android', 'which has google assistance and chromecast.']": {
+      "result": true,
+      "time": 0.12117981910705566,
+      "error": null
+    },
+    "assert multiple_split('Certain services\\nare subjected to change*over the seperate subscriptions.') == ['Certain services', 'are subjected to change', 'over the seperate subscriptions.']": {
+      "result": true,
+      "time": 0.11954736709594727,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:40:16",
+    "guidance_input_tokens": 570,
+    "guidance_output_tokens": 163,
+    "end_time": "2025-05-07 18:40:19",
+    "duration": "0:00:02.946900"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

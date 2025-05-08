@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef is_allowed_specific_char(string):\n    pattern = re.compile(r'^[a-zA-Z0-9]+$')\n    return bool(pattern.match(string))",
+  "results": {
+    "assert is_allowed_specific_char(\"ABCDEFabcdef123450\") == True": {
+      "result": true,
+      "time": 0.1416637897491455,
+      "error": null
+    },
+    "assert is_allowed_specific_char(\"*&%@#!}{\") == False": {
+      "result": true,
+      "time": 0.12929677963256836,
+      "error": null
+    },
+    "assert is_allowed_specific_char(\"HELLOhowareyou98765\") == True": {
+      "result": true,
+      "time": 0.12702608108520508,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:32:15",
+    "guidance_input_tokens": 672,
+    "guidance_output_tokens": 41,
+    "end_time": "2025-05-07 18:32:17",
+    "duration": "0:00:01.874468"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

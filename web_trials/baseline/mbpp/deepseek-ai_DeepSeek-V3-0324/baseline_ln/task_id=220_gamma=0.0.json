@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef replace_max_specialchar(text, n):\n    # This pattern matches spaces, commas, or dots\n    pattern = r'[ ,.]'\n    # Function to replace the matched characters\n    def replacer(match):\n        nonlocal n\n        if n > 0:\n            n -= 1\n            return ':'\n        else:\n            return match.group()\n    # Use re.sub with the replacer function\n    result = re.sub(pattern, replacer, text)\n    return result",
+  "results": {
+    "assert replace_max_specialchar('Python language, Programming language.',2)==('Python:language: Programming language.')": {
+      "result": true,
+      "time": 0.13755154609680176,
+      "error": null
+    },
+    "assert replace_max_specialchar('a b c,d e f',3)==('a:b:c:d e f')": {
+      "result": true,
+      "time": 0.12737727165222168,
+      "error": null
+    },
+    "assert replace_max_specialchar('ram reshma,ram rahim',1)==('ram:reshma,ram rahim')": {
+      "result": true,
+      "time": 0.12284469604492188,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:32:39",
+    "guidance_input_tokens": 677,
+    "guidance_output_tokens": 111,
+    "end_time": "2025-05-07 18:32:41",
+    "duration": "0:00:02.808739"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

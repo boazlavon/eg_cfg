@@ -1,0 +1,33 @@
+{
+  "code": "def count_element_in_list(list_of_lists, element):\n    count = 0\n    for sublist in list_of_lists:\n        found = False\n        for item in sublist:\n            if item == element:\n                found = True\n                break\n        if found:\n            count += 1\n    return count",
+  "results": {
+    "assert count_element_in_list([[1, 3], [5, 7], [1, 11], [1, 15, 7]],1)==3": {
+      "result": true,
+      "time": 0.12236618995666504,
+      "error": null
+    },
+    "assert count_element_in_list([['A', 'B'], ['A', 'C'], ['A', 'D', 'E'], ['B', 'C', 'D']],'A')==3": {
+      "result": true,
+      "time": 0.11583852767944336,
+      "error": null
+    },
+    "assert count_element_in_list([['A', 'B'], ['A', 'C'], ['A', 'D', 'E'], ['B', 'C', 'D']],'E')==1": {
+      "result": true,
+      "time": 0.11440777778625488,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:58:29",
+    "guidance_input_tokens": 571,
+    "guidance_output_tokens": 89,
+    "end_time": "2025-05-07 18:58:31",
+    "duration": "0:00:01.835211"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

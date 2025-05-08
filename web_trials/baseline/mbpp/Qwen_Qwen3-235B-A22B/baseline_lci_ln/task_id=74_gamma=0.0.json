@@ -1,0 +1,31 @@
+{
+  "code": "def is_samepatterns(words, patterns):\n    if len(words) != len(patterns):\n        return False\n    word_to_pattern = {}\n    pattern_to_word = {}\n    for i in range(len(words)):\n        word = words[i]\n        pattern = patterns[i]\n        if word not in word_to_pattern:\n            word_to_pattern[word] = pattern\n        if pattern not in pattern_to_word:\n            pattern_to_word[pattern] = word\n        if word_to_pattern[word] != pattern:\n            return False\n        if pattern_to_word[pattern] != word:\n            return False\n    return True",
+  "results": {
+    "assert is_samepatterns([\"red\",\"green\",\"green\"], [\"a\", \"b\", \"b\"])==True ": {
+      "result": true,
+      "time": 0.07918953895568848,
+      "error": null
+    },
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\",\"b\"])==False ": {
+      "result": true,
+      "time": 0.07762694358825684,
+      "error": null
+    },
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\"])==False ": {
+      "result": true,
+      "time": 0.2532491683959961,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:28:18",
+    "end_time": "2025-05-08 22:28:20",
+    "duration": "0:00:02.594334"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

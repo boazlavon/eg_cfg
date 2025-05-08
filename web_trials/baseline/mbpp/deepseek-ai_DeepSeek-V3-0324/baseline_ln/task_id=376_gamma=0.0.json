@@ -1,0 +1,33 @@
+{
+  "code": "def remove_replica(test_tup):\n    seen = {}\n    result = []\n    for elem in test_tup:\n        if elem in seen:\n            seen[elem] += 1\n            result.append('MSP')\n        else:\n            seen[elem] = 1\n            result.append(elem)\n    return tuple(result)",
+  "results": {
+    "assert remove_replica((1, 1, 4, 4, 4, 5, 5, 6, 7, 7)) == (1, 'MSP', 4, 'MSP', 'MSP', 5, 'MSP', 6, 7, 'MSP')": {
+      "result": true,
+      "time": 0.18053841590881348,
+      "error": null
+    },
+    "assert remove_replica((2, 3, 4, 4, 5, 6, 6, 7, 8, 9, 9)) == (2, 3, 4, 'MSP', 5, 6, 'MSP', 7, 8, 9, 'MSP')": {
+      "result": true,
+      "time": 0.154832124710083,
+      "error": null
+    },
+    "assert remove_replica((2, 2, 5, 4, 5, 7, 5, 6, 7, 7)) == (2, 'MSP', 5, 4, 'MSP', 7, 'MSP', 6, 'MSP', 'MSP')": {
+      "result": true,
+      "time": 0.37675046920776367,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:40:36",
+    "guidance_input_tokens": 819,
+    "guidance_output_tokens": 83,
+    "end_time": "2025-05-07 18:40:39",
+    "duration": "0:00:02.687738"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

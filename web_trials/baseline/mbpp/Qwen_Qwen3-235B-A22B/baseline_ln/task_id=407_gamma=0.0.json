@@ -1,0 +1,31 @@
+{
+  "code": "def rearrange_bigger(n):\n    temp = str(n)\n    for i in range(len(temp)-2,-1,-1):\n        if temp[i] < temp[i+1]:\n            break\n    else:\n        return False\n    m = temp[i:]\n    r = temp[:i]\n    m = list(m)\n    m.sort()\n    for j in range(len(m)):\n        if m[j] > temp[i]:\n            r += m[j]\n            m.pop(j)\n            break\n    r += ''.join(m)\n    return int(r)",
+  "results": {
+    "assert rearrange_bigger(12)==21": {
+      "result": true,
+      "time": 0.10870027542114258,
+      "error": null
+    },
+    "assert rearrange_bigger(10)==False": {
+      "result": true,
+      "time": 0.08802270889282227,
+      "error": null
+    },
+    "assert rearrange_bigger(102)==120": {
+      "result": true,
+      "time": 0.0822896957397461,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:00:30",
+    "end_time": "2025-05-08 23:00:33",
+    "duration": "0:00:02.717052"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

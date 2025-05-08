@@ -1,0 +1,33 @@
+{
+  "code": "def find_rotation_count(arr):\n    low = 0\n    high = len(arr) - 1\n    n = len(arr)\n    while low <= high:\n        if arr[low] <= arr[high]:\n            return low\n        mid = (low + high) // 2\n        next_mid = (mid + 1) % n\n        prev_mid = (mid - 1 + n) % n\n        if arr[mid] <= arr[next_mid] and arr[mid] <= arr[prev_mid]:\n            return mid\n        elif arr[mid] <= arr[high]:\n            high = mid - 1\n        elif arr[mid] >= arr[low]:\n            low = mid + 1\n    return 0",
+  "results": {
+    "assert find_rotation_count([8, 9, 10, 1, 2, 3, 4, 5, 6, 7]) == 3": {
+      "result": true,
+      "time": 0.11861205101013184,
+      "error": null
+    },
+    "assert find_rotation_count([8, 9, 10,2, 5, 6]) == 3": {
+      "result": true,
+      "time": 0.10095500946044922,
+      "error": null
+    },
+    "assert find_rotation_count([2, 5, 6, 8, 9, 10]) == 0": {
+      "result": true,
+      "time": 0.12084794044494629,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:56:28",
+    "guidance_input_tokens": 538,
+    "guidance_output_tokens": 186,
+    "end_time": "2025-05-07 18:56:31",
+    "duration": "0:00:03.043028"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

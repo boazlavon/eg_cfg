@@ -1,0 +1,33 @@
+{
+  "code": "import heapq as hq\n\ndef heap_assending(lst):\n    hq.heapify(lst)\n    sorted_list = []\n    while lst:\n        sorted_list.append(hq.heappop(lst))\n    return sorted_list",
+  "results": {
+    "assert heap_assending([18, 14, 10, 9, 8, 7, 9, 3, 2, 4, 1])==[1, 2, 3, 4, 7, 8, 9, 9, 10, 14, 18]": {
+      "result": true,
+      "time": 0.13466691970825195,
+      "error": null
+    },
+    "assert heap_assending([25, 35, 22, 85, 14, 65, 75, 25, 58])==[14, 22, 25, 25, 35, 58, 65, 75, 85]": {
+      "result": true,
+      "time": 0.12682676315307617,
+      "error": null
+    },
+    "assert heap_assending([1, 3, 5, 7, 9, 2, 4, 6, 8, 0])==[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]": {
+      "result": true,
+      "time": 0.11265373229980469,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:40:29",
+    "guidance_input_tokens": 797,
+    "guidance_output_tokens": 50,
+    "end_time": "2025-05-07 18:40:30",
+    "duration": "0:00:01.640971"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

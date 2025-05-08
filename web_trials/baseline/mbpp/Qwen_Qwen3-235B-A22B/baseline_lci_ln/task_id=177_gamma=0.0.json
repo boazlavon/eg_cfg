@@ -1,0 +1,31 @@
+{
+  "code": "def answer(low, high):\n    # Iterate through all possible pairs of numbers in the given range\n    for i in range(low, high + 1):\n        for j in range(low, high + 1):\n            # Check if the two numbers are distinct\n            if i != j:\n                # Calculate the LCM of the two numbers\n                gcd_value = 1\n                for k in range(1, min(i, j) + 1):\n                    if i % k == 0 and j % k == 0:\n                        gcd_value = k\n                lcm = (i * j) // gcd_value\n                # Check if the LCM lies within the given range\n                if low <= lcm <= high:\n                    # Return the pair of numbers\n                    return (i, j)\n    # If no such pair exists, return None\n    return None",
+  "results": {
+    "assert answer(3,8) == (3,6)": {
+      "result": true,
+      "time": 0.09134721755981445,
+      "error": null
+    },
+    "assert answer(2,6) == (2,4)": {
+      "result": false,
+      "time": 0.07939028739929199,
+      "error": null
+    },
+    "assert answer(1,3) == (1,2)": {
+      "result": true,
+      "time": 0.07246637344360352,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:53:11",
+    "end_time": "2025-05-08 22:53:15",
+    "duration": "0:00:03.687821"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

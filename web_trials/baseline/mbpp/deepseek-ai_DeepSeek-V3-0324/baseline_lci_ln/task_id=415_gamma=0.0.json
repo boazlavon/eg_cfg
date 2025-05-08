@@ -1,0 +1,33 @@
+{
+  "code": "def max_Product(arr):\n    if len(arr) < 2:\n        return None\n    \n    max1 = max(arr[0], arr[1])\n    max2 = min(arr[0], arr[1])\n    min1 = min(arr[0], arr[1])\n    min2 = max(arr[0], arr[1])\n    \n    for i in range(2, len(arr)):\n        current = arr[i]\n        \n        if current > max1:\n            max2 = max1\n            max1 = current\n        elif current > max2:\n            max2 = current\n        \n        if current < min1:\n            min2 = min1\n            min1 = current\n        elif current < min2:\n            min2 = current\n    \n    product_max = max1 * max2\n    product_min = min1 * min2\n    \n    if product_max > product_min:\n        return (max2, max1)\n    else:\n        return (min1, min2)",
+  "results": {
+    "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)": {
+      "result": true,
+      "time": 0.3525538444519043,
+      "error": null
+    },
+    "assert max_Product([0,-1,-2,-4,5,0,-6]) == (-4,-6)": {
+      "result": false,
+      "time": 0.12612223625183105,
+      "error": null
+    },
+    "assert max_Product([1,2,3]) == (2,3)": {
+      "result": true,
+      "time": 0.12789225578308105,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:57:55",
+    "guidance_input_tokens": 534,
+    "guidance_output_tokens": 232,
+    "end_time": "2025-05-07 18:57:59",
+    "duration": "0:00:03.537157"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,31 @@
+{
+  "code": "def empty_dit(input_list):\n    if isinstance(input_list, dict):\n        return len(input_list) == 0\n    for item in input_list:\n        if not isinstance(item, dict):\n            return False\n        if len(item) != 0:\n            return False\n    return True",
+  "results": {
+    "assert empty_dit([{},{},{}])==True": {
+      "result": true,
+      "time": 0.08239960670471191,
+      "error": null
+    },
+    "assert empty_dit([{1,2},{},{}])==False": {
+      "result": true,
+      "time": 0.07989239692687988,
+      "error": null
+    },
+    "assert empty_dit({})==True": {
+      "result": true,
+      "time": 0.07824969291687012,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:43:00",
+    "end_time": "2025-05-08 22:43:02",
+    "duration": "0:00:02.374567"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

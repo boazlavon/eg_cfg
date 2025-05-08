@@ -1,0 +1,33 @@
+{
+  "code": "def compute_Last_Digit(a, b):\n    if a >= b:\n        return 1\n    if b - a >= 5:\n        return 0\n    last_digit = 1\n    for num in range(a + 1, b + 1):\n        last_digit = (last_digit * (num % 10)) % 10\n    return last_digit",
+  "results": {
+    "assert compute_Last_Digit(2,4) == 2": {
+      "result": true,
+      "time": 0.09222245216369629,
+      "error": null
+    },
+    "assert compute_Last_Digit(6,8) == 6": {
+      "result": true,
+      "time": 0.09256505966186523,
+      "error": null
+    },
+    "assert compute_Last_Digit(1,2) == 2": {
+      "result": true,
+      "time": 0.08189749717712402,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:24:44",
+    "guidance_input_tokens": 647,
+    "guidance_output_tokens": 384,
+    "end_time": "2025-05-07 18:24:50",
+    "duration": "0:00:05.443054"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

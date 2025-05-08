@@ -1,0 +1,33 @@
+{
+  "code": "def max_subarray_product(arr):\n    if not arr:\n        return 0\n    \n    max_product = arr[0]\n    min_product = arr[0]\n    result = arr[0]\n    \n    for i in range(1, len(arr)):\n        current = arr[i]\n        \n        temp_max = max_product * current\n        temp_min = min_product * current\n        \n        max_product = max(current, temp_max, temp_min)\n        min_product = min(current, temp_max, temp_min)\n        \n        if max_product > result:\n            result = max_product\n    \n    return result",
+  "results": {
+    "assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112": {
+      "result": true,
+      "time": 0.12700676918029785,
+      "error": null
+    },
+    "assert max_subarray_product([6, -3, -10, 0, 2]) == 180 ": {
+      "result": true,
+      "time": 0.11686348915100098,
+      "error": null
+    },
+    "assert max_subarray_product([-2, -40, 0, -2, -3]) == 80": {
+      "result": true,
+      "time": 0.11394977569580078,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 19:00:28",
+    "guidance_input_tokens": 523,
+    "guidance_output_tokens": 143,
+    "end_time": "2025-05-07 19:00:32",
+    "duration": "0:00:03.897853"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

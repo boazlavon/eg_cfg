@@ -1,0 +1,33 @@
+{
+  "code": "def find_Nth_Digit(numerator, denominator, n):\n    result = numerator / denominator\n    # Convert to string to handle the digits\n    s = str(result)\n    # Split into integer and fractional parts\n    if '.' in s:\n        integer_part, fractional_part = s.split('.')\n    else:\n        integer_part = s\n        fractional_part = ''\n    # Ensure the fractional part is long enough\n    if n <= len(fractional_part):\n        return int(fractional_part[n-1])\n    else:\n        # If not enough digits, the nth digit is 0 (as per proper fraction, but test cases imply n is valid)\n        return 0",
+  "results": {
+    "assert find_Nth_Digit(1,2,1) == 5": {
+      "result": true,
+      "time": 0.13564515113830566,
+      "error": null
+    },
+    "assert find_Nth_Digit(3,5,1) == 6": {
+      "result": true,
+      "time": 0.12140440940856934,
+      "error": null
+    },
+    "assert find_Nth_Digit(5,6,5) == 3": {
+      "result": true,
+      "time": 0.13379693031311035,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:24:11",
+    "guidance_input_tokens": 653,
+    "guidance_output_tokens": 349,
+    "end_time": "2025-05-07 18:24:16",
+    "duration": "0:00:04.992451"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

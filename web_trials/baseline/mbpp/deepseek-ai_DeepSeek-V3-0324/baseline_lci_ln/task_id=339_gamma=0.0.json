@@ -1,0 +1,33 @@
+{
+  "code": "def find_Divisor(start, end):\n    if start == end:\n        return start\n    \n    divisor_counts = {}\n    \n    for num in range(start, end + 1):\n        if num == 0:\n            continue\n        for divisor in range(2, num + 1):\n            if num % divisor == 0:\n                if divisor in divisor_counts:\n                    divisor_counts[divisor] += 1\n                else:\n                    divisor_counts[divisor] = 1\n    \n    max_count = 0\n    max_divisor = 2\n    \n    for divisor in divisor_counts:\n        count = divisor_counts[divisor]\n        if count > max_count:\n            max_count = count\n            max_divisor = divisor\n        elif count == max_count:\n            if divisor > max_divisor:\n                max_divisor = divisor\n    \n    return max_divisor",
+  "results": {
+    "assert find_Divisor(2,2) == 2": {
+      "result": true,
+      "time": 0.1736435890197754,
+      "error": null
+    },
+    "assert find_Divisor(2,5) == 2": {
+      "result": true,
+      "time": 0.11860370635986328,
+      "error": null
+    },
+    "assert find_Divisor(5,10) == 2": {
+      "result": true,
+      "time": 0.12800335884094238,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:54:16",
+    "guidance_input_tokens": 489,
+    "guidance_output_tokens": 202,
+    "end_time": "2025-05-07 18:54:19",
+    "duration": "0:00:03.241018"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

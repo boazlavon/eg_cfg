@@ -1,0 +1,31 @@
+{
+  "code": "def bell_number(n):\n    bell = []\n    for i in range(n + 1):\n        bell.append([])\n        for j in range(n + 1):\n            bell[i].append(0)\n    bell[0][0] = 1\n    bell_0 = bell[0][0]\n    for i in range(1, n + 1):\n        bell[i][0] = bell[i - 1][i - 1]\n        bell_i_0 = bell[i][0]\n        for j in range(1, i + 1):\n            bell[i][j] = bell[i][j - 1] + bell[i - 1][j - 1]\n            bell_i_j = bell[i][j]\n    return bell[n][0]",
+  "results": {
+    "assert bell_number(2)==2": {
+      "result": true,
+      "time": 0.0726933479309082,
+      "error": null
+    },
+    "assert bell_number(10)==115975": {
+      "result": true,
+      "time": 0.07879972457885742,
+      "error": null
+    },
+    "assert bell_number(56)==6775685320645824322581483068371419745979053216268760300": {
+      "result": true,
+      "time": 0.07634162902832031,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:45:49",
+    "end_time": "2025-05-08 22:45:52",
+    "duration": "0:00:03.133252"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

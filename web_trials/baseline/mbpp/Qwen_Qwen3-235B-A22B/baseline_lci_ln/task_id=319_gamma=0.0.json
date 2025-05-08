@@ -1,0 +1,31 @@
+{
+  "code": "def find_long_word(input_string):\n    pattern = r'\\b\\w{5}\\b'\n    matches = re.findall(pattern, input_string)\n    result = []\n    for match in matches:\n        result.append(match)\n    return result",
+  "results": {
+    "assert find_long_word('Please move back to strem') == ['strem']": {
+      "result": false,
+      "time": 0.12050747871398926,
+      "error": null
+    },
+    "assert find_long_word('4K Ultra HD streaming player') == ['Ultra']": {
+      "result": false,
+      "time": 0.12191629409790039,
+      "error": null
+    },
+    "assert find_long_word('Streaming Media Player') == ['Media']": {
+      "result": false,
+      "time": 0.10958170890808105,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:50:16",
+    "end_time": "2025-05-08 22:50:19",
+    "duration": "0:00:02.715078"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,31 @@
+{
+  "code": "def first_non_repeating_character(s):\n    char_count = {}\n    for char in s:\n        if char in char_count:\n            char_count[char] += 1\n        else:\n            char_count[char] = 1\n    for char in s:\n        if char_count[char] == 1:\n            return char\n    return None",
+  "results": {
+    "assert first_non_repeating_character(\"abcabc\") == None": {
+      "result": true,
+      "time": 0.09730386734008789,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"abc\") == \"a\"": {
+      "result": true,
+      "time": 0.09997034072875977,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ababc\") == \"c\"": {
+      "result": true,
+      "time": 0.09852099418640137,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:01:31",
+    "end_time": "2025-05-08 23:01:33",
+    "duration": "0:00:02.207324"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

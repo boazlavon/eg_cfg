@@ -1,0 +1,33 @@
+{
+  "code": "def is_Monotonic(arr):\n    if len(arr) <= 2:\n        return True\n    \n    is_increasing = True\n    is_decreasing = True\n    \n    for i in range(len(arr) - 1):\n        current = arr[i]\n        next_val = arr[i + 1]\n        \n        if current < next_val:\n            is_decreasing = False\n        elif current > next_val:\n            is_increasing = False\n        \n        if not is_increasing and not is_decreasing:\n            return False\n    \n    return is_increasing or is_decreasing",
+  "results": {
+    "assert is_Monotonic([6, 5, 4, 4]) == True": {
+      "result": true,
+      "time": 0.3558380603790283,
+      "error": null
+    },
+    "assert is_Monotonic([1, 2, 2, 3]) == True": {
+      "result": true,
+      "time": 0.14782214164733887,
+      "error": null
+    },
+    "assert is_Monotonic([1, 3, 2]) == False": {
+      "result": true,
+      "time": 0.12332725524902344,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:39:59",
+    "guidance_input_tokens": 505,
+    "guidance_output_tokens": 144,
+    "end_time": "2025-05-07 18:40:02",
+    "duration": "0:00:02.984922"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

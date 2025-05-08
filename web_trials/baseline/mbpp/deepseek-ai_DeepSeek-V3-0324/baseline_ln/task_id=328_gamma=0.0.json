@@ -1,0 +1,33 @@
+{
+  "code": "def rotate_left(lst, n, k):\n    \"\"\"\n    Rotate the list to the left by 'n' items, 'k' times.\n    \n    Parameters:\n    lst (list): The input list to be rotated.\n    n (int): The number of items to rotate left each time.\n    k (int): The number of times to perform the rotation.\n    \n    Returns:\n    list: The rotated list.\n    \"\"\"\n    for _ in range(k):\n        if len(lst) == 0:\n            break  # Avoid division by zero if the list is empty\n        n = n % len(lst)  # Handle cases where n is larger than the list length\n        lst = lst[n:] + lst[:n]\n    return lst",
+  "results": {
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],3,4)==[4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4]": {
+      "result": false,
+      "time": 0.11924505233764648,
+      "error": null
+    },
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],2,2)==[3, 4, 5, 6, 7, 8, 9, 10, 1, 2]": {
+      "result": false,
+      "time": 0.11175990104675293,
+      "error": null
+    },
+    "assert rotate_left([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],5,2)==[6, 7, 8, 9, 10, 1, 2]": {
+      "result": false,
+      "time": 0.15761470794677734,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:38:03",
+    "guidance_input_tokens": 797,
+    "guidance_output_tokens": 188,
+    "end_time": "2025-05-07 18:38:06",
+    "duration": "0:00:02.789056"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

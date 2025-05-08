@@ -1,0 +1,33 @@
+{
+  "code": "from itertools import permutations\n\ndef rearrange_bigger(n):\n    digits = list(str(n))\n    perms = set(permutations(digits))  # Generate all unique permutations\n    numbers = []\n    for perm in perms:\n        num = int(''.join(perm))\n        if num > n:\n            numbers.append(num)\n    if not numbers:\n        return False\n    return min(numbers)  # The smallest number larger than n",
+  "results": {
+    "assert rearrange_bigger(12)==21": {
+      "result": true,
+      "time": 0.25766801834106445,
+      "error": null
+    },
+    "assert rearrange_bigger(10)==False": {
+      "result": true,
+      "time": 0.1261148452758789,
+      "error": null
+    },
+    "assert rearrange_bigger(102)==120": {
+      "result": true,
+      "time": 0.11366820335388184,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:42:03",
+    "guidance_input_tokens": 630,
+    "guidance_output_tokens": 96,
+    "end_time": "2025-05-07 18:42:05",
+    "duration": "0:00:02.435783"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,31 @@
+{
+  "code": "def max_len_sub(arr, n):\n    max_len = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            if abs(arr[i] - arr[j]) == 1:\n                max_len = max(max_len, j - i + 1)\n    return max_len",
+  "results": {
+    "assert max_len_sub([2, 5, 6, 3, 7, 6, 5, 8], 8) == 5": {
+      "result": true,
+      "time": 0.08089900016784668,
+      "error": null
+    },
+    "assert max_len_sub([-2, -1, 5, -1, 4, 0, 3], 7) == 4": {
+      "result": false,
+      "time": 0.0791482925415039,
+      "error": null
+    },
+    "assert max_len_sub([9, 11, 13, 15, 18], 5) == 1": {
+      "result": false,
+      "time": 0.07875418663024902,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:28:37",
+    "end_time": "2025-05-08 22:28:39",
+    "duration": "0:00:02.132843"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

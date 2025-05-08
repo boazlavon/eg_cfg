@@ -1,0 +1,31 @@
+{
+  "code": "def sort_matrix(matrix):\n    # Create a list to store row sums\n    row_sums = []\n    \n    # Calculate the sum for each row\n    for row in matrix:\n        current_sum = 0\n        for element in row:\n            current_sum += element\n        row_sums.append(current_sum)\n    \n    # Create a list of tuples containing row sums and rows\n    combined = []\n    for i in range(len(matrix)):\n        combined.append((row_sums[i], matrix[i]))\n    \n    # Sort the combined list based on row sums\n    for i in range(len(combined)):\n        for j in range(i + 1, len(combined)):\n            if combined[i][0] > combined[j][0]:\n                temp = combined[i]\n                combined[i] = combined[j]\n                combined[j] = temp\n    \n    # Extract the sorted rows from the combined list\n    sorted_matrix = []\n    for item in combined:\n        sorted_matrix.append(item[1])\n    \n    return sorted_matrix",
+  "results": {
+    "assert sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]])==[[1, 1, 1], [1, 2, 3], [2, 4, 5]]": {
+      "result": true,
+      "time": 0.09384870529174805,
+      "error": null
+    },
+    "assert sort_matrix([[1, 2, 3], [-2, 4, -5], [1, -1, 1]])==[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]": {
+      "result": true,
+      "time": 0.0758812427520752,
+      "error": null
+    },
+    "assert sort_matrix([[5,8,9],[6,4,3],[2,1,4]])==[[2, 1, 4], [6, 4, 3], [5, 8, 9]]": {
+      "result": true,
+      "time": 0.07641911506652832,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:11:21",
+    "end_time": "2025-05-08 22:11:24",
+    "duration": "0:00:03.225291"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

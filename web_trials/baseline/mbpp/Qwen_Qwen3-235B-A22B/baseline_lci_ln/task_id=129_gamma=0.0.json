@@ -1,0 +1,31 @@
+{
+  "code": "def magic_square_test(matrix):\n    is_magic = True\n    n = len(matrix)\n    expected_sum = 0\n    for i in range(n):\n        expected_sum += matrix[0][i]\n    for row in matrix:\n        row_sum = 0\n        for num in row:\n            row_sum += num\n        if row_sum != expected_sum:\n            is_magic = False\n            return is_magic\n    for col in range(n):\n        col_sum = 0\n        for row in range(n):\n            col_sum += matrix[row][col]\n        if col_sum != expected_sum:\n            is_magic = False\n            return is_magic\n    diag1_sum = 0\n    for i in range(n):\n        diag1_sum += matrix[i][i]\n    if diag1_sum != expected_sum:\n        is_magic = False\n        return is_magic\n    diag2_sum = 0\n    for i in range(n):\n        diag2_sum += matrix[i][n - 1 - i]\n    if diag2_sum != expected_sum:\n        is_magic = False\n        return is_magic\n    return is_magic",
+  "results": {
+    "assert magic_square_test([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]])==True": {
+      "result": true,
+      "time": 0.07827425003051758,
+      "error": null
+    },
+    "assert magic_square_test([[2, 7, 6], [9, 5, 1], [4, 3, 8]])==True": {
+      "result": true,
+      "time": 0.08121824264526367,
+      "error": null
+    },
+    "assert magic_square_test([[2, 7, 6], [9, 5, 1], [4, 3, 7]])==False": {
+      "result": true,
+      "time": 0.07645726203918457,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:32:23",
+    "end_time": "2025-05-08 22:32:27",
+    "duration": "0:00:03.942866"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

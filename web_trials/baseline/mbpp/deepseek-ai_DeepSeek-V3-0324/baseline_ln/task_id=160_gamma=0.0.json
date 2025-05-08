@@ -1,0 +1,33 @@
+{
+  "code": "def extended_gcd(a, b):\n    if a == 0:\n        return (b, 0, 1)\n    else:\n        g, y, x = extended_gcd(b % a, a)\n        return (g, x - (b // a) * y, y)\n\ndef solution(a, b, n):\n    g, x, y = extended_gcd(a, b)\n    if n % g != 0:\n        return 'No solution'\n    x0 = x * (n // g)\n    y0 = y * (n // g)\n    # Find the minimal positive solution\n    # Adjust x and y to be positive if possible\n    k = 0\n    while True:\n        x_k = x0 + k * (b // g)\n        y_k = y0 - k * (a // g)\n        if x_k >= 0 and y_k >= 0:\n            return ('x = ', x_k, ', y = ', y_k)\n        k += 1\n        if k > 1000:  # Prevent infinite loop, adjust as needed\n            break\n    return 'No solution'",
+  "results": {
+    "assert solution(2, 3, 7) == ('x = ', 2, ', y = ', 1)": {
+      "result": true,
+      "time": 0.09711408615112305,
+      "error": null
+    },
+    "assert solution(4, 2, 7) == 'No solution'": {
+      "result": true,
+      "time": 0.09073281288146973,
+      "error": null
+    },
+    "assert solution(1, 13, 17) == ('x = ', 4, ', y = ', 1)": {
+      "result": false,
+      "time": 0.0913240909576416,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:29:54",
+    "guidance_input_tokens": 668,
+    "guidance_output_tokens": 370,
+    "end_time": "2025-05-07 18:30:01",
+    "duration": "0:00:07.493037"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

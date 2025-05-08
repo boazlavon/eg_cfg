@@ -1,0 +1,33 @@
+{
+  "code": "def binary_to_decimal(binary_num):\n    decimal = 0\n    binary_str = str(binary_num)\n    length = len(binary_str)\n    for i in range(length):\n        decimal += int(binary_str[i]) * (2 ** (length - 1 - i))\n    return decimal",
+  "results": {
+    "assert binary_to_decimal(100) == 4": {
+      "result": true,
+      "time": 0.1434037685394287,
+      "error": null
+    },
+    "assert binary_to_decimal(1011) == 11": {
+      "result": true,
+      "time": 0.12647438049316406,
+      "error": null
+    },
+    "assert binary_to_decimal(1101101) == 109": {
+      "result": true,
+      "time": 0.1412203311920166,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:23:44",
+    "guidance_input_tokens": 637,
+    "guidance_output_tokens": 69,
+    "end_time": "2025-05-07 18:23:47",
+    "duration": "0:00:02.591373"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

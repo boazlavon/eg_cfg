@@ -1,0 +1,33 @@
+{
+  "code": "def most_occurrences(strings):\n    word_counts = {}\n    \n    for sentence in strings:\n        words = sentence.split()\n        for word in words:\n            if word in word_counts:\n                word_counts[word] += 1\n            else:\n                word_counts[word] = 1\n    \n    max_count = 0\n    most_common_word = None\n    \n    for word, count in word_counts.items():\n        if count > max_count:\n            max_count = count\n            most_common_word = word\n    \n    return most_common_word",
+  "results": {
+    "assert most_occurrences([\"UTS is best for RTF\", \"RTF love UTS\", \"UTS is best\"] ) == 'UTS'": {
+      "result": true,
+      "time": 0.14325261116027832,
+      "error": null
+    },
+    "assert most_occurrences([\"Its been a great year\", \"this year is so worse\", \"this year is okay\"] ) == 'year'": {
+      "result": true,
+      "time": 0.12502241134643555,
+      "error": null
+    },
+    "assert most_occurrences([\"Families can be reunited\", \"people can be reunited\", \"Tasks can be achieved \"] ) == 'can'": {
+      "result": true,
+      "time": 0.2694971561431885,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:53:39",
+    "guidance_input_tokens": 537,
+    "guidance_output_tokens": 136,
+    "end_time": "2025-05-07 18:53:43",
+    "duration": "0:00:04.759942"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

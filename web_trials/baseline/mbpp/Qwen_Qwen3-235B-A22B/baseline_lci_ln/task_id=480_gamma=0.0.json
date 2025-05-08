@@ -1,0 +1,31 @@
+{
+  "code": "def get_max_occuring_char(input_string):\n    char_count = {}\n    for char in input_string:\n        if char in char_count:\n            char_count[char] += 1\n        else:\n            char_count[char] = 1\n    max_count = 0\n    max_char = ''\n    for char in char_count:\n        if char_count[char] > max_count:\n            max_count = char_count[char]\n            max_char = char\n    return max_char",
+  "results": {
+    "assert get_max_occuring_char(\"data\") == \"a\"": {
+      "result": true,
+      "time": 0.0823831558227539,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"create\") == \"e\"": {
+      "result": true,
+      "time": 0.08032870292663574,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"brilliant girl\") == \"i\"": {
+      "result": true,
+      "time": 0.08600449562072754,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:52:24",
+    "end_time": "2025-05-08 22:52:26",
+    "duration": "0:00:02.246709"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

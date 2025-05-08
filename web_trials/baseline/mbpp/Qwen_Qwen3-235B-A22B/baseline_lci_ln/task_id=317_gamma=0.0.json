@@ -1,0 +1,31 @@
+{
+  "code": "def modified_encode(input_list):\n    result = []\n    count = 0\n    current_element = None\n    for element in input_list:\n        if current_element is None:\n            current_element = element\n            count = 1\n        elif element == current_element:\n            count += 1\n        else:\n            if count > 1:\n                encoded_element = [count, current_element]\n                result.append(encoded_element)\n            else:\n                result.append(current_element)\n            current_element = element\n            count = 1\n    if count > 0:\n        if count > 1:\n            encoded_element = [count, current_element]\n            result.append(encoded_element)\n        else:\n            result.append(current_element)\n    return result",
+  "results": {
+    "assert modified_encode([1,1,2,3,4,4,5,1])==[[2, 1], 2, 3, [2, 4], 5, 1]": {
+      "result": true,
+      "time": 0.08543634414672852,
+      "error": null
+    },
+    "assert modified_encode('automatically')==['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', [2, 'l'], 'y']": {
+      "result": true,
+      "time": 0.08646440505981445,
+      "error": null
+    },
+    "assert modified_encode('python')==['p', 'y', 't', 'h', 'o', 'n']": {
+      "result": true,
+      "time": 0.11441254615783691,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:45:44",
+    "end_time": "2025-05-08 22:45:47",
+    "duration": "0:00:02.847280"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

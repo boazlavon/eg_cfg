@@ -1,0 +1,33 @@
+{
+  "code": "def remove_dirty_chars(first_string, second_string):\n    # Create a set of characters to remove for O(1) lookups\n    chars_to_remove = set(second_string)\n    # Build the result by including only characters not in the second string\n    result = ''.join([char for char in first_string if char not in chars_to_remove])\n    return result",
+  "results": {
+    "assert remove_dirty_chars(\"probasscurve\", \"pros\") == 'bacuve'": {
+      "result": true,
+      "time": 0.12988543510437012,
+      "error": null
+    },
+    "assert remove_dirty_chars(\"digitalindia\", \"talent\") == 'digiidi'": {
+      "result": true,
+      "time": 0.13090944290161133,
+      "error": null
+    },
+    "assert remove_dirty_chars(\"exoticmiles\", \"toxic\") == 'emles' ": {
+      "result": true,
+      "time": 0.12384462356567383,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:23:30",
+    "guidance_input_tokens": 664,
+    "guidance_output_tokens": 104,
+    "end_time": "2025-05-07 18:23:33",
+    "duration": "0:00:02.615535"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

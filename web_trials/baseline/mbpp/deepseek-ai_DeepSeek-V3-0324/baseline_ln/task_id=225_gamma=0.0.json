@@ -1,0 +1,33 @@
+{
+  "code": "def find_Min(arr, low, high):\n    # If the array is not rotated at all\n    if arr[low] <= arr[high]:\n        return arr[low]\n    \n    # Binary search approach\n    while low <= high:\n        mid = (low + high) // 2\n        \n        # Check if mid is the minimum element\n        if mid > low and arr[mid] < arr[mid - 1]:\n            return arr[mid]\n        # Check if mid+1 is the minimum element\n        if mid < high and arr[mid + 1] < arr[mid]:\n            return arr[mid + 1]\n        \n        # Decide whether to go left or right\n        if arr[mid] < arr[high]:\n            high = mid - 1\n        else:\n            low = mid + 1\n    \n    return arr[0]",
+  "results": {
+    "assert find_Min([1,2,3,4,5],0,4) == 1": {
+      "result": true,
+      "time": 0.1455061435699463,
+      "error": null
+    },
+    "assert find_Min([4,6,8],0,2) == 4": {
+      "result": true,
+      "time": 0.13709163665771484,
+      "error": null
+    },
+    "assert find_Min([2,3,5,7,9],0,4) == 2": {
+      "result": true,
+      "time": 0.13303589820861816,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:32:56",
+    "guidance_input_tokens": 665,
+    "guidance_output_tokens": 182,
+    "end_time": "2025-05-07 18:32:59",
+    "duration": "0:00:02.996155"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

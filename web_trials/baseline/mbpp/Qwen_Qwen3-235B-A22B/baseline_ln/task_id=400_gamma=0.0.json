@@ -1,0 +1,31 @@
+{
+  "code": "from collections import Counter\n\ndef extract_freq(lst):\n    # Convert each tuple to a frozenset to ignore order\n    normalized = [frozenset(t) for t in lst]\n    # Count occurrences of each normalized tuple\n    freq = Counter(normalized)\n    # Return the number of unique tuples (frequency count)\n    return len(freq)",
+  "results": {
+    "assert extract_freq([(3, 4), (1, 2), (4, 3), (5, 6)] ) == 3": {
+      "result": true,
+      "time": 0.0876932144165039,
+      "error": null
+    },
+    "assert extract_freq([(4, 15), (2, 3), (5, 4), (6, 7)] ) == 4": {
+      "result": true,
+      "time": 0.07701945304870605,
+      "error": null
+    },
+    "assert extract_freq([(5, 16), (2, 3), (6, 5), (6, 9)] ) == 4": {
+      "result": true,
+      "time": 0.0777885913848877,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:19:21",
+    "end_time": "2025-05-08 22:19:23",
+    "duration": "0:00:02.060433"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

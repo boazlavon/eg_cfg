@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef match(input_string):\n    # Initialize the pattern to match one uppercase followed by lowercase letters\n    pattern = r'[A-Z][a-z]+'\n    \n    # Search for the pattern in the input string\n    match_result = re.search(pattern, input_string)\n    \n    # Check if a match was found\n    if match_result:\n        result = \"Yes\"\n    else:\n        result = \"No\"\n    \n    return result",
+  "results": {
+    "assert match(\"Geeks\") == 'Yes'": {
+      "result": true,
+      "time": 0.5921444892883301,
+      "error": null
+    },
+    "assert match(\"geeksforGeeks\") == 'Yes'": {
+      "result": true,
+      "time": 0.10837602615356445,
+      "error": null
+    },
+    "assert match(\"geeks\") == 'No'": {
+      "result": true,
+      "time": 0.09704375267028809,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 19:01:27",
+    "guidance_input_tokens": 486,
+    "guidance_output_tokens": 121,
+    "end_time": "2025-05-07 19:01:30",
+    "duration": "0:00:02.687861"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

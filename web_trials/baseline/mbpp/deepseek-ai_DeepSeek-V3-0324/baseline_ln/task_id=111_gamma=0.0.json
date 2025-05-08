@@ -1,0 +1,33 @@
+{
+  "code": "def common_in_nested_lists(nested_lists):\n    if not nested_lists:\n        return []\n    \n    # Start with the first list as the initial set of common elements\n    common_elements = set(nested_lists[0])\n    \n    # Iterate through the remaining lists and find intersection with common_elements\n    for lst in nested_lists[1:]:\n        common_elements.intersection_update(lst)\n    \n    # Convert the set to a sorted list in descending order (as per the test cases)\n    result = sorted(common_elements, reverse=True)\n    return result",
+  "results": {
+    "assert common_in_nested_lists([[12, 18, 23, 25, 45], [7, 12, 18, 24, 28], [1, 5, 8, 12, 15, 16, 18]])==[18, 12]": {
+      "result": true,
+      "time": 0.12355661392211914,
+      "error": null
+    },
+    "assert common_in_nested_lists([[12, 5, 23, 25, 45], [7, 11, 5, 23, 28], [1, 5, 8, 18, 23, 16]])==[5,23]": {
+      "result": false,
+      "time": 0.11723828315734863,
+      "error": null
+    },
+    "assert common_in_nested_lists([[2, 3,4, 1], [4, 5], [6,4, 8],[4, 5], [6, 8,4]])==[4]": {
+      "result": true,
+      "time": 0.134446382522583,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:27:22",
+    "guidance_input_tokens": 784,
+    "guidance_output_tokens": 129,
+    "end_time": "2025-05-07 18:27:24",
+    "duration": "0:00:02.389377"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

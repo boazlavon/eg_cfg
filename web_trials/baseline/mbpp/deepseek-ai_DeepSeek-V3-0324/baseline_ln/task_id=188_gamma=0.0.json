@@ -1,0 +1,33 @@
+{
+  "code": "import math\n\ndef prod_Square(n):\n    # Iterate through all possible factors up to sqrt(n)\n    for i in range(1, int(math.sqrt(n)) + 1):\n        if n % i == 0:\n            j = n // i\n            # Check if both i and j are perfect squares\n            if math.isqrt(i) ** 2 == i and math.isqrt(j) ** 2 == j:\n                return True\n    return False",
+  "results": {
+    "assert prod_Square(25) == False": {
+      "result": false,
+      "time": 0.1425180435180664,
+      "error": null
+    },
+    "assert prod_Square(30) == False": {
+      "result": true,
+      "time": 0.11719655990600586,
+      "error": null
+    },
+    "assert prod_Square(16) == True": {
+      "result": true,
+      "time": 0.129608154296875,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:31:17",
+    "guidance_input_tokens": 635,
+    "guidance_output_tokens": 103,
+    "end_time": "2025-05-07 18:31:19",
+    "duration": "0:00:02.019484"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

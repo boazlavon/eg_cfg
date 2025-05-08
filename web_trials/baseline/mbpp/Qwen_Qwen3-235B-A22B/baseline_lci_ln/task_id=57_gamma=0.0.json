@@ -1,0 +1,31 @@
+{
+  "code": "def find_Max_Num(digits, length):\n    sorted_digits = []\n    for digit in digits:\n        sorted_digits.append(digit)\n    sorted_digits.sort(reverse=True)\n    max_number = 0\n    for i in range(length):\n        current_digit = sorted_digits[i]\n        place_value = 10 ** (length - i - 1)\n        contribution = current_digit * place_value\n        max_number += contribution\n    return max_number",
+  "results": {
+    "assert find_Max_Num([1,2,3],3) == 321": {
+      "result": true,
+      "time": 0.07879257202148438,
+      "error": null
+    },
+    "assert find_Max_Num([4,5,6,1],4) == 6541": {
+      "result": true,
+      "time": 0.08671927452087402,
+      "error": null
+    },
+    "assert find_Max_Num([1,2,3,9],4) == 9321": {
+      "result": true,
+      "time": 0.08820533752441406,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:25:08",
+    "end_time": "2025-05-08 22:25:11",
+    "duration": "0:00:02.407947"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

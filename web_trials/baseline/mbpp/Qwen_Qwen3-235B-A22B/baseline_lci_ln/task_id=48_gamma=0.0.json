@@ -1,0 +1,31 @@
+{
+  "code": "def odd_bit_set_number(number):\n    result = 0\n    bit_position = 0\n    while number > 0:\n        if bit_position % 2 == 0:\n            bit_value = number % 2\n            if bit_value == 1:\n                result = result + (1 << bit_position)\n            else:\n                result = result + 0\n        else:\n            result = result + (1 << bit_position)\n        number = number // 2\n        bit_position = bit_position + 1\n    return result",
+  "results": {
+    "assert odd_bit_set_number(10) == 15": {
+      "result": false,
+      "time": 0.08117437362670898,
+      "error": null
+    },
+    "assert odd_bit_set_number(20) == 21": {
+      "result": false,
+      "time": 0.07987022399902344,
+      "error": null
+    },
+    "assert odd_bit_set_number(30) == 31": {
+      "result": false,
+      "time": 0.08284997940063477,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:52:26",
+    "end_time": "2025-05-08 22:52:29",
+    "duration": "0:00:02.748930"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

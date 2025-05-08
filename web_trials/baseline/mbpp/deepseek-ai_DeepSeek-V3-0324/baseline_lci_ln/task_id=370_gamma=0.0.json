@@ -1,0 +1,33 @@
+{
+  "code": "def float_sort(tuples_list):\n    # Create a list to store the converted tuples\n    converted_list = []\n    # Iterate over each tuple in the input list\n    for t in tuples_list:\n        # Get the first element of the tuple\n        item = t[0]\n        # Get the second element of the tuple and convert it to float\n        value = float(t[1])\n        # Create a new tuple with the original item and the float value\n        new_tuple = (item, value)\n        # Append the new tuple to the converted list\n        converted_list.append(new_tuple)\n    # Sort the converted list in descending order based on the float value\n    sorted_list = sorted(converted_list, key=lambda x: x[1], reverse=True)\n    # Create a list to store the final result with original string values\n    result = []\n    # Iterate over each tuple in the sorted list\n    for t in sorted_list:\n        # Get the first element of the tuple\n        item = t[0]\n        # Get the second element of the tuple and convert it back to string\n        value = str(t[1])\n        # Create a new tuple with the original item and string value\n        new_tuple = (item, value)\n        # Append the new tuple to the result list\n        result.append(new_tuple)\n    # Return the final sorted list\n    return result",
+  "results": {
+    "assert float_sort([('item1', '12.20'), ('item2', '15.10'), ('item3', '24.5')])==[('item3', '24.5'), ('item2', '15.10'), ('item1', '12.20')] ": {
+      "result": false,
+      "time": 0.12351012229919434,
+      "error": null
+    },
+    "assert float_sort([('item1', '15'), ('item2', '10'), ('item3', '20')])==[('item3', '20'), ('item1', '15'), ('item2', '10')] ": {
+      "result": false,
+      "time": 0.10784673690795898,
+      "error": null
+    },
+    "assert float_sort([('item1', '5'), ('item2', '10'), ('item3', '14')])==[('item3', '14'), ('item2', '10'), ('item1', '5')] ": {
+      "result": false,
+      "time": 0.09182357788085938,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:55:48",
+    "guidance_input_tokens": 601,
+    "guidance_output_tokens": 322,
+    "end_time": "2025-05-07 18:55:57",
+    "duration": "0:00:09.223699"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

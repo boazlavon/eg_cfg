@@ -1,0 +1,31 @@
+{
+  "code": "def remove_Occ(input_string, target_char):\n    first_index = None\n    last_index = None\n    index = 0\n    for char in input_string:\n        if char == target_char:\n            if first_index is None:\n                first_index = index\n            last_index = index\n        index += 1\n    result = []\n    index = 0\n    for char in input_string:\n        if index != first_index and index != last_index:\n            result.append(char)\n        index += 1\n    return ''.join(result)",
+  "results": {
+    "assert remove_Occ(\"hello\",\"l\") == \"heo\"": {
+      "result": true,
+      "time": 0.07611942291259766,
+      "error": null
+    },
+    "assert remove_Occ(\"abcda\",\"a\") == \"bcd\"": {
+      "result": true,
+      "time": 0.07506680488586426,
+      "error": null
+    },
+    "assert remove_Occ(\"PHP\",\"P\") == \"H\"": {
+      "result": true,
+      "time": 0.07622790336608887,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:11:19",
+    "end_time": "2025-05-08 22:11:21",
+    "duration": "0:00:02.358031"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

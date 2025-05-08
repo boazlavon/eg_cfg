@@ -1,0 +1,33 @@
+{
+  "code": "def newman_prime(n):\n    if n == 1:\n        return 2\n    if n == 2:\n        return 3\n    a = 2\n    b = 3\n    for i in range(3, n + 1):\n        c = 2 * b + a\n        a = b\n        b = c\n    return b",
+  "results": {
+    "assert newman_prime(3) == 7 ": {
+      "result": false,
+      "time": 0.137955904006958,
+      "error": null
+    },
+    "assert newman_prime(4) == 17": {
+      "result": false,
+      "time": 0.13692212104797363,
+      "error": null
+    },
+    "assert newman_prime(5) == 41": {
+      "result": false,
+      "time": 0.11373257637023926,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:50:00",
+    "guidance_input_tokens": 481,
+    "guidance_output_tokens": 106,
+    "end_time": "2025-05-07 18:50:05",
+    "duration": "0:00:05.034719"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def string_to_list(input_string):\n    words = []\n    current_word = \"\"\n    for character in input_string:\n        if character == \" \":\n            if current_word:\n                words.append(current_word)\n                current_word = \"\"\n        else:\n            current_word = current_word + character\n    if current_word:\n        words.append(current_word)\n    return words",
+  "results": {
+    "assert string_to_list(\"python programming\")==['python','programming']": {
+      "result": true,
+      "time": 0.1618642807006836,
+      "error": null
+    },
+    "assert string_to_list(\"lists tuples strings\")==['lists','tuples','strings']": {
+      "result": true,
+      "time": 0.11631202697753906,
+      "error": null
+    },
+    "assert string_to_list(\"write a program\")==['write','a','program']": {
+      "result": true,
+      "time": 0.1093907356262207,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:42:43",
+    "guidance_input_tokens": 515,
+    "guidance_output_tokens": 100,
+    "end_time": "2025-05-07 18:42:45",
+    "duration": "0:00:02.164572"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

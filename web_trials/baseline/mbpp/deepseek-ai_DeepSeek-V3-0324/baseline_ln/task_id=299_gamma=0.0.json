@@ -1,0 +1,33 @@
+{
+  "code": "def max_aggregate(tuples_list):\n    aggregate = {}\n    for name, value in tuples_list:\n        if name in aggregate:\n            aggregate[name] += value\n        else:\n            aggregate[name] = value\n    max_name = max(aggregate.items(), key=lambda x: x[1])\n    return max_name",
+  "results": {
+    "assert max_aggregate([('Juan Whelan',90),('Sabah Colley',88),('Peter Nichols',7),('Juan Whelan',122),('Sabah Colley',84)])==('Juan Whelan', 212)": {
+      "result": true,
+      "time": 0.1274118423461914,
+      "error": null
+    },
+    "assert max_aggregate([('Juan Whelan',50),('Sabah Colley',48),('Peter Nichols',37),('Juan Whelan',22),('Sabah Colley',14)])==('Juan Whelan', 72)": {
+      "result": true,
+      "time": 0.12560343742370605,
+      "error": null
+    },
+    "assert max_aggregate([('Juan Whelan',10),('Sabah Colley',20),('Peter Nichols',30),('Juan Whelan',40),('Sabah Colley',50)])==('Sabah Colley', 70)": {
+      "result": true,
+      "time": 0.11597633361816406,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:36:36",
+    "guidance_input_tokens": 763,
+    "guidance_output_tokens": 74,
+    "end_time": "2025-05-07 18:36:39",
+    "duration": "0:00:02.507771"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

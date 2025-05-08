@@ -1,0 +1,31 @@
+{
+  "code": "def counting_sort(arr):\n    if not arr:\n        return []\n    max_value = 0\n    for num in arr:\n        if num > max_value:\n            max_value = num\n    count_size = max_value + 1\n    count = [0] * count_size\n    for num in arr:\n        count[num] += 1\n    sorted_array = []\n    for i in range(count_size):\n        frequency = count[i]\n        for _ in range(frequency):\n            sorted_array.append(i)\n    return sorted_array",
+  "results": {
+    "assert counting_sort([1,23,4,5,6,7,8]) == [1, 4, 5, 6, 7, 8, 23]": {
+      "result": true,
+      "time": 0.07880640029907227,
+      "error": null
+    },
+    "assert counting_sort([12, 9, 28, 33, 69, 45]) == [9, 12, 28, 33, 45, 69]": {
+      "result": true,
+      "time": 0.0722661018371582,
+      "error": null
+    },
+    "assert counting_sort([8, 4, 14, 3, 2, 1]) == [1, 2, 3, 4, 8, 14]": {
+      "result": true,
+      "time": 0.07487893104553223,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:45:13",
+    "end_time": "2025-05-08 22:45:17",
+    "duration": "0:00:04.144570"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

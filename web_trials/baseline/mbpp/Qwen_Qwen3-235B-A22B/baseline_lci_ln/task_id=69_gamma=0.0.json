@@ -1,0 +1,31 @@
+{
+  "code": "def is_sublist(main_list, sub_list):\n    main_length = len(main_list)\n    sub_length = len(sub_list)\n    found = False\n    i = 0\n    while i <= main_length - sub_length:\n        match = True\n        j = 0\n        while j < sub_length:\n            if main_list[i + j] != sub_list[j]:\n                match = False\n                break\n            j += 1\n        if match:\n            found = True\n            break\n        i += 1\n    return found",
+  "results": {
+    "assert is_sublist([2,4,3,5,7],[3,7])==False": {
+      "result": true,
+      "time": 0.07913827896118164,
+      "error": null
+    },
+    "assert is_sublist([2,4,3,5,7],[4,3])==True": {
+      "result": true,
+      "time": 0.07994699478149414,
+      "error": null
+    },
+    "assert is_sublist([2,4,3,5,7],[1,6])==False": {
+      "result": true,
+      "time": 0.07262301445007324,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:39:45",
+    "end_time": "2025-05-08 22:39:48",
+    "duration": "0:00:02.865482"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

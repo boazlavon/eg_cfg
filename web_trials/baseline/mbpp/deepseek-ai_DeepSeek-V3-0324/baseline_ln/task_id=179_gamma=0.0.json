@@ -1,0 +1,33 @@
+{
+  "code": "def is_num_keith(n):\n    if n < 10:\n        return False  # Single-digit numbers are not considered Keith numbers\n    \n    digits = [int(d) for d in str(n)]\n    num_digits = len(digits)\n    sequence = digits.copy()\n    \n    while True:\n        next_num = sum(sequence[-num_digits:])\n        if next_num == n:\n            return True\n        if next_num > n:\n            return False\n        sequence.append(next_num)",
+  "results": {
+    "assert is_num_keith(14) == True": {
+      "result": true,
+      "time": 0.14090466499328613,
+      "error": null
+    },
+    "assert is_num_keith(12) == False": {
+      "result": true,
+      "time": 0.1172630786895752,
+      "error": null
+    },
+    "assert is_num_keith(197) == True": {
+      "result": true,
+      "time": 0.11211228370666504,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:30:43",
+    "guidance_input_tokens": 637,
+    "guidance_output_tokens": 279,
+    "end_time": "2025-05-07 18:30:48",
+    "duration": "0:00:04.609645"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

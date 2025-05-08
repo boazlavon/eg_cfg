@@ -1,0 +1,33 @@
+{
+  "code": "def odd_bit_set_number(n):\n    # Initialize a variable to hold the result\n    result = n\n    \n    # Determine the number of bits needed to represent the number\n    num_bits = n.bit_length()\n    \n    # Iterate over each bit position\n    for i in range(num_bits):\n        # Check if the bit position is odd (1-based index)\n        if i % 2 == 0:\n            # Create a mask for the current bit position\n            mask = 1 << i\n            # Set the bit in the result\n            result = result | mask\n    \n    return result",
+  "results": {
+    "assert odd_bit_set_number(10) == 15": {
+      "result": true,
+      "time": 0.11498689651489258,
+      "error": null
+    },
+    "assert odd_bit_set_number(20) == 21": {
+      "result": true,
+      "time": 0.1089487075805664,
+      "error": null
+    },
+    "assert odd_bit_set_number(30) == 31": {
+      "result": true,
+      "time": 0.10185050964355469,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:39:11",
+    "guidance_input_tokens": 479,
+    "guidance_output_tokens": 153,
+    "end_time": "2025-05-07 18:39:15",
+    "duration": "0:00:03.665760"
+  },
+  "retry": 0,
+  "random_seed": 813
+}
