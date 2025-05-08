@@ -176,6 +176,8 @@ class DsgiSessionManager:
         gamma = 0.0
         if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
             official_passed_task_ids = DEEPSEEK_V3_0324_SOLVED_TASK_IDS
+        elif self.session_config.model_name == QWEN3_253B_MODEL_NAME_HF:
+            official_passed_task_ids = QWEN3_SOLVED_TASK_IDS
         else:
             official_passed_task_ids, official_results = load_official_results(
                 self.session_config.model_name
@@ -187,7 +189,8 @@ class DsgiSessionManager:
         for _, problem in self.problems:
             task_id = problem["task_id"]
             if (
-                not self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF
+                not self.session_config.model_name
+                in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
             ) and (not task_id in official_passed_task_ids):
                 continue
             solution_entry_path = get_solution_filepath(
@@ -225,12 +228,19 @@ class DsgiSessionManager:
                 with open(solution_entry_path, "w") as f:
                     json.dump(solution_entry, f, indent=2)
 
-            elif self.session_config.model_name in (DEEPSEEK_V3_0324_MODEL_NAME_HF,):
-                baseline_trial_base = (
-                    "web_trials/baseline/mbpp/deepseek-ai_DeepSeek-V3-0324"
-                )
-                baseline_dirs = ["ns1t0.0d1_ln", "ns1t0.0d1_lci_ln"]
-                for baseline_dir in baseline_dirs:
+            elif self.session_config.model_name in (
+                DEEPSEEK_V3_0324_MODEL_NAME_HF,
+                QWEN3_253B_MODEL_NAME_HF,
+            ):
+                BASELINE_TRIALS_BASE = {
+                    DEEPSEEK_V3_0324_MODEL_NAME_HF: "web_trials/baseline/mbpp/deepseek-ai_DeepSeek-V3-0324",
+                    QWEN3_253B_MODEL_NAME_HF: "web_trials/baseline/mbpp/Qwen_Qwen3-235B-A22",
+                }
+                BASELINE_DIRS = ["baseline_ln", "baseline_lci_ln"]
+                baseline_trial_base = BASELINE_TRIALS_BASE[
+                    self.session_config.model_name
+                ]
+                for baseline_dir in BASELINE_DIRS:
                     results_dir = os.path.join(baseline_trial_base, baseline_dir)
                     bs_solution_entry_path = get_solution_filepath(
                         results_dir,
@@ -421,12 +431,14 @@ class DsgiSessionManager:
                 prompt = prompt.replace("Deepseek Coder", "Qwen3")
                 prompt = prompt.replace("Deepseek", "Qwen")
                 inserts = [
-                    "Allowing **incremental execution and debugging**", # long code prompt
-                    "Examples are listed as follows:", # deepseek instruct prompt
+                    "Allowing **incremental execution and debugging**",  # long code prompt
+                    "Examples are listed as follows:",  # deepseek instruct prompt
                 ]
                 for s in inserts:
                     if s in prompt:
-                        prompt = prompt.replace(s, f"{s}\n{PYTHON_CODE_TAGS_USAGE_INSTRUCTION}")
+                        prompt = prompt.replace(
+                            s, f"{s}\n{PYTHON_CODE_TAGS_USAGE_INSTRUCTION}"
+                        )
                         # print(prompt)
                         break
 
@@ -460,7 +472,7 @@ class DsgiSessionManager:
                     )
                 assert solution
                 return solution
-            else: # gamma > 0
+            else:  # gamma > 0
                 outputs = inference_endpoint_dsgi(
                     prompt,
                     self.tokenizer,
