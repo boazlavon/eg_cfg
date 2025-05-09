@@ -271,12 +271,18 @@ def pseudo_beam_search_batch(
         prompt_new_text, _ = extract_new_tokens(tokenizer, prompt_input_ids, crop_idx)
         prompt_code = extract_prompt_python_code(prompt_new_text)
         prompt_code_lines_count = len(prompt_code.splitlines())
-        data_choices_len = len(data["choices"])
+        choices = [choice for choice in data['choices']]
+        unique_choices = []
+        for choice in choices:
+            if choice not in unique_choices:
+                unique_choices.append(choice)
         print(
-            f"[INFO] Using batch size = {batch_size}, d={nf_samples_depth} t={temperature}, uniqe_count={len(unique_codes)}/{unique_samples_count}, choices={data_choices_len}"
+            f"[INFO] Using batch size = {batch_size}, d={nf_samples_depth} t={temperature}"
         )
-        lengths = []
-        for i, choice in enumerate(data["choices"]):
+        print(
+            f"[INFO] unique_samples={len(unique_choices)}/{len(choices)}, current_unique_count={len(unique_codes)}/{unique_samples_count}"
+        )
+        for i, choice in enumerate(unique_choices):
             raw_text = choice["text"]
             raw_text += END_OF_CODE_STOP_SEQUENCE
             full_answer = prompt + raw_text
@@ -516,8 +522,8 @@ def inference_endpoint_dsgi(
         prompt += START_OF_FUNCTION_SEQUENCE
     if model_name == QWEN3_253B_MODEL_NAME_HF:
         function_name = extract_function_name(function_signature)
-        prompt += f'def {function_name}('
-        new_text += f'def {function_name}('
+        prompt += f"def {function_name}("
+        new_text += f"def {function_name}("
 
     inputs = tokenizer(prompt, return_tensors="pt")
     input_ids = inputs["input_ids"]
