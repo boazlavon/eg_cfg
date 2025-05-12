@@ -234,7 +234,7 @@ class DsgiSessionManager:
             ):
                 BASELINE_TRIALS_BASE = {
                     DEEPSEEK_V3_0324_MODEL_NAME_HF: "web_trials/baseline/mbpp/deepseek-ai_DeepSeek-V3-0324",
-                    QWEN3_253B_MODEL_NAME_HF: "web_trials/baseline/mbpp/Qwen_Qwen3-235B-A22",
+                    QWEN3_253B_MODEL_NAME_HF: "web_trials/baseline/mbpp/Qwen_Qwen3-235B-A22B",
                 }
                 BASELINE_DIRS = ["baseline_ln", "baseline_lci_ln"]
                 baseline_trial_base = BASELINE_TRIALS_BASE[
@@ -430,17 +430,22 @@ class DsgiSessionManager:
                 # Qwen3 specific adaptations to the prompt
                 prompt = prompt.replace("Deepseek Coder", "Qwen3")
                 prompt = prompt.replace("Deepseek", "Qwen")
-                inserts = [
-                    "Allowing **incremental execution and debugging**",  # long code prompt
-                    "Examples are listed as follows:",  # deepseek instruct prompt
-                ]
-                for s in inserts:
-                    if s in prompt:
-                        prompt = prompt.replace(
-                            s, f"{s}\n{PYTHON_CODE_TAGS_USAGE_INSTRUCTION}"
-                        )
-                        # print(prompt)
-                        break
+                usage_comment = PYTHON_CODE_TAGS_USAGE_INSTRUCTION_QWEN
+
+            if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
+                usage_comment = PYTHON_CODE_TAGS_USAGE_INSTRUCTION_DS
+            
+            inserts = [
+                "Allowing **incremental execution and debugging**",  # long code prompt
+                "Examples are listed as follows:",  # deepseek instruct prompt
+            ]
+            for s in inserts:
+                if s in prompt:
+                    prompt = prompt.replace(
+                        s, f"{s}\n{usage_comment}"
+                    )
+                    # print(prompt)
+                    break
 
             if not gamma:
                 solution = None
@@ -473,21 +478,25 @@ class DsgiSessionManager:
                 assert solution
                 return solution
             else:  # gamma > 0
-                outputs = inference_endpoint_dsgi(
+                outputs, early_stop = inference_endpoint_dsgi(
                     prompt,
                     self.tokenizer,
                     self.session_config.model_name,
                     dsgi_injection_manager,
                     function_signature,
                 )
-        new_codes = raw_outputs_to_new_code(
-            outputs,
-            self.tokenizer,
-            initial_prompt_input_ids_len,
-            self.inference_session.inference_session_config["prompt_type"],
-            stats_manager=self.stats_manager,
-        )
-        solution = new_codes[0]
+        if early_stop:
+            print("Early Stop detected!")
+            solution = outputs
+        else:
+            new_codes = raw_outputs_to_new_code(
+                outputs,
+                self.tokenizer,
+                initial_prompt_input_ids_len,
+                self.inference_session.inference_session_config["prompt_type"],
+                stats_manager=self.stats_manager,
+            )
+            solution = new_codes[0]
         # if function_signature:
         #     solution = f"{function_signature}\n{solution}"
         #     assert is_valid_python(solution)

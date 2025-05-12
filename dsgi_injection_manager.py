@@ -116,3 +116,6 @@ class DsgiInjectionManager:
         return apply_guidance(
             P, P_c, self.gamma, eps=eps, tokenizer=self.tokenizer, debug=debug
         )
+
+    def early_stop_detected(self):
+        return self.adapter.query_early_stop()

@@ -74,6 +74,20 @@ class CodeGenerationAdapter:
         self.stats_manager = stats_manager
         self.model_name = model_name
 
+        self.early_stop_detected = False
+        self.early_stop_detected_program = None
+        self.early_stop_counter = 0
+        self.early_stop_threshold = EARLY_STOP_THRESHOLD
+        self.perform_early_stop = False
+
+        self.dynamic_early_stop_detected = False
+        self.dynamic_early_stop_detected_program = None
+        self.dynamic_early_stop_counter = 0
+        self.dynamic_early_stop_threshold = EARLY_STOP_THRESHOLD
+        self.perform_dynamic_early_stop = False
+
+        self.prompt_with_cot_length = 0
+
     @staticmethod
     def dynamic_signal_handlers():
         return {
@@ -81,6 +95,29 @@ class CodeGenerationAdapter:
             DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION: CodeGenerationAdapter._extract_nearest_future_execution_dynamic_signals,
             DYNAMIC_SIGNAL__BACKWARD: CodeGenerationAdapter._extract_backward_dynamic_signals,
         }
+
+    def query_early_stop(self):
+        if self.early_stop_counter >= self.early_stop_threshold * 1.5:
+            print("We are in a loop, lets early stop")
+            return True
+        if self.dynamic_early_stop_counter >= self.dynamic_early_stop_threshold * 1.5:
+            print("We are in a loop, lets early stop")
+            return True
+        if self.perform_early_stop and self.perform_dynamic_early_stop:
+            if (
+                self.early_stop_detected_program
+                == self.dynamic_early_stop_detected_program
+            ):
+                print("Lets early stop!")
+                return True
+            else:
+                print("Early stop detected program are different!")
+                return False
+        else:
+            print(
+                f"Early stop threshold are not met yet {self.dynamic_early_stop_counter}/{self.dynamic_early_stop_threshold}, {self.early_stop_counter}/{self.early_stop_threshold}"
+            )
+            return False
 
     def _extract_backward_dynamic_signals(self, dynamic_signal_type, input_ids):
         dynamic_signal_text = ""
@@ -98,11 +135,15 @@ class CodeGenerationAdapter:
         generate_new_signal = self._do_generate_new_signal(
             dynamic_signal_type, new_code
         )
+        self.generate_new_signal = generate_new_signal
         if not generate_new_signal:
             return (
                 self.current_dynamic_signal[dynamic_signal_type],
                 self.current_debug_data[dynamic_signal_type],
             )
+
+        if self.generate_new_signal:
+            print("Generate New Signal!")
         if self.detector.function_start_idx is None:
             self.current_dynamic_signal[dynamic_signal_type] = ""
             self.current_debug_data[dynamic_signal_type] = ()
@@ -150,6 +191,7 @@ class CodeGenerationAdapter:
                 nf_samples_depth=self.nf_samples_depth,
                 crop_idx=self.initial_prompt_input_ids_len,
                 model_name=self.model_name,
+                prompt_with_cot=self.prompt_with_cot,
             )
         new_codes = list(set(new_codes))
         executable_partial_programs = []
@@ -181,6 +223,47 @@ class CodeGenerationAdapter:
                         executable_partial_program_code, self.test_cases
                     )
                 )
+
+        if self.early_stop_detected and len(executable_partial_programs) != 1:
+            print(
+                f"[UNCOND] Cancel Early Stop since no unique executables ({self.early_stop_counter}/{self.early_stop_threshold})"
+            )
+            self.early_stop_detected = False
+            self.early_stop_counter = 0
+            self.early_stop_detected_program = None
+
+        if len(executable_partial_programs) == 1:
+            unique_program = executable_partial_programs[0].strip()
+            if self.early_stop_detected:
+                if self.early_stop_detected_program == unique_program:
+                    # We see same program again.
+                    self.early_stop_counter += 1
+                    print(
+                        f"[UNCOND] Detected Early Stop Again ({self.early_stop_counter}/{self.early_stop_threshold})"
+                    )
+                else:
+                    print(
+                        "[UNCOND] Previous Detection has ended - different unique programs"
+                    )
+                    self.early_stop_detected = False
+                    self.early_stop_counter = 0
+                    self.early_stop_detected_program = None
+            else:
+                return_in_last_line = "return" in unique_program.splitlines()[-1]
+                if return_in_last_line:
+                    self.early_stop_detected = True
+                    self.early_stop_detected_program = unique_program
+                    self.early_stop_counter = 1
+                    print(
+                        f"[UNCOND] Detected Early Stop ({self.early_stop_counter}/{self.early_stop_threshold})"
+                    )
+                    print("$" * 10)
+                    print(self.early_stop_detected_program)
+                    print("$" * 10)
+
+        if self.early_stop_counter >= self.early_stop_threshold:
+            print("[UNCOND] Perform Early Stop")
+            self.perform_early_stop = True
 
         dynamic_signals = []
         for executable_partial_program_code in executable_partial_programs:
@@ -373,6 +456,94 @@ class CodeGenerationAdapter:
             )
         return dynamic_signal_input_ids
 
+    def check_dynamic_early_stop_wrapper(self, dynamic_signal_input_ids):
+        try:
+            self.check_dynamic_early_stop(dynamic_signal_input_ids)
+        except:
+            print(
+                "Exception occured durring early stop for dynamic signal, since its an optimization we reset and ignore"
+            )
+            self.dynamic_early_stop_detected = False
+            self.dynamic_early_stop_detected_program = None
+            self.dynamic_early_stop_counter = 0
+            self.dynamic_early_stop_threshold = 4
+
+    def check_dynamic_early_stop(self, dynamic_signal_input_ids):
+        assert self.model_name
+        new_codes = fw_utils__sample_code_pseudo_beam_search(
+            dynamic_signal_input_ids,
+            tokenizer=self.tokenizer,
+            execution_manager=self.execution_manager,
+            stats_manager=self.stats_manager,
+            samples_count=self.nf_samples_count,
+            temperature=self.temperature,
+            nf_samples_depth=self.nf_samples_depth,
+            crop_idx=self.initial_prompt_input_ids_len,
+            model_name=self.model_name,
+            prompt_with_cot=self.prompt_with_cot,
+        )
+
+        new_codes = list(set(new_codes))
+        executable_partial_programs = []
+
+        # print(f"New Codes: {len(new_codes)}")
+        for idx, new_code in enumerate(new_codes):
+            try:
+                # print(f"#{idx + 1} Extracting Partial Executable")
+                executable_partial_program_code = (
+                    self.execution_manager.extract_partial_executable_program(new_code)
+                )
+            except ValueError:
+                # print(f"#{idx + 1} Error Extracting Partial Executable")
+                continue
+            executable_partial_programs.append(executable_partial_program_code)
+        executable_partial_programs = list(set(executable_partial_programs))
+
+        # print(f"Executable Programs: {len(executable_partial_programs)}")
+        if executable_partial_programs:
+            self.current_nf_samples_count = executable_partial_programs
+
+        if self.dynamic_early_stop_detected and len(executable_partial_programs) != 1:
+            print(
+                f"[DYNAMIC] Cancel Early Stop since no unique executables ({self.dynamic_early_stop_counter}/{self.dynamic_early_stop_threshold})"
+            )
+            self.dynamic_early_stop_detected = False
+            self.dynamic_early_stop_counter = 0
+            self.dynamic_early_stop_detected_program = None
+
+        if len(executable_partial_programs) == 1:
+            unique_program = executable_partial_programs[0].strip()
+            if self.dynamic_early_stop_detected:
+                if self.dynamic_early_stop_detected_program == unique_program:
+                    # We see same program again.
+                    self.dynamic_early_stop_counter += 1
+                    print(
+                        f"[DYNAMIC] Detected Early Stop Again ({self.dynamic_early_stop_counter}/{self.dynamic_early_stop_threshold})"
+                    )
+                else:
+                    print(
+                        "[DYNAMIC] Previous Detection has ended - different unique programs"
+                    )
+                    self.dynamic_early_stop_detected = False
+                    self.dynamic_early_stop_counter = 0
+                    self.dynamic_early_stop_detected_program = None
+            else:
+                return_in_last_line = "return" in unique_program.splitlines()[-1]
+                if return_in_last_line:
+                    self.dynamic_early_stop_detected = True
+                    self.dynamic_early_stop_detected_program = unique_program
+                    self.dynamic_early_stop_counter = 1
+                    print(
+                        f"[DYNAMIC] Detected Early Stop ({self.dynamic_early_stop_counter}/{self.dynamic_early_stop_threshold})"
+                    )
+                    print("$" * 10)
+                    print(self.dynamic_early_stop_detected_program)
+                    print("$" * 10)
+
+        if self.dynamic_early_stop_counter >= self.dynamic_early_stop_threshold:
+            print("[DYNAMIC] Perform Early Stop")
+            self.perform_dynamic_early_stop = True
+
     def extract_dynamic_signal_input_ids(self, input_ids):
         dynamic_signals_text = {}
         debug_data = {}
@@ -388,6 +559,8 @@ class CodeGenerationAdapter:
         dynamic_signal_input_ids = self.unify_dynamic_signals(
             input_ids, dynamic_signals_text
         )
+        if self.generate_new_signal and self.early_stop_detected:
+            self.check_dynamic_early_stop_wrapper(dynamic_signal_input_ids)
         debug_data = debug_data.get(DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION, ("", ""))
 
         return dynamic_signal_input_ids, debug_data

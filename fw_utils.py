@@ -114,8 +114,8 @@ def complex_qwen_query(
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
     url=FW_ENDPOINT_URL,
     verbose=False,
+    stop_condition = ("<endoftext>", "<im_end>", "<__end_of_sentence__>")
 ):
-    stop_condition = ["<endoftext>", "<im_end>"]
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -226,6 +226,7 @@ def pseudo_beam_search_batch(
     temperature,
     batch_size,
     crop_idx,
+    prompt_with_cot,
     max_total_requests=PSEUDO_BEAM_SEARCH_MAX_TOTAL_REQUESTS,
     top_p=FW_UTILS__DEFAULT_TOP_P,
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
@@ -239,9 +240,9 @@ def pseudo_beam_search_batch(
         "Content-Type": "application/json",
         "Authorization": f"Bearer {FW_KEY}",
     }
-    # print(
-    #     f"[INFO] Starting pseudo beam search for {unique_samples_count} unique completions"
-    # )
+    print(
+        f"[INFO] Starting pseudo beam search for {unique_samples_count} unique completions"
+    )
     total_completion_tokens = 0
     while (
         len(unique_codes) < unique_samples_count and total_requests < max_total_requests
@@ -267,11 +268,14 @@ def pseudo_beam_search_batch(
         data = response.json()
         completion_tokens = data["usage"]["completion_tokens"]
         total_completion_tokens += completion_tokens
-        prompt_input_ids = tokenizer(prompt, return_tensors="pt")["input_ids"]
-        prompt_new_text, _ = extract_new_tokens(tokenizer, prompt_input_ids, crop_idx)
-        prompt_code = extract_prompt_python_code(prompt_new_text)
-        prompt_code_lines_count = len(prompt_code.splitlines())
-        choices = [choice for choice in data['choices']]
+        only_answer = prompt[len(prompt_with_cot) :]
+        if '```python\n' in only_answer:
+            only_answer = only_answer.split('```python\n')[1]
+        # prompt_input_ids = tokenizer(prompt, return_tensors="pt")["input_ids"]
+        # prompt_new_text, _ = extract_new_tokens(tokenizer, prompt_input_ids, crop_idx)
+        # prompt_code = extract_prompt_python_code(prompt_new_text)
+        # prompt_code_lines_count = len(prompt_code.splitlines())
+        choices = [choice for choice in data["choices"]]
         unique_choices = []
         for choice in choices:
             if choice not in unique_choices:
@@ -284,17 +288,41 @@ def pseudo_beam_search_batch(
         )
         for i, choice in enumerate(unique_choices):
             raw_text = choice["text"]
-            raw_text += END_OF_CODE_STOP_SEQUENCE
-            full_answer = prompt + raw_text
 
-            input_ids = tokenizer(full_answer, return_tensors="pt")["input_ids"]
-            new_text, _ = extract_new_tokens(tokenizer, input_ids, crop_idx)
-            full_code = extract_python_code(new_text)
-            if not full_code:
+            # now we crop until ```
+            raw_text = raw_text.split("```")[0]
+
+            # now we split and take only the depth
+            new_code_lines = raw_text.splitlines()
+            full_code = only_answer
+            for idx, line in enumerate(new_code_lines):
+                if idx >= nf_samples_depth + 1:
+                    break
+                if "```" in line:
+                    break
+                if "<__end_of_sentence__>" in line:
+                    break
+                if "<endoftext>" in line:
+                    break
+                full_code += line + '\n'
+            full_code = full_code.replace('```','')
+            full_code = full_code.replace("<__end_of_sentence__>",'')
+            full_code = full_code.replace("<endoftext>",'')
+
+            full_code_lines = full_code.splitlines()
+            for line in full_code_lines:
+                if not line:
+                    continue
+                start_condition = line.strip().startswith(('def', 'import', 'from', '#'))
+                break
+            
+            if not start_condition:
+                print("#" * 10 + "    Invalid Code    " + "#" * 10)
+                print('=' * 10)
+                print(raw_text)
+                print('=' * 10)
                 continue
-            full_code = "\n".join(
-                full_code.splitlines()[: (prompt_code_lines_count + nf_samples_depth)]
-            )
+
             try:
                 executable_partial_program_code = (
                     execution_manager.extract_partial_executable_program(full_code)
@@ -316,9 +344,14 @@ def pseudo_beam_search_batch(
                 #     pass
                 # print(f"[WARN] No valid code block in completion #{i + 1}")
                 print(f"#{i}")
-                print("#" * 20)
+                print("#" * 10 + "    Full Code    " + "#" * 10)
+                print(f"Length: {len(full_code.splitlines())} lines")
                 print(full_code)
                 print("#" * 20)
+                print("#" * 10 + " Executable Code " + "#" * 10)
+                print(
+                    f"Length: {len(executable_partial_program_code.splitlines())} lines"
+                )
                 print(executable_partial_program_code)
                 print("#" * 20)
                 print()
@@ -401,8 +434,11 @@ def fw_utils__get_next_token_top_logprob_dist(
         post_requests_retries=post_requests_retries,
     )
     data = response.json()
-    completion_tokens = data["usage"]["completion_tokens"]
-    assert completion_tokens == max_tokens
+    try:
+        completion_tokens = data["usage"]["completion_tokens"]
+        assert completion_tokens == max_tokens
+    except:
+        completion_tokens = 0
 
     choice = data["choices"][0]
     raw_output_entry = choice["raw_output"]["completion_logprobs"]
@@ -422,7 +458,8 @@ def fw_utils__sample_code_pseudo_beam_search(
     temperature,
     nf_samples_depth,
     crop_idx,
-    model_name=DEEPSEEK_V3_0324_MODEL_NAME_FW,
+    prompt_with_cot,
+    model_name,
     url=FW_ENDPOINT_URL,
     fw_key=FW_KEY,
     max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
@@ -448,6 +485,7 @@ def fw_utils__sample_code_pseudo_beam_search(
         max_total_requests=2,
         batch_size=batch_size,
         crop_idx=crop_idx,
+        prompt_with_cot=prompt_with_cot,
     )
     if stats_manager is not None:
         stats_manager.increate_counter("beam_search_input_tokens", input_ids.shape[1])
@@ -466,13 +504,21 @@ def extract_dsgi_start_prefix(
 ):
     assert model_name in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
     if DEEPSEEK_V3_0324_MODEL_NAME_HF == model_name:
-        answer_start_until_code, completion_tokens = simple_query(
+        # answer_start_until_code, completion_tokens = simple_query(
+        #     prompt,
+        #     model_name,
+        #     temperture=dsgi_injection_manager.adapter.temperature,
+        #     stop_condition=START_OF_FUNCTION_SEQUENCE,
+        #     extract_code=False,
+        #     add_stop_condition=False,
+        #     verbose=True,
+        # )
+        answer_start_until_code, code_solution, completion_tokens = complex_qwen_query(
             prompt,
+            function_signature,
             model_name,
             temperture=dsgi_injection_manager.adapter.temperature,
-            stop_condition=START_OF_FUNCTION_SEQUENCE,
-            extract_code=False,
-            add_stop_condition=False,
+            max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
             verbose=True,
         )
     elif QWEN3_253B_MODEL_NAME_HF == model_name:
@@ -518,24 +564,24 @@ def inference_endpoint_dsgi(
         stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
 
     prompt += answer_start_until_code
-    if model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
-        prompt += START_OF_FUNCTION_SEQUENCE
-    if model_name == QWEN3_253B_MODEL_NAME_HF:
+    dsgi_injection_manager.adapter.prompt_with_cot = prompt
+
+    # if model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
+    #     prompt += START_OF_FUNCTION_SEQUENCE
+    if model_name in (QWEN3_253B_MODEL_NAME_HF,DEEPSEEK_V3_0324_MODEL_NAME_HF):
+        # now we have the starting ```python
         function_name = extract_function_name(function_signature)
         prompt += f"def {function_name}("
         new_text += f"def {function_name}("
+        code_borders_tokens_count += 1
 
     inputs = tokenizer(prompt, return_tensors="pt")
     input_ids = inputs["input_ids"]
+    early_stop = False
     for _ in range(max_tokens):
         # current_prompt = tokenizer.decode(input_ids[0], skip_special_tokens=True)
         # print(current_prompt)
         # print()
-        original_probs = fw_utils__get_next_token_prob_dist(
-            input_ids, tokenizer, model_name, stats_manager=stats_manager
-        )
-        probs = original_probs
-
         #### Extract Dynamic Signal  ####
         is_dsgi_enabled = (dsgi_injection_manager is not None) and (
             dsgi_injection_manager.is_dsgi_enabled(input_ids.clone())
@@ -565,6 +611,15 @@ def inference_endpoint_dsgi(
                     print(new_text)
                     print()
         ###########
+        if not (is_dsgi_enabled and dsgi_injection_manager.gamma == 1.0):
+            original_probs = fw_utils__get_next_token_prob_dist(
+                input_ids, tokenizer, model_name, stats_manager=stats_manager
+            )
+            probs = original_probs
+        else:
+            # print("Optimization for gamma=1 is enabled")
+            original_probs = None
+
         if is_dsgi_enabled:
             #### Calculate Dynamic Signal conditional distibution ####
             dyn_probs = fw_utils__get_next_token_prob_dist(
@@ -574,10 +629,14 @@ def inference_endpoint_dsgi(
                 stats_manager=stats_manager,
             )
 
-            #### Apply Dynamic Signal Guidance ####
-            probs_guided = dsgi_injection_manager.apply_guidance(
-                original_probs, dyn_probs, debug=False
-            )
+            if dsgi_injection_manager.gamma != 1.0:
+                #### Apply Dynamic Signal Guidance ####
+                probs_guided = dsgi_injection_manager.apply_guidance(
+                    original_probs, dyn_probs, debug=False
+                )
+            else:
+                # print("Use dynamic probs, no CFG needed")
+                probs_guided = dyn_probs
             probs = probs_guided
         #########################
 
@@ -589,6 +648,7 @@ def inference_endpoint_dsgi(
 
         next_token_text = tokenizer.decode(next_token)
         new_text += next_token_text
+        print(next_token_text)
         # print(next_token, next_token_text, code_borders_tokens_count)
         if CODE_BORDER_TOKEN in next_token_text:
             code_borders_tokens_count += 1
@@ -596,9 +656,19 @@ def inference_endpoint_dsgi(
             break
         if next_token.item() == end_of_sentence_token_id:
             break
+        if '<｜end▁of▁sentence｜>' in next_token_text:
+            break
+        
         input_ids = torch.cat([input_ids, next_token[:, None]], dim=-1)
+        if dsgi_injection_manager.early_stop_detected():
+            if dsgi_injection_manager.gamma != 1.0:
+                solution_code = dsgi_injection_manager.adapter.early_stop_detected_program
+            else:
+                solution_code = dsgi_injection_manager.adapter.dynamic_early_stop_detected_program
+            early_stop = True
+            return solution_code, early_stop
 
-    return input_ids
+    return input_ids, early_stop
 
 
 def fw_utils__get_next_token_prob_dist(
