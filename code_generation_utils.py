@@ -244,7 +244,7 @@ def raw_outputs_to_new_code(
                 tokenizer, output, initial_prompt_input_ids_len
             )
             if stats_manager is not None:
-                stats_manager.increate_counter(new_tokens.shape[1])
+                stats_manager.increate_counter("output_tokens", new_tokens.shape[1])
 
             if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
                 new_code = new_code.replace(
@@ -322,9 +322,12 @@ def generate_code_solutions(
     function_name=None,
     do_sample=False,
     prompt_type=None,
+    stats_manager=None,
 ):
     if inputs is None:
         inputs = tokenizer(prompt, return_tensors="pt").to(device)
+    if stats_manager is not None:
+        stats_manager.increate_counter("input_tokens", inputs["input_ids"].shape[1])
 
     stop_criteria_list = [
         CodeGenStopCriteria(

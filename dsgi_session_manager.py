@@ -1,4 +1,5 @@
 import random
+import datetime
 import torch
 import pprint
 from argparse import Namespace
@@ -58,16 +59,53 @@ def get_solution_filepath(results_dir, task_id, gamma, backward_signals_iteratio
     return os.path.join(results_dir, filename)
 
 
+# class StatisticsManager:
+#     def __init__(self):
+#         self.statistics = defaultdict(int)
+#         self.current_key = None
+#         self.unique_code_stats = []
+#         self.unique_code_stats_raw = []
+#         self.unique_dynamic_signal_code_stats = []
+#         self.unique_dynamic_signal_code_stats_raw = []
+#         self.converged_code = None
+#         self.converged_executable = None
+
+#     def set_current_key(self, current_key):
+#         self.current_key = current_key
+
+#     def increate_counter(self, count):
+#         self.statistics[self.current_key] += count
+
+#     def set_value(self, counter_key, value):
+#         if self.current_key not in self.statistics:
+#             self.statistics[self.current_key] = defaultdict(int)
+#         self.statistics[self.current_key][counter_key] = value
+
+
 class StatisticsManager:
     def __init__(self):
-        self.statistics = defaultdict(int)
+        self.statistics = {}
         self.current_key = None
+
+        self.unique_code_stats = []
+        self.unique_code_stats_raw = []
+        self.unique_dynamic_signal_code_stats = []
+        self.unique_dynamic_signal_code_stats_raw = []
+        self.converged_code = None
+        self.converged_executable = None
 
     def set_current_key(self, current_key):
         self.current_key = current_key
 
-    def increate_counter(self, count):
-        self.statistics[self.current_key] += count
+    def increate_counter(self, counter_key, count):
+        if self.current_key not in self.statistics:
+            self.statistics[self.current_key] = defaultdict(int)
+        self.statistics[self.current_key][counter_key] += count
+
+    def set_value(self, counter_key, value):
+        if self.current_key not in self.statistics:
+            self.statistics[self.current_key] = defaultdict(int)
+        self.statistics[self.current_key][counter_key] = value
 
 
 class DsgiSessionManager:
@@ -91,7 +129,9 @@ class DsgiSessionManager:
             self.session_config.model_name, self.device
         )
         self.execution_manager = ExecutionManager(
-            self.tokenizer, function_signature=None
+            self.tokenizer,
+            function_signature=None,
+            minimal_trace=self.session_config.minimal_trace,
         )
         self.stats_manager = StatisticsManager()
         self.problems = load_mbpp_problems()
@@ -339,6 +379,7 @@ class DsgiSessionManager:
             dsgi_injection_manager,
             num_return_sequences=1,
             prompt_type=self.inference_session.inference_session_config["prompt_type"],
+            stats_manager=self.stats_manager,
         )
         initial_prompt_input_ids_len = calculate_tokens_length(self.tokenizer, prompt)
         new_codes = raw_outputs_to_new_code(
@@ -358,6 +399,11 @@ class DsgiSessionManager:
         task_id = problem["task_id"]
         test_cases = problem["test_list"]
         self.stats_manager.set_current_key((task_id, gamma))
+        start_time = datetime.datetime.now()
+        start_time_str = start_time.strftime("%Y-%m-%d %H:%M:%S")
+        if self.stats_manager is not None:
+            self.stats_manager.set_value("start_time", start_time_str)
+        print(f"[START] {start_time_str}")
         for retry_idx in range(self.session_config.retries_count):
             general_error = None
             tb = None
@@ -421,11 +467,35 @@ class DsgiSessionManager:
             solution_entry = format_results(
                 solution, solution_results, general_error, tb
             )
-            solution_entry["tokens_count"] = self.stats_manager.statistics[
-                (task_id, gamma)
-            ]
+            end_time = datetime.datetime.now()
+            duration = end_time - start_time
+            end_time_str = end_time.strftime("%Y-%m-%d %H:%M:%S")
+            if self.stats_manager is not None:
+                self.stats_manager.set_value("end_time", end_time_str)
+                self.stats_manager.set_value("duration", str(duration))
+            print(f"[END] {end_time_str}")
+            print(f"[DURATION] {duration}")
+            # solution_entry["tokens_count"] = self.stats_manager.statistics[
+            #     (task_id, gamma)
+            # ]
+            solution_entry["stats"] = dict(
+                self.stats_manager.statistics[(task_id, gamma)]
+            )
+            # solution_entry["unique_code_stats"] = self.stats_manager.unique_code_stats
+            # solution_entry["unique_code_stats_raw"] = (
+            #     self.stats_manager.unique_code_stats_raw
+            # )
+            # solution_entry["unique_dynamic_signal_code_stats"] = (
+            #     self.stats_manager.unique_dynamic_signal_code_stats
+            # )
+            # solution_entry["unique_dynamic_signal_code_stats_raw"] = (
+            #     self.stats_manager.unique_dynamic_signal_code_stats_raw
+            # )
+            # self.stats_manager.unique_code_stats = []
+            # self.stats_manager.unique_code_stats_raw = []
+
             solution_entry["retry"] = retry_idx
-            solution_entry["random_seed"] = random_seed
+            # solution_entry["random_seed"] = random_seed
             if solution_entry["passed"]:
                 print(f"Problem task_id={task_id} is solved")
                 break

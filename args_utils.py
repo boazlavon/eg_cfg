@@ -153,6 +153,7 @@ def build_session_config(args):
         "end_idx": args["end_idx"],
         "results_dir": args.get("results_dir", "results"),
         "use_global_cache": args.get("global_cache", False),
+        "minimal_trace": args.get("minimal_trace", False),
         "top_probs": args["top_probs"],
         "random_seed": args.get("random_seed", None),
     }
@@ -180,6 +181,7 @@ def get_cmdline_args():
     parser.add_argument("--prod", action="store_true")
     parser.add_argument("--cache", action="store_true")
     parser.add_argument("--global-cache", action="store_true")
+    parser.add_argument("--minimal-trace", action="store_true")
     parser.add_argument("--top-probs", type=int, default=0, help="top probs")
     parser.add_argument("--s", type=int, default=2, help="nf samples count")
     parser.add_argument("--t", type=float, default=0.1, help="nf temp")

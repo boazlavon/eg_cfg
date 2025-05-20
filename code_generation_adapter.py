@@ -61,6 +61,7 @@ class CodeGenerationAdapter:
         self.dynamic_signals_types = dynamic_signals_types
         self.detector = None
         self.stats_manager = stats_manager
+        self.gen_new_signal = False
 
     @staticmethod
     def dynamic_signal_handlers():
@@ -82,10 +83,15 @@ class CodeGenerationAdapter:
     def _extract_nearest_future_execution_dynamic_signals(
         self, dynamic_signal_type, input_ids
     ):
+        unique_stats_entry = []
+        unique_stats_entry_raw = []
         new_code = self._extract_new_code(input_ids)
         generate_new_signal = self._do_generate_new_signal(
             dynamic_signal_type, new_code
         )
+        self.gen_new_signal = generate_new_signal
+        if self.gen_new_signal:
+            print("Should gen new signal")
         if not generate_new_signal:
             return (
                 self.current_dynamic_signal[dynamic_signal_type],
@@ -104,6 +110,7 @@ class CodeGenerationAdapter:
             "input_ids": input_ids.clone().to(self.device),
             "attention_mask": attention_mask.to(self.device),
         }
+
         function_name, args_str, _ = parse_mbpp_assert_statement(self.test_cases[0])
         outputs = generate_code_solutions(
             self.model,
@@ -118,6 +125,7 @@ class CodeGenerationAdapter:
             function_name=function_name,
             do_sample=True,
             prompt_type=self.prompt_type,
+            stats_manager=self.stats_manager,
         )
         new_codes = raw_outputs_to_new_code(
             outputs,
@@ -127,7 +135,12 @@ class CodeGenerationAdapter:
             validate=False,
             stats_manager=self.stats_manager,
         )
+        ### already having a set logic
+        unique_stats_entry.append(len(new_codes))
+        unique_stats_entry_raw.append(new_codes)
         new_codes = list(set(new_codes))
+        unique_stats_entry.append(len(new_codes))
+        unique_stats_entry_raw.append(new_codes)
         executable_partial_programs = []
         for idx, new_code in enumerate(new_codes):
             try:
@@ -137,7 +150,17 @@ class CodeGenerationAdapter:
             except ValueError:
                 continue
             executable_partial_programs.append(executable_partial_program_code)
+        unique_stats_entry.append(len(executable_partial_programs))
+        unique_stats_entry_raw.append(executable_partial_programs)
         executable_partial_programs = list(set(executable_partial_programs))
+        unique_stats_entry.append(len(executable_partial_programs))
+        unique_stats_entry_raw.append(executable_partial_programs)
+        unique_stats_entry = tuple(unique_stats_entry)
+        unique_stats_entry_raw = tuple(unique_stats_entry_raw)
+        print(f"UnconditionalUniqueCode: {unique_stats_entry}")
+        self.stats_manager.unique_code_stats.append(unique_stats_entry)
+        self.stats_manager.unique_code_stats_raw.append(unique_stats_entry_raw)
+
         if executable_partial_programs:
             self.current_nf_samples_count = executable_partial_programs
 
@@ -329,6 +352,78 @@ class CodeGenerationAdapter:
         )
         return dynamic_signal_input_ids
 
+    def check_for_early_stopping(self, dynamic_signal_input_ids):
+        self.beam_search_dynamic_signal(dynamic_signal_input_ids)
+
+    def beam_search_dynamic_signal(self, dynamic_signal_input_ids):
+        unique_stats_entry = []
+        unique_stats_entry_raw = []
+
+        attention_mask = (dynamic_signal_input_ids != 0).long()
+        inputs = {
+            "input_ids": dynamic_signal_input_ids.clone().to(self.device),
+            "attention_mask": attention_mask.to(self.device),
+        }
+        function_name, args_str, _ = parse_mbpp_assert_statement(self.test_cases[0])
+        try:
+            outputs = generate_code_solutions(
+                self.model,
+                self.tokenizer,
+                self.device,
+                prompt=None,
+                dsgi_injection_manager=None,
+                num_return_sequences=self.nf_samples_count,
+                temperature=self.temperature,
+                inputs=inputs,
+                nf_samples_depth=self.nf_samples_depth,
+                function_name=function_name,
+                do_sample=True,
+                prompt_type=self.prompt_type,
+                stats_manager=self.stats_manager,
+            )
+            new_codes = raw_outputs_to_new_code(
+                outputs,
+                self.tokenizer,
+                self.initial_prompt_input_ids_len,
+                self.prompt_type,
+                validate=False,
+                stats_manager=self.stats_manager,
+            )
+
+            unique_stats_entry.append(len(new_codes))
+            unique_stats_entry_raw.append(new_codes)
+            new_codes = list(set(new_codes))
+            unique_stats_entry.append(len(new_codes))
+            unique_stats_entry_raw.append(new_codes)
+            executable_partial_programs = []
+            for idx, new_code in enumerate(new_codes):
+                try:
+                    executable_partial_program_code = (
+                        self.execution_manager.extract_partial_executable_program(
+                            new_code
+                        )
+                    )
+                except ValueError:
+                    continue
+                executable_partial_programs.append(executable_partial_program_code)
+            unique_stats_entry.append(len(executable_partial_programs))
+            unique_stats_entry_raw.append(executable_partial_programs)
+            executable_partial_programs = list(set(executable_partial_programs))
+            unique_stats_entry.append(len(executable_partial_programs))
+            unique_stats_entry_raw.append(executable_partial_programs)
+            unique_stats_entry = tuple(unique_stats_entry)
+            unique_stats_entry_raw = tuple(unique_stats_entry_raw)
+            print(f"DynamicUniqueCode: {unique_stats_entry}")
+            self.stats_manager.unique_dynamic_signal_code_stats.append(
+                unique_stats_entry
+            )
+            self.stats_manager.unique_dynamic_signal_code_stats_raw.append(
+                unique_stats_entry_raw
+            )
+        except:
+            self.stats_manager.unique_dynamic_signal_code_stats.append(None)
+            self.stats_manager.unique_dynamic_signal_code_stats_raw.append(None)
+
     def extract_dynamic_signal_input_ids(self, input_ids):
         dynamic_signals_text = {}
         debug_data = {}
@@ -345,6 +440,11 @@ class CodeGenerationAdapter:
             input_ids, dynamic_signals_text
         )
         debug_data = debug_data.get(DYNAMIC_SIGNAL__PARTIAL_EXECUTION, ("", ""))
+
+        # check for early stopping!
+        if self.gen_new_signal:
+            print("Check for early stopping")
+            # self.check_for_early_stopping(dynamic_signal_input_ids)
 
         return dynamic_signal_input_ids, debug_data
 
