@@ -114,7 +114,7 @@ def complex_qwen_query(
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
     url=FW_ENDPOINT_URL,
     verbose=False,
-    stop_condition = ("<endoftext>", "<im_end>", "<__end_of_sentence__>")
+    stop_condition=("<endoftext>", "<im_end>", "<__end_of_sentence__>"),
 ):
     headers = {
         "Accept": "application/json",
@@ -269,8 +269,8 @@ def pseudo_beam_search_batch(
         completion_tokens = data["usage"]["completion_tokens"]
         total_completion_tokens += completion_tokens
         only_answer = prompt[len(prompt_with_cot) :]
-        if '```python\n' in only_answer:
-            only_answer = only_answer.split('```python\n')[1]
+        if "```python\n" in only_answer:
+            only_answer = only_answer.split("```python\n")[1]
         # prompt_input_ids = tokenizer(prompt, return_tensors="pt")["input_ids"]
         # prompt_new_text, _ = extract_new_tokens(tokenizer, prompt_input_ids, crop_idx)
         # prompt_code = extract_prompt_python_code(prompt_new_text)
@@ -304,23 +304,25 @@ def pseudo_beam_search_batch(
                     break
                 if "<endoftext>" in line:
                     break
-                full_code += line + '\n'
-            full_code = full_code.replace('```','')
-            full_code = full_code.replace("<__end_of_sentence__>",'')
-            full_code = full_code.replace("<endoftext>",'')
+                full_code += line + "\n"
+            full_code = full_code.replace("```", "")
+            full_code = full_code.replace("<__end_of_sentence__>", "")
+            full_code = full_code.replace("<endoftext>", "")
 
             full_code_lines = full_code.splitlines()
             for line in full_code_lines:
                 if not line:
                     continue
-                start_condition = line.strip().startswith(('def', 'import', 'from', '#'))
+                start_condition = line.strip().startswith(
+                    ("def", "import", "from", "#")
+                )
                 break
-            
+
             if not start_condition:
                 print("#" * 10 + "    Invalid Code    " + "#" * 10)
-                print('=' * 10)
+                print("=" * 10)
                 print(raw_text)
-                print('=' * 10)
+                print("=" * 10)
                 continue
 
             try:
@@ -568,7 +570,7 @@ def inference_endpoint_dsgi(
 
     # if model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
     #     prompt += START_OF_FUNCTION_SEQUENCE
-    if model_name in (QWEN3_253B_MODEL_NAME_HF,DEEPSEEK_V3_0324_MODEL_NAME_HF):
+    if model_name in (QWEN3_253B_MODEL_NAME_HF, DEEPSEEK_V3_0324_MODEL_NAME_HF):
         # now we have the starting ```python
         function_name = extract_function_name(function_signature)
         prompt += f"def {function_name}("
@@ -656,15 +658,19 @@ def inference_endpoint_dsgi(
             break
         if next_token.item() == end_of_sentence_token_id:
             break
-        if '<｜end▁of▁sentence｜>' in next_token_text:
+        if "<｜end▁of▁sentence｜>" in next_token_text:
             break
-        
+
         input_ids = torch.cat([input_ids, next_token[:, None]], dim=-1)
         if dsgi_injection_manager.early_stop_detected():
             if dsgi_injection_manager.gamma != 1.0:
-                solution_code = dsgi_injection_manager.adapter.early_stop_detected_program
+                solution_code = (
+                    dsgi_injection_manager.adapter.early_stop_detected_program
+                )
             else:
-                solution_code = dsgi_injection_manager.adapter.dynamic_early_stop_detected_program
+                solution_code = (
+                    dsgi_injection_manager.adapter.dynamic_early_stop_detected_program
+                )
             early_stop = True
             return solution_code, early_stop
 

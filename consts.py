@@ -149,10 +149,11 @@ EARLY_STOP_THRESHOLD = 4
 ## FW Inference API
 FW__MIN_BATCH_SIZE = 5
 LOGPROBS_COUNT = 5
-HTTP_REQUEST_TO_LLM_RETRIES_COUNT = 3
-REQUEST_TIMEOUT_SEC = 15
+HTTP_REQUEST_TO_LLM_RETRIES_COUNT = 5
+REQUEST_TIMEOUT_SEC = 30
 QWEN_REQUEST_TIMEOUT_SEC = REQUEST_TIMEOUT_SEC * 3
-FW_KEY = "fw_3ZkWSyAu3Z41GcwKkSM3pAax"
+# FW_KEY = "fw_3ZkWSyAu3Z41GcwKkSM3pAax"
+FW_KEY = "fw_3ZXKJ65ZUq6jFrGJGEtLS33e"
 
 DEEPSEEK_V3_0324_MODEL_NAME_HF = "deepseek-ai/DeepSeek-V3-0324"
 DEEPSEEK_V3_0324_MODEL_NAME_FW = "accounts/fireworks/models/deepseek-v3-0324"
@@ -168,11 +169,17 @@ HF_MODEL_TO_FW_MODEL = {
     QWEN3_253B_MODEL_NAME_HF: QWEN3_253B_MODEL_NAME_FW,
 }
 HTTP_SUCCESS_CODE = 200
-PYTHON_CODE_TAGS_USAGE_INSTRUCTION = (
+PYTHON_CODE_TAGS_USAGE_INSTRUCTION_QWEN = (
     "# IMPORTANT: All generated Python code MUST be enclosed EXCLUSIVELY within "
     "```python and ``` tags. No other formatting is acceptable.\n"
     "# The FINAL answer MUST be the LAST code block in the output, written with NO comments or text after it. "
     "It must be immediately followed by the <endoftext> token."
+)
+PYTHON_CODE_TAGS_USAGE_INSTRUCTION_DS = (
+    "# IMPORTANT: All generated Python code MUST be enclosed EXCLUSIVELY within "
+    "```python and ``` tags. No other formatting is acceptable.\n"
+    "# The FINAL answer MUST be the LAST code block in the output, written with NO comments or text after it. "
+    "It must be immediately followed by the <__end_of_sentence__> token."
 )
 
 # EXECUTION_TRACE_USAGE_INSTRUCTION = (

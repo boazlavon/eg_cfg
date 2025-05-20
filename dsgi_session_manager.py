@@ -434,16 +434,14 @@ class DsgiSessionManager:
 
             if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
                 usage_comment = PYTHON_CODE_TAGS_USAGE_INSTRUCTION_DS
-            
+
             inserts = [
                 "Allowing **incremental execution and debugging**",  # long code prompt
                 "Examples are listed as follows:",  # deepseek instruct prompt
             ]
             for s in inserts:
                 if s in prompt:
-                    prompt = prompt.replace(
-                        s, f"{s}\n{usage_comment}"
-                    )
+                    prompt = prompt.replace(s, f"{s}\n{usage_comment}")
                     # print(prompt)
                     break
 
