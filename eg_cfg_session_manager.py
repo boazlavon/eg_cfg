@@ -378,8 +378,10 @@ class EgCfgSessionManager:
         solution = None
         early_stop = False
         function_signature = None
-        eg_cfg_injection_manager, prompt = self.build_eg_cfg_injection_manager_and_prompt(
-            problem, gamma, function_signature
+        eg_cfg_injection_manager, prompt = (
+            self.build_eg_cfg_injection_manager_and_prompt(
+                problem, gamma, function_signature
+            )
         )
         initial_prompt_input_ids_len = calculate_tokens_length(self.tokenizer, prompt)
         stats_manager = eg_cfg_injection_manager.adapter.stats_manager
