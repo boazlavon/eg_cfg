@@ -87,6 +87,7 @@ class DsgiInjectionManager:
         detector_kwargs,
         use_detector=False,
         top_probs_count=0,
+        debug_mode=False
     ):
         self.tokenizer = tokenizer
         self.gamma = gamma
@@ -96,6 +97,7 @@ class DsgiInjectionManager:
             self.detector = TASKS_DETECDORS[task](**detector_kwargs)
             self.adapter.detector = self.detector
         self.top_probs_count = top_probs_count
+        self.debug_mode = debug_mode
 
     def is_dsgi_enabled(self, input_ids):
         if self.gamma == 0:

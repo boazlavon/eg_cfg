@@ -342,7 +342,7 @@ class DsgiSessionManager:
                 "use_local_hf_model": self.use_local_hf_model,
                 "use_inference_endpoint": self.use_inference_endpoint,
                 "model_name": self.session_config.model_name,
-                # "debug_mode": self.session_config.debug_mode
+                "debug_mode": self.session_config.debug_mode
             }
 
             detector_kwargs = {}
@@ -366,7 +366,7 @@ class DsgiSessionManager:
             detector_kwargs,
             use_detector=use_detector,
             top_probs_count=self.session_config.top_probs,
-            # debug_mode=self.session_config.debug_mode
+            debug_mode=self.session_config.debug_mode
         )
         return dsgi_injection_manager, prompt
 
