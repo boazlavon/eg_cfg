@@ -8,24 +8,9 @@ from model_utils import convert_logprobs_dist_dict_to_tokenizer_prob_dist
 
 from consts import *
 
-PROBLEM_PROMPT = """Write a function `count_vowels(s)` that takes a string `s` and returns the number of vowels (`a`, `e`, `i`, `o`, `u`) in the string. The function should be case-insensitive.
-
-Examples:
-count_vowels("hello") => 2
-count_vowels("OpenAI") => 3
-count_vowels("bcd") => 0
-
-"""
-
 
 class PostRequestTimeoutError(RuntimeError):
     pass
-
-
-START_OF_CODE_STOP_SEQUENCE = "```python\n"
-START_OF_FUNCTION_SEQUENCE = "```python\ndef"
-END_OF_CODE_STOP_SEQUENCE = "```\n"
-FW_UTILS__DEFAULT_TOP_P = 0.95
 
 
 def extract_python_code(text):
@@ -37,7 +22,7 @@ def extract_prompt_python_code(text):
     python_code = extract_python_code(text)
     if python_code is not None:
         return python_code
-    return text.split(f"{START_OF_CODE_STOP_SEQUENCE}")[1]
+    return text.split(f"{INSTRUCT_MODEL_PYTHON_CODE_START}")[1]
 
 
 def extract_function_name(signature_line):
@@ -57,9 +42,6 @@ def extract_matching_blocks_with_def_index(matches, target_func_name, verbose=Fa
     def_index_dict = defaultdict(list)  # block_str -> list of def_start_indices
     last_block = None
 
-    # executable_partial_program_code = (
-    #     self.execution_manager.extract_partial_executable_program(new_code)
-    # )
     for i, match in enumerate(matches):
         block = match.group(1)
         block_start_in_text = match.start(1)
@@ -99,7 +81,6 @@ def extract_matching_blocks_with_def_index(matches, target_func_name, verbose=Fa
         )
         print(f"Total unique blocks: {len(def_index_dict)}")
 
-    # return final_def_index, last_block, def_index_dict
     return final_def_index, last_block
 
 
@@ -112,7 +93,7 @@ def complex_qwen_query(
     top_p=FW_UTILS__DEFAULT_TOP_P,
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
     verbose=False,
-    stop_condition=("<endoftext>", "<im_end>", "<__end_of_sentence__>"),
+    stop_condition=COMPLEX_QUERY_STOP_CONDITION,
 ):
     inference_endpoint_api_key = os.environ.get("FW_KEY")
     inference_endpoint_url = os.environ.get("FW_ENDPOINT_URL")
@@ -146,7 +127,9 @@ def complex_qwen_query(
         completion_tokens = data["usage"]["completion_tokens"]
         total_completion_tokens += completion_tokens
         raw_text = data["choices"][0]["text"]
-        raw_text = raw_text.replace("<python>", "```python").replace("</python>", "```")
+        raw_text = raw_text.replace(
+            "<python>", INSTRUCT_MODEL_PYTHON_CODE_START_TOK
+        ).replace("</python>", CODE_BORDER_TOKEN)
         function_name = extract_function_name(function_signature)
         matches = extract_matching_blocks(raw_text, verbose=True)
         if not matches:
@@ -270,8 +253,8 @@ def beam_search_batch(
         completion_tokens = data["usage"]["completion_tokens"]
         total_completion_tokens += completion_tokens
         only_answer = prompt[len(prompt_with_cot) :]
-        if "```python\n" in only_answer:
-            only_answer = only_answer.split("```python\n")[1]
+        if INSTRUCT_MODEL_PYTHON_CODE_START in only_answer:
+            only_answer = only_answer.split(INSTRUCT_MODEL_PYTHON_CODE_START)[1]
         choices = [choice for choice in data["choices"]]
         unique_choices = []
         for choice in choices:
@@ -287,7 +270,7 @@ def beam_search_batch(
             raw_text = choice["text"]
 
             # now we crop until ```
-            raw_text = raw_text.split("```")[0]
+            raw_text = raw_text.split(CODE_BORDER_TOKEN)[0]
 
             # now we split and take only the depth
             new_code_lines = raw_text.splitlines()
@@ -295,16 +278,16 @@ def beam_search_batch(
             for idx, line in enumerate(new_code_lines):
                 if idx >= bs_completion_horizon + 1:
                     break
-                if "```" in line:
+                if CODE_BORDER_TOKEN in line:
                     break
-                if "<__end_of_sentence__>" in line:
+                if END_OF_SENTENCE_TOKEN in line:
                     break
-                if "<endoftext>" in line:
+                if END_OF_TEXT_TOKEN in line:
                     break
                 full_code += line + "\n"
-            full_code = full_code.replace("```", "")
-            full_code = full_code.replace("<__end_of_sentence__>", "")
-            full_code = full_code.replace("<endoftext>", "")
+            full_code = full_code.replace(CODE_BORDER_TOKEN, "")
+            full_code = full_code.replace(END_OF_SENTENCE_TOKEN, "")
+            full_code = full_code.replace(END_OF_TEXT_TOKEN, "")
 
             full_code_lines = full_code.splitlines()
             for line in full_code_lines:
@@ -408,9 +391,6 @@ def inference_endpoint_utils__post_request_retries(
     return response
 
 
-MAX_TOKENS__DONT_CHANGE = 1
-
-
 def inference_endpoint_utils__get_next_token_top_logprob_dist(
     prompt,
     model_name,
@@ -419,6 +399,7 @@ def inference_endpoint_utils__get_next_token_top_logprob_dist(
     logprobs_count=LOGPROBS_COUNT,
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
 ):
+    MAX_TOKENS__DONT_CHANGE = 1
     max_tokens = MAX_TOKENS__DONT_CHANGE  ## should not be changed
     assert max_tokens == 1
     payload = {
@@ -620,6 +601,8 @@ def inference_endpoint_eg_cfg(
         if next_token.item() == end_of_sentence_token_id:
             break
         if "<｜end▁of▁sentence｜>" in next_token_text:
+            break
+        if END_OF_SENTENCE_TOKEN in next_token_text:
             break
 
         input_ids = torch.cat([input_ids, next_token[:, None]], dim=-1)

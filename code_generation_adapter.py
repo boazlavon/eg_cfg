@@ -69,7 +69,6 @@ class CodeGenerationAdapter:
             assert dynamic_signal_type in self.dynamic_signal_handlers()
             self.current_dynamic_signal[dynamic_signal_type] = None
             self.current_debug_data[dynamic_signal_type] = None
-        self.backward_signals = []
         self.generate_new_signal = None
         self.dynamic_signals_types = dynamic_signals_types
         self.detector = None
@@ -87,8 +86,6 @@ class CodeGenerationAdapter:
         self.dynamic_early_stop_counter = 0
         self.dynamic_early_stop_threshold = EARLY_STOP_THRESHOLD
         self.perform_dynamic_early_stop = False
-
-        self.prompt_with_cot_length = 0
 
     @staticmethod
     def dynamic_signal_handlers():
@@ -268,7 +265,6 @@ class CodeGenerationAdapter:
             for test_case, program_execution in self.program_executions[
                 executable_partial_program_code
             ].items():
-                # trace = program_execution.to_compact_json()
                 trace = program_execution
                 function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
                 innvocation = f"{function_name}{args_str}"
@@ -370,7 +366,6 @@ class CodeGenerationAdapter:
             for test_case, program_execution in self.program_executions[
                 executable_partial_program_code
             ].items():
-                # trace = program_execution.to_compact_json()
                 trace = program_execution
                 function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
                 innvocation = f"{function_name}{args_str}"

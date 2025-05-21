@@ -160,12 +160,6 @@ class CodeGenStopCriteria(StoppingCriteria):
                     should_stop = True
                     discard_token = True
 
-            elif self.inside_function_body:
-                pass
-                # We've exited the function body
-                # should_stop = True
-                # discard_token = True
-
         self.previous_token = token
         return should_stop, discard_token
 
@@ -181,8 +175,6 @@ class CodeGenStopCriteria(StoppingCriteria):
             self.def_reached = True
 
         if self.def_reached and "\n" in self.previous_token:
-            # stripped = token.lstrip("\n")
-            # if stripped.startswith(" ") or stripped.startswith("\t"):
             if (
                 token.startswith(" ")
                 or token.startswith("\t")
@@ -369,7 +361,6 @@ def generate_code_solutions(
     else:
         sampling_kwargs = {
             "do_sample": False,
-            # "num_return_sequences": 1,
         }
 
     model.eval()

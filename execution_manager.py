@@ -31,13 +31,9 @@ class ExecutionManager:
                     function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
                     invocation = f"{function_name}{args_str}"
                 test_case_code = f"{executable_code}\n{invocation}"
-                # test_case_code = black.format_str(
-                #     test_case_code, mode=black.FileMode(line_length=1024)
-                # )
                 assert is_valid_python(
                     test_case_code
                 ), f"Invalid Test Case: {test_case}"
-                # program_execution = self.execute_compact(test_case_code)
                 program_execution = self.execute(test_case_code)
                 return test_case, program_execution
             except subprocess.TimeoutExpired:
@@ -61,9 +57,7 @@ class ExecutionManager:
 
             for future in as_completed(futures):
                 test_case, program_execution = future.result()
-                # test_case, program_execution = run_test_case(test_case)
                 if program_execution is not None:
-                    # executions[test_case] = program_execution
                     executions[test_case] = program_execution.to_compact_json(
                         minimal_trace=self.minimal_trace
                     )
@@ -78,7 +72,7 @@ class ExecutionManager:
 
     def extract_partial_executable_program(self, new_code) -> str:
         partial_program_code = new_code
-        partial_program_code = partial_program_code.replace("```", "")
+        partial_program_code = partial_program_code.replace(CODE_BORDER_TOKEN, "")
         if self.function_signature:
             partial_program_code = f"{self.function_signature}\n{new_code}"
         executable_partial_program_code = self.make_executable(partial_program_code)
@@ -157,9 +151,6 @@ class ExecutionManager:
                 if not indent:
                     indent = "   "
                 executable_code = f"{function_signature}\n{indent}pass"
-                # executable_code = black.format_str(
-                #     executable_code, mode=black.FileMode(line_length=1024)
-                # )
             else:
                 raise ValueError("Not Executable Code to extract")
         return executable_code
@@ -222,13 +213,6 @@ class ExecutionManager:
                     stdout=formatted_out,
                     check=True,
                 )
-
-            # Step 6: Read the contents of both output files
-            # with open(raw_trace_path, "r") as f:
-            #     raw_trace_content = f.read()
-
-            # with open(formatted_trace_path, "r") as f:
-            #     formatted_trace_content = f.read()
 
             # Step 7: Create and return a ProgramExecution object
             program_execution = ProgramExecution(formatted_trace_path, program_path)

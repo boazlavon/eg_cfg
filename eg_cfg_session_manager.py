@@ -54,14 +54,8 @@ def format_results(solution, results, general_error, tb=None):
     return entry
 
 
-def get_solution_filepath(results_dir, task_id, gamma, backward_signals_iteration=0):
+def get_solution_filepath(results_dir, task_id, gamma):
     filename = FILENAME_TEMPLATE.format(task_id=task_id, gamma=gamma)
-    if backward_signals_iteration > 0:
-        filename = FILENAME_TEMPLATE_BACKWARD_SIGNAL.format(
-            task_id=task_id,
-            gamma=gamma,
-            backward_signals_iteration=backward_signals_iteration,
-        )
     return os.path.join(results_dir, filename)
 
 
@@ -157,7 +151,7 @@ class EgCfgSessionManager:
         dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
         results_dir = os.path.join(
             self.session_config.results_dir,
-            "mbpp",
+            MBPP_DATASET_NAME,
             session_config.model_name.replace("/", "_"),
             dynamic_signals_str,
         )
@@ -170,9 +164,9 @@ class EgCfgSessionManager:
         os.makedirs(results_dir, exist_ok=True)
         solved_tasks_cache_dir = os.path.join(
             self.session_config.results_dir,
-            "mbpp",
+            MBPP_DATASET_NAME,
             self.session_config.model_name.replace("/", "_"),
-            ".solved_tasks_cache",
+            SOLVED_TASKS_CACHE_DIRNAME,
         )
         if self.session_config.use_global_cache:
             os.makedirs(solved_tasks_cache_dir, exist_ok=True)
@@ -285,7 +279,8 @@ class EgCfgSessionManager:
             == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT
         ):
             prompt, _ = format_mbpp_prompt(problem, False)
-            end_string = "```"
+            end_string = CODE_BORDER_TOKEN
+
         elif self.inference_session.inference_session_config["prompt_type"] in (
             PROMPT_TYPE__DEEPSEEK_BASE,
             PROMPT_TYPE__DEEPSEEK_INSTRUCT,
@@ -295,17 +290,17 @@ class EgCfgSessionManager:
                 == PROMPT_TYPE__DEEPSEEK_BASE
             ):
                 prompts_path = os.path.join(
-                    "deepseek_mbpp_prompts", "mbpp_base_prompts.json"
+                    DEEPSEEK_PROMPT_DIRNAME, MBPP_BASE_PROMPT_FILENAME
                 )
-                end_string = "[DONE]"
+                end_string = DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_END
             if (
                 self.inference_session.inference_session_config["prompt_type"]
                 == PROMPT_TYPE__DEEPSEEK_INSTRUCT
             ):
                 prompts_path = os.path.join(
-                    "deepseek_mbpp_prompts", "mbpp_instruct_prompts.json"
+                    DEEPSEEK_PROMPT_DIRNAME, MBPP_INSTRUCT_PROMPT_FILENAME
                 )
-                end_string = "```"
+                end_string = CODE_BORDER_TOKEN
             with open(prompts_path, "r") as f:
                 prompts = json.load(f)
                 prompt = prompts[str(problem["task_id"])]
@@ -482,6 +477,7 @@ class EgCfgSessionManager:
         start_time_str = start_time.strftime("%Y-%m-%d %H:%M:%S")
         if self.stats_manager is not None:
             self.stats_manager.set_value("start_time", start_time_str)
+        random_seed = 0
         print(f"[START] {start_time_str}")
         for retry_idx in range(self.session_config.retries_count):
             general_error = None
@@ -496,7 +492,7 @@ class EgCfgSessionManager:
                 # We want to be able to use different configs is different
                 # orders but make them agnostic to their order.
                 # Each config has an IID seed
-                # transformed to range (40,40+999)
+                # transformed to range (random_seed, random_seed + 999)
                 iid_arg = (
                     self.inference_session.inference_session_config[
                         DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
@@ -512,7 +508,7 @@ class EgCfgSessionManager:
                     ].is_enabled,
                 )
                 random_seed = stable_hash(iid_arg)
-                random_seed = random_seed % 1000
+                random_seed = random_seed % RANDOM_SEED_RANGE_SIZE
                 random_seed += self.session_config.random_seed
                 random_seed += retry_idx
                 random.seed(random_seed)
@@ -566,7 +562,7 @@ class EgCfgSessionManager:
             )
             print(solution_entry["stats"])
             solution_entry["retry"] = retry_idx
-            # solution_entry["random_seed"] = random_seed
+            solution_entry["random_seed"] = random_seed
             if solution_entry["passed"]:
                 print(f"Problem task_id={task_id} is solved. (gamma={gamma})")
                 break
