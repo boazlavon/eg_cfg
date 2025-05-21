@@ -87,7 +87,7 @@ class DsgiInjectionManager:
         detector_kwargs,
         use_detector=False,
         top_probs_count=0,
-        debug_mode=False
+        debug_mode=False,
     ):
         self.tokenizer = tokenizer
         self.gamma = gamma

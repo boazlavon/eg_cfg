@@ -14,7 +14,9 @@ from consts import *
 
 
 class ExecutionManager:
-    def __init__(self, tokenizer, function_signature=None, minimal_trace=False, debug=False):
+    def __init__(
+        self, tokenizer, function_signature=None, minimal_trace=False, debug=False
+    ):
         self.tokenizer = tokenizer
         self.function_signature = function_signature
         self.timeouts = 0

@@ -120,7 +120,7 @@ class DsgiSessionManager:
         assert (
             self.session_config.model_name
             in SUPPORTED_MODELS_ON_DEPLOYMENTS[self.session_config.deployment_type]
-        ), f"Model \"{self.session_config.model_name}\" is currently not supported for \"{self.session_config.deployment_type}\" deployment."
+        ), f'Model "{self.session_config.model_name}" is currently not supported for "{self.session_config.deployment_type}" deployment.'
         if self.use_local_hf_model:
             self.device = setup_device()
             self.model, self.tokenizer = load_model(
@@ -342,7 +342,7 @@ class DsgiSessionManager:
                 "use_local_hf_model": self.use_local_hf_model,
                 "use_inference_endpoint": self.use_inference_endpoint,
                 "model_name": self.session_config.model_name,
-                "debug_mode": self.session_config.debug_mode
+                "debug_mode": self.session_config.debug_mode,
             }
 
             detector_kwargs = {}
@@ -366,7 +366,7 @@ class DsgiSessionManager:
             detector_kwargs,
             use_detector=use_detector,
             top_probs_count=self.session_config.top_probs,
-            debug_mode=self.session_config.debug_mode
+            debug_mode=self.session_config.debug_mode,
         )
         return dsgi_injection_manager, prompt
 
@@ -487,7 +487,7 @@ class DsgiSessionManager:
             ].is_enabled:
                 # We want to be able to use different configs is different
                 # orders but make them agnostic to their order.
-                # Each config has an IID seed 
+                # Each config has an IID seed
                 # transformed to range (40,40+999)
                 iid_arg = (
                     self.inference_session.inference_session_config[
