@@ -322,15 +322,15 @@ class DsgiSessionManager:
                 "test_cases": test_cases,
                 "initial_prompt": prompt,
                 "dynamic_signals_types": dynamic_signals_types,
-                "nf_samples_count": self.inference_session.inference_session_config[
+                "bs_candidates_count": self.inference_session.inference_session_config[
                     DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
-                ].nf_samples_count,
+                ].bs_candidates_count,
                 "temperature": self.inference_session.inference_session_config[
                     DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
                 ].temperature,
-                "nf_samples_depth": self.inference_session.inference_session_config[
+                "bs_completion_horizon": self.inference_session.inference_session_config[
                     DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
-                ].nf_samples_depth,
+                ].bs_completion_horizon,
                 "prompt_type": self.inference_session.inference_session_config[
                     "prompt_type"
                 ],
@@ -495,10 +495,10 @@ class DsgiSessionManager:
                     ].temperature,
                     self.inference_session.inference_session_config[
                         DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
-                    ].nf_samples_count,
+                    ].bs_candidates_count,
                     self.inference_session.inference_session_config[
                         DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
-                    ].nf_samples_depth,
+                    ].bs_completion_horizon,
                     self.inference_session.inference_session_config[
                         DYNAMIC_SIGNAL__PARTIAL_EXECUTION
                     ].is_enabled,

@@ -25,19 +25,19 @@ def get_dynamic_signals_str(inference_session_config):
         if (
             inference_session_config[
                 DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
-            ].nf_samples_depth
+            ].bs_completion_horizon
             is not None
         ):
             d_arg = str(
                 inference_session_config[
                     DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
-                ].nf_samples_depth
+                ].bs_completion_horizon
             )
         else:
             d_arg = "inf"
         s = inference_session_config[
             DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
-        ].nf_samples_count
+        ].bs_candidates_count
         t = inference_session_config[
             DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
         ].temperature
@@ -127,8 +127,8 @@ def build_inference_session_config(args):
         DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION: Namespace(
             is_enabled=args["n"],
             temperature=args["t"] if args["n"] else None,
-            nf_samples_count=args["s"] if args["n"] else None,
-            nf_samples_depth=args["d"] if args["n"] else None,
+            bs_candidates_count=args["s"] if args["n"] else None,
+            bs_completion_horizon=args["d"] if args["n"] else None,
         ),
         DYNAMIC_SIGNAL__PARTIAL_EXECUTION: Namespace(
             is_enabled=args["p"],

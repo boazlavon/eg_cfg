@@ -26,9 +26,9 @@ class CodeGenerationAdapter:
         prompt_type,
         use_local_hf_model,
         use_inference_endpoint,
-        nf_samples_count=None,
+        bs_candidates_count=None,
         temperature=None,
-        nf_samples_depth=None,
+        bs_completion_horizon=None,
         guidance_strategy=None,
         execution_manager=None,
         stats_manager=None,
@@ -56,12 +56,12 @@ class CodeGenerationAdapter:
         self.prompt_type = prompt_type
         self.program_executions = OrderedDict()
         self.execution_manager = execution_manager
-        self.nf_samples_count = nf_samples_count
+        self.bs_candidates_count = bs_candidates_count
         self.temperature = temperature
-        self.nf_samples_depth = nf_samples_depth
+        self.bs_completion_horizon = bs_completion_horizon
         self.guidance_strategy = guidance_strategy
         self.lines_count = 0
-        self.current_nf_samples_count = []
+        self.current_bs_candidates_count = []
         self.current_dynamic_signal = {}
         self.current_debug_data = {}
 
@@ -160,9 +160,9 @@ class CodeGenerationAdapter:
                 self.tokenizer,
                 None,
                 inputs,
-                num_return_sequences=self.nf_samples_count,
+                num_return_sequences=self.bs_candidates_count,
                 temperature=self.temperature,
-                nf_samples_depth=self.nf_samples_depth,
+                bs_completion_horizon=self.bs_completion_horizon,
                 function_name=function_name,
                 do_sample=True,
                 prompt_type=self.prompt_type,
@@ -183,9 +183,9 @@ class CodeGenerationAdapter:
                 tokenizer=self.tokenizer,
                 execution_manager=self.execution_manager,
                 stats_manager=self.stats_manager,
-                samples_count=self.nf_samples_count,
+                candidates_count=self.bs_candidates_count,
                 temperature=self.temperature,
-                nf_samples_depth=self.nf_samples_depth,
+                bs_completion_horizon=self.bs_completion_horizon,
                 crop_idx=self.initial_prompt_input_ids_len,
                 model_name=self.model_name,
                 prompt_with_cot=self.prompt_with_cot,
@@ -212,7 +212,7 @@ class CodeGenerationAdapter:
 
         # print(f"Executable Programs: {len(executable_partial_programs)}")
         if executable_partial_programs:
-            self.current_nf_samples_count = executable_partial_programs
+            self.current_bs_candidates_count = executable_partial_programs
 
         for idx, executable_partial_program_code in enumerate(
             executable_partial_programs
@@ -336,10 +336,10 @@ class CodeGenerationAdapter:
                 dynamic_signal_type == DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
             ), f"Unsupported Signal Type: {dynamic_signal_type}"
             # iterate over the new codes that were generated and check if new code is a prefix
-            if not self.current_nf_samples_count:
+            if not self.current_bs_candidates_count:
                 generate_new_signal = True
             for idx, current_new_code_sample in enumerate(
-                self.current_nf_samples_count
+                self.current_bs_candidates_count
             ):
                 if not current_new_code_sample.startswith(new_code):
                     # print(f"New Code:\n{new_code}")
@@ -476,9 +476,9 @@ class CodeGenerationAdapter:
             tokenizer=self.tokenizer,
             execution_manager=self.execution_manager,
             stats_manager=self.stats_manager,
-            samples_count=self.nf_samples_count,
+            candidates_count=self.bs_candidates_count,
             temperature=self.temperature,
-            nf_samples_depth=self.nf_samples_depth,
+            bs_completion_horizon=self.bs_completion_horizon,
             crop_idx=self.initial_prompt_input_ids_len,
             model_name=self.model_name,
             prompt_with_cot=self.prompt_with_cot,
@@ -502,7 +502,7 @@ class CodeGenerationAdapter:
 
         # print(f"Executable Programs: {len(executable_partial_programs)}")
         if executable_partial_programs:
-            self.current_nf_samples_count = executable_partial_programs
+            self.current_bs_candidates_count = executable_partial_programs
 
         if self.dynamic_early_stop_detected and len(executable_partial_programs) != 1:
             print(

@@ -82,12 +82,12 @@ class CodeGenStopCriteria(StoppingCriteria):
     def __init__(
         self,
         tokenizer,
-        nf_samples_depth=None,
+        bs_completion_horizon=None,
         function_name=None,
         is_instruct=True,
     ):
         self.tokenizer = tokenizer
-        self.nf_samples_depth = nf_samples_depth
+        self.bs_completion_horizon = bs_completion_horizon
         self.function_name = function_name
         self.is_instruct = is_instruct
         self.code_started = False
@@ -155,8 +155,8 @@ class CodeGenStopCriteria(StoppingCriteria):
 
                 if (
                     count_lines
-                    and self.nf_samples_depth is not None
-                    and self.function_body_line_count >= self.nf_samples_depth
+                    and self.bs_completion_horizon is not None
+                    and self.function_body_line_count >= self.bs_completion_horizon
                 ):
                     should_stop = True
                     discard_token = True
@@ -199,8 +199,8 @@ class CodeGenStopCriteria(StoppingCriteria):
 
                 if (
                     count_lines
-                    and self.nf_samples_depth is not None
-                    and self.function_body_line_count >= self.nf_samples_depth
+                    and self.bs_completion_horizon is not None
+                    and self.function_body_line_count >= self.bs_completion_horizon
                 ):
                     should_stop = True
                     discard_token = True
@@ -318,7 +318,7 @@ def generate_code_solutions(
     max_new_tokens=MAX_NEW_TOKENS,
     num_return_sequences=1,
     temperature=1,
-    nf_samples_depth=None,
+    bs_completion_horizon=None,
     function_name=None,
     do_sample=False,
     prompt_type=None,
@@ -329,7 +329,7 @@ def generate_code_solutions(
     stop_criteria_list = [
         CodeGenStopCriteria(
             tokenizer,
-            nf_samples_depth=nf_samples_depth,
+            bs_completion_horizon=bs_completion_horizon,
             function_name=function_name,
         )
         for _ in range(num_return_sequences)

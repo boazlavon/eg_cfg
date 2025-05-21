@@ -217,8 +217,8 @@ def beam_search_batch(
     prompt,
     tokenizer,
     execution_manager,
-    unique_samples_count,
-    nf_samples_depth,
+    unique_candidates_count,
+    bs_completion_horizon,
     model_name,
     url,
     headers,
@@ -240,10 +240,13 @@ def beam_search_batch(
         "Content-Type": "application/json",
         "Authorization": f"Bearer {FW_KEY}",
     }
-    print(f"[INFO] Starting beam search for {unique_samples_count} unique completions")
+    print(
+        f"[INFO] Starting beam search for {unique_candidates_count} unique completions"
+    )
     total_completion_tokens = 0
     while (
-        len(unique_codes) < unique_samples_count and total_requests < max_total_requests
+        len(unique_codes) < unique_candidates_count
+        and total_requests < max_total_requests
     ):
         n = batch_size * (total_requests + 1)
         payload = {
@@ -279,10 +282,10 @@ def beam_search_batch(
             if choice not in unique_choices:
                 unique_choices.append(choice)
         print(
-            f"[INFO] Using batch size = {batch_size}, d={nf_samples_depth} t={temperature}"
+            f"[INFO] Using batch size = {batch_size}, d={bs_completion_horizon} t={temperature}"
         )
         print(
-            f"[INFO] unique_samples={len(unique_choices)}/{len(choices)}, current_unique_count={len(unique_codes)}/{unique_samples_count}"
+            f"[INFO] unique_samples={len(unique_choices)}/{len(choices)}, current_unique_count={len(unique_codes)}/{unique_candidates_count}"
         )
         for i, choice in enumerate(unique_choices):
             raw_text = choice["text"]
@@ -294,7 +297,7 @@ def beam_search_batch(
             new_code_lines = raw_text.splitlines()
             full_code = only_answer
             for idx, line in enumerate(new_code_lines):
-                if idx >= nf_samples_depth + 1:
+                if idx >= bs_completion_horizon + 1:
                     break
                 if "```" in line:
                     break
@@ -355,13 +358,13 @@ def beam_search_batch(
                 print(executable_partial_program_code)
                 print("#" * 20)
                 print()
-            if len(unique_codes) >= unique_samples_count:
+            if len(unique_codes) >= unique_candidates_count:
                 break
         total_requests += 1
         temperature = temperature * (1.2**total_requests)
 
     print(
-        f"[INFO] Completed with {len(unique_codes)}/{unique_samples_count} unique completions"
+        f"[INFO] Completed with {len(unique_codes)}/{unique_candidates_count} unique completions"
     )
     unique_codes = list(unique_codes)
     return unique_codes, total_completion_tokens
@@ -454,9 +457,9 @@ def fw_utils__sample_code_beam_search(
     tokenizer,
     execution_manager,
     stats_manager,
-    samples_count,
+    candidates_count,
     temperature,
-    nf_samples_depth,
+    bs_completion_horizon,
     crop_idx,
     prompt_with_cot,
     model_name,
@@ -469,14 +472,14 @@ def fw_utils__sample_code_beam_search(
         "Content-Type": "application/json",
         "Authorization": f"Bearer {fw_key}",
     }
-    batch_size = max(FW__MIN_BATCH_SIZE, samples_count)
+    batch_size = max(FW__MIN_BATCH_SIZE, candidates_count)
     prompt = tokenizer.batch_decode(input_ids, skip_special_tokens=True)[0]
     unique_codes, total_completion_tokens = beam_search_batch(
         prompt=prompt,
         tokenizer=tokenizer,
         execution_manager=execution_manager,
-        unique_samples_count=samples_count,
-        nf_samples_depth=nf_samples_depth,
+        unique_candidates_count=candidates_count,
+        bs_completion_horizon=bs_completion_horizon,
         model_name=model_name,
         url=url,
         headers=headers,
