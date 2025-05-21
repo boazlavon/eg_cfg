@@ -13,13 +13,11 @@ if parent_dir not in sys.path:
     sys.path.insert(0, parent_dir)
 
 from consts import (
-    GAMMAS,
-    OFFICIAL_PASSED_TASK_IDS_PATH,
     MBPP_SIZE,
     DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
     DEEPSEEK_13_SOLVED_TASK_IDS,
     DEEPSEEK_V3_0324_MODEL_NAME_HF,
-    DEEPSEEK_V3_0324_SOLVED_TASK_IDS
+    DEEPSEEK_V3_0324_SOLVED_TASK_IDS,
 )
 
 
@@ -32,155 +30,22 @@ def load_json(path):
         return None
 
 
-def load_official_passed_ids(json_path):
-    try:
-        with open(json_path, "r") as f:
-            return set(json.load(f))
-    except Exception as e:
-        print(f"Error loading baseline passed IDs from {json_path}: {e}")
-        return set()
-
-    samples = defaultdict(dict)
-
-    for fname in os.listdir(trial_dir):
-        if not fname.startswith("task_id=") or not fname.endswith(".json"):
-            continue
-
-        try:
-            parts = fname[len("task_id=") :].split("_gamma=")
-            task_id = int(parts[0])
-            gamma = float(parts[1][:-5])
-        except Exception as e:
-            print(f"Skipping file {fname} due to parsing error: {e}")
-            continue
-
-        data = load_json(os.path.join(trial_dir, fname))
-        if data is None:
-            continue
-
-        samples[task_id][gamma] = data
-
-    improved_ids = []
-    total = 0
-    total_guided_g1 = 0
-    total_clean = 0
-    passed_clean = 0
-    failed_samples = 0
-    failed_with_error = 0
-
-    for task_id, gamma_results in samples.items():
-        base = gamma_results.get(0.0)
-        if base is None:
-            continue
-        total += 1
-        is_error = base.get("general_error") or base.get("has_testcase_error")
-        if not is_error:
-            total_clean += 1
-            if base.get("passed"):
-                passed_clean += 1
-
-        if not base.get("passed"):
-            failed_samples += 1
-            if base.get("has_testcase_error") or base.get("general_error"):
-                failed_with_error += 1
-
-            for gamma, result in gamma_results.items():
-                if gamma == 0.0:
-                    continue
-                if (
-                    result.get("passed")
-                    and not result.get("general_error")
-                    and not result.get("has_testcase_error")
-                ):
-                    improved_ids.append(task_id)
-                    break
-
-    improved_ids = list(set(improved_ids))
-    improvement_count = len(improved_ids)
-    passed_without_improvement = passed_clean - improvement_count
-    pass_rate = passed_clean / total_clean if total_clean else 0
-    error_rate = failed_with_error / failed_samples if failed_samples else 0
-
-    print(f"Trial directory: {trial_dir}")
-    print(f"Total samples: {total}")
-    print(f"Improved samples: {improvement_count}")
-    print(f"Improvement percentage (over all): {improvement_count / total * 100:.2f}%")
-    print(
-        f"Improvement percentage (clean only): {improvement_count / total_clean * 100:.2f}%"
-    )
-    if failed_samples:
-        print(f"Error rate among failed samples: {error_rate * 100:.2f}%")
-    print(f"Improved sample IDs: {sorted(improved_ids)}")
-
-    if generate_csv:
-        task_ids = sorted(samples.keys())
-        gamma_values = sorted(GAMMAS)
-
-        accuracy_rows = []
-        passed_rows = []
-
-        header = ["task_id"] + [str(g) for g in gamma_values]
-
-        for task_id in task_ids:
-            acc_row = [str(task_id)]
-            pass_row = [str(task_id)]
-            for gamma in gamma_values:
-                data = samples[task_id].get(gamma)
-                if data is None:
-                    acc_row.append("")
-                    pass_row.append("")
-                else:
-                    acc = data.get("accuracy")
-                    passed = data.get("passed")
-                    acc_row.append(f"{acc:.4f}" if acc is not None else "")
-                    pass_row.append("1" if passed else "0")
-            accuracy_rows.append(acc_row)
-            passed_rows.append(pass_row)
-
-        with open(os.path.join(trial_dir, "accuracy.csv"), "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow(header)
-            writer.writerows(accuracy_rows)
-
-        with open(os.path.join(trial_dir, "passed.csv"), "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow(header)
-            writer.writerows(passed_rows)
-
-        print(f"CSV files saved to {trial_dir}[accuracy.csv, passed.csv]")
-
-    res = {
-        "dir": trial_dir,
-        "samples": samples,
-        "improved_ids": improved_ids,
-        "improvement_count": improvement_count,
-        "pass_rate": pass_rate,
-        "passed_clean": passed_clean,
-        "passed_without_improvement": passed_without_improvement,
-        "total_clean": total_clean,
-        "error_rate": error_rate,
-        "failed_samples": failed_samples,
-        "failed_with_error": failed_with_error,
-        "total_samples": total,
-    }
-    return res
-
-
-def analyze_trial(trial_dir, generate_csv, model_name):
+def analyze_trial(trial_dir, model_name, gammas, generate_csv=True):
     invalid_samples = []
 
     samples = defaultdict(dict)
+    assert model_name in (
+        DEEPSEEK_V3_0324_MODEL_NAME_HF,
+        DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
+    )
     if model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
         baseline_passed_ids = DEEPSEEK_V3_0324_SOLVED_TASK_IDS
-    else:
-        baseline_passed_ids = load_official_passed_ids(
-            OFFICIAL_PASSED_TASK_IDS_PATH[model_name]
-        )
+    elif model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME:
+        baseline_passed_ids = DEEPSEEK_13_SOLVED_TASK_IDS
 
     for fname in os.listdir(trial_dir):
         if not fname.startswith("task_id=") or not fname.endswith(".json"):
             continue
-
         try:
             parts = fname[len("task_id=") :].split("_gamma=")
             task_id = int(parts[0])
@@ -197,10 +62,9 @@ def analyze_trial(trial_dir, generate_csv, model_name):
         samples[task_id][gamma] = data
 
     improved_ids = set()
-    passed_baseline = set(baseline_passed_ids)
-    passed_total = set(baseline_passed_ids)
+    passed_baseline = set()
+    passed_total = set()
     gammas_stats = defaultdict(set)
-    g1_task_ids = set()
 
     total = 0
     total_clean = 0
@@ -218,15 +82,13 @@ def analyze_trial(trial_dir, generate_csv, model_name):
             total_clean += 1
 
         # Track baseline pass
-        # if base.get("passed"):
-        #     if task_id in baseline_passed_ids:
-        #         # passed_baseline.add(task_id)
-        #         passed_total.add(task_id)
+        if base.get("passed"):
+            passed_total.add(task_id)
+            if task_id in baseline_passed_ids:
+                passed_baseline.add(task_id)
 
         # Check for improvement via guided (gamma > 0)
         for gamma, result in gamma_results.items():
-            if gamma == 1.0:
-                g1_task_ids.add(task_id)
             if gamma == 0.0:
                 continue
             if (
@@ -238,12 +100,6 @@ def analyze_trial(trial_dir, generate_csv, model_name):
                     improved_ids.add(task_id)
                 passed_total.add(task_id)
                 gammas_stats[gamma].add(task_id)
-                print(f"Gamma={gamma}")
-                # if model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME:
-                # if task_id in DEEPSEEK_13_SOLVED_TASK_IDS:
-                # pass
-                # improved_ids.add(task_id)
-                # passed_total.add(task_id)
                 break  # stop at first successful gamma > 0
 
         # Track error rate on failed samples at gamma=0
@@ -270,12 +126,11 @@ def analyze_trial(trial_dir, generate_csv, model_name):
     if failed_samples:
         print(f"Error rate among failed samples: {error_rate * 100:.2f}%")
     print(f"Improved sample IDs: {sorted(improved_ids)}")
-    # pprint.pprint(f"Invalid Samples:\n{invalid_samples}")
 
     # CSV logic here if needed
     if generate_csv:
         task_ids = sorted(samples.keys())
-        gamma_values = sorted(GAMMAS)
+        gamma_values = sorted(gammas)
 
         accuracy_rows = []
         passed_rows = []
@@ -320,23 +175,20 @@ def analyze_trial(trial_dir, generate_csv, model_name):
         "failed_with_error": failed_with_error,
         "total_samples": total,
         "gamma_stats": gammas_stats,
-        "g1_task_ids": g1_task_ids
     }
     return results
 
 
 def analyze_trial_wrapper(args):
-    trial_dir, generate_csv, model_name = args
-    return analyze_trial(trial_dir, generate_csv, model_name)
+    trial_dir, model_name, gammas = args
+    return analyze_trial(trial_dir, model_name, gammas)
 
 
-def aggregate_analysis(base_dir, model_name):
+def aggregate_analysis(base_dir, model_name, gammas):
     if model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
         official_passed_ids = set(DEEPSEEK_V3_0324_SOLVED_TASK_IDS)
-    else:
-        official_passed_ids = load_official_passed_ids(
-            OFFICIAL_PASSED_TASK_IDS_PATH[model_name]
-        )
+    elif model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME:
+        official_passed_ids = set(DEEPSEEK_13_SOLVED_TASK_IDS)
     base_passed = defaultdict(bool)
     for task_id in official_passed_ids:
         base_passed[task_id] = True
@@ -349,41 +201,27 @@ def aggregate_analysis(base_dir, model_name):
         if os.path.isdir(os.path.join(base_dir, subdir)) and not subdir.startswith(".")
     ]
 
-    # with ProcessPoolExecutor() as executor:
-    #     results = list(
-    #         executor.map(
-    #             analyze_trial_wrapper,
-    #             [(trial_dir, True, model_name) for trial_dir in trial_dirs],
-    #         )
-    #     )
-    results = []
-    for trial_dir in trial_dirs:
-        result = analyze_trial(trial_dir, True, model_name)
-        results.append(result)
-        trial_results[trial_dir] = result
+    with ProcessPoolExecutor() as executor:
+        args = [(trial_dir, model_name, gammas) for trial_dir in trial_dirs]
+        results_list = list(executor.map(analyze_trial_wrapper, args))
+        trial_results = dict(zip(trial_dirs, results_list))
 
     all_improved_counter = Counter()
-    all_tasks_ids = Counter()
     improved_task_to_trials = defaultdict(list)
     complete_scores = []
     incomplete_scores = []
-    complete_improved_ids = set()
 
     print("\n===== AGGREGATE ANALYSIS =====")
 
     for trial_name, result in trial_results.items():
         improved_ids = set(result["improved_ids"])
-        passed_wo_impr_ids = set(
-            official_passed_ids
-            # and result["samples"][tid].get(0.0, {}).get("passed")
-        )
+        passed_wo_impr_ids = set(official_passed_ids)
 
         filtered_improved = sorted(improved_ids - official_passed_ids)
 
         for tid in filtered_improved:
             improved_task_to_trials[tid].append(trial_name)
         all_improved_counter.update(filtered_improved)
-        import ipdb; ipdb.set_trace()
         if not result["total_samples"]:
             result["total_samples"] = 1e-8
 
@@ -399,7 +237,6 @@ def aggregate_analysis(base_dir, model_name):
             trial_name,
             result["total_samples"],
             set(filtered_improved),
-            result["g1_task_ids"]
         )
 
         if result["total_samples"] >= 0.95 * MBPP_SIZE:
@@ -433,14 +270,10 @@ def aggregate_analysis(base_dir, model_name):
         name,
         total_samples,
         improved_ids,
-        g1_task_ids
     ) in complete_scores:
         cumulative |= improved_ids
-        # print(
-        #     f"{name}: {pass_rate*100:.2f}% | improved: ({improved}/{total}) {improved/total*100:.2f}% | passed: ({passed}/{total}) {passed/total*100:.2f}% | passed w/o improvement: ({passed_wo_impr}/{total}) {passed_wo_impr/total*100:.2f}% | error%: {err_rate*100:.2f}% ({err_count}/{fail_count}) | Cimp: {len(cumulative)} / {MBPP_SIZE} = {len(cumulative)/MBPP_SIZE*100:.2f}%"
-        # )
         print(
-            f"{name}: {pass_rate*100:.2f}% | improved: ({improved}/{total}) {improved/total*100:.2f}% | passed: ({passed}/{total}) {passed/total*100:.2f}% | g1 {len(g1_task_ids)} | error: {err_rate*100:.2f}% ({err_count}/{fail_count}) | Cimp: {len(cumulative)} / {MBPP_SIZE} = {len(cumulative)/MBPP_SIZE*100:.2f}%"
+            f"{name}: {pass_rate*100:.2f}% | improved: ({improved}/{total}) {improved/total*100:.2f}% | passed: ({passed}/{total}) {passed/total*100:.2f}% | passed w/o improvement: ({passed_wo_impr}/{total}) {passed_wo_impr/total*100:.2f}% | error%: {err_rate*100:.2f}% ({err_count}/{fail_count}) | Cimp: {len(cumulative)} / {MBPP_SIZE} = {len(cumulative)/MBPP_SIZE*100:.2f}%"
         )
         cumulative_list = list(improved_ids)
         cumulative_list.sort()
@@ -501,33 +334,26 @@ def main():
         description="Monitor MBPP guided inference results."
     )
     parser.add_argument(
-        "--trial-dir", type=str, help="Path to a single trial directory to analyze"
-    )
-    parser.add_argument(
         "--aggregate-dir",
         type=str,
+        required=True,
         help="Path to parent dir of multiple trials for aggregation",
-    )
-    parser.add_argument(
-        "--csv",
-        action="store_true",
-        help="If set, generate CSVs (only with --trial-dir)",
     )
     parser.add_argument(
         "--model-name",
         type=str,
-        default=DEEPSEEK_V3_0324_MODEL_NAME_HF,
-        help="Model name for display/logging purposes (default: %(default)s)",
+        required=True,
+        help="Model name",
     )
-
+    parser.add_argument(
+        "--gammas",
+        type=float,
+        nargs="+",
+        required=True,
+        help="List of gamma values (e.g., --gammas 0.0 0.5 1.0)",
+    )
     args = parser.parse_args()
-
-    if args.trial_dir:
-        analyze_trial(args.trial_dir, args.csv, args.model_name)
-    elif args.aggregate_dir:
-        aggregate_analysis(args.aggregate_dir, model_name=args.model_name)
-    else:
-        print("Please provide either --trial-dir or --aggregate-dir")
+    aggregate_analysis(args.aggregate_dir, args.model_name, args.gammas)
 
 
 if __name__ == "__main__":
