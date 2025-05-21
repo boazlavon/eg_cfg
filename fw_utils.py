@@ -502,15 +502,15 @@ CODE_BORDER_TOKEN = "```"
 END_OF_SENTENCE_TOKEN = "<__end_of_sentence__>"
 
 
-def extract_dsgi_start_prefix(
-    prompt, model_name, dsgi_injection_manager, function_signature
+def extract_eg_cfg_start_prefix(
+    prompt, model_name, eg_cfg_injection_manager, function_signature
 ):
     assert model_name in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
     if DEEPSEEK_V3_0324_MODEL_NAME_HF == model_name:
         # answer_start_until_code, completion_tokens = simple_query(
         #     prompt,
         #     model_name,
-        #     temperture=dsgi_injection_manager.adapter.temperature,
+        #     temperture=eg_cfg_injection_manager.adapter.temperature,
         #     stop_condition=START_OF_FUNCTION_SEQUENCE,
         #     extract_code=False,
         #     add_stop_condition=False,
@@ -520,7 +520,7 @@ def extract_dsgi_start_prefix(
             prompt,
             function_signature,
             model_name,
-            temperture=dsgi_injection_manager.adapter.temperature,
+            temperture=eg_cfg_injection_manager.adapter.temperature,
             max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
             verbose=True,
         )
@@ -529,35 +529,35 @@ def extract_dsgi_start_prefix(
             prompt,
             function_signature,
             model_name,
-            temperture=dsgi_injection_manager.adapter.temperature,
+            temperture=eg_cfg_injection_manager.adapter.temperature,
             max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
             verbose=True,
         )
     return answer_start_until_code, completion_tokens
 
 
-def inference_endpoint_dsgi(
+def inference_endpoint_eg_cfg(
     prompt,
     tokenizer,
     model_name,
-    dsgi_injection_manager,
+    eg_cfg_injection_manager,
     function_signature,
     max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
     debug=True,
     do_sample=False,
 ):
-    stats_manager = dsgi_injection_manager.adapter.stats_manager
+    stats_manager = eg_cfg_injection_manager.adapter.stats_manager
     new_text = ""
     code_borders_tokens_count = 0
-    is_dsgi_enabled = False
+    is_eg_cfg_enabled = False
     end_of_sentence_token_id = tokenizer.encode(
         END_OF_SENTENCE_TOKEN, add_special_tokens=False
     )[0]
     previous_executable_partial_program_code = None
     executable_partial_program_code, new_code = None, None
 
-    answer_start_until_code, completion_tokens = extract_dsgi_start_prefix(
-        prompt, model_name, dsgi_injection_manager, function_signature
+    answer_start_until_code, completion_tokens = extract_eg_cfg_start_prefix(
+        prompt, model_name, eg_cfg_injection_manager, function_signature
     )
 
     inputs = tokenizer(prompt, return_tensors="pt")
@@ -567,7 +567,7 @@ def inference_endpoint_dsgi(
         stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
 
     prompt += answer_start_until_code
-    dsgi_injection_manager.adapter.prompt_with_cot = prompt
+    eg_cfg_injection_manager.adapter.prompt_with_cot = prompt
 
     # if model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
     #     prompt += START_OF_FUNCTION_SEQUENCE
@@ -586,18 +586,18 @@ def inference_endpoint_dsgi(
         # print(current_prompt)
         # print()
         #### Extract Dynamic Signal  ####
-        is_dsgi_enabled = (dsgi_injection_manager is not None) and (
-            dsgi_injection_manager.is_dsgi_enabled(input_ids.clone())
+        is_eg_cfg_enabled = (eg_cfg_injection_manager is not None) and (
+            eg_cfg_injection_manager.is_eg_cfg_enabled(input_ids.clone())
         )
-        if is_dsgi_enabled:
+        if is_eg_cfg_enabled:
             dynamic_signal_input_ids, debug_data = (
-                dsgi_injection_manager.extract_dynamic_signal_input_ids(
+                eg_cfg_injection_manager.extract_dynamic_signal_input_ids(
                     input_ids.clone()
                 )
             )
             # no dynamic signals were extracted, no need for guidance
             if torch.equal(dynamic_signal_input_ids, input_ids):
-                is_dsgi_enabled = False
+                is_eg_cfg_enabled = False
             if debug:
                 executable_partial_program_code, new_code = debug_data
                 if (
@@ -614,7 +614,7 @@ def inference_endpoint_dsgi(
                     print(new_text)
                     print()
         ###########
-        if not (is_dsgi_enabled and dsgi_injection_manager.gamma == 1.0):
+        if not (is_eg_cfg_enabled and eg_cfg_injection_manager.gamma == 1.0):
             original_probs = fw_utils__get_next_token_prob_dist(
                 input_ids, tokenizer, model_name, stats_manager=stats_manager
             )
@@ -623,7 +623,7 @@ def inference_endpoint_dsgi(
             # print("Optimization for gamma=1 is enabled")
             original_probs = None
 
-        if is_dsgi_enabled:
+        if is_eg_cfg_enabled:
             #### Calculate Dynamic Signal conditional distibution ####
             dyn_probs = fw_utils__get_next_token_prob_dist(
                 dynamic_signal_input_ids,
@@ -632,9 +632,9 @@ def inference_endpoint_dsgi(
                 stats_manager=stats_manager,
             )
 
-            if dsgi_injection_manager.gamma != 1.0:
+            if eg_cfg_injection_manager.gamma != 1.0:
                 #### Apply Dynamic Signal Guidance ####
-                probs_guided = dsgi_injection_manager.apply_guidance(
+                probs_guided = eg_cfg_injection_manager.apply_guidance(
                     original_probs, dyn_probs, debug=False
                 )
             else:
@@ -663,14 +663,14 @@ def inference_endpoint_dsgi(
             break
 
         input_ids = torch.cat([input_ids, next_token[:, None]], dim=-1)
-        if dsgi_injection_manager.early_stop_detected():
-            if dsgi_injection_manager.gamma != 1.0:
+        if eg_cfg_injection_manager.early_stop_detected():
+            if eg_cfg_injection_manager.gamma != 1.0:
                 solution_code = (
-                    dsgi_injection_manager.adapter.early_stop_detected_program
+                    eg_cfg_injection_manager.adapter.early_stop_detected_program
                 )
             else:
                 solution_code = (
-                    dsgi_injection_manager.adapter.dynamic_early_stop_detected_program
+                    eg_cfg_injection_manager.adapter.dynamic_early_stop_detected_program
                 )
             early_stop = True
             return solution_code, early_stop
