@@ -27,7 +27,7 @@ from execution_manager import ExecutionManager
 from args_utils import get_dynamic_signals_str
 from probs_utils import stable_hash
 from collections import defaultdict
-from fw_utils import (
+from inference_endpoint_utils import (
     inference_endpoint_eg_cfg,
     PostRequestTimeoutError,
     simple_query,

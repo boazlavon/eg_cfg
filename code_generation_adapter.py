@@ -9,7 +9,7 @@ from code_generation_utils import (
     raw_outputs_to_new_code,
     slice_prompt_after_markers,
 )
-from fw_utils import fw_utils__sample_code_beam_search
+from inference_endpoint_utils import inference_endpoint_utils__sample_code_beam_search
 from consts import *
 
 
@@ -178,7 +178,7 @@ class CodeGenerationAdapter:
             )
         elif self.use_inference_endpoint:
             assert self.model_name
-            new_codes = fw_utils__sample_code_beam_search(
+            new_codes = inference_endpoint_utils__sample_code_beam_search(
                 input_ids,
                 tokenizer=self.tokenizer,
                 execution_manager=self.execution_manager,
@@ -471,7 +471,7 @@ class CodeGenerationAdapter:
 
     def check_dynamic_early_stop(self, dynamic_signal_input_ids):
         assert self.model_name
-        new_codes = fw_utils__sample_code_beam_search(
+        new_codes = inference_endpoint_utils__sample_code_beam_search(
             dynamic_signal_input_ids,
             tokenizer=self.tokenizer,
             execution_manager=self.execution_manager,

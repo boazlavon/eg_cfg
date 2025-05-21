@@ -6,7 +6,7 @@ from io import StringIO
 from transformers import StoppingCriteria
 from typing import Optional
 from transformers import StoppingCriteriaList
-from fw_utils import extract_python_code
+from inference_endpoint_utils import extract_python_code
 from model_utils import extract_new_tokens
 from consts import *
 
