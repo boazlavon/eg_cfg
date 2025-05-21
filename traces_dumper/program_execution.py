@@ -43,7 +43,6 @@ def clean_xml(xml_string):
     xml_string = xml_string.replace("<ProgramExecution>\n", "")
     xml_string = xml_string.replace("\n</ProgramExecution>", "")
     xml_string = xml_string.replace("&lt;", "<").replace("&gt;", ">")
-
     return xml_string
 
 
@@ -353,6 +352,7 @@ class FrameEntry(XmlElement):
         locals_types_str,
         process_instruction=True,
         do_eval=False,
+        empty_locals_on_err=False,
     ):
         super().__init__(
             {
@@ -373,7 +373,7 @@ class FrameEntry(XmlElement):
         self.frame_index = frame_index
         self.filename = filename
         self.function = function
-        self.line_number = line_number
+        self.line_number = int(line_number)
         self.source_line = source_line
         self.pc_offset = pc_offset
         if process_instruction:
@@ -384,7 +384,10 @@ class FrameEntry(XmlElement):
             self.instructions = instructions
             self.python_line = self.source_line
         _locals, _locals_types = self._set_locals(
-            locals_str, locals_types_str, do_eval=do_eval
+            locals_str,
+            locals_types_str,
+            do_eval=do_eval,
+            empty_locals_on_err=empty_locals_on_err,
         )
         self._locals = _locals
         self._locals_types = _locals_types
@@ -393,7 +396,7 @@ class FrameEntry(XmlElement):
         content = initial_content
         l_pattern = r"(L\.\s+(\d+))"
         pc_pattern = r"^((\s*(-->>|-->|>>)?\s*))(\d+)(.*)$"
-        current_line_pattern = r"(L\.\s+{})".format(self.line_number)
+        current_line_pattern = r"(L\.\s+{})".format(str(self.line_number))
         normalize_l_pattern = r"^(L\.\s+)\s+"
 
         # Replace each match with the original match and the corresponding line of code
@@ -463,23 +466,41 @@ class FrameEntry(XmlElement):
                 instructions = FrameEntry.INSTRUCTIONS_CACHE[instructions_key]
         return python_line, instructions
 
-    def _set_locals(self, locals_str, locals_types_str, do_eval=False):
-        try:
-            locals_dict = json.loads(locals_str)
-        except Exception as e:
-            if do_eval:
-                locals_dict = eval(locals_str)
-            else:
-                raise e
+    def _set_locals(
+        self, locals_str, locals_types_str, do_eval=False, empty_locals_on_err=False
+    ):
+        handlers = [json.loads]
+        if do_eval:
+            handlers = [json.loads, eval]
+        for handler_idx, handler in enumerate(handlers):
+            try:
+                locals_dict = handler(locals_str)
+                break
+            except Exception as e:
+                if handler_idx < len(handlers) - 1:
+                    continue
+                if handler_idx == len(handlers) - 1 and empty_locals_on_err:
+                    locals_dict = {}
+                else:
+                    raise e
 
-        try:
-            locals_types_dict = json.loads(locals_types_str)
-        except Exception as e:
-            if do_eval:
-                locals_types_dict = eval(locals_types_str)
-            else:
-                raise e
-
+        for handler_idx, handler in enumerate(handlers):
+            try:
+                locals_types_dict = handler(locals_types_str)
+                break
+            except Exception as e:
+                if handler_idx < len(handlers) - 1:
+                    continue
+                if handler_idx == len(handlers) - 1 and empty_locals_on_err:
+                    locals_types_dict = {}
+                else:
+                    raise e
+        # align
+        locals_types_dict = {
+            key: value
+            for key, value in locals_types_dict.items()
+            if key in locals_dict.keys()
+        }
         for key in FrameEntry.FILTER_KEYS:
             if key in locals_dict:
                 del locals_dict[key]
@@ -774,8 +795,8 @@ class ExecutionPhase(XmlElement):
 
         # execution control
         self.execution_control = None
-        if execution_control_action:
-            self.execution_control = ExecutionControl(execution_control_action)
+        # if execution_control_action:
+        # self.execution_control = ExecutionControl(execution_control_action)
         super().__init__(content=None)
 
     def validate_content(self):
@@ -838,10 +859,10 @@ class ExecutionPhase(XmlElement):
             state_element.append(ET.fromstring(info_frames_element.text))
         root.append(state_element)
 
-        if self.execution_control:
-            execution_control_element = Element("ExecutionControl")
-            execution_control_element.text = self.execution_control.to_xml()
-            root.append(ET.fromstring(execution_control_element.text))
+        # if self.execution_control:
+        #     execution_control_element = Element("ExecutionControl")
+        #     execution_control_element.text = self.execution_control.to_xml()
+        #     root.append(ET.fromstring(execution_control_element.text))
 
         # Append InfoExecution's XML if it exists
         if self.info_execution is not None:
@@ -851,6 +872,30 @@ class ExecutionPhase(XmlElement):
 
         # Return the XML as a string
         return tostring(root, encoding="ascii")
+
+    def to_compact_json(self, minimal_trace=False):
+        compact_json = ""
+        stack_level = 0
+        if self.info_frames is not None and self.info_frames.frames_count:
+            top_frame = self.info_frames.content[0]
+            stack_level = self.info_frames.frames_count
+
+            locals_str = f"{top_frame._locals} , {top_frame._locals_types}"
+
+            source_line = top_frame.source_line.replace("\n", "")
+            line_str = f"{self.event.content}: {source_line}"
+
+            if minimal_trace:
+                compact_json += f"{locals_str}"
+            else:
+                compact_json += f"{locals_str}\n{line_str}"
+
+        if self.event.return_value is not None and not minimal_trace:
+            return_str = f"\nReturn Value: {self.event.return_value}"
+            compact_json += return_str
+        if not minimal_trace:
+            compact_json = f"{stack_level * '='} {compact_json}"
+        return compact_json
 
     def to_canoncial_form(self, show_state=True, show_transition=True):
         # Create the root element for ExecutionPhase
@@ -891,10 +936,10 @@ class ExecutionPhase(XmlElement):
             answer_element.text = self.answer
             root.append(answer_element)
 
-        if self.execution_control:
-            execution_control_element = Element("ExecutionControl")
-            execution_control_element.text = self.execution_control.to_xml()
-            root.append(ET.fromstring(execution_control_element.text))
+        # if self.execution_control:
+        #     execution_control_element = Element("ExecutionControl")
+        #     execution_control_element.text = self.execution_control.to_xml()
+        #     root.append(ET.fromstring(execution_control_element.text))
 
         ET.indent(root, space="    ", level=0)
         xml_string = ET.tostring(root, encoding="ascii").decode("ascii")
@@ -923,9 +968,6 @@ class ExecutionPhase(XmlElement):
                 if event_element.find("ReturnValue") is not None
                 else None
             )
-            # print("\n--- Event ---")
-            # print("Event Type:", event_type)
-            # print("Return Value:", return_value)
             execution_phase.event = Event(
                 event_type, return_value=return_value, new_frame=None
             )
@@ -994,6 +1036,7 @@ class ExecutionPhase(XmlElement):
                 ),
                 process_instruction=False,
                 do_eval=True,
+                empty_locals_on_err=True,
             )
             frame_objects.append(frame_object)
 
@@ -1034,9 +1077,9 @@ class ProgramExecution:
         self.execution_phases = self._parse_execution_phases()
         self._fix_execution_entries_shift()
         self.has_errors = self.scan_errors()
-        if not self.has_errors:
-            self.append_program_start_phase()
-            self.append_program_termination_phase()
+        # if not self.has_errors:
+        self.append_program_start_phase()
+        self.append_program_termination_phase()
         self._upadate_previous_execution_info()
         self.tokenized_lengths = {}
 
@@ -1132,8 +1175,13 @@ class ProgramExecution:
                     prev_execution_entry = elements[-1]
                     if type(prev_execution_entry).__name__ == "NewFrame":
                         prev_execution_entry = elements[-2]
-                    if int(prev_execution_entry.content["pc_offset"]) == pc_offset:
-                        prev_execution_entry.exception_type = exception_type_entry
+                    try:
+                        if int(prev_execution_entry.content["pc_offset"]) == pc_offset:
+                            prev_execution_entry.exception_type = exception_type_entry
+                    except:
+                        prev_execution_entry = elements[-3]
+                        if int(prev_execution_entry.content["pc_offset"]) == pc_offset:
+                            prev_execution_entry.exception_type = exception_type_entry
                 else:
                     entry = ExecutionEntry(
                         frame_stack=frame_stack,
@@ -1287,9 +1335,8 @@ class ProgramExecution:
 
     def append_program_start_phase(self):
         event = Event("START")
-        start_phase = ExecutionPhase(
-            event, None, InfoExecution([]), CONTROL_ACTION__CONTINUE
-        )
+        # start_phase = ExecutionPhase(event, None, InfoExecution([]), CONTROL_ACTION__CONTINUE)
+        start_phase = ExecutionPhase(event, None, InfoExecution([]))
         self.execution_phases.insert(0, start_phase)
 
     def append_program_termination_phase(self):
@@ -1303,6 +1350,37 @@ class ProgramExecution:
             root.append(ET.fromstring(phase.to_xml()))
         xml_string = tostring(root, encoding="ascii", method="xml").decode("ascii")
         return xml_string
+
+    def filter_execution_phases(self, execution_phases):
+        frames_l1 = []
+        frames_l2 = []
+        for phase in execution_phases:
+            try:
+                frames = phase.info_frames.content
+                if len(frames) == 2:
+                    frames_l2.append(phase)
+                if len(frames) == 1:
+                    frames_l1.append(phase)
+            except AttributeError:
+                continue
+
+        if frames_l2:
+            return [frames_l2[-1]]
+        if frames_l1:
+            return [frames_l1[-1]]
+        return []
+
+    def to_compact_json(self, minimal_trace=False):
+        execution_phases = self.execution_phases
+        if execution_phases is None:
+            execution_phases = []
+        if minimal_trace:
+            execution_phases = self.filter_execution_phases(execution_phases)
+        root = []
+        for phase in execution_phases:
+            root.append(phase.to_compact_json(minimal_trace=minimal_trace))
+        compact_json_string = "\n".join(root)
+        return compact_json_string
 
     def get_recent_trace_phases_count(
         self, phase_idx, remaining_tokens, max_phases_count
@@ -1402,8 +1480,15 @@ class ProgramExecution:
         return (trace, next_phase, next_phase_splited)
 
 
+def to_xml_program_execution(program_execution):
+    xml_string = program_execution.to_xml()
+    xml_string = validate_and_prettify_xml(xml_string)
+    xml_string = clean_xml(xml_string)
+    return xml_string
+
+
 def process_program_execution(
-    program_execution, print_summary, output_xml, output_clean_xml, tokenize
+    program_execution, print_summary, output_xml, output_clean_xml, compact_json
 ):
     if print_summary:
         print(program_execution.to_summary_xml())  # Print summary
@@ -1417,6 +1502,9 @@ def process_program_execution(
         xml_string = validate_and_prettify_xml(xml_string)
         xml_string = clean_xml(xml_string)
         print(xml_string)
+    elif compact_json:
+        compact_json_str = program_execution.to_compact_json()
+        print(compact_json_str)
 
 
 def main():
@@ -1436,7 +1524,9 @@ def main():
     parser.add_argument(
         "-s", "--summary", action="store_true", help="Print the summary"
     )
-    parser.add_argument("-t", "--tokenize", action="store_true", help="Tokenize")
+    parser.add_argument(
+        "-c", "--compact-json", action="store_true", help="Compact JSON"
+    )
     parser.add_argument("--xml", action="store_true", help="Output as XML")
     parser.add_argument(
         "--xml-clean",
@@ -1448,9 +1538,9 @@ def main():
     args = parser.parse_args(
         sys.argv[3:]
     )  # Skip the first two arguments (xml_path and program_path)
-    if not (args.summary or args.xml or args.tokenize or args.xml_clean):
+    if not (args.summary or args.xml or args.xml_clean or args.compact_json):
         parser.error(
-            "At least one of --summary, --xml, --tokenize, or --xml-clean must be specified."
+            "At least one of --summary, --xml, --compact-json, or --xml-clean must be specified."
         )
 
     # Validate the provided paths
@@ -1465,7 +1555,7 @@ def main():
     program_execution = ProgramExecution(xml_path, program_path)
     # Call the function with the specified flags
     process_program_execution(
-        program_execution, args.summary, args.xml, args.xml_clean, args.tokenize
+        program_execution, args.summary, args.xml, args.xml_clean, args.compact_json
     )
 
 

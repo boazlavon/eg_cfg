@@ -28,7 +28,7 @@ def remove_ansi_escape_sequences(text):
 
 def send_command(command, master_fd):
     os.write(master_fd, (command + "\n").encode())
-    time.sleep(0.1)  # Allow some time for output to be generated
+    # time.sleep(0.1)  # Allow some time for output to be generated
     return read_output(master_fd)
 
 
