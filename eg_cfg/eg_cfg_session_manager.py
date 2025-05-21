@@ -146,10 +146,6 @@ class EgCfgSessionManager:
             ]
         if self.session_config.is_prod:
             random.shuffle(self.problems)
-        if self.session_config.results_dir:
-            self.session_config.results_dir = os.path.join(
-                os.getcwd(), self.session_config.results_dir
-            )
 
     def create_results_dir(self, session_config, inference_session_config):
         dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
