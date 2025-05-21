@@ -281,6 +281,14 @@ def generate_grid_configs(inference_session_grid_json, session_config_json):
     with open(inference_session_grid_json, "r") as f:
         inference_param_grid = json.load(f)
 
+    # Set Hard-coded
+    # Enable multiple candidates execution signal
+    inference_param_grid["n"] = [True]
+    # Disable partial execution signal
+    inference_param_grid["p"] = [False]
+    # Enable Only Line Guidance
+    inference_param_grid["g"] = ["line_guidance"]
+
     with open(session_config_json, "r") as f:
         session_config = json.load(f)
 

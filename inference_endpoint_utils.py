@@ -143,6 +143,8 @@ def complex_qwen_query(
         answer_start_until_code = (
             raw_text[:answer_start_idx] if answer_start_idx is not None else None
         )
+        if not answer_start_until_code:
+            continue
         # print("\n=== Answer Until Code ===")
         # print(answer_start_until_code)
         break
