@@ -121,6 +121,16 @@ class EgCfgSessionManager:
             self.session_config.model_name
             in SUPPORTED_MODELS_ON_DEPLOYMENTS[self.session_config.deployment_type]
         ), f'Model "{self.session_config.model_name}" is currently not supported for "{self.session_config.deployment_type}" deployment.'
+        if self.session_config.deployment_type == DEPLOYMENT_TYPE__INFERENCE_ENDPOINT:
+            assert (
+                self.session_config.inference_endpoint_api_key
+            ), "Missing inference endpoint key."
+            assert (
+                self.session_config.inference_endpoint_url
+            ), "Missing inference endpoint URL."
+            os.environ["FW_KEY"] = self.session_config.inference_endpoint_api_key
+            os.environ["FW_ENDPOINT_URL"] = self.session_config.inference_endpoint_url
+
         if self.use_local_hf_model:
             self.device = setup_device()
             self.model, self.tokenizer = load_model(

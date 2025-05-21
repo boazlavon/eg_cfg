@@ -1,11 +1,10 @@
+import os
 import requests
-import pprint
 import re
 from collections import defaultdict
 import json
 import torch
 from model_utils import convert_logprobs_dist_dict_to_tokenizer_prob_dist
-from model_utils import extract_new_tokens
 
 from consts import *
 
@@ -112,14 +111,15 @@ def complex_qwen_query(
     max_tokens,
     top_p=FW_UTILS__DEFAULT_TOP_P,
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
-    url=FW_ENDPOINT_URL,
     verbose=False,
     stop_condition=("<endoftext>", "<im_end>", "<__end_of_sentence__>"),
 ):
+    inference_endpoint_api_key = os.environ.get("FW_KEY")
+    inference_endpoint_url = os.environ.get("FW_ENDPOINT_URL")
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {FW_KEY}",
+        "Authorization": f"Bearer {inference_endpoint_api_key}",
     }
     payload = {
         "model": HF_MODEL_TO_FW_MODEL[model_name],
@@ -134,8 +134,8 @@ def complex_qwen_query(
     answer_start_until_code = None
     for match_retry in range(total_match_retries):
         print(f"Match Retry #{match_retry + 1}/{total_match_retries}")
-        response = fw_utils__post_request_retries(
-            url,
+        response = inference_endpoint_utils__post_request_retries(
+            inference_endpoint_url,
             headers,
             json.dumps(payload),
             timeout=QWEN_REQUEST_TIMEOUT_SEC,
@@ -175,16 +175,17 @@ def simple_query(
     top_p=FW_UTILS__DEFAULT_TOP_P,
     max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
-    url=FW_ENDPOINT_URL,
     stop_condition=END_OF_CODE_STOP_SEQUENCE,
     extract_code=True,
     add_stop_condition=True,
     verbose=False,
 ):
+    inference_endpoint_api_key = os.environ.get("FW_KEY")
+    inference_endpoint_url = os.environ.get("FW_ENDPOINT_URL")
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {FW_KEY}",
+        "Authorization": f"Bearer {inference_endpoint_api_key}",
     }
     payload = {
         "model": HF_MODEL_TO_FW_MODEL[model_name],
@@ -194,8 +195,8 @@ def simple_query(
         "top_p": top_p,
         "stop": stop_condition,
     }
-    response = fw_utils__post_request_retries(
-        url,
+    response = inference_endpoint_utils__post_request_retries(
+        inference_endpoint_url,
         headers,
         json.dumps(payload),
         timeout=REQUEST_TIMEOUT_SEC,
@@ -215,22 +216,21 @@ def simple_query(
 
 def beam_search_batch(
     prompt,
-    tokenizer,
     execution_manager,
     unique_candidates_count,
     bs_completion_horizon,
     model_name,
-    url,
-    headers,
     max_tokens,
     temperature,
     batch_size,
-    crop_idx,
     prompt_with_cot,
     max_total_requests=PSEUDO_BEAM_SEARCH_MAX_TOTAL_REQUESTS,
     top_p=FW_UTILS__DEFAULT_TOP_P,
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
 ):
+    inference_endpoint_api_key = os.environ.get("FW_KEY")
+    inference_endpoint_url = os.environ.get("FW_ENDPOINT_URL")
+
     unique_codes = set()
     unique_executable_codes = set()
     total_requests = 0
@@ -238,7 +238,7 @@ def beam_search_batch(
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {FW_KEY}",
+        "Authorization": f"Bearer {inference_endpoint_api_key}",
     }
     print(
         f"[INFO] Starting beam search for {unique_candidates_count} unique completions"
@@ -258,8 +258,8 @@ def beam_search_batch(
             "top_p": top_p,
             "stop": END_OF_CODE_STOP_SEQUENCE,
         }
-        response = fw_utils__post_request_retries(
-            url,
+        response = inference_endpoint_utils__post_request_retries(
+            inference_endpoint_url,
             headers,
             json.dumps(payload),
             timeout=REQUEST_TIMEOUT_SEC,
@@ -272,10 +272,6 @@ def beam_search_batch(
         only_answer = prompt[len(prompt_with_cot) :]
         if "```python\n" in only_answer:
             only_answer = only_answer.split("```python\n")[1]
-        # prompt_input_ids = tokenizer(prompt, return_tensors="pt")["input_ids"]
-        # prompt_new_text, _ = extract_new_tokens(tokenizer, prompt_input_ids, crop_idx)
-        # prompt_code = extract_prompt_python_code(prompt_new_text)
-        # prompt_code_lines_count = len(prompt_code.splitlines())
         choices = [choice for choice in data["choices"]]
         unique_choices = []
         for choice in choices:
@@ -370,7 +366,7 @@ def beam_search_batch(
     return unique_codes, total_completion_tokens
 
 
-def fw_utils__post_request_retries(
+def inference_endpoint_utils__post_request_retries(
     url,
     headers,
     data,
@@ -412,7 +408,8 @@ def fw_utils__post_request_retries(
     return response
 
 
-def fw_utils__get_next_token_top_logprob_dist(
+MAX_TOKENS__DONT_CHANGE = 1
+def inference_endpoint_utils__get_next_token_top_logprob_dist(
     prompt,
     model_name,
     url,
@@ -420,7 +417,8 @@ def fw_utils__get_next_token_top_logprob_dist(
     logprobs_count=LOGPROBS_COUNT,
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
 ):
-    max_tokens = 1  ## should not be changed
+    max_tokens = MAX_TOKENS__DONT_CHANGE  ## should not be changed
+    assert max_tokens == 1
     payload = {
         "model": HF_MODEL_TO_FW_MODEL[model_name],
         "prompt": prompt,
@@ -429,7 +427,7 @@ def fw_utils__get_next_token_top_logprob_dist(
         "logprobs": logprobs_count,
         "raw_output": True,
     }
-    response = fw_utils__post_request_retries(
+    response = inference_endpoint_utils__post_request_retries(
         url,
         headers,
         json.dumps(payload),
@@ -452,7 +450,7 @@ def fw_utils__get_next_token_top_logprob_dist(
     return top_logprobs, completion_tokens
 
 
-def fw_utils__sample_code_beam_search(
+def inference_endpoint_utils__sample_code_beam_search(
     input_ids,
     tokenizer,
     execution_manager,
@@ -460,34 +458,22 @@ def fw_utils__sample_code_beam_search(
     candidates_count,
     temperature,
     bs_completion_horizon,
-    crop_idx,
     prompt_with_cot,
     model_name,
-    url=FW_ENDPOINT_URL,
-    fw_key=FW_KEY,
     max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
 ):
-    headers = {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {fw_key}",
-    }
     batch_size = max(FW__MIN_BATCH_SIZE, candidates_count)
     prompt = tokenizer.batch_decode(input_ids, skip_special_tokens=True)[0]
     unique_codes, total_completion_tokens = beam_search_batch(
         prompt=prompt,
-        tokenizer=tokenizer,
         execution_manager=execution_manager,
         unique_candidates_count=candidates_count,
         bs_completion_horizon=bs_completion_horizon,
         model_name=model_name,
-        url=url,
-        headers=headers,
         max_tokens=max_tokens,
         temperature=temperature,
-        max_total_requests=2,
+        max_total_requests=PSEUDO_BEAM_SEARCH_MAX_TOTAL_REQUESTS,
         batch_size=batch_size,
-        crop_idx=crop_idx,
         prompt_with_cot=prompt_with_cot,
     )
     if stats_manager is not None:
@@ -498,41 +484,18 @@ def fw_utils__sample_code_beam_search(
     return unique_codes
 
 
-CODE_BORDER_TOKEN = "```"
-END_OF_SENTENCE_TOKEN = "<__end_of_sentence__>"
-
-
 def extract_eg_cfg_start_prefix(
     prompt, model_name, eg_cfg_injection_manager, function_signature
 ):
     assert model_name in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
-    if DEEPSEEK_V3_0324_MODEL_NAME_HF == model_name:
-        # answer_start_until_code, completion_tokens = simple_query(
-        #     prompt,
-        #     model_name,
-        #     temperture=eg_cfg_injection_manager.adapter.temperature,
-        #     stop_condition=START_OF_FUNCTION_SEQUENCE,
-        #     extract_code=False,
-        #     add_stop_condition=False,
-        #     verbose=True,
-        # )
-        answer_start_until_code, code_solution, completion_tokens = complex_qwen_query(
-            prompt,
-            function_signature,
-            model_name,
-            temperture=eg_cfg_injection_manager.adapter.temperature,
-            max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
-            verbose=True,
-        )
-    elif QWEN3_253B_MODEL_NAME_HF == model_name:
-        answer_start_until_code, code_solution, completion_tokens = complex_qwen_query(
-            prompt,
-            function_signature,
-            model_name,
-            temperture=eg_cfg_injection_manager.adapter.temperature,
-            max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
-            verbose=True,
-        )
+    answer_start_until_code, _, completion_tokens = complex_qwen_query(
+        prompt,
+        function_signature,
+        model_name,
+        temperture=eg_cfg_injection_manager.adapter.temperature,
+        max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
+        verbose=True,
+    )
     return answer_start_until_code, completion_tokens
 
 
@@ -569,8 +532,6 @@ def inference_endpoint_eg_cfg(
     prompt += answer_start_until_code
     eg_cfg_injection_manager.adapter.prompt_with_cot = prompt
 
-    # if model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
-    #     prompt += START_OF_FUNCTION_SEQUENCE
     if model_name in (QWEN3_253B_MODEL_NAME_HF, DEEPSEEK_V3_0324_MODEL_NAME_HF):
         # now we have the starting ```python
         function_name = extract_function_name(function_signature)
@@ -582,9 +543,6 @@ def inference_endpoint_eg_cfg(
     input_ids = inputs["input_ids"]
     early_stop = False
     for _ in range(max_tokens):
-        # current_prompt = tokenizer.decode(input_ids[0], skip_special_tokens=True)
-        # print(current_prompt)
-        # print()
         #### Extract Dynamic Signal  ####
         is_eg_cfg_enabled = (eg_cfg_injection_manager is not None) and (
             eg_cfg_injection_manager.is_eg_cfg_enabled(input_ids.clone())
@@ -604,8 +562,8 @@ def inference_endpoint_eg_cfg(
                     previous_executable_partial_program_code
                     != executable_partial_program_code
                 ):
-                    promp_without_signal = tokenizer.decode(input_ids[0])
-                    promp_with_signal = tokenizer.decode(dynamic_signal_input_ids[0])
+                    # promp_without_signal = tokenizer.decode(input_ids[0])
+                    # promp_with_signal = tokenizer.decode(dynamic_signal_input_ids[0])
                     previous_executable_partial_program_code = (
                         executable_partial_program_code
                     )
@@ -615,7 +573,7 @@ def inference_endpoint_eg_cfg(
                     print()
         ###########
         if not (is_eg_cfg_enabled and eg_cfg_injection_manager.gamma == 1.0):
-            original_probs = fw_utils__get_next_token_prob_dist(
+            original_probs = inference_endpoint_utils__get_next_token_prob_dist(
                 input_ids, tokenizer, model_name, stats_manager=stats_manager
             )
             probs = original_probs
@@ -625,7 +583,7 @@ def inference_endpoint_eg_cfg(
 
         if is_eg_cfg_enabled:
             #### Calculate Dynamic Signal conditional distibution ####
-            dyn_probs = fw_utils__get_next_token_prob_dist(
+            dyn_probs = inference_endpoint_utils__get_next_token_prob_dist(
                 dynamic_signal_input_ids,
                 tokenizer,
                 model_name,
@@ -678,23 +636,23 @@ def inference_endpoint_eg_cfg(
     return input_ids, early_stop
 
 
-def fw_utils__get_next_token_prob_dist(
+def inference_endpoint_utils__get_next_token_prob_dist(
     input_ids,
     tokenizer,
     model_name,
-    fw_key=FW_KEY,
-    url=FW_ENDPOINT_URL,
     stats_manager=None,
 ):
+    inference_endpoint_api_key = os.environ.get("FW_KEY")
+    inference_endpoint_url = os.environ.get("FW_ENDPOINT_URL")
     prompt = tokenizer.decode(input_ids[0], skip_special_tokens=True)
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {fw_key}",
+        "Authorization": f"Bearer {inference_endpoint_api_key}",
     }
     next_token_logprob_dist_dict, completion_tokens = (
-        fw_utils__get_next_token_top_logprob_dist(
-            prompt, model_name, url=url, headers=headers
+        inference_endpoint_utils__get_next_token_top_logprob_dist(
+            prompt, model_name, url=inference_endpoint_url, headers=headers
         )
     )
     next_token_prob_dist = convert_logprobs_dist_dict_to_tokenizer_prob_dist(

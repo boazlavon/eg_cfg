@@ -143,7 +143,7 @@ def build_inference_session_config(args):
 def build_session_config(args):
     inference_session_config = build_inference_session_config(args)
     session_config = {
-        "gammas": GAMMAS,
+        "gammas": CMDLINE_ARGS_ONLY_GAMMAS,
         "model_name": args["model_name"],
         "is_prod": args["prod"],
         "results_dir": args["results_dir"],
@@ -165,6 +165,14 @@ def build_session_config(args):
         ),
         "random_seed": args.get(
             "random_seed", SESSION_CONFIGS_DEFAULT_VALUES["random_seed"]
+        ),
+        "inference_endpoint_api_key": args.get(
+            "inference_endpoint_api_key",
+            SESSION_CONFIGS_DEFAULT_VALUES["inference_endpoint_api_key"],
+        ),
+        "inference_endpoint_url": args.get(
+            "inference_endpoint_url",
+            SESSION_CONFIGS_DEFAULT_VALUES["inference_endpoint_url"],
         ),
     }
     session_config = Namespace(**session_config)
@@ -227,6 +235,19 @@ def get_cmdline_args():
         type=int,
         default=SESSION_CONFIGS_DEFAULT_VALUES["random_seed"],
         help="Set a random seed to ensure reproducible results",
+    )
+    parser.add_argument(
+        "--inference-endpoint-api-key",
+        type=str,
+        default=SESSION_CONFIGS_DEFAULT_VALUES["inference_endpoint_api_key"],
+        help="API key for the inference endpoint",
+    )
+
+    parser.add_argument(
+        "--inference-endpoint-url",
+        type=str,
+        default=SESSION_CONFIGS_DEFAULT_VALUES["inference_endpoint_url"],
+        help="URL of the inference endpoint",
     )
     parser.add_argument(
         "--deployment-type",
