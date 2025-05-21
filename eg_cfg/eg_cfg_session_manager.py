@@ -146,6 +146,10 @@ class EgCfgSessionManager:
             ]
         if self.session_config.is_prod:
             random.shuffle(self.problems)
+        if self.session_config.results_dir:
+            self.session_config.results_dir = os.path.join(
+                os.getcwd(), self.session_config.results_dir
+            )
 
     def create_results_dir(self, session_config, inference_session_config):
         dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
@@ -240,11 +244,6 @@ class EgCfgSessionManager:
                 DEEPSEEK_V3_0324_MODEL_NAME_HF,
                 QWEN3_253B_MODEL_NAME_HF,
             ):
-                BASELINE_TRIALS_BASE = {
-                    DEEPSEEK_V3_0324_MODEL_NAME_HF: "web_trials/baseline/mbpp/deepseek-ai_DeepSeek-V3-0324",
-                    QWEN3_253B_MODEL_NAME_HF: "web_trials/baseline/mbpp/Qwen_Qwen3-235B-A22B",
-                }
-                BASELINE_DIRS = ["baseline_ln", "baseline_lci_ln"]
                 baseline_trial_base = BASELINE_TRIALS_BASE[
                     self.session_config.model_name
                 ]
