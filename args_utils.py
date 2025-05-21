@@ -40,8 +40,6 @@ def get_dynamic_signals_str(inference_session_config):
             DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
         ].temperature
         dynamic_signals_str.append(f"ns{s}t{t}d{d_arg}")
-    if inference_session_config[DYNAMIC_SIGNAL__BACKWARD].is_enabled:
-        dynamic_signals_str.append("b")
     dynamic_signals_str = "".join(dynamic_signals_str)
 
     if (
@@ -133,7 +131,6 @@ def build_inference_session_config(args):
         DYNAMIC_SIGNAL__PARTIAL_EXECUTION: Namespace(
             is_enabled=args["p"],
         ),
-        DYNAMIC_SIGNAL__BACKWARD: Namespace(is_enabled=False),
         "guidance_strategy": args["g"],
         "prompt_type": args["prompt_type"],
     }
@@ -151,22 +148,12 @@ def build_session_config(args):
         "deployment_type": args["deployment_type"],
         "start_idx": args.get("start_idx", SESSION_CONFIGS_DEFAULT_VALUES["start_idx"]),
         "end_idx": args.get("end_idx", SESSION_CONFIGS_DEFAULT_VALUES["end_idx"]),
-        "retries_count": args.get(
-            args["r"], SESSION_CONFIGS_DEFAULT_VALUES["retries_count"]
-        ),
-        "use_global_cache": args.get(
-            "global_cache", SESSION_CONFIGS_DEFAULT_VALUES["use_global_cache"]
-        ),
-        "minimal_trace": args.get(
-            "minimal_trace", SESSION_CONFIGS_DEFAULT_VALUES["minimal_trace"]
-        ),
-        "top_probs": args.get("top_probs", SESSION_CONFIGS_DEFAULT_VALUES["top_probs"]),
-        "debug_mode": args.get(
-            "debug_mode", SESSION_CONFIGS_DEFAULT_VALUES["debug_mode"]
-        ),
-        "random_seed": args.get(
-            "random_seed", SESSION_CONFIGS_DEFAULT_VALUES["random_seed"]
-        ),
+        "retries_count": args.get(args["r"], SESSION_CONFIGS_DEFAULT_VALUES["retries_count"]),
+        "use_global_cache": args.get("global_cache", SESSION_CONFIGS_DEFAULT_VALUES["use_global_cache"]),
+        "minimal_trace": args.get("minimal_trace", SESSION_CONFIGS_DEFAULT_VALUES['minimal_trace']),
+        "top_probs": args.get("top_probs", SESSION_CONFIGS_DEFAULT_VALUES['top_probs']),
+        "debug_mode": args.get("debug_mode", SESSION_CONFIGS_DEFAULT_VALUES["debug_mode"]),
+        "random_seed": args.get("random_seed", SESSION_CONFIGS_DEFAULT_VALUES['random_seed']),
     }
     session_config = Namespace(**session_config)
     return session_config, inference_session_config

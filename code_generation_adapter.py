@@ -97,7 +97,6 @@ class CodeGenerationAdapter:
         return {
             DYNAMIC_SIGNAL__PARTIAL_EXECUTION: CodeGenerationAdapter._extract_partial_execution_dynamic_signals,
             DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION: CodeGenerationAdapter._extract_nearest_future_execution_dynamic_signals,
-            DYNAMIC_SIGNAL__BACKWARD: CodeGenerationAdapter._extract_backward_dynamic_signals,
         }
 
     def query_early_stop(self):
@@ -122,15 +121,6 @@ class CodeGenerationAdapter:
                 f"Early stop threshold are not met yet {self.dynamic_early_stop_counter}/{self.dynamic_early_stop_threshold}, {self.early_stop_counter}/{self.early_stop_threshold}"
             )
             return False
-
-    def _extract_backward_dynamic_signals(self, dynamic_signal_type, input_ids):
-        dynamic_signal_text = ""
-        if self.backward_signals:
-            dynamic_signals = "\n".join(self.backward_signals)
-            dynamic_signal_text = BACKWARD_DYNAMIC_SIGNAL_PROMPT.format(
-                dynamic_signals=dynamic_signals
-            )
-        return dynamic_signal_text, ()
 
     def _extract_nearest_future_execution_dynamic_signals(
         self, dynamic_signal_type, input_ids
