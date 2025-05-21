@@ -1,9 +1,3 @@
-import sys
-import os
-
-# Add parent directory to sys.path for module import
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
 import argparse
 import json
 import re

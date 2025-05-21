@@ -1,7 +1,5 @@
 import torch
-import re
-
-from collections import OrderedDict, defaultdict
+from collections import OrderedDict
 from model_utils import extract_new_tokens, calculate_tokens_length
 from mbpp_utils import parse_mbpp_assert_statement
 from code_generation_utils import (

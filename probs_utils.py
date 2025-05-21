@@ -1,7 +1,6 @@
 import torch
 import json
 import hashlib
-import argparse
 
 
 def format_token(tokenizer, idx):

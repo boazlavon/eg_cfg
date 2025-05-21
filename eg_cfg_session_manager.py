@@ -18,7 +18,6 @@ from model_utils import calculate_tokens_length
 from mbpp_utils import parse_mbpp_assert_statement, load_official_results
 from code_generation_utils import (
     generate_code_solutions,
-    is_valid_python,
     raw_outputs_to_new_code,
 )
 from eg_cfg_injection_manager import EgCfgInjectionManager
@@ -30,10 +29,7 @@ from collections import defaultdict
 from inference_endpoint_utils import (
     inference_endpoint_eg_cfg,
     PostRequestTimeoutError,
-    simple_query,
     complex_qwen_query,
-    END_OF_CODE_STOP_SEQUENCE,
-    START_OF_CODE_STOP_SEQUENCE,
 )
 from consts import *
 from datetime import datetime
