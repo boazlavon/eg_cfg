@@ -95,9 +95,9 @@ def extract_matching_blocks_with_def_index(matches, target_func_name, verbose=Fa
     final_def_index = def_index_dict[last_block][-1] if last_block else None
     if verbose:
         print(
-            f"\n✔ First occurrence of last matching block starts at index {final_def_index}."
+            f"\nFirst occurrence of last matching block starts at index {final_def_index}."
         )
-        print(f"✔ Total unique blocks: {len(def_index_dict)}")
+        print(f"Total unique blocks: {len(def_index_dict)}")
 
     # return final_def_index, last_block, def_index_dict
     return final_def_index, last_block

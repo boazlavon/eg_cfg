@@ -184,7 +184,6 @@ class CodeGenerationAdapter:
                 candidates_count=self.bs_candidates_count,
                 temperature=self.temperature,
                 bs_completion_horizon=self.bs_completion_horizon,
-                crop_idx=self.initial_prompt_input_ids_len,
                 model_name=self.model_name,
                 prompt_with_cot=self.prompt_with_cot,
             )
@@ -477,7 +476,6 @@ class CodeGenerationAdapter:
             candidates_count=self.bs_candidates_count,
             temperature=self.temperature,
             bs_completion_horizon=self.bs_completion_horizon,
-            crop_idx=self.initial_prompt_input_ids_len,
             model_name=self.model_name,
             prompt_with_cot=self.prompt_with_cot,
         )
