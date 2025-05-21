@@ -313,7 +313,7 @@ def prime_stopping_criteria(
 def generate_code_solutions(
     model,
     tokenizer,
-    dsgi_injection_manager,
+    eg_cfg_injection_manager,
     inputs,
     max_new_tokens=MAX_NEW_TOKENS,
     num_return_sequences=1,
@@ -384,7 +384,7 @@ def generate_code_solutions(
             pad_token_id=pad_token_id,
             num_beams=1,
             stopping_criteria=stopping_criteria,
-            dsgi_injection_manager=dsgi_injection_manager,
+            eg_cfg_injection_manager=eg_cfg_injection_manager,
             use_cache=True,
             **sampling_kwargs,
         )

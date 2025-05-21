@@ -246,7 +246,7 @@ def get_cmdline_args():
 
 def get_grid_cmdline_args():
     parser = argparse.ArgumentParser(
-        description="Generate DSGI inference sessions configs."
+        description="Generate EG_CFG inference sessions configs."
     )
     parser.add_argument(
         "--inference-session-grid-json",

@@ -8,25 +8,25 @@ from consts import *
 TASKS_ADAPTERS = {TASK__CODE_GENERATION: CodeGenerationAdapter}
 
 
-class DsgiDetector:
+class EgCfgDetector:
     def __init__(self, tokenizer, initial_prompt_input_ids_len):
         self.tokenizer = tokenizer
         self.initial_prompt_input_ids_len = initial_prompt_input_ids_len
-        self.dsgi_enabled = False
+        self.eg_cfg_enabled = False
         self.start_detected = 0
         self.end_detected = 0
-        self.dsgi_count = 0
+        self.eg_cfg_count = 0
 
-    def is_dsgi_enabled(self, input_ids):
-        if not self.dsgi_enabled:
+    def is_eg_cfg_enabled(self, input_ids):
+        if not self.eg_cfg_enabled:
             if self.detect_start(input_ids):
                 self.start_detected += 1
-                self.dsgi_enabled = True
+                self.eg_cfg_enabled = True
         else:
             if self.detect_end(input_ids):
                 self.end_detected += 1
-                self.dsgi_enabled = False
-        return self.dsgi_enabled
+                self.eg_cfg_enabled = False
+        return self.eg_cfg_enabled
 
     def detect_start(self, input_ids):
         raise NotImplementedError()
@@ -35,7 +35,7 @@ class DsgiDetector:
         raise NotImplementedError()
 
 
-class FunctinoSigDsgiDetector(DsgiDetector):
+class FunctinoSigEgCfgDetector(EgCfgDetector):
     def __init__(
         self, tokenizer, initial_prompt_input_ids_len, function_name, end_string
     ):
@@ -74,10 +74,10 @@ class FunctinoSigDsgiDetector(DsgiDetector):
         return result
 
 
-TASKS_DETECDORS = {TASK__CODE_GENERATION: FunctinoSigDsgiDetector}
+TASKS_DETECDORS = {TASK__CODE_GENERATION: FunctinoSigEgCfgDetector}
 
 
-class DsgiInjectionManager:
+class EgCfgInjectionManager:
     def __init__(
         self,
         tokenizer,
@@ -99,10 +99,10 @@ class DsgiInjectionManager:
         self.top_probs_count = top_probs_count
         self.debug_mode = debug_mode
 
-    def is_dsgi_enabled(self, input_ids):
+    def is_eg_cfg_enabled(self, input_ids):
         if self.gamma == 0:
             return False
-        return self.detector.is_dsgi_enabled(input_ids)
+        return self.detector.is_eg_cfg_enabled(input_ids)
 
     def is_top_probs_enabled(self):
         return self.top_probs_count > 0

@@ -21,14 +21,14 @@ from code_generation_utils import (
     is_valid_python,
     raw_outputs_to_new_code,
 )
-from dsgi_injection_manager import DsgiInjectionManager
+from eg_cfg_injection_manager import EgCfgInjectionManager
 from model_utils import setup_device, load_model, load_tokenizer
 from execution_manager import ExecutionManager
 from args_utils import get_dynamic_signals_str
 from probs_utils import stable_hash
 from collections import defaultdict
 from fw_utils import (
-    inference_endpoint_dsgi,
+    inference_endpoint_eg_cfg,
     PostRequestTimeoutError,
     simple_query,
     complex_qwen_query,
@@ -88,7 +88,7 @@ class StatisticsManager:
         self.statistics[self.current_key][counter_key] = value
 
 
-class DsgiSessionManager:
+class EgCfgSessionManager:
     def __init__(
         self,
         session_config,
@@ -268,11 +268,11 @@ class DsgiSessionManager:
                     if bs_solution_entry["passed"]:
                         break
 
-    def build_dsgi_injection_manager_and_prompt(
+    def build_eg_cfg_injection_manager_and_prompt(
         self, problem, gamma, function_signature=None
     ):
         test_cases = problem["test_list"]
-        use_dsgi = True
+        use_eg_cfg = True
         use_detector = True
         if (
             self.inference_session.inference_session_config["prompt_type"]
@@ -312,8 +312,8 @@ class DsgiSessionManager:
                 dynamic_signal_type
             ].is_enabled
         ]
-        if use_dsgi:
-            dsgi_injection_manager = None
+        if use_eg_cfg:
+            eg_cfg_injection_manager = None
             task_kwargs = {
                 "model": self.model,
                 "tokenizer": self.tokenizer,
@@ -358,7 +358,7 @@ class DsgiSessionManager:
                     "end_string": end_string,
                 }
         task = TASK__CODE_GENERATION
-        dsgi_injection_manager = DsgiInjectionManager(
+        eg_cfg_injection_manager = EgCfgInjectionManager(
             self.tokenizer,
             task,
             task_kwargs,
@@ -368,9 +368,9 @@ class DsgiSessionManager:
             top_probs_count=self.session_config.top_probs,
             debug_mode=self.session_config.debug_mode,
         )
-        return dsgi_injection_manager, prompt
+        return eg_cfg_injection_manager, prompt
 
-    def solve_problem_with_dsgi(
+    def solve_problem_with_eg_cfg(
         self,
         problem,
         gamma,
@@ -378,17 +378,17 @@ class DsgiSessionManager:
         solution = None
         early_stop = False
         function_signature = None
-        dsgi_injection_manager, prompt = self.build_dsgi_injection_manager_and_prompt(
+        eg_cfg_injection_manager, prompt = self.build_eg_cfg_injection_manager_and_prompt(
             problem, gamma, function_signature
         )
         initial_prompt_input_ids_len = calculate_tokens_length(self.tokenizer, prompt)
-        stats_manager = dsgi_injection_manager.adapter.stats_manager
+        stats_manager = eg_cfg_injection_manager.adapter.stats_manager
         if self.use_local_hf_model:
             inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
             outputs = generate_code_solutions(
                 self.model,
                 self.tokenizer,
-                dsgi_injection_manager,
+                eg_cfg_injection_manager,
                 inputs,
                 num_return_sequences=1,
                 prompt_type=self.inference_session.inference_session_config[
@@ -421,11 +421,11 @@ class DsgiSessionManager:
                     break
 
             if gamma > 0.0:
-                outputs, early_stop = inference_endpoint_dsgi(
+                outputs, early_stop = inference_endpoint_eg_cfg(
                     prompt,
                     self.tokenizer,
                     self.session_config.model_name,
-                    dsgi_injection_manager,
+                    eg_cfg_injection_manager,
                     function_signature,
                 )
             else:  # gamma == 0
@@ -439,7 +439,7 @@ class DsgiSessionManager:
                     prompt,
                     function_signature,
                     self.session_config.model_name,
-                    temperture=dsgi_injection_manager.adapter.temperature,
+                    temperture=eg_cfg_injection_manager.adapter.temperature,
                     max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
                     verbose=True,
                 )
@@ -466,7 +466,7 @@ class DsgiSessionManager:
             solution = new_codes[0]
         return solution
 
-    def solve_problem_with_dsgi_wrapper(self, problem, gamma):
+    def solve_problem_with_eg_cfg_wrapper(self, problem, gamma):
         task_id = problem["task_id"]
         test_cases = problem["test_list"]
         self.stats_manager.set_current_key((task_id, gamma))
@@ -512,7 +512,7 @@ class DsgiSessionManager:
                 torch.cuda.manual_seed_all(random_seed)
 
             try:
-                solution = self.solve_problem_with_dsgi(problem, gamma)
+                solution = self.solve_problem_with_eg_cfg(problem, gamma)
                 print(solution)
             except KeyboardInterrupt:
                 exit(1)
@@ -640,7 +640,7 @@ class DsgiSessionManager:
             with open(solution_entry_path, "a"):
                 pass
 
-            solution_entry = self.solve_problem_with_dsgi_wrapper(problem, gamma)
+            solution_entry = self.solve_problem_with_eg_cfg_wrapper(problem, gamma)
             self.solutions[(task_id, gamma)] = solution_entry
             with open(solution_entry_path, "w") as f:
                 json.dump(solution_entry, f, indent=2)
