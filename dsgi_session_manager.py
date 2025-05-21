@@ -342,7 +342,7 @@ class DsgiSessionManager:
                 "use_local_hf_model": self.use_local_hf_model,
                 "use_inference_endpoint": self.use_inference_endpoint,
                 "model_name": self.session_config.model_name,
-                "debug_mode": self.session_config.debug_mode,
+                # "debug_mode": self.session_config.debug_mode,
             }
 
             detector_kwargs = {}
@@ -575,9 +575,6 @@ class DsgiSessionManager:
             self.inference_session.solved_tasks_cache_dir, f"{task_id}"
         )
         for gamma in self.session_config.gammas:
-            import ipdb; ipdb.set_trace()
-            if not gamma:
-                continue
             print(f"task_id={task_id}, gamma={gamma}")
             solution_entry_path = get_solution_filepath(
                 self.inference_session.results_dir, task_id, gamma

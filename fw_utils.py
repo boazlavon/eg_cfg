@@ -213,7 +213,7 @@ def simple_query(
     return output, completion_tokens
 
 
-def pseudo_beam_search_batch(
+def beam_search_batch(
     prompt,
     tokenizer,
     execution_manager,
@@ -241,7 +241,7 @@ def pseudo_beam_search_batch(
         "Authorization": f"Bearer {FW_KEY}",
     }
     print(
-        f"[INFO] Starting pseudo beam search for {unique_samples_count} unique completions"
+        f"[INFO] Starting beam search for {unique_samples_count} unique completions"
     )
     total_completion_tokens = 0
     while (
@@ -451,7 +451,7 @@ def fw_utils__get_next_token_top_logprob_dist(
     return top_logprobs, completion_tokens
 
 
-def fw_utils__sample_code_pseudo_beam_search(
+def fw_utils__sample_code_beam_search(
     input_ids,
     tokenizer,
     execution_manager,
@@ -473,7 +473,7 @@ def fw_utils__sample_code_pseudo_beam_search(
     }
     batch_size = max(FW__MIN_BATCH_SIZE, samples_count)
     prompt = tokenizer.batch_decode(input_ids, skip_special_tokens=True)[0]
-    unique_codes, total_completion_tokens = pseudo_beam_search_batch(
+    unique_codes, total_completion_tokens = beam_search_batch(
         prompt=prompt,
         tokenizer=tokenizer,
         execution_manager=execution_manager,

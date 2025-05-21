@@ -6,6 +6,7 @@ import time
 import black
 import traceback
 from datasets import load_dataset
+from collections import OrderedDict
 from consts import *
 
 CUSTOM_INSTRUCTION_TEXT = """\
@@ -243,7 +244,7 @@ def format_mbpp_prompt(problem, simple_prompt=False):
 
 def load_mbpp_problems():
     test_ds = load_dataset("google-research-datasets/mbpp", "full", split="test")
-    problems = {example["task_id"]: example for _, example in enumerate(test_ds)}
+    problems = OrderedDict((example["task_id"], example) for example in test_ds)
     return problems
 
 

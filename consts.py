@@ -6,7 +6,6 @@ PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT = "long_code"
 PROMPT_TYPE__CUSTOM_PROMPT_SIMPLE = "custom_simple"
 
 VALID_PROMPT_TYPES = [
-    PROMPT_TYPE__DEEPSEEK_BASE,
     PROMPT_TYPE__DEEPSEEK_INSTRUCT,
     PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
 ]
@@ -51,31 +50,6 @@ Typically, one or more test cases (invocations) are run against this partial ver
 Use this information to better understand how the partial function performs so far, and to guide the next steps in completing the function correctly.
 
 {dynamic_signals}
-"""
-
-BACKWARD_DYNAMIC_SIGNAL_PROMPT = """
-### Runtime Behavior of Invalid Solutions
-The following examples show complete function solutions that failed to pass validation. These solutions were tested using assertions, and at least one assertion failed during execution—typically resulting in an AssertionError.
-
-Each entry includes:
-- A full function solution that failed at least one test
-- A specific test case (assertion) that triggered the failure
-- The resulting execution trace
-
-Use this information to recognize and avoid common mistakes in incorrect solutions, and to guide your next attempt toward correct and robust behavior.
-
-{dynamic_signals}
-"""
-
-BACKWARD_DYNAMIC_SIGNAL_PATTERN = """
-# Invalid Solution:
-{function_code}
-
-# Test Case (Assertion):
-{test_case}
-
-# Execution Trace:
-{trace}
 """
 
 DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_INSTRUCT_BEGIN = "### Response:"
@@ -138,7 +112,6 @@ GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE = "persistent_prefix_guidance"
 GUIDANCE_STRATEGY__LINE_GUIDANCE = "line_guidance"
 GUIDANCE_STRATEGIES = (
     GUIDANCE_STRATEGY__TOKEN_GUIDANCE,
-    GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE,
     GUIDANCE_STRATEGY__LINE_GUIDANCE,
 )
 EARLY_STOP_THRESHOLD = 4

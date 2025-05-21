@@ -161,35 +161,25 @@ def build_session_config(args):
 
 def get_cmdline_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model-name", type=str, help="Name of the model used")
-    # parser.add_argument("--b", action="store_true", help="Enable backward signal")
-    parser.add_argument("--n", action="store_true", help="Enable nearest future signal")
+    parser.add_argument("--model-name", type=str, help="Model Name")
+    parser.add_argument("--n", action="store_true", help="Enable Multiple Candidates Execution Signal")
     parser.add_argument(
         "--p",
         action="store_true",
-        help="Enable partial execution signal",
+        help="Enable Partial Solution Execution Signal",
     )
     parser.add_argument(
         "--prompt-type",
         type=str,
         required=True,
         choices=VALID_PROMPT_TYPES,
-        help="Type of prompt to use. Must be one of: " + ", ".join(VALID_PROMPT_TYPES),
+        help="Type of prompt to use. Options: %(choices)s"
     )
+    parser.add_argument("--results-dir", type=str, required=True, help="Results directory path")
     parser.add_argument("--prod", action="store_true")
-    parser.add_argument("--cache", action="store_true")
-    parser.add_argument("--minimal-trace", action="store_true")
-    parser.add_argument("--global-cache", action="store_true")
-    parser.add_argument("--debug-mode", action="store_true")
-    parser.add_argument("--top-probs", type=int, default=0, help="top probs")
-    parser.add_argument("--s", type=int, default=2, help="nf samples count")
-    parser.add_argument("--t", type=float, default=0.1, help="nf temp")
-    parser.add_argument(
-        "--r", type=int, default=1, help="Attempts Count for each gamma (retries)"
-    )
-    parser.add_argument("--start-idx", type=int, default=0, help="start idx")
-    parser.add_argument("--end-idx", type=int, default=-1, help="end idx")
-    parser.add_argument("--d", type=int, default=None, help="nf samples depth")
+    parser.add_argument("--s", type=int, default=2, help="Multiple Candidates Beam-Search Sampling - Number of Candidates")
+    parser.add_argument("--t", type=float, default=0.1, help="Multiple Candidates Beam-Search Sampling - Temperature")
+    parser.add_argument("--d", type=int, default=None, help="Multiple Candidates Beam-Search Sampling - Completion Horizon (lines)")
     parser.add_argument(
         "--g",
         "--guidance",
@@ -197,31 +187,24 @@ def get_cmdline_args():
         default=GUIDANCE_STRATEGY__LINE_GUIDANCE,
         help="Guidance strategy to use. Options: %(choices)s (default: %(default)s)",
     )
-    parser.add_argument("--results-dir", type=str, help="Name of the model used")
-    parser.add_argument("--random-seed", type=int, help="Name of the model used")
+    parser.add_argument("--minimal-trace", action="store_true")
+    parser.add_argument("--global-cache", action="store_true")
+    parser.add_argument("--debug-mode", action="store_true")
+    parser.add_argument("--top-probs", type=int, default=0, help="top probs")
+    parser.add_argument("--random-seed", type=int, default=SESSION_CONFIGS_DEFAULT_VALUES["random_seed"], help="Set a random seed to ensure reproducible results")
     parser.add_argument(
         "--deployment-type",
         type=str,
         choices=SUPPORTED_DEPLOYMENT_TYPES,
         required=True,
-        help="Deployment type. Must be one of: inference_endpoint, local",
+        help="Deployment type. Options: %(choices)s"
     )
-    parser.add_argument("--from-string", default=None)
+    parser.add_argument(
+        "--r", type=int, default=1, help="Number of retry attempts per gamma value"
+    )
+    parser.add_argument("--start-idx", type=int, default=0, help="start idx")
+    parser.add_argument("--end-idx", type=int, default=-1, help="end idx")
     args = parser.parse_args()
-    if args.from_string:
-        parsed_args = dynamis_sigansl_str_to_cmdline_args(args.from_string)
-        parsed_args["model_name"] = args.model_name
-        parsed_args["prompt_type"] = args.prompt_type
-        parsed_args["prod"] = args.prod
-        parsed_args["cache"] = args.cache
-        parsed_args["r"] = args.r
-        parsed_args["start_idx"] = 0
-        parsed_args["end_idx"] = None
-        parsed_args["deployment_type"] = DEPLOYMENT_TYPE__LOCAL_HF_MODEL
-        parsed_args["debug_mode"] = False
-        args2 = Namespace(**parsed_args)
-
-        args = args2
     return args
 
 
