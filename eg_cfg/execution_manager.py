@@ -2,6 +2,11 @@ import re
 import tempfile
 import subprocess
 import os
+import sys
+
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, parent_dir)
+
 from traces_dumper.program_execution import ProgramExecution
 from code_generation_utils import remove_comments_and_docstrings, is_valid_python
 from mbpp_utils import parse_mbpp_assert_statement

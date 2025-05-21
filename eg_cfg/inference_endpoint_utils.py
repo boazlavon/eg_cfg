@@ -594,7 +594,7 @@ def inference_endpoint_eg_cfg(
 
         next_token_text = tokenizer.decode(next_token)
         new_text += next_token_text
-        print(next_token_text)
+        # print(next_token_text)
         # print(next_token, next_token_text, code_borders_tokens_count)
         if CODE_BORDER_TOKEN in next_token_text:
             code_borders_tokens_count += 1

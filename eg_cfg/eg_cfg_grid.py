@@ -6,7 +6,7 @@ from consts import *
 def main():
     args = get_grid_cmdline_args()
     session_config, inference_sessions_configs = generate_grid_configs(
-        args.inference_session_grid_json, args.session_config_json
+        args.dynamic_signals_params, args.session_config_json
     )
     start_eg_cfg_session_manager(session_config, inference_sessions_configs)
 

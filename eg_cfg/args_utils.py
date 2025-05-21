@@ -264,7 +264,7 @@ def get_grid_cmdline_args():
         description="Generate EG-CFG inference sessions configs."
     )
     parser.add_argument(
-        "--inference-session-grid-json",
+        "--dynamic-signals-params",
         required=True,
         help="Path to inference session parameter grid JSON file.",
     )

@@ -112,9 +112,10 @@ class CodeGenerationAdapter:
                 print("Early stop detected program are different!")
                 return False
         else:
-            print(
-                f"Early stop threshold are not met yet {self.dynamic_early_stop_counter}/{self.dynamic_early_stop_threshold}, {self.early_stop_counter}/{self.early_stop_threshold}"
-            )
+            if self.early_stop_counter > 0 or self.dynamic_early_stop_counter > 0:
+                print(
+                    f"Early stop threshold are not met yet {self.dynamic_early_stop_counter}/{self.dynamic_early_stop_threshold}, {self.early_stop_counter}/{self.early_stop_threshold}"
+                )
             return False
 
     def _extract_multiple_candidates_execution_dynamic_signals(
