@@ -10,7 +10,7 @@ VALID_PROMPT_TYPES = [
     PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
 ]
 
-NEAREST_FUTURE_DYNAMIC_SIGNAL_PATTERN = """
+MULTIPLE_CANDIDATES_DYNAMIC_SIGNAL_PATTERN = """
 # Function:
 {function_code}
 
@@ -27,7 +27,7 @@ SINGLE_DYNAMIC_SIGNAL_PATTERN = """
 # Execution Trace: {trace}
 """
 
-NEAREST_FUTURE_DYNAMIC_SIGNAL_PROMPT = """
+MULTIPLE_CANDIDATES_DYNAMIC_SIGNAL_PROMPT = """
 ### Runtime Behavior for Candidate Continuations
 Below are execution traces from running the response function after appending several possible future continuations. These continuations represent plausible ways the function might continue from its current state. They are not necessarily full solutions—some may be partial, exploratory, or incomplete.
 
@@ -64,11 +64,11 @@ DYNAMIC_SIGNAL_PROMPT_BASE_MODEL_START_FUNCTION_MARKER = (
 )
 
 DYNAMIC_SIGNAL__PARTIAL_EXECUTION = "PartialExecution"
-DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION = "NearestFutureExecution"
+DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION = "NearestFutureExecution"
 
 SUPPORTED_DYNAMIC_SIGNALS = (
     DYNAMIC_SIGNAL__PARTIAL_EXECUTION,
-    DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION,
+    DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION,
 )
 
 GAMMAS = [0.0, 0.5, 0.75, 1, 3]

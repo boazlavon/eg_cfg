@@ -96,7 +96,7 @@ class CodeGenerationAdapter:
     def dynamic_signal_handlers():
         return {
             DYNAMIC_SIGNAL__PARTIAL_EXECUTION: CodeGenerationAdapter._extract_partial_execution_dynamic_signals,
-            DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION: CodeGenerationAdapter._extract_nearest_future_execution_dynamic_signals,
+            DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION: CodeGenerationAdapter._extract_multiple_candidates_execution_dynamic_signals,
         }
 
     def query_early_stop(self):
@@ -122,7 +122,7 @@ class CodeGenerationAdapter:
             )
             return False
 
-    def _extract_nearest_future_execution_dynamic_signals(
+    def _extract_multiple_candidates_execution_dynamic_signals(
         self, dynamic_signal_type, input_ids
     ):
         unique_stats_entry = []
@@ -275,7 +275,7 @@ class CodeGenerationAdapter:
                 trace = program_execution
                 function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
                 innvocation = f"{function_name}{args_str}"
-                dynamic_signal = NEAREST_FUTURE_DYNAMIC_SIGNAL_PATTERN.format(
+                dynamic_signal = MULTIPLE_CANDIDATES_DYNAMIC_SIGNAL_PATTERN.format(
                     function_code=executable_partial_program_code,
                     test_case=innvocation,
                     trace=trace,
@@ -285,7 +285,7 @@ class CodeGenerationAdapter:
         dynamic_signal_text = ""
         if dynamic_signals:
             dynamic_signals = "\n".join(dynamic_signals)
-            dynamic_signal_text = NEAREST_FUTURE_DYNAMIC_SIGNAL_PROMPT.format(
+            dynamic_signal_text = MULTIPLE_CANDIDATES_DYNAMIC_SIGNAL_PROMPT.format(
                 dynamic_signals=dynamic_signals
             )
 
@@ -319,7 +319,7 @@ class CodeGenerationAdapter:
     def _do_generate_new_signal(self, dynamic_signal_type, new_code):
         guidance_strategy = self.guidance_strategy
         if (guidance_strategy == GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE) and (
-            dynamic_signal_type != DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+            dynamic_signal_type != DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
         ):
             guidance_strategy = GUIDANCE_STRATEGY__LINE_GUIDANCE
 
@@ -333,7 +333,7 @@ class CodeGenerationAdapter:
                 generate_new_signal = True
         if guidance_strategy == GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE:
             assert (
-                dynamic_signal_type == DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                dynamic_signal_type == DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
             ), f"Unsupported Signal Type: {dynamic_signal_type}"
             # iterate over the new codes that were generated and check if new code is a prefix
             if not self.current_nf_samples_count:
@@ -562,7 +562,9 @@ class CodeGenerationAdapter:
         )
         if self.generate_new_signal and self.early_stop_detected:
             self.check_dynamic_early_stop_wrapper(dynamic_signal_input_ids)
-        debug_data = debug_data.get(DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION, ("", ""))
+        debug_data = debug_data.get(
+            DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION, ("", "")
+        )
 
         return dynamic_signal_input_ids, debug_data
 

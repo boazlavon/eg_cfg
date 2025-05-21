@@ -240,9 +240,7 @@ def beam_search_batch(
         "Content-Type": "application/json",
         "Authorization": f"Bearer {FW_KEY}",
     }
-    print(
-        f"[INFO] Starting beam search for {unique_samples_count} unique completions"
-    )
+    print(f"[INFO] Starting beam search for {unique_samples_count} unique completions")
     total_completion_tokens = 0
     while (
         len(unique_codes) < unique_samples_count and total_requests < max_total_requests

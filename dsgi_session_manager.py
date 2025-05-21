@@ -323,13 +323,13 @@ class DsgiSessionManager:
                 "initial_prompt": prompt,
                 "dynamic_signals_types": dynamic_signals_types,
                 "nf_samples_count": self.inference_session.inference_session_config[
-                    DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                    DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
                 ].nf_samples_count,
                 "temperature": self.inference_session.inference_session_config[
-                    DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                    DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
                 ].temperature,
                 "nf_samples_depth": self.inference_session.inference_session_config[
-                    DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                    DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
                 ].nf_samples_depth,
                 "prompt_type": self.inference_session.inference_session_config[
                     "prompt_type"
@@ -483,7 +483,7 @@ class DsgiSessionManager:
                 break
             print(f"Retry #{retry_idx + 1}")
             if self.inference_session.inference_session_config[
-                DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
             ].is_enabled:
                 # We want to be able to use different configs is different
                 # orders but make them agnostic to their order.
@@ -491,13 +491,13 @@ class DsgiSessionManager:
                 # transformed to range (40,40+999)
                 iid_arg = (
                     self.inference_session.inference_session_config[
-                        DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                        DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
                     ].temperature,
                     self.inference_session.inference_session_config[
-                        DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                        DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
                     ].nf_samples_count,
                     self.inference_session.inference_session_config[
-                        DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                        DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
                     ].nf_samples_depth,
                     self.inference_session.inference_session_config[
                         DYNAMIC_SIGNAL__PARTIAL_EXECUTION

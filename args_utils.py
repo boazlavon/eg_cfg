@@ -19,25 +19,27 @@ def get_dynamic_signals_str(inference_session_config):
 
     if inference_session_config[DYNAMIC_SIGNAL__PARTIAL_EXECUTION].is_enabled:
         dynamic_signals_str.append("p")
-    if inference_session_config[DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION].is_enabled:
+    if inference_session_config[
+        DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
+    ].is_enabled:
         if (
             inference_session_config[
-                DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
             ].nf_samples_depth
             is not None
         ):
             d_arg = str(
                 inference_session_config[
-                    DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                    DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
                 ].nf_samples_depth
             )
         else:
             d_arg = "inf"
         s = inference_session_config[
-            DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+            DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
         ].nf_samples_count
         t = inference_session_config[
-            DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+            DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
         ].temperature
         dynamic_signals_str.append(f"ns{s}t{t}d{d_arg}")
     dynamic_signals_str = "".join(dynamic_signals_str)
@@ -122,7 +124,7 @@ def build_inference_session_config(args):
     if args["prompt_type"] is None:
         args["prompt_type"] = "deepseek_instruct"
     inference_session_config = {
-        DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION: Namespace(
+        DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION: Namespace(
             is_enabled=args["n"],
             temperature=args["t"] if args["n"] else None,
             nf_samples_count=args["s"] if args["n"] else None,
@@ -148,12 +150,22 @@ def build_session_config(args):
         "deployment_type": args["deployment_type"],
         "start_idx": args.get("start_idx", SESSION_CONFIGS_DEFAULT_VALUES["start_idx"]),
         "end_idx": args.get("end_idx", SESSION_CONFIGS_DEFAULT_VALUES["end_idx"]),
-        "retries_count": args.get(args["r"], SESSION_CONFIGS_DEFAULT_VALUES["retries_count"]),
-        "use_global_cache": args.get("global_cache", SESSION_CONFIGS_DEFAULT_VALUES["use_global_cache"]),
-        "minimal_trace": args.get("minimal_trace", SESSION_CONFIGS_DEFAULT_VALUES['minimal_trace']),
-        "top_probs": args.get("top_probs", SESSION_CONFIGS_DEFAULT_VALUES['top_probs']),
-        "debug_mode": args.get("debug_mode", SESSION_CONFIGS_DEFAULT_VALUES["debug_mode"]),
-        "random_seed": args.get("random_seed", SESSION_CONFIGS_DEFAULT_VALUES['random_seed']),
+        "retries_count": args.get(
+            args["r"], SESSION_CONFIGS_DEFAULT_VALUES["retries_count"]
+        ),
+        "use_global_cache": args.get(
+            "global_cache", SESSION_CONFIGS_DEFAULT_VALUES["use_global_cache"]
+        ),
+        "minimal_trace": args.get(
+            "minimal_trace", SESSION_CONFIGS_DEFAULT_VALUES["minimal_trace"]
+        ),
+        "top_probs": args.get("top_probs", SESSION_CONFIGS_DEFAULT_VALUES["top_probs"]),
+        "debug_mode": args.get(
+            "debug_mode", SESSION_CONFIGS_DEFAULT_VALUES["debug_mode"]
+        ),
+        "random_seed": args.get(
+            "random_seed", SESSION_CONFIGS_DEFAULT_VALUES["random_seed"]
+        ),
     }
     session_config = Namespace(**session_config)
     return session_config, inference_session_config
@@ -162,7 +174,9 @@ def build_session_config(args):
 def get_cmdline_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-name", type=str, help="Model Name")
-    parser.add_argument("--n", action="store_true", help="Enable Multiple Candidates Execution Signal")
+    parser.add_argument(
+        "--n", action="store_true", help="Enable Multiple Candidates Execution Signal"
+    )
     parser.add_argument(
         "--p",
         action="store_true",
@@ -173,13 +187,30 @@ def get_cmdline_args():
         type=str,
         required=True,
         choices=VALID_PROMPT_TYPES,
-        help="Type of prompt to use. Options: %(choices)s"
+        help="Type of prompt to use. Options: %(choices)s",
     )
-    parser.add_argument("--results-dir", type=str, required=True, help="Results directory path")
+    parser.add_argument(
+        "--results-dir", type=str, required=True, help="Results directory path"
+    )
     parser.add_argument("--prod", action="store_true")
-    parser.add_argument("--s", type=int, default=2, help="Multiple Candidates Beam-Search Sampling - Number of Candidates")
-    parser.add_argument("--t", type=float, default=0.1, help="Multiple Candidates Beam-Search Sampling - Temperature")
-    parser.add_argument("--d", type=int, default=None, help="Multiple Candidates Beam-Search Sampling - Completion Horizon (lines)")
+    parser.add_argument(
+        "--s",
+        type=int,
+        default=2,
+        help="Multiple Candidates Beam-Search Sampling - Number of Candidates",
+    )
+    parser.add_argument(
+        "--t",
+        type=float,
+        default=0.1,
+        help="Multiple Candidates Beam-Search Sampling - Temperature",
+    )
+    parser.add_argument(
+        "--d",
+        type=int,
+        default=None,
+        help="Multiple Candidates Beam-Search Sampling - Completion Horizon (lines)",
+    )
     parser.add_argument(
         "--g",
         "--guidance",
@@ -191,13 +222,18 @@ def get_cmdline_args():
     parser.add_argument("--global-cache", action="store_true")
     parser.add_argument("--debug-mode", action="store_true")
     parser.add_argument("--top-probs", type=int, default=0, help="top probs")
-    parser.add_argument("--random-seed", type=int, default=SESSION_CONFIGS_DEFAULT_VALUES["random_seed"], help="Set a random seed to ensure reproducible results")
+    parser.add_argument(
+        "--random-seed",
+        type=int,
+        default=SESSION_CONFIGS_DEFAULT_VALUES["random_seed"],
+        help="Set a random seed to ensure reproducible results",
+    )
     parser.add_argument(
         "--deployment-type",
         type=str,
         choices=SUPPORTED_DEPLOYMENT_TYPES,
         required=True,
-        help="Deployment type. Options: %(choices)s"
+        help="Deployment type. Options: %(choices)s",
     )
     parser.add_argument(
         "--r", type=int, default=1, help="Number of retry attempts per gamma value"
