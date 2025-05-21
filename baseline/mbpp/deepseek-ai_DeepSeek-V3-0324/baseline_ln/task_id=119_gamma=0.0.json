@@ -1,0 +1,33 @@
+{
+  "code": "def search(nums, n):\n    left, right = 0, n - 1\n    while left < right:\n        mid = (left + right) // 2\n        if mid % 2 == 1:\n            mid -= 1  # Ensure mid is even to compare pairs\n        if nums[mid] == nums[mid + 1]:\n            left = mid + 2\n        else:\n            right = mid\n    return nums[left]",
+  "results": {
+    "assert search([1,1,2,2,3],5) == 3": {
+      "result": true,
+      "time": 0.34943294525146484,
+      "error": null
+    },
+    "assert search([1,1,3,3,4,4,5,5,7,7,8],11) == 8": {
+      "result": true,
+      "time": 0.1218101978302002,
+      "error": null
+    },
+    "assert search([1,2,2,3,3,4,4],7) == 1": {
+      "result": true,
+      "time": 0.12089395523071289,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:27:40",
+    "guidance_input_tokens": 674,
+    "guidance_output_tokens": 100,
+    "end_time": "2025-05-07 18:27:42",
+    "duration": "0:00:02.219030"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def median_numbers(a, b, c):\n    # Compare a and b\n    if a > b:\n        temp = a\n        a = b\n        b = temp\n    # Now a <= b\n    # Compare b and c\n    if b > c:\n        temp = b\n        b = c\n        c = temp\n    # Now b <= c\n    # Compare a and b again to ensure a <= b\n    if a > b:\n        temp = a\n        a = b\n        b = temp\n    # Now a <= b <= c, so b is the median\n    median = b\n    return float(median)",
+  "results": {
+    "assert median_numbers(25,55,65)==55.0": {
+      "result": true,
+      "time": 0.21341824531555176,
+      "error": null
+    },
+    "assert median_numbers(20,10,30)==20.0": {
+      "result": true,
+      "time": 0.11646628379821777,
+      "error": null
+    },
+    "assert median_numbers(15,45,75)==45.0": {
+      "result": true,
+      "time": 0.12542366981506348,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:57:08",
+    "guidance_input_tokens": 495,
+    "guidance_output_tokens": 161,
+    "end_time": "2025-05-07 18:57:10",
+    "duration": "0:00:02.834965"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,33 @@
+{
+  "code": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef is_tree_balanced(root):\n    def check_height(node):\n        if not node:\n            return 0\n        left_height = check_height(node.left)\n        if left_height == -1:\n            return -1\n        right_height = check_height(node.right)\n        if right_height == -1:\n            return -1\n        if abs(left_height - right_height) > 1:\n            return -1\n        return max(left_height, right_height) + 1\n    \n    return check_height(root) != -1",
+  "results": {
+    "assert is_tree_balanced(root) == False": {
+      "result": false,
+      "time": 0.1219792366027832,
+      "error": null
+    },
+    "assert is_tree_balanced(root1) == True": {
+      "result": false,
+      "time": 0.12894129753112793,
+      "error": null
+    },
+    "assert is_tree_balanced(root2) == False ": {
+      "result": false,
+      "time": 0.12621259689331055,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:40:13",
+    "guidance_input_tokens": 630,
+    "guidance_output_tokens": 282,
+    "end_time": "2025-05-07 18:40:19",
+    "duration": "0:00:05.473912"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def bell_number(n):\n    if n == 0:\n        return 1\n    # Create a Bell triangle as a 2D array\n    bell = [[0] * (n + 1) for _ in range(n + 1)]\n    bell[0][0] = 1  # B(0) = 1\n\n    for i in range(1, n + 1):\n        # The first element of each row is the last element of the previous row\n        bell[i][0] = bell[i - 1][i - 1]\n        for j in range(1, i + 1):\n            bell[i][j] = bell[i - 1][j - 1] + bell[i][j - 1]\n    \n    return bell[n][0]",
+  "results": {
+    "assert bell_number(2)==2": {
+      "result": true,
+      "time": 0.138383150100708,
+      "error": null
+    },
+    "assert bell_number(10)==115975": {
+      "result": true,
+      "time": 0.12223553657531738,
+      "error": null
+    },
+    "assert bell_number(56)==6775685320645824322581483068371419745979053216268760300": {
+      "result": true,
+      "time": 0.10457730293273926,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:25:37",
+    "guidance_input_tokens": 644,
+    "guidance_output_tokens": 253,
+    "end_time": "2025-05-07 18:25:42",
+    "duration": "0:00:04.868503"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,33 @@
+{
+  "code": "import math\n\ndef largest_triangle(a, b):\n    if a <= 0 or b <= 0:\n        return 0.0\n    semi_major = max(a, b)\n    semi_minor = min(a, b)\n    if semi_major == semi_minor:\n        angle = math.pi / 3\n    else:\n        numerator = semi_minor * semi_minor\n        denominator = semi_major * semi_major\n        term = numerator / denominator\n        sqrt_term = math.sqrt(1 - term)\n        angle = math.acos((1 - sqrt_term) / (1 + sqrt_term))\n    x1 = semi_major * math.cos(0)\n    y1 = semi_minor * math.sin(0)\n    x2 = semi_major * math.cos(angle)\n    y2 = semi_minor * math.sin(angle)\n    x3 = semi_major * math.cos(2 * angle)\n    y3 = semi_minor * math.sin(2 * angle)\n    area = 0.5 * abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2))\n    return area",
+  "results": {
+    "assert largest_triangle(4,2)==10.392304845413264": {
+      "result": false,
+      "time": 0.1426098346710205,
+      "error": null
+    },
+    "assert largest_triangle(5,7)==4.639421805988064": {
+      "result": false,
+      "time": 0.1266007423400879,
+      "error": null
+    },
+    "assert largest_triangle(9,1)==105.2220865598093": {
+      "result": false,
+      "time": 0.11626410484313965,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:46:57",
+    "guidance_input_tokens": 505,
+    "guidance_output_tokens": 283,
+    "end_time": "2025-05-07 18:47:01",
+    "duration": "0:00:04.206334"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

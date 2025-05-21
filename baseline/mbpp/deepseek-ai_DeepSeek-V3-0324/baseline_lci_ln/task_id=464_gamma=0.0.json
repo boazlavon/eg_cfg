@@ -1,0 +1,33 @@
+{
+  "code": "def check_value(dictionary, value):\n    if not dictionary:\n        return False\n    first_value = next(iter(dictionary.values()))\n    if first_value != value:\n        return False\n    for val in dictionary.values():\n        if val != value:\n            return False\n    return True",
+  "results": {
+    "assert check_value({'Cierra Vega': 12, 'Alden Cantrell': 12, 'Kierra Gentry': 12, 'Pierre Cox': 12},10)==False": {
+      "result": true,
+      "time": 0.1309971809387207,
+      "error": null
+    },
+    "assert check_value({'Cierra Vega': 12, 'Alden Cantrell': 12, 'Kierra Gentry': 12, 'Pierre Cox': 12},12)==True": {
+      "result": true,
+      "time": 0.11724281311035156,
+      "error": null
+    },
+    "assert check_value({'Cierra Vega': 12, 'Alden Cantrell': 12, 'Kierra Gentry': 12, 'Pierre Cox': 12},5)==False": {
+      "result": true,
+      "time": 0.1559433937072754,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 19:00:32",
+    "guidance_input_tokens": 569,
+    "guidance_output_tokens": 90,
+    "end_time": "2025-05-07 19:00:34",
+    "duration": "0:00:02.385665"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

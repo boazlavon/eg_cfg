@@ -1,0 +1,33 @@
+{
+  "code": "def find_Max_Num(digits, n):\n    sorted_digits = []\n    for i in range(n):\n        max_digit = digits[i]\n        max_index = i\n        for j in range(i + 1, n):\n            if digits[j] > max_digit:\n                max_digit = digits[j]\n                max_index = j\n        if max_index != i:\n            temp = digits[i]\n            digits[i] = digits[max_index]\n            digits[max_index] = temp\n        sorted_digits.append(digits[i])\n    max_num = 0\n    for i in range(n):\n        max_num = max_num * 10 + sorted_digits[i]\n    return max_num",
+  "results": {
+    "assert find_Max_Num([1,2,3],3) == 321": {
+      "result": true,
+      "time": 0.12928271293640137,
+      "error": null
+    },
+    "assert find_Max_Num([4,5,6,1],4) == 6541": {
+      "result": true,
+      "time": 0.12781238555908203,
+      "error": null
+    },
+    "assert find_Max_Num([1,2,3,9],4) == 9321": {
+      "result": true,
+      "time": 0.12700128555297852,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:39:35",
+    "guidance_input_tokens": 521,
+    "guidance_output_tokens": 177,
+    "end_time": "2025-05-07 18:39:38",
+    "duration": "0:00:03.214357"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

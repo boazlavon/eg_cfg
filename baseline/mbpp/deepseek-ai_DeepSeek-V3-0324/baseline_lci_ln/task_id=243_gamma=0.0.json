@@ -1,0 +1,33 @@
+{
+  "code": "def sort_on_occurence(lst):\n    # Step 1: Create a dictionary to count occurrences of the first element\n    count_dict = {}\n    for item in lst:\n        key = item[0]\n        if key in count_dict:\n            count_dict[key] += 1\n        else:\n            count_dict[key] = 1\n\n    # Step 2: Group the items by their first element\n    group_dict = {}\n    for item in lst:\n        key = item[0]\n        if key in group_dict:\n            group_dict[key].append(item[1])\n        else:\n            group_dict[key] = [item[1]]\n\n    # Step 3: Prepare the result list\n    result = []\n    for key in group_dict:\n        # Create a tuple with the key, followed by the grouped items, and then the count\n        group_items = group_dict[key]\n        new_tuple = (key,) + tuple(group_items) + (count_dict[key],)\n        result.append(new_tuple)\n\n    # Step 4: Sort the result based on the occurrence count in descending order\n    result.sort(key=lambda x: x[-1], reverse=True)\n\n    return result",
+  "results": {
+    "assert sort_on_occurence([(1, 'Jake'), (2, 'Bob'), (1, 'Cara')]) == [(1, 'Jake', 'Cara', 2), (2, 'Bob', 1)]": {
+      "result": true,
+      "time": 0.09281706809997559,
+      "error": null
+    },
+    "assert sort_on_occurence([('b', 'ball'), ('a', 'arm'), ('b', 'b'), ('a', 'ant')]) == [('b', 'ball', 'b', 2), ('a', 'arm', 'ant', 2)]": {
+      "result": true,
+      "time": 0.08140850067138672,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'Mark'), (3, 'Maze'), (2, 'Sara')]) == [(2, 'Mark', 'Sara', 2), (3, 'Maze', 1)]": {
+      "result": true,
+      "time": 0.07849812507629395,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:49:15",
+    "guidance_input_tokens": 613,
+    "guidance_output_tokens": 269,
+    "end_time": "2025-05-07 18:49:19",
+    "duration": "0:00:04.708550"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

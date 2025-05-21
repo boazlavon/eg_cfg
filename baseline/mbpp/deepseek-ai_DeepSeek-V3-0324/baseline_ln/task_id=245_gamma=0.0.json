@@ -1,0 +1,33 @@
+{
+  "code": "def max_sum(arr, n):\n    # Initialize two arrays to store the maximum increasing and decreasing subsequence sums\n    lis = [0] * n\n    lds = [0] * n\n    \n    # Compute LIS values from left to right\n    for i in range(n):\n        lis[i] = arr[i]\n        for j in range(i):\n            if arr[i] > arr[j] and lis[i] < lis[j] + arr[i]:\n                lis[i] = lis[j] + arr[i]\n    \n    # Compute LDS values from right to left\n    for i in range(n-1, -1, -1):\n        lds[i] = arr[i]\n        for j in range(i+1, n):\n            if arr[i] > arr[j] and lds[i] < lds[j] + arr[i]:\n                lds[i] = lds[j] + arr[i]\n    \n    # Find the maximum value of lis[i] + lds[i] - arr[i]\n    max_val = 0\n    for i in range(n):\n        if lis[i] + lds[i] - arr[i] > max_val:\n            max_val = lis[i] + lds[i] - arr[i]\n    \n    return max_val",
+  "results": {
+    "assert max_sum([1, 15, 51, 45, 33, 100, 12, 18, 9], 9) == 194": {
+      "result": true,
+      "time": 0.18904638290405273,
+      "error": null
+    },
+    "assert max_sum([80, 60, 30, 40, 20, 10], 6) == 210": {
+      "result": true,
+      "time": 0.12722492218017578,
+      "error": null
+    },
+    "assert max_sum([2, 3 ,14, 16, 21, 23, 29, 30], 8) == 138": {
+      "result": true,
+      "time": 0.1123189926147461,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:33:52",
+    "guidance_input_tokens": 701,
+    "guidance_output_tokens": 367,
+    "end_time": "2025-05-07 18:33:56",
+    "duration": "0:00:04.876092"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

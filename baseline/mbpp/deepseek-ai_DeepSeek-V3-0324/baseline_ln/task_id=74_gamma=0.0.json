@@ -1,0 +1,33 @@
+{
+  "code": "def is_samepatterns(sequence1, sequence2):\n    if len(sequence1) != len(sequence2):\n        return False\n    \n    # Create mappings for both sequences\n    map1 = {}\n    map2 = {}\n    \n    for i in range(len(sequence1)):\n        if sequence1[i] not in map1:\n            map1[sequence1[i]] = sequence2[i]\n        if sequence2[i] not in map2:\n            map2[sequence2[i]] = sequence1[i]\n        \n        # Check if the mappings are consistent\n        if map1[sequence1[i]] != sequence2[i] or map2[sequence2[i]] != sequence1[i]:\n            return False\n    \n    return True",
+  "results": {
+    "assert is_samepatterns([\"red\",\"green\",\"green\"], [\"a\", \"b\", \"b\"])==True ": {
+      "result": true,
+      "time": 0.14322113990783691,
+      "error": null
+    },
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\",\"b\"])==False ": {
+      "result": true,
+      "time": 0.12792706489562988,
+      "error": null
+    },
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\"])==False ": {
+      "result": true,
+      "time": 0.12104606628417969,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:25:57",
+    "guidance_input_tokens": 668,
+    "guidance_output_tokens": 210,
+    "end_time": "2025-05-07 18:26:02",
+    "duration": "0:00:04.488415"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

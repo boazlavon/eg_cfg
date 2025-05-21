@@ -1,0 +1,33 @@
+{
+  "code": "def sum_div(n):\n    if n == 1:\n        return 1\n    total = 1  # 1 is a divisor for all n > 1\n    for i in range(2, int(n ** 0.5) + 1):\n        if n % i == 0:\n            if i == n // i:\n                total += i\n            else:\n                total += i + n // i\n    return total",
+  "results": {
+    "assert sum_div(8)==7": {
+      "result": true,
+      "time": 0.13627338409423828,
+      "error": null
+    },
+    "assert sum_div(12)==16": {
+      "result": true,
+      "time": 0.11641836166381836,
+      "error": null
+    },
+    "assert sum_div(7)==1": {
+      "result": true,
+      "time": 0.11471915245056152,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:36:22",
+    "guidance_input_tokens": 622,
+    "guidance_output_tokens": 99,
+    "end_time": "2025-05-07 18:36:24",
+    "duration": "0:00:02.144794"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

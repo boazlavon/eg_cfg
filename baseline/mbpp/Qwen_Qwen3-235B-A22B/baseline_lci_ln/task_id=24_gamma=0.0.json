@@ -1,0 +1,31 @@
+{
+  "code": "def binary_to_decimal(binary_number):\n    decimal_value = 0\n    power = 0\n    binary_str = str(binary_number)\n    reversed_binary_str = reversed(binary_str)\n    for digit in reversed_binary_str:\n        digit_int = int(digit)\n        base = 2 ** power\n        contribution = digit_int * base\n        decimal_value += contribution\n        power += 1\n    return decimal_value",
+  "results": {
+    "assert binary_to_decimal(100) == 4": {
+      "result": true,
+      "time": 0.0816037654876709,
+      "error": null
+    },
+    "assert binary_to_decimal(1011) == 11": {
+      "result": true,
+      "time": 0.08721494674682617,
+      "error": null
+    },
+    "assert binary_to_decimal(1101101) == 109": {
+      "result": true,
+      "time": 0.08058428764343262,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:12:51",
+    "end_time": "2025-05-08 22:13:18",
+    "duration": "0:00:26.479446"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

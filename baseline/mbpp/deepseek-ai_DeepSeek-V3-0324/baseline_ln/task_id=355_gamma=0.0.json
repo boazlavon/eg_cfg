@@ -1,0 +1,33 @@
+{
+  "code": "import math\n\ndef count_Rectangles(r):\n    if r <= 0:\n        return 0\n    diameter = 2 * r\n    count = 0\n    max_side = int(diameter)  # Since sides are integers, the maximum possible side is floor(2r)\n    for a in range(1, max_side + 1):\n        for b in range(1, max_side + 1):\n            if math.sqrt(a**2 + b**2) <= diameter:\n                count += 1\n    return count",
+  "results": {
+    "assert count_Rectangles(2) == 8": {
+      "result": true,
+      "time": 0.11831331253051758,
+      "error": null
+    },
+    "assert count_Rectangles(1) == 1": {
+      "result": true,
+      "time": 0.11153745651245117,
+      "error": null
+    },
+    "assert count_Rectangles(0) == 0": {
+      "result": true,
+      "time": 0.11336398124694824,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:39:26",
+    "guidance_input_tokens": 637,
+    "guidance_output_tokens": 355,
+    "end_time": "2025-05-07 18:39:35",
+    "duration": "0:00:09.280497"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

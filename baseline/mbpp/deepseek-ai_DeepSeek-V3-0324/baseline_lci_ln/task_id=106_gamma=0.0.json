@@ -1,0 +1,33 @@
+{
+  "code": "def add_lists(lst, tpl):\n    # Convert the tuple to a list to allow modification\n    temp_list = list(tpl)\n    # Iterate over each element in the input list\n    for element in lst:\n        # Append each element to the temporary list\n        temp_list.append(element)\n    # Convert the modified list back to a tuple\n    result_tuple = tuple(temp_list)\n    # Return the resulting tuple\n    return result_tuple",
+  "results": {
+    "assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)": {
+      "result": true,
+      "time": 0.13019347190856934,
+      "error": null
+    },
+    "assert add_lists([6, 7, 8], (10, 11)) == (10, 11, 6, 7, 8)": {
+      "result": true,
+      "time": 0.22224879264831543,
+      "error": null
+    },
+    "assert add_lists([7, 8, 9], (11, 12)) == (11, 12, 7, 8, 9)": {
+      "result": true,
+      "time": 0.11908888816833496,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:42:00",
+    "guidance_input_tokens": 547,
+    "guidance_output_tokens": 121,
+    "end_time": "2025-05-07 18:42:02",
+    "duration": "0:00:02.271505"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

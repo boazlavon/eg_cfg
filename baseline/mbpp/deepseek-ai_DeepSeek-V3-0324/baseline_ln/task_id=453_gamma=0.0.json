@@ -1,0 +1,33 @@
+{
+  "code": "import math\n\ndef sumofFactors(n):\n    sum_even = 0\n    for i in range(1, int(math.sqrt(n)) + 1):\n        if n % i == 0:\n            if i % 2 == 0:\n                sum_even += i\n            counterpart = n // i\n            if counterpart != i and counterpart % 2 == 0:\n                sum_even += counterpart\n    return sum_even",
+  "results": {
+    "assert sumofFactors(18) == 26": {
+      "result": true,
+      "time": 0.13381576538085938,
+      "error": null
+    },
+    "assert sumofFactors(30) == 48": {
+      "result": true,
+      "time": 0.12995386123657227,
+      "error": null
+    },
+    "assert sumofFactors(6) == 8": {
+      "result": true,
+      "time": 0.3401353359222412,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:44:08",
+    "guidance_input_tokens": 632,
+    "guidance_output_tokens": 98,
+    "end_time": "2025-05-07 18:44:10",
+    "duration": "0:00:02.302184"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

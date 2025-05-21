@@ -1,0 +1,31 @@
+{
+  "code": "def lps(s):\n    n = len(s)\n    dp = [[0]*n for _ in range(n)]\n    \n    for i in range(n):\n        dp[i][i] = 1\n        \n    for cl in range(2, n+1):\n        for i in range(n - cl + 1):\n            j = i + cl - 1\n            if s[i] == s[j] and cl == 2:\n                dp[i][j] = 2\n            elif s[i] == s[j]:\n                dp[i][j] = 2 + dp[i+1][j-1]\n            else:\n                dp[i][j] = max(dp[i+1][j], dp[i][j-1])\n                \n    return dp[0][n-1]",
+  "results": {
+    "assert lps(\"TENS FOR TENS\") == 5 ": {
+      "result": true,
+      "time": 0.08624029159545898,
+      "error": null
+    },
+    "assert lps(\"CARDIO FOR CARDS\") == 7": {
+      "result": true,
+      "time": 0.09709763526916504,
+      "error": null
+    },
+    "assert lps(\"PART OF THE JOURNEY IS PART\") == 9 ": {
+      "result": true,
+      "time": 0.07855224609375,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:05:22",
+    "end_time": "2025-05-08 23:05:32",
+    "duration": "0:00:09.518415"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

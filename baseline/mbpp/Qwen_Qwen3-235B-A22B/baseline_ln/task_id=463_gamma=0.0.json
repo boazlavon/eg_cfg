@@ -1,0 +1,31 @@
+{
+  "code": "def max_subarray_product(arr):\n    max_product = arr[0]\n    min_product = arr[0]\n    result = arr[0]\n    \n    for i in range(1, len(arr)):\n        if arr[i] < 0:\n            max_product, min_product = min_product, max_product\n        max_product = max(arr[i], max_product * arr[i])\n        min_product = min(arr[i], min_product * arr[i])\n        result = max(result, max_product)\n    return result",
+  "results": {
+    "assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112": {
+      "result": true,
+      "time": 0.08015680313110352,
+      "error": null
+    },
+    "assert max_subarray_product([6, -3, -10, 0, 2]) == 180 ": {
+      "result": true,
+      "time": 0.0819249153137207,
+      "error": null
+    },
+    "assert max_subarray_product([-2, -40, 0, -2, -3]) == 80": {
+      "result": true,
+      "time": 0.09684467315673828,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:05:54",
+    "end_time": "2025-05-08 23:05:56",
+    "duration": "0:00:02.430675"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

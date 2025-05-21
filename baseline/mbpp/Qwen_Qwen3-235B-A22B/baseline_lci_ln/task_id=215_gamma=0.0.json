@@ -1,0 +1,31 @@
+{
+  "code": "def decode_list(encoded_list):\n    decoded_result = []\n    for current_element in encoded_list:\n        if isinstance(current_element, list):\n            repetition_count = current_element[0]\n            value_to_repeat = current_element[1]\n            for _ in range(repetition_count):\n                decoded_result.append(value_to_repeat)\n        else:\n            decoded_result.append(current_element)\n    return decoded_result",
+  "results": {
+    "assert decode_list([[2, 1], 2, 3, [2, 4], 5,1])==[1,1,2,3,4,4,5,1]": {
+      "result": true,
+      "time": 0.08672189712524414,
+      "error": null
+    },
+    "assert decode_list(['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', [2, 'l'], 'y'])==['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', 'l', 'l', 'y']": {
+      "result": true,
+      "time": 0.08279967308044434,
+      "error": null
+    },
+    "assert decode_list(['p', 'y', 't', 'h', 'o', 'n'])==['p', 'y', 't', 'h', 'o', 'n']": {
+      "result": true,
+      "time": 0.07794880867004395,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:25:46",
+    "end_time": "2025-05-08 22:26:10",
+    "duration": "0:00:23.916361"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

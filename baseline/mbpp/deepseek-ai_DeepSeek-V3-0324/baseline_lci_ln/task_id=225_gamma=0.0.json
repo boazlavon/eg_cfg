@@ -1,0 +1,33 @@
+{
+  "code": "def find_Min(arr, low, high):\n    if high < low:\n        return arr[0]\n    if high == low:\n        return arr[low]\n    mid = (low + high) // 2\n    if mid < high and arr[mid + 1] < arr[mid]:\n        return arr[mid + 1]\n    if mid > low and arr[mid] < arr[mid - 1]:\n        return arr[mid]\n    if arr[high] > arr[mid]:\n        return find_Min(arr, low, mid - 1)\n    return find_Min(arr, mid + 1, high)",
+  "results": {
+    "assert find_Min([1,2,3,4,5],0,4) == 1": {
+      "result": true,
+      "time": 0.11588406562805176,
+      "error": null
+    },
+    "assert find_Min([4,6,8],0,2) == 4": {
+      "result": true,
+      "time": 0.11371231079101562,
+      "error": null
+    },
+    "assert find_Min([2,3,5,7,9],0,4) == 2": {
+      "result": true,
+      "time": 0.11790275573730469,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:48:26",
+    "guidance_input_tokens": 526,
+    "guidance_output_tokens": 155,
+    "end_time": "2025-05-07 18:48:30",
+    "duration": "0:00:03.077377"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

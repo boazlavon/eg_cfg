@@ -1,0 +1,31 @@
+{
+  "code": "def max_profit(prices, k):\n    n = len(prices)\n    if n < 2:\n        return 0\n    if k >= n // 2:\n        total = 0\n        for i in range(1, n):\n            if prices[i] > prices[i - 1]:\n                total += prices[i] - prices[i - 1]\n        return total\n    profits = [0] * (k + 1)\n    for i in range(1, n):\n        diff = prices[i] - prices[i - 1]\n        for j in range(k, 0, -1):\n            hold_profit = profits[j] + diff\n            buy_profit = profits[j - 1] + max(diff, 0)\n            profits[j] = max(hold_profit, buy_profit)\n    return profits[k]",
+  "results": {
+    "assert max_profit([1, 5, 2, 3, 7, 6, 4, 5], 3) == 10": {
+      "result": false,
+      "time": 0.07862353324890137,
+      "error": null
+    },
+    "assert max_profit([2, 4, 7, 5, 4, 3, 5], 2) == 7": {
+      "result": false,
+      "time": 0.0848691463470459,
+      "error": null
+    },
+    "assert max_profit([10, 6, 8, 4, 2], 2) == 2": {
+      "result": true,
+      "time": 0.08054184913635254,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:44:02",
+    "end_time": "2025-05-08 22:44:29",
+    "duration": "0:00:27.187242"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

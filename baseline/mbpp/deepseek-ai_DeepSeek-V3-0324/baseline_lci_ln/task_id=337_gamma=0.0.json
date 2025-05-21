@@ -1,0 +1,28 @@
+{
+  "code": "def text_match_word(text):\n    # Step 1: Remove leading and trailing whitespace from the input text\n    stripped_text = text.strip()\n    \n    # Step 2: Check if the stripped text is empty\n    if not stripped_text:\n        return \"Not matched!\"\n    \n    # Step 3: Initialize a variable to track if the last character is punctuation\n    last_char = stripped_text[-1]\n    \n    # Step 4: Define the set of punctuation characters to check\n    punctuation_chars = {'.', ',', '!', '?', ';', ':'}\n    \n    # Step 5: Check if the last character is punctuation\n    has_punctuation = last_char in punctuation_chars\n    \n    # Step 6: Extract the word part (without punctuation if present)\n    if has_punctuation:\n        word_part = stripped_text[:-1]\n    else:\n        word_part = stripped_text\n    \n    # Step 7: Check if the word part is non-empty and consists of letters\n    if word_part.isalpha():\n        return \"Found a match!\"\n    else:\n        return \"Not matched!\"",
+  "results": {
+    "assert text_match_word(\"python.\")==('Found a match!')": {
+      "result": true,
+      "time": 0.08481574058532715,
+      "error": null
+    },
+    "assert text_match_word(\"  lang  .\")==('Not matched!')": {
+      "result": true,
+      "time": 0.09322929382324219,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:54:09",
+    "guidance_input_tokens": 491,
+    "guidance_output_tokens": 268,
+    "end_time": "2025-05-07 18:54:13",
+    "duration": "0:00:04.041488"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

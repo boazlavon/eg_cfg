@@ -1,0 +1,33 @@
+{
+  "code": "from collections import Counter\n\ndef find_Product(arr, n):\n    count = Counter(arr)\n    product = 1\n    for num in arr:\n        if count[num] == 1:\n            product *= num\n    return product",
+  "results": {
+    "assert find_Product([1,1,2,3],4) == 6": {
+      "result": true,
+      "time": 0.13284564018249512,
+      "error": null
+    },
+    "assert find_Product([1,2,3,1,1],5) == 6": {
+      "result": true,
+      "time": 0.12855267524719238,
+      "error": null
+    },
+    "assert find_Product([1,1,4,5,6],5) == 120": {
+      "result": true,
+      "time": 0.13344454765319824,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:23:47",
+    "guidance_input_tokens": 663,
+    "guidance_output_tokens": 54,
+    "end_time": "2025-05-07 18:23:49",
+    "duration": "0:00:02.136140"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

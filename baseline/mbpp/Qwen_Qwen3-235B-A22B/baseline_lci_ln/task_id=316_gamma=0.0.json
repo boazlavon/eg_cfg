@@ -1,0 +1,31 @@
+{
+  "code": "def find_last_occurrence(arr, target):\n    low = 0\n    high = len(arr) - 1\n    result = -1\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            result = mid\n            low = mid + 1\n        elif arr[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return result",
+  "results": {
+    "assert find_last_occurrence([2, 5, 5, 5, 6, 6, 8, 9, 9, 9], 5) == 3": {
+      "result": true,
+      "time": 0.08298015594482422,
+      "error": null
+    },
+    "assert find_last_occurrence([2, 3, 5, 8, 6, 6, 8, 9, 9, 9], 9) == 9": {
+      "result": true,
+      "time": 0.08148384094238281,
+      "error": null
+    },
+    "assert find_last_occurrence([2, 2, 1, 5, 6, 6, 6, 9, 9, 9], 6) == 6": {
+      "result": true,
+      "time": 0.07807087898254395,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:44:34",
+    "end_time": "2025-05-08 22:44:37",
+    "duration": "0:00:03.030571"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

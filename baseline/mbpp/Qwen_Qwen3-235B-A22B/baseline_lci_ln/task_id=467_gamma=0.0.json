@@ -1,0 +1,31 @@
+{
+  "code": "def decimal_to_Octal(decimal_number):\n    if decimal_number == 0:\n        return 0\n    octal_number = 0\n    power = 0\n    while decimal_number > 0:\n        remainder = decimal_number % 8\n        octal_digit = remainder\n        octal_number += octal_digit * (10 ** power)\n        decimal_number = decimal_number // 8\n        power += 1\n    return octal_number",
+  "results": {
+    "assert decimal_to_Octal(10) == 12": {
+      "result": true,
+      "time": 0.08034229278564453,
+      "error": null
+    },
+    "assert decimal_to_Octal(2) == 2": {
+      "result": true,
+      "time": 0.08090758323669434,
+      "error": null
+    },
+    "assert decimal_to_Octal(33) == 41": {
+      "result": true,
+      "time": 0.07971835136413574,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:26:32",
+    "end_time": "2025-05-08 22:26:34",
+    "duration": "0:00:02.292734"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

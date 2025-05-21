@@ -1,0 +1,33 @@
+{
+  "code": "def get_max_occuring_char(input_string):\n    char_count = {}\n    \n    for char in input_string:\n        if char in char_count:\n            current_count = char_count[char]\n            new_count = current_count + 1\n            char_count[char] = new_count\n        else:\n            char_count[char] = 1\n    \n    max_count = 0\n    max_char = None\n    \n    for char in char_count:\n        count = char_count[char]\n        if count > max_count:\n            max_count = count\n            max_char = char\n        elif count == max_count:\n            if char < max_char:\n                max_char = char\n    \n    return max_char",
+  "results": {
+    "assert get_max_occuring_char(\"data\") == \"a\"": {
+      "result": true,
+      "time": 0.14246225357055664,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"create\") == \"e\"": {
+      "result": true,
+      "time": 0.13134241104125977,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"brilliant girl\") == \"i\"": {
+      "result": true,
+      "time": 0.11852598190307617,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 19:01:19",
+    "guidance_input_tokens": 489,
+    "guidance_output_tokens": 167,
+    "end_time": "2025-05-07 19:01:23",
+    "duration": "0:00:04.128832"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

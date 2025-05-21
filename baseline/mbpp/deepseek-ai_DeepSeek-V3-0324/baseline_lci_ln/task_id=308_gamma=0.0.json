@@ -1,0 +1,33 @@
+{
+  "code": "def large_product(list1, list2, n):\n    products = []\n    for num1 in list1:\n        for num2 in list2:\n            product = num1 * num2\n            products.append(product)\n    unique_products = []\n    for product in products:\n        if product not in unique_products:\n            unique_products.append(product)\n    sorted_products = sorted(unique_products, reverse=True)\n    result = sorted_products[:n]\n    return result",
+  "results": {
+    "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],3)==[60, 54, 50]": {
+      "result": true,
+      "time": 0.13101601600646973,
+      "error": null
+    },
+    "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],4)==[60, 54, 50, 48]": {
+      "result": true,
+      "time": 0.11911535263061523,
+      "error": null
+    },
+    "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],5)==[60, 54, 50, 48, 45]": {
+      "result": true,
+      "time": 0.1150205135345459,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:52:39",
+    "guidance_input_tokens": 610,
+    "guidance_output_tokens": 119,
+    "end_time": "2025-05-07 18:52:41",
+    "duration": "0:00:02.422775"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def min_flip_to_make_string_alternate(binary_str):\n    flip1 = 0  # Count flips for pattern starting with '0'\n    flip2 = 0  # Count flips for pattern starting with '1'\n    \n    for i in range(len(binary_str)):\n        expected_char1 = '0' if i % 2 == 0 else '1'\n        expected_char2 = '1' if i % 2 == 0 else '0'\n        \n        if binary_str[i] != expected_char1:\n            flip1 += 1\n        if binary_str[i] != expected_char2:\n            flip2 += 1\n    \n    return min(flip1, flip2)",
+  "results": {
+    "assert min_flip_to_make_string_alternate(\"0001010111\") == 2": {
+      "result": true,
+      "time": 0.12180733680725098,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"001\") == 1": {
+      "result": true,
+      "time": 0.1115567684173584,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"010111011\") == 2 ": {
+      "result": true,
+      "time": 0.15699100494384766,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:40:05",
+    "guidance_input_tokens": 666,
+    "guidance_output_tokens": 155,
+    "end_time": "2025-05-07 18:40:08",
+    "duration": "0:00:03.016225"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

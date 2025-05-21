@@ -1,0 +1,31 @@
+{
+  "code": "import re\ndef start_withp(list1):\n    for i in list1:\n        result = re.findall(r'\\b[Pp]\\w+',i)\n        if len(result)>=2:\n            return (result[0],result[1])",
+  "results": {
+    "assert start_withp([\"Python PHP\", \"Java JavaScript\", \"c c++\"])==('Python', 'PHP')": {
+      "result": true,
+      "time": 0.09782743453979492,
+      "error": null
+    },
+    "assert start_withp([\"Python Programming\",\"Java Programming\"])==('Python','Programming')": {
+      "result": true,
+      "time": 0.08634185791015625,
+      "error": null
+    },
+    "assert start_withp([\"Pqrst Pqr\",\"qrstuv\"])==('Pqrst','Pqr')": {
+      "result": true,
+      "time": 0.08701205253601074,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:00:24",
+    "end_time": "2025-05-08 23:00:26",
+    "duration": "0:00:02.504719"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,31 @@
+{
+  "code": "from collections import Counter\n\ndef minimum_Length(s):\n    if not s:\n        return 0\n    count = Counter(s)\n    min_char = min(count, key=count.get)\n    return len(s) - count[min_char]",
+  "results": {
+    "assert minimum_Length(\"mnm\") == 1": {
+      "result": false,
+      "time": 0.0789194107055664,
+      "error": null
+    },
+    "assert minimum_Length(\"abcda\") == 3": {
+      "result": false,
+      "time": 0.07619333267211914,
+      "error": null
+    },
+    "assert minimum_Length(\"abcb\") == 2": {
+      "result": false,
+      "time": 0.07924818992614746,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:32:56",
+    "end_time": "2025-05-08 22:32:57",
+    "duration": "0:00:01.689277"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def is_sublist(main_list, sublist):\n    # If the sublist is empty, it is always a sublist\n    if not sublist:\n        return True\n    \n    # If the main list is empty but sublist is not, it cannot be a sublist\n    if not main_list:\n        return False\n    \n    # Length of the sublist\n    sub_len = len(sublist)\n    \n    # Iterate over the main list to find the sublist\n    for i in range(len(main_list) - sub_len + 1):\n        # Extract a segment of the main list of the same length as the sublist\n        segment = main_list[i:i + sub_len]\n        \n        # Check if the segment matches the sublist\n        match = True\n        for j in range(sub_len):\n            if segment[j] != sublist[j]:\n                match = False\n                break\n        \n        # If a match is found, return True\n        if match:\n            return True\n    \n    # If no match is found after checking all segments, return False\n    return False",
+  "results": {
+    "assert is_sublist([2,4,3,5,7],[3,7])==False": {
+      "result": true,
+      "time": 0.10763001441955566,
+      "error": null
+    },
+    "assert is_sublist([2,4,3,5,7],[4,3])==True": {
+      "result": true,
+      "time": 0.12151288986206055,
+      "error": null
+    },
+    "assert is_sublist([2,4,3,5,7],[1,6])==False": {
+      "result": true,
+      "time": 0.11837220191955566,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:40:02",
+    "guidance_input_tokens": 532,
+    "guidance_output_tokens": 259,
+    "end_time": "2025-05-07 18:40:08",
+    "duration": "0:00:06.300519"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

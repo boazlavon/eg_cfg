@@ -1,0 +1,33 @@
+{
+  "code": "def dict_filter(input_dict, threshold):\n    filtered_dict = {}\n    for key in input_dict:\n        value = input_dict[key]\n        if value >= threshold:\n            filtered_dict[key] = value\n    return filtered_dict",
+  "results": {
+    "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},170)=={'Cierra Vega': 175, 'Alden Cantrell': 180, 'Pierre Cox': 190}": {
+      "result": true,
+      "time": 0.0780038833618164,
+      "error": null
+    },
+    "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},180)=={ 'Alden Cantrell': 180, 'Pierre Cox': 190}": {
+      "result": true,
+      "time": 0.07744741439819336,
+      "error": null
+    },
+    "assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},190)=={ 'Pierre Cox': 190}": {
+      "result": true,
+      "time": 0.08910322189331055,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:51:03",
+    "guidance_input_tokens": 607,
+    "guidance_output_tokens": 65,
+    "end_time": "2025-05-07 18:51:04",
+    "duration": "0:00:01.500733"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

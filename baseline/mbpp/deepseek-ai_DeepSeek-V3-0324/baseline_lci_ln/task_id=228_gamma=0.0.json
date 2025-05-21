@@ -1,0 +1,33 @@
+{
+  "code": "def all_Bits_Set_In_The_Given_Range(n, l, r):\n    # Iterate through each bit position in the range [l, r]\n    for i in range(l, r + 1):\n        # Check if the i-th bit is set\n        mask = 1 << (i - 1)\n        if n & mask:\n            # If any bit is set, return False\n            return False\n    # If no bits are set in the range, return True\n    return True",
+  "results": {
+    "assert all_Bits_Set_In_The_Given_Range(4,1,2) == True": {
+      "result": true,
+      "time": 0.09575700759887695,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(17,2,4) == True": {
+      "result": true,
+      "time": 0.08615374565124512,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(39,4,6) == False": {
+      "result": true,
+      "time": 0.0883638858795166,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:48:34",
+    "guidance_input_tokens": 518,
+    "guidance_output_tokens": 133,
+    "end_time": "2025-05-07 18:48:38",
+    "duration": "0:00:04.226573"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

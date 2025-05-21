@@ -1,0 +1,31 @@
+{
+  "code": "def count_no_of_ways(n, k):\n    if n == 0:\n        return 0\n    if n == 1:\n        return k\n    same = k\n    diff = k * (k - 1)\n    total = same + diff\n    for i in range(3, n + 1):\n        same = diff\n        diff = (total) * (k - 1)\n        total = same + diff\n    return total",
+  "results": {
+    "assert count_no_of_ways(2, 4) == 16": {
+      "result": true,
+      "time": 0.08460068702697754,
+      "error": null
+    },
+    "assert count_no_of_ways(3, 2) == 6": {
+      "result": true,
+      "time": 0.08089637756347656,
+      "error": null
+    },
+    "assert count_no_of_ways(4, 4) == 228": {
+      "result": true,
+      "time": 0.08032488822937012,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:42:00",
+    "end_time": "2025-05-08 22:42:02",
+    "duration": "0:00:02.301007"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

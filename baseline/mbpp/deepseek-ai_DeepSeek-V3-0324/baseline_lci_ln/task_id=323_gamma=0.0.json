@@ -1,0 +1,33 @@
+{
+  "code": "def re_arrange(arr, n):\n    # Separate positive and negative numbers\n    pos = []\n    neg = []\n    for num in arr:\n        if num >= 0:\n            pos.append(num)\n        else:\n            neg.append(num)\n    \n    # Initialize pointers for pos and neg lists\n    i = 0\n    j = 0\n    k = 0\n    result = []\n    \n    # Merge the lists in alternating fashion\n    while i < len(neg) and j < len(pos):\n        result.append(neg[i])\n        i += 1\n        result.append(pos[j])\n        j += 1\n    \n    # Append remaining negative numbers\n    while i < len(neg):\n        result.append(neg[i])\n        i += 1\n    \n    # Append remaining positive numbers\n    while j < len(pos):\n        result.append(pos[j])\n        j += 1\n    \n    return result",
+  "results": {
+    "assert re_arrange([-5, -2, 5, 2, 4,\t7, 1, 8, 0, -8], 10) == [-5, 5, -2, 2, -8, 4, 7, 1, 8, 0]": {
+      "result": true,
+      "time": 0.12645339965820312,
+      "error": null
+    },
+    "assert re_arrange([1, 2, 3, -4, -1, 4], 6) == [-4, 1, -1, 2, 3, 4]": {
+      "result": true,
+      "time": 0.1107485294342041,
+      "error": null
+    },
+    "assert re_arrange([4, 7, 9, 77, -4, 5, -3, -9], 8) == [-4, 4, -3, 7, -9, 9, 77, 5]": {
+      "result": true,
+      "time": 0.11528444290161133,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:53:28",
+    "guidance_input_tokens": 616,
+    "guidance_output_tokens": 218,
+    "end_time": "2025-05-07 18:53:32",
+    "duration": "0:00:04.568829"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

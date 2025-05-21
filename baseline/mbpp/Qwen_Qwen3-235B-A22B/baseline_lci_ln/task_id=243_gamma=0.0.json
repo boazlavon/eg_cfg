@@ -1,0 +1,31 @@
+{
+  "code": "def sort_on_occurence(data):\n    # Step 1: Count occurrences of first elements\n    occurrence_count = {}\n    for item in data:\n        first_element = item[0]\n        if first_element in occurrence_count:\n            occurrence_count[first_element] += 1\n        else:\n            occurrence_count[first_element] = 1\n\n    # Step 2: Group items by first element\n    grouped_items = {}\n    for item in data:\n        first_element = item[0]\n        if first_element in grouped_items:\n            grouped_items[first_element].append(item)\n        else:\n            grouped_items[first_element] = [item]\n\n    # Step 3: Create result list with required structure\n    result = []\n    for key in occurrence_count:\n        # Get the count\n        count = occurrence_count[key]\n        \n        # Get the group of items\n        items_group = grouped_items[key]\n        \n        # Extract the second elements from the items\n        second_elements = []\n        for item in items_group:\n            second_element = item[1]\n            second_elements.append(second_element)\n        \n        # Create the new tuple\n        new_tuple = (key, *second_elements, count)\n        result.append(new_tuple)\n\n    # Step 4: Sort the result based on occurrence count in descending order\n    # Using bubble sort for explicitness\n    n = len(result)\n    for i in range(n):\n        for j in range(0, n - i - 1):\n            # Compare counts\n            if result[j][-1] < result[j + 1][-1]:\n                # Swap items\n                temp = result[j]\n                result[j] = result[j + 1]\n                result[j + 1] = temp\n\n    return result",
+  "results": {
+    "assert sort_on_occurence([(1, 'Jake'), (2, 'Bob'), (1, 'Cara')]) == [(1, 'Jake', 'Cara', 2), (2, 'Bob', 1)]": {
+      "result": true,
+      "time": 0.10802149772644043,
+      "error": null
+    },
+    "assert sort_on_occurence([('b', 'ball'), ('a', 'arm'), ('b', 'b'), ('a', 'ant')]) == [('b', 'ball', 'b', 2), ('a', 'arm', 'ant', 2)]": {
+      "result": true,
+      "time": 0.10161423683166504,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'Mark'), (3, 'Maze'), (2, 'Sara')]) == [(2, 'Mark', 'Sara', 2), (3, 'Maze', 1)]": {
+      "result": true,
+      "time": 0.09992766380310059,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:21:09",
+    "end_time": "2025-05-08 22:21:48",
+    "duration": "0:00:39.407113"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

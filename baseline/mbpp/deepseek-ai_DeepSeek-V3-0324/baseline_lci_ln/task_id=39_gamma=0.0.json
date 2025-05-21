@@ -1,0 +1,33 @@
+{
+  "code": "from collections import defaultdict\nimport heapq\n\ndef rearange_string(s):\n    char_count = defaultdict(int)\n    for char in s:\n        char_count[char] += 1\n    \n    max_heap = []\n    for char, count in char_count.items():\n        heapq.heappush(max_heap, (-count, char))\n    \n    result = []\n    prev_char = None\n    prev_count = 0\n    \n    while max_heap:\n        current = heapq.heappop(max_heap)\n        current_count = -current[0]\n        current_char = current[1]\n        \n        result.append(current_char)\n        current_count -= 1\n        \n        if prev_count > 0:\n            heapq.heappush(max_heap, (-prev_count, prev_char))\n        \n        prev_char = current_char\n        prev_count = current_count\n    \n    if len(result) != len(s):\n        return \"\"\n    else:\n        return ''.join(result)",
+  "results": {
+    "assert rearange_string(\"aab\")==('aba')": {
+      "result": true,
+      "time": 0.13171672821044922,
+      "error": null
+    },
+    "assert rearange_string(\"aabb\")==('abab')": {
+      "result": true,
+      "time": 0.13166332244873047,
+      "error": null
+    },
+    "assert rearange_string(\"abccdd\")==('cdabcd')": {
+      "result": true,
+      "time": 0.12610816955566406,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:38:42",
+    "guidance_input_tokens": 497,
+    "guidance_output_tokens": 225,
+    "end_time": "2025-05-07 18:38:45",
+    "duration": "0:00:03.364051"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

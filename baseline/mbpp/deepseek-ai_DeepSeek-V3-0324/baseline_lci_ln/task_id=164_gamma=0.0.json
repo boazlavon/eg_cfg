@@ -1,0 +1,33 @@
+{
+  "code": "def areEquivalent(num1, num2):\n    def sum_of_divisors(n):\n        if n == 1:\n            return 1\n        sum_div = 1\n        for i in range(2, n + 1):\n            if n % i == 0:\n                sum_div = sum_div + i\n        return sum_div\n    \n    sum1 = sum_of_divisors(num1)\n    sum2 = sum_of_divisors(num2)\n    \n    if sum1 == sum2:\n        return True\n    else:\n        return False",
+  "results": {
+    "assert areEquivalent(36,57) == False": {
+      "result": true,
+      "time": 0.1292569637298584,
+      "error": null
+    },
+    "assert areEquivalent(2,4) == False": {
+      "result": true,
+      "time": 0.09966158866882324,
+      "error": null
+    },
+    "assert areEquivalent(23,47) == True": {
+      "result": false,
+      "time": 0.09967708587646484,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:45:16",
+    "guidance_input_tokens": 481,
+    "guidance_output_tokens": 144,
+    "end_time": "2025-05-07 18:45:21",
+    "duration": "0:00:05.154636"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

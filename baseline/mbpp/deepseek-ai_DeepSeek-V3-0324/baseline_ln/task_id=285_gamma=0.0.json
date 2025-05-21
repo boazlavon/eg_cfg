@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef text_match_two_three(text):\n    if re.search(r'ab{2,3}', text):\n        return 'Found a match!'\n    else:\n        return 'Not matched!'",
+  "results": {
+    "assert text_match_two_three(\"ac\")==('Not matched!')": {
+      "result": true,
+      "time": 0.13565349578857422,
+      "error": null
+    },
+    "assert text_match_two_three(\"dc\")==('Not matched!')": {
+      "result": true,
+      "time": 0.1140739917755127,
+      "error": null
+    },
+    "assert text_match_two_three(\"abbbba\")==('Found a match!')": {
+      "result": true,
+      "time": 0.12067627906799316,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:35:32",
+    "guidance_input_tokens": 651,
+    "guidance_output_tokens": 93,
+    "end_time": "2025-05-07 18:35:36",
+    "duration": "0:00:04.541927"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

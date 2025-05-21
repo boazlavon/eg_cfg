@@ -1,0 +1,33 @@
+{
+  "code": "def odd_Equivalent(binary_str, length):\n    count = 0\n    for i in range(length):\n        rotated_str = binary_str[i:] + binary_str[:i]\n        if int(rotated_str, 2) % 2 != 0:\n            count += 1\n    return count",
+  "results": {
+    "assert odd_Equivalent(\"011001\",6) == 3": {
+      "result": true,
+      "time": 0.1336052417755127,
+      "error": null
+    },
+    "assert odd_Equivalent(\"11011\",5) == 4": {
+      "result": true,
+      "time": 0.1259005069732666,
+      "error": null
+    },
+    "assert odd_Equivalent(\"1010\",4) == 2": {
+      "result": true,
+      "time": 0.12204933166503906,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:27:14",
+    "guidance_input_tokens": 644,
+    "guidance_output_tokens": 222,
+    "end_time": "2025-05-07 18:27:18",
+    "duration": "0:00:03.887067"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

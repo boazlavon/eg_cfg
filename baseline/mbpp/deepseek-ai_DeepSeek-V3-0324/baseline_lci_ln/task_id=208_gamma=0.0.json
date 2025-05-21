@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef is_decimal(num_str):\n    pattern = r'^\\d*\\.\\d{2}$'\n    match = re.fullmatch(pattern, num_str)\n    if match:\n        return True\n    else:\n        return False",
+  "results": {
+    "assert is_decimal('123.11') == True": {
+      "result": true,
+      "time": 0.0998373031616211,
+      "error": null
+    },
+    "assert is_decimal('0.21') == True": {
+      "result": true,
+      "time": 0.09047055244445801,
+      "error": null
+    },
+    "assert is_decimal('123.1214') == False": {
+      "result": true,
+      "time": 0.08700060844421387,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:47:30",
+    "guidance_input_tokens": 484,
+    "guidance_output_tokens": 84,
+    "end_time": "2025-05-07 18:47:32",
+    "duration": "0:00:01.945131"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

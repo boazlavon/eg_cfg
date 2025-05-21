@@ -1,0 +1,33 @@
+{
+  "code": "def cal_sum(n):\n    if n == 0:\n        return 3\n    elif n == 1:\n        return 3\n    elif n == 2:\n        return 5\n    \n    # Initialize the first three Perrin numbers\n    p = [3, 0, 2]\n    total = sum(p)  # Initial sum (3 + 0 + 2 = 5)\n    \n    for i in range(3, n + 1):\n        next_val = p[i-2] + p[i-3]\n        p.append(next_val)\n        total += next_val\n    \n    return total",
+  "results": {
+    "assert cal_sum(9) == 49": {
+      "result": true,
+      "time": 0.14575719833374023,
+      "error": null
+    },
+    "assert cal_sum(10) == 66": {
+      "result": true,
+      "time": 0.14377617835998535,
+      "error": null
+    },
+    "assert cal_sum(11) == 88": {
+      "result": true,
+      "time": 0.11748981475830078,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:43:53",
+    "guidance_input_tokens": 626,
+    "guidance_output_tokens": 161,
+    "end_time": "2025-05-07 18:43:58",
+    "duration": "0:00:04.436114"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

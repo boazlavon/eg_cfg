@@ -1,0 +1,31 @@
+{
+  "code": "def dict_depth(d):\n    if not isinstance(d, dict):\n        return 0\n    max_sub_depth = 0\n    for key in d:\n        value = d[key]\n        sub_depth = dict_depth(value)\n        if sub_depth > max_sub_depth:\n            max_sub_depth = sub_depth\n    current_depth = max_sub_depth + 1\n    return current_depth",
+  "results": {
+    "assert dict_depth({'a':1, 'b': {'c': {'d': {}}}})==4": {
+      "result": true,
+      "time": 0.08252358436584473,
+      "error": null
+    },
+    "assert dict_depth({'a':1, 'b': {'c':'python'}})==2": {
+      "result": true,
+      "time": 0.07919764518737793,
+      "error": null
+    },
+    "assert dict_depth({1: 'Sun', 2: {3: {4:'Mon'}}})==3": {
+      "result": true,
+      "time": 0.07816672325134277,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:24:40",
+    "end_time": "2025-05-08 22:24:42",
+    "duration": "0:00:02.419034"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def find_minimum_range(arrays):\n    # Initialize pointers for each array\n    pointers = [0] * len(arrays)\n    \n    # Initialize the current range variables\n    current_min = float('inf')\n    current_max = -float('inf')\n    \n    # Initialize the result variables\n    result_min = 0\n    result_max = float('inf')\n    \n    # Create a list to keep track of the current elements from each array\n    current_elements = []\n    for i in range(len(arrays)):\n        current_elements.append(arrays[i][pointers[i]])\n    \n    # Update current_min and current_max\n    for num in current_elements:\n        if num < current_min:\n            current_min = num\n        if num > current_max:\n            current_max = num\n    \n    # Initialize the minimum range\n    min_range = current_max - current_min\n    \n    # Main loop to find the smallest range\n    while True:\n        # Find the array with the smallest current element\n        min_index = 0\n        min_value = current_elements[0]\n        for i in range(1, len(current_elements)):\n            if current_elements[i] < min_value:\n                min_value = current_elements[i]\n                min_index = i\n        \n        # Move the pointer of the array with the smallest element\n        pointers[min_index] += 1\n        \n        # Check if we have reached the end of any array\n        if pointers[min_index] >= len(arrays[min_index]):\n            break\n        \n        # Update the current element for the array whose pointer was moved\n        current_elements[min_index] = arrays[min_index][pointers[min_index]]\n        \n        # Update current_min and current_max\n        new_min = min(current_elements)\n        new_max = max(current_elements)\n        \n        # Update the current range\n        new_range = new_max - new_min\n        \n        # Check if the new range is smaller than the current minimum range\n        if new_range < min_range:\n            min_range = new_range\n            result_min = new_min\n            result_max = new_max\n    \n    return (result_min, result_max)",
+  "results": {
+    "assert find_minimum_range([[3, 6, 8, 10, 15], [1, 5, 12], [4, 8, 15, 16], [2, 6]]) == (4, 6)": {
+      "result": true,
+      "time": 0.14483284950256348,
+      "error": null
+    },
+    "assert find_minimum_range([[ 2, 3, 4, 8, 10, 15 ], [1, 5, 12], [7, 8, 15, 16], [3, 6]]) == (4, 7)": {
+      "result": true,
+      "time": 0.12413930892944336,
+      "error": null
+    },
+    "assert find_minimum_range([[4, 7, 9, 11, 16], [2, 6, 13], [5, 9, 16, 17], [3, 7]]) == (5, 7)": {
+      "result": true,
+      "time": 0.32796573638916016,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:54:24",
+    "guidance_input_tokens": 616,
+    "guidance_output_tokens": 465,
+    "end_time": "2025-05-07 18:54:30",
+    "duration": "0:00:06.280552"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,31 @@
+{
+  "code": "def count_Rectangles(r):\n    if r == 0:\n        return 0\n    \n    count = 0\n    for x1 in range(-r, r + 1):\n        for y1 in range(-r, r + 1):\n            for x2 in range(x1 + 1, r + 1):\n                for y2 in range(y1 + 1, r + 1):\n                    if (x1 * x1 + y1 * y1 <= r * r and\n                        x2 * x2 + y2 * y2 <= r * r and\n                        x1 * x1 + y2 * y2 <= r * r and\n                        x2 * x2 + y1 * y1 <= r * r):\n                        count += 1\n    return count",
+  "results": {
+    "assert count_Rectangles(2) == 8": {
+      "result": false,
+      "time": 0.07992696762084961,
+      "error": null
+    },
+    "assert count_Rectangles(1) == 1": {
+      "result": false,
+      "time": 0.08029484748840332,
+      "error": null
+    },
+    "assert count_Rectangles(0) == 0": {
+      "result": true,
+      "time": 0.08027029037475586,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:40:24",
+    "end_time": "2025-05-08 22:40:52",
+    "duration": "0:00:27.825952"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

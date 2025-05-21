@@ -1,0 +1,33 @@
+{
+  "code": "import math\n\ndef sum_common_divisors(a, b):\n    def get_divisors(x):\n        divisors = set()\n        for i in range(1, int(math.sqrt(x)) + 1):\n            if x % i == 0:\n                divisors.add(i)\n                divisors.add(x // i)\n        return divisors\n    \n    divisors_a = get_divisors(a)\n    divisors_b = get_divisors(b)\n    common_divisors = divisors_a & divisors_b\n    return sum(common_divisors)",
+  "results": {
+    "assert sum(10,15) == 6": {
+      "result": false,
+      "time": 0.15267658233642578,
+      "error": null
+    },
+    "assert sum(100,150) == 93": {
+      "result": false,
+      "time": 0.14416956901550293,
+      "error": null
+    },
+    "assert sum(4,6) == 3": {
+      "result": false,
+      "time": 0.13834857940673828,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:28:02",
+    "guidance_input_tokens": 633,
+    "guidance_output_tokens": 134,
+    "end_time": "2025-05-07 18:28:04",
+    "duration": "0:00:02.258043"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

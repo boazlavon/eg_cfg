@@ -1,0 +1,31 @@
+{
+  "code": "import re\ndef check_char(string):\n    pattern = r'^([a-zA-Z])[\\w\\W]*\\1$'\n    if re.match(pattern, string):\n        return \"Valid\"\n    else:\n        return \"Invalid\"",
+  "results": {
+    "assert check_char(\"abba\") == \"Valid\"": {
+      "result": true,
+      "time": 0.08244514465332031,
+      "error": null
+    },
+    "assert check_char(\"a\") == \"Valid\"": {
+      "result": false,
+      "time": 0.09632325172424316,
+      "error": null
+    },
+    "assert check_char(\"abcd\") == \"Invalid\"": {
+      "result": true,
+      "time": 0.10352396965026855,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:05:32",
+    "end_time": "2025-05-08 23:05:35",
+    "duration": "0:00:03.268301"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

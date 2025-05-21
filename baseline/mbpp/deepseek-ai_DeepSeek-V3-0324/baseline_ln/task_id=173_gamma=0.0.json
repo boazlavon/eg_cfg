@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef remove_splchar(input_string):\n    return re.sub(r'[^a-zA-Z0-9]', '', input_string)",
+  "results": {
+    "assert remove_splchar('python  @#&^%$*program123')==('pythonprogram123')": {
+      "result": true,
+      "time": 0.1313788890838623,
+      "error": null
+    },
+    "assert remove_splchar('python %^$@!^&*()  programming24%$^^()    language')==('pythonprogramming24language')": {
+      "result": true,
+      "time": 0.11590099334716797,
+      "error": null
+    },
+    "assert remove_splchar('python   ^%&^()(+_)(_^&67)                  program')==('python67program')": {
+      "result": true,
+      "time": 0.1214592456817627,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:30:30",
+    "guidance_input_tokens": 687,
+    "guidance_output_tokens": 61,
+    "end_time": "2025-05-07 18:30:32",
+    "duration": "0:00:02.084018"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

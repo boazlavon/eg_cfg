@@ -1,0 +1,33 @@
+{
+  "code": "import heapq\n\ndef merge_sorted_list(*args):\n    # Initialize the heap\n    heap = []\n    \n    # Create an iterator for each input list\n    iterators = []\n    for lst in args:\n        iterator = iter(lst)\n        iterators.append(iterator)\n    \n    # Push the first element of each iterator into the heap\n    for i, iterator in enumerate(iterators):\n        try:\n            first_element = next(iterator)\n            heapq.heappush(heap, (first_element, i))\n        except StopIteration:\n            pass\n    \n    # Initialize the result list\n    result = []\n    \n    # Process the heap until it's empty\n    while heap:\n        # Get the smallest element from the heap\n        smallest_element, iterator_index = heapq.heappop(heap)\n        \n        # Add the smallest element to the result\n        result.append(smallest_element)\n        \n        # Get the next element from the same iterator\n        iterator = iterators[iterator_index]\n        try:\n            next_element = next(iterator)\n            heapq.heappush(heap, (next_element, iterator_index))\n        except StopIteration:\n            pass\n    \n    return result",
+  "results": {
+    "assert merge_sorted_list([25, 24, 15, 4, 5, 29, 110],[19, 20, 11, 56, 25, 233, 154],[24, 26, 54, 48])==[4, 5, 11, 15, 19, 20, 24, 24, 25, 25, 26, 29, 48, 54, 56, 110, 154, 233]": {
+      "result": false,
+      "time": 0.1301126480102539,
+      "error": null
+    },
+    "assert merge_sorted_list([1, 3, 5, 6, 8, 9], [2, 5, 7, 11], [1, 4, 7, 8, 12])==[1, 1, 2, 3, 4, 5, 5, 6, 7, 7, 8, 8, 9, 11, 12]": {
+      "result": true,
+      "time": 0.11710762977600098,
+      "error": null
+    },
+    "assert merge_sorted_list([18, 14, 10, 9, 8, 7, 9, 3, 2, 4, 1],[25, 35, 22, 85, 14, 65, 75, 25, 58],[12, 74, 9, 50, 61, 41])==[1, 2, 3, 4, 7, 8, 9, 9, 9, 10, 12, 14, 14, 18, 22, 25, 25, 35, 41, 50, 58, 61, 65, 74, 75, 85]": {
+      "result": false,
+      "time": 0.11135315895080566,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:42:05",
+    "guidance_input_tokens": 819,
+    "guidance_output_tokens": 270,
+    "end_time": "2025-05-07 18:42:09",
+    "duration": "0:00:04.280288"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

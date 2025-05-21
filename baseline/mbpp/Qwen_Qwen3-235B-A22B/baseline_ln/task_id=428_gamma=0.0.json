@@ -1,0 +1,31 @@
+{
+  "code": "def shell_sort(arr):\n    n = len(arr)\n    gap = n // 2\n    while gap > 0:\n        for i in range(gap, n):\n            temp = arr[i]\n            j = i\n            while j >= gap and arr[j - gap] > temp:\n                arr[j] = arr[j - gap]\n                j -= gap\n            arr[j] = temp\n        gap //= 2\n    return arr",
+  "results": {
+    "assert shell_sort([12, 23, 4, 5, 3, 2, 12, 81, 56, 95]) == [2, 3, 4, 5, 12, 12, 23, 56, 81, 95]": {
+      "result": true,
+      "time": 0.0935213565826416,
+      "error": null
+    },
+    "assert shell_sort([24, 22, 39, 34, 87, 73, 68]) == [22, 24, 34, 39, 68, 73, 87]": {
+      "result": true,
+      "time": 0.0798041820526123,
+      "error": null
+    },
+    "assert shell_sort([32, 30, 16, 96, 82, 83, 74]) == [16, 30, 32, 74, 82, 83, 96]": {
+      "result": true,
+      "time": 0.0857076644897461,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:05:51",
+    "end_time": "2025-05-08 23:05:54",
+    "duration": "0:00:02.285308"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

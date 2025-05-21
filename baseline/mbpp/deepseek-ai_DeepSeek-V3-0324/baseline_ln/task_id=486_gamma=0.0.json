@@ -1,0 +1,33 @@
+{
+  "code": "import math\n\ndef binomial_probability(n, k, p):\n    \"\"\"\n    Calculate the binomial probability of getting exactly k successes in n trials\n    with probability p of success on a single trial.\n    \n    Parameters:\n    n (int): Number of trials.\n    k (int): Number of successes.\n    p (float): Probability of success on a single trial.\n    \n    Returns:\n    float: The binomial probability.\n    \"\"\"\n    # Calculate the binomial coefficient: n choose k\n    binomial_coefficient = math.comb(n, k)\n    # Calculate the probability\n    probability = binomial_coefficient * (p ** k) * ((1 - p) ** (n - k))\n    return probability",
+  "results": {
+    "assert binomial_probability(10, 5, 1.0/3) == 0.13656454808718185": {
+      "result": true,
+      "time": 0.12498998641967773,
+      "error": null
+    },
+    "assert binomial_probability(11, 6, 2.0/4) == 0.2255859375": {
+      "result": true,
+      "time": 0.12172937393188477,
+      "error": null
+    },
+    "assert binomial_probability(12, 7, 3.0/5) == 0.227030335488": {
+      "result": true,
+      "time": 0.12505626678466797,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:45:13",
+    "guidance_input_tokens": 676,
+    "guidance_output_tokens": 175,
+    "end_time": "2025-05-07 18:45:16",
+    "duration": "0:00:03.408622"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

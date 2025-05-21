@@ -1,0 +1,33 @@
+{
+  "code": "def max_sum_rectangular_grid(grid, n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return max(grid[0][0], grid[1][0])\n    \n    # Initialize dp arrays for both rows\n    dp0 = [0] * n\n    dp1 = [0] * n\n    \n    # Base cases\n    dp0[0] = grid[0][0]\n    dp1[0] = grid[1][0]\n    \n    if n > 1:\n        dp0[1] = max(grid[0][1], dp1[0] + grid[0][1])\n        dp1[1] = max(grid[1][1], dp0[0] + grid[1][1])\n    \n    # Fill dp arrays for both rows\n    for i in range(2, n):\n        # For row 0\n        option1 = dp1[i-1] + grid[0][i]\n        option2 = max(dp0[i-2], dp1[i-2]) + grid[0][i]\n        dp0[i] = max(option1, option2, grid[0][i])\n        \n        # For row 1\n        option1 = dp0[i-1] + grid[1][i]\n        option2 = max(dp0[i-2], dp1[i-2]) + grid[1][i]\n        dp1[i] = max(option1, option2, grid[1][i])\n    \n    # The result is the maximum of the last elements in both dp arrays\n    result = max(dp0[-1], dp1[-1])\n    return result",
+  "results": {
+    "assert max_sum_rectangular_grid([ [1, 4, 5], [2, 0, 0 ] ], 3) == 7": {
+      "result": true,
+      "time": 0.12355422973632812,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([ [ 1, 2, 3, 4, 5], [ 6, 7, 8, 9, 10] ], 5) == 24": {
+      "result": false,
+      "time": 0.12536358833312988,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([ [7, 9, 11, 15, 19], [21, 25, 28, 31, 32] ], 5) == 81": {
+      "result": false,
+      "time": 0.1289653778076172,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:52:56",
+    "guidance_input_tokens": 578,
+    "guidance_output_tokens": 393,
+    "end_time": "2025-05-07 18:53:01",
+    "duration": "0:00:05.071958"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

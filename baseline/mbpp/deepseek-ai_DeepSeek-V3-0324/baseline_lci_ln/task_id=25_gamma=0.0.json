@@ -1,0 +1,33 @@
+{
+  "code": "def find_Product(arr, n):\n    # Step 1: Create a dictionary to count occurrences of each element\n    count_dict = {}\n    for num in arr:\n        if num in count_dict:\n            count_dict[num] += 1\n        else:\n            count_dict[num] = 1\n    \n    # Step 2: Identify elements that occur only once\n    unique_elements = []\n    for num in count_dict:\n        if count_dict[num] == 1:\n            unique_elements.append(num)\n    \n    # Step 3: Calculate the product of unique elements\n    product = 1\n    for num in unique_elements:\n        product = product * num\n    \n    return product",
+  "results": {
+    "assert find_Product([1,1,2,3],4) == 6": {
+      "result": true,
+      "time": 0.14272427558898926,
+      "error": null
+    },
+    "assert find_Product([1,2,3,1,1],5) == 6": {
+      "result": true,
+      "time": 0.12259817123413086,
+      "error": null
+    },
+    "assert find_Product([1,1,4,5,6],5) == 120": {
+      "result": true,
+      "time": 0.1113119125366211,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:37:47",
+    "guidance_input_tokens": 522,
+    "guidance_output_tokens": 173,
+    "end_time": "2025-05-07 18:37:49",
+    "duration": "0:00:02.640908"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,31 @@
+{
+  "code": "def is_majority(arr, n, x):\n    # Binary search to find the first occurrence of x\n    def first_occurrence(arr, low, high, x):\n        if high >= low:\n            mid = (low + high) // 2\n            if (mid == 0 or x > arr[mid - 1]) and arr[mid] == x:\n                return mid\n            elif x > arr[mid]:\n                return first_occurrence(arr, mid + 1, high, x)\n            else:\n                return first_occurrence(arr, low, mid - 1, x)\n        return -1\n\n    # Binary search to find the last occurrence of x\n    def last_occurrence(arr, low, high, x):\n        if high >= low:\n            mid = (low + high) // 2\n            if (mid == n - 1 or x < arr[mid + 1]) and arr[mid] == x:\n                return mid\n            elif x < arr[mid]:\n                return last_occurrence(arr, low, mid - 1, x)\n            else:\n                return last_occurrence(arr, mid + 1, high, x)\n        return -1\n\n    # Find first and last occurrence of x\n    first = first_occurrence(arr, 0, n - 1, x)\n    if first == -1:\n        return False  # x not present in array\n\n    last = last_occurrence(arr, 0, n - 1, x)\n    count = last - first + 1\n\n    # Check if count is more than n/2\n    return count > n // 2",
+  "results": {
+    "assert is_majority([1, 2, 3, 3, 3, 3, 10], 7, 3) == True": {
+      "result": true,
+      "time": 0.08069849014282227,
+      "error": null
+    },
+    "assert is_majority([1, 1, 2, 4, 4, 4, 6, 6], 8, 4) == False": {
+      "result": true,
+      "time": 0.07465600967407227,
+      "error": null
+    },
+    "assert is_majority([1, 1, 1, 2, 2], 5, 1) == True": {
+      "result": true,
+      "time": 0.07376456260681152,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:28:14",
+    "end_time": "2025-05-08 22:28:37",
+    "duration": "0:00:22.797314"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

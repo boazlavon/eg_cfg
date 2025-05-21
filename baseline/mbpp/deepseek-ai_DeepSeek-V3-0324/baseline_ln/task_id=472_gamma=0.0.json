@@ -1,0 +1,33 @@
+{
+  "code": "def check_Consecutive(lst):\n    if len(lst) < 1:\n        return False\n    min_val = min(lst)\n    max_val = max(lst)\n    if max_val - min_val + 1 == len(lst):\n        # Check for duplicates and correct range\n        return len(set(lst)) == len(lst)\n    return False",
+  "results": {
+    "assert check_Consecutive([1,2,3,4,5]) == True": {
+      "result": true,
+      "time": 0.1327824592590332,
+      "error": null
+    },
+    "assert check_Consecutive([1,2,3,5,6]) == False": {
+      "result": true,
+      "time": 0.11758208274841309,
+      "error": null
+    },
+    "assert check_Consecutive([1,2,1]) == False": {
+      "result": true,
+      "time": 0.11861300468444824,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:44:47",
+    "guidance_input_tokens": 656,
+    "guidance_output_tokens": 77,
+    "end_time": "2025-05-07 18:44:49",
+    "duration": "0:00:01.604314"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

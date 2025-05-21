@@ -1,0 +1,33 @@
+{
+  "code": "def count_pairs(arr, n, k):\n    count = 0\n    seen = set()\n    for num in arr:\n        if num + k in seen:\n            count += 1\n        if num - k in seen:\n            count += 1\n        seen.add(num)\n    return count",
+  "results": {
+    "assert count_pairs([1, 5, 3, 4, 2], 5, 3) == 2": {
+      "result": true,
+      "time": 0.10134387016296387,
+      "error": null
+    },
+    "assert count_pairs([8, 12, 16, 4, 0, 20], 6, 4) == 5": {
+      "result": true,
+      "time": 0.09439492225646973,
+      "error": null
+    },
+    "assert count_pairs([2, 4, 1, 3, 4], 5, 2) == 3": {
+      "result": true,
+      "time": 0.09337449073791504,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:31:01",
+    "guidance_input_tokens": 692,
+    "guidance_output_tokens": 68,
+    "end_time": "2025-05-07 18:31:02",
+    "duration": "0:00:01.695789"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

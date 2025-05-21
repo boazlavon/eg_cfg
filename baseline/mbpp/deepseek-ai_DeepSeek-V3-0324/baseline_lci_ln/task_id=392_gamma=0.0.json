@@ -1,0 +1,33 @@
+{
+  "code": "def get_max_sum(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    sum_n2 = get_max_sum(n // 2)\n    sum_n3 = get_max_sum(n // 3)\n    sum_n4 = get_max_sum(n // 4)\n    sum_n5 = get_max_sum(n // 5)\n    total = sum_n2 + sum_n3 + sum_n4 + sum_n5\n    if total > n:\n        return total\n    else:\n        return n",
+  "results": {
+    "assert get_max_sum(60) == 106": {
+      "result": true,
+      "time": 0.13640809059143066,
+      "error": null
+    },
+    "assert get_max_sum(10) == 12": {
+      "result": true,
+      "time": 0.11714363098144531,
+      "error": null
+    },
+    "assert get_max_sum(2) == 2": {
+      "result": true,
+      "time": 0.12238740921020508,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:56:56",
+    "guidance_input_tokens": 508,
+    "guidance_output_tokens": 143,
+    "end_time": "2025-05-07 18:56:59",
+    "duration": "0:00:02.723165"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

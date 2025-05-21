@@ -1,0 +1,31 @@
+{
+  "code": "def max_val(heterogeneous_list):\n    max_value = None\n    for item in heterogeneous_list:\n        if isinstance(item, (int, float)):\n            if max_value is None:\n                max_value = item\n            else:\n                if item > max_value:\n                    max_value = item\n    return max_value",
+  "results": {
+    "assert max_val(['Python', 3, 2, 4, 5, 'version'])==5": {
+      "result": true,
+      "time": 0.08022451400756836,
+      "error": null
+    },
+    "assert max_val(['Python', 15, 20, 25])==25": {
+      "result": true,
+      "time": 0.07924199104309082,
+      "error": null
+    },
+    "assert max_val(['Python', 30, 20, 40, 50, 'version'])==50": {
+      "result": true,
+      "time": 0.07886314392089844,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:18:26",
+    "end_time": "2025-05-08 22:18:28",
+    "duration": "0:00:01.683763"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

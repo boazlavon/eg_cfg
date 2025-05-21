@@ -1,0 +1,31 @@
+{
+  "code": "def pancake_sort(arr):\n    n = len(arr)\n    current_size = n\n    while current_size > 1:\n        max_index = find_max_index(arr, current_size)\n        if max_index != current_size - 1:\n            if max_index != 0:\n                flip(arr, max_index)\n            flip(arr, current_size - 1)\n        current_size -= 1\n    return arr\n\ndef find_max_index(arr, n):\n    max_index = 0\n    for i in range(n):\n        if arr[i] > arr[max_index]:\n            max_index = i\n    return max_index\n\ndef flip(arr, k):\n    left = 0\n    right = k\n    while left < right:\n        temp = arr[left]\n        arr[left] = arr[right]\n        arr[right] = temp\n        left += 1\n        right -= 1",
+  "results": {
+    "assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]": {
+      "result": true,
+      "time": 0.11214637756347656,
+      "error": null
+    },
+    "assert pancake_sort([98, 12, 54, 36, 85]) == [12, 36, 54, 85, 98]": {
+      "result": true,
+      "time": 0.1052088737487793,
+      "error": null
+    },
+    "assert pancake_sort([41, 42, 32, 12, 23]) == [12, 23, 32, 41, 42]": {
+      "result": true,
+      "time": 0.10961508750915527,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:49:40",
+    "end_time": "2025-05-08 22:50:02",
+    "duration": "0:00:22.326834"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

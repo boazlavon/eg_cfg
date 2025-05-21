@@ -1,0 +1,31 @@
+{
+  "code": "def is_Sum_Of_Powers_Of_Two(n):\n    # Initialize a variable to keep track of the current power of 2\n    power = 0\n    # Initialize a variable to store the current value of the power of 2\n    current_power_value = 2 ** power\n    # Loop until the current power value is less than or equal to the number n\n    while current_power_value <= n:\n        # Check if the current power value is a divisor of n\n        if n % current_power_value == 0:\n            # If it is a divisor, then subtract it from n\n            n = n - current_power_value\n        # Increment the power by 1\n        power = power + 1\n        # Update the current power value\n        current_power_value = 2 ** power\n    # After the loop, check if the remaining value of n is 0\n    if n == 0:\n        # If it is 0, then return True\n        return True\n    else:\n        # Otherwise, return False\n        return False",
+  "results": {
+    "assert is_Sum_Of_Powers_Of_Two(10) == True": {
+      "result": false,
+      "time": 0.08315038681030273,
+      "error": null
+    },
+    "assert is_Sum_Of_Powers_Of_Two(7) == False": {
+      "result": false,
+      "time": 0.08002710342407227,
+      "error": null
+    },
+    "assert is_Sum_Of_Powers_Of_Two(14) == True": {
+      "result": false,
+      "time": 0.08176350593566895,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:28:10",
+    "end_time": "2025-05-08 22:28:16",
+    "duration": "0:00:05.703567"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def extract_freq(tuples_list):\n    # Convert each tuple to a frozenset to handle order-irrelevance and make them hashable\n    unique_tuples = set()\n    for t in tuples_list:\n        # Use frozenset to handle tuples of any length (not just pairs)\n        unique_tuples.add(frozenset(t))\n    return len(unique_tuples)",
+  "results": {
+    "assert extract_freq([(3, 4), (1, 2), (4, 3), (5, 6)] ) == 3": {
+      "result": true,
+      "time": 0.1372661590576172,
+      "error": null
+    },
+    "assert extract_freq([(4, 15), (2, 3), (5, 4), (6, 7)] ) == 4": {
+      "result": true,
+      "time": 0.11781930923461914,
+      "error": null
+    },
+    "assert extract_freq([(5, 16), (2, 3), (6, 5), (6, 9)] ) == 4": {
+      "result": true,
+      "time": 0.09884166717529297,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:41:43",
+    "guidance_input_tokens": 703,
+    "guidance_output_tokens": 156,
+    "end_time": "2025-05-07 18:41:46",
+    "duration": "0:00:03.449319"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

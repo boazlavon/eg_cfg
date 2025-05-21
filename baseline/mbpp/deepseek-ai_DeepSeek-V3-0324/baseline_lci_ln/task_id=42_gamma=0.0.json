@@ -1,0 +1,33 @@
+{
+  "code": "def find_Sum(arr, n):\n    # Create a dictionary to count occurrences of each element\n    count_dict = {}\n    \n    # Iterate through the array to populate the dictionary\n    for num in arr:\n        if num in count_dict:\n            count_dict[num] += 1\n        else:\n            count_dict[num] = 1\n    \n    # Initialize the sum of repeated elements\n    sum_repeated = 0\n    \n    # Iterate through the dictionary to find repeated elements\n    for key in count_dict:\n        if count_dict[key] > 1:\n            sum_repeated += key\n    \n    return sum_repeated",
+  "results": {
+    "assert find_Sum([1,2,3,1,1,4,5,6],8) == 3": {
+      "result": false,
+      "time": 0.13333702087402344,
+      "error": null
+    },
+    "assert find_Sum([1,2,3,1,1],5) == 3": {
+      "result": false,
+      "time": 0.12686920166015625,
+      "error": null
+    },
+    "assert find_Sum([1,1,2],3) == 2": {
+      "result": false,
+      "time": 0.11764168739318848,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:38:49",
+    "guidance_input_tokens": 526,
+    "guidance_output_tokens": 159,
+    "end_time": "2025-05-07 18:38:54",
+    "duration": "0:00:04.507034"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

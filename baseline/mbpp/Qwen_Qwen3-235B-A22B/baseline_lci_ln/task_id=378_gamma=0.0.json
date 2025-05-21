@@ -1,0 +1,31 @@
+{
+  "code": "def move_first(lst):\n    # Check if the list is empty or has only one element\n    if len(lst) <= 1:\n        return lst\n    # Get the last element of the list\n    last_element = lst[-1]\n    # Create a new list starting with the last element\n    new_list = [last_element]\n    # Iterate through the original list except the last element\n    for i in range(len(lst) - 1):\n        # Append each element to the new list\n        new_list.append(lst[i])\n    # Return the modified list\n    return new_list",
+  "results": {
+    "assert move_first([1,2,3,4]) == [4,1,2,3]": {
+      "result": true,
+      "time": 0.07789206504821777,
+      "error": null
+    },
+    "assert move_first([0,1,2,3]) == [3,0,1,2]": {
+      "result": true,
+      "time": 0.08188080787658691,
+      "error": null
+    },
+    "assert move_first([9,8,7,1]) == [1,9,8,7]": {
+      "result": true,
+      "time": 0.08028888702392578,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:47:12",
+    "end_time": "2025-05-08 22:47:14",
+    "duration": "0:00:02.606292"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

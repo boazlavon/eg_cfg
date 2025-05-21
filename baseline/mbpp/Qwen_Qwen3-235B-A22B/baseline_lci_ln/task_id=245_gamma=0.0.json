@@ -1,0 +1,31 @@
+{
+  "code": "def max_sum(arr, n):\n    # Initialize two arrays to store the increasing and decreasing sub-sequence sums\n    inc = [0] * n\n    dec = [0] * n\n    \n    # Step 1: Populate the inc array\n    # inc[i] will store the maximum sum of an increasing sub-sequence ending at i\n    for i in range(n):\n        inc[i] = arr[i]\n        for j in range(i):\n            if arr[j] < arr[i]:\n                if inc[j] + arr[i] > inc[i]:\n                    inc[i] = inc[j] + arr[i]\n    \n    # Step 2: Populate the dec array\n    # dec[i] will store the maximum sum of a decreasing sub-sequence starting at i\n    for i in range(n):\n        dec[i] = arr[i]\n        for j in range(i + 1, n):\n            if arr[j] < arr[i]:\n                if dec[j] + arr[i] > dec[i]:\n                    dec[i] = dec[j] + arr[i]\n    \n    # Step 3: Calculate the maximum bi-tonic sum\n    max_bi_tonic_sum = 0\n    for i in range(n):\n        current_sum = inc[i] + dec[i] - arr[i]\n        if current_sum > max_bi_tonic_sum:\n            max_bi_tonic_sum = current_sum\n    \n    return max_bi_tonic_sum",
+  "results": {
+    "assert max_sum([1, 15, 51, 45, 33, 100, 12, 18, 9], 9) == 194": {
+      "result": false,
+      "time": 0.07494211196899414,
+      "error": null
+    },
+    "assert max_sum([80, 60, 30, 40, 20, 10], 6) == 210": {
+      "result": false,
+      "time": 0.07587933540344238,
+      "error": null
+    },
+    "assert max_sum([2, 3 ,14, 16, 21, 23, 29, 30], 8) == 138": {
+      "result": true,
+      "time": 0.07500267028808594,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:28:55",
+    "end_time": "2025-05-08 22:29:06",
+    "duration": "0:00:10.782966"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

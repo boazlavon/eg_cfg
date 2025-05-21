@@ -1,0 +1,31 @@
+{
+  "code": "def assign_freq(tuple_list):\n    count_dict = {}\n    for t in tuple_list:\n        if t in count_dict:\n            count_dict[t] += 1\n        else:\n            count_dict[t] = 1\n    result = []\n    for key in count_dict:\n        freq = count_dict[key]\n        new_tuple = key + (freq,)\n        result.append(new_tuple)\n    return str(result)",
+  "results": {
+    "assert assign_freq([(6, 5, 8), (2, 7), (6, 5, 8), (6, 5, 8), (9, ), (2, 7)] ) == '[(6, 5, 8, 3), (2, 7, 2), (9, 1)]'": {
+      "result": true,
+      "time": 0.08288311958312988,
+      "error": null
+    },
+    "assert assign_freq([(4, 2, 4), (7, 1), (4, 8), (4, 2, 4), (9, 2), (7, 1)] ) == '[(4, 2, 4, 2), (7, 1, 2), (4, 8, 1), (9, 2, 1)]'": {
+      "result": true,
+      "time": 0.07337236404418945,
+      "error": null
+    },
+    "assert assign_freq([(11, 13, 10), (17, 21), (4, 2, 3), (17, 21), (9, 2), (4, 2, 3)] ) == '[(11, 13, 10, 1), (17, 21, 2), (4, 2, 3, 2), (9, 2, 1)]'": {
+      "result": true,
+      "time": 0.07124805450439453,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:33:56",
+    "end_time": "2025-05-08 22:33:58",
+    "duration": "0:00:02.265573"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

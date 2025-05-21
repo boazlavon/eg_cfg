@@ -1,0 +1,33 @@
+{
+  "code": "from collections import defaultdict\n\ndef extract_singly(tuple_list):\n    count_dict = defaultdict(int)\n    # Count occurrences of each element\n    for tup in tuple_list:\n        for num in tup:\n            count_dict[num] += 1\n    # Extract elements that occur exactly once\n    result = [num for num, count in count_dict.items() if count == 1]\n    return result",
+  "results": {
+    "assert extract_singly([(3, 4, 5), (4, 5, 7), (1, 4)]) == [3, 4, 5, 7, 1]": {
+      "result": false,
+      "time": 0.08326005935668945,
+      "error": null
+    },
+    "assert extract_singly([(1, 2, 3), (4, 2, 3), (7, 8)]) == [1, 2, 3, 4, 7, 8]": {
+      "result": false,
+      "time": 0.09022951126098633,
+      "error": null
+    },
+    "assert extract_singly([(7, 8, 9), (10, 11, 12), (10, 11)]) == [7, 8, 9, 10, 11, 12]": {
+      "result": false,
+      "time": 0.08991074562072754,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:28:36",
+    "guidance_input_tokens": 743,
+    "guidance_output_tokens": 89,
+    "end_time": "2025-05-07 18:28:38",
+    "duration": "0:00:02.022965"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

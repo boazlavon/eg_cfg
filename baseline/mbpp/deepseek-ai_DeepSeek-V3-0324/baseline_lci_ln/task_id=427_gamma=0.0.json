@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef change_date_format(date_string):\n    # Define the regex pattern to match yyyy-mm-dd format\n    pattern = r'^(\\d{4})-(\\d{2})-(\\d{2})$'\n    \n    # Use regex to search for the pattern in the input string\n    match = re.search(pattern, date_string)\n    \n    # Check if the input string matches the pattern\n    if match:\n        # Extract the year, month, and day from the matched groups\n        year = match.group(1)\n        month = match.group(2)\n        day = match.group(3)\n        \n        # Construct the new date string in dd-mm-yyyy format\n        new_date_string = f\"{day}-{month}-{year}\"\n        \n        # Return the new date string\n        return new_date_string\n    else:\n        # Return None or raise an error if the input format is invalid\n        return None",
+  "results": {
+    "assert change_date_format(\"2026-01-02\") == '02-01-2026'": {
+      "result": true,
+      "time": 0.1184535026550293,
+      "error": null
+    },
+    "assert change_date_format(\"2020-11-13\") == '13-11-2020'": {
+      "result": true,
+      "time": 0.1165475845336914,
+      "error": null
+    },
+    "assert change_date_format(\"2021-04-26\") == '26-04-2021'": {
+      "result": true,
+      "time": 0.11527371406555176,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:58:33",
+    "guidance_input_tokens": 517,
+    "guidance_output_tokens": 230,
+    "end_time": "2025-05-07 18:58:37",
+    "duration": "0:00:03.606122"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

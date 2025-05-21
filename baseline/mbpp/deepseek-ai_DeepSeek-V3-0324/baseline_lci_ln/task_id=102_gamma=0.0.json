@@ -1,0 +1,33 @@
+{
+  "code": "def snake_to_camel(snake_str):\n    # Split the string into parts using underscore as delimiter\n    parts = snake_str.split('_')\n    \n    # Initialize an empty list to store the camel case parts\n    camel_parts = []\n    \n    # Iterate over each part in the split string\n    for part in parts:\n        # Capitalize the first letter of each part\n        if part:\n            first_char = part[0].upper()\n            remaining_chars = part[1:]\n            camel_part = first_char + remaining_chars\n            camel_parts.append(camel_part)\n    \n    # Join all the parts into a single string\n    camel_str = ''.join(camel_parts)\n    \n    return camel_str",
+  "results": {
+    "assert snake_to_camel('python_program')=='PythonProgram'": {
+      "result": true,
+      "time": 0.12153077125549316,
+      "error": null
+    },
+    "assert snake_to_camel('python_language')==('PythonLanguage')": {
+      "result": true,
+      "time": 0.12461686134338379,
+      "error": null
+    },
+    "assert snake_to_camel('programming_language')==('ProgrammingLanguage')": {
+      "result": true,
+      "time": 0.11375880241394043,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:41:49",
+    "guidance_input_tokens": 488,
+    "guidance_output_tokens": 176,
+    "end_time": "2025-05-07 18:41:52",
+    "duration": "0:00:02.961015"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

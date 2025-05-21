@@ -1,0 +1,31 @@
+{
+  "code": "def zigzag(n, k):\n    dp = [[0] * (k + 1) for _ in range(n + 1)]\n    dp[0][0] = 1\n    for i in range(1, n + 1):\n        for j in range(1, min(i, k) + 1):\n            dp[i][j] = dp[i][j - 1] + dp[i - 1][i - j]\n    return dp[n][k]",
+  "results": {
+    "assert zigzag(4, 3) == 5": {
+      "result": true,
+      "time": 0.08666729927062988,
+      "error": null
+    },
+    "assert zigzag(4, 2) == 4": {
+      "result": false,
+      "time": 0.08496475219726562,
+      "error": null
+    },
+    "assert zigzag(3, 1) == 1": {
+      "result": false,
+      "time": 0.08133935928344727,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:18:59",
+    "end_time": "2025-05-08 22:19:21",
+    "duration": "0:00:22.697673"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

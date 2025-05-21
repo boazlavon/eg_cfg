@@ -1,0 +1,31 @@
+{
+  "code": "import heapq\n\ndef heap_replace(heap, new_item):\n    # Step 1: Find the smallest element in the heap\n    smallest = heap[0]\n    \n    # Step 2: Remove the smallest element from the heap\n    # We pop the root element (smallest) and restructure the heap\n    # Using heapq.heappop to maintain heap property\n    heapq.heappop(heap)\n    \n    # Step 3: Insert the new item into the heap\n    # Using heapq.heappush to maintain heap property\n    heapq.heappush(heap, new_item)\n    \n    # Step 4: Return the modified heap\n    return heap\n\n# Test cases\nassert heap_replace([25, 44, 68, 21, 39, 23, 89], 21) == [21, 25, 23, 44, 39, 68, 89]\nassert heap_replace([25, 44, 68, 21, 39, 23, 89], 110) == [23, 25, 68, 44, 39, 110, 89]\nassert heap_replace([25, 44, 68, 21, 39, 23, 89], 500) == [23, 25, 68, 44, 39, 500, 89]",
+  "results": {
+    "assert heap_replace( [25, 44, 68, 21, 39, 23, 89],21)==[21, 25, 23, 44, 39, 68, 89]": {
+      "result": false,
+      "time": 0.08142662048339844,
+      "error": null
+    },
+    "assert heap_replace([25, 44, 68, 21, 39, 23, 89],110)== [23, 25, 68, 44, 39, 110, 89]": {
+      "result": false,
+      "time": 0.07892417907714844,
+      "error": null
+    },
+    "assert heap_replace([25, 44, 68, 21, 39, 23, 89],500)==[23, 25, 68, 44, 39, 500, 89]": {
+      "result": false,
+      "time": 0.07756948471069336,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:40:55",
+    "end_time": "2025-05-08 22:41:00",
+    "duration": "0:00:04.558658"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

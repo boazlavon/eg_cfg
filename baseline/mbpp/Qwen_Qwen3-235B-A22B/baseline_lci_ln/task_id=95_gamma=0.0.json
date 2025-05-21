@@ -1,0 +1,31 @@
+{
+  "code": "def Find_Min_Length(list_of_lists):\n    min_length = None\n    for sublist in list_of_lists:\n        current_length = len(sublist)\n        if min_length is None:\n            min_length = current_length\n        else:\n            if current_length < min_length:\n                min_length = current_length\n    return min_length",
+  "results": {
+    "assert Find_Min_Length([[1],[1,2]]) == 1": {
+      "result": true,
+      "time": 0.08440637588500977,
+      "error": null
+    },
+    "assert Find_Min_Length([[1,2],[1,2,3],[1,2,3,4]]) == 2": {
+      "result": true,
+      "time": 0.08447384834289551,
+      "error": null
+    },
+    "assert Find_Min_Length([[3,3,3],[4,4,4,4]]) == 3": {
+      "result": true,
+      "time": 0.08061742782592773,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:23:11",
+    "end_time": "2025-05-08 22:23:14",
+    "duration": "0:00:02.485863"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

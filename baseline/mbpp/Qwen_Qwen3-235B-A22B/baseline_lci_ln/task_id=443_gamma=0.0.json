@@ -1,0 +1,31 @@
+{
+  "code": "def largest_neg(numbers):\n    largest_negative = None\n    for num in numbers:\n        if num < 0:\n            if largest_negative is None:\n                largest_negative = num\n            else:\n                if num < largest_negative:\n                    largest_negative = num\n    return largest_negative",
+  "results": {
+    "assert largest_neg([1,2,3,-4,-6]) == -6": {
+      "result": true,
+      "time": 0.07953071594238281,
+      "error": null
+    },
+    "assert largest_neg([1,2,3,-8,-9]) == -9": {
+      "result": true,
+      "time": 0.08121418952941895,
+      "error": null
+    },
+    "assert largest_neg([1,2,3,4,-1]) == -1": {
+      "result": true,
+      "time": 0.07982087135314941,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:52:56",
+    "end_time": "2025-05-08 22:52:58",
+    "duration": "0:00:01.700843"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

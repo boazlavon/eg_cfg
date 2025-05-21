@@ -1,0 +1,31 @@
+{
+  "code": "def zigzag(n, k):\n    # Initialize a 2D list to store entringer numbers\n    dp = []\n    # Create a 2D list with (n+1) rows and (k+1) columns filled with zeros\n    for i in range(n + 1):\n        row = []\n        for j in range(k + 1):\n            row.append(0)\n        dp.append(row)\n    # Base case: entringer number e(0, 0) is 1\n    dp[0][0] = 1\n    # Fill the dp table using recurrence relation\n    for i in range(1, n + 1):\n        for j in range(0, k + 1):\n            # If j > i, entringer number is 0\n            if j > i:\n                dp[i][j] = 0\n            # If j == 0, entringer number is 0\n            elif j == 0:\n                dp[i][j] = 0\n            else:\n                # Calculate the sum of previous values\n                sum_val = 0\n                # Sum all values from previous row up to current column\n                for l in range(0, j + 1):\n                    sum_val += dp[i - 1][i - l]\n                # Assign the calculated value to current cell\n                dp[i][j] = sum_val\n    # Return the entringer number e(n, k)\n    return dp[n][k]",
+  "results": {
+    "assert zigzag(4, 3) == 5": {
+      "result": false,
+      "time": 0.10703420639038086,
+      "error": null
+    },
+    "assert zigzag(4, 2) == 4": {
+      "result": false,
+      "time": 0.11146020889282227,
+      "error": null
+    },
+    "assert zigzag(3, 1) == 1": {
+      "result": false,
+      "time": 0.10997557640075684,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:17:27",
+    "end_time": "2025-05-08 22:17:32",
+    "duration": "0:00:05.442284"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

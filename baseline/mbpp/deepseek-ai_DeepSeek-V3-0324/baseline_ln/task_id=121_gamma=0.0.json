@@ -1,0 +1,33 @@
+{
+  "code": "def check_triplet(arr, n, target, start):\n    \"\"\"\n    Check if there exists a triplet in the array whose sum equals the target.\n    \n    Parameters:\n    arr (list): The input array.\n    n (int): The length of the array.\n    target (int): The target sum to check.\n    start (int): The starting index for the search (unused in this implementation).\n    \n    Returns:\n    bool: True if a triplet exists, False otherwise.\n    \"\"\"\n    arr.sort()  # Sort the array to use the two-pointer technique\n    for i in range(n - 2):\n        left = i + 1\n        right = n - 1\n        while left < right:\n            current_sum = arr[i] + arr[left] + arr[right]\n            if current_sum == target:\n                return True\n            elif current_sum < target:\n                left += 1\n            else:\n                right -= 1\n    return False",
+  "results": {
+    "assert check_triplet([2, 7, 4, 0, 9, 5, 1, 3], 8, 6, 0) == True": {
+      "result": true,
+      "time": 0.17641663551330566,
+      "error": null
+    },
+    "assert check_triplet([1, 4, 5, 6, 7, 8, 5, 9], 8, 6, 0) == False": {
+      "result": true,
+      "time": 0.1294553279876709,
+      "error": null
+    },
+    "assert check_triplet([10, 4, 2, 3, 5], 5, 15, 0) == True": {
+      "result": true,
+      "time": 0.1307840347290039,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:27:44",
+    "guidance_input_tokens": 712,
+    "guidance_output_tokens": 260,
+    "end_time": "2025-05-07 18:27:48",
+    "duration": "0:00:03.811196"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

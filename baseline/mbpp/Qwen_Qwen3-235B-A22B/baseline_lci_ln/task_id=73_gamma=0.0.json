@@ -1,0 +1,31 @@
+{
+  "code": "import re\n\ndef multiple_split(text):\n    pattern = r'[\\n*]'\n    split_result = re.split(pattern, text)\n    filtered_result = []\n    for part in split_result:\n        if part:\n            filtered_result.append(part)\n    return filtered_result",
+  "results": {
+    "assert multiple_split('Forces of the \\ndarkness*are coming into the play.') == ['Forces of the ', 'darkness', 'are coming into the play.']": {
+      "result": true,
+      "time": 0.07969164848327637,
+      "error": null
+    },
+    "assert multiple_split('Mi Box runs on the \\n Latest android*which has google assistance and chromecast.') == ['Mi Box runs on the ', ' Latest android', 'which has google assistance and chromecast.']": {
+      "result": true,
+      "time": 0.07881355285644531,
+      "error": null
+    },
+    "assert multiple_split('Certain services\\nare subjected to change*over the seperate subscriptions.') == ['Certain services', 'are subjected to change', 'over the seperate subscriptions.']": {
+      "result": true,
+      "time": 0.0788578987121582,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:33:58",
+    "end_time": "2025-05-08 22:34:20",
+    "duration": "0:00:21.664629"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

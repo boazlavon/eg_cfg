@@ -1,0 +1,33 @@
+{
+  "code": "def count_Hexadecimal(start, end):\n    count = 0\n    for num in range(start, end + 1):\n        hex_str = hex(num)[2:]  # Convert to hex and remove '0x' prefix\n        if all(c in 'abcdef' for c in hex_str.lower()):\n            count += 1\n    return count",
+  "results": {
+    "assert count_Hexadecimal(10,15) == 6": {
+      "result": true,
+      "time": 0.10238432884216309,
+      "error": null
+    },
+    "assert count_Hexadecimal(2,4) == 0": {
+      "result": true,
+      "time": 0.08711886405944824,
+      "error": null
+    },
+    "assert count_Hexadecimal(15,16) == 1": {
+      "result": true,
+      "time": 0.09127974510192871,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:27:06",
+    "guidance_input_tokens": 639,
+    "guidance_output_tokens": 79,
+    "end_time": "2025-05-07 18:27:08",
+    "duration": "0:00:02.340411"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

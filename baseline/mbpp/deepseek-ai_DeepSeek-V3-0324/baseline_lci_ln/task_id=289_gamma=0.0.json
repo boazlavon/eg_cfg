@@ -1,0 +1,33 @@
+{
+  "code": "def odd_Days(year):\n    # Step 1: Calculate the number of years since the reference year (0001 AD)\n    years_since_ref = year - 1\n    \n    # Step 2: Calculate the number of leap years\n    # Leap years are divisible by 4, but not by 100 unless also divisible by 400\n    leap_years = years_since_ref // 4\n    century_years = years_since_ref // 100\n    leap_years = leap_years - century_years\n    leap_years = leap_years + (years_since_ref // 400)\n    \n    # Step 3: Calculate the number of ordinary years\n    ordinary_years = years_since_ref - leap_years\n    \n    # Step 4: Calculate the total number of days\n    # Each leap year contributes 2 odd days (366 % 7 = 2)\n    # Each ordinary year contributes 1 odd day (365 % 7 = 1)\n    total_odd_days = (leap_years * 2) + (ordinary_years * 1)\n    \n    # Step 5: Calculate the odd days modulo 7 to get the final result\n    result = total_odd_days % 7\n    \n    return result",
+  "results": {
+    "assert odd_Days(100) == 5": {
+      "result": false,
+      "time": 0.10321283340454102,
+      "error": null
+    },
+    "assert odd_Days(50) ==6": {
+      "result": false,
+      "time": 0.11881899833679199,
+      "error": null
+    },
+    "assert odd_Days(75) == 2": {
+      "result": false,
+      "time": 0.10368919372558594,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:51:39",
+    "guidance_input_tokens": 478,
+    "guidance_output_tokens": 295,
+    "end_time": "2025-05-07 18:51:43",
+    "duration": "0:00:04.135313"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

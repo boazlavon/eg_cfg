@@ -1,0 +1,31 @@
+{
+  "code": "def find_demlo(input_string):\n    length = len(input_string)\n    result = []\n    for i in range(length):\n        current_number = i + 1\n        result.append(current_number)\n    for j in range(length - 1, 0, -1):\n        current_number = j\n        result.append(current_number)\n    demlo_number = ''.join(map(str, result))\n    return demlo_number",
+  "results": {
+    "assert find_demlo(\"111111\") == '12345654321'": {
+      "result": true,
+      "time": 0.08122634887695312,
+      "error": null
+    },
+    "assert find_demlo(\"1111\") == '1234321'": {
+      "result": true,
+      "time": 0.0779118537902832,
+      "error": null
+    },
+    "assert find_demlo(\"13333122222\") == '123456789101110987654321'": {
+      "result": true,
+      "time": 0.0785672664642334,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:25:06",
+    "end_time": "2025-05-08 22:25:08",
+    "duration": "0:00:02.819390"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

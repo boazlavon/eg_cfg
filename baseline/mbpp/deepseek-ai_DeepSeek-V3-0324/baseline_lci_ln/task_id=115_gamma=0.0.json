@@ -1,0 +1,33 @@
+{
+  "code": "def empty_dit(lst):\n    # Check if the input is a dictionary (not a list)\n    if isinstance(lst, dict):\n        return not lst\n    \n    # Initialize a flag to track if all dictionaries are empty\n    all_empty = True\n    \n    # Iterate over each item in the list\n    for item in lst:\n        # Check if the item is a dictionary\n        if isinstance(item, dict):\n            # If the dictionary is not empty, set the flag to False\n            if item:\n                all_empty = False\n                break\n        else:\n            # If the item is not a dictionary, set the flag to False\n            all_empty = False\n            break\n    \n    return all_empty",
+  "results": {
+    "assert empty_dit([{},{},{}])==True": {
+      "result": true,
+      "time": 0.12286877632141113,
+      "error": null
+    },
+    "assert empty_dit([{1,2},{},{}])==False": {
+      "result": true,
+      "time": 0.1315925121307373,
+      "error": null
+    },
+    "assert empty_dit({})==True": {
+      "result": true,
+      "time": 0.12063908576965332,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:42:33",
+    "guidance_input_tokens": 483,
+    "guidance_output_tokens": 173,
+    "end_time": "2025-05-07 18:42:37",
+    "duration": "0:00:03.746928"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

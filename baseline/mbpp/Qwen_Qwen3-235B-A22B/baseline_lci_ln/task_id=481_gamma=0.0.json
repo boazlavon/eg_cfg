@@ -1,0 +1,31 @@
+{
+  "code": "def is_subset_sum(set_list, set_size, target_sum):\n    # Base case: if target sum is 0, return True\n    if target_sum == 0:\n        return True\n    # Base case: if set size is 0 and target sum is not 0, return False\n    if set_size == 0:\n        return False\n    # If the last element is greater than the target sum, skip it\n    if set_list[set_size - 1] > target_sum:\n        result = is_subset_sum(set_list, set_size - 1, target_sum)\n        return result\n    # Include or exclude the last element and check recursively\n    include_last = is_subset_sum(set_list, set_size - 1, target_sum - set_list[set_size - 1])\n    exclude_last = is_subset_sum(set_list, set_size - 1, target_sum)\n    final_result = include_last or exclude_last\n    return final_result",
+  "results": {
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 9) == True": {
+      "result": true,
+      "time": 0.07112264633178711,
+      "error": null
+    },
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 30) == False": {
+      "result": true,
+      "time": 0.07459235191345215,
+      "error": null
+    },
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 15) == True": {
+      "result": true,
+      "time": 0.07229161262512207,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:42:53",
+    "end_time": "2025-05-08 22:42:57",
+    "duration": "0:00:04.696294"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

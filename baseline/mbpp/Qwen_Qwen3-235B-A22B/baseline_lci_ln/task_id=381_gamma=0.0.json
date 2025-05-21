@@ -1,0 +1,31 @@
+{
+  "code": "def index_on_inner_list(list_of_lists, index):\n    # Step 1: Create a shallow copy of the list to avoid modifying the original\n    copied_list = []\n    for item in list_of_lists:\n        copied_list.append(item)\n\n    # Step 2: Implement a simple sorting algorithm (bubble sort)\n    n = len(copied_list)\n    for i in range(n):\n        for j in range(0, n - i - 1):\n            # Get the current and next elements at the specified index\n            current_element = copied_list[j]\n            next_element = copied_list[j + 1]\n            current_value = current_element[index]\n            next_value = next_element[index]\n\n            # Compare and swap if necessary\n            if current_value > next_value:\n                temp = copied_list[j]\n                copied_list[j] = copied_list[j + 1]\n                copied_list[j + 1] = temp\n\n    # Step 3: Return the sorted list\n    return copied_list",
+  "results": {
+    "assert index_on_inner_list([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)] ,0)==[('Beau Turnbull', 94, 98), ('Brady Kent', 97, 96), ('Greyson Fulton', 98, 99), ('Wyatt Knott', 91, 94)]": {
+      "result": true,
+      "time": 0.12355875968933105,
+      "error": null
+    },
+    "assert index_on_inner_list([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)] ,1)==[('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98), ('Brady Kent', 97, 96), ('Greyson Fulton', 98, 99)]": {
+      "result": true,
+      "time": 0.0878136157989502,
+      "error": null
+    },
+    "assert index_on_inner_list([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)] ,2)==[('Wyatt Knott', 91, 94), ('Brady Kent', 97, 96), ('Beau Turnbull', 94, 98), ('Greyson Fulton', 98, 99)]": {
+      "result": true,
+      "time": 0.08708858489990234,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:48:59",
+    "end_time": "2025-05-08 22:49:06",
+    "duration": "0:00:07.039754"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

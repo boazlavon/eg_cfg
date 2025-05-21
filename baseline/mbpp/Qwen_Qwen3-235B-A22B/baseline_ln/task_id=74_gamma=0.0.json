@@ -1,0 +1,31 @@
+{
+  "code": "def is_samepatterns(colors, patterns):\n    if len(colors) != len(patterns):\n        return False\n    color_to_pattern = {}\n    pattern_to_color = {}\n    for color, pattern in zip(colors, patterns):\n        if color in color_to_pattern:\n            if color_to_pattern[color] != pattern:\n                return False\n        else:\n            color_to_pattern[color] = pattern\n        if pattern in pattern_to_color:\n            if pattern_to_color[pattern] != color:\n                return False\n        else:\n            pattern_to_color[pattern] = color\n    return True",
+  "results": {
+    "assert is_samepatterns([\"red\",\"green\",\"green\"], [\"a\", \"b\", \"b\"])==True ": {
+      "result": true,
+      "time": 0.07877254486083984,
+      "error": null
+    },
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\",\"b\"])==False ": {
+      "result": true,
+      "time": 0.08066439628601074,
+      "error": null
+    },
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\"])==False ": {
+      "result": true,
+      "time": 0.0752716064453125,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:54:49",
+    "end_time": "2025-05-08 22:54:51",
+    "duration": "0:00:02.436605"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

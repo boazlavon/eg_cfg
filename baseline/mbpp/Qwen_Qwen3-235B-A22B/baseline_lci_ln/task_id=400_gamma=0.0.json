@@ -1,0 +1,31 @@
+{
+  "code": "def extract_freq(tuples_list):\n    unique_sets = []\n    for tuple in tuples_list:\n        sorted_tuple = tuple(sorted(tuple))\n        if sorted_tuple not in unique_sets:\n            unique_sets.append(sorted_tuple)\n    frequency = len(unique_sets)\n    return frequency",
+  "results": {
+    "assert extract_freq([(3, 4), (1, 2), (4, 3), (5, 6)] ) == 3": {
+      "result": false,
+      "time": 0.07921385765075684,
+      "error": null
+    },
+    "assert extract_freq([(4, 15), (2, 3), (5, 4), (6, 7)] ) == 4": {
+      "result": false,
+      "time": 0.07895731925964355,
+      "error": null
+    },
+    "assert extract_freq([(5, 16), (2, 3), (6, 5), (6, 9)] ) == 4": {
+      "result": false,
+      "time": 0.07914948463439941,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:41:50",
+    "end_time": "2025-05-08 22:41:52",
+    "duration": "0:00:01.710397"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

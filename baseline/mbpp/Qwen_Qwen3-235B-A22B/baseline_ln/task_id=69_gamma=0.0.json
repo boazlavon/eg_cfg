@@ -1,0 +1,31 @@
+{
+  "code": "def is_sublist(lst, sublst):\n    if not sublst:\n        return True\n    for i in range(len(lst) - len(sublst) + 1):\n        if lst[i:i+len(sublst)] == sublst:\n            return True\n    return False",
+  "results": {
+    "assert is_sublist([2,4,3,5,7],[3,7])==False": {
+      "result": true,
+      "time": 0.08408260345458984,
+      "error": null
+    },
+    "assert is_sublist([2,4,3,5,7],[4,3])==True": {
+      "result": true,
+      "time": 0.08562135696411133,
+      "error": null
+    },
+    "assert is_sublist([2,4,3,5,7],[1,6])==False": {
+      "result": true,
+      "time": 0.07984375953674316,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:52:19",
+    "end_time": "2025-05-08 22:52:21",
+    "duration": "0:00:01.880608"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

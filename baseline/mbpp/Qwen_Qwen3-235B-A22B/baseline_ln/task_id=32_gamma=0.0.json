@@ -1,0 +1,31 @@
+{
+  "code": "def max_Prime_Factors(n):\n    largest_prime = -1\n    # Divide out the factor of 2\n    while n % 2 == 0:\n        largest_prime = 2\n        n //= 2\n    # Check odd numbers up to sqrt(n)\n    i = 3\n    while i * i <= n:\n        while n % i == 0:\n            largest_prime = i\n            n //= i\n        i += 2\n    # If n is a prime number > 2\n    if n > 2:\n        largest_prime = n\n    return largest_prime",
+  "results": {
+    "assert max_Prime_Factors(15) == 5": {
+      "result": true,
+      "time": 0.0825347900390625,
+      "error": null
+    },
+    "assert max_Prime_Factors(6) == 3": {
+      "result": true,
+      "time": 0.073486328125,
+      "error": null
+    },
+    "assert max_Prime_Factors(2) == 2": {
+      "result": true,
+      "time": 0.07634782791137695,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:35:14",
+    "end_time": "2025-05-08 22:35:17",
+    "duration": "0:00:02.915015"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

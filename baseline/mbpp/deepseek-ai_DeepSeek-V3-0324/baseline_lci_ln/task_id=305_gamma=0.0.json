@@ -1,0 +1,33 @@
+{
+  "code": "def start_withp(words):\n    p_words = []\n    for phrase in words:\n        split_words = phrase.split()\n        for word in split_words:\n            if word[0].lower() == 'p':\n                p_words.append(word)\n    if len(p_words) >= 2:\n        first_word = p_words[0]\n        second_word = p_words[1]\n        return (first_word, second_word)\n    else:\n        return ()",
+  "results": {
+    "assert start_withp([\"Python PHP\", \"Java JavaScript\", \"c c++\"])==('Python', 'PHP')": {
+      "result": true,
+      "time": 0.12063813209533691,
+      "error": null
+    },
+    "assert start_withp([\"Python Programming\",\"Java Programming\"])==('Python','Programming')": {
+      "result": true,
+      "time": 0.1201169490814209,
+      "error": null
+    },
+    "assert start_withp([\"Pqrst Pqr\",\"qrstuv\"])==('Pqrst','Pqr')": {
+      "result": true,
+      "time": 0.10393524169921875,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:52:27",
+    "guidance_input_tokens": 516,
+    "guidance_output_tokens": 112,
+    "end_time": "2025-05-07 18:52:29",
+    "duration": "0:00:02.387745"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

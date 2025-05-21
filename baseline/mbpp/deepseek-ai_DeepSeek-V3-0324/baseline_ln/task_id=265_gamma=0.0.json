@@ -1,0 +1,33 @@
+{
+  "code": "def list_split(lst, n):\n    result = [[] for _ in range(n)]\n    for i in range(len(lst)):\n        result[i % n].append(lst[i])\n    return result",
+  "results": {
+    "assert list_split(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'],3)==[['a', 'd', 'g', 'j', 'm'], ['b', 'e', 'h', 'k', 'n'], ['c', 'f', 'i', 'l']] ": {
+      "result": true,
+      "time": 0.13067078590393066,
+      "error": null
+    },
+    "assert list_split([1,2,3,4,5,6,7,8,9,10,11,12,13,14],3)==[[1,4,7,10,13], [2,5,8,11,14], [3,6,9,12]] ": {
+      "result": true,
+      "time": 0.12717747688293457,
+      "error": null
+    },
+    "assert list_split(['python','java','C','C++','DBMS','SQL'],2)==[['python', 'C', 'DBMS'], ['java', 'C++', 'SQL']] ": {
+      "result": true,
+      "time": 0.11691832542419434,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:34:41",
+    "guidance_input_tokens": 797,
+    "guidance_output_tokens": 44,
+    "end_time": "2025-05-07 18:34:43",
+    "duration": "0:00:01.928345"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

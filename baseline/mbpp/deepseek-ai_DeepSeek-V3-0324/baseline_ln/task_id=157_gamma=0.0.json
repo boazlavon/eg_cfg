@@ -1,0 +1,33 @@
+{
+  "code": "def encode_list(lst):\n    if not lst:\n        return []\n    \n    encoded = []\n    current = lst[0]\n    count = 1\n    \n    for item in lst[1:]:\n        if item == current:\n            count += 1\n        else:\n            encoded.append([count, current])\n            current = item\n            count = 1\n    encoded.append([count, current])\n    \n    return encoded",
+  "results": {
+    "assert encode_list([1,1,2,3,4,4.3,5,1])==[[2, 1], [1, 2], [1, 3], [1, 4], [1, 4.3], [1, 5], [1, 1]]": {
+      "result": true,
+      "time": 0.1000068187713623,
+      "error": null
+    },
+    "assert encode_list('automatically')==[[1, 'a'], [1, 'u'], [1, 't'], [1, 'o'], [1, 'm'], [1, 'a'], [1, 't'], [1, 'i'], [1, 'c'], [1, 'a'], [2, 'l'], [1, 'y']]": {
+      "result": true,
+      "time": 0.09412479400634766,
+      "error": null
+    },
+    "assert encode_list('python')==[[1, 'p'], [1, 'y'], [1, 't'], [1, 'h'], [1, 'o'], [1, 'n']]": {
+      "result": true,
+      "time": 0.0883030891418457,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:29:38",
+    "guidance_input_tokens": 789,
+    "guidance_output_tokens": 105,
+    "end_time": "2025-05-07 18:29:48",
+    "duration": "0:00:09.934387"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

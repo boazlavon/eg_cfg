@@ -1,0 +1,33 @@
+{
+  "code": "def count_pairs(arr, n, k):\n    # Initialize a set to store unique elements from the array\n    unique_elements = set()\n    for num in arr:\n        unique_elements.add(num)\n    \n    # Convert the set back to a list for iteration\n    unique_list = list(unique_elements)\n    \n    # Initialize a counter for the pairs\n    pair_count = 0\n    \n    # Iterate through each unique element in the list\n    for num in unique_list:\n        # Calculate the target value that would form a pair with the current number\n        target = num + k\n        \n        # Check if the target exists in the set of unique elements\n        if target in unique_elements:\n            pair_count += 1\n    \n    # Return the total count of such pairs\n    return pair_count",
+  "results": {
+    "assert count_pairs([1, 5, 3, 4, 2], 5, 3) == 2": {
+      "result": true,
+      "time": 0.1272904872894287,
+      "error": null
+    },
+    "assert count_pairs([8, 12, 16, 4, 0, 20], 6, 4) == 5": {
+      "result": true,
+      "time": 0.12642550468444824,
+      "error": null
+    },
+    "assert count_pairs([2, 4, 1, 3, 4], 5, 2) == 3": {
+      "result": false,
+      "time": 0.1301441192626953,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:46:12",
+    "guidance_input_tokens": 537,
+    "guidance_output_tokens": 204,
+    "end_time": "2025-05-07 18:46:16",
+    "duration": "0:00:03.440392"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

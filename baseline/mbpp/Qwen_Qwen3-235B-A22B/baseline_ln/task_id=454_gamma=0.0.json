@@ -1,0 +1,31 @@
+{
+  "code": "import re\ndef text_match_wordz(text):\n    pattern = re.compile(r'\\w*z\\w*')\n    match = pattern.search(text)\n    return 'Found a match!' if match else 'Not matched!'",
+  "results": {
+    "assert text_match_wordz(\"pythonz.\")==('Found a match!')": {
+      "result": true,
+      "time": 0.08188247680664062,
+      "error": null
+    },
+    "assert text_match_wordz(\"xyz.\")==('Found a match!')": {
+      "result": true,
+      "time": 0.0772552490234375,
+      "error": null
+    },
+    "assert text_match_wordz(\"  lang  .\")==('Not matched!')": {
+      "result": true,
+      "time": 0.07971930503845215,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:53:52",
+    "end_time": "2025-05-08 22:54:12",
+    "duration": "0:00:20.312940"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

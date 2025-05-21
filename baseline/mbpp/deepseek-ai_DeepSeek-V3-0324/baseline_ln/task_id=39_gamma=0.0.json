@@ -1,0 +1,33 @@
+{
+  "code": "import heapq\n\ndef rearange_string(s):\n    if not s:\n        return \"\"\n    \n    # Count the frequency of each character\n    freq = {}\n    for char in s:\n        freq[char] = freq.get(char, 0) + 1\n    \n    # Create a max heap based on frequency\n    max_heap = []\n    for char, count in freq.items():\n        heapq.heappush(max_heap, (-count, char))\n    \n    result = []\n    prev_count, prev_char = 0, ''\n    \n    while max_heap:\n        current_neg_count, current_char = heapq.heappop(max_heap)\n        current_count = -current_neg_count\n        \n        result.append(current_char)\n        current_count -= 1\n        \n        if prev_count > 0:\n            heapq.heappush(max_heap, (-prev_count, prev_char))\n        \n        prev_count, prev_char = current_count, current_char\n    \n    # Check if rearrangement is possible\n    if len(result) != len(s):\n        return \"\"\n    else:\n        return ''.join(result)",
+  "results": {
+    "assert rearange_string(\"aab\")==('aba')": {
+      "result": true,
+      "time": 0.13268113136291504,
+      "error": null
+    },
+    "assert rearange_string(\"aabb\")==('abab')": {
+      "result": true,
+      "time": 0.11893701553344727,
+      "error": null
+    },
+    "assert rearange_string(\"abccdd\")==('cdabcd')": {
+      "result": true,
+      "time": 0.11448216438293457,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:24:22",
+    "guidance_input_tokens": 652,
+    "guidance_output_tokens": 446,
+    "end_time": "2025-05-07 18:24:28",
+    "duration": "0:00:06.333719"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

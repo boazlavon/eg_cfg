@@ -1,0 +1,33 @@
+{
+  "code": "from collections import defaultdict\n\ndef first_Element(arr, n, k):\n    freq = defaultdict(int)\n    for num in arr:\n        freq[num] += 1\n        if freq[num] == k:\n            return num\n    return -1  # in case no element occurs k times",
+  "results": {
+    "assert first_Element([0,1,2,3,4,5],6,1) == 0": {
+      "result": true,
+      "time": 0.11623239517211914,
+      "error": null
+    },
+    "assert first_Element([1,2,1,3,4],5,2) == 1": {
+      "result": true,
+      "time": 0.11364197731018066,
+      "error": null
+    },
+    "assert first_Element([2,3,4,3,5,7,1,2,3,5],10,2) == 2": {
+      "result": false,
+      "time": 0.12240839004516602,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:39:16",
+    "guidance_input_tokens": 682,
+    "guidance_output_tokens": 65,
+    "end_time": "2025-05-07 18:39:17",
+    "duration": "0:00:01.698970"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

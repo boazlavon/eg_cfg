@@ -1,0 +1,33 @@
+{
+  "code": "def max_volume(s):\n    if s < 3:\n        return 0\n    max_vol = 0\n    for a in range(1, s - 1):\n        for b in range(1, s - a):\n            c = s - a - b\n            volume = a * b * c\n            if volume > max_vol:\n                max_vol = volume\n    return max_vol",
+  "results": {
+    "assert max_volume(8) == 18": {
+      "result": true,
+      "time": 0.1367347240447998,
+      "error": null
+    },
+    "assert max_volume(4) == 2": {
+      "result": true,
+      "time": 0.12770295143127441,
+      "error": null
+    },
+    "assert max_volume(1) == 0": {
+      "result": true,
+      "time": 0.12282991409301758,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:53:09",
+    "guidance_input_tokens": 481,
+    "guidance_output_tokens": 122,
+    "end_time": "2025-05-07 18:53:15",
+    "duration": "0:00:05.674852"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

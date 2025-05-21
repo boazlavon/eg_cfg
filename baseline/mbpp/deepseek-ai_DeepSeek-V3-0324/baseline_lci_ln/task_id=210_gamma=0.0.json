@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef is_allowed_specific_char(input_string):\n    # Define the pattern for allowed characters\n    pattern = r'^[a-zA-Z0-9]+$'\n    \n    # Compile the regex pattern\n    regex = re.compile(pattern)\n    \n    # Check if the input string matches the pattern\n    match = regex.match(input_string)\n    \n    # Return True if there is a match, False otherwise\n    if match:\n        return True\n    else:\n        return False",
+  "results": {
+    "assert is_allowed_specific_char(\"ABCDEFabcdef123450\") == True": {
+      "result": true,
+      "time": 0.09898638725280762,
+      "error": null
+    },
+    "assert is_allowed_specific_char(\"*&%@#!}{\") == False": {
+      "result": true,
+      "time": 0.0951085090637207,
+      "error": null
+    },
+    "assert is_allowed_specific_char(\"HELLOhowareyou98765\") == True": {
+      "result": true,
+      "time": 0.08718299865722656,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:47:36",
+    "guidance_input_tokens": 517,
+    "guidance_output_tokens": 143,
+    "end_time": "2025-05-07 18:47:39",
+    "duration": "0:00:03.280830"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

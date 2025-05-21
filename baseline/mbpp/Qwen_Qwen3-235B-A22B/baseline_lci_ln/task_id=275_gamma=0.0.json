@@ -1,0 +1,31 @@
+{
+  "code": "def get_Position(arr, n, k):\n    removed_positions = []\n    for i in range(len(arr)):\n        element = arr[i]\n        position = i + 1\n        if element % k == 0:\n            removed_positions.append(position)\n    if len(removed_positions) == 0:\n        return -1\n    last_removed_position = removed_positions[-1]\n    return last_removed_position",
+  "results": {
+    "assert get_Position([2,5,4],3,2) == 2": {
+      "result": false,
+      "time": 0.07957196235656738,
+      "error": null
+    },
+    "assert get_Position([4,3],2,2) == 2": {
+      "result": false,
+      "time": 0.08082127571105957,
+      "error": null
+    },
+    "assert get_Position([1,2,3,4],4,1) == 4": {
+      "result": true,
+      "time": 0.08088183403015137,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:46:28",
+    "end_time": "2025-05-08 22:46:30",
+    "duration": "0:00:02.600143"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

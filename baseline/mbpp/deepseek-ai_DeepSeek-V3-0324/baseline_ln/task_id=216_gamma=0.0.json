@@ -1,0 +1,33 @@
+{
+  "code": "def check_subset_list(list1, list2):\n    # Flatten both lists to compare elements\n    def flatten(lst):\n        flat_list = []\n        for item in lst:\n            if isinstance(item, list):\n                flat_list.extend(flatten(item))\n            else:\n                flat_list.append(item)\n        return flat_list\n    \n    flat_list1 = flatten(list1)\n    flat_list2 = flatten(list2)\n    \n    # Check if all elements of list2 are in list1\n    return all(item in flat_list1 for item in flat_list2)",
+  "results": {
+    "assert check_subset_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],[[12, 18, 23, 25, 45], [7, 11, 19, 24, 28], [1, 5, 8, 18, 15, 16]])==False": {
+      "result": true,
+      "time": 0.12108302116394043,
+      "error": null
+    },
+    "assert check_subset_list([[2, 3, 1], [4, 5], [6, 8]],[[4, 5], [6, 8]])==True": {
+      "result": true,
+      "time": 0.11547422409057617,
+      "error": null
+    },
+    "assert check_subset_list([['a', 'b'], ['e'], ['c', 'd']],[['g']])==False": {
+      "result": true,
+      "time": 0.1103665828704834,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:32:26",
+    "guidance_input_tokens": 769,
+    "guidance_output_tokens": 138,
+    "end_time": "2025-05-07 18:32:30",
+    "duration": "0:00:03.751947"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

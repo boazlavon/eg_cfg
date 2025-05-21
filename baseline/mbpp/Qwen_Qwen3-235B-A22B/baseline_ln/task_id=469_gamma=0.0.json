@@ -1,0 +1,31 @@
+{
+  "code": "def max_profit(prices, k):\n    if not prices or k == 0:\n        return 0\n    n = len(prices)\n    dp = [[0] * n for _ in range(k + 1)]\n    for i in range(1, k + 1):\n        max_diff = -prices[0]\n        for j in range(1, n):\n            dp[i][j] = max(dp[i][j - 1], prices[j] + max_diff)\n            max_diff = max(max_diff, dp[i - 1][j] - prices[j])\n    return dp[k][n - 1]",
+  "results": {
+    "assert max_profit([1, 5, 2, 3, 7, 6, 4, 5], 3) == 10": {
+      "result": true,
+      "time": 0.13496184349060059,
+      "error": null
+    },
+    "assert max_profit([2, 4, 7, 5, 4, 3, 5], 2) == 7": {
+      "result": true,
+      "time": 0.11047649383544922,
+      "error": null
+    },
+    "assert max_profit([10, 6, 8, 4, 2], 2) == 2": {
+      "result": true,
+      "time": 0.11333465576171875,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:15:44",
+    "end_time": "2025-05-08 22:15:47",
+    "duration": "0:00:02.672107"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

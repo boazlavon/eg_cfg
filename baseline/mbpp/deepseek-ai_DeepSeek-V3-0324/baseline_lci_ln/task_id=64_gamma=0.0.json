@@ -1,0 +1,33 @@
+{
+  "code": "def subject_marks(subjects):\n    # Create a copy of the original list to avoid modifying it directly\n    sorted_subjects = subjects.copy()\n    \n    # Define a lambda function to extract the second element (marks) from each tuple\n    key_function = lambda subject: subject[1]\n    \n    # Sort the list using the lambda function as the key\n    sorted_subjects.sort(key=key_function)\n    \n    # Return the sorted list\n    return sorted_subjects",
+  "results": {
+    "assert subject_marks([('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)])==[('Social sciences', 82), ('English', 88), ('Science', 90), ('Maths', 97)]": {
+      "result": true,
+      "time": 0.13121557235717773,
+      "error": null
+    },
+    "assert subject_marks([('Telugu',49),('Hindhi',54),('Social',33)])==([('Social',33),('Telugu',49),('Hindhi',54)])": {
+      "result": true,
+      "time": 0.2862110137939453,
+      "error": null
+    },
+    "assert subject_marks([('Physics',96),('Chemistry',97),('Biology',45)])==([('Biology',45),('Physics',96),('Chemistry',97)])": {
+      "result": true,
+      "time": 0.11728739738464355,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:39:51",
+    "guidance_input_tokens": 596,
+    "guidance_output_tokens": 121,
+    "end_time": "2025-05-07 18:39:53",
+    "duration": "0:00:02.237068"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

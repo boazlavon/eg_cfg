@@ -1,0 +1,33 @@
+{
+  "code": "def eulerian_num(n, m):\n    if m >= n or n == 0:\n        return 0\n    if m == 0:\n        return 1\n    \n    # Create a DP table initialized to 0\n    dp = [[0] * (m + 1) for _ in range(n + 1)]\n    \n    # Base cases\n    for i in range(1, n + 1):\n        dp[i][0] = 1\n    \n    for i in range(2, n + 1):\n        for j in range(1, m + 1):\n            dp[i][j] = (i - j) * dp[i-1][j-1] + (j + 1) * dp[i-1][j]\n    \n    return dp[n][m]",
+  "results": {
+    "assert eulerian_num(3, 1) == 4": {
+      "result": true,
+      "time": 0.11181044578552246,
+      "error": null
+    },
+    "assert eulerian_num(4, 1) == 11": {
+      "result": true,
+      "time": 0.0980997085571289,
+      "error": null
+    },
+    "assert eulerian_num(5, 3) == 26": {
+      "result": true,
+      "time": 0.09728574752807617,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:26:57",
+    "guidance_input_tokens": 643,
+    "guidance_output_tokens": 352,
+    "end_time": "2025-05-07 18:27:01",
+    "duration": "0:00:04.714435"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

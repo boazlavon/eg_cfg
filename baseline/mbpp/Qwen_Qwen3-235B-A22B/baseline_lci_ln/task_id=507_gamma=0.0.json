@@ -1,0 +1,31 @@
+{
+  "code": "def remove_words(original_list, words_to_remove):\n    result = []\n    for word in original_list:\n        should_remove = False\n        for remove_word in words_to_remove:\n            if word == remove_word:\n                should_remove = True\n                break\n        if not should_remove:\n            result.append(word)\n    return result",
+  "results": {
+    "assert remove_words(['red', 'green', 'blue', 'white', 'black', 'orange'],['white', 'orange'])==['red', 'green', 'blue', 'black']": {
+      "result": true,
+      "time": 0.07664728164672852,
+      "error": null
+    },
+    "assert remove_words(['red', 'green', 'blue', 'white', 'black', 'orange'],['black', 'orange'])==['red', 'green', 'blue', 'white']": {
+      "result": true,
+      "time": 0.08023858070373535,
+      "error": null
+    },
+    "assert remove_words(['red', 'green', 'blue', 'white', 'black', 'orange'],['blue', 'white'])==['red', 'green', 'black', 'orange']": {
+      "result": true,
+      "time": 0.07703709602355957,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:19:19",
+    "end_time": "2025-05-08 22:19:21",
+    "duration": "0:00:02.095540"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

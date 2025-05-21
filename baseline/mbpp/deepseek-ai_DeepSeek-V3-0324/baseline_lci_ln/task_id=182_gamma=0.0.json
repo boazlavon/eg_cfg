@@ -1,0 +1,33 @@
+{
+  "code": "import re\n\ndef find_character(input_string):\n    uppercase_chars = []\n    lowercase_chars = []\n    numeric_chars = []\n    special_chars = []\n    \n    for char in input_string:\n        if re.match(r'[A-Z]', char):\n            uppercase_chars.append(char)\n        elif re.match(r'[a-z]', char):\n            lowercase_chars.append(char)\n        elif re.match(r'[0-9]', char):\n            numeric_chars.append(char)\n        else:\n            special_chars.append(char)\n    \n    return (uppercase_chars, lowercase_chars, numeric_chars, special_chars)",
+  "results": {
+    "assert find_character(\"ThisIsGeeksforGeeks\") == (['T', 'I', 'G', 'G'], ['h', 'i', 's', 's', 'e', 'e', 'k', 's', 'f', 'o', 'r', 'e', 'e', 'k', 's'], [], [])": {
+      "result": true,
+      "time": 0.13055086135864258,
+      "error": null
+    },
+    "assert find_character(\"Hithere2\") == (['H'], ['i', 't', 'h', 'e', 'r', 'e'], ['2'], [])": {
+      "result": true,
+      "time": 0.12726187705993652,
+      "error": null
+    },
+    "assert find_character(\"HeyFolks32\") == (['H', 'F'], ['e', 'y', 'o', 'l', 'k', 's'], ['3', '2'], [])": {
+      "result": true,
+      "time": 0.11704206466674805,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:46:09",
+    "guidance_input_tokens": 602,
+    "guidance_output_tokens": 163,
+    "end_time": "2025-05-07 18:46:12",
+    "duration": "0:00:03.222161"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

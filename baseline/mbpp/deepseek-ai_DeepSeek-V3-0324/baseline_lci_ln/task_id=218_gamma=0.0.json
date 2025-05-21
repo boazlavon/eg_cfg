@@ -1,0 +1,33 @@
+{
+  "code": "def min_Operations(a, b):\n    operations = 0\n    while a != b:\n        if a > b:\n            difference = a - b\n            if difference >= b:\n                quotient = difference // b\n                operations += quotient\n                a -= quotient * b\n            else:\n                operations += 1\n                a -= b\n        else:\n            difference = b - a\n            if difference >= a:\n                quotient = difference // a\n                operations += quotient\n                b -= quotient * a\n            else:\n                operations += 1\n                b -= a\n    return operations",
+  "results": {
+    "assert min_Operations(2,4) == 1": {
+      "result": true,
+      "time": 0.09444832801818848,
+      "error": null
+    },
+    "assert min_Operations(4,10) == 4": {
+      "result": false,
+      "time": 0.08515501022338867,
+      "error": null
+    },
+    "assert min_Operations(1,4) == 3": {
+      "result": true,
+      "time": 0.09315085411071777,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:47:59",
+    "guidance_input_tokens": 487,
+    "guidance_output_tokens": 153,
+    "end_time": "2025-05-07 18:48:03",
+    "duration": "0:00:03.812012"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

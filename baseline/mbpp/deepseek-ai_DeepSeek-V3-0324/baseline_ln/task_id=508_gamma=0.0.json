@@ -1,0 +1,28 @@
+{
+  "code": "def same_order(list1, list2):\n    # Find the common elements between the two lists\n    common_elements = [item for item in list1 if item in list2]\n    \n    # Filter the second list to include only the common elements, preserving order\n    filtered_list2 = [item for item in list2 if item in common_elements]\n    \n    # Check if the order of common elements is the same in both filtered lists\n    return common_elements == filtered_list2",
+  "results": {
+    "assert same_order([\"red\",\"green\",\"black\",\"orange\"],[\"red\",\"pink\",\"green\",\"white\",\"black\"])==True": {
+      "result": true,
+      "time": 0.11354446411132812,
+      "error": null
+    },
+    "assert same_order([\"red\",\"pink\",\"green\",\"white\",\"black\"],[\"white\",\"orange\",\"pink\",\"black\"])==False": {
+      "result": true,
+      "time": 0.11706662178039551,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:46:07",
+    "guidance_input_tokens": 687,
+    "guidance_output_tokens": 149,
+    "end_time": "2025-05-07 18:46:10",
+    "duration": "0:00:03.015977"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

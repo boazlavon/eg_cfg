@@ -1,0 +1,33 @@
+{
+  "code": "def first_Repeated_Char(input_string):\n    char_count = {}\n    for char in input_string:\n        if char in char_count:\n            char_count[char] += 1\n        else:\n            char_count[char] = 1\n    for char in input_string:\n        if char_count[char] > 1:\n            return char\n    return \"\\0\"",
+  "results": {
+    "assert first_Repeated_Char(\"Google\") == \"o\"": {
+      "result": true,
+      "time": 0.10023880004882812,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"data\") == \"a\"": {
+      "result": true,
+      "time": 0.09374117851257324,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"python\") == '\\0'": {
+      "result": true,
+      "time": 0.08927083015441895,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:47:57",
+    "guidance_input_tokens": 486,
+    "guidance_output_tokens": 102,
+    "end_time": "2025-05-07 18:47:59",
+    "duration": "0:00:02.353392"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

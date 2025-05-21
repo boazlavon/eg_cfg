@@ -1,0 +1,31 @@
+{
+  "code": "def tuple_int_str(tuple_of_strings):\n    result = []\n    for subtuple in tuple_of_strings:\n        converted_subtuple = []\n        for item in subtuple:\n            integer_value = int(item)\n            converted_subtuple.append(integer_value)\n        converted_subtuple_tuple = tuple(converted_subtuple)\n        result.append(converted_subtuple_tuple)\n    return tuple(result)",
+  "results": {
+    "assert tuple_int_str((('333', '33'), ('1416', '55')))==((333, 33), (1416, 55))": {
+      "result": true,
+      "time": 0.08158564567565918,
+      "error": null
+    },
+    "assert tuple_int_str((('999', '99'), ('1000', '500')))==((999, 99), (1000, 500))": {
+      "result": true,
+      "time": 0.07936954498291016,
+      "error": null
+    },
+    "assert tuple_int_str((('666', '66'), ('1500', '555')))==((666, 66), (1500, 555))": {
+      "result": true,
+      "time": 0.07818865776062012,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:30:17",
+    "end_time": "2025-05-08 22:30:19",
+    "duration": "0:00:02.137494"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

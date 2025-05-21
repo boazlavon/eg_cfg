@@ -1,0 +1,33 @@
+{
+  "code": "def min_Ops(arr, n, k):\n    # Check if it's possible to make all elements equal\n    max_element = max(arr)\n    operations = 0\n    \n    for num in arr:\n        diff = max_element - num\n        if diff % k != 0:\n            return -1\n        operations += diff // k\n    \n    return operations",
+  "results": {
+    "assert min_Ops([2,2,2,2],4,3) == 0": {
+      "result": true,
+      "time": 0.1013946533203125,
+      "error": null
+    },
+    "assert min_Ops([4,2,6,8],4,3) == -1": {
+      "result": true,
+      "time": 0.09428143501281738,
+      "error": null
+    },
+    "assert min_Ops([21,33,9,45,63],5,6) == 24": {
+      "result": true,
+      "time": 0.10413479804992676,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:29:48",
+    "guidance_input_tokens": 666,
+    "guidance_output_tokens": 148,
+    "end_time": "2025-05-07 18:29:51",
+    "duration": "0:00:03.029094"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

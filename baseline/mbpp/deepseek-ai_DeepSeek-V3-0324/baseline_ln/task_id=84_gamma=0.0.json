@@ -1,0 +1,33 @@
+{
+  "code": "def sequence(n):\n    if n == 1 or n == 2:\n        return 1\n    dp = [0] * (n + 1)\n    dp[1], dp[2] = 1, 1\n    for i in range(3, n + 1):\n        dp[i] = dp[dp[i - 1]] + dp[i - dp[i - 1]]\n    return dp[n]",
+  "results": {
+    "assert sequence(10) == 6": {
+      "result": true,
+      "time": 0.08820533752441406,
+      "error": null
+    },
+    "assert sequence(2) == 1": {
+      "result": true,
+      "time": 0.09380531311035156,
+      "error": null
+    },
+    "assert sequence(3) == 2": {
+      "result": true,
+      "time": 0.08617091178894043,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:26:21",
+    "guidance_input_tokens": 627,
+    "guidance_output_tokens": 96,
+    "end_time": "2025-05-07 18:26:23",
+    "duration": "0:00:02.168671"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

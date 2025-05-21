@@ -1,0 +1,33 @@
+{
+  "code": "def common_in_nested_lists(nested_lists):\n    # Handle empty input\n    if not nested_lists:\n        return []\n    \n    # Initialize the result with the first sublist\n    first_list = nested_lists[0]\n    common_elements = first_list.copy()\n    \n    # Iterate over the remaining sublists\n    for current_list in nested_lists[1:]:\n        # Temporary list to store new common elements\n        temp_common = []\n        # Check each element in the current common elements\n        for element in common_elements:\n            # If the element is in the current list, add to temp_common\n            if element in current_list:\n                temp_common.append(element)\n        # Update common_elements with the new intersection\n        common_elements = temp_common\n        # Early exit if no common elements left\n        if not common_elements:\n            break\n    \n    # Remove duplicates and sort in descending order\n    unique_common = []\n    seen = set()\n    for element in common_elements:\n        if element not in seen:\n            seen.add(element)\n            unique_common.append(element)\n    # Sort in descending order\n    unique_common.sort(reverse=True)\n    \n    return unique_common",
+  "results": {
+    "assert common_in_nested_lists([[12, 18, 23, 25, 45], [7, 12, 18, 24, 28], [1, 5, 8, 12, 15, 16, 18]])==[18, 12]": {
+      "result": true,
+      "time": 0.1256411075592041,
+      "error": null
+    },
+    "assert common_in_nested_lists([[12, 5, 23, 25, 45], [7, 11, 5, 23, 28], [1, 5, 8, 18, 23, 16]])==[5,23]": {
+      "result": false,
+      "time": 0.1215963363647461,
+      "error": null
+    },
+    "assert common_in_nested_lists([[2, 3,4, 1], [4, 5], [6,4, 8],[4, 5], [6, 8,4]])==[4]": {
+      "result": true,
+      "time": 0.11161541938781738,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:42:16",
+    "guidance_input_tokens": 634,
+    "guidance_output_tokens": 282,
+    "end_time": "2025-05-07 18:42:21",
+    "duration": "0:00:05.097795"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

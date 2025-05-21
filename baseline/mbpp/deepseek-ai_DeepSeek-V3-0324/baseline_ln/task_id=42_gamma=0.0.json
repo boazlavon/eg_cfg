@@ -1,0 +1,33 @@
+{
+  "code": "from collections import defaultdict\n\ndef find_Sum(arr, n):\n    freq = defaultdict(int)\n    for num in arr:\n        freq[num] += 1\n    \n    sum_repeated = 0\n    for num, count in freq.items():\n        if count > 1:\n            sum_repeated += num * count\n    \n    return sum_repeated",
+  "results": {
+    "assert find_Sum([1,2,3,1,1,4,5,6],8) == 3": {
+      "result": true,
+      "time": 0.10161662101745605,
+      "error": null
+    },
+    "assert find_Sum([1,2,3,1,1],5) == 3": {
+      "result": true,
+      "time": 0.1324758529663086,
+      "error": null
+    },
+    "assert find_Sum([1,1,2],3) == 2": {
+      "result": true,
+      "time": 0.10112881660461426,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:24:32",
+    "guidance_input_tokens": 665,
+    "guidance_output_tokens": 76,
+    "end_time": "2025-05-07 18:24:34",
+    "duration": "0:00:02.798732"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

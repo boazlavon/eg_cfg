@@ -1,0 +1,31 @@
+{
+  "code": "def babylonian_squareroot(n):\n    if n < 0:\n        raise ValueError(\"Cannot compute square root of a negative number\")\n    if n == 0:\n        return 0.0\n    guess = n / 2.0\n    difference = 1.0\n    while difference > 1e-15:\n        new_guess = n / guess\n        average = (guess + new_guess) / 2.0\n        difference = abs(guess - new_guess)\n        guess = average\n    return guess",
+  "results": {
+    "assert babylonian_squareroot(10)==3.162277660168379": {
+      "result": true,
+      "time": 0.10625624656677246,
+      "error": null
+    },
+    "assert babylonian_squareroot(2)==1.414213562373095": {
+      "result": true,
+      "time": 0.11128067970275879,
+      "error": null
+    },
+    "assert babylonian_squareroot(9)==3.0": {
+      "result": true,
+      "time": 0.10693550109863281,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:19:47",
+    "end_time": "2025-05-08 22:19:49",
+    "duration": "0:00:02.405924"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

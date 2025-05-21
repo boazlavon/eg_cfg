@@ -1,0 +1,33 @@
+{
+  "code": "def amicable_numbers_sum(n):\n    def sum_proper_divisors(num):\n        if num == 1:\n            return 0\n        divisors_sum = 1  # 1 is a proper divisor for any num > 1\n        for i in range(2, int(num**0.5) + 1):\n            if num % i == 0:\n                if i == num // i:\n                    divisors_sum += i\n                else:\n                    divisors_sum += i + num // i\n        return divisors_sum\n\n    amicable_sum = 0\n    for a in range(1, n + 1):\n        b = sum_proper_divisors(a)\n        if b > a and sum_proper_divisors(b) == a:\n            amicable_sum += a + b\n    return amicable_sum",
+  "results": {
+    "assert amicable_numbers_sum(999)==504": {
+      "result": true,
+      "time": 0.13901209831237793,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9999)==31626": {
+      "result": true,
+      "time": 0.1730964183807373,
+      "error": null
+    },
+    "assert amicable_numbers_sum(99)==0": {
+      "result": true,
+      "time": 0.10979676246643066,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:27:50",
+    "guidance_input_tokens": 633,
+    "guidance_output_tokens": 175,
+    "end_time": "2025-05-07 18:27:56",
+    "duration": "0:00:05.405098"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

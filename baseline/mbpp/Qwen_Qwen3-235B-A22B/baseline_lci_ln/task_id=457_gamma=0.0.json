@@ -1,0 +1,31 @@
+{
+  "code": "def Find_Min(list_of_lists):\n    min_length = len(list_of_lists[0])\n    min_sublist = list_of_lists[0]\n    for sublist in list_of_lists:\n        current_length = len(sublist)\n        if current_length < min_length:\n            min_length = current_length\n            min_sublist = sublist\n    return min_sublist",
+  "results": {
+    "assert Find_Min([[1],[1,2],[1,2,3]]) == [1]": {
+      "result": true,
+      "time": 0.11489415168762207,
+      "error": null
+    },
+    "assert Find_Min([[1,1],[1,1,1],[1,2,7,8]]) == [1,1]": {
+      "result": true,
+      "time": 0.11106109619140625,
+      "error": null
+    },
+    "assert Find_Min([['x'],['x','y'],['x','y','z']]) == ['x']": {
+      "result": true,
+      "time": 0.10448765754699707,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:16:25",
+    "end_time": "2025-05-08 22:16:27",
+    "duration": "0:00:01.952761"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def hamming_Distance(x, y):\n    xor_result = x ^ y\n    distance = 0\n    while xor_result > 0:\n        bit = xor_result & 1\n        if bit == 1:\n            distance += 1\n        xor_result = xor_result >> 1\n    return distance",
+  "results": {
+    "assert hamming_Distance(4,8) == 2": {
+      "result": true,
+      "time": 0.09980940818786621,
+      "error": null
+    },
+    "assert hamming_Distance(2,4) == 2": {
+      "result": true,
+      "time": 0.0869600772857666,
+      "error": null
+    },
+    "assert hamming_Distance(1,2) == 2": {
+      "result": true,
+      "time": 0.07901453971862793,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:47:19",
+    "guidance_input_tokens": 489,
+    "guidance_output_tokens": 89,
+    "end_time": "2025-05-07 18:47:21",
+    "duration": "0:00:02.194172"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

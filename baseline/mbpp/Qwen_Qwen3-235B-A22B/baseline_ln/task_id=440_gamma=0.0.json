@@ -1,0 +1,31 @@
+{
+  "code": "import re\ndef find_adverb_position(sentence):\n    match = re.search(r'\\b\\w+ly\\b', sentence)\n    if match:\n        return (match.start(), match.end(), match.group())\n    else:\n        return None",
+  "results": {
+    "assert find_adverb_position(\"clearly!! we can see the sky\")==(0, 7, 'clearly')": {
+      "result": true,
+      "time": 0.11656379699707031,
+      "error": null
+    },
+    "assert find_adverb_position(\"seriously!! there are many roses\")==(0, 9, 'seriously')": {
+      "result": true,
+      "time": 0.1287076473236084,
+      "error": null
+    },
+    "assert find_adverb_position(\"unfortunately!! sita is going to home\")==(0, 13, 'unfortunately')": {
+      "result": true,
+      "time": 0.09841036796569824,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 23:07:36",
+    "end_time": "2025-05-08 23:07:39",
+    "duration": "0:00:03.260493"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

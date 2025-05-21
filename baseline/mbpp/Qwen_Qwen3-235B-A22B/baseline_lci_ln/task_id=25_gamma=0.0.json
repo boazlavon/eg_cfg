@@ -1,0 +1,31 @@
+{
+  "code": "def find_Product(arr, n):\n    count_dict = {}\n    for num in arr:\n        if num in count_dict:\n            count = count_dict[num]\n            new_count = count + 1\n            count_dict[num] = new_count\n        else:\n            count_dict[num] = 1\n    product = 1\n    for num in arr:\n        count = count_dict[num]\n        if count == 1:\n            product = product * num\n    return product",
+  "results": {
+    "assert find_Product([1,1,2,3],4) == 6": {
+      "result": true,
+      "time": 0.0768284797668457,
+      "error": null
+    },
+    "assert find_Product([1,2,3,1,1],5) == 6": {
+      "result": true,
+      "time": 0.07809758186340332,
+      "error": null
+    },
+    "assert find_Product([1,1,4,5,6],5) == 120": {
+      "result": true,
+      "time": 0.07724595069885254,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:13:18",
+    "end_time": "2025-05-08 22:13:20",
+    "duration": "0:00:02.298818"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

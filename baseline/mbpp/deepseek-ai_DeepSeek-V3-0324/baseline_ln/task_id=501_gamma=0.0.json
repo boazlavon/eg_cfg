@@ -1,0 +1,33 @@
+{
+  "code": "import math\n\ndef num_comm_div(a, b):\n    # Find the greatest common divisor (GCD) of the two numbers\n    gcd_value = math.gcd(a, b)\n    \n    # The number of common divisors is equal to the number of divisors of the GCD\n    # To find the number of divisors of the GCD, we need to count the divisors\n    if gcd_value == 0:\n        return 0\n    \n    # Initialize the count of divisors\n    count = 0\n    \n    # Iterate from 1 to the square root of the GCD\n    for i in range(1, int(math.sqrt(gcd_value)) + 1):\n        if gcd_value % i == 0:\n            # If divisors are equal, count only one\n            if gcd_value // i == i:\n                count += 1\n            else:\n                count += 2\n    return count",
+  "results": {
+    "assert num_comm_div(2,4) == 2": {
+      "result": true,
+      "time": 0.10041046142578125,
+      "error": null
+    },
+    "assert num_comm_div(2,8) == 2": {
+      "result": true,
+      "time": 0.08422207832336426,
+      "error": null
+    },
+    "assert num_comm_div(12,24) == 6": {
+      "result": true,
+      "time": 0.07933592796325684,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:45:54",
+    "guidance_input_tokens": 642,
+    "guidance_output_tokens": 191,
+    "end_time": "2025-05-07 18:45:56",
+    "duration": "0:00:02.449982"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def breakSum(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    sum1 = n // 2\n    sum2 = n // 3\n    sum3 = n // 4\n    total = sum1 + sum2 + sum3\n    if total > n:\n        part1 = breakSum(sum1)\n        part2 = breakSum(sum2)\n        part3 = breakSum(sum3)\n        max_sum = part1 + part2 + part3\n        if max_sum > n:\n            return max_sum\n        else:\n            return n\n    else:\n        return n",
+  "results": {
+    "assert breakSum(12) == 13": {
+      "result": true,
+      "time": 0.13207292556762695,
+      "error": null
+    },
+    "assert breakSum(24) == 27": {
+      "result": true,
+      "time": 0.12656497955322266,
+      "error": null
+    },
+    "assert breakSum(23) == 23": {
+      "result": true,
+      "time": 0.12196087837219238,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:57:59",
+    "guidance_input_tokens": 487,
+    "guidance_output_tokens": 172,
+    "end_time": "2025-05-07 18:58:03",
+    "duration": "0:00:04.144710"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

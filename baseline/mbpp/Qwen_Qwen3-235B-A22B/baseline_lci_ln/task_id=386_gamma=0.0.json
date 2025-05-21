@@ -1,0 +1,31 @@
+{
+  "code": "def swap_count(s):\n    open_count = 0\n    close_count = 0\n    swap_count = 0\n    imbalance = 0\n    for char in s:\n        if char == '[':\n            open_count += 1\n            if imbalance > 0:\n                swap_count += imbalance\n                imbalance -= 1\n        elif char == ']':\n            close_count += 1\n            if open_count < close_count:\n                imbalance += 1\n                close_count = open_count\n    return swap_count",
+  "results": {
+    "assert swap_count(\"[]][][\") == 2": {
+      "result": false,
+      "time": 0.1014704704284668,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]\") == 0": {
+      "result": true,
+      "time": 0.08150100708007812,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]][\") == 1": {
+      "result": true,
+      "time": 0.07583117485046387,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:31:59",
+    "end_time": "2025-05-08 22:32:21",
+    "duration": "0:00:22.121700"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

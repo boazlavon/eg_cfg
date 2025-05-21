@@ -1,0 +1,33 @@
+{
+  "code": "def max_sum_increasing_subseq(arr, n, i, k):\n    # Initialize a list to store the maximum sum of increasing subsequence ending at each index\n    max_sum = [0] * n\n    max_sum[0] = arr[0]\n    \n    # Compute the maximum sum of increasing subsequence for each index up to i\n    for j in range(1, i + 1):\n        max_sum[j] = arr[j]\n        for l in range(j):\n            if arr[l] < arr[j] and max_sum[l] + arr[j] > max_sum[j]:\n                max_sum[j] = max_sum[l] + arr[j]\n    \n    # Now, include the kth element (k > i) and find the maximum sum\n    # The kth element must be greater than the last element of the subsequence ending at i\n    if k <= i or k >= n:\n        return 0  # Invalid k as per problem statement\n    \n    max_total = 0\n    for j in range(i + 1):\n        if arr[j] < arr[k]:\n            current_sum = max_sum[j] + arr[k]\n            if current_sum > max_total:\n                max_total = current_sum\n    \n    return max_total",
+  "results": {
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 4, 6) == 11": {
+      "result": true,
+      "time": 0.1587820053100586,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 2, 5) == 7": {
+      "result": true,
+      "time": 0.10536074638366699,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([11, 15, 19, 21, 26, 28, 31], 7, 2, 4) == 71": {
+      "result": true,
+      "time": 0.11177754402160645,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:36:57",
+    "guidance_input_tokens": 744,
+    "guidance_output_tokens": 266,
+    "end_time": "2025-05-07 18:37:01",
+    "duration": "0:00:03.604415"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

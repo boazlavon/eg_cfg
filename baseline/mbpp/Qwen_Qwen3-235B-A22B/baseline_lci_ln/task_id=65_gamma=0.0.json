@@ -1,0 +1,31 @@
+{
+  "code": "def recursive_list_sum(nested_list):\n    total = 0\n    for item in nested_list:\n        if isinstance(item, list):\n            subtotal = recursive_list_sum(item)\n            total += subtotal\n        else:\n            total += item\n    return total",
+  "results": {
+    "assert recursive_list_sum(([1, 2, [3,4],[5,6]]))==21": {
+      "result": true,
+      "time": 0.08077645301818848,
+      "error": null
+    },
+    "assert recursive_list_sum(([7, 10, [15,14],[19,41]]))==106": {
+      "result": true,
+      "time": 0.07742953300476074,
+      "error": null
+    },
+    "assert recursive_list_sum(([10, 20, [30,40],[50,60]]))==210": {
+      "result": true,
+      "time": 0.07914042472839355,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:34:20",
+    "end_time": "2025-05-08 22:34:28",
+    "duration": "0:00:07.686612"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

@@ -1,0 +1,31 @@
+{
+  "code": "from collections import defaultdict\n\ndef max_aggregate(scores):\n    d = defaultdict(int)\n    for name, score in scores:\n        d[name] += score\n    return max(d.items(), key=lambda x: x[1])",
+  "results": {
+    "assert max_aggregate([('Juan Whelan',90),('Sabah Colley',88),('Peter Nichols',7),('Juan Whelan',122),('Sabah Colley',84)])==('Juan Whelan', 212)": {
+      "result": true,
+      "time": 0.07912683486938477,
+      "error": null
+    },
+    "assert max_aggregate([('Juan Whelan',50),('Sabah Colley',48),('Peter Nichols',37),('Juan Whelan',22),('Sabah Colley',14)])==('Juan Whelan', 72)": {
+      "result": true,
+      "time": 0.07822799682617188,
+      "error": null
+    },
+    "assert max_aggregate([('Juan Whelan',10),('Sabah Colley',20),('Peter Nichols',30),('Juan Whelan',40),('Sabah Colley',50)])==('Sabah Colley', 70)": {
+      "result": true,
+      "time": 0.08038902282714844,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-08 22:36:42",
+    "end_time": "2025-05-08 22:36:45",
+    "duration": "0:00:02.540299"
+  },
+  "retry": 0,
+  "random_seed": 855
+}

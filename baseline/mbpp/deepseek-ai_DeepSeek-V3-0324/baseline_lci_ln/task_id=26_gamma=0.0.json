@@ -1,0 +1,33 @@
+{
+  "code": "def check_k_elements(tuple_list, k):\n    for tup in tuple_list:\n        all_k = True\n        for element in tup:\n            if element != k:\n                all_k = False\n                break\n        if not all_k:\n            return False\n    return True",
+  "results": {
+    "assert check_k_elements([(4, 4), (4, 4, 4), (4, 4), (4, 4, 4, 4), (4, )], 4) == True": {
+      "result": true,
+      "time": 0.13296103477478027,
+      "error": null
+    },
+    "assert check_k_elements([(7, 7, 7), (7, 7)], 7) == True": {
+      "result": true,
+      "time": 0.12513279914855957,
+      "error": null
+    },
+    "assert check_k_elements([(9, 9), (9, 9, 9, 9)], 7) == False": {
+      "result": true,
+      "time": 0.12602949142456055,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:37:49",
+    "guidance_input_tokens": 550,
+    "guidance_output_tokens": 82,
+    "end_time": "2025-05-07 18:37:52",
+    "duration": "0:00:02.663759"
+  },
+  "retry": 0,
+  "random_seed": 813
+}
