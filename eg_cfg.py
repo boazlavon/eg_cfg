@@ -10,7 +10,7 @@ def start_eg_cfg_session_manager(session_config, inference_sessions_configs):
     eg_cfg_session_manager = EgCfgSessionManager(
         session_config, inference_sessions_configs
     )
-    print("EG_CFG Session manager Setup started")
+    print("EG-CFG Session manager Setup started")
     eg_cfg_session_manager.setup()
     eg_cfg_session_manager.solve()
 
