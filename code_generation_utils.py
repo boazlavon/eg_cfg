@@ -375,10 +375,9 @@ def generate_code_solutions(
 
     model.eval()
     with torch.inference_mode():
-        # /a/home/cc/students/cs/boazlavon/miniconda3/envs/trepan-xpy-env/lib/python3.9/site-packages/transformers/generation/utils.py
+        # transformers/generation/utils.py
         outputs = model.generate(
             **inputs,
-            # inputs['input_ids'],
             max_new_tokens=max_new_tokens,
             eos_token_id=eos_token_id,
             pad_token_id=pad_token_id,

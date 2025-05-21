@@ -12,7 +12,7 @@ def setup_device():
 
 # In the model: deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct
 # https://huggingface.co/deepseek-ai/DeepSeek-V2-Lite-Chat/discussions/8
-# /a/home/cc/students/cs/boazlavon/.cache/huggingface/modules/transformers_modules/deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct/e434a23f91ba5b4923cf6c9d9a238eb4a08e3a11/modeling_deepseek.py
+# $HOME/.cache/huggingface/modules/transformers_modules/deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct/e434a23f91ba5b4923cf6c9d9a238eb4a08e3a11/modeling_deepseek.py
 # line 1728:
 # -- max_cache_length = past_key_values.get_max_length()
 # ++ max_cache_length = past_key_values.get_max_cache_shape()
