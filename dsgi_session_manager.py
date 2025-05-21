@@ -135,7 +135,7 @@ class DsgiSessionManager:
             self.tokenizer,
             function_signature=None,
             minimal_trace=self.session_config.minimal_trace,
-            debug_mode=self.session_config.debug_mode,
+            debug=self.session_config.debug_mode,
         )
         self.stats_manager = StatisticsManager()
         self.problems = load_mbpp_problems()
@@ -575,6 +575,9 @@ class DsgiSessionManager:
             self.inference_session.solved_tasks_cache_dir, f"{task_id}"
         )
         for gamma in self.session_config.gammas:
+            import ipdb; ipdb.set_trace()
+            if not gamma:
+                continue
             print(f"task_id={task_id}, gamma={gamma}")
             solution_entry_path = get_solution_filepath(
                 self.inference_session.results_dir, task_id, gamma
