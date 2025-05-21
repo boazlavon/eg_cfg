@@ -8,8 +8,8 @@ import argparse
 import json
 import re
 from argparse import Namespace
-from consts import *
 from sklearn.model_selection import ParameterGrid
+from consts import *
 
 
 def get_dynamic_signals_str(inference_session_config):
@@ -144,18 +144,19 @@ def build_inference_session_config(args):
 def build_session_config(args):
     inference_session_config = build_inference_session_config(args)
     session_config = {
-        "retries_count": args["r"],
         "gammas": GAMMAS,
         "model_name": args["model_name"],
         "is_prod": args["prod"],
-        "use_cache": args["cache"],
-        "start_idx": args["start_idx"],
-        "end_idx": args["end_idx"],
-        "results_dir": args.get("results_dir", "results"),
-        "use_global_cache": args.get("global_cache", False),
-        "minimal_trace": args.get("minimal_trace", False),
-        "top_probs": args["top_probs"],
-        "random_seed": args.get("random_seed", None),
+        "results_dir": args["results_dir"],
+        "deployment_type": args["deployment_type"],
+        "start_idx": args.get("start_idx", SESSION_CONFIGS_DEFAULT_VALUES["start_idx"]),
+        "end_idx": args.get("end_idx", SESSION_CONFIGS_DEFAULT_VALUES["end_idx"]),
+        "retries_count": args.get(args["r"], SESSION_CONFIGS_DEFAULT_VALUES["retries_count"]),
+        "use_global_cache": args.get("global_cache", SESSION_CONFIGS_DEFAULT_VALUES["use_global_cache"]),
+        "minimal_trace": args.get("minimal_trace", SESSION_CONFIGS_DEFAULT_VALUES['minimal_trace']),
+        "top_probs": args.get("top_probs", SESSION_CONFIGS_DEFAULT_VALUES['top_probs']),
+        "debug_mode": args.get("debug_mode", SESSION_CONFIGS_DEFAULT_VALUES["debug_mode"]),
+        "random_seed": args.get("random_seed", SESSION_CONFIGS_DEFAULT_VALUES['random_seed']),
     }
     session_config = Namespace(**session_config)
     return session_config, inference_session_config
@@ -182,6 +183,7 @@ def get_cmdline_args():
     parser.add_argument("--cache", action="store_true")
     parser.add_argument("--minimal-trace", action="store_true")
     parser.add_argument("--global-cache", action="store_true")
+    parser.add_argument("--debug-mode", action="store_true")
     parser.add_argument("--top-probs", type=int, default=0, help="top probs")
     parser.add_argument("--s", type=int, default=2, help="nf samples count")
     parser.add_argument("--t", type=float, default=0.1, help="nf temp")
@@ -190,7 +192,6 @@ def get_cmdline_args():
     )
     parser.add_argument("--start-idx", type=int, default=0, help="start idx")
     parser.add_argument("--end-idx", type=int, default=-1, help="end idx")
-    # parser.add_argument("--d", type=int, default=3, help="Max Lines for nearest future (deepness)")
     parser.add_argument("--d", type=int, default=None, help="nf samples depth")
     parser.add_argument(
         "--g",
@@ -201,6 +202,13 @@ def get_cmdline_args():
     )
     parser.add_argument("--results-dir", type=str, help="Name of the model used")
     parser.add_argument("--random-seed", type=int, help="Name of the model used")
+    parser.add_argument(
+        "--deployment-type",
+        type=str,
+        choices=SUPPORTED_DEPLOYMENT_TYPES,
+        required=True,
+        help="Deployment type. Must be one of: inference_endpoint, local",
+    )
     parser.add_argument("--from-string", default=None)
     args = parser.parse_args()
     if args.from_string:
@@ -212,7 +220,10 @@ def get_cmdline_args():
         parsed_args["r"] = args.r
         parsed_args["start_idx"] = 0
         parsed_args["end_idx"] = None
+        parsed_args["deployment_type"] = DEPLOYMENT_TYPE__LOCAL_HF_MODEL
+        parsed_args["debug_mode"] = False
         args2 = Namespace(**parsed_args)
+
         args = args2
     return args
 
@@ -241,6 +252,10 @@ def generate_grid_configs(inference_session_grid_json, session_config_json):
 
     with open(session_config_json, "r") as f:
         session_config = json.load(f)
+
+    for arg_name, default_value in SESSION_CONFIGS_DEFAULT_VALUES.items():
+        if arg_name not in session_config:
+            session_config[arg_name] = default_value
 
     inference_sessions_configs = [
         build_inference_session_config(inference_args)
@@ -273,10 +288,16 @@ def convert_trials_to_configs(trials_json, session_config_json):
         trials_list = json.load(f)
     with open(session_config_json, "r") as f:
         session_config = json.load(f)
-        session_config = Namespace(**session_config)
+
+    for arg_name, default_value in SESSION_CONFIGS_DEFAULT_VALUES.items():
+        if arg_name not in session_config:
+            session_config[arg_name] = default_value
+
     inference_sessions_configs = []
     for trial in trials_list:
         cmdline_args = dynamis_sigansl_str_to_cmdline_args(trial)
         inference_session_config = build_inference_session_config(cmdline_args)
         inference_sessions_configs.append(inference_session_config)
+
+    session_config = Namespace(**session_config)
     return session_config, inference_sessions_configs

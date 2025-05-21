@@ -1,4 +1,5 @@
 import random
+import datetime
 import torch
 import pprint
 from argparse import Namespace
@@ -92,15 +93,19 @@ class DsgiSessionManager:
         self,
         session_config,
         inference_sessions_configs,
-        use_hf_model=False,
-        use_inference_endpoint=True,
     ):
         self.session_config = session_config
         self.inference_sessions_configs = inference_sessions_configs
         self.inference_session = None
-        assert int(use_hf_model) + int(use_inference_endpoint) == 1
-        self.use_hf_model = use_hf_model
-        self.use_inference_endpoint = use_inference_endpoint
+        self.use_local_hf_model = (
+            self.session_config.deployment_type == DEPLOYMENT_TYPE__LOCAL_HF_MODEL
+        )
+        self.use_inference_endpoint = (
+            self.session_config.deployment_type == DEPLOYMENT_TYPE__INFERENCE_ENDPOINT
+        )
+        assert (
+            self.use_local_hf_model ^ self.use_inference_endpoint
+        ), "Exactly one of 'use_local_hf_model' or 'use_inference_endpoint' must be True"
 
     def validate_args(self):
         for inference_session_config in self.inference_sessions_configs:
@@ -112,7 +117,11 @@ class DsgiSessionManager:
 
     def setup(self):
         self.solutions = {}
-        if self.use_hf_model:
+        assert (
+            self.session_config.model_name
+            in SUPPORTED_MODELS_ON_DEPLOYMENTS[self.session_config.deployment_type]
+        ), f"Model \"{self.session_config.model_name}\" is currently not supported for \"{self.session_config.deployment_type}\" deployment."
+        if self.use_local_hf_model:
             self.device = setup_device()
             self.model, self.tokenizer = load_model(
                 self.session_config.model_name, self.device
@@ -126,6 +135,7 @@ class DsgiSessionManager:
             self.tokenizer,
             function_signature=None,
             minimal_trace=self.session_config.minimal_trace,
+            debug_mode=self.session_config.debug_mode,
         )
         self.stats_manager = StatisticsManager()
         self.problems = load_mbpp_problems()
@@ -136,8 +146,6 @@ class DsgiSessionManager:
             ]
         if self.session_config.is_prod:
             random.shuffle(self.problems)
-            # if I use trials list its better not to shuffle as they are decreasing in the effectivness.
-            # random.shuffle(self.inference_sessions_configs)
 
     def create_results_dir(self, session_config, inference_session_config):
         dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
@@ -172,7 +180,7 @@ class DsgiSessionManager:
         print("Setting inference session config:")
         pprint.pprint(self.inference_session)
 
-    def resolve_official_evaluation_solved_entries(self):
+    def resolve_baseline_solved_entries(self):
         gamma = 0.0
         if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
             official_passed_task_ids = DEEPSEEK_V3_0324_SOLVED_TASK_IDS
@@ -260,48 +268,6 @@ class DsgiSessionManager:
                     if bs_solution_entry["passed"]:
                         break
 
-    def resolve_cache_entries(self):
-        if not (
-            self.session_config.use_cache
-            and self.session_config.model_name == DEEPSEEK_13B_INSTRUCT_MODEL_NAME
-        ):
-            return
-
-        solved_list = DEEPSEEK_13_SOLVED_TASK_IDS
-        random.shuffle(solved_list)
-        time.sleep(random.randint(1, 10))
-        print("Perform Caching resolution")
-        for task_id in solved_list:
-            for _, problem in self.problems:
-                if problem["task_id"] != task_id:
-                    continue
-                print(f"Task {task_id}: Continue, Already Solved")
-                for gamma in GAMMAS:
-                    solution_entry_path = get_solution_filepath(
-                        self.inference_session.results_dir,
-                        task_id,
-                        gamma,
-                    )
-                    if os.path.exists(solution_entry_path):
-                        continue
-                    with open(solution_entry_path, "a"):
-                        pass
-                    solution_entry = {
-                        "code": "",
-                        "results": {},
-                        "passed": gamma > 0,
-                        "accuracy": float(int(gamma > 0)),
-                        "general_error": None,
-                        "has_testcase_error": False,
-                        "cached": True,
-                    }
-                    solution_entry["tokens_count"] = -1
-                    solution_entry["retry"] = -1
-                    solution_entry["random_seed"] = -1
-                    self.solutions[(task_id, gamma)] = solution_entry
-                    with open(solution_entry_path, "w") as f:
-                        json.dump(solution_entry, f, indent=2)
-
     def build_dsgi_injection_manager_and_prompt(
         self, problem, gamma, function_signature=None
     ):
@@ -373,9 +339,10 @@ class DsgiSessionManager:
                 ],
                 "execution_manager": self.execution_manager,
                 "stats_manager": self.stats_manager,
-                "use_hf_model": self.use_hf_model,
+                "use_local_hf_model": self.use_local_hf_model,
                 "use_inference_endpoint": self.use_inference_endpoint,
                 "model_name": self.session_config.model_name,
+                # "debug_mode": self.session_config.debug_mode
             }
 
             detector_kwargs = {}
@@ -399,6 +366,7 @@ class DsgiSessionManager:
             detector_kwargs,
             use_detector=use_detector,
             top_probs_count=self.session_config.top_probs,
+            # debug_mode=self.session_config.debug_mode
         )
         return dsgi_injection_manager, prompt
 
@@ -407,12 +375,15 @@ class DsgiSessionManager:
         problem,
         gamma,
     ):
+        solution = None
+        early_stop = False
         function_signature = None
         dsgi_injection_manager, prompt = self.build_dsgi_injection_manager_and_prompt(
             problem, gamma, function_signature
         )
         initial_prompt_input_ids_len = calculate_tokens_length(self.tokenizer, prompt)
-        if self.use_hf_model:
+        stats_manager = dsgi_injection_manager.adapter.stats_manager
+        if self.use_local_hf_model:
             inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
             outputs = generate_code_solutions(
                 self.model,
@@ -423,11 +394,14 @@ class DsgiSessionManager:
                 prompt_type=self.inference_session.inference_session_config[
                     "prompt_type"
                 ],
+                stats_manager=stats_manager,
             )
         elif self.use_inference_endpoint:
             function_signature = extract_function_signature(problem["code"])
+            # Instruct Model to write the final solution in the last code block
+            # This models tend to use code block as part of their reasoning steps
+            # and we need to way to decide where to start EG-CFG
             if self.session_config.model_name == QWEN3_253B_MODEL_NAME_HF:
-                # Qwen3 specific adaptations to the prompt
                 prompt = prompt.replace("Deepseek Coder", "Qwen3")
                 prompt = prompt.replace("Deepseek", "Qwen")
                 usage_comment = PYTHON_CODE_TAGS_USAGE_INSTRUCTION_QWEN
@@ -435,47 +409,18 @@ class DsgiSessionManager:
             if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
                 usage_comment = PYTHON_CODE_TAGS_USAGE_INSTRUCTION_DS
 
-            inserts = [
+            usage_comment_insertion_positions = [
                 "Allowing **incremental execution and debugging**",  # long code prompt
                 "Examples are listed as follows:",  # deepseek instruct prompt
             ]
-            for s in inserts:
-                if s in prompt:
-                    prompt = prompt.replace(s, f"{s}\n{usage_comment}")
-                    # print(prompt)
+            for insertion_position in usage_comment_insertion_positions:
+                if insertion_position in prompt:
+                    prompt = prompt.replace(
+                        insertion_position, f"{insertion_position}\n{usage_comment}"
+                    )
                     break
 
-            if not gamma:
-                solution = None
-                if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
-                    prompt_input_ids = self.tokenizer(prompt, return_tensors="pt")[
-                        "input_ids"
-                    ]
-                    solution, completion_tokens = simple_query(
-                        prompt,
-                        self.session_config.model_name,
-                        temperture=0,
-                        stop_condition=END_OF_CODE_STOP_SEQUENCE,
-                    )
-                    if self.stats_manager is not None:
-                        self.stats_manager.increate_counter(
-                            "guidance_input_tokens", prompt_input_ids.shape[1]
-                        )
-                        self.stats_manager.increate_counter(
-                            "guidance_output_tokens", completion_tokens
-                        )
-                elif self.session_config.model_name == QWEN3_253B_MODEL_NAME_HF:
-                    _, solution, completion_tokens = complex_qwen_query(
-                        prompt,
-                        function_signature,
-                        self.session_config.model_name,
-                        temperture=dsgi_injection_manager.adapter.temperature,
-                        max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
-                        verbose=True,
-                    )
-                assert solution
-                return solution
-            else:  # gamma > 0
+            if gamma > 0.0:
                 outputs, early_stop = inference_endpoint_dsgi(
                     prompt,
                     self.tokenizer,
@@ -483,10 +428,34 @@ class DsgiSessionManager:
                     dsgi_injection_manager,
                     function_signature,
                 )
-        if early_stop:
-            print("Early Stop detected!")
-            solution = outputs
-        else:
+            else:  # gamma == 0
+                # We resolve all gamma == 0.0. BUT it can be here in case we disable
+                # resolve all gamma = 0.0 forehead
+                # for some reason
+                prompt_input_ids = self.tokenizer(prompt, return_tensors="pt")[
+                    "input_ids"
+                ]
+                _, solution, completion_tokens = complex_qwen_query(
+                    prompt,
+                    function_signature,
+                    self.session_config.model_name,
+                    temperture=dsgi_injection_manager.adapter.temperature,
+                    max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
+                    verbose=True,
+                )
+                if self.stats_manager is not None:
+                    self.stats_manager.increate_counter(
+                        "guidance_input_tokens", prompt_input_ids.shape[1]
+                    )
+                    self.stats_manager.increate_counter(
+                        "guidance_output_tokens", completion_tokens
+                    )
+                assert solution
+                return solution
+            if early_stop:
+                print("Early Stop detected!")
+                solution = outputs
+        if solution is None:
             new_codes = raw_outputs_to_new_code(
                 outputs,
                 self.tokenizer,
@@ -495,9 +464,6 @@ class DsgiSessionManager:
                 stats_manager=self.stats_manager,
             )
             solution = new_codes[0]
-        # if function_signature:
-        #     solution = f"{function_signature}\n{solution}"
-        #     assert is_valid_python(solution)
         return solution
 
     def solve_problem_with_dsgi_wrapper(self, problem, gamma):
@@ -519,30 +485,27 @@ class DsgiSessionManager:
             if self.inference_session.inference_session_config[
                 DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
             ].is_enabled:
-                if self.session_config.random_seed is not None:
-                    random_seed = self.session_config.random_seed
-                else:
-                    iid_arg = (
-                        self.inference_session.inference_session_config[
-                            DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
-                        ].temperature,
-                        self.inference_session.inference_session_config[
-                            DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
-                        ].nf_samples_count,
-                        self.inference_session.inference_session_config[
-                            DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
-                        ].nf_samples_depth,
-                        self.inference_session.inference_session_config[
-                            DYNAMIC_SIGNAL__PARTIAL_EXECUTION
-                        ].is_enabled,
-                        # self.inference_session.inference_session_config[
-                        #     "guidance_strategy"
-                        # ],
-                        # self.inference_session.inference_session_config["prompt_type"],
-                    )
-                    random_seed = stable_hash(iid_arg)
-                    random_seed = random_seed % 1000
-                    random_seed += 40
+                # We want to be able to use different configs is different
+                # orders but make them agnostic to their order.
+                # Each config has an IID seed 
+                # transformed to range (40,40+999)
+                iid_arg = (
+                    self.inference_session.inference_session_config[
+                        DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                    ].temperature,
+                    self.inference_session.inference_session_config[
+                        DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                    ].nf_samples_count,
+                    self.inference_session.inference_session_config[
+                        DYNAMIC_SIGNAL__NEAREST_FUTURE_EXECUTION
+                    ].nf_samples_depth,
+                    self.inference_session.inference_session_config[
+                        DYNAMIC_SIGNAL__PARTIAL_EXECUTION
+                    ].is_enabled,
+                )
+                random_seed = stable_hash(iid_arg)
+                random_seed = random_seed % 1000
+                random_seed += self.session_config.random_seed
                 random_seed += retry_idx
                 random.seed(random_seed)
                 torch.manual_seed(random_seed)
@@ -595,7 +558,7 @@ class DsgiSessionManager:
             )
             print(solution_entry["stats"])
             solution_entry["retry"] = retry_idx
-            solution_entry["random_seed"] = random_seed
+            # solution_entry["random_seed"] = random_seed
             if solution_entry["passed"]:
                 print(f"Problem task_id={task_id} is solved. (gamma={gamma})")
                 break
@@ -626,8 +589,8 @@ class DsgiSessionManager:
                 solution_entry = {
                     "code": "",
                     "results": {},
-                    "passed": 1,
-                    "accuracy": 1,
+                    "passed": True,
+                    "accuracy": 1.0,
                     "general_error": None,
                     "has_testcase_error": False,
                     "global_cached": True,
@@ -699,15 +662,12 @@ class DsgiSessionManager:
                 print(f"Failed Solving Problem task_id={task_id} (gamma={gamma})")
 
     def solve(self):
-        # First resolve all inference sessions cache & officail evaluation entries
         for inference_session_config in self.inference_sessions_configs:
             self.setup_inference_session(
                 inference_session_config,
             )
-            self.resolve_cache_entries()
-            self.resolve_official_evaluation_solved_entries()
+            self.resolve_baseline_solved_entries()
 
-        # Then, for every problem use all the configs to maximize caching
         for _, problem in self.problems:
             for inference_session_config in self.inference_sessions_configs:
                 self.setup_inference_session(

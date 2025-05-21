@@ -242,6 +242,8 @@ def raw_outputs_to_new_code(
             output_text, output_tokens = extract_new_tokens(
                 tokenizer, output, initial_prompt_input_ids_len
             )
+            if stats_manager is not None:
+                stats_manager.increate_counter("output_tokens", output_tokens.shape[1])
             if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
                 output_text = output_text.replace(
                     DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_END, ""
@@ -315,12 +317,15 @@ def generate_code_solutions(
     inputs,
     max_new_tokens=MAX_NEW_TOKENS,
     num_return_sequences=1,
-    temperature=0.1,
+    temperature=1,
     nf_samples_depth=None,
     function_name=None,
     do_sample=False,
     prompt_type=None,
+    stats_manager=None,
 ):
+    if stats_manager is not None:
+        stats_manager.increate_counter("input_tokens", inputs["input_ids"].shape[1])
     stop_criteria_list = [
         CodeGenStopCriteria(
             tokenizer,

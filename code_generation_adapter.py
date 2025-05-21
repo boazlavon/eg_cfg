@@ -24,25 +24,28 @@ class CodeGenerationAdapter:
         initial_prompt,
         dynamic_signals_types,
         prompt_type,
+        use_local_hf_model,
+        use_inference_endpoint,
         nf_samples_count=None,
         temperature=None,
         nf_samples_depth=None,
         guidance_strategy=None,
         execution_manager=None,
         stats_manager=None,
-        use_hf_model=False,
-        use_inference_endpoint=True,
         model_name=None,
     ):
-        assert int(use_hf_model) + int(use_inference_endpoint) == 1
-        self.use_hf_model = use_hf_model
+        assert (
+            use_local_hf_model ^ use_inference_endpoint
+        ), "Exactly one of 'use_local_hf_model' or 'use_inference_endpoint' must be True"
+        self.use_local_hf_model = use_local_hf_model
         self.use_inference_endpoint = use_inference_endpoint
-        if self.use_hf_model:
+        if self.use_local_hf_model:
             self.device = device
             self.model = model
         elif self.use_inference_endpoint:
             self.device = None
             self.model = None
+
         self.tokenizer = tokenizer
         self.function_signature = function_signature
         self.test_cases = test_cases
@@ -61,6 +64,7 @@ class CodeGenerationAdapter:
         self.current_nf_samples_count = []
         self.current_dynamic_signal = {}
         self.current_debug_data = {}
+
         assert dynamic_signals_types
         for dynamic_signal_type in dynamic_signals_types:
             assert dynamic_signal_type in SUPPORTED_DYNAMIC_SIGNALS
@@ -131,6 +135,8 @@ class CodeGenerationAdapter:
     def _extract_nearest_future_execution_dynamic_signals(
         self, dynamic_signal_type, input_ids
     ):
+        unique_stats_entry = []
+        unique_stats_entry_raw = []
         new_code = self._extract_new_code(input_ids)
         generate_new_signal = self._do_generate_new_signal(
             dynamic_signal_type, new_code
@@ -153,7 +159,7 @@ class CodeGenerationAdapter:
             )
 
         function_name, args_str, _ = parse_mbpp_assert_statement(self.test_cases[0])
-        if self.use_hf_model:
+        if self.use_local_hf_model:
             attention_mask = (input_ids != 0).long()
             inputs = {
                 "input_ids": input_ids.clone().to(self.device),
@@ -170,6 +176,7 @@ class CodeGenerationAdapter:
                 function_name=function_name,
                 do_sample=True,
                 prompt_type=self.prompt_type,
+                stats_manager=self.stats_manager,
             )
             new_codes = raw_outputs_to_new_code(
                 outputs,
@@ -194,6 +201,8 @@ class CodeGenerationAdapter:
                 prompt_with_cot=self.prompt_with_cot,
             )
         new_codes = list(set(new_codes))
+        unique_stats_entry.append(len(new_codes))
+        unique_stats_entry_raw.append(new_codes)
         executable_partial_programs = []
 
         # print(f"New Codes: {len(new_codes)}")
@@ -207,6 +216,8 @@ class CodeGenerationAdapter:
                 # print(f"#{idx + 1} Error Extracting Partial Executable")
                 continue
             executable_partial_programs.append(executable_partial_program_code)
+        unique_stats_entry.append(len(executable_partial_programs))
+        unique_stats_entry_raw.append(executable_partial_programs)
         executable_partial_programs = list(set(executable_partial_programs))
 
         # print(f"Executable Programs: {len(executable_partial_programs)}")
@@ -438,7 +449,7 @@ class CodeGenerationAdapter:
         unified_dynamic_signal_prompt_tokens = self.tokenizer(
             unified_dynamic_signal_prompt, return_tensors="pt"
         )
-        if self.use_hf_model and self.device:
+        if self.use_local_hf_model and self.device:
             dynamic_signal_input_ids = torch.cat(
                 [
                     unified_dynamic_signal_prompt_tokens["input_ids"].to(self.device),
