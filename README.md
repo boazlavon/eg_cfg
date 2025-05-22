@@ -275,7 +275,7 @@ No local GPU is required—all inference runs remotely on Fireworks infrastructu
 
 ---
 
-## 📜 Citation for Our Work
+## 📜 Citation
 
 ```bibtex
 @inproceedings{anonymous2025egcfg,
