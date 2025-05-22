@@ -69,7 +69,7 @@ python scripts/redirect_env_to_submodules.py $PWD/submodules/
 ---
 
 ## Launch Inference Jobs
-
+To maximize throughput, we encourage launching this script multiple times—once per available GPU node. The pipeline supports full synchronization across jobs, so no manual coordination is needed. Simply launch as many instances as you have nodes, and they’ll run in parallel seamlessly.
 ```bash
 ./scripts/job_runners/inference_sbatch.local.sh
 # Or monitor in watch mode
