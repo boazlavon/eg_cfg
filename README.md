@@ -233,7 +233,7 @@ In addition, we introduce a **long-code instruction-only prompt** that:
 - Encourages line-by-line, traceable completions
 - Follows stylistic constraints aligned with dynamic execution trace extraction
 - Designed for EG-CFG’s runtime-guided generation  
-- Detailed in Appendix A of our paper:contentReference[oaicite:0]{index=0}
+- Detailed in Appendix A of our paper
 
 ## 📜 Citation
 
