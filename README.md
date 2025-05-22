@@ -42,7 +42,7 @@ EG-CFG supports any causal language model that provides token-level log probabil
 
 > 🔍 **Analysis of Benchmark Inaccuracies**
 > 
-> We manually analyzed **all 17 MBPP tasks** that were previously marked as unsolved by the large model (DeepSeek-V3-0324).  
+> We manually analyzed **all 17 MBPP tasks** that were previously marked as unsolved by DeepSeek-V3-0324.  
 > Our analysis revealed that **9 out of the 17 tasks contain invalid unit tests**, and **some also include incorrect reference solutions**.  
 > In these cases, our generated code is **correct**, but was incorrectly marked as failed due to flaws in the benchmark’s tests.  
 >  
@@ -52,7 +52,7 @@ EG-CFG supports any causal language model that provides token-level log probabil
 > • 7 / 17 tasks with DeepSeek-V3-0324 (baseline)  
 > • 9 / 17 tasks with DeepSeek-V3-0324 (EG-CFG)  
 >  
-> Full breakdowns and validations are provided in the [`analysis/`](./analysis/) directory.
+> Full breakdowns and validations are provided in the [`mbpp_analysis/`](./mbpp_analysis/) directory.
 ---
 
 ## 🧱 Project Structure
