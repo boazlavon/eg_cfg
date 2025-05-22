@@ -19,12 +19,12 @@ EG-CFG is a decoding-time algorithm for code generation that incorporates real-t
 eg_cfg/           # Core implementation (EG-CFG inference loop, CFG, prompts)
 traces_dumper/    # Trace extraction tools for partial execution feedback
 scripts/          # Entry points for launching and monitoring experiments
-configs/          # Configuration files for models, sweeps, runtime settings
+configs/          # Configuration files
 trials/           # Stores generated outputs from inference runs
-output/           # Evaluation reports, CSVs, results tables
-data/             # Benchmark tasks and test cases
+output/           # Stores stdout outputs of inference runs
+data/             # Data used for inference runs like prompts and baseline results
 submodules/       # Local modules (e.g., xpython, trepan, transformers)
-environment.yml   # Conda environment definition
+environment.yml   # Conda environment
 ```
 
 ---
