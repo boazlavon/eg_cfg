@@ -6,7 +6,7 @@ EG-CFG is a decoding-time algorithm for code generation that incorporates real-t
 
 ## 🚀 Highlights
 
-- 📈 **New SOTA on MBPP** using open models (98.4% with DeepSeek-V3-0324)
+- 📈 **New SOTA on MBPP** using open models (96.6% with DeepSeek-V3-0324)
 - ⚡ Real-time execution feedback integrated during decoding
 - 🛠️ Fully configurable pipeline: local or endpoint inference
 - 🔁 Reproducible and extensible for code generation research
@@ -40,19 +40,10 @@ EG-CFG supports any causal language model that provides token-level log probabil
 
 > See full tables and ablations in the [paper](link).
 
-> 🔍 **Analysis of Benchmark Inaccuracies**
-> 
-> We manually analyzed **all 17 MBPP tasks** that were previously marked as unsolved by DeepSeek-V3-0324.  
-> Our analysis revealed that **9 out of the 17 tasks contain invalid unit tests**, and **some also include incorrect reference solutions**.  
-> In these cases, our generated code is **correct**, but was incorrectly marked as failed due to flaws in the benchmark’s tests.  
->  
-> Specifically, our models produced correct code for:  
-> • 7 / 17 tasks with DeepSeek-Coder 1.3B (baseline)  
-> • 8 / 17 tasks with DeepSeek-Coder 1.3B (EG-CFG)  
-> • 7 / 17 tasks with DeepSeek-V3-0324 (baseline)  
-> • 9 / 17 tasks with DeepSeek-V3-0324 (EG-CFG)  
->  
-> Full breakdowns and validations are provided in the [`mbpp_analysis/`](./mbpp_analysis/) directory.
+### Evaluation Limitations
+
+We manually reviewed all 17 MBPP tasks that were not solved by DeepSeek-V3-0324 and found that 9 contain invalid unit tests, with some also having incorrect reference solutions. In these cases, the model-generated code is correct but marked as failed due to flawed benchmark tests.  Full details are available in the [`mbpp_analysis/`](./mbpp_analysis/) directory.
+
 ---
 
 ## 🧱 Project Structure
