@@ -1,13 +1,316 @@
+# 🧠 Execution-Guided Line-by-Line Code Generation (EG-CFG)
+
+EG-CFG is a decoding-time algorithm for code generation that incorporates real-time **execution feedback** into LLM inference. By injecting dynamic signals during generation, EG-CFG guides the model toward correct and executable solutions — achieving state-of-the-art performance on the MBPP benchmark using open-source models only.
+
+---
+
+## 🚀 Highlights
+
+- 📈 **New SOTA on MBPP** using open models (96.6% with DeepSeek-V3-0324)
+- ⚡ Real-time execution feedback integrated during decoding
+- 🛠️ Fully configurable pipeline: local or endpoint inference
+- 🔁 Reproducible and extensible for code generation research
+
+---
+
+## 🧱 Project Structure
+
+```
+eg_cfg/           # Core implementation (EG-CFG inference loop, CFG, prompts)
+traces_dumper/    # Trace extraction tools for partial execution feedback
+scripts/          # Entry points for launching and monitoring experiments
+configs/          # Configuration files for models, sweeps, runtime settings
+trials/           # Stores generated outputs from inference runs
+output/           # Evaluation reports, CSVs, results tables
+data/             # Benchmark tasks and test cases
+submodules/       # Local modules (e.g., xpython, trepan, transformers)
+environment.yml   # Conda environment definition
+```
+
+---
+
+## ⚡ Quickstart
+
+```bash
 git clone --recurse-submodules git@github.com:boazlavon/eg_cfg.git
+cd eg_cfg
 conda env create -f environment.yml -n eg-cfg-env
 conda activate eg-cfg-env
 python scripts/redirect_env_to_submodules.py $PWD/submodules/
+```
 
-## monitor
-python eg_cfg/eg_cfg_monitor.py --aggregate-dir trials/inference_endpoint_results/mbpp/deepseek-ai_DeepSeek-V3-0324/ --model "deepseek-ai/DeepSeek-V3-0324" --gammas 0.0 0.5 1.0 3.0
-python eg_cfg/eg_cfg_monitor.py --aggregate-dir trials/local_results/mbpp/deepseek-ai_deepseek-coder-1.3b-instruct/  --model "deepseek-ai/deepseek-coder-1.3b-instruct" --gammas 0.0 0.5 1.0 3.0
+---
 
+## 4️⃣ Launch Inference Jobs
 
-## execution
+```bash
 ./scripts/job_runners/inference_sbatch.local.sh
+# Or monitor in watch mode
 ./scripts/job_runners/inference_sbatch.local.sh watch
+```
+
+---
+
+## 5️⃣ Monitor and Aggregate Results
+
+```bash
+# DeepSeek-V3-0324 (inference endpoint)
+python eg_cfg/eg_cfg_monitor.py \
+  --aggregate-dir trials/inference_endpoint_results/mbpp/deepseek-ai_DeepSeek-V3-0324/ \
+  --model "deepseek-ai/DeepSeek-V3-0324" --gammas 0.0 0.5 1.0 3.0
+
+# DeepSeek-Coder-1.3B (local)
+python eg_cfg/eg_cfg_monitor.py \
+  --aggregate-dir trials/local_results/mbpp/deepseek-ai_deepseek-coder-1.3b-instruct/ \
+  --model "deepseek-ai/deepseek-coder-1.3b-instruct" --gammas 0.0 0.5 1.0 3.0
+```
+
+---
+
+## 3️⃣ Configuration Overview
+
+### 🔧 `configs/dynamic_signals_params.json`
+
+Controls the grid of signal parameters used in guided generation.
+
+```json
+{
+  "t": [0.7, 0.75, 0.85, 0.95, 1.2, 1.5],         // Sampling temperature
+  "s": [3],                                       // Beam size (number of candidates)
+  "d": [2, 3, 6, 8],                              // Completion horizon (lines)
+  "prompt_type": ["deepseek_instruct", "long_code"]
+}
+```
+
+---
+
+### 🔧 `configs/session_config.local.json`
+
+Used for local inference:
+
+```json
+{
+  "model_name": "deepseek-ai/deepseek-coder-1.3b-instruct",
+  "gammas": [0.0, 1.0],
+  "deployment_type": "local",
+  "results_dir": "trials/local_results",
+  "use_global_cache": true,
+  "debug_mode": true,
+  "is_prod": true
+}
+```
+
+---
+
+### 🔧 `configs/session_config.inference_endpoint.json`
+
+Used for cloud inference:
+
+```json
+{
+  "model_name": "deepseek-ai/DeepSeek-V3-0324",
+  "gammas": [0.0, 0.5, 1.0, 3.0],
+  "deployment_type": "inference_endpoint",
+  "results_dir": "trials/inference_endpoint_results",
+  "inference_endpoint_api_key": "YOUR_API_KEY",
+  "inference_endpoint_url": "https://api.fireworks.ai/inference/v1/completions",
+  "use_global_cache": true,
+  "debug_mode": true,
+  "is_prod": true
+}
+```
+
+---
+
+### 🔧 Additional Optional Fields
+
+These can also be passed via JSON or CLI to customize behavior:
+
+```json
+{
+  "prompt_type": "long_code",
+  "s": 3,
+  "t": 0.75,
+  "d": 2,
+  "g": "line_guidance",           // Guidance strategy
+  "p": true,                      // Partial-solution execution signal
+  "n": true,                      // Multi-candidate execution signal
+  "minimal_trace": true,
+  "global_cache": true,
+  "random_seed": 42,
+  "top_probs": 5,
+  "r": 2,
+  "start_idx": 0,
+  "end_idx": 100,
+  "prod": true
+}
+```
+
+---
+
+
+---
+
+## 📁 6️⃣ Results Directory Structure
+
+Each trial is written under the path defined by `results_dir` in your session config.
+For example:
+
+```json
+{
+  "results_dir": "trials/local_results",
+  "model_name": "deepseek-ai/deepseek-coder-1.3b-instruct",
+  "deployment_type": "local",
+  ...
+}
+```
+
+This results in directories like:
+
+```
+trials/local_results/mbpp/deepseek-ai_deepseek-coder-1.3b-instruct/ns2t0.75d2_ln/
+```
+
+The folder name encodes the run configuration:
+- `s2` → 2 candidates
+- `t0.75` → temperature 0.75
+- `d2` → horizon 2 lines
+- `_ln` or `_lci_ln` suffix → prompt type (`deepseek_instruct` or `long_code`)
+
+Each config directory contains:
+- One JSON per task and gamma (e.g. `task_id=395_gamma=1.0.json`)
+- `accuracy.csv` and `passed.csv` aggregating results
+
+### 🧪 JSON file format
+
+Each file includes:
+```json
+{
+  "code": "...",                 // Model-generated Python code
+  "results": {
+    "assert ...": {
+      "result": true/false,
+      "time": <float>,           // Execution time
+      "error": null / string     // Any runtime error
+    },
+    ...
+  },
+  "passed": true/false,          // Did all test cases pass?
+  "accuracy": 1.0 / 0.0 / ...,
+  "stats": {
+    "start_time": "...",
+    "end_time": "...",
+    "input_tokens": <int>,
+    "output_tokens": <int>,
+    "duration": "HH:MM:SS"
+  },
+  ...
+}
+```
+
+A successful solution is:
+- `passed = true`
+- `accuracy = 1.0`
+
+These fields are used for filtering and reporting.
+
+
+
+---
+
+## 📘 Configuration Guide
+
+### 🔧 dynamic_signals_params.json
+
+Defines the sampling and guidance sweep:
+
+```json
+{
+  "t": [0.7, 0.75],         // Sampling temperatures
+  "s": [3],                 // Number of candidates (beam size)
+  "d": [2, 3],              // Completion horizon (lines)
+  "prompt_type": ["deepseek_instruct", "long_code"]
+}
+```
+
+---
+
+### 🔧 session_config.local.json / inference_endpoint.json
+
+Defines runtime setup per session:
+
+| Field                      | Description                                                  |
+|----------------------------|--------------------------------------------------------------|
+| `model_name`              | Model to use (local path or HuggingFace hub name)            |
+| `gammas`                  | CFG guidance strengths                                       |
+| `deployment_type`         | `"local"` or `"inference_endpoint"`                         |
+| `results_dir`             | Root directory for saving results                            |
+| `inference_endpoint_url`  | (if endpoint) API URL for inference                          |
+| `inference_endpoint_api_key` | (if endpoint) API key for Fireworks                        |
+| `use_global_cache`        | Avoid recomputing same completions                           |
+| `debug_mode`              | Enable logging/debug information                             |
+| `is_prod`                 | Run in production mode (disable debug/test toggles)          |
+
+---
+
+### 🛠️ Additional JSON/CLI overrides
+
+Optional fields for advanced control:
+
+```json
+{
+  "prompt_type": "long_code",         // Prompt formatting
+  "s": 3,                              // Beam size
+  "t": 0.75,                           // Temperature
+  "d": 2,                              // Completion horizon (lines)
+  "g": "line_guidance",               // Guidance strategy
+  "p": true,                          // Enable partial-solution execution signal
+  "n": true,                          // Enable multiple-candidate signal
+  "minimal_trace": true,             // Use minimal trace format
+  "global_cache": true,
+  "random_seed": 42,
+  "top_probs": 5,
+  "r": 2,                             // Retries per gamma
+  "start_idx": 0,
+  "end_idx": 100,
+  "prod": true
+}
+```
+
+> These can be set inside JSON or overridden via CLI for one-off runs.
+
+
+## 📊 Benchmark Results
+
+| Model                 | Method        | Accuracy (%) | RSR (%) |
+|----------------------|---------------|--------------|---------|
+| DeepSeek-Coder 1.3B  | EG-CFG        | 83.2         | 66.79   |
+| DeepSeek-V3-0324     | **EG-CFG**    | **96.6**     | 80.23   |
+| Claude-Sonnet-3.5    | QualityFlow   | 94.2         | –       |
+| GPT-4                | MetaGPT       | 87.7         | –       |
+
+> See full tables and ablations in the [paper](link) or `output/`.
+
+---
+
+## 📜 Citation
+
+```bibtex
+@inproceedings{anonymous2025egcfg,
+  title={Execution-Guided Line-by-Line Code Generation},
+  author={Anonymous},
+  booktitle={NeurIPS 2025},
+  year={2025}
+}
+```
+
+---
+
+## ✅ ML Code Checklist
+
+- [x] Dependency spec: `environment.yml`
+- [x] Inference + analysis code
+- [x] Precomputed trial outputs (optional)
+- [x] Evaluation scripts and commands
+- [x] Result tables + reproducibility
+
