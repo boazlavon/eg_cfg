@@ -250,7 +250,9 @@ No local GPU is required—all inference runs remotely on Fireworks infrastructu
 
 ---
 
-## 📚 Related Work
+## 📚 Related Work Citations
+
+We gratefully acknowledge the authors of the following works for their implementations and publicly available models. If you find this repository helpful, please consider citing their papers as well.
 
 ```bibtex
 @article{guo2024deepseek,
