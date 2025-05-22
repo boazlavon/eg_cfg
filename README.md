@@ -41,7 +41,7 @@ python scripts/redirect_env_to_submodules.py $PWD/submodules/
 
 ---
 
-## 4️⃣ Launch Inference Jobs
+## Launch Inference Jobs
 
 ```bash
 ./scripts/job_runners/inference_sbatch.local.sh
@@ -51,7 +51,7 @@ python scripts/redirect_env_to_submodules.py $PWD/submodules/
 
 ---
 
-## 5️⃣ Monitor and Aggregate Results
+## Monitor and Aggregate Results
 
 ```bash
 # DeepSeek-V3-0324 (inference endpoint)
@@ -67,7 +67,7 @@ python eg_cfg/eg_cfg_monitor.py \
 
 ---
 
-## 3️⃣ Configuration Overview
+## Configuration Overview
 
 ### 🔧 `configs/dynamic_signals_params.json`
 
@@ -122,36 +122,7 @@ Used for cloud inference:
 
 ---
 
-### 🔧 Additional Optional Fields
-
-These can also be passed via JSON or CLI to customize behavior:
-
-```json
-{
-  "prompt_type": "long_code",
-  "s": 3,
-  "t": 0.75,
-  "d": 2,
-  "g": "line_guidance",           // Guidance strategy
-  "p": true,                      // Partial-solution execution signal
-  "n": true,                      // Multi-candidate execution signal
-  "minimal_trace": true,
-  "global_cache": true,
-  "random_seed": 42,
-  "top_probs": 5,
-  "r": 2,
-  "start_idx": 0,
-  "end_idx": 100,
-  "prod": true
-}
-```
-
----
-
-
----
-
-## 📁 6️⃣ Results Directory Structure
+## 📁 Results Directory Structure
 
 Each trial is written under the path defined by `results_dir` in your session config.
 For example:
@@ -179,7 +150,6 @@ The folder name encodes the run configuration:
 
 Each config directory contains:
 - One JSON per task and gamma (e.g. `task_id=395_gamma=1.0.json`)
-- `accuracy.csv` and `passed.csv` aggregating results
 
 ### 🧪 JSON file format
 
@@ -213,8 +183,6 @@ A successful solution is:
 - `accuracy = 1.0`
 
 These fields are used for filtering and reporting.
-
-
 
 ---
 
@@ -252,33 +220,6 @@ Defines runtime setup per session:
 | `is_prod`                 | Run in production mode (disable debug/test toggles)          |
 
 ---
-
-### 🛠️ Additional JSON/CLI overrides
-
-Optional fields for advanced control:
-
-```json
-{
-  "prompt_type": "long_code",         // Prompt formatting
-  "s": 3,                              // Beam size
-  "t": 0.75,                           // Temperature
-  "d": 2,                              // Completion horizon (lines)
-  "g": "line_guidance",               // Guidance strategy
-  "p": true,                          // Enable partial-solution execution signal
-  "n": true,                          // Enable multiple-candidate signal
-  "minimal_trace": true,             // Use minimal trace format
-  "global_cache": true,
-  "random_seed": 42,
-  "top_probs": 5,
-  "r": 2,                             // Retries per gamma
-  "start_idx": 0,
-  "end_idx": 100,
-  "prod": true
-}
-```
-
-> These can be set inside JSON or overridden via CLI for one-off runs.
-
 
 ## 📊 Benchmark Results
 
