@@ -98,13 +98,12 @@ python eg_cfg/eg_cfg_monitor.py \
 
 ### 🔧 dynamic_signals_params.json
 
-Defines the sampling and guidance sweep:
-
+Defines the parameters used to generate dynamic execution signals.
 ```json
 {
-  "t": [0.7, 0.75],         // Sampling temperatures
-  "s": [3],                 // Number of candidates (beam size)
-  "d": [2, 3],              // Completion horizon (lines)
+  "t": [0.7, 0.75],         # Sampling temperatures
+  "s": [3],                 # Number of candidates (beam size)
+  "d": [2, 3],              # Completion horizon (lines)
   "prompt_type": ["deepseek_instruct", "long_code"]
 }
 ```
