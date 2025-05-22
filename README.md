@@ -222,10 +222,9 @@ We evaluate EG-CFG on the **MBPP (Mostly Basic Python Problems)** benchmark [Aus
 
 To ensure consistency with prior work, we adopt the **official evaluation prompt formats introduced by DeepSeek-Coder** [Guo et al., 2024], including:
 
-- **Few-shot instruction prompts** with multiple solved examples  
-- **Instruction-only prompts** designed for line-by-line execution and debugging
+- **Few-shot instruction prompts** with multiple solved examples
 
-These templates align with the evaluation procedure described in the DeepSeek-Coder paper and are used in both baseline and EG-CFG runs.
+These prompt align with the evaluation procedure described in the DeepSeek-Coder paper and is used in both baseline and EG-CFG runs.
 
 ## 📜 Citation
 
