@@ -199,8 +199,9 @@ Some core functionality in EG-CFG relies on **custom extensions of external libr
 
 ### 🛠️ Modified `transformers/` Library
 
-In local inference mode, we extend the internal decoding loop of the HuggingFace `transformers` library to support our method’s execution-aware guidance.  
-This modification enables token-level integration of execution feedback (as described in Section 3 of the paper), ensuring the model conditions on runtime traces dynamically during generation.
+In local inference mode, we extend the internal decoding loop of the HuggingFace `transformers` library to support execution-aware generation.
+Specifically, our modifications in `transformers/generation/utils.py` enable token-level integration of runtime feedback, allowing the model to dynamically condition on execution traces as described in Section 3 of the paper.
+This integration is essential for realizing EG-CFG's line-by-line guidance mechanism during inference.
 
 ### 🧪 Execution Tracing via `trepan-xpy`
 
