@@ -181,9 +181,7 @@ Each file includes:
     "input_tokens": 1234,      # Total prompt tokens
     "output_tokens": 456,      # Total generated tokens
     "duration": "00:01:23"     # Inference wall-time duration
-  },
-  "retry": 0,                  # Retry count for this task
-  "random_seed": 559          # Random seed used for generation
+  }
 }
 ```
 
