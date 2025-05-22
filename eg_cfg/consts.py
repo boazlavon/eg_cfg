@@ -85,7 +85,7 @@ TASK__CODE_GENERATION = "CodeGeneration"
 SUPPORTED_TASKS = (TASK__CODE_GENERATION,)
 MBPP_INSTRUCT_PROMPT_FILENAME = "mbpp_instruct_prompts.json"
 MBPP_BASE_PROMPT_FILENAME = "mbpp_base_prompts.json"
-MAIN_DATA_DIR = 'data'
+MAIN_DATA_DIR = "data"
 DEEPSEEK_PROMPT_DIRNAME = "deepseek_mbpp_prompts"
 DEEPSEEK_13B_INSTRUCT_BASELINE_PASSED_PATH = (
     "data/official_eval_results/deepseek-ai_deepseek-coder-1.3b-instruct.task_ids.json"
@@ -101,9 +101,7 @@ DEEPSEEK_13B_INSTRUCT_MODEL_NAME = "deepseek-ai/deepseek-coder-1.3b-instruct"
 DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME = (
     "deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct"
 )
-DEEPSEEK_CODER_V2_LITE_INSTRUCT_BASELINE_PASSED_PATH = (
-    "data/official_eval_results/deepseek-ai_DeepSeek-Coder-V2-Lite-Instruct.task_ids.json"
-)
+DEEPSEEK_CODER_V2_LITE_INSTRUCT_BASELINE_PASSED_PATH = "data/official_eval_results/deepseek-ai_DeepSeek-Coder-V2-Lite-Instruct.task_ids.json"
 DEEPSEEK_CODER_V2_LITE_INSTRUCT_BASELINE_RESULTS_PATH = (
     "data/official_eval_results/deepseek-ai_DeepSeek-Coder-V2-Lite-Instruct.json"
 )
@@ -183,8 +181,12 @@ SUPPORTED_MODELS_ON_DEPLOYMENTS = {
     DEPLOYMENT_TYPE__LOCAL_HF_MODEL: (DEEPSEEK_13B_INSTRUCT_MODEL_NAME,),
 }
 
-BASELINE_DIR_DEEPSEEK_V3_0324 = "data/official_eval_results/baseline/mbpp/deepseek-ai_DeepSeek-V3-0324"
-BASELINE_DIR_QWEN3_253B = "data/official_eval_results/baseline/mbpp/Qwen_Qwen3-235B-A22B"
+BASELINE_DIR_DEEPSEEK_V3_0324 = (
+    "data/official_eval_results/baseline/mbpp/deepseek-ai_DeepSeek-V3-0324"
+)
+BASELINE_DIR_QWEN3_253B = (
+    "data/official_eval_results/baseline/mbpp/Qwen_Qwen3-235B-A22B"
+)
 BASELINE_TRIALS_BASE = {
     DEEPSEEK_V3_0324_MODEL_NAME_HF: BASELINE_DIR_DEEPSEEK_V3_0324,
     QWEN3_253B_MODEL_NAME_HF: BASELINE_DIR_QWEN3_253B,

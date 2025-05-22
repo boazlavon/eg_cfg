@@ -150,6 +150,7 @@ class EgCfgSessionManager:
             self.session_config.results_dir = os.path.join(
                 os.getcwd(), self.session_config.results_dir
             )
+            os.makedirs(self.session_config.results_dir, exist_ok=True)
 
     def create_results_dir(self, session_config, inference_session_config):
         dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
@@ -297,7 +298,9 @@ class EgCfgSessionManager:
                 == PROMPT_TYPE__DEEPSEEK_INSTRUCT
             ):
                 prompts_path = os.path.join(
-                    MAIN_DATA_DIR, DEEPSEEK_PROMPT_DIRNAME, MBPP_INSTRUCT_PROMPT_FILENAME
+                    MAIN_DATA_DIR,
+                    DEEPSEEK_PROMPT_DIRNAME,
+                    MBPP_INSTRUCT_PROMPT_FILENAME,
                 )
                 end_string = CODE_BORDER_TOKEN
             with open(prompts_path, "r") as f:
