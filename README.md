@@ -220,11 +220,20 @@ We evaluate EG-CFG on the **MBPP (Mostly Basic Python Problems)** benchmark [Aus
 
 ### 🧾 Prompt Format
 
-To ensure consistency with prior work, we adopt the **official evaluation prompt formats introduced by DeepSeek-Coder** [Guo et al., 2024], including:
+We use two prompt types to ensure broad and reproducible evaluation:
 
-- **Few-shot instruction prompts** with multiple solved examples
+#### 🔹 Official Few-Shot Prompt (DeepSeek-Coder)
+We adopt the **official evaluation prompt** provided by DeepSeek-Coder’s GitHub [Guo et al., 2024]:
+- Includes 3 few-shot examples before each target problem
+- Matches the DeepSeek-Coder evaluation setting  
+- Source: [deepseek-ai/DeepSeek-Coder GitHub](https://github.com/deepseek-ai/DeepSeek-Coder)
 
-These prompt align with the evaluation procedure described in the DeepSeek-Coder paper and is used in both baseline and EG-CFG runs.
+#### 🔹 Long-Code Prompt (ours)
+In addition, we introduce a **long-code instruction-only prompt** that:
+- Encourages line-by-line, traceable completions
+- Follows stylistic constraints aligned with dynamic execution trace extraction
+- Designed for EG-CFG’s runtime-guided generation  
+- Detailed in Appendix A of our paper:contentReference[oaicite:0]{index=0}
 
 ## 📜 Citation
 
