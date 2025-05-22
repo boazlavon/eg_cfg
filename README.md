@@ -250,15 +250,9 @@ No local GPU is required—all inference runs remotely on Fireworks infrastructu
 
 ---
 
-## 📜 Citation
+## 📚 Related Work
 
 ```bibtex
-@inproceedings{anonymous2025egcfg,
-  title={Execution-Guided Line-by-Line Code Generation},
-  author={Anonymous},
-  booktitle={NeurIPS 2025},
-  year={2025}
-}
 @article{guo2024deepseek,
   title={DeepSeek-Coder: When the Large Language Model Meets Programming--The Rise of Code Intelligence},
   author={Guo, Daya and Zhu, Qihao and Yang, Dejian and Xie, Zhenda and Dong, Kai and Zhang, Wentao and Chen, Guanting and Bi, Xiao and Wu, Yu and Li, YK and others},
@@ -278,6 +272,20 @@ No local GPU is required—all inference runs remotely on Fireworks infrastructu
   year={2024}
 }
 ```
+
+---
+
+## 📜 Citation for Our Work
+
+```bibtex
+@inproceedings{anonymous2025egcfg,
+  title={Execution-Guided Line-by-Line Code Generation},
+  author={Anonymous},
+  booktitle={NeurIPS 2025},
+  year={2025}
+}
+```
+
 
 ---
 
