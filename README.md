@@ -13,6 +13,19 @@ EG-CFG is a decoding-time algorithm for code generation that incorporates real-t
 
 ---
 
+## 📊 Benchmark Results
+
+| Model                 | Method        | Accuracy (%) | RSR (%) |
+|----------------------|---------------|--------------|---------|
+| DeepSeek-Coder 1.3B  | EG-CFG        | 83.2         | 66.79   |
+| DeepSeek-V3-0324     | **EG-CFG**    | **96.6**     | 80.23   |
+| Claude-Sonnet-3.5    | QualityFlow   | 94.2         | –       |
+| GPT-4                | MetaGPT       | 87.7         | –       |
+
+> See full tables and ablations in the [paper](link) or `output/`.
+
+---
+
 ## 🧱 Project Structure
 
 ```
@@ -67,60 +80,23 @@ python eg_cfg/eg_cfg_monitor.py \
 
 ---
 
-## Configuration Overview
+## 📘 Configuration Guide
 
-### 🔧 `configs/dynamic_signals_params.json`
+### 🔧 dynamic_signals_params.json
 
-Controls the grid of signal parameters used in guided generation.
+Defines the sampling and guidance sweep:
 
 ```json
 {
-  "t": [0.7, 0.75, 0.85, 0.95, 1.2, 1.5],         // Sampling temperature
-  "s": [3],                                       // Beam size (number of candidates)
-  "d": [2, 3, 6, 8],                              // Completion horizon (lines)
+  "t": [0.7, 0.75],         // Sampling temperatures
+  "s": [3],                 // Number of candidates (beam size)
+  "d": [2, 3],              // Completion horizon (lines)
   "prompt_type": ["deepseek_instruct", "long_code"]
 }
 ```
 
 ---
 
-### 🔧 `configs/session_config.local.json`
-
-Used for local inference:
-
-```json
-{
-  "model_name": "deepseek-ai/deepseek-coder-1.3b-instruct",
-  "gammas": [0.0, 1.0],
-  "deployment_type": "local",
-  "results_dir": "trials/local_results",
-  "use_global_cache": true,
-  "debug_mode": true,
-  "is_prod": true
-}
-```
-
----
-
-### 🔧 `configs/session_config.inference_endpoint.json`
-
-Used for cloud inference:
-
-```json
-{
-  "model_name": "deepseek-ai/DeepSeek-V3-0324",
-  "gammas": [0.0, 0.5, 1.0, 3.0],
-  "deployment_type": "inference_endpoint",
-  "results_dir": "trials/inference_endpoint_results",
-  "inference_endpoint_api_key": "YOUR_API_KEY",
-  "inference_endpoint_url": "https://api.fireworks.ai/inference/v1/completions",
-  "use_global_cache": true,
-  "debug_mode": true,
-  "is_prod": true
-}
-```
-
----
 
 ## 📁 Results Directory Structure
 
@@ -186,23 +162,6 @@ These fields are used for filtering and reporting.
 
 ---
 
-## 📘 Configuration Guide
-
-### 🔧 dynamic_signals_params.json
-
-Defines the sampling and guidance sweep:
-
-```json
-{
-  "t": [0.7, 0.75],         // Sampling temperatures
-  "s": [3],                 // Number of candidates (beam size)
-  "d": [2, 3],              // Completion horizon (lines)
-  "prompt_type": ["deepseek_instruct", "long_code"]
-}
-```
-
----
-
 ### 🔧 session_config.local.json / inference_endpoint.json
 
 Defines runtime setup per session:
@@ -221,18 +180,27 @@ Defines runtime setup per session:
 
 ---
 
-## 📊 Benchmark Results
-
-| Model                 | Method        | Accuracy (%) | RSR (%) |
-|----------------------|---------------|--------------|---------|
-| DeepSeek-Coder 1.3B  | EG-CFG        | 83.2         | 66.79   |
-| DeepSeek-V3-0324     | **EG-CFG**    | **96.6**     | 80.23   |
-| Claude-Sonnet-3.5    | QualityFlow   | 94.2         | –       |
-| GPT-4                | MetaGPT       | 87.7         | –       |
-
-> See full tables and ablations in the [paper](link) or `output/`.
-
 ---
+
+## 🔧 Submodules and Custom Modifications
+
+Some core functionality in EG-CFG relies on **custom extensions of external libraries**, which are included as Git submodules and redirected into the conda environment via symlinks.
+
+### 🛠️ Modified `transformers/` Library
+
+In local inference mode, we extend the internal decoding loop of the HuggingFace `transformers` library to support our method’s execution-aware guidance.  
+This modification enables token-level integration of execution feedback (as described in Section 3 of the paper), ensuring the model conditions on runtime traces dynamically during generation.
+
+### 🧪 Execution Tracing via `trepan-xpy`
+
+We use the `trepan-xpy` debugger to execute partially completed code and extract traces during inference.  
+To support our framework, we modified the debugger to emit execution traces in a **canonical form** — consistent structure regardless of success, failure, or runtime errors.
+
+> These are included in `submodules/` and linked into `site-packages/` using:
+> ```bash
+> python scripts/redirect_env_to_submodules.py $PWD/submodules/
+> ```
+
 
 ## 📜 Citation
 
