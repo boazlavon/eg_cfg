@@ -95,6 +95,23 @@ Defines the sampling and guidance sweep:
 }
 ```
 
+### 🔧 session_config.local.json / inference_endpoint.json
+
+Defines runtime setup per session:
+
+| Field                      | Description                                                  |
+|----------------------------|--------------------------------------------------------------|
+| `model_name`              | Model to use (local path or HuggingFace hub name)            |
+| `gammas`                  | CFG guidance strengths                                       |
+| `deployment_type`         | `"local"` or `"inference_endpoint"`                         |
+| `results_dir`             | Root directory for saving results                            |
+| `inference_endpoint_url`  | (if endpoint) API URL for inference                          |
+| `inference_endpoint_api_key` | (if endpoint) API key for Fireworks                        |
+| `use_global_cache`        | Avoid recomputing same completions                           |
+| `debug_mode`              | Enable logging/debug information                             |
+| `is_prod`                 | Run in production mode (disable debug/test toggles)          |
+
+
 ---
 
 
@@ -159,26 +176,6 @@ A successful solution is:
 - `accuracy = 1.0`
 
 These fields are used for filtering and reporting.
-
----
-
-### 🔧 session_config.local.json / inference_endpoint.json
-
-Defines runtime setup per session:
-
-| Field                      | Description                                                  |
-|----------------------------|--------------------------------------------------------------|
-| `model_name`              | Model to use (local path or HuggingFace hub name)            |
-| `gammas`                  | CFG guidance strengths                                       |
-| `deployment_type`         | `"local"` or `"inference_endpoint"`                         |
-| `results_dir`             | Root directory for saving results                            |
-| `inference_endpoint_url`  | (if endpoint) API URL for inference                          |
-| `inference_endpoint_api_key` | (if endpoint) API key for Fireworks                        |
-| `use_global_cache`        | Avoid recomputing same completions                           |
-| `debug_mode`              | Enable logging/debug information                             |
-| `is_prod`                 | Run in production mode (disable debug/test toggles)          |
-
----
 
 ---
 
