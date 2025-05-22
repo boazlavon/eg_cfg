@@ -237,6 +237,16 @@ In addition, we introduce a **long-code instruction-only prompt** that:
 - Designed for EG-CFG’s runtime-guided generation  
 - Detailed in Appendix A of our paper
 
+---
+
+### ☁️ Inference Endpoint
+
+For large-scale model inference (e.g., using DeepSeek-V3-0324), we use [Fireworks.ai](https://fireworks.ai/) as the inference endpoint provider.
+Fireworks supports **token-level log probabilities**, which are essential for performing Classifier-Free Guidance (CFG) during decoding.
+> Endpoint access is configured via `session_config.inference_endpoint.json` using your Fireworks API key and endpoint URL.
+
+---
+
 ## 📜 Citation
 
 ```bibtex
