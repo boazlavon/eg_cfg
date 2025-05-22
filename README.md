@@ -78,7 +78,7 @@ To maximize throughput, we encourage launching this script **multiple times—on
 
 ---
 
-## Monitor and Aggregate Results
+## 📈 Monitor and Aggregate Results
 
 ```bash
 # DeepSeek-Coder-1.3B (local)
