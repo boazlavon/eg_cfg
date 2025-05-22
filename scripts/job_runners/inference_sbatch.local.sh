@@ -20,7 +20,7 @@ sbatch \
 --output $OUTPUT_FILE_PATH \
 --job-name=$RUN \
 --nodes=1 \
-scripts/slurms/inference.local.slurm
+scripts/job_runners/slurms/inference.local.slurm
 
 if [ "$1" = "watch" ]; then
     watch tail -n50 $OUTPUT_FILE_PATH

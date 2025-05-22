@@ -18,7 +18,7 @@ sbatch \
 --partition=$PARTITION \
 --output $OUTPUT_FILE_PATH \
 --job-name=$RUN \
-scripts/slurms/inference.inference_endpoint.slurm
+scripts/job_runners/slurms/inference.inference_endpoint.slurm
 
 if [ "$1" = "watch" ]; then
     watch tail -n50 $OUTPUT_FILE_PATH
