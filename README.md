@@ -40,7 +40,7 @@ EG-CFG supports any causal language model that provides token-level log probabil
 
 > See full tables and ablations in the [paper](link).
 
-### 🧪 Evaluation Limitations
+### Evaluation Limitations
 
 We manually reviewed all 17 MBPP tasks that were not solved by the large model (DeepSeek-V3-0324) and found that 9 contain invalid unit tests, with some also having incorrect reference solutions. In these cases, the model-generated code is correct but marked as failed due to flawed benchmark tests. This highlights a limitation of test-based evaluation, where some reported failures are artifacts of benchmark inaccuracies rather than true model errors. Full details are available in the [`analysis/`](./analysis/) directory.
 
