@@ -1,4 +1,4 @@
-# 🧠 Execution-Guided Line-by-Line Code Generation (EG-CFG)
+# Execution-Guided Line-by-Line Code Generation (EG-CFG)
 
 EG-CFG is a decoding-time algorithm for code generation that incorporates real-time **execution feedback** into LLM inference. By injecting dynamic signals during generation, EG-CFG guides the model toward correct and executable solutions — achieving state-of-the-art performance on the MBPP benchmark using open-source models only.
 
