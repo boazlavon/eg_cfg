@@ -1,0 +1,12 @@
+{
+  "task_id": 187,
+  "text": "Write a function to find the longest common subsequence for the given two sequences.",
+  "code": "def longest_common_subsequence(X, Y, m, n): \r\n    if m == 0 or n == 0: \r\n       return 0 \r\n    elif X[m-1] == Y[n-1]: \r\n       return 1 + longest_common_subsequence(X, Y, m-1, n-1) \r\n    else: \r\n       return max(longest_common_subsequence(X, Y, m, n-1), longest_common_subsequence(X, Y, m-1, n))",
+  "test_list": [
+    "assert longest_common_subsequence(\"AGGTAB\" , \"GXTXAYB\", 6, 7) == 4",
+    "assert longest_common_subsequence(\"ABCDGH\" , \"AEDFHR\", 6, 6) == 3",
+    "assert longest_common_subsequence(\"AXYT\" , \"AYZX\", 4, 4) == 2"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": 396,
+  "text": "Write a function to check whether the given string starts and ends with the same character or not using regex.",
+  "code": "import re  \r\nregex = r'^[a-z]$|^([a-z]).*\\1$'\r\ndef check_char(string): \r\n\tif(re.search(regex, string)): \r\n\t\treturn \"Valid\" \r\n\telse: \r\n\t\treturn \"Invalid\" ",
+  "test_list": [
+    "assert check_char(\"abba\") == \"Valid\"",
+    "assert check_char(\"a\") == \"Valid\"",
+    "assert check_char(\"abcd\") == \"Invalid\""
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

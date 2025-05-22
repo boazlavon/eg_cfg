@@ -1,0 +1,12 @@
+{
+  "task_id": 173,
+  "text": "Write a function to remove everything except alphanumeric characters from a string.",
+  "code": "import re\r\ndef remove_splchar(text): \r\n pattern = re.compile('[\\W_]+')\r\n return (pattern.sub('', text))",
+  "test_list": [
+    "assert remove_splchar('python  @#&^%$*program123')==('pythonprogram123')",
+    "assert remove_splchar('python %^$@!^&*()  programming24%$^^()    language')==('pythonprogramming24language')",
+    "assert remove_splchar('python   ^%&^()(+_)(_^&67)                  program')==('python67program')"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

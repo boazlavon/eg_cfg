@@ -1,0 +1,12 @@
+{
+  "task_id": 463,
+  "text": "Write a function to find the maximum product subarray of the given array.",
+  "code": "def max_subarray_product(arr):\r\n\tn = len(arr)\r\n\tmax_ending_here = 1\r\n\tmin_ending_here = 1\r\n\tmax_so_far = 0\r\n\tflag = 0\r\n\tfor i in range(0, n):\r\n\t\tif arr[i] > 0:\r\n\t\t\tmax_ending_here = max_ending_here * arr[i]\r\n\t\t\tmin_ending_here = min (min_ending_here * arr[i], 1)\r\n\t\t\tflag = 1\r\n\t\telif arr[i] == 0:\r\n\t\t\tmax_ending_here = 1\r\n\t\t\tmin_ending_here = 1\r\n\t\telse:\r\n\t\t\ttemp = max_ending_here\r\n\t\t\tmax_ending_here = max (min_ending_here * arr[i], 1)\r\n\t\t\tmin_ending_here = temp * arr[i]\r\n\t\tif (max_so_far < max_ending_here):\r\n\t\t\tmax_so_far = max_ending_here\r\n\tif flag == 0 and max_so_far == 0:\r\n\t\treturn 0\r\n\treturn max_so_far",
+  "test_list": [
+    "assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112",
+    "assert max_subarray_product([6, -3, -10, 0, 2]) == 180 ",
+    "assert max_subarray_product([-2, -40, 0, -2, -3]) == 80"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

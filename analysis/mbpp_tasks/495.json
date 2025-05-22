@@ -1,0 +1,12 @@
+{
+  "task_id": 495,
+  "text": "Write a function to remove lowercase substrings from a given string by using regex.",
+  "code": "import re\r\ndef remove_lowercase(str1):\r\n  remove_lower = lambda text: re.sub('[a-z]', '', text)\r\n  result =  remove_lower(str1)\r\n  return (result)",
+  "test_list": [
+    "assert remove_lowercase('KDeoALOklOOHserfLoAJSIskdsf') == 'KDALOOOHLAJSI'",
+    "assert remove_lowercase('ProducTnamEstreAmIngMediAplAYer') == 'PTEAIMAAY'",
+    "assert remove_lowercase('maNufacTuredbYSheZenTechNolOGIes') == 'NTYSZTNOGI'"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

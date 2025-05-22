@@ -1,0 +1,12 @@
+{
+  "task_id": 165,
+  "text": "Write a python function to count characters at same position in a given string (lower and uppercase characters) as in english alphabet.",
+  "code": "def count_char_position(str1): \r\n    count_chars = 0\r\n    for i in range(len(str1)):\r\n        if ((i == ord(str1[i]) - ord('A')) or \r\n            (i == ord(str1[i]) - ord('a'))): \r\n            count_chars += 1\r\n    return count_chars ",
+  "test_list": [
+    "assert count_char_position(\"xbcefg\") == 2",
+    "assert count_char_position(\"ABcED\") == 3",
+    "assert count_char_position(\"AbgdeF\") == 5"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": 60,
+  "text": "Write a function to find the maximum length of the subsequence with difference between adjacent elements for the given array.",
+  "code": "def max_len_sub( arr, n): \r\n\tmls=[] \r\n\tmax = 0\r\n\tfor i in range(n): \r\n\t\tmls.append(1) \r\n\tfor i in range(n): \r\n\t\tfor j in range(i): \r\n\t\t\tif (abs(arr[i] - arr[j]) <= 1 and mls[i] < mls[j] + 1): \r\n\t\t\t\tmls[i] = mls[j] + 1\r\n\tfor i in range(n): \r\n\t\tif (max < mls[i]): \r\n\t\t\tmax = mls[i] \r\n\treturn max",
+  "test_list": [
+    "assert max_len_sub([2, 5, 6, 3, 7, 6, 5, 8], 8) == 5",
+    "assert max_len_sub([-2, -1, 5, -1, 4, 0, 3], 7) == 4",
+    "assert max_len_sub([9, 11, 13, 15, 18], 5) == 1"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

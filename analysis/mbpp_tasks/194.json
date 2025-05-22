@@ -1,0 +1,12 @@
+{
+  "task_id": 194,
+  "text": "Write a python function to convert octal number to decimal number.",
+  "code": "def octal_To_Decimal(n):  \r\n    num = n; \r\n    dec_value = 0; \r\n    base = 1; \r\n    temp = num; \r\n    while (temp): \r\n        last_digit = temp % 10; \r\n        temp = int(temp / 10); \r\n        dec_value += last_digit*base; \r\n        base = base * 8; \r\n    return dec_value; ",
+  "test_list": [
+    "assert octal_To_Decimal(25) == 21",
+    "assert octal_To_Decimal(30) == 24",
+    "assert octal_To_Decimal(40) == 32"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

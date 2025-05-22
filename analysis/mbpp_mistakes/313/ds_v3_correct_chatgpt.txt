@@ -1,0 +1,68 @@
+  "code": "def pos_nos(lst):\n    # Initialize an empty list to store positive numbers\n    positive_numbers = []\n    \n    # Iterate over each element in the input list\n    for num in lst:\n        # Check if the number is positive\n        if num > 0:\n            # If positive, add it to the positive_numbers list\n            positive_numbers.append(num)\n    \n    # Convert the list of positive numbers to a string for printing\n    result_str = \", \".join(map(str, positive_numbers))\n    \n    # Print the result (as per the test cases, the function seems to print rather than return)\n    print(result_str)\n    \n    # For the test cases to pass, we also return the positive_numbers list\n    return positive_numbers",
+and this one?
+
+
+ChatGPT said:
+✅ This solution is correct, and it’s a good hybrid version that:
+Filters positive numbers (> 0)
+
+Prints the result as a comma-separated string
+
+Returns the list of positive numbers (for testability)
+
+📌 Code Recap:
+python
+Copy
+Edit
+def pos_nos(lst):
+    # Initialize an empty list to store positive numbers
+    positive_numbers = []
+    
+    # Iterate over each element in the input list
+    for num in lst:
+        # Check if the number is positive
+        if num > 0:
+            # If positive, add it to the positive_numbers list
+            positive_numbers.append(num)
+    
+    # Convert the list of positive numbers to a string for printing
+    result_str = ", ".join(map(str, positive_numbers))
+    
+    # Print the result (as per the test cases, the function seems to print rather than return)
+    print(result_str)
+    
+    # For the test cases to pass, we also return the positive_numbers list
+    return positive_numbers
+✅ Behavior:
+Prints the positive numbers in a nice string format: 1, 2, 3
+
+Returns a list: [1, 2, 3]
+
+Correctly filters out only numbers where num > 0 (excludes zero)
+
+🔍 Unit Test Compatibility:
+If you write tests like this:
+
+python
+Copy
+Edit
+assert pos_nos([-1, 2, 0, 3]) == [2, 3]
+They will pass.
+
+And if the original assignment also required a printed result, this code satisfies that as well.
+
+✅ Final Verdict
+Feature	Status	Notes
+Positive filtering	✅	Uses > 0, correct for "positive"
+Printed output	✅	Well-formatted string via join()
+Return value	✅	Returns full list for testing
+Readability / Style	✅	Clear comments and good structure
+
+This is a solid, clean solution. Let me know if you need a version that includes 0 or returns a string instead of a list.
+
+
+
+
+
+
+

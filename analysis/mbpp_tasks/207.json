@@ -1,0 +1,12 @@
+{
+  "task_id": 207,
+  "text": "Write a function to count the longest repeating subsequences such that the two subsequences don’t have same string characters at same positions.",
+  "code": "def find_longest_repeating_subseq(str): \r\n\tn = len(str) \r\n\tdp = [[0 for k in range(n+1)] for l in range(n+1)] \r\n\tfor i in range(1, n+1): \r\n\t\tfor j in range(1, n+1): \r\n\t\t\tif (str[i-1] == str[j-1] and i != j): \r\n\t\t\t\tdp[i][j] = 1 + dp[i-1][j-1] \r\n\t\t\telse: \r\n\t\t\t\tdp[i][j] = max(dp[i][j-1], dp[i-1][j]) \r\n\treturn dp[n][n]",
+  "test_list": [
+    "assert find_longest_repeating_subseq(\"AABEBCDD\") == 3",
+    "assert find_longest_repeating_subseq(\"aabb\") == 2",
+    "assert find_longest_repeating_subseq(\"aab\") == 1"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

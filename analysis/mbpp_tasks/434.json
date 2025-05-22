@@ -1,0 +1,12 @@
+{
+  "task_id": 434,
+  "text": "Write a function that matches a string that has an a followed by one or more b's.",
+  "code": "import re\r\ndef text_match_one(text):\r\n        patterns = 'ab+?'\r\n        if re.search(patterns,  text):\r\n                return 'Found a match!'\r\n        else:\r\n                return('Not matched!')\r\n",
+  "test_list": [
+    "assert text_match_one(\"ac\")==('Not matched!')",
+    "assert text_match_one(\"dc\")==('Not matched!')",
+    "assert text_match_one(\"abba\")==('Found a match!')"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

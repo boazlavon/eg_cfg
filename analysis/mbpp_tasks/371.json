@@ -1,0 +1,12 @@
+{
+  "task_id": 371,
+  "text": "Write a function to find the smallest missing element in a sorted array.",
+  "code": "def smallest_missing(A, left_element, right_element):\r\n    if left_element > right_element:\r\n        return left_element\r\n    mid = left_element + (right_element - left_element) // 2\r\n    if A[mid] == mid:\r\n        return smallest_missing(A, mid + 1, right_element)\r\n    else:\r\n        return smallest_missing(A, left_element, mid - 1)",
+  "test_list": [
+    "assert smallest_missing([0, 1, 2, 3, 4, 5, 6], 0, 6) == 7",
+    "assert smallest_missing([0, 1, 2, 6, 9, 11, 15], 0, 6) == 3",
+    "assert smallest_missing([1, 2, 3, 4, 6, 9, 11, 15], 0, 7) == 0"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

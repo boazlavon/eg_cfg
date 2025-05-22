@@ -1,0 +1,12 @@
+{
+  "task_id": 74,
+  "text": "Write a function to check whether it follows the sequence given in the patterns array.",
+  "code": "def is_samepatterns(colors, patterns):    \r\n    if len(colors) != len(patterns):\r\n        return False    \r\n    sdict = {}\r\n    pset = set()\r\n    sset = set()    \r\n    for i in range(len(patterns)):\r\n        pset.add(patterns[i])\r\n        sset.add(colors[i])\r\n        if patterns[i] not in sdict.keys():\r\n            sdict[patterns[i]] = []\r\n\r\n        keys = sdict[patterns[i]]\r\n        keys.append(colors[i])\r\n        sdict[patterns[i]] = keys\r\n\r\n    if len(pset) != len(sset):\r\n        return False   \r\n\r\n    for values in sdict.values():\r\n\r\n        for i in range(len(values) - 1):\r\n            if values[i] != values[i+1]:\r\n                return False\r\n\r\n    return True",
+  "test_list": [
+    "assert is_samepatterns([\"red\",\"green\",\"green\"], [\"a\", \"b\", \"b\"])==True ",
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\",\"b\"])==False ",
+    "assert is_samepatterns([\"red\",\"green\",\"greenn\"], [\"a\",\"b\"])==False "
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

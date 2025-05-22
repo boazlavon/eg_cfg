@@ -1,0 +1,12 @@
+{
+  "task_id": 338,
+  "text": "Write a python function to count the number of substrings with same first and last characters.",
+  "code": "def check_Equality(s): \r\n    return (ord(s[0]) == ord(s[len(s) - 1])); \r\ndef count_Substring_With_Equal_Ends(s): \r\n    result = 0; \r\n    n = len(s); \r\n    for i in range(n):\r\n        for j in range(1,n-i+1): \r\n            if (check_Equality(s[i:i+j])): \r\n                result+=1; \r\n    return result; ",
+  "test_list": [
+    "assert count_Substring_With_Equal_Ends('aba') == 4",
+    "assert count_Substring_With_Equal_Ends('abcab') == 7",
+    "assert count_Substring_With_Equal_Ends('abc') == 3"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

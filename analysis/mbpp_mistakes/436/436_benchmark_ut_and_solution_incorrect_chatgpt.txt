@@ -1,0 +1,98 @@
+{
+  "task_id": 436,
+  "text": "Write a python function to print negative numbers in a list.",
+  "code": "def neg_nos(list1):\r\n  for num in list1: \r\n    if num < 0: \r\n       return num ",
+  "test_list": [
+    "assert neg_nos([-1,4,5,-6]) == -1,-6",
+    "assert neg_nos([-1,-2,3,4]) == -1,-2",
+    "assert neg_nos([-7,-6,8,9]) == -7,-6"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}
+
+is the solution and ut are correct?
+
+
+ChatGPT said:
+Let’s evaluate the function and the unit tests.
+
+🔍 Prompt:
+"Write a Python function to print negative numbers in a list."
+
+❌ Function Review
+Code:
+python
+Copy
+Edit
+def neg_nos(list1):
+  for num in list1: 
+    if num < 0: 
+       return num 
+❌ Problems:
+The function returns only the first negative number — due to the immediate return inside the loop.
+
+It does not print anything, although the prompt asks for printing.
+
+If the goal is to return all negative numbers, this is incorrect.
+
+If the goal is to print them, this is also not doing that.
+
+❌ Unit Test Review
+Test cases:
+python
+Copy
+Edit
+assert neg_nos([-1,4,5,-6]) == -1,-6
+assert neg_nos([-1,-2,3,4]) == -1,-2
+assert neg_nos([-7,-6,8,9]) == -7,-6
+❌ Problems:
+Syntax like == -1,-6 is incorrect — Python reads this as:
+
+python
+Copy
+Edit
+(assert neg_nos(...) == -1), -6
+Which is not what you want.
+
+Even if the function returned a list, the test would still be incorrect in format.
+
+✅ Correct Implementation (return list)
+If we want to return all negative numbers (best for testing):
+
+python
+Copy
+Edit
+def neg_nos(lst):
+    return [num for num in lst if num < 0]
+Correct tests:
+python
+Copy
+Edit
+assert neg_nos([-1, 4, 5, -6]) == [-1, -6]
+assert neg_nos([-1, -2, 3, 4]) == [-1, -2]
+assert neg_nos([-7, -6, 8, 9]) == [-7, -6]
+✅ If you want to print instead:
+python
+Copy
+Edit
+def neg_nos(lst):
+    for num in lst:
+        if num < 0:
+            print(num)
+But then unit testing becomes hard unless you capture stdout.
+
+✅ Final Verdict
+Item	Verdict	Fix Needed?
+Function	❌ Wrong — returns only first neg	✅ Needs rewrite
+Unit tests	❌ Invalid syntax and logic	✅ Needs list-based asserts
+Corrected version	✅ [num for num in lst if num < 0]	—
+
+Let me know if you'd like the function to print or return, or both.
+
+
+
+
+
+
+

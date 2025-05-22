@@ -1,0 +1,12 @@
+{
+  "task_id": 288,
+  "text": "Write a function to count array elements having modular inverse under given prime number p equal to itself.",
+  "code": "def modular_inverse(arr, N, P):\r\n\tcurrent_element = 0\r\n\tfor i in range(0, N):\r\n\t\tif ((arr[i] * arr[i]) % P == 1):\r\n\t\t\tcurrent_element = current_element + 1\r\n\treturn current_element",
+  "test_list": [
+    "assert modular_inverse([ 1, 6, 4, 5 ], 4, 7) == 2",
+    "assert modular_inverse([1, 3, 8, 12, 12], 5, 13) == 3",
+    "assert modular_inverse([2, 3, 4, 5], 4, 6) == 1"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

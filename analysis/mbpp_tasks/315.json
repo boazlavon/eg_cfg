@@ -1,0 +1,12 @@
+{
+  "task_id": 315,
+  "text": "Write a python function to find the first maximum length of even word.",
+  "code": "def find_Max_Len_Even(str): \r\n    n = len(str) \r\n    i = 0\r\n    currlen = 0\r\n    maxlen = 0\r\n    st = -1\r\n    while (i < n): \r\n        if (str[i] == ' '): \r\n            if (currlen % 2 == 0): \r\n                if (maxlen < currlen): \r\n                    maxlen = currlen \r\n                    st = i - currlen \r\n            currlen = 0 \r\n        else : \r\n            currlen += 1\r\n        i += 1\r\n    if (currlen % 2 == 0): \r\n        if (maxlen < currlen): \r\n            maxlen = currlen \r\n            st = i - currlen \r\n    if (st == -1): \r\n        return \"-1\" \r\n    return str[st: st + maxlen] ",
+  "test_list": [
+    "assert find_Max_Len_Even(\"python language\") == \"language\"",
+    "assert find_Max_Len_Even(\"maximum even length\") == \"length\"",
+    "assert find_Max_Len_Even(\"eve\") == \"-1\""
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

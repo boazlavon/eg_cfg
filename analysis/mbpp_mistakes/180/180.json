@@ -1,0 +1,12 @@
+{
+  "task_id": 180,
+  "text": "Write a function to calculate distance between two points using latitude and longitude.",
+  "code": "from math import radians, sin, cos, acos\r\ndef distance_lat_long(slat,slon,elat,elon):\r\n dist = 6371.01 * acos(sin(slat)*sin(elat) + cos(slat)*cos(elat)*cos(slon - elon))\r\n return dist",
+  "test_list": [
+    "assert distance_lat_long(23.5,67.5,25.5,69.5)==12179.372041317429",
+    "assert distance_lat_long(10.5,20.5,30.5,40.5)==6069.397933300514",
+    "assert distance_lat_long(10,20,30,40)==6783.751974994595"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

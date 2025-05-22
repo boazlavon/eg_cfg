@@ -1,0 +1,12 @@
+{
+  "task_id": 103,
+  "text": "Write a function to find eulerian number a(n, m).",
+  "code": "def eulerian_num(n, m): \r\n\tif (m >= n or n == 0): \r\n\t\treturn 0 \r\n\tif (m == 0): \r\n\t\treturn 1 \r\n\treturn ((n - m) * eulerian_num(n - 1, m - 1) +(m + 1) * eulerian_num(n - 1, m))",
+  "test_list": [
+    "assert eulerian_num(3, 1) == 4",
+    "assert eulerian_num(4, 1) == 11",
+    "assert eulerian_num(5, 3) == 26"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": 289,
+  "text": "Write a python function to calculate the number of odd days in a given year.",
+  "code": "def odd_Days(N): \r\n    hund1 = N // 100\r\n    hund4 = N // 400\r\n    leap = N >> 2\r\n    ordd = N - leap \r\n    if (hund1): \r\n        ordd += hund1 \r\n        leap -= hund1 \r\n    if (hund4): \r\n        ordd -= hund4 \r\n        leap += hund4 \r\n    days = ordd + leap * 2\r\n    odd = days % 7\r\n    return odd ",
+  "test_list": [
+    "assert odd_Days(100) == 5",
+    "assert odd_Days(50) ==6",
+    "assert odd_Days(75) == 2"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

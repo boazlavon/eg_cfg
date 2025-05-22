@@ -1,0 +1,14 @@
+{
+  "task_id": 26,
+  "text": "Write a function to check if the given tuple list has all k elements.",
+  "code": "def check_k_elements(test_list, K):\r\n  res = True\r\n  for tup in test_list:\r\n    for ele in tup:\r\n      if ele != K:\r\n        res = False\r\n  return (res) ",
+  "test_list": [
+    "assert check_k_elements([(4, 4), (4, 4, 4), (4, 4), (4, 4, 4, 4), (4, )], 4) == True",
+    "assert check_k_elements([(7, 7, 7), (7, 7)], 7) == True",
+    "assert check_k_elements([(9, 9), (9, 9, 9, 9)], 7) == False"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": [
+    "assert check_k_elements([(4, 4), (4, 4, 4), (4, 4), (4, 4, 6, 4), (4, )], 4) == False"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": 492,
+  "text": "Write a function to search an element in the given array by using binary search.",
+  "code": "def binary_search(item_list,item):\r\n\tfirst = 0\r\n\tlast = len(item_list)-1\r\n\tfound = False\r\n\twhile( first<=last and not found):\r\n\t\tmid = (first + last)//2\r\n\t\tif item_list[mid] == item :\r\n\t\t\tfound = True\r\n\t\telse:\r\n\t\t\tif item < item_list[mid]:\r\n\t\t\t\tlast = mid - 1\r\n\t\t\telse:\r\n\t\t\t\tfirst = mid + 1\t\r\n\treturn found",
+  "test_list": [
+    "assert binary_search([1,2,3,5,8], 6) == False",
+    "assert binary_search([7, 8, 9, 10, 13], 10) == True",
+    "assert binary_search([11, 13, 14, 19, 22, 36], 23) == False"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

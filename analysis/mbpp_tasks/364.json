@@ -1,0 +1,12 @@
+{
+  "task_id": 364,
+  "text": "Write a function to find the number of flips required to make the given binary string a sequence of alternate characters.",
+  "code": "def make_flip(ch): \r\n\treturn '1' if (ch == '0') else '0'\r\ndef get_flip_with_starting_charcter(str, expected): \r\n\tflip_count = 0\r\n\tfor i in range(len( str)): \r\n\t\tif (str[i] != expected): \r\n\t\t\tflip_count += 1\r\n\t\texpected = make_flip(expected) \r\n\treturn flip_count \r\ndef min_flip_to_make_string_alternate(str): \r\n\treturn min(get_flip_with_starting_charcter(str, '0'),get_flip_with_starting_charcter(str, '1')) ",
+  "test_list": [
+    "assert min_flip_to_make_string_alternate(\"0001010111\") == 2",
+    "assert min_flip_to_make_string_alternate(\"001\") == 1",
+    "assert min_flip_to_make_string_alternate(\"010111011\") == 2 "
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

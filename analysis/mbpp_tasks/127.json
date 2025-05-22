@@ -1,0 +1,12 @@
+{
+  "task_id": 127,
+  "text": "Write a function to multiply two integers without using the * operator in python.",
+  "code": "def multiply_int(x, y):\r\n    if y < 0:\r\n        return -multiply_int(x, -y)\r\n    elif y == 0:\r\n        return 0\r\n    elif y == 1:\r\n        return x\r\n    else:\r\n        return x + multiply_int(x, y - 1)",
+  "test_list": [
+    "assert multiply_int(10,20)==200",
+    "assert multiply_int(5,10)==50",
+    "assert multiply_int(4,8)==32"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": 181,
+  "text": "Write a function to find the longest common prefix in the given set of strings.",
+  "code": "def common_prefix_util(str1, str2): \r\n\tresult = \"\"; \r\n\tn1 = len(str1) \r\n\tn2 = len(str2) \r\n\ti = 0\r\n\tj = 0\r\n\twhile i <= n1 - 1 and j <= n2 - 1: \r\n\t\tif (str1[i] != str2[j]): \r\n\t\t\tbreak\r\n\t\tresult += str1[i] \r\n\t\ti += 1\r\n\t\tj += 1\r\n\treturn (result) \r\ndef common_prefix (arr, n): \r\n\tprefix = arr[0] \r\n\tfor i in range (1, n): \r\n\t\tprefix = common_prefix_util(prefix, arr[i]) \r\n\treturn (prefix) ",
+  "test_list": [
+    "assert common_prefix([\"tablets\", \"tables\", \"taxi\", \"tamarind\"], 4) == 'ta'",
+    "assert common_prefix([\"apples\", \"ape\", \"april\"], 3) == 'ap'",
+    "assert common_prefix([\"teens\", \"teenager\", \"teenmar\"], 3) == 'teen'"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

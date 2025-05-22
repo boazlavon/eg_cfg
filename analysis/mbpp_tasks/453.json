@@ -1,0 +1,12 @@
+{
+  "task_id": 453,
+  "text": "Write a python function to find the sum of even factors of a number.",
+  "code": "import math \r\ndef sumofFactors(n) : \r\n    if (n % 2 != 0) : \r\n        return 0\r\n    res = 1\r\n    for i in range(2, (int)(math.sqrt(n)) + 1) :    \r\n        count = 0\r\n        curr_sum = 1\r\n        curr_term = 1\r\n        while (n % i == 0) : \r\n            count= count + 1\r\n            n = n // i \r\n            if (i == 2 and count == 1) : \r\n                curr_sum = 0\r\n            curr_term = curr_term * i \r\n            curr_sum = curr_sum + curr_term \r\n        res = res * curr_sum  \r\n    if (n >= 2) : \r\n        res = res * (1 + n) \r\n    return res ",
+  "test_list": [
+    "assert sumofFactors(18) == 26",
+    "assert sumofFactors(30) == 48",
+    "assert sumofFactors(6) == 8"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

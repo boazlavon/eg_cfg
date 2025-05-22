@@ -1,0 +1,14 @@
+{
+  "task_id": 43,
+  "text": "Write a function to find sequences of lowercase letters joined with an underscore using regex.",
+  "code": "import re\r\ndef text_match(text):\r\n  patterns = '^[a-z]+_[a-z]+$'\r\n  if re.search(patterns,  text):\r\n    return ('Found a match!')\r\n  else:\r\n    return ('Not matched!')",
+  "test_list": [
+    "assert text_match(\"aab_cbbbc\") == 'Found a match!'",
+    "assert text_match(\"aab_Abbbc\") == 'Not matched!'",
+    "assert text_match(\"Aaab_abbbc\") == 'Not matched!'"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": [
+    "assert text_match(\"aab-cbbbc\") == 'Not matched!'"
+  ]
+}

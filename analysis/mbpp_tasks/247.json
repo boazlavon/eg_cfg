@@ -1,0 +1,12 @@
+{
+  "task_id": 247,
+  "text": "Write a function to find the longest palindromic subsequence in the given string.",
+  "code": "def lps(str): \r\n\tn = len(str) \r\n\tL = [[0 for x in range(n)] for x in range(n)] \r\n\tfor i in range(n): \r\n\t\tL[i][i] = 1\r\n\tfor cl in range(2, n+1): \r\n\t\tfor i in range(n-cl+1): \r\n\t\t\tj = i+cl-1\r\n\t\t\tif str[i] == str[j] and cl == 2: \r\n\t\t\t\tL[i][j] = 2\r\n\t\t\telif str[i] == str[j]: \r\n\t\t\t\tL[i][j] = L[i+1][j-1] + 2\r\n\t\t\telse: \r\n\t\t\t\tL[i][j] = max(L[i][j-1], L[i+1][j]); \r\n\treturn L[0][n-1]",
+  "test_list": [
+    "assert lps(\"TENS FOR TENS\") == 5 ",
+    "assert lps(\"CARDIO FOR CARDS\") == 7",
+    "assert lps(\"PART OF THE JOURNEY IS PART\") == 9 "
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

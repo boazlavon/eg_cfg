@@ -1,0 +1,12 @@
+{
+  "task_id": 481,
+  "text": "Write a function to determine if there is a subset of the given set with sum equal to the given sum.",
+  "code": "def is_subset_sum(set, n, sum):\r\n\tif (sum == 0):\r\n\t\treturn True\r\n\tif (n == 0):\r\n\t\treturn False\r\n\tif (set[n - 1] > sum):\r\n\t\treturn is_subset_sum(set, n - 1, sum)\r\n\treturn is_subset_sum(set, n-1, sum) or is_subset_sum(set, n-1, sum-set[n-1])",
+  "test_list": [
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 9) == True",
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 30) == False",
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 15) == True"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

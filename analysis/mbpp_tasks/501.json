@@ -1,0 +1,12 @@
+{
+  "task_id": 501,
+  "text": "Write a python function to find common divisor between two numbers in a given pair.",
+  "code": "def ngcd(x,y):\r\n    i=1\r\n    while(i<=x and i<=y):\r\n        if(x%i==0 and y%i == 0):\r\n            gcd=i;\r\n        i+=1\r\n    return gcd;\r\ndef num_comm_div(x,y):\r\n  n = ngcd(x,y)\r\n  result = 0\r\n  z = int(n**0.5)\r\n  i = 1\r\n  while(i <= z):\r\n    if(n % i == 0):\r\n      result += 2 \r\n      if(i == n/i):\r\n        result-=1\r\n    i+=1\r\n  return result",
+  "test_list": [
+    "assert num_comm_div(2,4) == 2",
+    "assert num_comm_div(2,8) == 2",
+    "assert num_comm_div(12,24) == 6"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}
