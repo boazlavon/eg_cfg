@@ -163,27 +163,27 @@ Each config directory contains:
 Each file includes:
 ```json
 {
-  "code": "...",                 // Model-generated Python code
+  "code": "...",  # Model-generated Python code
   "results": {
     "assert ...": {
-      "result": true/false,
-      "time": <float>,           // Execution time
-      "error": null / string     // Any runtime error
-    },
-    ...
+      "result": true,           # Whether test case passed
+      "time": 0.123,            # Execution time in seconds
+      "error": null             # Any runtime error (or null)
+    }
   },
-  "passed": true/false,          // Did all test cases pass?
-  "accuracy": 1.0 / 0.0 / ...,
-  "general_error": null,         // General failure
-  "has_testcase_error": false,   // True if any test case raised an exception
+  "passed": true,              # True if all test cases passed
+  "accuracy": 1.0,             # Fraction of passed test cases
+  "general_error": null,       # Top-level failure unrelated to test cases
+  "has_testcase_error": false, # True if any test case raised an exception
   "stats": {
     "start_time": "...",
     "end_time": "...",
-    "input_tokens": <int>,
-    "output_tokens": <int>,
-    "duration": "HH:MM:SS"
+    "input_tokens": 1234,      # Total prompt tokens
+    "output_tokens": 456,      # Total generated tokens
+    "duration": "00:01:23"     # Inference wall-time duration
   },
-  ...
+  "retry": 0,                  # Retry count for this task
+  "random_seed": 559          # Random seed used for generation
 }
 ```
 
