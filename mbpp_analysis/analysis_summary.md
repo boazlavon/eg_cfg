@@ -5,7 +5,7 @@ The following table lists tasks where errors were identified in the MBPP benchma
 
 ### 🧪 Per-Task Evaluation
 
-| Task ID | Sample Solution | UT | DeepSeek-Coder 1.3B, Baseline LLM | DeepSeek-Coder 1.3B, EG-CFG | Bs V3 | Eg-Cfg V3 |
+| Task ID | Sample Solution | UT | BS 1.3b | EG-CFG 1.3b | BS V3 | EG-CFG V3 |
 |:--------|:----------------|:--:|:--------:|:-------------:|:------:|:-----------:|
 | 180     | X              | X  | V       | V           | V     | V           |
 | 276     | V              | X  | V       | V           | V     | V           |
