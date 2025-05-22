@@ -29,12 +29,25 @@ EG-CFG supports any causal language model that provides token-level log probabil
 ---
 ## 📊 Benchmark Results
 
-| Model                 | Method        | Accuracy (%) | RSR (%) |
-|----------------------|---------------|--------------|---------|
-| DeepSeek-Coder 1.3B  | EG-CFG        | 83.2         | 66.79   |
-| DeepSeek-V3-0324     | **EG-CFG**    | **96.6**     | 80.23   |
-| Claude-Sonnet-3.5    | QualityFlow   | 94.2         | –       |
-| GPT-4                | MetaGPT       | 87.7         | –       |
+| Model                   | Method                      | Accuracy (%) | RSR (%)   |
+|------------------------|-----------------------------|--------------|-----------|
+| DeepSeek-Coder 1.3B    | Baseline LLM                | 50.8         | 0.00      |
+| DeepSeek-Coder 1.3B    | EG-CFG (Ours)               | 84.8         | 69.11     |
+| DeepSeek-Coder 1.3B    | MapCoder                    | 55.2         | 8.94      |
+| DeepSeek-Coder 1.3B    | MGDebugger                  | 70.4         | 39.84     |
+| DeepSeek-V3-0324       | Baseline LLM                | 84.2         | 0.00      |
+| **DeepSeek-V3-0324**   | **EG-CFG (Ours)**           | **98.4**     | **89.87** |
+| DeepSeek-V3-0324       | MapCoder                    | 74.23        | -63.10    |
+| DeepSeek-V3-0324       | MGDebugger                  | 77.0         | -45.57    |
+| GPT-4                  | Baseline LLM                | 68.3         | –         |
+| GPT-4                  | Self-Collaboration          | 78.9         | –         |
+| GPT-4                  | Self-Debugging              | 80.6         | –         |
+| GPT-4                  | MetaGPT                     | 87.7         | –         |
+| GPT-4                  | MapCoder                    | 83.1         | –         |
+| CodeQwen1.5            | MGDebugger                  | 80.8         | –         |
+| DeepSeek-Coder-V2-Lite | MGDebugger                  | 80.0         | –         |
+| Claude-Sonnet-3.5      | Baseline LM                 | 88.7         | –         |
+| Claude-Sonnet-3.5      | QualityFlow                 | 94.2         | –         |
 
 > See full tables and ablations in the [paper](link).
 
