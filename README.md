@@ -261,8 +261,7 @@ These templates align with the evaluation procedure described in the DeepSeek-Co
 ## ✅ ML Code Checklist
 
 - [x] Dependency spec: `environment.yml`
-- [x] Inference + analysis code
-- [x] Precomputed trial outputs (optional)
+- [x] Inference + Analysis code
 - [x] Evaluation scripts and commands
 - [x] Result tables + reproducibility
 
