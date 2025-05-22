@@ -207,7 +207,7 @@ This integration is essential for realizing EG-CFG's line-by-line guidance mecha
 We use the `trepan-xpy` debugger to execute partially completed code and extract execution traces during inference.
 To support our framework, we extended the debugger to emit canonicalized traces — a consistent structure that captures all relevant runtime signals, regardless of whether the execution succeeds or fails.
 This includes not only variable values and function calls, but also bytecode-level events such as instruction execution, enabling fine-grained introspection.
-The canonical format allows us to easily filter or manipulate the trace.
+The canonical format allows us to easily manipulate the trace to retain only the information most relevant for guiding generation.
 
 > These are included in `submodules/` and linked into `site-packages/` using:
 > ```bash
