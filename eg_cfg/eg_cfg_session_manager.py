@@ -289,7 +289,7 @@ class EgCfgSessionManager:
                 == PROMPT_TYPE__DEEPSEEK_BASE
             ):
                 prompts_path = os.path.join(
-                    DEEPSEEK_PROMPT_DIRNAME, MBPP_BASE_PROMPT_FILENAME
+                    MAIN_DATA_DIR, DEEPSEEK_PROMPT_DIRNAME, MBPP_BASE_PROMPT_FILENAME
                 )
                 end_string = DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_END
             if (
@@ -297,7 +297,7 @@ class EgCfgSessionManager:
                 == PROMPT_TYPE__DEEPSEEK_INSTRUCT
             ):
                 prompts_path = os.path.join(
-                    DEEPSEEK_PROMPT_DIRNAME, MBPP_INSTRUCT_PROMPT_FILENAME
+                    MAIN_DATA_DIR, DEEPSEEK_PROMPT_DIRNAME, MBPP_INSTRUCT_PROMPT_FILENAME
                 )
                 end_string = CODE_BORDER_TOKEN
             with open(prompts_path, "r") as f:
