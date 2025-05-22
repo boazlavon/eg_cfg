@@ -198,6 +198,20 @@ To support our framework, we modified the debugger to emit execution traces in a
 > python scripts/redirect_env_to_submodules.py $PWD/submodules/
 > ```
 
+---
+
+## 📚 Data
+
+We evaluate EG-CFG on the **MBPP (Mostly Basic Python Problems)** benchmark — a widely used dataset of Python programming tasks. Each task includes a natural language description, a target function name, and a set of unit tests.
+
+### 🧾 Prompt Format
+
+To ensure consistency with prior work, we adopt the **official evaluation prompt formats introduced by DeepSeek-Coder** [Guo et al., 2024], including:
+
+- **Few-shot instruction prompts** with multiple solved examples  
+- **Instruction-only prompts** designed for line-by-line execution and debugging
+
+These templates align with the evaluation procedure described in the DeepSeek-Coder paper and are used in both baseline and EG-CFG runs.
 
 ## 📜 Citation
 
@@ -208,6 +222,12 @@ To support our framework, we modified the debugger to emit execution traces in a
   booktitle={NeurIPS 2025},
   year={2025}
 }
+> @article{guo2024deepseek,
+>   title={DeepSeek-Coder: When the Large Language Model Meets Programming--The Rise of Code Intelligence},
+>   author={Guo, Daya and Zhu, Qihao and Yang, Dejian and Xie, Zhenda and Dong, Kai and Zhang, Wentao and Chen, Guanting and Bi, Xiao and Wu, Yu and Li, YK and others},
+>   journal={arXiv preprint arXiv:2401.14196},
+>   year={2024}
+> }
 ```
 
 ---
