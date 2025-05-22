@@ -33,7 +33,7 @@ eg_cfg/           # Core implementation (EG-CFG inference loop, CFG, prompts)
 traces_dumper/    # Trace extraction tools for partial execution feedback
 scripts/          # Entry points for launching and monitoring experiments
 configs/          # Configuration files
-trials/           # Stores generated outputs from inference runs
+trials/           # Stores generated results from inference runs
 output/           # Stores stdout outputs of inference runs
 data/             # Data used for inference runs like prompts and baseline results
 submodules/       # Local modules (e.g., xpython, trepan, transformers)
@@ -67,15 +67,15 @@ python scripts/redirect_env_to_submodules.py $PWD/submodules/
 ## Monitor and Aggregate Results
 
 ```bash
-# DeepSeek-V3-0324 (inference endpoint)
-python eg_cfg/eg_cfg_monitor.py \
-  --aggregate-dir trials/inference_endpoint_results/mbpp/deepseek-ai_DeepSeek-V3-0324/ \
-  --model "deepseek-ai/DeepSeek-V3-0324" --gammas 0.0 0.5 1.0 3.0
-
 # DeepSeek-Coder-1.3B (local)
 python eg_cfg/eg_cfg_monitor.py \
   --aggregate-dir trials/local_results/mbpp/deepseek-ai_deepseek-coder-1.3b-instruct/ \
   --model "deepseek-ai/deepseek-coder-1.3b-instruct" --gammas 0.0 0.5 1.0 3.0
+
+# DeepSeek-V3-0324 (inference endpoint)
+python eg_cfg/eg_cfg_monitor.py \
+  --aggregate-dir trials/inference_endpoint_results/mbpp/deepseek-ai_DeepSeek-V3-0324/ \
+  --model "deepseek-ai/DeepSeek-V3-0324" --gammas 0.0 0.5 1.0 3.0
 ```
 
 ---
@@ -95,7 +95,7 @@ Defines the sampling and guidance sweep:
 }
 ```
 
-### 🔧 session_config.local.json / inference_endpoint.json
+### 🔧 session_config.local.json / session_config.inference_endpoint.json
 
 Defines runtime setup per session:
 
