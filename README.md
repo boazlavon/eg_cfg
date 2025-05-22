@@ -174,6 +174,8 @@ Each file includes:
   },
   "passed": true/false,          // Did all test cases pass?
   "accuracy": 1.0 / 0.0 / ...,
+  "general_error": null,         // General failure
+  "has_testcase_error": false,   // True if any test case raised an exception
   "stats": {
     "start_time": "...",
     "end_time": "...",
