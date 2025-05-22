@@ -12,7 +12,21 @@ EG-CFG is a decoding-time algorithm for code generation that incorporates real-t
 - 🔁 Reproducible and extensible for code generation research
 
 ---
+## 🧠 Models
 
+EG-CFG supports any causal language model that provides token-level log probabilities. In our experiments, we use two models from the **DeepSeek** family:
+
+### 🔹 [DeepSeek-Coder-1.3B-Instruct](https://huggingface.co/deepseek-ai/deepseek-coder-1.3b-instruct)
+- 1.3B parameter instruction-tuned model
+- Suitable for local inference
+- Efficient yet surprisingly strong for Python code generation
+
+### 🔹 [DeepSeek-V3-0324](https://huggingface.co/deepseek-ai/DeepSeek-V3-0324)
+- Large-scale foundation model
+- Used via inference endpoint
+- Achieves 96.6% on MBPP with EG-CFG, setting a new state-of-the-art
+
+---
 ## 📊 Benchmark Results
 
 | Model                 | Method        | Accuracy (%) | RSR (%) |
@@ -233,6 +247,12 @@ These templates align with the evaluation procedure described in the DeepSeek-Co
   author={Austin, Jacob and Odena, Augustus and Nye, Maxwell and Bosma, Maarten and Michalewski, Henryk and Dohan, David and Jiang, Ellen and Cai, Carrie and Terry, Michael and Le, Quoc and others},
   journal={arXiv preprint arXiv:2108.07732},
   year={2021}
+}
+@article{liu2024deepseekv3,
+  title={DeepSeek-V3 Technical Report},
+  author={Liu, Aixin and Feng, Bei and Xue, Bing and Wang, Bingxuan and others},
+  journal={arXiv preprint arXiv:2412.19437},
+  year={2024}
 }
 ```
 
