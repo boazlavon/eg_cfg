@@ -32,9 +32,9 @@ EG-CFG supports any causal language model that provides token-level log probabil
 | Model                 | Method        | Accuracy (%) | RSR (%) |
 |----------------------|---------------|--------------|---------|
 | DeepSeek-Coder 1.3B  | Baseline LLM  | 49.4         | 0.00    |
-| DeepSeek-Coder 1.3B  | EG-CFG        | 83.2         | 66.79   |
+| DeepSeek-Coder 1.3B  | EG-CFG (Ours)       | 83.2         | 66.79   |
 | DeepSeek-V3-0324     | Baseline LLM  | 82.8         | 0.00    |
-| DeepSeek-V3-0324     | **EG-CFG**    | **96.6**     | 80.23   |
+| DeepSeek-V3-0324     | **EG-CFG (Ours)**    | **96.6**     | 80.23   |
 | Claude-Sonnet-3.5    | QualityFlow   | 94.2         | –       |
 | GPT-4                | MetaGPT       | 87.7         | –       |
 
