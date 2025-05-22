@@ -2,7 +2,6 @@
 export PARTITION=cpu-killable
 export GPUS_COUNT=0
 export CPUS_COUNT=1
-export TOKENIZERS_PARALLELISM=false
 export MODEL_NAME=deepseek-ai/DeepSeek-V3-0324
 
 model_name=$(echo $MODEL_NAME | sed 's_/_\__g')
@@ -13,6 +12,7 @@ export OUTPUT_FILE_PATH="output/$model_name/inference.web.$RUN.$unique_id.out"
 
 export TOKENIZERS_PARALLELISM=false
 export PYTHONUNBUFFERED=1
+
 sbatch \
 -c $CPUS_COUNT \
 --partition=$PARTITION \

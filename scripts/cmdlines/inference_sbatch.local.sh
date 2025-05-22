@@ -12,6 +12,7 @@ export OUTPUT_FILE_PATH="output/$model_name/inference.web.$RUN.$unique_id.out"
 
 export TOKENIZERS_PARALLELISM=false
 export PYTHONUNBUFFERED=1
+
 sbatch \
 -c $CPUS_COUNT \
 -G $GPUS_COUNT \
