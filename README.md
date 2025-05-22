@@ -43,15 +43,15 @@ EG-CFG supports any causal language model that provides token-level log probabil
 ## 🧱 Project Structure
 
 ```
-eg_cfg/           # Core implementation (EG-CFG inference loop, CFG, prompts)
-traces_dumper/    # Trace extraction tools for partial execution feedback
+eg_cfg/           # Core implementation (EG-CFG inference loop, CFG logic, and prompts)
+traces_dumper/    # Tools for extracting execution traces
 scripts/          # Entry points for launching and monitoring experiments
 configs/          # Configuration files
-trials/           # Stores generated results from inference runs
-output/           # Stores stdout outputs of inference runs
-data/             # Data used for inference runs like prompts and baseline results
-submodules/       # Local modules (e.g., xpython, trepan, transformers)
-environment.yml   # Conda environment
+trials/           # Generated results from inference runs
+output/           # Stdout logs from inference runs
+data/             # Input data for inference, such as prompts and baseline results
+submodules/       # Local submodules (e.g., xpython, trepan, transformers)
+environment.yml   # Conda environment definition
 ```
 
 ---
