@@ -1,0 +1,33 @@
+{
+  "code": "import math\n\ndef distance_lat_long(lat1, long1, lat2, long2):\n    # Convert degrees to radians\n    lat1, long1, lat2, long2 = map(math.radians, [lat1, long1, lat2, long2])\n\n    # Haversine formula\n    dlat = lat2 - lat1\n    dlong = long2 - long1\n    a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlong/2)**2\n    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))\n\n    # Distance in km\n    distance = 6371 * c\n\n    return distance",
+  "results": {
+    "assert distance_lat_long(23.5,67.5,25.5,69.5)==12179.372041317429": {
+      "result": false,
+      "time": 1.4460105895996094,
+      "error": null
+    },
+    "assert distance_lat_long(10.5,20.5,30.5,40.5)==6069.397933300514": {
+      "result": false,
+      "time": 1.5950846672058105,
+      "error": null
+    },
+    "assert distance_lat_long(10,20,30,40)==6783.751974994595": {
+      "result": false,
+      "time": 1.2770657539367676,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-22 12:01:59",
+    "input_tokens": 875,
+    "output_tokens": 210,
+    "end_time": "2025-05-22 12:02:10",
+    "duration": "0:00:11.833234"
+  },
+  "retry": 0,
+  "random_seed": 531
+}
