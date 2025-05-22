@@ -1,4 +1,4 @@
-# Execution-Guided Line-by-Line Code Generation (EG-CFG)
+# EG-CFG - Execution-Guided Line-by-Line Code Generation 
 
 EG-CFG is a decoding-time algorithm for code generation that incorporates real-time **execution feedback** into LLM inference. By injecting dynamic signals during generation, EG-CFG guides the model toward correct and executable solutions — achieving state-of-the-art performance on the MBPP benchmark using open-source models only.
 
@@ -12,7 +12,21 @@ EG-CFG is a decoding-time algorithm for code generation that incorporates real-t
 - 🔁 Reproducible and extensible for code generation research
 
 ---
+## 🧠 Models
 
+EG-CFG supports any causal language model that provides token-level log probabilities. In our experiments, we use two models from the **DeepSeek** family:
+
+### 🔹 [DeepSeek-Coder-1.3B-Instruct](https://huggingface.co/deepseek-ai/deepseek-coder-1.3b-instruct)
+- 1.3B parameter instruction-tuned model
+- Suitable for local inference
+- Efficient yet surprisingly strong for Python code generation
+
+### 🔹 [DeepSeek-V3-0324](https://huggingface.co/deepseek-ai/DeepSeek-V3-0324)
+- Large-scale foundation model
+- Used via inference endpoint
+- Achieves 96.6% on MBPP with EG-CFG, setting a new state-of-the-art
+
+---
 ## 📊 Benchmark Results
 
 | Model                 | Method        | Accuracy (%) | RSR (%) |
@@ -33,7 +47,7 @@ eg_cfg/           # Core implementation (EG-CFG inference loop, CFG, prompts)
 traces_dumper/    # Trace extraction tools for partial execution feedback
 scripts/          # Entry points for launching and monitoring experiments
 configs/          # Configuration files
-trials/           # Stores generated outputs from inference runs
+trials/           # Stores generated results from inference runs
 output/           # Stores stdout outputs of inference runs
 data/             # Data used for inference runs like prompts and baseline results
 submodules/       # Local modules (e.g., xpython, trepan, transformers)
@@ -45,7 +59,7 @@ environment.yml   # Conda environment
 ## ⚡ Quickstart
 
 ```bash
-git clone --recurse-submodules git@github.com:boazlavon/eg_cfg.git
+git clone --recurse-submodules git@github.com:OUR_REPO/eg_cfg.git
 cd eg_cfg
 conda env create -f environment.yml -n eg-cfg-env
 conda activate eg-cfg-env
@@ -67,15 +81,15 @@ python scripts/redirect_env_to_submodules.py $PWD/submodules/
 ## Monitor and Aggregate Results
 
 ```bash
-# DeepSeek-V3-0324 (inference endpoint)
-python eg_cfg/eg_cfg_monitor.py \
-  --aggregate-dir trials/inference_endpoint_results/mbpp/deepseek-ai_DeepSeek-V3-0324/ \
-  --model "deepseek-ai/DeepSeek-V3-0324" --gammas 0.0 0.5 1.0 3.0
-
 # DeepSeek-Coder-1.3B (local)
 python eg_cfg/eg_cfg_monitor.py \
   --aggregate-dir trials/local_results/mbpp/deepseek-ai_deepseek-coder-1.3b-instruct/ \
   --model "deepseek-ai/deepseek-coder-1.3b-instruct" --gammas 0.0 0.5 1.0 3.0
+
+# DeepSeek-V3-0324 (inference endpoint)
+python eg_cfg/eg_cfg_monitor.py \
+  --aggregate-dir trials/inference_endpoint_results/mbpp/deepseek-ai_DeepSeek-V3-0324/ \
+  --model "deepseek-ai/DeepSeek-V3-0324" --gammas 0.0 0.5 1.0 3.0
 ```
 
 ---
@@ -95,7 +109,7 @@ Defines the sampling and guidance sweep:
 }
 ```
 
-### 🔧 session_config.local.json / inference_endpoint.json
+### 🔧 session_config.local.json / session_config.inference_endpoint.json
 
 Defines runtime setup per session:
 
@@ -198,6 +212,20 @@ To support our framework, we modified the debugger to emit execution traces in a
 > python scripts/redirect_env_to_submodules.py $PWD/submodules/
 > ```
 
+---
+
+## 📚 Data
+
+We evaluate EG-CFG on the **MBPP (Mostly Basic Python Problems)** benchmark [Austin et al., 2021] — a widely used dataset of Python programming tasks. Each task includes a natural language description, a target function name, and a set of unit tests.
+
+### 🧾 Prompt Format
+
+To ensure consistency with prior work, we adopt the **official evaluation prompt formats introduced by DeepSeek-Coder** [Guo et al., 2024], including:
+
+- **Few-shot instruction prompts** with multiple solved examples  
+- **Instruction-only prompts** designed for line-by-line execution and debugging
+
+These templates align with the evaluation procedure described in the DeepSeek-Coder paper and are used in both baseline and EG-CFG runs.
 
 ## 📜 Citation
 
@@ -208,6 +236,24 @@ To support our framework, we modified the debugger to emit execution traces in a
   booktitle={NeurIPS 2025},
   year={2025}
 }
+@article{guo2024deepseek,
+  title={DeepSeek-Coder: When the Large Language Model Meets Programming--The Rise of Code Intelligence},
+  author={Guo, Daya and Zhu, Qihao and Yang, Dejian and Xie, Zhenda and Dong, Kai and Zhang, Wentao and Chen, Guanting and Bi, Xiao and Wu, Yu and Li, YK and others},
+  journal={arXiv preprint arXiv:2401.14196},
+  year={2024}
+}
+@article{austin2021program,
+  title={Program synthesis with large language models},
+  author={Austin, Jacob and Odena, Augustus and Nye, Maxwell and Bosma, Maarten and Michalewski, Henryk and Dohan, David and Jiang, Ellen and Cai, Carrie and Terry, Michael and Le, Quoc and others},
+  journal={arXiv preprint arXiv:2108.07732},
+  year={2021}
+}
+@article{liu2024deepseekv3,
+  title={DeepSeek-V3 Technical Report},
+  author={Liu, Aixin and Feng, Bei and Xue, Bing and Wang, Bingxuan and others},
+  journal={arXiv preprint arXiv:2412.19437},
+  year={2024}
+}
 ```
 
 ---
@@ -215,8 +261,7 @@ To support our framework, we modified the debugger to emit execution traces in a
 ## ✅ ML Code Checklist
 
 - [x] Dependency spec: `environment.yml`
-- [x] Inference + analysis code
-- [x] Precomputed trial outputs (optional)
+- [x] Inference + Analysis code
 - [x] Evaluation scripts and commands
 - [x] Result tables + reproducibility
 
