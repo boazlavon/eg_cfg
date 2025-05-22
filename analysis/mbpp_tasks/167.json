@@ -1,0 +1,12 @@
+{
+  "task_id": 167,
+  "text": "Write a python function to find smallest power of 2 greater than or equal to n.",
+  "code": "def next_Power_Of_2(n): \r\n    count = 0; \r\n    if (n and not(n & (n - 1))): \r\n        return n   \r\n    while( n != 0): \r\n        n >>= 1\r\n        count += 1\r\n    return 1 << count; ",
+  "test_list": [
+    "assert next_Power_Of_2(0) == 1",
+    "assert next_Power_Of_2(5) == 8",
+    "assert next_Power_Of_2(17) == 32"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

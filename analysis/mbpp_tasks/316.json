@@ -1,0 +1,12 @@
+{
+  "task_id": 316,
+  "text": "Write a function to find the index of the last occurrence of a given number in a sorted array.",
+  "code": "def find_last_occurrence(A, x):\r\n    (left, right) = (0, len(A) - 1)\r\n    result = -1\r\n    while left <= right:\r\n        mid = (left + right) // 2\r\n        if x == A[mid]:\r\n            result = mid\r\n            left = mid + 1\r\n        elif x < A[mid]:\r\n            right = mid - 1\r\n        else:\r\n            left = mid + 1\r\n    return result ",
+  "test_list": [
+    "assert find_last_occurrence([2, 5, 5, 5, 6, 6, 8, 9, 9, 9], 5) == 3",
+    "assert find_last_occurrence([2, 3, 5, 8, 6, 6, 8, 9, 9, 9], 9) == 9",
+    "assert find_last_occurrence([2, 2, 1, 5, 6, 6, 6, 9, 9, 9], 6) == 6"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

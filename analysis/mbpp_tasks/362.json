@@ -1,0 +1,12 @@
+{
+  "task_id": 362,
+  "text": "Write a python function to find the item with maximum occurrences in a given list.",
+  "code": "def max_occurrences(nums):\r\n    max_val = 0\r\n    result = nums[0] \r\n    for i in nums:\r\n        occu = nums.count(i)\r\n        if occu > max_val:\r\n            max_val = occu\r\n            result = i \r\n    return result",
+  "test_list": [
+    "assert max_occurrences([1,2,3,1,2,3,12,4,2]) ==  2",
+    "assert max_occurrences([1,2,6,7,0,1,0,1,0]) == 1,0",
+    "assert max_occurrences([1,2,3,1,2,4,1]) == 1"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

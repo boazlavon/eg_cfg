@@ -1,0 +1,12 @@
+{
+  "task_id": 403,
+  "text": "Write a function to check if a url is valid or not using regex.",
+  "code": "import re\r\ndef is_valid_URL(str):\r\n\tregex = (\"((http|https)://)(www.)?\" +\r\n\t\t\t\"[a-zA-Z0-9@:%._\\\\+~#?&//=]\" +\r\n\t\t\t\"{2,256}\\\\.[a-z]\" +\r\n\t\t\t\"{2,6}\\\\b([-a-zA-Z0-9@:%\" +\r\n\t\t\t\"._\\\\+~#?&//=]*)\")\r\n\tp = re.compile(regex)\r\n\tif (str == None):\r\n\t\treturn False\r\n\tif(re.search(p, str)):\r\n\t\treturn True\r\n\telse:\r\n\t\treturn False",
+  "test_list": [
+    "assert is_valid_URL(\"https://www.google.com\") == True",
+    "assert is_valid_URL(\"https:/www.gmail.com\") == False",
+    "assert is_valid_URL(\"https:// www.redit.com\") == False"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": 317,
+  "text": "Write a function to reflect the modified run-length encoding from a list.",
+  "code": "from itertools import groupby\r\ndef modified_encode(alist):\r\n        def ctr_ele(el):\r\n            if len(el)>1: return [len(el), el[0]]\r\n            else: return el[0]\r\n        return [ctr_ele(list(group)) for key, group in groupby(alist)]",
+  "test_list": [
+    "assert modified_encode([1,1,2,3,4,4,5,1])==[[2, 1], 2, 3, [2, 4], 5, 1]",
+    "assert modified_encode('automatically')==['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', [2, 'l'], 'y']",
+    "assert modified_encode('python')==['p', 'y', 't', 'h', 'o', 'n']"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

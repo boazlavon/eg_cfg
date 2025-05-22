@@ -1,0 +1,12 @@
+{
+  "task_id": 440,
+  "text": "Write a function to find all adverbs and their positions in a given sentence.",
+  "code": "import re\r\ndef find_adverb_position(text):\r\n for m in re.finditer(r\"\\w+ly\", text):\r\n    return (m.start(), m.end(), m.group(0))",
+  "test_list": [
+    "assert find_adverb_position(\"clearly!! we can see the sky\")==(0, 7, 'clearly')",
+    "assert find_adverb_position(\"seriously!! there are many roses\")==(0, 9, 'seriously')",
+    "assert find_adverb_position(\"unfortunately!! sita is going to home\")==(0, 13, 'unfortunately')"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

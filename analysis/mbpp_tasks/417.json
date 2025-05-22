@@ -1,0 +1,12 @@
+{
+  "task_id": 417,
+  "text": "Write a function to find common first element in given list of tuple.",
+  "code": "def group_tuples(Input): \r\n\tout = {} \r\n\tfor elem in Input: \r\n\t\ttry: \r\n\t\t\tout[elem[0]].extend(elem[1:]) \r\n\t\texcept KeyError: \r\n\t\t\tout[elem[0]] = list(elem) \r\n\treturn [tuple(values) for values in out.values()] ",
+  "test_list": [
+    "assert group_tuples([('x', 'y'), ('x', 'z'), ('w', 't')]) == [('x', 'y', 'z'), ('w', 't')]",
+    "assert group_tuples([('a', 'b'), ('a', 'c'), ('d', 'e')]) == [('a', 'b', 'c'), ('d', 'e')]",
+    "assert group_tuples([('f', 'g'), ('f', 'g'), ('h', 'i')]) == [('f', 'g', 'g'), ('h', 'i')]"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

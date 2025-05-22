@@ -1,0 +1,12 @@
+{
+  "task_id": 125,
+  "text": "Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.",
+  "code": "def find_length(string, n): \r\n\tcurrent_sum = 0\r\n\tmax_sum = 0\r\n\tfor i in range(n): \r\n\t\tcurrent_sum += (1 if string[i] == '0' else -1) \r\n\t\tif current_sum < 0: \r\n\t\t\tcurrent_sum = 0\r\n\t\tmax_sum = max(current_sum, max_sum) \r\n\treturn max_sum if max_sum else 0",
+  "test_list": [
+    "assert find_length(\"11000010001\", 11) == 6",
+    "assert find_length(\"10111\", 5) == 1",
+    "assert find_length(\"11011101100101\", 14) == 2 "
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

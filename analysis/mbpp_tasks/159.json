@@ -1,0 +1,12 @@
+{
+  "task_id": 159,
+  "text": "Write a function to print the season for the given month and day.",
+  "code": "def month_season(month,days):\r\n if month in ('January', 'February', 'March'):\r\n\t season = 'winter'\r\n elif month in ('April', 'May', 'June'):\r\n\t season = 'spring'\r\n elif month in ('July', 'August', 'September'):\r\n\t season = 'summer'\r\n else:\r\n\t season = 'autumn'\r\n if (month == 'March') and (days > 19):\r\n\t season = 'spring'\r\n elif (month == 'June') and (days > 20):\r\n\t season = 'summer'\r\n elif (month == 'September') and (days > 21):\r\n\t season = 'autumn'\r\n elif (month == 'October') and (days > 21):\r\n\t season = 'autumn'\r\n elif (month == 'November') and (days > 21):\r\n\t season = 'autumn'\r\n elif (month == 'December') and (days > 20):\r\n\t season = 'winter'\r\n return season",
+  "test_list": [
+    "assert month_season('January',4)==('winter')",
+    "assert month_season('October',28)==('autumn')",
+    "assert month_season('June',6)==('spring')"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

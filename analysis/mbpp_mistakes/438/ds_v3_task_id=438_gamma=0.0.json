@@ -1,0 +1,33 @@
+{
+  "code": "def count_bidirectional(tuples_list):\n    count = 0\n    seen_pairs = []\n    \n    for pair in tuples_list:\n        a = pair[0]\n        b = pair[1]\n        reversed_pair = (b, a)\n        \n        if reversed_pair in seen_pairs:\n            count += 1\n            seen_pairs.remove(reversed_pair)\n        else:\n            seen_pairs.append(pair)\n    \n    total_pairs = count * 2\n    return str(total_pairs)",
+  "results": {
+    "assert count_bidirectional([(5, 6), (1, 2), (6, 5), (9, 1), (6, 5), (2, 1)] ) == '3'": {
+      "result": false,
+      "time": 0.09450507164001465,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 6), (1, 3), (6, 5), (9, 1), (6, 5), (2, 1)] ) == '2'": {
+      "result": true,
+      "time": 0.07982206344604492,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 6), (1, 2), (6, 5), (9, 2), (6, 5), (2, 1)] ) == '4'": {
+      "result": true,
+      "time": 0.07999563217163086,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-07 18:59:06",
+    "guidance_input_tokens": 576,
+    "guidance_output_tokens": 126,
+    "end_time": "2025-05-07 18:59:11",
+    "duration": "0:00:04.530337"
+  },
+  "retry": 0,
+  "random_seed": 813
+}

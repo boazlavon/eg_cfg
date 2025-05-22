@@ -1,0 +1,12 @@
+{
+  "task_id": 69,
+  "text": "Write a function to check whether a list contains the given sublist or not.",
+  "code": "def is_sublist(l, s):\r\n\tsub_set = False\r\n\tif s == []:\r\n\t\tsub_set = True\r\n\telif s == l:\r\n\t\tsub_set = True\r\n\telif len(s) > len(l):\r\n\t\tsub_set = False\r\n\telse:\r\n\t\tfor i in range(len(l)):\r\n\t\t\tif l[i] == s[0]:\r\n\t\t\t\tn = 1\r\n\t\t\t\twhile (n < len(s)) and (l[i+n] == s[n]):\r\n\t\t\t\t\tn += 1\t\t\t\t\r\n\t\t\t\tif n == len(s):\r\n\t\t\t\t\tsub_set = True\r\n\treturn sub_set",
+  "test_list": [
+    "assert is_sublist([2,4,3,5,7],[3,7])==False",
+    "assert is_sublist([2,4,3,5,7],[4,3])==True",
+    "assert is_sublist([2,4,3,5,7],[1,6])==False"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

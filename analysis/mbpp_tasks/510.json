@@ -1,0 +1,12 @@
+{
+  "task_id": 510,
+  "text": "Write a function to find the number of subsequences having product smaller than k for the given non negative array.",
+  "code": "def no_of_subsequences(arr, k): \r\n\tn = len(arr) \r\n\tdp = [[0 for i in range(n + 1)] \r\n\t\t\tfor j in range(k + 1)] \r\n\tfor i in range(1, k + 1): \r\n\t\tfor j in range(1, n + 1): \r\n\t\t\tdp[i][j] = dp[i][j - 1] \r\n\t\t\tif arr[j - 1] <= i and arr[j - 1] > 0: \r\n\t\t\t\tdp[i][j] += dp[i // arr[j - 1]][j - 1] + 1\r\n\treturn dp[k][n]",
+  "test_list": [
+    "assert no_of_subsequences([1,2,3,4], 10) == 11",
+    "assert no_of_subsequences([4,8,7,2], 50) == 9",
+    "assert no_of_subsequences([5,6,7,8], 15) == 4"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

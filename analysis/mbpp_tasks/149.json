@@ -1,0 +1,12 @@
+{
+  "task_id": 149,
+  "text": "Write a function to find the longest subsequence such that the difference between adjacents is one for the given array.",
+  "code": "def longest_subseq_with_diff_one(arr, n): \r\n\tdp = [1 for i in range(n)] \r\n\tfor i in range(n): \r\n\t\tfor j in range(i): \r\n\t\t\tif ((arr[i] == arr[j]+1) or (arr[i] == arr[j]-1)): \r\n\t\t\t\tdp[i] = max(dp[i], dp[j]+1) \r\n\tresult = 1\r\n\tfor i in range(n): \r\n\t\tif (result < dp[i]): \r\n\t\t\tresult = dp[i] \r\n\treturn result",
+  "test_list": [
+    "assert longest_subseq_with_diff_one([1, 2, 3, 4, 5, 3, 2], 7) == 6",
+    "assert longest_subseq_with_diff_one([10, 9, 4, 5, 4, 8, 6], 7) == 3",
+    "assert longest_subseq_with_diff_one([1, 2, 3, 2, 3, 7, 2, 1], 8) == 7"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

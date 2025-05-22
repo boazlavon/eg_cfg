@@ -1,0 +1,12 @@
+{
+  "task_id": 175,
+  "text": "Write a function to verify validity of a string of parentheses.",
+  "code": "def is_valid_parenthese( str1):\r\n        stack, pchar = [], {\"(\": \")\", \"{\": \"}\", \"[\": \"]\"}\r\n        for parenthese in str1:\r\n            if parenthese in pchar:\r\n                stack.append(parenthese)\r\n            elif len(stack) == 0 or pchar[stack.pop()] != parenthese:\r\n                return False\r\n        return len(stack) == 0",
+  "test_list": [
+    "assert is_valid_parenthese(\"(){}[]\")==True",
+    "assert is_valid_parenthese(\"()[{)}\")==False",
+    "assert is_valid_parenthese(\"()\")==True"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": 189,
+  "text": "Write a python function to find the first missing positive number.",
+  "code": "def first_Missing_Positive(arr,n): \r\n    ptr = 0\r\n    for i in range(n):\r\n        if arr[i] == 1:\r\n            ptr = 1\r\n            break\r\n    if ptr == 0:\r\n        return(1)\r\n    for i in range(n):\r\n        if arr[i] <= 0 or arr[i] > n:\r\n            arr[i] = 1\r\n    for i in range(n):\r\n        arr[(arr[i] - 1) % n] += n\r\n    for i in range(n):\r\n        if arr[i] <= n:\r\n            return(i + 1)\r\n    return(n + 1)",
+  "test_list": [
+    "assert first_Missing_Positive([1,2,3,-1,5],5) == 4",
+    "assert first_Missing_Positive([0,-1,-2,1,5,8],6) == 2",
+    "assert first_Missing_Positive([0,1,2,5,-8],5) == 3"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

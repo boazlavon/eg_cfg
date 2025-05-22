@@ -1,0 +1,12 @@
+{
+  "task_id": 311,
+  "text": "Write a python function to set the left most unset bit.",
+  "code": "def set_left_most_unset_bit(n): \r\n    if not (n & (n + 1)): \r\n        return n \r\n    pos, temp, count = 0, n, 0 \r\n    while temp: \r\n        if not (temp & 1): \r\n            pos = count      \r\n        count += 1; temp>>=1\r\n    return (n | (1 << (pos))) ",
+  "test_list": [
+    "assert set_left_most_unset_bit(10) == 14",
+    "assert set_left_most_unset_bit(12) == 14",
+    "assert set_left_most_unset_bit(15) == 15"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

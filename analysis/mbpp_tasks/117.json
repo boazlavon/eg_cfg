@@ -1,0 +1,12 @@
+{
+  "task_id": 117,
+  "text": "Write a function to convert all possible convertible elements in the list to float.",
+  "code": "def list_to_float(test_list):\r\n  res = []\r\n  for tup in test_list:\r\n    temp = []\r\n    for ele in tup:\r\n      if ele.isalpha():\r\n        temp.append(ele)\r\n      else:\r\n        temp.append(float(ele))\r\n    res.append((temp[0],temp[1])) \r\n  return (str(res)) ",
+  "test_list": [
+    "assert list_to_float( [(\"3\", \"4\"), (\"1\", \"26.45\"), (\"7.32\", \"8\"), (\"4\", \"8\")] ) == '[(3.0, 4.0), (1.0, 26.45), (7.32, 8.0), (4.0, 8.0)]'",
+    "assert list_to_float( [(\"4\", \"4\"), (\"2\", \"27\"), (\"4.12\", \"9\"), (\"7\", \"11\")] ) == '[(4.0, 4.0), (2.0, 27.0), (4.12, 9.0), (7.0, 11.0)]'",
+    "assert list_to_float( [(\"6\", \"78\"), (\"5\", \"26.45\"), (\"1.33\", \"4\"), (\"82\", \"13\")] ) == '[(6.0, 78.0), (5.0, 26.45), (1.33, 4.0), (82.0, 13.0)]'"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": 283,
+  "text": "Write a python function to check whether the frequency of each digit is less than or equal to the digit itself.",
+  "code": "def validate(n): \r\n    for i in range(10): \r\n        temp = n;  \r\n        count = 0; \r\n        while (temp): \r\n            if (temp % 10 == i): \r\n                count+=1;  \r\n            if (count > i): \r\n                return False\r\n            temp //= 10; \r\n    return True",
+  "test_list": [
+    "assert validate(1234) == True",
+    "assert validate(51241) == False",
+    "assert validate(321) == True"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

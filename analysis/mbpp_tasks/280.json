@@ -1,0 +1,12 @@
+{
+  "task_id": 280,
+  "text": "Write a function to search an element in the given array by using sequential search.",
+  "code": "def sequential_search(dlist, item):\r\n    pos = 0\r\n    found = False\r\n    while pos < len(dlist) and not found:\r\n        if dlist[pos] == item:\r\n            found = True\r\n        else:\r\n            pos = pos + 1\r\n    return found, pos",
+  "test_list": [
+    "assert sequential_search([11,23,58,31,56,77,43,12,65,19],31) == (True, 3)",
+    "assert sequential_search([12, 32, 45, 62, 35, 47, 44, 61],61) == (True, 7)",
+    "assert sequential_search([9, 10, 17, 19, 22, 39, 48, 56],48) == (True, 6)"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

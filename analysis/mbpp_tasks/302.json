@@ -1,0 +1,12 @@
+{
+  "task_id": 302,
+  "text": "Write a python function to find the most significant bit number which is also a set bit.",
+  "code": "def set_Bit_Number(n): \r\n    if (n == 0): \r\n        return 0; \r\n    msb = 0; \r\n    n = int(n / 2); \r\n    while (n > 0): \r\n        n = int(n / 2); \r\n        msb += 1; \r\n    return (1 << msb)",
+  "test_list": [
+    "assert set_Bit_Number(6) == 4",
+    "assert set_Bit_Number(10) == 8",
+    "assert set_Bit_Number(18) == 16"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

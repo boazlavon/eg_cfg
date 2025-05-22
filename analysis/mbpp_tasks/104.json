@@ -1,0 +1,12 @@
+{
+  "task_id": 104,
+  "text": "Write a function to sort each sublist of strings in a given list of lists using lambda function.",
+  "code": "def sort_sublists(input_list):\r\n    result = [sorted(x, key = lambda x:x[0]) for x in input_list] \r\n    return result\r",
+  "test_list": [
+    "assert sort_sublists(([\"green\", \"orange\"], [\"black\", \"white\"], [\"white\", \"black\", \"orange\"]))==[['green', 'orange'], ['black', 'white'], ['black', 'orange', 'white']]",
+    "assert sort_sublists(([\" red \",\"green\" ],[\"blue \",\" black\"],[\" orange\",\"brown\"]))==[[' red ', 'green'], [' black', 'blue '], [' orange', 'brown']]",
+    "assert sort_sublists(([\"zilver\",\"gold\"], [\"magnesium\",\"aluminium\"], [\"steel\", \"bronze\"]))==[['gold', 'zilver'],['aluminium', 'magnesium'], ['bronze', 'steel']]"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

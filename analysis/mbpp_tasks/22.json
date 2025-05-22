@@ -1,0 +1,12 @@
+{
+  "task_id": 22,
+  "text": "Write a function to find the first duplicate element in a given array of integers.",
+  "code": "def find_first_duplicate(nums):\r\n    num_set = set()\r\n    no_duplicate = -1\r\n\r\n    for i in range(len(nums)):\r\n\r\n        if nums[i] in num_set:\r\n            return nums[i]\r\n        else:\r\n            num_set.add(nums[i])\r\n\r\n    return no_duplicate",
+  "test_list": [
+    "assert find_first_duplicate(([1, 2, 3, 4, 4, 5]))==4",
+    "assert find_first_duplicate([1, 2, 3, 4])==-1",
+    "assert find_first_duplicate([1, 1, 2, 3, 3, 2, 2])==1"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

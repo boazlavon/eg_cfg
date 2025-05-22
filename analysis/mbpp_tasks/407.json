@@ -1,0 +1,12 @@
+{
+  "task_id": 407,
+  "text": "Write a function to create the next bigger number by rearranging the digits of a given number.",
+  "code": "def rearrange_bigger(n):\r\n    nums = list(str(n))\r\n    for i in range(len(nums)-2,-1,-1):\r\n        if nums[i] < nums[i+1]:\r\n            z = nums[i:]\r\n            y = min(filter(lambda x: x > z[0], z))\r\n            z.remove(y)\r\n            z.sort()\r\n            nums[i:] = [y] + z\r\n            return int(\"\".join(nums))\r\n    return False",
+  "test_list": [
+    "assert rearrange_bigger(12)==21",
+    "assert rearrange_bigger(10)==False",
+    "assert rearrange_bigger(102)==120"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

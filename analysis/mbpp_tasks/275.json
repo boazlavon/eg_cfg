@@ -1,0 +1,12 @@
+{
+  "task_id": 275,
+  "text": "Write a python function to find the position of the last removed element from the given array.",
+  "code": "import math as mt \r\ndef get_Position(a,n,m): \r\n    for i in range(n): \r\n        a[i] = (a[i] // m + (a[i] % m != 0))  \r\n    result,maxx = -1,-1\r\n    for i in range(n - 1,-1,-1): \r\n        if (maxx < a[i]): \r\n            maxx = a[i] \r\n            result = i \r\n    return result + 1",
+  "test_list": [
+    "assert get_Position([2,5,4],3,2) == 2",
+    "assert get_Position([4,3],2,2) == 2",
+    "assert get_Position([1,2,3,4],4,1) == 4"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

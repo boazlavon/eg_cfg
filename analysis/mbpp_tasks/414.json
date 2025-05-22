@@ -1,0 +1,12 @@
+{
+  "task_id": 414,
+  "text": "Write a python function to check whether the value exists in a sequence or not.",
+  "code": "def overlapping(list1,list2):  \r\n    c=0\r\n    d=0\r\n    for i in list1: \r\n        c+=1\r\n    for i in list2: \r\n        d+=1\r\n    for i in range(0,c): \r\n        for j in range(0,d): \r\n            if(list1[i]==list2[j]): \r\n                return 1\r\n    return 0",
+  "test_list": [
+    "assert overlapping([1,2,3,4,5],[6,7,8,9]) == False",
+    "assert overlapping([1,2,3],[4,5,6]) == False",
+    "assert overlapping([1,4,5],[1,4,5]) == True"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

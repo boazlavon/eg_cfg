@@ -1,0 +1,12 @@
+{
+  "task_id": 382,
+  "text": "Write a function to find the number of rotations in a circularly sorted array.",
+  "code": "def find_rotation_count(A):\r\n    (left, right) = (0, len(A) - 1)\r\n    while left <= right:\r\n        if A[left] <= A[right]:\r\n            return left\r\n        mid = (left + right) // 2\r\n        next = (mid + 1) % len(A)\r\n        prev = (mid - 1 + len(A)) % len(A)\r\n        if A[mid] <= A[next] and A[mid] <= A[prev]:\r\n            return mid\r\n        elif A[mid] <= A[right]:\r\n            right = mid - 1\r\n        elif A[mid] >= A[left]:\r\n            left = mid + 1\r\n    return -1",
+  "test_list": [
+    "assert find_rotation_count([8, 9, 10, 1, 2, 3, 4, 5, 6, 7]) == 3",
+    "assert find_rotation_count([8, 9, 10,2, 5, 6]) == 3",
+    "assert find_rotation_count([2, 5, 6, 8, 9, 10]) == 0"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

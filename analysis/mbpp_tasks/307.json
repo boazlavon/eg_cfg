@@ -1,0 +1,12 @@
+{
+  "task_id": 307,
+  "text": "Write a function to get a colon of a tuple.",
+  "code": "from copy import deepcopy\r\ndef colon_tuplex(tuplex,m,n):\r\n  tuplex_colon = deepcopy(tuplex)\r\n  tuplex_colon[m].append(n)\r\n  return tuplex_colon",
+  "test_list": [
+    "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,50)==(\"HELLO\", 5, [50], True) ",
+    "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,100)==((\"HELLO\", 5, [100],True))",
+    "assert colon_tuplex((\"HELLO\", 5, [], True) ,2,500)==(\"HELLO\", 5, [500], True)"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}

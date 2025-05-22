@@ -1,0 +1,12 @@
+{
+  "task_id": 31,
+  "text": "Write a function to find the top k integers that occur most frequently from given lists of sorted and distinct integers using heap queue algorithm.",
+  "code": "def func(nums, k):\r\n    import collections\r\n    d = collections.defaultdict(int)\r\n    for row in nums:\r\n        for i in row:\r\n            d[i] += 1\r\n    temp = []\r\n    import heapq\r\n    for key, v in d.items():\r\n        if len(temp) < k:\r\n            temp.append((v, key))\r\n            if len(temp) == k:\r\n                heapq.heapify(temp)\r\n        else:\r\n            if v > temp[0][0]:\r\n                heapq.heappop(temp)\r\n                heapq.heappush(temp, (v, key))\r\n    result = []\r\n    while temp:\r\n        v, key = heapq.heappop(temp)\r\n        result.append(key)\r\n    return result",
+  "test_list": [
+    "assert func([[1, 2, 6], [1, 3, 4, 5, 7, 8], [1, 3, 5, 6, 8, 9], [2, 5, 7, 11], [1, 4, 7, 8, 12]],3)==[5, 7, 1]",
+    "assert func([[1, 2, 6], [1, 3, 4, 5, 7, 8], [1, 3, 5, 6, 8, 9], [2, 5, 7, 11], [1, 4, 7, 8, 12]],1)==[1]",
+    "assert func([[1, 2, 6], [1, 3, 4, 5, 7, 8], [1, 3, 5, 6, 8, 9], [2, 5, 7, 11], [1, 4, 7, 8, 12]],5)==[6, 5, 7, 8, 1]"
+  ],
+  "test_setup_code": "",
+  "challenge_test_list": []
+}
