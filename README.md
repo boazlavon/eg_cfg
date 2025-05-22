@@ -203,7 +203,7 @@ In local inference mode, we extend the internal decoding loop of the HuggingFace
 Specifically, our modifications in `transformers/generation/utils.py` enable token-level integration of runtime feedback, allowing the model to dynamically condition on execution traces as described in Section 3 of the paper.
 This integration is essential for realizing EG-CFG's line-by-line guidance mechanism during inference.
 
-### 🧪 Execution Tracing via `trepan-xpy`
+### 🛠️ Execution Tracing via `trepan-xpy`
 We use the `trepan-xpy` debugger to execute partially completed code and extract execution traces during inference.
 To support our framework, we extended the debugger to emit canonicalized traces — a consistent structure that captures all relevant runtime signals, regardless of whether the execution succeeds or fails.
 This includes not only variable values and function calls, but also bytecode-level events such as instruction execution, enabling fine-grained introspection.
