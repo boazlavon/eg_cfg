@@ -243,6 +243,7 @@ In addition, we introduce a **long-code instruction-only prompt** that:
 
 For large-scale model inference (e.g., using DeepSeek-V3-0324), we use [Fireworks.ai](https://fireworks.ai/) as the inference endpoint provider.
 Fireworks supports **token-level log probabilities**, which are essential for performing Classifier-Free Guidance (CFG) during decoding.
+
 No local GPU is required—all inference runs remotely on Fireworks infrastructure.
 
 > Endpoint access is configured via `session_config.inference_endpoint.json` using your Fireworks API key and endpoint URL.
