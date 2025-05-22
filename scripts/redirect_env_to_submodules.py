@@ -55,7 +55,7 @@ def redirect_modules(submodules_dir: Path, site_packages_dir: Path, dry_run: boo
             module_path.symlink_to(target_path)
     if not dry_run:
         print("\n🔗 Current symlinks in site-packages:")
-        os.system(f"ls -la {site_packages_dir} | grep '->'")
+        os.system(f"ls -la {site_packages_dir} | grep '\->'")
 
 
 # === CLI entry ===
