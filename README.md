@@ -36,7 +36,7 @@ EG-CFG supports any causal language model that provides token-level log probabil
 | Claude-Sonnet-3.5    | QualityFlow   | 94.2         | –       |
 | GPT-4                | MetaGPT       | 87.7         | –       |
 
-> See full tables and ablations in the [paper](link) or `output/`.
+> See full tables and ablations in the [paper](link).
 
 ---
 
