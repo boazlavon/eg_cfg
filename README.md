@@ -98,13 +98,12 @@ python eg_cfg/eg_cfg_monitor.py \
 
 ### 🔧 dynamic_signals_params.json
 
-Defines the sampling and guidance sweep:
-
+Defines the parameters used to generate dynamic execution signals.
 ```json
 {
-  "t": [0.7, 0.75],         // Sampling temperatures
-  "s": [3],                 // Number of candidates (beam size)
-  "d": [2, 3],              // Completion horizon (lines)
+  "t": [0.7, 0.75],         # Sampling temperatures
+  "s": [3],                 # Number of candidates (beam size)
+  "d": [2, 3],              # Completion horizon (lines)
   "prompt_type": ["deepseek_instruct", "long_code"]
 }
 ```
@@ -117,13 +116,14 @@ Defines runtime setup per session:
 |----------------------------|--------------------------------------------------------------|
 | `model_name`              | Model to use (local path or HuggingFace hub name)            |
 | `gammas`                  | CFG guidance strengths                                       |
-| `deployment_type`         | `"local"` or `"inference_endpoint"`                         |
+| `deployment_type`         | `"local"` or `"inference_endpoint"`                          |
 | `results_dir`             | Root directory for saving results                            |
 | `inference_endpoint_url`  | (if endpoint) API URL for inference                          |
-| `inference_endpoint_api_key` | (if endpoint) API key for Fireworks                        |
+| `inference_endpoint_api_key` | (if endpoint) API key for Fireworks                       |
 | `use_global_cache`        | Avoid recomputing same completions                           |
 | `debug_mode`              | Enable logging/debug information                             |
 | `is_prod`                 | Run in production mode (disable debug/test toggles)          |
+| `minimal_trace`           | Use final-state-only traces instead of full step-by-step traces |
 
 
 ---
@@ -163,25 +163,25 @@ Each config directory contains:
 Each file includes:
 ```json
 {
-  "code": "...",                 // Model-generated Python code
+  "code": "...",  # Model-generated Python code
   "results": {
     "assert ...": {
-      "result": true/false,
-      "time": <float>,           // Execution time
-      "error": null / string     // Any runtime error
-    },
-    ...
+      "result": true,           # Whether test case passed
+      "time": 0.123,            # Execution time in seconds
+      "error": null             # Any runtime error (or null)
+    }
   },
-  "passed": true/false,          // Did all test cases pass?
-  "accuracy": 1.0 / 0.0 / ...,
+  "passed": true,              # True if all test cases passed
+  "accuracy": 1.0,             # Fraction of passed test cases
+  "general_error": null,       # Top-level failure unrelated to test cases
+  "has_testcase_error": false, # True if any test case raised an exception
   "stats": {
     "start_time": "...",
     "end_time": "...",
-    "input_tokens": <int>,
-    "output_tokens": <int>,
-    "duration": "HH:MM:SS"
-  },
-  ...
+    "input_tokens": 1234,      # Total prompt tokens
+    "output_tokens": 456,      # Total generated tokens
+    "duration": "00:01:23"     # Inference wall-time duration
+  }
 }
 ```
 
@@ -199,13 +199,15 @@ Some core functionality in EG-CFG relies on **custom extensions of external libr
 
 ### 🛠️ Modified `transformers/` Library
 
-In local inference mode, we extend the internal decoding loop of the HuggingFace `transformers` library to support our method’s execution-aware guidance.  
-This modification enables token-level integration of execution feedback (as described in Section 3 of the paper), ensuring the model conditions on runtime traces dynamically during generation.
+In local inference mode, we extend the internal decoding loop of the HuggingFace `transformers` library to support execution-aware generation.
+Specifically, our modifications in `transformers/generation/utils.py` enable token-level integration of runtime feedback, allowing the model to dynamically condition on execution traces as described in Section 3 of the paper.
+This integration is essential for realizing EG-CFG's line-by-line guidance mechanism during inference.
 
 ### 🧪 Execution Tracing via `trepan-xpy`
-
-We use the `trepan-xpy` debugger to execute partially completed code and extract traces during inference.  
-To support our framework, we modified the debugger to emit execution traces in a **canonical form** — consistent structure regardless of success, failure, or runtime errors.
+We use the `trepan-xpy` debugger to execute partially completed code and extract execution traces during inference.
+To support our framework, we extended the debugger to emit canonicalized traces — a consistent structure that captures all relevant runtime signals, regardless of whether the execution succeeds or fails.
+This includes not only variable values and function calls, but also bytecode-level events such as instruction execution, enabling fine-grained introspection.
+The canonical format allows us to easily manipulate the trace to retain only the information most relevant for guiding generation.
 
 > These are included in `submodules/` and linked into `site-packages/` using:
 > ```bash
@@ -220,12 +222,30 @@ We evaluate EG-CFG on the **MBPP (Mostly Basic Python Problems)** benchmark [Aus
 
 ### 🧾 Prompt Format
 
-To ensure consistency with prior work, we adopt the **official evaluation prompt formats introduced by DeepSeek-Coder** [Guo et al., 2024], including:
+We use two prompt types to ensure broad and reproducible evaluation:
 
-- **Few-shot instruction prompts** with multiple solved examples  
-- **Instruction-only prompts** designed for line-by-line execution and debugging
+#### 🔹 Official Few-Shot Prompt (DeepSeek-Coder)
+We adopt the **official evaluation prompt** provided by DeepSeek-Coder’s GitHub [Guo et al., 2024]:
+- Includes 3 few-shot examples before each target problem
+- Matches the DeepSeek-Coder evaluation setting  
+- Source: [deepseek-ai/DeepSeek-Coder GitHub](https://github.com/deepseek-ai/DeepSeek-Coder)
 
-These templates align with the evaluation procedure described in the DeepSeek-Coder paper and are used in both baseline and EG-CFG runs.
+#### 🔹 Long-Code Prompt (ours)
+In addition, we introduce a **long-code instruction-only prompt** that:
+- Encourages line-by-line, traceable completions
+- Follows stylistic constraints aligned with dynamic execution trace extraction
+- Designed for EG-CFG’s runtime-guided generation  
+- Detailed in Appendix A of our paper
+
+---
+
+### ☁️ Inference Endpoint
+
+For large-scale model inference (e.g., using DeepSeek-V3-0324), we use [Fireworks.ai](https://fireworks.ai/) as the inference endpoint provider.
+Fireworks supports **token-level log probabilities**, which are essential for performing Classifier-Free Guidance (CFG) during decoding.
+> Endpoint access is configured via `session_config.inference_endpoint.json` using your Fireworks API key and endpoint URL.
+
+---
 
 ## 📜 Citation
 
