@@ -248,6 +248,12 @@ def load_mbpp_problems():
     return problems
 
 
+def load_mbpp_et_problems():
+    test_ds = load_dataset("dz1/CodeScore-MBPP-ET")
+    problems = OrderedDict((example["task_id"], example) for example in test_ds)
+    return problems
+
+
 def load_jsonl(file_path):
     """Loads a JSON Lines file into a list of dictionaries."""
     data = []

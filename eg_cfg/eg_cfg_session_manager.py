@@ -11,6 +11,7 @@ import random
 from mbpp_utils import (
     format_mbpp_prompt,
     load_mbpp_problems,
+    load_mbpp_et_problems,
     run_tests,
     extract_function_signature,
 )
@@ -138,7 +139,14 @@ class EgCfgSessionManager:
             debug=self.session_config.debug_mode,
         )
         self.stats_manager = StatisticsManager()
-        self.problems = load_mbpp_problems()
+        assert self.session_config.dataset in AVAILABLE_DATASETS
+        assert self.session_config.dataset in (DATASET__MBPP, DATASET__MBPP_ET)
+        if self.session_config.dataset in (DATASET__MBPP, DATASET__MBPP_ET):
+            self.problems = load_mbpp_problems()
+            if self.session_config.dataset == DATASET__MBPP_ET:
+                self.eval_dataset = load_mbpp_et_problems()
+            if self.session_config.dataset == DATASET__MBPP:
+                self.eval_dataset = self.problems
         self.problems = list(self.problems.items())
         if self.session_config.start_idx and self.session_config.end_idx:
             self.problems = self.problems[
@@ -216,7 +224,9 @@ class EgCfgSessionManager:
                 pass
             print(f"task_id: {task_id}")
             pprint.pprint(problem)
-            test_cases = problem["test_list"]
+            # test_cases = problem["test_list"]
+            eval_problem = self.eval_dataset[task_id]
+            test_cases = eval_problem["test_list"]
 
             solution = None
             general_error = None
@@ -271,6 +281,7 @@ class EgCfgSessionManager:
     def build_eg_cfg_injection_manager_and_prompt(
         self, problem, gamma, function_signature=None
     ):
+        # use problem test list here since in MBPP-ET we are not allowed to use the "hidden tests"
         test_cases = problem["test_list"]
         use_eg_cfg = True
         use_detector = True
@@ -473,7 +484,9 @@ class EgCfgSessionManager:
 
     def solve_problem_with_eg_cfg_wrapper(self, problem, gamma):
         task_id = problem["task_id"]
-        test_cases = problem["test_list"]
+        # test_cases = problem["test_list"]
+        eval_problem = self.eval_dataset[task_id]
+        test_cases = eval_problem["test_list"]
         self.stats_manager.set_current_key((task_id, gamma))
         start_time = datetime.now()
         start_time_str = start_time.strftime("%Y-%m-%d %H:%M:%S")

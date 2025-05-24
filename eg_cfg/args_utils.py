@@ -142,6 +142,7 @@ def build_session_config(args):
         "is_prod": args["prod"],
         "results_dir": args["results_dir"],
         "deployment_type": args["deployment_type"],
+        "dataset": args["dataset"],
         "start_idx": args.get("start_idx", SESSION_CONFIGS_DEFAULT_VALUES["start_idx"]),
         "end_idx": args.get("end_idx", SESSION_CONFIGS_DEFAULT_VALUES["end_idx"]),
         "retries_count": args.get(
@@ -249,6 +250,13 @@ def get_cmdline_args():
         choices=SUPPORTED_DEPLOYMENT_TYPES,
         required=True,
         help="Deployment type. Options: %(choices)s",
+    )
+    parser.add_argument(
+        "--dataset",
+        type=str,
+        choices=AVAILABLE_DATASETS,
+        required=True,
+        help="Dataset. Options: %(choices)s",
     )
     parser.add_argument(
         "--r", type=int, default=1, help="Number of retry attempts per gamma value"
