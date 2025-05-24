@@ -254,6 +254,69 @@ def load_mbpp_et_problems():
     return problems
 
 
+def extract_asserts_for_candidate_function(test_string: str) -> list[str]:
+    assert_statements = []
+
+    # First, locate the 'def check(candidate):' block
+    # This regex captures everything inside the check function, up to the next top-level statement or end of string.
+    check_function_pattern = re.compile(
+        r"def check\(candidate\):\s*\n(.*?)(?=\n[A-Za-z_]|\Z)", re.DOTALL
+    )
+    match = check_function_pattern.search(test_string)
+
+    if match:
+        check_body = match.group(1)
+        # Now, find all assert statements within that body that explicitly call 'candidate('
+        # ^\s*assert\s+          -> Start of line, optional leading whitespace, 'assert', one or more spaces
+        # candidate\s*\(         -> The literal 'candidate' followed by optional whitespace and an opening parenthesis
+        # .*$                    -> Match any characters until the end of the line
+        assert_pattern = re.compile(r"^\s*assert\s+candidate\s*\(.*$", re.MULTILINE)
+        found_asserts = assert_pattern.findall(check_body)
+
+        # Strip trailing whitespace from each found assert statement
+        assert_statements = [stmt.rstrip() for stmt in found_asserts]
+
+    return assert_statements
+
+
+HUMANEVAL_INSTRUCTION_TEMPLATE = """
+Write a function that performs the following task: {instruction}
+It should have the following function signature: {function_signature}
+"""
+
+
+def test_case_to_assert(invocation: str, expected: str) -> str:
+    """Convert a (input, expected_output) pair to a Python assert statement."""
+    return f"assert {invocation} == {expected}"
+
+
+def load_humaneval_problems():
+    with open("data/humaneval.json", "r") as f:
+        test_ds = json.load(f)
+    problems = OrderedDict()
+    for task_id, example in test_ds.items():
+        new_example = dict(example)
+        eval_test_list = extract_asserts_for_candidate_function(example["test"])
+        function_signature = example["function_signature"][4:].strip()
+        instruction_text = HUMANEVAL_INSTRUCTION_TEMPLATE.format(
+            instruction=example["text"], function_signature=function_signature
+        ).strip()
+        test_cases = [
+            test_case_to_assert(invocation, expected)
+            for (invocation, expected) in example["test_list"]
+        ]
+
+        new_example = {
+            "text": instruction_text,
+            "code": example["code"],
+            "test_list": test_cases,
+            "eval_test_list": eval_test_list,
+        }
+        problems[task_id] = new_example
+
+    return problems
+
+
 def load_jsonl(file_path):
     """Loads a JSON Lines file into a list of dictionaries."""
     data = []
