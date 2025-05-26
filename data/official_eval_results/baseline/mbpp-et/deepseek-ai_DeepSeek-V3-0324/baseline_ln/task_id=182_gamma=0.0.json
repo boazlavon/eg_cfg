@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef find_character(input_str):\n    uppercase = re.findall(r'[A-Z]', input_str)\n    lowercase = re.findall(r'[a-z]', input_str)\n    numeric = re.findall(r'[0-9]', input_str)\n    special = re.findall(r'[^A-Za-z0-9]', input_str)\n    return (uppercase, lowercase, numeric, special)",
+  "results": {
+    "assert find_character(\"ThisIsGeeksforGeeks\") == (['T', 'I', 'G', 'G'], ['h', 'i', 's', 's', 'e', 'e', 'k', 's', 'f', 'o', 'r', 'e', 'e', 'k', 's'], [], [])": {
+      "result": true,
+      "time": 0.5649137496948242,
+      "error": null
+    },
+    "assert find_character(\"Hithere2\") == (['H'], ['i', 't', 'h', 'e', 'r', 'e'], ['2'], [])": {
+      "result": true,
+      "time": 0.563636302947998,
+      "error": null
+    },
+    "assert find_character(\"HeyFolks32\") == (['H', 'F'], ['e', 'y', 'o', 'l', 'k', 's'], ['3', '2'], [])": {
+      "result": true,
+      "time": 0.5598490238189697,
+      "error": null
+    },
+    "assert find_character(\"DzjtKIAiFQtVYBkHA\") == (['D', 'K', 'I', 'A', 'F', 'Q', 'V', 'Y', 'B', 'H', 'A'], ['z', 'j', 't', 'i', 't', 'k'], [], [])": {
+      "result": true,
+      "time": 0.5763759613037109,
+      "error": null
+    },
+    "assert find_character(\"PRcErSJcJHehmIQK\") == (['P', 'R', 'E', 'S', 'J', 'J', 'H', 'I', 'Q', 'K'], ['c', 'r', 'c', 'e', 'h', 'm'], [], [])": {
+      "result": true,
+      "time": 0.5569634437561035,
+      "error": null
+    },
+    "assert find_character(\"lnBjKZZlgfTeBiuWjlKjJnTN\") == (['B', 'K', 'Z', 'Z', 'T', 'B', 'W', 'K', 'J', 'T', 'N'], ['l', 'n', 'j', 'l', 'g', 'f', 'e', 'i', 'u', 'j', 'l', 'j', 'n'], [], [])": {
+      "result": true,
+      "time": 0.5908608436584473,
+      "error": null
+    },
+    "assert find_character(\"tNQNuXxTeiWBLcEDBw\") == (['N', 'Q', 'N', 'X', 'T', 'W', 'B', 'L', 'E', 'D', 'B'], ['t', 'u', 'x', 'e', 'i', 'c', 'w'], [], [])": {
+      "result": true,
+      "time": 0.5538649559020996,
+      "error": null
+    },
+    "assert find_character(\"qvxTdFcTZBDSInCiFKUVCM\") == (['T', 'F', 'T', 'Z', 'B', 'D', 'S', 'I', 'C', 'F', 'K', 'U', 'V', 'C', 'M'], ['q', 'v', 'x', 'd', 'c', 'n', 'i'], [], [])": {
+      "result": true,
+      "time": 0.5586285591125488,
+      "error": null
+    },
+    "assert find_character(\"xZDVVchswOuVhHn\") == (['Z', 'D', 'V', 'V', 'O', 'V', 'H'], ['x', 'c', 'h', 's', 'w', 'u', 'h', 'n'], [], [])": {
+      "result": true,
+      "time": 0.5911159515380859,
+      "error": null
+    },
+    "assert find_character(\"RUyNWDKxhUAHAzPtgExagQ\") == (['R', 'U', 'N', 'W', 'D', 'K', 'U', 'A', 'H', 'A', 'P', 'E', 'Q'], ['y', 'x', 'h', 'z', 't', 'g', 'x', 'a', 'g'], [], [])": {
+      "result": true,
+      "time": 0.6033236980438232,
+      "error": null
+    },
+    "assert find_character(\"XRLqlkcCuSCLsDEofFP\") == (['X', 'R', 'L', 'C', 'S', 'C', 'L', 'D', 'E', 'F', 'P'], ['q', 'l', 'k', 'c', 'u', 's', 'o', 'f'], [], [])": {
+      "result": true,
+      "time": 0.6061065196990967,
+      "error": null
+    },
+    "assert find_character(\"TsdsjooVeXVwKQy\") == (['T', 'V', 'X', 'V', 'K', 'Q'], ['s', 'd', 's', 'j', 'o', 'o', 'e', 'w', 'y'], [], [])": {
+      "result": true,
+      "time": 0.626718282699585,
+      "error": null
+    },
+    "assert find_character(\"zywyNeCTpJnJuOT\") == (['N', 'C', 'T', 'J', 'J', 'O', 'T'], ['z', 'y', 'w', 'y', 'e', 'p', 'n', 'u'], [], [])": {
+      "result": true,
+      "time": 0.5832297801971436,
+      "error": null
+    },
+    "assert find_character(\"ZqkySQLoKEHLKVqpnZxqLw\") == (['Z', 'S', 'Q', 'L', 'K', 'E', 'H', 'L', 'K', 'V', 'Z', 'L'], ['q', 'k', 'y', 'o', 'q', 'p', 'n', 'x', 'q', 'w'], [], [])": {
+      "result": true,
+      "time": 0.5861895084381104,
+      "error": null
+    },
+    "assert find_character(\"wjCmbwzeRCwoEts\") == (['C', 'R', 'C', 'E'], ['w', 'j', 'm', 'b', 'w', 'z', 'e', 'w', 'o', 't', 's'], [], [])": {
+      "result": true,
+      "time": 0.5935618877410889,
+      "error": null
+    },
+    "assert find_character(\"zdewlNcAPqkhyWQ\") == (['N', 'A', 'P', 'W', 'Q'], ['z', 'd', 'e', 'w', 'l', 'c', 'q', 'k', 'h', 'y'], [], [])": {
+      "result": true,
+      "time": 0.5664596557617188,
+      "error": null
+    },
+    "assert find_character(\"DuVcXOwuqlZbzPMZzQsiiCK\") == (['D', 'V', 'X', 'O', 'Z', 'P', 'M', 'Z', 'Q', 'C', 'K'], ['u', 'c', 'w', 'u', 'q', 'l', 'b', 'z', 'z', 's', 'i', 'i'], [], [])": {
+      "result": true,
+      "time": 0.5819253921508789,
+      "error": null
+    },
+    "assert find_character(\"fGCtzGnzIFFjjzWIhegVeCK\") == (['G', 'C', 'G', 'I', 'F', 'F', 'W', 'I', 'V', 'C', 'K'], ['f', 't', 'z', 'n', 'z', 'j', 'j', 'z', 'h', 'e', 'g', 'e'], [], [])": {
+      "result": true,
+      "time": 0.6126711368560791,
+      "error": null
+    },
+    "assert find_character(\"bPEoUeTzGVxVYvuXVXfKuo\") == (['P', 'E', 'U', 'T', 'G', 'V', 'V', 'Y', 'X', 'V', 'X', 'K'], ['b', 'o', 'e', 'z', 'x', 'v', 'u', 'f', 'u', 'o'], [], [])": {
+      "result": true,
+      "time": 0.5637381076812744,
+      "error": null
+    },
+    "assert find_character(\"JszlaHeLHzQIpjypdK\") == (['J', 'H', 'L', 'H', 'Q', 'I', 'K'], ['s', 'z', 'l', 'a', 'e', 'z', 'p', 'j', 'y', 'p', 'd'], [], [])": {
+      "result": true,
+      "time": 0.5974087715148926,
+      "error": null
+    },
+    "assert find_character(\"YNpwneviSvakZdQTAs\") == (['Y', 'N', 'S', 'Z', 'Q', 'T', 'A'], ['p', 'w', 'n', 'e', 'v', 'i', 'v', 'a', 'k', 'd', 's'], [], [])": {
+      "result": true,
+      "time": 0.5886456966400146,
+      "error": null
+    },
+    "assert find_character(\"vsBVDxxVgAWDFnJOEIEDZz\") == (['B', 'V', 'D', 'V', 'A', 'W', 'D', 'F', 'J', 'O', 'E', 'I', 'E', 'D', 'Z'], ['v', 's', 'x', 'x', 'g', 'n', 'z'], [], [])": {
+      "result": true,
+      "time": 0.539808988571167,
+      "error": null
+    },
+    "assert find_character(\"IobFCEbdmYhWDdpTvYDU\") == (['I', 'F', 'C', 'E', 'Y', 'W', 'D', 'T', 'Y', 'D', 'U'], ['o', 'b', 'b', 'd', 'm', 'h', 'd', 'p', 'v'], [], [])": {
+      "result": true,
+      "time": 0.524573802947998,
+      "error": null
+    },
+    "assert find_character(\"KAogAtjzCaRCADKiDeCenaYH\") == (['K', 'A', 'A', 'C', 'R', 'C', 'A', 'D', 'K', 'D', 'C', 'Y', 'H'], ['o', 'g', 't', 'j', 'z', 'a', 'i', 'e', 'e', 'n', 'a'], [], [])": {
+      "result": true,
+      "time": 0.5859239101409912,
+      "error": null
+    },
+    "assert find_character(\"xBKIAGpQahqKkfmxqCKu\") == (['B', 'K', 'I', 'A', 'G', 'Q', 'K', 'C', 'K'], ['x', 'p', 'a', 'h', 'q', 'k', 'f', 'm', 'x', 'q', 'u'], [], [])": {
+      "result": true,
+      "time": 0.569511890411377,
+      "error": null
+    },
+    "assert find_character(\"mobEyBguLvpnbZvVlaod\") == (['E', 'B', 'L', 'Z', 'V'], ['m', 'o', 'b', 'y', 'g', 'u', 'v', 'p', 'n', 'b', 'v', 'l', 'a', 'o', 'd'], [], [])": {
+      "result": true,
+      "time": 0.5871860980987549,
+      "error": null
+    },
+    "assert find_character(\"KlqzYZPzYxmENTF\") == (['K', 'Y', 'Z', 'P', 'Y', 'E', 'N', 'T', 'F'], ['l', 'q', 'z', 'z', 'x', 'm'], [], [])": {
+      "result": true,
+      "time": 0.5771913528442383,
+      "error": null
+    },
+    "assert find_character(\"UOwyNncAbmloIyqAiGwJSFLd\") == (['U', 'O', 'N', 'A', 'I', 'A', 'G', 'J', 'S', 'F', 'L'], ['w', 'y', 'n', 'c', 'b', 'm', 'l', 'o', 'y', 'q', 'i', 'w', 'd'], [], [])": {
+      "result": true,
+      "time": 0.5818157196044922,
+      "error": null
+    },
+    "assert find_character(\"GjIcLDKBtjAQvYfLKrhiZn\") == (['G', 'I', 'L', 'D', 'K', 'B', 'A', 'Q', 'Y', 'L', 'K', 'Z'], ['j', 'c', 't', 'j', 'v', 'f', 'r', 'h', 'i', 'n'], [], [])": {
+      "result": true,
+      "time": 0.5855627059936523,
+      "error": null
+    },
+    "assert find_character(\"jkygpBfvOziiipWPlID\") == (['B', 'O', 'W', 'P', 'I', 'D'], ['j', 'k', 'y', 'g', 'p', 'f', 'v', 'z', 'i', 'i', 'i', 'p', 'l'], [], [])": {
+      "result": true,
+      "time": 0.5576658248901367,
+      "error": null
+    },
+    "assert find_character(\"kfQYBlPNhQkgfGqZrsRK\") == (['Q', 'Y', 'B', 'P', 'N', 'Q', 'G', 'Z', 'R', 'K'], ['k', 'f', 'l', 'h', 'k', 'g', 'f', 'q', 'r', 's'], [], [])": {
+      "result": true,
+      "time": 0.5883820056915283,
+      "error": null
+    },
+    "assert find_character(\"UhOYQhWKiGXElXUoUoq\") == (['U', 'O', 'Y', 'Q', 'W', 'K', 'G', 'X', 'E', 'X', 'U', 'U'], ['h', 'h', 'i', 'l', 'o', 'o', 'q'], [], [])": {
+      "result": true,
+      "time": 0.582705020904541,
+      "error": null
+    },
+    "assert find_character(\"cwcsQnHbLqQLqtAi\") == (['Q', 'H', 'L', 'Q', 'L', 'A'], ['c', 'w', 'c', 's', 'n', 'b', 'q', 'q', 't', 'i'], [], [])": {
+      "result": true,
+      "time": 0.610884428024292,
+      "error": null
+    },
+    "assert find_character(\"iwOmOYRKwYFrbvMen\") == (['O', 'O', 'Y', 'R', 'K', 'Y', 'F', 'M'], ['i', 'w', 'm', 'w', 'r', 'b', 'v', 'e', 'n'], [], [])": {
+      "result": true,
+      "time": 0.5831944942474365,
+      "error": null
+    },
+    "assert find_character(\"jWNIzrtaUFwJhVCfiVgHxTKT\") == (['W', 'N', 'I', 'U', 'F', 'J', 'V', 'C', 'V', 'H', 'T', 'K', 'T'], ['j', 'z', 'r', 't', 'a', 'w', 'h', 'f', 'i', 'g', 'x'], [], [])": {
+      "result": true,
+      "time": 0.608734130859375,
+      "error": null
+    },
+    "assert find_character(\"tzJxZBeVGCeelNwzWEzEWN\") == (['J', 'Z', 'B', 'V', 'G', 'C', 'N', 'W', 'E', 'E', 'W', 'N'], ['t', 'z', 'x', 'e', 'e', 'e', 'l', 'w', 'z', 'z'], [], [])": {
+      "result": true,
+      "time": 0.5938265323638916,
+      "error": null
+    },
+    "assert find_character(\"Z7C\") == (['Z', 'C'], [], ['7'], [])": {
+      "result": true,
+      "time": 0.603196382522583,
+      "error": null
+    },
+    "assert find_character(\"xdVB\") == (['V', 'B'], ['x', 'd'], [], [])": {
+      "result": true,
+      "time": 0.5992105007171631,
+      "error": null
+    },
+    "assert find_character(\"pvfbIgUDsz9\") == (['I', 'U', 'D'], ['p', 'v', 'f', 'b', 'g', 's', 'z'], ['9'], [])": {
+      "result": true,
+      "time": 0.4936206340789795,
+      "error": null
+    },
+    "assert find_character(\"rUOBTKi\") == (['U', 'O', 'B', 'T', 'K'], ['r', 'i'], [], [])": {
+      "result": true,
+      "time": 0.5929305553436279,
+      "error": null
+    },
+    "assert find_character(\"BcqY1SWIb\") == (['B', 'Y', 'S', 'W', 'I'], ['c', 'q', 'b'], ['1'], [])": {
+      "result": true,
+      "time": 0.5935735702514648,
+      "error": null
+    },
+    "assert find_character(\"wZdCS0E\") == (['Z', 'C', 'S', 'E'], ['w', 'd'], ['0'], [])": {
+      "result": true,
+      "time": 0.565934419631958,
+      "error": null
+    },
+    "assert find_character(\"OH9dUJs\") == (['O', 'H', 'U', 'J'], ['d', 's'], ['9'], [])": {
+      "result": true,
+      "time": 0.5809621810913086,
+      "error": null
+    },
+    "assert find_character(\"E63d\") == (['E'], ['d'], ['6', '3'], [])": {
+      "result": true,
+      "time": 0.5834922790527344,
+      "error": null
+    },
+    "assert find_character(\"f2GIh\") == (['G', 'I'], ['f', 'h'], ['2'], [])": {
+      "result": true,
+      "time": 0.5909769535064697,
+      "error": null
+    },
+    "assert find_character(\"WoCARcH6ME\") == (['W', 'C', 'A', 'R', 'H', 'M', 'E'], ['o', 'c'], ['6'], [])": {
+      "result": true,
+      "time": 0.5825281143188477,
+      "error": null
+    },
+    "assert find_character(\"7fwVoz6M\") == (['V', 'M'], ['f', 'w', 'o', 'z'], ['7', '6'], [])": {
+      "result": true,
+      "time": 0.607774019241333,
+      "error": null
+    },
+    "assert find_character(\"WLzUhH\") == (['W', 'L', 'U', 'H'], ['z', 'h'], [], [])": {
+      "result": true,
+      "time": 0.5849676132202148,
+      "error": null
+    },
+    "assert find_character(\"G4GPZPJTAKRL\") == (['G', 'G', 'P', 'Z', 'P', 'J', 'T', 'A', 'K', 'R', 'L'], [], ['4'], [])": {
+      "result": true,
+      "time": 0.5644209384918213,
+      "error": null
+    },
+    "assert find_character(\"rkDf8GdXHKy4\") == (['D', 'G', 'X', 'H', 'K'], ['r', 'k', 'f', 'd', 'y'], ['8', '4'], [])": {
+      "result": true,
+      "time": 0.5776581764221191,
+      "error": null
+    },
+    "assert find_character(\"uYXz76u4lhG\") == (['Y', 'X', 'G'], ['u', 'z', 'u', 'l', 'h'], ['7', '6', '4'], [])": {
+      "result": true,
+      "time": 0.5864241123199463,
+      "error": null
+    },
+    "assert find_character(\"O2tQb\") == (['O', 'Q'], ['t', 'b'], ['2'], [])": {
+      "result": true,
+      "time": 0.579261064529419,
+      "error": null
+    },
+    "assert find_character(\"sE9M\") == (['E', 'M'], ['s'], ['9'], [])": {
+      "result": true,
+      "time": 0.5774755477905273,
+      "error": null
+    },
+    "assert find_character(\"aleMIo9x\") == (['M', 'I'], ['a', 'l', 'e', 'o', 'x'], ['9'], [])": {
+      "result": true,
+      "time": 0.5550918579101562,
+      "error": null
+    },
+    "assert find_character(\"dgNROjLueYDF\") == (['N', 'R', 'O', 'L', 'Y', 'D', 'F'], ['d', 'g', 'j', 'u', 'e'], [], [])": {
+      "result": true,
+      "time": 0.5766415596008301,
+      "error": null
+    },
+    "assert find_character(\"SGFqpOP\") == (['S', 'G', 'F', 'O', 'P'], ['q', 'p'], [], [])": {
+      "result": true,
+      "time": 0.5768992900848389,
+      "error": null
+    },
+    "assert find_character(\"QHkG\") == (['Q', 'H', 'G'], ['k'], [], [])": {
+      "result": true,
+      "time": 0.5918397903442383,
+      "error": null
+    },
+    "assert find_character(\"TbcUjU2B\") == (['T', 'U', 'U', 'B'], ['b', 'c', 'j'], ['2'], [])": {
+      "result": true,
+      "time": 0.6415691375732422,
+      "error": null
+    },
+    "assert find_character(\"NWMcmqD\") == (['N', 'W', 'M', 'D'], ['c', 'm', 'q'], [], [])": {
+      "result": true,
+      "time": 0.48871731758117676,
+      "error": null
+    },
+    "assert find_character(\"tG9En7TCrCO\") == (['G', 'E', 'T', 'C', 'C', 'O'], ['t', 'n', 'r'], ['9', '7'], [])": {
+      "result": true,
+      "time": 0.5374901294708252,
+      "error": null
+    },
+    "assert find_character(\"Pkw\") == (['P'], ['k', 'w'], [], [])": {
+      "result": true,
+      "time": 0.6037583351135254,
+      "error": null
+    },
+    "assert find_character(\"IhswOWmOM\") == (['I', 'O', 'W', 'O', 'M'], ['h', 's', 'w', 'm'], [], [])": {
+      "result": true,
+      "time": 0.375535249710083,
+      "error": null
+    },
+    "assert find_character(\"cdH52WS\") == (['H', 'W', 'S'], ['c', 'd'], ['5', '2'], [])": {
+      "result": true,
+      "time": 0.4494597911834717,
+      "error": null
+    },
+    "assert find_character(\"LyOX7OgTw\") == (['L', 'O', 'X', 'O', 'T'], ['y', 'g', 'w'], ['7'], [])": {
+      "result": true,
+      "time": 0.5292420387268066,
+      "error": null
+    },
+    "assert find_character(\"MlBC0EkxpJL4\") == (['M', 'B', 'C', 'E', 'J', 'L'], ['l', 'k', 'x', 'p'], ['0', '4'], [])": {
+      "result": true,
+      "time": 0.3194749355316162,
+      "error": null
+    },
+    "assert find_character(\"CwmQU8iB2OJR\") == (['C', 'Q', 'U', 'B', 'O', 'J', 'R'], ['w', 'm', 'i'], ['8', '2'], [])": {
+      "result": true,
+      "time": 0.26395726203918457,
+      "error": null
+    },
+    "assert find_character(\"5Z4S\") == (['Z', 'S'], [], ['5', '4'], [])": {
+      "result": true,
+      "time": 0.5106415748596191,
+      "error": null
+    },
+    "assert find_character(\"C2vkqplUVI\") == (['C', 'U', 'V', 'I'], ['v', 'k', 'q', 'p', 'l'], ['2'], [])": {
+      "result": true,
+      "time": 0.35111021995544434,
+      "error": null
+    },
+    "assert find_character(\"xcgka6ViY9\") == (['V', 'Y'], ['x', 'c', 'g', 'k', 'a', 'i'], ['6', '9'], [])": {
+      "result": true,
+      "time": 0.46114516258239746,
+      "error": null
+    },
+    "assert find_character(\"sSsCHs7DtZhXH\") == (['S', 'C', 'H', 'D', 'Z', 'X', 'H'], ['s', 's', 's', 't', 'h'], ['7'], [])": {
+      "result": true,
+      "time": 0.4770956039428711,
+      "error": null
+    },
+    "assert find_character(\"mEUQN9rzt86CDEw\") == (['E', 'U', 'Q', 'N', 'C', 'D', 'E'], ['m', 'r', 'z', 't', 'w'], ['9', '8', '6'], [])": {
+      "result": true,
+      "time": 0.4009122848510742,
+      "error": null
+    },
+    "assert find_character(\"jkYsAb\") == (['Y', 'A'], ['j', 'k', 's', 'b'], [], [])": {
+      "result": true,
+      "time": 0.5959303379058838,
+      "error": null
+    },
+    "assert find_character(\"JM9yora5Htie\") == (['J', 'M', 'H'], ['y', 'o', 'r', 'a', 't', 'i', 'e'], ['9', '5'], [])": {
+      "result": true,
+      "time": 0.5114231109619141,
+      "error": null
+    },
+    "assert find_character(\"PkImRQCospK\") == (['P', 'I', 'R', 'Q', 'C', 'K'], ['k', 'm', 'o', 's', 'p'], [], [])": {
+      "result": true,
+      "time": 0.21932578086853027,
+      "error": null
+    },
+    "assert find_character(\"I7FYVhq8gc202H\") == (['I', 'F', 'Y', 'V', 'H'], ['h', 'q', 'g', 'c'], ['7', '8', '2', '0', '2'], [])": {
+      "result": true,
+      "time": 0.4808197021484375,
+      "error": null
+    },
+    "assert find_character(\"GTsvKp\") == (['G', 'T', 'K'], ['s', 'v', 'p'], [], [])": {
+      "result": true,
+      "time": 0.3903465270996094,
+      "error": null
+    },
+    "assert find_character(\"ZRcYw5Vy62\") == (['Z', 'R', 'Y', 'V'], ['c', 'w', 'y'], ['5', '6', '2'], [])": {
+      "result": true,
+      "time": 0.42643260955810547,
+      "error": null
+    },
+    "assert find_character(\"Xdeoqm7f\") == (['X'], ['d', 'e', 'o', 'q', 'm', 'f'], ['7'], [])": {
+      "result": true,
+      "time": 0.5706896781921387,
+      "error": null
+    },
+    "assert find_character(\"MzOS7FnX05\") == (['M', 'O', 'S', 'F', 'X'], ['z', 'n'], ['7', '0', '5'], [])": {
+      "result": true,
+      "time": 0.2728593349456787,
+      "error": null
+    },
+    "assert find_character(\"DYAaJoXVeKw\") == (['D', 'Y', 'A', 'J', 'X', 'V', 'K'], ['a', 'o', 'e', 'w'], [], [])": {
+      "result": true,
+      "time": 0.4631993770599365,
+      "error": null
+    },
+    "assert find_character(\"vsVEzESxKfp\") == (['V', 'E', 'E', 'S', 'K'], ['v', 's', 'z', 'x', 'f', 'p'], [], [])": {
+      "result": true,
+      "time": 0.6655545234680176,
+      "error": null
+    },
+    "assert find_character(\"LmR9uJ\") == (['L', 'R', 'J'], ['m', 'u'], ['9'], [])": {
+      "result": true,
+      "time": 0.6391701698303223,
+      "error": null
+    },
+    "assert find_character(\"1OBuAULC5r\") == (['O', 'B', 'A', 'U', 'L', 'C'], ['u', 'r'], ['1', '5'], [])": {
+      "result": true,
+      "time": 0.43923521041870117,
+      "error": null
+    },
+    "assert find_character(\"WI2PARzsmT\") == (['W', 'I', 'P', 'A', 'R', 'T'], ['z', 's', 'm'], ['2'], [])": {
+      "result": true,
+      "time": 0.506312370300293,
+      "error": null
+    },
+    "assert find_character(\"VTpGi8X5rfQ\") == (['V', 'T', 'G', 'X', 'Q'], ['p', 'i', 'r', 'f'], ['8', '5'], [])": {
+      "result": true,
+      "time": 0.3950035572052002,
+      "error": null
+    },
+    "assert find_character(\"MpTbLztFFKdPikh\") == (['M', 'T', 'L', 'F', 'F', 'K', 'P'], ['p', 'b', 'z', 't', 'd', 'i', 'k', 'h'], [], [])": {
+      "result": true,
+      "time": 0.29720354080200195,
+      "error": null
+    },
+    "assert find_character(\"lRQ1KC2\") == (['R', 'Q', 'K', 'C'], ['l'], ['1', '2'], [])": {
+      "result": true,
+      "time": 0.5398318767547607,
+      "error": null
+    },
+    "assert find_character(\"3Ag5ssVqg6\") == (['A', 'V'], ['g', 's', 's', 'q', 'g'], ['3', '5', '6'], [])": {
+      "result": true,
+      "time": 0.5753684043884277,
+      "error": null
+    },
+    "assert find_character(\"kg7JPD2bLnvxC\") == (['J', 'P', 'D', 'L', 'C'], ['k', 'g', 'b', 'n', 'v', 'x'], ['7', '2'], [])": {
+      "result": true,
+      "time": 0.6358742713928223,
+      "error": null
+    },
+    "assert find_character(\"KZ1llhxrXBpz2tf\") == (['K', 'Z', 'X', 'B'], ['l', 'l', 'h', 'x', 'r', 'p', 'z', 't', 'f'], ['1', '2'], [])": {
+      "result": true,
+      "time": 0.5857017040252686,
+      "error": null
+    },
+    "assert find_character(\"l94jzC95q\") == (['C'], ['l', 'j', 'z', 'q'], ['9', '4', '9', '5'], [])": {
+      "result": true,
+      "time": 0.5622069835662842,
+      "error": null
+    },
+    "assert find_character(\"qAdEszOY\") == (['A', 'E', 'O', 'Y'], ['q', 'd', 's', 'z'], [], [])": {
+      "result": true,
+      "time": 0.595095157623291,
+      "error": null
+    },
+    "assert find_character(\"7MaaL0v1oOVY\") == (['M', 'L', 'O', 'V', 'Y'], ['a', 'a', 'v', 'o'], ['7', '0', '1'], [])": {
+      "result": true,
+      "time": 0.5805323123931885,
+      "error": null
+    },
+    "assert find_character(\"ZJRbpxyO\") == (['Z', 'J', 'R', 'O'], ['b', 'p', 'x', 'y'], [], [])": {
+      "result": true,
+      "time": 0.5683982372283936,
+      "error": null
+    },
+    "assert find_character(\"5p2XdOkLf\") == (['X', 'O', 'L'], ['p', 'd', 'k', 'f'], ['5', '2'], [])": {
+      "result": true,
+      "time": 0.6100032329559326,
+      "error": null
+    },
+    "assert find_character(\"PNkgZlUEFS3o\") == (['P', 'N', 'Z', 'U', 'E', 'F', 'S'], ['k', 'g', 'l', 'o'], ['3'], [])": {
+      "result": true,
+      "time": 0.5653140544891357,
+      "error": null
+    },
+    "assert find_character(\"KODdTRAH4n\") == (['K', 'O', 'D', 'T', 'R', 'A', 'H'], ['d', 'n'], ['4'], [])": {
+      "result": true,
+      "time": 0.5578229427337646,
+      "error": null
+    },
+    "assert find_character(\"bKmU3Z33N11JXHn\") == (['K', 'U', 'Z', 'N', 'J', 'X', 'H'], ['b', 'm', 'n'], ['3', '3', '3', '1', '1'], [])": {
+      "result": true,
+      "time": 0.6039202213287354,
+      "error": null
+    },
+    "assert find_character(\"UyhqcwY3v7mejFb\") == (['U', 'Y', 'F'], ['y', 'h', 'q', 'c', 'w', 'v', 'm', 'e', 'j', 'b'], ['3', '7'], [])": {
+      "result": true,
+      "time": 0.58937668800354,
+      "error": null
+    },
+    "assert find_character(\"wE87zudH\") == (['E', 'H'], ['w', 'z', 'u', 'd'], ['8', '7'], [])": {
+      "result": true,
+      "time": 0.5887601375579834,
+      "error": null
+    },
+    "assert find_character(\"l95nG5HvuG9d4Qh\") == (['G', 'H', 'G', 'Q'], ['l', 'n', 'v', 'u', 'd', 'h'], ['9', '5', '5', '9', '4'], [])": {
+      "result": true,
+      "time": 0.5820162296295166,
+      "error": null
+    },
+    "assert find_character(\"ubNpaxgOPaOdB\") == (['N', 'O', 'P', 'O', 'B'], ['u', 'b', 'p', 'a', 'x', 'g', 'a', 'd'], [], [])": {
+      "result": true,
+      "time": 0.5576493740081787,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

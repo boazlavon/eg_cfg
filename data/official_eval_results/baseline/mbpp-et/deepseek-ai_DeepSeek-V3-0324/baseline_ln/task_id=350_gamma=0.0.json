@@ -1,0 +1,519 @@
+{
+  "code": "from collections import Counter\n\ndef minimum_Length(s):\n    if not s:\n        return 0\n    char_counts = Counter(s)\n    min_char = min(char_counts, key=char_counts.get)\n    return len(s) - char_counts[min_char]",
+  "results": {
+    "assert minimum_Length(\"mnm\") == 1": {
+      "result": false,
+      "time": 0.30024242401123047,
+      "error": null
+    },
+    "assert minimum_Length(\"abcda\") == 3": {
+      "result": false,
+      "time": 0.2756977081298828,
+      "error": null
+    },
+    "assert minimum_Length(\"abcb\") == 2": {
+      "result": false,
+      "time": 0.35265636444091797,
+      "error": null
+    },
+    "assert minimum_Length(\"poq\") == 2": {
+      "result": true,
+      "time": 0.28873157501220703,
+      "error": null
+    },
+    "assert minimum_Length(\"ujp\") == 2": {
+      "result": true,
+      "time": 0.3237011432647705,
+      "error": null
+    },
+    "assert minimum_Length(\"gnfkyfyq\") == 6": {
+      "result": false,
+      "time": 0.2989063262939453,
+      "error": null
+    },
+    "assert minimum_Length(\"hqdghgcf\") == 6": {
+      "result": false,
+      "time": 0.2813069820404053,
+      "error": null
+    },
+    "assert minimum_Length(\"jbds\") == 3": {
+      "result": true,
+      "time": 0.2887606620788574,
+      "error": null
+    },
+    "assert minimum_Length(\"jxstjvfeb\") == 7": {
+      "result": false,
+      "time": 0.28884363174438477,
+      "error": null
+    },
+    "assert minimum_Length(\"bkjnazr\") == 6": {
+      "result": true,
+      "time": 0.25577497482299805,
+      "error": null
+    },
+    "assert minimum_Length(\"vwwpmoqg\") == 6": {
+      "result": false,
+      "time": 0.30008983612060547,
+      "error": null
+    },
+    "assert minimum_Length(\"rtgqorj\") == 5": {
+      "result": false,
+      "time": 0.31325864791870117,
+      "error": null
+    },
+    "assert minimum_Length(\"samnltdvr\") == 8": {
+      "result": true,
+      "time": 0.27640771865844727,
+      "error": null
+    },
+    "assert minimum_Length(\"oct\") == 2": {
+      "result": true,
+      "time": 0.2781360149383545,
+      "error": null
+    },
+    "assert minimum_Length(\"fgtraxjc\") == 7": {
+      "result": true,
+      "time": 0.30635881423950195,
+      "error": null
+    },
+    "assert minimum_Length(\"hzwljpl\") == 5": {
+      "result": false,
+      "time": 0.1776597499847412,
+      "error": null
+    },
+    "assert minimum_Length(\"yzgsw\") == 4": {
+      "result": true,
+      "time": 0.28374576568603516,
+      "error": null
+    },
+    "assert minimum_Length(\"dbyeszw\") == 6": {
+      "result": true,
+      "time": 0.2408449649810791,
+      "error": null
+    },
+    "assert minimum_Length(\"xbodqww\") == 5": {
+      "result": false,
+      "time": 0.29293227195739746,
+      "error": null
+    },
+    "assert minimum_Length(\"qnarm\") == 4": {
+      "result": true,
+      "time": 0.31644439697265625,
+      "error": null
+    },
+    "assert minimum_Length(\"sys\") == 1": {
+      "result": false,
+      "time": 0.2766382694244385,
+      "error": null
+    },
+    "assert minimum_Length(\"kytlehl\") == 5": {
+      "result": false,
+      "time": 0.2782602310180664,
+      "error": null
+    },
+    "assert minimum_Length(\"kaeb\") == 3": {
+      "result": true,
+      "time": 0.2867105007171631,
+      "error": null
+    },
+    "assert minimum_Length(\"cvrn\") == 3": {
+      "result": true,
+      "time": 0.2860298156738281,
+      "error": null
+    },
+    "assert minimum_Length(\"kxfxdmgpj\") == 7": {
+      "result": false,
+      "time": 0.28467464447021484,
+      "error": null
+    },
+    "assert minimum_Length(\"awudfhc\") == 6": {
+      "result": true,
+      "time": 0.29204726219177246,
+      "error": null
+    },
+    "assert minimum_Length(\"tsbstgt\") == 4": {
+      "result": false,
+      "time": 0.28131580352783203,
+      "error": null
+    },
+    "assert minimum_Length(\"rujnb\") == 4": {
+      "result": true,
+      "time": 0.3025968074798584,
+      "error": null
+    },
+    "assert minimum_Length(\"dxaptlt\") == 5": {
+      "result": false,
+      "time": 0.28436708450317383,
+      "error": null
+    },
+    "assert minimum_Length(\"ckswxn\") == 5": {
+      "result": true,
+      "time": 0.27333688735961914,
+      "error": null
+    },
+    "assert minimum_Length(\"wbiethcd\") == 7": {
+      "result": true,
+      "time": 0.26711606979370117,
+      "error": null
+    },
+    "assert minimum_Length(\"ucndshads\") == 7": {
+      "result": false,
+      "time": 0.29288506507873535,
+      "error": null
+    },
+    "assert minimum_Length(\"xmkjkiwjz\") == 7": {
+      "result": false,
+      "time": 0.2842557430267334,
+      "error": null
+    },
+    "assert minimum_Length(\"aszfbzk\") == 5": {
+      "result": false,
+      "time": 0.2965841293334961,
+      "error": null
+    },
+    "assert minimum_Length(\"esqekehg\") == 5": {
+      "result": false,
+      "time": 0.29273366928100586,
+      "error": null
+    },
+    "assert minimum_Length(\"lvkpf\") == 4": {
+      "result": true,
+      "time": 0.28769803047180176,
+      "error": null
+    },
+    "assert minimum_Length(\"incniyy\") == 5": {
+      "result": false,
+      "time": 0.26813220977783203,
+      "error": null
+    },
+    "assert minimum_Length(\"mvmtizwv\") == 6": {
+      "result": false,
+      "time": 0.278958797454834,
+      "error": null
+    },
+    "assert minimum_Length(\"kvceyu\") == 5": {
+      "result": true,
+      "time": 0.2846980094909668,
+      "error": null
+    },
+    "assert minimum_Length(\"ulzjsfh\") == 6": {
+      "result": true,
+      "time": 0.27739429473876953,
+      "error": null
+    },
+    "assert minimum_Length(\"ddyekfkq\") == 6": {
+      "result": false,
+      "time": 0.27652716636657715,
+      "error": null
+    },
+    "assert minimum_Length(\"nhhbg\") == 3": {
+      "result": false,
+      "time": 0.2670121192932129,
+      "error": null
+    },
+    "assert minimum_Length(\"klspun\") == 5": {
+      "result": true,
+      "time": 0.272174596786499,
+      "error": null
+    },
+    "assert minimum_Length(\"wkdg\") == 3": {
+      "result": true,
+      "time": 0.2752983570098877,
+      "error": null
+    },
+    "assert minimum_Length(\"afavf\") == 3": {
+      "result": false,
+      "time": 0.30370545387268066,
+      "error": null
+    },
+    "assert minimum_Length(\"uwmhewlz\") == 6": {
+      "result": false,
+      "time": 0.29630184173583984,
+      "error": null
+    },
+    "assert minimum_Length(\"jfluhhe\") == 5": {
+      "result": false,
+      "time": 0.28339457511901855,
+      "error": null
+    },
+    "assert minimum_Length(\"oxcs\") == 3": {
+      "result": true,
+      "time": 0.28994035720825195,
+      "error": null
+    },
+    "assert minimum_Length(\"xqv\") == 2": {
+      "result": true,
+      "time": 0.2975776195526123,
+      "error": null
+    },
+    "assert minimum_Length(\"milsyq\") == 5": {
+      "result": true,
+      "time": 0.2668135166168213,
+      "error": null
+    },
+    "assert minimum_Length(\"gnjhqga\") == 5": {
+      "result": false,
+      "time": 0.2456374168395996,
+      "error": null
+    },
+    "assert minimum_Length(\"nyj\") == 2": {
+      "result": true,
+      "time": 0.2964451313018799,
+      "error": null
+    },
+    "assert minimum_Length(\"tqvdsperh\") == 8": {
+      "result": true,
+      "time": 0.2929666042327881,
+      "error": null
+    },
+    "assert minimum_Length(\"hwvlem\") == 5": {
+      "result": true,
+      "time": 0.2457587718963623,
+      "error": null
+    },
+    "assert minimum_Length(\"exnlnk\") == 4": {
+      "result": false,
+      "time": 0.2977790832519531,
+      "error": null
+    },
+    "assert minimum_Length(\"tbmluu\") == 4": {
+      "result": false,
+      "time": 0.28644824028015137,
+      "error": null
+    },
+    "assert minimum_Length(\"uzygdyv\") == 5": {
+      "result": false,
+      "time": 0.288405179977417,
+      "error": null
+    },
+    "assert minimum_Length(\"nlmogqr\") == 6": {
+      "result": true,
+      "time": 0.27849817276000977,
+      "error": null
+    },
+    "assert minimum_Length(\"fehvjqb\") == 6": {
+      "result": true,
+      "time": 0.28023409843444824,
+      "error": null
+    },
+    "assert minimum_Length(\"hor\") == 2": {
+      "result": true,
+      "time": 0.31276726722717285,
+      "error": null
+    },
+    "assert minimum_Length(\"pswck\") == 4": {
+      "result": true,
+      "time": 0.30329132080078125,
+      "error": null
+    },
+    "assert minimum_Length(\"tlfp\") == 3": {
+      "result": true,
+      "time": 0.26209449768066406,
+      "error": null
+    },
+    "assert minimum_Length(\"zamlvm\") == 4": {
+      "result": false,
+      "time": 0.30989623069763184,
+      "error": null
+    },
+    "assert minimum_Length(\"fuvdmah\") == 6": {
+      "result": true,
+      "time": 0.26424407958984375,
+      "error": null
+    },
+    "assert minimum_Length(\"fwufenc\") == 5": {
+      "result": false,
+      "time": 0.25647473335266113,
+      "error": null
+    },
+    "assert minimum_Length(\"wkgfe\") == 4": {
+      "result": true,
+      "time": 0.26153993606567383,
+      "error": null
+    },
+    "assert minimum_Length(\"rsefh\") == 4": {
+      "result": true,
+      "time": 0.26993870735168457,
+      "error": null
+    },
+    "assert minimum_Length(\"gzudngkw\") == 6": {
+      "result": false,
+      "time": 0.2730107307434082,
+      "error": null
+    },
+    "assert minimum_Length(\"wrsdmgeuu\") == 7": {
+      "result": false,
+      "time": 0.28675055503845215,
+      "error": null
+    },
+    "assert minimum_Length(\"lxdkiilqw\") == 7": {
+      "result": false,
+      "time": 0.29850268363952637,
+      "error": null
+    },
+    "assert minimum_Length(\"jkxzw\") == 4": {
+      "result": true,
+      "time": 0.2892417907714844,
+      "error": null
+    },
+    "assert minimum_Length(\"kcjshoyq\") == 7": {
+      "result": true,
+      "time": 0.2832939624786377,
+      "error": null
+    },
+    "assert minimum_Length(\"fydu\") == 3": {
+      "result": true,
+      "time": 0.28119397163391113,
+      "error": null
+    },
+    "assert minimum_Length(\"scylq\") == 4": {
+      "result": true,
+      "time": 0.3072354793548584,
+      "error": null
+    },
+    "assert minimum_Length(\"zyiipmv\") == 5": {
+      "result": false,
+      "time": 0.27260923385620117,
+      "error": null
+    },
+    "assert minimum_Length(\"hlw\") == 2": {
+      "result": true,
+      "time": 0.2851552963256836,
+      "error": null
+    },
+    "assert minimum_Length(\"iyzua\") == 4": {
+      "result": true,
+      "time": 0.27864956855773926,
+      "error": null
+    },
+    "assert minimum_Length(\"mzqiuu\") == 4": {
+      "result": false,
+      "time": 0.26413798332214355,
+      "error": null
+    },
+    "assert minimum_Length(\"mmdy\") == 2": {
+      "result": false,
+      "time": 0.2964496612548828,
+      "error": null
+    },
+    "assert minimum_Length(\"igcctg\") == 4": {
+      "result": false,
+      "time": 0.2713143825531006,
+      "error": null
+    },
+    "assert minimum_Length(\"uxsqvifi\") == 6": {
+      "result": false,
+      "time": 0.28431129455566406,
+      "error": null
+    },
+    "assert minimum_Length(\"plsbi\") == 4": {
+      "result": true,
+      "time": 0.27935242652893066,
+      "error": null
+    },
+    "assert minimum_Length(\"gtbhtnlh\") == 6": {
+      "result": false,
+      "time": 0.2772808074951172,
+      "error": null
+    },
+    "assert minimum_Length(\"yps\") == 2": {
+      "result": true,
+      "time": 0.26072120666503906,
+      "error": null
+    },
+    "assert minimum_Length(\"vxrx\") == 2": {
+      "result": false,
+      "time": 0.2995297908782959,
+      "error": null
+    },
+    "assert minimum_Length(\"xdrt\") == 3": {
+      "result": true,
+      "time": 0.2998955249786377,
+      "error": null
+    },
+    "assert minimum_Length(\"oxvhqeyy\") == 6": {
+      "result": false,
+      "time": 0.27709388732910156,
+      "error": null
+    },
+    "assert minimum_Length(\"rjh\") == 2": {
+      "result": true,
+      "time": 0.3039088249206543,
+      "error": null
+    },
+    "assert minimum_Length(\"wdj\") == 2": {
+      "result": true,
+      "time": 0.27802014350891113,
+      "error": null
+    },
+    "assert minimum_Length(\"dclzo\") == 4": {
+      "result": true,
+      "time": 0.27176809310913086,
+      "error": null
+    },
+    "assert minimum_Length(\"yhqnbek\") == 6": {
+      "result": true,
+      "time": 0.282665491104126,
+      "error": null
+    },
+    "assert minimum_Length(\"ffgtnog\") == 5": {
+      "result": false,
+      "time": 0.2963228225708008,
+      "error": null
+    },
+    "assert minimum_Length(\"xouj\") == 3": {
+      "result": true,
+      "time": 0.18423938751220703,
+      "error": null
+    },
+    "assert minimum_Length(\"ljzvieth\") == 7": {
+      "result": true,
+      "time": 0.2815580368041992,
+      "error": null
+    },
+    "assert minimum_Length(\"ackyo\") == 4": {
+      "result": true,
+      "time": 0.28714966773986816,
+      "error": null
+    },
+    "assert minimum_Length(\"wmq\") == 2": {
+      "result": true,
+      "time": 0.297274112701416,
+      "error": null
+    },
+    "assert minimum_Length(\"aqsamx\") == 4": {
+      "result": false,
+      "time": 0.2692430019378662,
+      "error": null
+    },
+    "assert minimum_Length(\"gzha\") == 3": {
+      "result": true,
+      "time": 0.2872958183288574,
+      "error": null
+    },
+    "assert minimum_Length(\"ljdudhqu\") == 6": {
+      "result": false,
+      "time": 0.3004639148712158,
+      "error": null
+    },
+    "assert minimum_Length(\"quujcnsu\") == 5": {
+      "result": false,
+      "time": 0.33116865158081055,
+      "error": null
+    },
+    "assert minimum_Length(\"mmjv\") == 2": {
+      "result": false,
+      "time": 0.28603172302246094,
+      "error": null
+    },
+    "assert minimum_Length(\"iryewrap\") == 6": {
+      "result": false,
+      "time": 0.2762775421142578,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.5196078431372549,
+  "general_error": "",
+  "has_testcase_error": false
+}

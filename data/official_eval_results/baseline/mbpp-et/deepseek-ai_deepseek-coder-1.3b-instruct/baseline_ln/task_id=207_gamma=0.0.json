@@ -1,0 +1,519 @@
+{
+  "code": "def find_longest_repeating_subseq(s):\n    n = len(s)\n    dp = [[0] * n for _ in range(n)]\n    longest = 0\n\n    # Precompute longest common suffixes\n    for i in range(n-1, -1, -1):\n        for j in range(i+1, n):\n            if s[i] == s[j]:\n                dp[i][j] = dp[i+1][j-1] + 2\n                longest = max(longest, dp[i][j])\n            else:\n                dp[i][j] = max(dp[i+1][j], dp[i][j-1])\n\n    return longest",
+  "results": {
+    "assert find_longest_repeating_subseq(\"AABEBCDD\") == 3": {
+      "result": false,
+      "time": 0.05437350273132324,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"aabb\") == 2": {
+      "result": true,
+      "time": 0.04330253601074219,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"aab\") == 1": {
+      "result": false,
+      "time": 0.05771684646606445,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"MMJXYIO\") == 1": {
+      "result": false,
+      "time": 0.05715131759643555,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"DBPUYC\") == 0": {
+      "result": true,
+      "time": 0.04900479316711426,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"YGZSQZISLZNY\") == 3": {
+      "result": false,
+      "time": 0.06052732467651367,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"JBVFWGS\") == 0": {
+      "result": true,
+      "time": 0.048975229263305664,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"UTMYWFMJTW\") == 2": {
+      "result": false,
+      "time": 0.045651912689208984,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"DEEMDH\") == 1": {
+      "result": false,
+      "time": 0.05324554443359375,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"RZBRODYII\") == 2": {
+      "result": true,
+      "time": 0.05524158477783203,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"CVYDEJIUH\") == 0": {
+      "result": true,
+      "time": 0.04410672187805176,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"RTWZNA\") == 0": {
+      "result": true,
+      "time": 0.048279523849487305,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"WZXWGKIQ\") == 1": {
+      "result": false,
+      "time": 0.06285595893859863,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"ILC\") == 0": {
+      "result": true,
+      "time": 0.05825209617614746,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"DLEROQURLR\") == 2": {
+      "result": false,
+      "time": 0.0648190975189209,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"YXNTOSXOTOK\") == 3": {
+      "result": false,
+      "time": 0.05982828140258789,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"AXVZAHHPH\") == 3": {
+      "result": false,
+      "time": 0.05985879898071289,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"GBG\") == 1": {
+      "result": false,
+      "time": 0.0511174201965332,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"BGFXYYXAQEDF\") == 1": {
+      "result": false,
+      "time": 0.05522441864013672,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"DONYM\") == 0": {
+      "result": true,
+      "time": 0.05643153190612793,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"IEJ\") == 0": {
+      "result": true,
+      "time": 0.0668497085571289,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"FKBIZOWNDMGW\") == 1": {
+      "result": false,
+      "time": 0.05186343193054199,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"QUZEFMVI\") == 0": {
+      "result": true,
+      "time": 0.06419229507446289,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"MQS\") == 0": {
+      "result": true,
+      "time": 0.05859994888305664,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"AXM\") == 0": {
+      "result": true,
+      "time": 0.08167457580566406,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"QZWSVKVA\") == 1": {
+      "result": false,
+      "time": 0.05332827568054199,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"JTI\") == 0": {
+      "result": true,
+      "time": 0.06084322929382324,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"UMDSKWLYOLCX\") == 1": {
+      "result": false,
+      "time": 0.04334259033203125,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"QERMETOFXL\") == 1": {
+      "result": false,
+      "time": 0.04896879196166992,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"HBKGASHMTYI\") == 1": {
+      "result": false,
+      "time": 0.04967212677001953,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"CQZ\") == 0": {
+      "result": true,
+      "time": 0.06042933464050293,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"LWBM\") == 0": {
+      "result": true,
+      "time": 0.05533957481384277,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"VIZNEYIYMR\") == 2": {
+      "result": true,
+      "time": 0.06002926826477051,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"CWWIOUGRFN\") == 1": {
+      "result": false,
+      "time": 0.04248499870300293,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"IGA\") == 0": {
+      "result": true,
+      "time": 0.040331363677978516,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"DKHTHUKOHIN\") == 2": {
+      "result": false,
+      "time": 0.04628872871398926,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"fnnvblb\") == 2": {
+      "result": true,
+      "time": 0.04144287109375,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"pdpzk\") == 1": {
+      "result": false,
+      "time": 0.042377471923828125,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"pdxxt\") == 1": {
+      "result": false,
+      "time": 0.04969644546508789,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"jvqedjcx\") == 1": {
+      "result": false,
+      "time": 0.05071520805358887,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"ovfyvqote\") == 1": {
+      "result": false,
+      "time": 0.04949784278869629,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"rxnqiwgk\") == 0": {
+      "result": true,
+      "time": 0.04162406921386719,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"qlyqxokcz\") == 1": {
+      "result": false,
+      "time": 0.0434417724609375,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"nnlrjcrgc\") == 3": {
+      "result": false,
+      "time": 0.041602134704589844,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"ylzfnm\") == 0": {
+      "result": true,
+      "time": 0.04606199264526367,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"ymuak\") == 0": {
+      "result": true,
+      "time": 0.04587888717651367,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"camxvnd\") == 0": {
+      "result": true,
+      "time": 0.03914213180541992,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"bivfzq\") == 0": {
+      "result": true,
+      "time": 0.036220550537109375,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"hprewyl\") == 0": {
+      "result": true,
+      "time": 0.04900813102722168,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"cbsk\") == 0": {
+      "result": true,
+      "time": 0.03995847702026367,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"desrbjhr\") == 1": {
+      "result": false,
+      "time": 0.04266977310180664,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"yozt\") == 0": {
+      "result": true,
+      "time": 0.03770756721496582,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"ytk\") == 0": {
+      "result": true,
+      "time": 0.0415651798248291,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"ztz\") == 1": {
+      "result": false,
+      "time": 0.04458737373352051,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"mrkg\") == 0": {
+      "result": true,
+      "time": 0.0447537899017334,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"wtn\") == 0": {
+      "result": true,
+      "time": 0.04105186462402344,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"ydxtzpsq\") == 0": {
+      "result": true,
+      "time": 0.04541492462158203,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"fyteadaei\") == 1": {
+      "result": false,
+      "time": 0.05040740966796875,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"isfmr\") == 0": {
+      "result": true,
+      "time": 0.03579115867614746,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"sdiobypgb\") == 1": {
+      "result": false,
+      "time": 0.04466104507446289,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"ylntbw\") == 0": {
+      "result": true,
+      "time": 0.05121350288391113,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"xdj\") == 0": {
+      "result": true,
+      "time": 0.037908315658569336,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"kxcxbfb\") == 2": {
+      "result": true,
+      "time": 0.03800082206726074,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"hgw\") == 0": {
+      "result": true,
+      "time": 0.05042266845703125,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"xymptxi\") == 1": {
+      "result": false,
+      "time": 0.045122385025024414,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"auuhrpfwi\") == 1": {
+      "result": false,
+      "time": 0.04233956336975098,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"grpokgwev\") == 1": {
+      "result": false,
+      "time": 0.052788496017456055,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"esfn\") == 0": {
+      "result": true,
+      "time": 0.05058002471923828,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"ojugwz\") == 0": {
+      "result": true,
+      "time": 0.04727673530578613,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"upyzpdgq\") == 1": {
+      "result": false,
+      "time": 0.046494245529174805,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"kdrg\") == 0": {
+      "result": true,
+      "time": 0.03816795349121094,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"rbw\") == 0": {
+      "result": true,
+      "time": 0.041986703872680664,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"ypbgryx\") == 1": {
+      "result": false,
+      "time": 0.04370284080505371,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"qyabcv\") == 0": {
+      "result": true,
+      "time": 0.0454866886138916,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"mpihrcuz\") == 0": {
+      "result": true,
+      "time": 0.04698657989501953,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"gcgrwnbzc\") == 2": {
+      "result": true,
+      "time": 0.044882774353027344,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"npcblofmq\") == 0": {
+      "result": true,
+      "time": 0.04065895080566406,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"hekkn\") == 1": {
+      "result": false,
+      "time": 0.047968387603759766,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"gofi\") == 0": {
+      "result": true,
+      "time": 0.05066943168640137,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"awc\") == 0": {
+      "result": true,
+      "time": 0.04239487648010254,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"vfyldz\") == 0": {
+      "result": true,
+      "time": 0.04560208320617676,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"pddxx\") == 2": {
+      "result": true,
+      "time": 0.042252540588378906,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"mqx\") == 0": {
+      "result": true,
+      "time": 0.045108795166015625,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"ddtrij\") == 1": {
+      "result": false,
+      "time": 0.05023837089538574,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"rsh\") == 0": {
+      "result": true,
+      "time": 0.04190254211425781,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"iorhnwyvt\") == 0": {
+      "result": true,
+      "time": 0.04908561706542969,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"iqjza\") == 0": {
+      "result": true,
+      "time": 0.04618668556213379,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"xzs\") == 0": {
+      "result": true,
+      "time": 0.05277395248413086,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"rewqmga\") == 0": {
+      "result": true,
+      "time": 0.05062985420227051,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"hvd\") == 0": {
+      "result": true,
+      "time": 0.04382181167602539,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"kxhdn\") == 0": {
+      "result": true,
+      "time": 0.045583248138427734,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"naes\") == 0": {
+      "result": true,
+      "time": 0.04094552993774414,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"kgrdgw\") == 1": {
+      "result": false,
+      "time": 0.04124855995178223,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"notjgl\") == 0": {
+      "result": true,
+      "time": 0.04947376251220703,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"kzaglui\") == 0": {
+      "result": true,
+      "time": 0.045195817947387695,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"vsho\") == 0": {
+      "result": true,
+      "time": 0.04509997367858887,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"gufs\") == 0": {
+      "result": true,
+      "time": 0.04631352424621582,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"vkvmcdliu\") == 1": {
+      "result": false,
+      "time": 0.036638736724853516,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"hwkepjle\") == 1": {
+      "result": false,
+      "time": 0.039252519607543945,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"pjpyh\") == 1": {
+      "result": false,
+      "time": 0.04213094711303711,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"qvjcv\") == 1": {
+      "result": false,
+      "time": 0.04871225357055664,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"rojlwfa\") == 0": {
+      "result": true,
+      "time": 0.03913307189941406,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.5980392156862745,
+  "general_error": "",
+  "has_testcase_error": false
+}

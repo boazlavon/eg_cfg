@@ -1,0 +1,519 @@
+{
+  "code": "def re_order(arr):\n    # Separate non-zero and zero elements\n    non_zeros = [x for x in arr if x != 0]\n    zeros = [x for x in arr if x == 0]\n    # Combine non-zeros followed by zeros\n    return non_zeros + zeros",
+  "results": {
+    "assert re_order([6, 0, 8, 2, 3, 0, 4, 0, 1]) == [6, 8, 2, 3, 4, 1, 0, 0, 0]": {
+      "result": true,
+      "time": 0.0366513729095459,
+      "error": null
+    },
+    "assert re_order([4, 0, 2, 7, 0, 9, 0, 12, 0]) == [4, 2, 7, 9, 12, 0, 0, 0, 0]": {
+      "result": true,
+      "time": 0.03718709945678711,
+      "error": null
+    },
+    "assert re_order([3, 11, 0, 74, 14, 0, 1, 0, 2]) == [3, 11, 74, 14, 1, 2, 0, 0, 0]": {
+      "result": true,
+      "time": 0.036852359771728516,
+      "error": null
+    },
+    "assert re_order([3, 5, 13, 3, 7, 5, 5, 4, 1]) == [3, 5, 13, 3, 7, 5, 5, 4, 1]": {
+      "result": true,
+      "time": 0.03499341011047363,
+      "error": null
+    },
+    "assert re_order([11, 1, 4, 2, 5, 1, 6, 2, 1]) == [11, 1, 4, 2, 5, 1, 6, 2, 1]": {
+      "result": true,
+      "time": 0.03271222114562988,
+      "error": null
+    },
+    "assert re_order([11, 5, 4, 7, 6, 1, 3, 5, 1]) == [11, 5, 4, 7, 6, 1, 3, 5, 1]": {
+      "result": true,
+      "time": 0.03807473182678223,
+      "error": null
+    },
+    "assert re_order([9, 1, 12, 1, 4, 3, 7, 5, 6]) == [9, 1, 12, 1, 4, 3, 7, 5, 6]": {
+      "result": true,
+      "time": 0.033243656158447266,
+      "error": null
+    },
+    "assert re_order([7, 1, 9, 1, 6, 3, 5, 2, 6]) == [7, 1, 9, 1, 6, 3, 5, 2, 6]": {
+      "result": true,
+      "time": 0.0388178825378418,
+      "error": null
+    },
+    "assert re_order([6, 1, 8, 5, 3, 3, 8, 2, 2]) == [6, 1, 8, 5, 3, 3, 8, 2, 2]": {
+      "result": true,
+      "time": 0.03947567939758301,
+      "error": null
+    },
+    "assert re_order([8, 5, 12, 7, 7, 2, 7, 5, 4]) == [8, 5, 12, 7, 7, 2, 7, 5, 4]": {
+      "result": true,
+      "time": 0.035677194595336914,
+      "error": null
+    },
+    "assert re_order([6, 2, 13, 1, 7, 2, 6, 2, 2]) == [6, 2, 13, 1, 7, 2, 6, 2, 2]": {
+      "result": true,
+      "time": 0.03329038619995117,
+      "error": null
+    },
+    "assert re_order([11, 3, 12, 6, 1, 5, 3, 2, 5]) == [11, 3, 12, 6, 1, 5, 3, 2, 5]": {
+      "result": true,
+      "time": 0.03541421890258789,
+      "error": null
+    },
+    "assert re_order([5, 5, 11, 2, 6, 1, 8, 2, 6]) == [5, 5, 11, 2, 6, 1, 8, 2, 6]": {
+      "result": true,
+      "time": 0.033841609954833984,
+      "error": null
+    },
+    "assert re_order([2, 5, 5, 1, 5, 1, 9, 2, 5]) == [2, 5, 5, 1, 5, 1, 9, 2, 5]": {
+      "result": true,
+      "time": 0.03580641746520996,
+      "error": null
+    },
+    "assert re_order([3, 2, 11, 1, 4, 2, 4, 5, 3]) == [3, 2, 11, 1, 4, 2, 4, 5, 3]": {
+      "result": true,
+      "time": 0.033148765563964844,
+      "error": null
+    },
+    "assert re_order([7, 4, 7, 5, 4, 4, 1, 5, 3]) == [7, 4, 7, 5, 4, 4, 1, 5, 3]": {
+      "result": true,
+      "time": 0.03338956832885742,
+      "error": null
+    },
+    "assert re_order([7, 1, 7, 2, 1, 3, 1, 3, 6]) == [7, 1, 7, 2, 1, 3, 1, 3, 6]": {
+      "result": true,
+      "time": 0.03235793113708496,
+      "error": null
+    },
+    "assert re_order([4, 2, 9, 5, 6, 2, 5, 3, 1]) == [4, 2, 9, 5, 6, 2, 5, 3, 1]": {
+      "result": true,
+      "time": 0.03698444366455078,
+      "error": null
+    },
+    "assert re_order([5, 4, 12, 6, 5, 3, 1, 2, 3]) == [5, 4, 12, 6, 5, 3, 1, 2, 3]": {
+      "result": true,
+      "time": 0.03565168380737305,
+      "error": null
+    },
+    "assert re_order([8, 1, 7, 2, 4, 5, 7, 3, 1]) == [8, 1, 7, 2, 4, 5, 7, 3, 1]": {
+      "result": true,
+      "time": 0.03955841064453125,
+      "error": null
+    },
+    "assert re_order([9, 3, 11, 1, 5, 4, 9, 2, 4]) == [9, 3, 11, 1, 5, 4, 9, 2, 4]": {
+      "result": true,
+      "time": 0.041367530822753906,
+      "error": null
+    },
+    "assert re_order([9, 4, 8, 3, 7, 1, 5, 1, 6]) == [9, 4, 8, 3, 7, 1, 5, 1, 6]": {
+      "result": true,
+      "time": 0.029246091842651367,
+      "error": null
+    },
+    "assert re_order([7, 2, 5, 2, 3, 5, 7, 3, 4]) == [7, 2, 5, 2, 3, 5, 7, 3, 4]": {
+      "result": true,
+      "time": 0.03744840621948242,
+      "error": null
+    },
+    "assert re_order([3, 2, 12, 5, 7, 1, 7, 2, 6]) == [3, 2, 12, 5, 7, 1, 7, 2, 6]": {
+      "result": true,
+      "time": 0.037885189056396484,
+      "error": null
+    },
+    "assert re_order([5, 2, 3, 7, 8, 4, 7, 2, 1]) == [5, 2, 3, 7, 8, 4, 7, 2, 1]": {
+      "result": true,
+      "time": 0.03315544128417969,
+      "error": null
+    },
+    "assert re_order([5, 5, 9, 2, 4, 5, 2, 4, 5]) == [5, 5, 9, 2, 4, 5, 2, 4, 5]": {
+      "result": true,
+      "time": 0.03545355796813965,
+      "error": null
+    },
+    "assert re_order([8, 3, 9, 6, 2, 5, 2, 1, 4]) == [8, 3, 9, 6, 2, 5, 2, 1, 4]": {
+      "result": true,
+      "time": 0.03193187713623047,
+      "error": null
+    },
+    "assert re_order([6, 4, 11, 6, 7, 5, 9, 3, 2]) == [6, 4, 11, 6, 7, 5, 9, 3, 2]": {
+      "result": true,
+      "time": 0.03709244728088379,
+      "error": null
+    },
+    "assert re_order([5, 5, 9, 2, 8, 4, 4, 2, 2]) == [5, 5, 9, 2, 8, 4, 4, 2, 2]": {
+      "result": true,
+      "time": 0.036185503005981445,
+      "error": null
+    },
+    "assert re_order([10, 1, 10, 4, 5, 2, 1, 1, 2]) == [10, 1, 10, 4, 5, 2, 1, 1, 2]": {
+      "result": true,
+      "time": 0.03710508346557617,
+      "error": null
+    },
+    "assert re_order([4, 1, 13, 2, 8, 3, 4, 2, 3]) == [4, 1, 13, 2, 8, 3, 4, 2, 3]": {
+      "result": true,
+      "time": 0.0338437557220459,
+      "error": null
+    },
+    "assert re_order([1, 4, 3, 7, 7, 1, 6, 3, 2]) == [1, 4, 3, 7, 7, 1, 6, 3, 2]": {
+      "result": true,
+      "time": 0.03203320503234863,
+      "error": null
+    },
+    "assert re_order([1, 2, 5, 6, 2, 2, 2, 3, 6]) == [1, 2, 5, 6, 2, 2, 2, 3, 6]": {
+      "result": true,
+      "time": 0.031419992446899414,
+      "error": null
+    },
+    "assert re_order([10, 3, 13, 5, 8, 2, 9, 5, 6]) == [10, 3, 13, 5, 8, 2, 9, 5, 6]": {
+      "result": true,
+      "time": 0.031754255294799805,
+      "error": null
+    },
+    "assert re_order([3, 5, 12, 7, 3, 4, 5, 3, 5]) == [3, 5, 12, 7, 3, 4, 5, 3, 5]": {
+      "result": true,
+      "time": 0.036473751068115234,
+      "error": null
+    },
+    "assert re_order([8, 3, 6, 7, 4, 3, 3, 5, 1]) == [8, 3, 6, 7, 4, 3, 3, 5, 1]": {
+      "result": true,
+      "time": 0.035726070404052734,
+      "error": null
+    },
+    "assert re_order([6, 2, 2, 4, 1, 6, 4, 12, 2]) == [6, 2, 2, 4, 1, 6, 4, 12, 2]": {
+      "result": true,
+      "time": 0.03647875785827637,
+      "error": null
+    },
+    "assert re_order([9, 3, 5, 5, 5, 9, 2, 12, 4]) == [9, 3, 5, 5, 5, 9, 2, 12, 4]": {
+      "result": true,
+      "time": 0.035897254943847656,
+      "error": null
+    },
+    "assert re_order([2, 5, 1, 8, 5, 9, 2, 14, 4]) == [2, 5, 1, 8, 5, 9, 2, 14, 4]": {
+      "result": true,
+      "time": 0.0348050594329834,
+      "error": null
+    },
+    "assert re_order([6, 5, 1, 4, 4, 12, 1, 16, 3]) == [6, 5, 1, 4, 4, 12, 1, 16, 3]": {
+      "result": true,
+      "time": 0.03777623176574707,
+      "error": null
+    },
+    "assert re_order([2, 1, 5, 2, 3, 9, 1, 9, 3]) == [2, 1, 5, 2, 3, 9, 1, 9, 3]": {
+      "result": true,
+      "time": 0.03940463066101074,
+      "error": null
+    },
+    "assert re_order([2, 2, 5, 2, 4, 5, 1, 14, 5]) == [2, 2, 5, 2, 4, 5, 1, 14, 5]": {
+      "result": true,
+      "time": 0.036074161529541016,
+      "error": null
+    },
+    "assert re_order([9, 4, 2, 2, 3, 4, 2, 17, 5]) == [9, 4, 2, 2, 3, 4, 2, 17, 5]": {
+      "result": true,
+      "time": 0.03666806221008301,
+      "error": null
+    },
+    "assert re_order([3, 5, 3, 10, 3, 12, 1, 9, 4]) == [3, 5, 3, 10, 3, 12, 1, 9, 4]": {
+      "result": true,
+      "time": 0.03871011734008789,
+      "error": null
+    },
+    "assert re_order([2, 5, 3, 6, 1, 12, 2, 17, 2]) == [2, 5, 3, 6, 1, 12, 2, 17, 2]": {
+      "result": true,
+      "time": 0.03641462326049805,
+      "error": null
+    },
+    "assert re_order([5, 2, 7, 9, 4, 14, 4, 7, 2]) == [5, 2, 7, 9, 4, 14, 4, 7, 2]": {
+      "result": true,
+      "time": 0.03754687309265137,
+      "error": null
+    },
+    "assert re_order([3, 5, 6, 3, 1, 14, 4, 16, 1]) == [3, 5, 6, 3, 1, 14, 4, 16, 1]": {
+      "result": true,
+      "time": 0.035332679748535156,
+      "error": null
+    },
+    "assert re_order([7, 1, 6, 5, 1, 8, 3, 9, 1]) == [7, 1, 6, 5, 1, 8, 3, 9, 1]": {
+      "result": true,
+      "time": 0.0326230525970459,
+      "error": null
+    },
+    "assert re_order([6, 2, 7, 9, 5, 7, 2, 14, 3]) == [6, 2, 7, 9, 5, 7, 2, 14, 3]": {
+      "result": true,
+      "time": 0.04206252098083496,
+      "error": null
+    },
+    "assert re_order([6, 3, 7, 7, 2, 7, 3, 17, 4]) == [6, 3, 7, 7, 2, 7, 3, 17, 4]": {
+      "result": true,
+      "time": 0.03399229049682617,
+      "error": null
+    },
+    "assert re_order([1, 4, 1, 9, 2, 6, 5, 7, 1]) == [1, 4, 1, 9, 2, 6, 5, 7, 1]": {
+      "result": true,
+      "time": 0.033031463623046875,
+      "error": null
+    },
+    "assert re_order([1, 3, 7, 7, 1, 13, 5, 16, 4]) == [1, 3, 7, 7, 1, 13, 5, 16, 4]": {
+      "result": true,
+      "time": 0.03611183166503906,
+      "error": null
+    },
+    "assert re_order([9, 4, 6, 10, 1, 9, 4, 12, 3]) == [9, 4, 6, 10, 1, 9, 4, 12, 3]": {
+      "result": true,
+      "time": 0.031104326248168945,
+      "error": null
+    },
+    "assert re_order([5, 4, 4, 8, 2, 5, 3, 16, 5]) == [5, 4, 4, 8, 2, 5, 3, 16, 5]": {
+      "result": true,
+      "time": 0.0421137809753418,
+      "error": null
+    },
+    "assert re_order([9, 2, 7, 9, 2, 8, 3, 11, 1]) == [9, 2, 7, 9, 2, 8, 3, 11, 1]": {
+      "result": true,
+      "time": 0.03983783721923828,
+      "error": null
+    },
+    "assert re_order([7, 3, 2, 2, 2, 8, 5, 17, 3]) == [7, 3, 2, 2, 2, 8, 5, 17, 3]": {
+      "result": true,
+      "time": 0.03544926643371582,
+      "error": null
+    },
+    "assert re_order([9, 3, 5, 7, 2, 14, 1, 11, 5]) == [9, 3, 5, 7, 2, 14, 1, 11, 5]": {
+      "result": true,
+      "time": 0.036330461502075195,
+      "error": null
+    },
+    "assert re_order([4, 3, 3, 5, 2, 5, 2, 8, 5]) == [4, 3, 3, 5, 2, 5, 2, 8, 5]": {
+      "result": true,
+      "time": 0.03833198547363281,
+      "error": null
+    },
+    "assert re_order([5, 1, 6, 4, 5, 12, 2, 8, 4]) == [5, 1, 6, 4, 5, 12, 2, 8, 4]": {
+      "result": true,
+      "time": 0.03530240058898926,
+      "error": null
+    },
+    "assert re_order([4, 5, 5, 7, 2, 12, 2, 17, 2]) == [4, 5, 5, 7, 2, 12, 2, 17, 2]": {
+      "result": true,
+      "time": 0.03608512878417969,
+      "error": null
+    },
+    "assert re_order([8, 5, 1, 6, 4, 5, 2, 8, 2]) == [8, 5, 1, 6, 4, 5, 2, 8, 2]": {
+      "result": true,
+      "time": 0.03762984275817871,
+      "error": null
+    },
+    "assert re_order([3, 3, 4, 10, 5, 10, 4, 9, 3]) == [3, 3, 4, 10, 5, 10, 4, 9, 3]": {
+      "result": true,
+      "time": 0.03553295135498047,
+      "error": null
+    },
+    "assert re_order([4, 2, 7, 2, 4, 7, 2, 16, 5]) == [4, 2, 7, 2, 4, 7, 2, 16, 5]": {
+      "result": true,
+      "time": 0.03729248046875,
+      "error": null
+    },
+    "assert re_order([4, 1, 5, 2, 1, 6, 5, 14, 3]) == [4, 1, 5, 2, 1, 6, 5, 14, 3]": {
+      "result": true,
+      "time": 0.0370020866394043,
+      "error": null
+    },
+    "assert re_order([8, 3, 3, 9, 3, 4, 1, 15, 2]) == [8, 3, 3, 9, 3, 4, 1, 15, 2]": {
+      "result": true,
+      "time": 0.030529022216796875,
+      "error": null
+    },
+    "assert re_order([4, 1, 2, 11, 5, 4, 3, 17, 2]) == [4, 1, 2, 11, 5, 4, 3, 17, 2]": {
+      "result": true,
+      "time": 0.034835100173950195,
+      "error": null
+    },
+    "assert re_order([3, 2, 4, 7, 4, 12, 2, 7, 5]) == [3, 2, 4, 7, 4, 12, 2, 7, 5]": {
+      "result": true,
+      "time": 0.03646111488342285,
+      "error": null
+    },
+    "assert re_order([3, 1, 5, 3, 2, 7, 5, 10, 3]) == [3, 1, 5, 3, 2, 7, 5, 10, 3]": {
+      "result": true,
+      "time": 0.03441572189331055,
+      "error": null
+    },
+    "assert re_order([7, 2, 2, 5, 1, 5, 5, 12, 4]) == [7, 2, 2, 5, 1, 5, 5, 12, 4]": {
+      "result": true,
+      "time": 0.03725075721740723,
+      "error": null
+    },
+    "assert re_order([3, 11, 1, 73, 14, 3, 2, 2, 5]) == [3, 11, 1, 73, 14, 3, 2, 2, 5]": {
+      "result": true,
+      "time": 0.036086082458496094,
+      "error": null
+    },
+    "assert re_order([1, 16, 5, 70, 15, 5, 2, 2, 4]) == [1, 16, 5, 70, 15, 5, 2, 2, 4]": {
+      "result": true,
+      "time": 0.03595161437988281,
+      "error": null
+    },
+    "assert re_order([8, 14, 5, 69, 14, 1, 4, 1, 5]) == [8, 14, 5, 69, 14, 1, 4, 1, 5]": {
+      "result": true,
+      "time": 0.041323184967041016,
+      "error": null
+    },
+    "assert re_order([3, 9, 1, 76, 12, 5, 3, 1, 4]) == [3, 9, 1, 76, 12, 5, 3, 1, 4]": {
+      "result": true,
+      "time": 0.045955657958984375,
+      "error": null
+    },
+    "assert re_order([7, 7, 1, 71, 11, 4, 4, 3, 3]) == [7, 7, 1, 71, 11, 4, 4, 3, 3]": {
+      "result": true,
+      "time": 0.0398707389831543,
+      "error": null
+    },
+    "assert re_order([5, 6, 2, 77, 15, 2, 6, 4, 5]) == [5, 6, 2, 77, 15, 2, 6, 4, 5]": {
+      "result": true,
+      "time": 0.03875446319580078,
+      "error": null
+    },
+    "assert re_order([6, 8, 1, 71, 13, 1, 2, 4, 3]) == [6, 8, 1, 71, 13, 1, 2, 4, 3]": {
+      "result": true,
+      "time": 0.0392303466796875,
+      "error": null
+    },
+    "assert re_order([2, 13, 5, 78, 14, 4, 2, 3, 3]) == [2, 13, 5, 78, 14, 4, 2, 3, 3]": {
+      "result": true,
+      "time": 0.03777766227722168,
+      "error": null
+    },
+    "assert re_order([8, 8, 4, 73, 10, 5, 3, 3, 6]) == [8, 8, 4, 73, 10, 5, 3, 3, 6]": {
+      "result": true,
+      "time": 0.03901815414428711,
+      "error": null
+    },
+    "assert re_order([3, 16, 3, 71, 13, 5, 3, 2, 2]) == [3, 16, 3, 71, 13, 5, 3, 2, 2]": {
+      "result": true,
+      "time": 0.03689861297607422,
+      "error": null
+    },
+    "assert re_order([4, 6, 1, 72, 9, 1, 2, 4, 4]) == [4, 6, 1, 72, 9, 1, 2, 4, 4]": {
+      "result": true,
+      "time": 0.04161667823791504,
+      "error": null
+    },
+    "assert re_order([5, 14, 2, 71, 9, 3, 5, 4, 1]) == [5, 14, 2, 71, 9, 3, 5, 4, 1]": {
+      "result": true,
+      "time": 0.035346031188964844,
+      "error": null
+    },
+    "assert re_order([7, 7, 5, 78, 13, 1, 4, 3, 5]) == [7, 7, 5, 78, 13, 1, 4, 3, 5]": {
+      "result": true,
+      "time": 0.04097485542297363,
+      "error": null
+    },
+    "assert re_order([5, 6, 3, 79, 17, 2, 6, 3, 2]) == [5, 6, 3, 79, 17, 2, 6, 3, 2]": {
+      "result": true,
+      "time": 0.04144477844238281,
+      "error": null
+    },
+    "assert re_order([3, 15, 3, 74, 17, 5, 5, 1, 2]) == [3, 15, 3, 74, 17, 5, 5, 1, 2]": {
+      "result": true,
+      "time": 0.038828372955322266,
+      "error": null
+    },
+    "assert re_order([3, 11, 2, 75, 19, 4, 1, 1, 5]) == [3, 11, 2, 75, 19, 4, 1, 1, 5]": {
+      "result": true,
+      "time": 0.032715797424316406,
+      "error": null
+    },
+    "assert re_order([7, 12, 3, 77, 19, 1, 4, 5, 2]) == [7, 12, 3, 77, 19, 1, 4, 5, 2]": {
+      "result": true,
+      "time": 0.037061214447021484,
+      "error": null
+    },
+    "assert re_order([7, 14, 3, 69, 19, 2, 3, 3, 2]) == [7, 14, 3, 69, 19, 2, 3, 3, 2]": {
+      "result": true,
+      "time": 0.037789106369018555,
+      "error": null
+    },
+    "assert re_order([5, 13, 4, 76, 16, 1, 2, 4, 7]) == [5, 13, 4, 76, 16, 1, 2, 4, 7]": {
+      "result": true,
+      "time": 0.040068864822387695,
+      "error": null
+    },
+    "assert re_order([1, 8, 5, 79, 10, 5, 5, 1, 7]) == [1, 8, 5, 79, 10, 5, 5, 1, 7]": {
+      "result": true,
+      "time": 0.03693342208862305,
+      "error": null
+    },
+    "assert re_order([2, 16, 1, 79, 15, 1, 2, 5, 1]) == [2, 16, 1, 79, 15, 1, 2, 5, 1]": {
+      "result": true,
+      "time": 0.04125165939331055,
+      "error": null
+    },
+    "assert re_order([7, 14, 2, 76, 16, 1, 5, 1, 1]) == [7, 14, 2, 76, 16, 1, 5, 1, 1]": {
+      "result": true,
+      "time": 0.04053664207458496,
+      "error": null
+    },
+    "assert re_order([7, 8, 5, 71, 16, 5, 1, 3, 4]) == [7, 8, 5, 71, 16, 5, 1, 3, 4]": {
+      "result": true,
+      "time": 0.039029836654663086,
+      "error": null
+    },
+    "assert re_order([2, 9, 5, 71, 12, 5, 2, 2, 4]) == [2, 9, 5, 71, 12, 5, 2, 2, 4]": {
+      "result": true,
+      "time": 0.03947639465332031,
+      "error": null
+    },
+    "assert re_order([2, 7, 1, 77, 10, 3, 5, 1, 5]) == [2, 7, 1, 77, 10, 3, 5, 1, 5]": {
+      "result": true,
+      "time": 0.03628063201904297,
+      "error": null
+    },
+    "assert re_order([2, 11, 5, 71, 12, 5, 1, 1, 7]) == [2, 11, 5, 71, 12, 5, 1, 1, 7]": {
+      "result": true,
+      "time": 0.04178500175476074,
+      "error": null
+    },
+    "assert re_order([6, 6, 2, 76, 13, 2, 3, 5, 6]) == [6, 6, 2, 76, 13, 2, 3, 5, 6]": {
+      "result": true,
+      "time": 0.03634929656982422,
+      "error": null
+    },
+    "assert re_order([2, 9, 3, 74, 16, 5, 4, 3, 1]) == [2, 9, 3, 74, 16, 5, 4, 3, 1]": {
+      "result": true,
+      "time": 0.0400850772857666,
+      "error": null
+    },
+    "assert re_order([7, 15, 3, 74, 10, 2, 2, 1, 2]) == [7, 15, 3, 74, 10, 2, 2, 1, 2]": {
+      "result": true,
+      "time": 0.039481163024902344,
+      "error": null
+    },
+    "assert re_order([7, 15, 2, 71, 17, 3, 3, 2, 1]) == [7, 15, 2, 71, 17, 3, 3, 2, 1]": {
+      "result": true,
+      "time": 0.037367820739746094,
+      "error": null
+    },
+    "assert re_order([4, 6, 2, 78, 11, 5, 5, 5, 2]) == [4, 6, 2, 78, 11, 5, 5, 5, 2]": {
+      "result": true,
+      "time": 0.034619808197021484,
+      "error": null
+    },
+    "assert re_order([5, 6, 2, 76, 13, 5, 3, 5, 1]) == [5, 6, 2, 76, 13, 5, 3, 5, 1]": {
+      "result": true,
+      "time": 0.03852725028991699,
+      "error": null
+    },
+    "assert re_order([6, 12, 5, 78, 17, 5, 6, 3, 3]) == [6, 12, 5, 78, 17, 5, 6, 3, 3]": {
+      "result": true,
+      "time": 0.035410404205322266,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

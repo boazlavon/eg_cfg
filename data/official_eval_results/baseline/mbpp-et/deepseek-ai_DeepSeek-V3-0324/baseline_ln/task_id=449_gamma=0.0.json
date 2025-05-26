@@ -1,0 +1,519 @@
+{
+  "code": "def check_Triangle(x1, y1, x2, y2, x3, y3):\n    # Calculate the area of the triangle\n    area = 0.5 * abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2))\n    if area > 0:\n        return 'Yes'\n    else:\n        return 'No'",
+  "results": {
+    "assert check_Triangle(1,5,2,5,4,6) == 'Yes'": {
+      "result": true,
+      "time": 0.030495166778564453,
+      "error": null
+    },
+    "assert check_Triangle(1,1,1,4,1,5) == 'No'": {
+      "result": true,
+      "time": 0.03671669960021973,
+      "error": null
+    },
+    "assert check_Triangle(1,1,1,1,1,1) == 'No'": {
+      "result": true,
+      "time": 0.04161953926086426,
+      "error": null
+    },
+    "assert check_Triangle(4, 9, 6, 9, 6, 2) == Yes": {
+      "result": false,
+      "time": 0.04405617713928223,
+      "error": null
+    },
+    "assert check_Triangle(3, 4, 2, 9, 7, 8) == Yes": {
+      "result": false,
+      "time": 0.03438997268676758,
+      "error": null
+    },
+    "assert check_Triangle(5, 3, 3, 6, 2, 1) == Yes": {
+      "result": false,
+      "time": 0.042336225509643555,
+      "error": null
+    },
+    "assert check_Triangle(4, 5, 4, 8, 7, 11) == Yes": {
+      "result": false,
+      "time": 0.04007744789123535,
+      "error": null
+    },
+    "assert check_Triangle(2, 2, 2, 10, 6, 5) == Yes": {
+      "result": false,
+      "time": 0.040169715881347656,
+      "error": null
+    },
+    "assert check_Triangle(5, 9, 3, 2, 3, 5) == Yes": {
+      "result": false,
+      "time": 0.0394444465637207,
+      "error": null
+    },
+    "assert check_Triangle(6, 4, 5, 4, 4, 10) == Yes": {
+      "result": false,
+      "time": 0.03874993324279785,
+      "error": null
+    },
+    "assert check_Triangle(4, 9, 3, 10, 9, 11) == Yes": {
+      "result": false,
+      "time": 0.040078163146972656,
+      "error": null
+    },
+    "assert check_Triangle(6, 6, 2, 3, 2, 2) == Yes": {
+      "result": false,
+      "time": 0.036577701568603516,
+      "error": null
+    },
+    "assert check_Triangle(4, 7, 3, 10, 2, 6) == Yes": {
+      "result": false,
+      "time": 0.04164552688598633,
+      "error": null
+    },
+    "assert check_Triangle(6, 8, 2, 4, 7, 3) == Yes": {
+      "result": false,
+      "time": 0.040415048599243164,
+      "error": null
+    },
+    "assert check_Triangle(2, 2, 2, 2, 4, 7) == No": {
+      "result": false,
+      "time": 0.04369330406188965,
+      "error": null
+    },
+    "assert check_Triangle(2, 10, 5, 8, 7, 5) == Yes": {
+      "result": false,
+      "time": 0.04202842712402344,
+      "error": null
+    },
+    "assert check_Triangle(3, 9, 5, 6, 4, 3) == Yes": {
+      "result": false,
+      "time": 0.03857851028442383,
+      "error": null
+    },
+    "assert check_Triangle(4, 8, 3, 3, 9, 2) == Yes": {
+      "result": false,
+      "time": 0.03992891311645508,
+      "error": null
+    },
+    "assert check_Triangle(3, 1, 7, 4, 1, 11) == Yes": {
+      "result": false,
+      "time": 0.03624773025512695,
+      "error": null
+    },
+    "assert check_Triangle(5, 8, 7, 4, 4, 3) == Yes": {
+      "result": false,
+      "time": 0.03536224365234375,
+      "error": null
+    },
+    "assert check_Triangle(2, 3, 2, 9, 7, 5) == Yes": {
+      "result": false,
+      "time": 0.03689908981323242,
+      "error": null
+    },
+    "assert check_Triangle(4, 4, 5, 8, 4, 7) == Yes": {
+      "result": false,
+      "time": 0.04433178901672363,
+      "error": null
+    },
+    "assert check_Triangle(2, 6, 6, 7, 5, 9) == Yes": {
+      "result": false,
+      "time": 0.0336761474609375,
+      "error": null
+    },
+    "assert check_Triangle(1, 6, 4, 7, 1, 5) == Yes": {
+      "result": false,
+      "time": 0.03506064414978027,
+      "error": null
+    },
+    "assert check_Triangle(1, 9, 7, 7, 6, 2) == Yes": {
+      "result": false,
+      "time": 0.03404641151428223,
+      "error": null
+    },
+    "assert check_Triangle(1, 2, 5, 6, 4, 5) == No": {
+      "result": false,
+      "time": 0.041709184646606445,
+      "error": null
+    },
+    "assert check_Triangle(1, 9, 1, 8, 8, 7) == Yes": {
+      "result": false,
+      "time": 0.04226827621459961,
+      "error": null
+    },
+    "assert check_Triangle(5, 1, 7, 8, 7, 2) == Yes": {
+      "result": false,
+      "time": 0.04438042640686035,
+      "error": null
+    },
+    "assert check_Triangle(1, 5, 5, 8, 6, 4) == Yes": {
+      "result": false,
+      "time": 0.04190778732299805,
+      "error": null
+    },
+    "assert check_Triangle(3, 6, 3, 10, 8, 8) == Yes": {
+      "result": false,
+      "time": 0.03964710235595703,
+      "error": null
+    },
+    "assert check_Triangle(3, 8, 1, 6, 9, 1) == Yes": {
+      "result": false,
+      "time": 0.0386509895324707,
+      "error": null
+    },
+    "assert check_Triangle(6, 3, 6, 3, 3, 7) == No": {
+      "result": false,
+      "time": 0.04072761535644531,
+      "error": null
+    },
+    "assert check_Triangle(3, 8, 5, 7, 6, 8) == Yes": {
+      "result": false,
+      "time": 0.03761911392211914,
+      "error": null
+    },
+    "assert check_Triangle(5, 1, 7, 5, 3, 9) == Yes": {
+      "result": false,
+      "time": 0.039650917053222656,
+      "error": null
+    },
+    "assert check_Triangle(6, 4, 4, 3, 5, 4) == Yes": {
+      "result": false,
+      "time": 0.03869962692260742,
+      "error": null
+    },
+    "assert check_Triangle(1, 8, 1, 1, 8, 6) == Yes": {
+      "result": false,
+      "time": 0.03589439392089844,
+      "error": null
+    },
+    "assert check_Triangle(1, 2, 6, 6, 1, 5) == Yes": {
+      "result": false,
+      "time": 0.033704280853271484,
+      "error": null
+    },
+    "assert check_Triangle(5, 2, 2, 2, 6, 5) == Yes": {
+      "result": false,
+      "time": 0.03649306297302246,
+      "error": null
+    },
+    "assert check_Triangle(5, 5, 6, 8, 2, 4) == Yes": {
+      "result": false,
+      "time": 0.03263711929321289,
+      "error": null
+    },
+    "assert check_Triangle(6, 3, 5, 5, 2, 5) == Yes": {
+      "result": false,
+      "time": 0.034995317459106445,
+      "error": null
+    },
+    "assert check_Triangle(3, 6, 4, 9, 2, 8) == Yes": {
+      "result": false,
+      "time": 0.038313865661621094,
+      "error": null
+    },
+    "assert check_Triangle(3, 3, 6, 2, 6, 4) == Yes": {
+      "result": false,
+      "time": 0.03358054161071777,
+      "error": null
+    },
+    "assert check_Triangle(2, 2, 3, 6, 1, 8) == Yes": {
+      "result": false,
+      "time": 0.03819394111633301,
+      "error": null
+    },
+    "assert check_Triangle(4, 2, 3, 7, 5, 6) == Yes": {
+      "result": false,
+      "time": 0.03616189956665039,
+      "error": null
+    },
+    "assert check_Triangle(2, 2, 3, 2, 5, 8) == Yes": {
+      "result": false,
+      "time": 0.03507232666015625,
+      "error": null
+    },
+    "assert check_Triangle(4, 6, 4, 7, 3, 6) == Yes": {
+      "result": false,
+      "time": 0.04021906852722168,
+      "error": null
+    },
+    "assert check_Triangle(2, 6, 1, 8, 4, 2) == No": {
+      "result": false,
+      "time": 0.03710055351257324,
+      "error": null
+    },
+    "assert check_Triangle(2, 3, 1, 3, 5, 8) == Yes": {
+      "result": false,
+      "time": 0.03342628479003906,
+      "error": null
+    },
+    "assert check_Triangle(1, 5, 3, 7, 4, 8) == No": {
+      "result": false,
+      "time": 0.04037880897521973,
+      "error": null
+    },
+    "assert check_Triangle(2, 4, 4, 4, 3, 1) == Yes": {
+      "result": false,
+      "time": 0.0344538688659668,
+      "error": null
+    },
+    "assert check_Triangle(2, 3, 1, 5, 4, 2) == Yes": {
+      "result": false,
+      "time": 0.03312325477600098,
+      "error": null
+    },
+    "assert check_Triangle(5, 1, 3, 7, 2, 2) == Yes": {
+      "result": false,
+      "time": 0.04170346260070801,
+      "error": null
+    },
+    "assert check_Triangle(3, 5, 2, 7, 5, 9) == Yes": {
+      "result": false,
+      "time": 0.036604881286621094,
+      "error": null
+    },
+    "assert check_Triangle(6, 3, 1, 9, 1, 7) == Yes": {
+      "result": false,
+      "time": 0.03977560997009277,
+      "error": null
+    },
+    "assert check_Triangle(5, 1, 5, 6, 4, 2) == Yes": {
+      "result": false,
+      "time": 0.037286996841430664,
+      "error": null
+    },
+    "assert check_Triangle(1, 1, 3, 8, 2, 9) == Yes": {
+      "result": false,
+      "time": 0.035436391830444336,
+      "error": null
+    },
+    "assert check_Triangle(3, 4, 6, 6, 4, 6) == Yes": {
+      "result": false,
+      "time": 0.03585243225097656,
+      "error": null
+    },
+    "assert check_Triangle(1, 2, 3, 2, 4, 8) == Yes": {
+      "result": false,
+      "time": 0.033164262771606445,
+      "error": null
+    },
+    "assert check_Triangle(2, 2, 5, 4, 2, 6) == Yes": {
+      "result": false,
+      "time": 0.03697705268859863,
+      "error": null
+    },
+    "assert check_Triangle(2, 4, 4, 4, 1, 5) == Yes": {
+      "result": false,
+      "time": 0.03770279884338379,
+      "error": null
+    },
+    "assert check_Triangle(2, 1, 2, 2, 5, 2) == Yes": {
+      "result": false,
+      "time": 0.03688359260559082,
+      "error": null
+    },
+    "assert check_Triangle(6, 6, 5, 1, 2, 1) == Yes": {
+      "result": false,
+      "time": 0.03619384765625,
+      "error": null
+    },
+    "assert check_Triangle(3, 5, 6, 2, 1, 3) == Yes": {
+      "result": false,
+      "time": 0.0347292423248291,
+      "error": null
+    },
+    "assert check_Triangle(2, 3, 6, 4, 6, 1) == Yes": {
+      "result": false,
+      "time": 0.035735130310058594,
+      "error": null
+    },
+    "assert check_Triangle(5, 5, 4, 1, 6, 1) == Yes": {
+      "result": false,
+      "time": 0.03493237495422363,
+      "error": null
+    },
+    "assert check_Triangle(2, 3, 4, 9, 2, 1) == Yes": {
+      "result": false,
+      "time": 0.033193111419677734,
+      "error": null
+    },
+    "assert check_Triangle(1, 5, 1, 3, 2, 5) == Yes": {
+      "result": false,
+      "time": 0.03826785087585449,
+      "error": null
+    },
+    "assert check_Triangle(4, 3, 6, 8, 6, 2) == Yes": {
+      "result": false,
+      "time": 0.038709163665771484,
+      "error": null
+    },
+    "assert check_Triangle(2, 4, 1, 5, 6, 5) == Yes": {
+      "result": false,
+      "time": 0.03436756134033203,
+      "error": null
+    },
+    "assert check_Triangle(4, 4, 6, 2, 3, 3) == Yes": {
+      "result": false,
+      "time": 0.037355661392211914,
+      "error": null
+    },
+    "assert check_Triangle(2, 5, 6, 3, 3, 4) == Yes": {
+      "result": false,
+      "time": 0.03494524955749512,
+      "error": null
+    },
+    "assert check_Triangle(3, 3, 4, 4, 1, 4) == Yes": {
+      "result": false,
+      "time": 0.040114402770996094,
+      "error": null
+    },
+    "assert check_Triangle(2, 2, 5, 1, 2, 4) == Yes": {
+      "result": false,
+      "time": 0.03518199920654297,
+      "error": null
+    },
+    "assert check_Triangle(5, 4, 2, 6, 6, 5) == Yes": {
+      "result": false,
+      "time": 0.03538370132446289,
+      "error": null
+    },
+    "assert check_Triangle(6, 2, 6, 3, 1, 4) == Yes": {
+      "result": false,
+      "time": 0.03962421417236328,
+      "error": null
+    },
+    "assert check_Triangle(1, 3, 5, 2, 2, 2) == Yes": {
+      "result": false,
+      "time": 0.03992486000061035,
+      "error": null
+    },
+    "assert check_Triangle(4, 3, 5, 6, 1, 2) == Yes": {
+      "result": false,
+      "time": 0.03856992721557617,
+      "error": null
+    },
+    "assert check_Triangle(6, 5, 3, 5, 4, 3) == Yes": {
+      "result": false,
+      "time": 0.037177324295043945,
+      "error": null
+    },
+    "assert check_Triangle(1, 3, 2, 2, 6, 6) == Yes": {
+      "result": false,
+      "time": 0.03727436065673828,
+      "error": null
+    },
+    "assert check_Triangle(1, 4, 3, 6, 6, 5) == Yes": {
+      "result": false,
+      "time": 0.035523176193237305,
+      "error": null
+    },
+    "assert check_Triangle(5, 3, 5, 2, 1, 5) == Yes": {
+      "result": false,
+      "time": 0.0434567928314209,
+      "error": null
+    },
+    "assert check_Triangle(2, 2, 6, 6, 1, 1) == No": {
+      "result": false,
+      "time": 0.03681373596191406,
+      "error": null
+    },
+    "assert check_Triangle(3, 2, 2, 1, 5, 5) == Yes": {
+      "result": false,
+      "time": 0.03952670097351074,
+      "error": null
+    },
+    "assert check_Triangle(1, 6, 3, 2, 2, 6) == Yes": {
+      "result": false,
+      "time": 0.03902602195739746,
+      "error": null
+    },
+    "assert check_Triangle(2, 6, 1, 2, 2, 6) == No": {
+      "result": false,
+      "time": 0.03720593452453613,
+      "error": null
+    },
+    "assert check_Triangle(5, 6, 6, 5, 1, 2) == Yes": {
+      "result": false,
+      "time": 0.039432525634765625,
+      "error": null
+    },
+    "assert check_Triangle(1, 4, 1, 1, 5, 3) == Yes": {
+      "result": false,
+      "time": 0.03789043426513672,
+      "error": null
+    },
+    "assert check_Triangle(1, 6, 5, 4, 1, 6) == No": {
+      "result": false,
+      "time": 0.0389094352722168,
+      "error": null
+    },
+    "assert check_Triangle(2, 1, 6, 2, 2, 1) == No": {
+      "result": false,
+      "time": 0.03704380989074707,
+      "error": null
+    },
+    "assert check_Triangle(6, 2, 5, 1, 4, 3) == Yes": {
+      "result": false,
+      "time": 0.043180227279663086,
+      "error": null
+    },
+    "assert check_Triangle(5, 6, 5, 1, 4, 6) == Yes": {
+      "result": false,
+      "time": 0.037805795669555664,
+      "error": null
+    },
+    "assert check_Triangle(6, 2, 4, 6, 1, 1) == Yes": {
+      "result": false,
+      "time": 0.03430438041687012,
+      "error": null
+    },
+    "assert check_Triangle(6, 4, 5, 2, 6, 5) == Yes": {
+      "result": false,
+      "time": 0.03485989570617676,
+      "error": null
+    },
+    "assert check_Triangle(3, 1, 2, 1, 6, 1) == No": {
+      "result": false,
+      "time": 0.03571963310241699,
+      "error": null
+    },
+    "assert check_Triangle(1, 1, 3, 1, 5, 5) == Yes": {
+      "result": false,
+      "time": 0.03644394874572754,
+      "error": null
+    },
+    "assert check_Triangle(3, 3, 6, 5, 2, 3) == Yes": {
+      "result": false,
+      "time": 0.03628396987915039,
+      "error": null
+    },
+    "assert check_Triangle(4, 2, 3, 6, 1, 3) == Yes": {
+      "result": false,
+      "time": 0.04445004463195801,
+      "error": null
+    },
+    "assert check_Triangle(1, 1, 2, 2, 4, 3) == Yes": {
+      "result": false,
+      "time": 0.04241514205932617,
+      "error": null
+    },
+    "assert check_Triangle(2, 2, 6, 2, 3, 5) == Yes": {
+      "result": false,
+      "time": 0.04685473442077637,
+      "error": null
+    },
+    "assert check_Triangle(4, 4, 4, 5, 4, 6) == No": {
+      "result": false,
+      "time": 0.04335451126098633,
+      "error": null
+    },
+    "assert check_Triangle(6, 5, 4, 1, 2, 5) == Yes": {
+      "result": false,
+      "time": 0.04755425453186035,
+      "error": null
+    },
+    "assert check_Triangle(6, 3, 6, 4, 6, 1) == No": {
+      "result": false,
+      "time": 0.04241657257080078,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.029411764705882353,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "def get_maxgold(gold, m, n):\n    # Create a DP table to store the maximum gold that can be collected\n    dp = [[0 for _ in range(n)] for _ in range(m)]\n    \n    # Initialize the DP table with the values from the first column\n    for i in range(m):\n        dp[i][0] = gold[i][0]\n    \n    # Fill the DP table column-wise\n    for j in range(1, n):\n        for i in range(m):\n            # The maximum gold that can be collected to reach (i, j)\n            # comes from three possible cells: (i-1, j-1), (i, j-1), (i+1, j-1)\n            up = dp[i-1][j-1] if i > 0 else 0\n            left = dp[i][j-1]\n            down = dp[i+1][j-1] if i < m-1 else 0\n            \n            dp[i][j] = gold[i][j] + max(up, left, down)\n    \n    # The answer is the maximum value in the last column\n    max_gold = 0\n    for i in range(m):\n        if dp[i][n-1] > max_gold:\n            max_gold = dp[i][n-1]\n    \n    return max_gold",
+  "results": {
+    "assert get_maxgold([[1, 3, 1, 5],[2, 2, 4, 1],[5, 0, 2, 3],[0, 6, 1, 2]],4,4)==16": {
+      "result": true,
+      "time": 0.035431623458862305,
+      "error": null
+    },
+    "assert get_maxgold([[10,20],[30,40]],2,2)==70": {
+      "result": true,
+      "time": 0.04348158836364746,
+      "error": null
+    },
+    "assert get_maxgold([[4,9],[3,7]],2,2)==13": {
+      "result": true,
+      "time": 0.03670001029968262,
+      "error": null
+    },
+    "assert get_maxgold([[2, 8, 1, 9], [6, 4, 1, 3], [9, 3, 5, 2], [5, 10, 6, 2]], 1, 4) == 20": {
+      "result": true,
+      "time": 0.04335188865661621,
+      "error": null
+    },
+    "assert get_maxgold([[5, 4, 2, 5], [4, 3, 1, 5], [8, 2, 2, 1], [2, 6, 5, 4]], 2, 4) == 16": {
+      "result": true,
+      "time": 0.03535890579223633,
+      "error": null
+    },
+    "assert get_maxgold([[4, 1, 4, 6], [6, 3, 7, 5], [4, 2, 7, 8], [5, 6, 3, 1]], 3, 3) == 16": {
+      "result": true,
+      "time": 0.040130615234375,
+      "error": null
+    },
+    "assert get_maxgold([[4, 1, 4, 2], [4, 2, 7, 4], [7, 4, 7, 8], [2, 6, 5, 6]], 3, 3) == 18": {
+      "result": true,
+      "time": 0.03795146942138672,
+      "error": null
+    },
+    "assert get_maxgold([[3, 4, 4, 7], [4, 2, 9, 6], [10, 1, 3, 8], [4, 7, 2, 5]], 2, 4) == 24": {
+      "result": true,
+      "time": 0.03890681266784668,
+      "error": null
+    },
+    "assert get_maxgold([[6, 8, 5, 5], [7, 5, 3, 4], [3, 3, 1, 1], [5, 8, 4, 1]], 3, 1) == 7": {
+      "result": true,
+      "time": 0.03812694549560547,
+      "error": null
+    },
+    "assert get_maxgold([[5, 2, 5, 9], [2, 3, 3, 3], [6, 1, 4, 7], [4, 5, 5, 6]], 2, 4) == 22": {
+      "result": true,
+      "time": 0.04028892517089844,
+      "error": null
+    },
+    "assert get_maxgold([[3, 2, 2, 9], [6, 2, 6, 5], [6, 5, 4, 1], [1, 4, 5, 3]], 2, 2) == 8": {
+      "result": true,
+      "time": 0.041161537170410156,
+      "error": null
+    },
+    "assert get_maxgold([[5, 4, 4, 4], [2, 2, 5, 1], [2, 4, 4, 8], [4, 9, 3, 1]], 2, 4) == 18": {
+      "result": true,
+      "time": 0.03776121139526367,
+      "error": null
+    },
+    "assert get_maxgold([[1, 1, 5, 6], [1, 7, 2, 1], [2, 3, 7, 7], [2, 2, 3, 6]], 4, 2) == 9": {
+      "result": true,
+      "time": 0.040947675704956055,
+      "error": null
+    },
+    "assert get_maxgold([[6, 4, 6, 2], [2, 7, 7, 1], [6, 3, 4, 7], [1, 10, 1, 6]], 4, 4) == 27": {
+      "result": true,
+      "time": 0.04019737243652344,
+      "error": null
+    },
+    "assert get_maxgold([[3, 5, 2, 8], [1, 5, 8, 6], [4, 2, 2, 4], [4, 3, 4, 3]], 2, 3) == 16": {
+      "result": true,
+      "time": 0.037474870681762695,
+      "error": null
+    },
+    "assert get_maxgold([[4, 5, 3, 4], [4, 7, 9, 5], [2, 1, 3, 5], [1, 1, 5, 4]], 2, 1) == 4": {
+      "result": true,
+      "time": 0.045717716217041016,
+      "error": null
+    },
+    "assert get_maxgold([[3, 2, 3, 10], [6, 5, 9, 4], [7, 3, 6, 8], [2, 1, 1, 2]], 3, 2) == 12": {
+      "result": true,
+      "time": 0.04008817672729492,
+      "error": null
+    },
+    "assert get_maxgold([[5, 4, 3, 8], [1, 4, 8, 2], [4, 5, 3, 7], [4, 7, 5, 6]], 2, 3) == 17": {
+      "result": true,
+      "time": 0.03854966163635254,
+      "error": null
+    },
+    "assert get_maxgold([[4, 4, 6, 8], [4, 1, 4, 5], [9, 2, 6, 6], [2, 6, 1, 5]], 1, 1) == 4": {
+      "result": true,
+      "time": 0.037100791931152344,
+      "error": null
+    },
+    "assert get_maxgold([[6, 1, 4, 4], [7, 3, 6, 2], [3, 5, 1, 8], [1, 3, 3, 3]], 4, 3) == 18": {
+      "result": true,
+      "time": 0.04204297065734863,
+      "error": null
+    },
+    "assert get_maxgold([[3, 2, 4, 4], [6, 1, 4, 4], [2, 1, 3, 4], [1, 5, 5, 4]], 2, 4) == 16": {
+      "result": true,
+      "time": 0.041823625564575195,
+      "error": null
+    },
+    "assert get_maxgold([[2, 3, 3, 5], [6, 2, 3, 1], [3, 5, 2, 5], [3, 2, 6, 2]], 2, 4) == 17": {
+      "result": true,
+      "time": 0.04212069511413574,
+      "error": null
+    },
+    "assert get_maxgold([[4, 2, 2, 10], [6, 1, 5, 3], [2, 1, 7, 5], [2, 3, 2, 7]], 2, 3) == 13": {
+      "result": true,
+      "time": 0.04166865348815918,
+      "error": null
+    },
+    "assert get_maxgold([[5, 8, 6, 1], [4, 5, 1, 1], [5, 2, 5, 3], [2, 2, 5, 7]], 2, 2) == 13": {
+      "result": true,
+      "time": 0.04467344284057617,
+      "error": null
+    },
+    "assert get_maxgold([[6, 8, 5, 10], [2, 7, 2, 3], [7, 1, 4, 3], [3, 11, 5, 4]], 3, 1) == 7": {
+      "result": true,
+      "time": 0.04051494598388672,
+      "error": null
+    },
+    "assert get_maxgold([[4, 5, 1, 2], [7, 5, 5, 4], [1, 4, 6, 6], [4, 10, 3, 1]], 4, 4) == 26": {
+      "result": true,
+      "time": 0.03821063041687012,
+      "error": null
+    },
+    "assert get_maxgold([[3, 8, 4, 10], [7, 2, 4, 2], [9, 1, 1, 6], [1, 2, 5, 6]], 3, 3) == 19": {
+      "result": true,
+      "time": 0.046678781509399414,
+      "error": null
+    },
+    "assert get_maxgold([[1, 3, 2, 4], [6, 3, 4, 6], [1, 1, 4, 3], [5, 1, 3, 1]], 2, 1) == 6": {
+      "result": true,
+      "time": 0.03829026222229004,
+      "error": null
+    },
+    "assert get_maxgold([[3, 7, 1, 1], [4, 7, 2, 2], [2, 1, 6, 1], [1, 3, 6, 6]], 2, 3) == 13": {
+      "result": true,
+      "time": 0.04216194152832031,
+      "error": null
+    },
+    "assert get_maxgold([[2, 8, 3, 7], [4, 2, 8, 6], [9, 1, 5, 3], [4, 2, 5, 5]], 3, 1) == 9": {
+      "result": true,
+      "time": 0.047564029693603516,
+      "error": null
+    },
+    "assert get_maxgold([[4, 2, 3, 5], [4, 7, 2, 3], [2, 4, 6, 4], [4, 10, 5, 6]], 4, 3) == 20": {
+      "result": true,
+      "time": 0.0456697940826416,
+      "error": null
+    },
+    "assert get_maxgold([[4, 8, 6, 6], [4, 4, 8, 1], [6, 1, 7, 4], [4, 5, 5, 4]], 4, 4) == 26": {
+      "result": true,
+      "time": 0.03897976875305176,
+      "error": null
+    },
+    "assert get_maxgold([[6, 2, 2, 4], [2, 1, 2, 3], [6, 4, 6, 7], [4, 4, 6, 7]], 3, 4) == 23": {
+      "result": true,
+      "time": 0.03968977928161621,
+      "error": null
+    },
+    "assert get_maxgold([[5, 5, 6, 3], [6, 7, 6, 5], [3, 2, 2, 2], [5, 3, 4, 5]], 3, 1) == 6": {
+      "result": true,
+      "time": 0.043537139892578125,
+      "error": null
+    },
+    "assert get_maxgold([[4, 8, 4, 9], [3, 4, 1, 6], [7, 5, 3, 7], [5, 7, 2, 2]], 1, 3) == 16": {
+      "result": true,
+      "time": 0.04020833969116211,
+      "error": null
+    },
+    "assert get_maxgold([[6, 7, 3, 2], [1, 5, 9, 6], [3, 5, 3, 3], [4, 11, 2, 3]], 3, 2) == 13": {
+      "result": true,
+      "time": 0.04830193519592285,
+      "error": null
+    },
+    "assert get_maxgold([[8, 18], [35, 37]], 1, 2) == 26": {
+      "result": true,
+      "time": 0.0434415340423584,
+      "error": null
+    },
+    "assert get_maxgold([[12, 20], [28, 43]], 2, 1) == 28": {
+      "result": true,
+      "time": 0.054373741149902344,
+      "error": null
+    },
+    "assert get_maxgold([[9, 17], [29, 37]], 2, 1) == 29": {
+      "result": true,
+      "time": 0.04015755653381348,
+      "error": null
+    },
+    "assert get_maxgold([[15, 19], [34, 36]], 2, 1) == 34": {
+      "result": true,
+      "time": 0.04334688186645508,
+      "error": null
+    },
+    "assert get_maxgold([[9, 23], [27, 36]], 2, 2) == 63": {
+      "result": true,
+      "time": 0.04170799255371094,
+      "error": null
+    },
+    "assert get_maxgold([[11, 20], [28, 41]], 2, 1) == 28": {
+      "result": true,
+      "time": 0.04153728485107422,
+      "error": null
+    },
+    "assert get_maxgold([[13, 24], [34, 37]], 1, 1) == 13": {
+      "result": true,
+      "time": 0.04782509803771973,
+      "error": null
+    },
+    "assert get_maxgold([[12, 15], [29, 40]], 2, 1) == 29": {
+      "result": true,
+      "time": 0.04121518135070801,
+      "error": null
+    },
+    "assert get_maxgold([[6, 18], [29, 44]], 1, 2) == 24": {
+      "result": true,
+      "time": 0.040419816970825195,
+      "error": null
+    },
+    "assert get_maxgold([[15, 23], [33, 37]], 2, 2) == 70": {
+      "result": true,
+      "time": 0.04253077507019043,
+      "error": null
+    },
+    "assert get_maxgold([[9, 18], [25, 35]], 1, 2) == 27": {
+      "result": true,
+      "time": 0.04728364944458008,
+      "error": null
+    },
+    "assert get_maxgold([[7, 18], [26, 42]], 2, 2) == 68": {
+      "result": true,
+      "time": 0.04968404769897461,
+      "error": null
+    },
+    "assert get_maxgold([[7, 15], [28, 35]], 1, 1) == 7": {
+      "result": true,
+      "time": 0.05351758003234863,
+      "error": null
+    },
+    "assert get_maxgold([[14, 16], [34, 43]], 2, 1) == 34": {
+      "result": true,
+      "time": 0.047013282775878906,
+      "error": null
+    },
+    "assert get_maxgold([[6, 15], [29, 44]], 1, 1) == 6": {
+      "result": true,
+      "time": 0.0480196475982666,
+      "error": null
+    },
+    "assert get_maxgold([[14, 24], [32, 43]], 2, 1) == 32": {
+      "result": true,
+      "time": 0.04278087615966797,
+      "error": null
+    },
+    "assert get_maxgold([[12, 20], [32, 38]], 2, 2) == 70": {
+      "result": true,
+      "time": 0.043914794921875,
+      "error": null
+    },
+    "assert get_maxgold([[8, 24], [25, 40]], 2, 1) == 25": {
+      "result": true,
+      "time": 0.0442814826965332,
+      "error": null
+    },
+    "assert get_maxgold([[10, 23], [31, 36]], 1, 1) == 10": {
+      "result": true,
+      "time": 0.045966148376464844,
+      "error": null
+    },
+    "assert get_maxgold([[7, 15], [28, 42]], 1, 2) == 22": {
+      "result": true,
+      "time": 0.04365253448486328,
+      "error": null
+    },
+    "assert get_maxgold([[13, 19], [25, 42]], 1, 1) == 13": {
+      "result": true,
+      "time": 0.05010390281677246,
+      "error": null
+    },
+    "assert get_maxgold([[11, 23], [33, 37]], 1, 2) == 34": {
+      "result": true,
+      "time": 0.04730844497680664,
+      "error": null
+    },
+    "assert get_maxgold([[11, 25], [35, 40]], 1, 2) == 36": {
+      "result": true,
+      "time": 0.04854846000671387,
+      "error": null
+    },
+    "assert get_maxgold([[9, 23], [26, 35]], 1, 2) == 32": {
+      "result": true,
+      "time": 0.04552435874938965,
+      "error": null
+    },
+    "assert get_maxgold([[8, 18], [25, 44]], 1, 1) == 8": {
+      "result": true,
+      "time": 0.0500180721282959,
+      "error": null
+    },
+    "assert get_maxgold([[14, 19], [35, 45]], 1, 1) == 14": {
+      "result": true,
+      "time": 0.04436779022216797,
+      "error": null
+    },
+    "assert get_maxgold([[6, 22], [34, 43]], 2, 1) == 34": {
+      "result": true,
+      "time": 0.04774141311645508,
+      "error": null
+    },
+    "assert get_maxgold([[12, 21], [28, 45]], 1, 1) == 12": {
+      "result": true,
+      "time": 0.04290056228637695,
+      "error": null
+    },
+    "assert get_maxgold([[13, 20], [27, 35]], 1, 1) == 13": {
+      "result": true,
+      "time": 0.04877662658691406,
+      "error": null
+    },
+    "assert get_maxgold([[13, 23], [35, 35]], 2, 1) == 35": {
+      "result": true,
+      "time": 0.0496373176574707,
+      "error": null
+    },
+    "assert get_maxgold([[10, 15], [32, 45]], 2, 1) == 32": {
+      "result": true,
+      "time": 0.042615652084350586,
+      "error": null
+    },
+    "assert get_maxgold([[5, 23], [32, 43]], 1, 2) == 28": {
+      "result": true,
+      "time": 0.04823923110961914,
+      "error": null
+    },
+    "assert get_maxgold([[6, 19], [33, 40]], 2, 2) == 73": {
+      "result": true,
+      "time": 0.043895721435546875,
+      "error": null
+    },
+    "assert get_maxgold([[1, 10], [4, 3]], 1, 1) == 1": {
+      "result": true,
+      "time": 0.04672598838806152,
+      "error": null
+    },
+    "assert get_maxgold([[9, 11], [4, 8]], 1, 2) == 20": {
+      "result": true,
+      "time": 0.03846478462219238,
+      "error": null
+    },
+    "assert get_maxgold([[3, 8], [8, 2]], 1, 2) == 11": {
+      "result": true,
+      "time": 0.0411381721496582,
+      "error": null
+    },
+    "assert get_maxgold([[2, 10], [6, 8]], 2, 1) == 6": {
+      "result": true,
+      "time": 0.03742265701293945,
+      "error": null
+    },
+    "assert get_maxgold([[6, 7], [2, 12]], 2, 2) == 18": {
+      "result": true,
+      "time": 0.03873777389526367,
+      "error": null
+    },
+    "assert get_maxgold([[2, 9], [8, 3]], 1, 1) == 2": {
+      "result": true,
+      "time": 0.03662514686584473,
+      "error": null
+    },
+    "assert get_maxgold([[7, 5], [3, 10]], 2, 1) == 7": {
+      "result": true,
+      "time": 0.042978525161743164,
+      "error": null
+    },
+    "assert get_maxgold([[2, 14], [5, 5]], 2, 2) == 19": {
+      "result": true,
+      "time": 0.037808895111083984,
+      "error": null
+    },
+    "assert get_maxgold([[1, 13], [2, 4]], 1, 1) == 1": {
+      "result": true,
+      "time": 0.051665544509887695,
+      "error": null
+    },
+    "assert get_maxgold([[2, 8], [3, 11]], 1, 2) == 10": {
+      "result": true,
+      "time": 0.03514719009399414,
+      "error": null
+    },
+    "assert get_maxgold([[4, 10], [6, 3]], 1, 1) == 4": {
+      "result": true,
+      "time": 0.04515266418457031,
+      "error": null
+    },
+    "assert get_maxgold([[1, 6], [6, 3]], 2, 2) == 12": {
+      "result": true,
+      "time": 0.03912520408630371,
+      "error": null
+    },
+    "assert get_maxgold([[1, 5], [6, 7]], 2, 1) == 6": {
+      "result": true,
+      "time": 0.036572933197021484,
+      "error": null
+    },
+    "assert get_maxgold([[9, 5], [4, 5]], 1, 1) == 9": {
+      "result": true,
+      "time": 0.04066824913024902,
+      "error": null
+    },
+    "assert get_maxgold([[9, 4], [8, 11]], 1, 2) == 13": {
+      "result": true,
+      "time": 0.039151668548583984,
+      "error": null
+    },
+    "assert get_maxgold([[7, 5], [8, 3]], 2, 2) == 13": {
+      "result": true,
+      "time": 0.04268240928649902,
+      "error": null
+    },
+    "assert get_maxgold([[5, 6], [3, 4]], 2, 2) == 11": {
+      "result": true,
+      "time": 0.04366779327392578,
+      "error": null
+    },
+    "assert get_maxgold([[5, 4], [6, 8]], 2, 1) == 6": {
+      "result": true,
+      "time": 0.04063773155212402,
+      "error": null
+    },
+    "assert get_maxgold([[3, 6], [1, 5]], 1, 1) == 3": {
+      "result": true,
+      "time": 0.03814530372619629,
+      "error": null
+    },
+    "assert get_maxgold([[8, 4], [3, 6]], 2, 2) == 14": {
+      "result": true,
+      "time": 0.037888526916503906,
+      "error": null
+    },
+    "assert get_maxgold([[1, 4], [4, 11]], 1, 1) == 1": {
+      "result": true,
+      "time": 0.04145193099975586,
+      "error": null
+    },
+    "assert get_maxgold([[1, 14], [4, 9]], 2, 2) == 18": {
+      "result": true,
+      "time": 0.04462456703186035,
+      "error": null
+    },
+    "assert get_maxgold([[1, 7], [8, 9]], 2, 2) == 17": {
+      "result": true,
+      "time": 0.03832364082336426,
+      "error": null
+    },
+    "assert get_maxgold([[8, 9], [3, 8]], 2, 2) == 17": {
+      "result": true,
+      "time": 0.03777933120727539,
+      "error": null
+    },
+    "assert get_maxgold([[3, 11], [3, 8]], 2, 2) == 14": {
+      "result": true,
+      "time": 0.039132118225097656,
+      "error": null
+    },
+    "assert get_maxgold([[3, 8], [2, 11]], 1, 1) == 3": {
+      "result": true,
+      "time": 0.04355263710021973,
+      "error": null
+    },
+    "assert get_maxgold([[5, 4], [1, 12]], 1, 2) == 9": {
+      "result": true,
+      "time": 0.04471921920776367,
+      "error": null
+    },
+    "assert get_maxgold([[1, 13], [4, 8]], 2, 1) == 4": {
+      "result": true,
+      "time": 0.03981757164001465,
+      "error": null
+    },
+    "assert get_maxgold([[1, 13], [3, 3]], 2, 2) == 16": {
+      "result": true,
+      "time": 0.03793525695800781,
+      "error": null
+    },
+    "assert get_maxgold([[6, 12], [8, 10]], 2, 1) == 8": {
+      "result": true,
+      "time": 0.03799700736999512,
+      "error": null
+    },
+    "assert get_maxgold([[5, 9], [8, 9]], 2, 2) == 17": {
+      "result": true,
+      "time": 0.03948569297790527,
+      "error": null
+    },
+    "assert get_maxgold([[3, 10], [8, 9]], 1, 2) == 13": {
+      "result": true,
+      "time": 0.03947734832763672,
+      "error": null
+    },
+    "assert get_maxgold([[8, 6], [7, 3]], 2, 1) == 8": {
+      "result": true,
+      "time": 0.04100966453552246,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

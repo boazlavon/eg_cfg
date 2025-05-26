@@ -1,0 +1,74 @@
+{
+  "code": "def max_volume(s):\n    if s < 3:\n        return 0\n    max_vol = 0\n    for a in range(1, s - 1):\n        for b in range(1, s - a):\n            c = s - a - b\n            volume = a * b * c\n            if volume > max_vol:\n                max_vol = volume\n    return max_vol",
+  "results": {
+    "assert max_volume(8) == 18": {
+      "result": true,
+      "time": 0.05099606513977051,
+      "error": null
+    },
+    "assert max_volume(4) == 2": {
+      "result": true,
+      "time": 0.049924612045288086,
+      "error": null
+    },
+    "assert max_volume(1) == 0": {
+      "result": true,
+      "time": 0.04855084419250488,
+      "error": null
+    },
+    "assert max_volume(11) == 48": {
+      "result": true,
+      "time": 0.0534515380859375,
+      "error": null
+    },
+    "assert max_volume(10) == 36": {
+      "result": true,
+      "time": 0.048111915588378906,
+      "error": null
+    },
+    "assert max_volume(9) == 27": {
+      "result": true,
+      "time": 0.05782890319824219,
+      "error": null
+    },
+    "assert max_volume(5) == 4": {
+      "result": true,
+      "time": 0.04823136329650879,
+      "error": null
+    },
+    "assert max_volume(13) == 80": {
+      "result": true,
+      "time": 0.04800820350646973,
+      "error": null
+    },
+    "assert max_volume(6) == 8": {
+      "result": true,
+      "time": 0.042386770248413086,
+      "error": null
+    },
+    "assert max_volume(3) == 1": {
+      "result": true,
+      "time": 0.03984260559082031,
+      "error": null
+    },
+    "assert max_volume(12) == 64": {
+      "result": true,
+      "time": 0.03433847427368164,
+      "error": null
+    },
+    "assert max_volume(7) == 12": {
+      "result": true,
+      "time": 0.045539140701293945,
+      "error": null
+    },
+    "assert max_volume(2) == 0": {
+      "result": true,
+      "time": 0.04738807678222656,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

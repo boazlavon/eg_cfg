@@ -1,0 +1,519 @@
+{
+  "code": "def count_pairs(arr, n, k):\n    # Initialize a set to store unique elements from the array\n    unique_elements = set()\n    for num in arr:\n        unique_elements.add(num)\n    \n    # Convert the set back to a list for iteration\n    unique_list = list(unique_elements)\n    \n    # Initialize a counter for the pairs\n    pair_count = 0\n    \n    # Iterate through each unique element in the list\n    for num in unique_list:\n        # Calculate the target value that would form a pair with the current number\n        target = num + k\n        \n        # Check if the target exists in the set of unique elements\n        if target in unique_elements:\n            pair_count += 1\n    \n    # Return the total count of such pairs\n    return pair_count",
+  "results": {
+    "assert count_pairs([1, 5, 3, 4, 2], 5, 3) == 2": {
+      "result": true,
+      "time": 0.033797502517700195,
+      "error": null
+    },
+    "assert count_pairs([8, 12, 16, 4, 0, 20], 6, 4) == 5": {
+      "result": true,
+      "time": 0.041843414306640625,
+      "error": null
+    },
+    "assert count_pairs([2, 4, 1, 3, 4], 5, 2) == 3": {
+      "result": false,
+      "time": 0.03867053985595703,
+      "error": null
+    },
+    "assert count_pairs([6, 5, 4, 6, 5], 1, 7) == 0": {
+      "result": true,
+      "time": 0.031154632568359375,
+      "error": null
+    },
+    "assert count_pairs([2, 4, 1, 5, 5], 3, 5) == 0": {
+      "result": true,
+      "time": 0.03598618507385254,
+      "error": null
+    },
+    "assert count_pairs([6, 2, 4, 8, 4], 1, 8) == 0": {
+      "result": true,
+      "time": 0.0362396240234375,
+      "error": null
+    },
+    "assert count_pairs([4, 6, 8, 2, 7], 3, 7) == 0": {
+      "result": true,
+      "time": 0.04030776023864746,
+      "error": null
+    },
+    "assert count_pairs([2, 5, 4, 1, 3], 1, 7) == 0": {
+      "result": true,
+      "time": 0.04119420051574707,
+      "error": null
+    },
+    "assert count_pairs([5, 5, 7, 5, 7], 5, 4) == 0": {
+      "result": true,
+      "time": 0.03597664833068848,
+      "error": null
+    },
+    "assert count_pairs([6, 2, 5, 3, 3], 2, 6) == 0": {
+      "result": true,
+      "time": 0.032508134841918945,
+      "error": null
+    },
+    "assert count_pairs([3, 7, 1, 4, 5], 4, 6) == 1": {
+      "result": true,
+      "time": 0.031060218811035156,
+      "error": null
+    },
+    "assert count_pairs([3, 2, 6, 7, 2], 2, 1) == 1": {
+      "result": false,
+      "time": 0.03618931770324707,
+      "error": null
+    },
+    "assert count_pairs([3, 3, 8, 8, 4], 3, 7) == 0": {
+      "result": true,
+      "time": 0.03612947463989258,
+      "error": null
+    },
+    "assert count_pairs([6, 8, 5, 5, 7], 5, 1) == 4": {
+      "result": false,
+      "time": 0.038408517837524414,
+      "error": null
+    },
+    "assert count_pairs([1, 2, 7, 2, 2], 2, 6) == 0": {
+      "result": false,
+      "time": 0.04193615913391113,
+      "error": null
+    },
+    "assert count_pairs([3, 2, 2, 1, 4], 5, 4) == 0": {
+      "result": true,
+      "time": 0.03830361366271973,
+      "error": null
+    },
+    "assert count_pairs([1, 4, 7, 9, 5], 2, 7) == 0": {
+      "result": true,
+      "time": 0.03164935111999512,
+      "error": null
+    },
+    "assert count_pairs([2, 3, 2, 1, 1], 5, 8) == 0": {
+      "result": true,
+      "time": 0.03281044960021973,
+      "error": null
+    },
+    "assert count_pairs([3, 8, 5, 1, 2], 5, 6) == 1": {
+      "result": true,
+      "time": 0.03656315803527832,
+      "error": null
+    },
+    "assert count_pairs([1, 8, 3, 9, 4], 4, 7) == 1": {
+      "result": true,
+      "time": 0.03786277770996094,
+      "error": null
+    },
+    "assert count_pairs([6, 8, 5, 5, 3], 4, 1) == 2": {
+      "result": false,
+      "time": 0.02866673469543457,
+      "error": null
+    },
+    "assert count_pairs([4, 5, 1, 5, 7], 3, 2) == 0": {
+      "result": false,
+      "time": 0.03648662567138672,
+      "error": null
+    },
+    "assert count_pairs([1, 1, 3, 8, 7], 3, 7) == 0": {
+      "result": false,
+      "time": 0.04198431968688965,
+      "error": null
+    },
+    "assert count_pairs([6, 6, 5, 8, 7], 2, 2) == 0": {
+      "result": false,
+      "time": 0.031652212142944336,
+      "error": null
+    },
+    "assert count_pairs([2, 8, 6, 6, 3], 2, 6) == 1": {
+      "result": true,
+      "time": 0.03633379936218262,
+      "error": null
+    },
+    "assert count_pairs([6, 4, 7, 7, 5], 3, 3) == 1": {
+      "result": true,
+      "time": 0.041567087173461914,
+      "error": null
+    },
+    "assert count_pairs([1, 10, 1, 5, 5], 2, 7) == 0": {
+      "result": true,
+      "time": 0.034630775451660156,
+      "error": null
+    },
+    "assert count_pairs([1, 8, 6, 3, 1], 3, 4) == 0": {
+      "result": true,
+      "time": 0.03490257263183594,
+      "error": null
+    },
+    "assert count_pairs([6, 4, 6, 4, 3], 5, 3) == 2": {
+      "result": false,
+      "time": 0.040457725524902344,
+      "error": null
+    },
+    "assert count_pairs([2, 10, 6, 8, 2], 3, 6) == 0": {
+      "result": false,
+      "time": 0.03543710708618164,
+      "error": null
+    },
+    "assert count_pairs([1, 10, 7, 6, 5], 3, 3) == 1": {
+      "result": true,
+      "time": 0.03324747085571289,
+      "error": null
+    },
+    "assert count_pairs([6, 2, 5, 1, 2], 4, 8) == 0": {
+      "result": true,
+      "time": 0.03335070610046387,
+      "error": null
+    },
+    "assert count_pairs([4, 6, 4, 1, 4], 4, 1) == 0": {
+      "result": true,
+      "time": 0.04591846466064453,
+      "error": null
+    },
+    "assert count_pairs([4, 5, 4, 3, 4], 4, 5) == 0": {
+      "result": true,
+      "time": 0.03496074676513672,
+      "error": null
+    },
+    "assert count_pairs([3, 6, 3, 7, 2], 5, 5) == 1": {
+      "result": true,
+      "time": 0.03359413146972656,
+      "error": null
+    },
+    "assert count_pairs([3, 9, 3, 6, 5], 1, 3) == 0": {
+      "result": false,
+      "time": 0.03147459030151367,
+      "error": null
+    },
+    "assert count_pairs([11, 15, 15, 1, 5, 18], 6, 2) == 0": {
+      "result": true,
+      "time": 0.03471565246582031,
+      "error": null
+    },
+    "assert count_pairs([12, 14, 17, 3, 1, 25], 1, 6) == 0": {
+      "result": true,
+      "time": 0.03228044509887695,
+      "error": null
+    },
+    "assert count_pairs([6, 7, 17, 2, 4, 24], 5, 1) == 1": {
+      "result": true,
+      "time": 0.035080671310424805,
+      "error": null
+    },
+    "assert count_pairs([6, 13, 20, 7, 3, 22], 6, 2) == 1": {
+      "result": true,
+      "time": 0.03589344024658203,
+      "error": null
+    },
+    "assert count_pairs([8, 16, 17, 3, 5, 16], 2, 6) == 0": {
+      "result": true,
+      "time": 0.043070077896118164,
+      "error": null
+    },
+    "assert count_pairs([12, 17, 15, 7, 5, 17], 1, 2) == 0": {
+      "result": false,
+      "time": 0.03744697570800781,
+      "error": null
+    },
+    "assert count_pairs([7, 10, 20, 3, 5, 21], 5, 1) == 0": {
+      "result": false,
+      "time": 0.04007148742675781,
+      "error": null
+    },
+    "assert count_pairs([5, 9, 18, 7, 4, 18], 4, 4) == 1": {
+      "result": true,
+      "time": 0.035285234451293945,
+      "error": null
+    },
+    "assert count_pairs([7, 9, 14, 1, 3, 25], 6, 2) == 2": {
+      "result": true,
+      "time": 0.03473186492919922,
+      "error": null
+    },
+    "assert count_pairs([10, 15, 14, 2, 3, 21], 4, 4) == 1": {
+      "result": true,
+      "time": 0.04125642776489258,
+      "error": null
+    },
+    "assert count_pairs([6, 7, 18, 2, 4, 23], 2, 7) == 0": {
+      "result": true,
+      "time": 0.034763336181640625,
+      "error": null
+    },
+    "assert count_pairs([8, 7, 17, 1, 4, 23], 1, 8) == 0": {
+      "result": true,
+      "time": 0.03599810600280762,
+      "error": null
+    },
+    "assert count_pairs([3, 15, 19, 1, 3, 15], 6, 7) == 0": {
+      "result": true,
+      "time": 0.03882455825805664,
+      "error": null
+    },
+    "assert count_pairs([3, 10, 15, 9, 3, 18], 3, 6) == 0": {
+      "result": false,
+      "time": 0.03729724884033203,
+      "error": null
+    },
+    "assert count_pairs([11, 9, 14, 3, 4, 21], 4, 9) == 0": {
+      "result": true,
+      "time": 0.032019853591918945,
+      "error": null
+    },
+    "assert count_pairs([11, 17, 19, 2, 2, 17], 1, 9) == 0": {
+      "result": false,
+      "time": 0.04621171951293945,
+      "error": null
+    },
+    "assert count_pairs([12, 14, 19, 6, 4, 18], 5, 4) == 0": {
+      "result": false,
+      "time": 0.0382380485534668,
+      "error": null
+    },
+    "assert count_pairs([11, 8, 19, 6, 4, 22], 1, 6) == 0": {
+      "result": true,
+      "time": 0.04159140586853027,
+      "error": null
+    },
+    "assert count_pairs([5, 13, 13, 2, 2, 25], 1, 8) == 0": {
+      "result": false,
+      "time": 0.04222440719604492,
+      "error": null
+    },
+    "assert count_pairs([4, 7, 12, 4, 1, 15], 4, 1) == 0": {
+      "result": true,
+      "time": 0.03760409355163574,
+      "error": null
+    },
+    "assert count_pairs([13, 8, 15, 2, 3, 16], 2, 9) == 0": {
+      "result": true,
+      "time": 0.03802967071533203,
+      "error": null
+    },
+    "assert count_pairs([7, 7, 20, 5, 3, 24], 1, 5) == 0": {
+      "result": true,
+      "time": 0.042696475982666016,
+      "error": null
+    },
+    "assert count_pairs([12, 12, 21, 9, 3, 16], 1, 4) == 0": {
+      "result": false,
+      "time": 0.0367891788482666,
+      "error": null
+    },
+    "assert count_pairs([9, 10, 17, 9, 4, 24], 6, 6) == 1": {
+      "result": true,
+      "time": 0.04847598075866699,
+      "error": null
+    },
+    "assert count_pairs([9, 10, 21, 3, 1, 23], 2, 3) == 0": {
+      "result": true,
+      "time": 0.04124093055725098,
+      "error": null
+    },
+    "assert count_pairs([8, 17, 19, 5, 1, 25], 4, 4) == 0": {
+      "result": false,
+      "time": 0.04488682746887207,
+      "error": null
+    },
+    "assert count_pairs([3, 13, 20, 1, 2, 21], 4, 2) == 1": {
+      "result": true,
+      "time": 0.03709721565246582,
+      "error": null
+    },
+    "assert count_pairs([12, 14, 20, 6, 2, 21], 5, 8) == 2": {
+      "result": true,
+      "time": 0.038442134857177734,
+      "error": null
+    },
+    "assert count_pairs([5, 8, 18, 2, 5, 19], 2, 6) == 0": {
+      "result": false,
+      "time": 0.042326927185058594,
+      "error": null
+    },
+    "assert count_pairs([10, 13, 20, 1, 4, 17], 6, 2) == 0": {
+      "result": true,
+      "time": 0.04301261901855469,
+      "error": null
+    },
+    "assert count_pairs([13, 12, 19, 7, 5, 16], 4, 1) == 1": {
+      "result": true,
+      "time": 0.0455927848815918,
+      "error": null
+    },
+    "assert count_pairs([6, 17, 13, 3, 2, 24], 4, 7) == 1": {
+      "result": false,
+      "time": 0.04610562324523926,
+      "error": null
+    },
+    "assert count_pairs([8, 12, 12, 1, 2, 24], 5, 3) == 0": {
+      "result": true,
+      "time": 0.04047036170959473,
+      "error": null
+    },
+    "assert count_pairs([4, 4, 5, 1, 3], 3, 5) == 0": {
+      "result": true,
+      "time": 0.041458845138549805,
+      "error": null
+    },
+    "assert count_pairs([4, 6, 5, 3, 8], 1, 1) == 0": {
+      "result": false,
+      "time": 0.04201841354370117,
+      "error": null
+    },
+    "assert count_pairs([6, 3, 5, 1, 7], 4, 4) == 1": {
+      "result": false,
+      "time": 0.041300058364868164,
+      "error": null
+    },
+    "assert count_pairs([1, 5, 3, 1, 4], 2, 7) == 0": {
+      "result": true,
+      "time": 0.03681230545043945,
+      "error": null
+    },
+    "assert count_pairs([6, 7, 6, 6, 2], 5, 2) == 0": {
+      "result": true,
+      "time": 0.03766989707946777,
+      "error": null
+    },
+    "assert count_pairs([1, 9, 3, 3, 9], 5, 6) == 4": {
+      "result": false,
+      "time": 0.04474830627441406,
+      "error": null
+    },
+    "assert count_pairs([4, 2, 6, 4, 3], 1, 4) == 0": {
+      "result": false,
+      "time": 0.04018402099609375,
+      "error": null
+    },
+    "assert count_pairs([2, 5, 3, 6, 2], 4, 6) == 0": {
+      "result": true,
+      "time": 0.03665900230407715,
+      "error": null
+    },
+    "assert count_pairs([3, 2, 3, 3, 1], 5, 3) == 0": {
+      "result": true,
+      "time": 0.04001879692077637,
+      "error": null
+    },
+    "assert count_pairs([7, 4, 2, 6, 3], 2, 1) == 0": {
+      "result": false,
+      "time": 0.03554797172546387,
+      "error": null
+    },
+    "assert count_pairs([6, 5, 2, 3, 2], 3, 7) == 0": {
+      "result": true,
+      "time": 0.04367542266845703,
+      "error": null
+    },
+    "assert count_pairs([3, 2, 6, 6, 2], 1, 6) == 0": {
+      "result": true,
+      "time": 0.03581714630126953,
+      "error": null
+    },
+    "assert count_pairs([2, 7, 6, 2, 7], 3, 7) == 0": {
+      "result": true,
+      "time": 0.03375816345214844,
+      "error": null
+    },
+    "assert count_pairs([3, 1, 6, 8, 2], 2, 1) == 0": {
+      "result": false,
+      "time": 0.04051494598388672,
+      "error": null
+    },
+    "assert count_pairs([3, 9, 4, 5, 4], 3, 4) == 0": {
+      "result": false,
+      "time": 0.03923320770263672,
+      "error": null
+    },
+    "assert count_pairs([4, 2, 1, 6, 6], 1, 5) == 0": {
+      "result": false,
+      "time": 0.04134202003479004,
+      "error": null
+    },
+    "assert count_pairs([2, 3, 2, 1, 2], 5, 6) == 0": {
+      "result": true,
+      "time": 0.03770256042480469,
+      "error": null
+    },
+    "assert count_pairs([7, 4, 6, 1, 2], 5, 6) == 1": {
+      "result": true,
+      "time": 0.03710007667541504,
+      "error": null
+    },
+    "assert count_pairs([7, 2, 5, 7, 6], 5, 7) == 0": {
+      "result": true,
+      "time": 0.04464435577392578,
+      "error": null
+    },
+    "assert count_pairs([1, 2, 1, 6, 8], 3, 7) == 0": {
+      "result": false,
+      "time": 0.05137205123901367,
+      "error": null
+    },
+    "assert count_pairs([4, 2, 2, 5, 9], 1, 6) == 0": {
+      "result": true,
+      "time": 0.04517817497253418,
+      "error": null
+    },
+    "assert count_pairs([4, 8, 6, 6, 4], 3, 3) == 0": {
+      "result": true,
+      "time": 0.03778505325317383,
+      "error": null
+    },
+    "assert count_pairs([4, 9, 3, 7, 4], 5, 1) == 2": {
+      "result": false,
+      "time": 0.04935812950134277,
+      "error": null
+    },
+    "assert count_pairs([7, 3, 5, 7, 1], 4, 2) == 3": {
+      "result": true,
+      "time": 0.043955326080322266,
+      "error": null
+    },
+    "assert count_pairs([1, 2, 6, 5, 6], 5, 7) == 0": {
+      "result": true,
+      "time": 0.03381776809692383,
+      "error": null
+    },
+    "assert count_pairs([7, 2, 3, 5, 4], 3, 3) == 0": {
+      "result": false,
+      "time": 0.049506187438964844,
+      "error": null
+    },
+    "assert count_pairs([4, 6, 1, 1, 2], 4, 3) == 2": {
+      "result": false,
+      "time": 0.04183530807495117,
+      "error": null
+    },
+    "assert count_pairs([7, 5, 3, 2, 1], 3, 6) == 0": {
+      "result": false,
+      "time": 0.04218125343322754,
+      "error": null
+    },
+    "assert count_pairs([7, 2, 3, 8, 3], 4, 5) == 2": {
+      "result": true,
+      "time": 0.03897595405578613,
+      "error": null
+    },
+    "assert count_pairs([5, 6, 3, 3, 7], 4, 1) == 1": {
+      "result": false,
+      "time": 0.03726625442504883,
+      "error": null
+    },
+    "assert count_pairs([7, 4, 4, 4, 5], 5, 6) == 0": {
+      "result": true,
+      "time": 0.04728960990905762,
+      "error": null
+    },
+    "assert count_pairs([5, 3, 2, 7, 4], 3, 2) == 1": {
+      "result": false,
+      "time": 0.045149803161621094,
+      "error": null
+    },
+    "assert count_pairs([1, 5, 6, 6, 6], 3, 1) == 1": {
+      "result": true,
+      "time": 0.0456545352935791,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6470588235294118,
+  "general_error": "",
+  "has_testcase_error": false
+}

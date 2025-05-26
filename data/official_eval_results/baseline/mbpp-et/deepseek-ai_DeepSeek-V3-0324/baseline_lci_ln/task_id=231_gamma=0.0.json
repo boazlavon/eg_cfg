@@ -1,0 +1,519 @@
+{
+  "code": "def max_sum(triangle, size):\n    if size == 0:\n        return 0\n    max_sums = []\n    for row in triangle:\n        max_sums.append(row.copy())\n    for i in range(1, size):\n        for j in range(len(triangle[i])):\n            if j == 0:\n                max_sums[i][j] = max_sums[i-1][j] + triangle[i][j]\n            elif j == len(triangle[i]) - 1:\n                max_sums[i][j] = max_sums[i-1][j-1] + triangle[i][j]\n            else:\n                left_parent = max_sums[i-1][j-1]\n                right_parent = max_sums[i-1][j]\n                max_sums[i][j] = max(left_parent, right_parent) + triangle[i][j]\n    return max(max_sums[-1])",
+  "results": {
+    "assert max_sum([[1], [2,1], [3,3,2]], 3) == 6": {
+      "result": true,
+      "time": 0.043115854263305664,
+      "error": null
+    },
+    "assert max_sum([[1], [1, 2], [4, 1, 12]], 3) == 15 ": {
+      "result": true,
+      "time": 0.05192065238952637,
+      "error": null
+    },
+    "assert max_sum([[2], [3,2], [13,23,12]], 3) == 28": {
+      "result": true,
+      "time": 0.03440356254577637,
+      "error": null
+    },
+    "assert max_sum([[2], [6, 5], [1, 4, 2]], 2) == 8": {
+      "result": false,
+      "time": 0.03690481185913086,
+      "error": null
+    },
+    "assert max_sum([[2], [1, 1], [7, 2, 3]], 3) == 10": {
+      "result": true,
+      "time": 0.04548072814941406,
+      "error": null
+    },
+    "assert max_sum([[2], [4, 4], [6, 8, 3]], 3) == 14": {
+      "result": true,
+      "time": 0.030328035354614258,
+      "error": null
+    },
+    "assert max_sum([[1], [2, 2], [8, 8, 6]], 3) == 11": {
+      "result": true,
+      "time": 0.04590415954589844,
+      "error": null
+    },
+    "assert max_sum([[4], [3, 5], [6, 4, 4]], 2) == 9": {
+      "result": false,
+      "time": 0.046293020248413086,
+      "error": null
+    },
+    "assert max_sum([[2], [3, 1], [2, 3, 7]], 1) == 2": {
+      "result": false,
+      "time": 0.04322648048400879,
+      "error": null
+    },
+    "assert max_sum([[2], [3, 4], [1, 2, 5]], 3) == 11": {
+      "result": true,
+      "time": 0.042951107025146484,
+      "error": null
+    },
+    "assert max_sum([[5], [3, 6], [5, 3, 5]], 2) == 11": {
+      "result": false,
+      "time": 0.048336029052734375,
+      "error": null
+    },
+    "assert max_sum([[1], [7, 2], [7, 1, 5]], 1) == 1": {
+      "result": false,
+      "time": 0.04327845573425293,
+      "error": null
+    },
+    "assert max_sum([[2], [4, 3], [7, 7, 6]], 2) == 6": {
+      "result": false,
+      "time": 0.0452275276184082,
+      "error": null
+    },
+    "assert max_sum([[1], [1, 5], [5, 4, 6]], 3) == 12": {
+      "result": true,
+      "time": 0.04223012924194336,
+      "error": null
+    },
+    "assert max_sum([[4], [7, 6], [8, 3, 4]], 2) == 11": {
+      "result": false,
+      "time": 0.04490780830383301,
+      "error": null
+    },
+    "assert max_sum([[3], [6, 3], [2, 7, 1]], 1) == 3": {
+      "result": false,
+      "time": 0.04966998100280762,
+      "error": null
+    },
+    "assert max_sum([[5], [6, 1], [2, 3, 3]], 3) == 14": {
+      "result": true,
+      "time": 0.04129791259765625,
+      "error": null
+    },
+    "assert max_sum([[6], [5, 5], [2, 4, 5]], 3) == 16": {
+      "result": true,
+      "time": 0.047083377838134766,
+      "error": null
+    },
+    "assert max_sum([[4], [6, 1], [5, 3, 6]], 1) == 4": {
+      "result": false,
+      "time": 0.04657936096191406,
+      "error": null
+    },
+    "assert max_sum([[6], [2, 4], [2, 1, 4]], 1) == 6": {
+      "result": false,
+      "time": 0.04930996894836426,
+      "error": null
+    },
+    "assert max_sum([[1], [2, 5], [3, 7, 3]], 3) == 13": {
+      "result": true,
+      "time": 0.04024052619934082,
+      "error": null
+    },
+    "assert max_sum([[5], [7, 3], [6, 8, 6]], 1) == 5": {
+      "result": false,
+      "time": 0.045430660247802734,
+      "error": null
+    },
+    "assert max_sum([[4], [3, 1], [6, 1, 5]], 1) == 4": {
+      "result": false,
+      "time": 0.04658865928649902,
+      "error": null
+    },
+    "assert max_sum([[2], [4, 5], [5, 3, 6]], 2) == 7": {
+      "result": false,
+      "time": 0.040346384048461914,
+      "error": null
+    },
+    "assert max_sum([[2], [5, 4], [1, 5, 5]], 3) == 12": {
+      "result": true,
+      "time": 0.04779171943664551,
+      "error": null
+    },
+    "assert max_sum([[4], [5, 5], [1, 6, 6]], 3) == 15": {
+      "result": true,
+      "time": 0.04389667510986328,
+      "error": null
+    },
+    "assert max_sum([[5], [7, 4], [1, 4, 4]], 2) == 12": {
+      "result": false,
+      "time": 0.04518723487854004,
+      "error": null
+    },
+    "assert max_sum([[2], [7, 4], [2, 2, 5]], 1) == 2": {
+      "result": false,
+      "time": 0.04877448081970215,
+      "error": null
+    },
+    "assert max_sum([[5], [7, 5], [6, 1, 5]], 3) == 18": {
+      "result": true,
+      "time": 0.03604912757873535,
+      "error": null
+    },
+    "assert max_sum([[1], [7, 4], [7, 1, 7]], 3) == 15": {
+      "result": true,
+      "time": 0.045825958251953125,
+      "error": null
+    },
+    "assert max_sum([[1], [4, 5], [8, 3, 2]], 2) == 6": {
+      "result": false,
+      "time": 0.04246091842651367,
+      "error": null
+    },
+    "assert max_sum([[6], [6, 6], [1, 2, 5]], 3) == 17": {
+      "result": true,
+      "time": 0.04970264434814453,
+      "error": null
+    },
+    "assert max_sum([[5], [6, 2], [7, 3, 6]], 2) == 11": {
+      "result": false,
+      "time": 0.04723930358886719,
+      "error": null
+    },
+    "assert max_sum([[1], [7, 2], [7, 4, 2]], 1) == 1": {
+      "result": false,
+      "time": 0.0462496280670166,
+      "error": null
+    },
+    "assert max_sum([[6], [7, 1], [7, 6, 6]], 2) == 13": {
+      "result": false,
+      "time": 0.04641842842102051,
+      "error": null
+    },
+    "assert max_sum([[6], [1, 3], [2, 4, 3]], 3) == 13": {
+      "result": true,
+      "time": 0.04946112632751465,
+      "error": null
+    },
+    "assert max_sum([[5], [3, 7], [3, 1, 7]], 3) == 19": {
+      "result": true,
+      "time": 0.04857635498046875,
+      "error": null
+    },
+    "assert max_sum([[6], [4, 3], [6, 3, 8]], 2) == 10": {
+      "result": false,
+      "time": 0.04504060745239258,
+      "error": null
+    },
+    "assert max_sum([[5], [6, 3], [9, 6, 11]], 2) == 11": {
+      "result": true,
+      "time": 0.053052425384521484,
+      "error": null
+    },
+    "assert max_sum([[5], [1, 6], [2, 1, 12]], 1) == 5": {
+      "result": false,
+      "time": 0.05037641525268555,
+      "error": null
+    },
+    "assert max_sum([[4], [3, 7], [2, 5, 12]], 1) == 4": {
+      "result": false,
+      "time": 0.057022809982299805,
+      "error": null
+    },
+    "assert max_sum([[1], [4, 5], [9, 2, 8]], 3) == 14": {
+      "result": true,
+      "time": 0.04945182800292969,
+      "error": null
+    },
+    "assert max_sum([[6], [1, 4], [2, 6, 17]], 1) == 6": {
+      "result": false,
+      "time": 0.05739259719848633,
+      "error": null
+    },
+    "assert max_sum([[6], [5, 7], [2, 4, 7]], 1) == 6": {
+      "result": false,
+      "time": 0.050139427185058594,
+      "error": null
+    },
+    "assert max_sum([[4], [5, 3], [8, 4, 8]], 2) == 9": {
+      "result": false,
+      "time": 0.0482180118560791,
+      "error": null
+    },
+    "assert max_sum([[6], [3, 5], [4, 4, 15]], 3) == 26": {
+      "result": true,
+      "time": 0.04914236068725586,
+      "error": null
+    },
+    "assert max_sum([[1], [4, 2], [3, 3, 10]], 1) == 1": {
+      "result": false,
+      "time": 0.053924560546875,
+      "error": null
+    },
+    "assert max_sum([[5], [3, 7], [9, 4, 14]], 1) == 5": {
+      "result": false,
+      "time": 0.048813819885253906,
+      "error": null
+    },
+    "assert max_sum([[2], [4, 2], [3, 4, 14]], 1) == 2": {
+      "result": false,
+      "time": 0.04429984092712402,
+      "error": null
+    },
+    "assert max_sum([[3], [2, 7], [4, 1, 14]], 2) == 10": {
+      "result": false,
+      "time": 0.040808916091918945,
+      "error": null
+    },
+    "assert max_sum([[6], [2, 3], [5, 1, 11]], 3) == 20": {
+      "result": true,
+      "time": 0.05100560188293457,
+      "error": null
+    },
+    "assert max_sum([[2], [3, 7], [1, 6, 8]], 2) == 9": {
+      "result": false,
+      "time": 0.05210995674133301,
+      "error": null
+    },
+    "assert max_sum([[1], [4, 1], [7, 5, 8]], 2) == 5": {
+      "result": false,
+      "time": 0.043624162673950195,
+      "error": null
+    },
+    "assert max_sum([[2], [4, 4], [8, 5, 10]], 2) == 6": {
+      "result": false,
+      "time": 0.0468902587890625,
+      "error": null
+    },
+    "assert max_sum([[1], [4, 6], [2, 3, 15]], 1) == 1": {
+      "result": false,
+      "time": 0.042772769927978516,
+      "error": null
+    },
+    "assert max_sum([[6], [1, 2], [5, 1, 14]], 3) == 22": {
+      "result": true,
+      "time": 0.05688667297363281,
+      "error": null
+    },
+    "assert max_sum([[3], [1, 4], [9, 2, 13]], 1) == 3": {
+      "result": false,
+      "time": 0.04765462875366211,
+      "error": null
+    },
+    "assert max_sum([[4], [1, 1], [7, 5, 9]], 1) == 4": {
+      "result": false,
+      "time": 0.07022595405578613,
+      "error": null
+    },
+    "assert max_sum([[3], [6, 6], [7, 6, 16]], 3) == 25": {
+      "result": true,
+      "time": 0.05032992362976074,
+      "error": null
+    },
+    "assert max_sum([[3], [4, 5], [1, 1, 9]], 3) == 17": {
+      "result": true,
+      "time": 0.05268096923828125,
+      "error": null
+    },
+    "assert max_sum([[4], [4, 1], [7, 6, 10]], 2) == 8": {
+      "result": false,
+      "time": 0.054346323013305664,
+      "error": null
+    },
+    "assert max_sum([[6], [3, 1], [1, 1, 13]], 1) == 6": {
+      "result": false,
+      "time": 0.046584129333496094,
+      "error": null
+    },
+    "assert max_sum([[2], [1, 3], [8, 3, 9]], 1) == 2": {
+      "result": false,
+      "time": 0.058184146881103516,
+      "error": null
+    },
+    "assert max_sum([[6], [4, 4], [1, 5, 8]], 3) == 18": {
+      "result": true,
+      "time": 0.06706523895263672,
+      "error": null
+    },
+    "assert max_sum([[6], [1, 6], [6, 3, 14]], 2) == 12": {
+      "result": false,
+      "time": 0.05089163780212402,
+      "error": null
+    },
+    "assert max_sum([[6], [1, 7], [2, 4, 13]], 3) == 26": {
+      "result": true,
+      "time": 0.059798479080200195,
+      "error": null
+    },
+    "assert max_sum([[2], [3, 6], [2, 2, 17]], 1) == 2": {
+      "result": false,
+      "time": 0.05600547790527344,
+      "error": null
+    },
+    "assert max_sum([[1], [6, 7], [4, 6, 9]], 2) == 8": {
+      "result": false,
+      "time": 0.05311465263366699,
+      "error": null
+    },
+    "assert max_sum([[1], [6, 7], [2, 3, 11]], 1) == 1": {
+      "result": false,
+      "time": 0.05533599853515625,
+      "error": null
+    },
+    "assert max_sum([[6], [3, 3], [16, 26, 8]], 3) == 35": {
+      "result": true,
+      "time": 0.06055474281311035,
+      "error": null
+    },
+    "assert max_sum([[2], [4, 3], [16, 22, 17]], 2) == 6": {
+      "result": false,
+      "time": 0.05351090431213379,
+      "error": null
+    },
+    "assert max_sum([[1], [2, 6], [18, 20, 10]], 3) == 27": {
+      "result": true,
+      "time": 0.04602217674255371,
+      "error": null
+    },
+    "assert max_sum([[3], [4, 1], [9, 20, 14]], 3) == 27": {
+      "result": true,
+      "time": 0.05565643310546875,
+      "error": null
+    },
+    "assert max_sum([[3], [8, 4], [12, 19, 15]], 1) == 3": {
+      "result": false,
+      "time": 0.05651378631591797,
+      "error": null
+    },
+    "assert max_sum([[7], [1, 5], [8, 21, 9]], 2) == 12": {
+      "result": false,
+      "time": 0.05531668663024902,
+      "error": null
+    },
+    "assert max_sum([[3], [6, 3], [13, 23, 9]], 2) == 9": {
+      "result": false,
+      "time": 0.05758237838745117,
+      "error": null
+    },
+    "assert max_sum([[3], [5, 1], [8, 21, 12]], 2) == 8": {
+      "result": false,
+      "time": 0.04365181922912598,
+      "error": null
+    },
+    "assert max_sum([[7], [5, 2], [17, 28, 10]], 3) == 40": {
+      "result": true,
+      "time": 0.05428647994995117,
+      "error": null
+    },
+    "assert max_sum([[2], [2, 3], [12, 23, 9]], 3) == 28": {
+      "result": true,
+      "time": 0.06148672103881836,
+      "error": null
+    },
+    "assert max_sum([[6], [8, 3], [14, 18, 14]], 2) == 14": {
+      "result": false,
+      "time": 0.05472874641418457,
+      "error": null
+    },
+    "assert max_sum([[1], [5, 3], [14, 23, 10]], 3) == 29": {
+      "result": true,
+      "time": 0.05742383003234863,
+      "error": null
+    },
+    "assert max_sum([[4], [6, 6], [16, 20, 10]], 1) == 4": {
+      "result": false,
+      "time": 0.05063056945800781,
+      "error": null
+    },
+    "assert max_sum([[1], [2, 2], [12, 22, 15]], 1) == 1": {
+      "result": false,
+      "time": 0.06192946434020996,
+      "error": null
+    },
+    "assert max_sum([[6], [8, 1], [9, 21, 11]], 3) == 35": {
+      "result": true,
+      "time": 0.04948592185974121,
+      "error": null
+    },
+    "assert max_sum([[4], [5, 1], [15, 18, 17]], 3) == 27": {
+      "result": true,
+      "time": 0.045488834381103516,
+      "error": null
+    },
+    "assert max_sum([[6], [1, 5], [9, 19, 17]], 1) == 6": {
+      "result": false,
+      "time": 0.059188127517700195,
+      "error": null
+    },
+    "assert max_sum([[1], [5, 3], [18, 23, 15]], 1) == 1": {
+      "result": false,
+      "time": 0.03906106948852539,
+      "error": null
+    },
+    "assert max_sum([[5], [6, 6], [11, 27, 9]], 1) == 5": {
+      "result": false,
+      "time": 0.052552223205566406,
+      "error": null
+    },
+    "assert max_sum([[2], [6, 7], [16, 19, 11]], 2) == 9": {
+      "result": false,
+      "time": 0.046952009201049805,
+      "error": null
+    },
+    "assert max_sum([[7], [7, 4], [17, 26, 9]], 2) == 14": {
+      "result": false,
+      "time": 0.060721397399902344,
+      "error": null
+    },
+    "assert max_sum([[4], [8, 1], [10, 26, 16]], 2) == 12": {
+      "result": false,
+      "time": 0.06125330924987793,
+      "error": null
+    },
+    "assert max_sum([[5], [1, 5], [15, 20, 17]], 1) == 5": {
+      "result": false,
+      "time": 0.04510045051574707,
+      "error": null
+    },
+    "assert max_sum([[3], [3, 5], [16, 19, 17]], 3) == 27": {
+      "result": true,
+      "time": 0.05157351493835449,
+      "error": null
+    },
+    "assert max_sum([[1], [3, 7], [13, 21, 9]], 3) == 29": {
+      "result": true,
+      "time": 0.048917531967163086,
+      "error": null
+    },
+    "assert max_sum([[3], [4, 6], [13, 22, 16]], 3) == 31": {
+      "result": true,
+      "time": 0.05386209487915039,
+      "error": null
+    },
+    "assert max_sum([[3], [7, 5], [15, 27, 11]], 2) == 10": {
+      "result": false,
+      "time": 0.045746564865112305,
+      "error": null
+    },
+    "assert max_sum([[3], [3, 3], [13, 27, 12]], 3) == 33": {
+      "result": true,
+      "time": 0.03776288032531738,
+      "error": null
+    },
+    "assert max_sum([[2], [3, 6], [8, 28, 7]], 3) == 36": {
+      "result": true,
+      "time": 0.04649615287780762,
+      "error": null
+    },
+    "assert max_sum([[2], [7, 2], [11, 19, 15]], 3) == 28": {
+      "result": true,
+      "time": 0.04076027870178223,
+      "error": null
+    },
+    "assert max_sum([[2], [1, 7], [10, 28, 9]], 2) == 9": {
+      "result": false,
+      "time": 0.041207075119018555,
+      "error": null
+    },
+    "assert max_sum([[1], [7, 4], [18, 25, 9]], 2) == 8": {
+      "result": false,
+      "time": 0.041860103607177734,
+      "error": null
+    },
+    "assert max_sum([[4], [4, 4], [10, 25, 11]], 1) == 4": {
+      "result": false,
+      "time": 0.04391312599182129,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.4019607843137255,
+  "general_error": "",
+  "has_testcase_error": false
+}

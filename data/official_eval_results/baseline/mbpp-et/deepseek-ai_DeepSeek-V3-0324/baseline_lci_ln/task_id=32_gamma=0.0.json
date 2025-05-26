@@ -1,0 +1,109 @@
+{
+  "code": "def max_Prime_Factors(n):\n    max_prime = -1\n    while n % 2 == 0:\n        max_prime = 2\n        n = n // 2\n    i = 3\n    while i * i <= n:\n        while n % i == 0:\n            max_prime = i\n            n = n // i\n        i = i + 2\n    if n > 2:\n        max_prime = n\n    return max_prime",
+  "results": {
+    "assert max_Prime_Factors(15) == 5": {
+      "result": true,
+      "time": 0.051117658615112305,
+      "error": null
+    },
+    "assert max_Prime_Factors(6) == 3": {
+      "result": true,
+      "time": 0.0565495491027832,
+      "error": null
+    },
+    "assert max_Prime_Factors(2) == 2": {
+      "result": true,
+      "time": 0.05527806282043457,
+      "error": null
+    },
+    "assert max_Prime_Factors(14) == 7": {
+      "result": true,
+      "time": 0.06236433982849121,
+      "error": null
+    },
+    "assert max_Prime_Factors(16) == 2": {
+      "result": true,
+      "time": 0.05630207061767578,
+      "error": null
+    },
+    "assert max_Prime_Factors(12) == 3": {
+      "result": true,
+      "time": 0.05782747268676758,
+      "error": null
+    },
+    "assert max_Prime_Factors(13) == 13": {
+      "result": true,
+      "time": 0.0552830696105957,
+      "error": null
+    },
+    "assert max_Prime_Factors(19) == 19": {
+      "result": true,
+      "time": 0.04708218574523926,
+      "error": null
+    },
+    "assert max_Prime_Factors(10) == 5": {
+      "result": true,
+      "time": 0.049748897552490234,
+      "error": null
+    },
+    "assert max_Prime_Factors(11) == 11": {
+      "result": true,
+      "time": 0.05290532112121582,
+      "error": null
+    },
+    "assert max_Prime_Factors(17) == 17": {
+      "result": true,
+      "time": 0.05391883850097656,
+      "error": null
+    },
+    "assert max_Prime_Factors(18) == 3": {
+      "result": true,
+      "time": 0.04671502113342285,
+      "error": null
+    },
+    "assert max_Prime_Factors(20) == 5": {
+      "result": true,
+      "time": 0.05458974838256836,
+      "error": null
+    },
+    "assert max_Prime_Factors(5) == 5": {
+      "result": true,
+      "time": 0.05950140953063965,
+      "error": null
+    },
+    "assert max_Prime_Factors(7) == 7": {
+      "result": true,
+      "time": 0.05112624168395996,
+      "error": null
+    },
+    "assert max_Prime_Factors(1) == -1": {
+      "result": true,
+      "time": 0.05660223960876465,
+      "error": null
+    },
+    "assert max_Prime_Factors(9) == 3": {
+      "result": true,
+      "time": 0.047043561935424805,
+      "error": null
+    },
+    "assert max_Prime_Factors(8) == 2": {
+      "result": true,
+      "time": 0.05855679512023926,
+      "error": null
+    },
+    "assert max_Prime_Factors(4) == 2": {
+      "result": true,
+      "time": 0.05633950233459473,
+      "error": null
+    },
+    "assert max_Prime_Factors(3) == 3": {
+      "result": true,
+      "time": 0.06003451347351074,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

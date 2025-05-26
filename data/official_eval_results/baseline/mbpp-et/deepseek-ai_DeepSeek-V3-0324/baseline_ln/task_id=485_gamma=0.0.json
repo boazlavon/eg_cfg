@@ -1,0 +1,519 @@
+{
+  "code": "def largest_palindrome(arr, n):\n    max_palindrome = -1\n    for num in arr:\n        if str(num) == str(num)[::-1] and num > max_palindrome:\n            max_palindrome = num\n    return max_palindrome",
+  "results": {
+    "assert largest_palindrome([1, 232, 54545, 999991], 4) == 54545": {
+      "result": true,
+      "time": 0.042817115783691406,
+      "error": null
+    },
+    "assert largest_palindrome([1, 2, 3, 4, 5, 50], 6) == 5": {
+      "result": true,
+      "time": 0.04573965072631836,
+      "error": null
+    },
+    "assert largest_palindrome([1, 3, 7, 9, 45], 5)  == 9": {
+      "result": true,
+      "time": 0.04740619659423828,
+      "error": null
+    },
+    "assert largest_palindrome([2, 237, 54721, 1000794], 4) == 2": {
+      "result": true,
+      "time": 0.04170060157775879,
+      "error": null
+    },
+    "assert largest_palindrome([5, 235, 55206, 1000218], 3) == 5": {
+      "result": true,
+      "time": 0.05324530601501465,
+      "error": null
+    },
+    "assert largest_palindrome([1, 227, 53593, 1000066], 4) == 1": {
+      "result": true,
+      "time": 0.046523332595825195,
+      "error": null
+    },
+    "assert largest_palindrome([2, 229, 54755, 1000404], 2) == 2": {
+      "result": true,
+      "time": 0.05244755744934082,
+      "error": null
+    },
+    "assert largest_palindrome([2, 230, 54185, 1000463], 2) == 2": {
+      "result": true,
+      "time": 0.04434490203857422,
+      "error": null
+    },
+    "assert largest_palindrome([1, 233, 55242, 1000588], 2) == 1": {
+      "result": true,
+      "time": 0.04578590393066406,
+      "error": null
+    },
+    "assert largest_palindrome([5, 228, 55151, 1000805], 4) == 5": {
+      "result": true,
+      "time": 0.04568052291870117,
+      "error": null
+    },
+    "assert largest_palindrome([4, 232, 55299, 999793], 1) == 4": {
+      "result": false,
+      "time": 0.04221010208129883,
+      "error": null
+    },
+    "assert largest_palindrome([3, 234, 54487, 999978], 2) == 3": {
+      "result": true,
+      "time": 0.04613232612609863,
+      "error": null
+    },
+    "assert largest_palindrome([3, 231, 54691, 1000681], 2) == 3": {
+      "result": true,
+      "time": 0.03872847557067871,
+      "error": null
+    },
+    "assert largest_palindrome([1, 231, 55173, 999797], 3) == 1": {
+      "result": true,
+      "time": 0.04508829116821289,
+      "error": null
+    },
+    "assert largest_palindrome([2, 234, 53589, 999687], 4) == 2": {
+      "result": true,
+      "time": 0.039929866790771484,
+      "error": null
+    },
+    "assert largest_palindrome([1, 229, 54341, 1000236], 3) == 1": {
+      "result": true,
+      "time": 0.03461122512817383,
+      "error": null
+    },
+    "assert largest_palindrome([6, 231, 55229, 999443], 4) == 6": {
+      "result": true,
+      "time": 0.04734969139099121,
+      "error": null
+    },
+    "assert largest_palindrome([6, 235, 55415, 999056], 2) == 6": {
+      "result": true,
+      "time": 0.044004201889038086,
+      "error": null
+    },
+    "assert largest_palindrome([6, 236, 54892, 1000053], 4) == 6": {
+      "result": true,
+      "time": 0.038521766662597656,
+      "error": null
+    },
+    "assert largest_palindrome([5, 228, 54838, 998994], 3) == 5": {
+      "result": true,
+      "time": 0.04250669479370117,
+      "error": null
+    },
+    "assert largest_palindrome([2, 231, 55471, 1000727], 3) == 2": {
+      "result": true,
+      "time": 0.04202079772949219,
+      "error": null
+    },
+    "assert largest_palindrome([1, 237, 53966, 1000361], 2) == 1": {
+      "result": true,
+      "time": 0.0398554801940918,
+      "error": null
+    },
+    "assert largest_palindrome([5, 235, 54967, 999893], 3) == 5": {
+      "result": true,
+      "time": 0.038306474685668945,
+      "error": null
+    },
+    "assert largest_palindrome([5, 236, 53720, 999389], 1) == 5": {
+      "result": true,
+      "time": 0.04098653793334961,
+      "error": null
+    },
+    "assert largest_palindrome([2, 234, 54167, 1000752], 3) == 2": {
+      "result": true,
+      "time": 0.028603792190551758,
+      "error": null
+    },
+    "assert largest_palindrome([6, 231, 53697, 1000823], 2) == 6": {
+      "result": true,
+      "time": 0.03674912452697754,
+      "error": null
+    },
+    "assert largest_palindrome([2, 234, 54312, 999714], 2) == 2": {
+      "result": true,
+      "time": 0.04515385627746582,
+      "error": null
+    },
+    "assert largest_palindrome([5, 228, 55477, 999334], 2) == 5": {
+      "result": true,
+      "time": 0.04596590995788574,
+      "error": null
+    },
+    "assert largest_palindrome([1, 229, 55056, 1000651], 1) == 1": {
+      "result": true,
+      "time": 0.03924059867858887,
+      "error": null
+    },
+    "assert largest_palindrome([3, 234, 54631, 1000020], 2) == 3": {
+      "result": true,
+      "time": 0.04555010795593262,
+      "error": null
+    },
+    "assert largest_palindrome([3, 232, 55085, 1000258], 4) == 232": {
+      "result": true,
+      "time": 0.04363226890563965,
+      "error": null
+    },
+    "assert largest_palindrome([1, 233, 55249, 1000630], 3) == 1": {
+      "result": true,
+      "time": 0.05004692077636719,
+      "error": null
+    },
+    "assert largest_palindrome([4, 234, 55373, 999981], 1) == 4": {
+      "result": true,
+      "time": 0.045569419860839844,
+      "error": null
+    },
+    "assert largest_palindrome([4, 234, 53854, 999473], 1) == 4": {
+      "result": true,
+      "time": 0.03884696960449219,
+      "error": null
+    },
+    "assert largest_palindrome([2, 237, 54312, 999289], 3) == 2": {
+      "result": true,
+      "time": 0.034958839416503906,
+      "error": null
+    },
+    "assert largest_palindrome([2, 227, 53505, 999834], 1) == 2": {
+      "result": true,
+      "time": 0.0346221923828125,
+      "error": null
+    },
+    "assert largest_palindrome([4, 5, 2, 2, 5, 51], 2) == 2": {
+      "result": false,
+      "time": 0.037874698638916016,
+      "error": null
+    },
+    "assert largest_palindrome([4, 7, 2, 4, 9, 47], 6) == 9": {
+      "result": true,
+      "time": 0.03486156463623047,
+      "error": null
+    },
+    "assert largest_palindrome([2, 2, 2, 6, 2, 48], 1) == 2": {
+      "result": false,
+      "time": 0.034024953842163086,
+      "error": null
+    },
+    "assert largest_palindrome([6, 5, 6, 4, 1, 49], 4) == 6": {
+      "result": true,
+      "time": 0.033280372619628906,
+      "error": null
+    },
+    "assert largest_palindrome([3, 4, 7, 1, 9, 46], 6) == 9": {
+      "result": true,
+      "time": 0.03643989562988281,
+      "error": null
+    },
+    "assert largest_palindrome([6, 4, 4, 1, 1, 53], 3) == 4": {
+      "result": false,
+      "time": 0.042122840881347656,
+      "error": null
+    },
+    "assert largest_palindrome([4, 6, 1, 4, 2, 53], 6) == 6": {
+      "result": true,
+      "time": 0.034890174865722656,
+      "error": null
+    },
+    "assert largest_palindrome([1, 6, 4, 3, 3, 55], 3) == 3": {
+      "result": false,
+      "time": 0.040253639221191406,
+      "error": null
+    },
+    "assert largest_palindrome([4, 2, 7, 6, 2, 50], 2) == 2": {
+      "result": false,
+      "time": 0.03968000411987305,
+      "error": null
+    },
+    "assert largest_palindrome([6, 4, 1, 9, 7, 53], 4) == 7": {
+      "result": false,
+      "time": 0.04074549674987793,
+      "error": null
+    },
+    "assert largest_palindrome([1, 3, 5, 3, 7, 50], 2) == 3": {
+      "result": false,
+      "time": 0.0316615104675293,
+      "error": null
+    },
+    "assert largest_palindrome([4, 3, 4, 5, 7, 52], 2) == 4": {
+      "result": false,
+      "time": 0.03369855880737305,
+      "error": null
+    },
+    "assert largest_palindrome([6, 7, 5, 1, 8, 50], 3) == 6": {
+      "result": false,
+      "time": 0.035424232482910156,
+      "error": null
+    },
+    "assert largest_palindrome([5, 2, 7, 2, 4, 53], 5) == 7": {
+      "result": true,
+      "time": 0.03387331962585449,
+      "error": null
+    },
+    "assert largest_palindrome([6, 2, 3, 5, 10, 48], 4) == 6": {
+      "result": true,
+      "time": 0.04205822944641113,
+      "error": null
+    },
+    "assert largest_palindrome([3, 1, 1, 4, 8, 52], 1) == 1": {
+      "result": false,
+      "time": 0.033600568771362305,
+      "error": null
+    },
+    "assert largest_palindrome([3, 1, 5, 9, 3, 50], 5) == 9": {
+      "result": true,
+      "time": 0.030682086944580078,
+      "error": null
+    },
+    "assert largest_palindrome([2, 3, 2, 3, 7, 46], 6) == 7": {
+      "result": true,
+      "time": 0.0395665168762207,
+      "error": null
+    },
+    "assert largest_palindrome([3, 4, 5, 4, 10, 53], 6) == 5": {
+      "result": true,
+      "time": 0.036649465560913086,
+      "error": null
+    },
+    "assert largest_palindrome([3, 1, 4, 6, 5, 47], 6) == 6": {
+      "result": true,
+      "time": 0.032315969467163086,
+      "error": null
+    },
+    "assert largest_palindrome([5, 3, 3, 1, 1, 50], 4) == 3": {
+      "result": false,
+      "time": 0.039270877838134766,
+      "error": null
+    },
+    "assert largest_palindrome([5, 4, 5, 7, 3, 50], 5) == 7": {
+      "result": true,
+      "time": 0.035291433334350586,
+      "error": null
+    },
+    "assert largest_palindrome([4, 4, 4, 7, 2, 53], 3) == 4": {
+      "result": false,
+      "time": 0.03144264221191406,
+      "error": null
+    },
+    "assert largest_palindrome([3, 1, 1, 2, 3, 55], 5) == 3": {
+      "result": false,
+      "time": 0.03754258155822754,
+      "error": null
+    },
+    "assert largest_palindrome([2, 7, 2, 9, 1, 50], 5) == 9": {
+      "result": true,
+      "time": 0.03574085235595703,
+      "error": null
+    },
+    "assert largest_palindrome([5, 2, 8, 6, 8, 49], 1) == 2": {
+      "result": false,
+      "time": 0.03436779975891113,
+      "error": null
+    },
+    "assert largest_palindrome([5, 4, 5, 3, 4, 48], 3) == 4": {
+      "result": false,
+      "time": 0.042995452880859375,
+      "error": null
+    },
+    "assert largest_palindrome([5, 7, 7, 9, 3, 49], 2) == 5": {
+      "result": false,
+      "time": 0.03462839126586914,
+      "error": null
+    },
+    "assert largest_palindrome([5, 6, 8, 1, 10, 47], 6) == 8": {
+      "result": true,
+      "time": 0.03816509246826172,
+      "error": null
+    },
+    "assert largest_palindrome([2, 2, 2, 3, 2, 52], 6) == 3": {
+      "result": true,
+      "time": 0.03223919868469238,
+      "error": null
+    },
+    "assert largest_palindrome([6, 7, 3, 1, 2, 53], 2) == 2": {
+      "result": false,
+      "time": 0.03439688682556152,
+      "error": null
+    },
+    "assert largest_palindrome([4, 3, 3, 8, 9, 49], 3) == 4": {
+      "result": false,
+      "time": 0.03549528121948242,
+      "error": null
+    },
+    "assert largest_palindrome([5, 1, 6, 3, 5, 51], 1) == 1": {
+      "result": false,
+      "time": 0.0313572883605957,
+      "error": null
+    },
+    "assert largest_palindrome([6, 2, 9, 10, 50], 2) == 6": {
+      "result": false,
+      "time": 0.03706097602844238,
+      "error": null
+    },
+    "assert largest_palindrome([2, 2, 12, 10, 43], 4) == 2": {
+      "result": true,
+      "time": 0.04146862030029297,
+      "error": null
+    },
+    "assert largest_palindrome([5, 6, 2, 11, 44], 2) == 5": {
+      "result": false,
+      "time": 0.027158737182617188,
+      "error": null
+    },
+    "assert largest_palindrome([2, 3, 6, 4, 48], 4) == 6": {
+      "result": true,
+      "time": 0.04181694984436035,
+      "error": null
+    },
+    "assert largest_palindrome([5, 3, 2, 12, 50], 1) == 2": {
+      "result": false,
+      "time": 0.032576799392700195,
+      "error": null
+    },
+    "assert largest_palindrome([3, 1, 11, 9, 41], 5) == 11": {
+      "result": true,
+      "time": 0.036527395248413086,
+      "error": null
+    },
+    "assert largest_palindrome([5, 3, 7, 5, 41], 4) == 7": {
+      "result": true,
+      "time": 0.04290318489074707,
+      "error": null
+    },
+    "assert largest_palindrome([4, 5, 12, 5, 50], 3) == 5": {
+      "result": true,
+      "time": 0.0437169075012207,
+      "error": null
+    },
+    "assert largest_palindrome([5, 1, 4, 14, 50], 5) == 5": {
+      "result": true,
+      "time": 0.034946441650390625,
+      "error": null
+    },
+    "assert largest_palindrome([2, 3, 8, 6, 47], 2) == 3": {
+      "result": false,
+      "time": 0.03369736671447754,
+      "error": null
+    },
+    "assert largest_palindrome([1, 8, 12, 4, 48], 1) == 1": {
+      "result": false,
+      "time": 0.03598785400390625,
+      "error": null
+    },
+    "assert largest_palindrome([3, 4, 11, 13, 42], 1) == 3": {
+      "result": false,
+      "time": 0.03330802917480469,
+      "error": null
+    },
+    "assert largest_palindrome([4, 6, 5, 10, 46], 4) == 6": {
+      "result": true,
+      "time": 0.03673505783081055,
+      "error": null
+    },
+    "assert largest_palindrome([4, 1, 8, 4, 45], 4) == 8": {
+      "result": true,
+      "time": 0.04007887840270996,
+      "error": null
+    },
+    "assert largest_palindrome([5, 4, 3, 6, 49], 1) == 3": {
+      "result": false,
+      "time": 0.04219365119934082,
+      "error": null
+    },
+    "assert largest_palindrome([4, 2, 7, 12, 41], 5) == 7": {
+      "result": true,
+      "time": 0.04361152648925781,
+      "error": null
+    },
+    "assert largest_palindrome([3, 1, 9, 8, 48], 5) == 9": {
+      "result": true,
+      "time": 0.04634499549865723,
+      "error": null
+    },
+    "assert largest_palindrome([4, 1, 3, 13, 42], 1) == 1": {
+      "result": false,
+      "time": 0.037802696228027344,
+      "error": null
+    },
+    "assert largest_palindrome([3, 6, 3, 8, 49], 3) == 6": {
+      "result": false,
+      "time": 0.04445815086364746,
+      "error": null
+    },
+    "assert largest_palindrome([2, 1, 9, 8, 49], 3) == 8": {
+      "result": false,
+      "time": 0.04356980323791504,
+      "error": null
+    },
+    "assert largest_palindrome([2, 4, 6, 13, 41], 1) == 2": {
+      "result": false,
+      "time": 0.03421187400817871,
+      "error": null
+    },
+    "assert largest_palindrome([2, 2, 2, 7, 42], 5) == 7": {
+      "result": true,
+      "time": 0.03244304656982422,
+      "error": null
+    },
+    "assert largest_palindrome([3, 3, 12, 5, 42], 5) == 5": {
+      "result": true,
+      "time": 0.0347287654876709,
+      "error": null
+    },
+    "assert largest_palindrome([5, 5, 11, 10, 45], 4) == 11": {
+      "result": true,
+      "time": 0.03441810607910156,
+      "error": null
+    },
+    "assert largest_palindrome([2, 1, 3, 4, 40], 3) == 3": {
+      "result": false,
+      "time": 0.033616065979003906,
+      "error": null
+    },
+    "assert largest_palindrome([4, 3, 11, 14, 41], 3) == 11": {
+      "result": true,
+      "time": 0.03719687461853027,
+      "error": null
+    },
+    "assert largest_palindrome([6, 4, 4, 11, 48], 2) == 4": {
+      "result": false,
+      "time": 0.0360569953918457,
+      "error": null
+    },
+    "assert largest_palindrome([2, 8, 11, 6, 40], 2) == 6": {
+      "result": false,
+      "time": 0.03478240966796875,
+      "error": null
+    },
+    "assert largest_palindrome([3, 2, 5, 6, 44], 5) == 44": {
+      "result": true,
+      "time": 0.03559398651123047,
+      "error": null
+    },
+    "assert largest_palindrome([5, 6, 6, 9, 44], 3) == 6": {
+      "result": false,
+      "time": 0.03208613395690918,
+      "error": null
+    },
+    "assert largest_palindrome([6, 2, 2, 11, 45], 1) == 2": {
+      "result": false,
+      "time": 0.03330516815185547,
+      "error": null
+    },
+    "assert largest_palindrome([1, 3, 7, 12, 44], 1) == 1": {
+      "result": false,
+      "time": 0.04059648513793945,
+      "error": null
+    },
+    "assert largest_palindrome([4, 4, 12, 13, 50], 2) == 4": {
+      "result": true,
+      "time": 0.03354907035827637,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6372549019607843,
+  "general_error": "",
+  "has_testcase_error": false
+}

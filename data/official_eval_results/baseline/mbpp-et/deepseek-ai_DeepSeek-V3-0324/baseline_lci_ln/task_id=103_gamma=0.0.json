@@ -1,0 +1,269 @@
+{
+  "code": "def eulerian_num(n, m):\n    if m == 0:\n        return 1\n    if m == n - 1:\n        return 1\n    if m < 0 or m >= n:\n        return 0\n    term1 = (n - m) * eulerian_num(n - 1, m - 1)\n    term2 = (m + 1) * eulerian_num(n - 1, m)\n    result = term1 + term2\n    return result",
+  "results": {
+    "assert eulerian_num(3, 1) == 4": {
+      "result": true,
+      "time": 0.03890728950500488,
+      "error": null
+    },
+    "assert eulerian_num(4, 1) == 11": {
+      "result": true,
+      "time": 0.03959989547729492,
+      "error": null
+    },
+    "assert eulerian_num(5, 3) == 26": {
+      "result": true,
+      "time": 0.048493146896362305,
+      "error": null
+    },
+    "assert eulerian_num(4, 3) == 1": {
+      "result": true,
+      "time": 0.04440116882324219,
+      "error": null
+    },
+    "assert eulerian_num(7, 3) == 2416": {
+      "result": true,
+      "time": 0.0417780876159668,
+      "error": null
+    },
+    "assert eulerian_num(1, 3) == 0": {
+      "result": true,
+      "time": 0.042085886001586914,
+      "error": null
+    },
+    "assert eulerian_num(7, 2) == 1191": {
+      "result": true,
+      "time": 0.04706859588623047,
+      "error": null
+    },
+    "assert eulerian_num(3, 4) == 0": {
+      "result": true,
+      "time": 0.04607510566711426,
+      "error": null
+    },
+    "assert eulerian_num(4, 4) == 0": {
+      "result": true,
+      "time": 0.04070687294006348,
+      "error": null
+    },
+    "assert eulerian_num(2, 2) == 0": {
+      "result": true,
+      "time": 0.04793381690979004,
+      "error": null
+    },
+    "assert eulerian_num(6, 1) == 57": {
+      "result": true,
+      "time": 0.0383603572845459,
+      "error": null
+    },
+    "assert eulerian_num(5, 2) == 66": {
+      "result": true,
+      "time": 0.0410771369934082,
+      "error": null
+    },
+    "assert eulerian_num(8, 5) == 4293": {
+      "result": true,
+      "time": 0.044573307037353516,
+      "error": null
+    },
+    "assert eulerian_num(6, 2) == 302": {
+      "result": true,
+      "time": 0.03903603553771973,
+      "error": null
+    },
+    "assert eulerian_num(7, 4) == 1191": {
+      "result": true,
+      "time": 0.038436174392700195,
+      "error": null
+    },
+    "assert eulerian_num(7, 1) == 120": {
+      "result": true,
+      "time": 0.044919490814208984,
+      "error": null
+    },
+    "assert eulerian_num(5, 5) == 0": {
+      "result": true,
+      "time": 0.04671072959899902,
+      "error": null
+    },
+    "assert eulerian_num(6, 5) == 1": {
+      "result": true,
+      "time": 0.03911709785461426,
+      "error": null
+    },
+    "assert eulerian_num(6, 3) == 302": {
+      "result": true,
+      "time": 0.0363006591796875,
+      "error": null
+    },
+    "assert eulerian_num(5, 4) == 1": {
+      "result": true,
+      "time": 0.041715383529663086,
+      "error": null
+    },
+    "assert eulerian_num(8, 3) == 15619": {
+      "result": true,
+      "time": 0.04230451583862305,
+      "error": null
+    },
+    "assert eulerian_num(1, 6) == 0": {
+      "result": true,
+      "time": 0.045007944107055664,
+      "error": null
+    },
+    "assert eulerian_num(2, 5) == 0": {
+      "result": true,
+      "time": 0.041373252868652344,
+      "error": null
+    },
+    "assert eulerian_num(4, 5) == 0": {
+      "result": true,
+      "time": 0.03967618942260742,
+      "error": null
+    },
+    "assert eulerian_num(1, 1) == 0": {
+      "result": true,
+      "time": 0.03718686103820801,
+      "error": null
+    },
+    "assert eulerian_num(8, 2) == 4293": {
+      "result": true,
+      "time": 0.043710947036743164,
+      "error": null
+    },
+    "assert eulerian_num(2, 4) == 0": {
+      "result": true,
+      "time": 0.035331010818481445,
+      "error": null
+    },
+    "assert eulerian_num(1, 4) == 0": {
+      "result": true,
+      "time": 0.040291786193847656,
+      "error": null
+    },
+    "assert eulerian_num(9, 3) == 88234": {
+      "result": true,
+      "time": 0.041695356369018555,
+      "error": null
+    },
+    "assert eulerian_num(9, 2) == 14608": {
+      "result": true,
+      "time": 0.03819012641906738,
+      "error": null
+    },
+    "assert eulerian_num(9, 6) == 14608": {
+      "result": true,
+      "time": 0.03900408744812012,
+      "error": null
+    },
+    "assert eulerian_num(3, 6) == 0": {
+      "result": true,
+      "time": 0.03824043273925781,
+      "error": null
+    },
+    "assert eulerian_num(1, 2) == 0": {
+      "result": true,
+      "time": 0.04786372184753418,
+      "error": null
+    },
+    "assert eulerian_num(3, 5) == 0": {
+      "result": true,
+      "time": 0.04138660430908203,
+      "error": null
+    },
+    "assert eulerian_num(2, 3) == 0": {
+      "result": true,
+      "time": 0.039537668228149414,
+      "error": null
+    },
+    "assert eulerian_num(8, 6) == 247": {
+      "result": true,
+      "time": 0.04404759407043457,
+      "error": null
+    },
+    "assert eulerian_num(9, 1) == 502": {
+      "result": true,
+      "time": 0.04321742057800293,
+      "error": null
+    },
+    "assert eulerian_num(6, 4) == 57": {
+      "result": true,
+      "time": 0.05215954780578613,
+      "error": null
+    },
+    "assert eulerian_num(5, 1) == 26": {
+      "result": true,
+      "time": 0.03245115280151367,
+      "error": null
+    },
+    "assert eulerian_num(2, 1) == 1": {
+      "result": true,
+      "time": 0.050447940826416016,
+      "error": null
+    },
+    "assert eulerian_num(2, 6) == 0": {
+      "result": true,
+      "time": 0.03782200813293457,
+      "error": null
+    },
+    "assert eulerian_num(5, 7) == 0": {
+      "result": true,
+      "time": 0.036286115646362305,
+      "error": null
+    },
+    "assert eulerian_num(1, 5) == 0": {
+      "result": true,
+      "time": 0.047521352767944336,
+      "error": null
+    },
+    "assert eulerian_num(10, 1) == 1013": {
+      "result": true,
+      "time": 0.04661130905151367,
+      "error": null
+    },
+    "assert eulerian_num(6, 7) == 0": {
+      "result": true,
+      "time": 0.04713273048400879,
+      "error": null
+    },
+    "assert eulerian_num(10, 5) == 1310354": {
+      "result": true,
+      "time": 0.04509758949279785,
+      "error": null
+    },
+    "assert eulerian_num(2, 8) == 0": {
+      "result": true,
+      "time": 0.032753944396972656,
+      "error": null
+    },
+    "assert eulerian_num(4, 6) == 0": {
+      "result": true,
+      "time": 0.038509368896484375,
+      "error": null
+    },
+    "assert eulerian_num(5, 8) == 0": {
+      "result": true,
+      "time": 0.03773808479309082,
+      "error": null
+    },
+    "assert eulerian_num(10, 8) == 1013": {
+      "result": true,
+      "time": 0.03135061264038086,
+      "error": null
+    },
+    "assert eulerian_num(8, 1) == 247": {
+      "result": true,
+      "time": 0.033635616302490234,
+      "error": null
+    },
+    "assert eulerian_num(5, 6) == 0": {
+      "result": true,
+      "time": 0.03524303436279297,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "def merge_sort(arr):\n    if len(arr) > 1:\n        mid = len(arr) // 2\n        left_half = arr[:mid]\n        right_half = arr[mid:]\n\n        merge_sort(left_half)\n        merge_sort(right_half)\n\n        i = 0\n        j = 0\n        k = 0\n\n        while i < len(left_half) and j < len(right_half):\n            if left_half[i] < right_half[j]:\n                arr[k] = left_half[i]\n                i += 1\n            else:\n                arr[k] = right_half[j]\n                j += 1\n            k += 1\n\n        while i < len(left_half):\n            arr[k] = left_half[i]\n            i += 1\n            k += 1\n\n        while j < len(right_half):\n            arr[k] = right_half[j]\n            j += 1\n            k += 1\n\n    return arr",
+  "results": {
+    "assert merge_sort([3, 4, 2, 6, 5, 7, 1, 9]) == [1, 2, 3, 4, 5, 6, 7, 9]": {
+      "result": true,
+      "time": 0.04488658905029297,
+      "error": null
+    },
+    "assert merge_sort([7, 25, 45, 78, 11, 33, 19]) == [7, 11, 19, 25, 33, 45, 78]": {
+      "result": true,
+      "time": 0.042253971099853516,
+      "error": null
+    },
+    "assert merge_sort([3, 1, 4, 9, 8]) == [1, 3, 4, 8, 9]": {
+      "result": true,
+      "time": 0.04961895942687988,
+      "error": null
+    },
+    "assert merge_sort([8, 1, 6, 11, 6, 5, 1, 7]) == [1, 1, 5, 6, 6, 7, 8, 11]": {
+      "result": true,
+      "time": 0.042708635330200195,
+      "error": null
+    },
+    "assert merge_sort([5, 9, 6, 6, 6, 8, 5, 8]) == [5, 5, 6, 6, 6, 8, 8, 9]": {
+      "result": true,
+      "time": 0.0420987606048584,
+      "error": null
+    },
+    "assert merge_sort([5, 6, 4, 10, 3, 3, 2, 13]) == [2, 3, 3, 4, 5, 6, 10, 13]": {
+      "result": true,
+      "time": 0.04042816162109375,
+      "error": null
+    },
+    "assert merge_sort([7, 7, 2, 5, 7, 9, 2, 10]) == [2, 2, 5, 7, 7, 7, 9, 10]": {
+      "result": true,
+      "time": 0.04027819633483887,
+      "error": null
+    },
+    "assert merge_sort([2, 2, 6, 3, 7, 8, 4, 13]) == [2, 2, 3, 4, 6, 7, 8, 13]": {
+      "result": true,
+      "time": 0.051093101501464844,
+      "error": null
+    },
+    "assert merge_sort([3, 7, 1, 5, 8, 9, 2, 13]) == [1, 2, 3, 5, 7, 8, 9, 13]": {
+      "result": true,
+      "time": 0.0471341609954834,
+      "error": null
+    },
+    "assert merge_sort([5, 8, 1, 10, 10, 3, 1, 12]) == [1, 1, 3, 5, 8, 10, 10, 12]": {
+      "result": true,
+      "time": 0.04410099983215332,
+      "error": null
+    },
+    "assert merge_sort([5, 1, 5, 2, 3, 7, 1, 9]) == [1, 1, 2, 3, 5, 5, 7, 9]": {
+      "result": true,
+      "time": 0.03700995445251465,
+      "error": null
+    },
+    "assert merge_sort([4, 1, 4, 9, 6, 2, 1, 13]) == [1, 1, 2, 4, 4, 6, 9, 13]": {
+      "result": true,
+      "time": 0.0364077091217041,
+      "error": null
+    },
+    "assert merge_sort([5, 6, 1, 11, 10, 5, 2, 4]) == [1, 2, 4, 5, 5, 6, 10, 11]": {
+      "result": true,
+      "time": 0.03824472427368164,
+      "error": null
+    },
+    "assert merge_sort([8, 9, 5, 6, 3, 2, 3, 5]) == [2, 3, 3, 5, 5, 6, 8, 9]": {
+      "result": true,
+      "time": 0.03955435752868652,
+      "error": null
+    },
+    "assert merge_sort([7, 9, 3, 8, 9, 8, 6, 8]) == [3, 6, 7, 8, 8, 8, 9, 9]": {
+      "result": true,
+      "time": 0.04219317436218262,
+      "error": null
+    },
+    "assert merge_sort([5, 3, 7, 10, 10, 7, 5, 10]) == [3, 5, 5, 7, 7, 10, 10, 10]": {
+      "result": true,
+      "time": 0.03771066665649414,
+      "error": null
+    },
+    "assert merge_sort([6, 8, 3, 9, 10, 8, 6, 6]) == [3, 6, 6, 6, 8, 8, 9, 10]": {
+      "result": true,
+      "time": 0.04565834999084473,
+      "error": null
+    },
+    "assert merge_sort([4, 6, 1, 9, 7, 12, 6, 4]) == [1, 4, 4, 6, 6, 7, 9, 12]": {
+      "result": true,
+      "time": 0.04350471496582031,
+      "error": null
+    },
+    "assert merge_sort([7, 7, 2, 4, 10, 11, 5, 11]) == [2, 4, 5, 7, 7, 10, 11, 11]": {
+      "result": true,
+      "time": 0.04636693000793457,
+      "error": null
+    },
+    "assert merge_sort([7, 7, 1, 5, 7, 9, 1, 12]) == [1, 1, 5, 7, 7, 7, 9, 12]": {
+      "result": true,
+      "time": 0.04382181167602539,
+      "error": null
+    },
+    "assert merge_sort([4, 4, 5, 2, 10, 6, 2, 12]) == [2, 2, 4, 4, 5, 6, 10, 12]": {
+      "result": true,
+      "time": 0.04192972183227539,
+      "error": null
+    },
+    "assert merge_sort([6, 3, 5, 10, 3, 12, 4, 11]) == [3, 3, 4, 5, 6, 10, 11, 12]": {
+      "result": true,
+      "time": 0.04202866554260254,
+      "error": null
+    },
+    "assert merge_sort([8, 3, 1, 7, 5, 10, 5, 13]) == [1, 3, 5, 5, 7, 8, 10, 13]": {
+      "result": true,
+      "time": 0.038789987564086914,
+      "error": null
+    },
+    "assert merge_sort([1, 2, 5, 6, 10, 7, 5, 10]) == [1, 2, 5, 5, 6, 7, 10, 10]": {
+      "result": true,
+      "time": 0.04205656051635742,
+      "error": null
+    },
+    "assert merge_sort([8, 3, 2, 8, 7, 8, 4, 7]) == [2, 3, 4, 7, 7, 8, 8, 8]": {
+      "result": true,
+      "time": 0.04138445854187012,
+      "error": null
+    },
+    "assert merge_sort([4, 2, 4, 2, 4, 2, 2, 6]) == [2, 2, 2, 2, 4, 4, 4, 6]": {
+      "result": true,
+      "time": 0.04013633728027344,
+      "error": null
+    },
+    "assert merge_sort([5, 1, 2, 10, 1, 10, 4, 9]) == [1, 1, 2, 4, 5, 9, 10, 10]": {
+      "result": true,
+      "time": 0.03677678108215332,
+      "error": null
+    },
+    "assert merge_sort([4, 8, 6, 10, 8, 4, 5, 9]) == [4, 4, 5, 6, 8, 8, 9, 10]": {
+      "result": true,
+      "time": 0.04521369934082031,
+      "error": null
+    },
+    "assert merge_sort([6, 5, 3, 9, 8, 3, 5, 7]) == [3, 3, 5, 5, 6, 7, 8, 9]": {
+      "result": true,
+      "time": 0.04113483428955078,
+      "error": null
+    },
+    "assert merge_sort([1, 9, 3, 2, 7, 4, 6, 6]) == [1, 2, 3, 4, 6, 6, 7, 9]": {
+      "result": true,
+      "time": 0.03927183151245117,
+      "error": null
+    },
+    "assert merge_sort([7, 3, 1, 11, 1, 8, 2, 5]) == [1, 1, 2, 3, 5, 7, 8, 11]": {
+      "result": true,
+      "time": 0.039386749267578125,
+      "error": null
+    },
+    "assert merge_sort([4, 1, 7, 7, 5, 9, 3, 8]) == [1, 3, 4, 5, 7, 7, 8, 9]": {
+      "result": true,
+      "time": 0.0332341194152832,
+      "error": null
+    },
+    "assert merge_sort([8, 7, 6, 10, 9, 2, 3, 14]) == [2, 3, 6, 7, 8, 9, 10, 14]": {
+      "result": true,
+      "time": 0.0484774112701416,
+      "error": null
+    },
+    "assert merge_sort([6, 5, 1, 8, 8, 12, 3, 9]) == [1, 3, 5, 6, 8, 8, 9, 12]": {
+      "result": true,
+      "time": 0.03993701934814453,
+      "error": null
+    },
+    "assert merge_sort([5, 1, 5, 11, 8, 5, 4, 12]) == [1, 4, 5, 5, 5, 8, 11, 12]": {
+      "result": true,
+      "time": 0.03856325149536133,
+      "error": null
+    },
+    "assert merge_sort([7, 4, 1, 2, 3, 11, 6, 4]) == [1, 2, 3, 4, 4, 6, 7, 11]": {
+      "result": true,
+      "time": 0.0413205623626709,
+      "error": null
+    },
+    "assert merge_sort([11, 22, 42, 75, 11, 38, 23]) == [11, 11, 22, 23, 38, 42, 75]": {
+      "result": true,
+      "time": 0.042406320571899414,
+      "error": null
+    },
+    "assert merge_sort([12, 25, 42, 76, 15, 35, 17]) == [12, 15, 17, 25, 35, 42, 76]": {
+      "result": true,
+      "time": 0.047368526458740234,
+      "error": null
+    },
+    "assert merge_sort([7, 22, 47, 79, 16, 30, 22]) == [7, 16, 22, 22, 30, 47, 79]": {
+      "result": true,
+      "time": 0.03715777397155762,
+      "error": null
+    },
+    "assert merge_sort([10, 26, 48, 76, 16, 32, 22]) == [10, 16, 22, 26, 32, 48, 76]": {
+      "result": true,
+      "time": 0.03768754005432129,
+      "error": null
+    },
+    "assert merge_sort([6, 22, 43, 80, 15, 34, 18]) == [6, 15, 18, 22, 34, 43, 80]": {
+      "result": true,
+      "time": 0.03667330741882324,
+      "error": null
+    },
+    "assert merge_sort([8, 21, 47, 78, 9, 35, 19]) == [8, 9, 19, 21, 35, 47, 78]": {
+      "result": true,
+      "time": 0.03235006332397461,
+      "error": null
+    },
+    "assert merge_sort([9, 24, 46, 79, 16, 31, 18]) == [9, 16, 18, 24, 31, 46, 79]": {
+      "result": true,
+      "time": 0.03371167182922363,
+      "error": null
+    },
+    "assert merge_sort([8, 27, 41, 80, 6, 31, 18]) == [6, 8, 18, 27, 31, 41, 80]": {
+      "result": true,
+      "time": 0.03632545471191406,
+      "error": null
+    },
+    "assert merge_sort([9, 22, 49, 81, 6, 31, 23]) == [6, 9, 22, 23, 31, 49, 81]": {
+      "result": true,
+      "time": 0.032639265060424805,
+      "error": null
+    },
+    "assert merge_sort([3, 20, 43, 73, 11, 33, 17]) == [3, 11, 17, 20, 33, 43, 73]": {
+      "result": true,
+      "time": 0.03712058067321777,
+      "error": null
+    },
+    "assert merge_sort([4, 26, 47, 78, 12, 28, 22]) == [4, 12, 22, 26, 28, 47, 78]": {
+      "result": true,
+      "time": 0.03691387176513672,
+      "error": null
+    },
+    "assert merge_sort([11, 29, 41, 75, 8, 38, 22]) == [8, 11, 22, 29, 38, 41, 75]": {
+      "result": true,
+      "time": 0.03309178352355957,
+      "error": null
+    },
+    "assert merge_sort([7, 28, 50, 79, 15, 37, 23]) == [7, 15, 23, 28, 37, 50, 79]": {
+      "result": true,
+      "time": 0.03672480583190918,
+      "error": null
+    },
+    "assert merge_sort([6, 28, 42, 74, 10, 34, 17]) == [6, 10, 17, 28, 34, 42, 74]": {
+      "result": true,
+      "time": 0.03235006332397461,
+      "error": null
+    },
+    "assert merge_sort([3, 24, 41, 80, 11, 36, 17]) == [3, 11, 17, 24, 36, 41, 80]": {
+      "result": true,
+      "time": 0.03984999656677246,
+      "error": null
+    },
+    "assert merge_sort([2, 28, 42, 75, 6, 29, 16]) == [2, 6, 16, 28, 29, 42, 75]": {
+      "result": true,
+      "time": 0.032637834548950195,
+      "error": null
+    },
+    "assert merge_sort([4, 26, 44, 79, 10, 33, 17]) == [4, 10, 17, 26, 33, 44, 79]": {
+      "result": true,
+      "time": 0.034963130950927734,
+      "error": null
+    },
+    "assert merge_sort([12, 22, 44, 77, 7, 35, 16]) == [7, 12, 16, 22, 35, 44, 77]": {
+      "result": true,
+      "time": 0.03526926040649414,
+      "error": null
+    },
+    "assert merge_sort([4, 24, 44, 83, 10, 38, 21]) == [4, 10, 21, 24, 38, 44, 83]": {
+      "result": true,
+      "time": 0.037413835525512695,
+      "error": null
+    },
+    "assert merge_sort([12, 24, 44, 77, 14, 28, 15]) == [12, 14, 15, 24, 28, 44, 77]": {
+      "result": true,
+      "time": 0.036684513092041016,
+      "error": null
+    },
+    "assert merge_sort([7, 24, 49, 75, 6, 30, 19]) == [6, 7, 19, 24, 30, 49, 75]": {
+      "result": true,
+      "time": 0.03394174575805664,
+      "error": null
+    },
+    "assert merge_sort([5, 25, 46, 78, 11, 34, 24]) == [5, 11, 24, 25, 34, 46, 78]": {
+      "result": true,
+      "time": 0.0346071720123291,
+      "error": null
+    },
+    "assert merge_sort([5, 23, 40, 73, 6, 33, 18]) == [5, 6, 18, 23, 33, 40, 73]": {
+      "result": true,
+      "time": 0.03692030906677246,
+      "error": null
+    },
+    "assert merge_sort([9, 22, 43, 79, 7, 31, 14]) == [7, 9, 14, 22, 31, 43, 79]": {
+      "result": true,
+      "time": 0.03166007995605469,
+      "error": null
+    },
+    "assert merge_sort([7, 24, 50, 83, 6, 30, 15]) == [6, 7, 15, 24, 30, 50, 83]": {
+      "result": true,
+      "time": 0.044675350189208984,
+      "error": null
+    },
+    "assert merge_sort([3, 28, 49, 75, 8, 28, 16]) == [3, 8, 16, 28, 28, 49, 75]": {
+      "result": true,
+      "time": 0.03425240516662598,
+      "error": null
+    },
+    "assert merge_sort([3, 26, 46, 82, 11, 32, 24]) == [3, 11, 24, 26, 32, 46, 82]": {
+      "result": true,
+      "time": 0.035006046295166016,
+      "error": null
+    },
+    "assert merge_sort([2, 30, 41, 81, 14, 34, 17]) == [2, 14, 17, 30, 34, 41, 81]": {
+      "result": true,
+      "time": 0.03949618339538574,
+      "error": null
+    },
+    "assert merge_sort([6, 30, 43, 78, 15, 32, 17]) == [6, 15, 17, 30, 32, 43, 78]": {
+      "result": true,
+      "time": 0.03486156463623047,
+      "error": null
+    },
+    "assert merge_sort([3, 22, 49, 78, 11, 29, 21]) == [3, 11, 21, 22, 29, 49, 78]": {
+      "result": true,
+      "time": 0.03624439239501953,
+      "error": null
+    },
+    "assert merge_sort([5, 26, 42, 73, 11, 33, 24]) == [5, 11, 24, 26, 33, 42, 73]": {
+      "result": true,
+      "time": 0.03730368614196777,
+      "error": null
+    },
+    "assert merge_sort([5, 21, 45, 75, 6, 38, 21]) == [5, 6, 21, 21, 38, 45, 75]": {
+      "result": true,
+      "time": 0.035117149353027344,
+      "error": null
+    },
+    "assert merge_sort([4, 25, 48, 82, 14, 32, 23]) == [4, 14, 23, 25, 32, 48, 82]": {
+      "result": true,
+      "time": 0.038298845291137695,
+      "error": null
+    },
+    "assert merge_sort([7, 4, 8, 12, 6]) == [4, 6, 7, 8, 12]": {
+      "result": true,
+      "time": 0.03679203987121582,
+      "error": null
+    },
+    "assert merge_sort([2, 5, 9, 12, 6]) == [2, 5, 6, 9, 12]": {
+      "result": true,
+      "time": 0.029719114303588867,
+      "error": null
+    },
+    "assert merge_sort([8, 2, 3, 5, 6]) == [2, 3, 5, 6, 8]": {
+      "result": true,
+      "time": 0.03807830810546875,
+      "error": null
+    },
+    "assert merge_sort([3, 5, 9, 9, 11]) == [3, 5, 9, 9, 11]": {
+      "result": true,
+      "time": 0.033464908599853516,
+      "error": null
+    },
+    "assert merge_sort([4, 4, 7, 6, 3]) == [3, 4, 4, 6, 7]": {
+      "result": true,
+      "time": 0.0356755256652832,
+      "error": null
+    },
+    "assert merge_sort([8, 4, 6, 14, 13]) == [4, 6, 8, 13, 14]": {
+      "result": true,
+      "time": 0.033551931381225586,
+      "error": null
+    },
+    "assert merge_sort([6, 2, 2, 10, 11]) == [2, 2, 6, 10, 11]": {
+      "result": true,
+      "time": 0.04158806800842285,
+      "error": null
+    },
+    "assert merge_sort([6, 2, 2, 14, 8]) == [2, 2, 6, 8, 14]": {
+      "result": true,
+      "time": 0.027703285217285156,
+      "error": null
+    },
+    "assert merge_sort([8, 3, 9, 10, 13]) == [3, 8, 9, 10, 13]": {
+      "result": true,
+      "time": 0.03555917739868164,
+      "error": null
+    },
+    "assert merge_sort([3, 5, 9, 8, 3]) == [3, 3, 5, 8, 9]": {
+      "result": true,
+      "time": 0.03681778907775879,
+      "error": null
+    },
+    "assert merge_sort([6, 3, 6, 7, 11]) == [3, 6, 6, 7, 11]": {
+      "result": true,
+      "time": 0.033942461013793945,
+      "error": null
+    },
+    "assert merge_sort([6, 2, 1, 4, 8]) == [1, 2, 4, 6, 8]": {
+      "result": true,
+      "time": 0.03377342224121094,
+      "error": null
+    },
+    "assert merge_sort([4, 1, 8, 4, 8]) == [1, 4, 4, 8, 8]": {
+      "result": true,
+      "time": 0.03339076042175293,
+      "error": null
+    },
+    "assert merge_sort([3, 2, 8, 7, 3]) == [2, 3, 3, 7, 8]": {
+      "result": true,
+      "time": 0.039223432540893555,
+      "error": null
+    },
+    "assert merge_sort([8, 3, 5, 12, 8]) == [3, 5, 8, 8, 12]": {
+      "result": true,
+      "time": 0.036932945251464844,
+      "error": null
+    },
+    "assert merge_sort([1, 1, 6, 11, 7]) == [1, 1, 6, 7, 11]": {
+      "result": true,
+      "time": 0.03410530090332031,
+      "error": null
+    },
+    "assert merge_sort([2, 4, 9, 14, 9]) == [2, 4, 9, 9, 14]": {
+      "result": true,
+      "time": 0.03736996650695801,
+      "error": null
+    },
+    "assert merge_sort([6, 6, 1, 14, 4]) == [1, 4, 6, 6, 14]": {
+      "result": true,
+      "time": 0.040671586990356445,
+      "error": null
+    },
+    "assert merge_sort([2, 2, 7, 12, 9]) == [2, 2, 7, 9, 12]": {
+      "result": true,
+      "time": 0.027299880981445312,
+      "error": null
+    },
+    "assert merge_sort([3, 1, 6, 14, 5]) == [1, 3, 5, 6, 14]": {
+      "result": true,
+      "time": 0.04234719276428223,
+      "error": null
+    },
+    "assert merge_sort([6, 2, 3, 11, 13]) == [2, 3, 6, 11, 13]": {
+      "result": true,
+      "time": 0.03417706489562988,
+      "error": null
+    },
+    "assert merge_sort([7, 6, 1, 4, 11]) == [1, 4, 6, 7, 11]": {
+      "result": true,
+      "time": 0.03382301330566406,
+      "error": null
+    },
+    "assert merge_sort([5, 6, 8, 9, 5]) == [5, 5, 6, 8, 9]": {
+      "result": true,
+      "time": 0.03734755516052246,
+      "error": null
+    },
+    "assert merge_sort([7, 6, 2, 7, 9]) == [2, 6, 7, 7, 9]": {
+      "result": true,
+      "time": 0.03562521934509277,
+      "error": null
+    },
+    "assert merge_sort([7, 3, 8, 11, 12]) == [3, 7, 8, 11, 12]": {
+      "result": true,
+      "time": 0.03523826599121094,
+      "error": null
+    },
+    "assert merge_sort([6, 4, 4, 8, 3]) == [3, 4, 4, 6, 8]": {
+      "result": true,
+      "time": 0.029972314834594727,
+      "error": null
+    },
+    "assert merge_sort([3, 5, 6, 8, 9]) == [3, 5, 6, 8, 9]": {
+      "result": true,
+      "time": 0.03830552101135254,
+      "error": null
+    },
+    "assert merge_sort([3, 1, 5, 6, 6]) == [1, 3, 5, 6, 6]": {
+      "result": true,
+      "time": 0.03776288032531738,
+      "error": null
+    },
+    "assert merge_sort([3, 2, 5, 9, 5]) == [2, 3, 5, 5, 9]": {
+      "result": true,
+      "time": 0.03760647773742676,
+      "error": null
+    },
+    "assert merge_sort([5, 4, 2, 9, 13]) == [2, 4, 5, 9, 13]": {
+      "result": true,
+      "time": 0.039422035217285156,
+      "error": null
+    },
+    "assert merge_sort([8, 2, 1, 5, 8]) == [1, 2, 5, 8, 8]": {
+      "result": true,
+      "time": 0.04044032096862793,
+      "error": null
+    },
+    "assert merge_sort([8, 6, 8, 13, 11]) == [6, 8, 8, 11, 13]": {
+      "result": true,
+      "time": 0.04001140594482422,
+      "error": null
+    },
+    "assert merge_sort([7, 2, 5, 9, 12]) == [2, 5, 7, 9, 12]": {
+      "result": true,
+      "time": 0.049773216247558594,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

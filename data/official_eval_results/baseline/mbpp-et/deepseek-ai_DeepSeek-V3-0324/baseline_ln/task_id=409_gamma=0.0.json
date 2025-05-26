@@ -1,0 +1,519 @@
+{
+  "code": "def min_product_tuple(tuple_list):\n    min_product = float('inf')\n    for pair in tuple_list:\n        product = pair[0] * pair[1]\n        if product < min_product:\n            min_product = product\n    return min_product",
+  "results": {
+    "assert min_product_tuple([(2, 7), (2, 6), (1, 8), (4, 9)] )==8": {
+      "result": true,
+      "time": 0.04846930503845215,
+      "error": null
+    },
+    "assert min_product_tuple([(10,20), (15,2), (5,10)] )==30": {
+      "result": true,
+      "time": 0.05365753173828125,
+      "error": null
+    },
+    "assert min_product_tuple([(11,44), (10,15), (20,5), (12, 9)] )==100": {
+      "result": true,
+      "time": 0.05230069160461426,
+      "error": null
+    },
+    "assert min_product_tuple([(4, 2), (6, 11), (5, 5), (7, 14)]) == 8": {
+      "result": true,
+      "time": 0.04592633247375488,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 5), (2, 10), (5, 4), (6, 9)]) == 20": {
+      "result": true,
+      "time": 0.056757211685180664,
+      "error": null
+    },
+    "assert min_product_tuple([(3, 11), (5, 8), (5, 8), (6, 7)]) == 33": {
+      "result": true,
+      "time": 0.05122852325439453,
+      "error": null
+    },
+    "assert min_product_tuple([(5, 3), (5, 5), (3, 10), (4, 9)]) == 15": {
+      "result": true,
+      "time": 0.0525364875793457,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 2), (6, 4), (1, 5), (1, 7)]) == 5": {
+      "result": true,
+      "time": 0.04135608673095703,
+      "error": null
+    },
+    "assert min_product_tuple([(4, 6), (2, 3), (6, 9), (9, 9)]) == 6": {
+      "result": true,
+      "time": 0.06152701377868652,
+      "error": null
+    },
+    "assert min_product_tuple([(2, 7), (1, 3), (2, 8), (2, 7)]) == 3": {
+      "result": true,
+      "time": 0.06331610679626465,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 11), (4, 11), (4, 13), (6, 7)]) == 42": {
+      "result": true,
+      "time": 0.04617643356323242,
+      "error": null
+    },
+    "assert min_product_tuple([(5, 6), (3, 3), (4, 13), (1, 14)]) == 9": {
+      "result": true,
+      "time": 0.04688310623168945,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 6), (3, 3), (6, 12), (6, 11)]) == 9": {
+      "result": true,
+      "time": 0.06187772750854492,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 11), (6, 9), (5, 5), (1, 7)]) == 7": {
+      "result": true,
+      "time": 0.05019187927246094,
+      "error": null
+    },
+    "assert min_product_tuple([(4, 11), (3, 10), (1, 5), (2, 14)]) == 5": {
+      "result": true,
+      "time": 0.040255069732666016,
+      "error": null
+    },
+    "assert min_product_tuple([(3, 2), (2, 6), (4, 5), (6, 4)]) == 6": {
+      "result": true,
+      "time": 0.04062938690185547,
+      "error": null
+    },
+    "assert min_product_tuple([(3, 6), (2, 6), (2, 6), (3, 8)]) == 12": {
+      "result": true,
+      "time": 0.05431318283081055,
+      "error": null
+    },
+    "assert min_product_tuple([(5, 2), (1, 4), (5, 5), (7, 13)]) == 4": {
+      "result": true,
+      "time": 0.04902791976928711,
+      "error": null
+    },
+    "assert min_product_tuple([(1, 10), (4, 10), (2, 6), (3, 10)]) == 10": {
+      "result": true,
+      "time": 0.05323934555053711,
+      "error": null
+    },
+    "assert min_product_tuple([(4, 2), (1, 9), (1, 10), (3, 9)]) == 8": {
+      "result": true,
+      "time": 0.05054807662963867,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 11), (5, 6), (6, 8), (8, 11)]) == 30": {
+      "result": true,
+      "time": 0.05197453498840332,
+      "error": null
+    },
+    "assert min_product_tuple([(5, 2), (7, 6), (4, 5), (4, 10)]) == 10": {
+      "result": true,
+      "time": 0.06516242027282715,
+      "error": null
+    },
+    "assert min_product_tuple([(2, 9), (4, 6), (2, 12), (7, 6)]) == 18": {
+      "result": true,
+      "time": 0.04458284378051758,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 2), (7, 8), (2, 8), (9, 9)]) == 14": {
+      "result": true,
+      "time": 0.04206442832946777,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 12), (7, 6), (1, 7), (1, 7)]) == 7": {
+      "result": true,
+      "time": 0.04296112060546875,
+      "error": null
+    },
+    "assert min_product_tuple([(4, 2), (7, 11), (4, 7), (1, 12)]) == 8": {
+      "result": true,
+      "time": 0.046454429626464844,
+      "error": null
+    },
+    "assert min_product_tuple([(2, 3), (5, 11), (4, 13), (1, 7)]) == 6": {
+      "result": true,
+      "time": 0.05701494216918945,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 3), (5, 8), (4, 13), (1, 6)]) == 6": {
+      "result": true,
+      "time": 0.04044485092163086,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 4), (7, 3), (3, 11), (1, 12)]) == 12": {
+      "result": true,
+      "time": 0.04406118392944336,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 11), (7, 11), (6, 10), (6, 12)]) == 60": {
+      "result": true,
+      "time": 0.047432899475097656,
+      "error": null
+    },
+    "assert min_product_tuple([(5, 8), (4, 8), (1, 8), (4, 9)]) == 8": {
+      "result": true,
+      "time": 0.0562281608581543,
+      "error": null
+    },
+    "assert min_product_tuple([(2, 3), (2, 5), (2, 6), (2, 14)]) == 6": {
+      "result": true,
+      "time": 0.051087141036987305,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 7), (1, 11), (6, 4), (7, 6)]) == 11": {
+      "result": true,
+      "time": 0.0433349609375,
+      "error": null
+    },
+    "assert min_product_tuple([(4, 9), (7, 9), (1, 6), (5, 10)]) == 6": {
+      "result": true,
+      "time": 0.05873441696166992,
+      "error": null
+    },
+    "assert min_product_tuple([(1, 10), (3, 4), (5, 3), (7, 9)]) == 10": {
+      "result": true,
+      "time": 0.05175065994262695,
+      "error": null
+    },
+    "assert min_product_tuple([(3, 4), (6, 11), (4, 3), (7, 10)]) == 12": {
+      "result": true,
+      "time": 0.058984994888305664,
+      "error": null
+    },
+    "assert min_product_tuple([(15, 17), (15, 7), (9, 14)]) == 105": {
+      "result": true,
+      "time": 0.054561614990234375,
+      "error": null
+    },
+    "assert min_product_tuple([(12, 18), (11, 3), (8, 10)]) == 33": {
+      "result": true,
+      "time": 0.04064154624938965,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 15), (11, 6), (9, 5)]) == 45": {
+      "result": true,
+      "time": 0.04737734794616699,
+      "error": null
+    },
+    "assert min_product_tuple([(5, 23), (15, 5), (2, 13)]) == 26": {
+      "result": true,
+      "time": 0.05391407012939453,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 22), (16, 3), (1, 10)]) == 10": {
+      "result": true,
+      "time": 0.04275107383728027,
+      "error": null
+    },
+    "assert min_product_tuple([(8, 24), (16, 5), (6, 8)]) == 48": {
+      "result": true,
+      "time": 0.044895172119140625,
+      "error": null
+    },
+    "assert min_product_tuple([(10, 16), (15, 3), (6, 6)]) == 36": {
+      "result": true,
+      "time": 0.058573007583618164,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 16), (17, 6), (3, 14)]) == 42": {
+      "result": true,
+      "time": 0.05165553092956543,
+      "error": null
+    },
+    "assert min_product_tuple([(5, 20), (18, 2), (6, 9)]) == 36": {
+      "result": true,
+      "time": 0.05946516990661621,
+      "error": null
+    },
+    "assert min_product_tuple([(5, 23), (10, 2), (10, 14)]) == 20": {
+      "result": true,
+      "time": 0.07068514823913574,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 15), (12, 2), (6, 8)]) == 24": {
+      "result": true,
+      "time": 0.06747245788574219,
+      "error": null
+    },
+    "assert min_product_tuple([(5, 15), (16, 5), (10, 6)]) == 60": {
+      "result": true,
+      "time": 0.05233931541442871,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 19), (14, 5), (10, 14)]) == 70": {
+      "result": true,
+      "time": 0.05989718437194824,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 23), (11, 5), (10, 9)]) == 55": {
+      "result": true,
+      "time": 0.05498552322387695,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 18), (20, 1), (1, 15)]) == 15": {
+      "result": true,
+      "time": 0.05844616889953613,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 15), (12, 6), (10, 14)]) == 72": {
+      "result": true,
+      "time": 0.0549166202545166,
+      "error": null
+    },
+    "assert min_product_tuple([(13, 15), (14, 1), (8, 14)]) == 14": {
+      "result": true,
+      "time": 0.06182432174682617,
+      "error": null
+    },
+    "assert min_product_tuple([(13, 23), (16, 5), (6, 12)]) == 72": {
+      "result": true,
+      "time": 0.05539894104003906,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 20), (10, 6), (2, 13)]) == 26": {
+      "result": true,
+      "time": 0.0675661563873291,
+      "error": null
+    },
+    "assert min_product_tuple([(9, 18), (12, 7), (8, 9)]) == 72": {
+      "result": true,
+      "time": 0.07084274291992188,
+      "error": null
+    },
+    "assert min_product_tuple([(13, 25), (15, 5), (10, 11)]) == 75": {
+      "result": true,
+      "time": 0.06755542755126953,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 17), (12, 1), (7, 14)]) == 12": {
+      "result": true,
+      "time": 0.05612945556640625,
+      "error": null
+    },
+    "assert min_product_tuple([(12, 25), (20, 7), (7, 15)]) == 105": {
+      "result": true,
+      "time": 0.047728776931762695,
+      "error": null
+    },
+    "assert min_product_tuple([(12, 18), (11, 2), (9, 7)]) == 22": {
+      "result": true,
+      "time": 0.06302213668823242,
+      "error": null
+    },
+    "assert min_product_tuple([(10, 19), (15, 7), (4, 8)]) == 32": {
+      "result": true,
+      "time": 0.0549015998840332,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 25), (14, 7), (10, 10)]) == 98": {
+      "result": true,
+      "time": 0.05292153358459473,
+      "error": null
+    },
+    "assert min_product_tuple([(10, 24), (11, 3), (8, 6)]) == 33": {
+      "result": true,
+      "time": 0.0548861026763916,
+      "error": null
+    },
+    "assert min_product_tuple([(13, 18), (20, 2), (3, 5)]) == 15": {
+      "result": true,
+      "time": 0.06783270835876465,
+      "error": null
+    },
+    "assert min_product_tuple([(8, 21), (18, 1), (7, 5)]) == 18": {
+      "result": true,
+      "time": 0.05256915092468262,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 16), (18, 7), (8, 7)]) == 56": {
+      "result": true,
+      "time": 0.0637507438659668,
+      "error": null
+    },
+    "assert min_product_tuple([(15, 19), (19, 2), (7, 13)]) == 38": {
+      "result": true,
+      "time": 0.06323385238647461,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 21), (14, 4), (10, 11)]) == 56": {
+      "result": true,
+      "time": 0.056447744369506836,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 20), (14, 6), (6, 14)]) == 84": {
+      "result": true,
+      "time": 0.063720703125,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 45), (6, 20), (21, 4), (8, 5)]) == 40": {
+      "result": true,
+      "time": 0.05683255195617676,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 47), (6, 20), (25, 8), (14, 6)]) == 84": {
+      "result": true,
+      "time": 0.06067490577697754,
+      "error": null
+    },
+    "assert min_product_tuple([(12, 46), (6, 14), (21, 8), (15, 11)]) == 84": {
+      "result": true,
+      "time": 0.07519793510437012,
+      "error": null
+    },
+    "assert min_product_tuple([(8, 44), (13, 10), (15, 7), (17, 10)]) == 105": {
+      "result": true,
+      "time": 0.06499099731445312,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 46), (9, 18), (25, 2), (14, 14)]) == 50": {
+      "result": true,
+      "time": 0.05661606788635254,
+      "error": null
+    },
+    "assert min_product_tuple([(11, 46), (15, 20), (22, 6), (8, 7)]) == 56": {
+      "result": true,
+      "time": 0.055991411209106445,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 44), (8, 13), (15, 4), (9, 12)]) == 60": {
+      "result": true,
+      "time": 0.059194326400756836,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 41), (14, 16), (19, 4), (12, 13)]) == 76": {
+      "result": true,
+      "time": 0.05150651931762695,
+      "error": null
+    },
+    "assert min_product_tuple([(12, 43), (12, 19), (17, 5), (16, 10)]) == 85": {
+      "result": true,
+      "time": 0.055731773376464844,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 48), (7, 13), (23, 8), (15, 4)]) == 60": {
+      "result": true,
+      "time": 0.04802823066711426,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 47), (8, 11), (25, 10), (17, 12)]) == 88": {
+      "result": true,
+      "time": 0.04954719543457031,
+      "error": null
+    },
+    "assert min_product_tuple([(13, 43), (6, 10), (19, 4), (16, 11)]) == 60": {
+      "result": true,
+      "time": 0.05677199363708496,
+      "error": null
+    },
+    "assert min_product_tuple([(11, 42), (12, 18), (22, 1), (16, 11)]) == 22": {
+      "result": true,
+      "time": 0.054991960525512695,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 48), (14, 18), (19, 10), (10, 8)]) == 80": {
+      "result": true,
+      "time": 0.06281876564025879,
+      "error": null
+    },
+    "assert min_product_tuple([(8, 42), (10, 18), (17, 8), (11, 5)]) == 55": {
+      "result": true,
+      "time": 0.042470693588256836,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 49), (6, 10), (17, 6), (17, 4)]) == 60": {
+      "result": true,
+      "time": 0.05369925498962402,
+      "error": null
+    },
+    "assert min_product_tuple([(13, 46), (8, 12), (20, 7), (12, 10)]) == 96": {
+      "result": true,
+      "time": 0.048834800720214844,
+      "error": null
+    },
+    "assert min_product_tuple([(16, 42), (14, 11), (25, 6), (9, 5)]) == 45": {
+      "result": true,
+      "time": 0.04453706741333008,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 45), (14, 17), (25, 6), (14, 11)]) == 150": {
+      "result": true,
+      "time": 0.07302451133728027,
+      "error": null
+    },
+    "assert min_product_tuple([(11, 47), (7, 14), (18, 8), (12, 12)]) == 98": {
+      "result": true,
+      "time": 0.05434465408325195,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 47), (15, 13), (24, 7), (13, 4)]) == 52": {
+      "result": true,
+      "time": 0.05430030822753906,
+      "error": null
+    },
+    "assert min_product_tuple([(11, 49), (14, 10), (22, 7), (15, 4)]) == 60": {
+      "result": true,
+      "time": 0.05233883857727051,
+      "error": null
+    },
+    "assert min_product_tuple([(7, 44), (5, 17), (20, 6), (11, 7)]) == 77": {
+      "result": true,
+      "time": 0.05701804161071777,
+      "error": null
+    },
+    "assert min_product_tuple([(16, 40), (10, 19), (18, 6), (16, 12)]) == 108": {
+      "result": true,
+      "time": 0.03923749923706055,
+      "error": null
+    },
+    "assert min_product_tuple([(12, 39), (11, 15), (15, 10), (13, 5)]) == 65": {
+      "result": true,
+      "time": 0.05530214309692383,
+      "error": null
+    },
+    "assert min_product_tuple([(13, 40), (11, 16), (15, 3), (12, 5)]) == 45": {
+      "result": true,
+      "time": 0.049027204513549805,
+      "error": null
+    },
+    "assert min_product_tuple([(8, 47), (9, 10), (22, 2), (16, 9)]) == 44": {
+      "result": true,
+      "time": 0.04982399940490723,
+      "error": null
+    },
+    "assert min_product_tuple([(12, 45), (9, 17), (22, 2), (13, 9)]) == 44": {
+      "result": true,
+      "time": 0.05020475387573242,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 47), (9, 11), (24, 7), (12, 5)]) == 60": {
+      "result": true,
+      "time": 0.06032991409301758,
+      "error": null
+    },
+    "assert min_product_tuple([(15, 48), (15, 19), (20, 2), (15, 14)]) == 40": {
+      "result": true,
+      "time": 0.06252717971801758,
+      "error": null
+    },
+    "assert min_product_tuple([(6, 40), (5, 14), (25, 4), (15, 8)]) == 70": {
+      "result": true,
+      "time": 0.04711437225341797,
+      "error": null
+    },
+    "assert min_product_tuple([(8, 46), (6, 16), (21, 1), (16, 12)]) == 21": {
+      "result": true,
+      "time": 0.05714845657348633,
+      "error": null
+    },
+    "assert min_product_tuple([(14, 41), (11, 19), (23, 2), (15, 11)]) == 46": {
+      "result": true,
+      "time": 0.046163320541381836,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

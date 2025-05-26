@@ -1,0 +1,519 @@
+{
+  "code": "def max_product(arr, n):\n    # Initialize a list to store the maximum product ending at each position\n    max_prod = [1] * n\n    \n    for i in range(n):\n        max_prod[i] = arr[i]  # Initialize with the element itself\n        for j in range(i):\n            if arr[j] < arr[i] and max_prod[i] < max_prod[j] * arr[i]:\n                max_prod[i] = max_prod[j] * arr[i]\n    \n    return max(max_prod)",
+  "results": {
+    "assert max_product([3, 100, 4, 5, 150, 6], 6) == 45000 ": {
+      "result": true,
+      "time": 0.03455948829650879,
+      "error": null
+    },
+    "assert max_product([4, 42, 55, 68, 80], 5) == 50265600": {
+      "result": true,
+      "time": 0.03679513931274414,
+      "error": null
+    },
+    "assert max_product([10, 22, 9, 33, 21, 50, 41, 60], 8) == 21780000 ": {
+      "result": true,
+      "time": 0.04340481758117676,
+      "error": null
+    },
+    "assert max_product([8, 96, 2, 8, 154, 4], 6) == 118272": {
+      "result": true,
+      "time": 0.04223346710205078,
+      "error": null
+    },
+    "assert max_product([7, 95, 8, 9, 155, 9], 3) == 665": {
+      "result": true,
+      "time": 0.044063568115234375,
+      "error": null
+    },
+    "assert max_product([2, 105, 2, 10, 145, 1], 5) == 30450": {
+      "result": true,
+      "time": 0.036905527114868164,
+      "error": null
+    },
+    "assert max_product([4, 104, 9, 9, 150, 3], 1) == 4": {
+      "result": true,
+      "time": 0.03578495979309082,
+      "error": null
+    },
+    "assert max_product([4, 100, 5, 7, 149, 7], 1) == 4": {
+      "result": true,
+      "time": 0.03321385383605957,
+      "error": null
+    },
+    "assert max_product([8, 103, 2, 4, 149, 2], 2) == 824": {
+      "result": true,
+      "time": 0.03549957275390625,
+      "error": null
+    },
+    "assert max_product([3, 105, 4, 9, 150, 10], 4) == 315": {
+      "result": true,
+      "time": 0.0338444709777832,
+      "error": null
+    },
+    "assert max_product([6, 98, 5, 5, 147, 5], 5) == 86436": {
+      "result": true,
+      "time": 0.033995866775512695,
+      "error": null
+    },
+    "assert max_product([7, 100, 6, 10, 155, 8], 4) == 700": {
+      "result": true,
+      "time": 0.034044504165649414,
+      "error": null
+    },
+    "assert max_product([5, 100, 5, 8, 150, 4], 5) == 75000": {
+      "result": true,
+      "time": 0.03330707550048828,
+      "error": null
+    },
+    "assert max_product([1, 97, 6, 4, 155, 7], 5) == 15035": {
+      "result": true,
+      "time": 0.038314104080200195,
+      "error": null
+    },
+    "assert max_product([2, 100, 6, 10, 153, 10], 6) == 30600": {
+      "result": true,
+      "time": 0.03694009780883789,
+      "error": null
+    },
+    "assert max_product([8, 99, 1, 1, 145, 7], 3) == 792": {
+      "result": true,
+      "time": 0.03793764114379883,
+      "error": null
+    },
+    "assert max_product([1, 95, 4, 10, 150, 1], 2) == 95": {
+      "result": true,
+      "time": 0.03738212585449219,
+      "error": null
+    },
+    "assert max_product([7, 100, 3, 9, 147, 4], 6) == 102900": {
+      "result": true,
+      "time": 0.035765886306762695,
+      "error": null
+    },
+    "assert max_product([8, 97, 4, 3, 145, 7], 1) == 8": {
+      "result": true,
+      "time": 0.03336167335510254,
+      "error": null
+    },
+    "assert max_product([7, 96, 2, 2, 152, 5], 5) == 102144": {
+      "result": true,
+      "time": 0.037660837173461914,
+      "error": null
+    },
+    "assert max_product([3, 100, 6, 7, 154, 8], 1) == 3": {
+      "result": true,
+      "time": 0.038866519927978516,
+      "error": null
+    },
+    "assert max_product([4, 95, 3, 8, 148, 11], 3) == 380": {
+      "result": true,
+      "time": 0.041420936584472656,
+      "error": null
+    },
+    "assert max_product([4, 101, 5, 8, 155, 11], 3) == 404": {
+      "result": true,
+      "time": 0.04122591018676758,
+      "error": null
+    },
+    "assert max_product([1, 104, 4, 8, 145, 11], 4) == 104": {
+      "result": true,
+      "time": 0.036983489990234375,
+      "error": null
+    },
+    "assert max_product([6, 103, 2, 2, 155, 7], 4) == 618": {
+      "result": true,
+      "time": 0.03588438034057617,
+      "error": null
+    },
+    "assert max_product([5, 99, 8, 8, 155, 3], 2) == 495": {
+      "result": true,
+      "time": 0.0382843017578125,
+      "error": null
+    },
+    "assert max_product([6, 105, 5, 4, 146, 3], 3) == 630": {
+      "result": true,
+      "time": 0.03832364082336426,
+      "error": null
+    },
+    "assert max_product([1, 100, 2, 6, 153, 2], 5) == 15300": {
+      "result": true,
+      "time": 0.03945612907409668,
+      "error": null
+    },
+    "assert max_product([7, 95, 1, 1, 148, 11], 1) == 7": {
+      "result": true,
+      "time": 0.03483128547668457,
+      "error": null
+    },
+    "assert max_product([8, 97, 8, 2, 155, 3], 3) == 776": {
+      "result": true,
+      "time": 0.03835582733154297,
+      "error": null
+    },
+    "assert max_product([2, 101, 4, 10, 151, 11], 3) == 202": {
+      "result": true,
+      "time": 0.03846430778503418,
+      "error": null
+    },
+    "assert max_product([7, 101, 7, 3, 148, 3], 5) == 104636": {
+      "result": true,
+      "time": 0.033210039138793945,
+      "error": null
+    },
+    "assert max_product([6, 95, 8, 1, 147, 7], 1) == 6": {
+      "result": true,
+      "time": 0.03798055648803711,
+      "error": null
+    },
+    "assert max_product([4, 99, 5, 1, 148, 6], 3) == 396": {
+      "result": true,
+      "time": 0.03047347068786621,
+      "error": null
+    },
+    "assert max_product([8, 100, 8, 6, 149, 8], 4) == 800": {
+      "result": true,
+      "time": 0.03322434425354004,
+      "error": null
+    },
+    "assert max_product([5, 103, 2, 7, 145, 6], 4) == 515": {
+      "result": true,
+      "time": 0.03401947021484375,
+      "error": null
+    },
+    "assert max_product([6, 45, 59, 70, 81], 3) == 15930": {
+      "result": true,
+      "time": 0.0318756103515625,
+      "error": null
+    },
+    "assert max_product([7, 43, 51, 73, 77], 2) == 301": {
+      "result": true,
+      "time": 0.039311885833740234,
+      "error": null
+    },
+    "assert max_product([1, 39, 52, 68, 82], 1) == 1": {
+      "result": true,
+      "time": 0.0318295955657959,
+      "error": null
+    },
+    "assert max_product([8, 40, 58, 71, 84], 4) == 1317760": {
+      "result": true,
+      "time": 0.03551459312438965,
+      "error": null
+    },
+    "assert max_product([6, 37, 60, 68, 80], 2) == 222": {
+      "result": true,
+      "time": 0.0379335880279541,
+      "error": null
+    },
+    "assert max_product([6, 41, 53, 65, 80], 3) == 13038": {
+      "result": true,
+      "time": 0.03679537773132324,
+      "error": null
+    },
+    "assert max_product([4, 44, 59, 69, 84], 4) == 716496": {
+      "result": true,
+      "time": 0.03959155082702637,
+      "error": null
+    },
+    "assert max_product([9, 43, 59, 64, 79], 3) == 22833": {
+      "result": true,
+      "time": 0.03705763816833496,
+      "error": null
+    },
+    "assert max_product([5, 42, 50, 66, 81], 4) == 693000": {
+      "result": true,
+      "time": 0.03321719169616699,
+      "error": null
+    },
+    "assert max_product([4, 44, 53, 71, 85], 5) == 56294480": {
+      "result": true,
+      "time": 0.037538766860961914,
+      "error": null
+    },
+    "assert max_product([7, 47, 56, 66, 78], 5) == 94846752": {
+      "result": true,
+      "time": 0.03325033187866211,
+      "error": null
+    },
+    "assert max_product([9, 45, 51, 68, 82], 5) == 115172280": {
+      "result": true,
+      "time": 0.05490565299987793,
+      "error": null
+    },
+    "assert max_product([9, 47, 51, 69, 82], 4) == 1488537": {
+      "result": true,
+      "time": 0.041898250579833984,
+      "error": null
+    },
+    "assert max_product([8, 37, 58, 68, 77], 4) == 1167424": {
+      "result": true,
+      "time": 0.06602787971496582,
+      "error": null
+    },
+    "assert max_product([1, 38, 60, 65, 78], 5) == 11559600": {
+      "result": true,
+      "time": 0.0485837459564209,
+      "error": null
+    },
+    "assert max_product([3, 39, 54, 63, 78], 3) == 6318": {
+      "result": true,
+      "time": 0.0457000732421875,
+      "error": null
+    },
+    "assert max_product([1, 44, 56, 67, 78], 5) == 12876864": {
+      "result": true,
+      "time": 0.048090457916259766,
+      "error": null
+    },
+    "assert max_product([5, 39, 54, 65, 84], 5) == 57493800": {
+      "result": true,
+      "time": 0.03476238250732422,
+      "error": null
+    },
+    "assert max_product([3, 46, 59, 65, 83], 4) == 529230": {
+      "result": true,
+      "time": 0.04517340660095215,
+      "error": null
+    },
+    "assert max_product([1, 42, 54, 66, 85], 2) == 42": {
+      "result": true,
+      "time": 0.03363990783691406,
+      "error": null
+    },
+    "assert max_product([6, 38, 59, 73, 77], 3) == 13452": {
+      "result": true,
+      "time": 0.034548044204711914,
+      "error": null
+    },
+    "assert max_product([8, 42, 58, 72, 75], 2) == 336": {
+      "result": true,
+      "time": 0.04191255569458008,
+      "error": null
+    },
+    "assert max_product([1, 40, 56, 69, 81], 1) == 1": {
+      "result": true,
+      "time": 0.046155691146850586,
+      "error": null
+    },
+    "assert max_product([4, 40, 58, 63, 84], 3) == 9280": {
+      "result": true,
+      "time": 0.03788495063781738,
+      "error": null
+    },
+    "assert max_product([5, 40, 59, 63, 75], 5) == 55755000": {
+      "result": true,
+      "time": 0.04282355308532715,
+      "error": null
+    },
+    "assert max_product([4, 47, 60, 64, 78], 3) == 11280": {
+      "result": true,
+      "time": 0.04547619819641113,
+      "error": null
+    },
+    "assert max_product([7, 43, 60, 68, 81], 3) == 18060": {
+      "result": true,
+      "time": 0.04382038116455078,
+      "error": null
+    },
+    "assert max_product([9, 45, 53, 69, 79], 4) == 1481085": {
+      "result": true,
+      "time": 0.04742717742919922,
+      "error": null
+    },
+    "assert max_product([6, 39, 53, 71, 75], 2) == 234": {
+      "result": true,
+      "time": 0.04225564002990723,
+      "error": null
+    },
+    "assert max_product([2, 38, 54, 72, 77], 1) == 2": {
+      "result": true,
+      "time": 0.04726219177246094,
+      "error": null
+    },
+    "assert max_product([5, 37, 51, 64, 75], 4) == 603840": {
+      "result": true,
+      "time": 0.04983019828796387,
+      "error": null
+    },
+    "assert max_product([2, 41, 52, 67, 78], 2) == 82": {
+      "result": true,
+      "time": 0.038643598556518555,
+      "error": null
+    },
+    "assert max_product([5, 38, 57, 65, 75], 2) == 190": {
+      "result": true,
+      "time": 0.05048704147338867,
+      "error": null
+    },
+    "assert max_product([14, 18, 10, 37, 21, 45, 39, 61], 4) == 9324": {
+      "result": true,
+      "time": 0.04305458068847656,
+      "error": null
+    },
+    "assert max_product([12, 22, 10, 37, 19, 45, 39, 58], 6) == 439560": {
+      "result": true,
+      "time": 0.05179023742675781,
+      "error": null
+    },
+    "assert max_product([14, 24, 9, 34, 20, 47, 46, 65], 5) == 11424": {
+      "result": true,
+      "time": 0.03693795204162598,
+      "error": null
+    },
+    "assert max_product([6, 24, 5, 34, 18, 48, 37, 55], 8) == 12925440": {
+      "result": true,
+      "time": 0.037267208099365234,
+      "error": null
+    },
+    "assert max_product([14, 24, 5, 31, 18, 55, 45, 63], 5) == 10416": {
+      "result": true,
+      "time": 0.03316903114318848,
+      "error": null
+    },
+    "assert max_product([9, 19, 5, 38, 20, 55, 36, 57], 3) == 171": {
+      "result": true,
+      "time": 0.03828549385070801,
+      "error": null
+    },
+    "assert max_product([15, 18, 6, 31, 21, 48, 40, 55], 7) == 401760": {
+      "result": true,
+      "time": 0.03575944900512695,
+      "error": null
+    },
+    "assert max_product([7, 24, 10, 30, 22, 47, 38, 58], 4) == 5040": {
+      "result": true,
+      "time": 0.03261446952819824,
+      "error": null
+    },
+    "assert max_product([12, 19, 9, 30, 24, 53, 36, 56], 5) == 6840": {
+      "result": true,
+      "time": 0.038674116134643555,
+      "error": null
+    },
+    "assert max_product([9, 19, 7, 34, 24, 55, 45, 62], 5) == 5814": {
+      "result": true,
+      "time": 0.033820152282714844,
+      "error": null
+    },
+    "assert max_product([6, 23, 7, 38, 26, 54, 39, 59], 4) == 5244": {
+      "result": true,
+      "time": 0.03706955909729004,
+      "error": null
+    },
+    "assert max_product([5, 19, 6, 38, 20, 54, 40, 55], 7) == 194940": {
+      "result": true,
+      "time": 0.03467059135437012,
+      "error": null
+    },
+    "assert max_product([9, 22, 5, 32, 26, 49, 44, 61], 8) == 18938304": {
+      "result": true,
+      "time": 0.03537774085998535,
+      "error": null
+    },
+    "assert max_product([11, 18, 13, 29, 20, 53, 43, 61], 8) == 18563886": {
+      "result": true,
+      "time": 0.03748297691345215,
+      "error": null
+    },
+    "assert max_product([5, 20, 12, 37, 21, 45, 41, 58], 4) == 3700": {
+      "result": true,
+      "time": 0.036206722259521484,
+      "error": null
+    },
+    "assert max_product([5, 27, 5, 30, 26, 46, 43, 56], 5) == 4050": {
+      "result": true,
+      "time": 0.029873371124267578,
+      "error": null
+    },
+    "assert max_product([6, 20, 13, 30, 21, 52, 39, 63], 7) == 187200": {
+      "result": true,
+      "time": 0.03396272659301758,
+      "error": null
+    },
+    "assert max_product([5, 26, 9, 29, 19, 49, 45, 65], 8) == 12007450": {
+      "result": true,
+      "time": 0.037946462631225586,
+      "error": null
+    },
+    "assert max_product([12, 20, 10, 29, 22, 46, 38, 64], 7) == 320160": {
+      "result": true,
+      "time": 0.027475357055664062,
+      "error": null
+    },
+    "assert max_product([13, 17, 9, 31, 24, 54, 45, 56], 3) == 221": {
+      "result": true,
+      "time": 0.030479907989501953,
+      "error": null
+    },
+    "assert max_product([7, 23, 11, 30, 17, 48, 36, 56], 4) == 4830": {
+      "result": true,
+      "time": 0.04004216194152832,
+      "error": null
+    },
+    "assert max_product([12, 23, 8, 28, 22, 54, 41, 58], 8) == 24204096": {
+      "result": true,
+      "time": 0.03497505187988281,
+      "error": null
+    },
+    "assert max_product([5, 22, 9, 29, 18, 53, 40, 62], 8) == 10482340": {
+      "result": true,
+      "time": 0.03482985496520996,
+      "error": null
+    },
+    "assert max_product([5, 19, 4, 35, 17, 55, 45, 63], 5) == 3325": {
+      "result": true,
+      "time": 0.03926229476928711,
+      "error": null
+    },
+    "assert max_product([13, 17, 13, 28, 23, 47, 41, 60], 3) == 221": {
+      "result": true,
+      "time": 0.033878326416015625,
+      "error": null
+    },
+    "assert max_product([8, 21, 12, 33, 25, 47, 37, 61], 5) == 5544": {
+      "result": true,
+      "time": 0.03456830978393555,
+      "error": null
+    },
+    "assert max_product([12, 18, 9, 28, 20, 46, 40, 57], 5) == 6048": {
+      "result": true,
+      "time": 0.03882622718811035,
+      "error": null
+    },
+    "assert max_product([8, 23, 4, 30, 19, 52, 39, 64], 7) == 287040": {
+      "result": true,
+      "time": 0.031852006912231445,
+      "error": null
+    },
+    "assert max_product([6, 25, 10, 37, 24, 54, 41, 56], 5) == 5550": {
+      "result": true,
+      "time": 0.03411126136779785,
+      "error": null
+    },
+    "assert max_product([5, 20, 14, 29, 19, 46, 36, 58], 5) == 2900": {
+      "result": true,
+      "time": 0.0344090461730957,
+      "error": null
+    },
+    "assert max_product([11, 21, 9, 38, 22, 47, 44, 57], 6) == 412566": {
+      "result": true,
+      "time": 0.03630542755126953,
+      "error": null
+    },
+    "assert max_product([8, 22, 8, 28, 26, 50, 39, 63], 3) == 176": {
+      "result": true,
+      "time": 0.03401446342468262,
+      "error": null
+    },
+    "assert max_product([10, 22, 12, 29, 25, 46, 45, 62], 8) == 18195760": {
+      "result": true,
+      "time": 0.03624224662780762,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

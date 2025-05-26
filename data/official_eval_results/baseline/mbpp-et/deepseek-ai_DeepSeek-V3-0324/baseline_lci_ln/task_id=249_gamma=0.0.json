@@ -1,0 +1,519 @@
+{
+  "code": "def intersection_array(arr1, arr2):\n    # Initialize an empty list to store the intersection elements\n    intersection = []\n    \n    # Iterate over each element in the first array\n    for element in arr1:\n        # Check if the element is present in the second array\n        if element in arr2:\n            # Also check if the element is not already in the intersection list\n            if element not in intersection:\n                # Add the element to the intersection list\n                intersection.append(element)\n    \n    # Return the intersection list\n    return intersection",
+  "results": {
+    "assert intersection_array([1, 2, 3, 5, 7, 8, 9, 10],[1, 2, 4, 8, 9])==[1, 2, 8, 9]": {
+      "result": true,
+      "time": 0.04476428031921387,
+      "error": null
+    },
+    "assert intersection_array([1, 2, 3, 5, 7, 8, 9, 10],[3,5,7,9])==[3,5,7,9]": {
+      "result": true,
+      "time": 0.045946598052978516,
+      "error": null
+    },
+    "assert intersection_array([1, 2, 3, 5, 7, 8, 9, 10],[10,20,30,40])==[10]": {
+      "result": true,
+      "time": 0.04604601860046387,
+      "error": null
+    },
+    "assert intersection_array([5, 3, 6, 2, 8, 9, 9, 13], [5, 4, 8, 9, 6]) == [5, 8, 9, 6]": {
+      "result": false,
+      "time": 0.043434858322143555,
+      "error": null
+    },
+    "assert intersection_array([3, 6, 1, 8, 11, 10, 13, 15], [3, 4, 9, 4, 14]) == [3]": {
+      "result": true,
+      "time": 0.03873181343078613,
+      "error": null
+    },
+    "assert intersection_array([2, 3, 7, 7, 10, 3, 5, 14], [6, 4, 7, 5, 10]) == [7, 5, 10]": {
+      "result": false,
+      "time": 0.04661202430725098,
+      "error": null
+    },
+    "assert intersection_array([1, 4, 2, 3, 5, 3, 9, 15], [2, 1, 6, 10, 12]) == [2, 1]": {
+      "result": false,
+      "time": 0.04225039482116699,
+      "error": null
+    },
+    "assert intersection_array([1, 3, 5, 3, 7, 7, 14, 13], [1, 1, 8, 11, 11]) == [1, 1]": {
+      "result": false,
+      "time": 0.041912078857421875,
+      "error": null
+    },
+    "assert intersection_array([1, 5, 1, 7, 12, 3, 14, 10], [6, 6, 5, 6, 7]) == [5, 7]": {
+      "result": true,
+      "time": 0.0413060188293457,
+      "error": null
+    },
+    "assert intersection_array([1, 6, 6, 2, 9, 4, 13, 8], [4, 5, 4, 6, 8]) == [4, 4, 6, 8]": {
+      "result": false,
+      "time": 0.04290914535522461,
+      "error": null
+    },
+    "assert intersection_array([3, 1, 2, 1, 4, 12, 7, 14], [4, 4, 2, 6, 5]) == [4, 4, 2]": {
+      "result": false,
+      "time": 0.043236494064331055,
+      "error": null
+    },
+    "assert intersection_array([6, 2, 7, 7, 8, 3, 11, 8], [4, 7, 5, 12, 5]) == [7]": {
+      "result": true,
+      "time": 0.042263031005859375,
+      "error": null
+    },
+    "assert intersection_array([2, 3, 3, 8, 8, 3, 11, 8], [1, 3, 2, 4, 6]) == [3, 2]": {
+      "result": false,
+      "time": 0.041445255279541016,
+      "error": null
+    },
+    "assert intersection_array([2, 5, 4, 10, 6, 3, 11, 10], [2, 6, 7, 7, 7]) == [2, 6]": {
+      "result": true,
+      "time": 0.04385542869567871,
+      "error": null
+    },
+    "assert intersection_array([6, 3, 5, 10, 8, 9, 12, 10], [1, 7, 8, 8, 5]) == [8, 8, 5]": {
+      "result": false,
+      "time": 0.04773378372192383,
+      "error": null
+    },
+    "assert intersection_array([4, 3, 7, 6, 12, 11, 8, 8], [6, 1, 9, 9, 10]) == [6]": {
+      "result": true,
+      "time": 0.05159354209899902,
+      "error": null
+    },
+    "assert intersection_array([2, 5, 5, 4, 10, 7, 12, 11], [4, 7, 1, 7, 9]) == [4, 7, 7]": {
+      "result": false,
+      "time": 0.039156198501586914,
+      "error": null
+    },
+    "assert intersection_array([4, 5, 3, 1, 3, 12, 4, 12], [2, 4, 6, 13, 13]) == [4]": {
+      "result": true,
+      "time": 0.042490482330322266,
+      "error": null
+    },
+    "assert intersection_array([4, 2, 3, 7, 5, 13, 13, 8], [2, 5, 6, 5, 12]) == [2, 5, 5]": {
+      "result": false,
+      "time": 0.03977489471435547,
+      "error": null
+    },
+    "assert intersection_array([3, 5, 3, 4, 3, 6, 7, 14], [4, 3, 2, 9, 10]) == [4, 3]": {
+      "result": false,
+      "time": 0.04103493690490723,
+      "error": null
+    },
+    "assert intersection_array([2, 4, 7, 8, 8, 5, 5, 6], [5, 1, 2, 9, 4]) == [5, 2, 4]": {
+      "result": false,
+      "time": 0.04284071922302246,
+      "error": null
+    },
+    "assert intersection_array([2, 4, 3, 10, 8, 3, 5, 15], [1, 6, 5, 9, 11]) == [5]": {
+      "result": true,
+      "time": 0.04146170616149902,
+      "error": null
+    },
+    "assert intersection_array([3, 5, 5, 5, 5, 9, 5, 8], [2, 1, 6, 8, 14]) == [8]": {
+      "result": true,
+      "time": 0.04640817642211914,
+      "error": null
+    },
+    "assert intersection_array([2, 3, 4, 6, 10, 5, 7, 11], [6, 7, 9, 4, 12]) == [6, 7, 4]": {
+      "result": false,
+      "time": 0.04516720771789551,
+      "error": null
+    },
+    "assert intersection_array([2, 4, 4, 8, 6, 9, 4, 10], [4, 6, 7, 9, 7]) == [4, 6, 9]": {
+      "result": true,
+      "time": 0.051239728927612305,
+      "error": null
+    },
+    "assert intersection_array([4, 6, 8, 7, 11, 8, 8, 13], [2, 1, 3, 4, 4]) == [4, 4]": {
+      "result": false,
+      "time": 0.04035305976867676,
+      "error": null
+    },
+    "assert intersection_array([4, 4, 3, 6, 9, 12, 11, 10], [1, 1, 8, 5, 9]) == [9]": {
+      "result": true,
+      "time": 0.03852105140686035,
+      "error": null
+    },
+    "assert intersection_array([5, 5, 3, 1, 8, 11, 9, 11], [5, 4, 7, 10, 12]) == [5]": {
+      "result": true,
+      "time": 0.04376554489135742,
+      "error": null
+    },
+    "assert intersection_array([4, 3, 8, 1, 4, 12, 7, 14], [6, 7, 1, 13, 11]) == [7, 1]": {
+      "result": false,
+      "time": 0.041445016860961914,
+      "error": null
+    },
+    "assert intersection_array([4, 4, 8, 3, 8, 5, 9, 12], [3, 5, 8, 9, 5]) == [3, 5, 8, 9, 5]": {
+      "result": false,
+      "time": 0.045899152755737305,
+      "error": null
+    },
+    "assert intersection_array([5, 4, 6, 6, 12, 9, 9, 11], [1, 5, 6, 5, 10]) == [5, 6, 5]": {
+      "result": false,
+      "time": 0.04045510292053223,
+      "error": null
+    },
+    "assert intersection_array([4, 6, 5, 1, 11, 8, 9, 14], [1, 4, 9, 10, 4]) == [1, 4, 9, 4]": {
+      "result": false,
+      "time": 0.04133963584899902,
+      "error": null
+    },
+    "assert intersection_array([6, 1, 6, 10, 10, 9, 8, 14], [2, 5, 6, 3, 14]) == [6, 14]": {
+      "result": true,
+      "time": 0.04478812217712402,
+      "error": null
+    },
+    "assert intersection_array([3, 7, 4, 3, 11, 12, 8, 15], [3, 2, 4, 10, 5]) == [3, 4]": {
+      "result": true,
+      "time": 0.04194068908691406,
+      "error": null
+    },
+    "assert intersection_array([2, 4, 8, 3, 9, 10, 14, 5], [4, 3, 3, 4, 11]) == [4, 3, 3, 4]": {
+      "result": false,
+      "time": 0.04298663139343262,
+      "error": null
+    },
+    "assert intersection_array([2, 2, 1, 5, 3, 4, 8, 13], [4, 2, 3, 10, 9]) == [4, 2, 3]": {
+      "result": false,
+      "time": 0.04484295845031738,
+      "error": null
+    },
+    "assert intersection_array([2, 3, 5, 5, 2, 7, 9, 15], [3, 1, 12, 5]) == [3, 5]": {
+      "result": true,
+      "time": 0.048362016677856445,
+      "error": null
+    },
+    "assert intersection_array([3, 7, 4, 8, 6, 13, 14, 15], [3, 8, 9, 12]) == [3, 8]": {
+      "result": true,
+      "time": 0.03516364097595215,
+      "error": null
+    },
+    "assert intersection_array([1, 2, 8, 6, 11, 5, 11, 9], [5, 5, 2, 11]) == [5, 5, 2, 11]": {
+      "result": false,
+      "time": 0.04185819625854492,
+      "error": null
+    },
+    "assert intersection_array([5, 1, 1, 8, 9, 12, 5, 15], [3, 1, 5, 12]) == [1, 5, 12]": {
+      "result": false,
+      "time": 0.043392181396484375,
+      "error": null
+    },
+    "assert intersection_array([2, 7, 2, 9, 12, 9, 14, 11], [6, 6, 12, 14]) == [12, 14]": {
+      "result": true,
+      "time": 0.04131627082824707,
+      "error": null
+    },
+    "assert intersection_array([5, 2, 4, 5, 7, 11, 8, 8], [6, 8, 4, 6]) == [8, 4]": {
+      "result": false,
+      "time": 0.04555511474609375,
+      "error": null
+    },
+    "assert intersection_array([1, 4, 3, 8, 5, 7, 6, 8], [2, 6, 2, 8]) == [6, 8]": {
+      "result": false,
+      "time": 0.04324150085449219,
+      "error": null
+    },
+    "assert intersection_array([3, 1, 4, 6, 6, 5, 13, 5], [2, 7, 7, 13]) == [13]": {
+      "result": true,
+      "time": 0.036339521408081055,
+      "error": null
+    },
+    "assert intersection_array([6, 3, 5, 8, 7, 4, 13, 8], [6, 9, 12, 11]) == [6]": {
+      "result": true,
+      "time": 0.048506736755371094,
+      "error": null
+    },
+    "assert intersection_array([5, 4, 8, 7, 8, 7, 6, 14], [4, 5, 7, 12]) == [4, 5, 7]": {
+      "result": false,
+      "time": 0.0342862606048584,
+      "error": null
+    },
+    "assert intersection_array([5, 6, 2, 3, 8, 6, 5, 6], [1, 1, 2, 12]) == [2]": {
+      "result": true,
+      "time": 0.029575109481811523,
+      "error": null
+    },
+    "assert intersection_array([4, 5, 8, 9, 2, 9, 13, 15], [2, 7, 8, 10]) == [2, 8]": {
+      "result": false,
+      "time": 0.038889408111572266,
+      "error": null
+    },
+    "assert intersection_array([3, 2, 8, 5, 5, 12, 5, 8], [6, 3, 2, 14]) == [3, 2]": {
+      "result": true,
+      "time": 0.03293895721435547,
+      "error": null
+    },
+    "assert intersection_array([1, 7, 4, 8, 8, 11, 8, 14], [6, 10, 4, 4]) == [4, 4]": {
+      "result": false,
+      "time": 0.047127723693847656,
+      "error": null
+    },
+    "assert intersection_array([2, 1, 2, 2, 10, 6, 13, 7], [8, 6, 12, 5]) == [6]": {
+      "result": true,
+      "time": 0.038434743881225586,
+      "error": null
+    },
+    "assert intersection_array([6, 7, 5, 6, 8, 7, 8, 12], [2, 10, 5, 13]) == [5]": {
+      "result": true,
+      "time": 0.04397130012512207,
+      "error": null
+    },
+    "assert intersection_array([2, 2, 8, 5, 8, 12, 12, 7], [7, 2, 8, 5]) == [7, 2, 8, 5]": {
+      "result": false,
+      "time": 0.03840994834899902,
+      "error": null
+    },
+    "assert intersection_array([4, 5, 6, 6, 6, 13, 12, 15], [8, 8, 12, 7]) == [12]": {
+      "result": true,
+      "time": 0.03991198539733887,
+      "error": null
+    },
+    "assert intersection_array([4, 3, 3, 7, 9, 6, 4, 12], [3, 9, 5, 14]) == [3, 9]": {
+      "result": true,
+      "time": 0.0357208251953125,
+      "error": null
+    },
+    "assert intersection_array([3, 7, 6, 5, 11, 5, 8, 12], [5, 10, 3, 6]) == [5, 3, 6]": {
+      "result": false,
+      "time": 0.03740549087524414,
+      "error": null
+    },
+    "assert intersection_array([3, 5, 6, 5, 3, 8, 4, 8], [6, 10, 2, 6]) == [6, 6]": {
+      "result": false,
+      "time": 0.035350799560546875,
+      "error": null
+    },
+    "assert intersection_array([4, 3, 4, 6, 4, 13, 5, 10], [7, 2, 7, 10]) == [10]": {
+      "result": true,
+      "time": 0.036058902740478516,
+      "error": null
+    },
+    "assert intersection_array([1, 7, 1, 10, 5, 13, 9, 5], [7, 7, 9, 11]) == [7, 7, 9]": {
+      "result": false,
+      "time": 0.0395662784576416,
+      "error": null
+    },
+    "assert intersection_array([4, 3, 5, 5, 7, 9, 4, 11], [6, 10, 9, 5]) == [9, 5]": {
+      "result": false,
+      "time": 0.03342485427856445,
+      "error": null
+    },
+    "assert intersection_array([1, 5, 8, 4, 12, 11, 13, 11], [5, 3, 5, 7]) == [5, 5]": {
+      "result": false,
+      "time": 0.04106450080871582,
+      "error": null
+    },
+    "assert intersection_array([1, 6, 4, 4, 9, 4, 10, 13], [1, 8, 12, 10]) == [1, 10]": {
+      "result": true,
+      "time": 0.035475730895996094,
+      "error": null
+    },
+    "assert intersection_array([6, 5, 5, 8, 5, 11, 10, 11], [6, 9, 12, 7]) == [6]": {
+      "result": true,
+      "time": 0.03456521034240723,
+      "error": null
+    },
+    "assert intersection_array([1, 1, 4, 1, 8, 5, 7, 14], [5, 1, 2, 14]) == [5, 1, 14]": {
+      "result": false,
+      "time": 0.03792428970336914,
+      "error": null
+    },
+    "assert intersection_array([2, 2, 8, 2, 12, 6, 7, 10], [5, 6, 9, 13]) == [6]": {
+      "result": true,
+      "time": 0.03522372245788574,
+      "error": null
+    },
+    "assert intersection_array([3, 5, 2, 9, 9, 7, 13, 7], [4, 8, 8, 5]) == [5]": {
+      "result": true,
+      "time": 0.03663229942321777,
+      "error": null
+    },
+    "assert intersection_array([6, 1, 7, 8, 10, 13, 9, 6], [3, 3, 10, 7]) == [10, 7]": {
+      "result": false,
+      "time": 0.0357666015625,
+      "error": null
+    },
+    "assert intersection_array([5, 5, 4, 4, 12, 6, 7, 14], [5, 7, 9, 14]) == [5, 7, 14]": {
+      "result": true,
+      "time": 0.04149365425109863,
+      "error": null
+    },
+    "assert intersection_array([5, 6, 6, 10, 4, 4, 4, 14], [7, 5, 3, 8]) == [5]": {
+      "result": true,
+      "time": 0.03249835968017578,
+      "error": null
+    },
+    "assert intersection_array([2, 2, 7, 8, 11, 8, 8, 6], [11, 22, 33, 36]) == [11]": {
+      "result": true,
+      "time": 0.04649639129638672,
+      "error": null
+    },
+    "assert intersection_array([4, 3, 3, 9, 5, 8, 10, 14], [15, 18, 28, 40]) == []": {
+      "result": true,
+      "time": 0.04001975059509277,
+      "error": null
+    },
+    "assert intersection_array([4, 1, 1, 3, 8, 6, 14, 8], [8, 24, 28, 38]) == [8]": {
+      "result": true,
+      "time": 0.041020870208740234,
+      "error": null
+    },
+    "assert intersection_array([6, 2, 7, 3, 6, 5, 13, 6], [13, 15, 30, 45]) == [13]": {
+      "result": true,
+      "time": 0.0433192253112793,
+      "error": null
+    },
+    "assert intersection_array([1, 2, 5, 1, 9, 12, 8, 14], [10, 16, 28, 39]) == []": {
+      "result": true,
+      "time": 0.061711788177490234,
+      "error": null
+    },
+    "assert intersection_array([5, 6, 6, 8, 3, 7, 8, 7], [10, 21, 34, 40]) == []": {
+      "result": true,
+      "time": 0.040018320083618164,
+      "error": null
+    },
+    "assert intersection_array([1, 6, 1, 6, 3, 11, 11, 9], [8, 24, 28, 40]) == []": {
+      "result": true,
+      "time": 0.03998923301696777,
+      "error": null
+    },
+    "assert intersection_array([3, 3, 1, 5, 9, 8, 9, 14], [5, 24, 34, 41]) == [5]": {
+      "result": true,
+      "time": 0.03601861000061035,
+      "error": null
+    },
+    "assert intersection_array([5, 1, 2, 8, 10, 5, 5, 12], [9, 22, 25, 41]) == []": {
+      "result": true,
+      "time": 0.03509783744812012,
+      "error": null
+    },
+    "assert intersection_array([1, 4, 8, 10, 12, 13, 8, 13], [7, 16, 30, 37]) == []": {
+      "result": true,
+      "time": 0.04993414878845215,
+      "error": null
+    },
+    "assert intersection_array([3, 2, 6, 2, 11, 12, 4, 15], [9, 17, 29, 41]) == []": {
+      "result": true,
+      "time": 0.04181671142578125,
+      "error": null
+    },
+    "assert intersection_array([1, 6, 5, 3, 2, 8, 7, 8], [8, 23, 33, 38]) == [8]": {
+      "result": true,
+      "time": 0.03633427619934082,
+      "error": null
+    },
+    "assert intersection_array([5, 1, 4, 6, 9, 7, 11, 10], [8, 24, 31, 35]) == []": {
+      "result": true,
+      "time": 0.040552616119384766,
+      "error": null
+    },
+    "assert intersection_array([3, 4, 2, 4, 8, 6, 13, 5], [12, 24, 26, 35]) == []": {
+      "result": true,
+      "time": 0.03619217872619629,
+      "error": null
+    },
+    "assert intersection_array([6, 6, 6, 7, 12, 11, 12, 9], [8, 16, 32, 36]) == []": {
+      "result": true,
+      "time": 0.042305707931518555,
+      "error": null
+    },
+    "assert intersection_array([6, 7, 4, 2, 10, 9, 14, 12], [6, 15, 34, 45]) == [6]": {
+      "result": true,
+      "time": 0.03672146797180176,
+      "error": null
+    },
+    "assert intersection_array([5, 6, 4, 6, 8, 3, 11, 13], [11, 16, 31, 36]) == [11]": {
+      "result": true,
+      "time": 0.035470008850097656,
+      "error": null
+    },
+    "assert intersection_array([3, 5, 2, 10, 10, 11, 10, 14], [14, 17, 25, 35]) == [14]": {
+      "result": true,
+      "time": 0.037873268127441406,
+      "error": null
+    },
+    "assert intersection_array([2, 2, 2, 2, 4, 8, 6, 5], [9, 18, 30, 37]) == []": {
+      "result": true,
+      "time": 0.042221784591674805,
+      "error": null
+    },
+    "assert intersection_array([6, 7, 8, 10, 6, 7, 12, 7], [7, 18, 27, 36]) == [7]": {
+      "result": true,
+      "time": 0.042035579681396484,
+      "error": null
+    },
+    "assert intersection_array([2, 4, 8, 3, 12, 9, 13, 7], [12, 20, 35, 45]) == [12]": {
+      "result": true,
+      "time": 0.03731179237365723,
+      "error": null
+    },
+    "assert intersection_array([5, 6, 6, 1, 3, 11, 9, 8], [12, 17, 32, 38]) == []": {
+      "result": true,
+      "time": 0.04099750518798828,
+      "error": null
+    },
+    "assert intersection_array([4, 5, 3, 9, 10, 4, 7, 11], [10, 18, 27, 39]) == [10]": {
+      "result": true,
+      "time": 0.04262256622314453,
+      "error": null
+    },
+    "assert intersection_array([3, 6, 4, 4, 6, 11, 14, 12], [6, 21, 31, 39]) == [6]": {
+      "result": true,
+      "time": 0.040619611740112305,
+      "error": null
+    },
+    "assert intersection_array([5, 7, 5, 2, 12, 13, 12, 10], [10, 15, 26, 37]) == [10]": {
+      "result": true,
+      "time": 0.04018998146057129,
+      "error": null
+    },
+    "assert intersection_array([1, 5, 2, 7, 2, 10, 9, 14], [8, 24, 31, 40]) == []": {
+      "result": true,
+      "time": 0.04315924644470215,
+      "error": null
+    },
+    "assert intersection_array([4, 5, 8, 2, 12, 7, 10, 6], [10, 17, 25, 45]) == [10]": {
+      "result": true,
+      "time": 0.037416696548461914,
+      "error": null
+    },
+    "assert intersection_array([1, 3, 5, 7, 8, 4, 5, 5], [9, 23, 35, 38]) == []": {
+      "result": true,
+      "time": 0.0381772518157959,
+      "error": null
+    },
+    "assert intersection_array([3, 6, 7, 9, 3, 3, 9, 6], [14, 15, 29, 40]) == []": {
+      "result": true,
+      "time": 0.038338422775268555,
+      "error": null
+    },
+    "assert intersection_array([6, 5, 3, 10, 7, 7, 7, 8], [9, 16, 33, 45]) == []": {
+      "result": true,
+      "time": 0.03634452819824219,
+      "error": null
+    },
+    "assert intersection_array([2, 1, 6, 10, 6, 6, 14, 11], [15, 25, 29, 43]) == []": {
+      "result": true,
+      "time": 0.02852487564086914,
+      "error": null
+    },
+    "assert intersection_array([5, 7, 6, 7, 6, 7, 10, 13], [8, 21, 30, 37]) == []": {
+      "result": true,
+      "time": 0.038912057876586914,
+      "error": null
+    },
+    "assert intersection_array([2, 1, 6, 1, 12, 4, 9, 8], [6, 25, 32, 42]) == [6]": {
+      "result": true,
+      "time": 0.03584480285644531,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6568627450980392,
+  "general_error": "",
+  "has_testcase_error": false
+}

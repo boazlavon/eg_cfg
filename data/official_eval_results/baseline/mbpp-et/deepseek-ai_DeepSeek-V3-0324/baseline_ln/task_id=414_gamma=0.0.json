@@ -1,0 +1,519 @@
+{
+  "code": "def overlapping(seq1, seq2):\n    return any(item in seq2 for item in seq1)",
+  "results": {
+    "assert overlapping([1,2,3,4,5],[6,7,8,9]) == False": {
+      "result": true,
+      "time": 0.04199862480163574,
+      "error": null
+    },
+    "assert overlapping([1,2,3],[4,5,6]) == False": {
+      "result": true,
+      "time": 0.04739546775817871,
+      "error": null
+    },
+    "assert overlapping([1,4,5],[1,4,5]) == True": {
+      "result": true,
+      "time": 0.04594898223876953,
+      "error": null
+    },
+    "assert overlapping([1, 3, 7, 9, 1], [6, 11, 4, 12]) == 0": {
+      "result": true,
+      "time": 0.04529523849487305,
+      "error": null
+    },
+    "assert overlapping([2, 2, 5, 3, 2], [1, 9, 12, 6]) == 0": {
+      "result": true,
+      "time": 0.043020009994506836,
+      "error": null
+    },
+    "assert overlapping([3, 6, 3, 3, 9], [1, 6, 11, 14]) == 1": {
+      "result": true,
+      "time": 0.044545888900756836,
+      "error": null
+    },
+    "assert overlapping([3, 6, 5, 9, 6], [10, 3, 12, 13]) == 1": {
+      "result": true,
+      "time": 0.04249238967895508,
+      "error": null
+    },
+    "assert overlapping([2, 5, 2, 2, 5], [1, 8, 12, 13]) == 0": {
+      "result": true,
+      "time": 0.04893922805786133,
+      "error": null
+    },
+    "assert overlapping([1, 7, 8, 2, 7], [4, 6, 13, 8]) == 1": {
+      "result": true,
+      "time": 0.04699969291687012,
+      "error": null
+    },
+    "assert overlapping([1, 5, 1, 1, 7], [2, 11, 7, 4]) == 1": {
+      "result": true,
+      "time": 0.043531179428100586,
+      "error": null
+    },
+    "assert overlapping([3, 2, 7, 7, 4], [3, 11, 5, 14]) == 1": {
+      "result": true,
+      "time": 0.06116175651550293,
+      "error": null
+    },
+    "assert overlapping([3, 7, 1, 6, 7], [3, 2, 6, 13]) == 1": {
+      "result": true,
+      "time": 0.04078054428100586,
+      "error": null
+    },
+    "assert overlapping([5, 6, 8, 4, 4], [7, 3, 8, 11]) == 1": {
+      "result": true,
+      "time": 0.05501675605773926,
+      "error": null
+    },
+    "assert overlapping([3, 4, 5, 2, 3], [10, 11, 9, 6]) == 0": {
+      "result": true,
+      "time": 0.042885780334472656,
+      "error": null
+    },
+    "assert overlapping([5, 4, 4, 2, 5], [8, 6, 13, 12]) == 0": {
+      "result": true,
+      "time": 0.0375516414642334,
+      "error": null
+    },
+    "assert overlapping([3, 3, 3, 3, 9], [2, 3, 12, 7]) == 1": {
+      "result": true,
+      "time": 0.04184365272521973,
+      "error": null
+    },
+    "assert overlapping([6, 1, 3, 5, 5], [2, 7, 3, 13]) == 1": {
+      "result": true,
+      "time": 0.04457449913024902,
+      "error": null
+    },
+    "assert overlapping([4, 5, 4, 7, 1], [6, 8, 6, 14]) == 0": {
+      "result": true,
+      "time": 0.05338096618652344,
+      "error": null
+    },
+    "assert overlapping([6, 1, 1, 5, 2], [6, 5, 10, 8]) == 1": {
+      "result": true,
+      "time": 0.05422377586364746,
+      "error": null
+    },
+    "assert overlapping([5, 1, 4, 3, 10], [9, 10, 6, 12]) == 1": {
+      "result": true,
+      "time": 0.04083418846130371,
+      "error": null
+    },
+    "assert overlapping([2, 5, 7, 9, 1], [6, 10, 11, 4]) == 0": {
+      "result": true,
+      "time": 0.046170711517333984,
+      "error": null
+    },
+    "assert overlapping([1, 7, 8, 3, 1], [9, 11, 12, 12]) == 0": {
+      "result": true,
+      "time": 0.056746721267700195,
+      "error": null
+    },
+    "assert overlapping([6, 4, 4, 5, 2], [7, 8, 3, 4]) == 1": {
+      "result": true,
+      "time": 0.0471644401550293,
+      "error": null
+    },
+    "assert overlapping([4, 1, 5, 6, 8], [1, 4, 9, 14]) == 1": {
+      "result": true,
+      "time": 0.05457901954650879,
+      "error": null
+    },
+    "assert overlapping([5, 2, 4, 4, 2], [4, 7, 9, 6]) == 1": {
+      "result": true,
+      "time": 0.04538154602050781,
+      "error": null
+    },
+    "assert overlapping([2, 1, 3, 8, 9], [9, 4, 6, 4]) == 1": {
+      "result": true,
+      "time": 0.042755842208862305,
+      "error": null
+    },
+    "assert overlapping([5, 2, 5, 8, 3], [6, 7, 5, 14]) == 1": {
+      "result": true,
+      "time": 0.046514272689819336,
+      "error": null
+    },
+    "assert overlapping([5, 3, 2, 6, 10], [4, 9, 9, 11]) == 0": {
+      "result": true,
+      "time": 0.05173087120056152,
+      "error": null
+    },
+    "assert overlapping([6, 7, 7, 8, 10], [7, 6, 10, 12]) == 1": {
+      "result": true,
+      "time": 0.05697226524353027,
+      "error": null
+    },
+    "assert overlapping([3, 6, 4, 3, 2], [1, 7, 11, 11]) == 0": {
+      "result": true,
+      "time": 0.05305981636047363,
+      "error": null
+    },
+    "assert overlapping([6, 5, 8, 4, 5], [2, 4, 12, 12]) == 1": {
+      "result": true,
+      "time": 0.06897878646850586,
+      "error": null
+    },
+    "assert overlapping([5, 7, 5, 9, 5], [2, 3, 12, 12]) == 0": {
+      "result": true,
+      "time": 0.05161595344543457,
+      "error": null
+    },
+    "assert overlapping([1, 7, 4, 7, 9], [7, 11, 8, 12]) == 1": {
+      "result": true,
+      "time": 0.05694270133972168,
+      "error": null
+    },
+    "assert overlapping([6, 4, 1, 1, 10], [2, 5, 5, 10]) == 1": {
+      "result": true,
+      "time": 0.053223609924316406,
+      "error": null
+    },
+    "assert overlapping([3, 7, 6, 8, 8], [10, 11, 6, 10]) == 1": {
+      "result": true,
+      "time": 0.06553530693054199,
+      "error": null
+    },
+    "assert overlapping([3, 1, 3, 9, 5], [9, 3, 10, 6]) == 1": {
+      "result": true,
+      "time": 0.05348706245422363,
+      "error": null
+    },
+    "assert overlapping([6, 7, 5], [6, 10, 2]) == 1": {
+      "result": true,
+      "time": 0.06890606880187988,
+      "error": null
+    },
+    "assert overlapping([6, 1, 5], [7, 8, 2]) == 0": {
+      "result": true,
+      "time": 0.0539546012878418,
+      "error": null
+    },
+    "assert overlapping([2, 3, 2], [6, 10, 3]) == 1": {
+      "result": true,
+      "time": 0.05901336669921875,
+      "error": null
+    },
+    "assert overlapping([4, 7, 1], [4, 1, 8]) == 1": {
+      "result": true,
+      "time": 0.06032681465148926,
+      "error": null
+    },
+    "assert overlapping([4, 5, 3], [9, 5, 8]) == 1": {
+      "result": true,
+      "time": 0.05896449089050293,
+      "error": null
+    },
+    "assert overlapping([3, 5, 3], [7, 2, 1]) == 0": {
+      "result": true,
+      "time": 0.05402016639709473,
+      "error": null
+    },
+    "assert overlapping([6, 5, 6], [6, 10, 4]) == 1": {
+      "result": true,
+      "time": 0.07011556625366211,
+      "error": null
+    },
+    "assert overlapping([5, 4, 2], [9, 6, 4]) == 1": {
+      "result": true,
+      "time": 0.05944180488586426,
+      "error": null
+    },
+    "assert overlapping([4, 7, 2], [6, 4, 3]) == 1": {
+      "result": true,
+      "time": 0.06002616882324219,
+      "error": null
+    },
+    "assert overlapping([3, 3, 2], [7, 6, 3]) == 1": {
+      "result": true,
+      "time": 0.05463218688964844,
+      "error": null
+    },
+    "assert overlapping([1, 7, 6], [6, 6, 2]) == 1": {
+      "result": true,
+      "time": 0.056799888610839844,
+      "error": null
+    },
+    "assert overlapping([2, 1, 3], [9, 1, 1]) == 1": {
+      "result": true,
+      "time": 0.05638527870178223,
+      "error": null
+    },
+    "assert overlapping([2, 5, 1], [8, 2, 8]) == 1": {
+      "result": true,
+      "time": 0.0522761344909668,
+      "error": null
+    },
+    "assert overlapping([1, 1, 8], [9, 3, 4]) == 0": {
+      "result": true,
+      "time": 0.05910158157348633,
+      "error": null
+    },
+    "assert overlapping([6, 2, 7], [6, 5, 7]) == 1": {
+      "result": true,
+      "time": 0.05513143539428711,
+      "error": null
+    },
+    "assert overlapping([2, 1, 2], [2, 8, 7]) == 1": {
+      "result": true,
+      "time": 0.042088985443115234,
+      "error": null
+    },
+    "assert overlapping([5, 6, 1], [2, 2, 3]) == 0": {
+      "result": true,
+      "time": 0.057584285736083984,
+      "error": null
+    },
+    "assert overlapping([6, 2, 2], [8, 10, 2]) == 1": {
+      "result": true,
+      "time": 0.05385613441467285,
+      "error": null
+    },
+    "assert overlapping([3, 7, 6], [4, 4, 3]) == 1": {
+      "result": true,
+      "time": 0.061103105545043945,
+      "error": null
+    },
+    "assert overlapping([5, 4, 6], [8, 3, 6]) == 1": {
+      "result": true,
+      "time": 0.04876351356506348,
+      "error": null
+    },
+    "assert overlapping([6, 1, 1], [3, 3, 3]) == 0": {
+      "result": true,
+      "time": 0.059401750564575195,
+      "error": null
+    },
+    "assert overlapping([1, 5, 5], [6, 6, 2]) == 0": {
+      "result": true,
+      "time": 0.059238433837890625,
+      "error": null
+    },
+    "assert overlapping([5, 3, 5], [6, 5, 10]) == 1": {
+      "result": true,
+      "time": 0.06776142120361328,
+      "error": null
+    },
+    "assert overlapping([3, 4, 2], [5, 2, 7]) == 1": {
+      "result": true,
+      "time": 0.05518054962158203,
+      "error": null
+    },
+    "assert overlapping([1, 2, 3], [7, 8, 6]) == 0": {
+      "result": true,
+      "time": 0.06144285202026367,
+      "error": null
+    },
+    "assert overlapping([5, 3, 5], [8, 8, 3]) == 1": {
+      "result": true,
+      "time": 0.05782198905944824,
+      "error": null
+    },
+    "assert overlapping([2, 3, 2], [8, 3, 8]) == 1": {
+      "result": true,
+      "time": 0.05888009071350098,
+      "error": null
+    },
+    "assert overlapping([2, 7, 5], [9, 9, 8]) == 0": {
+      "result": true,
+      "time": 0.0573575496673584,
+      "error": null
+    },
+    "assert overlapping([5, 7, 2], [3, 7, 11]) == 1": {
+      "result": true,
+      "time": 0.05413508415222168,
+      "error": null
+    },
+    "assert overlapping([1, 4, 8], [2, 10, 10]) == 0": {
+      "result": true,
+      "time": 0.06540989875793457,
+      "error": null
+    },
+    "assert overlapping([1, 1, 1], [9, 2, 3]) == 0": {
+      "result": true,
+      "time": 0.057715415954589844,
+      "error": null
+    },
+    "assert overlapping([1, 3, 5], [6, 9, 7]) == 0": {
+      "result": true,
+      "time": 0.058890342712402344,
+      "error": null
+    },
+    "assert overlapping([4, 2, 4], [9, 7, 5]) == 0": {
+      "result": true,
+      "time": 0.05512070655822754,
+      "error": null
+    },
+    "assert overlapping([4, 6, 6], [1, 6, 10]) == 1": {
+      "result": true,
+      "time": 0.05448627471923828,
+      "error": null
+    },
+    "assert overlapping([3, 2, 7], [2, 7, 1]) == 1": {
+      "result": true,
+      "time": 0.05193066596984863,
+      "error": null
+    },
+    "assert overlapping([6, 3, 1], [5, 5, 3]) == 1": {
+      "result": true,
+      "time": 0.04358315467834473,
+      "error": null
+    },
+    "assert overlapping([6, 4, 3], [5, 3, 1]) == 1": {
+      "result": true,
+      "time": 0.04609322547912598,
+      "error": null
+    },
+    "assert overlapping([3, 8, 1], [6, 3, 10]) == 1": {
+      "result": true,
+      "time": 0.047564029693603516,
+      "error": null
+    },
+    "assert overlapping([6, 2, 4], [2, 6, 8]) == 1": {
+      "result": true,
+      "time": 0.043566226959228516,
+      "error": null
+    },
+    "assert overlapping([6, 4, 5], [3, 8, 4]) == 1": {
+      "result": true,
+      "time": 0.04954028129577637,
+      "error": null
+    },
+    "assert overlapping([3, 6, 6], [2, 2, 7]) == 0": {
+      "result": true,
+      "time": 0.040682315826416016,
+      "error": null
+    },
+    "assert overlapping([4, 8, 10], [1, 6, 4]) == 1": {
+      "result": true,
+      "time": 0.05485939979553223,
+      "error": null
+    },
+    "assert overlapping([1, 9, 7], [1, 9, 6]) == 1": {
+      "result": true,
+      "time": 0.04528093338012695,
+      "error": null
+    },
+    "assert overlapping([1, 3, 7], [5, 6, 3]) == 1": {
+      "result": true,
+      "time": 0.049130916595458984,
+      "error": null
+    },
+    "assert overlapping([1, 6, 10], [5, 3, 7]) == 0": {
+      "result": true,
+      "time": 0.04406118392944336,
+      "error": null
+    },
+    "assert overlapping([5, 4, 10], [4, 1, 1]) == 1": {
+      "result": true,
+      "time": 0.03882718086242676,
+      "error": null
+    },
+    "assert overlapping([2, 7, 2], [4, 2, 10]) == 1": {
+      "result": true,
+      "time": 0.03998589515686035,
+      "error": null
+    },
+    "assert overlapping([6, 1, 3], [5, 4, 1]) == 1": {
+      "result": true,
+      "time": 0.04421401023864746,
+      "error": null
+    },
+    "assert overlapping([3, 1, 8], [4, 7, 10]) == 0": {
+      "result": true,
+      "time": 0.041065216064453125,
+      "error": null
+    },
+    "assert overlapping([2, 6, 10], [2, 8, 3]) == 1": {
+      "result": true,
+      "time": 0.04578447341918945,
+      "error": null
+    },
+    "assert overlapping([5, 1, 2], [2, 1, 8]) == 1": {
+      "result": true,
+      "time": 0.048744916915893555,
+      "error": null
+    },
+    "assert overlapping([3, 4, 2], [6, 4, 4]) == 1": {
+      "result": true,
+      "time": 0.041992902755737305,
+      "error": null
+    },
+    "assert overlapping([3, 3, 1], [1, 7, 7]) == 1": {
+      "result": true,
+      "time": 0.04108738899230957,
+      "error": null
+    },
+    "assert overlapping([3, 7, 1], [4, 5, 5]) == 0": {
+      "result": true,
+      "time": 0.036812782287597656,
+      "error": null
+    },
+    "assert overlapping([1, 1, 9], [5, 1, 1]) == 1": {
+      "result": true,
+      "time": 0.042661428451538086,
+      "error": null
+    },
+    "assert overlapping([4, 6, 9], [5, 6, 10]) == 1": {
+      "result": true,
+      "time": 0.051133155822753906,
+      "error": null
+    },
+    "assert overlapping([2, 1, 6], [4, 4, 7]) == 0": {
+      "result": true,
+      "time": 0.043854713439941406,
+      "error": null
+    },
+    "assert overlapping([4, 7, 7], [3, 8, 6]) == 0": {
+      "result": true,
+      "time": 0.04064154624938965,
+      "error": null
+    },
+    "assert overlapping([5, 8, 1], [3, 9, 4]) == 0": {
+      "result": true,
+      "time": 0.05128955841064453,
+      "error": null
+    },
+    "assert overlapping([2, 9, 1], [3, 4, 5]) == 0": {
+      "result": true,
+      "time": 0.04355168342590332,
+      "error": null
+    },
+    "assert overlapping([4, 4, 9], [3, 1, 4]) == 1": {
+      "result": true,
+      "time": 0.04573202133178711,
+      "error": null
+    },
+    "assert overlapping([3, 5, 9], [2, 1, 9]) == 1": {
+      "result": true,
+      "time": 0.04054403305053711,
+      "error": null
+    },
+    "assert overlapping([5, 2, 1], [1, 8, 2]) == 1": {
+      "result": true,
+      "time": 0.046898603439331055,
+      "error": null
+    },
+    "assert overlapping([1, 9, 4], [1, 1, 4]) == 1": {
+      "result": true,
+      "time": 0.03497910499572754,
+      "error": null
+    },
+    "assert overlapping([5, 3, 9], [3, 7, 5]) == 1": {
+      "result": true,
+      "time": 0.04690837860107422,
+      "error": null
+    },
+    "assert overlapping([5, 4, 4], [4, 4, 7]) == 1": {
+      "result": true,
+      "time": 0.03933906555175781,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

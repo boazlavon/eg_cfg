@@ -1,0 +1,139 @@
+{
+  "code": "def get_max_sum(n):\n    if n == 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        dp = [0] * (n + 1)\n        dp[1] = 1\n        for i in range(2, n + 1):\n            dp[i] = max(dp[i // 2] + dp[i // 3] + dp[i // 4] + dp[i // 5], i)\n        return dp[n]\n",
+  "results": {
+    "assert get_max_sum(60) == 106": {
+      "result": true,
+      "time": 0.04946446418762207,
+      "error": null
+    },
+    "assert get_max_sum(10) == 12": {
+      "result": true,
+      "time": 0.037104129791259766,
+      "error": null
+    },
+    "assert get_max_sum(2) == 2": {
+      "result": true,
+      "time": 0.035619497299194336,
+      "error": null
+    },
+    "assert get_max_sum(57) == 90": {
+      "result": true,
+      "time": 0.037894487380981445,
+      "error": null
+    },
+    "assert get_max_sum(62) == 106": {
+      "result": true,
+      "time": 0.04101705551147461,
+      "error": null
+    },
+    "assert get_max_sum(61) == 106": {
+      "result": true,
+      "time": 0.03731679916381836,
+      "error": null
+    },
+    "assert get_max_sum(55) == 90": {
+      "result": true,
+      "time": 0.03971219062805176,
+      "error": null
+    },
+    "assert get_max_sum(59) == 90": {
+      "result": true,
+      "time": 0.03518223762512207,
+      "error": null
+    },
+    "assert get_max_sum(63) == 106": {
+      "result": true,
+      "time": 0.03944540023803711,
+      "error": null
+    },
+    "assert get_max_sum(64) == 114": {
+      "result": true,
+      "time": 0.043489933013916016,
+      "error": null
+    },
+    "assert get_max_sum(65) == 114": {
+      "result": true,
+      "time": 0.039737701416015625,
+      "error": null
+    },
+    "assert get_max_sum(56) == 90": {
+      "result": true,
+      "time": 0.039788246154785156,
+      "error": null
+    },
+    "assert get_max_sum(58) == 90": {
+      "result": true,
+      "time": 0.04539370536804199,
+      "error": null
+    },
+    "assert get_max_sum(11) == 12": {
+      "result": true,
+      "time": 0.03492569923400879,
+      "error": null
+    },
+    "assert get_max_sum(15) == 18": {
+      "result": true,
+      "time": 0.04273533821105957,
+      "error": null
+    },
+    "assert get_max_sum(7) == 7": {
+      "result": true,
+      "time": 0.0369725227355957,
+      "error": null
+    },
+    "assert get_max_sum(6) == 7": {
+      "result": true,
+      "time": 0.03616142272949219,
+      "error": null
+    },
+    "assert get_max_sum(8) == 9": {
+      "result": true,
+      "time": 0.041964054107666016,
+      "error": null
+    },
+    "assert get_max_sum(9) == 10": {
+      "result": true,
+      "time": 0.043625593185424805,
+      "error": null
+    },
+    "assert get_max_sum(5) == 5": {
+      "result": true,
+      "time": 0.0428471565246582,
+      "error": null
+    },
+    "assert get_max_sum(13) == 16": {
+      "result": true,
+      "time": 0.0387272834777832,
+      "error": null
+    },
+    "assert get_max_sum(14) == 16": {
+      "result": true,
+      "time": 0.03495621681213379,
+      "error": null
+    },
+    "assert get_max_sum(12) == 16": {
+      "result": true,
+      "time": 0.041158437728881836,
+      "error": null
+    },
+    "assert get_max_sum(1) == 1": {
+      "result": true,
+      "time": 0.04174518585205078,
+      "error": null
+    },
+    "assert get_max_sum(4) == 4": {
+      "result": true,
+      "time": 0.04014396667480469,
+      "error": null
+    },
+    "assert get_max_sum(3) == 3": {
+      "result": true,
+      "time": 0.034894704818725586,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

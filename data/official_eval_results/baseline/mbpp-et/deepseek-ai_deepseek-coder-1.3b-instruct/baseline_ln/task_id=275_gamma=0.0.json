@@ -1,0 +1,519 @@
+{
+  "code": "def get_Position(arr, n, k):\n    queue = arr[:n]\n    for i in range(n, len(arr)):\n        hq.heappush(queue, arr[i])\n        if i >= k:\n            hq.heappop(queue)\n    return queue[0]",
+  "results": {
+    "assert get_Position([2,5,4],3,2) == 2": {
+      "result": true,
+      "time": 0.03720259666442871,
+      "error": null
+    },
+    "assert get_Position([4,3],2,2) == 2": {
+      "result": false,
+      "time": 0.034682512283325195,
+      "error": null
+    },
+    "assert get_Position([1,2,3,4],4,1) == 4": {
+      "result": false,
+      "time": 0.03829240798950195,
+      "error": null
+    },
+    "assert get_Position([1, 10, 1], 3, 5) == 2": {
+      "result": false,
+      "time": 0.03832674026489258,
+      "error": null
+    },
+    "assert get_Position([5, 9, 2], 2, 3) == 2": {
+      "result": false,
+      "time": 0.03940558433532715,
+      "error": null
+    },
+    "assert get_Position([3, 8, 3], 2, 2) == 2": {
+      "result": false,
+      "time": 0.038207292556762695,
+      "error": null
+    },
+    "assert get_Position([2, 2, 2], 3, 6) == 3": {
+      "result": false,
+      "time": 0.03688621520996094,
+      "error": null
+    },
+    "assert get_Position([4, 1, 9], 3, 4) == 3": {
+      "result": false,
+      "time": 0.03829669952392578,
+      "error": null
+    },
+    "assert get_Position([5, 6, 5], 3, 4) == 3": {
+      "result": false,
+      "time": 0.03200793266296387,
+      "error": null
+    },
+    "assert get_Position([4, 7, 6], 3, 6) == 2": {
+      "result": false,
+      "time": 0.0397334098815918,
+      "error": null
+    },
+    "assert get_Position([7, 8, 1], 3, 7) == 2": {
+      "result": false,
+      "time": 0.04581618309020996,
+      "error": null
+    },
+    "assert get_Position([6, 10, 1], 3, 1) == 2": {
+      "result": false,
+      "time": 0.035718679428100586,
+      "error": null
+    },
+    "assert get_Position([5, 7, 2], 2, 7) == 2": {
+      "result": false,
+      "time": 0.039235830307006836,
+      "error": null
+    },
+    "assert get_Position([7, 1, 6], 2, 1) == 1": {
+      "result": false,
+      "time": 0.04469871520996094,
+      "error": null
+    },
+    "assert get_Position([5, 3, 7], 3, 7) == 3": {
+      "result": false,
+      "time": 0.04085040092468262,
+      "error": null
+    },
+    "assert get_Position([7, 10, 6], 2, 2) == 2": {
+      "result": false,
+      "time": 0.04618358612060547,
+      "error": null
+    },
+    "assert get_Position([4, 9, 3], 3, 7) == 2": {
+      "result": false,
+      "time": 0.04508566856384277,
+      "error": null
+    },
+    "assert get_Position([2, 10, 6], 1, 4) == 1": {
+      "result": false,
+      "time": 0.04861927032470703,
+      "error": null
+    },
+    "assert get_Position([4, 6, 6], 1, 2) == 1": {
+      "result": false,
+      "time": 0.04454207420349121,
+      "error": null
+    },
+    "assert get_Position([7, 4, 5], 2, 1) == 1": {
+      "result": false,
+      "time": 0.04054093360900879,
+      "error": null
+    },
+    "assert get_Position([5, 9, 6], 1, 7) == 1": {
+      "result": false,
+      "time": 0.03663039207458496,
+      "error": null
+    },
+    "assert get_Position([2, 1, 9], 3, 2) == 3": {
+      "result": false,
+      "time": 0.03715920448303223,
+      "error": null
+    },
+    "assert get_Position([6, 9, 8], 2, 2) == 2": {
+      "result": false,
+      "time": 0.04226803779602051,
+      "error": null
+    },
+    "assert get_Position([7, 6, 2], 3, 4) == 2": {
+      "result": false,
+      "time": 0.04224133491516113,
+      "error": null
+    },
+    "assert get_Position([1, 5, 1], 3, 1) == 2": {
+      "result": false,
+      "time": 0.04169607162475586,
+      "error": null
+    },
+    "assert get_Position([6, 3, 2], 1, 6) == 1": {
+      "result": false,
+      "time": 0.038753509521484375,
+      "error": null
+    },
+    "assert get_Position([4, 4, 3], 3, 5) == 3": {
+      "result": false,
+      "time": 0.039803266525268555,
+      "error": null
+    },
+    "assert get_Position([4, 6, 5], 1, 7) == 1": {
+      "result": false,
+      "time": 0.05542588233947754,
+      "error": null
+    },
+    "assert get_Position([5, 9, 7], 3, 1) == 2": {
+      "result": false,
+      "time": 0.04003500938415527,
+      "error": null
+    },
+    "assert get_Position([4, 10, 8], 1, 3) == 1": {
+      "result": false,
+      "time": 0.04228997230529785,
+      "error": null
+    },
+    "assert get_Position([1, 7, 6], 1, 2) == 1": {
+      "result": false,
+      "time": 0.04213213920593262,
+      "error": null
+    },
+    "assert get_Position([7, 7, 6], 1, 1) == 1": {
+      "result": false,
+      "time": 0.04411888122558594,
+      "error": null
+    },
+    "assert get_Position([3, 10, 3], 3, 6) == 2": {
+      "result": false,
+      "time": 0.049765825271606445,
+      "error": null
+    },
+    "assert get_Position([1, 8, 3], 1, 4) == 1": {
+      "result": false,
+      "time": 0.03969526290893555,
+      "error": null
+    },
+    "assert get_Position([6, 10, 4], 3, 7) == 2": {
+      "result": false,
+      "time": 0.03754687309265137,
+      "error": null
+    },
+    "assert get_Position([6, 2, 2], 2, 2) == 1": {
+      "result": false,
+      "time": 0.0529942512512207,
+      "error": null
+    },
+    "assert get_Position([1, 1], 1, 2) == 1": {
+      "result": false,
+      "time": 0.03618335723876953,
+      "error": null
+    },
+    "assert get_Position([8, 4], 2, 7) == 1": {
+      "result": false,
+      "time": 0.0410003662109375,
+      "error": null
+    },
+    "assert get_Position([2, 6], 2, 2) == 2": {
+      "result": true,
+      "time": 0.042342424392700195,
+      "error": null
+    },
+    "assert get_Position([7, 2], 2, 7) == 2": {
+      "result": false,
+      "time": 0.04308056831359863,
+      "error": null
+    },
+    "assert get_Position([6, 2], 1, 3) == 1": {
+      "result": false,
+      "time": 0.04285383224487305,
+      "error": null
+    },
+    "assert get_Position([3, 4], 1, 2) == 1": {
+      "result": false,
+      "time": 0.045506954193115234,
+      "error": null
+    },
+    "assert get_Position([7, 4], 2, 2) == 1": {
+      "result": false,
+      "time": 0.03338456153869629,
+      "error": null
+    },
+    "assert get_Position([6, 8], 1, 6) == 1": {
+      "result": false,
+      "time": 0.04664039611816406,
+      "error": null
+    },
+    "assert get_Position([2, 1], 1, 7) == 1": {
+      "result": false,
+      "time": 0.04705476760864258,
+      "error": null
+    },
+    "assert get_Position([2, 4], 1, 4) == 1": {
+      "result": false,
+      "time": 0.0440526008605957,
+      "error": null
+    },
+    "assert get_Position([6, 7], 2, 1) == 2": {
+      "result": false,
+      "time": 0.03452944755554199,
+      "error": null
+    },
+    "assert get_Position([8, 1], 2, 7) == 1": {
+      "result": false,
+      "time": 0.04138684272766113,
+      "error": null
+    },
+    "assert get_Position([1, 5], 2, 5) == 2": {
+      "result": false,
+      "time": 0.04299211502075195,
+      "error": null
+    },
+    "assert get_Position([9, 3], 2, 3) == 1": {
+      "result": false,
+      "time": 0.04090452194213867,
+      "error": null
+    },
+    "assert get_Position([9, 3], 1, 1) == 1": {
+      "result": false,
+      "time": 0.04367566108703613,
+      "error": null
+    },
+    "assert get_Position([8, 3], 1, 5) == 1": {
+      "result": false,
+      "time": 0.038729190826416016,
+      "error": null
+    },
+    "assert get_Position([5, 5], 1, 7) == 1": {
+      "result": false,
+      "time": 0.042568206787109375,
+      "error": null
+    },
+    "assert get_Position([6, 3], 1, 6) == 1": {
+      "result": false,
+      "time": 0.0392763614654541,
+      "error": null
+    },
+    "assert get_Position([9, 3], 1, 2) == 1": {
+      "result": false,
+      "time": 0.04237532615661621,
+      "error": null
+    },
+    "assert get_Position([8, 8], 2, 4) == 2": {
+      "result": false,
+      "time": 0.040508270263671875,
+      "error": null
+    },
+    "assert get_Position([5, 7], 2, 1) == 2": {
+      "result": false,
+      "time": 0.04544353485107422,
+      "error": null
+    },
+    "assert get_Position([4, 5], 1, 2) == 1": {
+      "result": false,
+      "time": 0.038727521896362305,
+      "error": null
+    },
+    "assert get_Position([9, 4], 2, 5) == 1": {
+      "result": false,
+      "time": 0.0406649112701416,
+      "error": null
+    },
+    "assert get_Position([6, 4], 1, 4) == 1": {
+      "result": false,
+      "time": 0.031281232833862305,
+      "error": null
+    },
+    "assert get_Position([4, 2], 1, 3) == 1": {
+      "result": false,
+      "time": 0.04110908508300781,
+      "error": null
+    },
+    "assert get_Position([1, 3], 2, 7) == 2": {
+      "result": false,
+      "time": 0.03795790672302246,
+      "error": null
+    },
+    "assert get_Position([3, 5], 1, 4) == 1": {
+      "result": false,
+      "time": 0.040924787521362305,
+      "error": null
+    },
+    "assert get_Position([2, 7], 1, 2) == 1": {
+      "result": false,
+      "time": 0.06661844253540039,
+      "error": null
+    },
+    "assert get_Position([3, 5], 1, 1) == 1": {
+      "result": false,
+      "time": 0.061181068420410156,
+      "error": null
+    },
+    "assert get_Position([5, 6], 1, 2) == 1": {
+      "result": false,
+      "time": 0.05409383773803711,
+      "error": null
+    },
+    "assert get_Position([1, 6], 2, 3) == 2": {
+      "result": false,
+      "time": 0.057889461517333984,
+      "error": null
+    },
+    "assert get_Position([8, 3], 2, 3) == 1": {
+      "result": false,
+      "time": 0.06042766571044922,
+      "error": null
+    },
+    "assert get_Position([8, 2], 1, 2) == 1": {
+      "result": false,
+      "time": 0.06067466735839844,
+      "error": null
+    },
+    "assert get_Position([4, 2, 3, 2], 4, 3) == 1": {
+      "result": false,
+      "time": 0.050383567810058594,
+      "error": null
+    },
+    "assert get_Position([2, 6, 3, 8], 1, 4) == 1": {
+      "result": false,
+      "time": 0.04055953025817871,
+      "error": null
+    },
+    "assert get_Position([6, 1, 1, 1], 1, 6) == 1": {
+      "result": false,
+      "time": 0.0606842041015625,
+      "error": null
+    },
+    "assert get_Position([6, 2, 4, 6], 1, 5) == 1": {
+      "result": false,
+      "time": 0.05442976951599121,
+      "error": null
+    },
+    "assert get_Position([4, 5, 7, 9], 2, 5) == 2": {
+      "result": false,
+      "time": 0.051796674728393555,
+      "error": null
+    },
+    "assert get_Position([6, 6, 3, 2], 2, 6) == 2": {
+      "result": false,
+      "time": 0.05022835731506348,
+      "error": null
+    },
+    "assert get_Position([4, 2, 5, 2], 1, 1) == 1": {
+      "result": false,
+      "time": 0.05366206169128418,
+      "error": null
+    },
+    "assert get_Position([4, 5, 1, 4], 4, 1) == 2": {
+      "result": false,
+      "time": 0.0558774471282959,
+      "error": null
+    },
+    "assert get_Position([5, 1, 1, 6], 2, 2) == 1": {
+      "result": false,
+      "time": 0.043616533279418945,
+      "error": null
+    },
+    "assert get_Position([2, 7, 5, 3], 2, 3) == 2": {
+      "result": false,
+      "time": 0.06760144233703613,
+      "error": null
+    },
+    "assert get_Position([2, 3, 1, 7], 2, 1) == 2": {
+      "result": false,
+      "time": 0.04437136650085449,
+      "error": null
+    },
+    "assert get_Position([6, 4, 6, 3], 3, 6) == 3": {
+      "result": false,
+      "time": 0.06125617027282715,
+      "error": null
+    },
+    "assert get_Position([2, 1, 7, 1], 1, 5) == 1": {
+      "result": false,
+      "time": 0.05089139938354492,
+      "error": null
+    },
+    "assert get_Position([3, 6, 7, 5], 3, 4) == 3": {
+      "result": false,
+      "time": 0.053165435791015625,
+      "error": null
+    },
+    "assert get_Position([2, 1, 8, 9], 3, 3) == 3": {
+      "result": false,
+      "time": 0.0478665828704834,
+      "error": null
+    },
+    "assert get_Position([2, 1, 3, 6], 1, 3) == 1": {
+      "result": false,
+      "time": 0.05377936363220215,
+      "error": null
+    },
+    "assert get_Position([2, 3, 8, 4], 3, 4) == 3": {
+      "result": false,
+      "time": 0.0497586727142334,
+      "error": null
+    },
+    "assert get_Position([1, 5, 3, 2], 3, 1) == 2": {
+      "result": false,
+      "time": 0.052884817123413086,
+      "error": null
+    },
+    "assert get_Position([5, 1, 3, 2], 3, 5) == 3": {
+      "result": false,
+      "time": 0.042345285415649414,
+      "error": null
+    },
+    "assert get_Position([1, 1, 8, 8], 4, 5) == 4": {
+      "result": false,
+      "time": 0.05344128608703613,
+      "error": null
+    },
+    "assert get_Position([1, 3, 7, 8], 3, 6) == 3": {
+      "result": false,
+      "time": 0.057245492935180664,
+      "error": null
+    },
+    "assert get_Position([4, 4, 1, 9], 4, 2) == 4": {
+      "result": true,
+      "time": 0.051215410232543945,
+      "error": null
+    },
+    "assert get_Position([3, 7, 1, 7], 4, 4) == 4": {
+      "result": false,
+      "time": 0.045769691467285156,
+      "error": null
+    },
+    "assert get_Position([2, 2, 5, 9], 4, 6) == 4": {
+      "result": false,
+      "time": 0.05543231964111328,
+      "error": null
+    },
+    "assert get_Position([1, 7, 2, 2], 4, 1) == 2": {
+      "result": false,
+      "time": 0.054264068603515625,
+      "error": null
+    },
+    "assert get_Position([5, 1, 2, 4], 4, 5) == 4": {
+      "result": false,
+      "time": 0.05746293067932129,
+      "error": null
+    },
+    "assert get_Position([1, 6, 4, 8], 2, 6) == 2": {
+      "result": false,
+      "time": 0.045276641845703125,
+      "error": null
+    },
+    "assert get_Position([2, 2, 6, 8], 4, 1) == 4": {
+      "result": false,
+      "time": 0.0629119873046875,
+      "error": null
+    },
+    "assert get_Position([2, 7, 8, 9], 4, 2) == 4": {
+      "result": false,
+      "time": 0.04574990272521973,
+      "error": null
+    },
+    "assert get_Position([4, 5, 1, 5], 3, 4) == 2": {
+      "result": false,
+      "time": 0.05439949035644531,
+      "error": null
+    },
+    "assert get_Position([2, 6, 2, 2], 3, 5) == 2": {
+      "result": false,
+      "time": 0.05069994926452637,
+      "error": null
+    },
+    "assert get_Position([6, 5, 6, 2], 1, 4) == 1": {
+      "result": false,
+      "time": 0.05662417411804199,
+      "error": null
+    },
+    "assert get_Position([6, 2, 5, 4], 1, 5) == 1": {
+      "result": false,
+      "time": 0.04367542266845703,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.029411764705882353,
+  "general_error": "",
+  "has_testcase_error": false
+}

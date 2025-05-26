@@ -1,0 +1,519 @@
+{
+  "code": "def min_Ops(arr, n, k):\n    if n == 0:\n        return -1\n    \n    max_element = arr[0]\n    for num in arr:\n        if num > max_element:\n            max_element = num\n    \n    total_operations = 0\n    for num in arr:\n        difference = max_element - num\n        if difference % k != 0:\n            return -1\n        operations = difference // k\n        total_operations += operations\n    \n    return total_operations",
+  "results": {
+    "assert min_Ops([2,2,2,2],4,3) == 0": {
+      "result": true,
+      "time": 0.03644394874572754,
+      "error": null
+    },
+    "assert min_Ops([4,2,6,8],4,3) == -1": {
+      "result": true,
+      "time": 0.03536558151245117,
+      "error": null
+    },
+    "assert min_Ops([21,33,9,45,63],5,6) == 24": {
+      "result": true,
+      "time": 0.037508487701416016,
+      "error": null
+    },
+    "assert min_Ops([2, 3, 6, 4], 6, 8) == -1": {
+      "result": true,
+      "time": 0.03035736083984375,
+      "error": null
+    },
+    "assert min_Ops([5, 1, 1, 3], 2, 4) == 1": {
+      "result": false,
+      "time": 0.030640602111816406,
+      "error": null
+    },
+    "assert min_Ops([4, 1, 1, 5], 9, 6) == -1": {
+      "result": true,
+      "time": 0.039203643798828125,
+      "error": null
+    },
+    "assert min_Ops([7, 2, 5, 6], 1, 5) == 0": {
+      "result": false,
+      "time": 0.0347285270690918,
+      "error": null
+    },
+    "assert min_Ops([2, 2, 3, 4], 1, 8) == -1": {
+      "result": true,
+      "time": 0.037027597427368164,
+      "error": null
+    },
+    "assert min_Ops([6, 4, 1, 5], 7, 8) == -1": {
+      "result": true,
+      "time": 0.03620791435241699,
+      "error": null
+    },
+    "assert min_Ops([5, 4, 5, 6], 3, 4) == -1": {
+      "result": true,
+      "time": 0.03909873962402344,
+      "error": null
+    },
+    "assert min_Ops([5, 2, 4, 3], 8, 3) == -1": {
+      "result": true,
+      "time": 0.034921884536743164,
+      "error": null
+    },
+    "assert min_Ops([5, 4, 6, 5], 1, 3) == -1": {
+      "result": true,
+      "time": 0.037024497985839844,
+      "error": null
+    },
+    "assert min_Ops([7, 7, 4, 2], 9, 5) == -1": {
+      "result": true,
+      "time": 0.03476238250732422,
+      "error": null
+    },
+    "assert min_Ops([5, 3, 1, 5], 3, 8) == -1": {
+      "result": true,
+      "time": 0.03328442573547363,
+      "error": null
+    },
+    "assert min_Ops([1, 3, 2, 5], 5, 4) == -1": {
+      "result": true,
+      "time": 0.034113168716430664,
+      "error": null
+    },
+    "assert min_Ops([6, 7, 3, 2], 4, 4) == -1": {
+      "result": true,
+      "time": 0.04181838035583496,
+      "error": null
+    },
+    "assert min_Ops([2, 3, 6, 3], 7, 2) == -1": {
+      "result": true,
+      "time": 0.04617762565612793,
+      "error": null
+    },
+    "assert min_Ops([1, 2, 6, 4], 3, 8) == -1": {
+      "result": true,
+      "time": 0.044085025787353516,
+      "error": null
+    },
+    "assert min_Ops([7, 5, 5, 4], 3, 2) == 2": {
+      "result": false,
+      "time": 0.04292750358581543,
+      "error": null
+    },
+    "assert min_Ops([7, 5, 2, 4], 5, 8) == -1": {
+      "result": true,
+      "time": 0.048270225524902344,
+      "error": null
+    },
+    "assert min_Ops([1, 1, 1, 6], 2, 1) == 10": {
+      "result": false,
+      "time": 0.037741899490356445,
+      "error": null
+    },
+    "assert min_Ops([6, 5, 3, 1], 3, 4) == -1": {
+      "result": true,
+      "time": 0.04468655586242676,
+      "error": null
+    },
+    "assert min_Ops([4, 7, 7, 1], 4, 3) == 3": {
+      "result": true,
+      "time": 0.04171466827392578,
+      "error": null
+    },
+    "assert min_Ops([6, 5, 5, 2], 8, 8) == -1": {
+      "result": true,
+      "time": 0.0410923957824707,
+      "error": null
+    },
+    "assert min_Ops([5, 4, 4, 1], 3, 3) == -1": {
+      "result": true,
+      "time": 0.048293113708496094,
+      "error": null
+    },
+    "assert min_Ops([7, 2, 6, 1], 8, 4) == -1": {
+      "result": true,
+      "time": 0.0366969108581543,
+      "error": null
+    },
+    "assert min_Ops([1, 1, 6, 5], 8, 7) == -1": {
+      "result": true,
+      "time": 0.05565786361694336,
+      "error": null
+    },
+    "assert min_Ops([7, 4, 5, 4], 7, 2) == -1": {
+      "result": true,
+      "time": 0.053160905838012695,
+      "error": null
+    },
+    "assert min_Ops([3, 3, 4, 4], 3, 3) == -1": {
+      "result": true,
+      "time": 0.04451251029968262,
+      "error": null
+    },
+    "assert min_Ops([3, 2, 5, 5], 2, 1) == 5": {
+      "result": true,
+      "time": 0.044806480407714844,
+      "error": null
+    },
+    "assert min_Ops([3, 1, 5, 5], 5, 3) == -1": {
+      "result": true,
+      "time": 0.03594970703125,
+      "error": null
+    },
+    "assert min_Ops([2, 5, 5, 1], 2, 1) == 3": {
+      "result": false,
+      "time": 0.04709577560424805,
+      "error": null
+    },
+    "assert min_Ops([3, 1, 2, 6], 7, 7) == -1": {
+      "result": true,
+      "time": 0.03551840782165527,
+      "error": null
+    },
+    "assert min_Ops([4, 2, 5, 5], 3, 5) == -1": {
+      "result": true,
+      "time": 0.03704476356506348,
+      "error": null
+    },
+    "assert min_Ops([7, 4, 2, 2], 5, 2) == -1": {
+      "result": true,
+      "time": 0.0446934700012207,
+      "error": null
+    },
+    "assert min_Ops([7, 3, 4, 7], 9, 5) == -1": {
+      "result": true,
+      "time": 0.040589094161987305,
+      "error": null
+    },
+    "assert min_Ops([6, 7, 9, 10], 8, 6) == -1": {
+      "result": true,
+      "time": 0.042222023010253906,
+      "error": null
+    },
+    "assert min_Ops([4, 5, 5, 7], 7, 8) == -1": {
+      "result": true,
+      "time": 0.04142403602600098,
+      "error": null
+    },
+    "assert min_Ops([6, 6, 1, 4], 3, 7) == -1": {
+      "result": true,
+      "time": 0.046221256256103516,
+      "error": null
+    },
+    "assert min_Ops([5, 3, 2, 4], 9, 3) == -1": {
+      "result": true,
+      "time": 0.04246973991394043,
+      "error": null
+    },
+    "assert min_Ops([5, 6, 3, 10], 4, 4) == -1": {
+      "result": true,
+      "time": 0.03448677062988281,
+      "error": null
+    },
+    "assert min_Ops([1, 3, 5, 12], 9, 6) == -1": {
+      "result": true,
+      "time": 0.04147672653198242,
+      "error": null
+    },
+    "assert min_Ops([6, 5, 7, 10], 2, 7) == -1": {
+      "result": true,
+      "time": 0.04283738136291504,
+      "error": null
+    },
+    "assert min_Ops([2, 3, 7, 10], 9, 7) == -1": {
+      "result": true,
+      "time": 0.0392000675201416,
+      "error": null
+    },
+    "assert min_Ops([4, 2, 10, 9], 4, 5) == -1": {
+      "result": true,
+      "time": 0.03816485404968262,
+      "error": null
+    },
+    "assert min_Ops([4, 2, 5, 8], 8, 6) == -1": {
+      "result": true,
+      "time": 0.04323124885559082,
+      "error": null
+    },
+    "assert min_Ops([1, 6, 3, 9], 8, 3) == -1": {
+      "result": true,
+      "time": 0.03973579406738281,
+      "error": null
+    },
+    "assert min_Ops([8, 2, 2, 11], 1, 7) == -1": {
+      "result": true,
+      "time": 0.039876461029052734,
+      "error": null
+    },
+    "assert min_Ops([6, 1, 5, 9], 7, 2) == -1": {
+      "result": true,
+      "time": 0.04445981979370117,
+      "error": null
+    },
+    "assert min_Ops([4, 6, 8, 8], 6, 4) == -1": {
+      "result": true,
+      "time": 0.04503226280212402,
+      "error": null
+    },
+    "assert min_Ops([7, 7, 7, 6], 7, 5) == -1": {
+      "result": true,
+      "time": 0.04227566719055176,
+      "error": null
+    },
+    "assert min_Ops([7, 7, 10, 5], 9, 2) == -1": {
+      "result": true,
+      "time": 0.04159832000732422,
+      "error": null
+    },
+    "assert min_Ops([3, 2, 5, 11], 9, 4) == -1": {
+      "result": true,
+      "time": 0.03783106803894043,
+      "error": null
+    },
+    "assert min_Ops([2, 5, 1, 7], 6, 8) == -1": {
+      "result": true,
+      "time": 0.04308199882507324,
+      "error": null
+    },
+    "assert min_Ops([9, 2, 8, 12], 3, 4) == -1": {
+      "result": true,
+      "time": 0.040085554122924805,
+      "error": null
+    },
+    "assert min_Ops([9, 6, 6, 12], 3, 2) == -1": {
+      "result": true,
+      "time": 0.034005165100097656,
+      "error": null
+    },
+    "assert min_Ops([4, 6, 1, 12], 2, 6) == -1": {
+      "result": true,
+      "time": 0.04330277442932129,
+      "error": null
+    },
+    "assert min_Ops([1, 6, 10, 11], 8, 3) == -1": {
+      "result": true,
+      "time": 0.04158425331115723,
+      "error": null
+    },
+    "assert min_Ops([2, 7, 4, 12], 9, 2) == -1": {
+      "result": true,
+      "time": 0.047331809997558594,
+      "error": null
+    },
+    "assert min_Ops([7, 4, 9, 9], 1, 3) == -1": {
+      "result": true,
+      "time": 0.034554481506347656,
+      "error": null
+    },
+    "assert min_Ops([2, 7, 1, 10], 3, 6) == -1": {
+      "result": true,
+      "time": 0.04565072059631348,
+      "error": null
+    },
+    "assert min_Ops([5, 2, 11, 4], 7, 8) == -1": {
+      "result": true,
+      "time": 0.04150724411010742,
+      "error": null
+    },
+    "assert min_Ops([6, 7, 3, 11], 2, 5) == -1": {
+      "result": true,
+      "time": 0.042613983154296875,
+      "error": null
+    },
+    "assert min_Ops([2, 6, 6, 10], 4, 5) == -1": {
+      "result": true,
+      "time": 0.03723549842834473,
+      "error": null
+    },
+    "assert min_Ops([4, 6, 6, 11], 3, 8) == -1": {
+      "result": true,
+      "time": 0.03397822380065918,
+      "error": null
+    },
+    "assert min_Ops([1, 5, 8, 7], 2, 2) == -1": {
+      "result": true,
+      "time": 0.044446468353271484,
+      "error": null
+    },
+    "assert min_Ops([6, 5, 10, 13], 1, 6) == -1": {
+      "result": true,
+      "time": 0.044054269790649414,
+      "error": null
+    },
+    "assert min_Ops([1, 1, 8, 12], 9, 7) == -1": {
+      "result": true,
+      "time": 0.03880882263183594,
+      "error": null
+    },
+    "assert min_Ops([3, 4, 10, 4], 5, 5) == -1": {
+      "result": true,
+      "time": 0.03171873092651367,
+      "error": null
+    },
+    "assert min_Ops([23, 35, 7, 45, 58], 10, 6) == -1": {
+      "result": true,
+      "time": 0.046494483947753906,
+      "error": null
+    },
+    "assert min_Ops([26, 36, 13, 49, 63], 5, 10) == -1": {
+      "result": true,
+      "time": 0.037723541259765625,
+      "error": null
+    },
+    "assert min_Ops([22, 31, 6, 41, 67], 5, 5) == -1": {
+      "result": true,
+      "time": 0.03835034370422363,
+      "error": null
+    },
+    "assert min_Ops([24, 36, 9, 48, 58], 10, 6) == -1": {
+      "result": true,
+      "time": 0.044541358947753906,
+      "error": null
+    },
+    "assert min_Ops([21, 35, 10, 50, 61], 9, 5) == -1": {
+      "result": true,
+      "time": 0.04618501663208008,
+      "error": null
+    },
+    "assert min_Ops([25, 36, 11, 48, 58], 7, 4) == -1": {
+      "result": true,
+      "time": 0.04155302047729492,
+      "error": null
+    },
+    "assert min_Ops([19, 38, 11, 43, 63], 3, 11) == -1": {
+      "result": true,
+      "time": 0.039301395416259766,
+      "error": null
+    },
+    "assert min_Ops([25, 28, 10, 50, 59], 7, 7) == -1": {
+      "result": true,
+      "time": 0.03355526924133301,
+      "error": null
+    },
+    "assert min_Ops([22, 31, 8, 41, 64], 5, 11) == -1": {
+      "result": true,
+      "time": 0.040445804595947266,
+      "error": null
+    },
+    "assert min_Ops([16, 32, 9, 40, 67], 8, 5) == -1": {
+      "result": true,
+      "time": 0.039461612701416016,
+      "error": null
+    },
+    "assert min_Ops([20, 38, 8, 46, 64], 6, 11) == -1": {
+      "result": true,
+      "time": 0.04173445701599121,
+      "error": null
+    },
+    "assert min_Ops([23, 31, 13, 45, 60], 8, 2) == -1": {
+      "result": true,
+      "time": 0.040886878967285156,
+      "error": null
+    },
+    "assert min_Ops([18, 37, 11, 40, 59], 5, 4) == -1": {
+      "result": true,
+      "time": 0.042641639709472656,
+      "error": null
+    },
+    "assert min_Ops([16, 34, 8, 47, 62], 7, 9) == -1": {
+      "result": true,
+      "time": 0.038208961486816406,
+      "error": null
+    },
+    "assert min_Ops([23, 38, 4, 42, 64], 6, 3) == -1": {
+      "result": true,
+      "time": 0.05089259147644043,
+      "error": null
+    },
+    "assert min_Ops([24, 36, 9, 48, 64], 4, 9) == -1": {
+      "result": true,
+      "time": 0.044861793518066406,
+      "error": null
+    },
+    "assert min_Ops([16, 38, 4, 50, 58], 10, 4) == -1": {
+      "result": true,
+      "time": 0.03785967826843262,
+      "error": null
+    },
+    "assert min_Ops([17, 35, 12, 47, 62], 4, 11) == -1": {
+      "result": true,
+      "time": 0.04380226135253906,
+      "error": null
+    },
+    "assert min_Ops([25, 31, 5, 42, 63], 6, 4) == -1": {
+      "result": true,
+      "time": 0.03972315788269043,
+      "error": null
+    },
+    "assert min_Ops([24, 33, 6, 45, 61], 1, 7) == -1": {
+      "result": true,
+      "time": 0.040279388427734375,
+      "error": null
+    },
+    "assert min_Ops([24, 34, 8, 45, 66], 5, 7) == -1": {
+      "result": true,
+      "time": 0.04660439491271973,
+      "error": null
+    },
+    "assert min_Ops([18, 36, 14, 45, 66], 10, 7) == -1": {
+      "result": true,
+      "time": 0.03767085075378418,
+      "error": null
+    },
+    "assert min_Ops([19, 36, 6, 45, 67], 4, 6) == -1": {
+      "result": true,
+      "time": 0.04306173324584961,
+      "error": null
+    },
+    "assert min_Ops([16, 38, 5, 41, 61], 5, 4) == -1": {
+      "result": true,
+      "time": 0.04409456253051758,
+      "error": null
+    },
+    "assert min_Ops([16, 34, 8, 43, 62], 5, 10) == -1": {
+      "result": true,
+      "time": 0.03969836235046387,
+      "error": null
+    },
+    "assert min_Ops([26, 28, 7, 42, 58], 2, 5) == -1": {
+      "result": true,
+      "time": 0.04110312461853027,
+      "error": null
+    },
+    "assert min_Ops([26, 38, 9, 50, 61], 10, 11) == -1": {
+      "result": true,
+      "time": 0.041748046875,
+      "error": null
+    },
+    "assert min_Ops([18, 31, 8, 42, 60], 8, 2) == -1": {
+      "result": true,
+      "time": 0.03722977638244629,
+      "error": null
+    },
+    "assert min_Ops([16, 30, 4, 50, 61], 10, 10) == -1": {
+      "result": true,
+      "time": 0.03637075424194336,
+      "error": null
+    },
+    "assert min_Ops([16, 34, 12, 47, 67], 8, 3) == -1": {
+      "result": true,
+      "time": 0.0416562557220459,
+      "error": null
+    },
+    "assert min_Ops([17, 34, 11, 46, 67], 7, 8) == -1": {
+      "result": true,
+      "time": 0.04098057746887207,
+      "error": null
+    },
+    "assert min_Ops([22, 37, 4, 48, 58], 6, 9) == -1": {
+      "result": true,
+      "time": 0.04283022880554199,
+      "error": null
+    },
+    "assert min_Ops([21, 34, 7, 42, 67], 10, 5) == -1": {
+      "result": true,
+      "time": 0.04370713233947754,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9509803921568627,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "def kth_element(arr, n, k):\n    arr.sort()\n    return arr[k-1]",
+  "results": {
+    "assert kth_element([12,3,5,7,19], 5, 2) == 3": {
+      "result": false,
+      "time": 0.03476262092590332,
+      "error": null
+    },
+    "assert kth_element([17,24,8,23], 4, 3) == 8": {
+      "result": false,
+      "time": 0.03404521942138672,
+      "error": null
+    },
+    "assert kth_element([16,21,25,36,4], 5, 4) == 36": {
+      "result": false,
+      "time": 0.035736799240112305,
+      "error": null
+    },
+    "assert kth_element([8, 1, 1, 2, 20], 3, 4) == 2": {
+      "result": false,
+      "time": 0.03596925735473633,
+      "error": null
+    },
+    "assert kth_element([16, 5, 3, 8, 18], 5, 3) == 3": {
+      "result": false,
+      "time": 0.039427995681762695,
+      "error": null
+    },
+    "assert kth_element([11, 4, 10, 12, 18], 3, 2) == 4": {
+      "result": false,
+      "time": 0.03369593620300293,
+      "error": null
+    },
+    "assert kth_element([9, 7, 2, 5, 15], 2, 5) == 15": {
+      "result": true,
+      "time": 0.040503501892089844,
+      "error": null
+    },
+    "assert kth_element([15, 1, 2, 7, 15], 3, 3) == 2": {
+      "result": false,
+      "time": 0.037137508392333984,
+      "error": null
+    },
+    "assert kth_element([8, 5, 2, 7, 18], 2, 1) == 8": {
+      "result": false,
+      "time": 0.040789127349853516,
+      "error": null
+    },
+    "assert kth_element([16, 2, 2, 5, 20], 2, 1) == 16": {
+      "result": false,
+      "time": 0.03323721885681152,
+      "error": null
+    },
+    "assert kth_element([12, 2, 10, 11, 17], 1, 5) == 17": {
+      "result": true,
+      "time": 0.03092193603515625,
+      "error": null
+    },
+    "assert kth_element([15, 7, 9, 3, 17], 3, 4) == 3": {
+      "result": false,
+      "time": 0.03889727592468262,
+      "error": null
+    },
+    "assert kth_element([17, 7, 4, 12, 15], 4, 3) == 4": {
+      "result": false,
+      "time": 0.032999515533447266,
+      "error": null
+    },
+    "assert kth_element([13, 4, 10, 9, 14], 3, 4) == 9": {
+      "result": false,
+      "time": 0.034485578536987305,
+      "error": null
+    },
+    "assert kth_element([17, 3, 6, 7, 14], 5, 1) == 17": {
+      "result": false,
+      "time": 0.03725028038024902,
+      "error": null
+    },
+    "assert kth_element([9, 1, 9, 4, 16], 2, 2) == 1": {
+      "result": false,
+      "time": 0.03434562683105469,
+      "error": null
+    },
+    "assert kth_element([14, 8, 8, 8, 19], 3, 4) == 8": {
+      "result": false,
+      "time": 0.03545951843261719,
+      "error": null
+    },
+    "assert kth_element([16, 1, 8, 12, 21], 1, 3) == 8": {
+      "result": false,
+      "time": 0.039826154708862305,
+      "error": null
+    },
+    "assert kth_element([17, 4, 8, 9, 21], 2, 5) == 21": {
+      "result": true,
+      "time": 0.04302787780761719,
+      "error": null
+    },
+    "assert kth_element([11, 4, 9, 3, 23], 4, 3) == 9": {
+      "result": true,
+      "time": 0.03574347496032715,
+      "error": null
+    },
+    "assert kth_element([17, 6, 8, 3, 14], 4, 5) == 14": {
+      "result": false,
+      "time": 0.03447699546813965,
+      "error": null
+    },
+    "assert kth_element([13, 1, 5, 5, 17], 2, 1) == 13": {
+      "result": false,
+      "time": 0.04239249229431152,
+      "error": null
+    },
+    "assert kth_element([10, 1, 10, 5, 19], 5, 5) == 19": {
+      "result": true,
+      "time": 0.03497481346130371,
+      "error": null
+    },
+    "assert kth_element([16, 4, 3, 12, 18], 3, 4) == 12": {
+      "result": false,
+      "time": 0.02950143814086914,
+      "error": null
+    },
+    "assert kth_element([16, 4, 2, 11, 14], 5, 4) == 11": {
+      "result": false,
+      "time": 0.033455848693847656,
+      "error": null
+    },
+    "assert kth_element([14, 8, 4, 8, 19], 3, 2) == 8": {
+      "result": true,
+      "time": 0.035598039627075195,
+      "error": null
+    },
+    "assert kth_element([10, 1, 9, 12, 15], 3, 4) == 12": {
+      "result": true,
+      "time": 0.03610491752624512,
+      "error": null
+    },
+    "assert kth_element([12, 6, 3, 6, 22], 4, 1) == 12": {
+      "result": false,
+      "time": 0.029802799224853516,
+      "error": null
+    },
+    "assert kth_element([9, 5, 8, 7, 23], 5, 3) == 8": {
+      "result": true,
+      "time": 0.03256535530090332,
+      "error": null
+    },
+    "assert kth_element([8, 7, 5, 12, 21], 1, 2) == 7": {
+      "result": true,
+      "time": 0.038411617279052734,
+      "error": null
+    },
+    "assert kth_element([11, 5, 10, 9, 15], 4, 5) == 15": {
+      "result": true,
+      "time": 0.04402303695678711,
+      "error": null
+    },
+    "assert kth_element([15, 7, 10, 4, 15], 5, 4) == 4": {
+      "result": false,
+      "time": 0.04040026664733887,
+      "error": null
+    },
+    "assert kth_element([10, 7, 10, 7, 14], 3, 1) == 10": {
+      "result": false,
+      "time": 0.036925315856933594,
+      "error": null
+    },
+    "assert kth_element([14, 2, 10, 7, 23], 3, 3) == 10": {
+      "result": true,
+      "time": 0.03441023826599121,
+      "error": null
+    },
+    "assert kth_element([9, 7, 6, 6, 24], 5, 4) == 6": {
+      "result": false,
+      "time": 0.03302192687988281,
+      "error": null
+    },
+    "assert kth_element([7, 3, 10, 3, 24], 2, 3) == 10": {
+      "result": false,
+      "time": 0.039354562759399414,
+      "error": null
+    },
+    "assert kth_element([18, 26, 6, 27], 3, 4) == 27": {
+      "result": true,
+      "time": 0.03291630744934082,
+      "error": null
+    },
+    "assert kth_element([17, 19, 4, 21], 2, 1) == 17": {
+      "result": false,
+      "time": 0.03764200210571289,
+      "error": null
+    },
+    "assert kth_element([15, 24, 10, 26], 1, 3) == 10": {
+      "result": false,
+      "time": 0.03398752212524414,
+      "error": null
+    },
+    "assert kth_element([21, 20, 5, 23], 1, 2) == 20": {
+      "result": true,
+      "time": 0.035559892654418945,
+      "error": null
+    },
+    "assert kth_element([14, 19, 5, 27], 3, 4) == 27": {
+      "result": true,
+      "time": 0.03755640983581543,
+      "error": null
+    },
+    "assert kth_element([21, 19, 13, 23], 3, 1) == 21": {
+      "result": false,
+      "time": 0.0368802547454834,
+      "error": null
+    },
+    "assert kth_element([17, 19, 3, 26], 2, 2) == 19": {
+      "result": false,
+      "time": 0.03908681869506836,
+      "error": null
+    },
+    "assert kth_element([12, 25, 6, 23], 1, 4) == 23": {
+      "result": false,
+      "time": 0.037065744400024414,
+      "error": null
+    },
+    "assert kth_element([19, 28, 10, 20], 4, 2) == 28": {
+      "result": false,
+      "time": 0.0361330509185791,
+      "error": null
+    },
+    "assert kth_element([22, 26, 4, 19], 4, 4) == 19": {
+      "result": false,
+      "time": 0.035584449768066406,
+      "error": null
+    },
+    "assert kth_element([14, 23, 11, 20], 4, 1) == 14": {
+      "result": false,
+      "time": 0.03552389144897461,
+      "error": null
+    },
+    "assert kth_element([12, 26, 13, 18], 1, 3) == 13": {
+      "result": false,
+      "time": 0.03889107704162598,
+      "error": null
+    },
+    "assert kth_element([17, 19, 12, 20], 4, 2) == 19": {
+      "result": false,
+      "time": 0.03702425956726074,
+      "error": null
+    },
+    "assert kth_element([16, 22, 4, 24], 4, 3) == 4": {
+      "result": false,
+      "time": 0.037032365798950195,
+      "error": null
+    },
+    "assert kth_element([20, 28, 7, 26], 3, 3) == 7": {
+      "result": false,
+      "time": 0.03163027763366699,
+      "error": null
+    },
+    "assert kth_element([17, 20, 3, 22], 3, 2) == 20": {
+      "result": false,
+      "time": 0.035968780517578125,
+      "error": null
+    },
+    "assert kth_element([14, 21, 12, 22], 2, 1) == 14": {
+      "result": false,
+      "time": 0.038393259048461914,
+      "error": null
+    },
+    "assert kth_element([18, 24, 11, 19], 4, 1) == 18": {
+      "result": false,
+      "time": 0.03466963768005371,
+      "error": null
+    },
+    "assert kth_element([17, 28, 8, 25], 2, 3) == 8": {
+      "result": false,
+      "time": 0.03434491157531738,
+      "error": null
+    },
+    "assert kth_element([16, 20, 7, 21], 1, 3) == 7": {
+      "result": false,
+      "time": 0.04204440116882324,
+      "error": null
+    },
+    "assert kth_element([20, 26, 5, 28], 3, 2) == 26": {
+      "result": false,
+      "time": 0.03673744201660156,
+      "error": null
+    },
+    "assert kth_element([19, 23, 5, 22], 4, 1) == 19": {
+      "result": false,
+      "time": 0.035962820053100586,
+      "error": null
+    },
+    "assert kth_element([21, 26, 6, 25], 4, 2) == 26": {
+      "result": false,
+      "time": 0.039278507232666016,
+      "error": null
+    },
+    "assert kth_element([17, 21, 3, 26], 3, 4) == 26": {
+      "result": true,
+      "time": 0.03256630897521973,
+      "error": null
+    },
+    "assert kth_element([16, 20, 11, 28], 2, 2) == 20": {
+      "result": false,
+      "time": 0.036490440368652344,
+      "error": null
+    },
+    "assert kth_element([17, 28, 9, 24], 3, 4) == 24": {
+      "result": false,
+      "time": 0.03522539138793945,
+      "error": null
+    },
+    "assert kth_element([17, 27, 4, 23], 1, 4) == 23": {
+      "result": false,
+      "time": 0.03656196594238281,
+      "error": null
+    },
+    "assert kth_element([12, 23, 8, 22], 4, 1) == 12": {
+      "result": false,
+      "time": 0.03439497947692871,
+      "error": null
+    },
+    "assert kth_element([20, 25, 9, 28], 3, 1) == 20": {
+      "result": false,
+      "time": 0.035253047943115234,
+      "error": null
+    },
+    "assert kth_element([13, 23, 10, 22], 3, 2) == 23": {
+      "result": false,
+      "time": 0.03359699249267578,
+      "error": null
+    },
+    "assert kth_element([21, 19, 11, 27], 4, 4) == 27": {
+      "result": true,
+      "time": 0.03798031806945801,
+      "error": null
+    },
+    "assert kth_element([12, 23, 13, 24], 4, 2) == 23": {
+      "result": false,
+      "time": 0.03650474548339844,
+      "error": null
+    },
+    "assert kth_element([13, 19, 4, 28], 2, 3) == 4": {
+      "result": false,
+      "time": 0.03446459770202637,
+      "error": null
+    },
+    "assert kth_element([16, 19, 30, 40, 4], 5, 1) == 16": {
+      "result": false,
+      "time": 0.04261970520019531,
+      "error": null
+    },
+    "assert kth_element([18, 23, 26, 33, 5], 1, 5) == 5": {
+      "result": false,
+      "time": 0.0319056510925293,
+      "error": null
+    },
+    "assert kth_element([18, 25, 23, 36, 6], 5, 5) == 6": {
+      "result": false,
+      "time": 0.037195444107055664,
+      "error": null
+    },
+    "assert kth_element([20, 16, 22, 31, 9], 1, 2) == 16": {
+      "result": true,
+      "time": 0.03814363479614258,
+      "error": null
+    },
+    "assert kth_element([21, 17, 30, 40, 9], 1, 2) == 17": {
+      "result": true,
+      "time": 0.04329657554626465,
+      "error": null
+    },
+    "assert kth_element([15, 17, 27, 36, 6], 5, 2) == 17": {
+      "result": false,
+      "time": 0.03453373908996582,
+      "error": null
+    },
+    "assert kth_element([12, 18, 20, 40, 7], 5, 3) == 20": {
+      "result": false,
+      "time": 0.037964582443237305,
+      "error": null
+    },
+    "assert kth_element([21, 25, 23, 37, 7], 1, 1) == 21": {
+      "result": false,
+      "time": 0.03313016891479492,
+      "error": null
+    },
+    "assert kth_element([16, 18, 22, 40, 9], 4, 2) == 18": {
+      "result": false,
+      "time": 0.0328831672668457,
+      "error": null
+    },
+    "assert kth_element([12, 26, 29, 39, 7], 3, 1) == 12": {
+      "result": false,
+      "time": 0.04292416572570801,
+      "error": null
+    },
+    "assert kth_element([14, 25, 22, 36, 1], 4, 5) == 1": {
+      "result": false,
+      "time": 0.032518863677978516,
+      "error": null
+    },
+    "assert kth_element([17, 16, 21, 32, 7], 4, 5) == 7": {
+      "result": false,
+      "time": 0.03775620460510254,
+      "error": null
+    },
+    "assert kth_element([12, 19, 21, 41, 9], 3, 5) == 9": {
+      "result": false,
+      "time": 0.030408620834350586,
+      "error": null
+    },
+    "assert kth_element([13, 21, 27, 34, 1], 3, 4) == 34": {
+      "result": false,
+      "time": 0.03646206855773926,
+      "error": null
+    },
+    "assert kth_element([13, 25, 20, 33, 4], 1, 4) == 33": {
+      "result": false,
+      "time": 0.04155778884887695,
+      "error": null
+    },
+    "assert kth_element([16, 22, 20, 32, 9], 4, 4) == 32": {
+      "result": false,
+      "time": 0.032666921615600586,
+      "error": null
+    },
+    "assert kth_element([13, 22, 27, 32, 9], 1, 3) == 27": {
+      "result": false,
+      "time": 0.033461570739746094,
+      "error": null
+    },
+    "assert kth_element([11, 26, 26, 37, 6], 2, 4) == 37": {
+      "result": false,
+      "time": 0.0323176383972168,
+      "error": null
+    },
+    "assert kth_element([17, 23, 28, 41, 7], 1, 2) == 23": {
+      "result": false,
+      "time": 0.03857588768005371,
+      "error": null
+    },
+    "assert kth_element([14, 19, 21, 31, 1], 5, 5) == 1": {
+      "result": false,
+      "time": 0.03635549545288086,
+      "error": null
+    },
+    "assert kth_element([21, 25, 22, 37, 9], 5, 1) == 21": {
+      "result": false,
+      "time": 0.03754472732543945,
+      "error": null
+    },
+    "assert kth_element([20, 16, 22, 39, 5], 4, 5) == 5": {
+      "result": false,
+      "time": 0.03535270690917969,
+      "error": null
+    },
+    "assert kth_element([17, 17, 28, 36, 9], 5, 4) == 36": {
+      "result": false,
+      "time": 0.031203746795654297,
+      "error": null
+    },
+    "assert kth_element([16, 24, 30, 39, 2], 2, 2) == 24": {
+      "result": false,
+      "time": 0.045041799545288086,
+      "error": null
+    },
+    "assert kth_element([16, 19, 22, 37, 1], 4, 5) == 1": {
+      "result": false,
+      "time": 0.030503511428833008,
+      "error": null
+    },
+    "assert kth_element([17, 24, 21, 33, 7], 2, 3) == 21": {
+      "result": true,
+      "time": 0.035599470138549805,
+      "error": null
+    },
+    "assert kth_element([21, 24, 23, 41, 5], 2, 5) == 5": {
+      "result": false,
+      "time": 0.038121938705444336,
+      "error": null
+    },
+    "assert kth_element([18, 16, 28, 39, 4], 4, 1) == 18": {
+      "result": false,
+      "time": 0.03301215171813965,
+      "error": null
+    },
+    "assert kth_element([20, 17, 29, 39, 6], 3, 3) == 29": {
+      "result": false,
+      "time": 0.036168575286865234,
+      "error": null
+    },
+    "assert kth_element([17, 17, 27, 40, 6], 1, 2) == 17": {
+      "result": true,
+      "time": 0.031653642654418945,
+      "error": null
+    },
+    "assert kth_element([18, 22, 30, 36, 5], 2, 1) == 18": {
+      "result": false,
+      "time": 0.03095245361328125,
+      "error": null
+    },
+    "assert kth_element([19, 17, 29, 32, 8], 1, 3) == 29": {
+      "result": false,
+      "time": 0.03417325019836426,
+      "error": null
+    },
+    "assert kth_element([15, 23, 23, 32, 8], 5, 1) == 15": {
+      "result": false,
+      "time": 0.03738713264465332,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.19607843137254902,
+  "general_error": "",
+  "has_testcase_error": false
+}

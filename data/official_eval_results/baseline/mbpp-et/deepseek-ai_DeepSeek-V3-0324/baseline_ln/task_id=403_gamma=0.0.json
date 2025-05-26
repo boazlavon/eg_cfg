@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef is_valid_URL(url):\n    # Regular expression pattern for validating a URL\n    pattern = re.compile(\n        r'^(https?:\\/\\/)?'  # http:// or https://\n        r'([a-zA-Z0-9.-]+)'  # domain name\n        r'(\\.[a-zA-Z]{2,})'  # . followed by at least 2 letters (TLD)\n        r'(\\/[^\\s]*)?$'  # optional path\n    )\n    return bool(re.fullmatch(pattern, url))",
+  "results": {
+    "assert is_valid_URL(\"https://www.google.com\") == True": {
+      "result": true,
+      "time": 0.5612096786499023,
+      "error": null
+    },
+    "assert is_valid_URL(\"https:/www.gmail.com\") == False": {
+      "result": true,
+      "time": 0.588972806930542,
+      "error": null
+    },
+    "assert is_valid_URL(\"https:// www.redit.com\") == False": {
+      "result": true,
+      "time": 0.5669655799865723,
+      "error": null
+    },
+    "assert is_valid_URL(\"=hzn~~fk/to~f~ts#:.cy&r#|_#\") == False": {
+      "result": true,
+      "time": 0.5631515979766846,
+      "error": null
+    },
+    "assert is_valid_URL(\"rrj$#kht?mv$u_qblnq*u#+sg\") == False": {
+      "result": true,
+      "time": 0.5972480773925781,
+      "error": null
+    },
+    "assert is_valid_URL(\"tp+>kn@ky_rz|b@%qz=$vt\") == False": {
+      "result": true,
+      "time": 0.601696252822876,
+      "error": null
+    },
+    "assert is_valid_URL(\"w>d.dl#e-w$g>p.nhv^hlfx$r%\") == False": {
+      "result": true,
+      "time": 0.561983585357666,
+      "error": null
+    },
+    "assert is_valid_URL(\"hir^f#xm$ze&%jt+~h\") == False": {
+      "result": true,
+      "time": 0.6140775680541992,
+      "error": null
+    },
+    "assert is_valid_URL(\"!^zoe!sffe#u=x|m=&&:=w$_\") == False": {
+      "result": true,
+      "time": 0.6113426685333252,
+      "error": null
+    },
+    "assert is_valid_URL(\"e*ro~s-bgl#/&=!c~|\") == False": {
+      "result": true,
+      "time": 0.5599687099456787,
+      "error": null
+    },
+    "assert is_valid_URL(\"dvpa+txzl|<xzsbt%@*-\") == False": {
+      "result": true,
+      "time": 0.5655379295349121,
+      "error": null
+    },
+    "assert is_valid_URL(\"~jlfifly-zwe+xpx<g$h\") == False": {
+      "result": true,
+      "time": 0.6220316886901855,
+      "error": null
+    },
+    "assert is_valid_URL(\"b=v*ae_*>bfrb|xsyvz<\") == False": {
+      "result": true,
+      "time": 0.5691051483154297,
+      "error": null
+    },
+    "assert is_valid_URL(\"^w!?l=~amdg-q?&gw%\") == False": {
+      "result": true,
+      "time": 0.6142885684967041,
+      "error": null
+    },
+    "assert is_valid_URL(\"gv?.wkj:@?=$-zq>r>o+-:vlo\") == False": {
+      "result": true,
+      "time": 0.5939998626708984,
+      "error": null
+    },
+    "assert is_valid_URL(\"puh-s_ksd&i?blx=bx\") == False": {
+      "result": true,
+      "time": 0.5900833606719971,
+      "error": null
+    },
+    "assert is_valid_URL(\"l@l^*^g<utm!i~c^/k!rue*f$++\") == False": {
+      "result": true,
+      "time": 0.6243150234222412,
+      "error": null
+    },
+    "assert is_valid_URL(\"zs>*tg$su//*^n>!@_qsb<!ioga\") == False": {
+      "result": true,
+      "time": 0.5907025337219238,
+      "error": null
+    },
+    "assert is_valid_URL(\"wr.$jijyk~&^~/d/z@.hg\") == False": {
+      "result": true,
+      "time": 0.5341849327087402,
+      "error": null
+    },
+    "assert is_valid_URL(\"#>&egai@c-#h:?i==h@e#v\") == False": {
+      "result": true,
+      "time": 0.6197338104248047,
+      "error": null
+    },
+    "assert is_valid_URL(\"!@w%:-mqh--.mbw&s?<tt%hk\") == False": {
+      "result": true,
+      "time": 0.5292084217071533,
+      "error": null
+    },
+    "assert is_valid_URL(\"cesx/>n~a+.r>tqk>-><#<\") == False": {
+      "result": true,
+      "time": 0.5982053279876709,
+      "error": null
+    },
+    "assert is_valid_URL(\"lg!eq.gsxitgjcxsq=t%$_\") == False": {
+      "result": true,
+      "time": 0.6074848175048828,
+      "error": null
+    },
+    "assert is_valid_URL(\"|!*|g?dmae%q*tg%qboey%$\") == False": {
+      "result": true,
+      "time": 0.5770773887634277,
+      "error": null
+    },
+    "assert is_valid_URL(\"$@jlstx^jr>f~:?-o=qx$\") == False": {
+      "result": true,
+      "time": 0.4774196147918701,
+      "error": null
+    },
+    "assert is_valid_URL(\"jg$zpbyyb<dniwtpg?eqhkj<fhy\") == False": {
+      "result": true,
+      "time": 0.6150827407836914,
+      "error": null
+    },
+    "assert is_valid_URL(\"sx#y**o+v=-+k|vgqkxx\") == False": {
+      "result": true,
+      "time": 0.3470630645751953,
+      "error": null
+    },
+    "assert is_valid_URL(\"kgb/?z@:/@v|h^c_~v\") == False": {
+      "result": true,
+      "time": 0.6019806861877441,
+      "error": null
+    },
+    "assert is_valid_URL(\"+>v+o@&fi##%.ans|<*>|be=ev\") == False": {
+      "result": true,
+      "time": 0.5980715751647949,
+      "error": null
+    },
+    "assert is_valid_URL(\"fvp/to?pmlh#||j|<..-*k>\") == False": {
+      "result": true,
+      "time": 0.5022323131561279,
+      "error": null
+    },
+    "assert is_valid_URL(\">e+ks!y?%$cz?g!.ulw@<~bzme\") == False": {
+      "result": true,
+      "time": 0.6129467487335205,
+      "error": null
+    },
+    "assert is_valid_URL(\"|z/<@v.+ddpxa_+@p~>&$gq&|\") == False": {
+      "result": true,
+      "time": 0.6111793518066406,
+      "error": null
+    },
+    "assert is_valid_URL(\":u<:gh%>/=is@dfeeuj|eh?\") == False": {
+      "result": true,
+      "time": 0.5732614994049072,
+      "error": null
+    },
+    "assert is_valid_URL(\"%j^x>vwbuw+ovdk+mw\") == False": {
+      "result": true,
+      "time": 0.6090810298919678,
+      "error": null
+    },
+    "assert is_valid_URL(\"_ou^@ld#=^nmc:bpxs>m-!d.+tb\") == False": {
+      "result": true,
+      "time": 0.61232590675354,
+      "error": null
+    },
+    "assert is_valid_URL(\"!*_#:/px_n~&g:an*+ykvfl\") == False": {
+      "result": true,
+      "time": 0.5672433376312256,
+      "error": null
+    },
+    "assert is_valid_URL(\"=*n<<l<%_e$ql%+/\") == False": {
+      "result": true,
+      "time": 0.6114637851715088,
+      "error": null
+    },
+    "assert is_valid_URL(\"yc#od&@~wxc|*$y>r!yf\") == False": {
+      "result": true,
+      "time": 0.5719130039215088,
+      "error": null
+    },
+    "assert is_valid_URL(\"&<uh*tc-rxaeu^|&%!@x:c=\") == False": {
+      "result": true,
+      "time": 0.5822229385375977,
+      "error": null
+    },
+    "assert is_valid_URL(\"t^&=g+.<v|*!~^j*<|yso\") == False": {
+      "result": true,
+      "time": 0.562910795211792,
+      "error": null
+    },
+    "assert is_valid_URL(\"$/i:j-fb*z*/i*yo|==.\") == False": {
+      "result": true,
+      "time": 0.5519504547119141,
+      "error": null
+    },
+    "assert is_valid_URL(\"!!eihs*+.-m/&/$qq\") == False": {
+      "result": true,
+      "time": 0.5489840507507324,
+      "error": null
+    },
+    "assert is_valid_URL(\":-++_e:ks#isjf@~>l|$/h\") == False": {
+      "result": true,
+      "time": 0.5831928253173828,
+      "error": null
+    },
+    "assert is_valid_URL(\"ztsx+u@>/maunx?cmx.qdd\") == False": {
+      "result": true,
+      "time": 0.5578861236572266,
+      "error": null
+    },
+    "assert is_valid_URL(\"_urs.be$zef@ofa#~f.sd\") == False": {
+      "result": true,
+      "time": 0.5546877384185791,
+      "error": null
+    },
+    "assert is_valid_URL(\"%yex^_<l.fji_~/_&hqk+e\") == False": {
+      "result": true,
+      "time": 0.5686941146850586,
+      "error": null
+    },
+    "assert is_valid_URL(\"~|.nfy_g*h_aygcjs=.e@z_y\") == False": {
+      "result": true,
+      "time": 0.5639288425445557,
+      "error": null
+    },
+    "assert is_valid_URL(\":+^q&iexxn*qcih<\") == False": {
+      "result": true,
+      "time": 0.5884413719177246,
+      "error": null
+    },
+    "assert is_valid_URL(\"^%%sr.wh<=w-qrghrl\") == False": {
+      "result": true,
+      "time": 0.5845146179199219,
+      "error": null
+    },
+    "assert is_valid_URL(\"%%:bb+d@i:i@ukpnv=_kqa@*\") == False": {
+      "result": true,
+      "time": 0.58744215965271,
+      "error": null
+    },
+    "assert is_valid_URL(\"xmkfaxw@s|y!a<u\") == False": {
+      "result": true,
+      "time": 0.5652298927307129,
+      "error": null
+    },
+    "assert is_valid_URL(\"<&l&$gf*%bgv.zgg#@_j+\") == False": {
+      "result": true,
+      "time": 0.6001136302947998,
+      "error": null
+    },
+    "assert is_valid_URL(\"i-v&=.-_$<+/lfj_a:o\") == False": {
+      "result": true,
+      "time": 0.5777597427368164,
+      "error": null
+    },
+    "assert is_valid_URL(\"h^tqorqiim>*>:%\") == False": {
+      "result": true,
+      "time": 0.5898618698120117,
+      "error": null
+    },
+    "assert is_valid_URL(\"<#&=u|$m/:/<d_i\") == False": {
+      "result": true,
+      "time": 0.5756864547729492,
+      "error": null
+    },
+    "assert is_valid_URL(\">p-:@yl$^ow_a-%/dy-|\") == False": {
+      "result": true,
+      "time": 0.4621572494506836,
+      "error": null
+    },
+    "assert is_valid_URL(\"!b-_~cevz?zj<nq<*d\") == False": {
+      "result": true,
+      "time": 0.6052412986755371,
+      "error": null
+    },
+    "assert is_valid_URL(\"$>^i%u*!&vdzo=^hf\") == False": {
+      "result": true,
+      "time": 0.6077671051025391,
+      "error": null
+    },
+    "assert is_valid_URL(\"p_mb_gv?#fl.e:/%<~_|/bo\") == False": {
+      "result": true,
+      "time": 0.5762190818786621,
+      "error": null
+    },
+    "assert is_valid_URL(\"+$vwktenpa#cmk*f>s_c^nk\") == False": {
+      "result": true,
+      "time": 0.5754826068878174,
+      "error": null
+    },
+    "assert is_valid_URL(\"-..|uks+d#o*mck\") == False": {
+      "result": true,
+      "time": 0.58294677734375,
+      "error": null
+    },
+    "assert is_valid_URL(\"!ae|vu^@u#:e%*d^<%@-t<o\") == False": {
+      "result": true,
+      "time": 0.5813388824462891,
+      "error": null
+    },
+    "assert is_valid_URL(\"=iy_|:^vbl*&.a!\") == False": {
+      "result": true,
+      "time": 0.5752484798431396,
+      "error": null
+    },
+    "assert is_valid_URL(\"oq/nt~-w|<bo.z:pul\") == False": {
+      "result": true,
+      "time": 0.45705723762512207,
+      "error": null
+    },
+    "assert is_valid_URL(\"!!s:w+ckub.-:kqx\") == False": {
+      "result": true,
+      "time": 0.600489616394043,
+      "error": null
+    },
+    "assert is_valid_URL(\"vk&/$a-q~o#i/*=rm~pc\") == False": {
+      "result": true,
+      "time": 0.43381285667419434,
+      "error": null
+    },
+    "assert is_valid_URL(\"p<|d=$m@w<lp=nuql-oza\") == False": {
+      "result": true,
+      "time": 0.6061818599700928,
+      "error": null
+    },
+    "assert is_valid_URL(\"_-$xdwgo+pz%h#uq&aec@ri\") == False": {
+      "result": true,
+      "time": 0.6055850982666016,
+      "error": null
+    },
+    "assert is_valid_URL(\"&=joo|&cakzl+~=n_vsj?\") == False": {
+      "result": true,
+      "time": 0.6027042865753174,
+      "error": null
+    },
+    "assert is_valid_URL(\"^|yebf/mg+?al%$c*u pt\") == False": {
+      "result": true,
+      "time": 0.6010198593139648,
+      "error": null
+    },
+    "assert is_valid_URL(\" >%+%%rkb#k.nklxe^xi-q\") == False": {
+      "result": true,
+      "time": 0.5722761154174805,
+      "error": null
+    },
+    "assert is_valid_URL(\"fxo#|*qbo@t/s<.&>l!=~-o@x>\") == False": {
+      "result": true,
+      "time": 0.6038334369659424,
+      "error": null
+    },
+    "assert is_valid_URL(\"l#*j@^.~g-hl=>wh<.|haq&d!\") == False": {
+      "result": true,
+      "time": 0.5122418403625488,
+      "error": null
+    },
+    "assert is_valid_URL(\"=zmdmn.c*d n%^mpb*\") == False": {
+      "result": true,
+      "time": 0.5771362781524658,
+      "error": null
+    },
+    "assert is_valid_URL(\"pkhvtq|%?dbn<.efedu#dkhx\") == False": {
+      "result": true,
+      "time": 0.4933028221130371,
+      "error": null
+    },
+    "assert is_valid_URL(\" rgu+y>=uvv>^+eoyh&h~sr\") == False": {
+      "result": true,
+      "time": 0.6034202575683594,
+      "error": null
+    },
+    "assert is_valid_URL(\">nlsf*%u= fxv@#a<$cy@re@$-\") == False": {
+      "result": true,
+      "time": 0.6024758815765381,
+      "error": null
+    },
+    "assert is_valid_URL(\"fhvpr&_|r!bkuur!-qb.\") == False": {
+      "result": true,
+      "time": 0.5915091037750244,
+      "error": null
+    },
+    "assert is_valid_URL(\" ~%##_dtb^^ :u=?n!y/b*rgb\") == False": {
+      "result": true,
+      "time": 0.5907096862792969,
+      "error": null
+    },
+    "assert is_valid_URL(\"ky!%atw ? <x =/~m&&ga\") == False": {
+      "result": true,
+      "time": 0.5875992774963379,
+      "error": null
+    },
+    "assert is_valid_URL(\"cb_vyxaihyv.>*r|qjg<c@\") == False": {
+      "result": true,
+      "time": 0.5828742980957031,
+      "error": null
+    },
+    "assert is_valid_URL(\" <<%^io-vxgq@iq@-d%s:@&<kn!\") == False": {
+      "result": true,
+      "time": 0.5704803466796875,
+      "error": null
+    },
+    "assert is_valid_URL(\"/o:s@k<i_mtfe|dm-:\") == False": {
+      "result": true,
+      "time": 0.5914702415466309,
+      "error": null
+    },
+    "assert is_valid_URL(\"l_dqo+#u|&^o!|$o+x ~b\") == False": {
+      "result": true,
+      "time": 0.653907060623169,
+      "error": null
+    },
+    "assert is_valid_URL(\"s#te. aq!u|mn..a:!\") == False": {
+      "result": true,
+      "time": 0.4263267517089844,
+      "error": null
+    },
+    "assert is_valid_URL(\"_l&$aga%ko^:i_@r/cqt*-\") == False": {
+      "result": true,
+      "time": 0.5499763488769531,
+      "error": null
+    },
+    "assert is_valid_URL(\"~j**:ghv|mhk*p:+ez\") == False": {
+      "result": true,
+      "time": 0.5505244731903076,
+      "error": null
+    },
+    "assert is_valid_URL(\"q<.vp-|d*~-%by>:q&a/d<\") == False": {
+      "result": true,
+      "time": 0.6656980514526367,
+      "error": null
+    },
+    "assert is_valid_URL(\"=djj-%_.f+kn#m_~~a\") == False": {
+      "result": true,
+      "time": 0.3031933307647705,
+      "error": null
+    },
+    "assert is_valid_URL(\"snu|f ?%kqtmva.~kd\") == False": {
+      "result": true,
+      "time": 0.5085961818695068,
+      "error": null
+    },
+    "assert is_valid_URL(\"x^++yr^civeyw+#fwic_g#?^!&\") == False": {
+      "result": true,
+      "time": 0.32492995262145996,
+      "error": null
+    },
+    "assert is_valid_URL(\"fhm/moi&igef%wcy_@\") == False": {
+      "result": true,
+      "time": 0.5888752937316895,
+      "error": null
+    },
+    "assert is_valid_URL(\"my?<+&$ddv$yj@?il~:b&tjh?yl\") == False": {
+      "result": true,
+      "time": 0.5386662483215332,
+      "error": null
+    },
+    "assert is_valid_URL(\"sakc^eo|=gi=m.|h_^u\") == False": {
+      "result": true,
+      "time": 0.34430789947509766,
+      "error": null
+    },
+    "assert is_valid_URL(\"xo/.m$@@y+kq?k|.au\") == False": {
+      "result": true,
+      "time": 0.3804018497467041,
+      "error": null
+    },
+    "assert is_valid_URL(\"p%tw&ot/-/bn*f.j>@r\") == False": {
+      "result": true,
+      "time": 0.39717531204223633,
+      "error": null
+    },
+    "assert is_valid_URL(\"hi/nqklv|##.*qrpops\") == False": {
+      "result": true,
+      "time": 0.3645362854003906,
+      "error": null
+    },
+    "assert is_valid_URL(\"@b/a^>i<$@x&vllv#wg!vm@kmb=\") == False": {
+      "result": true,
+      "time": 0.41713666915893555,
+      "error": null
+    },
+    "assert is_valid_URL(\" nqx+hpu>fx+o!lne^~\") == False": {
+      "result": true,
+      "time": 0.31601405143737793,
+      "error": null
+    },
+    "assert is_valid_URL(\"@&^iee-pmt<#z#+lw .|e&v!k\") == False": {
+      "result": true,
+      "time": 0.5271244049072266,
+      "error": null
+    },
+    "assert is_valid_URL(\"m@dbd#teloxvg!?%&zm />chr&\") == False": {
+      "result": true,
+      "time": 0.6135275363922119,
+      "error": null
+    },
+    "assert is_valid_URL(\"w~!>&osqwdnl#xc*quxwa|y^d\") == False": {
+      "result": true,
+      "time": 0.49303197860717773,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

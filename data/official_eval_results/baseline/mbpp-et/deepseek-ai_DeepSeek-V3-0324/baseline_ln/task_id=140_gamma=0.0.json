@@ -1,0 +1,519 @@
+{
+  "code": "from collections import defaultdict\n\ndef extract_singly(tuple_list):\n    count_dict = defaultdict(int)\n    # Count occurrences of each element\n    for tup in tuple_list:\n        for num in tup:\n            count_dict[num] += 1\n    # Extract elements that occur exactly once\n    result = [num for num, count in count_dict.items() if count == 1]\n    return result",
+  "results": {
+    "assert extract_singly([(3, 4, 5), (4, 5, 7), (1, 4)]) == [3, 4, 5, 7, 1]": {
+      "result": false,
+      "time": 0.27129530906677246,
+      "error": null
+    },
+    "assert extract_singly([(1, 2, 3), (4, 2, 3), (7, 8)]) == [1, 2, 3, 4, 7, 8]": {
+      "result": false,
+      "time": 0.266721248626709,
+      "error": null
+    },
+    "assert extract_singly([(7, 8, 9), (10, 11, 12), (10, 11)]) == [7, 8, 9, 10, 11, 12]": {
+      "result": false,
+      "time": 0.2589530944824219,
+      "error": null
+    },
+    "assert extract_singly([(3, 7, 5), (7, 7, 9), (5, 2)]) == [3, 7, 5, 9, 2]": {
+      "result": false,
+      "time": 0.27548789978027344,
+      "error": null
+    },
+    "assert extract_singly([(3, 9, 6), (1, 6, 6), (4, 3)]) == [3, 9, 6, 1, 4]": {
+      "result": false,
+      "time": 0.260361909866333,
+      "error": null
+    },
+    "assert extract_singly([(1, 7, 2), (5, 10, 5), (2, 6)]) == [1, 7, 2, 5, 10, 6]": {
+      "result": false,
+      "time": 0.2737157344818115,
+      "error": null
+    },
+    "assert extract_singly([(6, 8, 9), (5, 8, 11), (4, 1)]) == [6, 8, 9, 5, 11, 4, 1]": {
+      "result": false,
+      "time": 0.25371646881103516,
+      "error": null
+    },
+    "assert extract_singly([(6, 9, 4), (3, 9, 10), (3, 3)]) == [6, 9, 4, 3, 10]": {
+      "result": false,
+      "time": 0.2714707851409912,
+      "error": null
+    },
+    "assert extract_singly([(2, 4, 9), (1, 3, 12), (2, 5)]) == [2, 4, 9, 1, 3, 12, 5]": {
+      "result": false,
+      "time": 0.2707340717315674,
+      "error": null
+    },
+    "assert extract_singly([(8, 9, 4), (4, 6, 2), (2, 6)]) == [8, 9, 4, 6, 2]": {
+      "result": false,
+      "time": 0.24827933311462402,
+      "error": null
+    },
+    "assert extract_singly([(6, 4, 2), (2, 5, 12), (5, 8)]) == [6, 4, 2, 5, 12, 8]": {
+      "result": false,
+      "time": 0.28960394859313965,
+      "error": null
+    },
+    "assert extract_singly([(2, 6, 6), (3, 4, 2), (3, 4)]) == [2, 6, 3, 4]": {
+      "result": false,
+      "time": 0.2751748561859131,
+      "error": null
+    },
+    "assert extract_singly([(4, 6, 5), (8, 3, 5), (6, 9)]) == [4, 6, 5, 8, 3, 9]": {
+      "result": false,
+      "time": 0.2758290767669678,
+      "error": null
+    },
+    "assert extract_singly([(3, 9, 1), (4, 7, 7), (6, 4)]) == [3, 9, 1, 4, 7, 6]": {
+      "result": false,
+      "time": 0.2926323413848877,
+      "error": null
+    },
+    "assert extract_singly([(4, 9, 2), (6, 8, 5), (5, 1)]) == [4, 9, 2, 6, 8, 5, 1]": {
+      "result": false,
+      "time": 0.28295135498046875,
+      "error": null
+    },
+    "assert extract_singly([(6, 8, 10), (5, 5, 7), (4, 9)]) == [6, 8, 10, 5, 7, 4, 9]": {
+      "result": false,
+      "time": 0.2810194492340088,
+      "error": null
+    },
+    "assert extract_singly([(8, 1, 5), (8, 9, 6), (2, 6)]) == [8, 1, 5, 9, 6, 2]": {
+      "result": false,
+      "time": 0.2919027805328369,
+      "error": null
+    },
+    "assert extract_singly([(6, 1, 1), (9, 8, 6), (1, 7)]) == [6, 1, 9, 8, 7]": {
+      "result": false,
+      "time": 0.2821381092071533,
+      "error": null
+    },
+    "assert extract_singly([(4, 5, 5), (8, 10, 2), (5, 6)]) == [4, 5, 8, 10, 2, 6]": {
+      "result": false,
+      "time": 0.28919243812561035,
+      "error": null
+    },
+    "assert extract_singly([(6, 2, 8), (8, 5, 8), (6, 7)]) == [6, 2, 8, 5, 7]": {
+      "result": false,
+      "time": 0.21988606452941895,
+      "error": null
+    },
+    "assert extract_singly([(5, 8, 9), (2, 3, 6), (5, 6)]) == [5, 8, 9, 2, 3, 6]": {
+      "result": false,
+      "time": 0.3037707805633545,
+      "error": null
+    },
+    "assert extract_singly([(7, 4, 1), (6, 3, 11), (2, 1)]) == [7, 4, 1, 6, 3, 11, 2]": {
+      "result": false,
+      "time": 0.2970089912414551,
+      "error": null
+    },
+    "assert extract_singly([(1, 4, 2), (8, 8, 3), (4, 6)]) == [1, 4, 2, 8, 3, 6]": {
+      "result": false,
+      "time": 0.3193657398223877,
+      "error": null
+    },
+    "assert extract_singly([(3, 1, 2), (2, 3, 10), (5, 5)]) == [3, 1, 2, 10, 5]": {
+      "result": false,
+      "time": 0.26540660858154297,
+      "error": null
+    },
+    "assert extract_singly([(6, 5, 10), (7, 3, 12), (4, 1)]) == [6, 5, 10, 7, 3, 12, 4, 1]": {
+      "result": true,
+      "time": 0.25106096267700195,
+      "error": null
+    },
+    "assert extract_singly([(2, 6, 8), (9, 5, 4), (1, 5)]) == [2, 6, 8, 9, 5, 4, 1]": {
+      "result": false,
+      "time": 0.2783782482147217,
+      "error": null
+    },
+    "assert extract_singly([(4, 5, 2), (1, 1, 11), (4, 1)]) == [4, 5, 2, 1, 11]": {
+      "result": false,
+      "time": 0.27425074577331543,
+      "error": null
+    },
+    "assert extract_singly([(2, 4, 7), (7, 9, 4), (6, 3)]) == [2, 4, 7, 9, 6, 3]": {
+      "result": false,
+      "time": 0.2679405212402344,
+      "error": null
+    },
+    "assert extract_singly([(4, 8, 7), (5, 10, 11), (3, 2)]) == [4, 8, 7, 5, 10, 11, 3, 2]": {
+      "result": true,
+      "time": 0.26677465438842773,
+      "error": null
+    },
+    "assert extract_singly([(5, 4, 10), (7, 3, 11), (4, 4)]) == [5, 4, 10, 7, 3, 11]": {
+      "result": false,
+      "time": 0.2678091526031494,
+      "error": null
+    },
+    "assert extract_singly([(6, 5, 2), (8, 10, 5), (1, 1)]) == [6, 5, 2, 8, 10, 1]": {
+      "result": false,
+      "time": 0.2886621952056885,
+      "error": null
+    },
+    "assert extract_singly([(5, 5, 10), (5, 3, 11), (3, 9)]) == [5, 10, 3, 11, 9]": {
+      "result": false,
+      "time": 0.2995483875274658,
+      "error": null
+    },
+    "assert extract_singly([(2, 5, 9), (7, 5, 6), (3, 6)]) == [2, 5, 9, 7, 6, 3]": {
+      "result": false,
+      "time": 0.2751741409301758,
+      "error": null
+    },
+    "assert extract_singly([(2, 6, 5), (8, 2, 11), (6, 1)]) == [2, 6, 5, 8, 11, 1]": {
+      "result": false,
+      "time": 0.26610422134399414,
+      "error": null
+    },
+    "assert extract_singly([(1, 2, 10), (4, 2, 5), (3, 2)]) == [1, 2, 10, 4, 5, 3]": {
+      "result": false,
+      "time": 0.2608187198638916,
+      "error": null
+    },
+    "assert extract_singly([(8, 1, 10), (8, 3, 2), (1, 3)]) == [8, 1, 10, 3, 2]": {
+      "result": false,
+      "time": 0.27364540100097656,
+      "error": null
+    },
+    "assert extract_singly([(3, 7, 4), (1, 1, 5), (5, 5)]) == [3, 7, 4, 1, 5]": {
+      "result": false,
+      "time": 0.268892765045166,
+      "error": null
+    },
+    "assert extract_singly([(6, 7, 1), (6, 5, 3), (11, 3)]) == [6, 7, 1, 5, 3, 11]": {
+      "result": false,
+      "time": 0.2619445323944092,
+      "error": null
+    },
+    "assert extract_singly([(1, 7, 4), (2, 2, 7), (2, 7)]) == [1, 7, 4, 2]": {
+      "result": false,
+      "time": 0.27541065216064453,
+      "error": null
+    },
+    "assert extract_singly([(4, 2, 3), (3, 7, 7), (2, 5)]) == [4, 2, 3, 7, 5]": {
+      "result": false,
+      "time": 0.2776756286621094,
+      "error": null
+    },
+    "assert extract_singly([(5, 6, 1), (7, 4, 3), (6, 4)]) == [5, 6, 1, 7, 4, 3]": {
+      "result": false,
+      "time": 0.2645304203033447,
+      "error": null
+    },
+    "assert extract_singly([(4, 1, 4), (8, 2, 5), (10, 12)]) == [4, 1, 8, 2, 5, 10, 12]": {
+      "result": false,
+      "time": 0.2608795166015625,
+      "error": null
+    },
+    "assert extract_singly([(6, 1, 2), (8, 2, 5), (4, 9)]) == [6, 1, 2, 8, 5, 4, 9]": {
+      "result": false,
+      "time": 0.26339125633239746,
+      "error": null
+    },
+    "assert extract_singly([(1, 5, 3), (9, 2, 6), (10, 4)]) == [1, 5, 3, 9, 2, 6, 10, 4]": {
+      "result": true,
+      "time": 0.2536735534667969,
+      "error": null
+    },
+    "assert extract_singly([(4, 3, 8), (6, 1, 6), (12, 12)]) == [4, 3, 8, 6, 1, 12]": {
+      "result": false,
+      "time": 0.26816654205322266,
+      "error": null
+    },
+    "assert extract_singly([(4, 7, 5), (9, 5, 3), (11, 11)]) == [4, 7, 5, 9, 3, 11]": {
+      "result": false,
+      "time": 0.25917768478393555,
+      "error": null
+    },
+    "assert extract_singly([(5, 3, 6), (4, 6, 3), (2, 7)]) == [5, 3, 6, 4, 2, 7]": {
+      "result": false,
+      "time": 0.2861824035644531,
+      "error": null
+    },
+    "assert extract_singly([(5, 1, 8), (1, 7, 8), (7, 9)]) == [5, 1, 8, 7, 9]": {
+      "result": false,
+      "time": 0.26291823387145996,
+      "error": null
+    },
+    "assert extract_singly([(4, 7, 1), (3, 2, 1), (11, 3)]) == [4, 7, 1, 3, 2, 11]": {
+      "result": false,
+      "time": 0.2633364200592041,
+      "error": null
+    },
+    "assert extract_singly([(6, 3, 6), (1, 2, 2), (8, 9)]) == [6, 3, 1, 2, 8, 9]": {
+      "result": false,
+      "time": 0.2564511299133301,
+      "error": null
+    },
+    "assert extract_singly([(5, 1, 4), (5, 3, 1), (2, 9)]) == [5, 1, 4, 3, 2, 9]": {
+      "result": false,
+      "time": 0.29293370246887207,
+      "error": null
+    },
+    "assert extract_singly([(2, 2, 2), (6, 5, 8), (12, 3)]) == [2, 6, 5, 8, 12, 3]": {
+      "result": false,
+      "time": 0.27098917961120605,
+      "error": null
+    },
+    "assert extract_singly([(5, 4, 3), (1, 5, 2), (12, 5)]) == [5, 4, 3, 1, 2, 12]": {
+      "result": false,
+      "time": 0.26818275451660156,
+      "error": null
+    },
+    "assert extract_singly([(4, 3, 4), (7, 2, 3), (8, 10)]) == [4, 3, 7, 2, 8, 10]": {
+      "result": false,
+      "time": 0.2969553470611572,
+      "error": null
+    },
+    "assert extract_singly([(3, 3, 4), (4, 1, 4), (4, 9)]) == [3, 4, 1, 9]": {
+      "result": false,
+      "time": 0.2605280876159668,
+      "error": null
+    },
+    "assert extract_singly([(5, 4, 3), (3, 5, 1), (3, 10)]) == [5, 4, 3, 1, 10]": {
+      "result": false,
+      "time": 0.2745330333709717,
+      "error": null
+    },
+    "assert extract_singly([(3, 7, 1), (6, 4, 8), (8, 8)]) == [3, 7, 1, 6, 4, 8]": {
+      "result": false,
+      "time": 0.26210904121398926,
+      "error": null
+    },
+    "assert extract_singly([(6, 3, 8), (3, 1, 1), (9, 13)]) == [6, 3, 8, 1, 9, 13]": {
+      "result": false,
+      "time": 0.28745436668395996,
+      "error": null
+    },
+    "assert extract_singly([(6, 2, 1), (2, 3, 6), (4, 13)]) == [6, 2, 1, 3, 4, 13]": {
+      "result": false,
+      "time": 0.2824063301086426,
+      "error": null
+    },
+    "assert extract_singly([(3, 7, 2), (8, 4, 1), (2, 10)]) == [3, 7, 2, 8, 4, 1, 10]": {
+      "result": false,
+      "time": 0.28231382369995117,
+      "error": null
+    },
+    "assert extract_singly([(5, 7, 4), (4, 7, 1), (11, 5)]) == [5, 7, 4, 1, 11]": {
+      "result": false,
+      "time": 0.26947021484375,
+      "error": null
+    },
+    "assert extract_singly([(3, 3, 3), (4, 1, 7), (8, 12)]) == [3, 4, 1, 7, 8, 12]": {
+      "result": false,
+      "time": 0.28004026412963867,
+      "error": null
+    },
+    "assert extract_singly([(3, 5, 7), (6, 1, 8), (4, 7)]) == [3, 5, 7, 6, 1, 8, 4]": {
+      "result": false,
+      "time": 0.28235340118408203,
+      "error": null
+    },
+    "assert extract_singly([(2, 2, 2), (6, 4, 8), (12, 6)]) == [2, 6, 4, 8, 12]": {
+      "result": false,
+      "time": 0.25605058670043945,
+      "error": null
+    },
+    "assert extract_singly([(1, 2, 3), (8, 2, 7), (6, 4)]) == [1, 2, 3, 8, 7, 6, 4]": {
+      "result": false,
+      "time": 0.265242338180542,
+      "error": null
+    },
+    "assert extract_singly([(5, 4, 1), (9, 6, 3), (6, 3)]) == [5, 4, 1, 9, 6, 3]": {
+      "result": false,
+      "time": 0.2693026065826416,
+      "error": null
+    },
+    "assert extract_singly([(6, 3, 4), (3, 1, 4), (6, 6)]) == [6, 3, 4, 1]": {
+      "result": false,
+      "time": 0.2708461284637451,
+      "error": null
+    },
+    "assert extract_singly([(1, 4, 1), (6, 3, 2), (10, 3)]) == [1, 4, 6, 3, 2, 10]": {
+      "result": false,
+      "time": 0.2611808776855469,
+      "error": null
+    },
+    "assert extract_singly([(2, 5, 7), (3, 2, 8), (12, 7)]) == [2, 5, 7, 3, 8, 12]": {
+      "result": false,
+      "time": 0.27695655822753906,
+      "error": null
+    },
+    "assert extract_singly([(6, 3, 8), (7, 9, 7), (10, 12)]) == [6, 3, 8, 7, 9, 10, 12]": {
+      "result": false,
+      "time": 0.2787959575653076,
+      "error": null
+    },
+    "assert extract_singly([(7, 9, 7), (13, 11, 8), (14, 6)]) == [7, 9, 13, 11, 8, 14, 6]": {
+      "result": false,
+      "time": 0.25369977951049805,
+      "error": null
+    },
+    "assert extract_singly([(3, 7, 11), (11, 14, 8), (11, 8)]) == [3, 7, 11, 14, 8]": {
+      "result": false,
+      "time": 0.2688772678375244,
+      "error": null
+    },
+    "assert extract_singly([(12, 12, 5), (15, 14, 13), (15, 13)]) == [12, 5, 15, 14, 13]": {
+      "result": false,
+      "time": 0.2719540596008301,
+      "error": null
+    },
+    "assert extract_singly([(6, 7, 13), (5, 12, 10), (14, 7)]) == [6, 7, 13, 5, 12, 10, 14]": {
+      "result": false,
+      "time": 0.2876863479614258,
+      "error": null
+    },
+    "assert extract_singly([(10, 10, 4), (14, 6, 8), (9, 9)]) == [10, 4, 14, 6, 8, 9]": {
+      "result": false,
+      "time": 0.2675793170928955,
+      "error": null
+    },
+    "assert extract_singly([(3, 11, 9), (12, 10, 12), (5, 16)]) == [3, 11, 9, 12, 10, 5, 16]": {
+      "result": false,
+      "time": 0.26037049293518066,
+      "error": null
+    },
+    "assert extract_singly([(4, 11, 10), (8, 10, 12), (14, 8)]) == [4, 11, 10, 8, 12, 14]": {
+      "result": false,
+      "time": 0.2624397277832031,
+      "error": null
+    },
+    "assert extract_singly([(5, 11, 9), (13, 15, 8), (9, 13)]) == [5, 11, 9, 13, 15, 8]": {
+      "result": false,
+      "time": 0.2687568664550781,
+      "error": null
+    },
+    "assert extract_singly([(7, 8, 5), (8, 14, 12), (13, 9)]) == [7, 8, 5, 14, 12, 13, 9]": {
+      "result": false,
+      "time": 0.27332401275634766,
+      "error": null
+    },
+    "assert extract_singly([(5, 13, 10), (7, 11, 13), (5, 7)]) == [5, 13, 10, 7, 11]": {
+      "result": false,
+      "time": 0.2528090476989746,
+      "error": null
+    },
+    "assert extract_singly([(12, 4, 12), (7, 16, 8), (7, 12)]) == [12, 4, 7, 16, 8]": {
+      "result": false,
+      "time": 0.25858402252197266,
+      "error": null
+    },
+    "assert extract_singly([(9, 10, 6), (7, 7, 8), (14, 16)]) == [9, 10, 6, 7, 8, 14, 16]": {
+      "result": false,
+      "time": 0.2539834976196289,
+      "error": null
+    },
+    "assert extract_singly([(3, 3, 9), (6, 8, 13), (7, 14)]) == [3, 9, 6, 8, 13, 7, 14]": {
+      "result": false,
+      "time": 0.26050448417663574,
+      "error": null
+    },
+    "assert extract_singly([(9, 7, 6), (9, 8, 9), (8, 6)]) == [9, 7, 6, 8]": {
+      "result": false,
+      "time": 0.25447845458984375,
+      "error": null
+    },
+    "assert extract_singly([(9, 13, 4), (13, 6, 15), (11, 13)]) == [9, 13, 4, 6, 15, 11]": {
+      "result": false,
+      "time": 0.27570557594299316,
+      "error": null
+    },
+    "assert extract_singly([(10, 4, 10), (7, 14, 9), (10, 15)]) == [10, 4, 7, 14, 9, 15]": {
+      "result": false,
+      "time": 0.288362979888916,
+      "error": null
+    },
+    "assert extract_singly([(7, 11, 9), (10, 9, 15), (8, 12)]) == [7, 11, 9, 10, 15, 8, 12]": {
+      "result": false,
+      "time": 0.2614610195159912,
+      "error": null
+    },
+    "assert extract_singly([(8, 7, 10), (8, 10, 13), (6, 7)]) == [8, 7, 10, 13, 6]": {
+      "result": false,
+      "time": 0.26743221282958984,
+      "error": null
+    },
+    "assert extract_singly([(6, 8, 9), (7, 15, 11), (5, 12)]) == [6, 8, 9, 7, 15, 11, 5, 12]": {
+      "result": true,
+      "time": 0.2917494773864746,
+      "error": null
+    },
+    "assert extract_singly([(4, 7, 7), (8, 13, 17), (11, 13)]) == [4, 7, 8, 13, 17, 11]": {
+      "result": false,
+      "time": 0.2636990547180176,
+      "error": null
+    },
+    "assert extract_singly([(8, 7, 14), (8, 14, 7), (15, 7)]) == [8, 7, 14, 15]": {
+      "result": false,
+      "time": 0.27289628982543945,
+      "error": null
+    },
+    "assert extract_singly([(7, 7, 11), (13, 16, 9), (15, 7)]) == [7, 11, 13, 16, 9, 15]": {
+      "result": false,
+      "time": 0.27682971954345703,
+      "error": null
+    },
+    "assert extract_singly([(5, 8, 13), (12, 16, 9), (10, 6)]) == [5, 8, 13, 12, 16, 9, 10, 6]": {
+      "result": true,
+      "time": 0.28156471252441406,
+      "error": null
+    },
+    "assert extract_singly([(9, 3, 5), (11, 12, 8), (9, 8)]) == [9, 3, 5, 11, 12, 8]": {
+      "result": false,
+      "time": 0.26804494857788086,
+      "error": null
+    },
+    "assert extract_singly([(11, 12, 10), (13, 9, 12), (5, 15)]) == [11, 12, 10, 13, 9, 5, 15]": {
+      "result": false,
+      "time": 0.2712523937225342,
+      "error": null
+    },
+    "assert extract_singly([(4, 6, 14), (6, 8, 10), (11, 11)]) == [4, 6, 14, 8, 10, 11]": {
+      "result": false,
+      "time": 0.26628875732421875,
+      "error": null
+    },
+    "assert extract_singly([(10, 6, 7), (8, 13, 16), (14, 13)]) == [10, 6, 7, 8, 13, 16, 14]": {
+      "result": false,
+      "time": 0.2584421634674072,
+      "error": null
+    },
+    "assert extract_singly([(12, 12, 5), (6, 14, 15), (9, 16)]) == [12, 5, 6, 14, 15, 9, 16]": {
+      "result": false,
+      "time": 0.28113794326782227,
+      "error": null
+    },
+    "assert extract_singly([(5, 5, 6), (14, 7, 7), (9, 13)]) == [5, 6, 14, 7, 9, 13]": {
+      "result": false,
+      "time": 0.27511024475097656,
+      "error": null
+    },
+    "assert extract_singly([(11, 8, 8), (13, 12, 15), (12, 6)]) == [11, 8, 13, 12, 15, 6]": {
+      "result": false,
+      "time": 0.2821066379547119,
+      "error": null
+    },
+    "assert extract_singly([(9, 3, 5), (12, 13, 15), (8, 14)]) == [9, 3, 5, 12, 13, 15, 8, 14]": {
+      "result": true,
+      "time": 0.27475571632385254,
+      "error": null
+    },
+    "assert extract_singly([(7, 4, 5), (7, 14, 10), (14, 7)]) == [7, 4, 5, 14, 10]": {
+      "result": false,
+      "time": 0.2815108299255371,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.058823529411764705,
+  "general_error": "",
+  "has_testcase_error": false
+}

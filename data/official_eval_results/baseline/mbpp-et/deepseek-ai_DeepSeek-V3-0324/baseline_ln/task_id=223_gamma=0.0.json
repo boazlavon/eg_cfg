@@ -1,0 +1,519 @@
+{
+  "code": "def is_majority(arr, n, x):\n    \"\"\"\n    Check if x is the majority element in the sorted array arr of size n.\n    A majority element is one that appears more than n/2 times.\n    \"\"\"\n    # Find the first occurrence of x\n    def first_occurrence(arr, low, high, x):\n        if high >= low:\n            mid = (low + high) // 2\n            if (mid == 0 or x > arr[mid - 1]) and arr[mid] == x:\n                return mid\n            elif x > arr[mid]:\n                return first_occurrence(arr, mid + 1, high, x)\n            else:\n                return first_occurrence(arr, low, mid - 1, x)\n        return -1\n\n    # Find the last occurrence of x\n    def last_occurrence(arr, low, high, x, n):\n        if high >= low:\n            mid = (low + high) // 2\n            if (mid == n - 1 or x < arr[mid + 1]) and arr[mid] == x:\n                return mid\n            elif x < arr[mid]:\n                return last_occurrence(arr, low, mid - 1, x, n)\n            else:\n                return last_occurrence(arr, mid + 1, high, x, n)\n        return -1\n\n    first = first_occurrence(arr, 0, n - 1, x)\n    if first == -1:\n        return False\n\n    last = last_occurrence(arr, first, n - 1, x, n)\n    count = last - first + 1\n    return count > n // 2",
+  "results": {
+    "assert is_majority([1, 2, 3, 3, 3, 3, 10], 7, 3) == True": {
+      "result": true,
+      "time": 0.04189562797546387,
+      "error": null
+    },
+    "assert is_majority([1, 1, 2, 4, 4, 4, 6, 6], 8, 4) == False": {
+      "result": true,
+      "time": 0.04362344741821289,
+      "error": null
+    },
+    "assert is_majority([1, 1, 1, 2, 2], 5, 1) == True": {
+      "result": true,
+      "time": 0.04069662094116211,
+      "error": null
+    },
+    "assert is_majority([6, 2, 3, 8, 1, 4, 11], 7, 8) == False": {
+      "result": true,
+      "time": 0.03774452209472656,
+      "error": null
+    },
+    "assert is_majority([4, 6, 3, 2, 6, 3, 11], 9, 5) == False": {
+      "result": true,
+      "time": 0.0351862907409668,
+      "error": null
+    },
+    "assert is_majority([4, 4, 4, 6, 6, 7, 12], 7, 4) == False": {
+      "result": true,
+      "time": 0.03583407402038574,
+      "error": null
+    },
+    "assert is_majority([6, 3, 2, 1, 8, 7, 13], 12, 7) == False": {
+      "result": true,
+      "time": 0.04043459892272949,
+      "error": null
+    },
+    "assert is_majority([1, 1, 5, 8, 6, 5, 9], 4, 6) == False": {
+      "result": true,
+      "time": 0.04537606239318848,
+      "error": null
+    },
+    "assert is_majority([3, 4, 8, 6, 6, 8, 8], 11, 2) == False": {
+      "result": true,
+      "time": 0.04369688034057617,
+      "error": null
+    },
+    "assert is_majority([1, 5, 4, 1, 2, 5, 12], 4, 7) == False": {
+      "result": true,
+      "time": 0.036524057388305664,
+      "error": null
+    },
+    "assert is_majority([1, 3, 1, 4, 1, 4, 14], 7, 8) == False": {
+      "result": true,
+      "time": 0.03745269775390625,
+      "error": null
+    },
+    "assert is_majority([2, 7, 3, 4, 1, 4, 12], 4, 7) == False": {
+      "result": true,
+      "time": 0.03568911552429199,
+      "error": null
+    },
+    "assert is_majority([1, 1, 1, 7, 5, 1, 15], 3, 6) == False": {
+      "result": true,
+      "time": 0.03883934020996094,
+      "error": null
+    },
+    "assert is_majority([4, 4, 7, 4, 3, 3, 7], 3, 1) == False": {
+      "result": true,
+      "time": 0.04290580749511719,
+      "error": null
+    },
+    "assert is_majority([4, 3, 7, 1, 7, 4, 12], 8, 8) == False": {
+      "result": true,
+      "time": 0.03995537757873535,
+      "error": null
+    },
+    "assert is_majority([3, 5, 2, 4, 8, 1, 11], 3, 4) == False": {
+      "result": true,
+      "time": 0.04569840431213379,
+      "error": null
+    },
+    "assert is_majority([1, 2, 7, 5, 4, 6, 15], 5, 5) == False": {
+      "result": true,
+      "time": 0.03986239433288574,
+      "error": null
+    },
+    "assert is_majority([3, 4, 4, 5, 8, 3, 7], 6, 7) == False": {
+      "result": true,
+      "time": 0.036278486251831055,
+      "error": null
+    },
+    "assert is_majority([3, 3, 8, 6, 3, 7, 13], 9, 7) == False": {
+      "result": false,
+      "time": 0.0381622314453125,
+      "error": null
+    },
+    "assert is_majority([3, 1, 1, 6, 6, 6, 5], 3, 1) == False": {
+      "result": true,
+      "time": 0.04485797882080078,
+      "error": null
+    },
+    "assert is_majority([6, 2, 3, 4, 7, 2, 9], 2, 5) == False": {
+      "result": true,
+      "time": 0.037494659423828125,
+      "error": null
+    },
+    "assert is_majority([6, 4, 6, 7, 3, 8, 10], 5, 3) == False": {
+      "result": true,
+      "time": 0.037375688552856445,
+      "error": null
+    },
+    "assert is_majority([4, 5, 2, 7, 2, 8, 12], 4, 3) == False": {
+      "result": true,
+      "time": 0.03786897659301758,
+      "error": null
+    },
+    "assert is_majority([3, 4, 1, 1, 6, 5, 13], 4, 2) == False": {
+      "result": true,
+      "time": 0.0430600643157959,
+      "error": null
+    },
+    "assert is_majority([3, 4, 8, 4, 4, 1, 9], 3, 3) == False": {
+      "result": true,
+      "time": 0.04548501968383789,
+      "error": null
+    },
+    "assert is_majority([2, 2, 1, 5, 4, 7, 8], 7, 2) == False": {
+      "result": true,
+      "time": 0.03700089454650879,
+      "error": null
+    },
+    "assert is_majority([2, 3, 1, 4, 1, 4, 10], 4, 2) == False": {
+      "result": true,
+      "time": 0.03684496879577637,
+      "error": null
+    },
+    "assert is_majority([2, 1, 8, 2, 2, 8, 5], 7, 7) == False": {
+      "result": true,
+      "time": 0.04125666618347168,
+      "error": null
+    },
+    "assert is_majority([4, 4, 2, 3, 4, 1, 9], 3, 4) == True": {
+      "result": false,
+      "time": 0.04466438293457031,
+      "error": null
+    },
+    "assert is_majority([4, 3, 7, 3, 1, 4, 5], 11, 1) == False": {
+      "result": true,
+      "time": 0.039406776428222656,
+      "error": null
+    },
+    "assert is_majority([2, 7, 3, 6, 2, 6, 11], 9, 1) == False": {
+      "result": true,
+      "time": 0.035515546798706055,
+      "error": null
+    },
+    "assert is_majority([5, 2, 1, 6, 3, 6, 6], 9, 6) == False": {
+      "result": false,
+      "time": 0.03961753845214844,
+      "error": null
+    },
+    "assert is_majority([2, 2, 6, 7, 2, 3, 8], 2, 7) == False": {
+      "result": true,
+      "time": 0.03965616226196289,
+      "error": null
+    },
+    "assert is_majority([3, 1, 6, 3, 5, 1, 9], 8, 7) == False": {
+      "result": true,
+      "time": 0.0388796329498291,
+      "error": null
+    },
+    "assert is_majority([4, 5, 7, 5, 1, 3, 14], 9, 1) == False": {
+      "result": true,
+      "time": 0.034415245056152344,
+      "error": null
+    },
+    "assert is_majority([4, 3, 3, 2, 6, 1, 6], 10, 2) == False": {
+      "result": true,
+      "time": 0.03227949142456055,
+      "error": null
+    },
+    "assert is_majority([2, 3, 5, 5, 4, 2, 11, 7], 5, 6) == False": {
+      "result": true,
+      "time": 0.03283095359802246,
+      "error": null
+    },
+    "assert is_majority([2, 1, 7, 7, 4, 1, 5, 10], 3, 8) == False": {
+      "result": true,
+      "time": 0.038680315017700195,
+      "error": null
+    },
+    "assert is_majority([2, 6, 6, 2, 9, 3, 7, 9], 3, 7) == False": {
+      "result": true,
+      "time": 0.03797793388366699,
+      "error": null
+    },
+    "assert is_majority([2, 1, 1, 6, 6, 5, 7, 3], 7, 4) == False": {
+      "result": true,
+      "time": 0.03905177116394043,
+      "error": null
+    },
+    "assert is_majority([6, 4, 4, 6, 9, 4, 2, 7], 7, 3) == False": {
+      "result": true,
+      "time": 0.034307003021240234,
+      "error": null
+    },
+    "assert is_majority([3, 1, 4, 4, 1, 9, 7, 1], 11, 3) == False": {
+      "result": true,
+      "time": 0.034295082092285156,
+      "error": null
+    },
+    "assert is_majority([5, 6, 7, 5, 3, 9, 9, 3], 8, 2) == False": {
+      "result": true,
+      "time": 0.036017656326293945,
+      "error": null
+    },
+    "assert is_majority([3, 6, 6, 6, 3, 3, 3, 6], 10, 3) == True": {
+      "result": false,
+      "time": 0.03786969184875488,
+      "error": null
+    },
+    "assert is_majority([6, 4, 1, 3, 6, 5, 7, 7], 6, 9) == False": {
+      "result": true,
+      "time": 0.036473751068115234,
+      "error": null
+    },
+    "assert is_majority([4, 6, 1, 8, 5, 8, 6, 11], 7, 1) == False": {
+      "result": true,
+      "time": 0.04130196571350098,
+      "error": null
+    },
+    "assert is_majority([5, 6, 7, 4, 7, 4, 8, 10], 6, 8) == False": {
+      "result": true,
+      "time": 0.03784823417663574,
+      "error": null
+    },
+    "assert is_majority([5, 3, 4, 8, 2, 7, 6, 6], 13, 6) == False": {
+      "result": true,
+      "time": 0.03952431678771973,
+      "error": null
+    },
+    "assert is_majority([4, 5, 5, 7, 5, 3, 8, 9], 7, 2) == False": {
+      "result": true,
+      "time": 0.03658795356750488,
+      "error": null
+    },
+    "assert is_majority([3, 5, 3, 1, 1, 9, 1, 2], 3, 9) == False": {
+      "result": true,
+      "time": 0.04010438919067383,
+      "error": null
+    },
+    "assert is_majority([2, 5, 6, 8, 6, 9, 1, 4], 7, 7) == False": {
+      "result": true,
+      "time": 0.03405022621154785,
+      "error": null
+    },
+    "assert is_majority([4, 3, 2, 6, 8, 8, 9, 2], 7, 8) == False": {
+      "result": true,
+      "time": 0.03518843650817871,
+      "error": null
+    },
+    "assert is_majority([5, 1, 6, 4, 4, 5, 5, 9], 3, 3) == False": {
+      "result": true,
+      "time": 0.029672861099243164,
+      "error": null
+    },
+    "assert is_majority([6, 2, 5, 5, 2, 2, 2, 9], 7, 4) == False": {
+      "result": true,
+      "time": 0.03292727470397949,
+      "error": null
+    },
+    "assert is_majority([2, 3, 6, 3, 4, 3, 10, 9], 6, 3) == False": {
+      "result": true,
+      "time": 0.0380396842956543,
+      "error": null
+    },
+    "assert is_majority([5, 2, 4, 5, 9, 4, 2, 10], 3, 4) == False": {
+      "result": true,
+      "time": 0.036347389221191406,
+      "error": null
+    },
+    "assert is_majority([2, 3, 4, 5, 5, 9, 8, 10], 4, 1) == False": {
+      "result": true,
+      "time": 0.043580055236816406,
+      "error": null
+    },
+    "assert is_majority([3, 1, 7, 6, 5, 2, 2, 10], 5, 8) == False": {
+      "result": true,
+      "time": 0.03991866111755371,
+      "error": null
+    },
+    "assert is_majority([1, 2, 3, 6, 6, 8, 7, 2], 7, 6) == False": {
+      "result": true,
+      "time": 0.031075239181518555,
+      "error": null
+    },
+    "assert is_majority([5, 2, 6, 3, 3, 2, 3, 11], 8, 2) == False": {
+      "result": true,
+      "time": 0.03923487663269043,
+      "error": null
+    },
+    "assert is_majority([4, 3, 5, 6, 2, 8, 5, 10], 5, 8) == False": {
+      "result": true,
+      "time": 0.03374457359313965,
+      "error": null
+    },
+    "assert is_majority([3, 5, 4, 1, 1, 1, 9, 4], 5, 5) == False": {
+      "result": true,
+      "time": 0.03999018669128418,
+      "error": null
+    },
+    "assert is_majority([1, 1, 2, 3, 2, 8, 8, 8], 11, 2) == False": {
+      "result": true,
+      "time": 0.037816524505615234,
+      "error": null
+    },
+    "assert is_majority([2, 5, 2, 7, 9, 3, 6, 5], 8, 1) == False": {
+      "result": true,
+      "time": 0.0375213623046875,
+      "error": null
+    },
+    "assert is_majority([3, 2, 3, 2, 5, 8, 11, 11], 9, 7) == False": {
+      "result": true,
+      "time": 0.040904998779296875,
+      "error": null
+    },
+    "assert is_majority([4, 4, 1, 8, 2, 6, 1, 10], 9, 2) == False": {
+      "result": true,
+      "time": 0.03723454475402832,
+      "error": null
+    },
+    "assert is_majority([4, 2, 6, 8, 9, 4, 4, 4], 13, 1) == False": {
+      "result": true,
+      "time": 0.04117584228515625,
+      "error": null
+    },
+    "assert is_majority([1, 3, 7, 3, 1, 7, 10, 7], 4, 8) == False": {
+      "result": true,
+      "time": 0.04303312301635742,
+      "error": null
+    },
+    "assert is_majority([6, 1, 7, 8, 4, 1, 3, 9], 7, 3) == False": {
+      "result": true,
+      "time": 0.035817861557006836,
+      "error": null
+    },
+    "assert is_majority([1, 6, 2, 6, 3], 7, 2) == False": {
+      "result": true,
+      "time": 0.03620457649230957,
+      "error": null
+    },
+    "assert is_majority([2, 1, 1, 7, 2], 2, 5) == False": {
+      "result": true,
+      "time": 0.041262149810791016,
+      "error": null
+    },
+    "assert is_majority([5, 1, 6, 5, 7], 5, 5) == False": {
+      "result": true,
+      "time": 0.03884720802307129,
+      "error": null
+    },
+    "assert is_majority([2, 1, 1, 6, 6], 5, 4) == False": {
+      "result": true,
+      "time": 0.0419316291809082,
+      "error": null
+    },
+    "assert is_majority([2, 2, 2, 4, 6], 3, 6) == False": {
+      "result": true,
+      "time": 0.03275299072265625,
+      "error": null
+    },
+    "assert is_majority([2, 1, 6, 3, 1], 6, 3) == False": {
+      "result": true,
+      "time": 0.039277076721191406,
+      "error": null
+    },
+    "assert is_majority([3, 5, 5, 6, 5], 3, 6) == False": {
+      "result": true,
+      "time": 0.03814864158630371,
+      "error": null
+    },
+    "assert is_majority([1, 1, 3, 5, 4], 5, 6) == False": {
+      "result": true,
+      "time": 0.03892707824707031,
+      "error": null
+    },
+    "assert is_majority([1, 6, 4, 3, 1], 6, 2) == False": {
+      "result": true,
+      "time": 0.03725719451904297,
+      "error": null
+    },
+    "assert is_majority([6, 3, 4, 4, 2], 9, 2) == False": {
+      "result": true,
+      "time": 0.038959503173828125,
+      "error": null
+    },
+    "assert is_majority([3, 4, 4, 7, 7], 3, 2) == False": {
+      "result": true,
+      "time": 0.03374958038330078,
+      "error": null
+    },
+    "assert is_majority([5, 3, 4, 6, 3], 1, 2) == False": {
+      "result": true,
+      "time": 0.032033681869506836,
+      "error": null
+    },
+    "assert is_majority([6, 5, 5, 1, 1], 4, 2) == False": {
+      "result": true,
+      "time": 0.04131889343261719,
+      "error": null
+    },
+    "assert is_majority([1, 4, 1, 6, 4], 2, 1) == False": {
+      "result": true,
+      "time": 0.03777003288269043,
+      "error": null
+    },
+    "assert is_majority([2, 5, 2, 2, 7], 6, 5) == False": {
+      "result": true,
+      "time": 0.04260063171386719,
+      "error": null
+    },
+    "assert is_majority([5, 5, 1, 3, 3], 4, 5) == False": {
+      "result": true,
+      "time": 0.047965288162231445,
+      "error": null
+    },
+    "assert is_majority([5, 6, 1, 5, 6], 2, 2) == False": {
+      "result": true,
+      "time": 0.04707908630371094,
+      "error": null
+    },
+    "assert is_majority([4, 2, 5, 3, 5], 6, 1) == False": {
+      "result": true,
+      "time": 0.03856658935546875,
+      "error": null
+    },
+    "assert is_majority([6, 2, 6, 6, 7], 9, 1) == False": {
+      "result": true,
+      "time": 0.052239418029785156,
+      "error": null
+    },
+    "assert is_majority([6, 5, 1, 3, 5], 10, 4) == False": {
+      "result": true,
+      "time": 0.043211936950683594,
+      "error": null
+    },
+    "assert is_majority([6, 5, 6, 6, 3], 3, 3) == False": {
+      "result": true,
+      "time": 0.051050424575805664,
+      "error": null
+    },
+    "assert is_majority([6, 6, 5, 3, 7], 3, 4) == False": {
+      "result": true,
+      "time": 0.04800248146057129,
+      "error": null
+    },
+    "assert is_majority([1, 3, 4, 7, 7], 4, 6) == False": {
+      "result": true,
+      "time": 0.04560661315917969,
+      "error": null
+    },
+    "assert is_majority([2, 2, 6, 7, 6], 9, 1) == False": {
+      "result": true,
+      "time": 0.0440831184387207,
+      "error": null
+    },
+    "assert is_majority([1, 3, 2, 7, 6], 3, 2) == False": {
+      "result": true,
+      "time": 0.04472827911376953,
+      "error": null
+    },
+    "assert is_majority([3, 2, 4, 2, 4], 2, 2) == False": {
+      "result": true,
+      "time": 0.04376864433288574,
+      "error": null
+    },
+    "assert is_majority([1, 4, 4, 1, 4], 2, 6) == False": {
+      "result": true,
+      "time": 0.03969407081604004,
+      "error": null
+    },
+    "assert is_majority([3, 4, 3, 1, 4], 2, 6) == False": {
+      "result": true,
+      "time": 0.04514789581298828,
+      "error": null
+    },
+    "assert is_majority([4, 1, 4, 2, 2], 2, 2) == False": {
+      "result": true,
+      "time": 0.05012178421020508,
+      "error": null
+    },
+    "assert is_majority([1, 3, 3, 3, 7], 5, 2) == False": {
+      "result": true,
+      "time": 0.04690670967102051,
+      "error": null
+    },
+    "assert is_majority([6, 6, 1, 3, 1], 7, 1) == False": {
+      "result": true,
+      "time": 0.039960622787475586,
+      "error": null
+    },
+    "assert is_majority([1, 5, 2, 2, 2], 2, 6) == False": {
+      "result": true,
+      "time": 0.04868268966674805,
+      "error": null
+    },
+    "assert is_majority([2, 2, 4, 6, 5], 2, 4) == False": {
+      "result": true,
+      "time": 0.04660797119140625,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9607843137254902,
+  "general_error": "",
+  "has_testcase_error": false
+}

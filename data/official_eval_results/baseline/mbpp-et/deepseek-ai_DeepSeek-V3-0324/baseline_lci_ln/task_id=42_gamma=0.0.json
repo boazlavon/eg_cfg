@@ -1,0 +1,519 @@
+{
+  "code": "def find_Sum(arr, n):\n    # Create a dictionary to count occurrences of each element\n    count_dict = {}\n    \n    # Iterate through the array to populate the dictionary\n    for num in arr:\n        if num in count_dict:\n            count_dict[num] += 1\n        else:\n            count_dict[num] = 1\n    \n    # Initialize the sum of repeated elements\n    sum_repeated = 0\n    \n    # Iterate through the dictionary to find repeated elements\n    for key in count_dict:\n        if count_dict[key] > 1:\n            sum_repeated += key\n    \n    return sum_repeated",
+  "results": {
+    "assert find_Sum([1,2,3,1,1,4,5,6],8) == 3": {
+      "result": false,
+      "time": 0.038980722427368164,
+      "error": null
+    },
+    "assert find_Sum([1,2,3,1,1],5) == 3": {
+      "result": false,
+      "time": 0.030439138412475586,
+      "error": null
+    },
+    "assert find_Sum([1,1,2],3) == 2": {
+      "result": false,
+      "time": 0.030810117721557617,
+      "error": null
+    },
+    "assert find_Sum([2, 2, 5, 2, 3, 6, 2, 3], 12) == 14": {
+      "result": false,
+      "time": 0.03532552719116211,
+      "error": null
+    },
+    "assert find_Sum([3, 1, 7, 6, 4, 5, 3, 10], 10) == 6": {
+      "result": false,
+      "time": 0.037288665771484375,
+      "error": null
+    },
+    "assert find_Sum([4, 4, 5, 3, 6, 5, 5, 7], 8) == 23": {
+      "result": false,
+      "time": 0.037688255310058594,
+      "error": null
+    },
+    "assert find_Sum([2, 2, 3, 1, 4, 3, 1, 3], 11) == 15": {
+      "result": false,
+      "time": 0.034171342849731445,
+      "error": null
+    },
+    "assert find_Sum([4, 7, 2, 3, 6, 5, 10, 3], 5) == 6": {
+      "result": false,
+      "time": 0.046103715896606445,
+      "error": null
+    },
+    "assert find_Sum([3, 3, 1, 6, 2, 2, 6, 10], 6) == 22": {
+      "result": false,
+      "time": 0.034589290618896484,
+      "error": null
+    },
+    "assert find_Sum([1, 2, 8, 1, 5, 5, 3, 7], 13) == 12": {
+      "result": false,
+      "time": 0.03557944297790527,
+      "error": null
+    },
+    "assert find_Sum([4, 1, 5, 2, 5, 8, 7, 2], 13) == 14": {
+      "result": false,
+      "time": 0.03317832946777344,
+      "error": null
+    },
+    "assert find_Sum([6, 5, 5, 3, 5, 4, 4, 1], 13) == 23": {
+      "result": false,
+      "time": 0.036711931228637695,
+      "error": null
+    },
+    "assert find_Sum([6, 6, 8, 5, 6, 1, 7, 4], 7) == 18": {
+      "result": false,
+      "time": 0.03522014617919922,
+      "error": null
+    },
+    "assert find_Sum([4, 4, 3, 1, 3, 7, 4, 9], 11) == 18": {
+      "result": false,
+      "time": 0.03351235389709473,
+      "error": null
+    },
+    "assert find_Sum([1, 5, 8, 2, 2, 3, 7, 9], 8) == 4": {
+      "result": false,
+      "time": 0.03519129753112793,
+      "error": null
+    },
+    "assert find_Sum([4, 4, 8, 3, 1, 9, 4, 4], 8) == 16": {
+      "result": false,
+      "time": 0.032822608947753906,
+      "error": null
+    },
+    "assert find_Sum([1, 5, 8, 2, 6, 7, 4, 10], 3) == 0": {
+      "result": true,
+      "time": 0.0363924503326416,
+      "error": null
+    },
+    "assert find_Sum([2, 6, 5, 5, 3, 6, 6, 8], 11) == 28": {
+      "result": false,
+      "time": 0.04378056526184082,
+      "error": null
+    },
+    "assert find_Sum([5, 1, 7, 2, 3, 3, 6, 10], 7) == 6": {
+      "result": false,
+      "time": 0.03675127029418945,
+      "error": null
+    },
+    "assert find_Sum([3, 7, 8, 5, 3, 3, 1, 4], 5) == 9": {
+      "result": false,
+      "time": 0.03370952606201172,
+      "error": null
+    },
+    "assert find_Sum([6, 6, 2, 3, 3, 7, 3, 11], 12) == 21": {
+      "result": false,
+      "time": 0.03886604309082031,
+      "error": null
+    },
+    "assert find_Sum([1, 1, 4, 6, 1, 9, 2, 7], 7) == 3": {
+      "result": false,
+      "time": 0.04381227493286133,
+      "error": null
+    },
+    "assert find_Sum([3, 5, 6, 2, 1, 5, 9, 10], 5) == 10": {
+      "result": false,
+      "time": 0.03544139862060547,
+      "error": null
+    },
+    "assert find_Sum([1, 4, 3, 3, 1, 4, 2, 11], 10) == 16": {
+      "result": false,
+      "time": 0.03730511665344238,
+      "error": null
+    },
+    "assert find_Sum([6, 3, 8, 6, 6, 5, 1, 6], 5) == 24": {
+      "result": false,
+      "time": 0.03503704071044922,
+      "error": null
+    },
+    "assert find_Sum([2, 2, 1, 2, 2, 2, 8, 7], 8) == 10": {
+      "result": false,
+      "time": 0.037175655364990234,
+      "error": null
+    },
+    "assert find_Sum([3, 4, 6, 6, 5, 7, 5, 1], 9) == 22": {
+      "result": false,
+      "time": 0.03765511512756348,
+      "error": null
+    },
+    "assert find_Sum([2, 1, 8, 5, 6, 8, 1, 2], 7) == 22": {
+      "result": false,
+      "time": 0.032213687896728516,
+      "error": null
+    },
+    "assert find_Sum([3, 2, 4, 6, 6, 6, 5, 1], 10) == 18": {
+      "result": false,
+      "time": 0.03699636459350586,
+      "error": null
+    },
+    "assert find_Sum([5, 7, 1, 1, 5, 8, 8, 11], 5) == 28": {
+      "result": false,
+      "time": 0.03544878959655762,
+      "error": null
+    },
+    "assert find_Sum([2, 1, 7, 5, 1, 2, 6, 10], 8) == 6": {
+      "result": false,
+      "time": 0.03514862060546875,
+      "error": null
+    },
+    "assert find_Sum([3, 6, 5, 1, 5, 2, 6, 11], 4) == 22": {
+      "result": false,
+      "time": 0.0365748405456543,
+      "error": null
+    },
+    "assert find_Sum([1, 5, 7, 4, 6, 7, 6, 10], 8) == 26": {
+      "result": false,
+      "time": 0.03504467010498047,
+      "error": null
+    },
+    "assert find_Sum([1, 7, 1, 5, 6, 1, 6, 7], 9) == 29": {
+      "result": false,
+      "time": 0.03582572937011719,
+      "error": null
+    },
+    "assert find_Sum([5, 1, 1, 3, 2, 5, 6, 2], 8) == 16": {
+      "result": false,
+      "time": 0.03660154342651367,
+      "error": null
+    },
+    "assert find_Sum([5, 1, 7, 1, 6, 1, 6, 7], 4) == 29": {
+      "result": false,
+      "time": 0.03787875175476074,
+      "error": null
+    },
+    "assert find_Sum([5, 2, 3, 1, 1], 10) == 2": {
+      "result": false,
+      "time": 0.034082651138305664,
+      "error": null
+    },
+    "assert find_Sum([1, 7, 7, 3, 1], 1) == 16": {
+      "result": false,
+      "time": 0.033968210220336914,
+      "error": null
+    },
+    "assert find_Sum([2, 1, 4, 5, 4], 3) == 8": {
+      "result": false,
+      "time": 0.03488445281982422,
+      "error": null
+    },
+    "assert find_Sum([6, 1, 4, 2, 5], 10) == 0": {
+      "result": true,
+      "time": 0.033406734466552734,
+      "error": null
+    },
+    "assert find_Sum([5, 3, 7, 3, 2], 5) == 6": {
+      "result": false,
+      "time": 0.03790020942687988,
+      "error": null
+    },
+    "assert find_Sum([5, 1, 7, 1, 4], 1) == 2": {
+      "result": false,
+      "time": 0.03719472885131836,
+      "error": null
+    },
+    "assert find_Sum([1, 4, 6, 6, 1], 6) == 14": {
+      "result": false,
+      "time": 0.036522865295410156,
+      "error": null
+    },
+    "assert find_Sum([6, 1, 2, 4, 1], 8) == 2": {
+      "result": false,
+      "time": 0.03168940544128418,
+      "error": null
+    },
+    "assert find_Sum([1, 7, 1, 2, 2], 7) == 6": {
+      "result": false,
+      "time": 0.0393528938293457,
+      "error": null
+    },
+    "assert find_Sum([5, 7, 5, 4, 2], 6) == 10": {
+      "result": false,
+      "time": 0.03561711311340332,
+      "error": null
+    },
+    "assert find_Sum([2, 3, 5, 5, 6], 2) == 10": {
+      "result": false,
+      "time": 0.038834333419799805,
+      "error": null
+    },
+    "assert find_Sum([4, 3, 1, 3, 6], 4) == 6": {
+      "result": false,
+      "time": 0.03927302360534668,
+      "error": null
+    },
+    "assert find_Sum([5, 4, 3, 4, 3], 9) == 14": {
+      "result": false,
+      "time": 0.03895998001098633,
+      "error": null
+    },
+    "assert find_Sum([1, 1, 8, 5, 5], 7) == 12": {
+      "result": false,
+      "time": 0.04246854782104492,
+      "error": null
+    },
+    "assert find_Sum([3, 7, 8, 1, 1], 10) == 2": {
+      "result": false,
+      "time": 0.040019989013671875,
+      "error": null
+    },
+    "assert find_Sum([1, 6, 8, 1, 3], 4) == 2": {
+      "result": false,
+      "time": 0.037296295166015625,
+      "error": null
+    },
+    "assert find_Sum([3, 1, 4, 4, 6], 5) == 8": {
+      "result": false,
+      "time": 0.03980827331542969,
+      "error": null
+    },
+    "assert find_Sum([5, 2, 3, 1, 6], 10) == 0": {
+      "result": true,
+      "time": 0.04372143745422363,
+      "error": null
+    },
+    "assert find_Sum([5, 5, 5, 6, 5], 5) == 20": {
+      "result": false,
+      "time": 0.045847177505493164,
+      "error": null
+    },
+    "assert find_Sum([1, 5, 4, 4, 5], 7) == 18": {
+      "result": false,
+      "time": 0.035314321517944336,
+      "error": null
+    },
+    "assert find_Sum([5, 1, 8, 5, 6], 1) == 10": {
+      "result": false,
+      "time": 0.03862357139587402,
+      "error": null
+    },
+    "assert find_Sum([1, 6, 8, 2, 3], 4) == 0": {
+      "result": true,
+      "time": 0.04371190071105957,
+      "error": null
+    },
+    "assert find_Sum([2, 2, 3, 5, 4], 6) == 4": {
+      "result": false,
+      "time": 0.037746429443359375,
+      "error": null
+    },
+    "assert find_Sum([3, 7, 2, 2, 4], 8) == 4": {
+      "result": false,
+      "time": 0.03938007354736328,
+      "error": null
+    },
+    "assert find_Sum([5, 4, 5, 3, 1], 1) == 10": {
+      "result": false,
+      "time": 0.04611945152282715,
+      "error": null
+    },
+    "assert find_Sum([4, 6, 5, 5, 6], 5) == 22": {
+      "result": false,
+      "time": 0.04416537284851074,
+      "error": null
+    },
+    "assert find_Sum([5, 1, 1, 2, 6], 9) == 2": {
+      "result": false,
+      "time": 0.04226946830749512,
+      "error": null
+    },
+    "assert find_Sum([6, 7, 4, 2, 5], 5) == 0": {
+      "result": true,
+      "time": 0.03872847557067871,
+      "error": null
+    },
+    "assert find_Sum([5, 3, 2, 3, 6], 8) == 6": {
+      "result": false,
+      "time": 0.037459611892700195,
+      "error": null
+    },
+    "assert find_Sum([5, 4, 6, 2, 1], 7) == 0": {
+      "result": true,
+      "time": 0.03679180145263672,
+      "error": null
+    },
+    "assert find_Sum([2, 7, 2, 1, 1], 2) == 6": {
+      "result": false,
+      "time": 0.03473806381225586,
+      "error": null
+    },
+    "assert find_Sum([3, 7, 1, 4, 2], 8) == 0": {
+      "result": true,
+      "time": 0.037915706634521484,
+      "error": null
+    },
+    "assert find_Sum([4, 4, 8, 2, 3], 6) == 8": {
+      "result": false,
+      "time": 0.03830766677856445,
+      "error": null
+    },
+    "assert find_Sum([5, 2, 5], 1) == 10": {
+      "result": false,
+      "time": 0.03287863731384277,
+      "error": null
+    },
+    "assert find_Sum([4, 1, 2], 6) == 0": {
+      "result": true,
+      "time": 0.04957771301269531,
+      "error": null
+    },
+    "assert find_Sum([6, 6, 2], 6) == 12": {
+      "result": false,
+      "time": 0.03685927391052246,
+      "error": null
+    },
+    "assert find_Sum([5, 2, 6], 8) == 0": {
+      "result": true,
+      "time": 0.03248238563537598,
+      "error": null
+    },
+    "assert find_Sum([1, 6, 7], 4) == 0": {
+      "result": true,
+      "time": 0.03709149360656738,
+      "error": null
+    },
+    "assert find_Sum([1, 1, 1], 2) == 3": {
+      "result": false,
+      "time": 0.03565812110900879,
+      "error": null
+    },
+    "assert find_Sum([2, 4, 5], 5) == 0": {
+      "result": true,
+      "time": 0.038359642028808594,
+      "error": null
+    },
+    "assert find_Sum([1, 5, 2], 5) == 0": {
+      "result": true,
+      "time": 0.03727006912231445,
+      "error": null
+    },
+    "assert find_Sum([6, 5, 7], 1) == 0": {
+      "result": true,
+      "time": 0.0352017879486084,
+      "error": null
+    },
+    "assert find_Sum([6, 1, 4], 8) == 0": {
+      "result": true,
+      "time": 0.04175591468811035,
+      "error": null
+    },
+    "assert find_Sum([6, 3, 6], 1) == 12": {
+      "result": false,
+      "time": 0.040624141693115234,
+      "error": null
+    },
+    "assert find_Sum([2, 1, 7], 1) == 0": {
+      "result": true,
+      "time": 0.04140591621398926,
+      "error": null
+    },
+    "assert find_Sum([3, 3, 6], 2) == 6": {
+      "result": false,
+      "time": 0.03692913055419922,
+      "error": null
+    },
+    "assert find_Sum([3, 5, 5], 6) == 10": {
+      "result": false,
+      "time": 0.04126143455505371,
+      "error": null
+    },
+    "assert find_Sum([3, 4, 6], 7) == 0": {
+      "result": true,
+      "time": 0.04406881332397461,
+      "error": null
+    },
+    "assert find_Sum([2, 6, 3], 6) == 0": {
+      "result": true,
+      "time": 0.0434877872467041,
+      "error": null
+    },
+    "assert find_Sum([5, 4, 6], 8) == 0": {
+      "result": true,
+      "time": 0.03377342224121094,
+      "error": null
+    },
+    "assert find_Sum([6, 6, 6], 2) == 18": {
+      "result": false,
+      "time": 0.031067371368408203,
+      "error": null
+    },
+    "assert find_Sum([4, 2, 7], 6) == 0": {
+      "result": true,
+      "time": 0.03775334358215332,
+      "error": null
+    },
+    "assert find_Sum([4, 5, 1], 6) == 0": {
+      "result": true,
+      "time": 0.0371706485748291,
+      "error": null
+    },
+    "assert find_Sum([3, 1, 2], 6) == 0": {
+      "result": true,
+      "time": 0.04215884208679199,
+      "error": null
+    },
+    "assert find_Sum([3, 5, 4], 2) == 0": {
+      "result": true,
+      "time": 0.03890538215637207,
+      "error": null
+    },
+    "assert find_Sum([2, 5, 2], 7) == 4": {
+      "result": false,
+      "time": 0.04006528854370117,
+      "error": null
+    },
+    "assert find_Sum([5, 3, 3], 6) == 6": {
+      "result": false,
+      "time": 0.03975033760070801,
+      "error": null
+    },
+    "assert find_Sum([4, 4, 7], 7) == 8": {
+      "result": false,
+      "time": 0.03400015830993652,
+      "error": null
+    },
+    "assert find_Sum([6, 3, 5], 7) == 0": {
+      "result": true,
+      "time": 0.03693890571594238,
+      "error": null
+    },
+    "assert find_Sum([3, 1, 7], 6) == 0": {
+      "result": true,
+      "time": 0.04462909698486328,
+      "error": null
+    },
+    "assert find_Sum([5, 6, 4], 3) == 0": {
+      "result": true,
+      "time": 0.040105342864990234,
+      "error": null
+    },
+    "assert find_Sum([4, 5, 5], 3) == 10": {
+      "result": false,
+      "time": 0.03974628448486328,
+      "error": null
+    },
+    "assert find_Sum([4, 2, 5], 4) == 0": {
+      "result": true,
+      "time": 0.04154038429260254,
+      "error": null
+    },
+    "assert find_Sum([4, 1, 2], 5) == 0": {
+      "result": true,
+      "time": 0.03973674774169922,
+      "error": null
+    },
+    "assert find_Sum([6, 1, 2], 1) == 0": {
+      "result": true,
+      "time": 0.04875063896179199,
+      "error": null
+    },
+    "assert find_Sum([3, 2, 1], 1) == 0": {
+      "result": true,
+      "time": 0.035475730895996094,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.28431372549019607,
+  "general_error": "",
+  "has_testcase_error": false
+}

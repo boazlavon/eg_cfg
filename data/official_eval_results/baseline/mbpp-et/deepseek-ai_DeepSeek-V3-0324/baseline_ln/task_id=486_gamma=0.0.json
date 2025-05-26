@@ -1,0 +1,519 @@
+{
+  "code": "import math\n\ndef binomial_probability(n, k, p):\n    \"\"\"\n    Calculate the binomial probability of getting exactly k successes in n trials\n    with probability p of success on a single trial.\n    \n    Parameters:\n    n (int): Number of trials.\n    k (int): Number of successes.\n    p (float): Probability of success on a single trial.\n    \n    Returns:\n    float: The binomial probability.\n    \"\"\"\n    # Calculate the binomial coefficient: n choose k\n    binomial_coefficient = math.comb(n, k)\n    # Calculate the probability\n    probability = binomial_coefficient * (p ** k) * ((1 - p) ** (n - k))\n    return probability",
+  "results": {
+    "assert binomial_probability(10, 5, 1.0/3) == 0.13656454808718185": {
+      "result": true,
+      "time": 0.08994245529174805,
+      "error": null
+    },
+    "assert binomial_probability(11, 6, 2.0/4) == 0.2255859375": {
+      "result": true,
+      "time": 0.09160971641540527,
+      "error": null
+    },
+    "assert binomial_probability(12, 7, 3.0/5) == 0.227030335488": {
+      "result": true,
+      "time": 0.10540223121643066,
+      "error": null
+    },
+    "assert binomial_probability(9, 3, 5.701190918434108) == 168044139.53555688": {
+      "result": true,
+      "time": 0.07361602783203125,
+      "error": null
+    },
+    "assert binomial_probability(8, 3, 2.087751431279063) == -776.0196427923785": {
+      "result": true,
+      "time": 0.09483885765075684,
+      "error": null
+    },
+    "assert binomial_probability(13, 4, 2.317392472725767) == -246456.9153615105": {
+      "result": true,
+      "time": 0.09447765350341797,
+      "error": null
+    },
+    "assert binomial_probability(7, 2, 4.835748435742909) == -407753.1058641725": {
+      "result": true,
+      "time": 0.07744598388671875,
+      "error": null
+    },
+    "assert binomial_probability(8, 4, 2.2285619181744027) == 3933.553463371839": {
+      "result": true,
+      "time": 0.08193349838256836,
+      "error": null
+    },
+    "assert binomial_probability(15, 9, 3.4031649327019244) == 59027246887.6748": {
+      "result": true,
+      "time": 0.0780785083770752,
+      "error": null
+    },
+    "assert binomial_probability(11, 3, 5.282827007765523) == 2753768159.908322": {
+      "result": true,
+      "time": 0.08609271049499512,
+      "error": null
+    },
+    "assert binomial_probability(9, 9, 3.269717334356807) == 42716.12880728284": {
+      "result": true,
+      "time": 0.08954215049743652,
+      "error": null
+    },
+    "assert binomial_probability(13, 8, 4.524823925834593) == -123049303308.03755": {
+      "result": true,
+      "time": 0.0904531478881836,
+      "error": null
+    },
+    "assert binomial_probability(7, 7, 2.188735244309749) == 240.63157778650384": {
+      "result": true,
+      "time": 0.09250926971435547,
+      "error": null
+    },
+    "assert binomial_probability(7, 6, 2.234821713308735) == -1076.8608575482635": {
+      "result": true,
+      "time": 0.07979702949523926,
+      "error": null
+    },
+    "assert binomial_probability(6, 5, 1.8463560659450189) == -108.96365171142695": {
+      "result": true,
+      "time": 0.09134364128112793,
+      "error": null
+    },
+    "assert binomial_probability(6, 9, 3.5750246919554245) == -5586.852659735955": {
+      "result": false,
+      "time": 0.0951378345489502,
+      "error": null
+    },
+    "assert binomial_probability(9, 8, 5.165535270996841) == -19003604.18154989": {
+      "result": true,
+      "time": 0.09848165512084961,
+      "error": null
+    },
+    "assert binomial_probability(5, 5, 3.1989087275382824) == 334.97256903664965": {
+      "result": true,
+      "time": 0.08019256591796875,
+      "error": null
+    },
+    "assert binomial_probability(13, 8, 5.032142367533059) == -564002711934.9469": {
+      "result": true,
+      "time": 0.0811166763305664,
+      "error": null
+    },
+    "assert binomial_probability(10, 3, 1.1994755687949517) == -0.002602456329716923": {
+      "result": true,
+      "time": 0.07391023635864258,
+      "error": null
+    },
+    "assert binomial_probability(15, 10, 3.993357652716894) == -744269917698.7051": {
+      "result": true,
+      "time": 0.07633829116821289,
+      "error": null
+    },
+    "assert binomial_probability(10, 7, 2.348053370397875) == -115679.9931029269": {
+      "result": true,
+      "time": 0.0835106372833252,
+      "error": null
+    },
+    "assert binomial_probability(10, 6, 5.157334295182589) == 1180404304.6275237": {
+      "result": true,
+      "time": 0.10190486907958984,
+      "error": null
+    },
+    "assert binomial_probability(9, 2, 5.296527882442255) == -27296594.48991178": {
+      "result": true,
+      "time": 0.08820867538452148,
+      "error": null
+    },
+    "assert binomial_probability(11, 8, 5.173027451560232) == -6148878813.8261795": {
+      "result": true,
+      "time": 0.09533452987670898,
+      "error": null
+    },
+    "assert binomial_probability(6, 5, 1.1387373747274192) == -1.5939056033660823": {
+      "result": true,
+      "time": 0.08121418952941895,
+      "error": null
+    },
+    "assert binomial_probability(8, 8, 5.528953516534863) == 873259.8836854771": {
+      "result": true,
+      "time": 0.0971982479095459,
+      "error": null
+    },
+    "assert binomial_probability(7, 7, 5.594585018847685) == 171543.84743572053": {
+      "result": true,
+      "time": 0.0875847339630127,
+      "error": null
+    },
+    "assert binomial_probability(5, 3, 5.6626721262087525) == 39476.0784907094": {
+      "result": true,
+      "time": 0.0946037769317627,
+      "error": null
+    },
+    "assert binomial_probability(11, 2, 1.9475132687872327) == -128.40775235825603": {
+      "result": true,
+      "time": 0.07328128814697266,
+      "error": null
+    },
+    "assert binomial_probability(11, 2, 5.437898751244569) == -1085979011.2427769": {
+      "result": true,
+      "time": 0.08571434020996094,
+      "error": null
+    },
+    "assert binomial_probability(6, 8, 2.6461065045336962) == 887.0389716224996": {
+      "result": false,
+      "time": 0.09038686752319336,
+      "error": null
+    },
+    "assert binomial_probability(6, 7, 2.9704548793459873) == -1035.605205578601": {
+      "result": false,
+      "time": 0.08695006370544434,
+      "error": null
+    },
+    "assert binomial_probability(7, 3, 4.596292840799825) == 568474.9219199612": {
+      "result": true,
+      "time": 0.07835245132446289,
+      "error": null
+    },
+    "assert binomial_probability(13, 4, 2.8847994005852975) == -14864651.554468162": {
+      "result": true,
+      "time": 0.07729387283325195,
+      "error": null
+    },
+    "assert binomial_probability(9, 2, 5.302693860730818) == -27636226.18570414": {
+      "result": true,
+      "time": 0.08488893508911133,
+      "error": null
+    },
+    "assert binomial_probability(13, 8, 4.884589478790804) == -368917071187.66034": {
+      "result": true,
+      "time": 0.09493803977966309,
+      "error": null
+    },
+    "assert binomial_probability(11, 10, 4.467841334817579) == -120900840.8732791": {
+      "result": true,
+      "time": 0.08989620208740234,
+      "error": null
+    },
+    "assert binomial_probability(10, 11, 1.5625068513656222) == -240.9425027421504": {
+      "result": false,
+      "time": 0.08237719535827637,
+      "error": null
+    },
+    "assert binomial_probability(14, 2, 4.027706330193604) == 876036040.5531797": {
+      "result": true,
+      "time": 0.07329249382019043,
+      "error": null
+    },
+    "assert binomial_probability(14, 4, 3.3944442862886453) == 823296332.5572486": {
+      "result": true,
+      "time": 0.07442808151245117,
+      "error": null
+    },
+    "assert binomial_probability(8, 8, 4.387054441636035) == 137209.50289673833": {
+      "result": true,
+      "time": 0.07436156272888184,
+      "error": null
+    },
+    "assert binomial_probability(10, 7, 5.782401897762991) == -2837117810.0148935": {
+      "result": true,
+      "time": 0.07500529289245605,
+      "error": null
+    },
+    "assert binomial_probability(15, 8, 4.819952730784859) == -22248293563615.07": {
+      "result": true,
+      "time": 0.07596421241760254,
+      "error": null
+    },
+    "assert binomial_probability(9, 6, 5.576980612325082) == -242332304.76596537": {
+      "result": true,
+      "time": 0.08349990844726562,
+      "error": null
+    },
+    "assert binomial_probability(6, 2, 2.4073485410521545) == 341.016877755017": {
+      "result": true,
+      "time": 0.08725500106811523,
+      "error": null
+    },
+    "assert binomial_probability(16, 10, 5.6311410499507755) == 2532889086879624.0": {
+      "result": true,
+      "time": 0.07462120056152344,
+      "error": null
+    },
+    "assert binomial_probability(16, 7, 3.211661467019687) == -51050760435.6921": {
+      "result": true,
+      "time": 0.08058691024780273,
+      "error": null
+    },
+    "assert binomial_probability(12, 10, 5.610862616518606) == 43391498689.30046": {
+      "result": true,
+      "time": 0.07089757919311523,
+      "error": null
+    },
+    "assert binomial_probability(13, 3, 2.985675197543997) == 7253971.189085983": {
+      "result": true,
+      "time": 0.08138823509216309,
+      "error": null
+    },
+    "assert binomial_probability(8, 8, 3.0540344390544436) == 7568.179793327709": {
+      "result": true,
+      "time": 0.08428955078125,
+      "error": null
+    },
+    "assert binomial_probability(11, 4, 2.5347025000297836) == -273143.7809096159": {
+      "result": true,
+      "time": 0.08914327621459961,
+      "error": null
+    },
+    "assert binomial_probability(8, 5, 2.8140460736213404) == -58991.43833333722": {
+      "result": true,
+      "time": 0.07281231880187988,
+      "error": null
+    },
+    "assert binomial_probability(14, 4, 4.32508677486969) == 57868631764.085556": {
+      "result": true,
+      "time": 0.07703948020935059,
+      "error": null
+    },
+    "assert binomial_probability(10, 2, 3.827643769016574) == 2694468.4437904195": {
+      "result": true,
+      "time": 0.08954524993896484,
+      "error": null
+    },
+    "assert binomial_probability(16, 7, 4.289986175193538) == -13815414836282.945": {
+      "result": true,
+      "time": 0.0785987377166748,
+      "error": null
+    },
+    "assert binomial_probability(9, 6, 4.710306460789216) == -46860143.89609932": {
+      "result": true,
+      "time": 0.07880115509033203,
+      "error": null
+    },
+    "assert binomial_probability(12, 1, 3.2123768793559466) == -239584.0822691581": {
+      "result": true,
+      "time": 0.0707864761352539,
+      "error": null
+    },
+    "assert binomial_probability(8, 7, 1.5469330272960722) == -92.7523067597879": {
+      "result": true,
+      "time": 0.07581210136413574,
+      "error": null
+    },
+    "assert binomial_probability(6, 7, 5.472288308239974) == -32858.89831741357": {
+      "result": false,
+      "time": 0.07108426094055176,
+      "error": null
+    },
+    "assert binomial_probability(16, 6, 1.708417960752754) == 6338.470457330739": {
+      "result": true,
+      "time": 0.07558178901672363,
+      "error": null
+    },
+    "assert binomial_probability(9, 2, 3.6701932797749635) == -469331.0227679235": {
+      "result": true,
+      "time": 0.0776679515838623,
+      "error": null
+    },
+    "assert binomial_probability(9, 9, 3.526636538855832) == 84381.32208750572": {
+      "result": true,
+      "time": 0.07778596878051758,
+      "error": null
+    },
+    "assert binomial_probability(10, 10, 1.563251455227447) == 87.15421917914112": {
+      "result": true,
+      "time": 0.07925271987915039,
+      "error": null
+    },
+    "assert binomial_probability(11, 2, 3.0148992089181377) == -273645.44430763245": {
+      "result": true,
+      "time": 0.0832376480102539,
+      "error": null
+    },
+    "assert binomial_probability(14, 9, 2.3670700993060683) == -22300678.198918834": {
+      "result": true,
+      "time": 0.08810687065124512,
+      "error": null
+    },
+    "assert binomial_probability(8, 10, 2.3964221075342906) == 3203.3157015978363": {
+      "result": false,
+      "time": 0.0760183334350586,
+      "error": null
+    },
+    "assert binomial_probability(16, 7, 4.606002698238645) == -51871614660274.71": {
+      "result": true,
+      "time": 0.08251214027404785,
+      "error": null
+    },
+    "assert binomial_probability(14, 11, 4.450095712379684) == -202608510760.8634": {
+      "result": true,
+      "time": 0.08511519432067871,
+      "error": null
+    },
+    "assert binomial_probability(16, 9, 4.596009162922271) == -81395336871762.31": {
+      "result": true,
+      "time": 0.0795753002166748,
+      "error": null
+    },
+    "assert binomial_probability(11, 3, 3.251101566489958) == 3738834.812421407": {
+      "result": true,
+      "time": 0.07495713233947754,
+      "error": null
+    },
+    "assert binomial_probability(15, 5, 5.587850814518933) == 67588408249472.34": {
+      "result": true,
+      "time": 0.07753944396972656,
+      "error": null
+    },
+    "assert binomial_probability(17, 11, 2.8113468949586653) == 37900845018.87118": {
+      "result": true,
+      "time": 0.09485626220703125,
+      "error": null
+    },
+    "assert binomial_probability(13, 3, 1.3879175589992514) == 0.058999920517849545": {
+      "result": true,
+      "time": 0.07876038551330566,
+      "error": null
+    },
+    "assert binomial_probability(14, 2, 3.479743536697259) == 59568555.61412864": {
+      "result": true,
+      "time": 0.09119796752929688,
+      "error": null
+    },
+    "assert binomial_probability(17, 12, 2.176729625221725) == -157974721.42179948": {
+      "result": true,
+      "time": 0.0783700942993164,
+      "error": null
+    },
+    "assert binomial_probability(8, 9, 4.730381712639461) == -317916.0178593194": {
+      "result": false,
+      "time": 0.0735921859741211,
+      "error": null
+    },
+    "assert binomial_probability(9, 8, 4.1651346517432) == -2580281.3764553666": {
+      "result": true,
+      "time": 0.08817529678344727,
+      "error": null
+    },
+    "assert binomial_probability(9, 11, 4.309737948785712) == 869705.6354572655": {
+      "result": false,
+      "time": 0.09270691871643066,
+      "error": null
+    },
+    "assert binomial_probability(11, 10, 4.351361532299551) == -89715120.85286139": {
+      "result": true,
+      "time": 0.07619953155517578,
+      "error": null
+    },
+    "assert binomial_probability(11, 4, 2.561304039429123) == -321196.5418779113": {
+      "result": true,
+      "time": 0.08442449569702148,
+      "error": null
+    },
+    "assert binomial_probability(11, 6, 3.092743080053274) == -16228732.858445877": {
+      "result": true,
+      "time": 0.09115862846374512,
+      "error": null
+    },
+    "assert binomial_probability(10, 12, 3.8865546372885875) == 1425665.9073889155": {
+      "result": false,
+      "time": 0.08951282501220703,
+      "error": null
+    },
+    "assert binomial_probability(13, 9, 1.1577740764961528) == 1.6560102445865867": {
+      "result": true,
+      "time": 0.08449649810791016,
+      "error": null
+    },
+    "assert binomial_probability(10, 6, 3.126806067299286) == 4015471.3635516404": {
+      "result": true,
+      "time": 0.0728445053100586,
+      "error": null
+    },
+    "assert binomial_probability(10, 4, 5.717118826088653) == 2471661930.8910155": {
+      "result": true,
+      "time": 0.07720828056335449,
+      "error": null
+    },
+    "assert binomial_probability(14, 12, 3.982265983185271) == 12873519945.768995": {
+      "result": true,
+      "time": 0.0710763931274414,
+      "error": null
+    },
+    "assert binomial_probability(11, 4, 2.4932861726634328) == -211156.16208201545": {
+      "result": true,
+      "time": 0.07531261444091797,
+      "error": null
+    },
+    "assert binomial_probability(8, 9, 1.0882582078166632) == -24.256741380294905": {
+      "result": false,
+      "time": 0.08348250389099121,
+      "error": null
+    },
+    "assert binomial_probability(9, 12, 5.295735414973665) == -6137659.238312544": {
+      "result": false,
+      "time": 0.0838310718536377,
+      "error": null
+    },
+    "assert binomial_probability(15, 4, 1.5117106417616986) == -4.490309434666576": {
+      "result": true,
+      "time": 0.09470725059509277,
+      "error": null
+    },
+    "assert binomial_probability(13, 11, 4.26489752163468) == 7060383867.935383": {
+      "result": true,
+      "time": 0.07730746269226074,
+      "error": null
+    },
+    "assert binomial_probability(17, 2, 5.597017921804632) == -36863388787801.74": {
+      "result": true,
+      "time": 0.08618640899658203,
+      "error": null
+    },
+    "assert binomial_probability(10, 5, 4.578077077668445) == -297210741.34534234": {
+      "result": true,
+      "time": 0.09344339370727539,
+      "error": null
+    },
+    "assert binomial_probability(17, 2, 2.94402408124928) == -25231683.600103933": {
+      "result": true,
+      "time": 0.0945138931274414,
+      "error": null
+    },
+    "assert binomial_probability(15, 3, 1.1429922616239754) == 4.964684894496024e-08": {
+      "result": true,
+      "time": 0.09142065048217773,
+      "error": null
+    },
+    "assert binomial_probability(16, 6, 2.2190468086078434) == 6929895.139080677": {
+      "result": true,
+      "time": 0.07750964164733887,
+      "error": null
+    },
+    "assert binomial_probability(9, 8, 3.9610825272493644) == -1615117.5921834686": {
+      "result": true,
+      "time": 0.09392881393432617,
+      "error": null
+    },
+    "assert binomial_probability(10, 2, 3.773268035073351) == 2241726.338952348": {
+      "result": true,
+      "time": 0.0856027603149414,
+      "error": null
+    },
+    "assert binomial_probability(7, 11, 2.8752752771382184) == 8978.703263233458": {
+      "result": false,
+      "time": 0.09352850914001465,
+      "error": null
+    },
+    "assert binomial_probability(10, 9, 5.413294840870316) == -176164372.3934158": {
+      "result": true,
+      "time": 0.09216189384460449,
+      "error": null
+    },
+    "assert binomial_probability(14, 10, 3.9927968017481144) == 82701824682.39813": {
+      "result": true,
+      "time": 0.07609748840332031,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8823529411764706,
+  "general_error": "",
+  "has_testcase_error": false
+}

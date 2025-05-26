@@ -1,0 +1,519 @@
+{
+  "code": "def is_subset_sum(set, n, sum):\n    if sum == 0:\n        return True\n    if n == 0 and sum != 0:\n        return False\n    if set[n-1] > sum:\n        return is_subset_sum(set, n-1, sum)\n    return is_subset_sum(set, n-1, sum) or is_subset_sum(set, n-1, sum-set[n-1])\n",
+  "results": {
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 9) == True": {
+      "result": true,
+      "time": 0.02998661994934082,
+      "error": null
+    },
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 30) == False": {
+      "result": true,
+      "time": 0.0413823127746582,
+      "error": null
+    },
+    "assert is_subset_sum([3, 34, 4, 12, 5, 2], 6, 15) == True": {
+      "result": true,
+      "time": 0.03264474868774414,
+      "error": null
+    },
+    "assert is_subset_sum([6, 34, 4, 11, 4, 6], 3, 7) == False": {
+      "result": true,
+      "time": 0.03289985656738281,
+      "error": null
+    },
+    "assert is_subset_sum([2, 33, 1, 9, 4, 6], 6, 7) == True": {
+      "result": true,
+      "time": 0.0332794189453125,
+      "error": null
+    },
+    "assert is_subset_sum([8, 32, 4, 10, 2, 7], 2, 10) == False": {
+      "result": true,
+      "time": 0.03244900703430176,
+      "error": null
+    },
+    "assert is_subset_sum([7, 39, 4, 14, 7, 5], 2, 5) == False": {
+      "result": true,
+      "time": 0.035491228103637695,
+      "error": null
+    },
+    "assert is_subset_sum([5, 33, 9, 7, 10, 4], 6, 7) == True": {
+      "result": true,
+      "time": 0.033349037170410156,
+      "error": null
+    },
+    "assert is_subset_sum([6, 32, 8, 10, 8, 1], 5, 6) == True": {
+      "result": true,
+      "time": 0.0321502685546875,
+      "error": null
+    },
+    "assert is_subset_sum([4, 34, 1, 13, 8, 5], 1, 8) == False": {
+      "result": true,
+      "time": 0.04611682891845703,
+      "error": null
+    },
+    "assert is_subset_sum([2, 30, 6, 17, 7, 2], 6, 9) == True": {
+      "result": true,
+      "time": 0.04173898696899414,
+      "error": null
+    },
+    "assert is_subset_sum([2, 39, 8, 7, 7, 5], 3, 6) == False": {
+      "result": true,
+      "time": 0.0379180908203125,
+      "error": null
+    },
+    "assert is_subset_sum([8, 36, 8, 8, 8, 1], 1, 14) == False": {
+      "result": true,
+      "time": 0.04217338562011719,
+      "error": null
+    },
+    "assert is_subset_sum([3, 34, 7, 11, 6, 3], 2, 13) == False": {
+      "result": true,
+      "time": 0.03937888145446777,
+      "error": null
+    },
+    "assert is_subset_sum([4, 35, 1, 8, 9, 7], 4, 9) == True": {
+      "result": true,
+      "time": 0.041649818420410156,
+      "error": null
+    },
+    "assert is_subset_sum([1, 31, 9, 14, 5, 7], 1, 10) == False": {
+      "result": true,
+      "time": 0.03836321830749512,
+      "error": null
+    },
+    "assert is_subset_sum([2, 35, 4, 17, 3, 2], 6, 12) == False": {
+      "result": true,
+      "time": 0.05620217323303223,
+      "error": null
+    },
+    "assert is_subset_sum([4, 33, 4, 16, 1, 2], 6, 9) == True": {
+      "result": true,
+      "time": 0.04014301300048828,
+      "error": null
+    },
+    "assert is_subset_sum([6, 30, 2, 14, 9, 6], 5, 13) == False": {
+      "result": true,
+      "time": 0.0463109016418457,
+      "error": null
+    },
+    "assert is_subset_sum([8, 32, 6, 13, 1, 1], 2, 10) == False": {
+      "result": true,
+      "time": 0.03619790077209473,
+      "error": null
+    },
+    "assert is_subset_sum([3, 36, 9, 17, 6, 2], 3, 14) == False": {
+      "result": true,
+      "time": 0.045187950134277344,
+      "error": null
+    },
+    "assert is_subset_sum([6, 36, 3, 15, 9, 2], 4, 10) == False": {
+      "result": true,
+      "time": 0.04496955871582031,
+      "error": null
+    },
+    "assert is_subset_sum([6, 36, 4, 13, 10, 2], 6, 11) == False": {
+      "result": true,
+      "time": 0.04151511192321777,
+      "error": null
+    },
+    "assert is_subset_sum([6, 31, 4, 9, 9, 7], 3, 8) == False": {
+      "result": true,
+      "time": 0.036414384841918945,
+      "error": null
+    },
+    "assert is_subset_sum([6, 38, 4, 10, 7, 6], 6, 7) == True": {
+      "result": true,
+      "time": 0.04101157188415527,
+      "error": null
+    },
+    "assert is_subset_sum([4, 30, 7, 10, 1, 2], 3, 9) == False": {
+      "result": true,
+      "time": 0.039372920989990234,
+      "error": null
+    },
+    "assert is_subset_sum([5, 39, 4, 10, 4, 7], 5, 11) == False": {
+      "result": true,
+      "time": 0.040979862213134766,
+      "error": null
+    },
+    "assert is_subset_sum([2, 31, 2, 13, 2, 1], 4, 7) == False": {
+      "result": true,
+      "time": 0.0404047966003418,
+      "error": null
+    },
+    "assert is_subset_sum([8, 30, 2, 17, 7, 6], 6, 9) == True": {
+      "result": true,
+      "time": 0.04745602607727051,
+      "error": null
+    },
+    "assert is_subset_sum([7, 29, 2, 11, 1, 5], 4, 11) == True": {
+      "result": true,
+      "time": 0.04400825500488281,
+      "error": null
+    },
+    "assert is_subset_sum([2, 30, 4, 14, 10, 4], 1, 12) == False": {
+      "result": true,
+      "time": 0.04728364944458008,
+      "error": null
+    },
+    "assert is_subset_sum([2, 35, 9, 9, 5, 2], 6, 11) == True": {
+      "result": true,
+      "time": 0.048717498779296875,
+      "error": null
+    },
+    "assert is_subset_sum([1, 30, 5, 8, 1, 6], 1, 8) == False": {
+      "result": true,
+      "time": 0.042436838150024414,
+      "error": null
+    },
+    "assert is_subset_sum([5, 33, 7, 7, 6, 2], 1, 4) == False": {
+      "result": true,
+      "time": 0.040834903717041016,
+      "error": null
+    },
+    "assert is_subset_sum([2, 39, 5, 16, 7, 1], 1, 4) == False": {
+      "result": true,
+      "time": 0.04482769966125488,
+      "error": null
+    },
+    "assert is_subset_sum([3, 32, 5, 12, 2, 5], 3, 10) == False": {
+      "result": true,
+      "time": 0.04652142524719238,
+      "error": null
+    },
+    "assert is_subset_sum([8, 34, 4, 7, 3, 7], 5, 25) == False": {
+      "result": true,
+      "time": 0.05854296684265137,
+      "error": null
+    },
+    "assert is_subset_sum([6, 31, 6, 7, 3, 3], 2, 25) == False": {
+      "result": true,
+      "time": 0.04421257972717285,
+      "error": null
+    },
+    "assert is_subset_sum([5, 36, 2, 12, 8, 1], 6, 31) == False": {
+      "result": true,
+      "time": 0.05044436454772949,
+      "error": null
+    },
+    "assert is_subset_sum([8, 39, 8, 11, 7, 6], 1, 25) == False": {
+      "result": true,
+      "time": 0.0405421257019043,
+      "error": null
+    },
+    "assert is_subset_sum([4, 35, 6, 14, 7, 7], 6, 25) == True": {
+      "result": true,
+      "time": 0.04558968544006348,
+      "error": null
+    },
+    "assert is_subset_sum([6, 36, 2, 11, 3, 7], 4, 29) == False": {
+      "result": true,
+      "time": 0.03934788703918457,
+      "error": null
+    },
+    "assert is_subset_sum([8, 30, 1, 8, 4, 6], 3, 25) == False": {
+      "result": true,
+      "time": 0.04738497734069824,
+      "error": null
+    },
+    "assert is_subset_sum([4, 39, 1, 10, 1, 1], 4, 28) == False": {
+      "result": true,
+      "time": 0.03562736511230469,
+      "error": null
+    },
+    "assert is_subset_sum([7, 33, 5, 16, 7, 1], 4, 25) == False": {
+      "result": true,
+      "time": 0.040370941162109375,
+      "error": null
+    },
+    "assert is_subset_sum([3, 39, 8, 12, 10, 3], 4, 29) == False": {
+      "result": true,
+      "time": 0.048085689544677734,
+      "error": null
+    },
+    "assert is_subset_sum([5, 36, 2, 13, 6, 4], 4, 35) == False": {
+      "result": true,
+      "time": 0.04266214370727539,
+      "error": null
+    },
+    "assert is_subset_sum([8, 38, 4, 8, 5, 3], 2, 28) == False": {
+      "result": true,
+      "time": 0.03742671012878418,
+      "error": null
+    },
+    "assert is_subset_sum([6, 39, 7, 16, 4, 5], 6, 34) == True": {
+      "result": true,
+      "time": 0.04681229591369629,
+      "error": null
+    },
+    "assert is_subset_sum([2, 29, 5, 17, 1, 3], 6, 32) == True": {
+      "result": true,
+      "time": 0.034287214279174805,
+      "error": null
+    },
+    "assert is_subset_sum([4, 37, 6, 9, 3, 1], 5, 32) == False": {
+      "result": true,
+      "time": 0.03912830352783203,
+      "error": null
+    },
+    "assert is_subset_sum([5, 36, 3, 10, 6, 6], 1, 26) == False": {
+      "result": true,
+      "time": 0.04294466972351074,
+      "error": null
+    },
+    "assert is_subset_sum([8, 39, 1, 12, 2, 2], 4, 30) == False": {
+      "result": true,
+      "time": 0.040317535400390625,
+      "error": null
+    },
+    "assert is_subset_sum([6, 36, 1, 15, 3, 7], 4, 28) == False": {
+      "result": true,
+      "time": 0.05022168159484863,
+      "error": null
+    },
+    "assert is_subset_sum([4, 39, 1, 7, 7, 6], 4, 26) == False": {
+      "result": true,
+      "time": 0.044992685317993164,
+      "error": null
+    },
+    "assert is_subset_sum([6, 36, 2, 8, 8, 5], 4, 26) == False": {
+      "result": true,
+      "time": 0.04481959342956543,
+      "error": null
+    },
+    "assert is_subset_sum([8, 39, 2, 17, 8, 2], 3, 29) == False": {
+      "result": true,
+      "time": 0.04676938056945801,
+      "error": null
+    },
+    "assert is_subset_sum([7, 38, 1, 17, 9, 4], 4, 25) == True": {
+      "result": true,
+      "time": 0.04449343681335449,
+      "error": null
+    },
+    "assert is_subset_sum([1, 39, 5, 16, 1, 7], 3, 26) == False": {
+      "result": true,
+      "time": 0.03717350959777832,
+      "error": null
+    },
+    "assert is_subset_sum([4, 29, 5, 15, 1, 1], 4, 30) == False": {
+      "result": true,
+      "time": 0.05093550682067871,
+      "error": null
+    },
+    "assert is_subset_sum([1, 32, 4, 8, 10, 2], 1, 33) == False": {
+      "result": true,
+      "time": 0.04601430892944336,
+      "error": null
+    },
+    "assert is_subset_sum([8, 34, 4, 13, 2, 2], 3, 28) == False": {
+      "result": true,
+      "time": 0.057306766510009766,
+      "error": null
+    },
+    "assert is_subset_sum([7, 39, 4, 10, 5, 2], 6, 27) == False": {
+      "result": true,
+      "time": 0.03861284255981445,
+      "error": null
+    },
+    "assert is_subset_sum([1, 34, 3, 14, 5, 5], 1, 28) == False": {
+      "result": true,
+      "time": 0.04419541358947754,
+      "error": null
+    },
+    "assert is_subset_sum([3, 39, 8, 7, 2, 4], 3, 32) == False": {
+      "result": true,
+      "time": 0.05149960517883301,
+      "error": null
+    },
+    "assert is_subset_sum([8, 35, 7, 9, 3, 7], 3, 28) == False": {
+      "result": true,
+      "time": 0.0366671085357666,
+      "error": null
+    },
+    "assert is_subset_sum([4, 35, 5, 7, 5, 6], 1, 29) == False": {
+      "result": true,
+      "time": 0.04441094398498535,
+      "error": null
+    },
+    "assert is_subset_sum([7, 29, 1, 16, 1, 7], 1, 31) == False": {
+      "result": true,
+      "time": 0.054077863693237305,
+      "error": null
+    },
+    "assert is_subset_sum([2, 36, 2, 9, 1, 2], 1, 30) == False": {
+      "result": true,
+      "time": 0.0349431037902832,
+      "error": null
+    },
+    "assert is_subset_sum([8, 36, 2, 11, 3, 5], 4, 19) == True": {
+      "result": true,
+      "time": 0.03696012496948242,
+      "error": null
+    },
+    "assert is_subset_sum([2, 29, 4, 10, 7, 7], 5, 18) == False": {
+      "result": true,
+      "time": 0.03931260108947754,
+      "error": null
+    },
+    "assert is_subset_sum([2, 34, 4, 12, 3, 4], 1, 13) == False": {
+      "result": true,
+      "time": 0.043083906173706055,
+      "error": null
+    },
+    "assert is_subset_sum([1, 31, 4, 13, 1, 3], 5, 18) == True": {
+      "result": true,
+      "time": 0.043985605239868164,
+      "error": null
+    },
+    "assert is_subset_sum([8, 34, 2, 7, 10, 5], 6, 14) == True": {
+      "result": true,
+      "time": 0.04196763038635254,
+      "error": null
+    },
+    "assert is_subset_sum([7, 37, 8, 9, 9, 1], 2, 18) == False": {
+      "result": true,
+      "time": 0.04078030586242676,
+      "error": null
+    },
+    "assert is_subset_sum([4, 31, 6, 10, 1, 3], 5, 18) == False": {
+      "result": true,
+      "time": 0.04454922676086426,
+      "error": null
+    },
+    "assert is_subset_sum([5, 29, 8, 8, 1, 5], 3, 11) == False": {
+      "result": true,
+      "time": 0.03811025619506836,
+      "error": null
+    },
+    "assert is_subset_sum([7, 35, 9, 14, 5, 2], 6, 19) == True": {
+      "result": true,
+      "time": 0.04925537109375,
+      "error": null
+    },
+    "assert is_subset_sum([3, 37, 9, 7, 10, 6], 4, 10) == True": {
+      "result": true,
+      "time": 0.051680564880371094,
+      "error": null
+    },
+    "assert is_subset_sum([7, 34, 3, 13, 1, 3], 3, 15) == False": {
+      "result": true,
+      "time": 0.05301475524902344,
+      "error": null
+    },
+    "assert is_subset_sum([7, 33, 5, 8, 8, 6], 5, 10) == False": {
+      "result": true,
+      "time": 0.041967153549194336,
+      "error": null
+    },
+    "assert is_subset_sum([7, 32, 9, 11, 3, 3], 1, 14) == False": {
+      "result": true,
+      "time": 0.04906892776489258,
+      "error": null
+    },
+    "assert is_subset_sum([3, 38, 2, 7, 7, 1], 4, 10) == True": {
+      "result": true,
+      "time": 0.03871417045593262,
+      "error": null
+    },
+    "assert is_subset_sum([1, 34, 9, 7, 5, 3], 2, 20) == False": {
+      "result": true,
+      "time": 0.0330808162689209,
+      "error": null
+    },
+    "assert is_subset_sum([1, 38, 5, 13, 1, 6], 4, 12) == False": {
+      "result": true,
+      "time": 0.04146552085876465,
+      "error": null
+    },
+    "assert is_subset_sum([6, 32, 2, 8, 7, 3], 3, 16) == False": {
+      "result": true,
+      "time": 0.047666072845458984,
+      "error": null
+    },
+    "assert is_subset_sum([6, 36, 1, 11, 7, 5], 4, 20) == False": {
+      "result": true,
+      "time": 0.04120039939880371,
+      "error": null
+    },
+    "assert is_subset_sum([7, 31, 1, 9, 1, 2], 3, 19) == False": {
+      "result": true,
+      "time": 0.04624629020690918,
+      "error": null
+    },
+    "assert is_subset_sum([3, 29, 5, 13, 2, 3], 6, 20) == True": {
+      "result": true,
+      "time": 0.052277565002441406,
+      "error": null
+    },
+    "assert is_subset_sum([8, 36, 4, 17, 1, 5], 6, 17) == True": {
+      "result": true,
+      "time": 0.042993783950805664,
+      "error": null
+    },
+    "assert is_subset_sum([1, 39, 8, 7, 8, 6], 3, 13) == False": {
+      "result": true,
+      "time": 0.05065464973449707,
+      "error": null
+    },
+    "assert is_subset_sum([1, 29, 4, 10, 6, 1], 4, 10) == True": {
+      "result": true,
+      "time": 0.040956735610961914,
+      "error": null
+    },
+    "assert is_subset_sum([1, 31, 7, 17, 8, 1], 5, 10) == False": {
+      "result": true,
+      "time": 0.04636192321777344,
+      "error": null
+    },
+    "assert is_subset_sum([5, 37, 1, 12, 6, 1], 1, 13) == False": {
+      "result": true,
+      "time": 0.055159807205200195,
+      "error": null
+    },
+    "assert is_subset_sum([1, 33, 5, 17, 1, 4], 1, 11) == False": {
+      "result": true,
+      "time": 0.04630875587463379,
+      "error": null
+    },
+    "assert is_subset_sum([4, 29, 7, 10, 5, 6], 3, 11) == True": {
+      "result": true,
+      "time": 0.06691646575927734,
+      "error": null
+    },
+    "assert is_subset_sum([8, 30, 7, 7, 6, 4], 2, 19) == False": {
+      "result": true,
+      "time": 0.05309104919433594,
+      "error": null
+    },
+    "assert is_subset_sum([2, 37, 4, 9, 9, 5], 3, 10) == False": {
+      "result": true,
+      "time": 0.06794452667236328,
+      "error": null
+    },
+    "assert is_subset_sum([7, 30, 2, 10, 10, 6], 6, 12) == True": {
+      "result": true,
+      "time": 0.05815839767456055,
+      "error": null
+    },
+    "assert is_subset_sum([8, 33, 6, 8, 5, 7], 1, 11) == False": {
+      "result": true,
+      "time": 0.04706597328186035,
+      "error": null
+    },
+    "assert is_subset_sum([5, 29, 5, 16, 3, 6], 2, 11) == False": {
+      "result": true,
+      "time": 0.052744150161743164,
+      "error": null
+    },
+    "assert is_subset_sum([4, 34, 9, 8, 5, 7], 3, 13) == True": {
+      "result": true,
+      "time": 0.04887890815734863,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

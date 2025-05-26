@@ -1,0 +1,514 @@
+{
+  "code": "def text_match_word(text):\n    # Step 1: Remove leading and trailing whitespace from the input text\n    stripped_text = text.strip()\n    \n    # Step 2: Check if the stripped text is empty\n    if not stripped_text:\n        return \"Not matched!\"\n    \n    # Step 3: Initialize a variable to track if the last character is punctuation\n    last_char = stripped_text[-1]\n    \n    # Step 4: Define the set of punctuation characters to check\n    punctuation_chars = {'.', ',', '!', '?', ';', ':'}\n    \n    # Step 5: Check if the last character is punctuation\n    has_punctuation = last_char in punctuation_chars\n    \n    # Step 6: Extract the word part (without punctuation if present)\n    if has_punctuation:\n        word_part = stripped_text[:-1]\n    else:\n        word_part = stripped_text\n    \n    # Step 7: Check if the word part is non-empty and consists of letters\n    if word_part.isalpha():\n        return \"Found a match!\"\n    else:\n        return \"Not matched!\"",
+  "results": {
+    "assert text_match_word(\"python.\")==('Found a match!')": {
+      "result": true,
+      "time": 0.06787872314453125,
+      "error": null
+    },
+    "assert text_match_word(\"  lang  .\")==('Not matched!')": {
+      "result": true,
+      "time": 0.06988883018493652,
+      "error": null
+    },
+    "assert text_match_word(\"wvdy.goblnu\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.05629110336303711,
+      "error": null
+    },
+    "assert text_match_word(\"fxigxfm.jld\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.0702977180480957,
+      "error": null
+    },
+    "assert text_match_word(\"jhflme\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.08580207824707031,
+      "error": null
+    },
+    "assert text_match_word(\"lznzcdmyoeh\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.0714871883392334,
+      "error": null
+    },
+    "assert text_match_word(\"gtuvstoi\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05811905860900879,
+      "error": null
+    },
+    "assert text_match_word(\"zmdu\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.0651710033416748,
+      "error": null
+    },
+    "assert text_match_word(\"bjjulcddnmlf\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.07503914833068848,
+      "error": null
+    },
+    "assert text_match_word(\"xtybegk\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.07165026664733887,
+      "error": null
+    },
+    "assert text_match_word(\"ulau\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05815768241882324,
+      "error": null
+    },
+    "assert text_match_word(\"rkyvvrpuisn\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05970501899719238,
+      "error": null
+    },
+    "assert text_match_word(\"iv.b\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.06146121025085449,
+      "error": null
+    },
+    "assert text_match_word(\"uliw.e\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.08449697494506836,
+      "error": null
+    },
+    "assert text_match_word(\"pmsy\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05696821212768555,
+      "error": null
+    },
+    "assert text_match_word(\"rxhqrmkod\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.07175970077514648,
+      "error": null
+    },
+    "assert text_match_word(\"rqxcybtofftp\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.12449860572814941,
+      "error": null
+    },
+    "assert text_match_word(\"xc.\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.07700586318969727,
+      "error": null
+    },
+    "assert text_match_word(\"xttplpue\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.06787919998168945,
+      "error": null
+    },
+    "assert text_match_word(\"odhl\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.06849956512451172,
+      "error": null
+    },
+    "assert text_match_word(\"dt.mne\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.09572315216064453,
+      "error": null
+    },
+    "assert text_match_word(\"ypabr\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.07756209373474121,
+      "error": null
+    },
+    "assert text_match_word(\"fbojhv\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.0747992992401123,
+      "error": null
+    },
+    "assert text_match_word(\"joirnhmutyh\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.07061219215393066,
+      "error": null
+    },
+    "assert text_match_word(\"qmfzgmz\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.12082886695861816,
+      "error": null
+    },
+    "assert text_match_word(\"xdxziesnoex.\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.12982869148254395,
+      "error": null
+    },
+    "assert text_match_word(\"n.oiuvh\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.07695865631103516,
+      "error": null
+    },
+    "assert text_match_word(\"bhl.\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.07871460914611816,
+      "error": null
+    },
+    "assert text_match_word(\"orajotdzqqz\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.0690605640411377,
+      "error": null
+    },
+    "assert text_match_word(\"thnobuxhuzgu\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.07914185523986816,
+      "error": null
+    },
+    "assert text_match_word(\"xdeoom\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.07665371894836426,
+      "error": null
+    },
+    "assert text_match_word(\"zdepnu.\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.06429791450500488,
+      "error": null
+    },
+    "assert text_match_word(\"fpjmxfqkhmvv\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.06232929229736328,
+      "error": null
+    },
+    "assert text_match_word(\"gog\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.0479280948638916,
+      "error": null
+    },
+    "assert text_match_word(\"veuhouagope\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05026125907897949,
+      "error": null
+    },
+    "assert text_match_word(\"ikdvjjqtq\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05475139617919922,
+      "error": null
+    },
+    "assert text_match_word(\"znrxhtk..h\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.05984640121459961,
+      "error": null
+    },
+    "assert text_match_word(\"ljsruuqxlzqm\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04597210884094238,
+      "error": null
+    },
+    "assert text_match_word(\"abcd\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.06952118873596191,
+      "error": null
+    },
+    "assert text_match_word(\"ry.kfhn\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.06364631652832031,
+      "error": null
+    },
+    "assert text_match_word(\"kljqxfl\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05315113067626953,
+      "error": null
+    },
+    "assert text_match_word(\"mjmtvjv\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05528759956359863,
+      "error": null
+    },
+    "assert text_match_word(\"ekbxklszdk\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05088162422180176,
+      "error": null
+    },
+    "assert text_match_word(\"whlorw\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05461430549621582,
+      "error": null
+    },
+    "assert text_match_word(\"spil\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.058632850646972656,
+      "error": null
+    },
+    "assert text_match_word(\"onhw.hkp\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.050894737243652344,
+      "error": null
+    },
+    "assert text_match_word(\"gpebr\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05226874351501465,
+      "error": null
+    },
+    "assert text_match_word(\"dxh.qagry\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.049153804779052734,
+      "error": null
+    },
+    "assert text_match_word(\"v.hxpdxsuf\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.05275106430053711,
+      "error": null
+    },
+    "assert text_match_word(\"epcwjpbd\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05143904685974121,
+      "error": null
+    },
+    "assert text_match_word(\"dzmyhu\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04550027847290039,
+      "error": null
+    },
+    "assert text_match_word(\"uuaj\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.051543474197387695,
+      "error": null
+    },
+    "assert text_match_word(\"rnsmue\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.06633210182189941,
+      "error": null
+    },
+    "assert text_match_word(\"qtufigvddhcv\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05094289779663086,
+      "error": null
+    },
+    "assert text_match_word(\"hbuthqakpfb\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05009937286376953,
+      "error": null
+    },
+    "assert text_match_word(\"vxnkn\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04368758201599121,
+      "error": null
+    },
+    "assert text_match_word(\"owefrcvwfls\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05264616012573242,
+      "error": null
+    },
+    "assert text_match_word(\"ghmlmfpqp\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04693317413330078,
+      "error": null
+    },
+    "assert text_match_word(\"wxg\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04654550552368164,
+      "error": null
+    },
+    "assert text_match_word(\"dqafxyv.hhf\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.040238142013549805,
+      "error": null
+    },
+    "assert text_match_word(\"qo.vxfo\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04636979103088379,
+      "error": null
+    },
+    "assert text_match_word(\"zkpdhq.l\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04240751266479492,
+      "error": null
+    },
+    "assert text_match_word(\"xdjtjje\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04779791831970215,
+      "error": null
+    },
+    "assert text_match_word(\"cukaspfby\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05535173416137695,
+      "error": null
+    },
+    "assert text_match_word(\"frglm\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04223370552062988,
+      "error": null
+    },
+    "assert text_match_word(\"tyr\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05032682418823242,
+      "error": null
+    },
+    "assert text_match_word(\"fsxllifgzju\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04796195030212402,
+      "error": null
+    },
+    "assert text_match_word(\"pofp\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04503440856933594,
+      "error": null
+    },
+    "assert text_match_word(\"prlkay q thnh\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04616498947143555,
+      "error": null
+    },
+    "assert text_match_word(\"nuu yoak\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.03966784477233887,
+      "error": null
+    },
+    "assert text_match_word(\"qtekwynio\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04543328285217285,
+      "error": null
+    },
+    "assert text_match_word(\"fafyh x\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.0379183292388916,
+      "error": null
+    },
+    "assert text_match_word(\"fhrblhvwqxosoy \") == \"Not matched!\"": {
+      "result": false,
+      "time": 0.04256844520568848,
+      "error": null
+    },
+    "assert text_match_word(\"usntikml\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.041617393493652344,
+      "error": null
+    },
+    "assert text_match_word(\"fmnbyvc.vyssr\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04639315605163574,
+      "error": null
+    },
+    "assert text_match_word(\"xhfcxxirvlp \") == \"Not matched!\"": {
+      "result": false,
+      "time": 0.04275107383728027,
+      "error": null
+    },
+    "assert text_match_word(\"rkulwnjapszhbjw\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.0486598014831543,
+      "error": null
+    },
+    "assert text_match_word(\"al.jg.x\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04349994659423828,
+      "error": null
+    },
+    "assert text_match_word(\"ueiebj\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04065513610839844,
+      "error": null
+    },
+    "assert text_match_word(\"vuuezqowxau o.o\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.05368494987487793,
+      "error": null
+    },
+    "assert text_match_word(\"wzuqshwifofav\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05298662185668945,
+      "error": null
+    },
+    "assert text_match_word(\"nfgt fuhyswa\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04798531532287598,
+      "error": null
+    },
+    "assert text_match_word(\"umisexsvz.mxo\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04720330238342285,
+      "error": null
+    },
+    "assert text_match_word(\"rserer.znbgkg\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04106712341308594,
+      "error": null
+    },
+    "assert text_match_word(\"wfqhdbdigq \") == \"Not matched!\"": {
+      "result": false,
+      "time": 0.04169416427612305,
+      "error": null
+    },
+    "assert text_match_word(\"encj xj\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.0471954345703125,
+      "error": null
+    },
+    "assert text_match_word(\"hswvkotibyhfvde\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04945063591003418,
+      "error": null
+    },
+    "assert text_match_word(\"ezuncet.inm\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04539942741394043,
+      "error": null
+    },
+    "assert text_match_word(\"sqstwubgipfiq\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.04900097846984863,
+      "error": null
+    },
+    "assert text_match_word(\"tpdsqguvakfn\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05025649070739746,
+      "error": null
+    },
+    "assert text_match_word(\"tfrpfmk\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.050569772720336914,
+      "error": null
+    },
+    "assert text_match_word(\"bcszdcpava\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.044928789138793945,
+      "error": null
+    },
+    "assert text_match_word(\"rrtxarirpnz\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.039646148681640625,
+      "error": null
+    },
+    "assert text_match_word(\".lzkvbyueeqtsu\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04395461082458496,
+      "error": null
+    },
+    "assert text_match_word(\".wptozlkosxqpl \") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.041152000427246094,
+      "error": null
+    },
+    "assert text_match_word(\"xtok .bap\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04073357582092285,
+      "error": null
+    },
+    "assert text_match_word(\"izttfwulntdi \") == \"Not matched!\"": {
+      "result": false,
+      "time": 0.04597878456115723,
+      "error": null
+    },
+    "assert text_match_word(\"gjk.gcvnm\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04971790313720703,
+      "error": null
+    },
+    "assert text_match_word(\"phgr.f.ttfk\") == \"Found a match!\"": {
+      "result": false,
+      "time": 0.04041028022766113,
+      "error": null
+    },
+    "assert text_match_word(\"lfjxqgchdxdqvn\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.054848670959472656,
+      "error": null
+    },
+    "assert text_match_word(\"zlcruv\") == \"Found a match!\"": {
+      "result": true,
+      "time": 0.05993151664733887,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6732673267326733,
+  "general_error": "",
+  "has_testcase_error": false
+}

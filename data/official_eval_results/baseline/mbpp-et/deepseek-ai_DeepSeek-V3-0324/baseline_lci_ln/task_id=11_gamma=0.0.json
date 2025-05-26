@@ -1,0 +1,519 @@
+{
+  "code": "def remove_Occ(s, ch):\n    first_index = -1\n    last_index = -1\n    length = len(s)\n    \n    # Find the first occurrence of the character\n    for i in range(length):\n        if s[i] == ch:\n            first_index = i\n            break\n    \n    # Find the last occurrence of the character\n    for i in range(length - 1, -1, -1):\n        if s[i] == ch:\n            last_index = i\n            break\n    \n    # If the character is not found, return the original string\n    if first_index == -1:\n        return s\n    \n    # If there's only one occurrence, remove it\n    if first_index == last_index:\n        new_str = s[:first_index] + s[first_index + 1:]\n        return new_str\n    \n    # Remove both first and last occurrences\n    new_str = s[:first_index] + s[first_index + 1:last_index] + s[last_index + 1:]\n    return new_str",
+  "results": {
+    "assert remove_Occ(\"hello\",\"l\") == \"heo\"": {
+      "result": true,
+      "time": 0.03385043144226074,
+      "error": null
+    },
+    "assert remove_Occ(\"abcda\",\"a\") == \"bcd\"": {
+      "result": true,
+      "time": 0.03258943557739258,
+      "error": null
+    },
+    "assert remove_Occ(\"PHP\",\"P\") == \"H\"": {
+      "result": true,
+      "time": 0.03281974792480469,
+      "error": null
+    },
+    "assert remove_Occ('bjfcnn', 'k') == \"bjfcnn\"": {
+      "result": true,
+      "time": 0.04149675369262695,
+      "error": null
+    },
+    "assert remove_Occ('qctfn', 'n') == \"qctf\"": {
+      "result": true,
+      "time": 0.040886640548706055,
+      "error": null
+    },
+    "assert remove_Occ('tcriz', 'h') == \"tcriz\"": {
+      "result": true,
+      "time": 0.038014888763427734,
+      "error": null
+    },
+    "assert remove_Occ('fqzw', 'r') == \"fqzw\"": {
+      "result": true,
+      "time": 0.03703498840332031,
+      "error": null
+    },
+    "assert remove_Occ('ivsf', 'l') == \"ivsf\"": {
+      "result": true,
+      "time": 0.03977060317993164,
+      "error": null
+    },
+    "assert remove_Occ('uun', 'u') == \"n\"": {
+      "result": true,
+      "time": 0.037641048431396484,
+      "error": null
+    },
+    "assert remove_Occ('jhi', 'i') == \"jh\"": {
+      "result": true,
+      "time": 0.031632184982299805,
+      "error": null
+    },
+    "assert remove_Occ('wzgmgznjo', 'n') == \"wzgmgzjo\"": {
+      "result": true,
+      "time": 0.03822660446166992,
+      "error": null
+    },
+    "assert remove_Occ('nfjv', 'i') == \"nfjv\"": {
+      "result": true,
+      "time": 0.038394927978515625,
+      "error": null
+    },
+    "assert remove_Occ('oyirnmq', 'a') == \"oyirnmq\"": {
+      "result": true,
+      "time": 0.03285336494445801,
+      "error": null
+    },
+    "assert remove_Occ('tsdx', 'l') == \"tsdx\"": {
+      "result": true,
+      "time": 0.03646087646484375,
+      "error": null
+    },
+    "assert remove_Occ('wlbjqs', 't') == \"wlbjqs\"": {
+      "result": true,
+      "time": 0.041884422302246094,
+      "error": null
+    },
+    "assert remove_Occ('nenxz', 'c') == \"nenxz\"": {
+      "result": true,
+      "time": 0.03380990028381348,
+      "error": null
+    },
+    "assert remove_Occ('zjc', 'a') == \"zjc\"": {
+      "result": true,
+      "time": 0.031861066818237305,
+      "error": null
+    },
+    "assert remove_Occ('goq', 'k') == \"goq\"": {
+      "result": true,
+      "time": 0.04302668571472168,
+      "error": null
+    },
+    "assert remove_Occ('bzihlvi', 't') == \"bzihlvi\"": {
+      "result": true,
+      "time": 0.03310370445251465,
+      "error": null
+    },
+    "assert remove_Occ('rzpxluuh', 'o') == \"rzpxluuh\"": {
+      "result": true,
+      "time": 0.039667606353759766,
+      "error": null
+    },
+    "assert remove_Occ('qhqoxsfs', 'q') == \"hoxsfs\"": {
+      "result": true,
+      "time": 0.03532123565673828,
+      "error": null
+    },
+    "assert remove_Occ('vduxnoc', 'p') == \"vduxnoc\"": {
+      "result": true,
+      "time": 0.03598284721374512,
+      "error": null
+    },
+    "assert remove_Occ('zqgz', 'g') == \"zqz\"": {
+      "result": true,
+      "time": 0.03327369689941406,
+      "error": null
+    },
+    "assert remove_Occ('fyxpdrd', 'b') == \"fyxpdrd\"": {
+      "result": true,
+      "time": 0.03481769561767578,
+      "error": null
+    },
+    "assert remove_Occ('lbnpqce', 'z') == \"lbnpqce\"": {
+      "result": true,
+      "time": 0.03343009948730469,
+      "error": null
+    },
+    "assert remove_Occ('iyvyrm', 'f') == \"iyvyrm\"": {
+      "result": true,
+      "time": 0.03602910041809082,
+      "error": null
+    },
+    "assert remove_Occ('zkskuainj', 'y') == \"zkskuainj\"": {
+      "result": true,
+      "time": 0.037604570388793945,
+      "error": null
+    },
+    "assert remove_Occ('lsim', 'v') == \"lsim\"": {
+      "result": true,
+      "time": 0.03659772872924805,
+      "error": null
+    },
+    "assert remove_Occ('rcnnivml', 'i') == \"rcnnvml\"": {
+      "result": true,
+      "time": 0.037719011306762695,
+      "error": null
+    },
+    "assert remove_Occ('bkgehfs', 'o') == \"bkgehfs\"": {
+      "result": true,
+      "time": 0.03459334373474121,
+      "error": null
+    },
+    "assert remove_Occ('tjsuannll', 'b') == \"tjsuannll\"": {
+      "result": true,
+      "time": 0.03731560707092285,
+      "error": null
+    },
+    "assert remove_Occ('bcdcdp', 'm') == \"bcdcdp\"": {
+      "result": true,
+      "time": 0.03870224952697754,
+      "error": null
+    },
+    "assert remove_Occ('blq', 'r') == \"blq\"": {
+      "result": true,
+      "time": 0.033873796463012695,
+      "error": null
+    },
+    "assert remove_Occ('faell', 'u') == \"faell\"": {
+      "result": true,
+      "time": 0.03125643730163574,
+      "error": null
+    },
+    "assert remove_Occ('chgwjm', 'd') == \"chgwjm\"": {
+      "result": true,
+      "time": 0.034612178802490234,
+      "error": null
+    },
+    "assert remove_Occ('gzs', 'p') == \"gzs\"": {
+      "result": true,
+      "time": 0.03533148765563965,
+      "error": null
+    },
+    "assert remove_Occ('dpftiin', 'y') == \"dpftiin\"": {
+      "result": true,
+      "time": 0.037790536880493164,
+      "error": null
+    },
+    "assert remove_Occ('ybdi', 'n') == \"ybdi\"": {
+      "result": true,
+      "time": 0.03873324394226074,
+      "error": null
+    },
+    "assert remove_Occ('ngzkdcxm', 'k') == \"ngzdcxm\"": {
+      "result": true,
+      "time": 0.03494572639465332,
+      "error": null
+    },
+    "assert remove_Occ('jjxg', 'a') == \"jjxg\"": {
+      "result": true,
+      "time": 0.04074740409851074,
+      "error": null
+    },
+    "assert remove_Occ('zprnzh', 'y') == \"zprnzh\"": {
+      "result": true,
+      "time": 0.04195737838745117,
+      "error": null
+    },
+    "assert remove_Occ('bdimmu', 'p') == \"bdimmu\"": {
+      "result": true,
+      "time": 0.03756833076477051,
+      "error": null
+    },
+    "assert remove_Occ('ocl', 'c') == \"ol\"": {
+      "result": true,
+      "time": 0.03676271438598633,
+      "error": null
+    },
+    "assert remove_Occ('bzmab', 'f') == \"bzmab\"": {
+      "result": true,
+      "time": 0.04741811752319336,
+      "error": null
+    },
+    "assert remove_Occ('mhpgh', 'w') == \"mhpgh\"": {
+      "result": true,
+      "time": 0.04350733757019043,
+      "error": null
+    },
+    "assert remove_Occ('hqzedlkbb', 'u') == \"hqzedlkbb\"": {
+      "result": true,
+      "time": 0.0427553653717041,
+      "error": null
+    },
+    "assert remove_Occ('zwqkfhk', 'b') == \"zwqkfhk\"": {
+      "result": true,
+      "time": 0.03833270072937012,
+      "error": null
+    },
+    "assert remove_Occ('ocgijfls', 'c') == \"ogijfls\"": {
+      "result": true,
+      "time": 0.04524564743041992,
+      "error": null
+    },
+    "assert remove_Occ('jejnp', 'u') == \"jejnp\"": {
+      "result": true,
+      "time": 0.0419619083404541,
+      "error": null
+    },
+    "assert remove_Occ('uzjkqvlqk', 'k') == \"uzjqvlq\"": {
+      "result": true,
+      "time": 0.048746347427368164,
+      "error": null
+    },
+    "assert remove_Occ('ceogxbnkk', 'f') == \"ceogxbnkk\"": {
+      "result": true,
+      "time": 0.04366254806518555,
+      "error": null
+    },
+    "assert remove_Occ('avpjhf', 'k') == \"avpjhf\"": {
+      "result": true,
+      "time": 0.03801417350769043,
+      "error": null
+    },
+    "assert remove_Occ('mgb', 'p') == \"mgb\"": {
+      "result": true,
+      "time": 0.037534475326538086,
+      "error": null
+    },
+    "assert remove_Occ('pjnnava', 'b') == \"pjnnava\"": {
+      "result": true,
+      "time": 0.033692121505737305,
+      "error": null
+    },
+    "assert remove_Occ('jgqutpfd', 'p') == \"jgqutfd\"": {
+      "result": true,
+      "time": 0.03311753273010254,
+      "error": null
+    },
+    "assert remove_Occ('hqtasp', 'b') == \"hqtasp\"": {
+      "result": true,
+      "time": 0.05328774452209473,
+      "error": null
+    },
+    "assert remove_Occ('soqpxqs', 'u') == \"soqpxqs\"": {
+      "result": true,
+      "time": 0.040947675704956055,
+      "error": null
+    },
+    "assert remove_Occ('joem', 'a') == \"joem\"": {
+      "result": true,
+      "time": 0.03878068923950195,
+      "error": null
+    },
+    "assert remove_Occ('dcbsr', 'j') == \"dcbsr\"": {
+      "result": true,
+      "time": 0.049031972885131836,
+      "error": null
+    },
+    "assert remove_Occ('jtddh', 't') == \"jddh\"": {
+      "result": true,
+      "time": 0.03818368911743164,
+      "error": null
+    },
+    "assert remove_Occ('tlvrsffg', 'c') == \"tlvrsffg\"": {
+      "result": true,
+      "time": 0.04095196723937988,
+      "error": null
+    },
+    "assert remove_Occ('cqf', 'v') == \"cqf\"": {
+      "result": true,
+      "time": 0.044898271560668945,
+      "error": null
+    },
+    "assert remove_Occ('yrznx', 'b') == \"yrznx\"": {
+      "result": true,
+      "time": 0.042322397232055664,
+      "error": null
+    },
+    "assert remove_Occ('rkdalwsj', 'f') == \"rkdalwsj\"": {
+      "result": true,
+      "time": 0.036365509033203125,
+      "error": null
+    },
+    "assert remove_Occ('lep', 'm') == \"lep\"": {
+      "result": true,
+      "time": 0.04841876029968262,
+      "error": null
+    },
+    "assert remove_Occ('nglkxvru', 'z') == \"nglkxvru\"": {
+      "result": true,
+      "time": 0.043931007385253906,
+      "error": null
+    },
+    "assert remove_Occ('ndhioijq', 'x') == \"ndhioijq\"": {
+      "result": true,
+      "time": 0.04015707969665527,
+      "error": null
+    },
+    "assert remove_Occ('lsvuunu', 'm') == \"lsvuunu\"": {
+      "result": true,
+      "time": 0.03115248680114746,
+      "error": null
+    },
+    "assert remove_Occ('oyzpgze', 'k') == \"oyzpgze\"": {
+      "result": true,
+      "time": 0.03554034233093262,
+      "error": null
+    },
+    "assert remove_Occ('XRYG', 'Z') == \"XRYG\"": {
+      "result": true,
+      "time": 0.04055047035217285,
+      "error": null
+    },
+    "assert remove_Occ('VAT', 'Y') == \"VAT\"": {
+      "result": true,
+      "time": 0.04804039001464844,
+      "error": null
+    },
+    "assert remove_Occ('IWEEJT', 'C') == \"IWEEJT\"": {
+      "result": true,
+      "time": 0.04051375389099121,
+      "error": null
+    },
+    "assert remove_Occ('YZPQIH', 'J') == \"YZPQIH\"": {
+      "result": true,
+      "time": 0.040564775466918945,
+      "error": null
+    },
+    "assert remove_Occ('VJSYMLNC', 'T') == \"VJSYMLNC\"": {
+      "result": true,
+      "time": 0.04193425178527832,
+      "error": null
+    },
+    "assert remove_Occ('CFF', 'B') == \"CFF\"": {
+      "result": true,
+      "time": 0.041829586029052734,
+      "error": null
+    },
+    "assert remove_Occ('ROKRVA', 'B') == \"ROKRVA\"": {
+      "result": true,
+      "time": 0.042894601821899414,
+      "error": null
+    },
+    "assert remove_Occ('GHBYUPBW', 'H') == \"GBYUPBW\"": {
+      "result": true,
+      "time": 0.041884422302246094,
+      "error": null
+    },
+    "assert remove_Occ('MVCM', 'L') == \"MVCM\"": {
+      "result": true,
+      "time": 0.04159832000732422,
+      "error": null
+    },
+    "assert remove_Occ('XGTWIN', 'Q') == \"XGTWIN\"": {
+      "result": true,
+      "time": 0.04266524314880371,
+      "error": null
+    },
+    "assert remove_Occ('WJVPGY', 'C') == \"WJVPGY\"": {
+      "result": true,
+      "time": 0.04813790321350098,
+      "error": null
+    },
+    "assert remove_Occ('ROILKDIPN', 'V') == \"ROILKDIPN\"": {
+      "result": true,
+      "time": 0.04550313949584961,
+      "error": null
+    },
+    "assert remove_Occ('OVH', 'G') == \"OVH\"": {
+      "result": true,
+      "time": 0.0412139892578125,
+      "error": null
+    },
+    "assert remove_Occ('OMHDDRSB', 'R') == \"OMHDDSB\"": {
+      "result": true,
+      "time": 0.03862142562866211,
+      "error": null
+    },
+    "assert remove_Occ('BJQ', 'O') == \"BJQ\"": {
+      "result": true,
+      "time": 0.04638409614562988,
+      "error": null
+    },
+    "assert remove_Occ('ILVCTMPIR', 'D') == \"ILVCTMPIR\"": {
+      "result": true,
+      "time": 0.04716014862060547,
+      "error": null
+    },
+    "assert remove_Occ('LMR', 'Z') == \"LMR\"": {
+      "result": true,
+      "time": 0.041793107986450195,
+      "error": null
+    },
+    "assert remove_Occ('UWIUVAWA', 'K') == \"UWIUVAWA\"": {
+      "result": true,
+      "time": 0.041359901428222656,
+      "error": null
+    },
+    "assert remove_Occ('FVNRPV', 'J') == \"FVNRPV\"": {
+      "result": true,
+      "time": 0.04770016670227051,
+      "error": null
+    },
+    "assert remove_Occ('KAGZE', 'O') == \"KAGZE\"": {
+      "result": true,
+      "time": 0.04325747489929199,
+      "error": null
+    },
+    "assert remove_Occ('PMGJYDIZ', 'A') == \"PMGJYDIZ\"": {
+      "result": true,
+      "time": 0.04089236259460449,
+      "error": null
+    },
+    "assert remove_Occ('QWMZBCZ', 'N') == \"QWMZBCZ\"": {
+      "result": true,
+      "time": 0.039572954177856445,
+      "error": null
+    },
+    "assert remove_Occ('MDH', 'B') == \"MDH\"": {
+      "result": true,
+      "time": 0.04131722450256348,
+      "error": null
+    },
+    "assert remove_Occ('QRS', 'Y') == \"QRS\"": {
+      "result": true,
+      "time": 0.058385372161865234,
+      "error": null
+    },
+    "assert remove_Occ('KAZFU', 'C') == \"KAZFU\"": {
+      "result": true,
+      "time": 0.04419660568237305,
+      "error": null
+    },
+    "assert remove_Occ('INRG', 'F') == \"INRG\"": {
+      "result": true,
+      "time": 0.040998220443725586,
+      "error": null
+    },
+    "assert remove_Occ('UZMFOT', 'S') == \"UZMFOT\"": {
+      "result": true,
+      "time": 0.049036502838134766,
+      "error": null
+    },
+    "assert remove_Occ('XWR', 'E') == \"XWR\"": {
+      "result": true,
+      "time": 0.03529977798461914,
+      "error": null
+    },
+    "assert remove_Occ('APVPBK', 'U') == \"APVPBK\"": {
+      "result": true,
+      "time": 0.04324007034301758,
+      "error": null
+    },
+    "assert remove_Occ('TFKUF', 'U') == \"TFKF\"": {
+      "result": true,
+      "time": 0.047000885009765625,
+      "error": null
+    },
+    "assert remove_Occ('WCW', 'B') == \"WCW\"": {
+      "result": true,
+      "time": 0.041451454162597656,
+      "error": null
+    },
+    "assert remove_Occ('REXJ', 'M') == \"REXJ\"": {
+      "result": true,
+      "time": 0.044120073318481445,
+      "error": null
+    },
+    "assert remove_Occ('NOAVJUI', 'X') == \"NOAVJUI\"": {
+      "result": true,
+      "time": 0.045133113861083984,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

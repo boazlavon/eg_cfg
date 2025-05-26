@@ -1,0 +1,519 @@
+{
+  "code": "def first_Repeated_Char(input_string):\n    char_count = {}\n    for char in input_string:\n        if char in char_count:\n            char_count[char] += 1\n        else:\n            char_count[char] = 1\n    for char in input_string:\n        if char_count[char] > 1:\n            return char\n    return \"\\0\"",
+  "results": {
+    "assert first_Repeated_Char(\"Google\") == \"o\"": {
+      "result": true,
+      "time": 0.046286582946777344,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"data\") == \"a\"": {
+      "result": true,
+      "time": 0.0575404167175293,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"python\") == '\\0'": {
+      "result": true,
+      "time": 0.04078817367553711,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"MVQvnZvFa\") == \"v\"": {
+      "result": true,
+      "time": 0.045960187911987305,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"suPzFLt\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04883933067321777,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"dUDyegpDR\") == \"D\"": {
+      "result": true,
+      "time": 0.04554438591003418,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"paMZ\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04844927787780762,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"CMufCHIzzmLw\") == \"C\"": {
+      "result": true,
+      "time": 0.05231142044067383,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"bVxIDBC\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04872465133666992,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"cvvJuuoG\") == \"v\"": {
+      "result": true,
+      "time": 0.04689216613769531,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"EoqRp\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.05343937873840332,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"yfHHY\") == \"H\"": {
+      "result": true,
+      "time": 0.05809807777404785,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"KcZkwnQtV\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.0501856803894043,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"hGB\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.0476689338684082,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"wxgJutlQuOd\") == \"u\"": {
+      "result": true,
+      "time": 0.05209612846374512,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"PdqlQBGOWTe\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.05083632469177246,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"wiDD\") == \"D\"": {
+      "result": true,
+      "time": 0.049360036849975586,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"YXxrzmdFbqF\") == \"F\"": {
+      "result": true,
+      "time": 0.056025028228759766,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"xxsulwz\") == \"x\"": {
+      "result": true,
+      "time": 0.047249555587768555,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"CpebMSkYBlRV\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.05137801170349121,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"EeiFLEqC\") == \"E\"": {
+      "result": true,
+      "time": 0.057204484939575195,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"cbtUrLVl\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.05516505241394043,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"qYkXfwEFIIQJ\") == \"I\"": {
+      "result": true,
+      "time": 0.053211212158203125,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"rNAxyZ\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.05129837989807129,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"hBlwGw\") == \"w\"": {
+      "result": true,
+      "time": 0.052101850509643555,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"LQAm\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.057146549224853516,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"odoeidOeBw\") == \"o\"": {
+      "result": true,
+      "time": 0.05144309997558594,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"PIYnlfxavenV\") == \"n\"": {
+      "result": true,
+      "time": 0.05035662651062012,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"VYKQjvw\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.05820417404174805,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"CoUTC\") == \"C\"": {
+      "result": true,
+      "time": 0.055915117263793945,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"JLcNdiCOHQzw\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.05074882507324219,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"hvzFwT\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.056467294692993164,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"WRNtG\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.05058860778808594,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"IDmURdHwJ\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.06462574005126953,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"VBgzyOPZbRtb\") == \"b\"": {
+      "result": true,
+      "time": 0.05539584159851074,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"QvIZHtmSubCb\") == \"b\"": {
+      "result": true,
+      "time": 0.06548452377319336,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"vsbjvkvp\") == \"v\"": {
+      "result": true,
+      "time": 0.05114126205444336,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"omv\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.05097484588623047,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"eyhpiufy\") == \"y\"": {
+      "result": true,
+      "time": 0.05413460731506348,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"omdapm\") == \"m\"": {
+      "result": true,
+      "time": 0.05521130561828613,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"afrovlot\") == \"o\"": {
+      "result": true,
+      "time": 0.06208658218383789,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"yjn\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.05608654022216797,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"lkctss\") == \"s\"": {
+      "result": true,
+      "time": 0.05351567268371582,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"kmmgqyq\") == \"m\"": {
+      "result": true,
+      "time": 0.044921159744262695,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"kjs\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04430842399597168,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"vabxppyvo\") == \"p\"": {
+      "result": false,
+      "time": 0.0438992977142334,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"ykhhvxx\") == \"h\"": {
+      "result": true,
+      "time": 0.04628419876098633,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"qhresbhyc\") == \"h\"": {
+      "result": true,
+      "time": 0.04536151885986328,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"shgqplyj\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04424452781677246,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"btrpkjmj\") == j": {
+      "result": false,
+      "time": 0.04897642135620117,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"btmo\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04921293258666992,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"teoh\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.041491031646728516,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"xbplre\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04275631904602051,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"pedxeojq\") == \"e\"": {
+      "result": true,
+      "time": 0.04788374900817871,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"cpbepfyv\") == \"p\"": {
+      "result": true,
+      "time": 0.047005414962768555,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"itoum\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04027915000915527,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"qkq\") == \"q\"": {
+      "result": true,
+      "time": 0.05156397819519043,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"rkjdo\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.043099164962768555,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"mwif\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.044898033142089844,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"mas\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04799365997314453,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"dtgksigun\") == \"g\"": {
+      "result": true,
+      "time": 0.039505720138549805,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"bnoh\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04448103904724121,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"epwitgrkp\") == \"p\"": {
+      "result": true,
+      "time": 0.050641775131225586,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"yxsranljq\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.042420387268066406,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"fiwgady\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04566168785095215,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"aqm\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04833078384399414,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"hfryn\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04715681076049805,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"jjhkzooxw\") == j": {
+      "result": false,
+      "time": 0.03552699089050293,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"xng\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.048337697982788086,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"ieogx\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.0453341007232666,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"iqnx\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04931831359863281,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"wwcsexvnwyl\") == \"w\"": {
+      "result": true,
+      "time": 0.043282270431518555,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"xoan\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.044527530670166016,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"rlstxoimnu\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.05248069763183594,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"kaxd\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.03792715072631836,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"vcja\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04626774787902832,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"tnjyjxfvdvq\") == j": {
+      "result": false,
+      "time": 0.04599118232727051,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"rjvsxjvf\") == j": {
+      "result": false,
+      "time": 0.042630672454833984,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"uhx\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04180598258972168,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"lzltivjwh\") == \"l\"": {
+      "result": true,
+      "time": 0.05420804023742676,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"kpckhcmrw\") == \"k\"": {
+      "result": true,
+      "time": 0.03676152229309082,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"azn\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.041698455810546875,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"xdaegqxkuect\") == \"x\"": {
+      "result": true,
+      "time": 0.041617393493652344,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"lsmnicyd\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04624509811401367,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"swpavz\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.050720930099487305,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"ylvzqql\") == \"q\"": {
+      "result": false,
+      "time": 0.04793691635131836,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"brgkn\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04804658889770508,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"aknb\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04689335823059082,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"ttumoneewf\") == \"t\"": {
+      "result": true,
+      "time": 0.04092717170715332,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"vmsbtvdzuy\") == \"v\"": {
+      "result": true,
+      "time": 0.03823256492614746,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"umplouy\") == \"u\"": {
+      "result": true,
+      "time": 0.047795772552490234,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"kcs\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.046462059020996094,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"rgqytyrau\") == \"y\"": {
+      "result": false,
+      "time": 0.044615983963012695,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"bydel\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.045728445053100586,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"aer\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.041799306869506836,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"anqnxvmmcq\") == \"n\"": {
+      "result": true,
+      "time": 0.04236412048339844,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"srsiw\") == \"s\"": {
+      "result": true,
+      "time": 0.04592490196228027,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"ovyhp\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.0473017692565918,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"ncd\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04374265670776367,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"gkilyg\") == \"g\"": {
+      "result": true,
+      "time": 0.04893326759338379,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"jnekyxewubw\") == \"e\"": {
+      "result": true,
+      "time": 0.04694223403930664,
+      "error": null
+    },
+    "assert first_Repeated_Char(\"qsuhtyrzolmp\") == \"\"\u0000\"\"": {
+      "result": false,
+      "time": 0.04798007011413574,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.43137254901960786,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,514 @@
+{
+  "code": "def cube_nums(nums):\n    return list(map(lambda x: x ** 3, nums))",
+  "results": {
+    "assert cube_nums([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])==[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]": {
+      "result": true,
+      "time": 0.04324531555175781,
+      "error": null
+    },
+    "assert cube_nums([10,20,30])==([1000, 8000, 27000])": {
+      "result": true,
+      "time": 0.037973880767822266,
+      "error": null
+    },
+    "assert cube_nums([12,15])==([1728, 3375])": {
+      "result": true,
+      "time": 0.04187774658203125,
+      "error": null
+    },
+    "assert cube_nums([3, 6, 6, 4, 4, 9, 5, 11, 11, 12]) == [27, 216, 216, 64, 64, 729, 125, 1331, 1331, 1728]": {
+      "result": true,
+      "time": 0.05025362968444824,
+      "error": null
+    },
+    "assert cube_nums([4, 3, 5, 5, 1, 8, 5, 5, 4, 6]) == [64, 27, 125, 125, 1, 512, 125, 125, 64, 216]": {
+      "result": true,
+      "time": 0.04049348831176758,
+      "error": null
+    },
+    "assert cube_nums([2, 1, 3, 4, 5, 8, 4, 5, 11, 12]) == [8, 1, 27, 64, 125, 512, 64, 125, 1331, 1728]": {
+      "result": true,
+      "time": 0.0370481014251709,
+      "error": null
+    },
+    "assert cube_nums([5, 2, 1, 4, 6, 2, 4, 13, 10, 11]) == [125, 8, 1, 64, 216, 8, 64, 2197, 1000, 1331]": {
+      "result": true,
+      "time": 0.04262804985046387,
+      "error": null
+    },
+    "assert cube_nums([6, 5, 2, 2, 7, 4, 11, 12, 6, 5]) == [216, 125, 8, 8, 343, 64, 1331, 1728, 216, 125]": {
+      "result": true,
+      "time": 0.03721952438354492,
+      "error": null
+    },
+    "assert cube_nums([6, 5, 1, 7, 1, 7, 6, 11, 9, 10]) == [216, 125, 1, 343, 1, 343, 216, 1331, 729, 1000]": {
+      "result": true,
+      "time": 0.04208540916442871,
+      "error": null
+    },
+    "assert cube_nums([3, 1, 2, 8, 10, 11, 7, 5, 13, 10]) == [27, 1, 8, 512, 1000, 1331, 343, 125, 2197, 1000]": {
+      "result": true,
+      "time": 0.04447627067565918,
+      "error": null
+    },
+    "assert cube_nums([4, 5, 7, 8, 4, 7, 2, 13, 4, 11]) == [64, 125, 343, 512, 64, 343, 8, 2197, 64, 1331]": {
+      "result": true,
+      "time": 0.04064512252807617,
+      "error": null
+    },
+    "assert cube_nums([2, 4, 8, 9, 1, 7, 7, 4, 14, 6]) == [8, 64, 512, 729, 1, 343, 343, 64, 2744, 216]": {
+      "result": true,
+      "time": 0.04438066482543945,
+      "error": null
+    },
+    "assert cube_nums([1, 3, 8, 1, 2, 10, 5, 9, 7, 6]) == [1, 27, 512, 1, 8, 1000, 125, 729, 343, 216]": {
+      "result": true,
+      "time": 0.0409846305847168,
+      "error": null
+    },
+    "assert cube_nums([2, 4, 5, 2, 4, 8, 6, 10, 7, 12]) == [8, 64, 125, 8, 64, 512, 216, 1000, 343, 1728]": {
+      "result": true,
+      "time": 0.03739595413208008,
+      "error": null
+    },
+    "assert cube_nums([5, 2, 6, 3, 3, 1, 10, 4, 10, 7]) == [125, 8, 216, 27, 27, 1, 1000, 64, 1000, 343]": {
+      "result": true,
+      "time": 0.03956127166748047,
+      "error": null
+    },
+    "assert cube_nums([4, 5, 1, 7, 1, 6, 6, 4, 9, 10]) == [64, 125, 1, 343, 1, 216, 216, 64, 729, 1000]": {
+      "result": true,
+      "time": 0.03853869438171387,
+      "error": null
+    },
+    "assert cube_nums([5, 5, 4, 4, 3, 10, 10, 7, 14, 13]) == [125, 125, 64, 64, 27, 1000, 1000, 343, 2744, 2197]": {
+      "result": true,
+      "time": 0.03808784484863281,
+      "error": null
+    },
+    "assert cube_nums([2, 2, 4, 3, 9, 6, 3, 11, 11, 11]) == [8, 8, 64, 27, 729, 216, 27, 1331, 1331, 1331]": {
+      "result": true,
+      "time": 0.04131722450256348,
+      "error": null
+    },
+    "assert cube_nums([4, 4, 3, 1, 7, 6, 4, 9, 11, 13]) == [64, 64, 27, 1, 343, 216, 64, 729, 1331, 2197]": {
+      "result": true,
+      "time": 0.040525197982788086,
+      "error": null
+    },
+    "assert cube_nums([2, 4, 4, 5, 3, 3, 7, 10, 4, 6]) == [8, 64, 64, 125, 27, 27, 343, 1000, 64, 216]": {
+      "result": true,
+      "time": 0.03922915458679199,
+      "error": null
+    },
+    "assert cube_nums([3, 7, 1, 9, 8, 8, 9, 9, 8, 15]) == [27, 343, 1, 729, 512, 512, 729, 729, 512, 3375]": {
+      "result": true,
+      "time": 0.03376364707946777,
+      "error": null
+    },
+    "assert cube_nums([1, 3, 2, 2, 2, 7, 9, 10, 13, 12]) == [1, 27, 8, 8, 8, 343, 729, 1000, 2197, 1728]": {
+      "result": true,
+      "time": 0.03771400451660156,
+      "error": null
+    },
+    "assert cube_nums([2, 3, 7, 9, 4, 6, 3, 4, 5, 6]) == [8, 27, 343, 729, 64, 216, 27, 64, 125, 216]": {
+      "result": true,
+      "time": 0.03977084159851074,
+      "error": null
+    },
+    "assert cube_nums([5, 3, 8, 9, 3, 5, 7, 12, 8, 5]) == [125, 27, 512, 729, 27, 125, 343, 1728, 512, 125]": {
+      "result": true,
+      "time": 0.030861616134643555,
+      "error": null
+    },
+    "assert cube_nums([5, 6, 3, 5, 1, 1, 6, 8, 14, 7]) == [125, 216, 27, 125, 1, 1, 216, 512, 2744, 343]": {
+      "result": true,
+      "time": 0.03959965705871582,
+      "error": null
+    },
+    "assert cube_nums([1, 5, 4, 1, 8, 2, 3, 4, 10, 11]) == [1, 125, 64, 1, 512, 8, 27, 64, 1000, 1331]": {
+      "result": true,
+      "time": 0.04525899887084961,
+      "error": null
+    },
+    "assert cube_nums([1, 3, 2, 1, 1, 9, 6, 5, 8, 7]) == [1, 27, 8, 1, 1, 729, 216, 125, 512, 343]": {
+      "result": true,
+      "time": 0.03565049171447754,
+      "error": null
+    },
+    "assert cube_nums([3, 3, 7, 3, 3, 2, 12, 10, 13, 15]) == [27, 27, 343, 27, 27, 8, 1728, 1000, 2197, 3375]": {
+      "result": true,
+      "time": 0.042311668395996094,
+      "error": null
+    },
+    "assert cube_nums([5, 4, 4, 9, 5, 4, 2, 6, 4, 9]) == [125, 64, 64, 729, 125, 64, 8, 216, 64, 729]": {
+      "result": true,
+      "time": 0.0438389778137207,
+      "error": null
+    },
+    "assert cube_nums([1, 2, 5, 7, 7, 5, 3, 8, 8, 7]) == [1, 8, 125, 343, 343, 125, 27, 512, 512, 343]": {
+      "result": true,
+      "time": 0.047411441802978516,
+      "error": null
+    },
+    "assert cube_nums([2, 1, 1, 4, 2, 9, 9, 8, 6, 5]) == [8, 1, 1, 64, 8, 729, 729, 512, 216, 125]": {
+      "result": true,
+      "time": 0.032500505447387695,
+      "error": null
+    },
+    "assert cube_nums([6, 3, 1, 5, 5, 11, 11, 11, 7, 5]) == [216, 27, 1, 125, 125, 1331, 1331, 1331, 343, 125]": {
+      "result": true,
+      "time": 0.047120094299316406,
+      "error": null
+    },
+    "assert cube_nums([5, 1, 4, 7, 9, 2, 4, 7, 4, 8]) == [125, 1, 64, 343, 729, 8, 64, 343, 64, 512]": {
+      "result": true,
+      "time": 0.039286136627197266,
+      "error": null
+    },
+    "assert cube_nums([4, 3, 7, 8, 7, 9, 9, 6, 5, 9]) == [64, 27, 343, 512, 343, 729, 729, 216, 125, 729]": {
+      "result": true,
+      "time": 0.03801846504211426,
+      "error": null
+    },
+    "assert cube_nums([3, 3, 2, 8, 1, 1, 9, 9, 4, 6]) == [27, 27, 8, 512, 1, 1, 729, 729, 64, 216]": {
+      "result": true,
+      "time": 0.03722262382507324,
+      "error": null
+    },
+    "assert cube_nums([4, 5, 1, 9, 8, 1, 12, 13, 9, 10]) == [64, 125, 1, 729, 512, 1, 1728, 2197, 729, 1000]": {
+      "result": true,
+      "time": 0.03865933418273926,
+      "error": null
+    },
+    "assert cube_nums([6, 15, 34]) == [216, 3375, 39304]": {
+      "result": true,
+      "time": 0.03912544250488281,
+      "error": null
+    },
+    "assert cube_nums([12, 23, 28]) == [1728, 12167, 21952]": {
+      "result": true,
+      "time": 0.04085230827331543,
+      "error": null
+    },
+    "assert cube_nums([6, 16, 32]) == [216, 4096, 32768]": {
+      "result": true,
+      "time": 0.03550386428833008,
+      "error": null
+    },
+    "assert cube_nums([8, 25, 26]) == [512, 15625, 17576]": {
+      "result": true,
+      "time": 0.03458523750305176,
+      "error": null
+    },
+    "assert cube_nums([6, 20, 34]) == [216, 8000, 39304]": {
+      "result": true,
+      "time": 0.04058670997619629,
+      "error": null
+    },
+    "assert cube_nums([15, 23, 29]) == [3375, 12167, 24389]": {
+      "result": true,
+      "time": 0.038947105407714844,
+      "error": null
+    },
+    "assert cube_nums([9, 22, 31]) == [729, 10648, 29791]": {
+      "result": true,
+      "time": 0.037076711654663086,
+      "error": null
+    },
+    "assert cube_nums([15, 18, 27]) == [3375, 5832, 19683]": {
+      "result": true,
+      "time": 0.04126715660095215,
+      "error": null
+    },
+    "assert cube_nums([8, 17, 31]) == [512, 4913, 29791]": {
+      "result": true,
+      "time": 0.033913373947143555,
+      "error": null
+    },
+    "assert cube_nums([13, 16, 28]) == [2197, 4096, 21952]": {
+      "result": true,
+      "time": 0.034764766693115234,
+      "error": null
+    },
+    "assert cube_nums([10, 22, 29]) == [1000, 10648, 24389]": {
+      "result": true,
+      "time": 0.04097461700439453,
+      "error": null
+    },
+    "assert cube_nums([12, 21, 32]) == [1728, 9261, 32768]": {
+      "result": true,
+      "time": 0.0355992317199707,
+      "error": null
+    },
+    "assert cube_nums([10, 18, 29]) == [1000, 5832, 24389]": {
+      "result": true,
+      "time": 0.03758549690246582,
+      "error": null
+    },
+    "assert cube_nums([5, 25, 29]) == [125, 15625, 24389]": {
+      "result": true,
+      "time": 0.03719663619995117,
+      "error": null
+    },
+    "assert cube_nums([6, 21, 35]) == [216, 9261, 42875]": {
+      "result": true,
+      "time": 0.041121482849121094,
+      "error": null
+    },
+    "assert cube_nums([9, 16, 30]) == [729, 4096, 27000]": {
+      "result": true,
+      "time": 0.03946638107299805,
+      "error": null
+    },
+    "assert cube_nums([5, 17, 34]) == [125, 4913, 39304]": {
+      "result": true,
+      "time": 0.03925633430480957,
+      "error": null
+    },
+    "assert cube_nums([5, 21, 32]) == [125, 9261, 32768]": {
+      "result": true,
+      "time": 0.03900432586669922,
+      "error": null
+    },
+    "assert cube_nums([7, 25, 30]) == [343, 15625, 27000]": {
+      "result": true,
+      "time": 0.03960275650024414,
+      "error": null
+    },
+    "assert cube_nums([15, 15, 30]) == [3375, 3375, 27000]": {
+      "result": true,
+      "time": 0.03628993034362793,
+      "error": null
+    },
+    "assert cube_nums([13, 20, 33]) == [2197, 8000, 35937]": {
+      "result": true,
+      "time": 0.03859257698059082,
+      "error": null
+    },
+    "assert cube_nums([8, 15, 32]) == [512, 3375, 32768]": {
+      "result": true,
+      "time": 0.03515052795410156,
+      "error": null
+    },
+    "assert cube_nums([8, 25, 31]) == [512, 15625, 29791]": {
+      "result": true,
+      "time": 0.03751635551452637,
+      "error": null
+    },
+    "assert cube_nums([8, 24, 26]) == [512, 13824, 17576]": {
+      "result": true,
+      "time": 0.042211294174194336,
+      "error": null
+    },
+    "assert cube_nums([12, 20, 33]) == [1728, 8000, 35937]": {
+      "result": true,
+      "time": 0.033969879150390625,
+      "error": null
+    },
+    "assert cube_nums([10, 16, 33]) == [1000, 4096, 35937]": {
+      "result": true,
+      "time": 0.03452873229980469,
+      "error": null
+    },
+    "assert cube_nums([13, 16, 26]) == [2197, 4096, 17576]": {
+      "result": true,
+      "time": 0.037980079650878906,
+      "error": null
+    },
+    "assert cube_nums([10, 17, 28]) == [1000, 4913, 21952]": {
+      "result": true,
+      "time": 0.03987598419189453,
+      "error": null
+    },
+    "assert cube_nums([12, 24, 32]) == [1728, 13824, 32768]": {
+      "result": true,
+      "time": 0.03778576850891113,
+      "error": null
+    },
+    "assert cube_nums([14, 23, 34]) == [2744, 12167, 39304]": {
+      "result": true,
+      "time": 0.03794097900390625,
+      "error": null
+    },
+    "assert cube_nums([6, 22, 35]) == [216, 10648, 42875]": {
+      "result": true,
+      "time": 0.03455710411071777,
+      "error": null
+    },
+    "assert cube_nums([8, 15, 25]) == [512, 3375, 15625]": {
+      "result": true,
+      "time": 0.03177237510681152,
+      "error": null
+    },
+    "assert cube_nums([13, 22, 35]) == [2197, 10648, 42875]": {
+      "result": true,
+      "time": 0.03866982460021973,
+      "error": null
+    },
+    "assert cube_nums([9, 13]) == [729, 2197]": {
+      "result": true,
+      "time": 0.0319676399230957,
+      "error": null
+    },
+    "assert cube_nums([16, 15]) == [4096, 3375]": {
+      "result": true,
+      "time": 0.031225919723510742,
+      "error": null
+    },
+    "assert cube_nums([12, 19]) == [1728, 6859]": {
+      "result": true,
+      "time": 0.03874611854553223,
+      "error": null
+    },
+    "assert cube_nums([15, 19]) == [3375, 6859]": {
+      "result": true,
+      "time": 0.03660321235656738,
+      "error": null
+    },
+    "assert cube_nums([14, 20]) == [2744, 8000]": {
+      "result": true,
+      "time": 0.03336381912231445,
+      "error": null
+    },
+    "assert cube_nums([7, 17]) == [343, 4913]": {
+      "result": true,
+      "time": 0.039151668548583984,
+      "error": null
+    },
+    "assert cube_nums([9, 12]) == [729, 1728]": {
+      "result": true,
+      "time": 0.034755706787109375,
+      "error": null
+    },
+    "assert cube_nums([10, 14]) == [1000, 2744]": {
+      "result": true,
+      "time": 0.034056663513183594,
+      "error": null
+    },
+    "assert cube_nums([14, 10]) == [2744, 1000]": {
+      "result": true,
+      "time": 0.04067564010620117,
+      "error": null
+    },
+    "assert cube_nums([9, 10]) == [729, 1000]": {
+      "result": true,
+      "time": 0.03767824172973633,
+      "error": null
+    },
+    "assert cube_nums([7, 10]) == [343, 1000]": {
+      "result": true,
+      "time": 0.03777432441711426,
+      "error": null
+    },
+    "assert cube_nums([10, 10]) == [1000, 1000]": {
+      "result": true,
+      "time": 0.03719592094421387,
+      "error": null
+    },
+    "assert cube_nums([16, 10]) == [4096, 1000]": {
+      "result": true,
+      "time": 0.03527522087097168,
+      "error": null
+    },
+    "assert cube_nums([15, 10]) == [3375, 1000]": {
+      "result": true,
+      "time": 0.035375356674194336,
+      "error": null
+    },
+    "assert cube_nums([10, 16]) == [1000, 4096]": {
+      "result": true,
+      "time": 0.03358602523803711,
+      "error": null
+    },
+    "assert cube_nums([13, 19]) == [2197, 6859]": {
+      "result": true,
+      "time": 0.038604736328125,
+      "error": null
+    },
+    "assert cube_nums([16, 20]) == [4096, 8000]": {
+      "result": true,
+      "time": 0.035394906997680664,
+      "error": null
+    },
+    "assert cube_nums([11, 15]) == [1331, 3375]": {
+      "result": true,
+      "time": 0.03436088562011719,
+      "error": null
+    },
+    "assert cube_nums([16, 14]) == [4096, 2744]": {
+      "result": true,
+      "time": 0.03673839569091797,
+      "error": null
+    },
+    "assert cube_nums([15, 14]) == [3375, 2744]": {
+      "result": true,
+      "time": 0.03659772872924805,
+      "error": null
+    },
+    "assert cube_nums([10, 19]) == [1000, 6859]": {
+      "result": true,
+      "time": 0.0345759391784668,
+      "error": null
+    },
+    "assert cube_nums([14, 11]) == [2744, 1331]": {
+      "result": true,
+      "time": 0.037001848220825195,
+      "error": null
+    },
+    "assert cube_nums([17, 13]) == [4913, 2197]": {
+      "result": true,
+      "time": 0.04093742370605469,
+      "error": null
+    },
+    "assert cube_nums([11, 20]) == [1331, 8000]": {
+      "result": true,
+      "time": 0.03945565223693848,
+      "error": null
+    },
+    "assert cube_nums([7, 13]) == [343, 2197]": {
+      "result": true,
+      "time": 0.0340118408203125,
+      "error": null
+    },
+    "assert cube_nums([7, 18]) == [343, 5832]": {
+      "result": true,
+      "time": 0.035968780517578125,
+      "error": null
+    },
+    "assert cube_nums([17, 16]) == [4913, 4096]": {
+      "result": true,
+      "time": 0.0331423282623291,
+      "error": null
+    },
+    "assert cube_nums([15, 18]) == [3375, 5832]": {
+      "result": true,
+      "time": 0.036485910415649414,
+      "error": null
+    },
+    "assert cube_nums([10, 13]) == [1000, 2197]": {
+      "result": true,
+      "time": 0.036606788635253906,
+      "error": null
+    },
+    "assert cube_nums([11, 12]) == [1331, 1728]": {
+      "result": true,
+      "time": 0.03158736228942871,
+      "error": null
+    },
+    "assert cube_nums([11, 16]) == [1331, 4096]": {
+      "result": true,
+      "time": 0.03444957733154297,
+      "error": null
+    },
+    "assert cube_nums([13, 16]) == [2197, 4096]": {
+      "result": true,
+      "time": 0.03902888298034668,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

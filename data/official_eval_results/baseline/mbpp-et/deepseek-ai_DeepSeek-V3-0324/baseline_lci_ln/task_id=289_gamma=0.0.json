@@ -1,0 +1,169 @@
+{
+  "code": "def odd_Days(year):\n    # Step 1: Calculate the number of years since the reference year (0001 AD)\n    years_since_ref = year - 1\n    \n    # Step 2: Calculate the number of leap years\n    # Leap years are divisible by 4, but not by 100 unless also divisible by 400\n    leap_years = years_since_ref // 4\n    century_years = years_since_ref // 100\n    leap_years = leap_years - century_years\n    leap_years = leap_years + (years_since_ref // 400)\n    \n    # Step 3: Calculate the number of ordinary years\n    ordinary_years = years_since_ref - leap_years\n    \n    # Step 4: Calculate the total number of days\n    # Each leap year contributes 2 odd days (366 % 7 = 2)\n    # Each ordinary year contributes 1 odd day (365 % 7 = 1)\n    total_odd_days = (leap_years * 2) + (ordinary_years * 1)\n    \n    # Step 5: Calculate the odd days modulo 7 to get the final result\n    result = total_odd_days % 7\n    \n    return result",
+  "results": {
+    "assert odd_Days(100) == 5": {
+      "result": false,
+      "time": 0.0280609130859375,
+      "error": null
+    },
+    "assert odd_Days(50) ==6": {
+      "result": false,
+      "time": 0.04039955139160156,
+      "error": null
+    },
+    "assert odd_Days(75) == 2": {
+      "result": false,
+      "time": 0.03589820861816406,
+      "error": null
+    },
+    "assert odd_Days(103) == 1": {
+      "result": false,
+      "time": 0.03530263900756836,
+      "error": null
+    },
+    "assert odd_Days(104) == 3": {
+      "result": false,
+      "time": 0.036414146423339844,
+      "error": null
+    },
+    "assert odd_Days(101) == 6": {
+      "result": false,
+      "time": 0.0314021110534668,
+      "error": null
+    },
+    "assert odd_Days(95) == 6": {
+      "result": false,
+      "time": 0.041224002838134766,
+      "error": null
+    },
+    "assert odd_Days(105) == 4": {
+      "result": false,
+      "time": 0.035033226013183594,
+      "error": null
+    },
+    "assert odd_Days(97) == 2": {
+      "result": false,
+      "time": 0.03483772277832031,
+      "error": null
+    },
+    "assert odd_Days(102) == 0": {
+      "result": false,
+      "time": 0.03752565383911133,
+      "error": null
+    },
+    "assert odd_Days(99) == 4": {
+      "result": false,
+      "time": 0.03201627731323242,
+      "error": null
+    },
+    "assert odd_Days(98) == 3": {
+      "result": false,
+      "time": 0.035021066665649414,
+      "error": null
+    },
+    "assert odd_Days(52) == 2": {
+      "result": false,
+      "time": 0.03612160682678223,
+      "error": null
+    },
+    "assert odd_Days(45) == 0": {
+      "result": false,
+      "time": 0.035385847091674805,
+      "error": null
+    },
+    "assert odd_Days(50) == 6": {
+      "result": false,
+      "time": 0.039151668548583984,
+      "error": null
+    },
+    "assert odd_Days(51) == 0": {
+      "result": false,
+      "time": 0.04068756103515625,
+      "error": null
+    },
+    "assert odd_Days(48) == 4": {
+      "result": false,
+      "time": 0.03678631782531738,
+      "error": null
+    },
+    "assert odd_Days(47) == 2": {
+      "result": false,
+      "time": 0.0346221923828125,
+      "error": null
+    },
+    "assert odd_Days(53) == 3": {
+      "result": false,
+      "time": 0.03553628921508789,
+      "error": null
+    },
+    "assert odd_Days(46) == 1": {
+      "result": false,
+      "time": 0.03358817100524902,
+      "error": null
+    },
+    "assert odd_Days(55) == 5": {
+      "result": false,
+      "time": 0.031888484954833984,
+      "error": null
+    },
+    "assert odd_Days(49) == 5": {
+      "result": false,
+      "time": 0.042902231216430664,
+      "error": null
+    },
+    "assert odd_Days(54) == 4": {
+      "result": false,
+      "time": 0.037139892578125,
+      "error": null
+    },
+    "assert odd_Days(79) == 0": {
+      "result": false,
+      "time": 0.03762006759643555,
+      "error": null
+    },
+    "assert odd_Days(76) == 4": {
+      "result": false,
+      "time": 0.034082651138305664,
+      "error": null
+    },
+    "assert odd_Days(72) == 6": {
+      "result": false,
+      "time": 0.03901362419128418,
+      "error": null
+    },
+    "assert odd_Days(74) == 1": {
+      "result": false,
+      "time": 0.04192781448364258,
+      "error": null
+    },
+    "assert odd_Days(70) == 3": {
+      "result": false,
+      "time": 0.03629636764526367,
+      "error": null
+    },
+    "assert odd_Days(73) == 0": {
+      "result": false,
+      "time": 0.0385286808013916,
+      "error": null
+    },
+    "assert odd_Days(77) == 5": {
+      "result": false,
+      "time": 0.03611254692077637,
+      "error": null
+    },
+    "assert odd_Days(80) == 2": {
+      "result": false,
+      "time": 0.03931283950805664,
+      "error": null
+    },
+    "assert odd_Days(71) == 4": {
+      "result": false,
+      "time": 0.03642988204956055,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

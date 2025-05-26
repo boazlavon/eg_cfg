@@ -1,0 +1,519 @@
+{
+  "code": "def common_prefix(strs, n):\n    prefix = strs[0]\n    for i in range(1, n):\n        while strs[i].startswith(prefix) == False:\n            prefix = prefix[:-1]\n            if len(prefix) == 0:\n                return \"\"\n    return prefix",
+  "results": {
+    "assert common_prefix([\"tablets\", \"tables\", \"taxi\", \"tamarind\"], 4) == 'ta'": {
+      "result": true,
+      "time": 0.04398632049560547,
+      "error": null
+    },
+    "assert common_prefix([\"apples\", \"ape\", \"april\"], 3) == 'ap'": {
+      "result": true,
+      "time": 0.0372166633605957,
+      "error": null
+    },
+    "assert common_prefix([\"teens\", \"teenager\", \"teenmar\"], 3) == 'teen'": {
+      "result": true,
+      "time": 0.042995452880859375,
+      "error": null
+    },
+    "assert common_prefix(['nrs', 'tzj', 'ffkttg', 'bpkvu'], 4) == \"\"": {
+      "result": true,
+      "time": 0.04509711265563965,
+      "error": null
+    },
+    "assert common_prefix(['mucil', 'wyfrmzggzo', 'seide', 'pgxc'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03748321533203125,
+      "error": null
+    },
+    "assert common_prefix(['ydaqpixm', 'mli', 'uppuuq', 'qloef'], 4) == \"\"": {
+      "result": true,
+      "time": 0.035384416580200195,
+      "error": null
+    },
+    "assert common_prefix(['gimxa', 'uksgfltxrfu', 'raoxfy', 'gekvxqdirr'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03514528274536133,
+      "error": null
+    },
+    "assert common_prefix(['xljfkucuxi', 'sldbzf', 'hbzdhesm', 'iyslyziuh'], 1) == \"xljfkucuxi\"": {
+      "result": true,
+      "time": 0.028980731964111328,
+      "error": null
+    },
+    "assert common_prefix(['ieub', 'uoeq', 'ssicqz', 'dvdhtvggkic'], 4) == \"\"": {
+      "result": true,
+      "time": 0.03693819046020508,
+      "error": null
+    },
+    "assert common_prefix(['nwn', 'gguc', 'lobi', 'viqcirldpqs'], 2) == \"\"": {
+      "result": true,
+      "time": 0.034235239028930664,
+      "error": null
+    },
+    "assert common_prefix(['wgmgjk', 'ufmvkt', 'zacrlox', 'xbpwvurx'], 1) == \"wgmgjk\"": {
+      "result": true,
+      "time": 0.03555798530578613,
+      "error": null
+    },
+    "assert common_prefix(['pruj', 'ijfqtri', 'gcyk', 'zuqw'], 4) == \"\"": {
+      "result": true,
+      "time": 0.034905433654785156,
+      "error": null
+    },
+    "assert common_prefix(['cfc', 'fkusv', 'hhx', 'dtxuun'], 1) == \"cfc\"": {
+      "result": true,
+      "time": 0.040178775787353516,
+      "error": null
+    },
+    "assert common_prefix(['oxgjkxsqvry', 'tuwhqa', 'rktwya', 'nenagar'], 1) == \"oxgjkxsqvry\"": {
+      "result": true,
+      "time": 0.037721872329711914,
+      "error": null
+    },
+    "assert common_prefix(['mrjnmqatyq', 'udxcpno', 'awlubbir', 'hgjpoytfynok'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03614687919616699,
+      "error": null
+    },
+    "assert common_prefix(['zkxxsacgwi', 'xjqt', 'uigfyilt', 'wotc'], 1) == \"zkxxsacgwi\"": {
+      "result": true,
+      "time": 0.03962111473083496,
+      "error": null
+    },
+    "assert common_prefix(['vprbmfelfvje', 'mzabsdpttfk', 'iupofgni', 'fxvk'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03976082801818848,
+      "error": null
+    },
+    "assert common_prefix(['rhrctwmu', 'aiixaxou', 'yzinwob', 'fasejr'], 3) == \"\"": {
+      "result": true,
+      "time": 0.034235477447509766,
+      "error": null
+    },
+    "assert common_prefix(['bldx', 'dthgttsnxokk', 'mvktmhda', 'xjuzf'], 1) == \"bldx\"": {
+      "result": true,
+      "time": 0.03790879249572754,
+      "error": null
+    },
+    "assert common_prefix(['jszjt', 'rbwi', 'ngdgubyb', 'hfment'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03671145439147949,
+      "error": null
+    },
+    "assert common_prefix(['fnyaffq', 'rsczdu', 'odiept', 'frrycjm'], 1) == \"fnyaffq\"": {
+      "result": true,
+      "time": 0.04191255569458008,
+      "error": null
+    },
+    "assert common_prefix(['mhufxelxhg', 'qlpqezzv', 'nmybbmy', 'pzgdx'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03288841247558594,
+      "error": null
+    },
+    "assert common_prefix(['rvqmgrr', 'jgdivtknbvtt', 'deqegqq', 'mypjivfw'], 2) == \"\"": {
+      "result": true,
+      "time": 0.043679237365722656,
+      "error": null
+    },
+    "assert common_prefix(['gqosqg', 'zbrzcjhga', 'gyuxdz', 'hyhrqzvekk'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03498649597167969,
+      "error": null
+    },
+    "assert common_prefix(['aobirb', 'lqqzlnkttdg', 'xwst', 'bczhl'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03715920448303223,
+      "error": null
+    },
+    "assert common_prefix(['ddjm', 'otypftg', 'iziuxzx', 'abxjyka'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03354525566101074,
+      "error": null
+    },
+    "assert common_prefix(['jptpzptrkx', 'yeahaxngdyo', 'xnl', 'cuk'], 1) == \"jptpzptrkx\"": {
+      "result": true,
+      "time": 0.03316092491149902,
+      "error": null
+    },
+    "assert common_prefix(['hdiqv', 'fqqalkp', 'lgpuruev', 'yowxlphuk'], 3) == \"\"": {
+      "result": true,
+      "time": 0.043320655822753906,
+      "error": null
+    },
+    "assert common_prefix(['prmppgrnwyg', 'mmipwnj', 'llw', 'ksfnfphbike'], 3) == \"\"": {
+      "result": true,
+      "time": 0.028479576110839844,
+      "error": null
+    },
+    "assert common_prefix(['fkfouhmbwv', 'xkachacyd', 'fvgbyov', 'gbustvxthyn'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03631186485290527,
+      "error": null
+    },
+    "assert common_prefix(['rnfugunhhva', 'bwjubixmr', 'najvi', 'vhyxu'], 1) == \"rnfugunhhva\"": {
+      "result": true,
+      "time": 0.037462472915649414,
+      "error": null
+    },
+    "assert common_prefix(['btrwypjyxbw', 'swygtyi', 'hnj', 'mmgkdho'], 1) == \"btrwypjyxbw\"": {
+      "result": true,
+      "time": 0.037517547607421875,
+      "error": null
+    },
+    "assert common_prefix(['dylriumhlmaz', 'hxcjkwpw', 'wbbyixrxs', 'wwu'], 3) == \"\"": {
+      "result": true,
+      "time": 0.0350499153137207,
+      "error": null
+    },
+    "assert common_prefix(['nihldeyzgjm', 'idzxujsfdqvf', 'ksypc', 'jifprvq'], 1) == \"nihldeyzgjm\"": {
+      "result": true,
+      "time": 0.03569817543029785,
+      "error": null
+    },
+    "assert common_prefix(['wswvzgpdgmg', 'tdfl', 'pkvoih', 'dgbi'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03525280952453613,
+      "error": null
+    },
+    "assert common_prefix(['kbt', 'dcilcfndf', 'egtr', 'pwhd'], 2) == \"\"": {
+      "result": true,
+      "time": 0.044463396072387695,
+      "error": null
+    },
+    "assert common_prefix(['srcwakreupzp', 'wqk', 'qjtx'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03255867958068848,
+      "error": null
+    },
+    "assert common_prefix(['pprvvnwi', 'wmrhyvx', 'uastyc'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03246665000915527,
+      "error": null
+    },
+    "assert common_prefix(['bwtkgqyeewx', 'unzergwlg', 'srnyvim'], 1) == \"bwtkgqyeewx\"": {
+      "result": true,
+      "time": 0.03272604942321777,
+      "error": null
+    },
+    "assert common_prefix(['lvlhv', 'gkyd', 'qipsjra'], 1) == \"lvlhv\"": {
+      "result": true,
+      "time": 0.030957698822021484,
+      "error": null
+    },
+    "assert common_prefix(['tbfe', 'igckq', 'ebmq'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03633928298950195,
+      "error": null
+    },
+    "assert common_prefix(['edwy', 'iheoasjid', 'otmgamobd'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03499746322631836,
+      "error": null
+    },
+    "assert common_prefix(['mbnyxdbyh', 'qouaski', 'vzlm'], 2) == \"\"": {
+      "result": true,
+      "time": 0.039095401763916016,
+      "error": null
+    },
+    "assert common_prefix(['jlnnknegm', 'wwzdbxc', 'uwvmfk'], 3) == \"\"": {
+      "result": true,
+      "time": 0.04098343849182129,
+      "error": null
+    },
+    "assert common_prefix(['rbdoedzpglgy', 'xzzdv', 'yoqlu'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03775334358215332,
+      "error": null
+    },
+    "assert common_prefix(['hntxag', 'pijab', 'tuyvraklw'], 1) == \"hntxag\"": {
+      "result": true,
+      "time": 0.037117719650268555,
+      "error": null
+    },
+    "assert common_prefix(['zdiw', 'pnbusoop', 'cplii'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03772091865539551,
+      "error": null
+    },
+    "assert common_prefix(['kcoqrg', 'qkwrc', 'mwmd'], 2) == \"\"": {
+      "result": true,
+      "time": 0.0365908145904541,
+      "error": null
+    },
+    "assert common_prefix(['vzzpfavyt', 'gxvz', 'kcqsrgg'], 1) == \"vzzpfavyt\"": {
+      "result": true,
+      "time": 0.033852577209472656,
+      "error": null
+    },
+    "assert common_prefix(['vptwzljksej', 'kyaabvg', 'hrggqern'], 2) == \"\"": {
+      "result": true,
+      "time": 0.030313491821289062,
+      "error": null
+    },
+    "assert common_prefix(['jibkz', 'axtpqcs', 'tttfa'], 1) == \"jibkz\"": {
+      "result": true,
+      "time": 0.03758049011230469,
+      "error": null
+    },
+    "assert common_prefix(['qhinhsrjgqi', 'jmpkig', 'nkxpouqt'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03456544876098633,
+      "error": null
+    },
+    "assert common_prefix(['sxjgs', 'otvjtchzc', 'tnx'], 3) == \"\"": {
+      "result": true,
+      "time": 0.04204535484313965,
+      "error": null
+    },
+    "assert common_prefix(['qrdsur', 'edfqh', 'ftkdmibqt'], 2) == \"\"": {
+      "result": true,
+      "time": 0.039334774017333984,
+      "error": null
+    },
+    "assert common_prefix(['xaaxbnow', 'pqmj', 'awhbfccuf'], 1) == \"xaaxbnow\"": {
+      "result": true,
+      "time": 0.036270856857299805,
+      "error": null
+    },
+    "assert common_prefix(['pljghtfuidp', 'rhhhzc', 'lptggyt'], 1) == \"pljghtfuidp\"": {
+      "result": true,
+      "time": 0.03601360321044922,
+      "error": null
+    },
+    "assert common_prefix(['ixgzo', 'qfatgod', 'hrle'], 1) == \"ixgzo\"": {
+      "result": true,
+      "time": 0.03589296340942383,
+      "error": null
+    },
+    "assert common_prefix(['bbfel', 'qdbfmqt', 'bqnu'], 3) == \"\"": {
+      "result": true,
+      "time": 0.036321163177490234,
+      "error": null
+    },
+    "assert common_prefix(['rajzlxq', 'ilsit', 'ynhrrka'], 3) == \"\"": {
+      "result": true,
+      "time": 0.040350914001464844,
+      "error": null
+    },
+    "assert common_prefix(['yuyfycmrpsc', 'rswlfkyy', 'wpn'], 2) == \"\"": {
+      "result": true,
+      "time": 0.0375211238861084,
+      "error": null
+    },
+    "assert common_prefix(['alxbvkxae', 'ieuriiz', 'paktc'], 1) == \"alxbvkxae\"": {
+      "result": true,
+      "time": 0.03643321990966797,
+      "error": null
+    },
+    "assert common_prefix(['dmpbwjhaqvhf', 'cfqwzz', 'occpjqprh'], 3) == \"\"": {
+      "result": true,
+      "time": 0.043548583984375,
+      "error": null
+    },
+    "assert common_prefix(['uplmadf', 'jzpznrstp', 'ronxhyf'], 1) == \"uplmadf\"": {
+      "result": true,
+      "time": 0.037256717681884766,
+      "error": null
+    },
+    "assert common_prefix(['vjqcnpqxow', 'ifuner', 'ggyrdm'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03438401222229004,
+      "error": null
+    },
+    "assert common_prefix(['hiavghd', 'wyy', 'lpxdwb'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03480029106140137,
+      "error": null
+    },
+    "assert common_prefix(['rjrycscwvhn', 'sytbwayr', 'jnd'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03833961486816406,
+      "error": null
+    },
+    "assert common_prefix(['vvnsxhms', 'rzamchdi', 'xktsz'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03336358070373535,
+      "error": null
+    },
+    "assert common_prefix(['gzup', 'roslhfyvi', 'enhfmnyo'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03388047218322754,
+      "error": null
+    },
+    "assert common_prefix(['hlqnf', 'nrhwxzya', 'zuret'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03583049774169922,
+      "error": null
+    },
+    "assert common_prefix(['dyy', 'tdvvdg', 'kki'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03992891311645508,
+      "error": null
+    },
+    "assert common_prefix(['pjlntt', 'xii', 'glhc'], 1) == \"pjlntt\"": {
+      "result": true,
+      "time": 0.03913426399230957,
+      "error": null
+    },
+    "assert common_prefix(['tdrkf', 'zrkhar', 'yetxnlqsak'], 1) == \"tdrkf\"": {
+      "result": true,
+      "time": 0.03761172294616699,
+      "error": null
+    },
+    "assert common_prefix(['ppwpj', 'tunnqc', 'nlnbizhng'], 2) == \"\"": {
+      "result": true,
+      "time": 0.0377805233001709,
+      "error": null
+    },
+    "assert common_prefix(['ubgtxemur', 'noelsbdee', 'vvmeqqyuto'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03409838676452637,
+      "error": null
+    },
+    "assert common_prefix(['tooivpzmu', 'hzchve', 'ijlv'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03507208824157715,
+      "error": null
+    },
+    "assert common_prefix(['gjrzvgy', 'nzvvpblzmfrw', 'penj'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03471851348876953,
+      "error": null
+    },
+    "assert common_prefix(['feyunvhaz', 'fqxvhdojzy', 'ltcfpbjyvv'], 1) == \"feyunvhaz\"": {
+      "result": true,
+      "time": 0.03210616111755371,
+      "error": null
+    },
+    "assert common_prefix(['per', 'oamzaqoaamq', 'sbayljgqzzna'], 2) == \"\"": {
+      "result": true,
+      "time": 0.04969191551208496,
+      "error": null
+    },
+    "assert common_prefix(['ziey', 'dkhzjt', 'jgrbstqk'], 2) == \"\"": {
+      "result": true,
+      "time": 0.04141569137573242,
+      "error": null
+    },
+    "assert common_prefix(['upw', 'xswsvuvcnyzn', 'upddzoy'], 2) == \"\"": {
+      "result": true,
+      "time": 0.042113542556762695,
+      "error": null
+    },
+    "assert common_prefix(['nrkxefa', 'nwlvybxxim', 'vwrgsod'], 1) == \"nrkxefa\"": {
+      "result": true,
+      "time": 0.04314613342285156,
+      "error": null
+    },
+    "assert common_prefix(['euhq', 'tvghomj', 'adsvojtzrx'], 1) == \"euhq\"": {
+      "result": true,
+      "time": 0.037781476974487305,
+      "error": null
+    },
+    "assert common_prefix(['sjynmsr', 'jvsl', 'pwestt'], 1) == \"sjynmsr\"": {
+      "result": true,
+      "time": 0.045461416244506836,
+      "error": null
+    },
+    "assert common_prefix(['yzzf', 'hxnjtgzn', 'lmwdzfxn'], 1) == \"yzzf\"": {
+      "result": true,
+      "time": 0.04311990737915039,
+      "error": null
+    },
+    "assert common_prefix(['pfwedmpy', 'ztrx', 'fuovcqaax'], 3) == \"\"": {
+      "result": true,
+      "time": 0.04130959510803223,
+      "error": null
+    },
+    "assert common_prefix(['eimtsoo', 'olgrh', 'cnslbvo'], 2) == \"\"": {
+      "result": true,
+      "time": 0.040036678314208984,
+      "error": null
+    },
+    "assert common_prefix(['jymnqd', 'pvs', 'bxuhjocmwiu'], 3) == \"\"": {
+      "result": true,
+      "time": 0.0422976016998291,
+      "error": null
+    },
+    "assert common_prefix(['hzg', 'alluqpuhga', 'wjefgbhk'], 1) == \"hzg\"": {
+      "result": true,
+      "time": 0.040685415267944336,
+      "error": null
+    },
+    "assert common_prefix(['qgncytcp', 'slv', 'jzpvbnzped'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03763461112976074,
+      "error": null
+    },
+    "assert common_prefix(['hjcue', 'goufrw', 'hamrnbt'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03908944129943848,
+      "error": null
+    },
+    "assert common_prefix(['ewbnuhs', 'deubkhvnlyl', 'wawixf'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03477883338928223,
+      "error": null
+    },
+    "assert common_prefix(['oxzilznp', 'ypugz', 'wwhnzww'], 3) == \"\"": {
+      "result": true,
+      "time": 0.04959368705749512,
+      "error": null
+    },
+    "assert common_prefix(['fzpcw', 'kyedmhu', 'zxydnr'], 2) == \"\"": {
+      "result": true,
+      "time": 0.040409088134765625,
+      "error": null
+    },
+    "assert common_prefix(['ykya', 'rgxyqvj', 'khtuowus'], 1) == \"ykya\"": {
+      "result": true,
+      "time": 0.0370790958404541,
+      "error": null
+    },
+    "assert common_prefix(['hiu', 'ghricwghymhj', 'ptoajezhkb'], 2) == \"\"": {
+      "result": true,
+      "time": 0.0557706356048584,
+      "error": null
+    },
+    "assert common_prefix(['xdwpfdz', 'ysrobhspm', 'xnxnhkx'], 1) == \"xdwpfdz\"": {
+      "result": true,
+      "time": 0.03802609443664551,
+      "error": null
+    },
+    "assert common_prefix(['dlxbbuwt', 'elf', 'pscqr'], 2) == \"\"": {
+      "result": true,
+      "time": 0.03869056701660156,
+      "error": null
+    },
+    "assert common_prefix(['tarzxjux', 'oibw', 'idkohlxlzoy'], 1) == \"tarzxjux\"": {
+      "result": true,
+      "time": 0.03648519515991211,
+      "error": null
+    },
+    "assert common_prefix(['umofpzu', 'ijxi', 'vmdriex'], 3) == \"\"": {
+      "result": true,
+      "time": 0.04353904724121094,
+      "error": null
+    },
+    "assert common_prefix(['zyvbjm', 'cbrqgv', 'odoybmsm'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03917503356933594,
+      "error": null
+    },
+    "assert common_prefix(['ixbqh', 'qcdxc', 'ibjaerik'], 3) == \"\"": {
+      "result": true,
+      "time": 0.04505205154418945,
+      "error": null
+    },
+    "assert common_prefix(['wxnvv', 'fppac', 'rnufpryn'], 3) == \"\"": {
+      "result": true,
+      "time": 0.03818464279174805,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

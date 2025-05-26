@@ -1,0 +1,519 @@
+{
+  "code": "def position_max(lst):\n    max_value = max(lst)\n    positions = [i for i, x in enumerate(lst) if x == max_value]\n    return positions\n",
+  "results": {
+    "assert position_max([12,33,23,10,67,89,45,667,23,12,11,10,54])==[7]": {
+      "result": true,
+      "time": 0.042495012283325195,
+      "error": null
+    },
+    "assert position_max([1,2,2,2,4,4,4,5,5,5,5])==[7,8,9,10]": {
+      "result": true,
+      "time": 0.03777766227722168,
+      "error": null
+    },
+    "assert position_max([2,1,5,6,8,3,4,9,10,11,8,12])==[11]": {
+      "result": true,
+      "time": 0.03898954391479492,
+      "error": null
+    },
+    "assert position_max([10, 36, 22, 7, 66, 88, 45, 672, 28, 7, 10, 7, 58]) == [7]": {
+      "result": true,
+      "time": 0.04065585136413574,
+      "error": null
+    },
+    "assert position_max([12, 31, 25, 7, 72, 84, 48, 672, 23, 17, 6, 15, 53]) == [7]": {
+      "result": true,
+      "time": 0.03926372528076172,
+      "error": null
+    },
+    "assert position_max([15, 35, 25, 8, 68, 91, 46, 672, 24, 11, 15, 5, 54]) == [7]": {
+      "result": true,
+      "time": 0.04374122619628906,
+      "error": null
+    },
+    "assert position_max([17, 38, 18, 10, 72, 89, 40, 671, 18, 7, 10, 8, 51]) == [7]": {
+      "result": true,
+      "time": 0.04228615760803223,
+      "error": null
+    },
+    "assert position_max([15, 34, 27, 9, 68, 87, 41, 662, 18, 11, 7, 10, 58]) == [7]": {
+      "result": true,
+      "time": 0.04292154312133789,
+      "error": null
+    },
+    "assert position_max([14, 38, 21, 7, 63, 86, 40, 662, 19, 14, 8, 9, 58]) == [7]": {
+      "result": true,
+      "time": 0.03850960731506348,
+      "error": null
+    },
+    "assert position_max([12, 35, 19, 15, 67, 87, 44, 664, 19, 10, 16, 8, 59]) == [7]": {
+      "result": true,
+      "time": 0.035196781158447266,
+      "error": null
+    },
+    "assert position_max([15, 28, 19, 13, 67, 92, 49, 669, 19, 14, 6, 8, 57]) == [7]": {
+      "result": true,
+      "time": 0.03639817237854004,
+      "error": null
+    },
+    "assert position_max([13, 31, 23, 7, 69, 94, 49, 666, 28, 16, 10, 6, 56]) == [7]": {
+      "result": true,
+      "time": 0.037700653076171875,
+      "error": null
+    },
+    "assert position_max([15, 35, 26, 12, 63, 92, 45, 663, 21, 10, 8, 11, 55]) == [7]": {
+      "result": true,
+      "time": 0.03588747978210449,
+      "error": null
+    },
+    "assert position_max([7, 37, 27, 7, 62, 86, 44, 669, 24, 17, 11, 12, 53]) == [7]": {
+      "result": true,
+      "time": 0.03521156311035156,
+      "error": null
+    },
+    "assert position_max([12, 29, 23, 9, 68, 89, 47, 671, 23, 17, 15, 7, 49]) == [7]": {
+      "result": true,
+      "time": 0.04172992706298828,
+      "error": null
+    },
+    "assert position_max([10, 33, 26, 10, 62, 85, 44, 666, 22, 16, 9, 8, 56]) == [7]": {
+      "result": true,
+      "time": 0.02965521812438965,
+      "error": null
+    },
+    "assert position_max([15, 36, 25, 11, 65, 93, 46, 663, 19, 13, 6, 14, 59]) == [7]": {
+      "result": true,
+      "time": 0.03601527214050293,
+      "error": null
+    },
+    "assert position_max([17, 37, 26, 12, 70, 90, 40, 672, 27, 9, 6, 7, 56]) == [7]": {
+      "result": true,
+      "time": 0.03657031059265137,
+      "error": null
+    },
+    "assert position_max([15, 31, 18, 5, 65, 93, 49, 662, 28, 17, 12, 10, 49]) == [7]": {
+      "result": true,
+      "time": 0.0339045524597168,
+      "error": null
+    },
+    "assert position_max([11, 28, 24, 8, 63, 84, 41, 665, 18, 9, 10, 7, 57]) == [7]": {
+      "result": true,
+      "time": 0.03516101837158203,
+      "error": null
+    },
+    "assert position_max([9, 33, 19, 10, 62, 87, 50, 671, 26, 9, 13, 10, 58]) == [7]": {
+      "result": true,
+      "time": 0.03309893608093262,
+      "error": null
+    },
+    "assert position_max([10, 30, 21, 10, 68, 89, 40, 662, 28, 10, 16, 13, 50]) == [7]": {
+      "result": true,
+      "time": 0.038691043853759766,
+      "error": null
+    },
+    "assert position_max([17, 30, 20, 6, 66, 84, 44, 668, 22, 13, 9, 12, 53]) == [7]": {
+      "result": true,
+      "time": 0.033339738845825195,
+      "error": null
+    },
+    "assert position_max([17, 29, 22, 15, 69, 89, 43, 670, 25, 12, 10, 5, 59]) == [7]": {
+      "result": true,
+      "time": 0.04572272300720215,
+      "error": null
+    },
+    "assert position_max([16, 30, 19, 5, 64, 87, 48, 665, 20, 10, 12, 15, 53]) == [7]": {
+      "result": true,
+      "time": 0.03223276138305664,
+      "error": null
+    },
+    "assert position_max([8, 37, 18, 9, 63, 89, 41, 662, 26, 8, 15, 5, 58]) == [7]": {
+      "result": true,
+      "time": 0.03856539726257324,
+      "error": null
+    },
+    "assert position_max([12, 36, 26, 12, 66, 89, 46, 671, 22, 17, 10, 8, 50]) == [7]": {
+      "result": true,
+      "time": 0.034641265869140625,
+      "error": null
+    },
+    "assert position_max([13, 35, 18, 14, 66, 87, 45, 666, 21, 13, 9, 15, 55]) == [7]": {
+      "result": true,
+      "time": 0.0359652042388916,
+      "error": null
+    },
+    "assert position_max([11, 28, 19, 6, 62, 92, 50, 662, 28, 8, 12, 5, 53]) == [7]": {
+      "result": true,
+      "time": 0.03905081748962402,
+      "error": null
+    },
+    "assert position_max([13, 32, 22, 7, 72, 93, 44, 664, 22, 12, 6, 6, 59]) == [7]": {
+      "result": true,
+      "time": 0.04071474075317383,
+      "error": null
+    },
+    "assert position_max([13, 36, 18, 15, 65, 88, 43, 670, 19, 11, 16, 15, 50]) == [7]": {
+      "result": true,
+      "time": 0.03848123550415039,
+      "error": null
+    },
+    "assert position_max([14, 31, 19, 6, 68, 84, 46, 667, 28, 13, 9, 14, 49]) == [7]": {
+      "result": true,
+      "time": 0.03449892997741699,
+      "error": null
+    },
+    "assert position_max([7, 34, 22, 10, 63, 93, 40, 670, 25, 8, 8, 15, 58]) == [7]": {
+      "result": true,
+      "time": 0.03627967834472656,
+      "error": null
+    },
+    "assert position_max([13, 28, 18, 9, 65, 88, 40, 668, 20, 10, 10, 13, 50]) == [7]": {
+      "result": true,
+      "time": 0.038596391677856445,
+      "error": null
+    },
+    "assert position_max([8, 31, 18, 8, 69, 92, 44, 667, 25, 11, 11, 10, 54]) == [7]": {
+      "result": true,
+      "time": 0.03973245620727539,
+      "error": null
+    },
+    "assert position_max([16, 38, 22, 15, 72, 88, 47, 672, 18, 16, 16, 6, 51]) == [7]": {
+      "result": true,
+      "time": 0.03703022003173828,
+      "error": null
+    },
+    "assert position_max([6, 5, 4, 5, 6, 2, 6, 2, 10, 10, 4]) == [8, 9]": {
+      "result": true,
+      "time": 0.03666377067565918,
+      "error": null
+    },
+    "assert position_max([2, 4, 2, 1, 8, 8, 1, 6, 6, 6, 5]) == [4, 5]": {
+      "result": true,
+      "time": 0.03883981704711914,
+      "error": null
+    },
+    "assert position_max([3, 2, 6, 6, 9, 9, 6, 8, 2, 2, 2]) == [4, 5]": {
+      "result": true,
+      "time": 0.0392301082611084,
+      "error": null
+    },
+    "assert position_max([6, 6, 5, 4, 6, 6, 2, 9, 6, 6, 2]) == [7]": {
+      "result": true,
+      "time": 0.03910422325134277,
+      "error": null
+    },
+    "assert position_max([2, 6, 1, 2, 4, 1, 9, 2, 1, 7, 9]) == [6, 10]": {
+      "result": true,
+      "time": 0.03578829765319824,
+      "error": null
+    },
+    "assert position_max([6, 5, 6, 5, 2, 9, 5, 4, 4, 6, 7]) == [5]": {
+      "result": true,
+      "time": 0.03720712661743164,
+      "error": null
+    },
+    "assert position_max([2, 6, 5, 5, 4, 4, 3, 7, 8, 7, 1]) == [8]": {
+      "result": true,
+      "time": 0.036978721618652344,
+      "error": null
+    },
+    "assert position_max([4, 3, 6, 2, 4, 5, 9, 2, 5, 1, 5]) == [6]": {
+      "result": true,
+      "time": 0.04674792289733887,
+      "error": null
+    },
+    "assert position_max([5, 6, 5, 2, 2, 5, 7, 3, 4, 2, 5]) == [6]": {
+      "result": true,
+      "time": 0.03853249549865723,
+      "error": null
+    },
+    "assert position_max([2, 2, 5, 3, 5, 9, 4, 6, 3, 10, 10]) == [9, 10]": {
+      "result": true,
+      "time": 0.039827585220336914,
+      "error": null
+    },
+    "assert position_max([3, 4, 5, 7, 2, 6, 9, 5, 9, 1, 5]) == [6, 8]": {
+      "result": true,
+      "time": 0.03989052772521973,
+      "error": null
+    },
+    "assert position_max([5, 6, 2, 3, 7, 5, 1, 6, 8, 6, 7]) == [8]": {
+      "result": true,
+      "time": 0.034406423568725586,
+      "error": null
+    },
+    "assert position_max([1, 1, 6, 5, 6, 3, 9, 3, 10, 8, 6]) == [8]": {
+      "result": true,
+      "time": 0.0369572639465332,
+      "error": null
+    },
+    "assert position_max([5, 7, 1, 7, 7, 9, 6, 8, 2, 3, 7]) == [5]": {
+      "result": true,
+      "time": 0.03511333465576172,
+      "error": null
+    },
+    "assert position_max([6, 1, 2, 3, 4, 9, 9, 4, 8, 4, 3]) == [5, 6]": {
+      "result": true,
+      "time": 0.040357112884521484,
+      "error": null
+    },
+    "assert position_max([5, 1, 1, 1, 7, 3, 1, 8, 10, 5, 2]) == [8]": {
+      "result": true,
+      "time": 0.033779144287109375,
+      "error": null
+    },
+    "assert position_max([4, 5, 5, 1, 4, 8, 3, 2, 3, 5, 6]) == [5]": {
+      "result": true,
+      "time": 0.03840494155883789,
+      "error": null
+    },
+    "assert position_max([3, 5, 6, 7, 6, 2, 7, 10, 6, 7, 6]) == [7]": {
+      "result": true,
+      "time": 0.034346580505371094,
+      "error": null
+    },
+    "assert position_max([4, 1, 3, 3, 8, 9, 8, 3, 6, 9, 1]) == [5, 9]": {
+      "result": true,
+      "time": 0.03854680061340332,
+      "error": null
+    },
+    "assert position_max([3, 2, 2, 4, 7, 4, 9, 10, 8, 1, 3]) == [7]": {
+      "result": true,
+      "time": 0.0401921272277832,
+      "error": null
+    },
+    "assert position_max([6, 1, 7, 2, 7, 2, 5, 10, 3, 10, 7]) == [7, 9]": {
+      "result": true,
+      "time": 0.0427854061126709,
+      "error": null
+    },
+    "assert position_max([2, 5, 7, 6, 1, 3, 9, 5, 4, 9, 3]) == [6, 9]": {
+      "result": true,
+      "time": 0.04624748229980469,
+      "error": null
+    },
+    "assert position_max([5, 5, 7, 1, 1, 4, 2, 3, 7, 4, 6]) == [2, 8]": {
+      "result": true,
+      "time": 0.037316322326660156,
+      "error": null
+    },
+    "assert position_max([5, 4, 3, 4, 9, 8, 5, 3, 2, 9, 7]) == [4, 9]": {
+      "result": true,
+      "time": 0.04369759559631348,
+      "error": null
+    },
+    "assert position_max([2, 2, 3, 5, 9, 5, 8, 5, 6, 10, 3]) == [9]": {
+      "result": true,
+      "time": 0.04375028610229492,
+      "error": null
+    },
+    "assert position_max([6, 4, 5, 6, 3, 3, 6, 9, 2, 9, 10]) == [10]": {
+      "result": true,
+      "time": 0.03814435005187988,
+      "error": null
+    },
+    "assert position_max([2, 7, 6, 3, 6, 3, 6, 2, 1, 6, 7]) == [1, 10]": {
+      "result": true,
+      "time": 0.04378795623779297,
+      "error": null
+    },
+    "assert position_max([2, 6, 7, 6, 4, 2, 6, 6, 7, 10, 2]) == [9]": {
+      "result": true,
+      "time": 0.03277730941772461,
+      "error": null
+    },
+    "assert position_max([4, 1, 1, 1, 5, 2, 5, 9, 3, 6, 1]) == [7]": {
+      "result": true,
+      "time": 0.03473258018493652,
+      "error": null
+    },
+    "assert position_max([5, 2, 4, 4, 4, 1, 9, 8, 10, 1, 10]) == [8, 10]": {
+      "result": true,
+      "time": 0.041147708892822266,
+      "error": null
+    },
+    "assert position_max([2, 7, 3, 2, 3, 7, 2, 5, 1, 1, 7]) == [1, 5, 10]": {
+      "result": true,
+      "time": 0.03440093994140625,
+      "error": null
+    },
+    "assert position_max([6, 4, 7, 6, 3, 2, 3, 7, 10, 6, 7]) == [8]": {
+      "result": true,
+      "time": 0.03791952133178711,
+      "error": null
+    },
+    "assert position_max([6, 1, 2, 1, 3, 1, 9, 2, 1, 9, 5]) == [6, 9]": {
+      "result": true,
+      "time": 0.03533530235290527,
+      "error": null
+    },
+    "assert position_max([2, 6, 4, 2, 6, 7, 3, 4, 15, 11, 10, 14]) == [8]": {
+      "result": true,
+      "time": 0.040719032287597656,
+      "error": null
+    },
+    "assert position_max([1, 5, 6, 6, 11, 8, 9, 14, 15, 12, 8, 10]) == [8]": {
+      "result": true,
+      "time": 0.041382551193237305,
+      "error": null
+    },
+    "assert position_max([6, 1, 4, 10, 8, 2, 3, 5, 8, 14, 6, 12]) == [9]": {
+      "result": true,
+      "time": 0.0410466194152832,
+      "error": null
+    },
+    "assert position_max([6, 1, 5, 3, 9, 3, 2, 14, 6, 13, 4, 17]) == [11]": {
+      "result": true,
+      "time": 0.04060006141662598,
+      "error": null
+    },
+    "assert position_max([7, 6, 1, 10, 6, 2, 8, 14, 12, 8, 6, 12]) == [7]": {
+      "result": true,
+      "time": 0.04374122619628906,
+      "error": null
+    },
+    "assert position_max([4, 1, 7, 2, 13, 6, 4, 12, 5, 8, 12, 15]) == [11]": {
+      "result": true,
+      "time": 0.048418283462524414,
+      "error": null
+    },
+    "assert position_max([2, 4, 3, 10, 12, 4, 3, 10, 9, 7, 8, 8]) == [4]": {
+      "result": true,
+      "time": 0.03925800323486328,
+      "error": null
+    },
+    "assert position_max([5, 5, 8, 5, 11, 1, 9, 9, 12, 14, 11, 15]) == [11]": {
+      "result": true,
+      "time": 0.04370832443237305,
+      "error": null
+    },
+    "assert position_max([7, 2, 2, 10, 6, 5, 9, 7, 5, 8, 9, 13]) == [11]": {
+      "result": true,
+      "time": 0.04288148880004883,
+      "error": null
+    },
+    "assert position_max([5, 5, 1, 5, 12, 6, 5, 4, 13, 12, 3, 9]) == [8]": {
+      "result": true,
+      "time": 0.040102481842041016,
+      "error": null
+    },
+    "assert position_max([1, 6, 6, 11, 10, 2, 8, 14, 14, 10, 3, 16]) == [11]": {
+      "result": true,
+      "time": 0.03959989547729492,
+      "error": null
+    },
+    "assert position_max([7, 1, 8, 8, 9, 7, 2, 7, 8, 13, 10, 12]) == [9]": {
+      "result": true,
+      "time": 0.045235633850097656,
+      "error": null
+    },
+    "assert position_max([4, 4, 4, 7, 4, 3, 1, 8, 7, 12, 6, 10]) == [9]": {
+      "result": true,
+      "time": 0.04103732109069824,
+      "error": null
+    },
+    "assert position_max([3, 2, 1, 4, 3, 7, 2, 13, 12, 16, 6, 9]) == [9]": {
+      "result": true,
+      "time": 0.044397830963134766,
+      "error": null
+    },
+    "assert position_max([6, 4, 9, 6, 3, 8, 9, 10, 13, 14, 9, 15]) == [11]": {
+      "result": true,
+      "time": 0.042803049087524414,
+      "error": null
+    },
+    "assert position_max([5, 3, 3, 1, 7, 3, 3, 10, 11, 7, 9, 7]) == [8]": {
+      "result": true,
+      "time": 0.043862342834472656,
+      "error": null
+    },
+    "assert position_max([6, 6, 2, 6, 11, 1, 6, 12, 6, 7, 4, 8]) == [7]": {
+      "result": true,
+      "time": 0.04217982292175293,
+      "error": null
+    },
+    "assert position_max([5, 1, 8, 9, 10, 7, 9, 14, 9, 9, 6, 11]) == [7]": {
+      "result": true,
+      "time": 0.0429224967956543,
+      "error": null
+    },
+    "assert position_max([7, 5, 4, 2, 10, 5, 9, 13, 11, 8, 6, 17]) == [11]": {
+      "result": true,
+      "time": 0.042656898498535156,
+      "error": null
+    },
+    "assert position_max([5, 1, 10, 11, 12, 5, 9, 9, 9, 13, 4, 14]) == [11]": {
+      "result": true,
+      "time": 0.03338909149169922,
+      "error": null
+    },
+    "assert position_max([6, 3, 9, 9, 12, 2, 4, 9, 11, 6, 13, 14]) == [11]": {
+      "result": true,
+      "time": 0.03859663009643555,
+      "error": null
+    },
+    "assert position_max([5, 2, 5, 9, 6, 2, 6, 9, 12, 9, 13, 13]) == [10, 11]": {
+      "result": true,
+      "time": 0.043406009674072266,
+      "error": null
+    },
+    "assert position_max([5, 2, 10, 4, 8, 2, 1, 9, 5, 8, 7, 10]) == [2, 11]": {
+      "result": true,
+      "time": 0.03914642333984375,
+      "error": null
+    },
+    "assert position_max([5, 3, 8, 8, 4, 6, 4, 8, 10, 11, 12, 8]) == [10]": {
+      "result": true,
+      "time": 0.0439000129699707,
+      "error": null
+    },
+    "assert position_max([7, 6, 3, 8, 13, 4, 3, 9, 13, 7, 13, 12]) == [4, 8, 10]": {
+      "result": true,
+      "time": 0.042807579040527344,
+      "error": null
+    },
+    "assert position_max([3, 6, 8, 5, 9, 4, 4, 7, 7, 13, 13, 8]) == [9, 10]": {
+      "result": true,
+      "time": 0.041543006896972656,
+      "error": null
+    },
+    "assert position_max([4, 5, 3, 2, 6, 6, 8, 7, 10, 14, 8, 12]) == [9]": {
+      "result": true,
+      "time": 0.05068039894104004,
+      "error": null
+    },
+    "assert position_max([5, 2, 9, 8, 11, 4, 8, 9, 8, 7, 6, 7]) == [4]": {
+      "result": true,
+      "time": 0.043210744857788086,
+      "error": null
+    },
+    "assert position_max([1, 2, 1, 9, 3, 6, 5, 5, 6, 7, 10, 8]) == [10]": {
+      "result": true,
+      "time": 0.04402446746826172,
+      "error": null
+    },
+    "assert position_max([6, 2, 2, 3, 6, 1, 9, 9, 10, 12, 8, 16]) == [11]": {
+      "result": true,
+      "time": 0.03920292854309082,
+      "error": null
+    },
+    "assert position_max([2, 2, 1, 7, 10, 4, 6, 6, 11, 15, 13, 16]) == [11]": {
+      "result": true,
+      "time": 0.03978276252746582,
+      "error": null
+    },
+    "assert position_max([4, 2, 8, 1, 7, 4, 7, 13, 9, 7, 3, 14]) == [11]": {
+      "result": true,
+      "time": 0.04893779754638672,
+      "error": null
+    },
+    "assert position_max([1, 1, 10, 3, 9, 5, 3, 4, 10, 9, 8, 9]) == [2, 8]": {
+      "result": true,
+      "time": 0.04578995704650879,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

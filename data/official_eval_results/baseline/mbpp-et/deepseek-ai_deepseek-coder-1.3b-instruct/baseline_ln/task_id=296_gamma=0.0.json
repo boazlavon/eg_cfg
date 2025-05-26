@@ -1,0 +1,519 @@
+{
+  "code": "def get_Inv_Count(arr, n):\n    inv_count = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            if arr[i] > arr[j]:\n                inv_count += 1\n    return inv_count\n",
+  "results": {
+    "assert get_Inv_Count([1,20,6,4,5],5) == 5": {
+      "result": true,
+      "time": 0.0392303466796875,
+      "error": null
+    },
+    "assert get_Inv_Count([1,2,1],3) == 1": {
+      "result": true,
+      "time": 0.04343533515930176,
+      "error": null
+    },
+    "assert get_Inv_Count([1,2,5,6,1],5) == 3": {
+      "result": true,
+      "time": 0.040138959884643555,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 22, 8, 3, 10], 1) == 0": {
+      "result": true,
+      "time": 0.03739118576049805,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 22, 10, 6, 3], 3) == 1": {
+      "result": true,
+      "time": 0.03916192054748535,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 16, 4, 6, 10], 1) == 0": {
+      "result": true,
+      "time": 0.048741817474365234,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 16, 7, 1, 4], 4) == 4": {
+      "result": true,
+      "time": 0.03936433792114258,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 18, 4, 9, 6], 3) == 1": {
+      "result": true,
+      "time": 0.04027748107910156,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 24, 2, 3, 2], 2) == 0": {
+      "result": true,
+      "time": 0.03766155242919922,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 16, 7, 2, 3], 1) == 0": {
+      "result": true,
+      "time": 0.04493379592895508,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 24, 3, 5, 5], 4) == 2": {
+      "result": true,
+      "time": 0.04552602767944336,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 25, 11, 1, 4], 3) == 1": {
+      "result": true,
+      "time": 0.04073452949523926,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 20, 2, 5, 2], 3) == 2": {
+      "result": true,
+      "time": 0.040318965911865234,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 23, 5, 5, 2], 2) == 0": {
+      "result": true,
+      "time": 0.044072628021240234,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 17, 4, 7, 2], 2) == 0": {
+      "result": true,
+      "time": 0.03908133506774902,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 17, 8, 1, 6], 4) == 4": {
+      "result": true,
+      "time": 0.04512286186218262,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 22, 9, 5, 2], 1) == 0": {
+      "result": true,
+      "time": 0.03907656669616699,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 23, 11, 6, 1], 2) == 0": {
+      "result": true,
+      "time": 0.04408144950866699,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 20, 5, 6, 5], 2) == 0": {
+      "result": true,
+      "time": 0.036943912506103516,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 21, 10, 8, 1], 2) == 0": {
+      "result": true,
+      "time": 0.04071474075317383,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 17, 5, 4, 8], 5) == 4": {
+      "result": true,
+      "time": 0.04244089126586914,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 19, 5, 4, 8], 3) == 2": {
+      "result": true,
+      "time": 0.046562910079956055,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 15, 7, 4, 2], 1) == 0": {
+      "result": true,
+      "time": 0.04278087615966797,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 21, 7, 9, 3], 3) == 1": {
+      "result": true,
+      "time": 0.03856682777404785,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 25, 3, 3, 4], 4) == 4": {
+      "result": true,
+      "time": 0.04212331771850586,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 16, 8, 4, 7], 1) == 0": {
+      "result": true,
+      "time": 0.03606104850769043,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 17, 9, 9, 8], 4) == 2": {
+      "result": true,
+      "time": 0.04109311103820801,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 25, 11, 8, 9], 5) == 5": {
+      "result": true,
+      "time": 0.04152202606201172,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 16, 3, 1, 2], 1) == 0": {
+      "result": true,
+      "time": 0.04879331588745117,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 15, 1, 3, 5], 3) == 2": {
+      "result": true,
+      "time": 0.04178357124328613,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 17, 6, 3, 1], 5) == 8": {
+      "result": true,
+      "time": 0.04811453819274902,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 25, 11, 6, 9], 1) == 0": {
+      "result": true,
+      "time": 0.037808895111083984,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 20, 3, 4, 5], 1) == 0": {
+      "result": true,
+      "time": 0.0395359992980957,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 17, 1, 5, 3], 3) == 2": {
+      "result": true,
+      "time": 0.043572187423706055,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 19, 6, 7, 10], 1) == 0": {
+      "result": true,
+      "time": 0.05506396293640137,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 15, 8, 3, 2], 5) == 6": {
+      "result": true,
+      "time": 0.035512447357177734,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 6, 1], 3) == 2": {
+      "result": true,
+      "time": 0.04531455039978027,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 3, 6], 1) == 0": {
+      "result": true,
+      "time": 0.044402122497558594,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 5, 4], 2) == 0": {
+      "result": true,
+      "time": 0.042516231536865234,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 2, 1], 2) == 0": {
+      "result": true,
+      "time": 0.03984999656677246,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 2, 6], 1) == 0": {
+      "result": true,
+      "time": 0.045538902282714844,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 5, 2], 2) == 1": {
+      "result": true,
+      "time": 0.04274439811706543,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 5, 6], 1) == 0": {
+      "result": true,
+      "time": 0.04405546188354492,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 3, 4], 3) == 1": {
+      "result": true,
+      "time": 0.040193796157836914,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 2, 5], 1) == 0": {
+      "result": true,
+      "time": 0.0419917106628418,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 2, 2], 2) == 0": {
+      "result": true,
+      "time": 0.0381169319152832,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 6, 5], 3) == 1": {
+      "result": true,
+      "time": 0.03906512260437012,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 4, 1], 2) == 0": {
+      "result": true,
+      "time": 0.045610904693603516,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 2, 6], 1) == 0": {
+      "result": true,
+      "time": 0.03976035118103027,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 7, 2], 3) == 1": {
+      "result": true,
+      "time": 0.04919743537902832,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 6, 4], 3) == 2": {
+      "result": true,
+      "time": 0.04330635070800781,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 4, 6], 1) == 0": {
+      "result": true,
+      "time": 0.041457176208496094,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 7, 1], 3) == 2": {
+      "result": true,
+      "time": 0.0404810905456543,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 3, 3], 1) == 0": {
+      "result": true,
+      "time": 0.04544949531555176,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 2, 6], 1) == 0": {
+      "result": true,
+      "time": 0.040383338928222656,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 3, 4], 2) == 1": {
+      "result": true,
+      "time": 0.03844738006591797,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 2, 3], 3) == 0": {
+      "result": true,
+      "time": 0.039742231369018555,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 2, 6], 3) == 0": {
+      "result": true,
+      "time": 0.048114776611328125,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 5, 2], 3) == 1": {
+      "result": true,
+      "time": 0.04217958450317383,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 3, 6], 2) == 1": {
+      "result": true,
+      "time": 0.03573727607727051,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 7, 2], 3) == 2": {
+      "result": true,
+      "time": 0.038733482360839844,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 1, 4], 1) == 0": {
+      "result": true,
+      "time": 0.04603743553161621,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 1, 2], 1) == 0": {
+      "result": true,
+      "time": 0.04171442985534668,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 7, 5], 3) == 1": {
+      "result": true,
+      "time": 0.03367948532104492,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 4, 5], 1) == 0": {
+      "result": true,
+      "time": 0.03446054458618164,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 3, 2], 3) == 3": {
+      "result": true,
+      "time": 0.04093670845031738,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 4, 6], 2) == 0": {
+      "result": true,
+      "time": 0.04431724548339844,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 5, 3], 3) == 1": {
+      "result": true,
+      "time": 0.04807090759277344,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 1, 2], 2) == 1": {
+      "result": true,
+      "time": 0.037583351135253906,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 6, 7, 11, 4], 3) == 0": {
+      "result": true,
+      "time": 0.03677511215209961,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 2, 1, 2, 6], 3) == 3": {
+      "result": true,
+      "time": 0.046147823333740234,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 3, 3, 7, 4], 1) == 0": {
+      "result": true,
+      "time": 0.044030189514160156,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 6, 2, 1, 1], 5) == 8": {
+      "result": true,
+      "time": 0.04044485092163086,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 4, 8, 6, 4], 2) == 0": {
+      "result": true,
+      "time": 0.043227434158325195,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 7, 4, 8, 3], 1) == 0": {
+      "result": true,
+      "time": 0.04298996925354004,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 5, 2, 7, 2], 3) == 2": {
+      "result": true,
+      "time": 0.044321298599243164,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 2, 2, 10, 6], 4) == 2": {
+      "result": true,
+      "time": 0.04182243347167969,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 7, 8, 3, 2], 4) == 2": {
+      "result": true,
+      "time": 0.04007363319396973,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 5, 8, 6, 5], 5) == 3": {
+      "result": true,
+      "time": 0.04373621940612793,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 3, 7, 3, 2], 2) == 0": {
+      "result": true,
+      "time": 0.051473379135131836,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 5, 5, 2, 5], 2) == 0": {
+      "result": true,
+      "time": 0.03313755989074707,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 3, 7, 8, 6], 3) == 1": {
+      "result": true,
+      "time": 0.04209709167480469,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 2, 7, 8, 1], 1) == 0": {
+      "result": true,
+      "time": 0.04584527015686035,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 3, 3, 3, 3], 3) == 2": {
+      "result": true,
+      "time": 0.04397416114807129,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 1, 1, 7, 4], 2) == 1": {
+      "result": true,
+      "time": 0.0372011661529541,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 3, 1, 2, 6], 3) == 2": {
+      "result": true,
+      "time": 0.0353245735168457,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 7, 5, 1, 6], 5) == 4": {
+      "result": true,
+      "time": 0.04013848304748535,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 6, 2, 10, 4], 2) == 0": {
+      "result": true,
+      "time": 0.03758692741394043,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 6, 2, 2, 3], 3) == 2": {
+      "result": true,
+      "time": 0.0454859733581543,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 2, 3, 9, 3], 3) == 2": {
+      "result": true,
+      "time": 0.030881404876708984,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 2, 1, 4, 5], 3) == 3": {
+      "result": true,
+      "time": 0.03566265106201172,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 6, 4, 5, 5], 1) == 0": {
+      "result": true,
+      "time": 0.05059385299682617,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 3, 10, 1, 6], 1) == 0": {
+      "result": true,
+      "time": 0.0393373966217041,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 3, 6, 3, 2], 2) == 1": {
+      "result": true,
+      "time": 0.04335451126098633,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 3, 4, 9, 6], 4) == 0": {
+      "result": true,
+      "time": 0.042612314224243164,
+      "error": null
+    },
+    "assert get_Inv_Count([3, 5, 5, 11, 6], 2) == 0": {
+      "result": true,
+      "time": 0.037305355072021484,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 6, 9, 8, 6], 1) == 0": {
+      "result": true,
+      "time": 0.04744887351989746,
+      "error": null
+    },
+    "assert get_Inv_Count([4, 4, 6, 3, 3], 4) == 3": {
+      "result": true,
+      "time": 0.04122591018676758,
+      "error": null
+    },
+    "assert get_Inv_Count([5, 4, 10, 1, 3], 4) == 4": {
+      "result": true,
+      "time": 0.03456616401672363,
+      "error": null
+    },
+    "assert get_Inv_Count([1, 2, 8, 1, 3], 2) == 0": {
+      "result": true,
+      "time": 0.04128861427307129,
+      "error": null
+    },
+    "assert get_Inv_Count([6, 1, 9, 11, 6], 1) == 0": {
+      "result": true,
+      "time": 0.041112422943115234,
+      "error": null
+    },
+    "assert get_Inv_Count([2, 6, 2, 5, 1], 3) == 1": {
+      "result": true,
+      "time": 0.05453205108642578,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

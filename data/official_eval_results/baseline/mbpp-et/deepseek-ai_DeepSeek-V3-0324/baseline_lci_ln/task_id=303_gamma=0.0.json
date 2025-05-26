@@ -1,0 +1,494 @@
+{
+  "code": "def solve(arr, n):\n    count_01 = 0\n    count_10 = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            if arr[i] == 0 and arr[j] == 1:\n                count_01 += 1\n            elif arr[i] == 1 and arr[j] == 0:\n                count_10 += 1\n    return count_01 == count_10",
+  "results": {
+    "assert solve([1,0,2],3) == True": {
+      "result": false,
+      "time": 0.05687379837036133,
+      "error": null
+    },
+    "assert solve([1,2,0],3) == False": {
+      "result": true,
+      "time": 0.05619096755981445,
+      "error": null
+    },
+    "assert solve([1,2,1],3) == True": {
+      "result": true,
+      "time": 0.060884714126586914,
+      "error": null
+    },
+    "assert solve([5, 2, 6], 3) == True": {
+      "result": true,
+      "time": 0.04516720771789551,
+      "error": null
+    },
+    "assert solve([6, 5, 1], 1) == True": {
+      "result": true,
+      "time": 0.04820895195007324,
+      "error": null
+    },
+    "assert solve([5, 5, 4], 1) == True": {
+      "result": true,
+      "time": 0.05765581130981445,
+      "error": null
+    },
+    "assert solve([4, 1, 3], 2) == True": {
+      "result": true,
+      "time": 0.054735422134399414,
+      "error": null
+    },
+    "assert solve([4, 5, 3], 2) == True": {
+      "result": true,
+      "time": 0.05962729454040527,
+      "error": null
+    },
+    "assert solve([6, 5, 3], 3) == False": {
+      "result": false,
+      "time": 0.043509483337402344,
+      "error": null
+    },
+    "assert solve([5, 2, 4], 3) == False": {
+      "result": false,
+      "time": 0.04782986640930176,
+      "error": null
+    },
+    "assert solve([1, 5, 5], 3) == True": {
+      "result": true,
+      "time": 0.05235862731933594,
+      "error": null
+    },
+    "assert solve([6, 4, 6], 2) == True": {
+      "result": true,
+      "time": 0.05998492240905762,
+      "error": null
+    },
+    "assert solve([3, 2, 7], 1) == True": {
+      "result": true,
+      "time": 0.053905487060546875,
+      "error": null
+    },
+    "assert solve([4, 3, 3], 3) == False": {
+      "result": false,
+      "time": 0.05056357383728027,
+      "error": null
+    },
+    "assert solve([1, 4, 3], 3) == True": {
+      "result": true,
+      "time": 0.05356121063232422,
+      "error": null
+    },
+    "assert solve([3, 4, 4], 3) == True": {
+      "result": true,
+      "time": 0.048836708068847656,
+      "error": null
+    },
+    "assert solve([6, 1, 3], 3) == False": {
+      "result": false,
+      "time": 0.04764294624328613,
+      "error": null
+    },
+    "assert solve([3, 5, 1], 4) == False": {
+      "result": false,
+      "time": 0.03967928886413574,
+      "error": null
+    },
+    "assert solve([6, 2, 6], 1) == True": {
+      "result": true,
+      "time": 0.04082489013671875,
+      "error": null
+    },
+    "assert solve([5, 5, 4], 8) == False": {
+      "result": false,
+      "time": 0.037770748138427734,
+      "error": null
+    },
+    "assert solve([5, 1, 2], 4) == False": {
+      "result": false,
+      "time": 0.04137778282165527,
+      "error": null
+    },
+    "assert solve([3, 3, 1], 1) == True": {
+      "result": true,
+      "time": 0.044975996017456055,
+      "error": null
+    },
+    "assert solve([1, 3, 4], 1) == True": {
+      "result": true,
+      "time": 0.04714155197143555,
+      "error": null
+    },
+    "assert solve([4, 5, 4], 3) == True": {
+      "result": true,
+      "time": 0.03803443908691406,
+      "error": null
+    },
+    "assert solve([4, 5, 3], 6) == False": {
+      "result": false,
+      "time": 0.052045583724975586,
+      "error": null
+    },
+    "assert solve([6, 3, 2], 8) == False": {
+      "result": false,
+      "time": 0.037065744400024414,
+      "error": null
+    },
+    "assert solve([4, 4, 2], 8) == False": {
+      "result": false,
+      "time": 0.04230189323425293,
+      "error": null
+    },
+    "assert solve([1, 1, 3], 2) == True": {
+      "result": true,
+      "time": 0.03646206855773926,
+      "error": null
+    },
+    "assert solve([4, 1, 1], 4) == False": {
+      "result": false,
+      "time": 0.03662276268005371,
+      "error": null
+    },
+    "assert solve([5, 5, 3], 3) == False": {
+      "result": false,
+      "time": 0.043030500411987305,
+      "error": null
+    },
+    "assert solve([5, 1, 5], 3) == True": {
+      "result": true,
+      "time": 0.0439906120300293,
+      "error": null
+    },
+    "assert solve([5, 4, 2], 2) == True": {
+      "result": true,
+      "time": 0.039673805236816406,
+      "error": null
+    },
+    "assert solve([5, 2, 2], 7) == False": {
+      "result": false,
+      "time": 0.04667258262634277,
+      "error": null
+    },
+    "assert solve([5, 4, 3], 4) == False": {
+      "result": false,
+      "time": 0.04907536506652832,
+      "error": null
+    },
+    "assert solve([3, 3, 3], 3) == True": {
+      "result": true,
+      "time": 0.039455413818359375,
+      "error": null
+    },
+    "assert solve([5, 1, 5], 2) == True": {
+      "result": true,
+      "time": 0.03980445861816406,
+      "error": null
+    },
+    "assert solve([5, 4, 1], 7) == False": {
+      "result": false,
+      "time": 0.035117387771606445,
+      "error": null
+    },
+    "assert solve([4, 6, 1], 7) == False": {
+      "result": false,
+      "time": 0.043685197830200195,
+      "error": null
+    },
+    "assert solve([5, 2, 1], 4) == False": {
+      "result": false,
+      "time": 0.0439915657043457,
+      "error": null
+    },
+    "assert solve([4, 2, 2], 4) == False": {
+      "result": false,
+      "time": 0.047223567962646484,
+      "error": null
+    },
+    "assert solve([1, 5, 3], 3) == True": {
+      "result": true,
+      "time": 0.04148411750793457,
+      "error": null
+    },
+    "assert solve([6, 2, 3], 6) == False": {
+      "result": false,
+      "time": 0.04117870330810547,
+      "error": null
+    },
+    "assert solve([6, 4, 3], 7) == False": {
+      "result": false,
+      "time": 0.03869962692260742,
+      "error": null
+    },
+    "assert solve([5, 7, 4], 8) == False": {
+      "result": false,
+      "time": 0.03865957260131836,
+      "error": null
+    },
+    "assert solve([6, 5, 2], 4) == False": {
+      "result": false,
+      "time": 0.039928436279296875,
+      "error": null
+    },
+    "assert solve([1, 7, 5], 3) == True": {
+      "result": true,
+      "time": 0.04672503471374512,
+      "error": null
+    },
+    "assert solve([2, 2, 1], 6) == False": {
+      "result": false,
+      "time": 0.04738140106201172,
+      "error": null
+    },
+    "assert solve([4, 3, 3], 6) == False": {
+      "result": false,
+      "time": 0.040311336517333984,
+      "error": null
+    },
+    "assert solve([5, 3, 1], 5) == False": {
+      "result": false,
+      "time": 0.04110860824584961,
+      "error": null
+    },
+    "assert solve([6, 6, 3], 4) == False": {
+      "result": false,
+      "time": 0.04180002212524414,
+      "error": null
+    },
+    "assert solve([5, 4, 3], 2) == True": {
+      "result": true,
+      "time": 0.04426407814025879,
+      "error": null
+    },
+    "assert solve([6, 1, 5], 3) == False": {
+      "result": false,
+      "time": 0.04597306251525879,
+      "error": null
+    },
+    "assert solve([4, 2, 4], 1) == True": {
+      "result": true,
+      "time": 0.03850436210632324,
+      "error": null
+    },
+    "assert solve([4, 2, 5], 1) == True": {
+      "result": true,
+      "time": 0.039325714111328125,
+      "error": null
+    },
+    "assert solve([4, 6, 1], 5) == False": {
+      "result": false,
+      "time": 0.03822016716003418,
+      "error": null
+    },
+    "assert solve([6, 7, 3], 8) == False": {
+      "result": false,
+      "time": 0.04259467124938965,
+      "error": null
+    },
+    "assert solve([5, 2, 3], 4) == False": {
+      "result": false,
+      "time": 0.04204607009887695,
+      "error": null
+    },
+    "assert solve([1, 6, 1], 1) == True": {
+      "result": true,
+      "time": 0.03720545768737793,
+      "error": null
+    },
+    "assert solve([6, 2, 1], 5) == False": {
+      "result": false,
+      "time": 0.04809379577636719,
+      "error": null
+    },
+    "assert solve([4, 6, 4], 2) == True": {
+      "result": true,
+      "time": 0.03661751747131348,
+      "error": null
+    },
+    "assert solve([6, 6, 3], 2) == True": {
+      "result": true,
+      "time": 0.04765915870666504,
+      "error": null
+    },
+    "assert solve([6, 1, 1], 3) == False": {
+      "result": false,
+      "time": 0.040101051330566406,
+      "error": null
+    },
+    "assert solve([3, 5, 1], 1) == True": {
+      "result": true,
+      "time": 0.044909000396728516,
+      "error": null
+    },
+    "assert solve([2, 7, 1], 6) == False": {
+      "result": false,
+      "time": 0.049660444259643555,
+      "error": null
+    },
+    "assert solve([1, 6, 5], 1) == True": {
+      "result": true,
+      "time": 0.04831337928771973,
+      "error": null
+    },
+    "assert solve([6, 5, 4], 7) == False": {
+      "result": false,
+      "time": 0.03927040100097656,
+      "error": null
+    },
+    "assert solve([2, 7, 1], 7) == False": {
+      "result": false,
+      "time": 0.03859257698059082,
+      "error": null
+    },
+    "assert solve([5, 6, 4], 2) == True": {
+      "result": true,
+      "time": 0.04248666763305664,
+      "error": null
+    },
+    "assert solve([1, 3, 4], 3) == True": {
+      "result": true,
+      "time": 0.038466691970825195,
+      "error": null
+    },
+    "assert solve([5, 2, 4], 8) == False": {
+      "result": false,
+      "time": 0.04253864288330078,
+      "error": null
+    },
+    "assert solve([3, 5, 3], 1) == True": {
+      "result": true,
+      "time": 0.04519343376159668,
+      "error": null
+    },
+    "assert solve([6, 2, 1], 2) == True": {
+      "result": true,
+      "time": 0.041344642639160156,
+      "error": null
+    },
+    "assert solve([4, 1, 5], 3) == True": {
+      "result": true,
+      "time": 0.04426884651184082,
+      "error": null
+    },
+    "assert solve([6, 1, 4], 8) == False": {
+      "result": false,
+      "time": 0.044835567474365234,
+      "error": null
+    },
+    "assert solve([6, 4, 3], 4) == False": {
+      "result": false,
+      "time": 0.04493570327758789,
+      "error": null
+    },
+    "assert solve([4, 3, 1], 1) == True": {
+      "result": true,
+      "time": 0.04243755340576172,
+      "error": null
+    },
+    "assert solve([6, 2, 3], 5) == False": {
+      "result": false,
+      "time": 0.039891719818115234,
+      "error": null
+    },
+    "assert solve([5, 7, 4], 1) == True": {
+      "result": true,
+      "time": 0.03638768196105957,
+      "error": null
+    },
+    "assert solve([3, 5, 1], 3) == False": {
+      "result": false,
+      "time": 0.0425870418548584,
+      "error": null
+    },
+    "assert solve([4, 7, 3], 8) == False": {
+      "result": false,
+      "time": 0.04181170463562012,
+      "error": null
+    },
+    "assert solve([4, 3, 3], 1) == True": {
+      "result": true,
+      "time": 0.041611433029174805,
+      "error": null
+    },
+    "assert solve([1, 4, 3], 1) == True": {
+      "result": true,
+      "time": 0.045261383056640625,
+      "error": null
+    },
+    "assert solve([3, 4, 5], 3) == True": {
+      "result": true,
+      "time": 0.04210519790649414,
+      "error": null
+    },
+    "assert solve([3, 3, 2], 2) == True": {
+      "result": true,
+      "time": 0.04641270637512207,
+      "error": null
+    },
+    "assert solve([2, 4, 1], 3) == False": {
+      "result": false,
+      "time": 0.05035233497619629,
+      "error": null
+    },
+    "assert solve([6, 6, 5], 2) == True": {
+      "result": true,
+      "time": 0.04297065734863281,
+      "error": null
+    },
+    "assert solve([4, 3, 4], 1) == True": {
+      "result": true,
+      "time": 0.041876792907714844,
+      "error": null
+    },
+    "assert solve([4, 6, 1], 8) == False": {
+      "result": false,
+      "time": 0.059035539627075195,
+      "error": null
+    },
+    "assert solve([2, 5, 6], 2) == True": {
+      "result": true,
+      "time": 0.04127359390258789,
+      "error": null
+    },
+    "assert solve([2, 1, 1], 2) == True": {
+      "result": true,
+      "time": 0.05143380165100098,
+      "error": null
+    },
+    "assert solve([3, 3, 2], 5) == False": {
+      "result": false,
+      "time": 0.041857242584228516,
+      "error": null
+    },
+    "assert solve([1, 5, 2], 3) == True": {
+      "result": true,
+      "time": 0.04968070983886719,
+      "error": null
+    },
+    "assert solve([6, 4, 2], 6) == False": {
+      "result": false,
+      "time": 0.048030853271484375,
+      "error": null
+    },
+    "assert solve([4, 2, 3], 1) == True": {
+      "result": true,
+      "time": 0.047936439514160156,
+      "error": null
+    },
+    "assert solve([5, 6, 3], 2) == True": {
+      "result": true,
+      "time": 0.05169677734375,
+      "error": null
+    },
+    "assert solve([5, 7, 3], 6) == False": {
+      "result": false,
+      "time": 0.046530723571777344,
+      "error": null
+    },
+    "assert solve([5, 5, 2], 1) == True": {
+      "result": true,
+      "time": 0.048436880111694336,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.5154639175257731,
+  "general_error": "",
+  "has_testcase_error": false
+}

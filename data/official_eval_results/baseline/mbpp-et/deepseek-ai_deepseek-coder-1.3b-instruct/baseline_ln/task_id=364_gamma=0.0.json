@@ -1,0 +1,519 @@
+{
+  "code": "def min_flip_to_make_string_alternate(binary_string):\n    flips = 0\n    last_flip = None\n    for i in range(len(binary_string)):\n        if binary_string[i] == last_flip:\n            flips += 1\n            last_flip = None if last_flip == '0' else '0'\n        else:\n            last_flip = binary_string[i]\n    return flips\n",
+  "results": {
+    "assert min_flip_to_make_string_alternate(\"0001010111\") == 2": {
+      "result": true,
+      "time": 0.04370832443237305,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"001\") == 1": {
+      "result": true,
+      "time": 0.03521251678466797,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"010111011\") == 2 ": {
+      "result": true,
+      "time": 0.0445551872253418,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"35742806887\") == 10": {
+      "result": false,
+      "time": 0.04413199424743652,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"98400012\") == 5": {
+      "result": false,
+      "time": 0.041487693786621094,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"754358422602\") == 11": {
+      "result": false,
+      "time": 0.03833460807800293,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"769873808841\") == 11": {
+      "result": false,
+      "time": 0.03523111343383789,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"3169757\") == 6": {
+      "result": false,
+      "time": 0.04384779930114746,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"4635627886\") == 10": {
+      "result": false,
+      "time": 0.045374393463134766,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"6451611\") == 5": {
+      "result": false,
+      "time": 0.03873753547668457,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"2446327424\") == 10": {
+      "result": false,
+      "time": 0.03476715087890625,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"762941945826\") == 11": {
+      "result": false,
+      "time": 0.0473785400390625,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"51131928888089\") == 11": {
+      "result": false,
+      "time": 0.03489804267883301,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"6438442353\") == 10": {
+      "result": false,
+      "time": 0.03608107566833496,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"3234862467\") == 10": {
+      "result": false,
+      "time": 0.037476539611816406,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"7277604347\") == 9": {
+      "result": false,
+      "time": 0.0436248779296875,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"295883214101\") == 8": {
+      "result": false,
+      "time": 0.03599071502685547,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"02250687907191\") == 10": {
+      "result": false,
+      "time": 0.04533720016479492,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"30700545\") == 6": {
+      "result": false,
+      "time": 0.03660178184509277,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"667022\") == 5": {
+      "result": false,
+      "time": 0.04101705551147461,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"945146937889697\") == 14": {
+      "result": false,
+      "time": 0.03685259819030762,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"9250088804596\") == 11": {
+      "result": false,
+      "time": 0.03396129608154297,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"98170965621\") == 9": {
+      "result": false,
+      "time": 0.0393519401550293,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"237266461\") == 8": {
+      "result": false,
+      "time": 0.031438350677490234,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"4401450\") == 4": {
+      "result": false,
+      "time": 0.04445767402648926,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"4964658\") == 7": {
+      "result": false,
+      "time": 0.03855180740356445,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"4016161483210\") == 9": {
+      "result": false,
+      "time": 0.04290175437927246,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"7330854\") == 6": {
+      "result": false,
+      "time": 0.033855438232421875,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"04994108774\") == 8": {
+      "result": false,
+      "time": 0.033104658126831055,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"911417446756\") == 10": {
+      "result": false,
+      "time": 0.039339303970336914,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"433686670131\") == 9": {
+      "result": false,
+      "time": 0.03507494926452637,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"76226661174\") == 10": {
+      "result": false,
+      "time": 0.030805587768554688,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"1253007347\") == 8": {
+      "result": false,
+      "time": 0.0373988151550293,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"2375534\") == 7": {
+      "result": false,
+      "time": 0.03903961181640625,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"0495036\") == 5": {
+      "result": false,
+      "time": 0.0394740104675293,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"603874700\") == 7": {
+      "result": false,
+      "time": 0.039879560470581055,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"699\") == 3": {
+      "result": false,
+      "time": 0.03587484359741211,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"41393\") == 4": {
+      "result": false,
+      "time": 0.04239654541015625,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"1243707\") == 5": {
+      "result": false,
+      "time": 0.0382847785949707,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"021099910\") == 6": {
+      "result": false,
+      "time": 0.03327155113220215,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"378\") == 3": {
+      "result": false,
+      "time": 0.03370547294616699,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"9821\") == 3": {
+      "result": false,
+      "time": 0.03683137893676758,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"449683980\") == 8": {
+      "result": false,
+      "time": 0.03355884552001953,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"578\") == 3": {
+      "result": false,
+      "time": 0.047048330307006836,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"29490\") == 4": {
+      "result": false,
+      "time": 0.03754830360412598,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"02741\") == 4": {
+      "result": false,
+      "time": 0.0403132438659668,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"65416970\") == 7": {
+      "result": false,
+      "time": 0.05094003677368164,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"5632793\") == 7": {
+      "result": false,
+      "time": 0.04341387748718262,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"489505\") == 5": {
+      "result": false,
+      "time": 0.036949872970581055,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"2872785\") == 7": {
+      "result": false,
+      "time": 0.03888678550720215,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"08363118\") == 6": {
+      "result": false,
+      "time": 0.03745293617248535,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"363\") == 3": {
+      "result": false,
+      "time": 0.04002785682678223,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"126152\") == 5": {
+      "result": false,
+      "time": 0.03232145309448242,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"839\") == 3": {
+      "result": false,
+      "time": 0.03859591484069824,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"869\") == 3": {
+      "result": false,
+      "time": 0.04175853729248047,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"7579766\") == 7": {
+      "result": false,
+      "time": 0.0360720157623291,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"53360\") == 4": {
+      "result": false,
+      "time": 0.03784489631652832,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"133322\") == 5": {
+      "result": false,
+      "time": 0.041435956954956055,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"01492153\") == 5": {
+      "result": false,
+      "time": 0.03448343276977539,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"2907472\") == 6": {
+      "result": false,
+      "time": 0.03272366523742676,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"193864673\") == 8": {
+      "result": false,
+      "time": 0.038980722427368164,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"8243\") == 4": {
+      "result": false,
+      "time": 0.04072165489196777,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"428598\") == 6": {
+      "result": false,
+      "time": 0.03540754318237305,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"5984419\") == 6": {
+      "result": false,
+      "time": 0.04494762420654297,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"428285106\") == 7": {
+      "result": false,
+      "time": 0.04093766212463379,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"221763\") == 5": {
+      "result": false,
+      "time": 0.04465603828430176,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"9391\") == 3": {
+      "result": false,
+      "time": 0.04390072822570801,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"66654215\") == 7": {
+      "result": false,
+      "time": 0.044586896896362305,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"50267197\") == 7": {
+      "result": false,
+      "time": 0.046906232833862305,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"48163287\") == 7": {
+      "result": false,
+      "time": 0.04079794883728027,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"322629\") == 6": {
+      "result": false,
+      "time": 0.03337550163269043,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"16288567\") == 7": {
+      "result": false,
+      "time": 0.04100680351257324,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"05630618123332\") == 12": {
+      "result": false,
+      "time": 0.04137849807739258,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"850512613258\") == 10": {
+      "result": false,
+      "time": 0.04556393623352051,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"260556471\") == 8": {
+      "result": false,
+      "time": 0.04190969467163086,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"5894251916\") == 8": {
+      "result": false,
+      "time": 0.04461336135864258,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"89302748510\") == 9": {
+      "result": false,
+      "time": 0.040894508361816406,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"37021784985\") == 10": {
+      "result": false,
+      "time": 0.04863142967224121,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"700193\") == 4": {
+      "result": false,
+      "time": 0.040111541748046875,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"334404921\") == 8": {
+      "result": false,
+      "time": 0.04103207588195801,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"4160759333\") == 9": {
+      "result": false,
+      "time": 0.046189308166503906,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"157055876711914\") == 12": {
+      "result": false,
+      "time": 0.04195523262023926,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"986465143196\") == 11": {
+      "result": false,
+      "time": 0.054297447204589844,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"058354\") == 5": {
+      "result": false,
+      "time": 0.04254794120788574,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"43669432154\") == 10": {
+      "result": false,
+      "time": 0.04458045959472656,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"21567309542\") == 9": {
+      "result": false,
+      "time": 0.04540252685546875,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"1606269610707\") == 9": {
+      "result": false,
+      "time": 0.03820204734802246,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"826597376933\") == 12": {
+      "result": false,
+      "time": 0.0556178092956543,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"667265\") == 6": {
+      "result": false,
+      "time": 0.038675785064697266,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"3743372105320\") == 10": {
+      "result": false,
+      "time": 0.04607248306274414,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"993766430\") == 8": {
+      "result": false,
+      "time": 0.04324913024902344,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"701518059\") == 6": {
+      "result": false,
+      "time": 0.03754782676696777,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"833425226\") == 9": {
+      "result": false,
+      "time": 0.04229569435119629,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"468548\") == 6": {
+      "result": false,
+      "time": 0.043718576431274414,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"5066806162\") == 8": {
+      "result": false,
+      "time": 0.04692983627319336,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"29054356153647\") == 13": {
+      "result": false,
+      "time": 0.04007911682128906,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"9784496380154\") == 11": {
+      "result": false,
+      "time": 0.03931713104248047,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"49409628941440\") == 11": {
+      "result": false,
+      "time": 0.041376352310180664,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"689390859742283\") == 14": {
+      "result": false,
+      "time": 0.04596352577209473,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"916201067\") == 5": {
+      "result": false,
+      "time": 0.04987978935241699,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"78732549881\") == 10": {
+      "result": false,
+      "time": 0.03742408752441406,
+      "error": null
+    },
+    "assert min_flip_to_make_string_alternate(\"2561049798191\") == 11": {
+      "result": false,
+      "time": 0.041629791259765625,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.029411764705882353,
+  "general_error": "",
+  "has_testcase_error": false
+}

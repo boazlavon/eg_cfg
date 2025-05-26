@@ -1,0 +1,514 @@
+{
+  "code": "def same_order(list1, list2):\n    # Extract common elements from both lists\n    common_elements = []\n    for element in list1:\n        if element in list2:\n            common_elements.append(element)\n    \n    # Extract the order of common elements in list1\n    order_list1 = []\n    for element in list1:\n        if element in common_elements:\n            order_list1.append(element)\n    \n    # Extract the order of common elements in list2\n    order_list2 = []\n    for element in list2:\n        if element in common_elements:\n            order_list2.append(element)\n    \n    # Check if the orders match\n    if order_list1 == order_list2:\n        return True\n    else:\n        return False",
+  "results": {
+    "assert same_order([\"red\",\"green\",\"black\",\"orange\"],[\"red\",\"pink\",\"green\",\"white\",\"black\"])==True": {
+      "result": true,
+      "time": 0.04892086982727051,
+      "error": null
+    },
+    "assert same_order([\"red\",\"pink\",\"green\",\"white\",\"black\"],[\"white\",\"orange\",\"pink\",\"black\"])==False": {
+      "result": true,
+      "time": 0.05180692672729492,
+      "error": null
+    },
+    "assert same_order(['lqggiz', 'onf', 'puxlf', 'mlauipydp'], ['hlgsonb', 'axeicwmx', 'scwrdsp', 'tgszpbyw', 'kmyyogjjz']) == True": {
+      "result": true,
+      "time": 0.04504585266113281,
+      "error": null
+    },
+    "assert same_order(['jahjuezu', 'irmdozkx', 'ish', 'whqvobcken'], ['pntkmtoby', 'feippbxff', 'zpowbpbzz', 'tspktrz', 'mowlj']) == True": {
+      "result": true,
+      "time": 0.049504756927490234,
+      "error": null
+    },
+    "assert same_order(['xryk', 'eepv', 'qojeb', 'umbsodic'], ['nsdvtjp', 'agoicgu', 'iiqidruw', 'mpocwu', 'ttix']) == True": {
+      "result": true,
+      "time": 0.03192543983459473,
+      "error": null
+    },
+    "assert same_order(['zsadch', 'qfayh', 'gcycx', 'gtlnnssoxvv'], ['cqt', 'ruaabuzj', 'oiemwulej', 'brmltjn', 'aib']) == True": {
+      "result": true,
+      "time": 0.03220224380493164,
+      "error": null
+    },
+    "assert same_order(['oxdone', 'fssyttoo', 'wrtqscu', 'boifusrfpsrt'], ['anpowao', 'qrgqm', 'dtw', 'rtuemcwk', 'unetvmsp']) == True": {
+      "result": true,
+      "time": 0.03339838981628418,
+      "error": null
+    },
+    "assert same_order(['ggfdnce', 'gkf', 'wij', 'cinxaxmnz'], ['bgob', 'ptmahfi', 'fcpgufig', 'obvtufc', 'fjisklnbm']) == True": {
+      "result": true,
+      "time": 0.03194451332092285,
+      "error": null
+    },
+    "assert same_order(['alvoxr', 'utnpyuga', 'mszd', 'btyiud'], ['emdpfpv', 'unqvv', 'igiw', 'bjhh', 'bfp']) == True": {
+      "result": true,
+      "time": 0.03395438194274902,
+      "error": null
+    },
+    "assert same_order(['ozrvauw', 'qduoq', 'qgylt', 'pqawdp'], ['zldl', 'cfdb', 'ike', 'jajajtdvj', 'tdvkiil']) == True": {
+      "result": true,
+      "time": 0.03329896926879883,
+      "error": null
+    },
+    "assert same_order(['yfuoaoozq', 'wufp', 'vxo', 'wzphtvfbvjia'], ['vztrqc', 'xqb', 'rxtuh', 'urnt', 'fxzacsufg']) == True": {
+      "result": true,
+      "time": 0.03619837760925293,
+      "error": null
+    },
+    "assert same_order(['odyzv', 'elpfo', 'bcac', 'vgeud'], ['wqks', 'fzmfzhe', 'jql', 'syxzdxqp', 'zma']) == True": {
+      "result": true,
+      "time": 0.03301286697387695,
+      "error": null
+    },
+    "assert same_order(['mpv', 'hqrzfa', 'giifxfsm', 'zdpmtmr'], ['oddchv', 'yesiwq', 'nhuqck', 'kpx', 'bxkd']) == True": {
+      "result": true,
+      "time": 0.0311276912689209,
+      "error": null
+    },
+    "assert same_order(['iuroj', 'yhqdg', 'egfxdk', 'armurcralskx'], ['khntfxcv', 'ahepch', 'cjxlxs', 'uhcmyw', 'zlfroej']) == True": {
+      "result": true,
+      "time": 0.029352903366088867,
+      "error": null
+    },
+    "assert same_order(['vtpwg', 'jxjj', 'wkqawn', 'xbqfwxaevpi'], ['aqwj', 'xqyqtckw', 'spl', 'putogaeh', 'eabhbvre']) == True": {
+      "result": true,
+      "time": 0.03350234031677246,
+      "error": null
+    },
+    "assert same_order(['jtbiwit', 'iatug', 'rcwg', 'bqezlny'], ['pagp', 'wfmp', 'wacyipqan', 'etg', 'zrx']) == True": {
+      "result": true,
+      "time": 0.035695552825927734,
+      "error": null
+    },
+    "assert same_order(['lizowklak', 'jfrcq', 'igfsha', 'nei'], ['zclw', 'pdjkjvaq', 'eexzf', 'ybwhgk', 'efodpx']) == True": {
+      "result": true,
+      "time": 0.03676724433898926,
+      "error": null
+    },
+    "assert same_order(['wqdhca', 'jycaet', 'fmuyiarb', 'etzzuc'], ['xckfulwi', 'issoj', 'rbfqpsus', 'vhfm', 'trjnhay']) == True": {
+      "result": true,
+      "time": 0.03263998031616211,
+      "error": null
+    },
+    "assert same_order(['vatscbvti', 'wqrt', 'qsipft', 'ezgyco'], ['uoinko', 'rvslpv', 'inj', 'olfcrujn', 'abttlnto']) == True": {
+      "result": true,
+      "time": 0.03379368782043457,
+      "error": null
+    },
+    "assert same_order(['dvdwld', 'isbuktie', 'yklumwh', 'ipzqqq'], ['mhrkiqrgj', 'rxldxos', 'yxz', 'eclalo', 'qovza']) == True": {
+      "result": true,
+      "time": 0.03440666198730469,
+      "error": null
+    },
+    "assert same_order(['ebggiy', 'lhlqvm', 'pexcnp', 'lpjkgiuvzfl'], ['cmhzat', 'vgtqo', 'iocgxi', 'qdsu', 'toi']) == True": {
+      "result": true,
+      "time": 0.03709864616394043,
+      "error": null
+    },
+    "assert same_order(['cmyxpxnm', 'sfdnqs', 'jpvbhypnj', 'ftux'], ['bbamen', 'rbakajk', 'mbvpmzbog', 'ilebnlh', 'qztwg']) == True": {
+      "result": true,
+      "time": 0.03372597694396973,
+      "error": null
+    },
+    "assert same_order(['jmzwbcy', 'kru', 'conubw', 'gztnuc'], ['egupde', 'wryenctol', 'yjxqpx', 'tcqq', 'ose']) == True": {
+      "result": true,
+      "time": 0.03335165977478027,
+      "error": null
+    },
+    "assert same_order(['fvlqpmj', 'bdms', 'vrhjk', 'ynagtq'], ['cod', 'gurfxj', 'kokcfvp', 'dafvfgtdq', 'kzr']) == True": {
+      "result": true,
+      "time": 0.037271976470947266,
+      "error": null
+    },
+    "assert same_order(['rzfu', 'rws', 'yhyrro', 'kpcmunx'], ['cvfddfhs', 'deuxcpi', 'vbysac', 'pxkqt', 'rgtex']) == True": {
+      "result": true,
+      "time": 0.0332951545715332,
+      "error": null
+    },
+    "assert same_order(['foxhu', 'foihd', 'dubxkiap', 'sdm'], ['mfki', 'hiclf', 'qkfr', 'ojrewsm', 'qowkgih']) == True": {
+      "result": true,
+      "time": 0.03591465950012207,
+      "error": null
+    },
+    "assert same_order(['jyqjdokw', 'xqwnvj', 'ewtqmdltf', 'nmrep'], ['ihxjbg', 'zzlz', 'wkzoukbxq', 'yqvywocxa', 'ifixyqp']) == True": {
+      "result": true,
+      "time": 0.03372478485107422,
+      "error": null
+    },
+    "assert same_order(['mlwfbsh', 'clkpzc', 'iki', 'ssnx'], ['chpdgto', 'lwlvnx', 'jibh', 'wqftzm', 'hobkxx']) == True": {
+      "result": true,
+      "time": 0.03350639343261719,
+      "error": null
+    },
+    "assert same_order(['txq', 'ajbqe', 'sybmv', 'slwje'], ['jbzbsibe', 'jqz', 'waaeuykn', 'kns', 'zymqe']) == True": {
+      "result": true,
+      "time": 0.03345537185668945,
+      "error": null
+    },
+    "assert same_order(['mtqijmkuw', 'tene', 'dhgqcnfsl', 'iouols'], ['ozf', 'ctcwseg', 'dgw', 'fjmbzcu', 'codv']) == True": {
+      "result": true,
+      "time": 0.03530240058898926,
+      "error": null
+    },
+    "assert same_order(['ozx', 'fhwhcbvy', 'fwuxtexyy', 'wcdz'], ['ggzmcggk', 'ofpt', 'mmqozrmpd', 'mepssnrg', 'yff']) == True": {
+      "result": true,
+      "time": 0.04221940040588379,
+      "error": null
+    },
+    "assert same_order(['aoxf', 'spy', 'vepkxc', 'ipcwu'], ['eqimvtvk', 'crrxaim', 'yjeqzg', 'ggltjdqj', 'hlu']) == True": {
+      "result": true,
+      "time": 0.03442955017089844,
+      "error": null
+    },
+    "assert same_order(['qqy', 'xngyqaeqn', 'gdkwaeon', 'bfyzjusdo'], ['oaesdxxkm', 'ktqusgis', 'xrmgkdoz', 'wipmxsip', 'knqob']) == True": {
+      "result": true,
+      "time": 0.03505420684814453,
+      "error": null
+    },
+    "assert same_order(['obi', 'ctnrhl', 'gshpqmehs', 'uspnkoeai'], ['ylx', 'yarfqb', 'whsr', 'vcasqsec', 'ugtd']) == True": {
+      "result": true,
+      "time": 0.03803253173828125,
+      "error": null
+    },
+    "assert same_order(['lfpbnrsy', 'sykz', 'trykr', 'nlkwya'], ['exfl', 'garnd', 'uaecu', 'nglup', 'ncgc']) == True": {
+      "result": true,
+      "time": 0.043309688568115234,
+      "error": null
+    },
+    "assert same_order(['hccywdlcw', 'rvck', 'acm', 'sled', 'ougw'], ['rfttbwd', 'kmg', 'zou', 'yovaex']) == True": {
+      "result": true,
+      "time": 0.04847860336303711,
+      "error": null
+    },
+    "assert same_order(['sjhmmkums', 'kcbplpat', 'xeijv', 'tjejkzev', 'qqpawipo'], ['jsrz', 'uuddkxzu', 'eyswuppv', 'ohjsl']) == True": {
+      "result": true,
+      "time": 0.0376436710357666,
+      "error": null
+    },
+    "assert same_order(['zcpmkpcni', 'grqtoha', 'vhqzb', 'oiofjef', 'eyaehs'], ['tjsvvmhvg', 'vpxuugv', 'ldbbdmobx', 'gzhfunhkd']) == True": {
+      "result": true,
+      "time": 0.03618597984313965,
+      "error": null
+    },
+    "assert same_order(['kialt', 'itinjjmt', 'skljtgtjx', 'gkdb', 'zvkco'], ['rshuec', 'mhwwzwwisjg', 'qdsjsdvn', 'dzjrzqgpu']) == True": {
+      "result": true,
+      "time": 0.03884601593017578,
+      "error": null
+    },
+    "assert same_order(['zqk', 'cmfzx', 'tdlbabz', 'kkeykoqnq', 'kapekdyjy'], ['aqhdv', 'gppjb', 'hrx', 'cyqmgp']) == True": {
+      "result": true,
+      "time": 0.035851240158081055,
+      "error": null
+    },
+    "assert same_order(['flpu', 'pxusd', 'syf', 'jheoxt', 'hry'], ['hxd', 'oupxf', 'evmgsiujv', 'fffawox']) == True": {
+      "result": true,
+      "time": 0.03306388854980469,
+      "error": null
+    },
+    "assert same_order(['qeujsmxq', 'rymcgool', 'ezaqo', 'lyezqtwb', 'qfuxskw'], ['bymnhgb', 'pstijqrlw', 'nhwpw', 'srzanozla']) == True": {
+      "result": true,
+      "time": 0.03506588935852051,
+      "error": null
+    },
+    "assert same_order(['erfnk', 'tzvk', 'qhjobbo', 'pblxb', 'yeuikaw'], ['emsfwpe', 'kjgu', 'yvty', 'cnr']) == True": {
+      "result": true,
+      "time": 0.031385183334350586,
+      "error": null
+    },
+    "assert same_order(['ezzrepy', 'ndhqlngbb', 'nufz', 'muwhbc', 'izjpioqy'], ['hma', 'jgx', 'dknfqs', 'vagkaqh']) == True": {
+      "result": true,
+      "time": 0.02874279022216797,
+      "error": null
+    },
+    "assert same_order(['xeatvodv', 'ajn', 'lbvy', 'fuuij', 'ptp'], ['kfr', 'ppvetwetwo', 'limqy', 'jrjz']) == True": {
+      "result": true,
+      "time": 0.03230857849121094,
+      "error": null
+    },
+    "assert same_order(['vbw', 'egbwjdus', 'lbwekw', 'fqxpvyp', 'djguasoyg'], ['zfs', 'xbtvlxfl', 'rlal', 'sfpzlfkcz']) == True": {
+      "result": true,
+      "time": 0.03564596176147461,
+      "error": null
+    },
+    "assert same_order(['zmcyrltt', 'piun', 'sbeuaxs', 'kwv', 'tauagwost'], ['wgcfy', 'ylksucc', 'vcfb', 'ikhanfv']) == True": {
+      "result": true,
+      "time": 0.03224778175354004,
+      "error": null
+    },
+    "assert same_order(['azqvlpe', 'ujvpne', 'vxpfr', 'uvwydooe', 'kjxsbj'], ['gyfcy', 'usfw', 'dtao', 'mgspaoum']) == True": {
+      "result": true,
+      "time": 0.03577756881713867,
+      "error": null
+    },
+    "assert same_order(['ugd', 'cubwgwg', 'azjzw', 'dpa', 'rirnhtp'], ['rxhfhudr', 'tfmmicv', 'qdg', 'cqvtfkxx']) == True": {
+      "result": true,
+      "time": 0.03855633735656738,
+      "error": null
+    },
+    "assert same_order(['mvaxnil', 'dum', 'soppmg', 'rgsbymf', 'idtpkpf'], ['eruhb', 'cwgahqdeni', 'eijnh', 'bbvz']) == True": {
+      "result": true,
+      "time": 0.03488278388977051,
+      "error": null
+    },
+    "assert same_order(['abweki', 'jysicitt', 'alfuzqgci', 'ioxrz', 'pyrvp'], ['inejldd', 'teidqbfjw', 'kpi', 'nipwlz']) == True": {
+      "result": true,
+      "time": 0.03407430648803711,
+      "error": null
+    },
+    "assert same_order(['aahtazeu', 'abadz', 'ewdp', 'ojjoxp', 'vbqdekwxq'], ['xai', 'yfp', 'mvbpbwnf', 'smxcfb']) == True": {
+      "result": true,
+      "time": 0.035033464431762695,
+      "error": null
+    },
+    "assert same_order(['qciuno', 'ttbwl', 'ywqcfy', 'pxbuy', 'oitxhaoaw'], ['ymjgrimhg', 'fgm', 'fabw', 'vaydvcqbj']) == True": {
+      "result": true,
+      "time": 0.03564929962158203,
+      "error": null
+    },
+    "assert same_order(['ndytimt', 'zyiek', 'ebxqbftke', 'tgydajzk', 'jzxoqhuy'], ['hcqmt', 'czovpiidjh', 'zxczm', 'vln']) == True": {
+      "result": true,
+      "time": 0.030122995376586914,
+      "error": null
+    },
+    "assert same_order(['jfved', 'xgihijbi', 'eoycfez', 'qhrmlaoi', 'uhbzgszf'], ['odnvrpxul', 'ptua', 'ejdwkww', 'prvehybiz']) == True": {
+      "result": true,
+      "time": 0.03535604476928711,
+      "error": null
+    },
+    "assert same_order(['swbjhsbh', 'vih', 'vrz', 'uvofvzr', 'ijdpxfbt'], ['izy', 'bwhwetlom', 'qkb', 'yebgcsw']) == True": {
+      "result": true,
+      "time": 0.03657984733581543,
+      "error": null
+    },
+    "assert same_order(['kisqx', 'idmt', 'tbmvmyxst', 'svitig', 'awo'], ['ysezpt', 'jhfzf', 'aos', 'snitmfrnl']) == True": {
+      "result": true,
+      "time": 0.03948068618774414,
+      "error": null
+    },
+    "assert same_order(['hqd', 'ezrt', 'dtnlkkl', 'jnu', 'vcuvpqwsb'], ['hhdhljmm', 'wqgdcahgrzg', 'mlrhe', 'dpzl']) == True": {
+      "result": true,
+      "time": 0.03740286827087402,
+      "error": null
+    },
+    "assert same_order(['bjnkgvtbi', 'pecirhoqo', 'qldxloci', 'uhi', 'gnpjxoill'], ['cbdjx', 'oyqenqi', 'vzxulfzht', 'liwvvdq']) == True": {
+      "result": true,
+      "time": 0.03737330436706543,
+      "error": null
+    },
+    "assert same_order(['jklrz', 'eyxybodc', 'jdwlwvldt', 'bqliks', 'kbdiqf'], ['xipn', 'gjhqkilxmva', 'mro', 'erimax']) == True": {
+      "result": true,
+      "time": 0.035840749740600586,
+      "error": null
+    },
+    "assert same_order(['nanjjjxw', 'qmjwfcn', 'tptlrs', 'toegk', 'evmihim'], ['uaw', 'vhxwndi', 'olrhcw', 'eznjga']) == True": {
+      "result": true,
+      "time": 0.040008544921875,
+      "error": null
+    },
+    "assert same_order(['rlfckttth', 'craubovrh', 'gkgbrvzk', 'mukszk', 'wadgxv'], ['pmwvogclb', 'rqowie', 'hwujtvtfa', 'btrcsz']) == True": {
+      "result": true,
+      "time": 0.030904769897460938,
+      "error": null
+    },
+    "assert same_order(['mutdbq', 'iybi', 'sqc', 'untgvmjjn', 'roxfiqqwc'], ['hzv', 'ephh', 'cghd', 'wavi']) == True": {
+      "result": true,
+      "time": 0.03591752052307129,
+      "error": null
+    },
+    "assert same_order(['eufzx', 'rdhoudoaa', 'bzghes', 'evnhtyhos', 'lofw'], ['tdawa', 'roirwga', 'diaeiat', 'ojejjfxg']) == True": {
+      "result": true,
+      "time": 0.0337526798248291,
+      "error": null
+    },
+    "assert same_order(['hqfbrinwz', 'mgmfgfdoh', 'lbisxyy', 'vxrjaf', 'uzmevfdo'], ['zildx', 'jbhtd', 'eygota', 'toh']) == True": {
+      "result": true,
+      "time": 0.032380104064941406,
+      "error": null
+    },
+    "assert same_order(['bslmc', 'lvrengm', 'qtrgulxm', 'fcirp', 'fam'], ['tcfqs', 'zkzrjd', 'ydjxu', 'edw']) == True": {
+      "result": true,
+      "time": 0.0370025634765625,
+      "error": null
+    },
+    "assert same_order(['aydhwpf', 'bvykbc', 'chkiex', 'nqcbp', 'uxredoqq'], ['tlhexrnos', 'kkytmisfqi', 'rtpmsghp', 'imegbs']) == True": {
+      "result": true,
+      "time": 0.03340578079223633,
+      "error": null
+    },
+    "assert same_order(['iehnlc', 'uadzvmp', 'pievk', 'nsp', 'hodruytti'], ['bwl', 'gljecxib', 'hizgjyht', 'eazlm']) == True": {
+      "result": true,
+      "time": 0.034207820892333984,
+      "error": null
+    },
+    "assert same_order(['fehbjy', 'fvs', 'thmncick', 'lllaidjx'], ['nig', 'uzehhits', 'mkznx', 'mov', 'eghyd']) == True": {
+      "result": true,
+      "time": 0.03739643096923828,
+      "error": null
+    },
+    "assert same_order(['sntg', 'gjbiariyh', 'gnmhld', 'oqu'], ['hqjnrk', 'idbmnt', 'edhrpxo', 'xqtfcxgl', 'hdafu']) == True": {
+      "result": true,
+      "time": 0.03487062454223633,
+      "error": null
+    },
+    "assert same_order(['bvevmmur', 'ythwbdh', 'zmp', 'ees'], ['akewtxj', 'tbiaonop', 'ydhb', 'vusygany', 'tyosgyvp']) == True": {
+      "result": true,
+      "time": 0.03027176856994629,
+      "error": null
+    },
+    "assert same_order(['wra', 'vynewcx', 'uxpc', 'qnscuuevnhk'], ['uqmgzkzph', 'spltdrami', 'dpru', 'wcu', 'mvxfg']) == True": {
+      "result": true,
+      "time": 0.0427241325378418,
+      "error": null
+    },
+    "assert same_order(['nil', 'mwt', 'eivliekg', 'ugyj'], ['ajrswjmcr', 'cgojscdda', 'ufcoahfuk', 'uyquzwom', 'uda']) == True": {
+      "result": true,
+      "time": 0.03251075744628906,
+      "error": null
+    },
+    "assert same_order(['hhc', 'koy', 'kum', 'zabgmoptgf'], ['wthk', 'crpuk', 'ehmdvtr', 'raqb', 'hfvbz']) == True": {
+      "result": true,
+      "time": 0.03255486488342285,
+      "error": null
+    },
+    "assert same_order(['pfpx', 'cdvwt', 'qtuskqdcd', 'fqmbiqct'], ['xru', 'wef', 'suqenhsaf', 'ctufgqbu', 'ijln']) == True": {
+      "result": true,
+      "time": 0.034731149673461914,
+      "error": null
+    },
+    "assert same_order(['gvvo', 'udebyzpci', 'yiwokd', 'evbuffyrwwb'], ['quatcubx', 'wnocusqna', 'pbeejj', 'nbvyax', 'xfdblm']) == True": {
+      "result": true,
+      "time": 0.03486347198486328,
+      "error": null
+    },
+    "assert same_order(['uqkbivba', 'ivieded', 'apzuf', 'egdrsyyseayy'], ['vafx', 'jukmighz', 'mmvv', 'jklg', 'alpnw']) == True": {
+      "result": true,
+      "time": 0.035526275634765625,
+      "error": null
+    },
+    "assert same_order(['fexzjybz', 'jtk', 'eqkq', 'vbnrfwh'], ['knnqdauhy', 'pvyuvloyw', 'xdlaxrpx', 'gzn', 'kjqzgwm']) == True": {
+      "result": true,
+      "time": 0.03386187553405762,
+      "error": null
+    },
+    "assert same_order(['yrf', 'lhvrnxamq', 'jjwgpyd', 'dbxgsygk'], ['hixw', 'qxfifqpee', 'bahcpndc', 'pzimz', 'zfw']) == True": {
+      "result": true,
+      "time": 0.03589510917663574,
+      "error": null
+    },
+    "assert same_order(['auwunlu', 'jokherkj', 'rktjvl', 'obm'], ['ggtjqna', 'xzylxjle', 'khigif', 'ndmkzf', 'wnvuzo']) == True": {
+      "result": true,
+      "time": 0.03986001014709473,
+      "error": null
+    },
+    "assert same_order(['ajcdmw', 'vdarz', 'zvfwte', 'fviivedkz'], ['gieo', 'fqgf', 'djsiqjjmz', 'jrfj', 'eidjctsbi']) == True": {
+      "result": true,
+      "time": 0.041411399841308594,
+      "error": null
+    },
+    "assert same_order(['pyny', 'rdty', 'vvy', 'fwqxmcevtp'], ['hntkr', 'viayfgz', 'cdnsmcjib', 'xrnu', 'qzzluwoh']) == True": {
+      "result": true,
+      "time": 0.04304003715515137,
+      "error": null
+    },
+    "assert same_order(['ufv', 'vysyxje', 'xyrnbs', 'qqiueepf'], ['migxhxdvf', 'ypegajm', 'mhasqftab', 'fzbaqeq', 'tpywog']) == True": {
+      "result": true,
+      "time": 0.04824471473693848,
+      "error": null
+    },
+    "assert same_order(['olwdh', 'bxolzjq', 'quufn', 'phemvzxdna'], ['ghff', 'uhue', 'iwfexsnud', 'gzhhjmjqt', 'ueumzbh']) == True": {
+      "result": true,
+      "time": 0.037476539611816406,
+      "error": null
+    },
+    "assert same_order(['kwkr', 'sbt', 'rjqjtmx', 'lclnqlocyrin'], ['tsr', 'mgda', 'hbsctxbd', 'wfaauc', 'vqhkr']) == True": {
+      "result": true,
+      "time": 0.04018044471740723,
+      "error": null
+    },
+    "assert same_order(['dpoevsefp', 'ibqioywrm', 'votpxe', 'gmbmetjfowjx'], ['lgnefzg', 'wflwza', 'upg', 'laxqjr', 'clsfdgsre']) == True": {
+      "result": true,
+      "time": 0.03940868377685547,
+      "error": null
+    },
+    "assert same_order(['idkhkdzyy', 'hjjqoqk', 'vhpukwzv', 'vgmn'], ['oyrfc', 'xac', 'lkkyu', 'mqhdfgscg', 'qpyba']) == True": {
+      "result": true,
+      "time": 0.037425994873046875,
+      "error": null
+    },
+    "assert same_order(['gqkain', 'sghcls', 'xhmjguux', 'hdbvkpjlxuw'], ['debuohah', 'zpu', 'dfkntjsk', 'yiwattsn', 'jzcqepgn']) == True": {
+      "result": true,
+      "time": 0.038423776626586914,
+      "error": null
+    },
+    "assert same_order(['frewkmq', 'dhrlxmqp', 'mcy', 'teomzzmp'], ['tpqcxvjgz', 'anrvavhtn', 'ixnkeng', 'hwm', 'dacs']) == True": {
+      "result": true,
+      "time": 0.03796863555908203,
+      "error": null
+    },
+    "assert same_order(['uoger', 'guhec', 'jboi', 'vbuefmkoqcux'], ['fecgc', 'iyccfi', 'dgzxfk', 'yko', 'zncvxyg']) == True": {
+      "result": true,
+      "time": 0.041724443435668945,
+      "error": null
+    },
+    "assert same_order(['rqcmenm', 'bwadzygs', 'zcr', 'rvgg'], ['uixmbr', 'jkaxj', 'fhbplm', 'wttzsy', 'ixbyzulq']) == True": {
+      "result": true,
+      "time": 0.036332130432128906,
+      "error": null
+    },
+    "assert same_order(['kqaiwfma', 'kuons', 'fytyfgqvr', 'nkrrcvroh'], ['tstnow', 'yiahcqxo', 'lyesayu', 'geoigp', 'ueaxqcsa']) == True": {
+      "result": true,
+      "time": 0.03885984420776367,
+      "error": null
+    },
+    "assert same_order(['qlq', 'gco', 'lva', 'vjkavlepdlvr'], ['iuqyd', 'ymktr', 'yknkyhca', 'nmtn', 'arfbp']) == True": {
+      "result": true,
+      "time": 0.04394173622131348,
+      "error": null
+    },
+    "assert same_order(['gnsbq', 'boyfh', 'tzs', 'inxrioq'], ['amp', 'hznvose', 'xttmdcrh', 'hxgxevqwa', 'hez']) == True": {
+      "result": true,
+      "time": 0.04428291320800781,
+      "error": null
+    },
+    "assert same_order(['opbkcgqh', 'qfxkm', 'fone', 'ucokoiyla'], ['lstpthbmv', 'dzwg', 'ajpkqvcm', 'tnauach', 'jdnqk']) == True": {
+      "result": true,
+      "time": 0.040911197662353516,
+      "error": null
+    },
+    "assert same_order(['srkqpnkwn', 'itqkldbos', 'ujbpcqz', 'vyeolxzt'], ['xhcauc', 'yome', 'nghnnhz', 'dpciucw', 'voxwqclkl']) == True": {
+      "result": true,
+      "time": 0.04961442947387695,
+      "error": null
+    },
+    "assert same_order(['dizknbfvl', 'sjklbinq', 'bfjwfjci', 'xzcyqlkz'], ['iajztxa', 'glyrd', 'qesenxwy', 'brvjjsmr', 'sbj']) == True": {
+      "result": true,
+      "time": 0.045829057693481445,
+      "error": null
+    },
+    "assert same_order(['sqhmye', 'tgiyn', 'muha', 'omjv'], ['qvbjr', 'kyhw', 'nglnehx', 'akeurjwg', 'yedq']) == True": {
+      "result": true,
+      "time": 0.03959488868713379,
+      "error": null
+    },
+    "assert same_order(['obyvvuwpj', 'gktqahs', 'fgnwhl', 'cbi'], ['vjo', 'lkmz', 'mtvegesod', 'uvjnpnzwg', 'yldy']) == True": {
+      "result": true,
+      "time": 0.04311180114746094,
+      "error": null
+    },
+    "assert same_order(['rwcwfclnn', 'ktbez', 'oqju', 'lzhqyuwcu'], ['orm', 'mbryms', 'unhzxzlyc', 'rlco', 'flgm']) == True": {
+      "result": true,
+      "time": 0.03546309471130371,
+      "error": null
+    },
+    "assert same_order(['jophu', 'zpzsknnfk', 'fadwah', 'dbwqun'], ['sevkhm', 'jrjrzwdz', 'ledmoy', 'qah', 'zgem']) == True": {
+      "result": true,
+      "time": 0.03892922401428223,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

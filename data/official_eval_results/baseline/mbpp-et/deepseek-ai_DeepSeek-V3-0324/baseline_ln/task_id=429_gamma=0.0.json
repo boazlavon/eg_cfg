@@ -1,0 +1,519 @@
+{
+  "code": "def and_tuples(tuple1, tuple2):\n    return tuple(a & b for a, b in zip(tuple1, tuple2))",
+  "results": {
+    "assert and_tuples((10, 4, 6, 9), (5, 2, 3, 3)) == (0, 0, 2, 1)": {
+      "result": true,
+      "time": 0.039482831954956055,
+      "error": null
+    },
+    "assert and_tuples((1, 2, 3, 4), (5, 6, 7, 8)) == (1, 2, 3, 0)": {
+      "result": true,
+      "time": 0.04471254348754883,
+      "error": null
+    },
+    "assert and_tuples((8, 9, 11, 12), (7, 13, 14, 17)) == (0, 9, 10, 0)": {
+      "result": true,
+      "time": 0.04624581336975098,
+      "error": null
+    },
+    "assert and_tuples((13, 7, 2, 9), (9, 7, 3, 5)) == (9, 7, 2, 1)": {
+      "result": true,
+      "time": 0.040932416915893555,
+      "error": null
+    },
+    "assert and_tuples((11, 9, 5, 6), (2, 2, 6, 6)) == (2, 0, 4, 6)": {
+      "result": true,
+      "time": 0.04997563362121582,
+      "error": null
+    },
+    "assert and_tuples((13, 4, 11, 10), (7, 3, 4, 8)) == (5, 0, 0, 8)": {
+      "result": true,
+      "time": 0.04474616050720215,
+      "error": null
+    },
+    "assert and_tuples((6, 9, 10, 9), (3, 1, 7, 6)) == (2, 1, 2, 0)": {
+      "result": true,
+      "time": 0.045737504959106445,
+      "error": null
+    },
+    "assert and_tuples((5, 3, 11, 7), (7, 5, 3, 5)) == (5, 1, 3, 5)": {
+      "result": true,
+      "time": 0.04085516929626465,
+      "error": null
+    },
+    "assert and_tuples((5, 8, 5, 9), (8, 4, 2, 8)) == (0, 0, 0, 8)": {
+      "result": true,
+      "time": 0.04641079902648926,
+      "error": null
+    },
+    "assert and_tuples((9, 2, 2, 6), (3, 1, 2, 7)) == (1, 0, 2, 6)": {
+      "result": true,
+      "time": 0.04775834083557129,
+      "error": null
+    },
+    "assert and_tuples((11, 9, 2, 10), (10, 2, 4, 1)) == (10, 0, 0, 0)": {
+      "result": true,
+      "time": 0.05106687545776367,
+      "error": null
+    },
+    "assert and_tuples((10, 3, 7, 11), (8, 7, 4, 3)) == (8, 3, 4, 3)": {
+      "result": true,
+      "time": 0.04718804359436035,
+      "error": null
+    },
+    "assert and_tuples((11, 2, 5, 12), (8, 1, 6, 7)) == (8, 0, 4, 4)": {
+      "result": true,
+      "time": 0.05270051956176758,
+      "error": null
+    },
+    "assert and_tuples((8, 3, 5, 8), (8, 3, 4, 4)) == (8, 3, 4, 0)": {
+      "result": true,
+      "time": 0.04726123809814453,
+      "error": null
+    },
+    "assert and_tuples((14, 5, 4, 11), (10, 1, 7, 5)) == (10, 1, 4, 1)": {
+      "result": true,
+      "time": 0.04546976089477539,
+      "error": null
+    },
+    "assert and_tuples((14, 6, 10, 12), (8, 3, 6, 5)) == (8, 2, 2, 4)": {
+      "result": true,
+      "time": 0.042093515396118164,
+      "error": null
+    },
+    "assert and_tuples((9, 7, 6, 10), (1, 3, 8, 2)) == (1, 3, 0, 2)": {
+      "result": true,
+      "time": 0.05116128921508789,
+      "error": null
+    },
+    "assert and_tuples((9, 5, 10, 11), (3, 6, 6, 8)) == (1, 4, 2, 8)": {
+      "result": true,
+      "time": 0.040144920349121094,
+      "error": null
+    },
+    "assert and_tuples((11, 5, 1, 11), (4, 1, 3, 4)) == (0, 1, 1, 0)": {
+      "result": true,
+      "time": 0.04213380813598633,
+      "error": null
+    },
+    "assert and_tuples((11, 7, 5, 13), (4, 7, 3, 2)) == (0, 7, 1, 0)": {
+      "result": true,
+      "time": 0.046111106872558594,
+      "error": null
+    },
+    "assert and_tuples((10, 5, 4, 14), (2, 4, 1, 6)) == (2, 4, 0, 6)": {
+      "result": true,
+      "time": 0.04767322540283203,
+      "error": null
+    },
+    "assert and_tuples((13, 7, 9, 10), (10, 6, 6, 6)) == (8, 6, 0, 2)": {
+      "result": true,
+      "time": 0.048429012298583984,
+      "error": null
+    },
+    "assert and_tuples((5, 1, 5, 9), (5, 4, 2, 6)) == (5, 0, 0, 0)": {
+      "result": true,
+      "time": 0.04907083511352539,
+      "error": null
+    },
+    "assert and_tuples((15, 1, 7, 7), (7, 6, 8, 1)) == (7, 0, 0, 1)": {
+      "result": true,
+      "time": 0.04775190353393555,
+      "error": null
+    },
+    "assert and_tuples((9, 5, 4, 14), (10, 5, 3, 4)) == (8, 5, 0, 4)": {
+      "result": true,
+      "time": 0.053795814514160156,
+      "error": null
+    },
+    "assert and_tuples((14, 6, 4, 10), (1, 1, 6, 5)) == (0, 0, 4, 0)": {
+      "result": true,
+      "time": 0.04703116416931152,
+      "error": null
+    },
+    "assert and_tuples((7, 4, 8, 8), (7, 7, 5, 4)) == (7, 4, 0, 0)": {
+      "result": true,
+      "time": 0.050815582275390625,
+      "error": null
+    },
+    "assert and_tuples((12, 8, 10, 8), (6, 2, 6, 2)) == (4, 0, 2, 0)": {
+      "result": true,
+      "time": 0.0383913516998291,
+      "error": null
+    },
+    "assert and_tuples((9, 5, 3, 9), (1, 4, 2, 2)) == (1, 4, 2, 0)": {
+      "result": true,
+      "time": 0.042490482330322266,
+      "error": null
+    },
+    "assert and_tuples((10, 8, 11, 7), (1, 7, 5, 6)) == (0, 0, 1, 6)": {
+      "result": true,
+      "time": 0.04090762138366699,
+      "error": null
+    },
+    "assert and_tuples((7, 2, 9, 11), (3, 2, 1, 6)) == (3, 2, 1, 2)": {
+      "result": true,
+      "time": 0.03661608695983887,
+      "error": null
+    },
+    "assert and_tuples((8, 8, 3, 12), (7, 1, 1, 4)) == (0, 0, 1, 4)": {
+      "result": true,
+      "time": 0.050657033920288086,
+      "error": null
+    },
+    "assert and_tuples((11, 4, 8, 13), (2, 4, 2, 2)) == (2, 4, 0, 0)": {
+      "result": true,
+      "time": 0.046782493591308594,
+      "error": null
+    },
+    "assert and_tuples((7, 7, 6, 14), (9, 7, 2, 7)) == (1, 7, 2, 6)": {
+      "result": true,
+      "time": 0.041748046875,
+      "error": null
+    },
+    "assert and_tuples((15, 1, 3, 7), (2, 7, 7, 7)) == (2, 1, 3, 7)": {
+      "result": true,
+      "time": 0.04467582702636719,
+      "error": null
+    },
+    "assert and_tuples((6, 7, 9, 14), (5, 4, 4, 3)) == (4, 4, 0, 2)": {
+      "result": true,
+      "time": 0.04362058639526367,
+      "error": null
+    },
+    "assert and_tuples((2, 3, 5, 8), (8, 3, 12, 5)) == (0, 3, 4, 0)": {
+      "result": true,
+      "time": 0.05159950256347656,
+      "error": null
+    },
+    "assert and_tuples((2, 2, 5, 6), (1, 2, 12, 9)) == (0, 2, 4, 0)": {
+      "result": true,
+      "time": 0.05266404151916504,
+      "error": null
+    },
+    "assert and_tuples((6, 7, 8, 7), (9, 6, 7, 13)) == (0, 6, 0, 5)": {
+      "result": true,
+      "time": 0.04237556457519531,
+      "error": null
+    },
+    "assert and_tuples((5, 3, 8, 7), (5, 3, 8, 7)) == (5, 3, 8, 7)": {
+      "result": true,
+      "time": 0.04165911674499512,
+      "error": null
+    },
+    "assert and_tuples((5, 1, 1, 4), (9, 4, 7, 10)) == (1, 0, 1, 0)": {
+      "result": true,
+      "time": 0.048503875732421875,
+      "error": null
+    },
+    "assert and_tuples((5, 2, 5, 6), (2, 7, 7, 7)) == (0, 2, 5, 6)": {
+      "result": true,
+      "time": 0.043744802474975586,
+      "error": null
+    },
+    "assert and_tuples((3, 4, 3, 8), (8, 5, 9, 11)) == (0, 4, 1, 8)": {
+      "result": true,
+      "time": 0.044840097427368164,
+      "error": null
+    },
+    "assert and_tuples((4, 2, 5, 1), (4, 11, 12, 4)) == (4, 2, 4, 0)": {
+      "result": true,
+      "time": 0.04960012435913086,
+      "error": null
+    },
+    "assert and_tuples((3, 2, 4, 7), (8, 3, 7, 10)) == (0, 2, 4, 2)": {
+      "result": true,
+      "time": 0.045267581939697266,
+      "error": null
+    },
+    "assert and_tuples((6, 2, 6, 8), (9, 6, 6, 12)) == (0, 2, 6, 8)": {
+      "result": true,
+      "time": 0.04352140426635742,
+      "error": null
+    },
+    "assert and_tuples((1, 6, 8, 1), (9, 10, 6, 7)) == (1, 2, 0, 1)": {
+      "result": true,
+      "time": 0.05030679702758789,
+      "error": null
+    },
+    "assert and_tuples((5, 4, 7, 4), (9, 10, 5, 7)) == (1, 0, 5, 4)": {
+      "result": true,
+      "time": 0.050919294357299805,
+      "error": null
+    },
+    "assert and_tuples((1, 3, 4, 2), (3, 1, 5, 11)) == (1, 1, 4, 2)": {
+      "result": true,
+      "time": 0.04681730270385742,
+      "error": null
+    },
+    "assert and_tuples((4, 1, 7, 8), (8, 6, 12, 8)) == (0, 0, 4, 8)": {
+      "result": true,
+      "time": 0.047035932540893555,
+      "error": null
+    },
+    "assert and_tuples((1, 2, 7, 3), (9, 4, 7, 7)) == (1, 0, 7, 3)": {
+      "result": true,
+      "time": 0.04498791694641113,
+      "error": null
+    },
+    "assert and_tuples((1, 5, 4, 8), (7, 10, 2, 5)) == (1, 0, 0, 0)": {
+      "result": true,
+      "time": 0.0459742546081543,
+      "error": null
+    },
+    "assert and_tuples((5, 5, 4, 3), (2, 1, 4, 3)) == (0, 1, 4, 3)": {
+      "result": true,
+      "time": 0.03979682922363281,
+      "error": null
+    },
+    "assert and_tuples((6, 2, 6, 5), (6, 6, 11, 5)) == (6, 2, 2, 5)": {
+      "result": true,
+      "time": 0.04050326347351074,
+      "error": null
+    },
+    "assert and_tuples((4, 6, 5, 1), (8, 7, 3, 4)) == (0, 6, 1, 0)": {
+      "result": true,
+      "time": 0.0526888370513916,
+      "error": null
+    },
+    "assert and_tuples((6, 7, 6, 8), (5, 11, 11, 11)) == (4, 3, 2, 8)": {
+      "result": true,
+      "time": 0.052513837814331055,
+      "error": null
+    },
+    "assert and_tuples((1, 3, 6, 5), (7, 4, 2, 4)) == (1, 0, 2, 4)": {
+      "result": true,
+      "time": 0.04215049743652344,
+      "error": null
+    },
+    "assert and_tuples((4, 7, 4, 7), (4, 3, 8, 11)) == (4, 3, 0, 3)": {
+      "result": true,
+      "time": 0.04253053665161133,
+      "error": null
+    },
+    "assert and_tuples((2, 7, 6, 4), (6, 8, 7, 13)) == (2, 0, 6, 4)": {
+      "result": true,
+      "time": 0.04412508010864258,
+      "error": null
+    },
+    "assert and_tuples((4, 5, 4, 1), (5, 5, 12, 7)) == (4, 5, 4, 1)": {
+      "result": true,
+      "time": 0.04868316650390625,
+      "error": null
+    },
+    "assert and_tuples((1, 2, 5, 6), (5, 2, 6, 10)) == (1, 2, 4, 2)": {
+      "result": true,
+      "time": 0.033263444900512695,
+      "error": null
+    },
+    "assert and_tuples((1, 6, 6, 3), (3, 8, 7, 10)) == (1, 0, 6, 2)": {
+      "result": true,
+      "time": 0.04821634292602539,
+      "error": null
+    },
+    "assert and_tuples((5, 5, 1, 3), (1, 1, 11, 8)) == (1, 1, 1, 0)": {
+      "result": true,
+      "time": 0.05679130554199219,
+      "error": null
+    },
+    "assert and_tuples((6, 6, 8, 9), (4, 8, 3, 8)) == (4, 0, 0, 8)": {
+      "result": true,
+      "time": 0.048445701599121094,
+      "error": null
+    },
+    "assert and_tuples((3, 2, 8, 1), (2, 11, 3, 12)) == (2, 2, 0, 0)": {
+      "result": true,
+      "time": 0.04495048522949219,
+      "error": null
+    },
+    "assert and_tuples((1, 1, 6, 5), (9, 4, 8, 13)) == (1, 0, 0, 5)": {
+      "result": true,
+      "time": 0.043450117111206055,
+      "error": null
+    },
+    "assert and_tuples((1, 4, 7, 7), (6, 4, 2, 3)) == (0, 4, 2, 3)": {
+      "result": true,
+      "time": 0.04511237144470215,
+      "error": null
+    },
+    "assert and_tuples((4, 4, 6, 4), (2, 3, 6, 4)) == (0, 0, 6, 4)": {
+      "result": true,
+      "time": 0.04768657684326172,
+      "error": null
+    },
+    "assert and_tuples((6, 6, 2, 6), (4, 4, 12, 7)) == (4, 4, 0, 6)": {
+      "result": true,
+      "time": 0.037557363510131836,
+      "error": null
+    },
+    "assert and_tuples((10, 7, 14, 8), (3, 8, 15, 21)) == (2, 0, 14, 0)": {
+      "result": true,
+      "time": 0.04045867919921875,
+      "error": null
+    },
+    "assert and_tuples((9, 8, 13, 7), (6, 15, 15, 18)) == (0, 8, 13, 2)": {
+      "result": true,
+      "time": 0.04748201370239258,
+      "error": null
+    },
+    "assert and_tuples((4, 7, 14, 8), (6, 14, 15, 12)) == (4, 6, 14, 8)": {
+      "result": true,
+      "time": 0.0458376407623291,
+      "error": null
+    },
+    "assert and_tuples((11, 6, 10, 14), (9, 13, 17, 14)) == (9, 4, 0, 14)": {
+      "result": true,
+      "time": 0.05306529998779297,
+      "error": null
+    },
+    "assert and_tuples((4, 4, 6, 7), (2, 13, 19, 16)) == (0, 4, 2, 0)": {
+      "result": true,
+      "time": 0.04891848564147949,
+      "error": null
+    },
+    "assert and_tuples((7, 14, 6, 17), (4, 9, 12, 16)) == (4, 8, 4, 16)": {
+      "result": true,
+      "time": 0.04851531982421875,
+      "error": null
+    },
+    "assert and_tuples((8, 14, 12, 14), (11, 17, 9, 22)) == (8, 0, 8, 6)": {
+      "result": true,
+      "time": 0.0410466194152832,
+      "error": null
+    },
+    "assert and_tuples((11, 10, 16, 15), (12, 16, 13, 21)) == (8, 0, 0, 5)": {
+      "result": true,
+      "time": 0.05005383491516113,
+      "error": null
+    },
+    "assert and_tuples((8, 4, 11, 10), (8, 10, 12, 18)) == (8, 0, 8, 2)": {
+      "result": true,
+      "time": 0.03740358352661133,
+      "error": null
+    },
+    "assert and_tuples((9, 10, 10, 16), (6, 8, 12, 18)) == (0, 8, 8, 16)": {
+      "result": true,
+      "time": 0.04520010948181152,
+      "error": null
+    },
+    "assert and_tuples((11, 13, 13, 15), (3, 16, 11, 15)) == (3, 0, 9, 15)": {
+      "result": true,
+      "time": 0.046178579330444336,
+      "error": null
+    },
+    "assert and_tuples((12, 10, 7, 17), (10, 15, 13, 12)) == (8, 10, 5, 0)": {
+      "result": true,
+      "time": 0.05127143859863281,
+      "error": null
+    },
+    "assert and_tuples((13, 11, 12, 8), (6, 17, 11, 18)) == (4, 1, 8, 0)": {
+      "result": true,
+      "time": 0.04059886932373047,
+      "error": null
+    },
+    "assert and_tuples((10, 12, 7, 10), (10, 15, 16, 18)) == (10, 12, 0, 2)": {
+      "result": true,
+      "time": 0.04701662063598633,
+      "error": null
+    },
+    "assert and_tuples((4, 9, 7, 13), (7, 15, 13, 17)) == (4, 9, 5, 1)": {
+      "result": true,
+      "time": 0.0426328182220459,
+      "error": null
+    },
+    "assert and_tuples((4, 14, 13, 17), (7, 14, 15, 15)) == (4, 14, 13, 1)": {
+      "result": true,
+      "time": 0.05412411689758301,
+      "error": null
+    },
+    "assert and_tuples((5, 8, 14, 17), (8, 16, 9, 20)) == (0, 0, 8, 16)": {
+      "result": true,
+      "time": 0.04259467124938965,
+      "error": null
+    },
+    "assert and_tuples((13, 10, 15, 17), (10, 9, 12, 20)) == (8, 8, 12, 16)": {
+      "result": true,
+      "time": 0.04197263717651367,
+      "error": null
+    },
+    "assert and_tuples((8, 4, 7, 9), (6, 8, 13, 14)) == (0, 0, 5, 8)": {
+      "result": true,
+      "time": 0.03920722007751465,
+      "error": null
+    },
+    "assert and_tuples((11, 9, 6, 14), (12, 15, 14, 12)) == (8, 9, 6, 12)": {
+      "result": true,
+      "time": 0.05867409706115723,
+      "error": null
+    },
+    "assert and_tuples((13, 8, 10, 17), (2, 14, 12, 12)) == (0, 8, 8, 0)": {
+      "result": true,
+      "time": 0.042546749114990234,
+      "error": null
+    },
+    "assert and_tuples((6, 5, 10, 16), (8, 14, 18, 16)) == (0, 4, 2, 16)": {
+      "result": true,
+      "time": 0.04098963737487793,
+      "error": null
+    },
+    "assert and_tuples((8, 4, 11, 12), (10, 13, 9, 18)) == (8, 4, 9, 0)": {
+      "result": true,
+      "time": 0.04425621032714844,
+      "error": null
+    },
+    "assert and_tuples((10, 4, 8, 10), (8, 8, 13, 22)) == (8, 0, 8, 2)": {
+      "result": true,
+      "time": 0.050279855728149414,
+      "error": null
+    },
+    "assert and_tuples((5, 8, 8, 11), (11, 17, 18, 15)) == (1, 0, 0, 11)": {
+      "result": true,
+      "time": 0.04598355293273926,
+      "error": null
+    },
+    "assert and_tuples((13, 7, 10, 12), (8, 16, 12, 19)) == (8, 0, 8, 0)": {
+      "result": true,
+      "time": 0.04312443733215332,
+      "error": null
+    },
+    "assert and_tuples((6, 6, 9, 7), (7, 17, 13, 19)) == (6, 0, 9, 3)": {
+      "result": true,
+      "time": 0.046251535415649414,
+      "error": null
+    },
+    "assert and_tuples((3, 12, 10, 17), (3, 15, 14, 13)) == (3, 12, 10, 1)": {
+      "result": true,
+      "time": 0.04549002647399902,
+      "error": null
+    },
+    "assert and_tuples((4, 13, 10, 11), (8, 16, 12, 20)) == (0, 0, 8, 0)": {
+      "result": true,
+      "time": 0.04262733459472656,
+      "error": null
+    },
+    "assert and_tuples((5, 14, 12, 10), (9, 17, 14, 20)) == (1, 0, 12, 0)": {
+      "result": true,
+      "time": 0.048296213150024414,
+      "error": null
+    },
+    "assert and_tuples((6, 8, 6, 7), (4, 16, 15, 18)) == (4, 0, 6, 2)": {
+      "result": true,
+      "time": 0.05051445960998535,
+      "error": null
+    },
+    "assert and_tuples((6, 10, 8, 13), (2, 16, 15, 17)) == (2, 0, 8, 1)": {
+      "result": true,
+      "time": 0.04348158836364746,
+      "error": null
+    },
+    "assert and_tuples((10, 6, 13, 9), (9, 15, 9, 13)) == (8, 6, 9, 9)": {
+      "result": true,
+      "time": 0.049849748611450195,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

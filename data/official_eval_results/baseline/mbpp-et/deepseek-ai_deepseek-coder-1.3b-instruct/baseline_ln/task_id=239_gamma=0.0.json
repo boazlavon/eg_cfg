@@ -1,0 +1,369 @@
+{
+  "code": "def get_total_number_of_sequences(n, m):\n    if n < 2:\n        return 0\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    dp[1] = 1\n    for i in range(2, n + 1):\n        dp[i] = 0\n        for j in range(i - 1, -1, -1):\n            if j >= 2 * (i - 1) and j <= min(i - 1, m):\n                dp[i] += dp[j]\n    return dp[n]",
+  "results": {
+    "assert get_total_number_of_sequences(10, 4) == 4": {
+      "result": false,
+      "time": 0.0398557186126709,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(5, 2) == 6": {
+      "result": false,
+      "time": 0.04702615737915039,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(16, 3) == 84": {
+      "result": false,
+      "time": 0.03654217720031738,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(14, 6) == 0": {
+      "result": true,
+      "time": 0.04424333572387695,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(15, 2) == 56": {
+      "result": false,
+      "time": 0.052208900451660156,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(6, 4) == 0": {
+      "result": true,
+      "time": 0.04023337364196777,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(7, 6) == 0": {
+      "result": true,
+      "time": 0.03888225555419922,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(15, 4) == 26": {
+      "result": false,
+      "time": 0.045084476470947266,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(5, 9) == 0": {
+      "result": true,
+      "time": 0.0497136116027832,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(6, 3) == 4": {
+      "result": false,
+      "time": 0.037708282470703125,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(9, 9) == 0": {
+      "result": true,
+      "time": 0.04411125183105469,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(11, 6) == 0": {
+      "result": true,
+      "time": 0.04096412658691406,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(13, 1) == 13": {
+      "result": false,
+      "time": 0.04413437843322754,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(13, 6) == 0": {
+      "result": true,
+      "time": 0.043782711029052734,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(15, 3) == 68": {
+      "result": false,
+      "time": 0.04262995719909668,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(12, 3) == 35": {
+      "result": false,
+      "time": 0.04391074180603027,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(12, 6) == 0": {
+      "result": true,
+      "time": 0.0455317497253418,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(8, 9) == 0": {
+      "result": true,
+      "time": 0.039865732192993164,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(10, 8) == 0": {
+      "result": true,
+      "time": 0.048577070236206055,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(14, 5) == 0": {
+      "result": true,
+      "time": 0.036802053451538086,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(14, 3) == 56": {
+      "result": false,
+      "time": 0.050978899002075195,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(11, 8) == 0": {
+      "result": true,
+      "time": 0.04626202583312988,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(6, 8) == 0": {
+      "result": true,
+      "time": 0.04266953468322754,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(7, 8) == 0": {
+      "result": true,
+      "time": 0.04324960708618164,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(13, 7) == 0": {
+      "result": true,
+      "time": 0.052276611328125,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(9, 8) == 0": {
+      "result": true,
+      "time": 0.04959392547607422,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(10, 1) == 10": {
+      "result": false,
+      "time": 0.042897701263427734,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(8, 6) == 0": {
+      "result": true,
+      "time": 0.043359994888305664,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(7, 4) == 0": {
+      "result": true,
+      "time": 0.040367841720581055,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(6, 1) == 6": {
+      "result": false,
+      "time": 0.036751508712768555,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(3, 6) == 0": {
+      "result": true,
+      "time": 0.038259029388427734,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(9, 1) == 9": {
+      "result": false,
+      "time": 0.03782153129577637,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(1, 4) == 0": {
+      "result": true,
+      "time": 0.046797752380371094,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(5, 5) == 0": {
+      "result": true,
+      "time": 0.03848838806152344,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(10, 5) == 0": {
+      "result": true,
+      "time": 0.043332815170288086,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(2, 4) == 0": {
+      "result": true,
+      "time": 0.03834843635559082,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(10, 2) == 25": {
+      "result": false,
+      "time": 0.033696889877319336,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(9, 3) == 14": {
+      "result": false,
+      "time": 0.03464341163635254,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(4, 2) == 4": {
+      "result": false,
+      "time": 0.034526824951171875,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(5, 7) == 0": {
+      "result": true,
+      "time": 0.04011416435241699,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(8, 1) == 8": {
+      "result": false,
+      "time": 0.03699326515197754,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(5, 6) == 0": {
+      "result": true,
+      "time": 0.036408185958862305,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(8, 7) == 0": {
+      "result": true,
+      "time": 0.03342843055725098,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(1, 6) == 0": {
+      "result": true,
+      "time": 0.031217575073242188,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(6, 2) == 9": {
+      "result": false,
+      "time": 0.0369572639465332,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(10, 7) == 0": {
+      "result": true,
+      "time": 0.028417110443115234,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(3, 2) == 2": {
+      "result": false,
+      "time": 0.03925466537475586,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(8, 4) == 1": {
+      "result": false,
+      "time": 0.03894686698913574,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(2, 3) == 0": {
+      "result": true,
+      "time": 0.03504514694213867,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(6, 6) == 0": {
+      "result": true,
+      "time": 0.04170989990234375,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(4, 7) == 0": {
+      "result": true,
+      "time": 0.03460812568664551,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(15, 5) == 0": {
+      "result": true,
+      "time": 0.03634500503540039,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(20, 8) == 0": {
+      "result": true,
+      "time": 0.039850711822509766,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(18, 6) == 0": {
+      "result": true,
+      "time": 0.034926414489746094,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(18, 8) == 0": {
+      "result": true,
+      "time": 0.035140275955200195,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(21, 7) == 0": {
+      "result": true,
+      "time": 0.04320788383483887,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(17, 7) == 0": {
+      "result": true,
+      "time": 0.042121171951293945,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(12, 5) == 0": {
+      "result": true,
+      "time": 0.04099130630493164,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(13, 3) == 44": {
+      "result": false,
+      "time": 0.035423994064331055,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(19, 4) == 74": {
+      "result": false,
+      "time": 0.03611183166503906,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(19, 1) == 19": {
+      "result": false,
+      "time": 0.03449082374572754,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(12, 1) == 12": {
+      "result": false,
+      "time": 0.03748798370361328,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(17, 1) == 17": {
+      "result": false,
+      "time": 0.035134315490722656,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(17, 3) == 100": {
+      "result": false,
+      "time": 0.03339242935180664,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(18, 2) == 81": {
+      "result": false,
+      "time": 0.03598380088806152,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(17, 8) == 0": {
+      "result": true,
+      "time": 0.03284740447998047,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(17, 4) == 46": {
+      "result": false,
+      "time": 0.03154444694519043,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(14, 1) == 14": {
+      "result": false,
+      "time": 0.03178143501281738,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(12, 8) == 0": {
+      "result": true,
+      "time": 0.031816720962524414,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(17, 2) == 72": {
+      "result": false,
+      "time": 0.03459310531616211,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(18, 5) == 4": {
+      "result": false,
+      "time": 0.03936505317687988,
+      "error": null
+    },
+    "assert get_total_number_of_sequences(16, 4) == 36": {
+      "result": false,
+      "time": 0.04263591766357422,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.5555555555555556,
+  "general_error": "",
+  "has_testcase_error": false
+}

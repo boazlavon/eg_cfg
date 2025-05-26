@@ -1,0 +1,519 @@
+{
+  "code": "def max_sub_array_sum_repeated(arr, n, k):\n    # Calculate the sum of the first 'n' elements\n    first_n_sum = sum(arr[:n])\n    \n    # Calculate the sum of the first 'n' elements repeated 'k' times\n    first_n_k_sum = sum(arr[:n:k])\n    \n    # Calculate the sum of the first 'n' elements repeated 'k' times\n    first_n_k_sum_repeated = sum(arr[:n*k:k])\n    \n    # Calculate the sum of the first 'n' elements repeated 'k' times\n    first_n_k_sum_repeated_2 = sum(arr[i:n:k] for i in range(0, len(arr), k))\n    \n    # Return the maximum of the three sums\n    return max(first_n_sum, first_n_k_sum, first_n_k_sum_repeated, first_n_k_sum_repeated_2)",
+  "results": {
+    "assert max_sub_array_sum_repeated([10, 20, -30, -1], 4, 3) == 30": {
+      "result": false,
+      "time": 0.044901371002197266,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, 10, 20], 3, 2) == 59": {
+      "result": false,
+      "time": 0.04128146171569824,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, -2, -3], 3, 3) == -1": {
+      "result": false,
+      "time": 0.03911161422729492,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([11, 25, -25, -3], 2, 3) == 108": {
+      "result": false,
+      "time": 0.04388689994812012,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([12, 15, -31, 2], 1, 3) == 36": {
+      "result": false,
+      "time": 0.042177438735961914,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([12, 16, -35, -1], 1, 1) == 12": {
+      "result": false,
+      "time": 0.0425410270690918,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([11, 16, -27, 1], 4, 8) == 34": {
+      "result": false,
+      "time": 0.043082237243652344,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([10, 20, -26, -3], 1, 1) == 10": {
+      "result": false,
+      "time": 0.03932666778564453,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([8, 19, -26, -1], 4, 3) == 27": {
+      "result": false,
+      "time": 0.04277300834655762,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([6, 18, -35, 4], 2, 7) == 168": {
+      "result": false,
+      "time": 0.04276847839355469,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([5, 15, -34, -6], 1, 1) == 5": {
+      "result": false,
+      "time": 0.04542875289916992,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([5, 19, -28, 2], 1, 5) == 25": {
+      "result": false,
+      "time": 0.035082101821899414,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([13, 15, -34, 0], 1, 8) == 104": {
+      "result": false,
+      "time": 0.035332679748535156,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([9, 24, -31, 2], 2, 3) == 99": {
+      "result": false,
+      "time": 0.03994941711425781,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([9, 21, -26, 0], 3, 4) == 42": {
+      "result": false,
+      "time": 0.03781938552856445,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([10, 16, -32, 1], 1, 3) == 30": {
+      "result": false,
+      "time": 0.039632320404052734,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([12, 15, -32, -1], 3, 1) == 27": {
+      "result": false,
+      "time": 0.03862500190734863,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([15, 18, -29, 3], 2, 7) == 231": {
+      "result": false,
+      "time": 0.04578566551208496,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([10, 24, -35, -3], 2, 1) == 34": {
+      "result": false,
+      "time": 0.03675436973571777,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([12, 20, -30, 3], 1, 6) == 72": {
+      "result": false,
+      "time": 0.043325185775756836,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([11, 16, -31, 3], 4, 8) == 30": {
+      "result": false,
+      "time": 0.044465065002441406,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([10, 17, -31, -2], 2, 7) == 189": {
+      "result": false,
+      "time": 0.03932666778564453,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([5, 18, -33, -2], 1, 2) == 10": {
+      "result": false,
+      "time": 0.0393829345703125,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([14, 15, -31, -2], 3, 7) == 29": {
+      "result": false,
+      "time": 0.03904318809509277,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([11, 19, -33, 0], 2, 5) == 150": {
+      "result": false,
+      "time": 0.04432559013366699,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([10, 24, -32, 4], 3, 4) == 40": {
+      "result": false,
+      "time": 0.04203534126281738,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([15, 20, -25, 2], 3, 6) == 85": {
+      "result": false,
+      "time": 0.04934287071228027,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([11, 25, -25, -5], 1, 7) == 77": {
+      "result": false,
+      "time": 0.04993748664855957,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([9, 24, -27, 0], 3, 8) == 75": {
+      "result": false,
+      "time": 0.04290914535522461,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([8, 21, -27, -2], 2, 3) == 87": {
+      "result": false,
+      "time": 0.041350364685058594,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([15, 17, -28, -3], 2, 1) == 32": {
+      "result": false,
+      "time": 0.03958249092102051,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([11, 24, -26, -4], 3, 2) == 44": {
+      "result": false,
+      "time": 0.04644894599914551,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([15, 21, -32, -4], 4, 6) == 36": {
+      "result": false,
+      "time": 0.04416012763977051,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([11, 15, -34, 4], 1, 2) == 22": {
+      "result": false,
+      "time": 0.04315042495727539,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([14, 23, -25, 4], 2, 6) == 222": {
+      "result": false,
+      "time": 0.03688693046569824,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([12, 19, -34, 4], 4, 3) == 36": {
+      "result": false,
+      "time": 0.03304004669189453,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([0, 11, 18], 2, 3) == 33": {
+      "result": false,
+      "time": 0.0372164249420166,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([1, 14, 21], 2, 5) == 75": {
+      "result": false,
+      "time": 0.03888702392578125,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([3, 8, 22], 1, 2) == 6": {
+      "result": false,
+      "time": 0.04554581642150879,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([4, 13, 21], 3, 3) == 114": {
+      "result": false,
+      "time": 0.03979682922363281,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([3, 9, 22], 1, 5) == 15": {
+      "result": false,
+      "time": 0.04026460647583008,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([2, 9, 23], 2, 7) == 77": {
+      "result": false,
+      "time": 0.038785457611083984,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([0, 12, 22], 2, 2) == 24": {
+      "result": false,
+      "time": 0.0425570011138916,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-6, 6, 20], 3, 6) == 126": {
+      "result": false,
+      "time": 0.04920363426208496,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([4, 7, 22], 1, 4) == 16": {
+      "result": false,
+      "time": 0.042148590087890625,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, 12, 16], 2, 7) == 78": {
+      "result": false,
+      "time": 0.03772139549255371,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-5, 11, 20], 2, 6) == 41": {
+      "result": false,
+      "time": 0.044649600982666016,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-5, 8, 18], 1, 6) == -5": {
+      "result": false,
+      "time": 0.04132723808288574,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([2, 12, 25], 3, 7) == 273": {
+      "result": false,
+      "time": 0.04131889343261719,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-3, 9, 17], 3, 3) == 72": {
+      "result": false,
+      "time": 0.05356621742248535,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-5, 12, 15], 2, 2) == 19": {
+      "result": false,
+      "time": 0.035489559173583984,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([2, 9, 23], 3, 1) == 34": {
+      "result": false,
+      "time": 0.04309535026550293,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-4, 6, 19], 3, 1) == 25": {
+      "result": false,
+      "time": 0.03924298286437988,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-2, 10, 20], 1, 5) == -2": {
+      "result": false,
+      "time": 0.04698991775512695,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-6, 7, 25], 1, 1) == -6": {
+      "result": false,
+      "time": 0.046808719635009766,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-4, 8, 22], 2, 1) == 8": {
+      "result": false,
+      "time": 0.040400028228759766,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([2, 12, 25], 3, 2) == 78": {
+      "result": false,
+      "time": 0.03722691535949707,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-5, 14, 17], 1, 5) == -5": {
+      "result": false,
+      "time": 0.03943133354187012,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-5, 5, 15], 2, 1) == 5": {
+      "result": false,
+      "time": 0.042827606201171875,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([3, 12, 15], 2, 1) == 15": {
+      "result": false,
+      "time": 0.04026031494140625,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-3, 7, 22], 3, 1) == 29": {
+      "result": false,
+      "time": 0.04079842567443848,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-2, 9, 24], 1, 1) == -2": {
+      "result": false,
+      "time": 0.03695178031921387,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([1, 13, 15], 2, 3) == 42": {
+      "result": false,
+      "time": 0.0499725341796875,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([4, 7, 23], 2, 4) == 44": {
+      "result": false,
+      "time": 0.04205012321472168,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-3, 15, 20], 2, 7) == 87": {
+      "result": false,
+      "time": 0.03489971160888672,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-6, 6, 15], 3, 7) == 111": {
+      "result": false,
+      "time": 0.04239177703857422,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-5, 15, 22], 3, 2) == 69": {
+      "result": false,
+      "time": 0.04465365409851074,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([3, 14, 18], 1, 2) == 6": {
+      "result": false,
+      "time": 0.04485750198364258,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-6, 15, 18], 3, 2) == 60": {
+      "result": false,
+      "time": 0.03403973579406738,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([0, -4, 2], 2, 6) == 0": {
+      "result": false,
+      "time": 0.04246640205383301,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([3, -5, -2], 3, 5) == 3": {
+      "result": false,
+      "time": 0.03790283203125,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, -2, 2], 1, 4) == -1": {
+      "result": false,
+      "time": 0.03913164138793945,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([2, -7, -6], 1, 2) == 4": {
+      "result": false,
+      "time": 0.03706192970275879,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([3, -5, 0], 3, 4) == 3": {
+      "result": false,
+      "time": 0.03960156440734863,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-4, 2, 1], 3, 5) == 3": {
+      "result": false,
+      "time": 0.04275918006896973,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, -5, -1], 1, 2) == -1": {
+      "result": false,
+      "time": 0.03691244125366211,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([3, 0, -3], 2, 4) == 12": {
+      "result": false,
+      "time": 0.052603960037231445,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-3, 1, -1], 2, 8) == 1": {
+      "result": false,
+      "time": 0.047651052474975586,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([2, -4, -2], 1, 4) == 8": {
+      "result": false,
+      "time": 0.033354997634887695,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-6, 2, -8], 2, 8) == 2": {
+      "result": false,
+      "time": 0.0467686653137207,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-2, -1, -6], 3, 8) == -1": {
+      "result": false,
+      "time": 0.04354524612426758,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-5, -3, -1], 3, 2) == -1": {
+      "result": false,
+      "time": 0.05015993118286133,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-3, -1, -2], 3, 6) == -1": {
+      "result": false,
+      "time": 0.054157257080078125,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-6, -6, -5], 2, 5) == -6": {
+      "result": false,
+      "time": 0.06331562995910645,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([2, 1, -7], 2, 3) == 9": {
+      "result": false,
+      "time": 0.0512394905090332,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-2, -3, -1], 3, 5) == -1": {
+      "result": false,
+      "time": 0.06211233139038086,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([0, -6, -8], 2, 8) == 0": {
+      "result": false,
+      "time": 0.06469249725341797,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([4, -4, 1], 1, 6) == 24": {
+      "result": false,
+      "time": 0.05726885795593262,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-3, 1, 2], 3, 6) == 3": {
+      "result": false,
+      "time": 0.04275226593017578,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([2, -1, -3], 1, 6) == 12": {
+      "result": false,
+      "time": 0.03440976142883301,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([2, -1, -7], 3, 8) == 2": {
+      "result": false,
+      "time": 0.03547072410583496,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-4, -7, -3], 2, 1) == -4": {
+      "result": false,
+      "time": 0.04070544242858887,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-1, 0, -3], 1, 5) == -1": {
+      "result": false,
+      "time": 0.043679237365722656,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([0, 1, -5], 2, 4) == 4": {
+      "result": false,
+      "time": 0.0417327880859375,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-4, -5, -5], 2, 2) == -4": {
+      "result": false,
+      "time": 0.03932833671569824,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([2, 2, -5], 1, 2) == 4": {
+      "result": false,
+      "time": 0.039580345153808594,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([2, -3, -6], 2, 8) == 2": {
+      "result": false,
+      "time": 0.04497790336608887,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-3, -4, -5], 1, 6) == -3": {
+      "result": false,
+      "time": 0.04366564750671387,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([3, -5, -3], 1, 1) == 3": {
+      "result": false,
+      "time": 0.0339510440826416,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-2, -3, -2], 3, 2) == -2": {
+      "result": false,
+      "time": 0.03277325630187988,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([4, -4, 2], 2, 3) == 4": {
+      "result": false,
+      "time": 0.03290414810180664,
+      "error": null
+    },
+    "assert max_sub_array_sum_repeated([-4, -4, -5], 1, 7) == -4": {
+      "result": false,
+      "time": 0.03813290596008301,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

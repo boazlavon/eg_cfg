@@ -1,0 +1,459 @@
+{
+  "code": "def binary_to_integer(binary_tuple):\n    # Initialize the result to 0\n    decimal_value = 0\n    # Get the length of the binary tuple\n    length = len(binary_tuple)\n    # Iterate over each bit in the tuple\n    for i in range(length):\n        # Get the current bit\n        bit = binary_tuple[i]\n        # Calculate the power of 2 for the current position\n        power = length - i - 1\n        # Update the decimal value by adding the bit multiplied by 2^power\n        decimal_value += bit * (2 ** power)\n    # Convert the decimal value to a string and return\n    return str(decimal_value)",
+  "results": {
+    "assert binary_to_integer((1, 1, 0, 1, 0, 0, 1)) == '105'": {
+      "result": true,
+      "time": 0.053975582122802734,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 0, 0, 1, 0, 1)) == '101'": {
+      "result": true,
+      "time": 0.06161236763000488,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 0, 1, 0, 1)) == '53'": {
+      "result": true,
+      "time": 0.05121445655822754,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1)) == 13387": {
+      "result": false,
+      "time": 0.05286979675292969,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1)) == 19303": {
+      "result": false,
+      "time": 0.05345034599304199,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0)) == 6878": {
+      "result": false,
+      "time": 0.057860374450683594,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 1, 1, 0, 0)) == 44": {
+      "result": false,
+      "time": 0.050246238708496094,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 0)) == 6": {
+      "result": false,
+      "time": 0.05599164962768555,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1)) == 1171": {
+      "result": false,
+      "time": 0.06132650375366211,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0)) == 13536": {
+      "result": false,
+      "time": 0.05786585807800293,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 1, 1)) == 3": {
+      "result": false,
+      "time": 0.05849504470825195,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 0, 1)) == 9": {
+      "result": false,
+      "time": 0.05671858787536621,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0)) == 530": {
+      "result": false,
+      "time": 0.05146336555480957,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 0)) == 4": {
+      "result": false,
+      "time": 0.0637502670288086,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 0, 0, 1, 1, 1, 1, 1)) == 927": {
+      "result": false,
+      "time": 0.05015158653259277,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 0, 1, 1)) == 3": {
+      "result": false,
+      "time": 0.05644106864929199,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 1, 0, 0)) == 60": {
+      "result": false,
+      "time": 0.03916788101196289,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 1)) == 5": {
+      "result": false,
+      "time": 0.046353816986083984,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 0, 1, 1, 0, 1, 0)) == 218": {
+      "result": false,
+      "time": 0.05967426300048828,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0)) == 2": {
+      "result": false,
+      "time": 0.06151723861694336,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1)) == 1463": {
+      "result": false,
+      "time": 0.03880596160888672,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0)) == 0": {
+      "result": false,
+      "time": 0.041800498962402344,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1)) == 1": {
+      "result": false,
+      "time": 0.040267229080200195,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1)) == 3": {
+      "result": false,
+      "time": 0.03671145439147949,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1)) == 11783": {
+      "result": false,
+      "time": 0.04254007339477539,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0)) == 4598": {
+      "result": false,
+      "time": 0.04324030876159668,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1)) == 1735": {
+      "result": false,
+      "time": 0.03829669952392578,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 0, 0, 0, 0)) == 32": {
+      "result": false,
+      "time": 0.04771780967712402,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 0, 0, 1)) == 25": {
+      "result": false,
+      "time": 0.0338740348815918,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 1, 0, 0, 1, 1)) == 243": {
+      "result": false,
+      "time": 0.04069995880126953,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1)) == 7779": {
+      "result": false,
+      "time": 0.04388785362243652,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 1)) == 1": {
+      "result": false,
+      "time": 0.04072427749633789,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 1, 1, 1)) == 63": {
+      "result": false,
+      "time": 0.04735755920410156,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 0, 1)) == 1": {
+      "result": false,
+      "time": 0.03860592842102051,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0)) == 3724": {
+      "result": false,
+      "time": 0.040067195892333984,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 0, 0)) == 12": {
+      "result": false,
+      "time": 0.04691147804260254,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 0, 0)) == 8": {
+      "result": false,
+      "time": 0.043939828872680664,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0)) == 1060": {
+      "result": false,
+      "time": 0.04857945442199707,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 0, 1, 0, 0)) == 36": {
+      "result": false,
+      "time": 0.04487943649291992,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 0, 0, 0, 0, 1, 0, 1)) == 901": {
+      "result": false,
+      "time": 0.04277515411376953,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 1, 1, 1, 1, 1, 0)) == 190": {
+      "result": false,
+      "time": 0.03991293907165527,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0)) == 978": {
+      "result": false,
+      "time": 0.04744362831115723,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 1, 0, 0)) == 28": {
+      "result": false,
+      "time": 0.03560161590576172,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0)) == 8658": {
+      "result": false,
+      "time": 0.035706281661987305,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1)) == 7": {
+      "result": false,
+      "time": 0.035661935806274414,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 1, 1, 0, 0, 0, 1, 1, 0)) == 710": {
+      "result": false,
+      "time": 0.03708648681640625,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1)) == 6947": {
+      "result": false,
+      "time": 0.04186558723449707,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 0, 0, 0, 1, 1, 0)) == 134": {
+      "result": false,
+      "time": 0.03822183609008789,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0)) == 1404": {
+      "result": false,
+      "time": 0.041106224060058594,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1)) == 16229": {
+      "result": false,
+      "time": 0.04134368896484375,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 0)) == 14": {
+      "result": false,
+      "time": 0.038988590240478516,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 1, 1, 0, 1, 1)) == 251": {
+      "result": false,
+      "time": 0.0336611270904541,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 0, 0, 1)) == 17": {
+      "result": false,
+      "time": 0.042493581771850586,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 1, 0, 0, 1)) == 41": {
+      "result": false,
+      "time": 0.04157114028930664,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1)) == 1577": {
+      "result": false,
+      "time": 0.03300666809082031,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0)) == 7706": {
+      "result": false,
+      "time": 0.03767251968383789,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1)) == 24657": {
+      "result": false,
+      "time": 0.044645071029663086,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 0, 0, 0, 0, 1, 1, 1)) == 7": {
+      "result": false,
+      "time": 0.038458824157714844,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 0, 0)) == 28": {
+      "result": false,
+      "time": 0.03905820846557617,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1)) == 25827": {
+      "result": false,
+      "time": 0.03784894943237305,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 0, 0, 0, 1, 0, 1)) == 133": {
+      "result": false,
+      "time": 0.042554378509521484,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 0, 0, 1, 0, 0, 0, 1, 0)) == 34": {
+      "result": false,
+      "time": 0.044972896575927734,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 0)) == 6": {
+      "result": false,
+      "time": 0.02933526039123535,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 0, 0, 1, 0, 1)) == 5": {
+      "result": false,
+      "time": 0.0374903678894043,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0)) == 1632": {
+      "result": false,
+      "time": 0.038987159729003906,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1)) == 3805": {
+      "result": false,
+      "time": 0.043529510498046875,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1)) == 1825": {
+      "result": false,
+      "time": 0.04364156723022461,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 0, 1, 1, 0, 0)) == 76": {
+      "result": false,
+      "time": 0.040755271911621094,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 1, 0, 0, 1, 0, 1, 0)) == 458": {
+      "result": false,
+      "time": 0.03791475296020508,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 0, 0, 1, 1, 0)) == 102": {
+      "result": false,
+      "time": 0.03920888900756836,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0)) == 2": {
+      "result": false,
+      "time": 0.03630185127258301,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1)) == 5211": {
+      "result": false,
+      "time": 0.042345523834228516,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 1, 1, 0, 0, 1)) == 89": {
+      "result": false,
+      "time": 0.033769845962524414,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0)) == 1404": {
+      "result": false,
+      "time": 0.045308828353881836,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0)) == 472": {
+      "result": false,
+      "time": 0.034659624099731445,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1)) == 323": {
+      "result": false,
+      "time": 0.03757667541503906,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 1, 0, 0, 0, 1, 0)) == 226": {
+      "result": false,
+      "time": 0.03889918327331543,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1)) == 235": {
+      "result": false,
+      "time": 0.03835344314575195,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 1, 0, 1)) == 21": {
+      "result": false,
+      "time": 0.04054093360900879,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1)) == 1073": {
+      "result": false,
+      "time": 0.03559160232543945,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 1, 0, 1)) == 13": {
+      "result": false,
+      "time": 0.04377102851867676,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0)) == 14950": {
+      "result": false,
+      "time": 0.03943467140197754,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 1, 1, 1)) == 23": {
+      "result": false,
+      "time": 0.047400712966918945,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 1, 1)) == 15": {
+      "result": false,
+      "time": 0.03367781639099121,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0)) == 680": {
+      "result": false,
+      "time": 0.043851613998413086,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0)) == 5690": {
+      "result": false,
+      "time": 0.04192471504211426,
+      "error": null
+    },
+    "assert binary_to_integer((0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0)) == 1430": {
+      "result": false,
+      "time": 0.037215232849121094,
+      "error": null
+    },
+    "assert binary_to_integer((0, 1, 0, 0, 1, 0, 0, 0, 1)) == 145": {
+      "result": false,
+      "time": 0.04156184196472168,
+      "error": null
+    },
+    "assert binary_to_integer((1, 0, 1, 1, 1, 1, 0)) == 94": {
+      "result": false,
+      "time": 0.044852495193481445,
+      "error": null
+    },
+    "assert binary_to_integer((1, 1, 0, 0, 1, 0)) == 50": {
+      "result": false,
+      "time": 0.04647016525268555,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.03333333333333333,
+  "general_error": "",
+  "has_testcase_error": false
+}

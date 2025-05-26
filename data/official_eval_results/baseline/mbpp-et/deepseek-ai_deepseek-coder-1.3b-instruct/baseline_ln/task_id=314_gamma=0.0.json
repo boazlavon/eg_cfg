@@ -1,0 +1,519 @@
+{
+  "code": "def max_sum_rectangular_grid(grid, n):\n    m, p = len(grid), len(grid[0])\n    prefix = [[0] * p for _ in range(m)]\n    for i in range(m):\n        for j in range(p):\n            if i == 0:\n                prefix[i][j] = grid[i][j]\n            else:\n                prefix[i][j] = prefix[i-1][j] + grid[i][j]\n    max_sum = float('-inf')\n    for i in range(m):\n        for j in range(p):\n            for k in range(j+1, p+1):\n                total = prefix[i][k] - (prefix[i][j] if j > 0 else 0)\n                for l in range(i+1, n+1):\n                    if total == prefix[l-1][k] - (prefix[l-1][j] if j > 0 else 0):\n                        max_sum = max(max_sum, total)\n    return max_sum",
+  "results": {
+    "assert max_sum_rectangular_grid([ [1, 4, 5], [2, 0, 0 ] ], 3) == 7": {
+      "result": false,
+      "time": 0.0393061637878418,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([ [ 1, 2, 3, 4, 5], [ 6, 7, 8, 9, 10] ], 5) == 24": {
+      "result": false,
+      "time": 0.04360198974609375,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([ [7, 9, 11, 15, 19], [21, 25, 28, 31, 32] ], 5) == 81": {
+      "result": false,
+      "time": 0.04493308067321777,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 9, 7], [1, 4, 5]], 1) == 3": {
+      "result": false,
+      "time": 0.04248666763305664,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 7, 8], [1, 5, 1]], 2) == 7": {
+      "result": false,
+      "time": 0.0438382625579834,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 2, 6], [6, 3, 5]], 3) == 12": {
+      "result": false,
+      "time": 0.04292654991149902,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[1, 8, 10], [6, 5, 2]], 1) == 6": {
+      "result": false,
+      "time": 0.054041385650634766,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 3, 8], [3, 3, 4]], 1) == 6": {
+      "result": false,
+      "time": 0.03819131851196289,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 2, 8], [6, 4, 1]], 3) == 14": {
+      "result": false,
+      "time": 0.03853726387023926,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 7, 5], [6, 4, 4]], 3) == 11": {
+      "result": false,
+      "time": 0.041342973709106445,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 1, 10], [5, 3, 3]], 3) == 15": {
+      "result": false,
+      "time": 0.04576683044433594,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 5, 4], [4, 5, 5]], 3) == 9": {
+      "result": false,
+      "time": 0.04641985893249512,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[1, 8, 6], [4, 2, 2]], 2) == 8": {
+      "result": false,
+      "time": 0.04071617126464844,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 9, 8], [6, 5, 5]], 3) == 14": {
+      "result": false,
+      "time": 0.04349875450134277,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 7, 9], [2, 2, 5]], 2) == 7": {
+      "result": false,
+      "time": 0.039971351623535156,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 9, 1], [5, 4, 3]], 2) == 9": {
+      "result": false,
+      "time": 0.032706260681152344,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 8, 8], [6, 2, 4]], 1) == 6": {
+      "result": false,
+      "time": 0.04449343681335449,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 3, 9], [2, 5, 3]], 1) == 2": {
+      "result": false,
+      "time": 0.03974437713623047,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 6, 5], [1, 3, 5]], 3) == 11": {
+      "result": false,
+      "time": 0.0539247989654541,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 3, 2], [6, 3, 2]], 2) == 6": {
+      "result": false,
+      "time": 0.040140390396118164,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[1, 9, 1], [3, 2, 2]], 3) == 9": {
+      "result": false,
+      "time": 0.03569173812866211,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[1, 7, 9], [7, 4, 3]], 2) == 7": {
+      "result": false,
+      "time": 0.04697012901306152,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 2, 6], [1, 3, 2]], 1) == 4": {
+      "result": false,
+      "time": 0.03992033004760742,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 9, 4], [2, 4, 2]], 1) == 2": {
+      "result": false,
+      "time": 0.04402351379394531,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 8, 6], [1, 2, 4]], 1) == 2": {
+      "result": false,
+      "time": 0.03943181037902832,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 2, 1], [1, 5, 3]], 2) == 5": {
+      "result": false,
+      "time": 0.035151004791259766,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 8, 3], [3, 3, 1]], 3) == 9": {
+      "result": false,
+      "time": 0.03064441680908203,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 1, 2], [7, 4, 2]], 3) == 9": {
+      "result": false,
+      "time": 0.03570675849914551,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 6, 9], [4, 4, 5]], 2) == 6": {
+      "result": false,
+      "time": 0.032010555267333984,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 4, 10], [3, 1, 2]], 3) == 13": {
+      "result": false,
+      "time": 0.034549713134765625,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 7, 4], [6, 4, 5]], 3) == 11": {
+      "result": false,
+      "time": 0.03200531005859375,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 5, 10], [4, 3, 4]], 1) == 4": {
+      "result": false,
+      "time": 0.04208064079284668,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 2, 10], [6, 3, 1]], 1) == 6": {
+      "result": false,
+      "time": 0.03871273994445801,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 4, 3], [3, 3, 5]], 2) == 5": {
+      "result": false,
+      "time": 0.03294682502746582,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 3, 5], [2, 1, 3]], 2) == 3": {
+      "result": false,
+      "time": 0.03448057174682617,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[1, 8, 6], [6, 5, 2]], 2) == 8": {
+      "result": false,
+      "time": 0.032717227935791016,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[1, 1, 7, 7, 6], [4, 5, 11, 9, 7]], 4) == 15": {
+      "result": false,
+      "time": 0.044883012771606445,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 4, 6, 5, 5], [2, 11, 10, 6, 13]], 3) == 16": {
+      "result": false,
+      "time": 0.03111886978149414,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 7, 8, 6, 2], [7, 6, 11, 13, 7]], 2) == 7": {
+      "result": false,
+      "time": 0.03875398635864258,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[1, 5, 1, 4, 8], [4, 3, 6, 13, 12]], 1) == 4": {
+      "result": false,
+      "time": 0.03484463691711426,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 2, 7, 7, 7], [3, 6, 3, 5, 6]], 1) == 3": {
+      "result": false,
+      "time": 0.034706830978393555,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 5, 8, 3, 4], [7, 8, 4, 11, 5]], 1) == 7": {
+      "result": false,
+      "time": 0.03943014144897461,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 3, 6, 2, 10], [11, 10, 4, 6, 10]], 3) == 17": {
+      "result": false,
+      "time": 0.03950858116149902,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 6, 3, 3, 10], [5, 8, 6, 7, 8]], 4) == 15": {
+      "result": false,
+      "time": 0.0354154109954834,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 4, 6, 3, 10], [4, 7, 3, 5, 6]], 3) == 12": {
+      "result": false,
+      "time": 0.0352170467376709,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[1, 4, 8, 7, 9], [4, 11, 13, 13, 12]], 1) == 4": {
+      "result": false,
+      "time": 0.03766489028930664,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 5, 4, 4, 10], [2, 2, 10, 8, 12]], 3) == 14": {
+      "result": false,
+      "time": 0.0348968505859375,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 1, 5, 7, 7], [1, 10, 10, 13, 7]], 3) == 15": {
+      "result": false,
+      "time": 0.038424015045166016,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 5, 3, 9, 3], [10, 11, 11, 13, 10]], 1) == 10": {
+      "result": false,
+      "time": 0.03767824172973633,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 4, 4, 1, 3], [8, 6, 4, 4, 11]], 5) == 23": {
+      "result": false,
+      "time": 0.04253983497619629,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 2, 8, 7, 1], [5, 2, 3, 13, 11]], 3) == 14": {
+      "result": false,
+      "time": 0.0328519344329834,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 4, 3, 3, 8], [11, 5, 11, 10, 8]], 4) == 22": {
+      "result": false,
+      "time": 0.039742231369018555,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 7, 6, 3, 7], [9, 7, 12, 9, 6]], 2) == 9": {
+      "result": false,
+      "time": 0.039977073669433594,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 7, 8, 8, 9], [2, 11, 6, 8, 15]], 3) == 14": {
+      "result": false,
+      "time": 0.039765119552612305,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 5, 5, 8, 4], [7, 2, 6, 14, 5]], 2) == 7": {
+      "result": false,
+      "time": 0.03049445152282715,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 3, 1, 5, 1], [3, 6, 12, 14, 5]], 5) == 23": {
+      "result": false,
+      "time": 0.03804302215576172,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 4, 7, 5, 7], [1, 10, 13, 11, 15]], 4) == 21": {
+      "result": false,
+      "time": 0.04289841651916504,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 2, 6, 5, 10], [8, 7, 6, 6, 11]], 2) == 8": {
+      "result": false,
+      "time": 0.03553318977355957,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 4, 3, 2, 5], [2, 12, 5, 4, 12]], 4) == 16": {
+      "result": false,
+      "time": 0.04622340202331543,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 3, 8, 4, 8], [5, 10, 8, 6, 15]], 3) == 13": {
+      "result": false,
+      "time": 0.035182952880859375,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 6, 7, 2, 8], [1, 4, 12, 13, 15]], 4) == 19": {
+      "result": false,
+      "time": 0.03986477851867676,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 6, 4, 8, 4], [3, 7, 5, 14, 8]], 5) == 21": {
+      "result": false,
+      "time": 0.036550283432006836,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 5, 1, 4, 8], [7, 10, 6, 6, 11]], 5) == 24": {
+      "result": false,
+      "time": 0.03606152534484863,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 7, 5, 9, 10], [6, 11, 12, 9, 6]], 2) == 11": {
+      "result": false,
+      "time": 0.03473067283630371,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 7, 5, 1, 9], [6, 8, 10, 12, 12]], 3) == 16": {
+      "result": false,
+      "time": 0.03340721130371094,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 2, 8, 9, 9], [1, 5, 10, 10, 9]], 3) == 15": {
+      "result": false,
+      "time": 0.037929534912109375,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 6, 3, 3, 7], [10, 6, 11, 14, 15]], 1) == 10": {
+      "result": false,
+      "time": 0.045224905014038086,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 6, 8, 9, 2], [2, 6, 7, 10, 9]], 2) == 6": {
+      "result": false,
+      "time": 0.036968231201171875,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 6, 3, 1, 9], [6, 9, 4, 5, 8]], 5) == 19": {
+      "result": false,
+      "time": 0.02963995933532715,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[10, 6, 8, 19, 16], [21, 28, 32, 29, 33]], 5) == 86": {
+      "result": false,
+      "time": 0.03470921516418457,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[7, 6, 8, 12, 24], [21, 24, 23, 34, 30]], 1) == 21": {
+      "result": false,
+      "time": 0.035431861877441406,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 6, 13, 18, 21], [20, 26, 25, 35, 37]], 4) == 61": {
+      "result": false,
+      "time": 0.03993034362792969,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[7, 6, 15, 10, 19], [21, 23, 29, 30, 28]], 5) == 78": {
+      "result": false,
+      "time": 0.03602313995361328,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 13, 6, 11, 16], [20, 21, 33, 28, 36]], 5) == 89": {
+      "result": false,
+      "time": 0.038702964782714844,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[11, 13, 10, 16, 18], [21, 25, 31, 30, 35]], 5) == 87": {
+      "result": false,
+      "time": 0.03770923614501953,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 13, 12, 12, 17], [25, 21, 33, 35, 36]], 2) == 25": {
+      "result": false,
+      "time": 0.03452301025390625,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 4, 15, 20, 22], [20, 24, 31, 29, 29]], 3) == 51": {
+      "result": false,
+      "time": 0.04069972038269043,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 11, 13, 12, 19], [20, 22, 33, 33, 33]], 2) == 22": {
+      "result": false,
+      "time": 0.034140586853027344,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 6, 9, 18, 18], [19, 24, 32, 30, 28]], 5) == 79": {
+      "result": false,
+      "time": 0.03279852867126465,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 5, 14, 12, 22], [22, 30, 31, 26, 37]], 1) == 22": {
+      "result": false,
+      "time": 0.04347705841064453,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 9, 11, 15, 14], [26, 26, 28, 34, 37]], 3) == 54": {
+      "result": false,
+      "time": 0.0409703254699707,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[11, 11, 15, 12, 24], [19, 26, 28, 35, 30]], 4) == 61": {
+      "result": false,
+      "time": 0.04026174545288086,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[11, 6, 7, 19, 15], [19, 26, 24, 27, 32]], 1) == 19": {
+      "result": false,
+      "time": 0.03440976142883301,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[8, 13, 11, 13, 20], [17, 27, 25, 26, 33]], 1) == 17": {
+      "result": false,
+      "time": 0.03792905807495117,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 7, 6, 11, 14], [19, 20, 29, 29, 31]], 3) == 48": {
+      "result": false,
+      "time": 0.0389714241027832,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[5, 6, 7, 20, 20], [24, 24, 23, 26, 36]], 5) == 83": {
+      "result": false,
+      "time": 0.03638148307800293,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 4, 7, 20, 23], [18, 23, 27, 34, 31]], 1) == 18": {
+      "result": false,
+      "time": 0.04065728187561035,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[6, 7, 10, 18, 24], [22, 20, 33, 26, 35]], 3) == 55": {
+      "result": false,
+      "time": 0.03891301155090332,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[2, 12, 14, 13, 15], [21, 27, 27, 33, 27]], 5) == 75": {
+      "result": false,
+      "time": 0.03831601142883301,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[12, 9, 8, 17, 22], [21, 25, 32, 34, 37]], 3) == 53": {
+      "result": false,
+      "time": 0.03235912322998047,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[9, 14, 15, 19, 21], [23, 21, 29, 27, 30]], 3) == 52": {
+      "result": false,
+      "time": 0.0345921516418457,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[12, 5, 7, 13, 20], [22, 25, 30, 28, 29]], 2) == 25": {
+      "result": false,
+      "time": 0.043674468994140625,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 6, 14, 20, 24], [17, 23, 32, 34, 30]], 3) == 49": {
+      "result": false,
+      "time": 0.03781867027282715,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[10, 9, 14, 14, 24], [25, 22, 33, 26, 35]], 4) == 58": {
+      "result": false,
+      "time": 0.03504133224487305,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 10, 11, 18, 21], [24, 26, 26, 35, 28]], 4) == 61": {
+      "result": false,
+      "time": 0.03211402893066406,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[10, 13, 7, 12, 21], [21, 30, 25, 35, 32]], 5) == 78": {
+      "result": false,
+      "time": 0.03768038749694824,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[4, 12, 12, 14, 24], [26, 20, 28, 31, 35]], 4) == 57": {
+      "result": false,
+      "time": 0.03256678581237793,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[11, 13, 10, 13, 24], [21, 20, 31, 28, 34]], 1) == 21": {
+      "result": false,
+      "time": 0.03732490539550781,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[3, 13, 10, 19, 17], [23, 29, 32, 31, 36]], 3) == 55": {
+      "result": false,
+      "time": 0.03974342346191406,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[10, 13, 14, 18, 16], [16, 29, 26, 34, 27]], 4) == 63": {
+      "result": false,
+      "time": 0.03529238700866699,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[8, 11, 6, 19, 16], [21, 20, 23, 29, 37]], 1) == 21": {
+      "result": false,
+      "time": 0.0380856990814209,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([[8, 13, 16, 17, 22], [16, 30, 33, 26, 30]], 5) == 79": {
+      "result": false,
+      "time": 0.0373682975769043,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,514 @@
+{
+  "code": "def is_Monotonic(arr):\n    increasing = decreasing = True\n    for i in range(len(arr) - 1):\n        if arr[i] > arr[i+1]:\n            increasing = False\n        if arr[i] < arr[i+1]:\n            decreasing = False\n    return increasing or decreasing",
+  "results": {
+    "assert is_Monotonic([6, 5, 4, 4]) == True": {
+      "result": true,
+      "time": 0.052710771560668945,
+      "error": null
+    },
+    "assert is_Monotonic([1, 2, 2, 3]) == True": {
+      "result": true,
+      "time": 0.045969247817993164,
+      "error": null
+    },
+    "assert is_Monotonic([1, 3, 2]) == False": {
+      "result": true,
+      "time": 0.03960824012756348,
+      "error": null
+    },
+    "assert is_Monotonic([3, 10, 7, 7]) == False": {
+      "result": true,
+      "time": 0.04161262512207031,
+      "error": null
+    },
+    "assert is_Monotonic([9, 4, 4, 2]) == True": {
+      "result": true,
+      "time": 0.04998183250427246,
+      "error": null
+    },
+    "assert is_Monotonic([4, 2, 8, 8]) == False": {
+      "result": true,
+      "time": 0.05796694755554199,
+      "error": null
+    },
+    "assert is_Monotonic([11, 1, 1, 3]) == False": {
+      "result": true,
+      "time": 0.04649782180786133,
+      "error": null
+    },
+    "assert is_Monotonic([2, 5, 4, 9]) == False": {
+      "result": true,
+      "time": 0.046950578689575195,
+      "error": null
+    },
+    "assert is_Monotonic([5, 1, 8, 7]) == False": {
+      "result": true,
+      "time": 0.04111194610595703,
+      "error": null
+    },
+    "assert is_Monotonic([5, 3, 7, 7]) == False": {
+      "result": true,
+      "time": 0.047162532806396484,
+      "error": null
+    },
+    "assert is_Monotonic([6, 10, 9, 3]) == False": {
+      "result": true,
+      "time": 0.04791831970214844,
+      "error": null
+    },
+    "assert is_Monotonic([6, 6, 1, 8]) == False": {
+      "result": true,
+      "time": 0.041532039642333984,
+      "error": null
+    },
+    "assert is_Monotonic([6, 4, 3, 6]) == False": {
+      "result": true,
+      "time": 0.04756331443786621,
+      "error": null
+    },
+    "assert is_Monotonic([7, 5, 4, 2]) == True": {
+      "result": true,
+      "time": 0.04567456245422363,
+      "error": null
+    },
+    "assert is_Monotonic([7, 8, 5, 1]) == False": {
+      "result": true,
+      "time": 0.04515981674194336,
+      "error": null
+    },
+    "assert is_Monotonic([8, 1, 7, 6]) == False": {
+      "result": true,
+      "time": 0.04525947570800781,
+      "error": null
+    },
+    "assert is_Monotonic([8, 5, 6, 2]) == False": {
+      "result": true,
+      "time": 0.04736328125,
+      "error": null
+    },
+    "assert is_Monotonic([5, 6, 6, 6]) == True": {
+      "result": true,
+      "time": 0.045424699783325195,
+      "error": null
+    },
+    "assert is_Monotonic([11, 2, 3, 8]) == False": {
+      "result": true,
+      "time": 0.04375505447387695,
+      "error": null
+    },
+    "assert is_Monotonic([9, 4, 7, 6]) == False": {
+      "result": true,
+      "time": 0.0442502498626709,
+      "error": null
+    },
+    "assert is_Monotonic([3, 10, 9, 9]) == False": {
+      "result": true,
+      "time": 0.044447898864746094,
+      "error": null
+    },
+    "assert is_Monotonic([7, 2, 2, 1]) == True": {
+      "result": true,
+      "time": 0.05038857460021973,
+      "error": null
+    },
+    "assert is_Monotonic([11, 8, 3, 2]) == True": {
+      "result": true,
+      "time": 0.04327750205993652,
+      "error": null
+    },
+    "assert is_Monotonic([10, 10, 5, 6]) == False": {
+      "result": true,
+      "time": 0.0487973690032959,
+      "error": null
+    },
+    "assert is_Monotonic([6, 2, 8, 2]) == False": {
+      "result": true,
+      "time": 0.041954994201660156,
+      "error": null
+    },
+    "assert is_Monotonic([1, 5, 5, 4]) == False": {
+      "result": true,
+      "time": 0.04385638236999512,
+      "error": null
+    },
+    "assert is_Monotonic([10, 3, 4, 8]) == False": {
+      "result": true,
+      "time": 0.04107499122619629,
+      "error": null
+    },
+    "assert is_Monotonic([8, 1, 6, 9]) == False": {
+      "result": true,
+      "time": 0.05452322959899902,
+      "error": null
+    },
+    "assert is_Monotonic([10, 7, 8, 8]) == False": {
+      "result": true,
+      "time": 0.047389984130859375,
+      "error": null
+    },
+    "assert is_Monotonic([6, 8, 7, 9]) == False": {
+      "result": true,
+      "time": 0.04613900184631348,
+      "error": null
+    },
+    "assert is_Monotonic([7, 7, 2, 1]) == True": {
+      "result": true,
+      "time": 0.05380964279174805,
+      "error": null
+    },
+    "assert is_Monotonic([5, 1, 5, 8]) == False": {
+      "result": true,
+      "time": 0.04305410385131836,
+      "error": null
+    },
+    "assert is_Monotonic([3, 10, 4, 5]) == False": {
+      "result": true,
+      "time": 0.04906201362609863,
+      "error": null
+    },
+    "assert is_Monotonic([3, 2, 2, 8]) == False": {
+      "result": true,
+      "time": 0.049199819564819336,
+      "error": null
+    },
+    "assert is_Monotonic([1, 10, 4, 8]) == False": {
+      "result": true,
+      "time": 0.0460047721862793,
+      "error": null
+    },
+    "assert is_Monotonic([5, 7, 3, 2]) == False": {
+      "result": true,
+      "time": 0.04558706283569336,
+      "error": null
+    },
+    "assert is_Monotonic([6, 3, 6, 5]) == False": {
+      "result": true,
+      "time": 0.04748058319091797,
+      "error": null
+    },
+    "assert is_Monotonic([6, 3, 4, 1]) == False": {
+      "result": true,
+      "time": 0.04592704772949219,
+      "error": null
+    },
+    "assert is_Monotonic([6, 3, 2, 7]) == False": {
+      "result": true,
+      "time": 0.04868745803833008,
+      "error": null
+    },
+    "assert is_Monotonic([2, 2, 6, 7]) == True": {
+      "result": true,
+      "time": 0.05167794227600098,
+      "error": null
+    },
+    "assert is_Monotonic([1, 2, 3, 4]) == True": {
+      "result": true,
+      "time": 0.05673384666442871,
+      "error": null
+    },
+    "assert is_Monotonic([2, 1, 1, 5]) == False": {
+      "result": true,
+      "time": 0.04465126991271973,
+      "error": null
+    },
+    "assert is_Monotonic([3, 6, 1, 4]) == False": {
+      "result": true,
+      "time": 0.049204111099243164,
+      "error": null
+    },
+    "assert is_Monotonic([5, 1, 5, 6]) == False": {
+      "result": true,
+      "time": 0.055556297302246094,
+      "error": null
+    },
+    "assert is_Monotonic([2, 2, 6, 1]) == False": {
+      "result": true,
+      "time": 0.05517840385437012,
+      "error": null
+    },
+    "assert is_Monotonic([2, 2, 6, 2]) == False": {
+      "result": true,
+      "time": 0.054535865783691406,
+      "error": null
+    },
+    "assert is_Monotonic([3, 5, 4, 7]) == False": {
+      "result": true,
+      "time": 0.04590272903442383,
+      "error": null
+    },
+    "assert is_Monotonic([4, 7, 1, 1]) == False": {
+      "result": true,
+      "time": 0.051195621490478516,
+      "error": null
+    },
+    "assert is_Monotonic([4, 6, 5, 6]) == False": {
+      "result": true,
+      "time": 0.049169063568115234,
+      "error": null
+    },
+    "assert is_Monotonic([6, 5, 3, 6]) == False": {
+      "result": true,
+      "time": 0.04550647735595703,
+      "error": null
+    },
+    "assert is_Monotonic([6, 6, 2, 2]) == True": {
+      "result": true,
+      "time": 0.06695890426635742,
+      "error": null
+    },
+    "assert is_Monotonic([1, 5, 1, 4]) == False": {
+      "result": true,
+      "time": 0.046477317810058594,
+      "error": null
+    },
+    "assert is_Monotonic([4, 1, 3, 8]) == False": {
+      "result": true,
+      "time": 0.0507969856262207,
+      "error": null
+    },
+    "assert is_Monotonic([4, 6, 7, 7]) == True": {
+      "result": true,
+      "time": 0.06248140335083008,
+      "error": null
+    },
+    "assert is_Monotonic([3, 4, 6, 1]) == False": {
+      "result": true,
+      "time": 0.059845924377441406,
+      "error": null
+    },
+    "assert is_Monotonic([3, 7, 7, 6]) == False": {
+      "result": true,
+      "time": 0.05436587333679199,
+      "error": null
+    },
+    "assert is_Monotonic([4, 1, 1, 2]) == False": {
+      "result": true,
+      "time": 0.05279135704040527,
+      "error": null
+    },
+    "assert is_Monotonic([4, 5, 1, 4]) == False": {
+      "result": true,
+      "time": 0.04945874214172363,
+      "error": null
+    },
+    "assert is_Monotonic([3, 7, 6, 7]) == False": {
+      "result": true,
+      "time": 0.059435367584228516,
+      "error": null
+    },
+    "assert is_Monotonic([5, 4, 3, 4]) == False": {
+      "result": true,
+      "time": 0.06432461738586426,
+      "error": null
+    },
+    "assert is_Monotonic([6, 6, 7, 1]) == False": {
+      "result": true,
+      "time": 0.053308963775634766,
+      "error": null
+    },
+    "assert is_Monotonic([2, 4, 7, 7]) == True": {
+      "result": true,
+      "time": 0.04959750175476074,
+      "error": null
+    },
+    "assert is_Monotonic([6, 6, 3, 3]) == True": {
+      "result": true,
+      "time": 0.05476784706115723,
+      "error": null
+    },
+    "assert is_Monotonic([3, 4, 5, 2]) == False": {
+      "result": true,
+      "time": 2.091139316558838,
+      "error": null
+    },
+    "assert is_Monotonic([6, 1, 6, 8]) == False": {
+      "result": true,
+      "time": 0.05153703689575195,
+      "error": null
+    },
+    "assert is_Monotonic([3, 1, 2, 3]) == False": {
+      "result": true,
+      "time": 0.05389523506164551,
+      "error": null
+    },
+    "assert is_Monotonic([3, 6, 7, 8]) == True": {
+      "result": true,
+      "time": 0.04698038101196289,
+      "error": null
+    },
+    "assert is_Monotonic([1, 4, 3, 2]) == False": {
+      "result": true,
+      "time": 0.04647350311279297,
+      "error": null
+    },
+    "assert is_Monotonic([5, 6, 6, 7]) == True": {
+      "result": true,
+      "time": 0.04764270782470703,
+      "error": null
+    },
+    "assert is_Monotonic([4, 1, 2]) == False": {
+      "result": true,
+      "time": 0.046851396560668945,
+      "error": null
+    },
+    "assert is_Monotonic([2, 2, 4]) == True": {
+      "result": true,
+      "time": 0.04872560501098633,
+      "error": null
+    },
+    "assert is_Monotonic([1, 4, 4]) == True": {
+      "result": true,
+      "time": 0.046380043029785156,
+      "error": null
+    },
+    "assert is_Monotonic([3, 2, 1]) == True": {
+      "result": true,
+      "time": 0.03799891471862793,
+      "error": null
+    },
+    "assert is_Monotonic([3, 2, 3]) == False": {
+      "result": true,
+      "time": 0.04062461853027344,
+      "error": null
+    },
+    "assert is_Monotonic([2, 1, 1]) == True": {
+      "result": true,
+      "time": 0.03818941116333008,
+      "error": null
+    },
+    "assert is_Monotonic([3, 2, 4]) == False": {
+      "result": true,
+      "time": 0.03905081748962402,
+      "error": null
+    },
+    "assert is_Monotonic([1, 5, 2]) == False": {
+      "result": true,
+      "time": 0.037737369537353516,
+      "error": null
+    },
+    "assert is_Monotonic([3, 8, 6]) == False": {
+      "result": true,
+      "time": 0.04829120635986328,
+      "error": null
+    },
+    "assert is_Monotonic([2, 8, 7]) == False": {
+      "result": true,
+      "time": 0.04284930229187012,
+      "error": null
+    },
+    "assert is_Monotonic([6, 7, 4]) == False": {
+      "result": true,
+      "time": 0.04685711860656738,
+      "error": null
+    },
+    "assert is_Monotonic([6, 6, 5]) == True": {
+      "result": true,
+      "time": 0.047849416732788086,
+      "error": null
+    },
+    "assert is_Monotonic([1, 1, 5]) == True": {
+      "result": true,
+      "time": 0.05141019821166992,
+      "error": null
+    },
+    "assert is_Monotonic([2, 5, 5]) == True": {
+      "result": true,
+      "time": 0.045327186584472656,
+      "error": null
+    },
+    "assert is_Monotonic([3, 3, 6]) == True": {
+      "result": true,
+      "time": 0.047264814376831055,
+      "error": null
+    },
+    "assert is_Monotonic([6, 5, 1]) == True": {
+      "result": true,
+      "time": 0.04390454292297363,
+      "error": null
+    },
+    "assert is_Monotonic([6, 3, 4]) == False": {
+      "result": true,
+      "time": 0.04309964179992676,
+      "error": null
+    },
+    "assert is_Monotonic([5, 2, 3]) == False": {
+      "result": true,
+      "time": 0.04449939727783203,
+      "error": null
+    },
+    "assert is_Monotonic([5, 4, 3]) == True": {
+      "result": true,
+      "time": 0.047002315521240234,
+      "error": null
+    },
+    "assert is_Monotonic([4, 7, 2]) == False": {
+      "result": true,
+      "time": 0.049652814865112305,
+      "error": null
+    },
+    "assert is_Monotonic([6, 5, 4]) == True": {
+      "result": true,
+      "time": 0.03870558738708496,
+      "error": null
+    },
+    "assert is_Monotonic([1, 4, 7]) == True": {
+      "result": true,
+      "time": 0.046561241149902344,
+      "error": null
+    },
+    "assert is_Monotonic([3, 7, 7]) == True": {
+      "result": true,
+      "time": 0.047089338302612305,
+      "error": null
+    },
+    "assert is_Monotonic([4, 1, 1]) == True": {
+      "result": true,
+      "time": 0.05136227607727051,
+      "error": null
+    },
+    "assert is_Monotonic([2, 2, 3]) == True": {
+      "result": true,
+      "time": 0.045775651931762695,
+      "error": null
+    },
+    "assert is_Monotonic([2, 2, 6]) == True": {
+      "result": true,
+      "time": 0.036011695861816406,
+      "error": null
+    },
+    "assert is_Monotonic([5, 5, 1]) == True": {
+      "result": true,
+      "time": 0.04742884635925293,
+      "error": null
+    },
+    "assert is_Monotonic([2, 3, 1]) == False": {
+      "result": true,
+      "time": 0.04523468017578125,
+      "error": null
+    },
+    "assert is_Monotonic([4, 7, 5]) == False": {
+      "result": true,
+      "time": 0.041983842849731445,
+      "error": null
+    },
+    "assert is_Monotonic([2, 1, 5]) == False": {
+      "result": true,
+      "time": 0.038983821868896484,
+      "error": null
+    },
+    "assert is_Monotonic([5, 5, 3]) == True": {
+      "result": true,
+      "time": 0.04494833946228027,
+      "error": null
+    },
+    "assert is_Monotonic([2, 5, 3]) == False": {
+      "result": true,
+      "time": 0.05302572250366211,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

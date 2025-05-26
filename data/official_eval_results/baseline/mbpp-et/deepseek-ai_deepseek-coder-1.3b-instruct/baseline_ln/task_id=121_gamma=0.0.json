@@ -1,0 +1,519 @@
+{
+  "code": "def check_triplet(arr, a, b, c):\n    arr.sort()\n    for i in range(len(arr)-2):\n        if arr[i] + arr[i+1] + arr[i+2] == a and arr[i] + arr[i+1] + arr[i+2] == b and arr[i] + arr[i+1] + arr[i+2] == c:\n            return True\n    return False",
+  "results": {
+    "assert check_triplet([2, 7, 4, 0, 9, 5, 1, 3], 8, 6, 0) == True": {
+      "result": false,
+      "time": 0.029369354248046875,
+      "error": null
+    },
+    "assert check_triplet([1, 4, 5, 6, 7, 8, 5, 9], 8, 6, 0) == False": {
+      "result": true,
+      "time": 0.027777910232543945,
+      "error": null
+    },
+    "assert check_triplet([10, 4, 2, 3, 5], 5, 15, 0) == True": {
+      "result": false,
+      "time": 0.03558826446533203,
+      "error": null
+    },
+    "assert check_triplet([3, 4, 1, 2, 5, 4, 1, 8], 4, 8, 1) == False": {
+      "result": true,
+      "time": 0.031400442123413086,
+      "error": null
+    },
+    "assert check_triplet([3, 8, 6, 2, 11, 1, 3, 6], 4, 10, 4) == False": {
+      "result": true,
+      "time": 0.028231143951416016,
+      "error": null
+    },
+    "assert check_triplet([5, 8, 6, 5, 8, 3, 6, 4], 8, 1, 5) == False": {
+      "result": true,
+      "time": 0.03717494010925293,
+      "error": null
+    },
+    "assert check_triplet([4, 4, 4, 3, 8, 1, 6, 2], 3, 5, 1) == False": {
+      "result": true,
+      "time": 0.029354333877563477,
+      "error": null
+    },
+    "assert check_triplet([1, 7, 6, 2, 10, 3, 4, 2], 7, 3, 1) == True": {
+      "result": false,
+      "time": 0.038973331451416016,
+      "error": null
+    },
+    "assert check_triplet([7, 2, 3, 5, 11, 4, 4, 2], 6, 3, 2) == True": {
+      "result": false,
+      "time": 0.03345847129821777,
+      "error": null
+    },
+    "assert check_triplet([1, 5, 6, 1, 7, 6, 4, 5], 6, 11, 1) == True": {
+      "result": false,
+      "time": 0.0338897705078125,
+      "error": null
+    },
+    "assert check_triplet([1, 10, 6, 4, 5, 5, 6, 1], 6, 3, 1) == False": {
+      "result": true,
+      "time": 0.03127932548522949,
+      "error": null
+    },
+    "assert check_triplet([2, 12, 9, 2, 6, 1, 2, 1], 3, 11, 5) == False": {
+      "result": true,
+      "time": 0.031279563903808594,
+      "error": null
+    },
+    "assert check_triplet([3, 3, 1, 2, 8, 8, 1, 2], 3, 10, 1) == False": {
+      "result": true,
+      "time": 0.03151869773864746,
+      "error": null
+    },
+    "assert check_triplet([6, 3, 6, 4, 8, 6, 5, 1], 4, 1, 5) == False": {
+      "result": true,
+      "time": 0.03226923942565918,
+      "error": null
+    },
+    "assert check_triplet([2, 9, 9, 4, 5, 9, 4, 8], 6, 6, 1) == True": {
+      "result": false,
+      "time": 0.03637504577636719,
+      "error": null
+    },
+    "assert check_triplet([3, 12, 5, 2, 7, 7, 5, 2], 9, 1, 3) == False": {
+      "result": true,
+      "time": 0.03450965881347656,
+      "error": null
+    },
+    "assert check_triplet([7, 6, 8, 2, 9, 4, 5, 3], 5, 3, 1) == False": {
+      "result": true,
+      "time": 0.03432917594909668,
+      "error": null
+    },
+    "assert check_triplet([6, 4, 4, 2, 7, 7, 2, 5], 7, 8, 1) == True": {
+      "result": false,
+      "time": 0.03269481658935547,
+      "error": null
+    },
+    "assert check_triplet([6, 7, 5, 1, 5, 3, 6, 6], 4, 10, 3) == False": {
+      "result": true,
+      "time": 0.030259132385253906,
+      "error": null
+    },
+    "assert check_triplet([7, 4, 7, 3, 12, 9, 3, 1], 4, 6, 1) == False": {
+      "result": true,
+      "time": 0.033590078353881836,
+      "error": null
+    },
+    "assert check_triplet([1, 6, 3, 4, 13, 6, 4, 6], 5, 2, 2) == False": {
+      "result": true,
+      "time": 0.03408980369567871,
+      "error": null
+    },
+    "assert check_triplet([5, 3, 4, 3, 7, 3, 3, 2], 6, 1, 3) == False": {
+      "result": true,
+      "time": 0.030777931213378906,
+      "error": null
+    },
+    "assert check_triplet([5, 5, 3, 2, 8, 1, 3, 8], 5, 7, 1) == True": {
+      "result": false,
+      "time": 0.034259796142578125,
+      "error": null
+    },
+    "assert check_triplet([3, 2, 1, 1, 12, 7, 6, 2], 7, 10, 3) == False": {
+      "result": true,
+      "time": 0.0374906063079834,
+      "error": null
+    },
+    "assert check_triplet([7, 6, 6, 2, 5, 7, 1, 3], 6, 6, 2) == True": {
+      "result": false,
+      "time": 0.03927469253540039,
+      "error": null
+    },
+    "assert check_triplet([2, 5, 6, 5, 14, 8, 2, 1], 5, 9, 4) == False": {
+      "result": true,
+      "time": 0.03058767318725586,
+      "error": null
+    },
+    "assert check_triplet([4, 9, 9, 5, 7, 6, 3, 3], 12, 10, 3) == False": {
+      "result": true,
+      "time": 0.030365705490112305,
+      "error": null
+    },
+    "assert check_triplet([7, 6, 3, 2, 12, 1, 4, 4], 7, 6, 1) == True": {
+      "result": false,
+      "time": 0.03170418739318848,
+      "error": null
+    },
+    "assert check_triplet([6, 3, 3, 2, 4, 7, 1, 8], 7, 8, 4) == False": {
+      "result": true,
+      "time": 0.032446861267089844,
+      "error": null
+    },
+    "assert check_triplet([5, 2, 9, 2, 6, 9, 2, 5], 4, 5, 4) == False": {
+      "result": true,
+      "time": 0.03406500816345215,
+      "error": null
+    },
+    "assert check_triplet([6, 9, 4, 1, 5, 7, 5, 2], 9, 11, 3) == False": {
+      "result": true,
+      "time": 0.03518986701965332,
+      "error": null
+    },
+    "assert check_triplet([7, 9, 2, 4, 8, 6, 1, 1], 6, 7, 2) == True": {
+      "result": false,
+      "time": 0.028453826904296875,
+      "error": null
+    },
+    "assert check_triplet([3, 11, 7, 5, 11, 4, 1, 6], 7, 1, 1) == False": {
+      "result": true,
+      "time": 0.039087533950805664,
+      "error": null
+    },
+    "assert check_triplet([2, 7, 5, 1, 4, 5, 4, 2], 9, 7, 3) == False": {
+      "result": true,
+      "time": 0.033196449279785156,
+      "error": null
+    },
+    "assert check_triplet([7, 3, 9, 2, 13, 4, 4, 5], 7, 6, 1) == True": {
+      "result": false,
+      "time": 0.029815196990966797,
+      "error": null
+    },
+    "assert check_triplet([4, 7, 4, 4, 7, 9, 3, 1], 7, 9, 5) == False": {
+      "result": true,
+      "time": 0.032629966735839844,
+      "error": null
+    },
+    "assert check_triplet([4, 2, 10, 4, 11, 6, 10, 6], 5, 3, 2) == False": {
+      "result": true,
+      "time": 0.036151885986328125,
+      "error": null
+    },
+    "assert check_triplet([2, 1, 10, 2, 9, 9, 1, 11], 8, 5, 3) == False": {
+      "result": true,
+      "time": 0.037566184997558594,
+      "error": null
+    },
+    "assert check_triplet([4, 8, 5, 5, 8, 8, 5, 13], 9, 4, 3) == False": {
+      "result": true,
+      "time": 0.0315554141998291,
+      "error": null
+    },
+    "assert check_triplet([6, 1, 1, 1, 7, 9, 5, 11], 4, 7, 5) == False": {
+      "result": true,
+      "time": 0.031626224517822266,
+      "error": null
+    },
+    "assert check_triplet([4, 1, 8, 10, 2, 3, 2, 14], 6, 2, 3) == False": {
+      "result": true,
+      "time": 0.03523993492126465,
+      "error": null
+    },
+    "assert check_triplet([2, 2, 10, 10, 4, 8, 7, 9], 8, 10, 3) == False": {
+      "result": true,
+      "time": 0.031089305877685547,
+      "error": null
+    },
+    "assert check_triplet([4, 5, 2, 5, 6, 5, 6, 7], 5, 11, 1) == True": {
+      "result": false,
+      "time": 0.03171396255493164,
+      "error": null
+    },
+    "assert check_triplet([5, 8, 8, 6, 2, 9, 9, 9], 5, 4, 3) == False": {
+      "result": true,
+      "time": 0.035593271255493164,
+      "error": null
+    },
+    "assert check_triplet([3, 6, 10, 10, 4, 9, 10, 11], 6, 2, 5) == False": {
+      "result": true,
+      "time": 0.029883623123168945,
+      "error": null
+    },
+    "assert check_triplet([5, 2, 6, 1, 11, 13, 10, 14], 5, 10, 5) == False": {
+      "result": true,
+      "time": 0.03027033805847168,
+      "error": null
+    },
+    "assert check_triplet([5, 1, 9, 5, 5, 8, 6, 11], 3, 8, 1) == False": {
+      "result": true,
+      "time": 0.03213167190551758,
+      "error": null
+    },
+    "assert check_triplet([6, 8, 2, 5, 12, 9, 9, 11], 3, 1, 1) == False": {
+      "result": true,
+      "time": 0.03567385673522949,
+      "error": null
+    },
+    "assert check_triplet([4, 6, 6, 9, 5, 4, 8, 5], 4, 2, 2) == False": {
+      "result": true,
+      "time": 0.03165102005004883,
+      "error": null
+    },
+    "assert check_triplet([5, 4, 3, 1, 5, 3, 7, 14], 3, 10, 4) == False": {
+      "result": true,
+      "time": 0.031340837478637695,
+      "error": null
+    },
+    "assert check_triplet([5, 6, 10, 11, 8, 4, 2, 6], 4, 5, 5) == False": {
+      "result": true,
+      "time": 0.03130221366882324,
+      "error": null
+    },
+    "assert check_triplet([1, 1, 6, 8, 7, 11, 9, 10], 8, 9, 4) == False": {
+      "result": true,
+      "time": 0.029267549514770508,
+      "error": null
+    },
+    "assert check_triplet([6, 1, 8, 3, 2, 5, 5, 10], 8, 3, 3) == False": {
+      "result": true,
+      "time": 0.03393959999084473,
+      "error": null
+    },
+    "assert check_triplet([4, 9, 4, 8, 4, 5, 6, 13], 4, 3, 2) == False": {
+      "result": true,
+      "time": 0.032399892807006836,
+      "error": null
+    },
+    "assert check_triplet([6, 7, 7, 6, 11, 4, 6, 13], 6, 1, 2) == False": {
+      "result": true,
+      "time": 0.032988548278808594,
+      "error": null
+    },
+    "assert check_triplet([4, 6, 10, 5, 8, 9, 1, 5], 7, 2, 5) == False": {
+      "result": true,
+      "time": 0.0374758243560791,
+      "error": null
+    },
+    "assert check_triplet([1, 1, 7, 5, 6, 12, 10, 6], 8, 11, 3) == False": {
+      "result": true,
+      "time": 0.03131222724914551,
+      "error": null
+    },
+    "assert check_triplet([4, 8, 1, 2, 11, 10, 10, 10], 12, 2, 3) == False": {
+      "result": true,
+      "time": 0.03190016746520996,
+      "error": null
+    },
+    "assert check_triplet([6, 9, 3, 6, 2, 13, 4, 11], 7, 11, 4) == False": {
+      "result": true,
+      "time": 0.02854299545288086,
+      "error": null
+    },
+    "assert check_triplet([6, 9, 9, 9, 11, 3, 2, 12], 8, 8, 1) == True": {
+      "result": false,
+      "time": 0.03251767158508301,
+      "error": null
+    },
+    "assert check_triplet([4, 3, 6, 10, 5, 11, 6, 10], 7, 3, 3) == False": {
+      "result": true,
+      "time": 0.029438495635986328,
+      "error": null
+    },
+    "assert check_triplet([6, 3, 8, 4, 11, 7, 5, 14], 3, 11, 4) == False": {
+      "result": true,
+      "time": 0.02889847755432129,
+      "error": null
+    },
+    "assert check_triplet([2, 1, 2, 1, 10, 3, 2, 7], 11, 4, 3) == False": {
+      "result": true,
+      "time": 0.03451228141784668,
+      "error": null
+    },
+    "assert check_triplet([4, 8, 1, 8, 11, 8, 2, 9], 3, 6, 1) == False": {
+      "result": true,
+      "time": 0.032364606857299805,
+      "error": null
+    },
+    "assert check_triplet([1, 7, 1, 7, 11, 7, 3, 6], 6, 1, 1) == False": {
+      "result": true,
+      "time": 0.03157639503479004,
+      "error": null
+    },
+    "assert check_triplet([2, 7, 3, 11, 3, 5, 2, 11], 8, 10, 4) == False": {
+      "result": true,
+      "time": 0.031230688095092773,
+      "error": null
+    },
+    "assert check_triplet([3, 1, 9, 11, 10, 11, 4, 12], 6, 6, 1) == False": {
+      "result": true,
+      "time": 0.03464913368225098,
+      "error": null
+    },
+    "assert check_triplet([1, 6, 10, 10, 3, 4, 8, 13], 3, 10, 1) == False": {
+      "result": true,
+      "time": 0.034410953521728516,
+      "error": null
+    },
+    "assert check_triplet([3, 1, 4, 4, 3, 8, 5, 6], 8, 8, 5) == False": {
+      "result": true,
+      "time": 0.030965566635131836,
+      "error": null
+    },
+    "assert check_triplet([13, 8, 3, 5, 3], 5, 13, 2) == True": {
+      "result": false,
+      "time": 0.030887842178344727,
+      "error": null
+    },
+    "assert check_triplet([10, 2, 1, 7, 1], 2, 15, 4) == False": {
+      "result": true,
+      "time": 0.03178882598876953,
+      "error": null
+    },
+    "assert check_triplet([8, 7, 4, 1, 9], 3, 15, 1) == True": {
+      "result": false,
+      "time": 0.03634762763977051,
+      "error": null
+    },
+    "assert check_triplet([5, 9, 4, 8, 6], 6, 17, 3) == False": {
+      "result": true,
+      "time": 0.033106327056884766,
+      "error": null
+    },
+    "assert check_triplet([8, 8, 5, 6, 4], 5, 17, 4) == False": {
+      "result": true,
+      "time": 0.03726959228515625,
+      "error": null
+    },
+    "assert check_triplet([11, 7, 4, 5, 2], 7, 15, 3) == False": {
+      "result": true,
+      "time": 0.0392916202545166,
+      "error": null
+    },
+    "assert check_triplet([5, 3, 1, 7, 9], 7, 13, 3) == False": {
+      "result": true,
+      "time": 0.036902427673339844,
+      "error": null
+    },
+    "assert check_triplet([11, 3, 7, 2, 9], 1, 10, 1) == False": {
+      "result": true,
+      "time": 0.03439497947692871,
+      "error": null
+    },
+    "assert check_triplet([11, 3, 5, 4, 1], 1, 11, 1) == False": {
+      "result": true,
+      "time": 0.03530621528625488,
+      "error": null
+    },
+    "assert check_triplet([13, 6, 3, 5, 5], 2, 20, 1) == False": {
+      "result": true,
+      "time": 0.03383302688598633,
+      "error": null
+    },
+    "assert check_triplet([7, 4, 7, 6, 7], 4, 11, 1) == True": {
+      "result": false,
+      "time": 0.03128218650817871,
+      "error": null
+    },
+    "assert check_triplet([9, 5, 5, 4, 1], 4, 10, 3) == False": {
+      "result": true,
+      "time": 0.03397512435913086,
+      "error": null
+    },
+    "assert check_triplet([14, 7, 5, 3, 7], 3, 19, 5) == False": {
+      "result": true,
+      "time": 0.032857656478881836,
+      "error": null
+    },
+    "assert check_triplet([9, 1, 1, 8, 9], 1, 14, 5) == False": {
+      "result": true,
+      "time": 0.030112266540527344,
+      "error": null
+    },
+    "assert check_triplet([14, 9, 1, 3, 10], 2, 18, 4) == False": {
+      "result": true,
+      "time": 0.0345003604888916,
+      "error": null
+    },
+    "assert check_triplet([13, 4, 3, 2, 3], 3, 18, 1) == False": {
+      "result": true,
+      "time": 0.0328679084777832,
+      "error": null
+    },
+    "assert check_triplet([9, 8, 5, 8, 9], 2, 16, 4) == False": {
+      "result": true,
+      "time": 0.036684513092041016,
+      "error": null
+    },
+    "assert check_triplet([6, 6, 5, 2, 10], 2, 15, 1) == False": {
+      "result": true,
+      "time": 0.0343019962310791,
+      "error": null
+    },
+    "assert check_triplet([8, 7, 7, 6, 6], 5, 10, 4) == False": {
+      "result": true,
+      "time": 0.03238630294799805,
+      "error": null
+    },
+    "assert check_triplet([5, 5, 7, 8, 2], 5, 18, 4) == False": {
+      "result": true,
+      "time": 0.025362491607666016,
+      "error": null
+    },
+    "assert check_triplet([6, 6, 2, 7, 4], 3, 18, 5) == False": {
+      "result": true,
+      "time": 0.035364389419555664,
+      "error": null
+    },
+    "assert check_triplet([6, 4, 7, 3, 7], 5, 20, 5) == False": {
+      "result": true,
+      "time": 0.03410506248474121,
+      "error": null
+    },
+    "assert check_triplet([5, 7, 7, 7, 7], 4, 16, 4) == False": {
+      "result": true,
+      "time": 0.031149625778198242,
+      "error": null
+    },
+    "assert check_triplet([5, 1, 7, 3, 3], 9, 17, 3) == False": {
+      "result": true,
+      "time": 0.03298830986022949,
+      "error": null
+    },
+    "assert check_triplet([11, 6, 3, 6, 5], 9, 19, 3) == False": {
+      "result": true,
+      "time": 0.03514695167541504,
+      "error": null
+    },
+    "assert check_triplet([11, 4, 4, 4, 8], 1, 11, 2) == True": {
+      "result": false,
+      "time": 0.03575634956359863,
+      "error": null
+    },
+    "assert check_triplet([5, 5, 4, 1, 6], 1, 19, 5) == False": {
+      "result": true,
+      "time": 0.03363204002380371,
+      "error": null
+    },
+    "assert check_triplet([8, 5, 6, 4, 9], 10, 17, 3) == False": {
+      "result": true,
+      "time": 0.030676603317260742,
+      "error": null
+    },
+    "assert check_triplet([13, 6, 7, 4, 9], 6, 17, 3) == False": {
+      "result": true,
+      "time": 0.028438568115234375,
+      "error": null
+    },
+    "assert check_triplet([6, 1, 7, 5, 5], 3, 10, 3) == False": {
+      "result": true,
+      "time": 0.03430485725402832,
+      "error": null
+    },
+    "assert check_triplet([12, 2, 3, 4, 5], 4, 17, 2) == False": {
+      "result": true,
+      "time": 0.03532266616821289,
+      "error": null
+    },
+    "assert check_triplet([7, 9, 3, 6, 9], 2, 19, 5) == False": {
+      "result": true,
+      "time": 0.03334212303161621,
+      "error": null
+    },
+    "assert check_triplet([10, 8, 2, 1, 2], 2, 15, 5) == False": {
+      "result": true,
+      "time": 0.030974388122558594,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8235294117647058,
+  "general_error": "",
+  "has_testcase_error": false
+}

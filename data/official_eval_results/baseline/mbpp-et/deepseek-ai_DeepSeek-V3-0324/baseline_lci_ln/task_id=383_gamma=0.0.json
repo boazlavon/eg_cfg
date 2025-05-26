@@ -1,0 +1,149 @@
+{
+  "code": "def even_bit_toggle_number(n):\n    # Initialize a variable to store the result\n    result = 0\n    # Iterate over each bit position\n    for i in range(32):\n        # Check if the current bit position is odd (1-based index)\n        if i % 2 == 0:\n            # Get the current bit value\n            current_bit = (n >> i) & 1\n            # Toggle the bit\n            toggled_bit = 1 - current_bit\n            # Set the toggled bit in the result\n            result = result | (toggled_bit << i)\n        else:\n            # Keep the even bits unchanged\n            current_bit = (n >> i) & 1\n            result = result | (current_bit << i)\n    return result",
+  "results": {
+    "assert even_bit_toggle_number(10) == 15": {
+      "result": false,
+      "time": 0.04356265068054199,
+      "error": null
+    },
+    "assert even_bit_toggle_number(20) == 1": {
+      "result": false,
+      "time": 0.04411625862121582,
+      "error": null
+    },
+    "assert even_bit_toggle_number(30) == 11": {
+      "result": false,
+      "time": 0.0471341609954834,
+      "error": null
+    },
+    "assert even_bit_toggle_number(6) == 3": {
+      "result": false,
+      "time": 0.03543567657470703,
+      "error": null
+    },
+    "assert even_bit_toggle_number(9) == 12": {
+      "result": false,
+      "time": 0.03901076316833496,
+      "error": null
+    },
+    "assert even_bit_toggle_number(11) == 14": {
+      "result": false,
+      "time": 0.04409003257751465,
+      "error": null
+    },
+    "assert even_bit_toggle_number(12) == 9": {
+      "result": false,
+      "time": 0.04179120063781738,
+      "error": null
+    },
+    "assert even_bit_toggle_number(14) == 11": {
+      "result": false,
+      "time": 0.044756174087524414,
+      "error": null
+    },
+    "assert even_bit_toggle_number(15) == 10": {
+      "result": false,
+      "time": 0.0414729118347168,
+      "error": null
+    },
+    "assert even_bit_toggle_number(13) == 8": {
+      "result": false,
+      "time": 0.038008689880371094,
+      "error": null
+    },
+    "assert even_bit_toggle_number(7) == 2": {
+      "result": false,
+      "time": 0.05537056922912598,
+      "error": null
+    },
+    "assert even_bit_toggle_number(5) == 0": {
+      "result": false,
+      "time": 0.04132962226867676,
+      "error": null
+    },
+    "assert even_bit_toggle_number(8) == 13": {
+      "result": false,
+      "time": 0.04201459884643555,
+      "error": null
+    },
+    "assert even_bit_toggle_number(19) == 6": {
+      "result": false,
+      "time": 0.05010533332824707,
+      "error": null
+    },
+    "assert even_bit_toggle_number(16) == 5": {
+      "result": false,
+      "time": 0.035788774490356445,
+      "error": null
+    },
+    "assert even_bit_toggle_number(21) == 0": {
+      "result": false,
+      "time": 0.04214882850646973,
+      "error": null
+    },
+    "assert even_bit_toggle_number(17) == 4": {
+      "result": false,
+      "time": 0.05198502540588379,
+      "error": null
+    },
+    "assert even_bit_toggle_number(24) == 13": {
+      "result": false,
+      "time": 0.03672623634338379,
+      "error": null
+    },
+    "assert even_bit_toggle_number(23) == 2": {
+      "result": false,
+      "time": 0.04566311836242676,
+      "error": null
+    },
+    "assert even_bit_toggle_number(25) == 12": {
+      "result": false,
+      "time": 0.0445246696472168,
+      "error": null
+    },
+    "assert even_bit_toggle_number(32) == 53": {
+      "result": false,
+      "time": 0.04212522506713867,
+      "error": null
+    },
+    "assert even_bit_toggle_number(31) == 10": {
+      "result": false,
+      "time": 0.052817344665527344,
+      "error": null
+    },
+    "assert even_bit_toggle_number(27) == 14": {
+      "result": false,
+      "time": 0.04088306427001953,
+      "error": null
+    },
+    "assert even_bit_toggle_number(28) == 9": {
+      "result": false,
+      "time": 0.048779964447021484,
+      "error": null
+    },
+    "assert even_bit_toggle_number(33) == 52": {
+      "result": false,
+      "time": 0.042922019958496094,
+      "error": null
+    },
+    "assert even_bit_toggle_number(26) == 15": {
+      "result": false,
+      "time": 0.04127359390258789,
+      "error": null
+    },
+    "assert even_bit_toggle_number(29) == 8": {
+      "result": false,
+      "time": 0.04063820838928223,
+      "error": null
+    },
+    "assert even_bit_toggle_number(35) == 54": {
+      "result": false,
+      "time": 0.05665326118469238,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

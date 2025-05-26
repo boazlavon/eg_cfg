@@ -1,0 +1,519 @@
+{
+  "code": "def sort_on_occurence(lst):\n    # Step 1: Create a dictionary to count occurrences of the first element\n    count_dict = {}\n    for item in lst:\n        key = item[0]\n        if key in count_dict:\n            count_dict[key] += 1\n        else:\n            count_dict[key] = 1\n\n    # Step 2: Group the items by their first element\n    group_dict = {}\n    for item in lst:\n        key = item[0]\n        if key in group_dict:\n            group_dict[key].append(item[1])\n        else:\n            group_dict[key] = [item[1]]\n\n    # Step 3: Prepare the result list\n    result = []\n    for key in group_dict:\n        # Create a tuple with the key, followed by the grouped items, and then the count\n        group_items = group_dict[key]\n        new_tuple = (key,) + tuple(group_items) + (count_dict[key],)\n        result.append(new_tuple)\n\n    # Step 4: Sort the result based on the occurrence count in descending order\n    result.sort(key=lambda x: x[-1], reverse=True)\n\n    return result",
+  "results": {
+    "assert sort_on_occurence([(1, 'Jake'), (2, 'Bob'), (1, 'Cara')]) == [(1, 'Jake', 'Cara', 2), (2, 'Bob', 1)]": {
+      "result": true,
+      "time": 0.033896684646606445,
+      "error": null
+    },
+    "assert sort_on_occurence([('b', 'ball'), ('a', 'arm'), ('b', 'b'), ('a', 'ant')]) == [('b', 'ball', 'b', 2), ('a', 'arm', 'ant', 2)]": {
+      "result": true,
+      "time": 0.040084123611450195,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'Mark'), (3, 'Maze'), (2, 'Sara')]) == [(2, 'Mark', 'Sara', 2), (3, 'Maze', 1)]": {
+      "result": true,
+      "time": 0.03356480598449707,
+      "error": null
+    },
+    "assert sort_on_occurence([(5, 'DlS'), (5, 'dwIi'), (2, 'pqpFawad')]) == [(5, 'DlS', 'dwIi', 2), (2, 'pqpFawad', 1)]": {
+      "result": true,
+      "time": 0.03989672660827637,
+      "error": null
+    },
+    "assert sort_on_occurence([(4, 'ySKDtdE'), (1, 'KNb'), (2, 'sBG')]) == [(4, 'ySKDtdE', 1), (1, 'KNb', 1), (2, 'sBG', 1)]": {
+      "result": true,
+      "time": 0.04171562194824219,
+      "error": null
+    },
+    "assert sort_on_occurence([(3, 'WHG'), (6, 'oYaqCDCO'), (5, 'FtScfUM')]) == [(3, 'WHG', 1), (6, 'oYaqCDCO', 1), (5, 'FtScfUM', 1)]": {
+      "result": true,
+      "time": 0.04109501838684082,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'IootsAY'), (2, 'BsorOIG'), (1, 'MkaLiJs')]) == [(2, 'IootsAY', 'BsorOIG', 2), (1, 'MkaLiJs', 1)]": {
+      "result": true,
+      "time": 0.03942155838012695,
+      "error": null
+    },
+    "assert sort_on_occurence([(3, 'BwpEP'), (5, 'wmYLQOxG'), (6, 'jcZrU')]) == [(3, 'BwpEP', 1), (5, 'wmYLQOxG', 1), (6, 'jcZrU', 1)]": {
+      "result": true,
+      "time": 0.03769683837890625,
+      "error": null
+    },
+    "assert sort_on_occurence([(6, 'OQJBdqYm'), (7, 'pfLTGw'), (3, 'oqN')]) == [(6, 'OQJBdqYm', 1), (7, 'pfLTGw', 1), (3, 'oqN', 1)]": {
+      "result": true,
+      "time": 0.03891134262084961,
+      "error": null
+    },
+    "assert sort_on_occurence([(5, 'wEAHTRn'), (6, 'uOD'), (1, 'lbsNDGL')]) == [(5, 'wEAHTRn', 1), (6, 'uOD', 1), (1, 'lbsNDGL', 1)]": {
+      "result": true,
+      "time": 0.033129215240478516,
+      "error": null
+    },
+    "assert sort_on_occurence([(1, 'VAVIUSaGI'), (6, 'czpsIWUa'), (2, 'rPwnTKS')]) == [(1, 'VAVIUSaGI', 1), (6, 'czpsIWUa', 1), (2, 'rPwnTKS', 1)]": {
+      "result": true,
+      "time": 0.03615546226501465,
+      "error": null
+    },
+    "assert sort_on_occurence([(6, 'BgGZ'), (2, 'fjOO'), (6, 'kAIFZrxr')]) == [(6, 'BgGZ', 'kAIFZrxr', 2), (2, 'fjOO', 1)]": {
+      "result": true,
+      "time": 0.03452777862548828,
+      "error": null
+    },
+    "assert sort_on_occurence([(3, 'mLiBe'), (4, 'SPUhbWhhC'), (2, 'PplZeT')]) == [(3, 'mLiBe', 1), (4, 'SPUhbWhhC', 1), (2, 'PplZeT', 1)]": {
+      "result": true,
+      "time": 0.03601980209350586,
+      "error": null
+    },
+    "assert sort_on_occurence([(5, 'GIyKyi'), (2, 'mAEEd'), (1, 'RBaygC')]) == [(5, 'GIyKyi', 1), (2, 'mAEEd', 1), (1, 'RBaygC', 1)]": {
+      "result": true,
+      "time": 0.03353261947631836,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'TmChy'), (7, 'fLkFK'), (3, 'FvK')]) == [(2, 'TmChy', 1), (7, 'fLkFK', 1), (3, 'FvK', 1)]": {
+      "result": true,
+      "time": 0.039336442947387695,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'snudytK'), (2, 'yqjGzQ'), (2, 'vSM')]) == [(2, 'snudytK', 'yqjGzQ', 'vSM', 3)]": {
+      "result": true,
+      "time": 0.03724956512451172,
+      "error": null
+    },
+    "assert sort_on_occurence([(3, 'mfWu'), (2, 'EDBFySf'), (2, 'xis')]) == [(3, 'mfWu', 1), (2, 'EDBFySf', 'xis', 2)]": {
+      "result": false,
+      "time": 0.03860902786254883,
+      "error": null
+    },
+    "assert sort_on_occurence([(1, 'ncAb'), (2, 'oKR'), (2, 'Uyt')]) == [(1, 'ncAb', 1), (2, 'oKR', 'Uyt', 2)]": {
+      "result": false,
+      "time": 0.03802323341369629,
+      "error": null
+    },
+    "assert sort_on_occurence([(6, 'InBJdqlP'), (1, 'eojuQZnt'), (4, 'mIW')]) == [(6, 'InBJdqlP', 1), (1, 'eojuQZnt', 1), (4, 'mIW', 1)]": {
+      "result": true,
+      "time": 0.043746232986450195,
+      "error": null
+    },
+    "assert sort_on_occurence([(6, 'EOwZKZ'), (2, 'fAAu'), (1, 'vkWrSVf')]) == [(6, 'EOwZKZ', 1), (2, 'fAAu', 1), (1, 'vkWrSVf', 1)]": {
+      "result": true,
+      "time": 0.03868412971496582,
+      "error": null
+    },
+    "assert sort_on_occurence([(6, 'omuSkfPV'), (2, 'nBKzmHCo'), (3, 'fvMNQZhy')]) == [(6, 'omuSkfPV', 1), (2, 'nBKzmHCo', 1), (3, 'fvMNQZhy', 1)]": {
+      "result": true,
+      "time": 0.035787343978881836,
+      "error": null
+    },
+    "assert sort_on_occurence([(6, 'xAQkvAxnY'), (6, 'wmIL'), (1, 'MyrshF')]) == [(6, 'xAQkvAxnY', 'wmIL', 2), (1, 'MyrshF', 1)]": {
+      "result": true,
+      "time": 0.0362241268157959,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'yFLdy'), (2, 'VBKj'), (6, 'MoJsZzx')]) == [(2, 'yFLdy', 'VBKj', 2), (6, 'MoJsZzx', 1)]": {
+      "result": true,
+      "time": 0.03783059120178223,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'mPF'), (7, 'Ovod'), (1, 'jyCjAJ')]) == [(2, 'mPF', 1), (7, 'Ovod', 1), (1, 'jyCjAJ', 1)]": {
+      "result": true,
+      "time": 0.03503704071044922,
+      "error": null
+    },
+    "assert sort_on_occurence([(1, 'YTJ'), (2, 'qhejeKmN'), (4, 'aiIvRlh')]) == [(1, 'YTJ', 1), (2, 'qhejeKmN', 1), (4, 'aiIvRlh', 1)]": {
+      "result": true,
+      "time": 0.03646683692932129,
+      "error": null
+    },
+    "assert sort_on_occurence([(6, 'WolxVqDI'), (7, 'xQIV'), (1, 'WTXXEf')]) == [(6, 'WolxVqDI', 1), (7, 'xQIV', 1), (1, 'WTXXEf', 1)]": {
+      "result": true,
+      "time": 0.035027265548706055,
+      "error": null
+    },
+    "assert sort_on_occurence([(5, 'zWVGammzA'), (4, 'gZvYNqQ'), (5, 'hikJDu')]) == [(5, 'zWVGammzA', 'hikJDu', 2), (4, 'gZvYNqQ', 1)]": {
+      "result": true,
+      "time": 0.035008907318115234,
+      "error": null
+    },
+    "assert sort_on_occurence([(1, 'zDUGt'), (7, 'TVxR'), (1, 'bSRhpJW')]) == [(1, 'zDUGt', 'bSRhpJW', 2), (7, 'TVxR', 1)]": {
+      "result": true,
+      "time": 0.031655073165893555,
+      "error": null
+    },
+    "assert sort_on_occurence([(1, 'EdE'), (6, 'IAEclbtV'), (6, 'tyKjK')]) == [(1, 'EdE', 1), (6, 'IAEclbtV', 'tyKjK', 2)]": {
+      "result": false,
+      "time": 0.040631771087646484,
+      "error": null
+    },
+    "assert sort_on_occurence([(1, 'MPUdRACU'), (1, 'LLLAwlHI'), (2, 'ynsYOgpSr')]) == [(1, 'MPUdRACU', 'LLLAwlHI', 2), (2, 'ynsYOgpSr', 1)]": {
+      "result": true,
+      "time": 0.038410186767578125,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'ouVLvYe'), (3, 'KIMRxJ'), (1, 'wPW')]) == [(2, 'ouVLvYe', 1), (3, 'KIMRxJ', 1), (1, 'wPW', 1)]": {
+      "result": true,
+      "time": 0.04060959815979004,
+      "error": null
+    },
+    "assert sort_on_occurence([(3, 'CLLQj'), (2, 'nxhPCazF'), (2, 'deGQqE')]) == [(3, 'CLLQj', 1), (2, 'nxhPCazF', 'deGQqE', 2)]": {
+      "result": false,
+      "time": 0.033031463623046875,
+      "error": null
+    },
+    "assert sort_on_occurence([(5, 'ptSVc'), (6, 'dOmKe'), (3, 'iyfUeTvS')]) == [(5, 'ptSVc', 1), (6, 'dOmKe', 1), (3, 'iyfUeTvS', 1)]": {
+      "result": true,
+      "time": 0.03612518310546875,
+      "error": null
+    },
+    "assert sort_on_occurence([(5, 'gxD'), (5, 'ZgKCxqHJ'), (4, 'cku')]) == [(5, 'gxD', 'ZgKCxqHJ', 2), (4, 'cku', 1)]": {
+      "result": true,
+      "time": 0.032747745513916016,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'ymFdk'), (6, 'KWN'), (4, 'akXW')]) == [(2, 'ymFdk', 1), (6, 'KWN', 1), (4, 'akXW', 1)]": {
+      "result": true,
+      "time": 0.037931203842163086,
+      "error": null
+    },
+    "assert sort_on_occurence([(3, 'vTHmL'), (1, 'bUfRBiFdS'), (3, 'NMRXGFSG')]) == [(3, 'vTHmL', 'NMRXGFSG', 2), (1, 'bUfRBiFdS', 1)]": {
+      "result": true,
+      "time": 0.035074710845947266,
+      "error": null
+    },
+    "assert sort_on_occurence([('i', 'jqqmixfp'), ('f', 'lqpg'), ('e', 'x'), ('s', 'nns')]) == [('i', 'jqqmixfp', 1), ('f', 'lqpg', 1), ('e', 'x', 1), ('s', 'nns', 1)]": {
+      "result": true,
+      "time": 0.03950190544128418,
+      "error": null
+    },
+    "assert sort_on_occurence([('q', 'tnyhejdn'), ('m', 'ybwd'), ('g', 'f'), ('i', 'vafzj')]) == [('q', 'tnyhejdn', 1), ('m', 'ybwd', 1), ('g', 'f', 1), ('i', 'vafzj', 1)]": {
+      "result": true,
+      "time": 0.03470325469970703,
+      "error": null
+    },
+    "assert sort_on_occurence([('z', 'tdetlu'), ('c', 'lvpbti'), ('p', 'l'), ('z', 'qvobnr')]) == [('z', 'tdetlu', 'qvobnr', 2), ('c', 'lvpbti', 1), ('p', 'l', 1)]": {
+      "result": true,
+      "time": 0.03509783744812012,
+      "error": null
+    },
+    "assert sort_on_occurence([('c', 'opv'), ('h', 'qwip'), ('p', 'x'), ('a', 'xokzctsg')]) == [('c', 'opv', 1), ('h', 'qwip', 1), ('p', 'x', 1), ('a', 'xokzctsg', 1)]": {
+      "result": true,
+      "time": 0.03904461860656738,
+      "error": null
+    },
+    "assert sort_on_occurence([('o', 'mpymlq'), ('q', 'wciu'), ('c', 'c'), ('i', 'madguv')]) == [('o', 'mpymlq', 1), ('q', 'wciu', 1), ('c', 'c', 1), ('i', 'madguv', 1)]": {
+      "result": true,
+      "time": 0.03269004821777344,
+      "error": null
+    },
+    "assert sort_on_occurence([('j', 'vbnlg'), ('o', 'qygpvqa'), ('i', 'm'), ('c', 'qzsjfhjv')]) == [('j', 'vbnlg', 1), ('o', 'qygpvqa', 1), ('i', 'm', 1), ('c', 'qzsjfhjv', 1)]": {
+      "result": true,
+      "time": 0.04453468322753906,
+      "error": null
+    },
+    "assert sort_on_occurence([('z', 'zfjvax'), ('b', 'dosybpf'), ('m', 'u'), ('x', 'vjito')]) == [('z', 'zfjvax', 1), ('b', 'dosybpf', 1), ('m', 'u', 1), ('x', 'vjito', 1)]": {
+      "result": true,
+      "time": 0.04431295394897461,
+      "error": null
+    },
+    "assert sort_on_occurence([('c', 'eeeqm'), ('r', 'tjjde'), ('b', 'g'), ('e', 'undi')]) == [('c', 'eeeqm', 1), ('r', 'tjjde', 1), ('b', 'g', 1), ('e', 'undi', 1)]": {
+      "result": true,
+      "time": 0.036955833435058594,
+      "error": null
+    },
+    "assert sort_on_occurence([('c', 'gwqlcl'), ('c', 'qdeprf'), ('l', 'n'), ('y', 'pcjif')]) == [('c', 'gwqlcl', 'qdeprf', 2), ('l', 'n', 1), ('y', 'pcjif', 1)]": {
+      "result": true,
+      "time": 0.03820323944091797,
+      "error": null
+    },
+    "assert sort_on_occurence([('d', 'eettvizx'), ('c', 'nmcq'), ('k', 'l'), ('s', 'vwqrbmr')]) == [('d', 'eettvizx', 1), ('c', 'nmcq', 1), ('k', 'l', 1), ('s', 'vwqrbmr', 1)]": {
+      "result": true,
+      "time": 0.036034584045410156,
+      "error": null
+    },
+    "assert sort_on_occurence([('n', 'awaqtnawk'), ('l', 'yldg'), ('f', 't'), ('h', 'nxtivg')]) == [('n', 'awaqtnawk', 1), ('l', 'yldg', 1), ('f', 't', 1), ('h', 'nxtivg', 1)]": {
+      "result": true,
+      "time": 0.030922412872314453,
+      "error": null
+    },
+    "assert sort_on_occurence([('q', 'pgruyih'), ('x', 'uiiditosk'), ('m', 'j'), ('l', 'ftza')]) == [('q', 'pgruyih', 1), ('x', 'uiiditosk', 1), ('m', 'j', 1), ('l', 'ftza', 1)]": {
+      "result": true,
+      "time": 0.03685331344604492,
+      "error": null
+    },
+    "assert sort_on_occurence([('a', 'wxsngd'), ('f', 'ivrep'), ('m', 'c'), ('i', 'yhr')]) == [('a', 'wxsngd', 1), ('f', 'ivrep', 1), ('m', 'c', 1), ('i', 'yhr', 1)]": {
+      "result": true,
+      "time": 0.03412675857543945,
+      "error": null
+    },
+    "assert sort_on_occurence([('d', 'knsn'), ('e', 'qgjydvcdb'), ('i', 'g'), ('z', 'bure')]) == [('d', 'knsn', 1), ('e', 'qgjydvcdb', 1), ('i', 'g', 1), ('z', 'bure', 1)]": {
+      "result": true,
+      "time": 0.03189706802368164,
+      "error": null
+    },
+    "assert sort_on_occurence([('i', 'yauxfwt'), ('h', 'qdwdmhv'), ('e', 'a'), ('e', 'momboigec')]) == [('i', 'yauxfwt', 1), ('h', 'qdwdmhv', 1), ('e', 'a', 'momboigec', 2)]": {
+      "result": false,
+      "time": 0.03586101531982422,
+      "error": null
+    },
+    "assert sort_on_occurence([('f', 'zzhzgtq'), ('e', 'faxb'), ('w', 't'), ('c', 'qhd')]) == [('f', 'zzhzgtq', 1), ('e', 'faxb', 1), ('w', 't', 1), ('c', 'qhd', 1)]": {
+      "result": true,
+      "time": 0.040166378021240234,
+      "error": null
+    },
+    "assert sort_on_occurence([('h', 'xcsemcflw'), ('w', 'udwsk'), ('f', 'y'), ('c', 'iqnd')]) == [('h', 'xcsemcflw', 1), ('w', 'udwsk', 1), ('f', 'y', 1), ('c', 'iqnd', 1)]": {
+      "result": true,
+      "time": 0.03431582450866699,
+      "error": null
+    },
+    "assert sort_on_occurence([('o', 'aniiyb'), ('k', 'bzdqkoa'), ('t', 't'), ('y', 'jqxawq')]) == [('o', 'aniiyb', 1), ('k', 'bzdqkoa', 1), ('t', 't', 1), ('y', 'jqxawq', 1)]": {
+      "result": true,
+      "time": 0.03527498245239258,
+      "error": null
+    },
+    "assert sort_on_occurence([('p', 'ybftc'), ('t', 'bpdqke'), ('a', 't'), ('m', 'smwrs')]) == [('p', 'ybftc', 1), ('t', 'bpdqke', 1), ('a', 't', 1), ('m', 'smwrs', 1)]": {
+      "result": true,
+      "time": 0.03751182556152344,
+      "error": null
+    },
+    "assert sort_on_occurence([('s', 'bxhlzp'), ('t', 'gbd'), ('u', 'v'), ('j', 'vuqp')]) == [('s', 'bxhlzp', 1), ('t', 'gbd', 1), ('u', 'v', 1), ('j', 'vuqp', 1)]": {
+      "result": true,
+      "time": 0.03463602066040039,
+      "error": null
+    },
+    "assert sort_on_occurence([('g', 'krke'), ('s', 'eyg'), ('p', 'd'), ('r', 'kmayehf')]) == [('g', 'krke', 1), ('s', 'eyg', 1), ('p', 'd', 1), ('r', 'kmayehf', 1)]": {
+      "result": true,
+      "time": 0.03335738182067871,
+      "error": null
+    },
+    "assert sort_on_occurence([('q', 'ntwmsqv'), ('e', 'eshxqwdgx'), ('j', 's'), ('j', 'eilii')]) == [('q', 'ntwmsqv', 1), ('e', 'eshxqwdgx', 1), ('j', 's', 'eilii', 2)]": {
+      "result": false,
+      "time": 0.04145669937133789,
+      "error": null
+    },
+    "assert sort_on_occurence([('q', 'zgwldtwb'), ('v', 'ymopmr'), ('y', 'o'), ('t', 'ubdljkl')]) == [('q', 'zgwldtwb', 1), ('v', 'ymopmr', 1), ('y', 'o', 1), ('t', 'ubdljkl', 1)]": {
+      "result": true,
+      "time": 0.0357975959777832,
+      "error": null
+    },
+    "assert sort_on_occurence([('q', 'wlexjrrk'), ('p', 'vaenyjb'), ('y', 'y'), ('x', 'wyb')]) == [('q', 'wlexjrrk', 1), ('p', 'vaenyjb', 1), ('y', 'y', 1), ('x', 'wyb', 1)]": {
+      "result": true,
+      "time": 0.03537392616271973,
+      "error": null
+    },
+    "assert sort_on_occurence([('i', 'niq'), ('y', 'ziju'), ('v', 'p'), ('u', 'nye')]) == [('i', 'niq', 1), ('y', 'ziju', 1), ('v', 'p', 1), ('u', 'nye', 1)]": {
+      "result": true,
+      "time": 0.032692909240722656,
+      "error": null
+    },
+    "assert sort_on_occurence([('k', 'mootofiic'), ('j', 'xnlfwq'), ('r', 'c'), ('b', 'rqjqbyc')]) == [('k', 'mootofiic', 1), ('j', 'xnlfwq', 1), ('r', 'c', 1), ('b', 'rqjqbyc', 1)]": {
+      "result": true,
+      "time": 0.03275346755981445,
+      "error": null
+    },
+    "assert sort_on_occurence([('z', 'ayhhtoi'), ('f', 'snwekworl'), ('b', 'm'), ('x', 'jhoxl')]) == [('z', 'ayhhtoi', 1), ('f', 'snwekworl', 1), ('b', 'm', 1), ('x', 'jhoxl', 1)]": {
+      "result": true,
+      "time": 0.03680229187011719,
+      "error": null
+    },
+    "assert sort_on_occurence([('k', 'bqyz'), ('k', 'bzodq'), ('n', 'u'), ('t', 'dxvnoq')]) == [('k', 'bqyz', 'bzodq', 2), ('n', 'u', 1), ('t', 'dxvnoq', 1)]": {
+      "result": true,
+      "time": 0.03878021240234375,
+      "error": null
+    },
+    "assert sort_on_occurence([('x', 'eecxiaox'), ('a', 'fvc'), ('n', 'w'), ('a', 'yikxjvj')]) == [('x', 'eecxiaox', 1), ('a', 'fvc', 'yikxjvj', 2), ('n', 'w', 1)]": {
+      "result": false,
+      "time": 0.036885738372802734,
+      "error": null
+    },
+    "assert sort_on_occurence([('k', 'ckzaikiug'), ('l', 'qwm'), ('x', 'v'), ('c', 'joqz')]) == [('k', 'ckzaikiug', 1), ('l', 'qwm', 1), ('x', 'v', 1), ('c', 'joqz', 1)]": {
+      "result": true,
+      "time": 0.034032344818115234,
+      "error": null
+    },
+    "assert sort_on_occurence([('a', 'cmbhcjfp'), ('f', 'yofr'), ('g', 'f'), ('l', 'wtmj')]) == [('a', 'cmbhcjfp', 1), ('f', 'yofr', 1), ('g', 'f', 1), ('l', 'wtmj', 1)]": {
+      "result": true,
+      "time": 0.0448000431060791,
+      "error": null
+    },
+    "assert sort_on_occurence([('v', 'orh'), ('b', 'yuuapzof'), ('f', 'h'), ('h', 'suyxk')]) == [('v', 'orh', 1), ('b', 'yuuapzof', 1), ('f', 'h', 1), ('h', 'suyxk', 1)]": {
+      "result": true,
+      "time": 0.04704999923706055,
+      "error": null
+    },
+    "assert sort_on_occurence([('v', 'tmdjfmns'), ('t', 'ngrl'), ('e', 'a'), ('x', 'ptweftp')]) == [('v', 'tmdjfmns', 1), ('t', 'ngrl', 1), ('e', 'a', 1), ('x', 'ptweftp', 1)]": {
+      "result": true,
+      "time": 0.04581904411315918,
+      "error": null
+    },
+    "assert sort_on_occurence([(4, 'Vdbx'), (6, 'DPjftPv'), (2, 'lydClCLy')]) == [(4, 'Vdbx', 1), (6, 'DPjftPv', 1), (2, 'lydClCLy', 1)]": {
+      "result": true,
+      "time": 0.04315447807312012,
+      "error": null
+    },
+    "assert sort_on_occurence([(4, 'CXqjC'), (4, 'gSd'), (6, 'PaZtPR')]) == [(4, 'CXqjC', 'gSd', 2), (6, 'PaZtPR', 1)]": {
+      "result": true,
+      "time": 0.04473257064819336,
+      "error": null
+    },
+    "assert sort_on_occurence([(5, 'snPBncbsq'), (5, 'lcRXPkXdR'), (6, 'jkmH')]) == [(5, 'snPBncbsq', 'lcRXPkXdR', 2), (6, 'jkmH', 1)]": {
+      "result": true,
+      "time": 0.03545784950256348,
+      "error": null
+    },
+    "assert sort_on_occurence([(7, 'fnTu'), (3, 'uqZmINA'), (7, 'fOpUBiSY')]) == [(7, 'fnTu', 'fOpUBiSY', 2), (3, 'uqZmINA', 1)]": {
+      "result": true,
+      "time": 0.044138193130493164,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'aGhwwjDcF'), (8, 'yOdLxlePi'), (4, 'VZMFiWK')]) == [(2, 'aGhwwjDcF', 1), (8, 'yOdLxlePi', 1), (4, 'VZMFiWK', 1)]": {
+      "result": true,
+      "time": 0.03660154342651367,
+      "error": null
+    },
+    "assert sort_on_occurence([(5, 'gHzIRTk'), (2, 'HqoQbX'), (1, 'kcNxeO')]) == [(5, 'gHzIRTk', 1), (2, 'HqoQbX', 1), (1, 'kcNxeO', 1)]": {
+      "result": true,
+      "time": 0.04036140441894531,
+      "error": null
+    },
+    "assert sort_on_occurence([(4, 'QcVQ'), (1, 'IvLzzdMkT'), (1, 'kPXUFs')]) == [(4, 'QcVQ', 1), (1, 'IvLzzdMkT', 'kPXUFs', 2)]": {
+      "result": false,
+      "time": 0.04407811164855957,
+      "error": null
+    },
+    "assert sort_on_occurence([(3, 'CmUvRoKJD'), (3, 'TYrt'), (4, 'uNHy')]) == [(3, 'CmUvRoKJD', 'TYrt', 2), (4, 'uNHy', 1)]": {
+      "result": true,
+      "time": 0.04499936103820801,
+      "error": null
+    },
+    "assert sort_on_occurence([(1, 'NIJC'), (2, 'HFPuOn'), (1, 'tOD')]) == [(1, 'NIJC', 'tOD', 2), (2, 'HFPuOn', 1)]": {
+      "result": true,
+      "time": 0.04015994071960449,
+      "error": null
+    },
+    "assert sort_on_occurence([(4, 'raITRgXwF'), (1, 'vmgc'), (6, 'SOJUxAJ')]) == [(4, 'raITRgXwF', 1), (1, 'vmgc', 1), (6, 'SOJUxAJ', 1)]": {
+      "result": true,
+      "time": 0.04735875129699707,
+      "error": null
+    },
+    "assert sort_on_occurence([(1, 'vsBZlcwzJ'), (6, 'WUdC'), (1, 'bTELym')]) == [(1, 'vsBZlcwzJ', 'bTELym', 2), (6, 'WUdC', 1)]": {
+      "result": true,
+      "time": 0.05019974708557129,
+      "error": null
+    },
+    "assert sort_on_occurence([(3, 'ClJ'), (6, 'tgVv'), (7, 'resNM')]) == [(3, 'ClJ', 1), (6, 'tgVv', 1), (7, 'resNM', 1)]": {
+      "result": true,
+      "time": 0.03612542152404785,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'oHotYwue'), (5, 'lWzpXzW'), (1, 'COYxnU')]) == [(2, 'oHotYwue', 1), (5, 'lWzpXzW', 1), (1, 'COYxnU', 1)]": {
+      "result": true,
+      "time": 0.04650115966796875,
+      "error": null
+    },
+    "assert sort_on_occurence([(5, 'NcGbMMh'), (4, 'dSxTCC'), (7, 'fEj')]) == [(5, 'NcGbMMh', 1), (4, 'dSxTCC', 1), (7, 'fEj', 1)]": {
+      "result": true,
+      "time": 0.03773665428161621,
+      "error": null
+    },
+    "assert sort_on_occurence([(6, 'NVMttIE'), (6, 'bbWV'), (1, 'LFSINQuqB')]) == [(6, 'NVMttIE', 'bbWV', 2), (1, 'LFSINQuqB', 1)]": {
+      "result": true,
+      "time": 0.03387331962585449,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'QuW'), (6, 'IqnEu'), (2, 'oqu')]) == [(2, 'QuW', 'oqu', 2), (6, 'IqnEu', 1)]": {
+      "result": true,
+      "time": 0.0456392765045166,
+      "error": null
+    },
+    "assert sort_on_occurence([(4, 'OOSsqH'), (8, 'HWuJUmKJZ'), (1, 'wJrVNjVg')]) == [(4, 'OOSsqH', 1), (8, 'HWuJUmKJZ', 1), (1, 'wJrVNjVg', 1)]": {
+      "result": true,
+      "time": 0.05103325843811035,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'ihniBgOs'), (5, 'AvqHKN'), (4, 'QRSVGl')]) == [(2, 'ihniBgOs', 1), (5, 'AvqHKN', 1), (4, 'QRSVGl', 1)]": {
+      "result": true,
+      "time": 0.04045295715332031,
+      "error": null
+    },
+    "assert sort_on_occurence([(6, 'ZFVjxnvDi'), (3, 'kZjg'), (2, 'UiV')]) == [(6, 'ZFVjxnvDi', 1), (3, 'kZjg', 1), (2, 'UiV', 1)]": {
+      "result": true,
+      "time": 0.042469024658203125,
+      "error": null
+    },
+    "assert sort_on_occurence([(4, 'yUzbZ'), (8, 'nGUmlrEj'), (3, 'sloOenLt')]) == [(4, 'yUzbZ', 1), (8, 'nGUmlrEj', 1), (3, 'sloOenLt', 1)]": {
+      "result": true,
+      "time": 0.04334115982055664,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'LuAZ'), (8, 'EWUaD'), (6, 'QlDZ')]) == [(2, 'LuAZ', 1), (8, 'EWUaD', 1), (6, 'QlDZ', 1)]": {
+      "result": true,
+      "time": 0.04724931716918945,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'UAPWfp'), (4, 'kRf'), (2, 'kaHbCfCcA')]) == [(2, 'UAPWfp', 'kaHbCfCcA', 2), (4, 'kRf', 1)]": {
+      "result": true,
+      "time": 0.03930544853210449,
+      "error": null
+    },
+    "assert sort_on_occurence([(4, 'OlQN'), (6, 'iHGyhXvve'), (2, 'UTIOJhAJ')]) == [(4, 'OlQN', 1), (6, 'iHGyhXvve', 1), (2, 'UTIOJhAJ', 1)]": {
+      "result": true,
+      "time": 0.043631792068481445,
+      "error": null
+    },
+    "assert sort_on_occurence([(3, 'KONT'), (3, 'qasWY'), (1, 'WzMPDNC')]) == [(3, 'KONT', 'qasWY', 2), (1, 'WzMPDNC', 1)]": {
+      "result": true,
+      "time": 0.03271985054016113,
+      "error": null
+    },
+    "assert sort_on_occurence([(4, 'dmBKBw'), (6, 'OONEopx'), (7, 'Zwsy')]) == [(4, 'dmBKBw', 1), (6, 'OONEopx', 1), (7, 'Zwsy', 1)]": {
+      "result": true,
+      "time": 0.041750192642211914,
+      "error": null
+    },
+    "assert sort_on_occurence([(5, 'fVimWaXh'), (4, 'ggIkpu'), (2, 'HNwIFBh')]) == [(5, 'fVimWaXh', 1), (4, 'ggIkpu', 1), (2, 'HNwIFBh', 1)]": {
+      "result": true,
+      "time": 0.04029107093811035,
+      "error": null
+    },
+    "assert sort_on_occurence([(7, 'IHqb'), (7, 'rhxiC'), (1, 'THd')]) == [(7, 'IHqb', 'rhxiC', 2), (1, 'THd', 1)]": {
+      "result": true,
+      "time": 0.04056978225708008,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'KmfOqY'), (2, 'AwemrH'), (6, 'SjnKDDf')]) == [(2, 'KmfOqY', 'AwemrH', 2), (6, 'SjnKDDf', 1)]": {
+      "result": true,
+      "time": 0.05060935020446777,
+      "error": null
+    },
+    "assert sort_on_occurence([(3, 'uuzmGhkP'), (3, 'QsHvUac'), (2, 'jMvnVfduD')]) == [(3, 'uuzmGhkP', 'QsHvUac', 2), (2, 'jMvnVfduD', 1)]": {
+      "result": true,
+      "time": 0.03891420364379883,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'iFR'), (5, 'euM'), (2, 'irZCdTeA')]) == [(2, 'iFR', 'irZCdTeA', 2), (5, 'euM', 1)]": {
+      "result": true,
+      "time": 0.039053916931152344,
+      "error": null
+    },
+    "assert sort_on_occurence([(6, 'uiXdO'), (3, 'GCHJICfHX'), (3, 'xbeUMCYm')]) == [(6, 'uiXdO', 1), (3, 'GCHJICfHX', 'xbeUMCYm', 2)]": {
+      "result": false,
+      "time": 0.04759478569030762,
+      "error": null
+    },
+    "assert sort_on_occurence([(3, 'CuFw'), (1, 'iCsekNILx'), (5, 'prrt')]) == [(3, 'CuFw', 1), (1, 'iCsekNILx', 1), (5, 'prrt', 1)]": {
+      "result": true,
+      "time": 0.03819012641906738,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'rvUN'), (5, 'Ppkmv'), (1, 'tXCDlzr')]) == [(2, 'rvUN', 1), (5, 'Ppkmv', 1), (1, 'tXCDlzr', 1)]": {
+      "result": true,
+      "time": 0.04549264907836914,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9117647058823529,
+  "general_error": "",
+  "has_testcase_error": false
+}

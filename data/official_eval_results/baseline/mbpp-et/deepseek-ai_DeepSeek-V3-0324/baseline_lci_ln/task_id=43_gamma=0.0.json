@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef text_match(text):\n    pattern = r'^[a-z]+_[a-z]+$'\n    compiled_pattern = re.compile(pattern)\n    match_result = compiled_pattern.search(text)\n    if match_result:\n        return \"Found a match!\"\n    else:\n        return \"Not matched!\"",
+  "results": {
+    "assert text_match(\"aab_cbbbc\") == 'Found a match!'": {
+      "result": true,
+      "time": 0.4098663330078125,
+      "error": null
+    },
+    "assert text_match(\"aab_Abbbc\") == 'Not matched!'": {
+      "result": true,
+      "time": 0.4655764102935791,
+      "error": null
+    },
+    "assert text_match(\"Aaab_abbbc\") == 'Not matched!'": {
+      "result": true,
+      "time": 0.2649834156036377,
+      "error": null
+    },
+    "assert text_match(\"i-ro$?\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.39087629318237305,
+      "error": null
+    },
+    "assert text_match(\"$|kp^ot-x+^_\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.30506205558776855,
+      "error": null
+    },
+    "assert text_match(\"pexjij\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5753817558288574,
+      "error": null
+    },
+    "assert text_match(\">?!?+xr#>z\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.4693021774291992,
+      "error": null
+    },
+    "assert text_match(\"upi~!b?suf\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.501154899597168,
+      "error": null
+    },
+    "assert text_match(\"#wjjk+id\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6549937725067139,
+      "error": null
+    },
+    "assert text_match(\"%p?s|p$+x\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.507704496383667,
+      "error": null
+    },
+    "assert text_match(\"vz_r$b~=#s:\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6185944080352783,
+      "error": null
+    },
+    "assert text_match(\"$+@q?iq$u\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.577925443649292,
+      "error": null
+    },
+    "assert text_match(\"=-:u_qhj!khe\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5976800918579102,
+      "error": null
+    },
+    "assert text_match(\"jnu:^:ni:\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6136069297790527,
+      "error": null
+    },
+    "assert text_match(\"&?cf$pyh\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5688562393188477,
+      "error": null
+    },
+    "assert text_match(\"a_->ah=k<b=xf#x\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5670671463012695,
+      "error": null
+    },
+    "assert text_match(\"x_>mmn~de>+v/\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5584890842437744,
+      "error": null
+    },
+    "assert text_match(\"owrhxh=vdhswev\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6175251007080078,
+      "error": null
+    },
+    "assert text_match(\"jmi-i=?n^<z\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5232081413269043,
+      "error": null
+    },
+    "assert text_match(\"f%-ok>ug^+s\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5215835571289062,
+      "error": null
+    },
+    "assert text_match(\"@rp/&^^gay:\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5398259162902832,
+      "error": null
+    },
+    "assert text_match(\"::ezp?@?#fg\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5901591777801514,
+      "error": null
+    },
+    "assert text_match(\"%dbnc_jgc+$j*\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5395371913909912,
+      "error": null
+    },
+    "assert text_match(\"-bz|fjt&jxs-\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5819001197814941,
+      "error": null
+    },
+    "assert text_match(\"w!lsco+y&b\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5914547443389893,
+      "error": null
+    },
+    "assert text_match(\"vvy/al@r&ohwod\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5996973514556885,
+      "error": null
+    },
+    "assert text_match(\"a#!da!^:\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5736525058746338,
+      "error": null
+    },
+    "assert text_match(\"-$bxn>~@\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6047782897949219,
+      "error": null
+    },
+    "assert text_match(\"^h|iip\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5984370708465576,
+      "error": null
+    },
+    "assert text_match(\"+!x#jg@a?\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5911667346954346,
+      "error": null
+    },
+    "assert text_match(\"cm-q!o\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5994555950164795,
+      "error": null
+    },
+    "assert text_match(\"gzu@-zsjntp\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5949423313140869,
+      "error": null
+    },
+    "assert text_match(\"t~~sd%\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5853424072265625,
+      "error": null
+    },
+    "assert text_match(\"~t>c$-*a\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.589045524597168,
+      "error": null
+    },
+    "assert text_match(\"+@g_yj&$a+%\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5847172737121582,
+      "error": null
+    },
+    "assert text_match(\":_m^r<_ak\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5982425212860107,
+      "error": null
+    },
+    "assert text_match(\"lS=xQ%pgLC+\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5964665412902832,
+      "error": null
+    },
+    "assert text_match(\"vQpi#H\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5392074584960938,
+      "error": null
+    },
+    "assert text_match(\"gq&feTn#qJGVaj\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5796451568603516,
+      "error": null
+    },
+    "assert text_match(\"spe&?Z@|-WT=a\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6258432865142822,
+      "error": null
+    },
+    "assert text_match(\"SEZmGwd\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6406481266021729,
+      "error": null
+    },
+    "assert text_match(\"p~GHARZKm&z\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5721836090087891,
+      "error": null
+    },
+    "assert text_match(\"yAjhfH@n*?rJ\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5687789916992188,
+      "error": null
+    },
+    "assert text_match(\"gcToawftkh?wm#\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6180346012115479,
+      "error": null
+    },
+    "assert text_match(\"Y<=/Iz=uyqYaqJ\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.569328784942627,
+      "error": null
+    },
+    "assert text_match(\"UM^@neU#DTwY-p\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5636296272277832,
+      "error": null
+    },
+    "assert text_match(\"KnT=pjDrERcPQ\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5392425060272217,
+      "error": null
+    },
+    "assert text_match(\"hd*cSGakkU/jHz*\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5784504413604736,
+      "error": null
+    },
+    "assert text_match(\"i:#hP@luGzbZ\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.571983814239502,
+      "error": null
+    },
+    "assert text_match(\"_&>#muadK_O|w\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5792317390441895,
+      "error": null
+    },
+    "assert text_match(\"JWjXh?I\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.588782548904419,
+      "error": null
+    },
+    "assert text_match(\"DNQ-ayd^n\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.40024232864379883,
+      "error": null
+    },
+    "assert text_match(\"JIMWaXM/f_GV\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6211762428283691,
+      "error": null
+    },
+    "assert text_match(\"py#=Zr>j-lFUyX\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5442585945129395,
+      "error": null
+    },
+    "assert text_match(\"U|ZJEfi:d!a%QA\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5217339992523193,
+      "error": null
+    },
+    "assert text_match(\"jCwPhQH!v\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.4347646236419678,
+      "error": null
+    },
+    "assert text_match(\"<ndSwhmR=wo\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6131076812744141,
+      "error": null
+    },
+    "assert text_match(\"NS&Gtbf\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6462340354919434,
+      "error": null
+    },
+    "assert text_match(\"-d-XPCT\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5912110805511475,
+      "error": null
+    },
+    "assert text_match(\"lI-iTCKQ<_y\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5848667621612549,
+      "error": null
+    },
+    "assert text_match(\"RFqZbDi!%$L\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6506004333496094,
+      "error": null
+    },
+    "assert text_match(\"bLPYpz\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.49305057525634766,
+      "error": null
+    },
+    "assert text_match(\"mLyBq>VON$H\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5621130466461182,
+      "error": null
+    },
+    "assert text_match(\"h<%:RhYO$?UCA\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5836002826690674,
+      "error": null
+    },
+    "assert text_match(\"Y_a>Gvbr|o-Zej*\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5969808101654053,
+      "error": null
+    },
+    "assert text_match(\"^Z@GdAl\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5827715396881104,
+      "error": null
+    },
+    "assert text_match(\"Q-/Bupdz\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5880498886108398,
+      "error": null
+    },
+    "assert text_match(\"/@puQsR&ixE\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6327188014984131,
+      "error": null
+    },
+    "assert text_match(\":!gvaAh#\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5795269012451172,
+      "error": null
+    },
+    "assert text_match(\"ebTb=HsmW?sV\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5329763889312744,
+      "error": null
+    },
+    "assert text_match(\"o!c$#TtGZtU+\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5435185432434082,
+      "error": null
+    },
+    "assert text_match(\"IeWoedKDk^I>l|T\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6164102554321289,
+      "error": null
+    },
+    "assert text_match(\"~_:K<B/zR\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5742185115814209,
+      "error": null
+    },
+    "assert text_match(\"N&gpliHda\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5838460922241211,
+      "error": null
+    },
+    "assert text_match(\"q|JhM:bav~Ru+v\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5785689353942871,
+      "error": null
+    },
+    "assert text_match(\"|pqFiHucSOisY\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6055302619934082,
+      "error": null
+    },
+    "assert text_match(\"Jrv*_mIL/#nfCQ\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5664851665496826,
+      "error": null
+    },
+    "assert text_match(\"=D/zl:BtOHWe?o<\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5894224643707275,
+      "error": null
+    },
+    "assert text_match(\"$e%P=|@:*ehSO\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6037976741790771,
+      "error": null
+    },
+    "assert text_match(\"AchYZn=EyNoq\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5713527202606201,
+      "error": null
+    },
+    "assert text_match(\"^uZ+mrl\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6136631965637207,
+      "error": null
+    },
+    "assert text_match(\"SXlwll*nWJit\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5625877380371094,
+      "error": null
+    },
+    "assert text_match(\"<~-HNO\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5603253841400146,
+      "error": null
+    },
+    "assert text_match(\"jxA&xhoCZj/Dz\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6099727153778076,
+      "error": null
+    },
+    "assert text_match(\"^wfPzJ!R*q\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5760385990142822,
+      "error": null
+    },
+    "assert text_match(\"v_j$kIyod!>L\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5937652587890625,
+      "error": null
+    },
+    "assert text_match(\"&geq/_PL!N\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.4740104675292969,
+      "error": null
+    },
+    "assert text_match(\"CFbs:y\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.613189697265625,
+      "error": null
+    },
+    "assert text_match(\"HGiOD^tTqKyO\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.6041998863220215,
+      "error": null
+    },
+    "assert text_match(\"o_fF%^VPa\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5854406356811523,
+      "error": null
+    },
+    "assert text_match(\"v+QcKKIcabsL\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5446031093597412,
+      "error": null
+    },
+    "assert text_match(\"h=iElg\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5701229572296143,
+      "error": null
+    },
+    "assert text_match(\"n&rhm%yyCe\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5717244148254395,
+      "error": null
+    },
+    "assert text_match(\"byIdN><?mv\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5490462779998779,
+      "error": null
+    },
+    "assert text_match(\"hSC<cx=mfRs<?\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5571672916412354,
+      "error": null
+    },
+    "assert text_match(\"#>tN-|k\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5655028820037842,
+      "error": null
+    },
+    "assert text_match(\"aYMgGYa\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5818066596984863,
+      "error": null
+    },
+    "assert text_match(\"j~qoP&fhp^v\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5635819435119629,
+      "error": null
+    },
+    "assert text_match(\"dzwGUMT/Pcq\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5810890197753906,
+      "error": null
+    },
+    "assert text_match(\"iI_Chxfj\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5876178741455078,
+      "error": null
+    },
+    "assert text_match(\"KKiWzwo\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5696570873260498,
+      "error": null
+    },
+    "assert text_match(\"#Ur#rhysVXQy\") == \"Not matched!\"": {
+      "result": true,
+      "time": 0.5799791812896729,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "def dict_depth(d):\n    if not isinstance(d, dict) or not d:\n        return 0\n    max_depth = 1\n    for key in d:\n        if isinstance(d[key], dict):\n            current_depth = 1 + dict_depth(d[key])\n            if current_depth > max_depth:\n                max_depth = current_depth\n    return max_depth",
+  "results": {
+    "assert dict_depth({'a':1, 'b': {'c': {'d': {}}}})==4": {
+      "result": false,
+      "time": 0.059500694274902344,
+      "error": null
+    },
+    "assert dict_depth({'a':1, 'b': {'c':'python'}})==2": {
+      "result": true,
+      "time": 0.06365108489990234,
+      "error": null
+    },
+    "assert dict_depth({1: 'Sun', 2: {3: {4:'Mon'}}})==3": {
+      "result": true,
+      "time": 0.06125593185424805,
+      "error": null
+    },
+    "assert dict_depth({'h': 1, 'i': {'d': {'m': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06237673759460449,
+      "error": null
+    },
+    "assert dict_depth({'h': 4, 'n': {'h': {'a': {}}}}) == 4": {
+      "result": false,
+      "time": 0.07351446151733398,
+      "error": null
+    },
+    "assert dict_depth({'v': 4, 'a': {'m': {'i': {}}}}) == 4": {
+      "result": false,
+      "time": 0.0649118423461914,
+      "error": null
+    },
+    "assert dict_depth({'a': 1, 'f': {'w': {'h': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06179404258728027,
+      "error": null
+    },
+    "assert dict_depth({'t': 6, 'q': {'l': {'m': {}}}}) == 4": {
+      "result": false,
+      "time": 0.057942867279052734,
+      "error": null
+    },
+    "assert dict_depth({'b': 6, 'x': {'d': {'s': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06948995590209961,
+      "error": null
+    },
+    "assert dict_depth({'c': 3, 'l': {'o': {'e': {}}}}) == 4": {
+      "result": false,
+      "time": 0.07050490379333496,
+      "error": null
+    },
+    "assert dict_depth({'e': 1, 'b': {'p': {'d': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06300163269042969,
+      "error": null
+    },
+    "assert dict_depth({'o': 2, 'p': {'a': {'e': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06985616683959961,
+      "error": null
+    },
+    "assert dict_depth({'q': {'g': {'v': {}}}}) == 4": {
+      "result": false,
+      "time": 0.0608820915222168,
+      "error": null
+    },
+    "assert dict_depth({'q': 3, 'y': {'h': {'i': {}}}}) == 4": {
+      "result": false,
+      "time": 0.07550358772277832,
+      "error": null
+    },
+    "assert dict_depth({'h': 2, 'o': {'j': {'w': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06494665145874023,
+      "error": null
+    },
+    "assert dict_depth({'w': 4, 'l': {'n': {'q': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06424427032470703,
+      "error": null
+    },
+    "assert dict_depth({'j': 4, 'n': {'j': {'d': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06779241561889648,
+      "error": null
+    },
+    "assert dict_depth({'m': 2, 's': {'m': {'k': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06674838066101074,
+      "error": null
+    },
+    "assert dict_depth({'f': 1, 'j': {'v': {'p': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06927990913391113,
+      "error": null
+    },
+    "assert dict_depth({'f': 2, 'u': {'x': {'f': {}}}}) == 4": {
+      "result": false,
+      "time": 0.05842852592468262,
+      "error": null
+    },
+    "assert dict_depth({'u': 2, 'q': {'n': {'a': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06674051284790039,
+      "error": null
+    },
+    "assert dict_depth({'t': 1, 'h': {'z': {'p': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06483340263366699,
+      "error": null
+    },
+    "assert dict_depth({'q': 3, 'n': {'y': {'w': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06728291511535645,
+      "error": null
+    },
+    "assert dict_depth({'q': 2, 'p': {'q': {'k': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06289196014404297,
+      "error": null
+    },
+    "assert dict_depth({'e': 2, 'l': {'g': {'w': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06677365303039551,
+      "error": null
+    },
+    "assert dict_depth({'y': 4, 'r': {'u': {'b': {}}}}) == 4": {
+      "result": false,
+      "time": 0.04919934272766113,
+      "error": null
+    },
+    "assert dict_depth({'z': 4, 'c': {'r': {'m': {}}}}) == 4": {
+      "result": false,
+      "time": 0.058367013931274414,
+      "error": null
+    },
+    "assert dict_depth({'m': 6, 'g': {'g': {'k': {}}}}) == 4": {
+      "result": false,
+      "time": 0.04961991310119629,
+      "error": null
+    },
+    "assert dict_depth({'e': 1, 'i': {'n': {'q': {}}}}) == 4": {
+      "result": false,
+      "time": 0.04902005195617676,
+      "error": null
+    },
+    "assert dict_depth({'z': 2, 'p': {'s': {'n': {}}}}) == 4": {
+      "result": false,
+      "time": 0.05105400085449219,
+      "error": null
+    },
+    "assert dict_depth({'d': 6, 'f': {'g': {'f': {}}}}) == 4": {
+      "result": false,
+      "time": 0.054968833923339844,
+      "error": null
+    },
+    "assert dict_depth({'y': 6, 'n': {'w': {'y': {}}}}) == 4": {
+      "result": false,
+      "time": 0.04707527160644531,
+      "error": null
+    },
+    "assert dict_depth({'a': 3, 'g': {'y': {'s': {}}}}) == 4": {
+      "result": false,
+      "time": 0.05644941329956055,
+      "error": null
+    },
+    "assert dict_depth({'u': 4, 'f': {'a': {'y': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06108427047729492,
+      "error": null
+    },
+    "assert dict_depth({'p': 6, 'o': {'u': {'y': {}}}}) == 4": {
+      "result": false,
+      "time": 0.04671478271484375,
+      "error": null
+    },
+    "assert dict_depth({'n': 3, 'l': {'d': {'p': {}}}}) == 4": {
+      "result": false,
+      "time": 0.06665539741516113,
+      "error": null
+    },
+    "assert dict_depth({'q': 3, 'x': {'c': 'cgru'}}) == 2": {
+      "result": true,
+      "time": 0.037372589111328125,
+      "error": null
+    },
+    "assert dict_depth({'f': 3, 'x': {'v': 'adw'}}) == 2": {
+      "result": true,
+      "time": 0.05865001678466797,
+      "error": null
+    },
+    "assert dict_depth({'t': {'x': 'tmev'}}) == 2": {
+      "result": true,
+      "time": 0.0613710880279541,
+      "error": null
+    },
+    "assert dict_depth({'k': 5, 'r': {'r': 'zjuqacuwpypo'}}) == 2": {
+      "result": true,
+      "time": 0.05582404136657715,
+      "error": null
+    },
+    "assert dict_depth({'e': 3, 'c': {'r': 'yqdrqxi'}}) == 2": {
+      "result": true,
+      "time": 0.06100606918334961,
+      "error": null
+    },
+    "assert dict_depth({'t': 5, 'q': {'n': 'svn'}}) == 2": {
+      "result": true,
+      "time": 0.06206464767456055,
+      "error": null
+    },
+    "assert dict_depth({'y': {'z': 'zwuq'}}) == 2": {
+      "result": true,
+      "time": 0.059209585189819336,
+      "error": null
+    },
+    "assert dict_depth({'g': 4, 'z': {'y': 'vbwkuvnm'}}) == 2": {
+      "result": true,
+      "time": 0.054579973220825195,
+      "error": null
+    },
+    "assert dict_depth({'s': 3, 'x': {'j': 'fztjekk'}}) == 2": {
+      "result": true,
+      "time": 0.058013200759887695,
+      "error": null
+    },
+    "assert dict_depth({'l': 2, 'x': {'z': 'cyqbtbq'}}) == 2": {
+      "result": true,
+      "time": 0.05771231651306152,
+      "error": null
+    },
+    "assert dict_depth({'p': 2, 'c': {'u': 'bytnoprdrac'}}) == 2": {
+      "result": true,
+      "time": 0.054409027099609375,
+      "error": null
+    },
+    "assert dict_depth({'w': 4, 'j': {'h': 'oekpbkujs'}}) == 2": {
+      "result": true,
+      "time": 0.0337679386138916,
+      "error": null
+    },
+    "assert dict_depth({'y': 4, 'l': {'e': 'bocnr'}}) == 2": {
+      "result": true,
+      "time": 0.05018258094787598,
+      "error": null
+    },
+    "assert dict_depth({'y': 4, 'i': {'r': 'ydsns'}}) == 2": {
+      "result": true,
+      "time": 0.035332679748535156,
+      "error": null
+    },
+    "assert dict_depth({'c': 2, 'x': {'l': 'npjzmwbczca'}}) == 2": {
+      "result": true,
+      "time": 0.06577539443969727,
+      "error": null
+    },
+    "assert dict_depth({'b': 5, 'w': {'c': 'dfgukexilm'}}) == 2": {
+      "result": true,
+      "time": 0.03754019737243652,
+      "error": null
+    },
+    "assert dict_depth({'c': {'d': 'mtbx'}}) == 2": {
+      "result": true,
+      "time": 0.0613398551940918,
+      "error": null
+    },
+    "assert dict_depth({'x': 3, 'g': {'a': 'zfuvu'}}) == 2": {
+      "result": true,
+      "time": 0.041974544525146484,
+      "error": null
+    },
+    "assert dict_depth({'k': 1, 'h': {'j': 'zqalgwlcuxyx'}}) == 2": {
+      "result": true,
+      "time": 0.042891740798950195,
+      "error": null
+    },
+    "assert dict_depth({'m': 3, 'z': {'g': 'shbwwqulp'}}) == 2": {
+      "result": true,
+      "time": 0.041086673736572266,
+      "error": null
+    },
+    "assert dict_depth({'i': 4, 'u': {'j': 'ktrnondywdh'}}) == 2": {
+      "result": true,
+      "time": 0.04035687446594238,
+      "error": null
+    },
+    "assert dict_depth({'y': 4, 'l': {'x': 'jgvvuq'}}) == 2": {
+      "result": true,
+      "time": 0.04596352577209473,
+      "error": null
+    },
+    "assert dict_depth({'f': 5, 's': {'g': 'vhrfvvcqcknf'}}) == 2": {
+      "result": true,
+      "time": 0.04069018363952637,
+      "error": null
+    },
+    "assert dict_depth({'z': 6, 'f': {'l': 'fjzbsjpgecw'}}) == 2": {
+      "result": true,
+      "time": 0.05698537826538086,
+      "error": null
+    },
+    "assert dict_depth({'m': 1, 'h': {'p': 'ekqo'}}) == 2": {
+      "result": true,
+      "time": 0.03935647010803223,
+      "error": null
+    },
+    "assert dict_depth({'i': 3, 'e': {'g': 'xloseextqnr'}}) == 2": {
+      "result": true,
+      "time": 0.04562497138977051,
+      "error": null
+    },
+    "assert dict_depth({'i': 2, 'j': {'a': 'rihuosp'}}) == 2": {
+      "result": true,
+      "time": 0.04162788391113281,
+      "error": null
+    },
+    "assert dict_depth({'x': 2, 'u': {'t': 'jdsmtco'}}) == 2": {
+      "result": true,
+      "time": 0.03821825981140137,
+      "error": null
+    },
+    "assert dict_depth({'r': 3, 'd': {'z': 'zbsiepfwcagj'}}) == 2": {
+      "result": true,
+      "time": 0.045813798904418945,
+      "error": null
+    },
+    "assert dict_depth({'g': 4, 'm': {'b': 'xasvdu'}}) == 2": {
+      "result": true,
+      "time": 0.04868793487548828,
+      "error": null
+    },
+    "assert dict_depth({'t': 6, 'g': {'d': 'atvszy'}}) == 2": {
+      "result": true,
+      "time": 0.04302525520324707,
+      "error": null
+    },
+    "assert dict_depth({'n': 6, 'f': {'s': 'vpgznazavxow'}}) == 2": {
+      "result": true,
+      "time": 0.04398798942565918,
+      "error": null
+    },
+    "assert dict_depth({'x': 4, 'q': {'d': 'zuszjhfe'}}) == 2": {
+      "result": true,
+      "time": 0.04771280288696289,
+      "error": null
+    },
+    "assert dict_depth({4: 'BFlZFvDfv', 1: {1: {4: 'ozU'}}}) == 3": {
+      "result": true,
+      "time": 0.051198720932006836,
+      "error": null
+    },
+    "assert dict_depth({1: 'CSd', 5: {8: {5: 'klesvkv'}}}) == 3": {
+      "result": true,
+      "time": 0.05636477470397949,
+      "error": null
+    },
+    "assert dict_depth({6: 'auMlicwu', 2: {5: {1: 'mBtm'}}}) == 3": {
+      "result": true,
+      "time": 0.055904388427734375,
+      "error": null
+    },
+    "assert dict_depth({2: {7: {7: 'Xlfq'}}}) == 3": {
+      "result": true,
+      "time": 0.07041215896606445,
+      "error": null
+    },
+    "assert dict_depth({3: 'Jpasq', 6: {6: {5: 'ihfkhx'}}}) == 3": {
+      "result": true,
+      "time": 0.051143646240234375,
+      "error": null
+    },
+    "assert dict_depth({6: {7: {9: 'pCr'}}}) == 3": {
+      "result": true,
+      "time": 0.06149697303771973,
+      "error": null
+    },
+    "assert dict_depth({1: 'mdEhRWemo', 7: {5: {7: 'OPSs'}}}) == 3": {
+      "result": true,
+      "time": 0.06268596649169922,
+      "error": null
+    },
+    "assert dict_depth({1: 'omV', 4: {8: {3: 'CmOyctkXy'}}}) == 3": {
+      "result": true,
+      "time": 0.05641508102416992,
+      "error": null
+    },
+    "assert dict_depth({5: 'dGOSEmjD', 1: {3: {8: 'pSPDlSS'}}}) == 3": {
+      "result": true,
+      "time": 0.06289792060852051,
+      "error": null
+    },
+    "assert dict_depth({1: {3: {1: 'qAp'}}}) == 3": {
+      "result": true,
+      "time": 0.055863380432128906,
+      "error": null
+    },
+    "assert dict_depth({4: 'SvCBEG', 6: {2: {1: 'nqdnpktyZ'}}}) == 3": {
+      "result": true,
+      "time": 0.06458163261413574,
+      "error": null
+    },
+    "assert dict_depth({4: 'wQn', 6: {6: {2: 'eNlOxXPFm'}}}) == 3": {
+      "result": true,
+      "time": 0.061609506607055664,
+      "error": null
+    },
+    "assert dict_depth({3: 'xKpOhcQ', 6: {3: {6: 'jeUDzxpSV'}}}) == 3": {
+      "result": true,
+      "time": 0.0705573558807373,
+      "error": null
+    },
+    "assert dict_depth({5: {7: {2: 'TTOcfxc'}}}) == 3": {
+      "result": true,
+      "time": 0.06035423278808594,
+      "error": null
+    },
+    "assert dict_depth({1: 'BLCZOmSnr', 4: {4: {5: 'TjYtXtFXq'}}}) == 3": {
+      "result": true,
+      "time": 0.06353354454040527,
+      "error": null
+    },
+    "assert dict_depth({3: {6: {7: 'Ktuow'}}}) == 3": {
+      "result": true,
+      "time": 0.053142547607421875,
+      "error": null
+    },
+    "assert dict_depth({2: 'qgMZavQg', 5: {8: {9: 'CFoUM'}}}) == 3": {
+      "result": true,
+      "time": 0.05309009552001953,
+      "error": null
+    },
+    "assert dict_depth({6: {1: {4: 'rECiF'}}}) == 3": {
+      "result": true,
+      "time": 0.03710317611694336,
+      "error": null
+    },
+    "assert dict_depth({3: 'jgbcR', 1: {8: {5: 'LSLeDhYC'}}}) == 3": {
+      "result": true,
+      "time": 0.057489633560180664,
+      "error": null
+    },
+    "assert dict_depth({2: 'ELrGJ', 6: {8: {7: 'XoU'}}}) == 3": {
+      "result": true,
+      "time": 0.052091121673583984,
+      "error": null
+    },
+    "assert dict_depth({5: 'UkDT', 6: {8: {9: 'mRuFMnTEV'}}}) == 3": {
+      "result": true,
+      "time": 0.05418539047241211,
+      "error": null
+    },
+    "assert dict_depth({1: 'GKvoCA', 6: {3: {5: 'Dpy'}}}) == 3": {
+      "result": true,
+      "time": 0.06088972091674805,
+      "error": null
+    },
+    "assert dict_depth({2: 'YNXLJgzEJ', 7: {4: {9: 'TRS'}}}) == 3": {
+      "result": true,
+      "time": 0.04752969741821289,
+      "error": null
+    },
+    "assert dict_depth({2: 'NycjnF', 1: {1: {3: 'MoIm'}}}) == 3": {
+      "result": true,
+      "time": 0.06242775917053223,
+      "error": null
+    },
+    "assert dict_depth({4: 'HcHV', 7: {7: {4: 'JWR'}}}) == 3": {
+      "result": true,
+      "time": 0.05179142951965332,
+      "error": null
+    },
+    "assert dict_depth({3: {7: {2: 'TxQcdU'}}}) == 3": {
+      "result": true,
+      "time": 0.04327273368835449,
+      "error": null
+    },
+    "assert dict_depth({4: {3: {6: 'Lpc'}}}) == 3": {
+      "result": true,
+      "time": 0.05921006202697754,
+      "error": null
+    },
+    "assert dict_depth({5: 'ASRpdRrEK', 4: {2: {2: 'cTDMxM'}}}) == 3": {
+      "result": true,
+      "time": 0.04542875289916992,
+      "error": null
+    },
+    "assert dict_depth({3: 'iiwzJ', 5: {7: {6: 'fQGqk'}}}) == 3": {
+      "result": true,
+      "time": 0.048558712005615234,
+      "error": null
+    },
+    "assert dict_depth({1: 'JcdEppwy', 2: {1: {4: 'LUBzgeCnp'}}}) == 3": {
+      "result": true,
+      "time": 0.05306553840637207,
+      "error": null
+    },
+    "assert dict_depth({1: 'StoVGm', 2: {5: {9: 'uCcLmc'}}}) == 3": {
+      "result": true,
+      "time": 0.05990457534790039,
+      "error": null
+    },
+    "assert dict_depth({6: 'XlGSCVR', 1: {2: {4: 'rHORFRde'}}}) == 3": {
+      "result": true,
+      "time": 0.054705142974853516,
+      "error": null
+    },
+    "assert dict_depth({3: 'BVHVlGdwP', 2: {6: {4: 'NItuDFc'}}}) == 3": {
+      "result": true,
+      "time": 0.055791378021240234,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": "",
+  "has_testcase_error": false
+}

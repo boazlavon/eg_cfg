@@ -1,0 +1,64 @@
+{
+  "code": "def count_unset_bits(num):\n    if num == 0:\n        return 0  # Handle the case where num is 0, all bits are unset\n    binary = bin(num)[2:]  # Convert to binary string and remove '0b' prefix\n    total_bits = len(binary)\n    set_bits = binary.count('1')\n    unset_bits = total_bits - set_bits\n    return unset_bits",
+  "results": {
+    "assert count_unset_bits(2) == 1": {
+      "result": true,
+      "time": 0.04237055778503418,
+      "error": null
+    },
+    "assert count_unset_bits(4) == 2": {
+      "result": true,
+      "time": 0.039833784103393555,
+      "error": null
+    },
+    "assert count_unset_bits(6) == 1": {
+      "result": true,
+      "time": 0.039431095123291016,
+      "error": null
+    },
+    "assert count_unset_bits(5) == 1": {
+      "result": true,
+      "time": 0.045801401138305664,
+      "error": null
+    },
+    "assert count_unset_bits(3) == 0": {
+      "result": true,
+      "time": 0.05302691459655762,
+      "error": null
+    },
+    "assert count_unset_bits(7) == 0": {
+      "result": true,
+      "time": 0.0421442985534668,
+      "error": null
+    },
+    "assert count_unset_bits(1) == 0": {
+      "result": true,
+      "time": 0.06285572052001953,
+      "error": null
+    },
+    "assert count_unset_bits(9) == 2": {
+      "result": true,
+      "time": 0.0329282283782959,
+      "error": null
+    },
+    "assert count_unset_bits(8) == 3": {
+      "result": true,
+      "time": 0.04877424240112305,
+      "error": null
+    },
+    "assert count_unset_bits(11) == 1": {
+      "result": true,
+      "time": 0.040131330490112305,
+      "error": null
+    },
+    "assert count_unset_bits(10) == 2": {
+      "result": true,
+      "time": 0.04780888557434082,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

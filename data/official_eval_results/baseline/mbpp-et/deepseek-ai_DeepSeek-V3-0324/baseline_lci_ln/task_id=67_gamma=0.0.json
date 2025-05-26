@@ -1,0 +1,149 @@
+{
+  "code": "def bell_number(n):\n    if n == 0:\n        return 1\n    bell = [[0] * (n + 1) for _ in range(n + 1)]\n    bell[0][0] = 1\n    for i in range(1, n + 1):\n        bell[i][0] = bell[i - 1][i - 1]\n        for j in range(1, i + 1):\n            bell[i][j] = bell[i - 1][j - 1] + bell[i][j - 1]\n    return bell[n][0]",
+  "results": {
+    "assert bell_number(2)==2": {
+      "result": true,
+      "time": 0.05632424354553223,
+      "error": null
+    },
+    "assert bell_number(10)==115975": {
+      "result": true,
+      "time": 0.04355049133300781,
+      "error": null
+    },
+    "assert bell_number(56)==6775685320645824322581483068371419745979053216268760300": {
+      "result": true,
+      "time": 0.04493308067321777,
+      "error": null
+    },
+    "assert bell_number(4) == 15": {
+      "result": true,
+      "time": 0.046842336654663086,
+      "error": null
+    },
+    "assert bell_number(3) == 5": {
+      "result": true,
+      "time": 0.04605460166931152,
+      "error": null
+    },
+    "assert bell_number(5) == 52": {
+      "result": true,
+      "time": 0.04763650894165039,
+      "error": null
+    },
+    "assert bell_number(7) == 877": {
+      "result": true,
+      "time": 0.03733515739440918,
+      "error": null
+    },
+    "assert bell_number(2) == 2": {
+      "result": true,
+      "time": 0.05290389060974121,
+      "error": null
+    },
+    "assert bell_number(1) == 1": {
+      "result": true,
+      "time": 0.04603767395019531,
+      "error": null
+    },
+    "assert bell_number(6) == 203": {
+      "result": true,
+      "time": 0.04091644287109375,
+      "error": null
+    },
+    "assert bell_number(10) == 115975": {
+      "result": true,
+      "time": 0.04331517219543457,
+      "error": null
+    },
+    "assert bell_number(9) == 21147": {
+      "result": true,
+      "time": 0.04939603805541992,
+      "error": null
+    },
+    "assert bell_number(13) == 27644437": {
+      "result": true,
+      "time": 0.04574298858642578,
+      "error": null
+    },
+    "assert bell_number(11) == 678570": {
+      "result": true,
+      "time": 0.058414459228515625,
+      "error": null
+    },
+    "assert bell_number(14) == 190899322": {
+      "result": true,
+      "time": 0.0453035831451416,
+      "error": null
+    },
+    "assert bell_number(8) == 4140": {
+      "result": true,
+      "time": 0.046936988830566406,
+      "error": null
+    },
+    "assert bell_number(15) == 1382958545": {
+      "result": true,
+      "time": 0.03960466384887695,
+      "error": null
+    },
+    "assert bell_number(53) == 1052928518014714166107781298021583534928402714242132": {
+      "result": true,
+      "time": 0.047525644302368164,
+      "error": null
+    },
+    "assert bell_number(54) == 19317287589145618265728950069285503257349832850302011": {
+      "result": true,
+      "time": 0.04446744918823242,
+      "error": null
+    },
+    "assert bell_number(55) == 359334085968622831041960188598043661065388726959079837": {
+      "result": true,
+      "time": 0.04266929626464844,
+      "error": null
+    },
+    "assert bell_number(60) == 976939307467007552986994066961675455550246347757474482558637": {
+      "result": true,
+      "time": 0.053440093994140625,
+      "error": null
+    },
+    "assert bell_number(61) == 19652364471547941482114228389322789963345673460673370562378245": {
+      "result": true,
+      "time": 0.04824566841125488,
+      "error": null
+    },
+    "assert bell_number(57) == 129482661947506964462616580633806000917491602609372517195": {
+      "result": true,
+      "time": 0.04624128341674805,
+      "error": null
+    },
+    "assert bell_number(51) == 3263983870004111524856951830191582524419255819477": {
+      "result": true,
+      "time": 0.04297995567321777,
+      "error": null
+    },
+    "assert bell_number(59) == 49176743336309621659000944152624896853591018248919168867818": {
+      "result": true,
+      "time": 0.042714834213256836,
+      "error": null
+    },
+    "assert bell_number(58) == 2507136358984296114560786627437574942253015623445622326263": {
+      "result": true,
+      "time": 0.04488348960876465,
+      "error": null
+    },
+    "assert bell_number(56) == 6775685320645824322581483068371419745979053216268760300": {
+      "result": true,
+      "time": 0.053981781005859375,
+      "error": null
+    },
+    "assert bell_number(52) == 58205338024195872785464627063218599149503972126463": {
+      "result": true,
+      "time": 0.04213118553161621,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

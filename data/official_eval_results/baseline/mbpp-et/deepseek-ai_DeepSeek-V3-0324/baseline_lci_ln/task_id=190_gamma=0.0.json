@@ -1,0 +1,514 @@
+{
+  "code": "def count_Intgral_Points(x1, y1, x2, y2):\n    # Calculate the minimum and maximum x-coordinates\n    min_x = min(x1, x2)\n    max_x = max(x1, x2)\n    \n    # Calculate the minimum and maximum y-coordinates\n    min_y = min(y1, y2)\n    max_y = max(y1, y2)\n    \n    # Initialize the count of integral points\n    count = 0\n    \n    # Iterate over each x-coordinate within the square's bounds\n    x = min_x + 1\n    while x < max_x:\n        # Iterate over each y-coordinate within the square's bounds\n        y = min_y + 1\n        while y < max_y:\n            # Increment the count for each integral point inside the square\n            count += 1\n            y += 1\n        x += 1\n    \n    # Return the total count of integral points\n    return count",
+  "results": {
+    "assert count_Intgral_Points(1,1,4,4) == 4": {
+      "result": true,
+      "time": 0.035567522048950195,
+      "error": null
+    },
+    "assert count_Intgral_Points(1,2,1,2) == 1": {
+      "result": false,
+      "time": 0.03617978096008301,
+      "error": null
+    },
+    "assert count_Intgral_Points(4,2,6,4) == 1": {
+      "result": true,
+      "time": 0.036774635314941406,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 2, 3, 3) == 0": {
+      "result": true,
+      "time": 0.038132429122924805,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 3, 9, 3) == -5": {
+      "result": false,
+      "time": 0.037871360778808594,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 4, 6, 6) == 1": {
+      "result": true,
+      "time": 0.04506206512451172,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 2, 2, 5) == 0": {
+      "result": true,
+      "time": 0.03834724426269531,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 3, 2, 8) == -12": {
+      "result": false,
+      "time": 0.037642717361450195,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 4, 2, 1) == 0": {
+      "result": true,
+      "time": 0.03471183776855469,
+      "error": null
+    },
+    "assert count_Intgral_Points(6, 4, 3, 5) == 0": {
+      "result": true,
+      "time": 0.041722774505615234,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 1, 3, 3) == -1": {
+      "result": false,
+      "time": 0.032247304916381836,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 1, 7, 7) == 10": {
+      "result": true,
+      "time": 0.03489327430725098,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 5, 1, 2) == 16": {
+      "result": false,
+      "time": 0.03916501998901367,
+      "error": null
+    },
+    "assert count_Intgral_Points(6, 4, 9, 8) == 6": {
+      "result": true,
+      "time": 0.03682589530944824,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 4, 7, 8) == 3": {
+      "result": true,
+      "time": 0.03628182411193848,
+      "error": null
+    },
+    "assert count_Intgral_Points(6, 1, 2, 3) == -5": {
+      "result": false,
+      "time": 0.03620791435241699,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 5, 2, 7) == -4": {
+      "result": false,
+      "time": 0.0389406681060791,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 1, 7, 2) == 0": {
+      "result": true,
+      "time": 0.0361630916595459,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 5, 6, 4) == 0": {
+      "result": true,
+      "time": 0.036821842193603516,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 6, 8, 9) == 4": {
+      "result": true,
+      "time": 0.031057119369506836,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 3, 1, 4) == 0": {
+      "result": true,
+      "time": 0.03007197380065918,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 6, 7, 4) == -3": {
+      "result": false,
+      "time": 0.0415339469909668,
+      "error": null
+    },
+    "assert count_Intgral_Points(6, 6, 9, 2) == -10": {
+      "result": false,
+      "time": 0.04776144027709961,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 1, 7, 6) == 4": {
+      "result": true,
+      "time": 0.03881978988647461,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 2, 6, 5) == 0": {
+      "result": true,
+      "time": 0.037076473236083984,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 3, 4, 8) == 8": {
+      "result": true,
+      "time": 0.037415266036987305,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 6, 4, 3) == 8": {
+      "result": false,
+      "time": 0.041660308837890625,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 2, 4, 7) == 8": {
+      "result": true,
+      "time": 0.0378568172454834,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 1, 6, 1) == 0": {
+      "result": true,
+      "time": 0.0346219539642334,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 1, 9, 6) == 28": {
+      "result": true,
+      "time": 0.03620314598083496,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 4, 7, 6) == 1": {
+      "result": true,
+      "time": 0.03423261642456055,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 2, 9, 3) == 0": {
+      "result": true,
+      "time": 0.03435373306274414,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 6, 4, 6) == 1": {
+      "result": false,
+      "time": 0.038707733154296875,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 6, 1, 3) == 4": {
+      "result": false,
+      "time": 0.03163552284240723,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 5, 9, 3) == -12": {
+      "result": false,
+      "time": 0.03877520561218262,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 3, 6, 7) == 6": {
+      "result": true,
+      "time": 0.037743568420410156,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 4, 5, 4) == 1": {
+      "result": false,
+      "time": 0.03744935989379883,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 7, 4, 1) == 14": {
+      "result": false,
+      "time": 0.042227983474731445,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 2, 2, 7) == -16": {
+      "result": false,
+      "time": 0.0359807014465332,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 7, 4, 1) == -14": {
+      "result": false,
+      "time": 0.036423444747924805,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 5, 4, 1) == -10": {
+      "result": false,
+      "time": 0.040509700775146484,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 7, 3, 2) == 18": {
+      "result": false,
+      "time": 0.03798699378967285,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 5, 2, 5) == 2": {
+      "result": false,
+      "time": 0.03544044494628906,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 7, 2, 6) == 2": {
+      "result": false,
+      "time": 0.03464365005493164,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 7, 5, 6) == -4": {
+      "result": false,
+      "time": 0.0399172306060791,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 3, 2, 6) == 0": {
+      "result": true,
+      "time": 0.03534650802612305,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 4, 5, 6) == 3": {
+      "result": true,
+      "time": 0.045506954193115234,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 1, 4, 3) == 0": {
+      "result": true,
+      "time": 0.03686332702636719,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 7, 2, 4) == 16": {
+      "result": false,
+      "time": 0.04144167900085449,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 4, 5, 3) == 0": {
+      "result": true,
+      "time": 0.04185009002685547,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 1, 1, 5) == -12": {
+      "result": false,
+      "time": 0.03802156448364258,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 1, 4, 1) == 2": {
+      "result": false,
+      "time": 0.04615974426269531,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 1, 6, 7) == 5": {
+      "result": true,
+      "time": 0.049562931060791016,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 2, 6, 2) == -3": {
+      "result": false,
+      "time": 0.03960704803466797,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 1, 5, 4) == 2": {
+      "result": true,
+      "time": 0.03849363327026367,
+      "error": null
+    },
+    "assert count_Intgral_Points(6, 5, 5, 4) == 4": {
+      "result": false,
+      "time": 0.04232454299926758,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 3, 5, 2) == 2": {
+      "result": false,
+      "time": 0.04202771186828613,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 5, 3, 1) == 10": {
+      "result": false,
+      "time": 0.05481290817260742,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 5, 4, 3) == -6": {
+      "result": false,
+      "time": 0.03931379318237305,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 4, 2, 6) == -4": {
+      "result": false,
+      "time": 0.038970232009887695,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 7, 5, 7) == 0": {
+      "result": true,
+      "time": 0.046257734298706055,
+      "error": null
+    },
+    "assert count_Intgral_Points(5, 2, 6, 6) == 0": {
+      "result": true,
+      "time": 0.0392606258392334,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 5, 4, 4) == -2": {
+      "result": false,
+      "time": 0.03770947456359863,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 6, 3, 3) == 0": {
+      "result": true,
+      "time": 0.04202413558959961,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 7, 6, 6) == -4": {
+      "result": false,
+      "time": 0.0491786003112793,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 5, 5, 4) == 0": {
+      "result": true,
+      "time": 0.04431462287902832,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 1, 2, 2) == 0": {
+      "result": true,
+      "time": 0.04096555709838867,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 4, 1, 6) == -2": {
+      "result": false,
+      "time": 0.052350759506225586,
+      "error": null
+    },
+    "assert count_Intgral_Points(8, 5, 1, 4) == 16": {
+      "result": false,
+      "time": 0.044003963470458984,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 5, 6, 9) == 12": {
+      "result": true,
+      "time": 0.04645061492919922,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 4, 11, 6) == 8": {
+      "result": true,
+      "time": 0.044777631759643555,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 6, 3, 3) == -4": {
+      "result": false,
+      "time": 0.03627347946166992,
+      "error": null
+    },
+    "assert count_Intgral_Points(9, 3, 6, 9) == -20": {
+      "result": false,
+      "time": 0.04116034507751465,
+      "error": null
+    },
+    "assert count_Intgral_Points(6, 6, 9, 6) == -2": {
+      "result": false,
+      "time": 0.038236141204833984,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 5, 2, 9) == -9": {
+      "result": false,
+      "time": 0.04227423667907715,
+      "error": null
+    },
+    "assert count_Intgral_Points(8, 7, 3, 3) == 30": {
+      "result": false,
+      "time": 0.04477071762084961,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 7, 1, 3) == 15": {
+      "result": false,
+      "time": 0.04050564765930176,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 5, 5, 8) == 6": {
+      "result": true,
+      "time": 0.04510617256164551,
+      "error": null
+    },
+    "assert count_Intgral_Points(9, 6, 11, 3) == -4": {
+      "result": false,
+      "time": 0.038542747497558594,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 4, 8, 8) == 12": {
+      "result": true,
+      "time": 0.04498577117919922,
+      "error": null
+    },
+    "assert count_Intgral_Points(7, 3, 3, 9) == -25": {
+      "result": false,
+      "time": 0.03792881965637207,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 1, 8, 7) == 25": {
+      "result": true,
+      "time": 0.040805816650390625,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 1, 6, 1) == -1": {
+      "result": false,
+      "time": 0.04135894775390625,
+      "error": null
+    },
+    "assert count_Intgral_Points(1, 1, 8, 2) == 0": {
+      "result": true,
+      "time": 0.03936290740966797,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 1, 2, 1) == 3": {
+      "result": false,
+      "time": 0.040085792541503906,
+      "error": null
+    },
+    "assert count_Intgral_Points(9, 1, 5, 3) == -5": {
+      "result": false,
+      "time": 0.04359006881713867,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 6, 6, 3) == -4": {
+      "result": false,
+      "time": 0.041304826736450195,
+      "error": null
+    },
+    "assert count_Intgral_Points(9, 4, 9, 5) == 0": {
+      "result": true,
+      "time": 0.03459763526916504,
+      "error": null
+    },
+    "assert count_Intgral_Points(6, 4, 8, 3) == -2": {
+      "result": false,
+      "time": 0.038980722427368164,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 5, 7, 9) == 12": {
+      "result": true,
+      "time": 0.04175877571105957,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 4, 10, 8) == 18": {
+      "result": true,
+      "time": 0.04401898384094238,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 6, 9, 4) == -15": {
+      "result": false,
+      "time": 0.04116225242614746,
+      "error": null
+    },
+    "assert count_Intgral_Points(7, 5, 6, 6) == 0": {
+      "result": true,
+      "time": 0.04007458686828613,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 6, 9, 6) == -4": {
+      "result": false,
+      "time": 0.0428466796875,
+      "error": null
+    },
+    "assert count_Intgral_Points(7, 5, 8, 3) == 0": {
+      "result": true,
+      "time": 0.03755640983581543,
+      "error": null
+    },
+    "assert count_Intgral_Points(7, 4, 3, 4) == 5": {
+      "result": false,
+      "time": 0.04424858093261719,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 6, 4, 6) == -1": {
+      "result": false,
+      "time": 0.04111194610595703,
+      "error": null
+    },
+    "assert count_Intgral_Points(2, 6, 6, 7) == 0": {
+      "result": true,
+      "time": 0.04879164695739746,
+      "error": null
+    },
+    "assert count_Intgral_Points(3, 6, 5, 1) == -6": {
+      "result": false,
+      "time": 0.041307687759399414,
+      "error": null
+    },
+    "assert count_Intgral_Points(9, 1, 4, 3) == -6": {
+      "result": false,
+      "time": 0.041945695877075195,
+      "error": null
+    },
+    "assert count_Intgral_Points(4, 6, 2, 8) == -3": {
+      "result": false,
+      "time": 0.03593325614929199,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.45544554455445546,
+  "general_error": "",
+  "has_testcase_error": false
+}

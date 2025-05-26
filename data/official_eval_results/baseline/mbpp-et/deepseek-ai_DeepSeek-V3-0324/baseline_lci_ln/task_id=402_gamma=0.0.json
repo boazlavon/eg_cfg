@@ -1,0 +1,509 @@
+{
+  "code": "def ncr_modp(n, r, p):\n    if r > n:\n        return 0\n    if r == 0 or r == n:\n        return 1\n    numerator = 1\n    for i in range(n, n - r, -1):\n        numerator = numerator * i\n        numerator = numerator % p\n    denominator = 1\n    for i in range(1, r + 1):\n        denominator = denominator * i\n        denominator = denominator % p\n    inverse_denominator = pow(denominator, p - 2, p)\n    result = (numerator * inverse_denominator) % p\n    return result",
+  "results": {
+    "assert ncr_modp(10,2,13)==6": {
+      "result": true,
+      "time": 0.045290231704711914,
+      "error": null
+    },
+    "assert ncr_modp(15,12,43)==25": {
+      "result": true,
+      "time": 0.03456592559814453,
+      "error": null
+    },
+    "assert ncr_modp(17,9,18)==10": {
+      "result": false,
+      "time": 0.03925967216491699,
+      "error": null
+    },
+    "assert ncr_modp(10, 7, 17) == 1": {
+      "result": true,
+      "time": 0.036490440368652344,
+      "error": null
+    },
+    "assert ncr_modp(14, 1, 10) == 4": {
+      "result": true,
+      "time": 0.035611867904663086,
+      "error": null
+    },
+    "assert ncr_modp(10, 3, 17) == 1": {
+      "result": true,
+      "time": 0.034731149673461914,
+      "error": null
+    },
+    "assert ncr_modp(6, 7, 14) == 0": {
+      "result": true,
+      "time": 0.03650617599487305,
+      "error": null
+    },
+    "assert ncr_modp(7, 7, 13) == 1": {
+      "result": true,
+      "time": 0.04136371612548828,
+      "error": null
+    },
+    "assert ncr_modp(14, 1, 17) == 14": {
+      "result": true,
+      "time": 0.03642535209655762,
+      "error": null
+    },
+    "assert ncr_modp(11, 2, 17) == 4": {
+      "result": true,
+      "time": 0.03671407699584961,
+      "error": null
+    },
+    "assert ncr_modp(7, 1, 14) == 7": {
+      "result": true,
+      "time": 0.037046194076538086,
+      "error": null
+    },
+    "assert ncr_modp(12, 5, 15) == 12": {
+      "result": false,
+      "time": 0.03616476058959961,
+      "error": null
+    },
+    "assert ncr_modp(7, 7, 10) == 1": {
+      "result": true,
+      "time": 0.041043996810913086,
+      "error": null
+    },
+    "assert ncr_modp(9, 2, 18) == 0": {
+      "result": true,
+      "time": 0.042920589447021484,
+      "error": null
+    },
+    "assert ncr_modp(13, 1, 12) == 1": {
+      "result": true,
+      "time": 0.03669929504394531,
+      "error": null
+    },
+    "assert ncr_modp(6, 2, 10) == 5": {
+      "result": false,
+      "time": 0.0394291877746582,
+      "error": null
+    },
+    "assert ncr_modp(14, 7, 10) == 2": {
+      "result": false,
+      "time": 0.035364389419555664,
+      "error": null
+    },
+    "assert ncr_modp(12, 1, 16) == 12": {
+      "result": true,
+      "time": 0.0377194881439209,
+      "error": null
+    },
+    "assert ncr_modp(8, 7, 15) == 8": {
+      "result": false,
+      "time": 0.03733086585998535,
+      "error": null
+    },
+    "assert ncr_modp(14, 3, 11) == 1": {
+      "result": true,
+      "time": 0.0401911735534668,
+      "error": null
+    },
+    "assert ncr_modp(15, 4, 14) == 7": {
+      "result": false,
+      "time": 0.03643465042114258,
+      "error": null
+    },
+    "assert ncr_modp(11, 4, 14) == 8": {
+      "result": false,
+      "time": 0.03499960899353027,
+      "error": null
+    },
+    "assert ncr_modp(12, 4, 10) == 5": {
+      "result": false,
+      "time": 0.0470118522644043,
+      "error": null
+    },
+    "assert ncr_modp(8, 1, 11) == 8": {
+      "result": true,
+      "time": 0.0381627082824707,
+      "error": null
+    },
+    "assert ncr_modp(15, 3, 8) == 7": {
+      "result": false,
+      "time": 0.03712010383605957,
+      "error": null
+    },
+    "assert ncr_modp(9, 7, 18) == 0": {
+      "result": true,
+      "time": 0.03679466247558594,
+      "error": null
+    },
+    "assert ncr_modp(11, 6, 9) == 3": {
+      "result": false,
+      "time": 0.03971695899963379,
+      "error": null
+    },
+    "assert ncr_modp(7, 2, 16) == 5": {
+      "result": false,
+      "time": 0.044126033782958984,
+      "error": null
+    },
+    "assert ncr_modp(13, 7, 9) == 6": {
+      "result": false,
+      "time": 0.03647327423095703,
+      "error": null
+    },
+    "assert ncr_modp(12, 4, 15) == 0": {
+      "result": true,
+      "time": 0.03716015815734863,
+      "error": null
+    },
+    "assert ncr_modp(11, 2, 15) == 10": {
+      "result": true,
+      "time": 0.04230523109436035,
+      "error": null
+    },
+    "assert ncr_modp(15, 2, 10) == 5": {
+      "result": false,
+      "time": 0.05332064628601074,
+      "error": null
+    },
+    "assert ncr_modp(13, 2, 17) == 10": {
+      "result": true,
+      "time": 0.05868864059448242,
+      "error": null
+    },
+    "assert ncr_modp(10, 3, 13) == 3": {
+      "result": true,
+      "time": 0.04979968070983887,
+      "error": null
+    },
+    "assert ncr_modp(12, 7, 18) == 0": {
+      "result": true,
+      "time": 0.0583953857421875,
+      "error": null
+    },
+    "assert ncr_modp(16, 7, 40) == 0": {
+      "result": true,
+      "time": 0.05238628387451172,
+      "error": null
+    },
+    "assert ncr_modp(17, 9, 47) == 11": {
+      "result": true,
+      "time": 0.05758094787597656,
+      "error": null
+    },
+    "assert ncr_modp(20, 16, 47) == 4": {
+      "result": true,
+      "time": 0.04694533348083496,
+      "error": null
+    },
+    "assert ncr_modp(13, 16, 45) == 0": {
+      "result": true,
+      "time": 0.06396031379699707,
+      "error": null
+    },
+    "assert ncr_modp(10, 16, 47) == 0": {
+      "result": true,
+      "time": 0.05178475379943848,
+      "error": null
+    },
+    "assert ncr_modp(15, 7, 41) == 39": {
+      "result": true,
+      "time": 0.043969154357910156,
+      "error": null
+    },
+    "assert ncr_modp(17, 17, 43) == 1": {
+      "result": true,
+      "time": 0.05346941947937012,
+      "error": null
+    },
+    "assert ncr_modp(20, 17, 38) == 0": {
+      "result": true,
+      "time": 0.0605168342590332,
+      "error": null
+    },
+    "assert ncr_modp(14, 10, 40) == 1": {
+      "result": false,
+      "time": 0.059803009033203125,
+      "error": null
+    },
+    "assert ncr_modp(18, 13, 43) == 11": {
+      "result": true,
+      "time": 0.0574345588684082,
+      "error": null
+    },
+    "assert ncr_modp(13, 13, 43) == 1": {
+      "result": true,
+      "time": 0.06699323654174805,
+      "error": null
+    },
+    "assert ncr_modp(10, 7, 46) == 28": {
+      "result": false,
+      "time": 0.058550357818603516,
+      "error": null
+    },
+    "assert ncr_modp(19, 15, 40) == 36": {
+      "result": false,
+      "time": 0.06380105018615723,
+      "error": null
+    },
+    "assert ncr_modp(19, 11, 47) == 6": {
+      "result": true,
+      "time": 0.052535057067871094,
+      "error": null
+    },
+    "assert ncr_modp(15, 7, 40) == 35": {
+      "result": false,
+      "time": 0.05255460739135742,
+      "error": null
+    },
+    "assert ncr_modp(13, 7, 39) == 0": {
+      "result": true,
+      "time": 0.04355478286743164,
+      "error": null
+    },
+    "assert ncr_modp(12, 10, 43) == 23": {
+      "result": true,
+      "time": 0.04738783836364746,
+      "error": null
+    },
+    "assert ncr_modp(19, 17, 44) == 39": {
+      "result": false,
+      "time": 0.05391836166381836,
+      "error": null
+    },
+    "assert ncr_modp(16, 17, 46) == 0": {
+      "result": true,
+      "time": 0.06777000427246094,
+      "error": null
+    },
+    "assert ncr_modp(11, 13, 40) == 0": {
+      "result": true,
+      "time": 0.060700416564941406,
+      "error": null
+    },
+    "assert ncr_modp(13, 15, 43) == 0": {
+      "result": true,
+      "time": 0.05717873573303223,
+      "error": null
+    },
+    "assert ncr_modp(17, 13, 47) == 30": {
+      "result": true,
+      "time": 0.05777096748352051,
+      "error": null
+    },
+    "assert ncr_modp(20, 15, 48) == 0": {
+      "result": true,
+      "time": 0.06078171730041504,
+      "error": null
+    },
+    "assert ncr_modp(14, 11, 42) == 28": {
+      "result": false,
+      "time": 0.0482182502746582,
+      "error": null
+    },
+    "assert ncr_modp(16, 17, 39) == 0": {
+      "result": true,
+      "time": 0.04241585731506348,
+      "error": null
+    },
+    "assert ncr_modp(14, 8, 44) == 11": {
+      "result": false,
+      "time": 0.06754851341247559,
+      "error": null
+    },
+    "assert ncr_modp(18, 15, 46) == 34": {
+      "result": false,
+      "time": 0.04906487464904785,
+      "error": null
+    },
+    "assert ncr_modp(10, 14, 40) == 0": {
+      "result": true,
+      "time": 0.053189992904663086,
+      "error": null
+    },
+    "assert ncr_modp(15, 8, 38) == 13": {
+      "result": false,
+      "time": 0.054990291595458984,
+      "error": null
+    },
+    "assert ncr_modp(13, 14, 43) == 0": {
+      "result": true,
+      "time": 0.0668790340423584,
+      "error": null
+    },
+    "assert ncr_modp(14, 7, 41) == 29": {
+      "result": true,
+      "time": 0.04041099548339844,
+      "error": null
+    },
+    "assert ncr_modp(16, 10, 42) == 28": {
+      "result": false,
+      "time": 0.05603456497192383,
+      "error": null
+    },
+    "assert ncr_modp(16, 16, 39) == 1": {
+      "result": true,
+      "time": 0.052187204360961914,
+      "error": null
+    },
+    "assert ncr_modp(20, 11, 23) == 14": {
+      "result": true,
+      "time": 0.04508042335510254,
+      "error": null
+    },
+    "assert ncr_modp(19, 14, 18) == 0": {
+      "result": true,
+      "time": 0.0501401424407959,
+      "error": null
+    },
+    "assert ncr_modp(13, 10, 14) == 6": {
+      "result": false,
+      "time": 0.05175924301147461,
+      "error": null
+    },
+    "assert ncr_modp(17, 12, 17) == 0": {
+      "result": true,
+      "time": 0.0440983772277832,
+      "error": null
+    },
+    "assert ncr_modp(17, 6, 23) == 2": {
+      "result": true,
+      "time": 0.04885697364807129,
+      "error": null
+    },
+    "assert ncr_modp(16, 5, 13) == 0": {
+      "result": true,
+      "time": 0.05713462829589844,
+      "error": null
+    },
+    "assert ncr_modp(18, 7, 20) == 4": {
+      "result": false,
+      "time": 0.059741973876953125,
+      "error": null
+    },
+    "assert ncr_modp(14, 12, 14) == 7": {
+      "result": false,
+      "time": 0.05688667297363281,
+      "error": null
+    },
+    "assert ncr_modp(20, 13, 21) == 9": {
+      "result": false,
+      "time": 0.04809069633483887,
+      "error": null
+    },
+    "assert ncr_modp(21, 11, 21) == 0": {
+      "result": true,
+      "time": 0.04768204689025879,
+      "error": null
+    },
+    "assert ncr_modp(12, 14, 13) == 0": {
+      "result": true,
+      "time": 0.039276123046875,
+      "error": null
+    },
+    "assert ncr_modp(16, 5, 21) == 0": {
+      "result": true,
+      "time": 0.04860568046569824,
+      "error": null
+    },
+    "assert ncr_modp(13, 10, 13) == 0": {
+      "result": true,
+      "time": 0.04745197296142578,
+      "error": null
+    },
+    "assert ncr_modp(15, 9, 15) == 10": {
+      "result": false,
+      "time": 0.043222665786743164,
+      "error": null
+    },
+    "assert ncr_modp(13, 14, 21) == 0": {
+      "result": true,
+      "time": 0.047641754150390625,
+      "error": null
+    },
+    "assert ncr_modp(13, 7, 22) == 0": {
+      "result": true,
+      "time": 0.04871320724487305,
+      "error": null
+    },
+    "assert ncr_modp(13, 12, 16) == 13": {
+      "result": false,
+      "time": 0.042017459869384766,
+      "error": null
+    },
+    "assert ncr_modp(15, 10, 18) == 15": {
+      "result": false,
+      "time": 0.03950142860412598,
+      "error": null
+    },
+    "assert ncr_modp(21, 4, 18) == 9": {
+      "result": false,
+      "time": 0.03735995292663574,
+      "error": null
+    },
+    "assert ncr_modp(15, 14, 22) == 15": {
+      "result": false,
+      "time": 0.03958749771118164,
+      "error": null
+    },
+    "assert ncr_modp(22, 9, 18) == 8": {
+      "result": false,
+      "time": 0.0416111946105957,
+      "error": null
+    },
+    "assert ncr_modp(22, 12, 19) == 0": {
+      "result": true,
+      "time": 0.05124807357788086,
+      "error": null
+    },
+    "assert ncr_modp(14, 14, 23) == 1": {
+      "result": true,
+      "time": 0.049085140228271484,
+      "error": null
+    },
+    "assert ncr_modp(19, 11, 16) == 14": {
+      "result": false,
+      "time": 0.04220271110534668,
+      "error": null
+    },
+    "assert ncr_modp(18, 12, 16) == 4": {
+      "result": false,
+      "time": 0.04965782165527344,
+      "error": null
+    },
+    "assert ncr_modp(13, 13, 21) == 1": {
+      "result": true,
+      "time": 0.04535627365112305,
+      "error": null
+    },
+    "assert ncr_modp(15, 7, 15) == 0": {
+      "result": true,
+      "time": 0.03789472579956055,
+      "error": null
+    },
+    "assert ncr_modp(22, 10, 20) == 6": {
+      "result": false,
+      "time": 0.04496359825134277,
+      "error": null
+    },
+    "assert ncr_modp(13, 9, 14) == 1": {
+      "result": false,
+      "time": 0.0458369255065918,
+      "error": null
+    },
+    "assert ncr_modp(14, 13, 17) == 14": {
+      "result": true,
+      "time": 0.041042327880859375,
+      "error": null
+    },
+    "assert ncr_modp(19, 10, 16) == 10": {
+      "result": false,
+      "time": 0.053684234619140625,
+      "error": null
+    },
+    "assert ncr_modp(22, 9, 14) == 0": {
+      "result": true,
+      "time": 0.04814505577087402,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.62,
+  "general_error": "",
+  "has_testcase_error": false
+}

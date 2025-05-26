@@ -1,0 +1,499 @@
+{
+  "code": "def round_num(number, multiple):\n    # Calculate the remainder when the number is divided by the multiple\n    remainder = number % multiple\n    # Determine the difference to the lower multiple\n    lower_diff = remainder\n    # Determine the difference to the higher multiple\n    higher_diff = multiple - remainder\n    # Check if the remainder is closer to the lower or higher multiple\n    if lower_diff < higher_diff:\n        # Round down to the nearest multiple\n        rounded_number = number - lower_diff\n    else:\n        # Round up to the nearest multiple\n        rounded_number = number + higher_diff\n    return rounded_number",
+  "results": {
+    "assert round_num(4722,10)==4720": {
+      "result": true,
+      "time": 0.06030464172363281,
+      "error": null
+    },
+    "assert round_num(1111,5)==1110": {
+      "result": true,
+      "time": 0.05119657516479492,
+      "error": null
+    },
+    "assert round_num(219,2)==218": {
+      "result": false,
+      "time": 0.05754995346069336,
+      "error": null
+    },
+    "assert round_num(5091, 9) == 5094": {
+      "result": true,
+      "time": 0.04144620895385742,
+      "error": null
+    },
+    "assert round_num(5326, 8) == 5328": {
+      "result": true,
+      "time": 0.03626060485839844,
+      "error": null
+    },
+    "assert round_num(5141, 11) == 5137": {
+      "result": true,
+      "time": 0.04035496711730957,
+      "error": null
+    },
+    "assert round_num(4194, 9) == 4194": {
+      "result": true,
+      "time": 0.03958415985107422,
+      "error": null
+    },
+    "assert round_num(4406, 9) == 4410": {
+      "result": true,
+      "time": 0.03921937942504883,
+      "error": null
+    },
+    "assert round_num(4821, 7) == 4823": {
+      "result": true,
+      "time": 0.06268596649169922,
+      "error": null
+    },
+    "assert round_num(4141, 13) == 4147": {
+      "result": true,
+      "time": 0.060393333435058594,
+      "error": null
+    },
+    "assert round_num(4945, 11) == 4950": {
+      "result": true,
+      "time": 0.06878805160522461,
+      "error": null
+    },
+    "assert round_num(5182, 6) == 5184": {
+      "result": true,
+      "time": 0.06389474868774414,
+      "error": null
+    },
+    "assert round_num(4787, 6) == 4788": {
+      "result": true,
+      "time": 0.06275486946105957,
+      "error": null
+    },
+    "assert round_num(4099, 12) == 4104": {
+      "result": true,
+      "time": 0.060213327407836914,
+      "error": null
+    },
+    "assert round_num(5152, 11) == 5148": {
+      "result": true,
+      "time": 0.06212210655212402,
+      "error": null
+    },
+    "assert round_num(5669, 13) == 5668": {
+      "result": true,
+      "time": 0.06325387954711914,
+      "error": null
+    },
+    "assert round_num(4550, 12) == 4548": {
+      "result": true,
+      "time": 0.061702728271484375,
+      "error": null
+    },
+    "assert round_num(4959, 7) == 4956": {
+      "result": true,
+      "time": 0.07391071319580078,
+      "error": null
+    },
+    "assert round_num(5318, 9) == 5319": {
+      "result": true,
+      "time": 0.047026872634887695,
+      "error": null
+    },
+    "assert round_num(4914, 11) == 4917": {
+      "result": true,
+      "time": 0.03616762161254883,
+      "error": null
+    },
+    "assert round_num(4006, 5) == 4005": {
+      "result": true,
+      "time": 0.05197477340698242,
+      "error": null
+    },
+    "assert round_num(4834, 14) == 4830": {
+      "result": true,
+      "time": 0.0661170482635498,
+      "error": null
+    },
+    "assert round_num(5003, 13) == 5005": {
+      "result": true,
+      "time": 0.0599215030670166,
+      "error": null
+    },
+    "assert round_num(4989, 15) == 4995": {
+      "result": true,
+      "time": 0.06725049018859863,
+      "error": null
+    },
+    "assert round_num(4787, 5) == 4785": {
+      "result": true,
+      "time": 0.05514240264892578,
+      "error": null
+    },
+    "assert round_num(5581, 15) == 5580": {
+      "result": true,
+      "time": 0.06644988059997559,
+      "error": null
+    },
+    "assert round_num(3947, 12) == 3948": {
+      "result": true,
+      "time": 0.04566216468811035,
+      "error": null
+    },
+    "assert round_num(5208, 6) == 5208": {
+      "result": true,
+      "time": 0.05514860153198242,
+      "error": null
+    },
+    "assert round_num(4300, 9) == 4302": {
+      "result": true,
+      "time": 0.04059004783630371,
+      "error": null
+    },
+    "assert round_num(4308, 14) == 4312": {
+      "result": true,
+      "time": 0.0557560920715332,
+      "error": null
+    },
+    "assert round_num(5583, 9) == 5580": {
+      "result": true,
+      "time": 0.048224449157714844,
+      "error": null
+    },
+    "assert round_num(3800, 9) == 3798": {
+      "result": true,
+      "time": 0.05205368995666504,
+      "error": null
+    },
+    "assert round_num(4179, 13) == 4173": {
+      "result": true,
+      "time": 0.05513620376586914,
+      "error": null
+    },
+    "assert round_num(3719, 15) == 3720": {
+      "result": true,
+      "time": 0.04816007614135742,
+      "error": null
+    },
+    "assert round_num(4335, 13) == 4329": {
+      "result": true,
+      "time": 0.0716707706451416,
+      "error": null
+    },
+    "assert round_num(4846, 15) == 4845": {
+      "result": true,
+      "time": 0.040381431579589844,
+      "error": null
+    },
+    "assert round_num(120, 4) == 120": {
+      "result": true,
+      "time": 0.05160355567932129,
+      "error": null
+    },
+    "assert round_num(2064, 9) == 2061": {
+      "result": true,
+      "time": 0.05325460433959961,
+      "error": null
+    },
+    "assert round_num(1603, 7) == 1603": {
+      "result": true,
+      "time": 0.04455375671386719,
+      "error": null
+    },
+    "assert round_num(1338, 6) == 1338": {
+      "result": true,
+      "time": 0.055602073669433594,
+      "error": null
+    },
+    "assert round_num(337, 8) == 336": {
+      "result": true,
+      "time": 0.05043506622314453,
+      "error": null
+    },
+    "assert round_num(1352, 5) == 1350": {
+      "result": true,
+      "time": 0.05852699279785156,
+      "error": null
+    },
+    "assert round_num(1713, 5) == 1715": {
+      "result": true,
+      "time": 0.04501962661743164,
+      "error": null
+    },
+    "assert round_num(1057, 10) == 1060": {
+      "result": true,
+      "time": 0.05827951431274414,
+      "error": null
+    },
+    "assert round_num(437, 7) == 434": {
+      "result": true,
+      "time": 0.0506284236907959,
+      "error": null
+    },
+    "assert round_num(1821, 6) == 1818": {
+      "result": false,
+      "time": 0.06398963928222656,
+      "error": null
+    },
+    "assert round_num(1486, 2) == 1486": {
+      "result": true,
+      "time": 0.04857325553894043,
+      "error": null
+    },
+    "assert round_num(1134, 4) == 1132": {
+      "result": false,
+      "time": 0.050959110260009766,
+      "error": null
+    },
+    "assert round_num(106, 9) == 108": {
+      "result": true,
+      "time": 0.04999566078186035,
+      "error": null
+    },
+    "assert round_num(1399, 9) == 1395": {
+      "result": true,
+      "time": 0.04813981056213379,
+      "error": null
+    },
+    "assert round_num(779, 2) == 778": {
+      "result": false,
+      "time": 0.04897475242614746,
+      "error": null
+    },
+    "assert round_num(890, 5) == 890": {
+      "result": true,
+      "time": 0.04913330078125,
+      "error": null
+    },
+    "assert round_num(959, 6) == 960": {
+      "result": true,
+      "time": 0.04869484901428223,
+      "error": null
+    },
+    "assert round_num(1189, 6) == 1188": {
+      "result": true,
+      "time": 0.04612445831298828,
+      "error": null
+    },
+    "assert round_num(1587, 8) == 1584": {
+      "result": true,
+      "time": 0.05039644241333008,
+      "error": null
+    },
+    "assert round_num(657, 10) == 660": {
+      "result": true,
+      "time": 0.03670191764831543,
+      "error": null
+    },
+    "assert round_num(1804, 8) == 1800": {
+      "result": false,
+      "time": 0.043230295181274414,
+      "error": null
+    },
+    "assert round_num(1016, 9) == 1017": {
+      "result": true,
+      "time": 0.04275655746459961,
+      "error": null
+    },
+    "assert round_num(850, 4) == 848": {
+      "result": false,
+      "time": 0.055287837982177734,
+      "error": null
+    },
+    "assert round_num(1862, 10) == 1860": {
+      "result": true,
+      "time": 0.03719043731689453,
+      "error": null
+    },
+    "assert round_num(1860, 4) == 1860": {
+      "result": true,
+      "time": 0.04212641716003418,
+      "error": null
+    },
+    "assert round_num(488, 7) == 490": {
+      "result": true,
+      "time": 0.036041259765625,
+      "error": null
+    },
+    "assert round_num(582, 10) == 580": {
+      "result": true,
+      "time": 0.04344344139099121,
+      "error": null
+    },
+    "assert round_num(375, 7) == 378": {
+      "result": true,
+      "time": 0.046697378158569336,
+      "error": null
+    },
+    "assert round_num(1624, 6) == 1626": {
+      "result": true,
+      "time": 0.0462183952331543,
+      "error": null
+    },
+    "assert round_num(908, 10) == 910": {
+      "result": true,
+      "time": 0.03920292854309082,
+      "error": null
+    },
+    "assert round_num(747, 2) == 746": {
+      "result": false,
+      "time": 0.04550337791442871,
+      "error": null
+    },
+    "assert round_num(1637, 7) == 1638": {
+      "result": true,
+      "time": 0.04006814956665039,
+      "error": null
+    },
+    "assert round_num(106, 10) == 110": {
+      "result": true,
+      "time": 0.04565620422363281,
+      "error": null
+    },
+    "assert round_num(215, 3) == 216": {
+      "result": true,
+      "time": 0.04368114471435547,
+      "error": null
+    },
+    "assert round_num(222, 6) == 222": {
+      "result": true,
+      "time": 0.03786349296569824,
+      "error": null
+    },
+    "assert round_num(219, 3) == 219": {
+      "result": true,
+      "time": 0.04509139060974121,
+      "error": null
+    },
+    "assert round_num(222, 1) == 222": {
+      "result": true,
+      "time": 0.04200553894042969,
+      "error": null
+    },
+    "assert round_num(219, 1) == 219": {
+      "result": true,
+      "time": 0.04625725746154785,
+      "error": null
+    },
+    "assert round_num(218, 4) == 216": {
+      "result": false,
+      "time": 0.038419246673583984,
+      "error": null
+    },
+    "assert round_num(221, 2) == 220": {
+      "result": false,
+      "time": 0.04739785194396973,
+      "error": null
+    },
+    "assert round_num(220, 2) == 220": {
+      "result": true,
+      "time": 0.037992238998413086,
+      "error": null
+    },
+    "assert round_num(214, 4) == 212": {
+      "result": false,
+      "time": 0.03800535202026367,
+      "error": null
+    },
+    "assert round_num(214, 5) == 215": {
+      "result": true,
+      "time": 0.04017925262451172,
+      "error": null
+    },
+    "assert round_num(223, 1) == 223": {
+      "result": true,
+      "time": 0.04663348197937012,
+      "error": null
+    },
+    "assert round_num(221, 5) == 220": {
+      "result": true,
+      "time": 0.0338132381439209,
+      "error": null
+    },
+    "assert round_num(218, 5) == 220": {
+      "result": true,
+      "time": 0.042226314544677734,
+      "error": null
+    },
+    "assert round_num(217, 3) == 216": {
+      "result": true,
+      "time": 0.039893150329589844,
+      "error": null
+    },
+    "assert round_num(221, 1) == 221": {
+      "result": true,
+      "time": 0.03809762001037598,
+      "error": null
+    },
+    "assert round_num(219, 2) == 218": {
+      "result": false,
+      "time": 0.04997992515563965,
+      "error": null
+    },
+    "assert round_num(223, 6) == 222": {
+      "result": true,
+      "time": 0.05093240737915039,
+      "error": null
+    },
+    "assert round_num(223, 2) == 222": {
+      "result": false,
+      "time": 0.03888082504272461,
+      "error": null
+    },
+    "assert round_num(217, 1) == 217": {
+      "result": true,
+      "time": 0.039102792739868164,
+      "error": null
+    },
+    "assert round_num(216, 4) == 216": {
+      "result": true,
+      "time": 0.04689383506774902,
+      "error": null
+    },
+    "assert round_num(219, 4) == 220": {
+      "result": true,
+      "time": 0.043543338775634766,
+      "error": null
+    },
+    "assert round_num(217, 4) == 216": {
+      "result": true,
+      "time": 0.04914450645446777,
+      "error": null
+    },
+    "assert round_num(222, 7) == 224": {
+      "result": true,
+      "time": 0.04080486297607422,
+      "error": null
+    },
+    "assert round_num(215, 6) == 216": {
+      "result": true,
+      "time": 0.0389554500579834,
+      "error": null
+    },
+    "assert round_num(215, 1) == 215": {
+      "result": true,
+      "time": 0.05073094367980957,
+      "error": null
+    },
+    "assert round_num(221, 3) == 222": {
+      "result": true,
+      "time": 0.04367828369140625,
+      "error": null
+    },
+    "assert round_num(217, 5) == 215": {
+      "result": true,
+      "time": 0.042699575424194336,
+      "error": null
+    },
+    "assert round_num(214, 2) == 214": {
+      "result": true,
+      "time": 0.04877638816833496,
+      "error": null
+    },
+    "assert round_num(216, 6) == 216": {
+      "result": true,
+      "time": 0.04715585708618164,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8775510204081632,
+  "general_error": "",
+  "has_testcase_error": false
+}

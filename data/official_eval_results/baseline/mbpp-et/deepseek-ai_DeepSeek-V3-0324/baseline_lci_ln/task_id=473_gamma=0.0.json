@@ -1,0 +1,519 @@
+{
+  "code": "def tuple_intersection(tuple_list1, tuple_list2):\n    # Step 1: Create a set to store normalized tuples from the first list\n    normalized_set1 = set()\n    for t in tuple_list1:\n        # Normalize the tuple by sorting it to handle order insensitivity\n        normalized_tuple = tuple(sorted(t))\n        normalized_set1.add(normalized_tuple)\n    \n    # Step 2: Create a set to store normalized tuples from the second list\n    normalized_set2 = set()\n    for t in tuple_list2:\n        # Normalize the tuple by sorting it to handle order insensitivity\n        normalized_tuple = tuple(sorted(t))\n        normalized_set2.add(normalized_tuple)\n    \n    # Step 3: Find the intersection of the two sets\n    common_tuples = normalized_set1.intersection(normalized_set2)\n    \n    # Step 4: Convert the normalized tuples back to their original form (if needed)\n    # But since the problem allows any order, we can return the normalized form\n    return common_tuples",
+  "results": {
+    "assert tuple_intersection([(3, 4), (5, 6), (9, 10), (4, 5)] , [(5, 4), (3, 4), (6, 5), (9, 11)]) == {(4, 5), (3, 4), (5, 6)}": {
+      "result": true,
+      "time": 0.03783583641052246,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 1), (7, 4), (11, 13), (17, 14)] , [(1, 4), (7, 4), (16, 12), (10, 13)]) == {(4, 7), (1, 4)}": {
+      "result": true,
+      "time": 0.040781497955322266,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 1), (3, 2), (1, 3), (1, 4)] , [(11, 2), (2, 3), (6, 2), (1, 3)]) == {(1, 3), (2, 3)}": {
+      "result": true,
+      "time": 0.03924131393432617,
+      "error": null
+    },
+    "assert tuple_intersection([(5, 2), (2, 2), (14, 9), (9, 9)], [(9, 3), (2, 7), (6, 8), (11, 14)]) == set()": {
+      "result": true,
+      "time": 0.032421112060546875,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 9), (3, 8), (9, 12), (6, 10)], [(4, 8), (2, 3), (9, 7), (12, 13)]) == set()": {
+      "result": true,
+      "time": 0.04029202461242676,
+      "error": null
+    },
+    "assert tuple_intersection([(6, 3), (8, 2), (14, 15), (6, 2)], [(4, 2), (1, 3), (2, 8), (6, 13)]) == {(2, 8)}": {
+      "result": true,
+      "time": 0.03500628471374512,
+      "error": null
+    },
+    "assert tuple_intersection([(5, 8), (10, 11), (6, 15), (2, 5)], [(2, 8), (8, 8), (2, 10), (11, 15)]) == set()": {
+      "result": true,
+      "time": 0.03670787811279297,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 3), (6, 4), (10, 12), (1, 4)], [(1, 6), (1, 6), (7, 1), (12, 14)]) == set()": {
+      "result": true,
+      "time": 0.04945850372314453,
+      "error": null
+    },
+    "assert tuple_intersection([(8, 3), (6, 8), (8, 13), (8, 3)], [(3, 8), (3, 1), (1, 10), (5, 13)]) == {(3, 8)}": {
+      "result": true,
+      "time": 0.039839982986450195,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 7), (10, 1), (10, 12), (4, 5)], [(4, 9), (4, 3), (9, 3), (14, 9)]) == set()": {
+      "result": true,
+      "time": 0.035016775131225586,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 3), (5, 1), (6, 7), (1, 1)], [(6, 9), (1, 7), (8, 10), (9, 14)]) == set()": {
+      "result": true,
+      "time": 0.04124045372009277,
+      "error": null
+    },
+    "assert tuple_intersection([(8, 3), (5, 5), (13, 14), (4, 1)], [(9, 5), (8, 5), (1, 8), (10, 16)]) == set()": {
+      "result": true,
+      "time": 0.03847956657409668,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 6), (2, 8), (12, 8), (6, 7)], [(7, 9), (1, 2), (11, 5), (14, 15)]) == set()": {
+      "result": true,
+      "time": 0.04454851150512695,
+      "error": null
+    },
+    "assert tuple_intersection([(3, 6), (8, 4), (10, 9), (6, 6)], [(8, 4), (5, 5), (3, 8), (7, 13)]) == {(4, 8)}": {
+      "result": true,
+      "time": 0.03643679618835449,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 9), (8, 6), (9, 13), (7, 3)], [(10, 4), (4, 4), (11, 3), (10, 8)]) == set()": {
+      "result": true,
+      "time": 0.04126405715942383,
+      "error": null
+    },
+    "assert tuple_intersection([(5, 5), (2, 9), (11, 12), (1, 7)], [(2, 3), (6, 3), (3, 8), (13, 15)]) == set()": {
+      "result": true,
+      "time": 0.03602147102355957,
+      "error": null
+    },
+    "assert tuple_intersection([(8, 5), (5, 10), (4, 7), (3, 10)], [(2, 2), (5, 4), (5, 5), (14, 15)]) == set()": {
+      "result": true,
+      "time": 0.03471708297729492,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 2), (4, 8), (11, 9), (9, 4)], [(8, 6), (7, 2), (2, 8), (8, 13)]) == set()": {
+      "result": true,
+      "time": 0.04192805290222168,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 1), (7, 10), (11, 10), (7, 7)], [(8, 9), (8, 9), (1, 7), (8, 16)]) == set()": {
+      "result": true,
+      "time": 0.0414431095123291,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 9), (9, 2), (4, 15), (2, 7)], [(7, 8), (5, 7), (8, 5), (9, 12)]) == set()": {
+      "result": true,
+      "time": 0.038129329681396484,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 3), (4, 9), (5, 10), (6, 2)], [(2, 8), (8, 8), (1, 6), (9, 13)]) == set()": {
+      "result": true,
+      "time": 0.041342735290527344,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 8), (7, 3), (12, 9), (8, 4)], [(9, 5), (4, 6), (1, 5), (5, 7)]) == set()": {
+      "result": true,
+      "time": 0.04564619064331055,
+      "error": null
+    },
+    "assert tuple_intersection([(5, 1), (8, 9), (14, 12), (8, 10)], [(4, 1), (8, 7), (4, 5), (12, 14)]) == {(12, 14)}": {
+      "result": true,
+      "time": 0.03561758995056152,
+      "error": null
+    },
+    "assert tuple_intersection([(6, 5), (7, 7), (6, 6), (7, 9)], [(1, 2), (8, 9), (6, 9), (11, 7)]) == set()": {
+      "result": true,
+      "time": 0.0435786247253418,
+      "error": null
+    },
+    "assert tuple_intersection([(5, 4), (4, 8), (10, 8), (1, 4)], [(3, 4), (4, 7), (11, 2), (4, 9)]) == set()": {
+      "result": true,
+      "time": 0.03625845909118652,
+      "error": null
+    },
+    "assert tuple_intersection([(6, 7), (7, 5), (14, 5), (7, 5)], [(5, 7), (4, 6), (1, 6), (6, 13)]) == {(5, 7)}": {
+      "result": true,
+      "time": 0.03937363624572754,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 2), (1, 10), (11, 13), (8, 6)], [(5, 5), (8, 7), (3, 3), (4, 12)]) == set()": {
+      "result": true,
+      "time": 0.03724360466003418,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 5), (4, 9), (13, 12), (6, 6)], [(2, 6), (5, 5), (4, 3), (11, 12)]) == set()": {
+      "result": true,
+      "time": 0.038780927658081055,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 4), (6, 8), (7, 13), (9, 6)], [(9, 6), (4, 6), (4, 3), (5, 14)]) == {(6, 9)}": {
+      "result": true,
+      "time": 0.0365147590637207,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 4), (10, 11), (9, 6), (2, 4)], [(10, 5), (8, 6), (3, 2), (8, 11)]) == set()": {
+      "result": true,
+      "time": 0.03686928749084473,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 3), (7, 6), (8, 6), (6, 9)], [(6, 2), (1, 7), (5, 1), (9, 13)]) == set()": {
+      "result": true,
+      "time": 0.03640866279602051,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 7), (2, 7), (13, 14), (9, 8)], [(7, 2), (8, 7), (6, 2), (10, 13)]) == {(2, 7)}": {
+      "result": true,
+      "time": 0.037322282791137695,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 9), (7, 9), (10, 9), (7, 8)], [(6, 7), (1, 3), (4, 8), (7, 14)]) == set()": {
+      "result": true,
+      "time": 0.03656935691833496,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 7), (7, 10), (5, 15), (9, 10)], [(10, 9), (3, 1), (3, 5), (11, 6)]) == {(9, 10)}": {
+      "result": true,
+      "time": 0.031360626220703125,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 8), (9, 11), (5, 8), (8, 7)], [(6, 9), (1, 1), (5, 2), (5, 13)]) == set()": {
+      "result": true,
+      "time": 0.04129433631896973,
+      "error": null
+    },
+    "assert tuple_intersection([(5, 5), (2, 6), (13, 8), (8, 2)], [(9, 7), (4, 3), (7, 7), (11, 9)]) == set()": {
+      "result": true,
+      "time": 0.03833603858947754,
+      "error": null
+    },
+    "assert tuple_intersection([(8, 3), (3, 2), (8, 15), (20, 10)], [(6, 6), (2, 8), (16, 17), (8, 8)]) == set()": {
+      "result": true,
+      "time": 0.03482770919799805,
+      "error": null
+    },
+    "assert tuple_intersection([(8, 4), (11, 3), (12, 11), (20, 10)], [(3, 7), (12, 9), (15, 7), (12, 17)]) == set()": {
+      "result": true,
+      "time": 0.0300140380859375,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 2), (9, 9), (12, 8), (12, 11)], [(5, 2), (10, 7), (18, 14), (14, 14)]) == set()": {
+      "result": true,
+      "time": 0.038520097732543945,
+      "error": null
+    },
+    "assert tuple_intersection([(6, 4), (11, 3), (14, 15), (22, 12)], [(6, 9), (10, 1), (20, 16), (9, 13)]) == set()": {
+      "result": true,
+      "time": 0.0355839729309082,
+      "error": null
+    },
+    "assert tuple_intersection([(6, 3), (7, 1), (12, 18), (12, 14)], [(3, 6), (10, 4), (17, 17), (15, 8)]) == {(3, 6)}": {
+      "result": true,
+      "time": 0.03521919250488281,
+      "error": null
+    },
+    "assert tuple_intersection([(6, 3), (7, 9), (10, 16), (19, 18)], [(2, 7), (10, 5), (13, 7), (11, 14)]) == set()": {
+      "result": true,
+      "time": 0.04141068458557129,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 1), (3, 4), (7, 18), (15, 12)], [(5, 9), (6, 2), (21, 14), (9, 8)]) == set()": {
+      "result": true,
+      "time": 0.03361058235168457,
+      "error": null
+    },
+    "assert tuple_intersection([(8, 6), (3, 2), (8, 11), (22, 19)], [(4, 9), (12, 2), (14, 14), (13, 14)]) == set()": {
+      "result": true,
+      "time": 0.03508925437927246,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 3), (3, 3), (10, 14), (18, 17)], [(6, 4), (7, 3), (16, 16), (15, 11)]) == set()": {
+      "result": true,
+      "time": 0.0348207950592041,
+      "error": null
+    },
+    "assert tuple_intersection([(9, 2), (2, 4), (9, 11), (16, 16)], [(4, 6), (9, 6), (20, 14), (6, 9)]) == set()": {
+      "result": true,
+      "time": 0.04114246368408203,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 6), (7, 5), (12, 12), (17, 10)], [(1, 1), (11, 6), (12, 9), (13, 16)]) == set()": {
+      "result": true,
+      "time": 0.04002666473388672,
+      "error": null
+    },
+    "assert tuple_intersection([(5, 6), (10, 2), (7, 17), (13, 17)], [(5, 2), (8, 9), (12, 8), (12, 9)]) == set()": {
+      "result": true,
+      "time": 0.04826998710632324,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 5), (12, 5), (13, 17), (15, 19)], [(3, 7), (11, 8), (14, 15), (15, 16)]) == set()": {
+      "result": true,
+      "time": 0.03324413299560547,
+      "error": null
+    },
+    "assert tuple_intersection([(9, 4), (6, 5), (10, 9), (15, 13)], [(6, 8), (2, 1), (11, 9), (11, 15)]) == set()": {
+      "result": true,
+      "time": 0.03602170944213867,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 2), (11, 9), (6, 16), (18, 19)], [(5, 6), (4, 6), (11, 7), (8, 16)]) == set()": {
+      "result": true,
+      "time": 0.035179853439331055,
+      "error": null
+    },
+    "assert tuple_intersection([(6, 6), (12, 4), (11, 9), (20, 9)], [(2, 7), (10, 4), (17, 17), (10, 14)]) == set()": {
+      "result": true,
+      "time": 0.04184889793395996,
+      "error": null
+    },
+    "assert tuple_intersection([(6, 6), (3, 2), (10, 18), (21, 9)], [(6, 5), (12, 4), (21, 11), (8, 11)]) == set()": {
+      "result": true,
+      "time": 0.03642582893371582,
+      "error": null
+    },
+    "assert tuple_intersection([(5, 6), (3, 7), (15, 17), (12, 9)], [(5, 2), (12, 9), (20, 11), (11, 13)]) == {(9, 12)}": {
+      "result": true,
+      "time": 0.0438389778137207,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 2), (5, 6), (11, 8), (17, 13)], [(1, 6), (8, 1), (12, 13), (6, 11)]) == set()": {
+      "result": true,
+      "time": 0.041680335998535156,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 4), (2, 5), (16, 10), (15, 10)], [(6, 6), (4, 3), (16, 15), (8, 11)]) == set()": {
+      "result": true,
+      "time": 0.042664289474487305,
+      "error": null
+    },
+    "assert tuple_intersection([(5, 3), (6, 5), (10, 12), (12, 16)], [(5, 8), (9, 3), (14, 14), (7, 10)]) == set()": {
+      "result": true,
+      "time": 0.046071529388427734,
+      "error": null
+    },
+    "assert tuple_intersection([(8, 4), (2, 3), (7, 13), (12, 17)], [(1, 3), (12, 2), (19, 17), (14, 13)]) == set()": {
+      "result": true,
+      "time": 0.0507512092590332,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 6), (3, 1), (9, 18), (16, 15)], [(3, 3), (11, 4), (18, 16), (12, 9)]) == set()": {
+      "result": true,
+      "time": 0.04888629913330078,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 3), (4, 2), (14, 16), (19, 19)], [(4, 9), (4, 7), (14, 10), (7, 15)]) == set()": {
+      "result": true,
+      "time": 0.0569002628326416,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 2), (7, 1), (14, 9), (19, 14)], [(4, 8), (11, 2), (18, 15), (7, 15)]) == set()": {
+      "result": true,
+      "time": 0.05701756477355957,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 5), (7, 4), (10, 9), (18, 18)], [(6, 2), (4, 6), (14, 10), (12, 16)]) == set()": {
+      "result": true,
+      "time": 0.04891562461853027,
+      "error": null
+    },
+    "assert tuple_intersection([(9, 3), (6, 7), (9, 8), (15, 13)], [(5, 4), (8, 4), (18, 14), (10, 9)]) == set()": {
+      "result": true,
+      "time": 0.05822563171386719,
+      "error": null
+    },
+    "assert tuple_intersection([(8, 1), (7, 9), (8, 16), (17, 10)], [(1, 7), (2, 4), (19, 16), (12, 18)]) == set()": {
+      "result": true,
+      "time": 0.05570220947265625,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 2), (3, 1), (12, 11), (13, 14)], [(6, 7), (9, 7), (14, 13), (9, 8)]) == {(13, 14)}": {
+      "result": true,
+      "time": 0.044992923736572266,
+      "error": null
+    },
+    "assert tuple_intersection([(8, 1), (6, 1), (15, 10), (15, 13)], [(6, 3), (11, 9), (20, 12), (9, 15)]) == set()": {
+      "result": true,
+      "time": 0.0493471622467041,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 6), (2, 4), (16, 9), (16, 10)], [(6, 2), (4, 6), (11, 7), (11, 13)]) == set()": {
+      "result": true,
+      "time": 0.05538129806518555,
+      "error": null
+    },
+    "assert tuple_intersection([(3, 1), (4, 3), (6, 11), (20, 16)], [(4, 5), (9, 9), (19, 13), (7, 18)]) == set()": {
+      "result": true,
+      "time": 0.048982858657836914,
+      "error": null
+    },
+    "assert tuple_intersection([(9, 2), (12, 2), (13, 14), (17, 13)], [(1, 9), (5, 4), (11, 17), (9, 13)]) == set()": {
+      "result": true,
+      "time": 0.07128262519836426,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 1), (7, 3), (3, 8), (1, 1)], [(10, 3), (1, 5), (11, 4), (5, 7)]) == set()": {
+      "result": true,
+      "time": 0.05675506591796875,
+      "error": null
+    },
+    "assert tuple_intersection([(6, 6), (5, 2), (2, 1), (1, 5)], [(11, 2), (7, 6), (6, 7), (6, 4)]) == set()": {
+      "result": true,
+      "time": 0.06735420227050781,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 6), (2, 5), (5, 1), (6, 5)], [(13, 5), (3, 7), (2, 3), (5, 7)]) == set()": {
+      "result": true,
+      "time": 0.055905818939208984,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 5), (7, 5), (6, 2), (2, 2)], [(11, 7), (4, 4), (5, 1), (3, 6)]) == set()": {
+      "result": true,
+      "time": 0.053251028060913086,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 3), (4, 4), (4, 7), (3, 4)], [(10, 7), (4, 8), (5, 4), (6, 8)]) == set()": {
+      "result": true,
+      "time": 0.055782318115234375,
+      "error": null
+    },
+    "assert tuple_intersection([(6, 4), (4, 3), (4, 6), (6, 3)], [(10, 5), (5, 3), (4, 4), (2, 7)]) == set()": {
+      "result": true,
+      "time": 0.044506072998046875,
+      "error": null
+    },
+    "assert tuple_intersection([(6, 3), (7, 2), (4, 7), (2, 8)], [(8, 5), (2, 5), (7, 7), (1, 8)]) == set()": {
+      "result": true,
+      "time": 0.039726972579956055,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 6), (3, 1), (6, 2), (5, 7)], [(13, 7), (4, 7), (9, 7), (4, 4)]) == set()": {
+      "result": true,
+      "time": 0.04007411003112793,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 6), (7, 1), (3, 8), (5, 7)], [(9, 6), (5, 5), (11, 6), (6, 5)]) == set()": {
+      "result": true,
+      "time": 0.039194583892822266,
+      "error": null
+    },
+    "assert tuple_intersection([(3, 6), (3, 7), (4, 1), (4, 8)], [(15, 2), (4, 1), (4, 7), (1, 1)]) == {(1, 4)}": {
+      "result": true,
+      "time": 0.040163278579711914,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 4), (2, 2), (1, 3), (5, 5)], [(8, 2), (3, 4), (1, 6), (5, 2)]) == set()": {
+      "result": true,
+      "time": 0.038010597229003906,
+      "error": null
+    },
+    "assert tuple_intersection([(3, 1), (1, 5), (6, 6), (3, 3)], [(11, 3), (6, 8), (9, 6), (3, 5)]) == set()": {
+      "result": true,
+      "time": 0.03926968574523926,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 6), (4, 1), (1, 5), (2, 3)], [(8, 1), (3, 1), (1, 5), (2, 3)]) == {(2, 3), (1, 5)}": {
+      "result": true,
+      "time": 0.04470062255859375,
+      "error": null
+    },
+    "assert tuple_intersection([(3, 3), (2, 3), (3, 3), (2, 3)], [(10, 4), (6, 1), (6, 7), (4, 5)]) == set()": {
+      "result": true,
+      "time": 0.03743553161621094,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 3), (6, 4), (1, 7), (1, 9)], [(15, 3), (6, 8), (2, 7), (3, 2)]) == set()": {
+      "result": true,
+      "time": 0.042669057846069336,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 1), (4, 5), (3, 8), (5, 7)], [(7, 3), (3, 5), (3, 7), (5, 8)]) == set()": {
+      "result": true,
+      "time": 0.03894329071044922,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 2), (6, 2), (6, 6), (6, 5)], [(14, 5), (3, 7), (9, 3), (4, 2)]) == set()": {
+      "result": true,
+      "time": 0.04484391212463379,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 5), (6, 7), (3, 4), (6, 7)], [(13, 1), (4, 6), (1, 6), (3, 4)]) == {(3, 4)}": {
+      "result": true,
+      "time": 0.047716379165649414,
+      "error": null
+    },
+    "assert tuple_intersection([(3, 3), (4, 5), (5, 3), (2, 9)], [(12, 7), (5, 7), (6, 4), (6, 2)]) == set()": {
+      "result": true,
+      "time": 0.047914743423461914,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 1), (1, 2), (4, 2), (4, 6)], [(16, 2), (7, 8), (2, 5), (5, 4)]) == set()": {
+      "result": true,
+      "time": 0.04278421401977539,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 3), (3, 5), (5, 7), (3, 6)], [(16, 4), (3, 7), (2, 7), (6, 1)]) == set()": {
+      "result": true,
+      "time": 0.03459477424621582,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 4), (4, 4), (4, 1), (2, 8)], [(8, 2), (3, 4), (2, 4), (1, 4)]) == {(1, 4), (2, 8)}": {
+      "result": true,
+      "time": 0.03704500198364258,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 6), (5, 2), (6, 6), (2, 2)], [(13, 3), (2, 6), (1, 6), (5, 2)]) == {(2, 5), (2, 6)}": {
+      "result": true,
+      "time": 0.046189069747924805,
+      "error": null
+    },
+    "assert tuple_intersection([(3, 3), (3, 5), (3, 5), (3, 5)], [(11, 4), (6, 4), (6, 2), (5, 6)]) == set()": {
+      "result": true,
+      "time": 0.03162693977355957,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 1), (5, 3), (1, 1), (5, 6)], [(12, 6), (6, 8), (8, 4), (3, 7)]) == set()": {
+      "result": true,
+      "time": 0.036109209060668945,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 1), (5, 5), (1, 5), (4, 6)], [(9, 6), (2, 3), (7, 7), (3, 7)]) == set()": {
+      "result": true,
+      "time": 0.037454843521118164,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 3), (1, 2), (3, 3), (1, 4)], [(14, 3), (4, 7), (6, 7), (5, 8)]) == set()": {
+      "result": true,
+      "time": 0.03095078468322754,
+      "error": null
+    },
+    "assert tuple_intersection([(2, 1), (8, 5), (5, 6), (3, 3)], [(13, 1), (1, 5), (6, 3), (1, 1)]) == set()": {
+      "result": true,
+      "time": 0.03375053405761719,
+      "error": null
+    },
+    "assert tuple_intersection([(5, 4), (8, 2), (3, 3), (6, 5)], [(14, 1), (3, 1), (4, 7), (3, 5)]) == set()": {
+      "result": true,
+      "time": 0.03921318054199219,
+      "error": null
+    },
+    "assert tuple_intersection([(5, 6), (1, 7), (3, 3), (4, 8)], [(6, 5), (7, 7), (2, 3), (6, 4)]) == {(5, 6)}": {
+      "result": true,
+      "time": 0.03236889839172363,
+      "error": null
+    },
+    "assert tuple_intersection([(4, 4), (4, 7), (3, 6), (4, 5)], [(14, 1), (7, 1), (3, 5), (2, 3)]) == set()": {
+      "result": true,
+      "time": 0.03758430480957031,
+      "error": null
+    },
+    "assert tuple_intersection([(1, 1), (4, 3), (4, 4), (1, 9)], [(8, 1), (7, 2), (2, 1), (6, 7)]) == set()": {
+      "result": true,
+      "time": 0.033290863037109375,
+      "error": null
+    },
+    "assert tuple_intersection([(7, 6), (2, 4), (3, 2), (3, 7)], [(6, 5), (4, 8), (3, 7), (3, 5)]) == {(3, 7)}": {
+      "result": true,
+      "time": 0.035781145095825195,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "import heapq as hq\n\ndef large_product(list1, list2, n):\n    products = [x * y for x in list1 for y in list2]\n    largest_products = hq.nlargest(n, products)\n    return largest_products",
+  "results": {
+    "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],3)==[60, 54, 50]": {
+      "result": true,
+      "time": 0.13988661766052246,
+      "error": null
+    },
+    "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],4)==[60, 54, 50, 48]": {
+      "result": true,
+      "time": 0.12457394599914551,
+      "error": null
+    },
+    "assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],5)==[60, 54, 50, 48, 45]": {
+      "result": true,
+      "time": 0.1180717945098877,
+      "error": null
+    },
+    "assert large_product([1, 5, 7, 3, 4, 5], [3, 2, 3, 12, 7, 1], 8) == [84, 60, 60, 49, 48, 36, 35, 35]": {
+      "result": true,
+      "time": 0.13480758666992188,
+      "error": null
+    },
+    "assert large_product([1, 6, 8, 3, 2, 11], [7, 6, 9, 6, 5, 4], 6) == [99, 77, 72, 66, 66, 56]": {
+      "result": true,
+      "time": 0.13798284530639648,
+      "error": null
+    },
+    "assert large_product([1, 1, 1, 3, 9, 2], [5, 4, 12, 7, 15, 5], 6) == [135, 108, 63, 45, 45, 45]": {
+      "result": true,
+      "time": 0.14111089706420898,
+      "error": null
+    },
+    "assert large_product([3, 3, 3, 4, 10, 3], [2, 7, 10, 11, 10, 11], 4) == [110, 110, 100, 100]": {
+      "result": true,
+      "time": 0.12823724746704102,
+      "error": null
+    },
+    "assert large_product([1, 5, 7, 2, 5, 10], [6, 5, 8, 12, 10, 7], 5) == [120, 100, 84, 80, 70]": {
+      "result": true,
+      "time": 0.14350414276123047,
+      "error": null
+    },
+    "assert large_product([1, 6, 4, 6, 9, 7], [7, 8, 9, 4, 8, 11], 8) == [99, 81, 77, 72, 72, 66, 66, 63]": {
+      "result": true,
+      "time": 0.1263113021850586,
+      "error": null
+    },
+    "assert large_product([4, 1, 1, 4, 4, 7], [2, 2, 7, 14, 14, 2], 5) == [98, 98, 56, 56, 56]": {
+      "result": true,
+      "time": 0.12969708442687988,
+      "error": null
+    },
+    "assert large_product([6, 6, 5, 5, 5, 10], [6, 1, 12, 7, 12, 10], 5) == [120, 120, 100, 72, 72]": {
+      "result": true,
+      "time": 0.12334680557250977,
+      "error": null
+    },
+    "assert large_product([4, 6, 7, 9, 2, 7], [5, 2, 3, 11, 13, 5], 8) == [117, 99, 91, 91, 78, 77, 77, 66]": {
+      "result": true,
+      "time": 0.143782377243042,
+      "error": null
+    },
+    "assert large_product([2, 5, 6, 8, 1, 8], [2, 3, 9, 14, 9, 3], 6) == [112, 112, 84, 72, 72, 72]": {
+      "result": true,
+      "time": 0.12203240394592285,
+      "error": null
+    },
+    "assert large_product([6, 5, 3, 3, 7, 9], [8, 10, 7, 11, 11, 10], 7) == [99, 99, 90, 90, 77, 77, 72]": {
+      "result": true,
+      "time": 0.1333918571472168,
+      "error": null
+    },
+    "assert large_product([1, 4, 8, 8, 1, 10], [4, 11, 12, 10, 14, 2], 4) == [140, 120, 112, 112]": {
+      "result": true,
+      "time": 0.15054655075073242,
+      "error": null
+    },
+    "assert large_product([6, 3, 4, 2, 3, 2], [4, 1, 10, 9, 15, 1], 8) == [90, 60, 60, 54, 45, 45, 40, 36]": {
+      "result": true,
+      "time": 0.1399381160736084,
+      "error": null
+    },
+    "assert large_product([4, 2, 2, 5, 10, 11], [1, 7, 3, 11, 9, 4], 3) == [121, 110, 99]": {
+      "result": true,
+      "time": 0.13016533851623535,
+      "error": null
+    },
+    "assert large_product([5, 5, 4, 5, 8, 7], [4, 3, 9, 11, 5, 9], 4) == [88, 77, 72, 72]": {
+      "result": true,
+      "time": 0.1315779685974121,
+      "error": null
+    },
+    "assert large_product([4, 1, 2, 6, 7, 10], [1, 9, 5, 8, 10, 4], 1) == [100]": {
+      "result": true,
+      "time": 0.12600278854370117,
+      "error": null
+    },
+    "assert large_product([4, 3, 3, 7, 1, 5], [1, 8, 11, 6, 12, 11], 1) == [84]": {
+      "result": true,
+      "time": 0.14272761344909668,
+      "error": null
+    },
+    "assert large_product([3, 2, 7, 8, 4, 5], [1, 11, 7, 13, 9, 8], 4) == [104, 91, 88, 77]": {
+      "result": true,
+      "time": 0.13107728958129883,
+      "error": null
+    },
+    "assert large_product([1, 7, 7, 7, 10, 7], [1, 7, 12, 6, 6, 9], 3) == [120, 90, 84]": {
+      "result": true,
+      "time": 0.13206052780151367,
+      "error": null
+    },
+    "assert large_product([3, 3, 6, 4, 4, 10], [4, 7, 6, 11, 15, 1], 8) == [150, 110, 90, 70, 66, 60, 60, 60]": {
+      "result": true,
+      "time": 0.13206148147583008,
+      "error": null
+    },
+    "assert large_product([1, 3, 5, 3, 5, 3], [1, 8, 11, 12, 10, 8], 1) == [60]": {
+      "result": true,
+      "time": 0.14360404014587402,
+      "error": null
+    },
+    "assert large_product([6, 6, 4, 9, 1, 1], [1, 5, 6, 10, 10, 6], 2) == [90, 90]": {
+      "result": true,
+      "time": 0.11039948463439941,
+      "error": null
+    },
+    "assert large_product([6, 6, 4, 9, 10, 3], [7, 6, 5, 11, 13, 6], 7) == [130, 117, 110, 99, 78, 78, 70]": {
+      "result": true,
+      "time": 0.13465452194213867,
+      "error": null
+    },
+    "assert large_product([5, 4, 8, 9, 6, 8], [5, 9, 8, 12, 14, 6], 7) == [126, 112, 112, 108, 96, 96, 84]": {
+      "result": true,
+      "time": 0.13899946212768555,
+      "error": null
+    },
+    "assert large_product([5, 5, 2, 1, 5, 4], [2, 6, 7, 10, 8, 10], 8) == [50, 50, 50, 50, 50, 50, 40, 40]": {
+      "result": true,
+      "time": 0.14772319793701172,
+      "error": null
+    },
+    "assert large_product([4, 1, 5, 4, 5, 7], [7, 1, 3, 11, 6, 5], 2) == [77, 55]": {
+      "result": true,
+      "time": 0.15517425537109375,
+      "error": null
+    },
+    "assert large_product([3, 6, 3, 3, 9, 5], [6, 2, 5, 6, 5, 9], 4) == [81, 54, 54, 54]": {
+      "result": true,
+      "time": 0.1334841251373291,
+      "error": null
+    },
+    "assert large_product([6, 2, 8, 1, 3, 3], [8, 3, 12, 13, 7, 7], 3) == [104, 96, 78]": {
+      "result": true,
+      "time": 0.15414786338806152,
+      "error": null
+    },
+    "assert large_product([2, 6, 1, 2, 10, 5], [3, 3, 12, 9, 9, 8], 8) == [120, 90, 90, 80, 72, 60, 54, 54]": {
+      "result": true,
+      "time": 0.14964795112609863,
+      "error": null
+    },
+    "assert large_product([6, 1, 3, 4, 10, 5], [7, 7, 8, 13, 12, 10], 3) == [130, 120, 100]": {
+      "result": true,
+      "time": 0.1355743408203125,
+      "error": null
+    },
+    "assert large_product([5, 4, 6, 8, 9, 4], [2, 6, 8, 6, 12, 3], 6) == [108, 96, 72, 72, 64, 60]": {
+      "result": true,
+      "time": 0.1299114227294922,
+      "error": null
+    },
+    "assert large_product([1, 1, 4, 1, 7, 2], [4, 3, 7, 7, 6, 8], 6) == [56, 49, 49, 42, 32, 28]": {
+      "result": true,
+      "time": 0.11135101318359375,
+      "error": null
+    },
+    "assert large_product([3, 2, 3, 9, 2, 2], [6, 8, 11, 4, 13, 11], 4) == [117, 99, 99, 72]": {
+      "result": true,
+      "time": 0.15083956718444824,
+      "error": null
+    },
+    "assert large_product([4, 2, 3, 5, 8, 11], [2, 4, 9, 11, 9, 5], 3) == [121, 99, 99]": {
+      "result": true,
+      "time": 0.13947463035583496,
+      "error": null
+    },
+    "assert large_product([5, 5, 5, 4, 1, 7], [5, 8, 6, 13, 7, 3], 1) == [91]": {
+      "result": true,
+      "time": 0.14487075805664062,
+      "error": null
+    },
+    "assert large_product([4, 4, 2, 9, 2, 5], [7, 11, 9, 6, 8, 4], 7) == [99, 81, 72, 63, 55, 54, 45]": {
+      "result": true,
+      "time": 0.1517186164855957,
+      "error": null
+    },
+    "assert large_product([2, 4, 2, 1, 9, 7], [6, 5, 8, 7, 6, 6], 2) == [72, 63]": {
+      "result": true,
+      "time": 0.14128351211547852,
+      "error": null
+    },
+    "assert large_product([6, 5, 4, 9, 5, 4], [7, 2, 10, 6, 9, 7], 6) == [90, 81, 63, 63, 60, 54]": {
+      "result": true,
+      "time": 0.14039373397827148,
+      "error": null
+    },
+    "assert large_product([3, 4, 1, 3, 8, 6], [2, 4, 5, 4, 9, 9], 4) == [72, 72, 54, 54]": {
+      "result": true,
+      "time": 0.13839507102966309,
+      "error": null
+    },
+    "assert large_product([6, 6, 8, 9, 8, 5], [3, 11, 9, 14, 9, 10], 1) == [126]": {
+      "result": true,
+      "time": 0.13707208633422852,
+      "error": null
+    },
+    "assert large_product([1, 6, 1, 6, 5, 6], [4, 4, 13, 12, 13, 9], 3) == [78, 78, 78]": {
+      "result": true,
+      "time": 0.14977216720581055,
+      "error": null
+    },
+    "assert large_product([1, 1, 1, 9, 4, 4], [4, 9, 3, 11, 9, 1], 8) == [99, 81, 81, 44, 44, 36, 36, 36]": {
+      "result": true,
+      "time": 0.12444329261779785,
+      "error": null
+    },
+    "assert large_product([2, 6, 1, 1, 7, 1], [3, 3, 13, 11, 10, 1], 6) == [91, 78, 77, 70, 66, 60]": {
+      "result": true,
+      "time": 0.12401747703552246,
+      "error": null
+    },
+    "assert large_product([6, 5, 5, 9, 8, 4], [2, 7, 6, 11, 6, 6], 7) == [99, 88, 66, 63, 56, 55, 55]": {
+      "result": true,
+      "time": 0.10965633392333984,
+      "error": null
+    },
+    "assert large_product([4, 5, 5, 8, 7, 6], [6, 5, 9, 7, 14, 6], 7) == [112, 98, 84, 72, 70, 70, 63]": {
+      "result": true,
+      "time": 0.11729979515075684,
+      "error": null
+    },
+    "assert large_product([2, 2, 2, 2, 7, 1], [8, 8, 6, 9, 14, 1], 9) == [98, 63, 56, 56, 42, 28, 28, 28, 28]": {
+      "result": true,
+      "time": 0.13903117179870605,
+      "error": null
+    },
+    "assert large_product([5, 3, 6, 2, 9, 4], [6, 8, 9, 7, 11, 6], 6) == [99, 81, 72, 66, 63, 55]": {
+      "result": true,
+      "time": 0.13447070121765137,
+      "error": null
+    },
+    "assert large_product([3, 3, 3, 2, 7, 9], [3, 2, 3, 6, 6, 4], 4) == [54, 54, 42, 42]": {
+      "result": true,
+      "time": 0.12173652648925781,
+      "error": null
+    },
+    "assert large_product([1, 4, 6, 4, 7, 8], [6, 8, 7, 13, 13, 10], 9) == [104, 104, 91, 91, 80, 78, 78, 70, 64]": {
+      "result": true,
+      "time": 0.13106417655944824,
+      "error": null
+    },
+    "assert large_product([2, 7, 3, 5, 5, 5], [4, 1, 9, 8, 11, 11], 6) == [77, 77, 63, 56, 55, 55]": {
+      "result": true,
+      "time": 0.1410384178161621,
+      "error": null
+    },
+    "assert large_product([2, 2, 3, 9, 5, 7], [2, 1, 9, 6, 11, 5], 2) == [99, 81]": {
+      "result": true,
+      "time": 0.13138437271118164,
+      "error": null
+    },
+    "assert large_product([4, 7, 2, 6, 3, 1], [4, 3, 4, 11, 5, 9], 8) == [77, 66, 63, 54, 44, 36, 35, 33]": {
+      "result": true,
+      "time": 0.13204383850097656,
+      "error": null
+    },
+    "assert large_product([1, 3, 5, 9, 1, 6], [7, 4, 9, 14, 8, 3], 6) == [126, 84, 81, 72, 70, 63]": {
+      "result": true,
+      "time": 0.119598388671875,
+      "error": null
+    },
+    "assert large_product([5, 7, 7, 1, 3, 1], [1, 1, 5, 8, 9, 8], 7) == [63, 63, 56, 56, 56, 56, 45]": {
+      "result": true,
+      "time": 0.1404421329498291,
+      "error": null
+    },
+    "assert large_product([3, 5, 8, 1, 1, 8], [5, 11, 8, 14, 10, 10], 8) == [112, 112, 88, 88, 80, 80, 80, 80]": {
+      "result": true,
+      "time": 0.12768220901489258,
+      "error": null
+    },
+    "assert large_product([2, 1, 7, 5, 6, 5], [3, 11, 12, 9, 10, 7], 7) == [84, 77, 72, 70, 66, 63, 60]": {
+      "result": true,
+      "time": 0.12273240089416504,
+      "error": null
+    },
+    "assert large_product([6, 4, 5, 4, 10, 11], [2, 10, 13, 13, 11, 1], 5) == [143, 143, 130, 130, 121]": {
+      "result": true,
+      "time": 0.1592719554901123,
+      "error": null
+    },
+    "assert large_product([1, 6, 3, 9, 2, 8], [3, 3, 11, 4, 5, 1], 7) == [99, 88, 66, 45, 40, 36, 33]": {
+      "result": true,
+      "time": 0.147796630859375,
+      "error": null
+    },
+    "assert large_product([2, 6, 7, 1, 6, 9], [4, 7, 11, 10, 9, 11], 8) == [99, 99, 90, 81, 77, 77, 70, 66]": {
+      "result": true,
+      "time": 0.13735222816467285,
+      "error": null
+    },
+    "assert large_product([1, 2, 8, 3, 8, 10], [6, 1, 10, 9, 12, 11], 8) == [120, 110, 100, 96, 96, 90, 88, 88]": {
+      "result": true,
+      "time": 0.12612462043762207,
+      "error": null
+    },
+    "assert large_product([2, 2, 2, 5, 7, 8], [6, 2, 11, 9, 14, 4], 2) == [112, 98]": {
+      "result": true,
+      "time": 0.13609981536865234,
+      "error": null
+    },
+    "assert large_product([2, 6, 7, 4, 4, 6], [6, 8, 6, 7, 9, 10], 3) == [70, 63, 60]": {
+      "result": true,
+      "time": 0.12938404083251953,
+      "error": null
+    },
+    "assert large_product([3, 5, 5, 6, 9, 8], [7, 11, 11, 12, 14, 2], 2) == [126, 112]": {
+      "result": true,
+      "time": 0.13892173767089844,
+      "error": null
+    },
+    "assert large_product([2, 1, 6, 1, 4, 4], [7, 5, 4, 6, 10, 8], 3) == [60, 48, 42]": {
+      "result": true,
+      "time": 0.1417386531829834,
+      "error": null
+    },
+    "assert large_product([1, 6, 3, 6, 7, 2], [1, 5, 3, 13, 14, 10], 3) == [98, 91, 84]": {
+      "result": true,
+      "time": 0.1341419219970703,
+      "error": null
+    },
+    "assert large_product([5, 5, 4, 5, 1, 5], [7, 7, 5, 8, 7, 4], 6) == [40, 40, 40, 40, 35, 35]": {
+      "result": true,
+      "time": 0.14241981506347656,
+      "error": null
+    },
+    "assert large_product([6, 5, 1, 8, 2, 9], [4, 4, 11, 12, 11, 3], 3) == [108, 99, 99]": {
+      "result": true,
+      "time": 0.1425948143005371,
+      "error": null
+    },
+    "assert large_product([2, 7, 7, 8, 1, 10], [8, 1, 5, 7, 14, 7], 8) == [140, 112, 98, 98, 80, 70, 70, 64]": {
+      "result": true,
+      "time": 0.14193153381347656,
+      "error": null
+    },
+    "assert large_product([2, 6, 8, 2, 3, 1], [5, 9, 9, 7, 6, 7], 7) == [72, 72, 56, 56, 54, 54, 48]": {
+      "result": true,
+      "time": 0.12061309814453125,
+      "error": null
+    },
+    "assert large_product([5, 4, 6, 4, 7, 9], [1, 1, 7, 13, 12, 7], 5) == [117, 108, 91, 84, 78]": {
+      "result": true,
+      "time": 0.1316218376159668,
+      "error": null
+    },
+    "assert large_product([1, 3, 5, 1, 3, 1], [1, 6, 10, 14, 13, 8], 3) == [70, 65, 50]": {
+      "result": true,
+      "time": 0.12097954750061035,
+      "error": null
+    },
+    "assert large_product([4, 2, 8, 6, 3, 5], [8, 10, 7, 12, 15, 9], 7) == [120, 96, 90, 80, 75, 72, 72]": {
+      "result": true,
+      "time": 0.1337442398071289,
+      "error": null
+    },
+    "assert large_product([2, 4, 3, 4, 9, 5], [1, 7, 7, 9, 14, 6], 8) == [126, 81, 70, 63, 63, 56, 56, 54]": {
+      "result": true,
+      "time": 0.1244041919708252,
+      "error": null
+    },
+    "assert large_product([5, 7, 3, 3, 7, 8], [7, 11, 13, 4, 12, 1], 9) == [104, 96, 91, 91, 88, 84, 84, 77, 77]": {
+      "result": true,
+      "time": 0.12546944618225098,
+      "error": null
+    },
+    "assert large_product([2, 5, 4, 9, 9, 3], [6, 11, 12, 8, 7, 3], 8) == [108, 108, 99, 99, 72, 72, 63, 63]": {
+      "result": true,
+      "time": 0.11832046508789062,
+      "error": null
+    },
+    "assert large_product([2, 5, 2, 6, 6, 3], [2, 2, 4, 11, 11, 2], 3) == [66, 66, 66]": {
+      "result": true,
+      "time": 0.11594891548156738,
+      "error": null
+    },
+    "assert large_product([3, 2, 5, 3, 5, 8], [5, 7, 12, 9, 7, 10], 2) == [96, 80]": {
+      "result": true,
+      "time": 0.138655424118042,
+      "error": null
+    },
+    "assert large_product([5, 1, 7, 6, 6, 4], [5, 5, 3, 4, 5, 1], 5) == [35, 35, 35, 30, 30]": {
+      "result": true,
+      "time": 0.12386298179626465,
+      "error": null
+    },
+    "assert large_product([3, 3, 5, 3, 3, 2], [4, 4, 11, 6, 11, 10], 1) == [55]": {
+      "result": true,
+      "time": 0.13542652130126953,
+      "error": null
+    },
+    "assert large_product([4, 4, 8, 5, 10, 9], [2, 9, 12, 6, 10, 10], 2) == [120, 108]": {
+      "result": true,
+      "time": 0.11476755142211914,
+      "error": null
+    },
+    "assert large_product([4, 3, 4, 5, 3, 5], [5, 10, 3, 6, 11, 8], 4) == [55, 55, 50, 50]": {
+      "result": true,
+      "time": 0.14337491989135742,
+      "error": null
+    },
+    "assert large_product([5, 7, 3, 1, 2, 9], [6, 10, 6, 12, 6, 4], 9) == [108, 90, 84, 70, 60, 54, 54, 54, 50]": {
+      "result": true,
+      "time": 0.12400937080383301,
+      "error": null
+    },
+    "assert large_product([1, 3, 4, 3, 7, 3], [5, 9, 6, 4, 6, 10], 10) == [70, 63, 42, 42, 40, 36, 35, 30, 30, 30]": {
+      "result": true,
+      "time": 0.11902523040771484,
+      "error": null
+    },
+    "assert large_product([4, 1, 1, 3, 4, 10], [1, 10, 4, 11, 14, 10], 3) == [140, 110, 100]": {
+      "result": true,
+      "time": 0.11844897270202637,
+      "error": null
+    },
+    "assert large_product([6, 4, 5, 4, 4, 10], [3, 10, 6, 8, 13, 7], 4) == [130, 100, 80, 78]": {
+      "result": true,
+      "time": 0.14267754554748535,
+      "error": null
+    },
+    "assert large_product([2, 5, 6, 2, 2, 2], [6, 9, 7, 8, 7, 4], 3) == [54, 48, 45]": {
+      "result": true,
+      "time": 0.12909245491027832,
+      "error": null
+    },
+    "assert large_product([5, 6, 6, 4, 3, 6], [3, 9, 5, 8, 8, 3], 1) == [54]": {
+      "result": true,
+      "time": 0.12370610237121582,
+      "error": null
+    },
+    "assert large_product([2, 1, 4, 8, 7, 7], [6, 8, 5, 13, 5, 7], 5) == [104, 91, 91, 64, 56]": {
+      "result": true,
+      "time": 0.13607287406921387,
+      "error": null
+    },
+    "assert large_product([5, 7, 1, 6, 9, 1], [8, 1, 13, 5, 5, 4], 2) == [117, 91]": {
+      "result": true,
+      "time": 0.11870789527893066,
+      "error": null
+    },
+    "assert large_product([2, 7, 6, 8, 9, 1], [5, 11, 9, 10, 15, 6], 3) == [135, 120, 105]": {
+      "result": true,
+      "time": 0.12665367126464844,
+      "error": null
+    },
+    "assert large_product([1, 7, 8, 5, 3, 11], [2, 9, 4, 8, 14, 10], 4) == [154, 112, 110, 99]": {
+      "result": true,
+      "time": 0.12512803077697754,
+      "error": null
+    },
+    "assert large_product([2, 1, 5, 8, 10, 3], [6, 9, 6, 5, 7, 2], 8) == [90, 72, 70, 60, 60, 56, 50, 48]": {
+      "result": true,
+      "time": 0.13870477676391602,
+      "error": null
+    },
+    "assert large_product([6, 7, 2, 5, 3, 1], [5, 5, 11, 14, 6, 11], 5) == [98, 84, 77, 77, 70]": {
+      "result": true,
+      "time": 0.12456226348876953,
+      "error": null
+    },
+    "assert large_product([3, 2, 2, 2, 4, 10], [3, 6, 7, 8, 5, 6], 10) == [80, 70, 60, 60, 50, 32, 30, 28, 24, 24]": {
+      "result": true,
+      "time": 0.1419222354888916,
+      "error": null
+    },
+    "assert large_product([4, 3, 3, 5, 4, 9], [5, 2, 13, 13, 15, 7], 7) == [135, 117, 117, 75, 65, 65, 63]": {
+      "result": true,
+      "time": 0.14974379539489746,
+      "error": null
+    },
+    "assert large_product([2, 6, 1, 2, 8, 8], [6, 9, 9, 10, 14, 3], 6) == [112, 112, 84, 80, 80, 72]": {
+      "result": true,
+      "time": 0.14843201637268066,
+      "error": null
+    },
+    "assert large_product([2, 1, 3, 2, 9, 4], [1, 9, 11, 12, 7, 2], 1) == [108]": {
+      "result": true,
+      "time": 0.14966249465942383,
+      "error": null
+    },
+    "assert large_product([6, 2, 6, 5, 9, 8], [5, 9, 6, 10, 12, 6], 7) == [108, 96, 90, 81, 80, 72, 72]": {
+      "result": true,
+      "time": 0.1348114013671875,
+      "error": null
+    },
+    "assert large_product([4, 6, 7, 8, 2, 7], [2, 11, 6, 12, 10, 3], 2) == [96, 88]": {
+      "result": true,
+      "time": 0.1370527744293213,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

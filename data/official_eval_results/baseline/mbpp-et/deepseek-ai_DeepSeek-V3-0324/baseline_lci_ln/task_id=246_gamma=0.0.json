@@ -1,0 +1,99 @@
+{
+  "code": "def babylonian_squareroot(number):\n    if number == 0:\n        return 0.0\n    \n    guess = number / 2.0\n    \n    while True:\n        new_guess = (guess + number / guess) / 2.0\n        \n        difference = abs(new_guess - guess)\n        \n        if difference < 1e-15:\n            break\n            \n        guess = new_guess\n    \n    return guess",
+  "results": {
+    "assert babylonian_squareroot(10)==3.162277660168379": {
+      "result": true,
+      "time": 0.03498482704162598,
+      "error": null
+    },
+    "assert babylonian_squareroot(2)==1.414213562373095": {
+      "result": true,
+      "time": 0.04129958152770996,
+      "error": null
+    },
+    "assert babylonian_squareroot(9)==3.0": {
+      "result": true,
+      "time": 0.0360112190246582,
+      "error": null
+    },
+    "assert babylonian_squareroot(8) == 2.82842712474619": {
+      "result": true,
+      "time": 0.03721785545349121,
+      "error": null
+    },
+    "assert babylonian_squareroot(14) == 3.7416573867739413": {
+      "result": false,
+      "time": 0.03769636154174805,
+      "error": null
+    },
+    "assert babylonian_squareroot(12) == 3.4641016151377544": {
+      "result": true,
+      "time": 0.0392148494720459,
+      "error": null
+    },
+    "assert babylonian_squareroot(10) == 3.162277660168379": {
+      "result": true,
+      "time": 0.03271341323852539,
+      "error": null
+    },
+    "assert babylonian_squareroot(11) == 3.3166247903554": {
+      "result": true,
+      "time": 0.03974485397338867,
+      "error": null
+    },
+    "assert babylonian_squareroot(9) == 3.0": {
+      "result": true,
+      "time": 0.03873133659362793,
+      "error": null
+    },
+    "assert babylonian_squareroot(15) == 3.872983346207417": {
+      "result": false,
+      "time": 0.03794407844543457,
+      "error": null
+    },
+    "assert babylonian_squareroot(6) == 2.449489742783178": {
+      "result": false,
+      "time": 0.03358006477355957,
+      "error": null
+    },
+    "assert babylonian_squareroot(5) == 2.23606797749979": {
+      "result": true,
+      "time": 0.037114858627319336,
+      "error": null
+    },
+    "assert babylonian_squareroot(7) == 2.6457513110645907": {
+      "result": true,
+      "time": 0.038271188735961914,
+      "error": null
+    },
+    "assert babylonian_squareroot(13) == 3.6055512754639896": {
+      "result": true,
+      "time": 0.03173184394836426,
+      "error": null
+    },
+    "assert babylonian_squareroot(2) == 1.414213562373095": {
+      "result": true,
+      "time": 0.033967018127441406,
+      "error": null
+    },
+    "assert babylonian_squareroot(1) == 1.0": {
+      "result": true,
+      "time": 0.03218483924865723,
+      "error": null
+    },
+    "assert babylonian_squareroot(3) == 1.7320508075688772": {
+      "result": true,
+      "time": 0.03754878044128418,
+      "error": null
+    },
+    "assert babylonian_squareroot(4) == 2.0": {
+      "result": true,
+      "time": 0.029625415802001953,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8333333333333334,
+  "general_error": "",
+  "has_testcase_error": false
+}

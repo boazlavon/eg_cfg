@@ -1,0 +1,519 @@
+{
+  "code": "def moddiv_list(list1, list2):\n    # Create a lambda function to compute modulo division\n    moddiv = lambda x, y: x % y\n    # Use map to apply the lambda function to corresponding elements of the lists\n    result = map(moddiv, list1, list2)\n    # Convert the map object to a list\n    result_list = list(result)\n    return result_list",
+  "results": {
+    "assert moddiv_list([4,5,6],[1, 2, 3])==[0, 1, 0]": {
+      "result": true,
+      "time": 0.06294488906860352,
+      "error": null
+    },
+    "assert moddiv_list([3,2],[1,4])==[0, 2]": {
+      "result": true,
+      "time": 0.06011557579040527,
+      "error": null
+    },
+    "assert moddiv_list([90,120],[50,70])==[40, 50]": {
+      "result": true,
+      "time": 0.06447267532348633,
+      "error": null
+    },
+    "assert moddiv_list([4, 3, 3], [3, 4, 3]) == [1, 3, 0]": {
+      "result": true,
+      "time": 0.06201481819152832,
+      "error": null
+    },
+    "assert moddiv_list([8, 8, 4], [5, 2, 2]) == [3, 0, 0]": {
+      "result": true,
+      "time": 0.0640707015991211,
+      "error": null
+    },
+    "assert moddiv_list([6, 4, 7], [1, 1, 3]) == [0, 0, 1]": {
+      "result": true,
+      "time": 0.052709102630615234,
+      "error": null
+    },
+    "assert moddiv_list([8, 3, 5], [5, 5, 7]) == [3, 3, 5]": {
+      "result": true,
+      "time": 0.06390905380249023,
+      "error": null
+    },
+    "assert moddiv_list([6, 2, 8], [6, 7, 3]) == [0, 2, 2]": {
+      "result": true,
+      "time": 0.050821542739868164,
+      "error": null
+    },
+    "assert moddiv_list([6, 5, 11], [4, 2, 7]) == [2, 1, 4]": {
+      "result": true,
+      "time": 0.057919979095458984,
+      "error": null
+    },
+    "assert moddiv_list([5, 8, 4], [3, 5, 7]) == [2, 3, 4]": {
+      "result": true,
+      "time": 0.07206130027770996,
+      "error": null
+    },
+    "assert moddiv_list([8, 9, 4], [4, 2, 6]) == [0, 1, 4]": {
+      "result": true,
+      "time": 0.06488323211669922,
+      "error": null
+    },
+    "assert moddiv_list([8, 6, 10], [5, 6, 6]) == [3, 0, 4]": {
+      "result": true,
+      "time": 0.06155061721801758,
+      "error": null
+    },
+    "assert moddiv_list([6, 3, 8], [6, 1, 4]) == [0, 0, 0]": {
+      "result": true,
+      "time": 0.05828452110290527,
+      "error": null
+    },
+    "assert moddiv_list([6, 9, 7], [4, 7, 1]) == [2, 2, 0]": {
+      "result": true,
+      "time": 0.06036639213562012,
+      "error": null
+    },
+    "assert moddiv_list([5, 7, 5], [2, 7, 1]) == [1, 0, 0]": {
+      "result": true,
+      "time": 0.056466102600097656,
+      "error": null
+    },
+    "assert moddiv_list([3, 2, 6], [4, 6, 5]) == [3, 2, 1]": {
+      "result": true,
+      "time": 0.06579947471618652,
+      "error": null
+    },
+    "assert moddiv_list([7, 9, 3], [3, 6, 3]) == [1, 3, 0]": {
+      "result": true,
+      "time": 0.06919693946838379,
+      "error": null
+    },
+    "assert moddiv_list([1, 8, 10], [6, 5, 6]) == [1, 3, 4]": {
+      "result": true,
+      "time": 0.0583643913269043,
+      "error": null
+    },
+    "assert moddiv_list([5, 9, 10], [5, 6, 1]) == [0, 3, 0]": {
+      "result": true,
+      "time": 0.0644376277923584,
+      "error": null
+    },
+    "assert moddiv_list([1, 8, 4], [1, 1, 8]) == [0, 0, 4]": {
+      "result": true,
+      "time": 0.059796810150146484,
+      "error": null
+    },
+    "assert moddiv_list([4, 8, 5], [5, 7, 1]) == [4, 1, 0]": {
+      "result": true,
+      "time": 0.06903219223022461,
+      "error": null
+    },
+    "assert moddiv_list([4, 9, 3], [3, 2, 7]) == [1, 1, 3]": {
+      "result": true,
+      "time": 0.06188321113586426,
+      "error": null
+    },
+    "assert moddiv_list([9, 6, 4], [3, 4, 2]) == [0, 2, 0]": {
+      "result": true,
+      "time": 0.059604644775390625,
+      "error": null
+    },
+    "assert moddiv_list([8, 2, 5], [6, 1, 4]) == [2, 0, 1]": {
+      "result": true,
+      "time": 0.07001972198486328,
+      "error": null
+    },
+    "assert moddiv_list([6, 7, 10], [5, 6, 8]) == [1, 1, 2]": {
+      "result": true,
+      "time": 0.06086874008178711,
+      "error": null
+    },
+    "assert moddiv_list([3, 1, 10], [1, 4, 8]) == [0, 1, 2]": {
+      "result": true,
+      "time": 0.0674436092376709,
+      "error": null
+    },
+    "assert moddiv_list([6, 10, 9], [1, 4, 8]) == [0, 2, 1]": {
+      "result": true,
+      "time": 0.04301142692565918,
+      "error": null
+    },
+    "assert moddiv_list([1, 9, 8], [5, 1, 5]) == [1, 0, 3]": {
+      "result": true,
+      "time": 0.05314469337463379,
+      "error": null
+    },
+    "assert moddiv_list([7, 1, 5], [2, 3, 8]) == [1, 1, 5]": {
+      "result": true,
+      "time": 0.06086158752441406,
+      "error": null
+    },
+    "assert moddiv_list([8, 3, 4], [4, 7, 7]) == [0, 3, 4]": {
+      "result": true,
+      "time": 0.046385765075683594,
+      "error": null
+    },
+    "assert moddiv_list([1, 7, 4], [4, 6, 1]) == [1, 1, 0]": {
+      "result": true,
+      "time": 0.05639243125915527,
+      "error": null
+    },
+    "assert moddiv_list([7, 8, 5], [6, 6, 5]) == [1, 2, 0]": {
+      "result": true,
+      "time": 0.04437518119812012,
+      "error": null
+    },
+    "assert moddiv_list([5, 6, 5], [2, 2, 8]) == [1, 0, 5]": {
+      "result": true,
+      "time": 0.0512542724609375,
+      "error": null
+    },
+    "assert moddiv_list([7, 2, 6], [2, 1, 3]) == [1, 0, 0]": {
+      "result": true,
+      "time": 0.051404476165771484,
+      "error": null
+    },
+    "assert moddiv_list([7, 8, 2], [4, 5, 8]) == [3, 3, 2]": {
+      "result": true,
+      "time": 0.05366849899291992,
+      "error": null
+    },
+    "assert moddiv_list([2, 1, 6], [3, 3, 8]) == [2, 1, 6]": {
+      "result": true,
+      "time": 0.052117347717285156,
+      "error": null
+    },
+    "assert moddiv_list([1, 2], [5, 7]) == [1, 2]": {
+      "result": true,
+      "time": 0.043405771255493164,
+      "error": null
+    },
+    "assert moddiv_list([4, 2], [6, 9]) == [4, 2]": {
+      "result": true,
+      "time": 0.04907655715942383,
+      "error": null
+    },
+    "assert moddiv_list([7, 1], [3, 1]) == [1, 0]": {
+      "result": true,
+      "time": 0.058593034744262695,
+      "error": null
+    },
+    "assert moddiv_list([4, 6], [4, 4]) == [0, 2]": {
+      "result": true,
+      "time": 0.04901695251464844,
+      "error": null
+    },
+    "assert moddiv_list([5, 3], [5, 4]) == [0, 3]": {
+      "result": true,
+      "time": 0.05780911445617676,
+      "error": null
+    },
+    "assert moddiv_list([2, 7], [5, 5]) == [2, 2]": {
+      "result": true,
+      "time": 0.05176663398742676,
+      "error": null
+    },
+    "assert moddiv_list([1, 5], [4, 1]) == [1, 0]": {
+      "result": true,
+      "time": 0.045549869537353516,
+      "error": null
+    },
+    "assert moddiv_list([4, 2], [3, 4]) == [1, 2]": {
+      "result": true,
+      "time": 0.05647587776184082,
+      "error": null
+    },
+    "assert moddiv_list([8, 3], [1, 4]) == [0, 3]": {
+      "result": true,
+      "time": 0.05440688133239746,
+      "error": null
+    },
+    "assert moddiv_list([5, 7], [1, 6]) == [0, 1]": {
+      "result": true,
+      "time": 0.04848527908325195,
+      "error": null
+    },
+    "assert moddiv_list([1, 7], [3, 7]) == [1, 0]": {
+      "result": true,
+      "time": 0.05300331115722656,
+      "error": null
+    },
+    "assert moddiv_list([2, 7], [3, 6]) == [2, 1]": {
+      "result": true,
+      "time": 0.058257102966308594,
+      "error": null
+    },
+    "assert moddiv_list([2, 7], [1, 2]) == [0, 1]": {
+      "result": true,
+      "time": 0.03970193862915039,
+      "error": null
+    },
+    "assert moddiv_list([4, 1], [5, 5]) == [4, 1]": {
+      "result": true,
+      "time": 0.05854487419128418,
+      "error": null
+    },
+    "assert moddiv_list([6, 6], [5, 2]) == [1, 0]": {
+      "result": true,
+      "time": 0.05369925498962402,
+      "error": null
+    },
+    "assert moddiv_list([4, 7], [6, 3]) == [4, 1]": {
+      "result": true,
+      "time": 0.05446052551269531,
+      "error": null
+    },
+    "assert moddiv_list([8, 6], [3, 8]) == [2, 6]": {
+      "result": true,
+      "time": 0.06466221809387207,
+      "error": null
+    },
+    "assert moddiv_list([7, 2], [6, 9]) == [1, 2]": {
+      "result": true,
+      "time": 0.04802393913269043,
+      "error": null
+    },
+    "assert moddiv_list([6, 5], [2, 4]) == [0, 1]": {
+      "result": true,
+      "time": 0.052887916564941406,
+      "error": null
+    },
+    "assert moddiv_list([1, 7], [2, 2]) == [1, 1]": {
+      "result": true,
+      "time": 0.0587611198425293,
+      "error": null
+    },
+    "assert moddiv_list([5, 1], [5, 2]) == [0, 1]": {
+      "result": true,
+      "time": 0.049692392349243164,
+      "error": null
+    },
+    "assert moddiv_list([6, 2], [4, 2]) == [2, 0]": {
+      "result": true,
+      "time": 0.06543850898742676,
+      "error": null
+    },
+    "assert moddiv_list([1, 6], [6, 2]) == [1, 0]": {
+      "result": true,
+      "time": 0.06361985206604004,
+      "error": null
+    },
+    "assert moddiv_list([6, 1], [4, 3]) == [2, 1]": {
+      "result": true,
+      "time": 0.05711245536804199,
+      "error": null
+    },
+    "assert moddiv_list([7, 5], [6, 2]) == [1, 1]": {
+      "result": true,
+      "time": 0.04564023017883301,
+      "error": null
+    },
+    "assert moddiv_list([2, 7], [6, 6]) == [2, 1]": {
+      "result": true,
+      "time": 0.04324674606323242,
+      "error": null
+    },
+    "assert moddiv_list([8, 3], [3, 7]) == [2, 3]": {
+      "result": true,
+      "time": 0.055006980895996094,
+      "error": null
+    },
+    "assert moddiv_list([2, 1], [2, 7]) == [0, 1]": {
+      "result": true,
+      "time": 0.05121898651123047,
+      "error": null
+    },
+    "assert moddiv_list([4, 6], [6, 3]) == [4, 0]": {
+      "result": true,
+      "time": 0.06367754936218262,
+      "error": null
+    },
+    "assert moddiv_list([8, 5], [5, 3]) == [3, 2]": {
+      "result": true,
+      "time": 0.05652594566345215,
+      "error": null
+    },
+    "assert moddiv_list([1, 1], [3, 6]) == [1, 1]": {
+      "result": true,
+      "time": 0.0519871711730957,
+      "error": null
+    },
+    "assert moddiv_list([4, 7], [1, 3]) == [0, 1]": {
+      "result": true,
+      "time": 0.04133296012878418,
+      "error": null
+    },
+    "assert moddiv_list([4, 1], [4, 4]) == [0, 1]": {
+      "result": true,
+      "time": 0.06305432319641113,
+      "error": null
+    },
+    "assert moddiv_list([95, 125], [49, 70]) == [46, 55]": {
+      "result": true,
+      "time": 0.0620119571685791,
+      "error": null
+    },
+    "assert moddiv_list([91, 119], [55, 66]) == [36, 53]": {
+      "result": true,
+      "time": 0.06003451347351074,
+      "error": null
+    },
+    "assert moddiv_list([85, 115], [47, 68]) == [38, 47]": {
+      "result": true,
+      "time": 0.07195520401000977,
+      "error": null
+    },
+    "assert moddiv_list([95, 118], [55, 72]) == [40, 46]": {
+      "result": true,
+      "time": 0.06339192390441895,
+      "error": null
+    },
+    "assert moddiv_list([94, 123], [52, 67]) == [42, 56]": {
+      "result": true,
+      "time": 0.06657719612121582,
+      "error": null
+    },
+    "assert moddiv_list([90, 119], [48, 73]) == [42, 46]": {
+      "result": true,
+      "time": 0.057882070541381836,
+      "error": null
+    },
+    "assert moddiv_list([93, 123], [48, 66]) == [45, 57]": {
+      "result": true,
+      "time": 0.06708240509033203,
+      "error": null
+    },
+    "assert moddiv_list([95, 117], [46, 68]) == [3, 49]": {
+      "result": true,
+      "time": 0.052289485931396484,
+      "error": null
+    },
+    "assert moddiv_list([91, 124], [48, 67]) == [43, 57]": {
+      "result": true,
+      "time": 0.0723562240600586,
+      "error": null
+    },
+    "assert moddiv_list([94, 121], [51, 68]) == [43, 53]": {
+      "result": true,
+      "time": 0.04559063911437988,
+      "error": null
+    },
+    "assert moddiv_list([94, 122], [55, 71]) == [39, 51]": {
+      "result": true,
+      "time": 0.058173418045043945,
+      "error": null
+    },
+    "assert moddiv_list([92, 119], [52, 65]) == [40, 54]": {
+      "result": true,
+      "time": 0.05215024948120117,
+      "error": null
+    },
+    "assert moddiv_list([94, 115], [45, 75]) == [4, 40]": {
+      "result": true,
+      "time": 0.0501708984375,
+      "error": null
+    },
+    "assert moddiv_list([88, 120], [50, 65]) == [38, 55]": {
+      "result": true,
+      "time": 0.04414701461791992,
+      "error": null
+    },
+    "assert moddiv_list([91, 116], [47, 68]) == [44, 48]": {
+      "result": true,
+      "time": 0.05930352210998535,
+      "error": null
+    },
+    "assert moddiv_list([87, 121], [46, 71]) == [41, 50]": {
+      "result": true,
+      "time": 0.07782506942749023,
+      "error": null
+    },
+    "assert moddiv_list([93, 117], [50, 72]) == [43, 45]": {
+      "result": true,
+      "time": 0.05475473403930664,
+      "error": null
+    },
+    "assert moddiv_list([91, 120], [53, 74]) == [38, 46]": {
+      "result": true,
+      "time": 0.05700945854187012,
+      "error": null
+    },
+    "assert moddiv_list([93, 120], [47, 74]) == [46, 46]": {
+      "result": true,
+      "time": 0.05687308311462402,
+      "error": null
+    },
+    "assert moddiv_list([85, 118], [50, 70]) == [35, 48]": {
+      "result": true,
+      "time": 0.05094456672668457,
+      "error": null
+    },
+    "assert moddiv_list([88, 117], [46, 70]) == [42, 47]": {
+      "result": true,
+      "time": 0.04319262504577637,
+      "error": null
+    },
+    "assert moddiv_list([90, 121], [47, 72]) == [43, 49]": {
+      "result": true,
+      "time": 0.05163455009460449,
+      "error": null
+    },
+    "assert moddiv_list([85, 119], [51, 66]) == [34, 53]": {
+      "result": true,
+      "time": 0.049524784088134766,
+      "error": null
+    },
+    "assert moddiv_list([95, 115], [47, 71]) == [1, 44]": {
+      "result": true,
+      "time": 0.0497591495513916,
+      "error": null
+    },
+    "assert moddiv_list([88, 121], [55, 73]) == [33, 48]": {
+      "result": true,
+      "time": 0.04401707649230957,
+      "error": null
+    },
+    "assert moddiv_list([94, 125], [48, 68]) == [46, 57]": {
+      "result": true,
+      "time": 0.039739370346069336,
+      "error": null
+    },
+    "assert moddiv_list([95, 121], [53, 75]) == [42, 46]": {
+      "result": true,
+      "time": 0.046907901763916016,
+      "error": null
+    },
+    "assert moddiv_list([91, 124], [53, 66]) == [38, 58]": {
+      "result": true,
+      "time": 0.04638481140136719,
+      "error": null
+    },
+    "assert moddiv_list([91, 115], [51, 71]) == [40, 44]": {
+      "result": true,
+      "time": 0.04961347579956055,
+      "error": null
+    },
+    "assert moddiv_list([91, 121], [45, 71]) == [1, 50]": {
+      "result": true,
+      "time": 0.05960845947265625,
+      "error": null
+    },
+    "assert moddiv_list([95, 116], [47, 65]) == [1, 51]": {
+      "result": true,
+      "time": 0.05209779739379883,
+      "error": null
+    },
+    "assert moddiv_list([92, 117], [49, 66]) == [43, 51]": {
+      "result": true,
+      "time": 0.048880577087402344,
+      "error": null
+    },
+    "assert moddiv_list([95, 120], [45, 74]) == [5, 46]": {
+      "result": true,
+      "time": 0.04891514778137207,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

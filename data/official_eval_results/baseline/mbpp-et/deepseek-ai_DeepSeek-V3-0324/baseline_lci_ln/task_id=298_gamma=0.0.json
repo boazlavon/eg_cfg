@@ -1,0 +1,519 @@
+{
+  "code": "def intersection_nested_lists(main_list, nested_lists):\n    result = []\n    for sublist in nested_lists:\n        intersection = []\n        for element in sublist:\n            if element in main_list:\n                intersection.append(element)\n        result.append(intersection)\n    return result",
+  "results": {
+    "assert intersection_nested_lists( [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],[[12, 18, 23, 25, 45], [7, 11, 19, 24, 28], [1, 5, 8, 18, 15, 16]])==[[12], [7, 11], [1, 5, 8]]": {
+      "result": true,
+      "time": 0.03869271278381348,
+      "error": null
+    },
+    "assert intersection_nested_lists([[2, 3, 1], [4, 5], [6, 8]], [[4, 5], [6, 8]])==[[], []]": {
+      "result": true,
+      "time": 0.04975461959838867,
+      "error": null
+    },
+    "assert intersection_nested_lists(['john','amal','joel','george'],[['john'],['jack','john','mary'],['howard','john'],['jude']])==[['john'], ['john'], ['john'], []]": {
+      "result": true,
+      "time": 0.03651118278503418,
+      "error": null
+    },
+    "assert intersection_nested_lists([6, 2, 1, 3, 1, 11, 12, 11, 14, 12, 13, 13, 18, 9], [[16, 18, 26, 21, 47], [9, 7, 22, 27, 31], [4, 5, 11, 21, 20, 14]]) == [[18], [9], [11, 14]]": {
+      "result": true,
+      "time": 0.03781723976135254,
+      "error": null
+    },
+    "assert intersection_nested_lists([3, 7, 8, 5, 10, 5, 12, 3, 12, 8, 11, 16, 9, 17], [[13, 16, 23, 23, 41], [8, 7, 22, 19, 26], [4, 4, 3, 20, 10, 12]]) == [[16], [8, 7], [3, 10, 12]]": {
+      "result": true,
+      "time": 0.0462188720703125,
+      "error": null
+    },
+    "assert intersection_nested_lists([1, 1, 8, 3, 8, 10, 5, 7, 9, 10, 8, 17, 18, 16], [[17, 17, 18, 30, 42], [10, 9, 24, 26, 27], [2, 9, 3, 13, 15, 19]]) == [[17, 17, 18], [10, 9], [9, 3]]": {
+      "result": true,
+      "time": 0.04505276679992676,
+      "error": null
+    },
+    "assert intersection_nested_lists([4, 7, 7, 1, 1, 1, 2, 3, 13, 13, 6, 12, 14, 16], [[17, 20, 27, 25, 40], [5, 9, 17, 19, 26], [4, 3, 3, 15, 10, 13]]) == [[], [], [4, 3, 3, 13]]": {
+      "result": true,
+      "time": 0.03886532783508301,
+      "error": null
+    },
+    "assert intersection_nested_lists([3, 7, 4, 6, 2, 2, 11, 13, 10, 14, 10, 13, 17, 17], [[17, 18, 23, 21, 48], [4, 13, 17, 27, 23], [6, 4, 7, 23, 18, 15]]) == [[17], [4, 13, 17], [6, 4, 7]]": {
+      "result": true,
+      "time": 0.04076957702636719,
+      "error": null
+    },
+    "assert intersection_nested_lists([1, 7, 2, 8, 2, 9, 11, 3, 4, 14, 11, 13, 8, 12], [[16, 20, 25, 27, 49], [6, 10, 17, 26, 26], [2, 9, 4, 16, 16, 20]]) == [[], [], [2, 9, 4]]": {
+      "result": true,
+      "time": 0.03753852844238281,
+      "error": null
+    },
+    "assert intersection_nested_lists([6, 5, 6, 9, 5, 8, 4, 5, 9, 12, 13, 8, 12, 17], [[13, 21, 28, 28, 47], [6, 16, 18, 22, 23], [2, 8, 6, 13, 11, 18]]) == [[13], [6], [8, 6, 13]]": {
+      "result": true,
+      "time": 0.04617953300476074,
+      "error": null
+    },
+    "assert intersection_nested_lists([2, 4, 4, 3, 2, 10, 7, 7, 11, 15, 14, 7, 13, 14], [[8, 18, 22, 27, 41], [3, 7, 18, 29, 33], [3, 2, 10, 21, 20, 20]]) == [[], [3, 7], [3, 2, 10]]": {
+      "result": true,
+      "time": 0.040308237075805664,
+      "error": null
+    },
+    "assert intersection_nested_lists([2, 2, 1, 1, 5, 4, 9, 4, 13, 10, 9, 12, 18, 10], [[9, 19, 28, 30, 44], [6, 9, 24, 25, 31], [6, 10, 4, 20, 15, 14]]) == [[9], [9], [10, 4]]": {
+      "result": true,
+      "time": 0.0358734130859375,
+      "error": null
+    },
+    "assert intersection_nested_lists([1, 1, 5, 1, 9, 5, 11, 10, 7, 15, 9, 15, 17, 17], [[11, 22, 19, 30, 47], [10, 6, 24, 20, 31], [5, 6, 4, 21, 19, 12]]) == [[11], [10], [5]]": {
+      "result": true,
+      "time": 0.03890872001647949,
+      "error": null
+    },
+    "assert intersection_nested_lists([4, 2, 5, 2, 1, 8, 7, 3, 10, 10, 11, 12, 9, 18], [[14, 21, 19, 22, 46], [8, 8, 20, 27, 31], [6, 10, 4, 20, 18, 12]]) == [[], [8, 8], [10, 4, 18, 12]]": {
+      "result": true,
+      "time": 0.03672480583190918,
+      "error": null
+    },
+    "assert intersection_nested_lists([6, 5, 1, 6, 7, 5, 6, 4, 7, 10, 16, 14, 14, 10], [[17, 16, 19, 27, 43], [4, 11, 18, 25, 28], [6, 10, 8, 15, 15, 14]]) == [[16], [4], [6, 10, 14]]": {
+      "result": true,
+      "time": 0.0369565486907959,
+      "error": null
+    },
+    "assert intersection_nested_lists([5, 2, 2, 9, 5, 7, 8, 11, 9, 10, 13, 11, 8, 16], [[16, 15, 19, 20, 50], [9, 16, 23, 28, 33], [5, 1, 3, 19, 11, 14]]) == [[16], [9, 16], [5, 11]]": {
+      "result": true,
+      "time": 0.03955721855163574,
+      "error": null
+    },
+    "assert intersection_nested_lists([3, 5, 3, 7, 10, 2, 5, 8, 11, 13, 9, 8, 14, 10], [[16, 22, 25, 23, 46], [10, 11, 15, 19, 24], [4, 3, 5, 16, 12, 15]]) == [[], [10, 11], [3, 5]]": {
+      "result": true,
+      "time": 0.04227495193481445,
+      "error": null
+    },
+    "assert intersection_nested_lists([2, 1, 5, 3, 7, 5, 10, 9, 14, 7, 10, 8, 10, 15], [[8, 17, 24, 21, 50], [5, 9, 18, 28, 28], [1, 1, 5, 15, 20, 17]]) == [[8], [5, 9], [1, 1, 5, 15]]": {
+      "result": true,
+      "time": 0.042792320251464844,
+      "error": null
+    },
+    "assert intersection_nested_lists([4, 6, 3, 6, 6, 4, 8, 9, 7, 14, 6, 7, 17, 13], [[16, 14, 19, 28, 46], [5, 8, 16, 26, 31], [4, 6, 4, 18, 15, 14]]) == [[14], [8], [4, 6, 4, 14]]": {
+      "result": true,
+      "time": 0.037596702575683594,
+      "error": null
+    },
+    "assert intersection_nested_lists([3, 7, 8, 2, 10, 9, 10, 12, 6, 8, 9, 16, 13, 10], [[17, 13, 23, 23, 47], [3, 16, 15, 25, 27], [6, 3, 11, 16, 12, 20]]) == [[13], [3, 16], [6, 3, 16, 12]]": {
+      "result": true,
+      "time": 0.053313255310058594,
+      "error": null
+    },
+    "assert intersection_nested_lists([2, 3, 2, 6, 8, 7, 7, 11, 14, 10, 7, 16, 15, 15], [[8, 13, 28, 23, 46], [4, 16, 24, 28, 24], [3, 10, 13, 22, 13, 15]]) == [[8], [16], [3, 10, 15]]": {
+      "result": true,
+      "time": 0.03264880180358887,
+      "error": null
+    },
+    "assert intersection_nested_lists([1, 3, 7, 4, 5, 10, 3, 11, 11, 7, 6, 15, 13, 18], [[12, 22, 22, 21, 49], [12, 12, 22, 22, 27], [3, 6, 9, 21, 18, 15]]) == [[], [], [3, 6, 18, 15]]": {
+      "result": true,
+      "time": 0.04676675796508789,
+      "error": null
+    },
+    "assert intersection_nested_lists([3, 5, 4, 1, 6, 11, 7, 4, 4, 14, 13, 16, 17, 10], [[12, 18, 28, 24, 43], [10, 13, 18, 23, 25], [4, 8, 8, 22, 16, 19]]) == [[], [10, 13], [4, 16]]": {
+      "result": true,
+      "time": 0.044564008712768555,
+      "error": null
+    },
+    "assert intersection_nested_lists([2, 1, 8, 5, 1, 11, 12, 13, 12, 8, 8, 11, 10, 14], [[12, 13, 23, 24, 47], [2, 9, 20, 27, 26], [6, 1, 7, 17, 16, 12]]) == [[12, 13], [2], [1, 12]]": {
+      "result": true,
+      "time": 0.045174598693847656,
+      "error": null
+    },
+    "assert intersection_nested_lists([5, 2, 5, 6, 1, 7, 10, 6, 4, 11, 15, 10, 9, 15], [[13, 21, 28, 22, 48], [6, 9, 20, 29, 30], [4, 9, 12, 20, 13, 11]]) == [[], [6, 9], [4, 9, 11]]": {
+      "result": true,
+      "time": 0.03859114646911621,
+      "error": null
+    },
+    "assert intersection_nested_lists([1, 7, 7, 3, 4, 4, 5, 11, 4, 7, 15, 15, 16, 9], [[9, 18, 20, 25, 46], [2, 7, 22, 22, 30], [3, 10, 11, 13, 16, 11]]) == [[9], [7], [3, 11, 16, 11]]": {
+      "result": true,
+      "time": 0.045137643814086914,
+      "error": null
+    },
+    "assert intersection_nested_lists([2, 5, 1, 2, 10, 6, 5, 13, 11, 10, 7, 14, 11, 11], [[9, 13, 20, 25, 44], [10, 7, 20, 24, 29], [6, 8, 7, 14, 18, 12]]) == [[13], [10, 7], [6, 7, 14]]": {
+      "result": true,
+      "time": 0.04514002799987793,
+      "error": null
+    },
+    "assert intersection_nested_lists([3, 5, 7, 2, 8, 3, 4, 11, 11, 5, 8, 12, 12, 15], [[9, 22, 25, 21, 47], [8, 7, 17, 22, 28], [6, 8, 5, 23, 14, 14]]) == [[], [8, 7], [8, 5]]": {
+      "result": true,
+      "time": 0.03779339790344238,
+      "error": null
+    },
+    "assert intersection_nested_lists([3, 6, 5, 3, 6, 11, 8, 12, 13, 5, 10, 13, 8, 11], [[13, 19, 24, 29, 49], [3, 9, 15, 22, 23], [5, 8, 10, 15, 13, 15]]) == [[13], [3], [5, 8, 10, 13]]": {
+      "result": true,
+      "time": 0.0426332950592041,
+      "error": null
+    },
+    "assert intersection_nested_lists([3, 7, 6, 8, 6, 5, 4, 9, 7, 14, 8, 15, 13, 14], [[17, 18, 22, 29, 42], [11, 14, 17, 20, 28], [1, 7, 7, 22, 11, 17]]) == [[], [14], [7, 7]]": {
+      "result": true,
+      "time": 0.040445804595947266,
+      "error": null
+    },
+    "assert intersection_nested_lists([1, 2, 1, 7, 4, 8, 12, 11, 11, 11, 12, 7, 16, 15], [[11, 20, 24, 21, 42], [12, 6, 17, 24, 33], [1, 10, 5, 16, 12, 12]]) == [[11], [12], [1, 16, 12, 12]]": {
+      "result": true,
+      "time": 0.030622243881225586,
+      "error": null
+    },
+    "assert intersection_nested_lists([5, 2, 7, 7, 10, 9, 2, 3, 10, 13, 16, 7, 9, 14], [[14, 16, 22, 27, 50], [6, 14, 21, 24, 25], [1, 1, 9, 19, 17, 18]]) == [[14, 16], [14], [9]]": {
+      "result": true,
+      "time": 0.05317187309265137,
+      "error": null
+    },
+    "assert intersection_nested_lists([2, 4, 8, 6, 6, 1, 10, 3, 13, 7, 13, 12, 17, 11], [[17, 19, 18, 28, 50], [7, 12, 17, 19, 31], [6, 4, 13, 18, 15, 11]]) == [[17], [7, 12, 17], [6, 4, 13, 11]]": {
+      "result": true,
+      "time": 0.0465388298034668,
+      "error": null
+    },
+    "assert intersection_nested_lists([3, 6, 6, 4, 3, 11, 12, 11, 13, 7, 7, 10, 10, 19], [[8, 23, 18, 24, 40], [3, 13, 21, 24, 31], [2, 4, 13, 19, 15, 21]]) == [[], [3, 13], [4, 13, 19]]": {
+      "result": true,
+      "time": 0.044501304626464844,
+      "error": null
+    },
+    "assert intersection_nested_lists([2, 6, 7, 3, 7, 7, 5, 12, 14, 11, 16, 14, 17, 16], [[7, 18, 23, 29, 43], [9, 7, 18, 24, 25], [6, 9, 12, 18, 17, 17]]) == [[7], [7], [6, 12, 17, 17]]": {
+      "result": true,
+      "time": 0.04622650146484375,
+      "error": null
+    },
+    "assert intersection_nested_lists([5, 4, 2, 5, 3, 6, 5, 13, 6, 15, 12, 12, 12, 17], [[9, 15, 24, 30, 46], [7, 6, 17, 27, 31], [4, 7, 12, 17, 18, 20]]) == [[15], [6, 17], [4, 12, 17]]": {
+      "result": true,
+      "time": 0.038945674896240234,
+      "error": null
+    },
+    "assert intersection_nested_lists([[2, 1, 4], [7, 5], [7, 8]], [[5, 4], [2, 5]]) == [[], []]": {
+      "result": true,
+      "time": 0.03668069839477539,
+      "error": null
+    },
+    "assert intersection_nested_lists([[7, 7, 2], [2, 4], [1, 8]], [[3, 4], [10, 11]]) == [[], []]": {
+      "result": true,
+      "time": 0.03887534141540527,
+      "error": null
+    },
+    "assert intersection_nested_lists([[6, 3, 5], [7, 5], [6, 8]], [[3, 2], [7, 8]]) == [[], []]": {
+      "result": true,
+      "time": 0.036295413970947266,
+      "error": null
+    },
+    "assert intersection_nested_lists([[1, 3, 5], [8, 2], [2, 3]], [[8, 7], [11, 3]]) == [[], []]": {
+      "result": true,
+      "time": 0.039852142333984375,
+      "error": null
+    },
+    "assert intersection_nested_lists([[2, 7, 4], [2, 4], [11, 3]], [[4, 3], [8, 7]]) == [[], []]": {
+      "result": true,
+      "time": 0.03906059265136719,
+      "error": null
+    },
+    "assert intersection_nested_lists([[7, 5, 5], [6, 6], [5, 12]], [[9, 1], [2, 9]]) == [[], []]": {
+      "result": true,
+      "time": 0.04037046432495117,
+      "error": null
+    },
+    "assert intersection_nested_lists([[5, 4, 4], [3, 9], [4, 12]], [[1, 5], [8, 12]]) == [[], []]": {
+      "result": true,
+      "time": 0.05469536781311035,
+      "error": null
+    },
+    "assert intersection_nested_lists([[2, 8, 5], [5, 6], [5, 13]], [[3, 10], [1, 11]]) == [[], []]": {
+      "result": true,
+      "time": 0.05044698715209961,
+      "error": null
+    },
+    "assert intersection_nested_lists([[2, 6, 1], [2, 3], [11, 7]], [[5, 6], [4, 6]]) == [[], []]": {
+      "result": true,
+      "time": 0.05321335792541504,
+      "error": null
+    },
+    "assert intersection_nested_lists([[5, 4, 2], [5, 7], [5, 12]], [[3, 8], [3, 12]]) == [[], []]": {
+      "result": true,
+      "time": 0.062486886978149414,
+      "error": null
+    },
+    "assert intersection_nested_lists([[7, 7, 6], [1, 2], [6, 6]], [[5, 9], [6, 13]]) == [[], []]": {
+      "result": true,
+      "time": 0.054404497146606445,
+      "error": null
+    },
+    "assert intersection_nested_lists([[7, 5, 1], [1, 8], [4, 10]], [[3, 10], [4, 13]]) == [[], []]": {
+      "result": true,
+      "time": 0.05259132385253906,
+      "error": null
+    },
+    "assert intersection_nested_lists([[6, 7, 3], [8, 4], [7, 5]], [[2, 7], [6, 6]]) == [[], []]": {
+      "result": true,
+      "time": 0.048920631408691406,
+      "error": null
+    },
+    "assert intersection_nested_lists([[3, 2, 6], [8, 3], [6, 4]], [[8, 4], [4, 11]]) == [[], []]": {
+      "result": true,
+      "time": 0.04542350769042969,
+      "error": null
+    },
+    "assert intersection_nested_lists([[7, 6, 6], [6, 6], [10, 11]], [[9, 5], [5, 7]]) == [[], []]": {
+      "result": true,
+      "time": 0.057706356048583984,
+      "error": null
+    },
+    "assert intersection_nested_lists([[5, 4, 3], [3, 4], [11, 9]], [[9, 9], [11, 10]]) == [[], []]": {
+      "result": true,
+      "time": 0.04686141014099121,
+      "error": null
+    },
+    "assert intersection_nested_lists([[3, 5, 3], [2, 7], [8, 7]], [[7, 1], [3, 6]]) == [[], []]": {
+      "result": true,
+      "time": 0.0563662052154541,
+      "error": null
+    },
+    "assert intersection_nested_lists([[6, 8, 2], [7, 1], [9, 9]], [[5, 8], [6, 7]]) == [[], []]": {
+      "result": true,
+      "time": 0.04790759086608887,
+      "error": null
+    },
+    "assert intersection_nested_lists([[7, 6, 1], [9, 9], [11, 5]], [[1, 2], [1, 3]]) == [[], []]": {
+      "result": true,
+      "time": 0.05142974853515625,
+      "error": null
+    },
+    "assert intersection_nested_lists([[7, 7, 1], [3, 9], [5, 6]], [[4, 9], [11, 12]]) == [[], []]": {
+      "result": true,
+      "time": 0.04761028289794922,
+      "error": null
+    },
+    "assert intersection_nested_lists([[7, 3, 3], [6, 4], [2, 8]], [[8, 8], [10, 12]]) == [[], []]": {
+      "result": true,
+      "time": 0.04860329627990723,
+      "error": null
+    },
+    "assert intersection_nested_lists([[7, 5, 2], [5, 5], [6, 4]], [[6, 3], [8, 11]]) == [[], []]": {
+      "result": true,
+      "time": 0.05559277534484863,
+      "error": null
+    },
+    "assert intersection_nested_lists([[6, 5, 1], [5, 6], [5, 6]], [[2, 4], [6, 7]]) == [[], []]": {
+      "result": true,
+      "time": 0.052961111068725586,
+      "error": null
+    },
+    "assert intersection_nested_lists([[2, 5, 2], [3, 8], [4, 11]], [[4, 3], [3, 3]]) == [[], []]": {
+      "result": true,
+      "time": 0.05420565605163574,
+      "error": null
+    },
+    "assert intersection_nested_lists([[3, 5, 2], [1, 5], [2, 8]], [[7, 7], [2, 8]]) == [[], []]": {
+      "result": true,
+      "time": 0.05764198303222656,
+      "error": null
+    },
+    "assert intersection_nested_lists([[5, 4, 6], [8, 2], [3, 9]], [[4, 1], [10, 12]]) == [[], []]": {
+      "result": true,
+      "time": 0.05055379867553711,
+      "error": null
+    },
+    "assert intersection_nested_lists([[5, 1, 2], [3, 1], [5, 13]], [[6, 8], [2, 10]]) == [[], []]": {
+      "result": true,
+      "time": 0.05345630645751953,
+      "error": null
+    },
+    "assert intersection_nested_lists([[5, 6, 4], [8, 6], [7, 5]], [[5, 3], [3, 6]]) == [[], []]": {
+      "result": true,
+      "time": 0.04786872863769531,
+      "error": null
+    },
+    "assert intersection_nested_lists([[6, 3, 3], [3, 6], [7, 12]], [[2, 1], [4, 7]]) == [[], []]": {
+      "result": true,
+      "time": 0.05344390869140625,
+      "error": null
+    },
+    "assert intersection_nested_lists([[4, 6, 2], [1, 4], [9, 4]], [[3, 2], [6, 8]]) == [[], []]": {
+      "result": true,
+      "time": 0.05097341537475586,
+      "error": null
+    },
+    "assert intersection_nested_lists([[5, 5, 1], [9, 1], [3, 10]], [[3, 9], [11, 11]]) == [[], []]": {
+      "result": true,
+      "time": 0.0546107292175293,
+      "error": null
+    },
+    "assert intersection_nested_lists([[6, 7, 5], [5, 9], [5, 4]], [[7, 5], [5, 4]]) == [[], []]": {
+      "result": true,
+      "time": 0.05449700355529785,
+      "error": null
+    },
+    "assert intersection_nested_lists([[5, 6, 1], [5, 4], [1, 3]], [[2, 7], [5, 5]]) == [[], []]": {
+      "result": true,
+      "time": 0.04802560806274414,
+      "error": null
+    },
+    "assert intersection_nested_lists(['nrtyf', 'bedvpv', 'iuhvi', 'obms'], [['wburndym'], ['qqzlz', 'roopp', 'tdue'], ['mcqv', 'eqxyyg'], ['rqqvvd']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.05365777015686035,
+      "error": null
+    },
+    "assert intersection_nested_lists(['tdhvh', 'woky', 'zdqsqkkna', 'lwwsslawltr'], [['ssjto'], ['kzroiq', 'cxn', 'nwvpjlkl'], ['vhnp', 'wmscqeot'], ['vbzpy']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.06522774696350098,
+      "error": null
+    },
+    "assert intersection_nested_lists(['ioo', 'wcx', 'iucigjek', 'zcd'], [['cbom'], ['oeoyap', 'kwdokcn', 'fccgyhn'], ['qyrmtyruhlr', 'iiihjcy'], ['kmcomrwg']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.051488399505615234,
+      "error": null
+    },
+    "assert intersection_nested_lists(['fmj', 'padem', 'zrjsejcp', 'kswdiimk'], [['yxhl'], ['julzduqe', 'ffxfxxlwd', 'grkn'], ['grbwnql', 'drzpecd'], ['diwpo']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04581403732299805,
+      "error": null
+    },
+    "assert intersection_nested_lists(['ftmsqeiu', 'ofqvmcup', 'hcaxpb', 'qeb'], [['lvqpted'], ['ndhq', 'xgtakkke', 'trmoclztq'], ['uegnwyzh', 'fhg'], ['hnlsynj']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.05391955375671387,
+      "error": null
+    },
+    "assert intersection_nested_lists(['dmipna', 'fynt', 'qtxuee', 'deothot'], [['ihpaxhdc'], ['pbf', 'dhbaqk', 'oltkxg'], ['flbshn', 'wjhlr'], ['vbfku']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04625582695007324,
+      "error": null
+    },
+    "assert intersection_nested_lists(['soxtpk', 'bghgja', 'yhbvj', 'gnjskkxxvzy'], [['nwgoysha'], ['geynv', 'bdvsntvu', 'suljq'], ['mxtiepyfsyhe', 'fhenuw'], ['ourewjob']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.05905318260192871,
+      "error": null
+    },
+    "assert intersection_nested_lists(['npgbqee', 'qzc', 'jcfrjoj', 'ooljtvmh'], [['xmiv'], ['mdtf', 'maae', 'jsy'], ['upnzvb', 'xtv'], ['eplqqbv']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04835867881774902,
+      "error": null
+    },
+    "assert intersection_nested_lists(['brlpvguwm', 'vsoprbgh', 'swsz', 'cbomn'], [['cqqpz'], ['xniqnlzqj', 'vgzrdwuyu', 'naay'], ['lcdzwpvd', 'cxtwaxxsh'], ['zooyjaho']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.05666756629943848,
+      "error": null
+    },
+    "assert intersection_nested_lists(['yrpdjn', 'lmnfzu', 'hjidfc', 'spozuzehkd'], [['xcmpd'], ['pwhbx', 'rwsap', 'stlryt'], ['onvtqoxozga', 'aju'], ['drqpd']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.05475258827209473,
+      "error": null
+    },
+    "assert intersection_nested_lists(['ahvwq', 'zvs', 'kubwylii', 'ctjw'], [['kujoqa'], ['sfw', 'akffcxd', 'xefovdign'], ['tvgvh', 'lsuy'], ['agwu']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.060123443603515625,
+      "error": null
+    },
+    "assert intersection_nested_lists(['zqvl', 'ndqjnnnk', 'lvdmfar', 'ajio'], [['yliz'], ['jobjpdny', 'ytninxmd', 'whcloxr'], ['uaivfkmaodf', 'jmkgqcdf'], ['fzc']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.045381784439086914,
+      "error": null
+    },
+    "assert intersection_nested_lists(['qxblwld', 'dxvafetg', 'wjphr', 'bfye'], [['hlmngopfn'], ['skvxnlk', 'ehjslqsw', 'vyygyw'], ['eopyeios', 'oxfjcn'], ['ryazp']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.047191619873046875,
+      "error": null
+    },
+    "assert intersection_nested_lists(['dckw', 'jmigrn', 'foqnn', 'ldngeo'], [['wcmwo'], ['urnvuet', 'ner', 'zmci'], ['nqtrne', 'hdmz'], ['azgvkam']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04567146301269531,
+      "error": null
+    },
+    "assert intersection_nested_lists(['zvzjdjf', 'dienexesk', 'huqemqu', 'tiqwx'], [['dcrcu'], ['uenud', 'jvswhvoe', 'oma'], ['udznek', 'gxfy'], ['gku']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04104471206665039,
+      "error": null
+    },
+    "assert intersection_nested_lists(['dvswd', 'qrsh', 'osoifhip', 'jfnlklceu'], [['nlyng'], ['pqd', 'oyhixmg', 'glqjot'], ['uei', 'plbz'], ['jjmccdjam']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.043837785720825195,
+      "error": null
+    },
+    "assert intersection_nested_lists(['wxge', 'incvffwg', 'urmhlzf', 'fpshoycgqplv'], [['mmunheha'], ['lkljdaitz', 'clxzik', 'hvr'], ['eztjziw', 'enyuk'], ['pboxuxos']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04159665107727051,
+      "error": null
+    },
+    "assert intersection_nested_lists(['rgkkongdv', 'qhgzycgzm', 'xukjm', 'lslwee'], [['ldzt'], ['ofl', 'rmuexo', 'cye'], ['uabvhwgh', 'ucevk'], ['tmbdrq']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04494333267211914,
+      "error": null
+    },
+    "assert intersection_nested_lists(['jnrin', 'xrccd', 'lrackfn', 'nchrtaxaq'], [['kuw'], ['hwufgma', 'nmroywk', 'rjbadoisk'], ['iyn', 'epcme'], ['dvync']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04252481460571289,
+      "error": null
+    },
+    "assert intersection_nested_lists(['vbcae', 'akhh', 'dcgk', 'fwsajyxqlxi'], [['bgmu'], ['kbha', 'flnbpkcnb', 'lsa'], ['kjusz', 'yuens'], ['uckhbme']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04262852668762207,
+      "error": null
+    },
+    "assert intersection_nested_lists(['keguusna', 'acqjlal', 'ojbv', 'jukxlmkfs'], [['umlabj'], ['kwcznsyo', 'makafum', 'ddcc'], ['vylugu', 'fsmvdhb'], ['exmdl']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04140663146972656,
+      "error": null
+    },
+    "assert intersection_nested_lists(['vmvimqi', 'emrmzbrq', 'ebhy', 'ntxrnybckdm'], [['mpxgaik'], ['lznl', 'gauamo', 'smwqu'], ['tulf', 'pkjupsfrm'], ['qigiyb']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.036753177642822266,
+      "error": null
+    },
+    "assert intersection_nested_lists(['xoz', 'wybsyfgo', 'loum', 'jwhzefuzk'], [['osjolkx'], ['oqygh', 'cuzk', 'wtcbl'], ['gjrgpdnetxye', 'sxy'], ['msq']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04602456092834473,
+      "error": null
+    },
+    "assert intersection_nested_lists(['ipdzshu', 'yyviynbm', 'mtgowswz', 'wfikvvbhf'], [['uyap'], ['agz', 'afyykh', 'ooidaxx'], ['omzy', 'znx'], ['auxub']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04446005821228027,
+      "error": null
+    },
+    "assert intersection_nested_lists(['rmts', 'jgcklu', 'blnmdeckz', 'gvyr'], [['ggnrotrt'], ['otx', 'nzipp', 'uyw'], ['shd', 'asgyo'], ['fmaeuka']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04377174377441406,
+      "error": null
+    },
+    "assert intersection_nested_lists(['kzdkz', 'fdlaxg', 'xpy', 'yakfxlhkzx'], [['trgsekdqv'], ['wfoiyafx', 'kchbhri', 'leuvi'], ['osacz', 'hyyypxafb'], ['wutijoxv']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04089546203613281,
+      "error": null
+    },
+    "assert intersection_nested_lists(['lsmnrvegn', 'ghg', 'kkyovbl', 'qfyydoz'], [['umghyal'], ['xyrhpwzf', 'cndoxjl', 'xyonw'], ['mazuhpmptxd', 'yvjgnrng'], ['itw']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04617190361022949,
+      "error": null
+    },
+    "assert intersection_nested_lists(['kcjiyvkww', 'riek', 'kgqaec', 'eyibxcbtye'], [['larjyhuhw'], ['vvut', 'uqf', 'briwoqxuw'], ['bqkasgjbkzos', 'bwzh'], ['jlsev']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04798245429992676,
+      "error": null
+    },
+    "assert intersection_nested_lists(['ftgh', 'uxwfnwp', 'epauet', 'vgblgbxgeds'], [['mvoxq'], ['pdarwqihz', 'vuuvpovxk', 'rxkqtrbc'], ['opbqysozhjn', 'vhi'], ['qooawzwx']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.03872275352478027,
+      "error": null
+    },
+    "assert intersection_nested_lists(['glm', 'pwdrwt', 'fchyr', 'tpuowuqrw'], [['xisglu'], ['nlpzvpbc', 'iidvnlak', 'gwjc'], ['kajqhxxx', 'pjbsepj'], ['ahc']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.038666725158691406,
+      "error": null
+    },
+    "assert intersection_nested_lists(['nug', 'knte', 'vwkfrx', 'xkhftpaycbd'], [['zybpsn'], ['mvvan', 'hjoh', 'hpdkvjg'], ['vovn', 'xtat'], ['ciby']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.046556711196899414,
+      "error": null
+    },
+    "assert intersection_nested_lists(['tosuytyh', 'bokiwpjm', 'nohwbju', 'fydmwzmx'], [['pww'], ['vyy', 'lxpf', 'vcot'], ['dncookwpedy', 'loyiankt'], ['tckcux']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.04470324516296387,
+      "error": null
+    },
+    "assert intersection_nested_lists(['xiqced', 'mpcfewdw', 'ljxgnxjiu', 'rwrbnvkxt'], [['kpthp'], ['vehq', 'juxeshod', 'aeiptin'], ['hqhgytimn', 'piccquxiz'], ['jlxw']]) == [[], [], [], []]": {
+      "result": true,
+      "time": 0.03917717933654785,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

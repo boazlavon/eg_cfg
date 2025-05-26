@@ -1,0 +1,519 @@
+{
+  "code": "def sequential_search(arr, x):\n    for i in range(len(arr)):\n        if arr[i] == x:\n            return (True, i)\n    return (False, -1)",
+  "results": {
+    "assert sequential_search([11,23,58,31,56,77,43,12,65,19],31) == (True, 3)": {
+      "result": true,
+      "time": 0.05009961128234863,
+      "error": null
+    },
+    "assert sequential_search([12, 32, 45, 62, 35, 47, 44, 61],61) == (True, 7)": {
+      "result": true,
+      "time": 0.0469050407409668,
+      "error": null
+    },
+    "assert sequential_search([9, 10, 17, 19, 22, 39, 48, 56],48) == (True, 6)": {
+      "result": true,
+      "time": 0.045224666595458984,
+      "error": null
+    },
+    "assert sequential_search([9, 22, 55, 30, 51, 81, 47, 16, 67, 22], 31) == (False, 10)": {
+      "result": false,
+      "time": 0.039008140563964844,
+      "error": null
+    },
+    "assert sequential_search([14, 22, 60, 34, 58, 79, 40, 17, 66, 17], 32) == (False, 10)": {
+      "result": false,
+      "time": 0.04435396194458008,
+      "error": null
+    },
+    "assert sequential_search([12, 22, 62, 36, 58, 72, 41, 12, 64, 24], 36) == (True, 3)": {
+      "result": true,
+      "time": 0.04401350021362305,
+      "error": null
+    },
+    "assert sequential_search([15, 24, 61, 31, 59, 73, 41, 11, 60, 23], 31) == (True, 3)": {
+      "result": true,
+      "time": 0.0533292293548584,
+      "error": null
+    },
+    "assert sequential_search([9, 19, 62, 29, 57, 80, 48, 8, 70, 16], 27) == (False, 10)": {
+      "result": false,
+      "time": 0.05294656753540039,
+      "error": null
+    },
+    "assert sequential_search([11, 18, 59, 29, 51, 76, 48, 10, 69, 16], 34) == (False, 10)": {
+      "result": false,
+      "time": 0.049890756607055664,
+      "error": null
+    },
+    "assert sequential_search([11, 20, 54, 36, 54, 78, 43, 14, 65, 22], 36) == (True, 3)": {
+      "result": true,
+      "time": 0.03680229187011719,
+      "error": null
+    },
+    "assert sequential_search([11, 23, 58, 29, 58, 80, 47, 9, 68, 23], 26) == (False, 10)": {
+      "result": false,
+      "time": 0.04272031784057617,
+      "error": null
+    },
+    "assert sequential_search([6, 24, 62, 27, 60, 73, 38, 15, 60, 16], 28) == (False, 10)": {
+      "result": false,
+      "time": 0.03952908515930176,
+      "error": null
+    },
+    "assert sequential_search([10, 18, 58, 28, 57, 80, 45, 13, 69, 17], 34) == (False, 10)": {
+      "result": false,
+      "time": 0.050101518630981445,
+      "error": null
+    },
+    "assert sequential_search([6, 27, 55, 28, 59, 76, 38, 7, 61, 15], 36) == (False, 10)": {
+      "result": false,
+      "time": 0.036191701889038086,
+      "error": null
+    },
+    "assert sequential_search([11, 18, 57, 34, 56, 81, 48, 15, 66, 22], 26) == (False, 10)": {
+      "result": false,
+      "time": 0.051641225814819336,
+      "error": null
+    },
+    "assert sequential_search([15, 21, 57, 26, 59, 73, 48, 10, 69, 19], 33) == (False, 10)": {
+      "result": false,
+      "time": 0.054457902908325195,
+      "error": null
+    },
+    "assert sequential_search([9, 28, 56, 36, 52, 76, 44, 10, 60, 19], 34) == (False, 10)": {
+      "result": false,
+      "time": 0.03921699523925781,
+      "error": null
+    },
+    "assert sequential_search([12, 20, 56, 27, 61, 78, 40, 16, 66, 19], 35) == (False, 10)": {
+      "result": false,
+      "time": 0.04245257377624512,
+      "error": null
+    },
+    "assert sequential_search([12, 24, 55, 31, 60, 81, 39, 14, 68, 15], 33) == (False, 10)": {
+      "result": false,
+      "time": 0.04624295234680176,
+      "error": null
+    },
+    "assert sequential_search([11, 19, 53, 30, 54, 80, 42, 15, 65, 19], 29) == (False, 10)": {
+      "result": false,
+      "time": 0.04715728759765625,
+      "error": null
+    },
+    "assert sequential_search([11, 21, 58, 26, 53, 80, 40, 15, 60, 14], 26) == (True, 3)": {
+      "result": true,
+      "time": 0.04490065574645996,
+      "error": null
+    },
+    "assert sequential_search([14, 22, 58, 29, 59, 81, 47, 16, 69, 18], 29) == (True, 3)": {
+      "result": true,
+      "time": 0.04192018508911133,
+      "error": null
+    },
+    "assert sequential_search([14, 21, 55, 34, 55, 78, 41, 8, 62, 22], 34) == (True, 3)": {
+      "result": true,
+      "time": 0.03918766975402832,
+      "error": null
+    },
+    "assert sequential_search([15, 18, 62, 29, 52, 72, 47, 13, 62, 17], 29) == (True, 3)": {
+      "result": true,
+      "time": 0.03662729263305664,
+      "error": null
+    },
+    "assert sequential_search([15, 26, 62, 30, 54, 76, 48, 12, 62, 24], 28) == (False, 10)": {
+      "result": false,
+      "time": 0.04238176345825195,
+      "error": null
+    },
+    "assert sequential_search([9, 21, 56, 27, 57, 78, 46, 10, 65, 24], 26) == (False, 10)": {
+      "result": false,
+      "time": 0.03633236885070801,
+      "error": null
+    },
+    "assert sequential_search([15, 21, 54, 30, 53, 78, 41, 10, 70, 19], 34) == (False, 10)": {
+      "result": false,
+      "time": 0.03667902946472168,
+      "error": null
+    },
+    "assert sequential_search([15, 25, 56, 32, 56, 73, 38, 10, 66, 23], 31) == (False, 10)": {
+      "result": false,
+      "time": 0.049027442932128906,
+      "error": null
+    },
+    "assert sequential_search([6, 22, 58, 34, 60, 72, 45, 16, 63, 22], 30) == (False, 10)": {
+      "result": false,
+      "time": 0.039214372634887695,
+      "error": null
+    },
+    "assert sequential_search([15, 27, 57, 33, 54, 82, 46, 8, 63, 23], 33) == (True, 3)": {
+      "result": true,
+      "time": 0.03788638114929199,
+      "error": null
+    },
+    "assert sequential_search([6, 26, 60, 31, 51, 80, 39, 7, 69, 24], 33) == (False, 10)": {
+      "result": false,
+      "time": 0.05263686180114746,
+      "error": null
+    },
+    "assert sequential_search([10, 18, 54, 35, 52, 82, 48, 9, 60, 20], 27) == (False, 10)": {
+      "result": false,
+      "time": 0.03931570053100586,
+      "error": null
+    },
+    "assert sequential_search([11, 23, 59, 29, 55, 75, 40, 11, 61, 18], 29) == (True, 3)": {
+      "result": true,
+      "time": 0.0444183349609375,
+      "error": null
+    },
+    "assert sequential_search([11, 28, 59, 29, 56, 77, 47, 12, 65, 17], 29) == (True, 3)": {
+      "result": true,
+      "time": 0.05108952522277832,
+      "error": null
+    },
+    "assert sequential_search([13, 22, 56, 36, 52, 78, 41, 14, 68, 15], 36) == (True, 3)": {
+      "result": true,
+      "time": 0.0386204719543457,
+      "error": null
+    },
+    "assert sequential_search([15, 25, 58, 31, 59, 77, 40, 15, 64, 23], 28) == (False, 10)": {
+      "result": false,
+      "time": 0.04088902473449707,
+      "error": null
+    },
+    "assert sequential_search([16, 34, 40, 64, 31, 52, 48, 56], 58) == (False, 8)": {
+      "result": false,
+      "time": 0.041036367416381836,
+      "error": null
+    },
+    "assert sequential_search([9, 36, 48, 59, 30, 51, 40, 56], 57) == (False, 8)": {
+      "result": false,
+      "time": 0.042955875396728516,
+      "error": null
+    },
+    "assert sequential_search([12, 32, 49, 67, 33, 46, 42, 62], 61) == (False, 8)": {
+      "result": false,
+      "time": 0.041481733322143555,
+      "error": null
+    },
+    "assert sequential_search([13, 28, 44, 59, 40, 44, 42, 57], 66) == (False, 8)": {
+      "result": false,
+      "time": 0.04291701316833496,
+      "error": null
+    },
+    "assert sequential_search([15, 37, 42, 65, 35, 47, 48, 65], 65) == (True, 3)": {
+      "result": true,
+      "time": 0.0413818359375,
+      "error": null
+    },
+    "assert sequential_search([11, 30, 41, 57, 40, 49, 40, 56], 60) == (False, 8)": {
+      "result": false,
+      "time": 0.03700137138366699,
+      "error": null
+    },
+    "assert sequential_search([15, 37, 46, 61, 31, 52, 40, 57], 64) == (False, 8)": {
+      "result": false,
+      "time": 0.04510235786437988,
+      "error": null
+    },
+    "assert sequential_search([12, 34, 42, 67, 40, 46, 43, 60], 59) == (False, 8)": {
+      "result": false,
+      "time": 0.0393826961517334,
+      "error": null
+    },
+    "assert sequential_search([14, 31, 50, 58, 32, 42, 42, 60], 62) == (False, 8)": {
+      "result": false,
+      "time": 0.037796735763549805,
+      "error": null
+    },
+    "assert sequential_search([16, 35, 43, 58, 37, 50, 46, 66], 56) == (False, 8)": {
+      "result": false,
+      "time": 0.045728445053100586,
+      "error": null
+    },
+    "assert sequential_search([13, 33, 47, 66, 33, 45, 45, 66], 64) == (False, 8)": {
+      "result": false,
+      "time": 0.04905366897583008,
+      "error": null
+    },
+    "assert sequential_search([12, 30, 44, 62, 31, 44, 45, 58], 56) == (False, 8)": {
+      "result": false,
+      "time": 0.04435896873474121,
+      "error": null
+    },
+    "assert sequential_search([16, 29, 50, 58, 39, 50, 47, 62], 63) == (False, 8)": {
+      "result": false,
+      "time": 0.0442960262298584,
+      "error": null
+    },
+    "assert sequential_search([16, 36, 44, 61, 32, 42, 48, 60], 66) == (False, 8)": {
+      "result": false,
+      "time": 0.039962053298950195,
+      "error": null
+    },
+    "assert sequential_search([8, 36, 43, 59, 32, 47, 45, 65], 60) == (False, 8)": {
+      "result": false,
+      "time": 0.04089641571044922,
+      "error": null
+    },
+    "assert sequential_search([16, 33, 47, 58, 38, 50, 46, 63], 62) == (False, 8)": {
+      "result": false,
+      "time": 0.04330158233642578,
+      "error": null
+    },
+    "assert sequential_search([17, 35, 45, 61, 36, 49, 43, 58], 60) == (False, 8)": {
+      "result": false,
+      "time": 0.046289682388305664,
+      "error": null
+    },
+    "assert sequential_search([9, 37, 44, 58, 36, 48, 46, 61], 63) == (False, 8)": {
+      "result": false,
+      "time": 0.04361915588378906,
+      "error": null
+    },
+    "assert sequential_search([7, 31, 48, 59, 38, 52, 44, 59], 66) == (False, 8)": {
+      "result": false,
+      "time": 0.04524064064025879,
+      "error": null
+    },
+    "assert sequential_search([10, 36, 46, 67, 34, 46, 41, 59], 63) == (False, 8)": {
+      "result": false,
+      "time": 0.035334110260009766,
+      "error": null
+    },
+    "assert sequential_search([12, 32, 44, 61, 39, 49, 48, 63], 60) == (False, 8)": {
+      "result": false,
+      "time": 0.037232398986816406,
+      "error": null
+    },
+    "assert sequential_search([12, 30, 43, 63, 30, 49, 48, 66], 57) == (False, 8)": {
+      "result": false,
+      "time": 0.059308767318725586,
+      "error": null
+    },
+    "assert sequential_search([8, 34, 42, 67, 34, 48, 48, 59], 61) == (False, 8)": {
+      "result": false,
+      "time": 0.04827570915222168,
+      "error": null
+    },
+    "assert sequential_search([11, 35, 40, 66, 34, 45, 49, 63], 66) == (True, 3)": {
+      "result": true,
+      "time": 0.04851174354553223,
+      "error": null
+    },
+    "assert sequential_search([10, 27, 50, 66, 31, 43, 45, 64], 60) == (False, 8)": {
+      "result": false,
+      "time": 0.039415836334228516,
+      "error": null
+    },
+    "assert sequential_search([17, 35, 41, 57, 38, 47, 44, 63], 64) == (False, 8)": {
+      "result": false,
+      "time": 0.0492556095123291,
+      "error": null
+    },
+    "assert sequential_search([8, 36, 43, 59, 35, 48, 45, 60], 59) == (True, 3)": {
+      "result": true,
+      "time": 0.042830705642700195,
+      "error": null
+    },
+    "assert sequential_search([8, 27, 50, 57, 38, 43, 45, 60], 65) == (False, 8)": {
+      "result": false,
+      "time": 0.04215717315673828,
+      "error": null
+    },
+    "assert sequential_search([14, 34, 46, 60, 39, 47, 42, 58], 63) == (False, 8)": {
+      "result": false,
+      "time": 0.04417157173156738,
+      "error": null
+    },
+    "assert sequential_search([17, 36, 46, 57, 35, 52, 48, 57], 62) == (False, 8)": {
+      "result": false,
+      "time": 0.04580259323120117,
+      "error": null
+    },
+    "assert sequential_search([15, 27, 47, 60, 37, 45, 46, 64], 60) == (True, 3)": {
+      "result": true,
+      "time": 0.03944897651672363,
+      "error": null
+    },
+    "assert sequential_search([17, 35, 46, 59, 34, 43, 45, 57], 60) == (False, 8)": {
+      "result": false,
+      "time": 0.03917360305786133,
+      "error": null
+    },
+    "assert sequential_search([17, 33, 50, 61, 38, 42, 48, 58], 59) == (False, 8)": {
+      "result": false,
+      "time": 0.04377150535583496,
+      "error": null
+    },
+    "assert sequential_search([9, 10, 20, 21, 22, 35, 53, 53], 51) == (False, 8)": {
+      "result": false,
+      "time": 0.05060005187988281,
+      "error": null
+    },
+    "assert sequential_search([4, 14, 17, 15, 21, 38, 52, 51], 44) == (False, 8)": {
+      "result": false,
+      "time": 0.043175697326660156,
+      "error": null
+    },
+    "assert sequential_search([12, 7, 15, 15, 19, 41, 45, 57], 50) == (False, 8)": {
+      "result": false,
+      "time": 0.04388833045959473,
+      "error": null
+    },
+    "assert sequential_search([6, 9, 12, 16, 19, 44, 53, 53], 43) == (False, 8)": {
+      "result": false,
+      "time": 0.040892839431762695,
+      "error": null
+    },
+    "assert sequential_search([5, 5, 19, 21, 22, 35, 46, 58], 50) == (False, 8)": {
+      "result": false,
+      "time": 0.041744232177734375,
+      "error": null
+    },
+    "assert sequential_search([13, 7, 15, 15, 21, 41, 46, 55], 44) == (False, 8)": {
+      "result": false,
+      "time": 0.04085564613342285,
+      "error": null
+    },
+    "assert sequential_search([12, 14, 13, 16, 20, 38, 50, 61], 47) == (False, 8)": {
+      "result": false,
+      "time": 0.04057645797729492,
+      "error": null
+    },
+    "assert sequential_search([10, 6, 15, 23, 18, 35, 52, 56], 50) == (False, 8)": {
+      "result": false,
+      "time": 0.046584367752075195,
+      "error": null
+    },
+    "assert sequential_search([8, 8, 12, 14, 19, 34, 50, 56], 53) == (False, 8)": {
+      "result": false,
+      "time": 0.040082693099975586,
+      "error": null
+    },
+    "assert sequential_search([6, 5, 19, 18, 18, 40, 48, 56], 45) == (False, 8)": {
+      "result": false,
+      "time": 0.03612256050109863,
+      "error": null
+    },
+    "assert sequential_search([13, 12, 19, 15, 27, 34, 52, 61], 45) == (False, 8)": {
+      "result": false,
+      "time": 0.04157829284667969,
+      "error": null
+    },
+    "assert sequential_search([14, 12, 20, 23, 23, 44, 47, 59], 50) == (False, 8)": {
+      "result": false,
+      "time": 0.04148745536804199,
+      "error": null
+    },
+    "assert sequential_search([12, 12, 12, 24, 24, 35, 51, 57], 44) == (False, 8)": {
+      "result": false,
+      "time": 0.03843545913696289,
+      "error": null
+    },
+    "assert sequential_search([5, 14, 14, 14, 17, 40, 51, 56], 46) == (False, 8)": {
+      "result": false,
+      "time": 0.03680753707885742,
+      "error": null
+    },
+    "assert sequential_search([11, 5, 14, 15, 25, 44, 50, 60], 46) == (False, 8)": {
+      "result": false,
+      "time": 0.03623008728027344,
+      "error": null
+    },
+    "assert sequential_search([9, 6, 18, 16, 25, 36, 53, 57], 46) == (False, 8)": {
+      "result": false,
+      "time": 0.04586601257324219,
+      "error": null
+    },
+    "assert sequential_search([13, 9, 21, 14, 21, 39, 49, 61], 51) == (False, 8)": {
+      "result": false,
+      "time": 0.0366511344909668,
+      "error": null
+    },
+    "assert sequential_search([7, 12, 15, 15, 24, 37, 44, 55], 46) == (False, 8)": {
+      "result": false,
+      "time": 0.03610801696777344,
+      "error": null
+    },
+    "assert sequential_search([6, 13, 19, 23, 20, 37, 50, 56], 52) == (False, 8)": {
+      "result": false,
+      "time": 0.03703904151916504,
+      "error": null
+    },
+    "assert sequential_search([8, 10, 19, 23, 23, 40, 52, 58], 47) == (False, 8)": {
+      "result": false,
+      "time": 0.050421714782714844,
+      "error": null
+    },
+    "assert sequential_search([7, 6, 19, 18, 23, 40, 53, 58], 47) == (False, 8)": {
+      "result": false,
+      "time": 0.04266190528869629,
+      "error": null
+    },
+    "assert sequential_search([8, 6, 16, 18, 25, 38, 44, 58], 45) == (False, 8)": {
+      "result": false,
+      "time": 0.04431009292602539,
+      "error": null
+    },
+    "assert sequential_search([9, 13, 17, 22, 18, 39, 49, 57], 48) == (False, 8)": {
+      "result": false,
+      "time": 0.04221081733703613,
+      "error": null
+    },
+    "assert sequential_search([12, 15, 19, 20, 19, 36, 43, 56], 44) == (False, 8)": {
+      "result": false,
+      "time": 0.03778195381164551,
+      "error": null
+    },
+    "assert sequential_search([10, 11, 19, 14, 22, 35, 48, 53], 53) == (True, 7)": {
+      "result": true,
+      "time": 0.03844046592712402,
+      "error": null
+    },
+    "assert sequential_search([13, 5, 14, 19, 25, 34, 45, 57], 44) == (False, 8)": {
+      "result": false,
+      "time": 0.04029107093811035,
+      "error": null
+    },
+    "assert sequential_search([4, 5, 20, 18, 26, 36, 51, 57], 52) == (False, 8)": {
+      "result": false,
+      "time": 0.04119372367858887,
+      "error": null
+    },
+    "assert sequential_search([8, 7, 21, 22, 22, 34, 47, 58], 50) == (False, 8)": {
+      "result": false,
+      "time": 0.03860306739807129,
+      "error": null
+    },
+    "assert sequential_search([7, 15, 21, 18, 22, 35, 48, 60], 44) == (False, 8)": {
+      "result": false,
+      "time": 0.03760504722595215,
+      "error": null
+    },
+    "assert sequential_search([11, 6, 18, 18, 19, 40, 51, 61], 45) == (False, 8)": {
+      "result": false,
+      "time": 0.03743386268615723,
+      "error": null
+    },
+    "assert sequential_search([13, 13, 15, 14, 18, 37, 48, 60], 53) == (False, 8)": {
+      "result": false,
+      "time": 0.03817129135131836,
+      "error": null
+    },
+    "assert sequential_search([11, 5, 16, 24, 21, 35, 51, 60], 48) == (False, 8)": {
+      "result": false,
+      "time": 0.038784027099609375,
+      "error": null
+    },
+    "assert sequential_search([9, 12, 16, 24, 22, 40, 47, 56], 50) == (False, 8)": {
+      "result": false,
+      "time": 0.03390169143676758,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.18627450980392157,
+  "general_error": "",
+  "has_testcase_error": false
+}

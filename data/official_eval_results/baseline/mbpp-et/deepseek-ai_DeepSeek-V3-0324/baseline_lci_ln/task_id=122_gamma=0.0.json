@@ -1,0 +1,144 @@
+{
+  "code": "def smartNumber(n):\n    if n == 1:\n        return 30\n    count = 1\n    current_number = 30\n    while count < n:\n        current_number += 1\n        temp = current_number\n        factors = set()\n        divisor = 2\n        while divisor * divisor <= temp:\n            if temp % divisor == 0:\n                factors.add(divisor)\n                temp = temp // divisor\n            else:\n                divisor += 1\n        if temp > 1:\n            factors.add(temp)\n        if len(factors) == 3:\n            count += 1\n    return current_number",
+  "results": {
+    "assert smartNumber(1) == 30": {
+      "result": true,
+      "time": 0.04097557067871094,
+      "error": null
+    },
+    "assert smartNumber(50) == 273": {
+      "result": false,
+      "time": 0.032607078552246094,
+      "error": null
+    },
+    "assert smartNumber(1000) == 2664": {
+      "result": false,
+      "time": 0.04294180870056152,
+      "error": null
+    },
+    "assert smartNumber(5) == 70": {
+      "result": true,
+      "time": 0.03495216369628906,
+      "error": null
+    },
+    "assert smartNumber(2) == 42": {
+      "result": true,
+      "time": 0.03293490409851074,
+      "error": null
+    },
+    "assert smartNumber(6) == 78": {
+      "result": true,
+      "time": 0.032384395599365234,
+      "error": null
+    },
+    "assert smartNumber(3) == 60": {
+      "result": true,
+      "time": 0.042200565338134766,
+      "error": null
+    },
+    "assert smartNumber(4) == 66": {
+      "result": true,
+      "time": 0.04171299934387207,
+      "error": null
+    },
+    "assert smartNumber(49) == 270": {
+      "result": false,
+      "time": 0.039818763732910156,
+      "error": null
+    },
+    "assert smartNumber(48) == 266": {
+      "result": false,
+      "time": 0.040550947189331055,
+      "error": null
+    },
+    "assert smartNumber(45) == 258": {
+      "result": false,
+      "time": 0.04581904411315918,
+      "error": null
+    },
+    "assert smartNumber(55) == 286": {
+      "result": false,
+      "time": 0.04097318649291992,
+      "error": null
+    },
+    "assert smartNumber(54) == 285": {
+      "result": false,
+      "time": 0.0399930477142334,
+      "error": null
+    },
+    "assert smartNumber(53) == 282": {
+      "result": false,
+      "time": 0.04155230522155762,
+      "error": null
+    },
+    "assert smartNumber(46) == 260": {
+      "result": false,
+      "time": 0.046399831771850586,
+      "error": null
+    },
+    "assert smartNumber(47) == 264": {
+      "result": false,
+      "time": 0.04182863235473633,
+      "error": null
+    },
+    "assert smartNumber(51) == 276": {
+      "result": false,
+      "time": 0.049704551696777344,
+      "error": null
+    },
+    "assert smartNumber(52) == 280": {
+      "result": false,
+      "time": 0.04643702507019043,
+      "error": null
+    },
+    "assert smartNumber(995) == 2650": {
+      "result": false,
+      "time": 0.04508781433105469,
+      "error": null
+    },
+    "assert smartNumber(1001) == 2665": {
+      "result": false,
+      "time": 0.0404665470123291,
+      "error": null
+    },
+    "assert smartNumber(1005) == 2670": {
+      "result": false,
+      "time": 0.05762624740600586,
+      "error": null
+    },
+    "assert smartNumber(999) == 2660": {
+      "result": false,
+      "time": 0.046080589294433594,
+      "error": null
+    },
+    "assert smartNumber(996) == 2652": {
+      "result": false,
+      "time": 0.05834674835205078,
+      "error": null
+    },
+    "assert smartNumber(997) == 2655": {
+      "result": false,
+      "time": 0.04795098304748535,
+      "error": null
+    },
+    "assert smartNumber(1004) == 2668": {
+      "result": false,
+      "time": 0.05122804641723633,
+      "error": null
+    },
+    "assert smartNumber(1003) == 2667": {
+      "result": false,
+      "time": 0.0454256534576416,
+      "error": null
+    },
+    "assert smartNumber(998) == 2658": {
+      "result": false,
+      "time": 0.04907345771789551,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.2222222222222222,
+  "general_error": "",
+  "has_testcase_error": false
+}

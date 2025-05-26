@@ -1,0 +1,519 @@
+{
+  "code": "def zero_count(nums):\n    zero_count = nums.count(0)\n    total_count = len(nums)\n    ratio = zero_count / total_count\n    return ratio",
+  "results": {
+    "assert zero_count([0, 1, 2, -1, -5, 6, 0, -3, -2, 3, 4, 6, 8])==0.15": {
+      "result": false,
+      "time": 0.0343165397644043,
+      "error": null
+    },
+    "assert zero_count([2, 1, 2, -1, -5, 6, 4, -3, -2, 3, 4, 6, 8])==0.00": {
+      "result": true,
+      "time": 0.041883230209350586,
+      "error": null
+    },
+    "assert zero_count([2, 4, -6, -9, 11, -12, 14, -5, 17])==0.00": {
+      "result": true,
+      "time": 0.034189462661743164,
+      "error": null
+    },
+    "assert zero_count([1, 4, 2, -3, -5, 7, 5, -6, 1, 8, 3, 8, 9]) == 0.0": {
+      "result": true,
+      "time": 0.02840733528137207,
+      "error": null
+    },
+    "assert zero_count([5, 5, 5, -1, -6, 11, 1, -1, -2, 5, 8, 4, 7]) == 0.0": {
+      "result": true,
+      "time": 0.036331892013549805,
+      "error": null
+    },
+    "assert zero_count([4, 6, 7, -1, -9, 1, 1, -8, 3, 6, 8, 5, 4]) == 0.0": {
+      "result": true,
+      "time": 0.03288626670837402,
+      "error": null
+    },
+    "assert zero_count([1, 1, 4, 2, -1, 10, 1, -2, 2, 6, 3, 1, 3]) == 0.0": {
+      "result": true,
+      "time": 0.03608965873718262,
+      "error": null
+    },
+    "assert zero_count([4, 3, 5, 3, -4, 8, 3, 2, -2, 5, 5, 3, 9]) == 0.0": {
+      "result": true,
+      "time": 0.041536569595336914,
+      "error": null
+    },
+    "assert zero_count([3, 2, 6, -3, -5, 1, 3, -1, -3, 5, 3, 8, 6]) == 0.0": {
+      "result": true,
+      "time": 0.04262661933898926,
+      "error": null
+    },
+    "assert zero_count([4, 5, 1, -6, -2, 5, 5, -8, 1, 7, 4, 6, 4]) == 0.0": {
+      "result": true,
+      "time": 0.03981733322143555,
+      "error": null
+    },
+    "assert zero_count([2, 1, 7, -6, -10, 9, 2, -5, -4, 4, 4, 11, 4]) == 0.0": {
+      "result": true,
+      "time": 0.03419041633605957,
+      "error": null
+    },
+    "assert zero_count([4, 5, 2, 2, -1, 7, 2, -7, 3, 3, 8, 6, 4]) == 0.0": {
+      "result": true,
+      "time": 0.037178993225097656,
+      "error": null
+    },
+    "assert zero_count([2, 6, 1, 1, 0, 5, 5, -3, 3, 4, 4, 4, 12]) == 0.08": {
+      "result": false,
+      "time": 0.035158395767211914,
+      "error": null
+    },
+    "assert zero_count([4, 5, 5, -3, 0, 4, 3, -8, -5, 2, 5, 9, 9]) == 0.08": {
+      "result": false,
+      "time": 0.03382110595703125,
+      "error": null
+    },
+    "assert zero_count([1, 2, 6, 0, -5, 7, 3, -3, -6, 3, 8, 4, 5]) == 0.08": {
+      "result": false,
+      "time": 0.03510332107543945,
+      "error": null
+    },
+    "assert zero_count([4, 5, 5, -6, -1, 10, 1, -4, -2, 7, 1, 3, 5]) == 0.0": {
+      "result": true,
+      "time": 0.04021501541137695,
+      "error": null
+    },
+    "assert zero_count([5, 2, 4, -5, -10, 2, 5, -1, -7, 1, 5, 10, 6]) == 0.0": {
+      "result": true,
+      "time": 0.03375744819641113,
+      "error": null
+    },
+    "assert zero_count([5, 3, 4, -3, -5, 2, 4, -1, -6, 5, 3, 7, 4]) == 0.0": {
+      "result": true,
+      "time": 0.033570289611816406,
+      "error": null
+    },
+    "assert zero_count([3, 4, 6, -6, 0, 8, 1, -8, 3, 8, 8, 9, 11]) == 0.08": {
+      "result": false,
+      "time": 0.03707289695739746,
+      "error": null
+    },
+    "assert zero_count([2, 4, 4, -2, -6, 3, 1, -6, -1, 2, 4, 6, 13]) == 0.0": {
+      "result": true,
+      "time": 0.03229951858520508,
+      "error": null
+    },
+    "assert zero_count([4, 2, 2, 4, -8, 1, 5, 2, -5, 6, 9, 1, 11]) == 0.0": {
+      "result": true,
+      "time": 0.0379335880279541,
+      "error": null
+    },
+    "assert zero_count([1, 5, 3, 0, -10, 6, 3, -8, -3, 5, 5, 7, 10]) == 0.08": {
+      "result": false,
+      "time": 0.035227298736572266,
+      "error": null
+    },
+    "assert zero_count([2, 3, 6, 3, -8, 4, 4, -3, -3, 7, 4, 9, 9]) == 0.0": {
+      "result": true,
+      "time": 0.03456521034240723,
+      "error": null
+    },
+    "assert zero_count([4, 1, 3, -2, -9, 3, 3, 2, -1, 4, 3, 8, 11]) == 0.0": {
+      "result": true,
+      "time": 0.04385638236999512,
+      "error": null
+    },
+    "assert zero_count([3, 3, 2, -3, -10, 8, 3, -8, 0, 7, 1, 2, 8]) == 0.08": {
+      "result": false,
+      "time": 0.03706932067871094,
+      "error": null
+    },
+    "assert zero_count([2, 2, 3, 1, -3, 2, 1, -8, 3, 6, 6, 6, 10]) == 0.0": {
+      "result": true,
+      "time": 0.031690359115600586,
+      "error": null
+    },
+    "assert zero_count([3, 4, 7, 2, -6, 6, 1, -8, 0, 1, 3, 5, 6]) == 0.08": {
+      "result": false,
+      "time": 0.04204392433166504,
+      "error": null
+    },
+    "assert zero_count([1, 5, 1, -5, -8, 11, 1, -5, -5, 5, 1, 5, 11]) == 0.0": {
+      "result": true,
+      "time": 0.03362464904785156,
+      "error": null
+    },
+    "assert zero_count([4, 1, 4, -6, -9, 4, 4, -3, -7, 3, 5, 7, 3]) == 0.0": {
+      "result": true,
+      "time": 0.039789676666259766,
+      "error": null
+    },
+    "assert zero_count([5, 4, 4, 4, -10, 3, 1, -5, -3, 2, 1, 4, 11]) == 0.0": {
+      "result": true,
+      "time": 0.04179263114929199,
+      "error": null
+    },
+    "assert zero_count([5, 1, 5, -4, -1, 8, 2, -7, -7, 7, 2, 5, 6]) == 0.0": {
+      "result": true,
+      "time": 0.03679680824279785,
+      "error": null
+    },
+    "assert zero_count([1, 6, 7, -4, -4, 10, 3, -2, 1, 7, 8, 3, 10]) == 0.0": {
+      "result": true,
+      "time": 0.032155752182006836,
+      "error": null
+    },
+    "assert zero_count([3, 5, 1, -2, -6, 10, 4, -5, -2, 8, 5, 10, 7]) == 0.0": {
+      "result": true,
+      "time": 0.036461830139160156,
+      "error": null
+    },
+    "assert zero_count([3, 6, 6, 4, -4, 11, 1, 1, -5, 1, 9, 11, 4]) == 0.0": {
+      "result": true,
+      "time": 0.03160810470581055,
+      "error": null
+    },
+    "assert zero_count([3, 5, 6, 4, -6, 4, 5, -7, 1, 3, 1, 4, 3]) == 0.0": {
+      "result": true,
+      "time": 0.03269696235656738,
+      "error": null
+    },
+    "assert zero_count([4, 5, 7, 4, -3, 9, 2, 1, 3, 7, 2, 1, 9]) == 0.0": {
+      "result": true,
+      "time": 0.038041114807128906,
+      "error": null
+    },
+    "assert zero_count([2, 4, 6, -5, -1, 11, 2, -8, -1, 1, 8, 8, 10]) == 0.0": {
+      "result": true,
+      "time": 0.04031062126159668,
+      "error": null
+    },
+    "assert zero_count([7, 2, 4, -5, -1, 1, 3, -3, 1, 1, 9, 2, 11]) == 0.0": {
+      "result": true,
+      "time": 0.034155845642089844,
+      "error": null
+    },
+    "assert zero_count([5, 1, 5, 2, -6, 10, 6, -1, 1, 8, 2, 1, 3]) == 0.0": {
+      "result": true,
+      "time": 0.04012942314147949,
+      "error": null
+    },
+    "assert zero_count([6, 6, 7, 4, -6, 2, 2, 2, -5, 1, 6, 3, 13]) == 0.0": {
+      "result": true,
+      "time": 0.030979633331298828,
+      "error": null
+    },
+    "assert zero_count([1, 5, 5, 4, -1, 9, 9, 1, 2, 6, 1, 9, 10]) == 0.0": {
+      "result": true,
+      "time": 0.035018205642700195,
+      "error": null
+    },
+    "assert zero_count([4, 5, 7, -5, -10, 10, 1, 0, -3, 1, 2, 4, 12]) == 0.08": {
+      "result": false,
+      "time": 0.035407304763793945,
+      "error": null
+    },
+    "assert zero_count([6, 2, 6, 1, -3, 7, 3, -8, 2, 2, 2, 4, 11]) == 0.0": {
+      "result": true,
+      "time": 0.028447628021240234,
+      "error": null
+    },
+    "assert zero_count([5, 6, 3, 0, -6, 1, 9, -4, -4, 4, 5, 3, 3]) == 0.08": {
+      "result": false,
+      "time": 0.03711724281311035,
+      "error": null
+    },
+    "assert zero_count([4, 2, 7, -3, -1, 7, 8, 1, -7, 5, 4, 8, 4]) == 0.0": {
+      "result": true,
+      "time": 0.033792734146118164,
+      "error": null
+    },
+    "assert zero_count([6, 1, 5, 3, -3, 11, 4, -5, 2, 1, 1, 3, 12]) == 0.0": {
+      "result": true,
+      "time": 0.03726482391357422,
+      "error": null
+    },
+    "assert zero_count([1, 3, 5, -2, -2, 8, 8, -7, -4, 3, 3, 3, 3]) == 0.0": {
+      "result": true,
+      "time": 0.03577423095703125,
+      "error": null
+    },
+    "assert zero_count([2, 4, 6, -3, -6, 4, 1, 1, -6, 1, 1, 3, 11]) == 0.0": {
+      "result": true,
+      "time": 0.04321432113647461,
+      "error": null
+    },
+    "assert zero_count([1, 5, 6, 1, -7, 5, 7, -5, -2, 2, 7, 4, 5]) == 0.0": {
+      "result": true,
+      "time": 0.039279937744140625,
+      "error": null
+    },
+    "assert zero_count([6, 6, 3, 0, -1, 11, 2, 1, 0, 4, 3, 1, 12]) == 0.15": {
+      "result": false,
+      "time": 0.032489776611328125,
+      "error": null
+    },
+    "assert zero_count([7, 4, 6, -1, -10, 3, 7, -1, -1, 3, 5, 2, 13]) == 0.0": {
+      "result": true,
+      "time": 0.04178452491760254,
+      "error": null
+    },
+    "assert zero_count([6, 4, 5, 0, -8, 1, 8, 0, -1, 2, 7, 2, 4]) == 0.15": {
+      "result": false,
+      "time": 0.030884981155395508,
+      "error": null
+    },
+    "assert zero_count([7, 2, 4, -4, -4, 4, 1, -6, -3, 3, 5, 6, 3]) == 0.0": {
+      "result": true,
+      "time": 0.039771080017089844,
+      "error": null
+    },
+    "assert zero_count([3, 5, 7, -2, -8, 3, 4, -1, 1, 1, 9, 9, 13]) == 0.0": {
+      "result": true,
+      "time": 0.037483930587768555,
+      "error": null
+    },
+    "assert zero_count([4, 4, 4, -5, -9, 11, 6, 0, 2, 1, 4, 6, 6]) == 0.08": {
+      "result": false,
+      "time": 0.03689217567443848,
+      "error": null
+    },
+    "assert zero_count([5, 3, 6, 0, -6, 10, 8, -4, 0, 6, 4, 6, 12]) == 0.15": {
+      "result": false,
+      "time": 0.03988003730773926,
+      "error": null
+    },
+    "assert zero_count([7, 1, 3, -4, -2, 6, 8, -4, -1, 1, 8, 6, 13]) == 0.0": {
+      "result": true,
+      "time": 0.0353240966796875,
+      "error": null
+    },
+    "assert zero_count([3, 3, 4, 1, -3, 6, 6, -6, 1, 8, 6, 8, 7]) == 0.0": {
+      "result": true,
+      "time": 0.039494991302490234,
+      "error": null
+    },
+    "assert zero_count([2, 4, 7, -4, -7, 6, 1, -1, 1, 5, 4, 2, 4]) == 0.0": {
+      "result": true,
+      "time": 0.03752303123474121,
+      "error": null
+    },
+    "assert zero_count([6, 2, 5, -3, -6, 10, 4, -2, -1, 8, 5, 1, 7]) == 0.0": {
+      "result": true,
+      "time": 0.040828704833984375,
+      "error": null
+    },
+    "assert zero_count([7, 5, 2, -2, -2, 1, 6, 2, 2, 3, 9, 2, 4]) == 0.0": {
+      "result": true,
+      "time": 0.03331494331359863,
+      "error": null
+    },
+    "assert zero_count([3, 5, 4, -4, -7, 5, 8, 0, -3, 8, 5, 6, 9]) == 0.08": {
+      "result": false,
+      "time": 0.03896617889404297,
+      "error": null
+    },
+    "assert zero_count([2, 1, 4, 3, -6, 2, 1, 0, -6, 8, 2, 7, 6]) == 0.08": {
+      "result": false,
+      "time": 0.03692793846130371,
+      "error": null
+    },
+    "assert zero_count([5, 3, 6, 3, -2, 11, 3, -4, -5, 5, 9, 8, 3]) == 0.0": {
+      "result": true,
+      "time": 0.039992570877075195,
+      "error": null
+    },
+    "assert zero_count([7, 6, 4, -5, -2, 4, 8, -1, -2, 2, 9, 4, 10]) == 0.0": {
+      "result": true,
+      "time": 0.03713679313659668,
+      "error": null
+    },
+    "assert zero_count([1, 6, 4, -3, -9, 11, 2, -7, 1, 6, 7, 9, 9]) == 0.0": {
+      "result": true,
+      "time": 0.04417252540588379,
+      "error": null
+    },
+    "assert zero_count([6, 6, 3, -3, -10, 1, 2, -6, 2, 3, 2, 1, 4]) == 0.0": {
+      "result": true,
+      "time": 0.037436485290527344,
+      "error": null
+    },
+    "assert zero_count([7, 1, 3, 3, -5, 8, 1, -7, 0, 7, 3, 10, 8]) == 0.08": {
+      "result": false,
+      "time": 0.03501605987548828,
+      "error": null
+    },
+    "assert zero_count([5, 5, 1, 4, -5, 3, 9, -4, -7, 2, 1, 7, 10]) == 0.0": {
+      "result": true,
+      "time": 0.03699946403503418,
+      "error": null
+    },
+    "assert zero_count([2, 9, -6, -14, 10, -9, 9, -6, 12]) == 0.0": {
+      "result": true,
+      "time": 0.03281855583190918,
+      "error": null
+    },
+    "assert zero_count([1, 1, -10, -10, 6, -12, 10, -4, 21]) == 0.0": {
+      "result": true,
+      "time": 0.03710532188415527,
+      "error": null
+    },
+    "assert zero_count([7, 3, -11, -7, 14, -12, 10, -8, 22]) == 0.0": {
+      "result": true,
+      "time": 0.03995323181152344,
+      "error": null
+    },
+    "assert zero_count([4, 8, -7, -13, 11, -8, 19, -5, 15]) == 0.0": {
+      "result": true,
+      "time": 0.03554201126098633,
+      "error": null
+    },
+    "assert zero_count([7, 5, -11, -4, 8, -11, 18, -3, 18]) == 0.0": {
+      "result": true,
+      "time": 0.03524065017700195,
+      "error": null
+    },
+    "assert zero_count([6, 1, -1, -4, 6, -13, 13, -8, 14]) == 0.0": {
+      "result": true,
+      "time": 0.03587841987609863,
+      "error": null
+    },
+    "assert zero_count([2, 6, -4, -8, 8, -10, 17, -2, 18]) == 0.0": {
+      "result": true,
+      "time": 0.03901076316833496,
+      "error": null
+    },
+    "assert zero_count([2, 7, -8, -14, 13, -11, 16, -9, 18]) == 0.0": {
+      "result": true,
+      "time": 0.03613018989562988,
+      "error": null
+    },
+    "assert zero_count([2, 9, -7, -7, 8, -17, 18, -6, 15]) == 0.0": {
+      "result": true,
+      "time": 0.03933143615722656,
+      "error": null
+    },
+    "assert zero_count([5, 5, -8, -14, 10, -10, 10, -5, 12]) == 0.0": {
+      "result": true,
+      "time": 0.031049728393554688,
+      "error": null
+    },
+    "assert zero_count([4, 1, -7, -8, 13, -12, 9, -5, 13]) == 0.0": {
+      "result": true,
+      "time": 0.03780484199523926,
+      "error": null
+    },
+    "assert zero_count([1, 4, -10, -5, 7, -8, 11, -7, 13]) == 0.0": {
+      "result": true,
+      "time": 0.04297614097595215,
+      "error": null
+    },
+    "assert zero_count([1, 4, -11, -7, 9, -9, 14, -4, 21]) == 0.0": {
+      "result": true,
+      "time": 0.03942131996154785,
+      "error": null
+    },
+    "assert zero_count([6, 5, -9, -12, 16, -17, 12, -3, 12]) == 0.0": {
+      "result": true,
+      "time": 0.038327693939208984,
+      "error": null
+    },
+    "assert zero_count([6, 5, -8, -4, 8, -9, 19, -8, 13]) == 0.0": {
+      "result": true,
+      "time": 0.04168891906738281,
+      "error": null
+    },
+    "assert zero_count([2, 8, -5, -13, 9, -17, 10, -3, 20]) == 0.0": {
+      "result": true,
+      "time": 0.040457725524902344,
+      "error": null
+    },
+    "assert zero_count([1, 9, -6, -9, 9, -8, 17, -8, 21]) == 0.0": {
+      "result": true,
+      "time": 0.03284120559692383,
+      "error": null
+    },
+    "assert zero_count([4, 1, -8, -11, 10, -12, 17, -6, 17]) == 0.0": {
+      "result": true,
+      "time": 0.03298640251159668,
+      "error": null
+    },
+    "assert zero_count([2, 6, -7, -14, 10, -11, 9, -4, 16]) == 0.0": {
+      "result": true,
+      "time": 0.03641462326049805,
+      "error": null
+    },
+    "assert zero_count([4, 7, -6, -13, 14, -8, 17, -8, 17]) == 0.0": {
+      "result": true,
+      "time": 0.047116756439208984,
+      "error": null
+    },
+    "assert zero_count([3, 4, -5, -7, 15, -17, 16, -3, 22]) == 0.0": {
+      "result": true,
+      "time": 0.037213802337646484,
+      "error": null
+    },
+    "assert zero_count([2, 3, -8, -10, 7, -13, 19, -5, 18]) == 0.0": {
+      "result": true,
+      "time": 0.03535890579223633,
+      "error": null
+    },
+    "assert zero_count([6, 3, -5, -14, 16, -10, 13, -7, 13]) == 0.0": {
+      "result": true,
+      "time": 0.0312800407409668,
+      "error": null
+    },
+    "assert zero_count([6, 8, -10, -11, 9, -17, 14, -8, 12]) == 0.0": {
+      "result": true,
+      "time": 0.03751206398010254,
+      "error": null
+    },
+    "assert zero_count([7, 5, -6, -4, 8, -9, 15, -2, 13]) == 0.0": {
+      "result": true,
+      "time": 0.03749728202819824,
+      "error": null
+    },
+    "assert zero_count([1, 4, -6, -14, 10, -13, 14, -10, 20]) == 0.0": {
+      "result": true,
+      "time": 0.03655266761779785,
+      "error": null
+    },
+    "assert zero_count([6, 1, -1, -13, 12, -10, 16, -4, 19]) == 0.0": {
+      "result": true,
+      "time": 0.03918266296386719,
+      "error": null
+    },
+    "assert zero_count([6, 2, -1, -4, 10, -12, 13, -9, 22]) == 0.0": {
+      "result": true,
+      "time": 0.037172555923461914,
+      "error": null
+    },
+    "assert zero_count([6, 9, -5, -11, 14, -7, 17, -9, 12]) == 0.0": {
+      "result": true,
+      "time": 0.040261030197143555,
+      "error": null
+    },
+    "assert zero_count([1, 7, -6, -11, 10, -15, 18, -6, 22]) == 0.0": {
+      "result": true,
+      "time": 0.027912378311157227,
+      "error": null
+    },
+    "assert zero_count([3, 9, -6, -8, 15, -9, 11, -7, 12]) == 0.0": {
+      "result": true,
+      "time": 0.039267778396606445,
+      "error": null
+    },
+    "assert zero_count([2, 9, -4, -7, 11, -14, 16, -6, 22]) == 0.0": {
+      "result": true,
+      "time": 0.033745765686035156,
+      "error": null
+    },
+    "assert zero_count([3, 9, -8, -10, 13, -16, 10, 0, 22]) == 0.11": {
+      "result": false,
+      "time": 0.03383660316467285,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8235294117647058,
+  "general_error": "",
+  "has_testcase_error": false
+}

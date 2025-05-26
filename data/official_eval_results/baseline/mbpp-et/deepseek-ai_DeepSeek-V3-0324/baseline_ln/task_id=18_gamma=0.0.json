@@ -1,0 +1,519 @@
+{
+  "code": "def remove_dirty_chars(first_string, second_string):\n    # Create a set of characters to remove for O(1) lookups\n    chars_to_remove = set(second_string)\n    # Build the result by including only characters not in the second string\n    result = ''.join([char for char in first_string if char not in chars_to_remove])\n    return result",
+  "results": {
+    "assert remove_dirty_chars(\"probasscurve\", \"pros\") == 'bacuve'": {
+      "result": true,
+      "time": 0.04089498519897461,
+      "error": null
+    },
+    "assert remove_dirty_chars(\"digitalindia\", \"talent\") == 'digiidi'": {
+      "result": true,
+      "time": 0.03447413444519043,
+      "error": null
+    },
+    "assert remove_dirty_chars(\"exoticmiles\", \"toxic\") == 'emles' ": {
+      "result": true,
+      "time": 0.03953385353088379,
+      "error": null
+    },
+    "assert remove_dirty_chars('qdpzozkznqlaoom', 'njqo') == \"dpzzkzlam\"": {
+      "result": true,
+      "time": 0.03748941421508789,
+      "error": null
+    },
+    "assert remove_dirty_chars('tlmbxuhlcohzvqug', 'sxminpa') == \"tlbuhlcohzvqug\"": {
+      "result": true,
+      "time": 0.038291215896606445,
+      "error": null
+    },
+    "assert remove_dirty_chars('xvzhycpqvu', 'viltjuv') == \"xzhycpq\"": {
+      "result": true,
+      "time": 0.03341341018676758,
+      "error": null
+    },
+    "assert remove_dirty_chars('rdykdjovqsnojsg', 'hjwkhdqmo') == \"ryvsnsg\"": {
+      "result": true,
+      "time": 0.04097294807434082,
+      "error": null
+    },
+    "assert remove_dirty_chars('cazbpqlqk', 'gntsmlgk') == \"cazbpqq\"": {
+      "result": true,
+      "time": 0.04035615921020508,
+      "error": null
+    },
+    "assert remove_dirty_chars('eykxzgefmmd', 'ptwmiq') == \"eykxzgefd\"": {
+      "result": true,
+      "time": 0.03711891174316406,
+      "error": null
+    },
+    "assert remove_dirty_chars('pkesvoyddpemyts', 'liibow') == \"pkesvyddpemyts\"": {
+      "result": true,
+      "time": 0.05626964569091797,
+      "error": null
+    },
+    "assert remove_dirty_chars('xetczzyufrykj', 'ppmvozo') == \"xetcyufrykj\"": {
+      "result": true,
+      "time": 0.04720163345336914,
+      "error": null
+    },
+    "assert remove_dirty_chars('zwihdehckulyfbk', 'pjqrsqsga') == \"zwihdehckulyfbk\"": {
+      "result": true,
+      "time": 0.04029059410095215,
+      "error": null
+    },
+    "assert remove_dirty_chars('chnprtogleqygiku', 'qazdgkov') == \"chnprtleyiu\"": {
+      "result": true,
+      "time": 0.05677437782287598,
+      "error": null
+    },
+    "assert remove_dirty_chars('tjgycprhiu', 'rpvwkf') == \"tjgychiu\"": {
+      "result": true,
+      "time": 0.05779290199279785,
+      "error": null
+    },
+    "assert remove_dirty_chars('aphqzohvss', 'votf') == \"aphqzhss\"": {
+      "result": true,
+      "time": 0.054143667221069336,
+      "error": null
+    },
+    "assert remove_dirty_chars('vharnxmvehre', 'yqbwyiri') == \"vhanxmvehe\"": {
+      "result": true,
+      "time": 0.05883479118347168,
+      "error": null
+    },
+    "assert remove_dirty_chars('mougsgkkjbevuqjah', 'fkrkzlug') == \"mosjbevqjah\"": {
+      "result": true,
+      "time": 0.06328320503234863,
+      "error": null
+    },
+    "assert remove_dirty_chars('vdobkqlaboa', 'okceevdjq') == \"blaba\"": {
+      "result": true,
+      "time": 0.055426597595214844,
+      "error": null
+    },
+    "assert remove_dirty_chars('fyxuhqorafvdbdi', 'yvj') == \"fxuhqorafdbdi\"": {
+      "result": true,
+      "time": 0.05525493621826172,
+      "error": null
+    },
+    "assert remove_dirty_chars('ugeenenpzwhisxyxq', 'gwmsk') == \"ueenenpzhixyxq\"": {
+      "result": true,
+      "time": 0.0688483715057373,
+      "error": null
+    },
+    "assert remove_dirty_chars('xsioernnoyhvtc', 'okfyaow') == \"xsiernnhvtc\"": {
+      "result": true,
+      "time": 0.05456852912902832,
+      "error": null
+    },
+    "assert remove_dirty_chars('kqxehdzsmpdd', 'oafylpwk') == \"qxehdzsmdd\"": {
+      "result": true,
+      "time": 0.06110382080078125,
+      "error": null
+    },
+    "assert remove_dirty_chars('awaquznerv', 'kpknku') == \"awaqzerv\"": {
+      "result": true,
+      "time": 0.050479888916015625,
+      "error": null
+    },
+    "assert remove_dirty_chars('qxdsistktfdfhlik', 'ujzjg') == \"qxdsistktfdfhlik\"": {
+      "result": true,
+      "time": 0.0517575740814209,
+      "error": null
+    },
+    "assert remove_dirty_chars('eonhxciirfd', 'jtdnz') == \"eohxciirf\"": {
+      "result": true,
+      "time": 0.06021738052368164,
+      "error": null
+    },
+    "assert remove_dirty_chars('djyfhrpvnlqpt', 'ixzd') == \"jyfhrpvnlqpt\"": {
+      "result": true,
+      "time": 0.06488680839538574,
+      "error": null
+    },
+    "assert remove_dirty_chars('bptvrokulewymvemjl', 'ojlxadet') == \"bpvrkuwymvm\"": {
+      "result": true,
+      "time": 0.05246996879577637,
+      "error": null
+    },
+    "assert remove_dirty_chars('nhvuyhieg', 'bnct') == \"hvuyhieg\"": {
+      "result": true,
+      "time": 0.05461859703063965,
+      "error": null
+    },
+    "assert remove_dirty_chars('uazdxotjengwy', 'ems') == \"uazdxotjngwy\"": {
+      "result": true,
+      "time": 0.06238293647766113,
+      "error": null
+    },
+    "assert remove_dirty_chars('iyvywrcadioetun', 'kcxkbqsz') == \"iyvywradioetun\"": {
+      "result": true,
+      "time": 0.055459022521972656,
+      "error": null
+    },
+    "assert remove_dirty_chars('cifdktwdpy', 'diju') == \"cfktwpy\"": {
+      "result": true,
+      "time": 0.059781551361083984,
+      "error": null
+    },
+    "assert remove_dirty_chars('atbalbsbyamnj', 'jqfr') == \"atbalbsbyamn\"": {
+      "result": true,
+      "time": 0.042243242263793945,
+      "error": null
+    },
+    "assert remove_dirty_chars('wsetdcmnguuyu', 'mzmbhynwc') == \"setdguuu\"": {
+      "result": true,
+      "time": 0.05084228515625,
+      "error": null
+    },
+    "assert remove_dirty_chars('mgwdheebgxwhnwddjp', 'wqnzlskn') == \"mgdheebgxhddjp\"": {
+      "result": true,
+      "time": 0.046770334243774414,
+      "error": null
+    },
+    "assert remove_dirty_chars('ttshznreofgjkiqd', 'lkvarjhqq') == \"ttszneofgid\"": {
+      "result": true,
+      "time": 0.059250593185424805,
+      "error": null
+    },
+    "assert remove_dirty_chars('wbnkwxtag', 'dbukx') == \"wnwtag\"": {
+      "result": true,
+      "time": 0.06315422058105469,
+      "error": null
+    },
+    "assert remove_dirty_chars('xhgwymdmzfnz', 'xqhuxbum') == \"gwydzfnz\"": {
+      "result": true,
+      "time": 0.05513143539428711,
+      "error": null
+    },
+    "assert remove_dirty_chars('rixoupluamkstkex', 'mccdn') == \"rixoupluakstkex\"": {
+      "result": true,
+      "time": 0.05932044982910156,
+      "error": null
+    },
+    "assert remove_dirty_chars('uaxirorrt', 'wltezlji') == \"uaxrorr\"": {
+      "result": true,
+      "time": 0.05996823310852051,
+      "error": null
+    },
+    "assert remove_dirty_chars('hwyksqowszy', 'pftzdpj') == \"hwyksqowsy\"": {
+      "result": true,
+      "time": 0.059409379959106445,
+      "error": null
+    },
+    "assert remove_dirty_chars('jdjdtzxhsmbqyvxnjy', 'nwecz') == \"jdjdtxhsmbqyvxjy\"": {
+      "result": true,
+      "time": 0.05750918388366699,
+      "error": null
+    },
+    "assert remove_dirty_chars('tquaziyocfhlnkt', 'akgodkqhb') == \"tuziycflnt\"": {
+      "result": true,
+      "time": 0.05835700035095215,
+      "error": null
+    },
+    "assert remove_dirty_chars('cyuhnvrfdqsafohbc', 'tmfk') == \"cyuhnvrdqsaohbc\"": {
+      "result": true,
+      "time": 0.05177021026611328,
+      "error": null
+    },
+    "assert remove_dirty_chars('jdifzvjrx', 'jullvjpnx') == \"difzr\"": {
+      "result": true,
+      "time": 0.04998278617858887,
+      "error": null
+    },
+    "assert remove_dirty_chars('qxsrvbxcyh', 'wljgnvqpi') == \"xsrbxcyh\"": {
+      "result": true,
+      "time": 0.05581831932067871,
+      "error": null
+    },
+    "assert remove_dirty_chars('pbclncvyvml', 'emcvkl') == \"pbny\"": {
+      "result": true,
+      "time": 0.05734896659851074,
+      "error": null
+    },
+    "assert remove_dirty_chars('obxppocumjpnzkd', 'zhboi') == \"xppcumjpnkd\"": {
+      "result": true,
+      "time": 0.04412698745727539,
+      "error": null
+    },
+    "assert remove_dirty_chars('zaaswyhxdpqx', 'bkedxvrmi') == \"zaaswyhpq\"": {
+      "result": true,
+      "time": 0.05034279823303223,
+      "error": null
+    },
+    "assert remove_dirty_chars('wunhqitjietzce', 'tjemmw') == \"unhqiizc\"": {
+      "result": true,
+      "time": 0.05031919479370117,
+      "error": null
+    },
+    "assert remove_dirty_chars('nmrcsoktfr', 'mmtsaom') == \"nrckfr\"": {
+      "result": true,
+      "time": 0.04329395294189453,
+      "error": null
+    },
+    "assert remove_dirty_chars('lvnfvyakbtmnlsg', 'rfv') == \"lnyakbtmnlsg\"": {
+      "result": true,
+      "time": 0.041854143142700195,
+      "error": null
+    },
+    "assert remove_dirty_chars('sqysazjjwxggzoum', 'bacpvdvfgptm') == \"sqyszjjwxzou\"": {
+      "result": true,
+      "time": 0.04278373718261719,
+      "error": null
+    },
+    "assert remove_dirty_chars('xibtzokkx', 'nbbdpsu') == \"xitzokkx\"": {
+      "result": true,
+      "time": 0.031179189682006836,
+      "error": null
+    },
+    "assert remove_dirty_chars('locbqwvygprspqcgl', 'kmqbxrcmvq') == \"lowygpspgl\"": {
+      "result": true,
+      "time": 0.05983710289001465,
+      "error": null
+    },
+    "assert remove_dirty_chars('pvwepkgetu', 'otxhrhl') == \"pvwepkgeu\"": {
+      "result": true,
+      "time": 0.04630303382873535,
+      "error": null
+    },
+    "assert remove_dirty_chars('fgekzqkhqtdexgm', 'ntxwd') == \"fgekzqkhqegm\"": {
+      "result": true,
+      "time": 0.04892230033874512,
+      "error": null
+    },
+    "assert remove_dirty_chars('siqyibigck', 'ydlk') == \"siqibigc\"": {
+      "result": true,
+      "time": 0.04886054992675781,
+      "error": null
+    },
+    "assert remove_dirty_chars('nfatwjhmpnxq', 'ktbequqdx') == \"nfawjhmpn\"": {
+      "result": true,
+      "time": 0.04011964797973633,
+      "error": null
+    },
+    "assert remove_dirty_chars('qrfitwztsdfgr', 'sjpvm') == \"qrfitwztdfgr\"": {
+      "result": true,
+      "time": 0.03873038291931152,
+      "error": null
+    },
+    "assert remove_dirty_chars('kvpnyadfnwjyw', 'ttnxk') == \"vpyadfwjyw\"": {
+      "result": true,
+      "time": 0.045996665954589844,
+      "error": null
+    },
+    "assert remove_dirty_chars('qdeqsarwxtn', 'dqcg') == \"esarwxtn\"": {
+      "result": true,
+      "time": 0.0484318733215332,
+      "error": null
+    },
+    "assert remove_dirty_chars('zxiebsvabhioe', 'atfzr') == \"xiebsvbhioe\"": {
+      "result": true,
+      "time": 0.0371856689453125,
+      "error": null
+    },
+    "assert remove_dirty_chars('iwybuvxltfqhmy', 'qmrqkp') == \"iwybuvxltfhy\"": {
+      "result": true,
+      "time": 0.04739046096801758,
+      "error": null
+    },
+    "assert remove_dirty_chars('kzslfzvexmjia', 'adfl') == \"kzszvexmji\"": {
+      "result": true,
+      "time": 0.042819976806640625,
+      "error": null
+    },
+    "assert remove_dirty_chars('bxylyxthiypsxnzfkh', 'jdvdpnwyqt') == \"bxlxhisxzfkh\"": {
+      "result": true,
+      "time": 0.037166595458984375,
+      "error": null
+    },
+    "assert remove_dirty_chars('eltkmdtqtrkllwduin', 'efonoxirugy') == \"ltkmdtqtkllwd\"": {
+      "result": true,
+      "time": 0.039958953857421875,
+      "error": null
+    },
+    "assert remove_dirty_chars('wqvhwrsilutfagl', 'bbqvijj') == \"whwrslutfagl\"": {
+      "result": true,
+      "time": 0.04076123237609863,
+      "error": null
+    },
+    "assert remove_dirty_chars('whtzizzagztjgp', 'majoh') == \"wtzizzgztgp\"": {
+      "result": true,
+      "time": 0.03638815879821777,
+      "error": null
+    },
+    "assert remove_dirty_chars('viiepmsyiy', 'ssxzytrj') == \"viiepmi\"": {
+      "result": true,
+      "time": 0.03745150566101074,
+      "error": null
+    },
+    "assert remove_dirty_chars('bqtqat', 'hkz') == \"bqtqat\"": {
+      "result": true,
+      "time": 0.04321026802062988,
+      "error": null
+    },
+    "assert remove_dirty_chars('nlhrkzfpfo', 'duyoj') == \"nlhrkzfpf\"": {
+      "result": true,
+      "time": 0.04072070121765137,
+      "error": null
+    },
+    "assert remove_dirty_chars('ganmdsh', 'lddvs') == \"ganmh\"": {
+      "result": true,
+      "time": 0.042752981185913086,
+      "error": null
+    },
+    "assert remove_dirty_chars('iheewbmwk', 'ibwgmkdl') == \"hee\"": {
+      "result": true,
+      "time": 0.0425410270690918,
+      "error": null
+    },
+    "assert remove_dirty_chars('clsubmokhr', 'vulgck') == \"sbmohr\"": {
+      "result": true,
+      "time": 0.04175543785095215,
+      "error": null
+    },
+    "assert remove_dirty_chars('igtoozrtxgqzw', 'rho') == \"igtztxgqzw\"": {
+      "result": true,
+      "time": 0.04609513282775879,
+      "error": null
+    },
+    "assert remove_dirty_chars('bmffqbega', 'jfv') == \"bmqbega\"": {
+      "result": true,
+      "time": 0.04990339279174805,
+      "error": null
+    },
+    "assert remove_dirty_chars('ylggmhzpdxf', 'drqpxeny') == \"lggmhzf\"": {
+      "result": true,
+      "time": 0.042909860610961914,
+      "error": null
+    },
+    "assert remove_dirty_chars('duipzioi', 'krele') == \"duipzioi\"": {
+      "result": true,
+      "time": 0.03888559341430664,
+      "error": null
+    },
+    "assert remove_dirty_chars('htqckgxzqjo', 'atxhiouo') == \"qckgzqj\"": {
+      "result": true,
+      "time": 0.04056239128112793,
+      "error": null
+    },
+    "assert remove_dirty_chars('epfdyhqjv', 'dzmuiep') == \"fyhqjv\"": {
+      "result": true,
+      "time": 0.0508732795715332,
+      "error": null
+    },
+    "assert remove_dirty_chars('bihfoqbsqjqdzmk', 'zjvxpx') == \"bihfoqbsqqdmk\"": {
+      "result": true,
+      "time": 0.04459500312805176,
+      "error": null
+    },
+    "assert remove_dirty_chars('fgyjqlobtsesp', 'moqc') == \"fgyjlbtsesp\"": {
+      "result": true,
+      "time": 0.04174351692199707,
+      "error": null
+    },
+    "assert remove_dirty_chars('sicnpwcseluexm', 'klisxjqo') == \"cnpwceuem\"": {
+      "result": true,
+      "time": 0.037558555603027344,
+      "error": null
+    },
+    "assert remove_dirty_chars('hlublspcn', 'uiqawoduj') == \"hlblspcn\"": {
+      "result": true,
+      "time": 0.0442507266998291,
+      "error": null
+    },
+    "assert remove_dirty_chars('wligcjwhrgvvf', 'shx') == \"wligcjwrgvvf\"": {
+      "result": true,
+      "time": 0.03679990768432617,
+      "error": null
+    },
+    "assert remove_dirty_chars('yfcnkcmya', 'aqogq') == \"yfcnkcmy\"": {
+      "result": true,
+      "time": 0.04694104194641113,
+      "error": null
+    },
+    "assert remove_dirty_chars('cnhepvgxicbqme', 'rivryjgf') == \"cnhepxcbqme\"": {
+      "result": true,
+      "time": 0.04489326477050781,
+      "error": null
+    },
+    "assert remove_dirty_chars('lupinj', 'xgluvgngg') == \"pij\"": {
+      "result": true,
+      "time": 0.043929338455200195,
+      "error": null
+    },
+    "assert remove_dirty_chars('yptnaqet', 'nyg') == \"ptaqet\"": {
+      "result": true,
+      "time": 0.04738616943359375,
+      "error": null
+    },
+    "assert remove_dirty_chars('hxkzhkkkevglp', 'detgy') == \"hxkzhkkkvlp\"": {
+      "result": true,
+      "time": 0.04354572296142578,
+      "error": null
+    },
+    "assert remove_dirty_chars('oxgykoxujyolpkf', 'bai') == \"oxgykoxujyolpkf\"": {
+      "result": true,
+      "time": 0.039548635482788086,
+      "error": null
+    },
+    "assert remove_dirty_chars('xpnumduiltlin', 'uqkzlpt') == \"xnmdiin\"": {
+      "result": true,
+      "time": 0.04631853103637695,
+      "error": null
+    },
+    "assert remove_dirty_chars('tagxoexlmei', 'bojhf') == \"tagxexlmei\"": {
+      "result": true,
+      "time": 0.04513120651245117,
+      "error": null
+    },
+    "assert remove_dirty_chars('aodbpici', 'pednq') == \"aobici\"": {
+      "result": true,
+      "time": 0.04304027557373047,
+      "error": null
+    },
+    "assert remove_dirty_chars('vlxtxskxxwb', 'ynrdc') == \"vlxtxskxxwb\"": {
+      "result": true,
+      "time": 0.04554009437561035,
+      "error": null
+    },
+    "assert remove_dirty_chars('uroanodq', 'dmkhgqs') == \"uroano\"": {
+      "result": true,
+      "time": 0.0381319522857666,
+      "error": null
+    },
+    "assert remove_dirty_chars('wfuztnhy', 'bvlvcc') == \"wfuztnhy\"": {
+      "result": true,
+      "time": 0.038375139236450195,
+      "error": null
+    },
+    "assert remove_dirty_chars('sjghbqfdvio', 'qskysewyv') == \"jghbfdio\"": {
+      "result": true,
+      "time": 0.050380706787109375,
+      "error": null
+    },
+    "assert remove_dirty_chars('bcnpmupnnz', 'kjmzojvjh') == \"bcnpupnn\"": {
+      "result": true,
+      "time": 0.03738093376159668,
+      "error": null
+    },
+    "assert remove_dirty_chars('dqlcrhtmubx', 'xigtq') == \"dlcrhmub\"": {
+      "result": true,
+      "time": 0.04171156883239746,
+      "error": null
+    },
+    "assert remove_dirty_chars('whxtbxisodgjzb', 'nypsi') == \"whxtbxodgjzb\"": {
+      "result": true,
+      "time": 0.04428839683532715,
+      "error": null
+    },
+    "assert remove_dirty_chars('dlqppzlppxsyzhx', 'zkevug') == \"dlqpplppxsyhx\"": {
+      "result": true,
+      "time": 0.040022850036621094,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "from collections import Counter\n\ndef find_Product(arr, n):\n    count = Counter(arr)\n    product = 1\n    for num in arr:\n        if count[num] == 1:\n            product *= num\n    return product",
+  "results": {
+    "assert find_Product([1,1,2,3],4) == 6": {
+      "result": true,
+      "time": 0.29654383659362793,
+      "error": null
+    },
+    "assert find_Product([1,2,3,1,1],5) == 6": {
+      "result": true,
+      "time": 0.27669358253479004,
+      "error": null
+    },
+    "assert find_Product([1,1,4,5,6],5) == 120": {
+      "result": true,
+      "time": 0.28023290634155273,
+      "error": null
+    },
+    "assert find_Product([5, 4, 1, 4], 2) == 4": {
+      "result": false,
+      "time": 0.26825451850891113,
+      "error": null
+    },
+    "assert find_Product([6, 5, 2, 2], 4) == 60": {
+      "result": false,
+      "time": 0.2692110538482666,
+      "error": null
+    },
+    "assert find_Product([3, 3, 4, 8], 2) == 3": {
+      "result": false,
+      "time": 0.27645230293273926,
+      "error": null
+    },
+    "assert find_Product([3, 6, 1, 5], 1) == 1": {
+      "result": false,
+      "time": 0.27840232849121094,
+      "error": null
+    },
+    "assert find_Product([4, 3, 1, 2], 3) == 6": {
+      "result": false,
+      "time": 0.28232359886169434,
+      "error": null
+    },
+    "assert find_Product([3, 3, 1, 6], 1) == 1": {
+      "result": false,
+      "time": 0.2978038787841797,
+      "error": null
+    },
+    "assert find_Product([6, 6, 7, 7], 3) == 42": {
+      "result": false,
+      "time": 0.27606725692749023,
+      "error": null
+    },
+    "assert find_Product([3, 3, 2, 7], 3) == 6": {
+      "result": false,
+      "time": 0.2809131145477295,
+      "error": null
+    },
+    "assert find_Product([3, 5, 6, 7], 2) == 15": {
+      "result": false,
+      "time": 0.27893662452697754,
+      "error": null
+    },
+    "assert find_Product([3, 3, 2, 1], 1) == 1": {
+      "result": false,
+      "time": 0.29181981086730957,
+      "error": null
+    },
+    "assert find_Product([3, 5, 3, 1], 4) == 15": {
+      "result": false,
+      "time": 0.27866196632385254,
+      "error": null
+    },
+    "assert find_Product([2, 2, 2, 8], 3) == 2": {
+      "result": false,
+      "time": 0.272418737411499,
+      "error": null
+    },
+    "assert find_Product([5, 4, 6, 3], 3) == 60": {
+      "result": false,
+      "time": 0.27768397331237793,
+      "error": null
+    },
+    "assert find_Product([1, 1, 2, 2], 4) == 2": {
+      "result": false,
+      "time": 0.28044772148132324,
+      "error": null
+    },
+    "assert find_Product([6, 3, 4, 4], 3) == 12": {
+      "result": false,
+      "time": 0.2921123504638672,
+      "error": null
+    },
+    "assert find_Product([2, 5, 4, 8], 3) == 40": {
+      "result": false,
+      "time": 0.28581976890563965,
+      "error": null
+    },
+    "assert find_Product([6, 1, 6, 7], 2) == 6": {
+      "result": false,
+      "time": 0.2716355323791504,
+      "error": null
+    },
+    "assert find_Product([5, 4, 6, 5], 3) == 20": {
+      "result": false,
+      "time": 0.28885984420776367,
+      "error": null
+    },
+    "assert find_Product([3, 1, 2, 6], 4) == 36": {
+      "result": true,
+      "time": 0.26196908950805664,
+      "error": null
+    },
+    "assert find_Product([4, 6, 3, 8], 2) == 12": {
+      "result": false,
+      "time": 0.26830267906188965,
+      "error": null
+    },
+    "assert find_Product([6, 2, 2, 8], 2) == 2": {
+      "result": false,
+      "time": 0.26723337173461914,
+      "error": null
+    },
+    "assert find_Product([5, 4, 5, 3], 4) == 60": {
+      "result": false,
+      "time": 0.26386380195617676,
+      "error": null
+    },
+    "assert find_Product([2, 1, 2, 4], 4) == 8": {
+      "result": false,
+      "time": 0.27175116539001465,
+      "error": null
+    },
+    "assert find_Product([2, 1, 6, 6], 3) == 12": {
+      "result": false,
+      "time": 0.2657196521759033,
+      "error": null
+    },
+    "assert find_Product([2, 5, 2, 4], 4) == 40": {
+      "result": false,
+      "time": 0.285109281539917,
+      "error": null
+    },
+    "assert find_Product([5, 1, 2, 3], 1) == 1": {
+      "result": false,
+      "time": 0.2716538906097412,
+      "error": null
+    },
+    "assert find_Product([2, 3, 4, 3], 3) == 6": {
+      "result": false,
+      "time": 0.28145384788513184,
+      "error": null
+    },
+    "assert find_Product([6, 1, 2, 5], 4) == 60": {
+      "result": true,
+      "time": 0.2824690341949463,
+      "error": null
+    },
+    "assert find_Product([4, 3, 5, 8], 3) == 60": {
+      "result": false,
+      "time": 0.26580810546875,
+      "error": null
+    },
+    "assert find_Product([3, 3, 4, 4], 1) == 3": {
+      "result": false,
+      "time": 0.282623291015625,
+      "error": null
+    },
+    "assert find_Product([2, 6, 5, 8], 3) == 60": {
+      "result": false,
+      "time": 0.2773311138153076,
+      "error": null
+    },
+    "assert find_Product([4, 2, 1, 3], 4) == 24": {
+      "result": true,
+      "time": 0.2684140205383301,
+      "error": null
+    },
+    "assert find_Product([3, 5, 1, 1], 3) == 3": {
+      "result": false,
+      "time": 0.26868653297424316,
+      "error": null
+    },
+    "assert find_Product([2, 1, 8, 3, 3], 5) == 48": {
+      "result": false,
+      "time": 0.2886021137237549,
+      "error": null
+    },
+    "assert find_Product([6, 5, 6, 4, 1], 4) == 120": {
+      "result": false,
+      "time": 0.3012692928314209,
+      "error": null
+    },
+    "assert find_Product([5, 4, 4, 1, 1], 4) == 4": {
+      "result": false,
+      "time": 0.2862124443054199,
+      "error": null
+    },
+    "assert find_Product([3, 3, 1, 4, 3], 1) == 1": {
+      "result": false,
+      "time": 0.2926051616668701,
+      "error": null
+    },
+    "assert find_Product([6, 7, 5, 4, 2], 2) == 8": {
+      "result": false,
+      "time": 0.26873779296875,
+      "error": null
+    },
+    "assert find_Product([3, 5, 1, 6, 4], 2) == 3": {
+      "result": false,
+      "time": 0.2813379764556885,
+      "error": null
+    },
+    "assert find_Product([2, 3, 1, 5, 4], 5) == 120": {
+      "result": true,
+      "time": 0.2862250804901123,
+      "error": null
+    },
+    "assert find_Product([5, 4, 3, 6, 6], 3) == 60": {
+      "result": true,
+      "time": 0.27880406379699707,
+      "error": null
+    },
+    "assert find_Product([4, 7, 5, 4, 2], 2) == 8": {
+      "result": false,
+      "time": 0.28718996047973633,
+      "error": null
+    },
+    "assert find_Product([2, 1, 2, 4, 4], 4) == 8": {
+      "result": false,
+      "time": 0.26195573806762695,
+      "error": null
+    },
+    "assert find_Product([1, 4, 8, 5, 6], 1) == 1": {
+      "result": false,
+      "time": 0.2893857955932617,
+      "error": null
+    },
+    "assert find_Product([5, 2, 6, 6, 6], 5) == 60": {
+      "result": false,
+      "time": 0.26232147216796875,
+      "error": null
+    },
+    "assert find_Product([1, 6, 5, 1, 3], 1) == 1": {
+      "result": false,
+      "time": 0.27876710891723633,
+      "error": null
+    },
+    "assert find_Product([2, 6, 8, 1, 1], 4) == 12": {
+      "result": false,
+      "time": 0.2687063217163086,
+      "error": null
+    },
+    "assert find_Product([1, 6, 2, 2, 4], 5) == 48": {
+      "result": false,
+      "time": 0.2948648929595947,
+      "error": null
+    },
+    "assert find_Product([2, 2, 7, 1, 6], 5) == 84": {
+      "result": false,
+      "time": 0.28556060791015625,
+      "error": null
+    },
+    "assert find_Product([3, 5, 1, 3, 6], 1) == 1": {
+      "result": false,
+      "time": 0.2706174850463867,
+      "error": null
+    },
+    "assert find_Product([3, 7, 3, 4, 5], 5) == 420": {
+      "result": false,
+      "time": 0.2978188991546631,
+      "error": null
+    },
+    "assert find_Product([3, 1, 3, 3, 5], 5) == 15": {
+      "result": false,
+      "time": 0.2708454132080078,
+      "error": null
+    },
+    "assert find_Product([6, 3, 7, 2, 3], 4) == 36": {
+      "result": false,
+      "time": 0.28814244270324707,
+      "error": null
+    },
+    "assert find_Product([5, 2, 2, 4, 5], 5) == 40": {
+      "result": false,
+      "time": 0.3044912815093994,
+      "error": null
+    },
+    "assert find_Product([2, 5, 6, 2, 3], 1) == 2": {
+      "result": false,
+      "time": 0.26291632652282715,
+      "error": null
+    },
+    "assert find_Product([4, 3, 7, 2, 5], 2) == 6": {
+      "result": false,
+      "time": 0.27124524116516113,
+      "error": null
+    },
+    "assert find_Product([3, 7, 5, 6, 2], 3) == 30": {
+      "result": false,
+      "time": 0.2873990535736084,
+      "error": null
+    },
+    "assert find_Product([3, 5, 8, 6, 5], 1) == 3": {
+      "result": false,
+      "time": 0.2857222557067871,
+      "error": null
+    },
+    "assert find_Product([1, 2, 8, 6, 5], 3) == 10": {
+      "result": false,
+      "time": 0.29741501808166504,
+      "error": null
+    },
+    "assert find_Product([5, 1, 6, 4, 1], 2) == 1": {
+      "result": false,
+      "time": 0.27679920196533203,
+      "error": null
+    },
+    "assert find_Product([2, 7, 6, 6, 5], 1) == 2": {
+      "result": false,
+      "time": 0.26686716079711914,
+      "error": null
+    },
+    "assert find_Product([2, 6, 1, 6, 5], 4) == 60": {
+      "result": false,
+      "time": 0.28243541717529297,
+      "error": null
+    },
+    "assert find_Product([6, 6, 8, 2, 3], 5) == 288": {
+      "result": false,
+      "time": 0.2733590602874756,
+      "error": null
+    },
+    "assert find_Product([5, 6, 4, 1, 2], 3) == 8": {
+      "result": false,
+      "time": 0.28694915771484375,
+      "error": null
+    },
+    "assert find_Product([2, 5, 4, 6, 3], 2) == 6": {
+      "result": false,
+      "time": 0.276214599609375,
+      "error": null
+    },
+    "assert find_Product([3, 7, 7, 1, 1], 3) == 3": {
+      "result": true,
+      "time": 0.2672696113586426,
+      "error": null
+    },
+    "assert find_Product([2, 5, 4, 10, 5], 5) == 400": {
+      "result": false,
+      "time": 0.26880693435668945,
+      "error": null
+    },
+    "assert find_Product([4, 6, 9, 9, 5], 2) == 20": {
+      "result": false,
+      "time": 0.3193051815032959,
+      "error": null
+    },
+    "assert find_Product([1, 2, 7, 10, 4], 4) == 56": {
+      "result": false,
+      "time": 0.2866647243499756,
+      "error": null
+    },
+    "assert find_Product([6, 2, 3, 5, 11], 1) == 2": {
+      "result": false,
+      "time": 0.3147096633911133,
+      "error": null
+    },
+    "assert find_Product([6, 6, 7, 1, 10], 2) == 6": {
+      "result": false,
+      "time": 0.306988000869751,
+      "error": null
+    },
+    "assert find_Product([2, 2, 2, 8, 11], 2) == 2": {
+      "result": false,
+      "time": 0.3093986511230469,
+      "error": null
+    },
+    "assert find_Product([6, 1, 3, 1, 4], 1) == 1": {
+      "result": false,
+      "time": 0.30294036865234375,
+      "error": null
+    },
+    "assert find_Product([1, 6, 4, 2, 9], 4) == 48": {
+      "result": false,
+      "time": 0.29936885833740234,
+      "error": null
+    },
+    "assert find_Product([1, 2, 8, 10, 1], 3) == 2": {
+      "result": false,
+      "time": 0.29189181327819824,
+      "error": null
+    },
+    "assert find_Product([2, 3, 8, 10, 3], 4) == 48": {
+      "result": false,
+      "time": 0.3032405376434326,
+      "error": null
+    },
+    "assert find_Product([4, 6, 5, 7, 7], 5) == 840": {
+      "result": false,
+      "time": 0.29723596572875977,
+      "error": null
+    },
+    "assert find_Product([5, 1, 4, 6, 9], 3) == 20": {
+      "result": false,
+      "time": 0.2682070732116699,
+      "error": null
+    },
+    "assert find_Product([2, 6, 3, 6, 7], 1) == 2": {
+      "result": false,
+      "time": 0.3136179447174072,
+      "error": null
+    },
+    "assert find_Product([1, 3, 6, 10, 7], 5) == 1260": {
+      "result": true,
+      "time": 0.26827096939086914,
+      "error": null
+    },
+    "assert find_Product([2, 5, 1, 2, 11], 3) == 2": {
+      "result": false,
+      "time": 0.297654390335083,
+      "error": null
+    },
+    "assert find_Product([2, 5, 7, 8, 3], 2) == 6": {
+      "result": false,
+      "time": 0.2933945655822754,
+      "error": null
+    },
+    "assert find_Product([3, 3, 6, 6, 11], 2) == 3": {
+      "result": false,
+      "time": 0.1774578094482422,
+      "error": null
+    },
+    "assert find_Product([5, 1, 6, 10, 3], 4) == 90": {
+      "result": false,
+      "time": 0.3022158145904541,
+      "error": null
+    },
+    "assert find_Product([3, 1, 3, 10, 10], 1) == 1": {
+      "result": true,
+      "time": 0.29781460762023926,
+      "error": null
+    },
+    "assert find_Product([6, 5, 9, 10, 3], 3) == 90": {
+      "result": false,
+      "time": 0.2758657932281494,
+      "error": null
+    },
+    "assert find_Product([5, 1, 1, 6, 6], 2) == 1": {
+      "result": false,
+      "time": 0.3025991916656494,
+      "error": null
+    },
+    "assert find_Product([5, 3, 1, 4, 6], 1) == 1": {
+      "result": false,
+      "time": 0.30020594596862793,
+      "error": null
+    },
+    "assert find_Product([2, 2, 7, 6, 6], 1) == 2": {
+      "result": false,
+      "time": 0.2539494037628174,
+      "error": null
+    },
+    "assert find_Product([4, 2, 5, 6, 11], 2) == 8": {
+      "result": false,
+      "time": 0.297713041305542,
+      "error": null
+    },
+    "assert find_Product([6, 5, 5, 3, 10], 5) == 900": {
+      "result": false,
+      "time": 0.30875182151794434,
+      "error": null
+    },
+    "assert find_Product([1, 4, 6, 2, 8], 5) == 384": {
+      "result": true,
+      "time": 0.2875642776489258,
+      "error": null
+    },
+    "assert find_Product([3, 2, 6, 8, 9], 4) == 288": {
+      "result": false,
+      "time": 0.27640676498413086,
+      "error": null
+    },
+    "assert find_Product([6, 4, 8, 2, 2], 1) == 2": {
+      "result": false,
+      "time": 0.2533409595489502,
+      "error": null
+    },
+    "assert find_Product([1, 4, 2, 2, 4], 5) == 8": {
+      "result": false,
+      "time": 0.2922646999359131,
+      "error": null
+    },
+    "assert find_Product([2, 1, 7, 1, 5], 3) == 2": {
+      "result": false,
+      "time": 0.29396843910217285,
+      "error": null
+    },
+    "assert find_Product([3, 3, 7, 10, 5], 2) == 3": {
+      "result": false,
+      "time": 0.26993632316589355,
+      "error": null
+    },
+    "assert find_Product([6, 3, 1, 7, 11], 4) == 126": {
+      "result": false,
+      "time": 0.27071070671081543,
+      "error": null
+    },
+    "assert find_Product([5, 3, 6, 4, 3], 1) == 3": {
+      "result": false,
+      "time": 0.2913703918457031,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.11764705882352941,
+  "general_error": "",
+  "has_testcase_error": false
+}

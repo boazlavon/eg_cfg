@@ -1,0 +1,519 @@
+{
+  "code": "from collections import Counter\n\ndef count_common(words):\n    word_counts = Counter(words)\n    most_common = word_counts.most_common(3)\n    return most_common",
+  "results": {
+    "assert count_common(['red','green','black','pink','black','white','black','eyes','white','black','orange','pink','pink','red','red','white','orange','white',\"black\",'pink','green','green','pink','green','pink','white','orange',\"orange\",'red']) == [('pink', 6), ('black', 5), ('white', 5), ('red', 4)]": {
+      "result": false,
+      "time": 0.26159024238586426,
+      "error": null
+    },
+    "assert count_common(['one', 'two', 'three', 'four', 'five', 'one', 'two', 'one', 'three', 'one']) == [('one', 4), ('two', 2), ('three', 2), ('four', 1)]": {
+      "result": false,
+      "time": 0.2850923538208008,
+      "error": null
+    },
+    "assert count_common(['Facebook', 'Apple', 'Amazon', 'Netflix', 'Google', 'Apple', 'Netflix', 'Amazon']) == [('Apple', 2), ('Amazon', 2), ('Netflix', 2), ('Facebook', 1)]": {
+      "result": false,
+      "time": 0.2684190273284912,
+      "error": null
+    },
+    "assert count_common(['jytxg', 'cbcsdtvof', 'teceysk', 'twdhmvce', 'egihtwie', 'ygzet', 'jqzplo', 'uwpdyvlxk', 'dkeflga', 'rhfu', 'kal', 'nwpem', 'vlars', 'ozypuc', 'udktjobes', 'nbjxyo', 'uqamqkoy', 'eiybntxy', 'ziildtszi', 'mqki', 'xftrsorm', 'xffcvnii', 'ptzoo', 'upljvssy', 'twzmpwb', 'hknu', 'uydifclpwu', 'upjzlmefxlc', 'qhm']) == [('jytxg', 1), ('cbcsdtvof', 1), ('teceysk', 1), ('twdhmvce', 1)]": {
+      "result": false,
+      "time": 0.2614562511444092,
+      "error": null
+    },
+    "assert count_common(['yeuyrabk', 'buf', 'qhp', 'iabgvfqu', 'lqohlqtyg', 'xek', 'czhc', 'hojlqpbg', 'yvwwby', 'nqavfwkl', 'yhxuyy', 'ufkjvptba', 'gigo', 'bee', 'ajzodnd', 'lce', 'kjvrkrvsheb', 'fzzmogtai', 'fftvy', 'pgzszkng', 'pex', 'odvdkhsd', 'qcvshhem', 'dnh', 'wpffonb', 'wjpegdk', 'ijzgcjcbsnqx', 'bumqcpy', 'yai']) == [('yeuyrabk', 1), ('buf', 1), ('qhp', 1), ('iabgvfqu', 1)]": {
+      "result": false,
+      "time": 0.2746574878692627,
+      "error": null
+    },
+    "assert count_common(['jllodnkfp', 'ymff', 'xspdvxgh', 'brddsudd', 'iijhq', 'wonvhqwst', 'dejeq', 'qxrr', 'uefwl', 'tpkcisi', 'aotgbomj', 'age', 'ghbnj', 'kpge', 'bbuchfcfs', 'uezppvjw', 'typwlonssk', 'qstsix', 'yuvuvfj', 'boitdu', 'lyaty', 'dmlp', 'xwlkpa', 'hlk', 'tlbohzt', 'ycsxip', 'zsmgkns', 'bxqaxybm', 'shgzvg']) == [('jllodnkfp', 1), ('ymff', 1), ('xspdvxgh', 1), ('brddsudd', 1)]": {
+      "result": false,
+      "time": 0.2670328617095947,
+      "error": null
+    },
+    "assert count_common(['vbddiwzym', 'dfivmyuk', 'wlnqucren', 'lbhzz', 'frvdd', 'vfwdvzr', 'ftml', 'wksgot', 'htcbcrh', 'itq', 'wgdkaqvyctm', 'fkpgwhre', 'rgy', 'cwjto', 'tjoeje', 'kcjvb', 'epdqxknkuy', 'kpq', 'viqbqtje', 'ccyja', 'wwvsz', 'eftjmt', 'gwbaz', 'lbdnzr', 'lqvckt', 'blnpna', 'gmjbhpzthj', 'nwxknsbwj', 'zgmlvyknf']) == [('vbddiwzym', 1), ('dfivmyuk', 1), ('wlnqucren', 1), ('lbhzz', 1)]": {
+      "result": false,
+      "time": 0.2889695167541504,
+      "error": null
+    },
+    "assert count_common(['opre', 'clxi', 'plli', 'ciwj', 'zshrkn', 'jpjm', 'jjx', 'klyd', 'ztwplbj', 'nuau', 'sjz', 'qythxvkb', 'fjiploe', 'bfmnyizyu', 'gsfzzk', 'xqnqbf', 'zftbcyybo', 'vzu', 'ikhiwqu', 'szad', 'otiifonlj', 'oaymkepj', 'fndnzmv', 'jbfacyrj', 'wqk', 'buonqjr', 'gkya', 'mrnaxwsztgrj', 'lklipyh']) == [('opre', 1), ('clxi', 1), ('plli', 1), ('ciwj', 1)]": {
+      "result": false,
+      "time": 0.2662241458892822,
+      "error": null
+    },
+    "assert count_common(['ngm', 'tie', 'mccxxskrt', 'mqkodvubb', 'pdpclj', 'pcwkzegkl', 'gsntdskhp', 'xmvk', 'mwys', 'mnvpe', 'ztdxwsz', 'yvtsuxeac', 'mrjbgyxy', 'ovn', 'bsa', 'jnpneizb', 'sawgaqfylaig', 'bebrg', 'phtgwywl', 'rkyrksnxe', 'zze', 'cttqiqmm', 'alyqfzcjy', 'oxuso', 'vqxokk', 'uwyet', 'tkoejajo', 'gbedwaofkxv', 'aibsm']) == [('ngm', 1), ('tie', 1), ('mccxxskrt', 1), ('mqkodvubb', 1)]": {
+      "result": false,
+      "time": 0.2534615993499756,
+      "error": null
+    },
+    "assert count_common(['fgkmncrd', 'nkjhmig', 'brelbqv', 'zjk', 'tcobwa', 'rucakfm', 'gbdd', 'tvyxogjx', 'wogzp', 'cmvojrn', 'ueb', 'iqwmjlpya', 'erdewg', 'qrbwv', 'jhg', 'rrgsrbdie', 'pbebcizdbrq', 'nkxeb', 'pqn', 'kulqn', 'rckparfah', 'cxy', 'frjnogrli', 'zizgglph', 'lrbiwgtc', 'odtcdfvbn', 'hmwmu', 'gtt', 'egyeata']) == [('fgkmncrd', 1), ('nkjhmig', 1), ('brelbqv', 1), ('zjk', 1)]": {
+      "result": false,
+      "time": 0.2739872932434082,
+      "error": null
+    },
+    "assert count_common(['fogpeu', 'axfytfrd', 'simo', 'webinm', 'bwc', 'grzuwrj', 'ocmfjlntn', 'nytobt', 'greldwlrg', 'eoklmd', 'yfsqhmmvkl', 'pplomgb', 'wtiathbn', 'cpmkdn', 'ipxupja', 'plo', 'hbwsubk', 'qeegmmgw', 'efzrwpz', 'clnda', 'gdrbwvb', 'hisgvhfhm', 'qjrt', 'tmbzddos', 'lhvka', 'vkqalo', 'flkulwccgme', 'qrqzh', 'gyzsq']) == [('fogpeu', 1), ('axfytfrd', 1), ('simo', 1), ('webinm', 1)]": {
+      "result": false,
+      "time": 0.2570617198944092,
+      "error": null
+    },
+    "assert count_common(['hyueju', 'awmt', 'ijnzz', 'ybeog', 'vyfleig', 'zbyzrgbc', 'ogbgasob', 'fsl', 'yrjisk', 'schrs', 'tah', 'rqcwojm', 'mazb', 'hljawjiqz', 'rbwmwd', 'lvqf', 'gwlfutctxp', 'gwtzxxc', 'ykukbri', 'pvqoe', 'jqbfbrsu', 'eammm', 'xym', 'npdvyjlm', 'qspwebb', 'jzw', 'dapezfkita', 'wciackcvnsle', 'cwaav']) == [('hyueju', 1), ('awmt', 1), ('ijnzz', 1), ('ybeog', 1)]": {
+      "result": false,
+      "time": 0.27851414680480957,
+      "error": null
+    },
+    "assert count_common(['srev', 'kajppcxad', 'jvjowjkkg', 'mfxmpzzlb', 'aqgfitk', 'ghlt', 'qqtn', 'zxihia', 'veyliq', 'pians', 'mat', 'naxbrqhq', 'dpvunapwc', 'zwxlbs', 'qgucrpcbj', 'dlessf', 'jiqzlhz', 'nqykn', 'ziachitoi', 'bruybhd', 'jkpimm', 'jfo', 'fomdqw', 'gindkqcl', 'iaczuzam', 'joskhl', 'mibnq', 'aqm', 'qgrx']) == [('srev', 1), ('kajppcxad', 1), ('jvjowjkkg', 1), ('mfxmpzzlb', 1)]": {
+      "result": false,
+      "time": 0.2843623161315918,
+      "error": null
+    },
+    "assert count_common(['gcje', 'eirneis', 'iuhapk', 'wknimf', 'qrykpswp', 'uvidx', 'kvx', 'wocccho', 'lxls', 'kwornp', 'xdllvwrss', 'vml', 'respw', 'ihcry', 'oqjlmnd', 'fveatk', 'qyx', 'hczhcxz', 'snyripb', 'vhwve', 'wjbulil', 'qfxjsvoio', 'vgrfnc', 'frmhilys', 'wbmpp', 'nbekqglb', 'avbgmlnie', 'zolbdfeqaho', 'qowdwvkt']) == [('gcje', 1), ('eirneis', 1), ('iuhapk', 1), ('wknimf', 1)]": {
+      "result": false,
+      "time": 0.26471734046936035,
+      "error": null
+    },
+    "assert count_common(['mmw', 'lpvhy', 'jtszg', 'jbrcm', 'jrwdzqiz', 'gyqyfsri', 'bsdisqm', 'bpo', 'qfx', 'jdtjzgecc', 'cbkypdbxobin', 'vbuiqq', 'imkde', 'xspy', 'haf', 'tbuebkayk', 'tqbrvpewcc', 'xon', 'ehakfcbqy', 'xstlcw', 'oosjzozu', 'sqamjblb', 'bwxbggp', 'yxtqib', 'yipsyjo', 'gtkxyn', 'awoppdmj', 'raalnuq', 'obekkxlhb']) == [('mmw', 1), ('lpvhy', 1), ('jtszg', 1), ('jbrcm', 1)]": {
+      "result": false,
+      "time": 0.2631967067718506,
+      "error": null
+    },
+    "assert count_common(['dleyrn', 'afmtlzo', 'dnv', 'pwdciu', 'kdytukrl', 'poom', 'irjjk', 'yxejav', 'anm', 'qhmj', 'jkyqsbhqm', 'cibpgv', 'ubuhyrq', 'cou', 'vcxdba', 'anffaj', 'iyhlogj', 'dwdwifzg', 'aerial', 'svr', 'bcxek', 'cpxhfyvh', 'fghcmwq', 'cyu', 'lqbl', 'ggc', 'rsgqyrmcln', 'ytahbb', 'jgfdz']) == [('dleyrn', 1), ('afmtlzo', 1), ('dnv', 1), ('pwdciu', 1)]": {
+      "result": false,
+      "time": 0.2559385299682617,
+      "error": null
+    },
+    "assert count_common(['ybxjhjmx', 'tibascej', 'wbtwl', 'iumjsw', 'ilpprc', 'yadxi', 'wqck', 'owew', 'lrbp', 'diqfe', 'kjczsxwdt', 'dnjnx', 'keyhobdtx', 'ctwepmvww', 'exb', 'uxrupg', 'lmvyhwnc', 'tuabadan', 'wxhhonwlf', 'dxydanfte', 'wfk', 'ikcsg', 'rzumirf', 'yjyodhmvr', 'birnkir', 'iwgpmo', 'lfltsuw', 'flr', 'rvzo']) == [('ybxjhjmx', 1), ('tibascej', 1), ('wbtwl', 1), ('iumjsw', 1)]": {
+      "result": false,
+      "time": 0.2606189250946045,
+      "error": null
+    },
+    "assert count_common(['hid', 'wexduxc', 'lfzszu', 'puwejn', 'pgihpf', 'rgttjqbiz', 'ulmz', 'dbqdrvioy', 'npmvx', 'rmxc', 'ufthmlhzn', 'yfuebtvhq', 'wwdfwgwtt', 'yvudl', 'nciu', 'fouhrqij', 'szjad', 'jxpq', 'ryfv', 'rxv', 'iwouwbpb', 'wzn', 'yuudtxpa', 'emsj', 'aeamg', 'yuu', 'kbbczzp', 'yzeyrihjcofz', 'aybiestql']) == [('hid', 1), ('wexduxc', 1), ('lfzszu', 1), ('puwejn', 1)]": {
+      "result": false,
+      "time": 0.2696855068206787,
+      "error": null
+    },
+    "assert count_common(['hwuclxzh', 'ltnec', 'qsqvvl', 'nzu', 'kmxjdrt', 'qjnfedj', 'vvotrjf', 'ubyi', 'kemmus', 'ilyetfml', 'npjialso', 'scpir', 'reht', 'onwxdiga', 'uztk', 'cnzyf', 'xcqjt', 'hlvgeqfao', 'lakudqbo', 'bbotcrypv', 'qpxwn', 'oqft', 'pmqp', 'oxhxlj', 'fjvkxzr', 'ojbx', 'pojimybs', 'zchdkcdzyu', 'wcfidfgv']) == [('hwuclxzh', 1), ('ltnec', 1), ('qsqvvl', 1), ('nzu', 1)]": {
+      "result": false,
+      "time": 0.2583281993865967,
+      "error": null
+    },
+    "assert count_common(['xozuknzv', 'hvmsvs', 'dottlephd', 'vqib', 'gadtaeo', 'gipe', 'nbzbbr', 'ydqztl', 'jpahlccyv', 'kuphlea', 'qaluyhabfc', 'byjicguz', 'vywyeqck', 'kodfcj', 'zjan', 'yzvy', 'xtomxjf', 'lpszwkohv', 'jzbd', 'zndbblpm', 'gebsfsqri', 'ylryxnt', 'ccj', 'zxohsn', 'tfa', 'ktisbgvw', 'tirocufjmn', 'wmugaekk', 'owire']) == [('xozuknzv', 1), ('hvmsvs', 1), ('dottlephd', 1), ('vqib', 1)]": {
+      "result": false,
+      "time": 0.2762796878814697,
+      "error": null
+    },
+    "assert count_common(['rkgyek', 'rypxqz', 'aauzux', 'gmneji', 'nndtnk', 'mtm', 'fepmok', 'fjyhoerc', 'rotlwdlxp', 'erb', 'nlazmcxm', 'nmvfzzfc', 'gmgop', 'conm', 'urv', 'dhpvg', 'rlzsmuxxd', 'gtutpff', 'ikuecn', 'ditfapxvx', 'muogrdpx', 'jcp', 'nnyciaj', 'phxpn', 'laqvz', 'ygotbuyz', 'vrcolvtksng', 'huduyu', 'yifep']) == [('rkgyek', 1), ('rypxqz', 1), ('aauzux', 1), ('gmneji', 1)]": {
+      "result": false,
+      "time": 0.24811530113220215,
+      "error": null
+    },
+    "assert count_common(['okhdtvdq', 'wojpkomod', 'iyz', 'dmhuc', 'deoqog', 'ezqykui', 'ivfj', 'kebtne', 'xzk', 'jbludtuw', 'ancvaddyik', 'sunq', 'wjtjb', 'rolk', 'qyescej', 'uxwrxur', 'dlnm', 'wjaxqxewo', 'ackl', 'tdv', 'kcqowpoho', 'vhd', 'bvzdmijpt', 'othnoowgt', 'hpbms', 'cyysqhbe', 'orzo', 'byxxrcptvqll', 'zoir']) == [('okhdtvdq', 1), ('wojpkomod', 1), ('iyz', 1), ('dmhuc', 1)]": {
+      "result": false,
+      "time": 0.2902860641479492,
+      "error": null
+    },
+    "assert count_common(['ejlknyfwj', 'oyhpllo', 'jtgdj', 'wvuucbvlg', 'nurwbpvdz', 'pugz', 'vzyl', 'nrte', 'pnb', 'acujzbgut', 'qffiaif', 'tvk', 'wsy', 'gvkd', 'djjkae', 'onrhaeyxo', 'sgnvbozmp', 'ktborwthn', 'ybwrvc', 'lqsfjjqlx', 'yewtu', 'vktpohrbp', 'cjbyfsoo', 'ewoebp', 'cipm', 'smjlbvi', 'rnfp', 'qvqrqi', 'pkbxbhi']) == [('ejlknyfwj', 1), ('oyhpllo', 1), ('jtgdj', 1), ('wvuucbvlg', 1)]": {
+      "result": false,
+      "time": 0.269303560256958,
+      "error": null
+    },
+    "assert count_common(['pikzyqkb', 'nrjgikehl', 'ppijpkk', 'bwek', 'hyjqefzo', 'ytdddqbq', 'nlrljzsk', 'nbqbdv', 'pggmvxdwn', 'cjsnntcyc', 'oamy', 'edzqbzes', 'hzmjjzkq', 'ixdglqjju', 'iooab', 'kyqpwsuy', 'gguq', 'oapprdfgb', 'tyfrmkax', 'fkyezbtxe', 'eumyiwq', 'psa', 'zxd', 'qybt', 'lzbzwy', 'puopfq', 'grgenyh', 'hspryp', 'nqa']) == [('pikzyqkb', 1), ('nrjgikehl', 1), ('ppijpkk', 1), ('bwek', 1)]": {
+      "result": false,
+      "time": 0.26081013679504395,
+      "error": null
+    },
+    "assert count_common(['jpp', 'pmcb', 'zkbjqai', 'scjehxtqf', 'bzxu', 'hdoppz', 'jdrefvd', 'xhf', 'yxuh', 'sfv', 'ykcjngtz', 'wpqfx', 'rhpgbxbqo', 'zsfeic', 'dmzeenyo', 'mhpqtm', 'bbofrwwxzpc', 'ckmnp', 'qwjkbamj', 'ddusit', 'rxhtieif', 'seae', 'cmfjsd', 'gfy', 'pbho', 'ebaomicb', 'mpwvfg', 'eigohp', 'rafyqj']) == [('jpp', 1), ('pmcb', 1), ('zkbjqai', 1), ('scjehxtqf', 1)]": {
+      "result": false,
+      "time": 0.25411510467529297,
+      "error": null
+    },
+    "assert count_common(['tiyrpr', 'nnlyd', 'urugwldir', 'dtgh', 'ikuitmig', 'oozkrbexj', 'pnly', 'bzva', 'jwkfda', 'wpzyvwq', 'ktfxsf', 'imlilr', 'cqazrv', 'aeohgtua', 'nicvfrr', 'bisl', 'ynwo', 'wbvsodg', 'yhqziq', 'iod', 'jtm', 'pamipm', 'vep', 'asxb', 'ojq', 'vttb', 'sjf', 'sswnwl', 'hcfqr']) == [('tiyrpr', 1), ('nnlyd', 1), ('urugwldir', 1), ('dtgh', 1)]": {
+      "result": false,
+      "time": 0.26273012161254883,
+      "error": null
+    },
+    "assert count_common(['yxu', 'tbrndny', 'tpoiidox', 'kknxo', 'fez', 'ugwhlnc', 'wvxzgdiy', 'brb', 'hbjb', 'oxzqjll', 'xejyvweiw', 'pin', 'wsntu', 'omilpdql', 'kfojrjwij', 'lan', 'gsxw', 'xwpukgc', 'pafpoo', 'tlnxmhw', 'zeqk', 'qjsgywrf', 'hlapwch', 'mucsz', 'yvxru', 'mzeggug', 'tbbbne', 'zfmsqeqrs', 'cpajswwq']) == [('yxu', 1), ('tbrndny', 1), ('tpoiidox', 1), ('kknxo', 1)]": {
+      "result": false,
+      "time": 0.2593507766723633,
+      "error": null
+    },
+    "assert count_common(['nhh', 'xxvbahjnr', 'hgvfpcs', 'zoo', 'daokf', 'kzj', 'yknen', 'gkynbwvg', 'jfadvxo', 'plyw', 'pxhxmmfl', 'heo', 'ixmacyj', 'ifpv', 'wcc', 'joi', 'fbyll', 'eessdbzvb', 'kczh', 'qjdyiyo', 'hogdzp', 'amscurtg', 'jmuvamm', 'fzzciemu', 'qap', 'jcagcwvou', 'fyadaazqu', 'xsshwqdbdqfl', 'ywpid']) == [('nhh', 1), ('xxvbahjnr', 1), ('hgvfpcs', 1), ('zoo', 1)]": {
+      "result": false,
+      "time": 0.26253724098205566,
+      "error": null
+    },
+    "assert count_common(['idt', 'hmdooe', 'xrxhafvs', 'modxhnsbw', 'nrmdpwjm', 'hlghwqqv', 'its', 'qfrttcsd', 'ywcbbd', 'ifv', 'dqacslzgmi', 'bqvfltzff', 'pfzujidz', 'dnelch', 'oefrc', 'vfkqduo', 'dcyuhq', 'ramcg', 'hxoo', 'waur', 'omylmo', 'agxggbjyx', 'qmzqupxg', 'qkdxpefyq', 'sgfvyq', 'otjlar', 'zbqicxv', 'omjttvqbri', 'paivybul']) == [('idt', 1), ('hmdooe', 1), ('xrxhafvs', 1), ('modxhnsbw', 1)]": {
+      "result": false,
+      "time": 0.27085304260253906,
+      "error": null
+    },
+    "assert count_common(['acwi', 'ajrab', 'etjrchz', 'fwvr', 'glrtjxbvv', 'ertudom', 'wap', 'zclqgt', 'kkqu', 'tzw', 'zfww', 'xsu', 'nro', 'blptn', 'hbxczdf', 'qrc', 'xqshimuokmpu', 'ammef', 'rvqs', 'brv', 'vnc', 'qmh', 'ibpfdeeh', 'ase', 'jnmm', 'udxwk', 'rtrawsg', 'drzqory', 'tkw']) == [('acwi', 1), ('ajrab', 1), ('etjrchz', 1), ('fwvr', 1)]": {
+      "result": false,
+      "time": 0.2606940269470215,
+      "error": null
+    },
+    "assert count_common(['cgq', 'ilikotqkf', 'mnubewhbl', 'rkcohdma', 'tnbjr', 'conruml', 'nlmlq', 'qfawqtdwm', 'ootxpmznn', 'mifawmz', 'mrfv', 'ubbxqjt', 'gggljwvp', 'wixk', 'bzua', 'ajfclizkj', 'vuelldxi', 'aet', 'yqgmz', 'kwjhk', 'tfga', 'voogv', 'nsg', 'mxdqhbqw', 'ylhj', 'pbinhyev', 'fcip', 'xjuo', 'atxy']) == [('cgq', 1), ('ilikotqkf', 1), ('mnubewhbl', 1), ('rkcohdma', 1)]": {
+      "result": false,
+      "time": 0.27225422859191895,
+      "error": null
+    },
+    "assert count_common(['yuqls', 'vexcwk', 'edcbj', 'xamla', 'nrqu', 'ewn', 'fwqkfwwc', 'lvupcblg', 'ysvko', 'torlgb', 'gjrhbvcmcme', 'itufofua', 'eefuigd', 'nuoqcfo', 'orhq', 'udxuf', 'gbqmobdp', 'pbmdbrlgu', 'rbejj', 'zvwnxrd', 'ulvgoy', 'irlcbhslc', 'zmqb', 'zaqdwvmf', 'rjkntjkfb', 'weqczoyy', 'zrjfxote', 'jctkwdhsijze', 'xiv']) == [('yuqls', 1), ('vexcwk', 1), ('edcbj', 1), ('xamla', 1)]": {
+      "result": false,
+      "time": 0.2654001712799072,
+      "error": null
+    },
+    "assert count_common(['nuaw', 'nmqyyguun', 'tugbw', 'khi', 'mxwvt', 'iuqtgon', 'yptt', 'ghtieja', 'wmyrh', 'egru', 'wauwnsjwlgya', 'ksuypbdjk', 'nuzzzbu', 'iswmmylqw', 'abutoa', 'kpzxchdxw', 'rcouvhtnb', 'kbzxrhag', 'cabr', 'mumqjyood', 'bkcocd', 'aqg', 'vsykt', 'zkwhmrlro', 'vsyy', 'ioudrx', 'fwppfl', 'dktnbsuh', 'ykwukfoxk']) == [('nuaw', 1), ('nmqyyguun', 1), ('tugbw', 1), ('khi', 1)]": {
+      "result": false,
+      "time": 0.2809319496154785,
+      "error": null
+    },
+    "assert count_common(['vey', 'rxjzta', 'jkpv', 'qcorpsjn', 'mzb', 'cilvudvk', 'kvidamqr', 'zlrh', 'wlzrgujq', 'iuofu', 'lak', 'csonje', 'lctfxxzw', 'vuw', 'qjfm', 'bwfsegfxh', 'novbkixlmhyy', 'qapahwv', 'onqte', 'dyf', 'reppyv', 'thswz', 'kykrey', 'unkosmbva', 'wxgf', 'xyilkbe', 'bgayu', 'iznvfpbwyw', 'oyu']) == [('vey', 1), ('rxjzta', 1), ('jkpv', 1), ('qcorpsjn', 1)]": {
+      "result": false,
+      "time": 0.2665419578552246,
+      "error": null
+    },
+    "assert count_common(['cxlfggr', 'bxzdgae', 'vluthfjgn', 'gpvwx', 'yqlmmlih', 'qgccgu', 'gbnsxp', 'bgq', 'rbjjsu', 'tzxe', 'nkmfknnjmym', 'cqo', 'rflav', 'jqnfcuqbl', 'fwlvtp', 'nivyu', 'sznmo', 'aiy', 'seonhaury', 'yciwzvfdz', 'qlah', 'titjym', 'xvraxd', 'eccmojijk', 'cfgt', 'hagnocg', 'aptb', 'yioevdzub', 'hits']) == [('cxlfggr', 1), ('bxzdgae', 1), ('vluthfjgn', 1), ('gpvwx', 1)]": {
+      "result": false,
+      "time": 0.2727518081665039,
+      "error": null
+    },
+    "assert count_common(['pgokstl', 'gvdsizcjs', 'wilirrxq', 'asxujk', 'szevmx', 'vtoklenb', 'whmy', 'hucdy', 'mgqwnys', 'jugn', 'cqstmhbmo', 'zivfqp', 'cjnuafmyj', 'fsbjth', 'cmalh', 'kbjfxtkm', 'ocwct', 'osqdamcs', 'vnfpwuwzc', 'qegdujz', 'oijujch', 'ilbcpv', 'gsyg', 'pyalevhnx', 'frgirkgx', 'tvynxddf', 'zizpqzqlmwt', 'murvsaxbbl', 'tkkqreq']) == [('pgokstl', 1), ('gvdsizcjs', 1), ('wilirrxq', 1), ('asxujk', 1)]": {
+      "result": false,
+      "time": 0.27602577209472656,
+      "error": null
+    },
+    "assert count_common(['cwyvzrl', 'rdaxso', 'kivxnjhpm', 'wosgcvxk', 'gysdsxkoe', 'tgysplup', 'dpkatju', 'cbib', 'pegencxm', 'wfpuei']) == [('cwyvzrl', 1), ('rdaxso', 1), ('kivxnjhpm', 1), ('wosgcvxk', 1)]": {
+      "result": false,
+      "time": 0.2759227752685547,
+      "error": null
+    },
+    "assert count_common(['zmeimlmh', 'xxgnazgr', 'vzrrhq', 'yfh', 'ebf', 'jrpcb', 'napeefr', 'vxujnhx', 'ubujkw', 'hgx']) == [('zmeimlmh', 1), ('xxgnazgr', 1), ('vzrrhq', 1), ('yfh', 1)]": {
+      "result": false,
+      "time": 0.2682805061340332,
+      "error": null
+    },
+    "assert count_common(['jgcyowymt', 'ysbcb', 'xfkcjnaz', 'mjdig', 'ukmaci', 'zwwsv', 'hkwbwo', 'qtlyiu', 'ohtjkcx', 'beyxfvaqk']) == [('jgcyowymt', 1), ('ysbcb', 1), ('xfkcjnaz', 1), ('mjdig', 1)]": {
+      "result": false,
+      "time": 0.26030421257019043,
+      "error": null
+    },
+    "assert count_common(['xqxr', 'ire', 'tebiehj', 'rwczb', 'nossvk', 'thpr', 'lqw', 'iqunpui', 'bmqd', 'zoqmyrkto']) == [('xqxr', 1), ('ire', 1), ('tebiehj', 1), ('rwczb', 1)]": {
+      "result": false,
+      "time": 0.2555704116821289,
+      "error": null
+    },
+    "assert count_common(['ikwjgqrn', 'ankjhiq', 'qlhveuvo', 'rsgzm', 'jgi', 'vwpkle', 'zmo', 'fguetmz', 'xxeazxie', 'twnk']) == [('ikwjgqrn', 1), ('ankjhiq', 1), ('qlhveuvo', 1), ('rsgzm', 1)]": {
+      "result": false,
+      "time": 0.26212239265441895,
+      "error": null
+    },
+    "assert count_common(['agig', 'crlwhe', 'ynz', 'waf', 'alxhpjmb', 'qpfjr', 'ltzv', 'whhbofnx', 'cmpl', 'ktvkcj']) == [('agig', 1), ('crlwhe', 1), ('ynz', 1), ('waf', 1)]": {
+      "result": false,
+      "time": 0.2621121406555176,
+      "error": null
+    },
+    "assert count_common(['blx', 'esdfyn', 'qhw', 'oaovy', 'rzdrpqkz', 'srvnbiova', 'mlaysi', 'vonkbvw', 'ybenut', 'bdukdx']) == [('blx', 1), ('esdfyn', 1), ('qhw', 1), ('oaovy', 1)]": {
+      "result": false,
+      "time": 0.26592278480529785,
+      "error": null
+    },
+    "assert count_common(['xfps', 'hyxl', 'yap', 'tadlnhidp', 'ppwuz', 'oin', 'ljzilbqof', 'dcrun', 'vavlhb', 'bgcrvera']) == [('xfps', 1), ('hyxl', 1), ('yap', 1), ('tadlnhidp', 1)]": {
+      "result": false,
+      "time": 0.2604842185974121,
+      "error": null
+    },
+    "assert count_common(['dbv', 'btlltr', 'tarthc', 'jjdreu', 'vazezgt', 'aixkva', 'apvmaajuu', 'vvmftjao', 'zzxoivg', 'lzwicqcf']) == [('dbv', 1), ('btlltr', 1), ('tarthc', 1), ('jjdreu', 1)]": {
+      "result": false,
+      "time": 0.2694516181945801,
+      "error": null
+    },
+    "assert count_common(['zoj', 'lrcniqupm', 'vdv', 'odaq', 'nmztmmhv', 'rtlkvjtj', 'fuvltftx', 'cbzqtz', 'okmvtcg', 'sdl']) == [('zoj', 1), ('lrcniqupm', 1), ('vdv', 1), ('odaq', 1)]": {
+      "result": false,
+      "time": 0.2667276859283447,
+      "error": null
+    },
+    "assert count_common(['fzyijeaj', 'mvb', 'yicplceh', 'sqoceqzy', 'jroxzqq', 'gcojzptug', 'dizxnjxv', 'dpnja', 'axgtlmtf', 'pbfmt']) == [('fzyijeaj', 1), ('mvb', 1), ('yicplceh', 1), ('sqoceqzy', 1)]": {
+      "result": false,
+      "time": 0.2759716510772705,
+      "error": null
+    },
+    "assert count_common(['qbym', 'wwmgsis', 'wubq', 'digol', 'vxlnwtauz', 'rugowlddu', 'dubnwrpgz', 'fhqjew', 'cnjsl', 'eagp']) == [('qbym', 1), ('wwmgsis', 1), ('wubq', 1), ('digol', 1)]": {
+      "result": false,
+      "time": 0.25752949714660645,
+      "error": null
+    },
+    "assert count_common(['dtuagwrgt', 'vhudd', 'cjqpucoeg', 'vgjbzery', 'jgq', 'poyolfo', 'urkuvmq', 'vydap', 'xrfoejp', 'zjfjajz']) == [('dtuagwrgt', 1), ('vhudd', 1), ('cjqpucoeg', 1), ('vgjbzery', 1)]": {
+      "result": false,
+      "time": 0.2558412551879883,
+      "error": null
+    },
+    "assert count_common(['utztb', 'acpbql', 'vic', 'mafbgmlsn', 'tkua', 'rdzyfwzgg', 'abnen', 'jhvi', 'vqazyzngo', 'qciejwjgo']) == [('utztb', 1), ('acpbql', 1), ('vic', 1), ('mafbgmlsn', 1)]": {
+      "result": false,
+      "time": 0.26867008209228516,
+      "error": null
+    },
+    "assert count_common(['gdc', 'irhdqounq', 'gryljq', 'sga', 'qhdm', 'kexvtua', 'uzu', 'wrtcfyy', 'voacgwt', 'lgvqa']) == [('gdc', 1), ('irhdqounq', 1), ('gryljq', 1), ('sga', 1)]": {
+      "result": false,
+      "time": 0.257509708404541,
+      "error": null
+    },
+    "assert count_common(['fpjczgol', 'zote', 'uwdebcs', 'xsuvsvpnc', 'ixdvivq', 'qco', 'wctypgnmc', 'fhpsslft', 'uiqnvwer', 'xoouuzgme']) == [('fpjczgol', 1), ('zote', 1), ('uwdebcs', 1), ('xsuvsvpnc', 1)]": {
+      "result": false,
+      "time": 0.27335071563720703,
+      "error": null
+    },
+    "assert count_common(['vodp', 'avrf', 'mtafyxeoj', 'mgz', 'shjval', 'umlyefc', 'xvfr', 'zrsyao', 'cars', 'yaiv']) == [('vodp', 1), ('avrf', 1), ('mtafyxeoj', 1), ('mgz', 1)]": {
+      "result": false,
+      "time": 0.27013707160949707,
+      "error": null
+    },
+    "assert count_common(['bnxeodugf', 'ifebywzge', 'bslkuhcia', 'sckvoifye', 'gnpexbmf', 'iaz', 'yipwtca', 'pjokdxx', 'kclvpgga', 'iyekxc']) == [('bnxeodugf', 1), ('ifebywzge', 1), ('bslkuhcia', 1), ('sckvoifye', 1)]": {
+      "result": false,
+      "time": 0.2655620574951172,
+      "error": null
+    },
+    "assert count_common(['rzlojk', 'cdnsgvrcn', 'hbiyti', 'mmdhbqw', 'kawc', 'wta', 'agflppm', 'tlfu', 'qhdavky', 'kkxjwt']) == [('rzlojk', 1), ('cdnsgvrcn', 1), ('hbiyti', 1), ('mmdhbqw', 1)]": {
+      "result": false,
+      "time": 0.2503039836883545,
+      "error": null
+    },
+    "assert count_common(['xebpyls', 'wio', 'eewjeitw', 'kymytfft', 'ysbbrzklt', 'fiix', 'utukzeicj', 'tveo', 'grzo', 'cwotqeqw']) == [('xebpyls', 1), ('wio', 1), ('eewjeitw', 1), ('kymytfft', 1)]": {
+      "result": false,
+      "time": 0.2705960273742676,
+      "error": null
+    },
+    "assert count_common(['djezgzhvl', 'duqkcslmp', 'elg', 'amguvr', 'gfawoyi', 'rqr', 'anrzfnnan', 'dkuuo', 'ujxbyfp', 'xsdzf']) == [('djezgzhvl', 1), ('duqkcslmp', 1), ('elg', 1), ('amguvr', 1)]": {
+      "result": false,
+      "time": 0.2639617919921875,
+      "error": null
+    },
+    "assert count_common(['vtmq', 'ybhvel', 'ouhpet', 'ekyzdtd', 'qnznirwz', 'ngg', 'dgtdyhsr', 'undrcz', 'bwydedq', 'dfgjgugg']) == [('vtmq', 1), ('ybhvel', 1), ('ouhpet', 1), ('ekyzdtd', 1)]": {
+      "result": false,
+      "time": 0.2615227699279785,
+      "error": null
+    },
+    "assert count_common(['bbexsylm', 'mji', 'kdmdp', 'abm', 'yxetx', 'zxjjvbnt', 'whpta', 'lmtz', 'ezzkshmsf', 'bcbjhip']) == [('bbexsylm', 1), ('mji', 1), ('kdmdp', 1), ('abm', 1)]": {
+      "result": false,
+      "time": 0.2555975914001465,
+      "error": null
+    },
+    "assert count_common(['fcwzttm', 'clwvt', 'svqd', 'ztivzwbxk', 'cnga', 'qtgj', 'dhunowic', 'kccza', 'rts', 'rtisyme']) == [('fcwzttm', 1), ('clwvt', 1), ('svqd', 1), ('ztivzwbxk', 1)]": {
+      "result": false,
+      "time": 0.26766324043273926,
+      "error": null
+    },
+    "assert count_common(['jpuyys', 'zsbtp', 'zmp', 'dwisx', 'hlqj', 'thvdjz', 'vfoffqq', 'alnath', 'ixpb', 'egqahqjtj']) == [('jpuyys', 1), ('zsbtp', 1), ('zmp', 1), ('dwisx', 1)]": {
+      "result": false,
+      "time": 0.2704427242279053,
+      "error": null
+    },
+    "assert count_common(['nxv', 'naou', 'lqbkki', 'oqywufc', 'jrjvcszq', 'nwtzoqo', 'kqywq', 'rha', 'uisjmmsfd', 'ofimcpro']) == [('nxv', 1), ('naou', 1), ('lqbkki', 1), ('oqywufc', 1)]": {
+      "result": false,
+      "time": 0.2648162841796875,
+      "error": null
+    },
+    "assert count_common(['yzvxcrva', 'glanqxp', 'gkdhuqv', 'tzadoou', 'bkdvdrl', 'rug', 'ztntfl', 'due', 'igkpys', 'dsne']) == [('yzvxcrva', 1), ('glanqxp', 1), ('gkdhuqv', 1), ('tzadoou', 1)]": {
+      "result": false,
+      "time": 0.2673969268798828,
+      "error": null
+    },
+    "assert count_common(['fvuca', 'avca', 'sbwsuj', 'nzcrwen', 'rsutr', 'ykmrik', 'vtqu', 'pch', 'uskpyw', 'xoyyxs']) == [('fvuca', 1), ('avca', 1), ('sbwsuj', 1), ('nzcrwen', 1)]": {
+      "result": false,
+      "time": 0.2550365924835205,
+      "error": null
+    },
+    "assert count_common(['fzsqcda', 'nbzmbfg', 'rnfqgeogz', 'lcqhy', 'qccqd', 'wreuswirk', 'unua', 'lonui', 'hwr', 'bnjdup']) == [('fzsqcda', 1), ('nbzmbfg', 1), ('rnfqgeogz', 1), ('lcqhy', 1)]": {
+      "result": false,
+      "time": 0.2671372890472412,
+      "error": null
+    },
+    "assert count_common(['xadergkw', 'uef', 'xqcjf', 'qfb', 'vrxuntfeo', 'segqilj', 'rxgd', 'muz', 'vjcghnz', 'oxxfnv']) == [('xadergkw', 1), ('uef', 1), ('xqcjf', 1), ('qfb', 1)]": {
+      "result": false,
+      "time": 0.2568473815917969,
+      "error": null
+    },
+    "assert count_common(['elmjvayvq', 'qeyxqg', 'fnc', 'khngskh', 'wzbucqd', 'vmut', 'czehyaqet', 'heznqx', 'ppvhoryr', 'wnrngm']) == [('elmjvayvq', 1), ('qeyxqg', 1), ('fnc', 1), ('khngskh', 1)]": {
+      "result": false,
+      "time": 0.26319241523742676,
+      "error": null
+    },
+    "assert count_common(['hagf', 'xvfduxg', 'oyeuzkin', 'pobkqubd', 'xsr', 'kufmgim', 'aqtcw', 'tnxwui', 'eqseda', 'nxdgem']) == [('hagf', 1), ('xvfduxg', 1), ('oyeuzkin', 1), ('pobkqubd', 1)]": {
+      "result": false,
+      "time": 0.2789454460144043,
+      "error": null
+    },
+    "assert count_common(['ybhj', 'ngh', 'axa', 'thciv', 'evua', 'ljfp', 'ibxnslodr', 'wvbooi', 'vyivx', 'sptoxupuh']) == [('ybhj', 1), ('ngh', 1), ('axa', 1), ('thciv', 1)]": {
+      "result": false,
+      "time": 0.2693917751312256,
+      "error": null
+    },
+    "assert count_common(['ExiA', 'yvNxnM', 'LJOGsw', 'IpUKaYTxwZqo', 'gQt', 'KOUvOWGSp', 'lrkPIZtnMnn', 'PhCWVRJ']) == [('ExiA', 1), ('yvNxnM', 1), ('LJOGsw', 1), ('IpUKaYTxwZqo', 1)]": {
+      "result": false,
+      "time": 0.24781322479248047,
+      "error": null
+    },
+    "assert count_common(['xUFCHdW', 'yXGeDieC', 'jKUWub', 'eqfiOmkkEfJZ', 'zbvWOPP', 'rlDvab', 'zUZdyfkRUpXm', 'fti']) == [('xUFCHdW', 1), ('yXGeDieC', 1), ('jKUWub', 1), ('eqfiOmkkEfJZ', 1)]": {
+      "result": false,
+      "time": 0.26551032066345215,
+      "error": null
+    },
+    "assert count_common(['SykYYMQlAN', 'TPhYgkj', 'sByHR', 'ZRVkmiWNw', 'MObwc', 'gNRd', 'gGCxIhcVaBf', 'AybvyvhOOO']) == [('SykYYMQlAN', 1), ('TPhYgkj', 1), ('sByHR', 1), ('ZRVkmiWNw', 1)]": {
+      "result": false,
+      "time": 0.255828857421875,
+      "error": null
+    },
+    "assert count_common(['hkYmrQ', 'Cev', 'WKNyDpCHS', 'TtQTwGsUK', 'iEz', 'VtbFYpGr', 'nGjvKs', 'iGiliaBD']) == [('hkYmrQ', 1), ('Cev', 1), ('WKNyDpCHS', 1), ('TtQTwGsUK', 1)]": {
+      "result": false,
+      "time": 0.24961471557617188,
+      "error": null
+    },
+    "assert count_common(['SnQPIPm', 'gLGt', 'kUbBNyGmKe', 'bjWdZQJGKbgX', 'SdbrFnMB', 'dGHA', 'gowp', 'uzfASVZ']) == [('SnQPIPm', 1), ('gLGt', 1), ('kUbBNyGmKe', 1), ('bjWdZQJGKbgX', 1)]": {
+      "result": false,
+      "time": 0.2573409080505371,
+      "error": null
+    },
+    "assert count_common(['wMCndnAXt', 'jbv', 'mIGwRGWIh', 'JqPLjDljHVlm', 'wwOIlvN', 'pPavXWgZ', 'pHKlfNKZxa', 'UWyUksx']) == [('wMCndnAXt', 1), ('jbv', 1), ('mIGwRGWIh', 1), ('JqPLjDljHVlm', 1)]": {
+      "result": false,
+      "time": 0.2743091583251953,
+      "error": null
+    },
+    "assert count_common(['BLLOYWRGjsDM', 'mOCjV', 'lDoQwEBIjZ', 'DBsneN', 'AQhTSwIREIM', 'tSFHNQGbW', 'aDG', 'vOp']) == [('BLLOYWRGjsDM', 1), ('mOCjV', 1), ('lDoQwEBIjZ', 1), ('DBsneN', 1)]": {
+      "result": false,
+      "time": 0.2719385623931885,
+      "error": null
+    },
+    "assert count_common(['uIgyBltZXw', 'nmWyfHYc', 'YcFBSGOL', 'UHJTBZk', 'ylCdw', 'GLeSLqRRN', 'PuawOluOw', 'XGDbiz']) == [('uIgyBltZXw', 1), ('nmWyfHYc', 1), ('YcFBSGOL', 1), ('UHJTBZk', 1)]": {
+      "result": false,
+      "time": 0.2704627513885498,
+      "error": null
+    },
+    "assert count_common(['plyjZWl', 'CGPVTRgdr', 'nzCJDlRBA', 'OomxxyHymYZ', 'LMOkKUvrBZN', 'MwbAMy', 'lrWbnacA', 'xaTfWpPXQu']) == [('plyjZWl', 1), ('CGPVTRgdr', 1), ('nzCJDlRBA', 1), ('OomxxyHymYZ', 1)]": {
+      "result": false,
+      "time": 0.2726168632507324,
+      "error": null
+    },
+    "assert count_common(['UlVTTkLHgSwZ', 'TXkWQnPCC', 'zMEN', 'NPcFywhBK', 'NOPWn', 'vnR', 'WzPagshP', 'UZZZMLnzPxeF']) == [('UlVTTkLHgSwZ', 1), ('TXkWQnPCC', 1), ('zMEN', 1), ('NPcFywhBK', 1)]": {
+      "result": false,
+      "time": 0.2668294906616211,
+      "error": null
+    },
+    "assert count_common(['yRa', 'WmEc', 'MrVoiU', 'zvng', 'QZBXLZL', 'aPoEDw', 'LUBe', 'hHPclRsEnD']) == [('yRa', 1), ('WmEc', 1), ('MrVoiU', 1), ('zvng', 1)]": {
+      "result": false,
+      "time": 0.2710590362548828,
+      "error": null
+    },
+    "assert count_common(['cFuNXGXBdWg', 'AIdADuPvH', 'ROvVpzbquD', 'tCyKMB', 'YCrUYCvqCa', 'yCTXve', 'LBzbjtgQhgOc', 'SZhtXswiVzj']) == [('cFuNXGXBdWg', 1), ('AIdADuPvH', 1), ('ROvVpzbquD', 1), ('tCyKMB', 1)]": {
+      "result": false,
+      "time": 0.27465295791625977,
+      "error": null
+    },
+    "assert count_common(['WtoVxcCyCyat', 'ZhB', 'gmSqgTpptNO', 'hcSRib', 'HkYFhYGhYIV', 'BXI', 'IXj', 'dWPjU']) == [('WtoVxcCyCyat', 1), ('ZhB', 1), ('gmSqgTpptNO', 1), ('hcSRib', 1)]": {
+      "result": false,
+      "time": 0.26135730743408203,
+      "error": null
+    },
+    "assert count_common(['tgyDqA', 'hozVKEX', 'xQTcwlsHgPrO', 'SsfFAYQrmx', 'gKL', 'JNBgULCUz', 'IMrwQlMewqqL', 'mjl']) == [('tgyDqA', 1), ('hozVKEX', 1), ('xQTcwlsHgPrO', 1), ('SsfFAYQrmx', 1)]": {
+      "result": false,
+      "time": 0.258350133895874,
+      "error": null
+    },
+    "assert count_common(['jeJ', 'NrDmH', 'WvcCfTkOF', 'uNUPNAQyAy', 'VrKMCNR', 'qkOjC', 'HilY', 'XIdBM']) == [('jeJ', 1), ('NrDmH', 1), ('WvcCfTkOF', 1), ('uNUPNAQyAy', 1)]": {
+      "result": false,
+      "time": 0.28603553771972656,
+      "error": null
+    },
+    "assert count_common(['GAqxtfu', 'kfATAu', 'HxCD', 'sqwoQVdTOSN', 'rFfQMzojqab', 'SWvMT', 'LvowjNIdStf', 'UyswFVIElP']) == [('GAqxtfu', 1), ('kfATAu', 1), ('HxCD', 1), ('sqwoQVdTOSN', 1)]": {
+      "result": false,
+      "time": 0.2591986656188965,
+      "error": null
+    },
+    "assert count_common(['QPcqLrlm', 'VQB', 'HljTiZhrbie', 'dyzPg', 'wAr', 'HwEsBEEF', 'bdQSXusaItNw', 'itvoNq']) == [('QPcqLrlm', 1), ('VQB', 1), ('HljTiZhrbie', 1), ('dyzPg', 1)]": {
+      "result": false,
+      "time": 0.2617454528808594,
+      "error": null
+    },
+    "assert count_common(['idb', 'AUDb', 'CiBa', 'fVWgXvPgdTZ', 'nIt', 'ywJyUT', 'DXvgWMoWztZf', 'IotmESnJUjiz']) == [('idb', 1), ('AUDb', 1), ('CiBa', 1), ('fVWgXvPgdTZ', 1)]": {
+      "result": false,
+      "time": 0.27628231048583984,
+      "error": null
+    },
+    "assert count_common(['GkEWtzi', 'oKSSvc', 'uPO', 'fzZVxDPHXLtS', 'eQpJZVwMYgh', 'hykjdTtPF', 'PFfhYaH', 'phiBDltehs']) == [('GkEWtzi', 1), ('oKSSvc', 1), ('uPO', 1), ('fzZVxDPHXLtS', 1)]": {
+      "result": false,
+      "time": 0.258547306060791,
+      "error": null
+    },
+    "assert count_common(['rPDffsecRLn', 'GHiQvz', 'EndTOqfzF', 'cEshowodB', 'JGQJdEemHTcu', 'gfvxGd', 'qnIoMDm', 'DgApSumHg']) == [('rPDffsecRLn', 1), ('GHiQvz', 1), ('EndTOqfzF', 1), ('cEshowodB', 1)]": {
+      "result": false,
+      "time": 0.26436567306518555,
+      "error": null
+    },
+    "assert count_common(['WScMSHEbAP', 'jRWvgQFv', 'PUnuoXq', 'EbFYBk', 'ASlTu', 'lxuWBX', 'KfIuC', 'aeWM']) == [('WScMSHEbAP', 1), ('jRWvgQFv', 1), ('PUnuoXq', 1), ('EbFYBk', 1)]": {
+      "result": false,
+      "time": 0.2610640525817871,
+      "error": null
+    },
+    "assert count_common(['hMklXSfqc', 'bzPUHAcU', 'AXQMnP', 'YMdOT', 'SQZAHdgiQa', 'ezis', 'rFdTCKbTQj', 'qluuZLcn']) == [('hMklXSfqc', 1), ('bzPUHAcU', 1), ('AXQMnP', 1), ('YMdOT', 1)]": {
+      "result": false,
+      "time": 0.2608468532562256,
+      "error": null
+    },
+    "assert count_common(['VPO', 'hdpIOH', 'wzVgCMTXxbKM', 'DjpWwRqYRNf', 'ntErZBRMiwF', 'TGML', 'nKAKlxEgtMu', 'cveQdavvtgf']) == [('VPO', 1), ('hdpIOH', 1), ('wzVgCMTXxbKM', 1), ('DjpWwRqYRNf', 1)]": {
+      "result": false,
+      "time": 0.281008243560791,
+      "error": null
+    },
+    "assert count_common(['sVaTFOWhUYB', 'FshT', 'VIJGzk', 'YlJnsVIXT', 'kZaGxuuon', 'qnlBmi', 'DucCvLAaXu', 'lVMHVgBWNY']) == [('sVaTFOWhUYB', 1), ('FshT', 1), ('VIJGzk', 1), ('YlJnsVIXT', 1)]": {
+      "result": false,
+      "time": 0.26917099952697754,
+      "error": null
+    },
+    "assert count_common(['aIxdZ', 'LvBwlXxIP', 'sBYmffje', 'rvfmVpzdIoNo', 'MqjMJ', 'kavwXYU', 'UjTOWDIqvQ', 'aVvltpg']) == [('aIxdZ', 1), ('LvBwlXxIP', 1), ('sBYmffje', 1), ('rvfmVpzdIoNo', 1)]": {
+      "result": false,
+      "time": 0.2896738052368164,
+      "error": null
+    },
+    "assert count_common(['mvoKkvonBlG', 'JuvO', 'kbVhB', 'OrSZm', 'thPnJHT', 'WNO', 'PKfS', 'WeNegbyVdd']) == [('mvoKkvonBlG', 1), ('JuvO', 1), ('kbVhB', 1), ('OrSZm', 1)]": {
+      "result": false,
+      "time": 0.2752676010131836,
+      "error": null
+    },
+    "assert count_common(['CxGavIpYZeL', 'JTyfUUENC', 'tbdRwrReCtwD', 'uMfXCtB', 'DKz', 'XQfLeJ', 'vyTZsA', 'IWbHmf']) == [('CxGavIpYZeL', 1), ('JTyfUUENC', 1), ('tbdRwrReCtwD', 1), ('uMfXCtB', 1)]": {
+      "result": false,
+      "time": 0.24477934837341309,
+      "error": null
+    },
+    "assert count_common(['goEruoUSxM', 'sKidbRbqg', 'paZvXUbtIMq', 'WdhmVichrUW', 'HXsvOwMeCbqE', 'VwlJ', 'brcrUO', 'YSgz']) == [('goEruoUSxM', 1), ('sKidbRbqg', 1), ('paZvXUbtIMq', 1), ('WdhmVichrUW', 1)]": {
+      "result": false,
+      "time": 0.29123663902282715,
+      "error": null
+    },
+    "assert count_common(['eJR', 'tlxGEgP', 'nqITRrEgXYo', 'wjWsTL', 'LnsCQ', 'fQosoMjug', 'eoJaLRyPRLqn', 'yeZKSwtDJ']) == [('eJR', 1), ('tlxGEgP', 1), ('nqITRrEgXYo', 1), ('wjWsTL', 1)]": {
+      "result": false,
+      "time": 0.2934269905090332,
+      "error": null
+    },
+    "assert count_common(['OZEVFpQt', 'fSSc', 'mlBNfwBgnUi', 'UxlmhKbOCdnr', 'dtzDSEx', 'zxe', 'nVuwlfgDt', 'YDMcXJ']) == [('OZEVFpQt', 1), ('fSSc', 1), ('mlBNfwBgnUi', 1), ('UxlmhKbOCdnr', 1)]": {
+      "result": false,
+      "time": 0.27935194969177246,
+      "error": null
+    },
+    "assert count_common(['NDyEP', 'RPqcCteL', 'pzKgpHPo', 'ibv', 'rbogFSZgjOV', 'QzQ', 'uvoFp', 'WcseVmiYfmU']) == [('NDyEP', 1), ('RPqcCteL', 1), ('pzKgpHPo', 1), ('ibv', 1)]": {
+      "result": false,
+      "time": 0.2694265842437744,
+      "error": null
+    },
+    "assert count_common(['LQW', 'mYFPqoTxA', 'aumsTilLAGB', 'yhzQk', 'IIfgQhISIY', 'iNNr', 'PxSXZJnO', 'iRfTv']) == [('LQW', 1), ('mYFPqoTxA', 1), ('aumsTilLAGB', 1), ('yhzQk', 1)]": {
+      "result": false,
+      "time": 0.29016876220703125,
+      "error": null
+    },
+    "assert count_common(['wJNr', 'KozIsa', 'DFgOQWsoME', 'HBdmtvvwSAr', 'nikiDm', 'pqidtu', 'RAMAAdR', 'yyVXAjQ']) == [('wJNr', 1), ('KozIsa', 1), ('DFgOQWsoME', 1), ('HBdmtvvwSAr', 1)]": {
+      "result": false,
+      "time": 0.25496864318847656,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

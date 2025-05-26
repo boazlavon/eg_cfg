@@ -1,0 +1,294 @@
+{
+  "code": "def next_smallest_palindrome(n):\n    n = str(n)\n    if len(n) == 1:\n        return int(n + n)\n    elif len(n) == 2:\n        if n[0] == '9' and n[1] == '9':\n            return int(n + '0' + n[::-1])\n        elif n[0] < '9' and n[1] > '9':\n            return int(n + '9' + n[::-1])\n        else:\n            return int(n + n[::-1])\n    else:\n        if n[0] == '9' and n[1] == '9' and n[2] == '9':\n            return int(n + '0' + n[2::-1])\n        elif n[0] < '9' and n[1] > '9' and n[2] > '9':\n            return int(n + '9' + n[2::-1])\n        else:\n            return int(n + n[2::-1])",
+  "results": {
+    "assert next_smallest_palindrome(99)==101": {
+      "result": false,
+      "time": 0.05628347396850586,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1221)==1331": {
+      "result": false,
+      "time": 0.03449606895446777,
+      "error": null
+    },
+    "assert next_smallest_palindrome(120)==121": {
+      "result": false,
+      "time": 0.0409090518951416,
+      "error": null
+    },
+    "assert next_smallest_palindrome(103) == 111": {
+      "result": false,
+      "time": 0.03515982627868652,
+      "error": null
+    },
+    "assert next_smallest_palindrome(95) == 99": {
+      "result": false,
+      "time": 0.03583073616027832,
+      "error": null
+    },
+    "assert next_smallest_palindrome(97) == 99": {
+      "result": false,
+      "time": 0.03739047050476074,
+      "error": null
+    },
+    "assert next_smallest_palindrome(104) == 111": {
+      "result": false,
+      "time": 0.040289878845214844,
+      "error": null
+    },
+    "assert next_smallest_palindrome(101) == 111": {
+      "result": false,
+      "time": 0.03398895263671875,
+      "error": null
+    },
+    "assert next_smallest_palindrome(102) == 111": {
+      "result": false,
+      "time": 0.03989148139953613,
+      "error": null
+    },
+    "assert next_smallest_palindrome(98) == 99": {
+      "result": false,
+      "time": 0.03599238395690918,
+      "error": null
+    },
+    "assert next_smallest_palindrome(99) == 101": {
+      "result": false,
+      "time": 0.03539085388183594,
+      "error": null
+    },
+    "assert next_smallest_palindrome(96) == 99": {
+      "result": false,
+      "time": 0.03719758987426758,
+      "error": null
+    },
+    "assert next_smallest_palindrome(94) == 99": {
+      "result": false,
+      "time": 0.03297138214111328,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1661) == 1771": {
+      "result": false,
+      "time": 0.039910078048706055,
+      "error": null
+    },
+    "assert next_smallest_palindrome(725) == 727": {
+      "result": false,
+      "time": 0.031142711639404297,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1151) == 1221": {
+      "result": false,
+      "time": 0.031973838806152344,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1343) == 1441": {
+      "result": false,
+      "time": 0.037957191467285156,
+      "error": null
+    },
+    "assert next_smallest_palindrome(217) == 222": {
+      "result": false,
+      "time": 0.03089284896850586,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1595) == 1661": {
+      "result": false,
+      "time": 0.04018115997314453,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1311) == 1331": {
+      "result": false,
+      "time": 0.03594565391540527,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1986) == 1991": {
+      "result": false,
+      "time": 0.03374838829040527,
+      "error": null
+    },
+    "assert next_smallest_palindrome(2185) == 2222": {
+      "result": false,
+      "time": 0.03553318977355957,
+      "error": null
+    },
+    "assert next_smallest_palindrome(897) == 898": {
+      "result": false,
+      "time": 0.03316092491149902,
+      "error": null
+    },
+    "assert next_smallest_palindrome(721) == 727": {
+      "result": false,
+      "time": 0.03463315963745117,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1798) == 1881": {
+      "result": false,
+      "time": 0.033417701721191406,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1078) == 1111": {
+      "result": false,
+      "time": 0.03875541687011719,
+      "error": null
+    },
+    "assert next_smallest_palindrome(571) == 575": {
+      "result": false,
+      "time": 0.03630542755126953,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1704) == 1771": {
+      "result": false,
+      "time": 0.03481483459472656,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1106) == 1111": {
+      "result": false,
+      "time": 0.035355329513549805,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1660) == 1661": {
+      "result": false,
+      "time": 0.03862166404724121,
+      "error": null
+    },
+    "assert next_smallest_palindrome(712) == 717": {
+      "result": false,
+      "time": 0.039109230041503906,
+      "error": null
+    },
+    "assert next_smallest_palindrome(2166) == 2222": {
+      "result": false,
+      "time": 0.03259754180908203,
+      "error": null
+    },
+    "assert next_smallest_palindrome(790) == 797": {
+      "result": false,
+      "time": 0.044759511947631836,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1438) == 1441": {
+      "result": false,
+      "time": 0.03437352180480957,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1098) == 1111": {
+      "result": false,
+      "time": 0.03684854507446289,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1672) == 1771": {
+      "result": false,
+      "time": 0.038011789321899414,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1424) == 1441": {
+      "result": false,
+      "time": 0.033347368240356445,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1839) == 1881": {
+      "result": false,
+      "time": 0.03335762023925781,
+      "error": null
+    },
+    "assert next_smallest_palindrome(513) == 515": {
+      "result": false,
+      "time": 0.04544401168823242,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1522) == 1551": {
+      "result": false,
+      "time": 0.03954029083251953,
+      "error": null
+    },
+    "assert next_smallest_palindrome(238) == 242": {
+      "result": false,
+      "time": 0.03092336654663086,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1337) == 1441": {
+      "result": false,
+      "time": 0.032799720764160156,
+      "error": null
+    },
+    "assert next_smallest_palindrome(365) == 373": {
+      "result": false,
+      "time": 0.0397341251373291,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1834) == 1881": {
+      "result": false,
+      "time": 0.03398466110229492,
+      "error": null
+    },
+    "assert next_smallest_palindrome(858) == 868": {
+      "result": false,
+      "time": 0.045612335205078125,
+      "error": null
+    },
+    "assert next_smallest_palindrome(903) == 909": {
+      "result": false,
+      "time": 0.034439802169799805,
+      "error": null
+    },
+    "assert next_smallest_palindrome(122) == 131": {
+      "result": false,
+      "time": 0.03773617744445801,
+      "error": null
+    },
+    "assert next_smallest_palindrome(119) == 121": {
+      "result": false,
+      "time": 0.037029266357421875,
+      "error": null
+    },
+    "assert next_smallest_palindrome(125) == 131": {
+      "result": false,
+      "time": 0.03972315788269043,
+      "error": null
+    },
+    "assert next_smallest_palindrome(124) == 131": {
+      "result": false,
+      "time": 0.03836345672607422,
+      "error": null
+    },
+    "assert next_smallest_palindrome(120) == 121": {
+      "result": false,
+      "time": 0.03515815734863281,
+      "error": null
+    },
+    "assert next_smallest_palindrome(116) == 121": {
+      "result": false,
+      "time": 0.038808345794677734,
+      "error": null
+    },
+    "assert next_smallest_palindrome(115) == 121": {
+      "result": false,
+      "time": 0.04014158248901367,
+      "error": null
+    },
+    "assert next_smallest_palindrome(118) == 121": {
+      "result": false,
+      "time": 0.03576231002807617,
+      "error": null
+    },
+    "assert next_smallest_palindrome(117) == 121": {
+      "result": false,
+      "time": 0.03595280647277832,
+      "error": null
+    },
+    "assert next_smallest_palindrome(121) == 131": {
+      "result": false,
+      "time": 0.03830909729003906,
+      "error": null
+    },
+    "assert next_smallest_palindrome(123) == 131": {
+      "result": false,
+      "time": 0.03479647636413574,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

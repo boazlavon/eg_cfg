@@ -1,0 +1,504 @@
+{
+  "code": "def set_to_tuple(input_set):\n    # Convert the set to a list to maintain order\n    list_from_set = list(input_set)\n    # Sort the list to ensure the order\n    sorted_list = sorted(list_from_set)\n    # Convert the sorted list to a tuple\n    result_tuple = tuple(sorted_list)\n    # Return the final tuple\n    return result_tuple",
+  "results": {
+    "assert set_to_tuple({1, 2, 3, 4, 5}) == (1, 2, 3, 4, 5)": {
+      "result": true,
+      "time": 0.06270813941955566,
+      "error": null
+    },
+    "assert set_to_tuple({6, 7, 8, 9, 10, 11}) == (6, 7, 8, 9, 10, 11)": {
+      "result": true,
+      "time": 0.0641179084777832,
+      "error": null
+    },
+    "assert set_to_tuple({12, 13, 14, 15, 16}) == (12, 13, 14, 15, 16)": {
+      "result": true,
+      "time": 0.06281757354736328,
+      "error": null
+    },
+    "assert set_to_tuple({3, 4, 5, 6, 7}) == (3, 4, 5, 6, 7)": {
+      "result": true,
+      "time": 0.07096362113952637,
+      "error": null
+    },
+    "assert set_to_tuple({2, 4, 5, 7, 9}) == (2, 4, 5, 7, 9)": {
+      "result": true,
+      "time": 0.05973243713378906,
+      "error": null
+    },
+    "assert set_to_tuple({1, 3, 5, 6, 10}) == (1, 3, 5, 6, 10)": {
+      "result": true,
+      "time": 0.07072973251342773,
+      "error": null
+    },
+    "assert set_to_tuple({2, 3, 5, 7, 9}) == (2, 3, 5, 7, 9)": {
+      "result": true,
+      "time": 0.05796527862548828,
+      "error": null
+    },
+    "assert set_to_tuple({1, 2, 3, 7, 8}) == (1, 2, 3, 7, 8)": {
+      "result": true,
+      "time": 0.06543087959289551,
+      "error": null
+    },
+    "assert set_to_tuple({2, 3, 5, 7, 8}) == (2, 3, 5, 7, 8)": {
+      "result": true,
+      "time": 0.06856131553649902,
+      "error": null
+    },
+    "assert set_to_tuple({1, 2, 3, 4, 10}) == (1, 2, 3, 4, 10)": {
+      "result": true,
+      "time": 0.06687688827514648,
+      "error": null
+    },
+    "assert set_to_tuple({1, 3, 4, 8, 9}) == (1, 3, 4, 8, 9)": {
+      "result": true,
+      "time": 0.07310605049133301,
+      "error": null
+    },
+    "assert set_to_tuple({4, 5, 7, 8, 9}) == (4, 5, 7, 8, 9)": {
+      "result": true,
+      "time": 0.061606407165527344,
+      "error": null
+    },
+    "assert set_to_tuple({1, 2, 4, 5, 7}) == (1, 2, 4, 5, 7)": {
+      "result": true,
+      "time": 0.07063412666320801,
+      "error": null
+    },
+    "assert set_to_tuple({1, 2, 5, 7, 8}) == (1, 2, 5, 7, 8)": {
+      "result": true,
+      "time": 0.06270027160644531,
+      "error": null
+    },
+    "assert set_to_tuple({1, 2, 5, 7, 9}) == (1, 2, 5, 7, 9)": {
+      "result": true,
+      "time": 0.06628227233886719,
+      "error": null
+    },
+    "assert set_to_tuple({4, 5, 6, 8, 9}) == (4, 5, 6, 8, 9)": {
+      "result": true,
+      "time": 0.05815768241882324,
+      "error": null
+    },
+    "assert set_to_tuple({2, 3, 4, 5, 8}) == (2, 3, 4, 5, 8)": {
+      "result": true,
+      "time": 0.054650068283081055,
+      "error": null
+    },
+    "assert set_to_tuple({1, 3, 5, 7, 8}) == (1, 3, 5, 7, 8)": {
+      "result": true,
+      "time": 0.04917430877685547,
+      "error": null
+    },
+    "assert set_to_tuple({1, 2, 3, 7, 9}) == (1, 2, 3, 7, 9)": {
+      "result": true,
+      "time": 0.07455062866210938,
+      "error": null
+    },
+    "assert set_to_tuple({2, 4, 6, 7, 10}) == (2, 4, 6, 7, 10)": {
+      "result": true,
+      "time": 0.05931997299194336,
+      "error": null
+    },
+    "assert set_to_tuple({2, 3, 5, 6, 7}) == (2, 3, 5, 6, 7)": {
+      "result": true,
+      "time": 0.05699896812438965,
+      "error": null
+    },
+    "assert set_to_tuple({1, 4, 5, 7, 8}) == (1, 4, 5, 7, 8)": {
+      "result": true,
+      "time": 0.05203652381896973,
+      "error": null
+    },
+    "assert set_to_tuple({1, 4, 6, 7, 10}) == (1, 4, 6, 7, 10)": {
+      "result": true,
+      "time": 0.07299661636352539,
+      "error": null
+    },
+    "assert set_to_tuple({2, 5, 6, 7, 9}) == (2, 5, 6, 7, 9)": {
+      "result": true,
+      "time": 0.06642389297485352,
+      "error": null
+    },
+    "assert set_to_tuple({2, 4, 5, 8, 9}) == (2, 4, 5, 8, 9)": {
+      "result": true,
+      "time": 0.06395697593688965,
+      "error": null
+    },
+    "assert set_to_tuple({3, 5, 7, 9, 10}) == (3, 5, 7, 9, 10)": {
+      "result": true,
+      "time": 0.0665137767791748,
+      "error": null
+    },
+    "assert set_to_tuple({1, 2, 3, 4, 9}) == (1, 2, 3, 4, 9)": {
+      "result": true,
+      "time": 0.0453341007232666,
+      "error": null
+    },
+    "assert set_to_tuple({3, 4, 7, 8, 9}) == (3, 4, 7, 8, 9)": {
+      "result": true,
+      "time": 0.0728299617767334,
+      "error": null
+    },
+    "assert set_to_tuple({1, 2, 4, 8, 10}) == (1, 2, 4, 8, 10)": {
+      "result": true,
+      "time": 0.050932884216308594,
+      "error": null
+    },
+    "assert set_to_tuple({1, 3, 6, 7, 8}) == (1, 3, 6, 7, 8)": {
+      "result": true,
+      "time": 0.06535077095031738,
+      "error": null
+    },
+    "assert set_to_tuple({2, 4, 5, 6, 8}) == (2, 4, 5, 6, 8)": {
+      "result": true,
+      "time": 0.07006192207336426,
+      "error": null
+    },
+    "assert set_to_tuple({1, 2, 3, 5, 7}) == (1, 2, 3, 5, 7)": {
+      "result": true,
+      "time": 0.06771159172058105,
+      "error": null
+    },
+    "assert set_to_tuple({2, 3, 4, 5, 9}) == (2, 3, 4, 5, 9)": {
+      "result": true,
+      "time": 0.06026029586791992,
+      "error": null
+    },
+    "assert set_to_tuple({3, 10, 11, 12, 13, 14}) == (3, 10, 11, 12, 13, 14)": {
+      "result": true,
+      "time": 0.06917858123779297,
+      "error": null
+    },
+    "assert set_to_tuple({3, 5, 6, 11, 12, 15}) == (3, 5, 6, 11, 12, 15)": {
+      "result": true,
+      "time": 0.06103944778442383,
+      "error": null
+    },
+    "assert set_to_tuple({1, 7, 9, 11, 14, 15}) == (1, 7, 9, 11, 14, 15)": {
+      "result": true,
+      "time": 0.07398533821105957,
+      "error": null
+    },
+    "assert set_to_tuple({4, 7, 8, 11, 14, 16}) == (4, 7, 8, 11, 14, 16)": {
+      "result": true,
+      "time": 0.06497788429260254,
+      "error": null
+    },
+    "assert set_to_tuple({6, 7, 9, 11, 12, 13}) == (6, 7, 9, 11, 12, 13)": {
+      "result": true,
+      "time": 0.0636906623840332,
+      "error": null
+    },
+    "assert set_to_tuple({6, 8, 10, 11, 12, 13}) == (6, 8, 10, 11, 12, 13)": {
+      "result": true,
+      "time": 0.0706796646118164,
+      "error": null
+    },
+    "assert set_to_tuple({2, 4, 6, 9, 11, 13}) == (2, 4, 6, 9, 11, 13)": {
+      "result": true,
+      "time": 0.05694723129272461,
+      "error": null
+    },
+    "assert set_to_tuple({1, 3, 7, 12, 13, 14}) == (1, 3, 7, 12, 13, 14)": {
+      "result": true,
+      "time": 0.06485176086425781,
+      "error": null
+    },
+    "assert set_to_tuple({3, 6, 8, 11, 12, 13}) == (3, 6, 8, 11, 12, 13)": {
+      "result": true,
+      "time": 0.06312370300292969,
+      "error": null
+    },
+    "assert set_to_tuple({5, 6, 9, 12, 13, 16}) == (5, 6, 9, 12, 13, 16)": {
+      "result": true,
+      "time": 0.05285048484802246,
+      "error": null
+    },
+    "assert set_to_tuple({6, 7, 9, 10, 13, 14}) == (6, 7, 9, 10, 13, 14)": {
+      "result": true,
+      "time": 0.048178672790527344,
+      "error": null
+    },
+    "assert set_to_tuple({3, 5, 6, 10, 12, 14}) == (3, 5, 6, 10, 12, 14)": {
+      "result": true,
+      "time": 0.04001569747924805,
+      "error": null
+    },
+    "assert set_to_tuple({4, 5, 6, 7, 9, 16}) == (4, 5, 6, 7, 9, 16)": {
+      "result": true,
+      "time": 0.04178023338317871,
+      "error": null
+    },
+    "assert set_to_tuple({4, 8, 11, 13, 14, 15}) == (4, 8, 11, 13, 14, 15)": {
+      "result": true,
+      "time": 0.05056619644165039,
+      "error": null
+    },
+    "assert set_to_tuple({2, 8, 9, 11, 13, 14}) == (2, 8, 9, 11, 13, 14)": {
+      "result": true,
+      "time": 0.04499530792236328,
+      "error": null
+    },
+    "assert set_to_tuple({2, 7, 8, 9, 12, 13}) == (2, 7, 8, 9, 12, 13)": {
+      "result": true,
+      "time": 0.043618202209472656,
+      "error": null
+    },
+    "assert set_to_tuple({1, 9, 10, 11, 12, 14}) == (1, 9, 10, 11, 12, 14)": {
+      "result": true,
+      "time": 0.04342174530029297,
+      "error": null
+    },
+    "assert set_to_tuple({3, 5, 7, 8, 14, 16}) == (3, 5, 7, 8, 14, 16)": {
+      "result": true,
+      "time": 0.04075813293457031,
+      "error": null
+    },
+    "assert set_to_tuple({6, 8, 9, 12, 14, 16}) == (6, 8, 9, 12, 14, 16)": {
+      "result": true,
+      "time": 0.04934835433959961,
+      "error": null
+    },
+    "assert set_to_tuple({4, 7, 8, 9, 13, 14}) == (4, 7, 8, 9, 13, 14)": {
+      "result": true,
+      "time": 0.04123258590698242,
+      "error": null
+    },
+    "assert set_to_tuple({3, 7, 8, 9, 12, 13}) == (3, 7, 8, 9, 12, 13)": {
+      "result": true,
+      "time": 0.04873299598693848,
+      "error": null
+    },
+    "assert set_to_tuple({2, 4, 5, 6, 8, 13}) == (2, 4, 5, 6, 8, 13)": {
+      "result": true,
+      "time": 0.045700788497924805,
+      "error": null
+    },
+    "assert set_to_tuple({5, 6, 7, 9, 12, 13}) == (5, 6, 7, 9, 12, 13)": {
+      "result": true,
+      "time": 0.04280710220336914,
+      "error": null
+    },
+    "assert set_to_tuple({6, 7, 9, 10, 11, 12}) == (6, 7, 9, 10, 11, 12)": {
+      "result": true,
+      "time": 0.03966522216796875,
+      "error": null
+    },
+    "assert set_to_tuple({3, 6, 8, 11, 12, 15}) == (3, 6, 8, 11, 12, 15)": {
+      "result": true,
+      "time": 0.04617023468017578,
+      "error": null
+    },
+    "assert set_to_tuple({6, 8, 9, 11, 14, 15}) == (6, 8, 9, 11, 14, 15)": {
+      "result": true,
+      "time": 0.04228830337524414,
+      "error": null
+    },
+    "assert set_to_tuple({3, 4, 5, 8, 12, 15}) == (3, 4, 5, 8, 12, 15)": {
+      "result": true,
+      "time": 0.04298686981201172,
+      "error": null
+    },
+    "assert set_to_tuple({1, 5, 7, 9, 10, 13}) == (1, 5, 7, 9, 10, 13)": {
+      "result": true,
+      "time": 0.0448300838470459,
+      "error": null
+    },
+    "assert set_to_tuple({3, 4, 5, 7, 10, 13}) == (3, 4, 5, 7, 10, 13)": {
+      "result": true,
+      "time": 0.04073977470397949,
+      "error": null
+    },
+    "assert set_to_tuple({4, 6, 10, 11, 12, 15}) == (4, 6, 10, 11, 12, 15)": {
+      "result": true,
+      "time": 0.038086652755737305,
+      "error": null
+    },
+    "assert set_to_tuple({2, 4, 5, 6, 13, 16}) == (2, 4, 5, 6, 13, 16)": {
+      "result": true,
+      "time": 0.043111324310302734,
+      "error": null
+    },
+    "assert set_to_tuple({3, 8, 10, 11, 12, 15}) == (3, 8, 10, 11, 12, 15)": {
+      "result": true,
+      "time": 0.0407404899597168,
+      "error": null
+    },
+    "assert set_to_tuple({4, 8, 9, 11, 12, 14}) == (4, 8, 9, 11, 12, 14)": {
+      "result": true,
+      "time": 0.0429379940032959,
+      "error": null
+    },
+    "assert set_to_tuple({10, 14, 16, 17, 18}) == (10, 14, 16, 17, 18)": {
+      "result": true,
+      "time": 0.040891170501708984,
+      "error": null
+    },
+    "assert set_to_tuple({10, 17, 18, 20, 21}) == (10, 17, 18, 20, 21)": {
+      "result": true,
+      "time": 0.03786587715148926,
+      "error": null
+    },
+    "assert set_to_tuple({8, 9, 10, 19, 21}) == (8, 9, 10, 19, 21)": {
+      "result": true,
+      "time": 0.04006671905517578,
+      "error": null
+    },
+    "assert set_to_tuple({12, 13, 14, 15, 21}) == (12, 13, 14, 15, 21)": {
+      "result": true,
+      "time": 0.04757404327392578,
+      "error": null
+    },
+    "assert set_to_tuple({8, 9, 13, 14, 17}) == (8, 9, 13, 14, 17)": {
+      "result": true,
+      "time": 0.045326948165893555,
+      "error": null
+    },
+    "assert set_to_tuple({11, 12, 13, 16, 18}) == (11, 12, 13, 16, 18)": {
+      "result": true,
+      "time": 0.041193485260009766,
+      "error": null
+    },
+    "assert set_to_tuple({10, 11, 12, 14, 19}) == (10, 11, 12, 14, 19)": {
+      "result": true,
+      "time": 0.045084476470947266,
+      "error": null
+    },
+    "assert set_to_tuple({10, 11, 12, 16, 19}) == (10, 11, 12, 16, 19)": {
+      "result": true,
+      "time": 0.051029205322265625,
+      "error": null
+    },
+    "assert set_to_tuple({11, 14, 15, 16, 17}) == (11, 14, 15, 16, 17)": {
+      "result": true,
+      "time": 0.043698787689208984,
+      "error": null
+    },
+    "assert set_to_tuple({16, 17, 19, 20, 21}) == (16, 17, 19, 20, 21)": {
+      "result": true,
+      "time": 0.04643726348876953,
+      "error": null
+    },
+    "assert set_to_tuple({12, 13, 15, 16, 21}) == (12, 13, 15, 16, 21)": {
+      "result": true,
+      "time": 0.04206132888793945,
+      "error": null
+    },
+    "assert set_to_tuple({7, 8, 11, 14, 15}) == (7, 8, 11, 14, 15)": {
+      "result": true,
+      "time": 0.0377810001373291,
+      "error": null
+    },
+    "assert set_to_tuple({11, 12, 14, 19, 20}) == (11, 12, 14, 19, 20)": {
+      "result": true,
+      "time": 0.04365396499633789,
+      "error": null
+    },
+    "assert set_to_tuple({9, 15, 16, 17, 19}) == (9, 15, 16, 17, 19)": {
+      "result": true,
+      "time": 0.04481363296508789,
+      "error": null
+    },
+    "assert set_to_tuple({10, 13, 15, 16, 19}) == (10, 13, 15, 16, 19)": {
+      "result": true,
+      "time": 0.047034502029418945,
+      "error": null
+    },
+    "assert set_to_tuple({11, 16, 17, 18, 20}) == (11, 16, 17, 18, 20)": {
+      "result": true,
+      "time": 0.0442957878112793,
+      "error": null
+    },
+    "assert set_to_tuple({7, 13, 14, 16, 20}) == (7, 13, 14, 16, 20)": {
+      "result": true,
+      "time": 0.03860354423522949,
+      "error": null
+    },
+    "assert set_to_tuple({7, 9, 15, 19, 20}) == (7, 9, 15, 19, 20)": {
+      "result": true,
+      "time": 0.04558396339416504,
+      "error": null
+    },
+    "assert set_to_tuple({9, 10, 12, 15, 18}) == (9, 10, 12, 15, 18)": {
+      "result": true,
+      "time": 0.04544830322265625,
+      "error": null
+    },
+    "assert set_to_tuple({11, 13, 17, 18, 19}) == (11, 13, 17, 18, 19)": {
+      "result": true,
+      "time": 0.05030536651611328,
+      "error": null
+    },
+    "assert set_to_tuple({10, 12, 13, 14, 18}) == (10, 12, 13, 14, 18)": {
+      "result": true,
+      "time": 0.04897427558898926,
+      "error": null
+    },
+    "assert set_to_tuple({10, 13, 14, 15, 17}) == (10, 13, 14, 15, 17)": {
+      "result": true,
+      "time": 0.0490725040435791,
+      "error": null
+    },
+    "assert set_to_tuple({9, 13, 15, 16, 21}) == (9, 13, 15, 16, 21)": {
+      "result": true,
+      "time": 0.04386186599731445,
+      "error": null
+    },
+    "assert set_to_tuple({8, 10, 11, 18, 19}) == (8, 10, 11, 18, 19)": {
+      "result": true,
+      "time": 0.0650787353515625,
+      "error": null
+    },
+    "assert set_to_tuple({12, 14, 15, 16, 19}) == (12, 14, 15, 16, 19)": {
+      "result": true,
+      "time": 0.05675363540649414,
+      "error": null
+    },
+    "assert set_to_tuple({14, 16, 17, 19, 20}) == (14, 16, 17, 19, 20)": {
+      "result": true,
+      "time": 0.05258917808532715,
+      "error": null
+    },
+    "assert set_to_tuple({11, 14, 16, 17, 21}) == (11, 14, 16, 17, 21)": {
+      "result": true,
+      "time": 0.05443286895751953,
+      "error": null
+    },
+    "assert set_to_tuple({12, 14, 15, 16, 17}) == (12, 14, 15, 16, 17)": {
+      "result": true,
+      "time": 0.050063371658325195,
+      "error": null
+    },
+    "assert set_to_tuple({7, 11, 15, 18, 21}) == (7, 11, 15, 18, 21)": {
+      "result": true,
+      "time": 0.055509328842163086,
+      "error": null
+    },
+    "assert set_to_tuple({9, 13, 15, 18, 19}) == (9, 13, 15, 18, 19)": {
+      "result": true,
+      "time": 0.050338029861450195,
+      "error": null
+    },
+    "assert set_to_tuple({9, 11, 12, 13, 19}) == (9, 11, 12, 13, 19)": {
+      "result": true,
+      "time": 0.06473708152770996,
+      "error": null
+    },
+    "assert set_to_tuple({8, 12, 13, 14, 20}) == (8, 12, 13, 14, 20)": {
+      "result": true,
+      "time": 0.04653501510620117,
+      "error": null
+    },
+    "assert set_to_tuple({8, 12, 15, 17, 19}) == (8, 12, 15, 17, 19)": {
+      "result": true,
+      "time": 0.060037851333618164,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

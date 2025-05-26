@@ -1,0 +1,519 @@
+{
+  "code": "def merge_dict(dict1, dict2):\n    merged = {}\n    for key in dict1:\n        value = dict1[key]\n        merged[key] = value\n    for key in dict2:\n        value = dict2[key]\n        merged[key] = value\n    return merged",
+  "results": {
+    "assert merge_dict({'a': 100, 'b': 200},{'x': 300, 'y': 200})=={'x': 300, 'y': 200, 'a': 100, 'b': 200}": {
+      "result": true,
+      "time": 0.06093335151672363,
+      "error": null
+    },
+    "assert merge_dict({'a':900,'b':900,'d':900},{'a':900,'b':900,'d':900})=={'a':900,'b':900,'d':900,'a':900,'b':900,'d':900}": {
+      "result": true,
+      "time": 0.053987979888916016,
+      "error": null
+    },
+    "assert merge_dict({'a':10,'b':20},{'x':30,'y':40})=={'x':30,'y':40,'a':10,'b':20}": {
+      "result": true,
+      "time": 0.045996665954589844,
+      "error": null
+    },
+    "assert merge_dict({'l': 105, 'g': 196}, {'q': 300, 'c': 204}) == {'l': 105, 'g': 196, 'q': 300, 'c': 204}": {
+      "result": true,
+      "time": 0.040535688400268555,
+      "error": null
+    },
+    "assert merge_dict({'n': 101, 'g': 204}, {'w': 304, 'a': 200}) == {'n': 101, 'g': 204, 'w': 304, 'a': 200}": {
+      "result": true,
+      "time": 0.04988694190979004,
+      "error": null
+    },
+    "assert merge_dict({'h': 104, 'v': 205}, {'z': 295, 'p': 195}) == {'h': 104, 'v': 205, 'z': 295, 'p': 195}": {
+      "result": true,
+      "time": 0.04446887969970703,
+      "error": null
+    },
+    "assert merge_dict({'l': 102, 'm': 205}, {'o': 298, 'f': 203}) == {'l': 102, 'm': 205, 'o': 298, 'f': 203}": {
+      "result": true,
+      "time": 0.0375826358795166,
+      "error": null
+    },
+    "assert merge_dict({'f': 98, 'c': 205}, {'j': 299, 'd': 203}) == {'f': 98, 'c': 205, 'j': 299, 'd': 203}": {
+      "result": true,
+      "time": 0.037032127380371094,
+      "error": null
+    },
+    "assert merge_dict({'v': 101, 'm': 198}, {'g': 299, 'e': 198}) == {'v': 101, 'm': 198, 'g': 299, 'e': 198}": {
+      "result": true,
+      "time": 0.03691983222961426,
+      "error": null
+    },
+    "assert merge_dict({'a': 102, 'w': 198}, {'w': 303, 'c': 200}) == {'a': 102, 'w': 303, 'c': 200}": {
+      "result": true,
+      "time": 0.038782358169555664,
+      "error": null
+    },
+    "assert merge_dict({'u': 97, 'r': 200}, {'w': 305, 'b': 202}) == {'u': 97, 'r': 200, 'w': 305, 'b': 202}": {
+      "result": true,
+      "time": 0.041416168212890625,
+      "error": null
+    },
+    "assert merge_dict({'s': 101, 'a': 199}, {'h': 303, 'p': 202}) == {'s': 101, 'a': 199, 'h': 303, 'p': 202}": {
+      "result": true,
+      "time": 0.03973269462585449,
+      "error": null
+    },
+    "assert merge_dict({'a': 103, 'y': 205}, {'e': 301, 'd': 203}) == {'a': 103, 'y': 205, 'e': 301, 'd': 203}": {
+      "result": true,
+      "time": 0.04509711265563965,
+      "error": null
+    },
+    "assert merge_dict({'a': 101, 'y': 200}, {'b': 300, 'o': 204}) == {'a': 101, 'y': 200, 'b': 300, 'o': 204}": {
+      "result": true,
+      "time": 0.041556358337402344,
+      "error": null
+    },
+    "assert merge_dict({'m': 102, 'e': 195}, {'t': 295, 'd': 205}) == {'m': 102, 'e': 195, 't': 295, 'd': 205}": {
+      "result": true,
+      "time": 0.046608686447143555,
+      "error": null
+    },
+    "assert merge_dict({'k': 97, 'b': 197}, {'c': 297, 'g': 197}) == {'k': 97, 'b': 197, 'c': 297, 'g': 197}": {
+      "result": true,
+      "time": 0.04175257682800293,
+      "error": null
+    },
+    "assert merge_dict({'d': 104, 'c': 199}, {'a': 302, 'n': 199}) == {'d': 104, 'c': 199, 'a': 302, 'n': 199}": {
+      "result": true,
+      "time": 0.04450726509094238,
+      "error": null
+    },
+    "assert merge_dict({'e': 101, 'l': 204}, {'i': 295, 'g': 202}) == {'e': 101, 'l': 204, 'i': 295, 'g': 202}": {
+      "result": true,
+      "time": 0.045656442642211914,
+      "error": null
+    },
+    "assert merge_dict({'c': 97, 'l': 195}, {'h': 295, 'y': 198}) == {'c': 97, 'l': 195, 'h': 295, 'y': 198}": {
+      "result": true,
+      "time": 0.03615164756774902,
+      "error": null
+    },
+    "assert merge_dict({'m': 100, 'n': 200}, {'m': 303, 'q': 198}) == {'m': 303, 'n': 200, 'q': 198}": {
+      "result": true,
+      "time": 0.039888620376586914,
+      "error": null
+    },
+    "assert merge_dict({'e': 200}, {'v': 297, 'g': 195}) == {'e': 200, 'v': 297, 'g': 195}": {
+      "result": true,
+      "time": 0.035875558853149414,
+      "error": null
+    },
+    "assert merge_dict({'b': 102, 'o': 205}, {'d': 299, 'a': 201}) == {'b': 102, 'o': 205, 'd': 299, 'a': 201}": {
+      "result": true,
+      "time": 0.04315447807312012,
+      "error": null
+    },
+    "assert merge_dict({'d': 98, 'b': 195}, {'g': 296, 's': 202}) == {'d': 98, 'b': 195, 'g': 296, 's': 202}": {
+      "result": true,
+      "time": 0.05226635932922363,
+      "error": null
+    },
+    "assert merge_dict({'k': 97, 'h': 201}, {'p': 301, 'g': 196}) == {'k': 97, 'h': 201, 'p': 301, 'g': 196}": {
+      "result": true,
+      "time": 0.04274487495422363,
+      "error": null
+    },
+    "assert merge_dict({'j': 100, 'v': 200}, {'g': 297, 'j': 197}) == {'j': 197, 'v': 200, 'g': 297}": {
+      "result": true,
+      "time": 0.04323077201843262,
+      "error": null
+    },
+    "assert merge_dict({'z': 100, 'w': 199}, {'g': 296, 'c': 204}) == {'z': 100, 'w': 199, 'g': 296, 'c': 204}": {
+      "result": true,
+      "time": 0.04674506187438965,
+      "error": null
+    },
+    "assert merge_dict({'k': 96, 'b': 200}, {'s': 298, 'y': 195}) == {'k': 96, 'b': 200, 's': 298, 'y': 195}": {
+      "result": true,
+      "time": 0.03832674026489258,
+      "error": null
+    },
+    "assert merge_dict({'d': 105, 'y': 196}, {'c': 300, 'h': 203}) == {'d': 105, 'y': 196, 'c': 300, 'h': 203}": {
+      "result": true,
+      "time": 0.04512810707092285,
+      "error": null
+    },
+    "assert merge_dict({'g': 105, 'l': 196}, {'u': 299, 'x': 197}) == {'g': 105, 'l': 196, 'u': 299, 'x': 197}": {
+      "result": true,
+      "time": 0.044120073318481445,
+      "error": null
+    },
+    "assert merge_dict({'g': 104, 'z': 200}, {'h': 295, 'r': 202}) == {'g': 104, 'z': 200, 'h': 295, 'r': 202}": {
+      "result": true,
+      "time": 0.04436898231506348,
+      "error": null
+    },
+    "assert merge_dict({'w': 101, 'b': 195}, {'p': 301, 'h': 205}) == {'w': 101, 'b': 195, 'p': 301, 'h': 205}": {
+      "result": true,
+      "time": 0.04451751708984375,
+      "error": null
+    },
+    "assert merge_dict({'q': 104, 'g': 200}, {'x': 304, 'g': 200}) == {'q': 104, 'g': 200, 'x': 304}": {
+      "result": true,
+      "time": 0.04066872596740723,
+      "error": null
+    },
+    "assert merge_dict({'z': 95, 'c': 200}, {'h': 296, 'm': 200}) == {'z': 95, 'c': 200, 'h': 296, 'm': 200}": {
+      "result": true,
+      "time": 0.040390968322753906,
+      "error": null
+    },
+    "assert merge_dict({'h': 101, 'u': 197}, {'o': 305, 'w': 204}) == {'h': 101, 'u': 197, 'o': 305, 'w': 204}": {
+      "result": true,
+      "time": 0.0402829647064209,
+      "error": null
+    },
+    "assert merge_dict({'p': 101, 'd': 200}, {'y': 303, 'f': 196}) == {'p': 101, 'd': 200, 'y': 303, 'f': 196}": {
+      "result": true,
+      "time": 0.03815293312072754,
+      "error": null
+    },
+    "assert merge_dict({'r': 101, 'd': 200}, {'q': 301, 'l': 197}) == {'r': 101, 'd': 200, 'q': 301, 'l': 197}": {
+      "result": true,
+      "time": 0.039150238037109375,
+      "error": null
+    },
+    "assert merge_dict({'z': 897, 'q': 897}, {'g': 901, 'b': 895, 'r': 901}) == {'z': 897, 'q': 897, 'g': 901, 'b': 895, 'r': 901}": {
+      "result": true,
+      "time": 0.0379946231842041,
+      "error": null
+    },
+    "assert merge_dict({'t': 899, 'x': 901, 'r': 896}, {'u': 897, 'd': 901, 'z': 905}) == {'t': 899, 'x': 901, 'r': 896, 'u': 897, 'd': 901, 'z': 905}": {
+      "result": true,
+      "time": 0.037705421447753906,
+      "error": null
+    },
+    "assert merge_dict({'l': 896, 'g': 896, 'k': 896}, {'l': 897, 'z': 903, 'k': 905}) == {'l': 897, 'g': 896, 'k': 905, 'z': 903}": {
+      "result": true,
+      "time": 0.037117958068847656,
+      "error": null
+    },
+    "assert merge_dict({'h': 901, 'y': 896, 'x': 897}, {'i': 895, 'e': 898, 'm': 901}) == {'h': 901, 'y': 896, 'x': 897, 'i': 895, 'e': 898, 'm': 901}": {
+      "result": true,
+      "time": 0.04153132438659668,
+      "error": null
+    },
+    "assert merge_dict({'h': 900, 'r': 897, 'g': 900}, {'j': 899, 'y': 902}) == {'h': 900, 'r': 897, 'g': 900, 'j': 899, 'y': 902}": {
+      "result": true,
+      "time": 0.04417586326599121,
+      "error": null
+    },
+    "assert merge_dict({'y': 897, 't': 902, 'v': 904}, {'s': 902, 'j': 905, 'n': 895}) == {'y': 897, 't': 902, 'v': 904, 's': 902, 'j': 905, 'n': 895}": {
+      "result": true,
+      "time": 0.03228497505187988,
+      "error": null
+    },
+    "assert merge_dict({'v': 900, 'x': 898, 'p': 899}, {'o': 898, 's': 899, 'd': 898}) == {'v': 900, 'x': 898, 'p': 899, 'o': 898, 's': 899, 'd': 898}": {
+      "result": true,
+      "time": 0.04236912727355957,
+      "error": null
+    },
+    "assert merge_dict({'m': 897, 'r': 903, 'l': 905}, {'j': 905, 'z': 905, 'l': 904}) == {'m': 897, 'r': 903, 'l': 904, 'j': 905, 'z': 905}": {
+      "result": true,
+      "time": 0.0436708927154541,
+      "error": null
+    },
+    "assert merge_dict({'e': 900, 'z': 900, 'o': 899}, {'z': 902, 'q': 895, 'p': 897}) == {'e': 900, 'z': 902, 'o': 899, 'q': 895, 'p': 897}": {
+      "result": true,
+      "time": 0.03752732276916504,
+      "error": null
+    },
+    "assert merge_dict({'z': 898, 'q': 900, 'w': 900}, {'a': 899, 'x': 897, 'q': 900}) == {'z': 898, 'q': 900, 'w': 900, 'a': 899, 'x': 897}": {
+      "result": true,
+      "time": 0.047499895095825195,
+      "error": null
+    },
+    "assert merge_dict({'p': 905, 't': 898, 'y': 901}, {'y': 900, 's': 899, 'c': 902}) == {'p': 905, 't': 898, 'y': 900, 's': 899, 'c': 902}": {
+      "result": true,
+      "time": 0.03759193420410156,
+      "error": null
+    },
+    "assert merge_dict({'z': 897, 'b': 900, 'm': 902}, {'u': 904, 'z': 897, 'h': 897}) == {'z': 897, 'b': 900, 'm': 902, 'u': 904, 'h': 897}": {
+      "result": true,
+      "time": 0.04328155517578125,
+      "error": null
+    },
+    "assert merge_dict({'c': 895, 'k': 902, 'b': 896}, {'r': 902, 'g': 903, 'l': 901}) == {'c': 895, 'k': 902, 'b': 896, 'r': 902, 'g': 903, 'l': 901}": {
+      "result": true,
+      "time": 0.04648733139038086,
+      "error": null
+    },
+    "assert merge_dict({'e': 901, 'x': 900, 'a': 895}, {'b': 905, 'i': 898}) == {'e': 901, 'x': 900, 'a': 895, 'b': 905, 'i': 898}": {
+      "result": true,
+      "time": 0.04083251953125,
+      "error": null
+    },
+    "assert merge_dict({'t': 896, 'e': 905, 'w': 899}, {'p': 904, 'v': 902, 'j': 896}) == {'t': 896, 'e': 905, 'w': 899, 'p': 904, 'v': 902, 'j': 896}": {
+      "result": true,
+      "time": 0.04389524459838867,
+      "error": null
+    },
+    "assert merge_dict({'d': 901, 'x': 903, 'c': 898}, {'w': 898, 'z': 900, 'x': 898}) == {'d': 901, 'x': 898, 'c': 898, 'w': 898, 'z': 900}": {
+      "result": true,
+      "time": 0.04221296310424805,
+      "error": null
+    },
+    "assert merge_dict({'j': 897, 'a': 897, 'k': 902}, {'o': 905, 'r': 901, 'b': 903}) == {'j': 897, 'a': 897, 'k': 902, 'o': 905, 'r': 901, 'b': 903}": {
+      "result": true,
+      "time": 0.04011368751525879,
+      "error": null
+    },
+    "assert merge_dict({'h': 898, 's': 897, 'a': 905}, {'t': 900, 'z': 899, 'e': 897}) == {'h': 898, 's': 897, 'a': 905, 't': 900, 'z': 899, 'e': 897}": {
+      "result": true,
+      "time": 0.03840279579162598,
+      "error": null
+    },
+    "assert merge_dict({'t': 904, 'q': 898, 'k': 902}, {'a': 904, 'r': 897, 'f': 904}) == {'t': 904, 'q': 898, 'k': 902, 'a': 904, 'r': 897, 'f': 904}": {
+      "result": true,
+      "time": 0.03761553764343262,
+      "error": null
+    },
+    "assert merge_dict({'j': 904, 'v': 904, 'x': 904}, {'h': 902, 'v': 895, 'l': 898}) == {'j': 904, 'v': 895, 'x': 904, 'h': 902, 'l': 898}": {
+      "result": true,
+      "time": 0.04283475875854492,
+      "error": null
+    },
+    "assert merge_dict({'g': 902, 'o': 900, 'e': 900}, {'r': 898, 'm': 904, 'c': 895}) == {'g': 902, 'o': 900, 'e': 900, 'r': 898, 'm': 904, 'c': 895}": {
+      "result": true,
+      "time": 0.03752636909484863,
+      "error": null
+    },
+    "assert merge_dict({'s': 899, 'i': 899, 'q': 901}, {'d': 902, 'o': 904, 'i': 896}) == {'s': 899, 'i': 896, 'q': 901, 'd': 902, 'o': 904}": {
+      "result": true,
+      "time": 0.03964400291442871,
+      "error": null
+    },
+    "assert merge_dict({'m': 904, 'p': 902, 'h': 900}, {'h': 901, 'z': 897, 'y': 897}) == {'m': 904, 'p': 902, 'h': 901, 'z': 897, 'y': 897}": {
+      "result": true,
+      "time": 0.04043841361999512,
+      "error": null
+    },
+    "assert merge_dict({'x': 896, 'n': 900, 'l': 904}, {'n': 899, 'x': 905, 'h': 902}) == {'x': 905, 'n': 899, 'l': 904, 'h': 902}": {
+      "result": true,
+      "time": 0.04529619216918945,
+      "error": null
+    },
+    "assert merge_dict({'v': 899, 'x': 898, 'j': 902}, {'o': 896, 'z': 901, 'w': 903}) == {'v': 899, 'x': 898, 'j': 902, 'o': 896, 'z': 901, 'w': 903}": {
+      "result": true,
+      "time": 0.04299569129943848,
+      "error": null
+    },
+    "assert merge_dict({'a': 896, 'o': 900, 'h': 905}, {'i': 900, 'a': 904, 'o': 898}) == {'a': 904, 'o': 898, 'h': 905, 'i': 900}": {
+      "result": true,
+      "time": 0.043645620346069336,
+      "error": null
+    },
+    "assert merge_dict({'e': 897, 'l': 904, 'r': 899}, {'t': 897, 'y': 900}) == {'e': 897, 'l': 904, 'r': 899, 't': 897, 'y': 900}": {
+      "result": true,
+      "time": 0.03733181953430176,
+      "error": null
+    },
+    "assert merge_dict({'q': 900, 'y': 903, 'e': 900}, {'i': 895, 'j': 899}) == {'q': 900, 'y': 903, 'e': 900, 'i': 895, 'j': 899}": {
+      "result": true,
+      "time": 0.04974031448364258,
+      "error": null
+    },
+    "assert merge_dict({'v': 902, 'e': 905, 'a': 903}, {'w': 898, 'v': 896, 'u': 902}) == {'v': 896, 'e': 905, 'a': 903, 'w': 898, 'u': 902}": {
+      "result": true,
+      "time": 0.04429793357849121,
+      "error": null
+    },
+    "assert merge_dict({'b': 901, 'q': 901, 'w': 897}, {'v': 905, 'n': 902, 'b': 898}) == {'b': 898, 'q': 901, 'w': 897, 'v': 905, 'n': 902}": {
+      "result": true,
+      "time": 0.036988258361816406,
+      "error": null
+    },
+    "assert merge_dict({'n': 903, 'x': 900, 'v': 902}, {'x': 898, 't': 898}) == {'n': 903, 'x': 898, 'v': 902, 't': 898}": {
+      "result": true,
+      "time": 0.039119720458984375,
+      "error": null
+    },
+    "assert merge_dict({'i': 898, 't': 895, 'p': 904}, {'c': 901, 'r': 898, 'i': 897}) == {'i': 897, 't': 895, 'p': 904, 'c': 901, 'r': 898}": {
+      "result": true,
+      "time": 0.042086124420166016,
+      "error": null
+    },
+    "assert merge_dict({'x': 904, 'o': 896, 't': 901}, {'a': 905, 'm': 895}) == {'x': 904, 'o': 896, 't': 901, 'a': 905, 'm': 895}": {
+      "result": true,
+      "time": 0.03778386116027832,
+      "error": null
+    },
+    "assert merge_dict({'m': 5, 'l': 22}, {'t': 27, 'f': 36}) == {'m': 5, 'l': 22, 't': 27, 'f': 36}": {
+      "result": true,
+      "time": 0.045171260833740234,
+      "error": null
+    },
+    "assert merge_dict({'t': 9, 'e': 25}, {'m': 27, 'u': 41}) == {'t': 9, 'e': 25, 'm': 27, 'u': 41}": {
+      "result": true,
+      "time": 0.04623675346374512,
+      "error": null
+    },
+    "assert merge_dict({'i': 5, 'm': 25}, {'d': 35, 's': 43}) == {'i': 5, 'm': 25, 'd': 35, 's': 43}": {
+      "result": true,
+      "time": 0.03495478630065918,
+      "error": null
+    },
+    "assert merge_dict({'i': 8, 'd': 20}, {'k': 33, 'y': 35}) == {'i': 8, 'd': 20, 'k': 33, 'y': 35}": {
+      "result": true,
+      "time": 0.03371000289916992,
+      "error": null
+    },
+    "assert merge_dict({'b': 14, 'n': 20}, {'i': 35, 'g': 44}) == {'b': 14, 'n': 20, 'i': 35, 'g': 44}": {
+      "result": true,
+      "time": 0.04549407958984375,
+      "error": null
+    },
+    "assert merge_dict({'g': 7, 'd': 23}, {'d': 26, 'r': 45}) == {'g': 7, 'd': 26, 'r': 45}": {
+      "result": true,
+      "time": 0.03902626037597656,
+      "error": null
+    },
+    "assert merge_dict({'j': 8, 'n': 20}, {'f': 32, 'j': 44}) == {'j': 44, 'n': 20, 'f': 32}": {
+      "result": true,
+      "time": 0.04703545570373535,
+      "error": null
+    },
+    "assert merge_dict({'e': 15, 'y': 25}, {'e': 25, 'x': 42}) == {'e': 25, 'y': 25, 'x': 42}": {
+      "result": true,
+      "time": 0.04444122314453125,
+      "error": null
+    },
+    "assert merge_dict({'w': 5, 'e': 17}, {'b': 29, 'f': 36}) == {'w': 5, 'e': 17, 'b': 29, 'f': 36}": {
+      "result": true,
+      "time": 0.04282402992248535,
+      "error": null
+    },
+    "assert merge_dict({'b': 8, 'd': 25}, {'l': 26, 'h': 37}) == {'b': 8, 'd': 25, 'l': 26, 'h': 37}": {
+      "result": true,
+      "time": 0.0438995361328125,
+      "error": null
+    },
+    "assert merge_dict({'a': 14, 'l': 23}, {'p': 27, 'z': 45}) == {'a': 14, 'l': 23, 'p': 27, 'z': 45}": {
+      "result": true,
+      "time": 0.044306278228759766,
+      "error": null
+    },
+    "assert merge_dict({'p': 14, 'x': 22}, {'n': 28, 'w': 35}) == {'p': 14, 'x': 22, 'n': 28, 'w': 35}": {
+      "result": true,
+      "time": 0.04531240463256836,
+      "error": null
+    },
+    "assert merge_dict({'d': 9, 'c': 25}, {'q': 29, 'l': 38}) == {'d': 9, 'c': 25, 'q': 29, 'l': 38}": {
+      "result": true,
+      "time": 0.03898811340332031,
+      "error": null
+    },
+    "assert merge_dict({'b': 8, 'q': 16}, {'t': 31, 'u': 37}) == {'b': 8, 'q': 16, 't': 31, 'u': 37}": {
+      "result": true,
+      "time": 0.03939700126647949,
+      "error": null
+    },
+    "assert merge_dict({'t': 5, 'o': 17}, {'z': 25, 'q': 35}) == {'t': 5, 'o': 17, 'z': 25, 'q': 35}": {
+      "result": true,
+      "time": 0.03457021713256836,
+      "error": null
+    },
+    "assert merge_dict({'f': 15, 'c': 25}, {'t': 36}) == {'f': 15, 'c': 25, 't': 36}": {
+      "result": true,
+      "time": 0.03794384002685547,
+      "error": null
+    },
+    "assert merge_dict({'x': 14, 'a': 24}, {'d': 32, 'v': 38}) == {'x': 14, 'a': 24, 'd': 32, 'v': 38}": {
+      "result": true,
+      "time": 0.04052114486694336,
+      "error": null
+    },
+    "assert merge_dict({'v': 8, 'a': 15}, {'e': 25, 'm': 44}) == {'v': 8, 'a': 15, 'e': 25, 'm': 44}": {
+      "result": true,
+      "time": 0.037125587463378906,
+      "error": null
+    },
+    "assert merge_dict({'h': 8, 's': 17}, {'s': 38}) == {'h': 8, 's': 38}": {
+      "result": true,
+      "time": 0.0463714599609375,
+      "error": null
+    },
+    "assert merge_dict({'z': 10, 'i': 20}, {'c': 28, 'q': 39}) == {'z': 10, 'i': 20, 'c': 28, 'q': 39}": {
+      "result": true,
+      "time": 0.03735923767089844,
+      "error": null
+    },
+    "assert merge_dict({'z': 5, 'd': 15}, {'j': 33, 'w': 39}) == {'z': 5, 'd': 15, 'j': 33, 'w': 39}": {
+      "result": true,
+      "time": 0.03538179397583008,
+      "error": null
+    },
+    "assert merge_dict({'d': 7, 'y': 19}, {'p': 29, 'y': 42}) == {'d': 7, 'y': 42, 'p': 29}": {
+      "result": true,
+      "time": 0.03781414031982422,
+      "error": null
+    },
+    "assert merge_dict({'x': 9, 'd': 21}, {'h': 25, 't': 40}) == {'x': 9, 'd': 21, 'h': 25, 't': 40}": {
+      "result": true,
+      "time": 0.03747439384460449,
+      "error": null
+    },
+    "assert merge_dict({'y': 14, 'z': 17}, {'o': 30, 'q': 44}) == {'y': 14, 'z': 17, 'o': 30, 'q': 44}": {
+      "result": true,
+      "time": 0.03892159461975098,
+      "error": null
+    },
+    "assert merge_dict({'p': 18}, {'a': 32, 'q': 40}) == {'p': 18, 'a': 32, 'q': 40}": {
+      "result": true,
+      "time": 0.03498411178588867,
+      "error": null
+    },
+    "assert merge_dict({'x': 8, 'w': 21}, {'t': 30, 'y': 43}) == {'x': 8, 'w': 21, 't': 30, 'y': 43}": {
+      "result": true,
+      "time": 0.03659510612487793,
+      "error": null
+    },
+    "assert merge_dict({'e': 14, 'z': 21}, {'a': 33, 'h': 42}) == {'e': 14, 'z': 21, 'a': 33, 'h': 42}": {
+      "result": true,
+      "time": 0.04310011863708496,
+      "error": null
+    },
+    "assert merge_dict({'o': 5, 'u': 24}, {'x': 32, 'f': 42}) == {'o': 5, 'u': 24, 'x': 32, 'f': 42}": {
+      "result": true,
+      "time": 0.03626751899719238,
+      "error": null
+    },
+    "assert merge_dict({'y': 12, 'z': 24}, {'n': 34, 'l': 43}) == {'y': 12, 'z': 24, 'n': 34, 'l': 43}": {
+      "result": true,
+      "time": 0.0372014045715332,
+      "error": null
+    },
+    "assert merge_dict({'z': 22}, {'w': 35, 'a': 38}) == {'z': 22, 'w': 35, 'a': 38}": {
+      "result": true,
+      "time": 0.04804635047912598,
+      "error": null
+    },
+    "assert merge_dict({'f': 11, 'i': 16}, {'f': 35, 'o': 41}) == {'f': 35, 'i': 16, 'o': 41}": {
+      "result": true,
+      "time": 0.046172142028808594,
+      "error": null
+    },
+    "assert merge_dict({'n': 10, 'p': 19}, {'d': 31, 'g': 45}) == {'n': 10, 'p': 19, 'd': 31, 'g': 45}": {
+      "result": true,
+      "time": 0.036948442459106445,
+      "error": null
+    },
+    "assert merge_dict({'z': 10, 'b': 15}, {'i': 25, 'm': 44}) == {'z': 10, 'b': 15, 'i': 25, 'm': 44}": {
+      "result": true,
+      "time": 0.037729740142822266,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,64 @@
+{
+  "code": "import math\n\ndef get_Min_Squares(n):\n    # Create a DP array initialized with infinity, except for dp[0] which is 0\n    dp = [float('inf')] * (n + 1)\n    dp[0] = 0\n    \n    for i in range(1, n + 1):\n        # Check all perfect squares less than or equal to i\n        j = 1\n        while j * j <= i:\n            dp[i] = min(dp[i], dp[i - j * j] + 1)\n            j += 1\n    \n    return dp[n]",
+  "results": {
+    "assert get_Min_Squares(6) == 3": {
+      "result": true,
+      "time": 0.08528423309326172,
+      "error": null
+    },
+    "assert get_Min_Squares(2) == 2": {
+      "result": true,
+      "time": 0.08302426338195801,
+      "error": null
+    },
+    "assert get_Min_Squares(4) == 1": {
+      "result": true,
+      "time": 0.09795570373535156,
+      "error": null
+    },
+    "assert get_Min_Squares(3) == 3": {
+      "result": true,
+      "time": 0.09978652000427246,
+      "error": null
+    },
+    "assert get_Min_Squares(10) == 2": {
+      "result": true,
+      "time": 0.09759712219238281,
+      "error": null
+    },
+    "assert get_Min_Squares(5) == 2": {
+      "result": true,
+      "time": 0.09333515167236328,
+      "error": null
+    },
+    "assert get_Min_Squares(7) == 4": {
+      "result": true,
+      "time": 0.09052014350891113,
+      "error": null
+    },
+    "assert get_Min_Squares(9) == 1": {
+      "result": true,
+      "time": 0.09752297401428223,
+      "error": null
+    },
+    "assert get_Min_Squares(8) == 2": {
+      "result": true,
+      "time": 0.10143446922302246,
+      "error": null
+    },
+    "assert get_Min_Squares(1) == 1": {
+      "result": true,
+      "time": 0.09204602241516113,
+      "error": null
+    },
+    "assert get_Min_Squares(11) == 3": {
+      "result": true,
+      "time": 0.10206198692321777,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

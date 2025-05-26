@@ -1,0 +1,144 @@
+{
+  "code": "def rearrange_bigger(n):\n    digits = []\n    temp = n\n    while temp > 0:\n        digit = temp % 10\n        digits.append(digit)\n        temp = temp // 10\n    digits.reverse()\n    \n    pivot = -1\n    for i in range(len(digits) - 1, 0, -1):\n        if digits[i] > digits[i - 1]:\n            pivot = i - 1\n            break\n    \n    if pivot == -1:\n        return False\n    \n    swap = -1\n    for j in range(len(digits) - 1, pivot, -1):\n        if digits[j] > digits[pivot]:\n            swap = j\n            break\n    \n    temp_digit = digits[pivot]\n    digits[pivot] = digits[swap]\n    digits[swap] = temp_digit\n    \n    left = pivot + 1\n    right = len(digits) - 1\n    while left < right:\n        temp_digit = digits[left]\n        digits[left] = digits[right]\n        digits[right] = temp_digit\n        left += 1\n        right -= 1\n    \n    result = 0\n    for digit in digits:\n        result = result * 10 + digit\n    \n    return result",
+  "results": {
+    "assert rearrange_bigger(12)==21": {
+      "result": true,
+      "time": 0.04141521453857422,
+      "error": null
+    },
+    "assert rearrange_bigger(10)==False": {
+      "result": true,
+      "time": 0.04273414611816406,
+      "error": null
+    },
+    "assert rearrange_bigger(102)==120": {
+      "result": true,
+      "time": 0.0472722053527832,
+      "error": null
+    },
+    "assert rearrange_bigger(14) == 41": {
+      "result": true,
+      "time": 0.037874698638916016,
+      "error": null
+    },
+    "assert rearrange_bigger(9) == False": {
+      "result": true,
+      "time": 0.044205665588378906,
+      "error": null
+    },
+    "assert rearrange_bigger(8) == False": {
+      "result": true,
+      "time": 0.03713393211364746,
+      "error": null
+    },
+    "assert rearrange_bigger(11) == False": {
+      "result": true,
+      "time": 0.04243278503417969,
+      "error": null
+    },
+    "assert rearrange_bigger(15) == 51": {
+      "result": true,
+      "time": 0.04184365272521973,
+      "error": null
+    },
+    "assert rearrange_bigger(12) == 21": {
+      "result": true,
+      "time": 0.04224038124084473,
+      "error": null
+    },
+    "assert rearrange_bigger(13) == 31": {
+      "result": true,
+      "time": 0.04559016227722168,
+      "error": null
+    },
+    "assert rearrange_bigger(16) == 61": {
+      "result": true,
+      "time": 0.04861855506896973,
+      "error": null
+    },
+    "assert rearrange_bigger(17) == 71": {
+      "result": true,
+      "time": 0.03985762596130371,
+      "error": null
+    },
+    "assert rearrange_bigger(7) == False": {
+      "result": true,
+      "time": 0.038249969482421875,
+      "error": null
+    },
+    "assert rearrange_bigger(10) == False": {
+      "result": true,
+      "time": 0.05130887031555176,
+      "error": null
+    },
+    "assert rearrange_bigger(6) == False": {
+      "result": true,
+      "time": 0.049539804458618164,
+      "error": null
+    },
+    "assert rearrange_bigger(5) == False": {
+      "result": true,
+      "time": 0.04264068603515625,
+      "error": null
+    },
+    "assert rearrange_bigger(106) == 160": {
+      "result": true,
+      "time": 0.04698824882507324,
+      "error": null
+    },
+    "assert rearrange_bigger(104) == 140": {
+      "result": true,
+      "time": 0.03517270088195801,
+      "error": null
+    },
+    "assert rearrange_bigger(107) == 170": {
+      "result": true,
+      "time": 0.037696123123168945,
+      "error": null
+    },
+    "assert rearrange_bigger(99) == False": {
+      "result": true,
+      "time": 0.04090428352355957,
+      "error": null
+    },
+    "assert rearrange_bigger(103) == 130": {
+      "result": true,
+      "time": 0.038461923599243164,
+      "error": null
+    },
+    "assert rearrange_bigger(102) == 120": {
+      "result": true,
+      "time": 0.04480695724487305,
+      "error": null
+    },
+    "assert rearrange_bigger(98) == False": {
+      "result": true,
+      "time": 0.039952993392944336,
+      "error": null
+    },
+    "assert rearrange_bigger(100) == False": {
+      "result": true,
+      "time": 0.052115440368652344,
+      "error": null
+    },
+    "assert rearrange_bigger(105) == 150": {
+      "result": true,
+      "time": 0.04641079902648926,
+      "error": null
+    },
+    "assert rearrange_bigger(101) == 110": {
+      "result": true,
+      "time": 0.04577231407165527,
+      "error": null
+    },
+    "assert rearrange_bigger(97) == False": {
+      "result": true,
+      "time": 0.03545999526977539,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,514 @@
+{
+  "code": "def swap_count(s):\n    open_brackets = 0\n    close_brackets = 0\n    swap = 0\n    imbalance = 0\n    for char in s:\n        if char == '[':\n            open_brackets += 1\n            if imbalance > 0:\n                swap += imbalance\n                imbalance -= 1\n        else:\n            close_brackets += 1\n            imbalance = close_brackets - open_brackets\n    return swap",
+  "results": {
+    "assert swap_count(\"[]][][\") == 2": {
+      "result": true,
+      "time": 0.05509805679321289,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]\") == 0": {
+      "result": true,
+      "time": 0.05474519729614258,
+      "error": null
+    },
+    "assert swap_count(\"[[][]]][\") == 1": {
+      "result": true,
+      "time": 0.05991530418395996,
+      "error": null
+    },
+    "assert swap_count(\")>{(\") == 0": {
+      "result": true,
+      "time": 0.0613102912902832,
+      "error": null
+    },
+    "assert swap_count(\")[)]}<\") == 0": {
+      "result": false,
+      "time": 0.05315899848937988,
+      "error": null
+    },
+    "assert swap_count(\"{>]{<)[<])\") == 1": {
+      "result": false,
+      "time": 0.05508899688720703,
+      "error": null
+    },
+    "assert swap_count(\"{][)<}()\") == 1": {
+      "result": false,
+      "time": 0.05545186996459961,
+      "error": null
+    },
+    "assert swap_count(\"{<{(>(\") == 0": {
+      "result": true,
+      "time": 0.0504765510559082,
+      "error": null
+    },
+    "assert swap_count(\"([]}({}({[)\") == 0": {
+      "result": false,
+      "time": 0.03665280342102051,
+      "error": null
+    },
+    "assert swap_count(\"]}{[<<)]<<[]\") == 2": {
+      "result": false,
+      "time": 0.042211294174194336,
+      "error": null
+    },
+    "assert swap_count(\")}]}{{[)\") == 1": {
+      "result": false,
+      "time": 0.04874897003173828,
+      "error": null
+    },
+    "assert swap_count(\"[]))<<>>]}\") == 0": {
+      "result": true,
+      "time": 0.048279762268066406,
+      "error": null
+    },
+    "assert swap_count(\">}{}>{)<[{\") == 0": {
+      "result": false,
+      "time": 0.041359901428222656,
+      "error": null
+    },
+    "assert swap_count(\"<}><]\") == 0": {
+      "result": true,
+      "time": 0.0542905330657959,
+      "error": null
+    },
+    "assert swap_count(\"}))[[{<}><{>\") == 0": {
+      "result": false,
+      "time": 0.03981947898864746,
+      "error": null
+    },
+    "assert swap_count(\"]<)[\") == 1": {
+      "result": false,
+      "time": 0.043071746826171875,
+      "error": null
+    },
+    "assert swap_count(\"]>>{)\") == 0": {
+      "result": true,
+      "time": 0.041638851165771484,
+      "error": null
+    },
+    "assert swap_count(\")([))[)(]><[\") == 0": {
+      "result": false,
+      "time": 0.04015636444091797,
+      "error": null
+    },
+    "assert swap_count(\"(][<<(<>[(]>\") == 1": {
+      "result": false,
+      "time": 0.044023990631103516,
+      "error": null
+    },
+    "assert swap_count(\"(({(>{<\") == 0": {
+      "result": true,
+      "time": 0.038437604904174805,
+      "error": null
+    },
+    "assert swap_count(\")[({<>\") == 0": {
+      "result": false,
+      "time": 0.045705318450927734,
+      "error": null
+    },
+    "assert swap_count(\"]}}]}{>\") == 0": {
+      "result": true,
+      "time": 0.04378032684326172,
+      "error": null
+    },
+    "assert swap_count(\")(()(]\") == 0": {
+      "result": true,
+      "time": 0.05340981483459473,
+      "error": null
+    },
+    "assert swap_count(\"<(>\") == 0": {
+      "result": true,
+      "time": 0.04505586624145508,
+      "error": null
+    },
+    "assert swap_count(\"}}<<{\") == 0": {
+      "result": true,
+      "time": 0.041623592376708984,
+      "error": null
+    },
+    "assert swap_count(\"}(><})\") == 0": {
+      "result": true,
+      "time": 0.03542041778564453,
+      "error": null
+    },
+    "assert swap_count(\"{]}>]>\") == 0": {
+      "result": true,
+      "time": 0.048720359802246094,
+      "error": null
+    },
+    "assert swap_count(\"])]\") == 0": {
+      "result": true,
+      "time": 0.0555264949798584,
+      "error": null
+    },
+    "assert swap_count(\"}]}<[\") == 1": {
+      "result": false,
+      "time": 0.06081986427307129,
+      "error": null
+    },
+    "assert swap_count(\"]>[[>\") == 1": {
+      "result": false,
+      "time": 0.05944108963012695,
+      "error": null
+    },
+    "assert swap_count(\"(]}>{{((}\") == 0": {
+      "result": true,
+      "time": 0.049260854721069336,
+      "error": null
+    },
+    "assert swap_count(\"(}<>[))<((\") == 0": {
+      "result": false,
+      "time": 0.04976844787597656,
+      "error": null
+    },
+    "assert swap_count(\"<<(<<>}[><[\") == 0": {
+      "result": false,
+      "time": 0.04321861267089844,
+      "error": null
+    },
+    "assert swap_count(\"])(]})}<]]]]\") == 0": {
+      "result": true,
+      "time": 0.04744124412536621,
+      "error": null
+    },
+    "assert swap_count(\"<)(])\") == 0": {
+      "result": true,
+      "time": 0.05537009239196777,
+      "error": null
+    },
+    "assert swap_count(\")>[]}[<{[<<(\") == 0": {
+      "result": false,
+      "time": 0.03653573989868164,
+      "error": null
+    },
+    "assert swap_count(\"(}<{]({<)\") == 0": {
+      "result": true,
+      "time": 0.07065057754516602,
+      "error": null
+    },
+    "assert swap_count(\"([>)}}{{}}\") == 0": {
+      "result": false,
+      "time": 0.05174398422241211,
+      "error": null
+    },
+    "assert swap_count(\"{[}><]{())}\") == 0": {
+      "result": false,
+      "time": 0.05732417106628418,
+      "error": null
+    },
+    "assert swap_count(\"[))]>[>]\") == 0": {
+      "result": false,
+      "time": 0.05214858055114746,
+      "error": null
+    },
+    "assert swap_count(\"]>(><(<\") == 0": {
+      "result": true,
+      "time": 0.05583000183105469,
+      "error": null
+    },
+    "assert swap_count(\"<}[]}<(>\") == 0": {
+      "result": false,
+      "time": 0.06016683578491211,
+      "error": null
+    },
+    "assert swap_count(\"))])>})\") == 0": {
+      "result": true,
+      "time": 0.06353616714477539,
+      "error": null
+    },
+    "assert swap_count(\"<[{}]((({]\") == 0": {
+      "result": false,
+      "time": 0.06264996528625488,
+      "error": null
+    },
+    "assert swap_count(\"}>>)[\") == 0": {
+      "result": false,
+      "time": 0.06330466270446777,
+      "error": null
+    },
+    "assert swap_count(\"})]{][]<>}}\") == 2": {
+      "result": false,
+      "time": 0.05231428146362305,
+      "error": null
+    },
+    "assert swap_count(\"{<])[[}[{\") == 1": {
+      "result": false,
+      "time": 0.05224871635437012,
+      "error": null
+    },
+    "assert swap_count(\"[([}>\") == 0": {
+      "result": true,
+      "time": 0.03996086120605469,
+      "error": null
+    },
+    "assert swap_count(\"(()\") == 0": {
+      "result": true,
+      "time": 0.04454970359802246,
+      "error": null
+    },
+    "assert swap_count(\"{((})[])}{})\") == 0": {
+      "result": false,
+      "time": 0.03985166549682617,
+      "error": null
+    },
+    "assert swap_count(\"([}>>{\") == 0": {
+      "result": false,
+      "time": 0.03884553909301758,
+      "error": null
+    },
+    "assert swap_count(\")><][][}\") == 2": {
+      "result": false,
+      "time": 0.049439430236816406,
+      "error": null
+    },
+    "assert swap_count(\"[))>><<])(\") == 0": {
+      "result": true,
+      "time": 0.04925847053527832,
+      "error": null
+    },
+    "assert swap_count(\")<}\") == 0": {
+      "result": true,
+      "time": 0.037368059158325195,
+      "error": null
+    },
+    "assert swap_count(\"<([}{<>}{[<]\") == 0": {
+      "result": false,
+      "time": 0.04932427406311035,
+      "error": null
+    },
+    "assert swap_count(\">}{((}<})<]<\") == 0": {
+      "result": true,
+      "time": 0.04154562950134277,
+      "error": null
+    },
+    "assert swap_count(\"[}(]<}}((\") == 0": {
+      "result": true,
+      "time": 0.03937053680419922,
+      "error": null
+    },
+    "assert swap_count(\"])}[[\") == 1": {
+      "result": false,
+      "time": 0.04660320281982422,
+      "error": null
+    },
+    "assert swap_count(\"[[{{[{])\") == 0": {
+      "result": true,
+      "time": 0.03832530975341797,
+      "error": null
+    },
+    "assert swap_count(\"{><}<<[){[]\") == 0": {
+      "result": false,
+      "time": 0.05030107498168945,
+      "error": null
+    },
+    "assert swap_count(\"{{)(\") == 0": {
+      "result": true,
+      "time": 0.03542828559875488,
+      "error": null
+    },
+    "assert swap_count(\"[[{({\") == 0": {
+      "result": true,
+      "time": 0.043843746185302734,
+      "error": null
+    },
+    "assert swap_count(\"[{}{]><\") == 0": {
+      "result": true,
+      "time": 0.05040693283081055,
+      "error": null
+    },
+    "assert swap_count(\"(<(()(}><<]\") == 0": {
+      "result": true,
+      "time": 0.04677009582519531,
+      "error": null
+    },
+    "assert swap_count(\"[[<\") == 0": {
+      "result": true,
+      "time": 0.03368186950683594,
+      "error": null
+    },
+    "assert swap_count(\"})]>{[{[(>\") == 1": {
+      "result": false,
+      "time": 0.03910994529724121,
+      "error": null
+    },
+    "assert swap_count(\"]>{}(\") == 0": {
+      "result": true,
+      "time": 0.03876781463623047,
+      "error": null
+    },
+    "assert swap_count(\")><<<\") == 0": {
+      "result": true,
+      "time": 0.03632688522338867,
+      "error": null
+    },
+    "assert swap_count(\"[<]}>((]\") == 0": {
+      "result": true,
+      "time": 0.043375253677368164,
+      "error": null
+    },
+    "assert swap_count(\")(}}}))>}<\") == 0": {
+      "result": true,
+      "time": 0.03949594497680664,
+      "error": null
+    },
+    "assert swap_count(\"}]<]\") == 0": {
+      "result": true,
+      "time": 0.037030696868896484,
+      "error": null
+    },
+    "assert swap_count(\"}>]{\") == 0": {
+      "result": true,
+      "time": 0.03422212600708008,
+      "error": null
+    },
+    "assert swap_count(\"}]{{>(()(]}\") == 0": {
+      "result": true,
+      "time": 0.04268240928649902,
+      "error": null
+    },
+    "assert swap_count(\"[)]<<}[><\") == 0": {
+      "result": false,
+      "time": 0.03171730041503906,
+      "error": null
+    },
+    "assert swap_count(\"]]{)([)[}}[\") == 3": {
+      "result": false,
+      "time": 0.03216385841369629,
+      "error": null
+    },
+    "assert swap_count(\"]>><}>]>[\") == 2": {
+      "result": false,
+      "time": 0.03713417053222656,
+      "error": null
+    },
+    "assert swap_count(\")[(}]\") == 0": {
+      "result": false,
+      "time": 0.037755489349365234,
+      "error": null
+    },
+    "assert swap_count(\"<()[({){<>\") == 0": {
+      "result": false,
+      "time": 0.03498387336730957,
+      "error": null
+    },
+    "assert swap_count(\"[<]>>\") == 0": {
+      "result": true,
+      "time": 0.042606353759765625,
+      "error": null
+    },
+    "assert swap_count(\">>(}}<{>(}\") == 0": {
+      "result": true,
+      "time": 0.04032588005065918,
+      "error": null
+    },
+    "assert swap_count(\"<)}]{(}({]\") == 0": {
+      "result": true,
+      "time": 0.03623223304748535,
+      "error": null
+    },
+    "assert swap_count(\">>[{]\") == 0": {
+      "result": false,
+      "time": 0.03573012351989746,
+      "error": null
+    },
+    "assert swap_count(\"([[}[<(})\") == 0": {
+      "result": false,
+      "time": 0.0347900390625,
+      "error": null
+    },
+    "assert swap_count(\"<}}])[{)<>[\") == 1": {
+      "result": false,
+      "time": 0.037459611892700195,
+      "error": null
+    },
+    "assert swap_count(\"}([[(([[>\") == 0": {
+      "result": false,
+      "time": 0.03463101387023926,
+      "error": null
+    },
+    "assert swap_count(\"}>{}>){<(\") == 0": {
+      "result": true,
+      "time": 0.04395008087158203,
+      "error": null
+    },
+    "assert swap_count(\"{{](({>}\") == 0": {
+      "result": true,
+      "time": 0.0357058048248291,
+      "error": null
+    },
+    "assert swap_count(\"[{]}})}{}\") == 0": {
+      "result": true,
+      "time": 0.03588056564331055,
+      "error": null
+    },
+    "assert swap_count(\"<}>>(>{\") == 0": {
+      "result": true,
+      "time": 0.04063534736633301,
+      "error": null
+    },
+    "assert swap_count(\"{}[>{)(]\") == 0": {
+      "result": false,
+      "time": 0.03850960731506348,
+      "error": null
+    },
+    "assert swap_count(\"[]{{\") == 0": {
+      "result": true,
+      "time": 0.04023265838623047,
+      "error": null
+    },
+    "assert swap_count(\"((<[))\") == 0": {
+      "result": false,
+      "time": 0.03294539451599121,
+      "error": null
+    },
+    "assert swap_count(\"<]<}<>[<[\") == 1": {
+      "result": false,
+      "time": 0.04459691047668457,
+      "error": null
+    },
+    "assert swap_count(\"<}>](<[{]){{\") == 1": {
+      "result": false,
+      "time": 0.037268638610839844,
+      "error": null
+    },
+    "assert swap_count(\"<<]>})}\") == 0": {
+      "result": true,
+      "time": 0.040307044982910156,
+      "error": null
+    },
+    "assert swap_count(\"())()[\") == 0": {
+      "result": false,
+      "time": 0.03614354133605957,
+      "error": null
+    },
+    "assert swap_count(\"]{[](>>\") == 1": {
+      "result": false,
+      "time": 0.03392291069030762,
+      "error": null
+    },
+    "assert swap_count(\"{{[]\") == 0": {
+      "result": false,
+      "time": 0.03732466697692871,
+      "error": null
+    },
+    "assert swap_count(\"{{]<]}>}\") == 0": {
+      "result": true,
+      "time": 0.036347389221191406,
+      "error": null
+    },
+    "assert swap_count(\"]{[\") == 1": {
+      "result": false,
+      "time": 0.03649616241455078,
+      "error": null
+    },
+    "assert swap_count(\"({<{{><>>)]{\") == 0": {
+      "result": true,
+      "time": 0.042302608489990234,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.5148514851485149,
+  "general_error": "",
+  "has_testcase_error": false
+}

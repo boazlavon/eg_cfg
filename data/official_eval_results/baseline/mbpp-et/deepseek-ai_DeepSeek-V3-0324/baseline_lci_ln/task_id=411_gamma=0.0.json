@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef snake_to_camel(snake_str):\n    # Split the string into parts using underscore as delimiter\n    parts = re.split('_', snake_str)\n    \n    # Initialize an empty list to store the camel case parts\n    camel_parts = []\n    \n    # Iterate over each part\n    for part in parts:\n        # Capitalize the first letter of each part\n        if part:\n            first_char = part[0].upper()\n            rest_chars = part[1:]\n            camel_part = first_char + rest_chars\n            camel_parts.append(camel_part)\n    \n    # Join all parts into a single string\n    camel_str = ''.join(camel_parts)\n    \n    return camel_str",
+  "results": {
+    "assert snake_to_camel('android_tv') == 'AndroidTv'": {
+      "result": true,
+      "time": 0.5670232772827148,
+      "error": null
+    },
+    "assert snake_to_camel('google_pixel') == 'GooglePixel'": {
+      "result": true,
+      "time": 0.5897858142852783,
+      "error": null
+    },
+    "assert snake_to_camel('apple_watch') == 'AppleWatch'": {
+      "result": true,
+      "time": 0.6065094470977783,
+      "error": null
+    },
+    "assert snake_to_camel(\"@m^_ss&\") == \"@m^Ss&\"": {
+      "result": true,
+      "time": 0.589998722076416,
+      "error": null
+    },
+    "assert snake_to_camel(\">*d>-p\") == \">*d>-p\"": {
+      "result": true,
+      "time": 0.573237419128418,
+      "error": null
+    },
+    "assert snake_to_camel(\"!euyc*@ro|?/ea/\") == \"!euyc*@ro|?/ea/\"": {
+      "result": true,
+      "time": 0.5877771377563477,
+      "error": null
+    },
+    "assert snake_to_camel(\"ac<bj*|rfn#&ux\") == \"Ac<bj*|rfn#&ux\"": {
+      "result": true,
+      "time": 0.5587341785430908,
+      "error": null
+    },
+    "assert snake_to_camel(\"j+aj=>b@hdt\") == \"J+aj=>b@hdt\"": {
+      "result": true,
+      "time": 0.5861408710479736,
+      "error": null
+    },
+    "assert snake_to_camel(\"$:cg**-\") == \"$:cg**-\"": {
+      "result": true,
+      "time": 0.5991621017456055,
+      "error": null
+    },
+    "assert snake_to_camel(\"ve_hq*\") == \"VeHq*\"": {
+      "result": true,
+      "time": 0.561290979385376,
+      "error": null
+    },
+    "assert snake_to_camel(\"qlaph$jxon*&\") == \"Qlaph$jxon*&\"": {
+      "result": true,
+      "time": 0.5978498458862305,
+      "error": null
+    },
+    "assert snake_to_camel(\"l<-pef\") == \"L<-pef\"": {
+      "result": true,
+      "time": 0.5720372200012207,
+      "error": null
+    },
+    "assert snake_to_camel(\"oef:w-p:^f/\") == \"Oef:w-p:^f/\"": {
+      "result": true,
+      "time": 0.621854305267334,
+      "error": null
+    },
+    "assert snake_to_camel(\"n?it:_tdh\") == \"N?it:Tdh\"": {
+      "result": true,
+      "time": 0.5935828685760498,
+      "error": null
+    },
+    "assert snake_to_camel(\"l%drc@n:-\") == \"L%drc@n:-\"": {
+      "result": true,
+      "time": 0.5530831813812256,
+      "error": null
+    },
+    "assert snake_to_camel(\"l~cbw$f_\") == \"L~cbw$f_\"": {
+      "result": false,
+      "time": 0.5632987022399902,
+      "error": null
+    },
+    "assert snake_to_camel(\"cby?b>?!m\") == \"Cby?b>?!m\"": {
+      "result": true,
+      "time": 0.553743839263916,
+      "error": null
+    },
+    "assert snake_to_camel(\"tet_cv!/?!e:^%?\") == \"TetCv!/?!e:^%?\"": {
+      "result": true,
+      "time": 0.5972189903259277,
+      "error": null
+    },
+    "assert snake_to_camel(\"gne:/=%dl|<_\") == \"Gne:/=%dl|<_\"": {
+      "result": false,
+      "time": 0.6079316139221191,
+      "error": null
+    },
+    "assert snake_to_camel(\"z:&h+-m\") == \"Z:&h+-m\"": {
+      "result": true,
+      "time": 0.5968837738037109,
+      "error": null
+    },
+    "assert snake_to_camel(\"_h_md&we>e/vy\") == \"_HMd&we>e/vy\"": {
+      "result": false,
+      "time": 0.559429407119751,
+      "error": null
+    },
+    "assert snake_to_camel(\"y~pjjs-#\") == \"Y~pjjs-#\"": {
+      "result": true,
+      "time": 0.5953395366668701,
+      "error": null
+    },
+    "assert snake_to_camel(\"dqf#ilf%m\") == \"Dqf#ilf%m\"": {
+      "result": true,
+      "time": 0.5914599895477295,
+      "error": null
+    },
+    "assert snake_to_camel(\"kqf^j:uh?iy\") == \"Kqf^j:uh?iy\"": {
+      "result": true,
+      "time": 0.5843451023101807,
+      "error": null
+    },
+    "assert snake_to_camel(\"m>cy~~hr|ngn\") == \"M>cy~~hr|ngn\"": {
+      "result": true,
+      "time": 0.5691120624542236,
+      "error": null
+    },
+    "assert snake_to_camel(\"#pubt#^%l/zjbch\") == \"#pubt#^%l/zjbch\"": {
+      "result": true,
+      "time": 0.577418327331543,
+      "error": null
+    },
+    "assert snake_to_camel(\"qcvjjt%s/r+!\") == \"Qcvjjt%s/r+!\"": {
+      "result": true,
+      "time": 0.6419134140014648,
+      "error": null
+    },
+    "assert snake_to_camel(\"brtpl-$ty!h@i^:\") == \"Brtpl-$ty!h@i^:\"": {
+      "result": true,
+      "time": 0.5960156917572021,
+      "error": null
+    },
+    "assert snake_to_camel(\"onv^:v|gg\") == \"Onv^:v|gg\"": {
+      "result": true,
+      "time": 0.6176323890686035,
+      "error": null
+    },
+    "assert snake_to_camel(\":np=emxg@nmn-\") == \":np=emxg@nmn-\"": {
+      "result": true,
+      "time": 0.5452661514282227,
+      "error": null
+    },
+    "assert snake_to_camel(\"oznz^*evieap\") == \"Oznz^*evieap\"": {
+      "result": true,
+      "time": 0.5938749313354492,
+      "error": null
+    },
+    "assert snake_to_camel(\"rwe|b<k<a\") == \"Rwe|b<k<a\"": {
+      "result": true,
+      "time": 0.5945549011230469,
+      "error": null
+    },
+    "assert snake_to_camel(\"/m~l@$&th##>>\") == \"/m~l@$&th##>>\"": {
+      "result": true,
+      "time": 0.6378424167633057,
+      "error": null
+    },
+    "assert snake_to_camel(\"~iostp\") == \"~iostp\"": {
+      "result": true,
+      "time": 0.5987248420715332,
+      "error": null
+    },
+    "assert snake_to_camel(\"_?<pc/-upujuts\") == \"_?<pc/-upujuts\"": {
+      "result": false,
+      "time": 0.6008732318878174,
+      "error": null
+    },
+    "assert snake_to_camel(\"!j|jw=\") == \"!j|jw=\"": {
+      "result": true,
+      "time": 0.6157820224761963,
+      "error": null
+    },
+    "assert snake_to_camel(\"qw*u_zay$\") == \"Qw*uZay$\"": {
+      "result": true,
+      "time": 0.6131947040557861,
+      "error": null
+    },
+    "assert snake_to_camel(\"q+z+secpkdw^_r<e\") == \"Q+z+secpkdw^R<e\"": {
+      "result": true,
+      "time": 0.549931526184082,
+      "error": null
+    },
+    "assert snake_to_camel(\"jd?p%>xy^uw#\") == \"Jd?p%>xy^uw#\"": {
+      "result": true,
+      "time": 0.5400576591491699,
+      "error": null
+    },
+    "assert snake_to_camel(\"/w_~sqqbzvh&jh%bw\") == \"/w~sqqbzvh&jh%bw\"": {
+      "result": true,
+      "time": 0.5575997829437256,
+      "error": null
+    },
+    "assert snake_to_camel(\"k@q!ep|p$x=iax_n_g\") == \"K@q!ep|p$x=iaxNG\"": {
+      "result": true,
+      "time": 0.5746371746063232,
+      "error": null
+    },
+    "assert snake_to_camel(\"okqhsvx+dm$\") == \"Okqhsvx+dm$\"": {
+      "result": true,
+      "time": 0.6061837673187256,
+      "error": null
+    },
+    "assert snake_to_camel(\"hwqm%wa&@@y\") == \"Hwqm%wa&@@y\"": {
+      "result": true,
+      "time": 0.5808441638946533,
+      "error": null
+    },
+    "assert snake_to_camel(\"i&rm*wiitj_c\") == \"I&rm*wiitjC\"": {
+      "result": true,
+      "time": 0.5666806697845459,
+      "error": null
+    },
+    "assert snake_to_camel(\"ur>#sk~b@\") == \"Ur>#sk~b@\"": {
+      "result": true,
+      "time": 0.5815181732177734,
+      "error": null
+    },
+    "assert snake_to_camel(\"nh?uqh!g&&f\") == \"Nh?uqh!g&&f\"": {
+      "result": true,
+      "time": 0.5472490787506104,
+      "error": null
+    },
+    "assert snake_to_camel(\"-wngo@p>s\") == \"-wngo@p>s\"": {
+      "result": true,
+      "time": 0.5712687969207764,
+      "error": null
+    },
+    "assert snake_to_camel(\"=*/yx?hh%oatowu~jo\") == \"=*/yx?hh%oatowu~jo\"": {
+      "result": true,
+      "time": 0.5847451686859131,
+      "error": null
+    },
+    "assert snake_to_camel(\"hj|od~y:@l-ugw|\") == \"Hj|od~y:@l-ugw|\"": {
+      "result": true,
+      "time": 0.5559728145599365,
+      "error": null
+    },
+    "assert snake_to_camel(\"i$axvw/l~~k<\") == \"I$axvw/l~~k<\"": {
+      "result": true,
+      "time": 0.6061844825744629,
+      "error": null
+    },
+    "assert snake_to_camel(\"ne%hpb$/gmd_w^t\") == \"Ne%hpb$/gmdW^t\"": {
+      "result": true,
+      "time": 0.5914957523345947,
+      "error": null
+    },
+    "assert snake_to_camel(\"t*e&ph#r>c=sr\") == \"T*e&ph#r>c=sr\"": {
+      "result": true,
+      "time": 0.557572603225708,
+      "error": null
+    },
+    "assert snake_to_camel(\"u<~%&g_kwhq!zd&>&u\") == \"U<~%&gKwhq!zd&>&u\"": {
+      "result": true,
+      "time": 0.5663611888885498,
+      "error": null
+    },
+    "assert snake_to_camel(\"n~y#jz_hgg+t>@?jk+\") == \"N~y#jzHgg+t>@?jk+\"": {
+      "result": true,
+      "time": 0.5607814788818359,
+      "error": null
+    },
+    "assert snake_to_camel(\"kfyp#~a!z?sh:?y$\") == \"Kfyp#~a!z?sh:?y$\"": {
+      "result": true,
+      "time": 0.5619258880615234,
+      "error": null
+    },
+    "assert snake_to_camel(\"vtbe_ns#$?x\") == \"VtbeNs#$?x\"": {
+      "result": true,
+      "time": 0.5602891445159912,
+      "error": null
+    },
+    "assert snake_to_camel(\":y-|sfvebw\") == \":y-|sfvebw\"": {
+      "result": true,
+      "time": 0.5458323955535889,
+      "error": null
+    },
+    "assert snake_to_camel(\"#voic=o:_->jfc\") == \"#voic=o:->jfc\"": {
+      "result": true,
+      "time": 0.5747370719909668,
+      "error": null
+    },
+    "assert snake_to_camel(\"!b/=^z~q%$ay<hy*ry\") == \"!b/=^z~q%$ay<hy*ry\"": {
+      "result": true,
+      "time": 0.5730438232421875,
+      "error": null
+    },
+    "assert snake_to_camel(\"hx$o$#hrdae~?u-\") == \"Hx$o$#hrdae~?u-\"": {
+      "result": true,
+      "time": 0.3478219509124756,
+      "error": null
+    },
+    "assert snake_to_camel(\"qzfsm_yw!x:i<qewsl\") == \"QzfsmYw!x:i<qewsl\"": {
+      "result": true,
+      "time": 0.5872128009796143,
+      "error": null
+    },
+    "assert snake_to_camel(\"@ulwze-b@p>tnkxnv\") == \"@ulwze-b@p>tnkxnv\"": {
+      "result": true,
+      "time": 0.5916385650634766,
+      "error": null
+    },
+    "assert snake_to_camel(\"k&vhsh=xap%\") == \"K&vhsh=xap%\"": {
+      "result": true,
+      "time": 0.47269296646118164,
+      "error": null
+    },
+    "assert snake_to_camel(\"~anvt=&kafw:?+\") == \"~anvt=&kafw:?+\"": {
+      "result": true,
+      "time": 0.4937150478363037,
+      "error": null
+    },
+    "assert snake_to_camel(\"g:m+o_re_s*_rku#%\") == \"G:m+oReS*Rku#%\"": {
+      "result": true,
+      "time": 0.3717966079711914,
+      "error": null
+    },
+    "assert snake_to_camel(\"i/%n:^yzy\") == \"I/%n:^yzy\"": {
+      "result": true,
+      "time": 0.47672581672668457,
+      "error": null
+    },
+    "assert snake_to_camel(\"i:&|/rp*i*>-\") == \"I:&|/rp*i*>-\"": {
+      "result": true,
+      "time": 0.6932628154754639,
+      "error": null
+    },
+    "assert snake_to_camel(\"@oxe#t&zoi~gj\") == \"@oxe#t&zoi~gj\"": {
+      "result": true,
+      "time": 0.4596104621887207,
+      "error": null
+    },
+    "assert snake_to_camel(\"*r-xmtwm?<@^_\") == \"*r-xmtwm?<@^_\"": {
+      "result": false,
+      "time": 0.5806736946105957,
+      "error": null
+    },
+    "assert snake_to_camel(\"&k/|y-fl*w\") == \"&k/|y-fl*w\"": {
+      "result": true,
+      "time": 0.596137285232544,
+      "error": null
+    },
+    "assert snake_to_camel(\"<bp%_a/\") == \"<bp%A/\"": {
+      "result": true,
+      "time": 0.5852792263031006,
+      "error": null
+    },
+    "assert snake_to_camel(\"=aei-whn&\") == \"=aei-whn&\"": {
+      "result": true,
+      "time": 0.5791053771972656,
+      "error": null
+    },
+    "assert snake_to_camel(\"m/m_+iqc\") == \"M/m+iqc\"": {
+      "result": true,
+      "time": 0.49126768112182617,
+      "error": null
+    },
+    "assert snake_to_camel(\"=gizti:+sp\") == \"=gizti:+sp\"": {
+      "result": true,
+      "time": 0.5766177177429199,
+      "error": null
+    },
+    "assert snake_to_camel(\"%|v>jz|ksi+u&ns\") == \"%|v>jz|ksi+u&ns\"": {
+      "result": true,
+      "time": 0.5549533367156982,
+      "error": null
+    },
+    "assert snake_to_camel(\"?ugofui>ddn^vbk\") == \"?ugofui>ddn^vbk\"": {
+      "result": true,
+      "time": 0.5671064853668213,
+      "error": null
+    },
+    "assert snake_to_camel(\"a|rdx/^\") == \"A|rdx/^\"": {
+      "result": true,
+      "time": 0.6325547695159912,
+      "error": null
+    },
+    "assert snake_to_camel(\"/ue+c@=&?@/e\") == \"/ue+c@=&?@/e\"": {
+      "result": true,
+      "time": 0.5660083293914795,
+      "error": null
+    },
+    "assert snake_to_camel(\"=zj/bnw|=>^ewoc\") == \"=zj/bnw|=>^ewoc\"": {
+      "result": true,
+      "time": 0.5600314140319824,
+      "error": null
+    },
+    "assert snake_to_camel(\"q<s!n:&:ua\") == \"Q<s!n:&:ua\"": {
+      "result": true,
+      "time": 0.6094775199890137,
+      "error": null
+    },
+    "assert snake_to_camel(\"fsizrftf/d>\") == \"Fsizrftf/d>\"": {
+      "result": true,
+      "time": 0.5576291084289551,
+      "error": null
+    },
+    "assert snake_to_camel(\"kv=aaq\") == \"Kv=aaq\"": {
+      "result": true,
+      "time": 0.5977222919464111,
+      "error": null
+    },
+    "assert snake_to_camel(\"&#izumks~#c-f~\") == \"&#izumks~#c-f~\"": {
+      "result": true,
+      "time": 0.6040983200073242,
+      "error": null
+    },
+    "assert snake_to_camel(\":^$?!b*k\") == \":^$?!b*k\"": {
+      "result": true,
+      "time": 0.5966172218322754,
+      "error": null
+    },
+    "assert snake_to_camel(\"a<du-qw-<\") == \"A<du-qw-<\"": {
+      "result": true,
+      "time": 0.603057861328125,
+      "error": null
+    },
+    "assert snake_to_camel(\"~b?=^hal\") == \"~b?=^hal\"": {
+      "result": true,
+      "time": 0.5650558471679688,
+      "error": null
+    },
+    "assert snake_to_camel(\"bi<?n|z\") == \"Bi<?n|z\"": {
+      "result": true,
+      "time": 0.5818307399749756,
+      "error": null
+    },
+    "assert snake_to_camel(\"i>qp>iu<?|\") == \"I>qp>iu<?|\"": {
+      "result": true,
+      "time": 0.5660231113433838,
+      "error": null
+    },
+    "assert snake_to_camel(\"lgcjksi>my&|bc\") == \"Lgcjksi>my&|bc\"": {
+      "result": true,
+      "time": 0.5645661354064941,
+      "error": null
+    },
+    "assert snake_to_camel(\"#|aj_lz*\") == \"#|ajLz*\"": {
+      "result": true,
+      "time": 0.6054933071136475,
+      "error": null
+    },
+    "assert snake_to_camel(\"^em@oxj\") == \"^em@oxj\"": {
+      "result": true,
+      "time": 0.6058251857757568,
+      "error": null
+    },
+    "assert snake_to_camel(\"~zp$rkrzm&<<\") == \"~zp$rkrzm&<<\"": {
+      "result": true,
+      "time": 0.6110358238220215,
+      "error": null
+    },
+    "assert snake_to_camel(\"|&fnde?e%+?@\") == \"|&fnde?e%+?@\"": {
+      "result": true,
+      "time": 0.6206400394439697,
+      "error": null
+    },
+    "assert snake_to_camel(\"*h<a#wj?%oqm\") == \"*h<a#wj?%oqm\"": {
+      "result": true,
+      "time": 0.5926172733306885,
+      "error": null
+    },
+    "assert snake_to_camel(\"e<%sgpd$\") == \"E<%sgpd$\"": {
+      "result": true,
+      "time": 0.5730018615722656,
+      "error": null
+    },
+    "assert snake_to_camel(\"&x#s?x\") == \"&x#s?x\"": {
+      "result": true,
+      "time": 0.5553934574127197,
+      "error": null
+    },
+    "assert snake_to_camel(\"z~k_#s\") == \"Z~k#s\"": {
+      "result": true,
+      "time": 0.6104698181152344,
+      "error": null
+    },
+    "assert snake_to_camel(\"bd=>!rpy=#x^>u\") == \"Bd=>!rpy=#x^>u\"": {
+      "result": true,
+      "time": 0.5974962711334229,
+      "error": null
+    },
+    "assert snake_to_camel(\"-^&iyhg#%i$g$\") == \"-^&iyhg#%i$g$\"": {
+      "result": true,
+      "time": 0.6058807373046875,
+      "error": null
+    },
+    "assert snake_to_camel(\"|b~>&=zxq$vjbh\") == \"|b~>&=zxq$vjbh\"": {
+      "result": true,
+      "time": 0.624298095703125,
+      "error": null
+    },
+    "assert snake_to_camel(\"<x*a@&ey^-uf\") == \"<x*a@&ey^-uf\"": {
+      "result": true,
+      "time": 0.5784306526184082,
+      "error": null
+    },
+    "assert snake_to_camel(\"ivtnr?by\") == \"Ivtnr?by\"": {
+      "result": true,
+      "time": 0.5650298595428467,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9509803921568627,
+  "general_error": "",
+  "has_testcase_error": false
+}

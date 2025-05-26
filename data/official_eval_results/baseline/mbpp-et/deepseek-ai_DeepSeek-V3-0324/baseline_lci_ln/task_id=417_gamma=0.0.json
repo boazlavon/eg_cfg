@@ -1,0 +1,519 @@
+{
+  "code": "def group_tuples(tuples_list):\n    # Create a dictionary to store the first elements and their corresponding values\n    groups = {}\n    \n    # Iterate through each tuple in the list\n    for t in tuples_list:\n        first_element = t[0]\n        remaining_elements = t[1:]\n        \n        # Check if the first element is already in the dictionary\n        if first_element in groups:\n            # If it is, extend the existing list with the remaining elements\n            existing_elements = groups[first_element]\n            for element in remaining_elements:\n                existing_elements.append(element)\n        else:\n            # If not, create a new entry with the first element and remaining elements\n            groups[first_element] = list(remaining_elements)\n    \n    # Prepare the result list by combining the first elements with their grouped values\n    result = []\n    for key in groups:\n        combined_tuple = (key,) + tuple(groups[key])\n        result.append(combined_tuple)\n    \n    return result",
+  "results": {
+    "assert group_tuples([('x', 'y'), ('x', 'z'), ('w', 't')]) == [('x', 'y', 'z'), ('w', 't')]": {
+      "result": true,
+      "time": 0.04002785682678223,
+      "error": null
+    },
+    "assert group_tuples([('a', 'b'), ('a', 'c'), ('d', 'e')]) == [('a', 'b', 'c'), ('d', 'e')]": {
+      "result": true,
+      "time": 0.04248356819152832,
+      "error": null
+    },
+    "assert group_tuples([('f', 'g'), ('f', 'g'), ('h', 'i')]) == [('f', 'g', 'g'), ('h', 'i')]": {
+      "result": true,
+      "time": 0.04203534126281738,
+      "error": null
+    },
+    "assert group_tuples([('w', 'u'), ('s', 'v'), ('f', 'r')]) == [('w', 'u'), ('s', 'v'), ('f', 'r')]": {
+      "result": true,
+      "time": 0.03557252883911133,
+      "error": null
+    },
+    "assert group_tuples([('i', 'y'), ('x', 'e'), ('c', 'v')]) == [('i', 'y'), ('x', 'e'), ('c', 'v')]": {
+      "result": true,
+      "time": 0.04316353797912598,
+      "error": null
+    },
+    "assert group_tuples([('t', 'b'), ('n', 'a'), ('m', 'e')]) == [('t', 'b'), ('n', 'a'), ('m', 'e')]": {
+      "result": true,
+      "time": 0.03929638862609863,
+      "error": null
+    },
+    "assert group_tuples([('s', 't'), ('w', 'v'), ('q', 's')]) == [('s', 't'), ('w', 'v'), ('q', 's')]": {
+      "result": true,
+      "time": 0.03659701347351074,
+      "error": null
+    },
+    "assert group_tuples([('x', 'l'), ('h', 'y'), ('i', 'r')]) == [('x', 'l'), ('h', 'y'), ('i', 'r')]": {
+      "result": true,
+      "time": 0.03623795509338379,
+      "error": null
+    },
+    "assert group_tuples([('c', 'b'), ('l', 'c'), ('i', 'w')]) == [('c', 'b'), ('l', 'c'), ('i', 'w')]": {
+      "result": true,
+      "time": 0.04416537284851074,
+      "error": null
+    },
+    "assert group_tuples([('c', 'd'), ('s', 'l'), ('z', 'm')]) == [('c', 'd'), ('s', 'l'), ('z', 'm')]": {
+      "result": true,
+      "time": 0.0413665771484375,
+      "error": null
+    },
+    "assert group_tuples([('r', 'k'), ('c', 'o'), ('b', 'w')]) == [('r', 'k'), ('c', 'o'), ('b', 'w')]": {
+      "result": true,
+      "time": 0.035141944885253906,
+      "error": null
+    },
+    "assert group_tuples([('i', 'f'), ('w', 'n'), ('z', 'q')]) == [('i', 'f'), ('w', 'n'), ('z', 'q')]": {
+      "result": true,
+      "time": 0.034102439880371094,
+      "error": null
+    },
+    "assert group_tuples([('f', 'z'), ('l', 'l'), ('r', 'q')]) == [('f', 'z'), ('l', 'l'), ('r', 'q')]": {
+      "result": true,
+      "time": 0.05117654800415039,
+      "error": null
+    },
+    "assert group_tuples([('k', 't'), ('c', 'n'), ('b', 'w')]) == [('k', 't'), ('c', 'n'), ('b', 'w')]": {
+      "result": true,
+      "time": 0.043380022048950195,
+      "error": null
+    },
+    "assert group_tuples([('a', 'z'), ('o', 'w'), ('r', 'v')]) == [('a', 'z'), ('o', 'w'), ('r', 'v')]": {
+      "result": true,
+      "time": 0.04449796676635742,
+      "error": null
+    },
+    "assert group_tuples([('m', 'r'), ('b', 'o'), ('h', 'k')]) == [('m', 'r'), ('b', 'o'), ('h', 'k')]": {
+      "result": true,
+      "time": 0.0367429256439209,
+      "error": null
+    },
+    "assert group_tuples([('s', 'j'), ('x', 'r'), ('b', 'i')]) == [('s', 'j'), ('x', 'r'), ('b', 'i')]": {
+      "result": true,
+      "time": 0.03829026222229004,
+      "error": null
+    },
+    "assert group_tuples([('g', 'h'), ('i', 'd'), ('m', 'o')]) == [('g', 'h'), ('i', 'd'), ('m', 'o')]": {
+      "result": true,
+      "time": 0.04128551483154297,
+      "error": null
+    },
+    "assert group_tuples([('u', 'h'), ('w', 'k'), ('m', 'r')]) == [('u', 'h'), ('w', 'k'), ('m', 'r')]": {
+      "result": true,
+      "time": 0.04132199287414551,
+      "error": null
+    },
+    "assert group_tuples([('m', 'b'), ('t', 'v'), ('w', 'i')]) == [('m', 'b'), ('t', 'v'), ('w', 'i')]": {
+      "result": true,
+      "time": 0.03774905204772949,
+      "error": null
+    },
+    "assert group_tuples([('t', 'q'), ('j', 'c'), ('l', 'y')]) == [('t', 'q'), ('j', 'c'), ('l', 'y')]": {
+      "result": true,
+      "time": 0.04017496109008789,
+      "error": null
+    },
+    "assert group_tuples([('x', 't'), ('e', 's'), ('b', 'v')]) == [('x', 't'), ('e', 's'), ('b', 'v')]": {
+      "result": true,
+      "time": 0.03861880302429199,
+      "error": null
+    },
+    "assert group_tuples([('y', 'd'), ('v', 'a'), ('e', 'c')]) == [('y', 'd'), ('v', 'a'), ('e', 'c')]": {
+      "result": true,
+      "time": 0.04402875900268555,
+      "error": null
+    },
+    "assert group_tuples([('a', 's'), ('o', 'e'), ('m', 'r')]) == [('a', 's'), ('o', 'e'), ('m', 'r')]": {
+      "result": true,
+      "time": 0.040869951248168945,
+      "error": null
+    },
+    "assert group_tuples([('c', 'r'), ('r', 't'), ('d', 'u')]) == [('c', 'r'), ('r', 't'), ('d', 'u')]": {
+      "result": true,
+      "time": 0.03198671340942383,
+      "error": null
+    },
+    "assert group_tuples([('v', 'z'), ('h', 'u'), ('x', 'd')]) == [('v', 'z'), ('h', 'u'), ('x', 'd')]": {
+      "result": true,
+      "time": 0.0424809455871582,
+      "error": null
+    },
+    "assert group_tuples([('v', 't'), ('v', 'm'), ('l', 'q')]) == [('v', 't', 'm'), ('l', 'q')]": {
+      "result": true,
+      "time": 0.03614044189453125,
+      "error": null
+    },
+    "assert group_tuples([('v', 'l'), ('l', 'w'), ('d', 'b')]) == [('v', 'l'), ('l', 'w'), ('d', 'b')]": {
+      "result": true,
+      "time": 0.03338360786437988,
+      "error": null
+    },
+    "assert group_tuples([('f', 'd'), ('n', 'h'), ('m', 'n')]) == [('f', 'd'), ('n', 'h'), ('m', 'n')]": {
+      "result": true,
+      "time": 0.034183502197265625,
+      "error": null
+    },
+    "assert group_tuples([('x', 'a'), ('n', 'v'), ('t', 'j')]) == [('x', 'a'), ('n', 'v'), ('t', 'j')]": {
+      "result": true,
+      "time": 0.04050850868225098,
+      "error": null
+    },
+    "assert group_tuples([('w', 'c'), ('x', 'e'), ('r', 'v')]) == [('w', 'c'), ('x', 'e'), ('r', 'v')]": {
+      "result": true,
+      "time": 0.03867197036743164,
+      "error": null
+    },
+    "assert group_tuples([('u', 'r'), ('o', 'v'), ('y', 'n')]) == [('u', 'r'), ('o', 'v'), ('y', 'n')]": {
+      "result": true,
+      "time": 0.03994154930114746,
+      "error": null
+    },
+    "assert group_tuples([('g', 'p'), ('d', 'm'), ('a', 'd')]) == [('g', 'p'), ('d', 'm'), ('a', 'd')]": {
+      "result": true,
+      "time": 0.040456533432006836,
+      "error": null
+    },
+    "assert group_tuples([('m', 'm'), ('g', 'e'), ('p', 'f')]) == [('m', 'm'), ('g', 'e'), ('p', 'f')]": {
+      "result": true,
+      "time": 0.04653596878051758,
+      "error": null
+    },
+    "assert group_tuples([('a', 'c'), ('d', 'e'), ('l', 'n')]) == [('a', 'c'), ('d', 'e'), ('l', 'n')]": {
+      "result": true,
+      "time": 0.03630661964416504,
+      "error": null
+    },
+    "assert group_tuples([('c', 'g'), ('r', 'p'), ('m', 'x')]) == [('c', 'g'), ('r', 'p'), ('m', 'x')]": {
+      "result": true,
+      "time": 0.04415702819824219,
+      "error": null
+    },
+    "assert group_tuples([('d', 'r'), ('y', 'v'), ('q', 'b')]) == [('d', 'r'), ('y', 'v'), ('q', 'b')]": {
+      "result": true,
+      "time": 0.03803610801696777,
+      "error": null
+    },
+    "assert group_tuples([('w', 'j'), ('w', 'o'), ('d', 'e')]) == [('w', 'j', 'o'), ('d', 'e')]": {
+      "result": true,
+      "time": 0.03521275520324707,
+      "error": null
+    },
+    "assert group_tuples([('x', 's'), ('i', 'w'), ('i', 'f')]) == [('x', 's'), ('i', 'w', 'f')]": {
+      "result": true,
+      "time": 0.03757357597351074,
+      "error": null
+    },
+    "assert group_tuples([('z', 'o'), ('b', 'b'), ('c', 'b')]) == [('z', 'o'), ('b', 'b'), ('c', 'b')]": {
+      "result": true,
+      "time": 0.04604220390319824,
+      "error": null
+    },
+    "assert group_tuples([('h', 'd'), ('l', 'e'), ('p', 'y')]) == [('h', 'd'), ('l', 'e'), ('p', 'y')]": {
+      "result": true,
+      "time": 0.03417396545410156,
+      "error": null
+    },
+    "assert group_tuples([('m', 'u'), ('k', 'b'), ('x', 'v')]) == [('m', 'u'), ('k', 'b'), ('x', 'v')]": {
+      "result": true,
+      "time": 0.03888368606567383,
+      "error": null
+    },
+    "assert group_tuples([('o', 'd'), ('n', 'n'), ('g', 'o')]) == [('o', 'd'), ('n', 'n'), ('g', 'o')]": {
+      "result": true,
+      "time": 0.04076409339904785,
+      "error": null
+    },
+    "assert group_tuples([('j', 'o'), ('v', 'q'), ('o', 'p')]) == [('j', 'o'), ('v', 'q'), ('o', 'p')]": {
+      "result": true,
+      "time": 0.03627943992614746,
+      "error": null
+    },
+    "assert group_tuples([('i', 'a'), ('c', 'e'), ('s', 'j')]) == [('i', 'a'), ('c', 'e'), ('s', 'j')]": {
+      "result": true,
+      "time": 0.039658308029174805,
+      "error": null
+    },
+    "assert group_tuples([('a', 'i'), ('d', 'u'), ('b', 'o')]) == [('a', 'i'), ('d', 'u'), ('b', 'o')]": {
+      "result": true,
+      "time": 0.04661297798156738,
+      "error": null
+    },
+    "assert group_tuples([('e', 'g'), ('v', 't'), ('a', 'c')]) == [('e', 'g'), ('v', 't'), ('a', 'c')]": {
+      "result": true,
+      "time": 0.036782264709472656,
+      "error": null
+    },
+    "assert group_tuples([('e', 'f'), ('w', 'o'), ('u', 'x')]) == [('e', 'f'), ('w', 'o'), ('u', 'x')]": {
+      "result": true,
+      "time": 0.03333592414855957,
+      "error": null
+    },
+    "assert group_tuples([('n', 'f'), ('k', 'v'), ('i', 'g')]) == [('n', 'f'), ('k', 'v'), ('i', 'g')]": {
+      "result": true,
+      "time": 0.03806805610656738,
+      "error": null
+    },
+    "assert group_tuples([('u', 'a'), ('q', 'i'), ('o', 'z')]) == [('u', 'a'), ('q', 'i'), ('o', 'z')]": {
+      "result": true,
+      "time": 0.042266845703125,
+      "error": null
+    },
+    "assert group_tuples([('l', 'b'), ('u', 'd'), ('n', 'y')]) == [('l', 'b'), ('u', 'd'), ('n', 'y')]": {
+      "result": true,
+      "time": 0.03743433952331543,
+      "error": null
+    },
+    "assert group_tuples([('l', 'o'), ('w', 'e'), ('s', 'u')]) == [('l', 'o'), ('w', 'e'), ('s', 'u')]": {
+      "result": true,
+      "time": 0.04030346870422363,
+      "error": null
+    },
+    "assert group_tuples([('h', 'w'), ('u', 't'), ('f', 'k')]) == [('h', 'w'), ('u', 't'), ('f', 'k')]": {
+      "result": true,
+      "time": 0.037992000579833984,
+      "error": null
+    },
+    "assert group_tuples([('h', 'q'), ('s', 'a'), ('t', 'd')]) == [('h', 'q'), ('s', 'a'), ('t', 'd')]": {
+      "result": true,
+      "time": 0.04751396179199219,
+      "error": null
+    },
+    "assert group_tuples([('k', 'n'), ('k', 'l'), ('q', 'j')]) == [('k', 'n', 'l'), ('q', 'j')]": {
+      "result": true,
+      "time": 0.042233943939208984,
+      "error": null
+    },
+    "assert group_tuples([('d', 'e'), ('q', 'q'), ('q', 'l')]) == [('d', 'e'), ('q', 'q', 'l')]": {
+      "result": true,
+      "time": 0.0391850471496582,
+      "error": null
+    },
+    "assert group_tuples([('l', 'r'), ('s', 'p'), ('d', 'l')]) == [('l', 'r'), ('s', 'p'), ('d', 'l')]": {
+      "result": true,
+      "time": 0.04254937171936035,
+      "error": null
+    },
+    "assert group_tuples([('s', 'v'), ('b', 'w'), ('x', 'm')]) == [('s', 'v'), ('b', 'w'), ('x', 'm')]": {
+      "result": true,
+      "time": 0.03624439239501953,
+      "error": null
+    },
+    "assert group_tuples([('d', 'd'), ('z', 'g'), ('k', 'm')]) == [('d', 'd'), ('z', 'g'), ('k', 'm')]": {
+      "result": true,
+      "time": 0.036649227142333984,
+      "error": null
+    },
+    "assert group_tuples([('u', 'g'), ('d', 'v'), ('l', 'o')]) == [('u', 'g'), ('d', 'v'), ('l', 'o')]": {
+      "result": true,
+      "time": 0.039247989654541016,
+      "error": null
+    },
+    "assert group_tuples([('l', 'd'), ('n', 'b'), ('q', 'x')]) == [('l', 'd'), ('n', 'b'), ('q', 'x')]": {
+      "result": true,
+      "time": 0.03526782989501953,
+      "error": null
+    },
+    "assert group_tuples([('f', 'e'), ('f', 'z'), ('w', 'g')]) == [('f', 'e', 'z'), ('w', 'g')]": {
+      "result": true,
+      "time": 0.03942394256591797,
+      "error": null
+    },
+    "assert group_tuples([('r', 'k'), ('z', 'i'), ('v', 'c')]) == [('r', 'k'), ('z', 'i'), ('v', 'c')]": {
+      "result": true,
+      "time": 0.04682278633117676,
+      "error": null
+    },
+    "assert group_tuples([('a', 'w'), ('v', 'd'), ('w', 'y')]) == [('a', 'w'), ('v', 'd'), ('w', 'y')]": {
+      "result": true,
+      "time": 0.03330636024475098,
+      "error": null
+    },
+    "assert group_tuples([('m', 'b'), ('j', 'k'), ('s', 'i')]) == [('m', 'b'), ('j', 'k'), ('s', 'i')]": {
+      "result": true,
+      "time": 0.03496241569519043,
+      "error": null
+    },
+    "assert group_tuples([('v', 'x'), ('n', 'k'), ('a', 'd')]) == [('v', 'x'), ('n', 'k'), ('a', 'd')]": {
+      "result": true,
+      "time": 0.03981590270996094,
+      "error": null
+    },
+    "assert group_tuples([('p', 'm'), ('v', 'd'), ('i', 'k')]) == [('p', 'm'), ('v', 'd'), ('i', 'k')]": {
+      "result": true,
+      "time": 0.036736488342285156,
+      "error": null
+    },
+    "assert group_tuples([('y', 'x'), ('y', 'l'), ('p', 'i')]) == [('y', 'x', 'l'), ('p', 'i')]": {
+      "result": true,
+      "time": 0.03309512138366699,
+      "error": null
+    },
+    "assert group_tuples([('s', 'n'), ('w', 'r'), ('i', 'b')]) == [('s', 'n'), ('w', 'r'), ('i', 'b')]": {
+      "result": true,
+      "time": 0.03479266166687012,
+      "error": null
+    },
+    "assert group_tuples([('z', 'u'), ('w', 'n'), ('j', 'd')]) == [('z', 'u'), ('w', 'n'), ('j', 'd')]": {
+      "result": true,
+      "time": 0.03595709800720215,
+      "error": null
+    },
+    "assert group_tuples([('u', 'q'), ('e', 'j'), ('b', 'x')]) == [('u', 'q'), ('e', 'j'), ('b', 'x')]": {
+      "result": true,
+      "time": 0.04042816162109375,
+      "error": null
+    },
+    "assert group_tuples([('n', 'a'), ('h', 'i'), ('x', 'u')]) == [('n', 'a'), ('h', 'i'), ('x', 'u')]": {
+      "result": true,
+      "time": 0.033754587173461914,
+      "error": null
+    },
+    "assert group_tuples([('x', 'h'), ('u', 'p'), ('z', 'b')]) == [('x', 'h'), ('u', 'p'), ('z', 'b')]": {
+      "result": true,
+      "time": 0.03596329689025879,
+      "error": null
+    },
+    "assert group_tuples([('b', 'g'), ('l', 'g'), ('x', 'v')]) == [('b', 'g'), ('l', 'g'), ('x', 'v')]": {
+      "result": true,
+      "time": 0.033149003982543945,
+      "error": null
+    },
+    "assert group_tuples([('n', 'n'), ('f', 'n'), ('t', 'v')]) == [('n', 'n'), ('f', 'n'), ('t', 'v')]": {
+      "result": true,
+      "time": 0.04060959815979004,
+      "error": null
+    },
+    "assert group_tuples([('b', 'd'), ('p', 'd'), ('s', 'c')]) == [('b', 'd'), ('p', 'd'), ('s', 'c')]": {
+      "result": true,
+      "time": 0.034708261489868164,
+      "error": null
+    },
+    "assert group_tuples([('i', 'w'), ('d', 'w'), ('r', 'o')]) == [('i', 'w'), ('d', 'w'), ('r', 'o')]": {
+      "result": true,
+      "time": 0.03797030448913574,
+      "error": null
+    },
+    "assert group_tuples([('g', 'd'), ('s', 'r'), ('x', 'f')]) == [('g', 'd'), ('s', 'r'), ('x', 'f')]": {
+      "result": true,
+      "time": 0.03595089912414551,
+      "error": null
+    },
+    "assert group_tuples([('h', 'e'), ('m', 'f'), ('o', 'i')]) == [('h', 'e'), ('m', 'f'), ('o', 'i')]": {
+      "result": true,
+      "time": 0.028874874114990234,
+      "error": null
+    },
+    "assert group_tuples([('e', 't'), ('o', 'n'), ('a', 'q')]) == [('e', 't'), ('o', 'n'), ('a', 'q')]": {
+      "result": true,
+      "time": 0.04157876968383789,
+      "error": null
+    },
+    "assert group_tuples([('b', 'y'), ('j', 'f'), ('b', 'a')]) == [('b', 'y', 'a'), ('j', 'f')]": {
+      "result": true,
+      "time": 0.03505730628967285,
+      "error": null
+    },
+    "assert group_tuples([('m', 'x'), ('l', 'y'), ('a', 'o')]) == [('m', 'x'), ('l', 'y'), ('a', 'o')]": {
+      "result": true,
+      "time": 0.03657221794128418,
+      "error": null
+    },
+    "assert group_tuples([('n', 't'), ('h', 'o'), ('n', 'f')]) == [('n', 't', 'f'), ('h', 'o')]": {
+      "result": true,
+      "time": 0.04142022132873535,
+      "error": null
+    },
+    "assert group_tuples([('p', 'd'), ('k', 'a'), ('n', 'm')]) == [('p', 'd'), ('k', 'a'), ('n', 'm')]": {
+      "result": true,
+      "time": 0.03606152534484863,
+      "error": null
+    },
+    "assert group_tuples([('j', 's'), ('l', 'f'), ('s', 'r')]) == [('j', 's'), ('l', 'f'), ('s', 'r')]": {
+      "result": true,
+      "time": 0.03759288787841797,
+      "error": null
+    },
+    "assert group_tuples([('p', 'q'), ('b', 'z'), ('g', 'h')]) == [('p', 'q'), ('b', 'z'), ('g', 'h')]": {
+      "result": true,
+      "time": 0.04614853858947754,
+      "error": null
+    },
+    "assert group_tuples([('t', 'w'), ('x', 'e'), ('o', 'r')]) == [('t', 'w'), ('x', 'e'), ('o', 'r')]": {
+      "result": true,
+      "time": 0.03495073318481445,
+      "error": null
+    },
+    "assert group_tuples([('h', 'e'), ('n', 'o'), ('j', 'h')]) == [('h', 'e'), ('n', 'o'), ('j', 'h')]": {
+      "result": true,
+      "time": 0.040209054946899414,
+      "error": null
+    },
+    "assert group_tuples([('c', 'o'), ('x', 'a'), ('e', 'p')]) == [('c', 'o'), ('x', 'a'), ('e', 'p')]": {
+      "result": true,
+      "time": 0.039574384689331055,
+      "error": null
+    },
+    "assert group_tuples([('h', 'h'), ('r', 'n'), ('a', 'd')]) == [('h', 'h'), ('r', 'n'), ('a', 'd')]": {
+      "result": true,
+      "time": 0.03677678108215332,
+      "error": null
+    },
+    "assert group_tuples([('e', 'y'), ('l', 'n'), ('j', 'r')]) == [('e', 'y'), ('l', 'n'), ('j', 'r')]": {
+      "result": true,
+      "time": 0.04695296287536621,
+      "error": null
+    },
+    "assert group_tuples([('m', 'l'), ('a', 'z'), ('o', 'm')]) == [('m', 'l'), ('a', 'z'), ('o', 'm')]": {
+      "result": true,
+      "time": 0.03454732894897461,
+      "error": null
+    },
+    "assert group_tuples([('d', 'i'), ('m', 'p'), ('j', 'h')]) == [('d', 'i'), ('m', 'p'), ('j', 'h')]": {
+      "result": true,
+      "time": 0.035422325134277344,
+      "error": null
+    },
+    "assert group_tuples([('y', 'o'), ('u', 'y'), ('m', 'k')]) == [('y', 'o'), ('u', 'y'), ('m', 'k')]": {
+      "result": true,
+      "time": 0.041075706481933594,
+      "error": null
+    },
+    "assert group_tuples([('s', 'i'), ('g', 'm'), ('i', 'j')]) == [('s', 'i'), ('g', 'm'), ('i', 'j')]": {
+      "result": true,
+      "time": 0.04507946968078613,
+      "error": null
+    },
+    "assert group_tuples([('t', 'u'), ('u', 'e'), ('z', 'l')]) == [('t', 'u'), ('u', 'e'), ('z', 'l')]": {
+      "result": true,
+      "time": 0.0439763069152832,
+      "error": null
+    },
+    "assert group_tuples([('l', 'u'), ('k', 'i'), ('a', 'n')]) == [('l', 'u'), ('k', 'i'), ('a', 'n')]": {
+      "result": true,
+      "time": 0.040164947509765625,
+      "error": null
+    },
+    "assert group_tuples([('l', 'j'), ('i', 's'), ('t', 'b')]) == [('l', 'j'), ('i', 's'), ('t', 'b')]": {
+      "result": true,
+      "time": 0.03774714469909668,
+      "error": null
+    },
+    "assert group_tuples([('g', 'u'), ('m', 'x'), ('v', 'd')]) == [('g', 'u'), ('m', 'x'), ('v', 'd')]": {
+      "result": true,
+      "time": 0.04519367218017578,
+      "error": null
+    },
+    "assert group_tuples([('f', 'y'), ('p', 'k'), ('k', 'd')]) == [('f', 'y'), ('p', 'k'), ('k', 'd')]": {
+      "result": true,
+      "time": 0.042827606201171875,
+      "error": null
+    },
+    "assert group_tuples([('s', 'q'), ('j', 'h'), ('p', 'c')]) == [('s', 'q'), ('j', 'h'), ('p', 'c')]": {
+      "result": true,
+      "time": 0.04200267791748047,
+      "error": null
+    },
+    "assert group_tuples([('u', 'b'), ('u', 'f'), ('n', 'i')]) == [('u', 'b', 'f'), ('n', 'i')]": {
+      "result": true,
+      "time": 0.04142141342163086,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

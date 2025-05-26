@@ -1,0 +1,519 @@
+{
+  "code": "def split_lowerstring(s):\n    return [s[i:j] for i, j in zip([0]+[x+1 for x in range(len(s)) if s[x] == s[x+1].lower()], [x for x in range(len(s)) if s[x] == s[x+1].lower()]+[len(s)])]",
+  "results": {
+    "assert split_lowerstring(\"AbCd\")==['bC','d']": {
+      "result": false,
+      "time": 0.039488792419433594,
+      "error": null
+    },
+    "assert split_lowerstring(\"Python\")==['y', 't', 'h', 'o', 'n']": {
+      "result": false,
+      "time": 0.03313899040222168,
+      "error": null
+    },
+    "assert split_lowerstring(\"Programming\")==['r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']": {
+      "result": false,
+      "time": 0.03841114044189453,
+      "error": null
+    },
+    "assert split_lowerstring(\"alV\") == ['a', 'lV']": {
+      "result": false,
+      "time": 0.03955960273742676,
+      "error": null
+    },
+    "assert split_lowerstring(\"vGqbr\") == ['vG', 'q', 'b', 'r']": {
+      "result": false,
+      "time": 0.0356903076171875,
+      "error": null
+    },
+    "assert split_lowerstring(\"VWfwhsubt\") == ['f', 'w', 'h', 's', 'u', 'b', 't']": {
+      "result": false,
+      "time": 0.028469562530517578,
+      "error": null
+    },
+    "assert split_lowerstring(\"FBacE\") == ['a', 'cE']": {
+      "result": false,
+      "time": 0.04253649711608887,
+      "error": null
+    },
+    "assert split_lowerstring(\"qMc\") == ['qM', 'c']": {
+      "result": false,
+      "time": 0.03917241096496582,
+      "error": null
+    },
+    "assert split_lowerstring(\"MiH\") == ['iH']": {
+      "result": false,
+      "time": 0.034633636474609375,
+      "error": null
+    },
+    "assert split_lowerstring(\"GxKzBJhi\") == ['xK', 'zBJ', 'h', 'i']": {
+      "result": false,
+      "time": 0.03963041305541992,
+      "error": null
+    },
+    "assert split_lowerstring(\"cWR\") == ['cWR']": {
+      "result": false,
+      "time": 0.033891916275024414,
+      "error": null
+    },
+    "assert split_lowerstring(\"vxLSC\") == ['v', 'xLSC']": {
+      "result": false,
+      "time": 0.03872871398925781,
+      "error": null
+    },
+    "assert split_lowerstring(\"KVNuU\") == ['uU']": {
+      "result": false,
+      "time": 0.037101030349731445,
+      "error": null
+    },
+    "assert split_lowerstring(\"lUqax\") == ['lU', 'q', 'a', 'x']": {
+      "result": false,
+      "time": 0.03949761390686035,
+      "error": null
+    },
+    "assert split_lowerstring(\"WtBVeyci\") == ['tBV', 'e', 'y', 'c', 'i']": {
+      "result": false,
+      "time": 0.03654742240905762,
+      "error": null
+    },
+    "assert split_lowerstring(\"QpJ\") == ['pJ']": {
+      "result": false,
+      "time": 0.040085554122924805,
+      "error": null
+    },
+    "assert split_lowerstring(\"uEHj\") == ['uEH', 'j']": {
+      "result": false,
+      "time": 0.03722333908081055,
+      "error": null
+    },
+    "assert split_lowerstring(\"pjs\") == ['p', 'j', 's']": {
+      "result": false,
+      "time": 0.033822059631347656,
+      "error": null
+    },
+    "assert split_lowerstring(\"gPBIuH\") == ['gPBI', 'uH']": {
+      "result": false,
+      "time": 0.03734278678894043,
+      "error": null
+    },
+    "assert split_lowerstring(\"tgWN\") == ['t', 'gWN']": {
+      "result": false,
+      "time": 0.033701181411743164,
+      "error": null
+    },
+    "assert split_lowerstring(\"iCMC\") == ['iCMC']": {
+      "result": false,
+      "time": 0.03908872604370117,
+      "error": null
+    },
+    "assert split_lowerstring(\"WnM\") == ['nM']": {
+      "result": false,
+      "time": 0.02889728546142578,
+      "error": null
+    },
+    "assert split_lowerstring(\"NPhLG\") == ['hLG']": {
+      "result": false,
+      "time": 0.031096696853637695,
+      "error": null
+    },
+    "assert split_lowerstring(\"DqMmEMllu\") == ['qM', 'mEM', 'l', 'l', 'u']": {
+      "result": false,
+      "time": 0.033818721771240234,
+      "error": null
+    },
+    "assert split_lowerstring(\"CjupuFX\") == ['j', 'u', 'p', 'uFX']": {
+      "result": false,
+      "time": 0.03641080856323242,
+      "error": null
+    },
+    "assert split_lowerstring(\"YCplif\") == ['p', 'l', 'i', 'f']": {
+      "result": false,
+      "time": 0.03672480583190918,
+      "error": null
+    },
+    "assert split_lowerstring(\"DeSahPMu\") == ['eS', 'a', 'hPM', 'u']": {
+      "result": false,
+      "time": 0.04062318801879883,
+      "error": null
+    },
+    "assert split_lowerstring(\"KRcNwzl\") == ['cN', 'w', 'z', 'l']": {
+      "result": false,
+      "time": 0.039214372634887695,
+      "error": null
+    },
+    "assert split_lowerstring(\"qDXSbVD\") == ['qDXS', 'bVD']": {
+      "result": false,
+      "time": 0.037364959716796875,
+      "error": null
+    },
+    "assert split_lowerstring(\"fIeN\") == ['fI', 'eN']": {
+      "result": false,
+      "time": 0.032486915588378906,
+      "error": null
+    },
+    "assert split_lowerstring(\"Pfag\") == ['f', 'a', 'g']": {
+      "result": false,
+      "time": 0.03390765190124512,
+      "error": null
+    },
+    "assert split_lowerstring(\"jiSSpdi\") == ['j', 'iSS', 'p', 'd', 'i']": {
+      "result": false,
+      "time": 0.035500526428222656,
+      "error": null
+    },
+    "assert split_lowerstring(\"fYpC\") == ['fY', 'pC']": {
+      "result": false,
+      "time": 0.04082798957824707,
+      "error": null
+    },
+    "assert split_lowerstring(\"TXBtF\") == ['tF']": {
+      "result": false,
+      "time": 0.028349637985229492,
+      "error": null
+    },
+    "assert split_lowerstring(\"BoZEUmTav\") == ['oZEU', 'mT', 'a', 'v']": {
+      "result": false,
+      "time": 0.03418684005737305,
+      "error": null
+    },
+    "assert split_lowerstring(\"htvV\") == ['h', 't', 'vV']": {
+      "result": false,
+      "time": 0.037020206451416016,
+      "error": null
+    },
+    "assert split_lowerstring(\"XxyGW\") == ['x', 'yGW']": {
+      "result": false,
+      "time": 0.032355546951293945,
+      "error": null
+    },
+    "assert split_lowerstring(\"TvuWokP\") == ['v', 'uW', 'o', 'kP']": {
+      "result": false,
+      "time": 0.0303041934967041,
+      "error": null
+    },
+    "assert split_lowerstring(\"NJfH\") == ['fH']": {
+      "result": false,
+      "time": 0.035948753356933594,
+      "error": null
+    },
+    "assert split_lowerstring(\"Kdx\") == ['d', 'x']": {
+      "result": false,
+      "time": 0.03611302375793457,
+      "error": null
+    },
+    "assert split_lowerstring(\"NNaLZNZsHTG\") == ['aLZNZ', 'sHTG']": {
+      "result": false,
+      "time": 0.0367436408996582,
+      "error": null
+    },
+    "assert split_lowerstring(\"rzdIMD\") == ['r', 'z', 'dIMD']": {
+      "result": false,
+      "time": 0.03281211853027344,
+      "error": null
+    },
+    "assert split_lowerstring(\"Rfw\") == ['f', 'w']": {
+      "result": false,
+      "time": 0.036986589431762695,
+      "error": null
+    },
+    "assert split_lowerstring(\"QSLmHEBIoaUo\") == ['mHEBI', 'o', 'aU', 'o']": {
+      "result": false,
+      "time": 0.03260016441345215,
+      "error": null
+    },
+    "assert split_lowerstring(\"WTVAlkMjGprn\") == ['l', 'kM', 'jG', 'p', 'r', 'n']": {
+      "result": false,
+      "time": 0.03418254852294922,
+      "error": null
+    },
+    "assert split_lowerstring(\"lYrfN\") == ['lY', 'r', 'fN']": {
+      "result": false,
+      "time": 0.04146122932434082,
+      "error": null
+    },
+    "assert split_lowerstring(\"LswsBmyltni\") == ['s', 'w', 'sB', 'm', 'y', 'l', 't', 'n', 'i']": {
+      "result": false,
+      "time": 0.034575700759887695,
+      "error": null
+    },
+    "assert split_lowerstring(\"loHXplxpKn\") == ['l', 'oHX', 'p', 'l', 'x', 'pK', 'n']": {
+      "result": false,
+      "time": 0.037720441818237305,
+      "error": null
+    },
+    "assert split_lowerstring(\"UInAdTfMriR\") == ['nA', 'dT', 'fM', 'r', 'iR']": {
+      "result": false,
+      "time": 0.03508567810058594,
+      "error": null
+    },
+    "assert split_lowerstring(\"Qunk\") == ['u', 'n', 'k']": {
+      "result": false,
+      "time": 0.0374751091003418,
+      "error": null
+    },
+    "assert split_lowerstring(\"fRheQsNVX\") == ['fR', 'h', 'eQ', 'sNVX']": {
+      "result": false,
+      "time": 0.03528237342834473,
+      "error": null
+    },
+    "assert split_lowerstring(\"XgmbgNKnde\") == ['g', 'm', 'b', 'gNK', 'n', 'd', 'e']": {
+      "result": false,
+      "time": 0.03642702102661133,
+      "error": null
+    },
+    "assert split_lowerstring(\"qzALQf\") == ['q', 'zALQ', 'f']": {
+      "result": false,
+      "time": 0.03719449043273926,
+      "error": null
+    },
+    "assert split_lowerstring(\"LforFAQUaXe\") == ['f', 'o', 'rFAQU', 'aX', 'e']": {
+      "result": false,
+      "time": 0.038361310958862305,
+      "error": null
+    },
+    "assert split_lowerstring(\"LnyRQCoe\") == ['n', 'yRQC', 'o', 'e']": {
+      "result": false,
+      "time": 0.038268327713012695,
+      "error": null
+    },
+    "assert split_lowerstring(\"szgUbt\") == ['s', 'z', 'gU', 'b', 't']": {
+      "result": false,
+      "time": 0.03543591499328613,
+      "error": null
+    },
+    "assert split_lowerstring(\"XOvZLOH\") == ['vZLOH']": {
+      "result": false,
+      "time": 0.04106903076171875,
+      "error": null
+    },
+    "assert split_lowerstring(\"uza\") == ['u', 'z', 'a']": {
+      "result": false,
+      "time": 0.03966665267944336,
+      "error": null
+    },
+    "assert split_lowerstring(\"wVrFWRJ\") == ['wV', 'rFWRJ']": {
+      "result": false,
+      "time": 0.03114604949951172,
+      "error": null
+    },
+    "assert split_lowerstring(\"niOP\") == ['n', 'iOP']": {
+      "result": false,
+      "time": 0.04033041000366211,
+      "error": null
+    },
+    "assert split_lowerstring(\"TMxiPy\") == ['x', 'iP', 'y']": {
+      "result": false,
+      "time": 0.034542083740234375,
+      "error": null
+    },
+    "assert split_lowerstring(\"kbSkN\") == ['k', 'bS', 'kN']": {
+      "result": false,
+      "time": 0.035387516021728516,
+      "error": null
+    },
+    "assert split_lowerstring(\"zwTIzriKI\") == ['z', 'wTI', 'z', 'r', 'iKI']": {
+      "result": false,
+      "time": 0.03989839553833008,
+      "error": null
+    },
+    "assert split_lowerstring(\"qgchenoICZK\") == ['q', 'g', 'c', 'h', 'e', 'n', 'oICZK']": {
+      "result": false,
+      "time": 0.046080827713012695,
+      "error": null
+    },
+    "assert split_lowerstring(\"vXhnNzvGGwYI\") == ['vX', 'h', 'nN', 'z', 'vGG', 'wYI']": {
+      "result": false,
+      "time": 0.04255962371826172,
+      "error": null
+    },
+    "assert split_lowerstring(\"TyCg\") == ['yC', 'g']": {
+      "result": false,
+      "time": 0.03448772430419922,
+      "error": null
+    },
+    "assert split_lowerstring(\"VJUYJDSBrF\") == ['rF']": {
+      "result": false,
+      "time": 0.034448862075805664,
+      "error": null
+    },
+    "assert split_lowerstring(\"rmPxzdHkiXGD\") == ['r', 'mP', 'x', 'z', 'dH', 'k', 'iXGD']": {
+      "result": false,
+      "time": 0.04953646659851074,
+      "error": null
+    },
+    "assert split_lowerstring(\"UUHMr\") == ['r']": {
+      "result": false,
+      "time": 0.037583112716674805,
+      "error": null
+    },
+    "assert split_lowerstring(\"OKAXHzBiEEANw\") == ['zB', 'iEEAN', 'w']": {
+      "result": false,
+      "time": 0.04037189483642578,
+      "error": null
+    },
+    "assert split_lowerstring(\"vHJnVpbwrRJNV\") == ['vHJ', 'nV', 'p', 'b', 'w', 'rRJNV']": {
+      "result": false,
+      "time": 0.03812813758850098,
+      "error": null
+    },
+    "assert split_lowerstring(\"IdmycHwzkWwjt\") == ['d', 'm', 'y', 'cH', 'w', 'z', 'kW', 'w', 'j', 't']": {
+      "result": false,
+      "time": 0.04101085662841797,
+      "error": null
+    },
+    "assert split_lowerstring(\"NKiRmsm\") == ['iR', 'm', 's', 'm']": {
+      "result": false,
+      "time": 0.03816843032836914,
+      "error": null
+    },
+    "assert split_lowerstring(\"lKupZgkKJ\") == ['lK', 'u', 'pZ', 'g', 'kKJ']": {
+      "result": false,
+      "time": 0.03395509719848633,
+      "error": null
+    },
+    "assert split_lowerstring(\"amyFxfPEzuSShDy\") == ['a', 'm', 'yF', 'x', 'fPE', 'z', 'uSS', 'hD', 'y']": {
+      "result": false,
+      "time": 0.03509640693664551,
+      "error": null
+    },
+    "assert split_lowerstring(\"fPAdrdpiRtb\") == ['fPA', 'd', 'r', 'd', 'p', 'iR', 't', 'b']": {
+      "result": false,
+      "time": 0.03631019592285156,
+      "error": null
+    },
+    "assert split_lowerstring(\"xHgeiXbT\") == ['xH', 'g', 'e', 'iX', 'bT']": {
+      "result": false,
+      "time": 0.038733720779418945,
+      "error": null
+    },
+    "assert split_lowerstring(\"lYdJjUbQ\") == ['lY', 'dJ', 'jU', 'bQ']": {
+      "result": false,
+      "time": 0.03735685348510742,
+      "error": null
+    },
+    "assert split_lowerstring(\"YHDnoBHWpHDB\") == ['n', 'oBHW', 'pHDB']": {
+      "result": false,
+      "time": 0.03977537155151367,
+      "error": null
+    },
+    "assert split_lowerstring(\"IoenLex\") == ['o', 'e', 'nL', 'e', 'x']": {
+      "result": false,
+      "time": 0.03982281684875488,
+      "error": null
+    },
+    "assert split_lowerstring(\"kXiHOhalyY\") == ['kX', 'iHO', 'h', 'a', 'l', 'yY']": {
+      "result": false,
+      "time": 0.035817623138427734,
+      "error": null
+    },
+    "assert split_lowerstring(\"LGMBhiUzM\") == ['h', 'iU', 'zM']": {
+      "result": false,
+      "time": 0.043878793716430664,
+      "error": null
+    },
+    "assert split_lowerstring(\"TIhLZIcx\") == ['hLZI', 'c', 'x']": {
+      "result": false,
+      "time": 0.035292625427246094,
+      "error": null
+    },
+    "assert split_lowerstring(\"sayEJNS\") == ['s', 'a', 'yEJNS']": {
+      "result": false,
+      "time": 0.034256696701049805,
+      "error": null
+    },
+    "assert split_lowerstring(\"CqKcREbHUTG\") == ['qK', 'cRE', 'bHUTG']": {
+      "result": false,
+      "time": 0.04033780097961426,
+      "error": null
+    },
+    "assert split_lowerstring(\"GCuXGMzVczXPCB\") == ['uXGM', 'zV', 'c', 'zXPCB']": {
+      "result": false,
+      "time": 0.03558182716369629,
+      "error": null
+    },
+    "assert split_lowerstring(\"guWMuknUFXiBYhh\") == ['g', 'uWM', 'u', 'k', 'nUFX', 'iBY', 'h', 'h']": {
+      "result": false,
+      "time": 0.03941845893859863,
+      "error": null
+    },
+    "assert split_lowerstring(\"yHygCG\") == ['yH', 'y', 'gCG']": {
+      "result": false,
+      "time": 0.037847042083740234,
+      "error": null
+    },
+    "assert split_lowerstring(\"tFSlDLavXf\") == ['tFS', 'lDL', 'a', 'vX', 'f']": {
+      "result": false,
+      "time": 0.037686824798583984,
+      "error": null
+    },
+    "assert split_lowerstring(\"ynAOmBuzBzU\") == ['y', 'nAO', 'mB', 'u', 'zB', 'zU']": {
+      "result": false,
+      "time": 0.04966139793395996,
+      "error": null
+    },
+    "assert split_lowerstring(\"idrZtLjR\") == ['i', 'd', 'rZ', 'tL', 'jR']": {
+      "result": false,
+      "time": 0.035169363021850586,
+      "error": null
+    },
+    "assert split_lowerstring(\"snQADtcfpvo\") == ['s', 'nQAD', 't', 'c', 'f', 'p', 'v', 'o']": {
+      "result": false,
+      "time": 0.03681802749633789,
+      "error": null
+    },
+    "assert split_lowerstring(\"SSLcIUGtA\") == ['cIUG', 'tA']": {
+      "result": false,
+      "time": 0.03900885581970215,
+      "error": null
+    },
+    "assert split_lowerstring(\"feEGcHOYfx\") == ['f', 'eEG', 'cHOY', 'f', 'x']": {
+      "result": false,
+      "time": 0.036484718322753906,
+      "error": null
+    },
+    "assert split_lowerstring(\"eoiowqSLIFSp\") == ['e', 'o', 'i', 'o', 'w', 'qSLIFS', 'p']": {
+      "result": false,
+      "time": 0.0382542610168457,
+      "error": null
+    },
+    "assert split_lowerstring(\"NviGzNwnxGUN\") == ['v', 'iG', 'zN', 'w', 'n', 'xGUN']": {
+      "result": false,
+      "time": 0.043123722076416016,
+      "error": null
+    },
+    "assert split_lowerstring(\"epLyyazQmdmz\") == ['e', 'pL', 'y', 'y', 'a', 'zQ', 'm', 'd', 'm', 'z']": {
+      "result": false,
+      "time": 0.03541374206542969,
+      "error": null
+    },
+    "assert split_lowerstring(\"qQtdpvJee\") == ['qQ', 't', 'd', 'p', 'vJ', 'e', 'e']": {
+      "result": false,
+      "time": 0.0402226448059082,
+      "error": null
+    },
+    "assert split_lowerstring(\"SznIRxbvoQqKSq\") == ['z', 'nIR', 'x', 'b', 'v', 'oQ', 'qKS', 'q']": {
+      "result": false,
+      "time": 0.041049957275390625,
+      "error": null
+    },
+    "assert split_lowerstring(\"oXvErxRmUerhc\") == ['oX', 'vE', 'r', 'xR', 'mU', 'e', 'r', 'h', 'c']": {
+      "result": false,
+      "time": 0.04971957206726074,
+      "error": null
+    },
+    "assert split_lowerstring(\"pAxuMDuUZqUAuX\") == ['pA', 'x', 'uMD', 'uUZ', 'qUA', 'uX']": {
+      "result": false,
+      "time": 0.0364072322845459,
+      "error": null
+    },
+    "assert split_lowerstring(\"BVubGKphuNP\") == ['u', 'bGK', 'p', 'h', 'uNP']": {
+      "result": false,
+      "time": 0.03554224967956543,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef remove_uppercase(input_string):\n    # Initialize an empty string to store the result\n    result = \"\"\n    # Iterate over each character in the input string\n    for char in input_string:\n        # Check if the character is lowercase\n        if char.islower():\n            # Append the lowercase character to the result\n            result += char\n    # Return the final result\n    return result",
+  "results": {
+    "assert remove_uppercase('cAstyoUrFavoRitETVshoWs') == 'cstyoravoitshos'": {
+      "result": true,
+      "time": 0.5791153907775879,
+      "error": null
+    },
+    "assert remove_uppercase('wAtchTheinTernEtrAdIo') == 'wtchheinerntrdo'": {
+      "result": true,
+      "time": 0.576540470123291,
+      "error": null
+    },
+    "assert remove_uppercase('VoicESeaRchAndreComMendaTionS') == 'oiceachndreomendaion'": {
+      "result": true,
+      "time": 0.6856763362884521,
+      "error": null
+    },
+    "assert remove_uppercase(\"RmBpfoCeyUxuUkDlNDFzBuTz\") == \"mpfoeyxuklzuz\"": {
+      "result": true,
+      "time": 0.4875609874725342,
+      "error": null
+    },
+    "assert remove_uppercase(\"ICHVrkLbWxAUUtPZmyXZCM\") == \"rkbxtmy\"": {
+      "result": true,
+      "time": 0.38696908950805664,
+      "error": null
+    },
+    "assert remove_uppercase(\"FKAjufwhQfjDZofBluCoZAvtY\") == \"jufwhfjofluovt\"": {
+      "result": true,
+      "time": 0.6530978679656982,
+      "error": null
+    },
+    "assert remove_uppercase(\"secjOYhfrHiHQmXKVBBNdR\") == \"secjhfrimd\"": {
+      "result": true,
+      "time": 0.6185808181762695,
+      "error": null
+    },
+    "assert remove_uppercase(\"SRHoEkqwpCpTwJdIDd\") == \"okqwppwdd\"": {
+      "result": true,
+      "time": 0.5773360729217529,
+      "error": null
+    },
+    "assert remove_uppercase(\"fFpIiCQjWNTsKBhWReGq\") == \"fpijsheq\"": {
+      "result": true,
+      "time": 0.5948336124420166,
+      "error": null
+    },
+    "assert remove_uppercase(\"mBnAYsyMnutsxLOrjJeoSThpFJk\") == \"mnsynutsxrjeohpk\"": {
+      "result": true,
+      "time": 0.6003429889678955,
+      "error": null
+    },
+    "assert remove_uppercase(\"IYuLGivZYUzLlSWzrfqEzvsuS\") == \"uivzlzrfqzvsu\"": {
+      "result": true,
+      "time": 0.5972995758056641,
+      "error": null
+    },
+    "assert remove_uppercase(\"dAXwzDuofXYsRUjFXmLSyaHEAWn\") == \"dwzuofsjmyan\"": {
+      "result": true,
+      "time": 0.5409748554229736,
+      "error": null
+    },
+    "assert remove_uppercase(\"KhCNvdrgkBmSXCZgLGLqqwqfxo\") == \"hvdrgkmgqqwqfxo\"": {
+      "result": true,
+      "time": 0.5602593421936035,
+      "error": null
+    },
+    "assert remove_uppercase(\"FcyxKVUqExoKhCFTUtGdjodRTMg\") == \"cyxqxohtdjodg\"": {
+      "result": true,
+      "time": 0.6411762237548828,
+      "error": null
+    },
+    "assert remove_uppercase(\"NmVotdtdlKyNHZwxcuHiBq\") == \"motdtdlywxcuiq\"": {
+      "result": true,
+      "time": 0.5939757823944092,
+      "error": null
+    },
+    "assert remove_uppercase(\"gUccwoZFjSrtnTDcRkKg\") == \"gccwojrtnckg\"": {
+      "result": true,
+      "time": 0.4195411205291748,
+      "error": null
+    },
+    "assert remove_uppercase(\"lMfssZkjbkyHlsKLmMjgrDiBc\") == \"lfsskjbkylsmjgric\"": {
+      "result": true,
+      "time": 0.5606479644775391,
+      "error": null
+    },
+    "assert remove_uppercase(\"KVwdVmnKroQBNOGxyABSaPqm\") == \"wdmnroxyaqm\"": {
+      "result": true,
+      "time": 0.526832103729248,
+      "error": null
+    },
+    "assert remove_uppercase(\"jGkfMFZWteGXGRrOfC\") == \"jkfterf\"": {
+      "result": true,
+      "time": 0.5059409141540527,
+      "error": null
+    },
+    "assert remove_uppercase(\"RcwMMjljhHeQnODxtBcN\") == \"cwjljhenxtc\"": {
+      "result": true,
+      "time": 0.4096951484680176,
+      "error": null
+    },
+    "assert remove_uppercase(\"zohgMaKpMelqBwdGRjQCSQJVJf\") == \"zohgapelqwdjf\"": {
+      "result": true,
+      "time": 0.5842807292938232,
+      "error": null
+    },
+    "assert remove_uppercase(\"PlndOZVGGYrXKmOwwkcTdwI\") == \"lndrmwwkcdw\"": {
+      "result": true,
+      "time": 0.6143596172332764,
+      "error": null
+    },
+    "assert remove_uppercase(\"bzlQWQRRUbZfWyEWYwuWjhIuoK\") == \"bzlbfywujhuo\"": {
+      "result": true,
+      "time": 0.6026413440704346,
+      "error": null
+    },
+    "assert remove_uppercase(\"BrIHrDeuxspmWSPnlqPnCqh\") == \"rreuxspmnlqnqh\"": {
+      "result": true,
+      "time": 0.5909559726715088,
+      "error": null
+    },
+    "assert remove_uppercase(\"MHDazaiscWOYTzbboZAG\") == \"azaisczbbo\"": {
+      "result": true,
+      "time": 0.593503475189209,
+      "error": null
+    },
+    "assert remove_uppercase(\"xzvAMWOzctNZNkGgHsUFX\") == \"xzvzctkgs\"": {
+      "result": true,
+      "time": 0.5873355865478516,
+      "error": null
+    },
+    "assert remove_uppercase(\"YypOuhdnjKyNfKrEtQU\") == \"ypuhdnjyfrt\"": {
+      "result": true,
+      "time": 0.5891876220703125,
+      "error": null
+    },
+    "assert remove_uppercase(\"DkdplDRmuUNSYXZrzj\") == \"kdplmurzj\"": {
+      "result": true,
+      "time": 0.5744757652282715,
+      "error": null
+    },
+    "assert remove_uppercase(\"qwYHWQUgPWDbzfEabFqlhefqLHD\") == \"qwgbzfabqlhefq\"": {
+      "result": true,
+      "time": 0.606142520904541,
+      "error": null
+    },
+    "assert remove_uppercase(\"bIKlviuPesEtwImeQyUOOzPk\") == \"blviuestwmeyzk\"": {
+      "result": true,
+      "time": 0.5611286163330078,
+      "error": null
+    },
+    "assert remove_uppercase(\"trnCnbHceWhhhJtxIDtT\") == \"trnnbcehhhtxt\"": {
+      "result": true,
+      "time": 0.5092120170593262,
+      "error": null
+    },
+    "assert remove_uppercase(\"KvbQLvatcuKMqXNmcOfD\") == \"vbvatcuqmcf\"": {
+      "result": true,
+      "time": 0.5610461235046387,
+      "error": null
+    },
+    "assert remove_uppercase(\"tfrSBnBCpwcUVBozfku\") == \"tfrnpwcozfku\"": {
+      "result": true,
+      "time": 0.5636091232299805,
+      "error": null
+    },
+    "assert remove_uppercase(\"SdFSygxdjXTJhXVCbUYHLau\") == \"dygxdjhbau\"": {
+      "result": true,
+      "time": 0.6139063835144043,
+      "error": null
+    },
+    "assert remove_uppercase(\"OLLAiHOYpFrUMekIEk\") == \"iprekk\"": {
+      "result": true,
+      "time": 0.5788915157318115,
+      "error": null
+    },
+    "assert remove_uppercase(\"nuRRaNNPkEaYMoXKyp\") == \"nuakaoyp\"": {
+      "result": true,
+      "time": 0.605027437210083,
+      "error": null
+    },
+    "assert remove_uppercase(\"wXPuGEpMaDybiVmrRUMB\") == \"wupaybimr\"": {
+      "result": true,
+      "time": 0.5912058353424072,
+      "error": null
+    },
+    "assert remove_uppercase(\"RzIKZvvyluRLsWTJPPd\") == \"zvvylusd\"": {
+      "result": true,
+      "time": 0.6212379932403564,
+      "error": null
+    },
+    "assert remove_uppercase(\"wmZwNVbODmcyODPgEfdyEpPsXoj\") == \"wmwbmcygfdypsoj\"": {
+      "result": true,
+      "time": 0.6084778308868408,
+      "error": null
+    },
+    "assert remove_uppercase(\"zKerRuGXjGsVzHBkmGZdJ\") == \"zerujszkmd\"": {
+      "result": true,
+      "time": 0.5729796886444092,
+      "error": null
+    },
+    "assert remove_uppercase(\"mPUHTknuLCepOBjzEfRseJORV\") == \"mknuepjzfse\"": {
+      "result": true,
+      "time": 0.5567188262939453,
+      "error": null
+    },
+    "assert remove_uppercase(\"yXxEeDVhDVkUJumktkTGPw\") == \"yxehkumktkw\"": {
+      "result": true,
+      "time": 0.5909454822540283,
+      "error": null
+    },
+    "assert remove_uppercase(\"bZxpWJOomnvhrkSDlByb\") == \"bxpomnvhrklyb\"": {
+      "result": true,
+      "time": 0.573824405670166,
+      "error": null
+    },
+    "assert remove_uppercase(\"hmPgTDiaUuZzbTxQHrRDn\") == \"hmgiauzbxrn\"": {
+      "result": true,
+      "time": 0.5629332065582275,
+      "error": null
+    },
+    "assert remove_uppercase(\"EEuxNPINvMbHRihwqVPHPbTPT\") == \"uxvbihwqb\"": {
+      "result": true,
+      "time": 0.594200611114502,
+      "error": null
+    },
+    "assert remove_uppercase(\"RVAhbFhNrfcAGIHOux\") == \"hbhrfcux\"": {
+      "result": true,
+      "time": 0.5628387928009033,
+      "error": null
+    },
+    "assert remove_uppercase(\"ZSouVkjetXIJhhyrymOXEYTla\") == \"oukjethhyrymla\"": {
+      "result": true,
+      "time": 0.5735692977905273,
+      "error": null
+    },
+    "assert remove_uppercase(\"qjnekSBORHwtWCxEDANbHIj\") == \"qjnekwtxbj\"": {
+      "result": true,
+      "time": 0.5710620880126953,
+      "error": null
+    },
+    "assert remove_uppercase(\"XMHfpGBlXoqoGPODgksmsvgm\") == \"fploqogksmsvgm\"": {
+      "result": true,
+      "time": 0.5954859256744385,
+      "error": null
+    },
+    "assert remove_uppercase(\"bRElExEJqPcpZMoNrnzqzDGQAua\") == \"blxqcpornzqzua\"": {
+      "result": true,
+      "time": 0.6032440662384033,
+      "error": null
+    },
+    "assert remove_uppercase(\"ObqGuNrCGSJXBwkZhRQoqjW\") == \"bqurwkhoqj\"": {
+      "result": true,
+      "time": 0.5780043601989746,
+      "error": null
+    },
+    "assert remove_uppercase(\"fVSVEKKvEirjOgyztvnTxgen\") == \"fvirjgyztvnxgen\"": {
+      "result": true,
+      "time": 0.5745382308959961,
+      "error": null
+    },
+    "assert remove_uppercase(\"ZTaUbamcsYfCMVAXbDkRBVacwb\") == \"abamcsfbkacwb\"": {
+      "result": true,
+      "time": 0.5605564117431641,
+      "error": null
+    },
+    "assert remove_uppercase(\"tqkjJhbLQLCUEjUjzzTaHTWz\") == \"tqkjhbjjzzaz\"": {
+      "result": true,
+      "time": 0.5903599262237549,
+      "error": null
+    },
+    "assert remove_uppercase(\"WBxsDZhGjqZYUjortMnNWXQW\") == \"xshjqjortn\"": {
+      "result": true,
+      "time": 0.5504107475280762,
+      "error": null
+    },
+    "assert remove_uppercase(\"lvyhshaRfVrqiAAsgsal\") == \"lvyhshafrqisgsal\"": {
+      "result": true,
+      "time": 0.5505414009094238,
+      "error": null
+    },
+    "assert remove_uppercase(\"nPqrUKPCwdWQoylMLPnLgSCpK\") == \"nqrwdoylngp\"": {
+      "result": true,
+      "time": 0.5545728206634521,
+      "error": null
+    },
+    "assert remove_uppercase(\"hDgzqZdRFtcTVCpSCRYzb\") == \"hgzqdtcpzb\"": {
+      "result": true,
+      "time": 0.5779695510864258,
+      "error": null
+    },
+    "assert remove_uppercase(\"yibwzKDhUWcAeHCuKHVHPSSKVPl\") == \"yibwzhceul\"": {
+      "result": true,
+      "time": 0.5886011123657227,
+      "error": null
+    },
+    "assert remove_uppercase(\"RjKLnGqjyZgPnpRHcEI\") == \"jnqjygnpc\"": {
+      "result": true,
+      "time": 0.5841243267059326,
+      "error": null
+    },
+    "assert remove_uppercase(\"waccoPvMVcHBKWAkoj\") == \"waccovckoj\"": {
+      "result": true,
+      "time": 0.5832946300506592,
+      "error": null
+    },
+    "assert remove_uppercase(\"VkZnffHpwTXPwasrIniRmU\") == \"knffpwwasrnim\"": {
+      "result": true,
+      "time": 0.5695135593414307,
+      "error": null
+    },
+    "assert remove_uppercase(\"XHQntWceAklXNZVHpUlACgp\") == \"ntceklplgp\"": {
+      "result": true,
+      "time": 0.5520884990692139,
+      "error": null
+    },
+    "assert remove_uppercase(\"WbdoEDyfGgLonnalgH\") == \"bdoyfgonnalg\"": {
+      "result": true,
+      "time": 0.5452785491943359,
+      "error": null
+    },
+    "assert remove_uppercase(\"xCIcopdsFUnZYwmrys\") == \"xcopdsnwmrys\"": {
+      "result": true,
+      "time": 0.6014420986175537,
+      "error": null
+    },
+    "assert remove_uppercase(\"jSuEhNYfqTCxIgyqryG\") == \"juhfqxgyqry\"": {
+      "result": true,
+      "time": 0.569464921951294,
+      "error": null
+    },
+    "assert remove_uppercase(\"zuuTsFHKvCBMSjGrHlHe\") == \"zuusvjrle\"": {
+      "result": true,
+      "time": 0.5736250877380371,
+      "error": null
+    },
+    "assert remove_uppercase(\"KayXQMqfQktBjZqQCfufz\") == \"ayqfktjqfufz\"": {
+      "result": true,
+      "time": 0.5872180461883545,
+      "error": null
+    },
+    "assert remove_uppercase(\"ozKyeATWSbUPTjOVcQws\") == \"ozyebjcws\"": {
+      "result": true,
+      "time": 0.5788669586181641,
+      "error": null
+    },
+    "assert remove_uppercase(\"WqpoZJYTrJnmtbSpYrXcETShN\") == \"qpornmtbprch\"": {
+      "result": true,
+      "time": 0.5962691307067871,
+      "error": null
+    },
+    "assert remove_uppercase(\"QaJyEZQsWDrKCnWZJlcmNhSCHBdUrpbWZ\") == \"aysrnlcmhdrpb\"": {
+      "result": true,
+      "time": 0.5360541343688965,
+      "error": null
+    },
+    "assert remove_uppercase(\"efUHpNwJsGGdsjKIdlTkTvBMT\") == \"efpwsdsjdlkv\"": {
+      "result": true,
+      "time": 0.5582621097564697,
+      "error": null
+    },
+    "assert remove_uppercase(\"aqBxNpDeKRvHJangqpevXucRlhbd\") == \"aqxpevangqpevuclhbd\"": {
+      "result": true,
+      "time": 0.5535900592803955,
+      "error": null
+    },
+    "assert remove_uppercase(\"rdCAyEFVFTgCBjuxcgHdOROpYVAACS\") == \"rdygjuxcgdp\"": {
+      "result": true,
+      "time": 0.5842294692993164,
+      "error": null
+    },
+    "assert remove_uppercase(\"KpPDbJPUrMlYUvuKtEvTDmkXOQCAvhqAs\") == \"pbrlvutvmkvhqs\"": {
+      "result": true,
+      "time": 0.5688066482543945,
+      "error": null
+    },
+    "assert remove_uppercase(\"EWwgHwyEgZJPBuMlmGaBbtXTXCU\") == \"wgwygulmabt\"": {
+      "result": true,
+      "time": 0.5923295021057129,
+      "error": null
+    },
+    "assert remove_uppercase(\"tQwhTQspXkItgrTxsOVyMnqEpLRD\") == \"twhspktgrxsynqp\"": {
+      "result": true,
+      "time": 0.5290970802307129,
+      "error": null
+    },
+    "assert remove_uppercase(\"LreUSHbskpEldQTcgHSSgyHGithe\") == \"rebskpldcggyithe\"": {
+      "result": true,
+      "time": 0.5965487957000732,
+      "error": null
+    },
+    "assert remove_uppercase(\"vnvithPeypcyFvoQnxlczPCTNQorr\") == \"vnvitheypcyvonxlczorr\"": {
+      "result": true,
+      "time": 0.5728759765625,
+      "error": null
+    },
+    "assert remove_uppercase(\"EnUfyytTTCOfOyODDJIFCRFc\") == \"nfyytfyc\"": {
+      "result": true,
+      "time": 0.6086206436157227,
+      "error": null
+    },
+    "assert remove_uppercase(\"hWCdWGSHVSgkmAAcWqHDpBWrNFRUeRi\") == \"hdgkmcqprei\"": {
+      "result": true,
+      "time": 0.5881063938140869,
+      "error": null
+    },
+    "assert remove_uppercase(\"eYZEAikDeLMWxvDYYyCIgRrllZqPr\") == \"eikexvygrllqr\"": {
+      "result": true,
+      "time": 0.5555727481842041,
+      "error": null
+    },
+    "assert remove_uppercase(\"yMJXfNURGXPZaFfydNfqamDlEXyZgHml\") == \"yfafydfqamlygml\"": {
+      "result": true,
+      "time": 0.5397005081176758,
+      "error": null
+    },
+    "assert remove_uppercase(\"KMADfithMJMEwBwUlebXUGptZIXwKLa\") == \"fithwwlebptwa\"": {
+      "result": true,
+      "time": 0.481494665145874,
+      "error": null
+    },
+    "assert remove_uppercase(\"FDJYnsKrUiOaTLuZBAoiAhjNZ\") == \"nsriauoihj\"": {
+      "result": true,
+      "time": 0.6637766361236572,
+      "error": null
+    },
+    "assert remove_uppercase(\"OBxUekcsdCZivWNMJKDppzxB\") == \"xekcsdivppzx\"": {
+      "result": true,
+      "time": 0.5550541877746582,
+      "error": null
+    },
+    "assert remove_uppercase(\"cIMkRnzwEsDhhrVbqYcUjgJfh\") == \"cknzwshhrbqcjgfh\"": {
+      "result": true,
+      "time": 0.5948781967163086,
+      "error": null
+    },
+    "assert remove_uppercase(\"ynYsNWqewmiMOhmTyfeqhhnUVWCic\") == \"ynsqewmihmyfeqhhnic\"": {
+      "result": true,
+      "time": 0.5760765075683594,
+      "error": null
+    },
+    "assert remove_uppercase(\"qczqgODMyokQwYUfmvcNqllBLaX\") == \"qczqgyokwfmvcqlla\"": {
+      "result": true,
+      "time": 0.5943789482116699,
+      "error": null
+    },
+    "assert remove_uppercase(\"gzKGmFNnqZYplXDEJbhVtdKxemTztA\") == \"gzmnqplbhtdxemzt\"": {
+      "result": true,
+      "time": 0.6088001728057861,
+      "error": null
+    },
+    "assert remove_uppercase(\"EibwxXWddsYURsFQCJzscoSjM\") == \"ibwxddsszscoj\"": {
+      "result": true,
+      "time": 0.6035022735595703,
+      "error": null
+    },
+    "assert remove_uppercase(\"uNtvzmXFofjLeyhplDtiGXjG\") == \"utvzmofjeyhpltij\"": {
+      "result": true,
+      "time": 0.5666625499725342,
+      "error": null
+    },
+    "assert remove_uppercase(\"xvPbfYLbPndAMEeHUzdNSVCRpgZSfQX\") == \"xvbfbndezdpgf\"": {
+      "result": true,
+      "time": 0.5794641971588135,
+      "error": null
+    },
+    "assert remove_uppercase(\"rOLmQJpsekXYAFfAoplYbiRas\") == \"rmpsekfoplbias\"": {
+      "result": true,
+      "time": 0.55438232421875,
+      "error": null
+    },
+    "assert remove_uppercase(\"JQwgRPTTUXKVjqyuYbXSpstsLNKCjifuZ\") == \"wgjqyubpstsjifu\"": {
+      "result": true,
+      "time": 0.5833778381347656,
+      "error": null
+    },
+    "assert remove_uppercase(\"pAXPQXynaPGiEazCtMHUCAWvDJndBHd\") == \"pynaiaztvndd\"": {
+      "result": true,
+      "time": 0.5937612056732178,
+      "error": null
+    },
+    "assert remove_uppercase(\"qZYixrqOwvhsHuAOUyOZdSqEBoUFQs\") == \"qixrqwvhsuydqos\"": {
+      "result": true,
+      "time": 0.5884714126586914,
+      "error": null
+    },
+    "assert remove_uppercase(\"coTLCmGKjkhZgSHHZTEGOgYuBOQuyI\") == \"comjkhgguuy\"": {
+      "result": true,
+      "time": 0.5916304588317871,
+      "error": null
+    },
+    "assert remove_uppercase(\"qoHhHXaskQNERdipHXUJTyuflXmM\") == \"qohaskdipyuflm\"": {
+      "result": true,
+      "time": 0.5665783882141113,
+      "error": null
+    },
+    "assert remove_uppercase(\"bSatOmcokwnJGFoBMXjQHpzSkPvmFOwe\") == \"batmcokwnojpzkvmwe\"": {
+      "result": true,
+      "time": 0.5880584716796875,
+      "error": null
+    },
+    "assert remove_uppercase(\"AKYhcjLnFPJBmRECGlnFGrxMHNxw\") == \"hcjnmlnrxxw\"": {
+      "result": true,
+      "time": 0.565565824508667,
+      "error": null
+    },
+    "assert remove_uppercase(\"CDfCCdKNIbxMdSBAvlTJMnLo\") == \"fdbxdvlno\"": {
+      "result": true,
+      "time": 0.582047700881958,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

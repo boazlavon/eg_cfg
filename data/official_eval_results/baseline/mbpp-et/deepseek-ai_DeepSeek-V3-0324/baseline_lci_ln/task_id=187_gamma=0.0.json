@@ -1,0 +1,519 @@
+{
+  "code": "def longest_common_subsequence(seq1, seq2, m, n):\n    # Create a table to store lengths of longest common subsequences\n    lcs_table = []\n    for i in range(m + 1):\n        row = []\n        for j in range(n + 1):\n            row.append(0)\n        lcs_table.append(row)\n    \n    # Fill the table in bottom-up manner\n    for i in range(m + 1):\n        for j in range(n + 1):\n            if i == 0 or j == 0:\n                lcs_table[i][j] = 0\n            elif seq1[i - 1] == seq2[j - 1]:\n                lcs_table[i][j] = lcs_table[i - 1][j - 1] + 1\n            else:\n                value1 = lcs_table[i - 1][j]\n                value2 = lcs_table[i][j - 1]\n                if value1 > value2:\n                    lcs_table[i][j] = value1\n                else:\n                    lcs_table[i][j] = value2\n    \n    # The value at lcs_table[m][n] contains the length of LCS\n    result = lcs_table[m][n]\n    return result",
+  "results": {
+    "assert longest_common_subsequence(\"AGGTAB\" , \"GXTXAYB\", 6, 7) == 4": {
+      "result": true,
+      "time": 0.03849339485168457,
+      "error": null
+    },
+    "assert longest_common_subsequence(\"ABCDGH\" , \"AEDFHR\", 6, 6) == 3": {
+      "result": true,
+      "time": 0.03957939147949219,
+      "error": null
+    },
+    "assert longest_common_subsequence(\"AXYT\" , \"AYZX\", 4, 4) == 2": {
+      "result": true,
+      "time": 0.04185676574707031,
+      "error": null
+    },
+    "assert longest_common_subsequence('XVXXMFQHN', 'TEQVZL', 6, 5) == 1": {
+      "result": true,
+      "time": 0.033936262130737305,
+      "error": null
+    },
+    "assert longest_common_subsequence('DBMEKDJXSTMZ', 'ZCRUSR', 11, 5) == 1": {
+      "result": true,
+      "time": 0.04164004325866699,
+      "error": null
+    },
+    "assert longest_common_subsequence('TVIVSSGV', 'SSIQSROF', 8, 2) == 2": {
+      "result": true,
+      "time": 0.03894448280334473,
+      "error": null
+    },
+    "assert longest_common_subsequence('FFA', 'SBWQSHRXV', 1, 8) == 0": {
+      "result": true,
+      "time": 0.033840179443359375,
+      "error": null
+    },
+    "assert longest_common_subsequence('BGXPD', 'QVGTRHEFJH', 2, 9) == 1": {
+      "result": true,
+      "time": 0.03580427169799805,
+      "error": null
+    },
+    "assert longest_common_subsequence('SQFVLHQKA', 'VKBRCNN', 9, 5) == 2": {
+      "result": true,
+      "time": 0.03689002990722656,
+      "error": null
+    },
+    "assert longest_common_subsequence('HIWMNZE', 'YBPJXBAHHVFG', 6, 5) == 0": {
+      "result": true,
+      "time": 0.02962183952331543,
+      "error": null
+    },
+    "assert longest_common_subsequence('RZKIWXW', 'HLFDPZ', 7, 5) == 0": {
+      "result": true,
+      "time": 0.03822922706604004,
+      "error": null
+    },
+    "assert longest_common_subsequence('APJFREN', 'CZGJLECRWHS', 3, 8) == 1": {
+      "result": true,
+      "time": 0.03628063201904297,
+      "error": null
+    },
+    "assert longest_common_subsequence('WWIKQKYWEITZ', 'BDUCVSLTRUK', 5, 7) == 0": {
+      "result": true,
+      "time": 0.034433603286743164,
+      "error": null
+    },
+    "assert longest_common_subsequence('JVNOBDLUVWR', 'IQZAPZGLN', 3, 9) == 1": {
+      "result": true,
+      "time": 0.03423714637756348,
+      "error": null
+    },
+    "assert longest_common_subsequence('DOLWZPX', 'CNDVBLHSVTY', 1, 3) == 1": {
+      "result": true,
+      "time": 0.03197503089904785,
+      "error": null
+    },
+    "assert longest_common_subsequence('YVCTRUGDW', 'TYZI', 1, 4) == 1": {
+      "result": true,
+      "time": 0.037238359451293945,
+      "error": null
+    },
+    "assert longest_common_subsequence('ZMEJI', 'SZA', 1, 3) == 1": {
+      "result": true,
+      "time": 0.036536455154418945,
+      "error": null
+    },
+    "assert longest_common_subsequence('ZZJBB', 'ICCITESUTMIZ', 1, 9) == 0": {
+      "result": true,
+      "time": 0.03753995895385742,
+      "error": null
+    },
+    "assert longest_common_subsequence('ZJZDGLEA', 'DLWZFBIR', 3, 6) == 1": {
+      "result": true,
+      "time": 0.03842806816101074,
+      "error": null
+    },
+    "assert longest_common_subsequence('JFDEEWJIMY', 'BOWEPLPDEWHS', 5, 2) == 0": {
+      "result": true,
+      "time": 0.03313326835632324,
+      "error": null
+    },
+    "assert longest_common_subsequence('PYT', 'XMAOPLFLGBQI', 1, 12) == 1": {
+      "result": true,
+      "time": 0.037874460220336914,
+      "error": null
+    },
+    "assert longest_common_subsequence('GZBIZZNTDSEO', 'QKZRXNLGZ', 9, 9) == 2": {
+      "result": true,
+      "time": 0.03792834281921387,
+      "error": null
+    },
+    "assert longest_common_subsequence('LXFDPNISJP', 'VCJXMVFYHA', 5, 10) == 2": {
+      "result": true,
+      "time": 0.02869272232055664,
+      "error": null
+    },
+    "assert longest_common_subsequence('QAAUXDQCUUJI', 'LACEBNBYJWH', 8, 11) == 2": {
+      "result": true,
+      "time": 0.03161025047302246,
+      "error": null
+    },
+    "assert longest_common_subsequence('YOXYGEPLQLXF', 'ZFUOLTIQ', 5, 8) == 1": {
+      "result": true,
+      "time": 0.038404226303100586,
+      "error": null
+    },
+    "assert longest_common_subsequence('DUDPFVZ', 'PCPNRTS', 1, 5) == 0": {
+      "result": true,
+      "time": 0.036572933197021484,
+      "error": null
+    },
+    "assert longest_common_subsequence('IUQLGWGSTGGX', 'KLLPYSLMMNY', 7, 4) == 1": {
+      "result": true,
+      "time": 0.0323030948638916,
+      "error": null
+    },
+    "assert longest_common_subsequence('COSUCMB', 'RYLRKGAZMU', 1, 9) == 0": {
+      "result": true,
+      "time": 0.03905510902404785,
+      "error": null
+    },
+    "assert longest_common_subsequence('KBZGWM', 'HHGLADURG', 1, 6) == 0": {
+      "result": true,
+      "time": 0.037482261657714844,
+      "error": null
+    },
+    "assert longest_common_subsequence('ISCBQFCGHHOQ', 'XGRSMBFBLB', 11, 6) == 2": {
+      "result": true,
+      "time": 0.03414034843444824,
+      "error": null
+    },
+    "assert longest_common_subsequence('QAQQDMECLS', 'HXSBZWTRKNKC', 1, 5) == 0": {
+      "result": true,
+      "time": 0.036458730697631836,
+      "error": null
+    },
+    "assert longest_common_subsequence('AXGZK', 'VFOCBQVNI', 1, 7) == 0": {
+      "result": true,
+      "time": 0.03651142120361328,
+      "error": null
+    },
+    "assert longest_common_subsequence('CIWRHBIQUO', 'BJZLWUV', 4, 7) == 1": {
+      "result": true,
+      "time": 0.0344548225402832,
+      "error": null
+    },
+    "assert longest_common_subsequence('GSIQOBXQTLXM', 'IYQRLZS', 10, 3) == 2": {
+      "result": true,
+      "time": 0.04170393943786621,
+      "error": null
+    },
+    "assert longest_common_subsequence('TWVOWEHMP', 'VZJVMUCXSZT', 4, 9) == 1": {
+      "result": true,
+      "time": 0.0361170768737793,
+      "error": null
+    },
+    "assert longest_common_subsequence('OTHFLBXVSFY', 'SPBX', 7, 3) == 1": {
+      "result": true,
+      "time": 0.03847384452819824,
+      "error": null
+    },
+    "assert longest_common_subsequence('IEGWKQQWJGIN', 'HPWJBM', 10, 3) == 1": {
+      "result": true,
+      "time": 0.04113364219665527,
+      "error": null
+    },
+    "assert longest_common_subsequence('TWJCDATHCAPK', 'RUJRTKAIQBO', 4, 10) == 1": {
+      "result": true,
+      "time": 0.03429388999938965,
+      "error": null
+    },
+    "assert longest_common_subsequence('TAKZYMMNRDR', 'VLQYEZWAUCV', 2, 1) == 0": {
+      "result": true,
+      "time": 0.03465080261230469,
+      "error": null
+    },
+    "assert longest_common_subsequence('FKYUKQMIKQ', 'XLDVSD', 2, 3) == 0": {
+      "result": true,
+      "time": 0.031384944915771484,
+      "error": null
+    },
+    "assert longest_common_subsequence('QSXHMI', 'HJHKKFZGN', 6, 2) == 1": {
+      "result": true,
+      "time": 0.03651547431945801,
+      "error": null
+    },
+    "assert longest_common_subsequence('VOJXESI', 'YHXAJWYZVNCF', 4, 8) == 1": {
+      "result": true,
+      "time": 0.03465533256530762,
+      "error": null
+    },
+    "assert longest_common_subsequence('GGVMRVRWYFVE', 'OMIPZO', 5, 2) == 1": {
+      "result": true,
+      "time": 0.037995100021362305,
+      "error": null
+    },
+    "assert longest_common_subsequence('XRKHOAKUI', 'PKGYVOYYR', 1, 5) == 0": {
+      "result": true,
+      "time": 0.029039621353149414,
+      "error": null
+    },
+    "assert longest_common_subsequence('GMNZDHWIEFX', 'LGBUBZCAVM', 7, 4) == 1": {
+      "result": true,
+      "time": 0.033692359924316406,
+      "error": null
+    },
+    "assert longest_common_subsequence('KTVDJL', 'MHRROKQIA', 3, 9) == 1": {
+      "result": true,
+      "time": 0.028823137283325195,
+      "error": null
+    },
+    "assert longest_common_subsequence('TYHSGRUIFZ', 'QUCZP', 3, 2) == 0": {
+      "result": true,
+      "time": 0.037462472915649414,
+      "error": null
+    },
+    "assert longest_common_subsequence('SCQXH', 'EADYVSH', 2, 3) == 0": {
+      "result": true,
+      "time": 0.035079240798950195,
+      "error": null
+    },
+    "assert longest_common_subsequence('QNXXFJTLHU', 'ALJFFZYI', 8, 2) == 1": {
+      "result": true,
+      "time": 0.040291547775268555,
+      "error": null
+    },
+    "assert longest_common_subsequence('JXFQERXGP', 'WFYWREDUGMLL', 5, 5) == 1": {
+      "result": true,
+      "time": 0.029697656631469727,
+      "error": null
+    },
+    "assert longest_common_subsequence('VKXJYLGVVPBS', 'JAB', 2, 3) == 0": {
+      "result": true,
+      "time": 0.03277397155761719,
+      "error": null
+    },
+    "assert longest_common_subsequence('ZYEGUNUVCSD', 'HRSZB', 2, 2) == 0": {
+      "result": true,
+      "time": 0.04260420799255371,
+      "error": null
+    },
+    "assert longest_common_subsequence('RMQMKEDYUU', 'ZDZC', 3, 3) == 0": {
+      "result": true,
+      "time": 0.035202980041503906,
+      "error": null
+    },
+    "assert longest_common_subsequence('OSHZXVU', 'IJYIRPYNMET', 6, 7) == 0": {
+      "result": true,
+      "time": 0.0378880500793457,
+      "error": null
+    },
+    "assert longest_common_subsequence('AMSVAJFFBGKG', 'MDZUNDZUEVI', 4, 5) == 1": {
+      "result": true,
+      "time": 0.0373079776763916,
+      "error": null
+    },
+    "assert longest_common_subsequence('JWFYKAAV', 'MIVNCVJRLQ', 8, 10) == 1": {
+      "result": true,
+      "time": 0.03822040557861328,
+      "error": null
+    },
+    "assert longest_common_subsequence('SQTOJZTRJPA', 'EFHIHRBHVPW', 5, 1) == 0": {
+      "result": true,
+      "time": 0.03876328468322754,
+      "error": null
+    },
+    "assert longest_common_subsequence('QXAZKWHD', 'HUTMGWBM', 7, 2) == 1": {
+      "result": true,
+      "time": 0.046890974044799805,
+      "error": null
+    },
+    "assert longest_common_subsequence('WVFFXV', 'GVOPNFKQSN', 2, 7) == 1": {
+      "result": true,
+      "time": 0.03485727310180664,
+      "error": null
+    },
+    "assert longest_common_subsequence('QBZLKJVVB', 'NBQCLORZY', 2, 2) == 1": {
+      "result": true,
+      "time": 0.03450727462768555,
+      "error": null
+    },
+    "assert longest_common_subsequence('EDOUP', 'OYNIV', 4, 1) == 1": {
+      "result": true,
+      "time": 0.03581690788269043,
+      "error": null
+    },
+    "assert longest_common_subsequence('ENAZXWRJSCT', 'XGQH', 8, 2) == 1": {
+      "result": true,
+      "time": 0.03146934509277344,
+      "error": null
+    },
+    "assert longest_common_subsequence('ZYCDZALTGP', 'XNFWSROVRG', 3, 8) == 0": {
+      "result": true,
+      "time": 0.04241466522216797,
+      "error": null
+    },
+    "assert longest_common_subsequence('EPXOMONH', 'JUKOFCZQDGR', 8, 4) == 1": {
+      "result": true,
+      "time": 0.030893325805664062,
+      "error": null
+    },
+    "assert longest_common_subsequence('WKGLGNVR', 'SYQJWSHWCACX', 7, 4) == 0": {
+      "result": true,
+      "time": 0.03485989570617676,
+      "error": null
+    },
+    "assert longest_common_subsequence('AWYXK', 'BVQJVYL', 4, 1) == 0": {
+      "result": true,
+      "time": 0.03516960144042969,
+      "error": null
+    },
+    "assert longest_common_subsequence('XAYLOZ', 'ELQYFJUEYB', 1, 4) == 0": {
+      "result": true,
+      "time": 0.03593587875366211,
+      "error": null
+    },
+    "assert longest_common_subsequence('BERUVAGNLCWB', 'TVYUXZSXR', 11, 1) == 0": {
+      "result": true,
+      "time": 0.036427974700927734,
+      "error": null
+    },
+    "assert longest_common_subsequence('ZJCMATPMVGO', 'JQJNXIPDPQK', 8, 10) == 2": {
+      "result": true,
+      "time": 0.03741025924682617,
+      "error": null
+    },
+    "assert longest_common_subsequence('BFCRWL', 'XKCZV', 6, 2) == 0": {
+      "result": true,
+      "time": 0.03248023986816406,
+      "error": null
+    },
+    "assert longest_common_subsequence('KVC', 'SBELOUXH', 3, 1) == 0": {
+      "result": true,
+      "time": 0.03697967529296875,
+      "error": null
+    },
+    "assert longest_common_subsequence('TSCLVGME', 'BHAZJAPAH', 2, 1) == 0": {
+      "result": true,
+      "time": 0.03535962104797363,
+      "error": null
+    },
+    "assert longest_common_subsequence('DVCFKTCLY', 'WYIAQRH', 2, 3) == 0": {
+      "result": true,
+      "time": 0.03632402420043945,
+      "error": null
+    },
+    "assert longest_common_subsequence('BLCFBWDSV', 'JDZCGDHE', 7, 3) == 1": {
+      "result": true,
+      "time": 0.044816017150878906,
+      "error": null
+    },
+    "assert longest_common_subsequence('RPRTQLSS', 'TPHYVZSQ', 2, 6) == 1": {
+      "result": true,
+      "time": 0.03609490394592285,
+      "error": null
+    },
+    "assert longest_common_subsequence('ZPFPDCYE', 'ZLPEYLZ', 5, 6) == 2": {
+      "result": true,
+      "time": 0.035211801528930664,
+      "error": null
+    },
+    "assert longest_common_subsequence('LWIPOX', 'UJFLOKTVZ', 3, 7) == 1": {
+      "result": true,
+      "time": 0.03136706352233887,
+      "error": null
+    },
+    "assert longest_common_subsequence('AJXVVVCRA', 'DPDNCD', 1, 6) == 0": {
+      "result": true,
+      "time": 0.0354313850402832,
+      "error": null
+    },
+    "assert longest_common_subsequence('YKCOZY', 'FFONDD', 4, 4) == 1": {
+      "result": true,
+      "time": 0.033329010009765625,
+      "error": null
+    },
+    "assert longest_common_subsequence('ZYT', 'INM', 1, 3) == 0": {
+      "result": true,
+      "time": 0.0392153263092041,
+      "error": null
+    },
+    "assert longest_common_subsequence('ATMQOWSP', 'NJT', 2, 2) == 0": {
+      "result": true,
+      "time": 0.03623199462890625,
+      "error": null
+    },
+    "assert longest_common_subsequence('PHY', 'UOOZY', 1, 4) == 0": {
+      "result": true,
+      "time": 0.04514956474304199,
+      "error": null
+    },
+    "assert longest_common_subsequence('GSNEJ', 'DHDG', 1, 2) == 0": {
+      "result": true,
+      "time": 0.04097485542297363,
+      "error": null
+    },
+    "assert longest_common_subsequence('CNMSOXZN', 'LMYJINQ', 8, 2) == 1": {
+      "result": true,
+      "time": 0.04722309112548828,
+      "error": null
+    },
+    "assert longest_common_subsequence('IRBF', 'VVJWK', 3, 5) == 0": {
+      "result": true,
+      "time": 0.04486227035522461,
+      "error": null
+    },
+    "assert longest_common_subsequence('GEFISIZN', 'FBWOCGUO', 1, 5) == 0": {
+      "result": true,
+      "time": 0.04248809814453125,
+      "error": null
+    },
+    "assert longest_common_subsequence('KXFEJLYD', 'JAWQI', 8, 1) == 1": {
+      "result": true,
+      "time": 0.03752756118774414,
+      "error": null
+    },
+    "assert longest_common_subsequence('UFPL', 'VZXQZ', 4, 4) == 0": {
+      "result": true,
+      "time": 0.04736495018005371,
+      "error": null
+    },
+    "assert longest_common_subsequence('QMFLYEGAY', 'BHZHFKZ', 7, 7) == 1": {
+      "result": true,
+      "time": 0.03870129585266113,
+      "error": null
+    },
+    "assert longest_common_subsequence('YFNN', 'KMDIC', 2, 4) == 0": {
+      "result": true,
+      "time": 0.052191972732543945,
+      "error": null
+    },
+    "assert longest_common_subsequence('TIWVWWLB', 'KNX', 5, 3) == 0": {
+      "result": true,
+      "time": 0.03592276573181152,
+      "error": null
+    },
+    "assert longest_common_subsequence('JAHGPEXD', 'PNHOVHTT', 2, 1) == 0": {
+      "result": true,
+      "time": 0.04444599151611328,
+      "error": null
+    },
+    "assert longest_common_subsequence('LUHWLQ', 'CCNZWBTH', 2, 1) == 0": {
+      "result": true,
+      "time": 0.041719913482666016,
+      "error": null
+    },
+    "assert longest_common_subsequence('YHVLOJ', 'ZEWMDKOIC', 4, 5) == 0": {
+      "result": true,
+      "time": 0.048048973083496094,
+      "error": null
+    },
+    "assert longest_common_subsequence('KYQBRWLVB', 'UMPUZF', 3, 6) == 0": {
+      "result": true,
+      "time": 0.049327850341796875,
+      "error": null
+    },
+    "assert longest_common_subsequence('HXKI', 'CDCHM', 4, 3) == 0": {
+      "result": true,
+      "time": 0.03958892822265625,
+      "error": null
+    },
+    "assert longest_common_subsequence('PTQQ', 'FANWGNQG', 1, 4) == 0": {
+      "result": true,
+      "time": 0.03460097312927246,
+      "error": null
+    },
+    "assert longest_common_subsequence('JJZZDBLR', 'IUQXZY', 5, 6) == 1": {
+      "result": true,
+      "time": 0.042983293533325195,
+      "error": null
+    },
+    "assert longest_common_subsequence('JFMWOYRS', 'SOYWOAS', 4, 5) == 1": {
+      "result": true,
+      "time": 0.03888845443725586,
+      "error": null
+    },
+    "assert longest_common_subsequence('MPKMTRMVT', 'ULQTWKMS', 4, 6) == 1": {
+      "result": true,
+      "time": 0.04065561294555664,
+      "error": null
+    },
+    "assert longest_common_subsequence('XSY', 'BGOGRQYYE', 1, 5) == 0": {
+      "result": true,
+      "time": 0.03311967849731445,
+      "error": null
+    },
+    "assert longest_common_subsequence('IZUNGYZFF', 'WFAOTWUN', 2, 7) == 0": {
+      "result": true,
+      "time": 0.044873714447021484,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

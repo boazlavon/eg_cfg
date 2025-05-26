@@ -1,0 +1,519 @@
+{
+  "code": "def replace_list(input_list, replacement_list):\n    input_list[-1] = replacement_list\n    return input_list",
+  "results": {
+    "assert replace_list([1, 3, 5, 7, 9, 10],[2, 4, 6, 8])==[1, 3, 5, 7, 9, 2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.03582763671875,
+      "error": null
+    },
+    "assert replace_list([1,2,3,4,5],[5,6,7,8])==[1,2,3,4,5,6,7,8]": {
+      "result": false,
+      "time": 0.03775310516357422,
+      "error": null
+    },
+    "assert replace_list([\"red\",\"blue\",\"green\"],[\"yellow\"])==[\"red\",\"blue\",\"yellow\"]": {
+      "result": false,
+      "time": 0.04285168647766113,
+      "error": null
+    },
+    "assert replace_list([3, 3, 5, 10, 12, 14], [5, 5, 9, 9]) == [3, 3, 5, 10, 12, 5, 5, 9, 9]": {
+      "result": false,
+      "time": 0.03110647201538086,
+      "error": null
+    },
+    "assert replace_list([1, 2, 4, 7, 4, 10], [3, 5, 4, 8]) == [1, 2, 4, 7, 4, 3, 5, 4, 8]": {
+      "result": false,
+      "time": 0.034361839294433594,
+      "error": null
+    },
+    "assert replace_list([1, 5, 8, 4, 8, 13], [7, 2, 10, 4]) == [1, 5, 8, 4, 8, 7, 2, 10, 4]": {
+      "result": false,
+      "time": 0.03504681587219238,
+      "error": null
+    },
+    "assert replace_list([3, 1, 6, 3, 7, 7], [4, 6, 9, 13]) == [3, 1, 6, 3, 7, 4, 6, 9, 13]": {
+      "result": false,
+      "time": 0.03252434730529785,
+      "error": null
+    },
+    "assert replace_list([5, 5, 6, 2, 7, 12], [1, 1, 2, 12]) == [5, 5, 6, 2, 7, 1, 1, 2, 12]": {
+      "result": false,
+      "time": 0.03466033935546875,
+      "error": null
+    },
+    "assert replace_list([2, 2, 2, 2, 5, 15], [7, 9, 11, 4]) == [2, 2, 2, 2, 5, 7, 9, 11, 4]": {
+      "result": false,
+      "time": 0.038642168045043945,
+      "error": null
+    },
+    "assert replace_list([5, 3, 4, 9, 4, 8], [5, 3, 11, 3]) == [5, 3, 4, 9, 4, 5, 3, 11, 3]": {
+      "result": false,
+      "time": 0.03683948516845703,
+      "error": null
+    },
+    "assert replace_list([1, 2, 6, 6, 9, 5], [2, 3, 8, 7]) == [1, 2, 6, 6, 9, 2, 3, 8, 7]": {
+      "result": false,
+      "time": 0.03441476821899414,
+      "error": null
+    },
+    "assert replace_list([1, 2, 4, 5, 5, 13], [7, 9, 10, 8]) == [1, 2, 4, 5, 5, 7, 9, 10, 8]": {
+      "result": false,
+      "time": 0.034639835357666016,
+      "error": null
+    },
+    "assert replace_list([4, 1, 9, 4, 10, 14], [3, 2, 2, 13]) == [4, 1, 9, 4, 10, 3, 2, 2, 13]": {
+      "result": false,
+      "time": 0.034781694412231445,
+      "error": null
+    },
+    "assert replace_list([6, 8, 9, 5, 4, 13], [4, 1, 4, 9]) == [6, 8, 9, 5, 4, 4, 1, 4, 9]": {
+      "result": false,
+      "time": 0.031020164489746094,
+      "error": null
+    },
+    "assert replace_list([6, 7, 5, 10, 12, 14], [1, 7, 3, 12]) == [6, 7, 5, 10, 12, 1, 7, 3, 12]": {
+      "result": false,
+      "time": 0.04430508613586426,
+      "error": null
+    },
+    "assert replace_list([6, 1, 4, 12, 4, 11], [3, 1, 8, 10]) == [6, 1, 4, 12, 4, 3, 1, 8, 10]": {
+      "result": false,
+      "time": 0.03680753707885742,
+      "error": null
+    },
+    "assert replace_list([2, 7, 5, 11, 13, 13], [1, 8, 10, 13]) == [2, 7, 5, 11, 13, 1, 8, 10, 13]": {
+      "result": false,
+      "time": 0.03756141662597656,
+      "error": null
+    },
+    "assert replace_list([5, 7, 1, 7, 13, 7], [3, 1, 8, 9]) == [5, 7, 1, 7, 13, 3, 1, 8, 9]": {
+      "result": false,
+      "time": 0.04028010368347168,
+      "error": null
+    },
+    "assert replace_list([3, 2, 6, 2, 10, 8], [5, 1, 9, 5]) == [3, 2, 6, 2, 10, 5, 1, 9, 5]": {
+      "result": false,
+      "time": 0.03707480430603027,
+      "error": null
+    },
+    "assert replace_list([4, 2, 2, 12, 7, 13], [5, 9, 2, 11]) == [4, 2, 2, 12, 7, 5, 9, 2, 11]": {
+      "result": false,
+      "time": 0.03138017654418945,
+      "error": null
+    },
+    "assert replace_list([6, 8, 2, 12, 9, 15], [7, 1, 3, 8]) == [6, 8, 2, 12, 9, 7, 1, 3, 8]": {
+      "result": false,
+      "time": 0.035738468170166016,
+      "error": null
+    },
+    "assert replace_list([5, 4, 5, 9, 10, 6], [5, 5, 4, 7]) == [5, 4, 5, 9, 10, 5, 5, 4, 7]": {
+      "result": false,
+      "time": 0.036069393157958984,
+      "error": null
+    },
+    "assert replace_list([4, 8, 9, 6, 9, 11], [1, 9, 2, 9]) == [4, 8, 9, 6, 9, 1, 9, 2, 9]": {
+      "result": false,
+      "time": 0.038416385650634766,
+      "error": null
+    },
+    "assert replace_list([3, 7, 10, 6, 14, 14], [3, 8, 3, 7]) == [3, 7, 10, 6, 14, 3, 8, 3, 7]": {
+      "result": false,
+      "time": 0.03797578811645508,
+      "error": null
+    },
+    "assert replace_list([3, 5, 7, 4, 4, 6], [4, 5, 11, 11]) == [3, 5, 7, 4, 4, 4, 5, 11, 11]": {
+      "result": false,
+      "time": 0.04161715507507324,
+      "error": null
+    },
+    "assert replace_list([5, 3, 7, 8, 4, 5], [7, 7, 9, 3]) == [5, 3, 7, 8, 4, 7, 7, 9, 3]": {
+      "result": false,
+      "time": 0.0410158634185791,
+      "error": null
+    },
+    "assert replace_list([3, 1, 9, 4, 13, 9], [5, 6, 7, 13]) == [3, 1, 9, 4, 13, 5, 6, 7, 13]": {
+      "result": false,
+      "time": 0.03478693962097168,
+      "error": null
+    },
+    "assert replace_list([3, 2, 4, 7, 6, 9], [4, 7, 7, 12]) == [3, 2, 4, 7, 6, 4, 7, 7, 12]": {
+      "result": false,
+      "time": 0.03452253341674805,
+      "error": null
+    },
+    "assert replace_list([4, 3, 1, 10, 7, 9], [4, 2, 6, 8]) == [4, 3, 1, 10, 7, 4, 2, 6, 8]": {
+      "result": false,
+      "time": 0.04367351531982422,
+      "error": null
+    },
+    "assert replace_list([5, 4, 9, 3, 13, 10], [1, 1, 7, 13]) == [5, 4, 9, 3, 13, 1, 1, 7, 13]": {
+      "result": false,
+      "time": 0.03602147102355957,
+      "error": null
+    },
+    "assert replace_list([5, 8, 3, 8, 9, 8], [7, 7, 3, 7]) == [5, 8, 3, 8, 9, 7, 7, 3, 7]": {
+      "result": false,
+      "time": 0.038556575775146484,
+      "error": null
+    },
+    "assert replace_list([6, 2, 4, 7, 9, 11], [5, 9, 9, 9]) == [6, 2, 4, 7, 9, 5, 9, 9, 9]": {
+      "result": false,
+      "time": 0.04369854927062988,
+      "error": null
+    },
+    "assert replace_list([1, 7, 10, 11, 8, 15], [7, 1, 5, 9]) == [1, 7, 10, 11, 8, 7, 1, 5, 9]": {
+      "result": false,
+      "time": 0.04289412498474121,
+      "error": null
+    },
+    "assert replace_list([2, 3, 4, 11, 13, 15], [3, 2, 8, 11]) == [2, 3, 4, 11, 13, 3, 2, 8, 11]": {
+      "result": false,
+      "time": 0.04562091827392578,
+      "error": null
+    },
+    "assert replace_list([4, 1, 4, 3, 7, 12], [3, 2, 10, 10]) == [4, 1, 4, 3, 7, 3, 2, 10, 10]": {
+      "result": false,
+      "time": 0.04723620414733887,
+      "error": null
+    },
+    "assert replace_list([2, 2, 5, 4, 5, 14], [7, 6, 10, 10]) == [2, 2, 5, 4, 5, 7, 6, 10, 10]": {
+      "result": false,
+      "time": 0.03142094612121582,
+      "error": null
+    },
+    "assert replace_list([3, 3, 8, 8, 5], [1, 4, 11, 8]) == [3, 3, 8, 8, 1, 4, 11, 8]": {
+      "result": false,
+      "time": 0.044930458068847656,
+      "error": null
+    },
+    "assert replace_list([1, 1, 1, 2, 4], [7, 9, 8, 6]) == [1, 1, 1, 2, 7, 9, 8, 6]": {
+      "result": false,
+      "time": 0.04101920127868652,
+      "error": null
+    },
+    "assert replace_list([5, 3, 3, 6, 1], [5, 4, 5, 5]) == [5, 3, 3, 6, 5, 4, 5, 5]": {
+      "result": false,
+      "time": 0.04315328598022461,
+      "error": null
+    },
+    "assert replace_list([1, 2, 7, 3, 3], [2, 5, 2, 11]) == [1, 2, 7, 3, 2, 5, 2, 11]": {
+      "result": false,
+      "time": 0.04290604591369629,
+      "error": null
+    },
+    "assert replace_list([4, 5, 4, 4, 3], [10, 10, 12, 7]) == [4, 5, 4, 4, 10, 10, 12, 7]": {
+      "result": false,
+      "time": 0.038147687911987305,
+      "error": null
+    },
+    "assert replace_list([5, 5, 4, 3, 6], [10, 10, 9, 4]) == [5, 5, 4, 3, 10, 10, 9, 4]": {
+      "result": false,
+      "time": 0.03371596336364746,
+      "error": null
+    },
+    "assert replace_list([5, 7, 2, 2, 10], [1, 2, 4, 6]) == [5, 7, 2, 2, 1, 2, 4, 6]": {
+      "result": false,
+      "time": 0.038987159729003906,
+      "error": null
+    },
+    "assert replace_list([1, 4, 1, 1, 10], [1, 2, 4, 3]) == [1, 4, 1, 1, 1, 2, 4, 3]": {
+      "result": false,
+      "time": 0.040374040603637695,
+      "error": null
+    },
+    "assert replace_list([6, 4, 6, 4, 7], [8, 4, 12, 5]) == [6, 4, 6, 4, 8, 4, 12, 5]": {
+      "result": false,
+      "time": 0.03623533248901367,
+      "error": null
+    },
+    "assert replace_list([4, 5, 2, 4, 7], [7, 4, 10, 4]) == [4, 5, 2, 4, 7, 4, 10, 4]": {
+      "result": false,
+      "time": 0.038429975509643555,
+      "error": null
+    },
+    "assert replace_list([2, 4, 6, 8, 2], [2, 11, 12, 13]) == [2, 4, 6, 8, 2, 11, 12, 13]": {
+      "result": false,
+      "time": 0.042871713638305664,
+      "error": null
+    },
+    "assert replace_list([6, 7, 2, 5, 8], [10, 7, 6, 10]) == [6, 7, 2, 5, 10, 7, 6, 10]": {
+      "result": false,
+      "time": 0.03739428520202637,
+      "error": null
+    },
+    "assert replace_list([5, 5, 2, 2, 1], [10, 10, 5, 4]) == [5, 5, 2, 2, 10, 10, 5, 4]": {
+      "result": false,
+      "time": 0.03519320487976074,
+      "error": null
+    },
+    "assert replace_list([2, 7, 2, 5, 4], [7, 9, 10, 12]) == [2, 7, 2, 5, 7, 9, 10, 12]": {
+      "result": false,
+      "time": 0.03845071792602539,
+      "error": null
+    },
+    "assert replace_list([2, 4, 7, 8, 9], [5, 4, 10, 8]) == [2, 4, 7, 8, 5, 4, 10, 8]": {
+      "result": false,
+      "time": 0.04043936729431152,
+      "error": null
+    },
+    "assert replace_list([6, 7, 5, 7, 4], [9, 9, 9, 13]) == [6, 7, 5, 7, 9, 9, 9, 13]": {
+      "result": false,
+      "time": 0.03341865539550781,
+      "error": null
+    },
+    "assert replace_list([2, 3, 6, 5, 6], [8, 10, 3, 5]) == [2, 3, 6, 5, 8, 10, 3, 5]": {
+      "result": false,
+      "time": 0.04016470909118652,
+      "error": null
+    },
+    "assert replace_list([3, 2, 8, 5, 8], [1, 2, 3, 10]) == [3, 2, 8, 5, 1, 2, 3, 10]": {
+      "result": false,
+      "time": 0.03975987434387207,
+      "error": null
+    },
+    "assert replace_list([2, 2, 6, 7, 7], [4, 7, 2, 8]) == [2, 2, 6, 7, 4, 7, 2, 8]": {
+      "result": false,
+      "time": 0.04212141036987305,
+      "error": null
+    },
+    "assert replace_list([2, 3, 6, 2, 9], [2, 6, 12, 4]) == [2, 3, 6, 2, 2, 6, 12, 4]": {
+      "result": false,
+      "time": 0.035839080810546875,
+      "error": null
+    },
+    "assert replace_list([1, 6, 6, 3, 1], [1, 6, 10, 8]) == [1, 6, 6, 3, 1, 6, 10, 8]": {
+      "result": false,
+      "time": 0.04141688346862793,
+      "error": null
+    },
+    "assert replace_list([5, 7, 5, 8, 6], [8, 11, 11, 13]) == [5, 7, 5, 8, 8, 11, 11, 13]": {
+      "result": false,
+      "time": 0.03825783729553223,
+      "error": null
+    },
+    "assert replace_list([2, 1, 7, 3, 5], [2, 6, 3, 3]) == [2, 1, 7, 3, 2, 6, 3, 3]": {
+      "result": false,
+      "time": 0.036878347396850586,
+      "error": null
+    },
+    "assert replace_list([1, 3, 2, 4, 9], [4, 9, 10, 9]) == [1, 3, 2, 4, 4, 9, 10, 9]": {
+      "result": false,
+      "time": 0.04767417907714844,
+      "error": null
+    },
+    "assert replace_list([4, 1, 8, 1, 8], [6, 2, 8, 4]) == [4, 1, 8, 1, 6, 2, 8, 4]": {
+      "result": false,
+      "time": 0.04669523239135742,
+      "error": null
+    },
+    "assert replace_list([5, 4, 6, 1, 10], [10, 5, 4, 12]) == [5, 4, 6, 1, 10, 5, 4, 12]": {
+      "result": false,
+      "time": 0.04754948616027832,
+      "error": null
+    },
+    "assert replace_list([5, 7, 3, 7, 6], [6, 5, 10, 13]) == [5, 7, 3, 7, 6, 5, 10, 13]": {
+      "result": false,
+      "time": 0.04115724563598633,
+      "error": null
+    },
+    "assert replace_list([5, 2, 3, 7, 1], [4, 1, 9, 8]) == [5, 2, 3, 7, 4, 1, 9, 8]": {
+      "result": false,
+      "time": 0.03680896759033203,
+      "error": null
+    },
+    "assert replace_list([4, 6, 6, 8, 6], [5, 7, 2, 6]) == [4, 6, 6, 8, 5, 7, 2, 6]": {
+      "result": false,
+      "time": 0.03856945037841797,
+      "error": null
+    },
+    "assert replace_list([3, 4, 7, 8, 3], [7, 3, 10, 4]) == [3, 4, 7, 8, 7, 3, 10, 4]": {
+      "result": false,
+      "time": 0.04027676582336426,
+      "error": null
+    },
+    "assert replace_list([5, 5, 5, 1, 1], [10, 7, 4, 12]) == [5, 5, 5, 1, 10, 7, 4, 12]": {
+      "result": false,
+      "time": 0.0385127067565918,
+      "error": null
+    },
+    "assert replace_list([2, 1, 8, 1, 9], [9, 4, 4, 10]) == [2, 1, 8, 1, 9, 4, 4, 10]": {
+      "result": false,
+      "time": 0.04026055335998535,
+      "error": null
+    },
+    "assert replace_list([6, 5, 3, 3, 10], [1, 5, 12, 9]) == [6, 5, 3, 3, 1, 5, 12, 9]": {
+      "result": false,
+      "time": 0.03600025177001953,
+      "error": null
+    },
+    "assert replace_list(['qdyoeeu', 'gefnaw', 'hgpldd'], ['kpd']) == ['qdyoeeu', 'gefnaw', 'kpd']": {
+      "result": false,
+      "time": 0.0376429557800293,
+      "error": null
+    },
+    "assert replace_list(['biitbtech', 'kbnpelj', 'hdvcqq'], ['ogmfd']) == ['biitbtech', 'kbnpelj', 'ogmfd']": {
+      "result": false,
+      "time": 0.04649066925048828,
+      "error": null
+    },
+    "assert replace_list(['brq', 'jybtf', 'dgprhtmfd'], ['utasfyiytx']) == ['brq', 'jybtf', 'utasfyiytx']": {
+      "result": false,
+      "time": 0.03722047805786133,
+      "error": null
+    },
+    "assert replace_list(['lfhw', 'zgy', 'vblfxv'], ['adgpjhytsrj']) == ['lfhw', 'zgy', 'adgpjhytsrj']": {
+      "result": false,
+      "time": 0.04295706748962402,
+      "error": null
+    },
+    "assert replace_list(['yrvqxrn', 'bfsst', 'khwop'], ['yvvbt']) == ['yrvqxrn', 'bfsst', 'yvvbt']": {
+      "result": false,
+      "time": 0.04355978965759277,
+      "error": null
+    },
+    "assert replace_list(['ixkcdi', 'chpafcyls', 'ruhasuxte'], ['yoj']) == ['ixkcdi', 'chpafcyls', 'yoj']": {
+      "result": false,
+      "time": 0.03746461868286133,
+      "error": null
+    },
+    "assert replace_list(['rpd', 'dlxkwwe', 'hcjlpwysx'], ['rjjpdtsjxgm']) == ['rpd', 'dlxkwwe', 'rjjpdtsjxgm']": {
+      "result": false,
+      "time": 0.042014360427856445,
+      "error": null
+    },
+    "assert replace_list(['nielwn', 'ccbgaidwo', 'nddhknu'], ['pbmmea']) == ['nielwn', 'ccbgaidwo', 'pbmmea']": {
+      "result": false,
+      "time": 0.03737783432006836,
+      "error": null
+    },
+    "assert replace_list(['cyracji', 'xcvf', 'fbwqhk'], ['oupmrs']) == ['cyracji', 'xcvf', 'oupmrs']": {
+      "result": false,
+      "time": 0.03435564041137695,
+      "error": null
+    },
+    "assert replace_list(['rkshnpz', 'zdg', 'xedbzvp'], ['vpwzwv']) == ['rkshnpz', 'zdg', 'vpwzwv']": {
+      "result": false,
+      "time": 0.03536725044250488,
+      "error": null
+    },
+    "assert replace_list(['czyhhsvoh', 'gdwojlyzo', 'vsegwyqjz'], ['huqdpse']) == ['czyhhsvoh', 'gdwojlyzo', 'huqdpse']": {
+      "result": false,
+      "time": 0.038511037826538086,
+      "error": null
+    },
+    "assert replace_list(['raz', 'igeio', 'cxyal'], ['japzuafdgbm']) == ['raz', 'igeio', 'japzuafdgbm']": {
+      "result": false,
+      "time": 0.037930965423583984,
+      "error": null
+    },
+    "assert replace_list(['igxlvqnun', 'ojsekz', 'lqd'], ['geynju']) == ['igxlvqnun', 'ojsekz', 'geynju']": {
+      "result": false,
+      "time": 0.04081439971923828,
+      "error": null
+    },
+    "assert replace_list(['iuawcxnls', 'vwlyb', 'tyjc'], ['bgtmftcc']) == ['iuawcxnls', 'vwlyb', 'bgtmftcc']": {
+      "result": false,
+      "time": 0.03522682189941406,
+      "error": null
+    },
+    "assert replace_list(['losfep', 'sxwzwcc', 'vsqfdepg'], ['fczavcccusma']) == ['losfep', 'sxwzwcc', 'fczavcccusma']": {
+      "result": false,
+      "time": 0.03701615333557129,
+      "error": null
+    },
+    "assert replace_list(['adswdps', 'gmhzuw', 'katzm'], ['kwsikaaatpyx']) == ['adswdps', 'gmhzuw', 'kwsikaaatpyx']": {
+      "result": false,
+      "time": 0.03492927551269531,
+      "error": null
+    },
+    "assert replace_list(['pmpj', 'yfzfgxw', 'lspcqkg'], ['vhwg']) == ['pmpj', 'yfzfgxw', 'vhwg']": {
+      "result": false,
+      "time": 0.034880876541137695,
+      "error": null
+    },
+    "assert replace_list(['ajma', 'ikox', 'yzqtyz'], ['fglmjylsjvnu']) == ['ajma', 'ikox', 'fglmjylsjvnu']": {
+      "result": false,
+      "time": 0.039839982986450195,
+      "error": null
+    },
+    "assert replace_list(['gzkphu', 'auvufxoq', 'krp'], ['twr']) == ['gzkphu', 'auvufxoq', 'twr']": {
+      "result": false,
+      "time": 0.03348660469055176,
+      "error": null
+    },
+    "assert replace_list(['snvzvivgl', 'bybff', 'neovjfty'], ['kaymumnee']) == ['snvzvivgl', 'bybff', 'kaymumnee']": {
+      "result": false,
+      "time": 0.041024208068847656,
+      "error": null
+    },
+    "assert replace_list(['fulxgtm', 'syh', 'ezpj'], ['ixhxalncrpn']) == ['fulxgtm', 'syh', 'ixhxalncrpn']": {
+      "result": false,
+      "time": 0.03749871253967285,
+      "error": null
+    },
+    "assert replace_list(['ggfyy', 'pxzq', 'pky'], ['voxogi']) == ['ggfyy', 'pxzq', 'voxogi']": {
+      "result": false,
+      "time": 0.03309774398803711,
+      "error": null
+    },
+    "assert replace_list(['zpetpvjqr', 'chnu', 'zdpfgxi'], ['ajuglppjrds']) == ['zpetpvjqr', 'chnu', 'ajuglppjrds']": {
+      "result": false,
+      "time": 0.03984498977661133,
+      "error": null
+    },
+    "assert replace_list(['bfh', 'lssgrjd', 'okk'], ['reyqaqpl']) == ['bfh', 'lssgrjd', 'reyqaqpl']": {
+      "result": false,
+      "time": 0.03728604316711426,
+      "error": null
+    },
+    "assert replace_list(['gtlcm', 'dbrbupso', 'cgu'], ['ucndelwre']) == ['gtlcm', 'dbrbupso', 'ucndelwre']": {
+      "result": false,
+      "time": 0.0362696647644043,
+      "error": null
+    },
+    "assert replace_list(['zbdvp', 'cnrbk', 'heagbm'], ['spqp']) == ['zbdvp', 'cnrbk', 'spqp']": {
+      "result": false,
+      "time": 0.03950309753417969,
+      "error": null
+    },
+    "assert replace_list(['ojjwmepa', 'szre', 'lfpyblu'], ['vrtveju']) == ['ojjwmepa', 'szre', 'vrtveju']": {
+      "result": false,
+      "time": 0.03829789161682129,
+      "error": null
+    },
+    "assert replace_list(['qsamsj', 'jkmzxaxf', 'jksqlv'], ['accl']) == ['qsamsj', 'jkmzxaxf', 'accl']": {
+      "result": false,
+      "time": 0.03601479530334473,
+      "error": null
+    },
+    "assert replace_list(['syr', 'rzp', 'kqzodtshx'], ['rqa']) == ['syr', 'rzp', 'rqa']": {
+      "result": false,
+      "time": 0.03808784484863281,
+      "error": null
+    },
+    "assert replace_list(['gwiu', 'eply', 'bha'], ['imqvszrun']) == ['gwiu', 'eply', 'imqvszrun']": {
+      "result": false,
+      "time": 0.03380584716796875,
+      "error": null
+    },
+    "assert replace_list(['wkkvfkmyf', 'xwnsvfhg', 'oex'], ['kqy']) == ['wkkvfkmyf', 'xwnsvfhg', 'kqy']": {
+      "result": false,
+      "time": 0.03203177452087402,
+      "error": null
+    },
+    "assert replace_list(['zbiojfnm', 'rmedltyx', 'rsbytytc'], ['hdevmkvoks']) == ['zbiojfnm', 'rmedltyx', 'hdevmkvoks']": {
+      "result": false,
+      "time": 0.02860283851623535,
+      "error": null
+    },
+    "assert replace_list(['fttaodysp', 'gflbqdax', 'hdoab'], ['frodfeeunssi']) == ['fttaodysp', 'gflbqdax', 'frodfeeunssi']": {
+      "result": false,
+      "time": 0.036485910415649414,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

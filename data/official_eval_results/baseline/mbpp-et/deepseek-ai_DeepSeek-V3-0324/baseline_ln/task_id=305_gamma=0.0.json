@@ -1,0 +1,519 @@
+{
+  "code": "def start_withp(words_list):\n    p_words = []\n    for phrase in words_list:\n        for word in phrase.split():\n            if word.lower().startswith('p'):\n                p_words.append(word)\n    if len(p_words) >= 2:\n        return (p_words[0], p_words[1])\n    else:\n        return ()",
+  "results": {
+    "assert start_withp([\"Python PHP\", \"Java JavaScript\", \"c c++\"])==('Python', 'PHP')": {
+      "result": true,
+      "time": 0.04854226112365723,
+      "error": null
+    },
+    "assert start_withp([\"Python Programming\",\"Java Programming\"])==('Python','Programming')": {
+      "result": true,
+      "time": 0.056009531021118164,
+      "error": null
+    },
+    "assert start_withp([\"Pqrst Pqr\",\"qrstuv\"])==('Pqrst','Pqr')": {
+      "result": true,
+      "time": 0.0588984489440918,
+      "error": null
+    },
+    "assert start_withp(['uelzUTnvlDK', 'bMVVDgJuWLOOBlLup l', '&</yjn:&e']) == None": {
+      "result": false,
+      "time": 0.05592966079711914,
+      "error": null
+    },
+    "assert start_withp(['MX RAeDmCzai', 'LvplXJCqjgUA sbeBZ', 'guhluu/$c']) == None": {
+      "result": false,
+      "time": 0.06107902526855469,
+      "error": null
+    },
+    "assert start_withp(['ZorGcYvoSsNAJ', 'lGIHNwRsdjYNiC', 'xmq=:sh']) == None": {
+      "result": false,
+      "time": 0.05119514465332031,
+      "error": null
+    },
+    "assert start_withp(['yKMBxxvhz', 'RnvwjsfkkzTEvyZH', ':c%sqa|md']) == None": {
+      "result": false,
+      "time": 0.060858726501464844,
+      "error": null
+    },
+    "assert start_withp(['pRuhbOOhHc', 'LXTgjiweKjLyVDbFpA', 'az*pck']) == None": {
+      "result": false,
+      "time": 0.038564205169677734,
+      "error": null
+    },
+    "assert start_withp(['CROmZcr L', 'jfsezulVfSebocTP', ':n-#']) == None": {
+      "result": false,
+      "time": 0.04464244842529297,
+      "error": null
+    },
+    "assert start_withp(['BUWjeXbmNl', 'pfDMbASwngmn', 'xq ']) == None": {
+      "result": false,
+      "time": 0.03467392921447754,
+      "error": null
+    },
+    "assert start_withp(['vxfd SYevH', 'YkYHYOFFoisXloNHkRnHr', 'm^c']) == None": {
+      "result": false,
+      "time": 0.05758953094482422,
+      "error": null
+    },
+    "assert start_withp(['UAsKMNkPuizxx', 'ZTWmtuGbkSOK', 'b##ujx s<']) == None": {
+      "result": false,
+      "time": 0.0389862060546875,
+      "error": null
+    },
+    "assert start_withp(['veRoljhr', 'oftMYlqHvctnFEVCHLB', '_c|he']) == None": {
+      "result": false,
+      "time": 0.04824638366699219,
+      "error": null
+    },
+    "assert start_withp(['jbkRXynNITJNZ', 'VjnWMTUPXyINcCRvUMw', 'm_+c<nm u']) == None": {
+      "result": false,
+      "time": 0.041593074798583984,
+      "error": null
+    },
+    "assert start_withp([' CsOZA xGfF', 'HzkWdOXfrYCeFWtrWnW', 'oz+h$@=']) == None": {
+      "result": false,
+      "time": 0.04489254951477051,
+      "error": null
+    },
+    "assert start_withp(['eFbGhtRnsX', 'rIaRVhtOMajUtjc', '~xq']) == None": {
+      "result": false,
+      "time": 0.039464712142944336,
+      "error": null
+    },
+    "assert start_withp(['hBOOfEf', 'OqIoeuiRQhaHG', 'me_kxp+<']) == None": {
+      "result": false,
+      "time": 0.04534435272216797,
+      "error": null
+    },
+    "assert start_withp(['hzpeoj', ' qINqjaEIbHUBpg', 'bjqv!bg']) == None": {
+      "result": false,
+      "time": 0.04572439193725586,
+      "error": null
+    },
+    "assert start_withp(['PZXYpziHebLi', 'BUHRKvVvjthgBp Pxk', 'x: nq']) == None": {
+      "result": false,
+      "time": 0.04574441909790039,
+      "error": null
+    },
+    "assert start_withp(['jDoDJlbrspMv', 'QYGBlxsIBptYvjTH', 'cas~']) == None": {
+      "result": false,
+      "time": 0.05000638961791992,
+      "error": null
+    },
+    "assert start_withp(['ngBLAleFMNEWKY', 'EfszuFekMfAMm', '~v?z']) == None": {
+      "result": false,
+      "time": 0.0391383171081543,
+      "error": null
+    },
+    "assert start_withp(['vpDXeIQGmkTxTUi', 'eAnzJOXUxWt zo', '<wl&^c']) == None": {
+      "result": false,
+      "time": 0.045415639877319336,
+      "error": null
+    },
+    "assert start_withp(['DFUFMBlCQhNDBg', 'nSNbqXElQcYXPNNCvR', '/?|h/vehp']) == None": {
+      "result": false,
+      "time": 0.05008745193481445,
+      "error": null
+    },
+    "assert start_withp(['OAdGUugMGPA', 'dbHAQKlsMjwHRvbAey', '/hvwxib']) == None": {
+      "result": false,
+      "time": 0.051103830337524414,
+      "error": null
+    },
+    "assert start_withp(['FYKaiSqowCLck', 'HiyZlNeRpAdmntJvrAKVT', 'olz>']) == None": {
+      "result": false,
+      "time": 0.046387672424316406,
+      "error": null
+    },
+    "assert start_withp(['IYgwfLtYwkKkw', 'sHMeMPHgzcftxB', ' l$jh']) == None": {
+      "result": false,
+      "time": 0.04064607620239258,
+      "error": null
+    },
+    "assert start_withp(['vUOyVHcyGmwZn', 'LxJXsWzWlxApfgaKiS', 'juln*u']) == None": {
+      "result": false,
+      "time": 0.04695487022399902,
+      "error": null
+    },
+    "assert start_withp(['fuAitLd', 'RciqyUuOvXqZ', 'c!*xf|t']) == None": {
+      "result": false,
+      "time": 0.05032920837402344,
+      "error": null
+    },
+    "assert start_withp(['YLFJPNqQuk', 'fnZecZGZCnMt', 'o?%r']) == None": {
+      "result": false,
+      "time": 0.0453493595123291,
+      "error": null
+    },
+    "assert start_withp(['ALlZGDISqdpv', 'enIvWmVUOnpbto BLIvkH', '/%#%_w']) == None": {
+      "result": false,
+      "time": 0.0645287036895752,
+      "error": null
+    },
+    "assert start_withp(['XaivZiOKAVCJHFT', 'pLbQkXMXTYuLcnUOx', 'ear|']) == None": {
+      "result": false,
+      "time": 0.058929443359375,
+      "error": null
+    },
+    "assert start_withp(['eXweFqgnD', 'hAeooul YpcpXPO', 'qwxe']) == None": {
+      "result": false,
+      "time": 0.07038569450378418,
+      "error": null
+    },
+    "assert start_withp(['FEcgbbxGYAtOsAd', 'QBmoiWZITujLlFKRidKIj', 'xj& ']) == None": {
+      "result": false,
+      "time": 0.05420064926147461,
+      "error": null
+    },
+    "assert start_withp(['rxh DandFbPR', 'sqTldzSoPxJyQTcAkAkJ', '%e _']) == None": {
+      "result": false,
+      "time": 0.060712575912475586,
+      "error": null
+    },
+    "assert start_withp(['lJrEkJhX', 'SjrMhjECdbSXsl Fgzp', '=iq*']) == None": {
+      "result": false,
+      "time": 0.04578113555908203,
+      "error": null
+    },
+    "assert start_withp(['GWjCbyE', 'MyUjSEtOZIvUgDIQB', 'eq*=h^b/']) == None": {
+      "result": false,
+      "time": 0.06894397735595703,
+      "error": null
+    },
+    "assert start_withp(['UQxEKHiSiVUDtPKwMQk DdBv', 'EQuKeqqKYWdzKX F']) == None": {
+      "result": false,
+      "time": 0.06349563598632812,
+      "error": null
+    },
+    "assert start_withp(['CrHdmBRrteYMQNZ', 'kAygJJIYtqZN']) == None": {
+      "result": false,
+      "time": 0.059477806091308594,
+      "error": null
+    },
+    "assert start_withp(['pbZYszl mqZMHkt', 'pIrTUunsXLmp acDq']) == None": {
+      "result": false,
+      "time": 0.056639671325683594,
+      "error": null
+    },
+    "assert start_withp(['AFUjQXnLhbvoMpUtwh', 'UggVSmroMNdAYnkBbORnv']) == None": {
+      "result": false,
+      "time": 0.06935882568359375,
+      "error": null
+    },
+    "assert start_withp(['ajIVTnUavlwGzzXQ', 'UZJnWQXUXqnVeFjAW']) == None": {
+      "result": false,
+      "time": 0.062201499938964844,
+      "error": null
+    },
+    "assert start_withp(['tktW YIsIVNSdIZUNmDBA', 'QRhSdeseDkiBoBS']) == None": {
+      "result": false,
+      "time": 0.06252622604370117,
+      "error": null
+    },
+    "assert start_withp(['tFzubXixbqnQuZLjfk', 'dFOctHjHeNNhtIsIO']) == None": {
+      "result": false,
+      "time": 0.05919766426086426,
+      "error": null
+    },
+    "assert start_withp(['lHfgSZmGOLdJaHrBUvRC', 'eRPBDcsPsCiGDWHFRF']) == None": {
+      "result": false,
+      "time": 0.06762480735778809,
+      "error": null
+    },
+    "assert start_withp(['TGHx IGRHpcMYjeP', 'zuiJnoqMzOtOEjdgMCrQY']) == None": {
+      "result": false,
+      "time": 0.05227327346801758,
+      "error": null
+    },
+    "assert start_withp(['tozHMQmbXGfHGBDBaBkeL', 'uKnfDB urUGBTAdR']) == None": {
+      "result": false,
+      "time": 0.04674243927001953,
+      "error": null
+    },
+    "assert start_withp(['zqeRhVHcLFHxoKWNA', 'tojBBai WkNSCxFqSgv']) == None": {
+      "result": false,
+      "time": 0.06401348114013672,
+      "error": null
+    },
+    "assert start_withp(['ksBBEyEpzomnduq', 'EUgCWKDBfwEtIkneWCNl']) == None": {
+      "result": false,
+      "time": 0.0587306022644043,
+      "error": null
+    },
+    "assert start_withp(['HfjimhViucYBnW ST', 'cyfMRNk QQgheHK']) == None": {
+      "result": false,
+      "time": 0.05406546592712402,
+      "error": null
+    },
+    "assert start_withp(['YCNNgeZVufLJFZmXxOpfelv', 'IxyzSXLXmtHPcn']) == None": {
+      "result": false,
+      "time": 0.05821371078491211,
+      "error": null
+    },
+    "assert start_withp(['iCChFPtutVqyUpDftMrS', 'hsXprCZgYmeCWyUfqVy']) == None": {
+      "result": false,
+      "time": 0.05223202705383301,
+      "error": null
+    },
+    "assert start_withp(['JRfwmuNNwqCyTjv wrddwFT', 'pTjXoOEiBpEqJ']) == None": {
+      "result": false,
+      "time": 0.059237003326416016,
+      "error": null
+    },
+    "assert start_withp(['MBiYppTTuKJuGCJuMR', 'HgoZPaysxKYWfVNUtP']) == None": {
+      "result": false,
+      "time": 0.055994510650634766,
+      "error": null
+    },
+    "assert start_withp(['LLBjfFGZRDrqOIFPcdyEVay', 'MryoqQzGKHlMfVPDdK']) == None": {
+      "result": false,
+      "time": 0.04107999801635742,
+      "error": null
+    },
+    "assert start_withp(['SurhOfRMFsQVmLmvlJEN', 'HAEBGSjgbyKcyzDqTSUG']) == None": {
+      "result": false,
+      "time": 0.05852937698364258,
+      "error": null
+    },
+    "assert start_withp(['YIHpgViZzo DwLFn', 'yAonbBcYVtABk']) == None": {
+      "result": false,
+      "time": 0.049633026123046875,
+      "error": null
+    },
+    "assert start_withp(['jwALRPIQDaLdwPlezgrPUG', 'epuLobCvSCjoH']) == None": {
+      "result": false,
+      "time": 0.050455570220947266,
+      "error": null
+    },
+    "assert start_withp(['TrRiIuwiVGqUQTpt', 'IX fZSATmRoh']) == None": {
+      "result": false,
+      "time": 0.04928851127624512,
+      "error": null
+    },
+    "assert start_withp(['FInNMj nxFooNepxM', 'FqNRmJocXXsRGULSvek']) == None": {
+      "result": false,
+      "time": 0.06618976593017578,
+      "error": null
+    },
+    "assert start_withp(['WlJfxxAEyqQkktJQdUPyaW', 'BmQzLPBaXEthHGiQKHXf']) == None": {
+      "result": false,
+      "time": 0.05593562126159668,
+      "error": null
+    },
+    "assert start_withp(['KzwxvmYPacCOnQzSWNCN ', 'tPeizrtTKMUnXWDsA']) == None": {
+      "result": false,
+      "time": 0.055405378341674805,
+      "error": null
+    },
+    "assert start_withp(['QuejfiAwbu JCknaxcnIBMx', 'tyRDWgijSYNHFamJ']) == None": {
+      "result": false,
+      "time": 0.05672478675842285,
+      "error": null
+    },
+    "assert start_withp(['sZsLBCBXgcbT Zqh', 'lgyllefKHCygstv']) == None": {
+      "result": false,
+      "time": 0.046452999114990234,
+      "error": null
+    },
+    "assert start_withp(['WRTpCHDuTu NLCh', 'XsESHF rgCyrlkCFXdYl']) == None": {
+      "result": false,
+      "time": 0.048267364501953125,
+      "error": null
+    },
+    "assert start_withp(['hexigSLkrgN unSRYrPsKa', 'WDOglYpJQOk T']) == None": {
+      "result": false,
+      "time": 0.05758047103881836,
+      "error": null
+    },
+    "assert start_withp(['xggb WGXqNXJgCvm', 'ChQNrNuZxezIkVbf']) == None": {
+      "result": false,
+      "time": 0.05679917335510254,
+      "error": null
+    },
+    "assert start_withp(['VinSoXcTQQsNURNXHoxf', 'MmJUwskAVgNk']) == None": {
+      "result": false,
+      "time": 0.04530835151672363,
+      "error": null
+    },
+    "assert start_withp(['VLsAPMFZrOyYxNN', 'qGaioMCdiClTy']) == None": {
+      "result": false,
+      "time": 0.047530412673950195,
+      "error": null
+    },
+    "assert start_withp(['ReQHZaMtWKtiBklCNvju', 'HzwGXnUkOyAXXIeWxcJ']) == None": {
+      "result": false,
+      "time": 0.062235355377197266,
+      "error": null
+    },
+    "assert start_withp(['mZGFGrw', 'gyl']) == None": {
+      "result": false,
+      "time": 0.05262398719787598,
+      "error": null
+    },
+    "assert start_withp(['OMDDrsvtUXOAs', 'tygcbhgq']) == None": {
+      "result": false,
+      "time": 0.054502010345458984,
+      "error": null
+    },
+    "assert start_withp(['UeFQEiGPAEFEd', 'xwd']) == None": {
+      "result": false,
+      "time": 0.056149959564208984,
+      "error": null
+    },
+    "assert start_withp(['hEZSeJXTHaJCmm', 'emuu']) == None": {
+      "result": false,
+      "time": 0.05866670608520508,
+      "error": null
+    },
+    "assert start_withp(['guRRptsiKE', 'yavheugysm']) == None": {
+      "result": false,
+      "time": 0.049268245697021484,
+      "error": null
+    },
+    "assert start_withp(['iwQKlVjqHYjHnRV', 'ynsvvttpaqch']) == None": {
+      "result": false,
+      "time": 0.04926419258117676,
+      "error": null
+    },
+    "assert start_withp(['JdUtVZAI', 'jwyvvqqfktx']) == None": {
+      "result": false,
+      "time": 0.050707340240478516,
+      "error": null
+    },
+    "assert start_withp(['LLnrJU ', 'kpaeixktubw']) == None": {
+      "result": false,
+      "time": 0.055649757385253906,
+      "error": null
+    },
+    "assert start_withp(['xGyaDJTKvq', 'lpaivcaqs']) == None": {
+      "result": false,
+      "time": 0.051039695739746094,
+      "error": null
+    },
+    "assert start_withp(['SQwEwLjTYVnDh', 'qgd']) == None": {
+      "result": false,
+      "time": 0.05474424362182617,
+      "error": null
+    },
+    "assert start_withp(['nMPMRTh', 'eqabjucty']) == None": {
+      "result": false,
+      "time": 0.06453776359558105,
+      "error": null
+    },
+    "assert start_withp(['yHAubGLFaCAOc', 'dhtomwhod']) == None": {
+      "result": false,
+      "time": 0.056815147399902344,
+      "error": null
+    },
+    "assert start_withp(['hkQOiS', 'bbqzeljk']) == None": {
+      "result": false,
+      "time": 0.05558323860168457,
+      "error": null
+    },
+    "assert start_withp(['anMROjxELtQKVF', 'etlfmp']) == None": {
+      "result": false,
+      "time": 0.04988813400268555,
+      "error": null
+    },
+    "assert start_withp(['wbmCufl', 'emjtjefjafm']) == None": {
+      "result": false,
+      "time": 0.059648990631103516,
+      "error": null
+    },
+    "assert start_withp(['UDUTyzGTiVCQmX', 'gzqzykmzjenz']) == None": {
+      "result": false,
+      "time": 0.05326700210571289,
+      "error": null
+    },
+    "assert start_withp(['dtOFLOSx', 'onpbgtgezgk']) == None": {
+      "result": false,
+      "time": 0.060105085372924805,
+      "error": null
+    },
+    "assert start_withp(['ilKHevCVORso', 'fzudcwueawl']) == None": {
+      "result": false,
+      "time": 0.04981112480163574,
+      "error": null
+    },
+    "assert start_withp(['KblRMSveehN', 'txrjoxpfvudg']) == None": {
+      "result": false,
+      "time": 0.052544593811035156,
+      "error": null
+    },
+    "assert start_withp(['kAXuQArph MTCG', 'jswdssifkof']) == None": {
+      "result": false,
+      "time": 0.05470466613769531,
+      "error": null
+    },
+    "assert start_withp(['CHRZMHwfkt', 'zknbuzdf']) == None": {
+      "result": false,
+      "time": 0.05548739433288574,
+      "error": null
+    },
+    "assert start_withp(['GsHUWAOkphRJC', 'cjh']) == None": {
+      "result": false,
+      "time": 0.04336357116699219,
+      "error": null
+    },
+    "assert start_withp(['EztbVG', 'fpibdpg']) == None": {
+      "result": false,
+      "time": 0.0440366268157959,
+      "error": null
+    },
+    "assert start_withp(['PRrLTIfkcsl', 'fahmk']) == None": {
+      "result": false,
+      "time": 0.05675148963928223,
+      "error": null
+    },
+    "assert start_withp([' ouojxqrfyxL', 'efegqcv']) == None": {
+      "result": false,
+      "time": 0.05376696586608887,
+      "error": null
+    },
+    "assert start_withp(['cCmfguzyW', 'ckcboxqeqs']) == None": {
+      "result": false,
+      "time": 0.04791617393493652,
+      "error": null
+    },
+    "assert start_withp(['QwYgesgAnPmk', 'nbvcmpdxw']) == None": {
+      "result": false,
+      "time": 0.05232381820678711,
+      "error": null
+    },
+    "assert start_withp(['byjKnvf', 'jnbytsq']) == None": {
+      "result": false,
+      "time": 0.061760663986206055,
+      "error": null
+    },
+    "assert start_withp(['adGQFimbm', 'wlmwdztkq']) == None": {
+      "result": false,
+      "time": 0.061285972595214844,
+      "error": null
+    },
+    "assert start_withp(['WHmbe sajFL', 'ickqtwa']) == None": {
+      "result": false,
+      "time": 0.04588747024536133,
+      "error": null
+    },
+    "assert start_withp(['PvwIjCXZpspL', 'hyihxov']) == None": {
+      "result": false,
+      "time": 0.06519269943237305,
+      "error": null
+    },
+    "assert start_withp(['ZtuvCYJazjsjRYX', 'uaclryyrh']) == None": {
+      "result": false,
+      "time": 0.052451372146606445,
+      "error": null
+    },
+    "assert start_withp(['ARrJFecRB', 'vuxrwjcw']) == None": {
+      "result": false,
+      "time": 0.059697628021240234,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.029411764705882353,
+  "general_error": "",
+  "has_testcase_error": false
+}

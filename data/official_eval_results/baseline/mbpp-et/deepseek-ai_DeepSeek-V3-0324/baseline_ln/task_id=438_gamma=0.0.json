@@ -1,0 +1,519 @@
+{
+  "code": "def count_bidirectional(tuple_list):\n    count = 0\n    seen = set()\n    for pair in tuple_list:\n        reversed_pair = (pair[1], pair[0])\n        if reversed_pair in seen:\n            count += 1\n            seen.remove(reversed_pair)\n        else:\n            seen.add(pair)\n    return str(count)",
+  "results": {
+    "assert count_bidirectional([(5, 6), (1, 2), (6, 5), (9, 1), (6, 5), (2, 1)] ) == '3'": {
+      "result": false,
+      "time": 0.03922128677368164,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 6), (1, 3), (6, 5), (9, 1), (6, 5), (2, 1)] ) == '2'": {
+      "result": false,
+      "time": 0.03816390037536621,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 6), (1, 2), (6, 5), (9, 2), (6, 5), (2, 1)] ) == '4'": {
+      "result": false,
+      "time": 0.04399538040161133,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 10), (4, 5), (2, 9), (8, 2), (9, 7), (4, 3)]) == 1": {
+      "result": false,
+      "time": 0.039949655532836914,
+      "error": null
+    },
+    "assert count_bidirectional([(8, 6), (2, 4), (3, 4), (8, 2), (4, 3), (4, 6)]) == 4": {
+      "result": false,
+      "time": 0.04714202880859375,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 8), (2, 4), (2, 2), (9, 1), (11, 7), (1, 5)]) == 1": {
+      "result": false,
+      "time": 0.03166389465332031,
+      "error": null
+    },
+    "assert count_bidirectional([(6, 7), (6, 3), (5, 9), (7, 6), (11, 7), (5, 2)]) == 1": {
+      "result": false,
+      "time": 0.03881025314331055,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 2), (6, 1), (11, 2), (4, 5), (5, 2), (3, 3)]) == 1": {
+      "result": false,
+      "time": 0.04795694351196289,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 2), (1, 6), (11, 9), (9, 5), (11, 4), (1, 1)]) == 1": {
+      "result": false,
+      "time": 0.0400393009185791,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 8), (5, 6), (7, 9), (12, 1), (10, 10), (7, 5)]) == 0": {
+      "result": false,
+      "time": 0.04028487205505371,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 7), (3, 2), (4, 7), (7, 6), (5, 6), (2, 5)]) == 3": {
+      "result": false,
+      "time": 0.041046857833862305,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 10), (1, 2), (6, 1), (7, 3), (8, 9), (6, 1)]) == 0": {
+      "result": false,
+      "time": 0.03853631019592285,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 11), (5, 4), (10, 5), (8, 5), (9, 7), (2, 4)]) == 0": {
+      "result": false,
+      "time": 0.042885780334472656,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 3), (5, 3), (8, 8), (12, 2), (3, 3), (3, 4)]) == 5": {
+      "result": false,
+      "time": 0.04249858856201172,
+      "error": null
+    },
+    "assert count_bidirectional([(10, 8), (3, 1), (9, 10), (5, 4), (5, 10), (7, 6)]) == 0": {
+      "result": false,
+      "time": 0.03878307342529297,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 6), (1, 5), (3, 1), (6, 1), (9, 9), (2, 3)]) == 1": {
+      "result": false,
+      "time": 0.04055953025817871,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 5), (6, 6), (11, 9), (7, 5), (6, 6), (1, 2)]) == 1": {
+      "result": false,
+      "time": 0.04238128662109375,
+      "error": null
+    },
+    "assert count_bidirectional([(8, 1), (4, 6), (4, 10), (14, 4), (9, 4), (6, 3)]) == 1": {
+      "result": false,
+      "time": 0.04865694046020508,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 1), (5, 6), (2, 2), (4, 4), (7, 7), (7, 3)]) == 1": {
+      "result": false,
+      "time": 0.04112696647644043,
+      "error": null
+    },
+    "assert count_bidirectional([(10, 11), (5, 4), (9, 2), (7, 1), (7, 1), (7, 6)]) == 0": {
+      "result": false,
+      "time": 0.03713202476501465,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 5), (3, 4), (11, 2), (7, 5), (9, 3), (1, 6)]) == 0": {
+      "result": false,
+      "time": 0.050798892974853516,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 10), (5, 4), (6, 6), (11, 6), (2, 7), (2, 5)]) == 0": {
+      "result": false,
+      "time": 0.039945125579833984,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 2), (4, 5), (6, 8), (4, 4), (5, 4), (2, 5)]) == 2": {
+      "result": false,
+      "time": 0.039501190185546875,
+      "error": null
+    },
+    "assert count_bidirectional([(2, 4), (4, 1), (6, 4), (9, 4), (11, 8), (1, 3)]) == 2": {
+      "result": false,
+      "time": 0.044564247131347656,
+      "error": null
+    },
+    "assert count_bidirectional([(2, 7), (3, 3), (5, 3), (11, 3), (3, 9), (5, 4)]) == 3": {
+      "result": false,
+      "time": 0.04184675216674805,
+      "error": null
+    },
+    "assert count_bidirectional([(2, 1), (6, 1), (9, 3), (14, 3), (10, 8), (1, 3)]) == 2": {
+      "result": false,
+      "time": 0.03663468360900879,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 6), (4, 1), (6, 2), (14, 6), (2, 8), (5, 6)]) == 2": {
+      "result": false,
+      "time": 0.036583900451660156,
+      "error": null
+    },
+    "assert count_bidirectional([(6, 3), (5, 4), (3, 8), (9, 4), (10, 6), (1, 2)]) == 1": {
+      "result": false,
+      "time": 0.043250083923339844,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 4), (2, 7), (4, 7), (12, 4), (10, 8), (6, 6)]) == 1": {
+      "result": false,
+      "time": 0.0333552360534668,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 5), (2, 4), (1, 4), (6, 1), (3, 1), (3, 1)]) == 0": {
+      "result": false,
+      "time": 0.03427839279174805,
+      "error": null
+    },
+    "assert count_bidirectional([(2, 10), (2, 3), (7, 6), (13, 2), (6, 7), (2, 3)]) == 2": {
+      "result": false,
+      "time": 0.03932785987854004,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 2), (4, 2), (8, 10), (11, 4), (6, 3), (7, 1)]) == 0": {
+      "result": false,
+      "time": 0.04006671905517578,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 9), (5, 6), (10, 7), (12, 2), (1, 10), (1, 4)]) == 0": {
+      "result": false,
+      "time": 0.04410552978515625,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 10), (4, 5), (6, 4), (7, 1), (7, 2), (4, 2)]) == 1": {
+      "result": false,
+      "time": 0.03788328170776367,
+      "error": null
+    },
+    "assert count_bidirectional([(2, 11), (2, 3), (11, 4), (5, 3), (5, 1), (5, 5)]) == 1": {
+      "result": false,
+      "time": 0.0373837947845459,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 4), (4, 4), (2, 6), (4, 3), (6, 3), (1, 2)]) == 4": {
+      "result": false,
+      "time": 0.04178667068481445,
+      "error": null
+    },
+    "assert count_bidirectional([(2, 6), (1, 8), (10, 1), (5, 3), (8, 1), (2, 2)]) == 1": {
+      "result": false,
+      "time": 0.04192543029785156,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 6), (3, 4), (8, 6), (12, 5), (8, 5), (2, 2)]) == 0": {
+      "result": false,
+      "time": 0.04289984703063965,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 1), (6, 4), (10, 8), (12, 5), (5, 4), (2, 1)]) == 1": {
+      "result": false,
+      "time": 0.040108442306518555,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 3), (2, 4), (1, 9), (11, 3), (7, 1), (1, 2)]) == 1": {
+      "result": false,
+      "time": 0.03565359115600586,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 1), (3, 8), (6, 4), (11, 2), (5, 10), (4, 4)]) == 1": {
+      "result": false,
+      "time": 0.042618513107299805,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 8), (3, 3), (2, 4), (12, 3), (2, 9), (7, 4)]) == 0": {
+      "result": false,
+      "time": 0.0322725772857666,
+      "error": null
+    },
+    "assert count_bidirectional([(10, 3), (6, 5), (10, 7), (14, 6), (10, 2), (2, 2)]) == 1": {
+      "result": false,
+      "time": 0.03292393684387207,
+      "error": null
+    },
+    "assert count_bidirectional([(10, 6), (5, 3), (7, 7), (11, 1), (1, 4), (7, 4)]) == 2": {
+      "result": false,
+      "time": 0.04322338104248047,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 1), (4, 8), (7, 10), (4, 6), (6, 2), (1, 2)]) == 2": {
+      "result": false,
+      "time": 0.046430349349975586,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 7), (4, 8), (11, 4), (5, 5), (2, 10), (3, 3)]) == 0": {
+      "result": false,
+      "time": 0.03481101989746094,
+      "error": null
+    },
+    "assert count_bidirectional([(6, 9), (4, 1), (5, 10), (13, 2), (2, 7), (7, 6)]) == 2": {
+      "result": false,
+      "time": 0.042281150817871094,
+      "error": null
+    },
+    "assert count_bidirectional([(1, 9), (2, 7), (3, 9), (5, 2), (1, 7), (3, 3)]) == 0": {
+      "result": false,
+      "time": 0.040818214416503906,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 9), (2, 4), (1, 10), (8, 2), (5, 1), (1, 2)]) == 1": {
+      "result": false,
+      "time": 0.046675682067871094,
+      "error": null
+    },
+    "assert count_bidirectional([(8, 8), (4, 2), (1, 8), (6, 4), (6, 2), (6, 2)]) == 0": {
+      "result": false,
+      "time": 0.04507946968078613,
+      "error": null
+    },
+    "assert count_bidirectional([(2, 10), (1, 7), (11, 7), (13, 5), (3, 9), (1, 6)]) == 0": {
+      "result": false,
+      "time": 0.04286932945251465,
+      "error": null
+    },
+    "assert count_bidirectional([(8, 7), (3, 4), (10, 6), (5, 3), (5, 2), (1, 2)]) == 0": {
+      "result": false,
+      "time": 0.04069924354553223,
+      "error": null
+    },
+    "assert count_bidirectional([(1, 5), (3, 4), (11, 6), (13, 5), (9, 1), (1, 4)]) == 1": {
+      "result": false,
+      "time": 0.041709184646606445,
+      "error": null
+    },
+    "assert count_bidirectional([(10, 3), (1, 8), (2, 2), (8, 5), (2, 6), (1, 3)]) == 2": {
+      "result": false,
+      "time": 0.03826594352722168,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 4), (3, 8), (9, 8), (4, 6), (5, 7), (3, 1)]) == 1": {
+      "result": false,
+      "time": 0.04048657417297363,
+      "error": null
+    },
+    "assert count_bidirectional([(1, 9), (2, 8), (3, 4), (10, 6), (5, 3), (5, 3)]) == 0": {
+      "result": false,
+      "time": 0.03641986846923828,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 8), (4, 5), (11, 7), (7, 2), (5, 5), (3, 2)]) == 2": {
+      "result": false,
+      "time": 0.03713488578796387,
+      "error": null
+    },
+    "assert count_bidirectional([(1, 3), (2, 6), (3, 7), (4, 4), (10, 2), (2, 3)]) == 2": {
+      "result": false,
+      "time": 0.0466156005859375,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 4), (1, 5), (6, 9), (10, 1), (10, 6), (2, 5)]) == 0": {
+      "result": false,
+      "time": 0.0471196174621582,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 7), (2, 3), (10, 8), (10, 6), (10, 5), (3, 6)]) == 1": {
+      "result": false,
+      "time": 0.04311513900756836,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 6), (5, 1), (5, 8), (5, 1), (5, 1), (7, 3)]) == 0": {
+      "result": false,
+      "time": 0.05095267295837402,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 6), (5, 5), (5, 6), (7, 6), (10, 1), (5, 6)]) == 2": {
+      "result": false,
+      "time": 0.04193115234375,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 5), (5, 1), (5, 9), (8, 4), (5, 6), (4, 1)]) == 4": {
+      "result": false,
+      "time": 0.046540260314941406,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 7), (2, 2), (8, 5), (6, 6), (9, 9), (7, 6)]) == 1": {
+      "result": false,
+      "time": 0.04281878471374512,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 6), (5, 8), (2, 3), (13, 4), (10, 1), (1, 2)]) == 1": {
+      "result": false,
+      "time": 0.044769287109375,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 7), (5, 2), (11, 8), (8, 6), (4, 8), (5, 3)]) == 1": {
+      "result": false,
+      "time": 0.04782509803771973,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 4), (2, 4), (10, 1), (4, 4), (7, 3), (7, 2)]) == 2": {
+      "result": false,
+      "time": 0.04901480674743652,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 4), (5, 1), (11, 5), (6, 3), (10, 6), (5, 5)]) == 1": {
+      "result": false,
+      "time": 0.045629024505615234,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 9), (2, 6), (5, 8), (6, 6), (2, 4), (3, 5)]) == 1": {
+      "result": false,
+      "time": 0.04835677146911621,
+      "error": null
+    },
+    "assert count_bidirectional([(2, 8), (2, 5), (6, 2), (12, 5), (4, 10), (2, 4)]) == 1": {
+      "result": false,
+      "time": 0.043786048889160156,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 11), (5, 4), (2, 10), (12, 3), (6, 4), (5, 4)]) == 0": {
+      "result": false,
+      "time": 0.039250850677490234,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 9), (5, 3), (7, 3), (10, 3), (4, 3), (2, 1)]) == 0": {
+      "result": false,
+      "time": 0.03945779800415039,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 10), (2, 6), (3, 1), (11, 6), (2, 10), (2, 3)]) == 0": {
+      "result": false,
+      "time": 0.04760599136352539,
+      "error": null
+    },
+    "assert count_bidirectional([(6, 4), (1, 3), (7, 8), (9, 3), (7, 5), (4, 6)]) == 1": {
+      "result": false,
+      "time": 0.04697251319885254,
+      "error": null
+    },
+    "assert count_bidirectional([(6, 2), (6, 1), (10, 3), (12, 2), (5, 4), (5, 4)]) == 0": {
+      "result": false,
+      "time": 0.04619956016540527,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 5), (3, 5), (8, 4), (9, 5), (9, 5), (2, 4)]) == 0": {
+      "result": false,
+      "time": 0.04861330986022949,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 8), (4, 2), (9, 9), (5, 4), (2, 1), (7, 4)]) == 1": {
+      "result": false,
+      "time": 0.04398488998413086,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 10), (6, 3), (10, 3), (9, 6), (5, 2), (3, 6)]) == 3": {
+      "result": false,
+      "time": 0.0493006706237793,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 2), (5, 6), (9, 8), (8, 3), (9, 7), (2, 3)]) == 2": {
+      "result": false,
+      "time": 0.045410871505737305,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 10), (3, 6), (1, 3), (13, 3), (10, 3), (2, 2)]) == 1": {
+      "result": false,
+      "time": 0.045368194580078125,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 11), (4, 4), (2, 1), (9, 6), (3, 6), (6, 6)]) == 2": {
+      "result": false,
+      "time": 0.04959988594055176,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 2), (1, 3), (9, 8), (7, 2), (6, 3), (3, 5)]) == 2": {
+      "result": false,
+      "time": 0.04748725891113281,
+      "error": null
+    },
+    "assert count_bidirectional([(1, 2), (1, 6), (5, 10), (5, 6), (4, 7), (4, 4)]) == 0": {
+      "result": false,
+      "time": 0.04551076889038086,
+      "error": null
+    },
+    "assert count_bidirectional([(2, 4), (5, 5), (2, 4), (5, 3), (1, 7), (6, 6)]) == 1": {
+      "result": false,
+      "time": 0.04924440383911133,
+      "error": null
+    },
+    "assert count_bidirectional([(5, 9), (3, 5), (3, 9), (5, 7), (6, 9), (4, 5)]) == 1": {
+      "result": false,
+      "time": 0.044203758239746094,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 8), (5, 5), (9, 6), (7, 7), (10, 9), (3, 5)]) == 0": {
+      "result": false,
+      "time": 0.04828000068664551,
+      "error": null
+    },
+    "assert count_bidirectional([(10, 5), (3, 5), (11, 5), (12, 4), (9, 3), (4, 1)]) == 1": {
+      "result": false,
+      "time": 0.038753509521484375,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 5), (2, 6), (2, 3), (11, 1), (2, 2), (6, 4)]) == 1": {
+      "result": false,
+      "time": 0.04089188575744629,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 3), (3, 7), (1, 9), (11, 5), (7, 8), (6, 4)]) == 2": {
+      "result": false,
+      "time": 0.04543709754943848,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 10), (5, 6), (11, 7), (14, 6), (4, 8), (6, 1)]) == 2": {
+      "result": false,
+      "time": 0.058823347091674805,
+      "error": null
+    },
+    "assert count_bidirectional([(4, 7), (1, 2), (1, 1), (8, 7), (1, 3), (2, 5)]) == 2": {
+      "result": false,
+      "time": 0.045978546142578125,
+      "error": null
+    },
+    "assert count_bidirectional([(8, 8), (5, 2), (9, 7), (12, 5), (6, 3), (2, 5)]) == 1": {
+      "result": false,
+      "time": 0.04143357276916504,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 5), (1, 4), (3, 1), (4, 2), (3, 10), (2, 6)]) == 2": {
+      "result": false,
+      "time": 0.04525017738342285,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 8), (1, 3), (7, 10), (9, 5), (11, 3), (5, 5)]) == 1": {
+      "result": false,
+      "time": 0.04640460014343262,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 2), (4, 2), (4, 7), (5, 7), (9, 8), (7, 6)]) == 2": {
+      "result": false,
+      "time": 0.03658938407897949,
+      "error": null
+    },
+    "assert count_bidirectional([(6, 7), (3, 5), (2, 6), (12, 4), (8, 5), (5, 5)]) == 2": {
+      "result": false,
+      "time": 0.04611921310424805,
+      "error": null
+    },
+    "assert count_bidirectional([(7, 9), (5, 7), (4, 4), (5, 4), (6, 5), (3, 1)]) == 0": {
+      "result": false,
+      "time": 0.04104042053222656,
+      "error": null
+    },
+    "assert count_bidirectional([(9, 2), (2, 7), (11, 3), (10, 7), (3, 7), (4, 5)]) == 2": {
+      "result": false,
+      "time": 0.041460275650024414,
+      "error": null
+    },
+    "assert count_bidirectional([(6, 11), (4, 7), (9, 6), (12, 3), (4, 1), (1, 6)]) == 1": {
+      "result": false,
+      "time": 0.04021120071411133,
+      "error": null
+    },
+    "assert count_bidirectional([(8, 8), (6, 7), (10, 2), (10, 6), (6, 1), (3, 6)]) == 1": {
+      "result": false,
+      "time": 0.03808856010437012,
+      "error": null
+    },
+    "assert count_bidirectional([(2, 1), (1, 2), (5, 9), (7, 2), (10, 6), (7, 1)]) == 1": {
+      "result": false,
+      "time": 0.03890037536621094,
+      "error": null
+    },
+    "assert count_bidirectional([(3, 10), (1, 1), (6, 10), (6, 4), (5, 5), (5, 6)]) == 1": {
+      "result": false,
+      "time": 0.03554987907409668,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

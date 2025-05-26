@@ -1,0 +1,519 @@
+{
+  "code": "def find_even_Pair(arr, n):\n    count = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            xor_result = arr[i] ^ arr[j]\n            if xor_result % 2 == 0:\n                count += 1\n    return count",
+  "results": {
+    "assert find_even_Pair([5,4,7,2,1],5) == 4": {
+      "result": true,
+      "time": 0.04084157943725586,
+      "error": null
+    },
+    "assert find_even_Pair([7,2,8,1,0,5,11],7) == 9": {
+      "result": true,
+      "time": 0.03538346290588379,
+      "error": null
+    },
+    "assert find_even_Pair([1,2,3],3) == 1": {
+      "result": true,
+      "time": 0.042745113372802734,
+      "error": null
+    },
+    "assert find_even_Pair([3, 1, 7, 5, 3], 4) == 6": {
+      "result": true,
+      "time": 0.0351412296295166,
+      "error": null
+    },
+    "assert find_even_Pair([4, 5, 6, 6, 1], 3) == 1": {
+      "result": true,
+      "time": 0.039077043533325195,
+      "error": null
+    },
+    "assert find_even_Pair([5, 7, 9, 1, 6], 2) == 1": {
+      "result": true,
+      "time": 0.0437469482421875,
+      "error": null
+    },
+    "assert find_even_Pair([10, 4, 4, 2, 1], 4) == 6": {
+      "result": true,
+      "time": 0.03902745246887207,
+      "error": null
+    },
+    "assert find_even_Pair([9, 1, 4, 6, 2], 2) == 1": {
+      "result": true,
+      "time": 0.03560352325439453,
+      "error": null
+    },
+    "assert find_even_Pair([3, 7, 10, 4, 6], 4) == 2": {
+      "result": true,
+      "time": 0.041048288345336914,
+      "error": null
+    },
+    "assert find_even_Pair([3, 2, 8, 4, 6], 4) == 3": {
+      "result": true,
+      "time": 0.03789210319519043,
+      "error": null
+    },
+    "assert find_even_Pair([8, 1, 7, 2, 6], 4) == 2": {
+      "result": true,
+      "time": 0.0424497127532959,
+      "error": null
+    },
+    "assert find_even_Pair([8, 6, 2, 7, 4], 5) == 6": {
+      "result": true,
+      "time": 0.039164066314697266,
+      "error": null
+    },
+    "assert find_even_Pair([8, 5, 2, 1, 5], 2) == 0": {
+      "result": true,
+      "time": 0.03498220443725586,
+      "error": null
+    },
+    "assert find_even_Pair([10, 9, 8, 2, 4], 4) == 3": {
+      "result": true,
+      "time": 0.04456472396850586,
+      "error": null
+    },
+    "assert find_even_Pair([6, 4, 4, 4, 4], 5) == 10": {
+      "result": true,
+      "time": 0.04051065444946289,
+      "error": null
+    },
+    "assert find_even_Pair([2, 1, 5, 3, 2], 2) == 0": {
+      "result": true,
+      "time": 0.04041099548339844,
+      "error": null
+    },
+    "assert find_even_Pair([10, 4, 7, 7, 1], 4) == 2": {
+      "result": true,
+      "time": 0.03996729850769043,
+      "error": null
+    },
+    "assert find_even_Pair([5, 7, 10, 5, 5], 2) == 1": {
+      "result": true,
+      "time": 0.04296135902404785,
+      "error": null
+    },
+    "assert find_even_Pair([3, 6, 8, 6, 6], 2) == 0": {
+      "result": true,
+      "time": 0.043735504150390625,
+      "error": null
+    },
+    "assert find_even_Pair([2, 5, 9, 1, 6], 3) == 1": {
+      "result": true,
+      "time": 0.038065433502197266,
+      "error": null
+    },
+    "assert find_even_Pair([7, 3, 9, 5, 3], 4) == 6": {
+      "result": true,
+      "time": 0.037353515625,
+      "error": null
+    },
+    "assert find_even_Pair([2, 8, 6, 3, 4], 4) == 3": {
+      "result": true,
+      "time": 0.04438495635986328,
+      "error": null
+    },
+    "assert find_even_Pair([8, 5, 5, 3, 3], 3) == 1": {
+      "result": true,
+      "time": 0.03127288818359375,
+      "error": null
+    },
+    "assert find_even_Pair([1, 2, 12, 6, 2], 1) == 0": {
+      "result": true,
+      "time": 0.04031515121459961,
+      "error": null
+    },
+    "assert find_even_Pair([4, 3, 5, 4, 6], 5) == 4": {
+      "result": true,
+      "time": 0.03635597229003906,
+      "error": null
+    },
+    "assert find_even_Pair([2, 1, 8, 2, 5], 4) == 3": {
+      "result": true,
+      "time": 0.03699231147766113,
+      "error": null
+    },
+    "assert find_even_Pair([2, 9, 12, 2, 5], 4) == 3": {
+      "result": true,
+      "time": 0.03788471221923828,
+      "error": null
+    },
+    "assert find_even_Pair([3, 6, 8, 6, 4], 3) == 1": {
+      "result": true,
+      "time": 0.043121337890625,
+      "error": null
+    },
+    "assert find_even_Pair([1, 8, 2, 3, 1], 5) == 4": {
+      "result": true,
+      "time": 0.037596940994262695,
+      "error": null
+    },
+    "assert find_even_Pair([6, 7, 8, 4, 6], 5) == 6": {
+      "result": true,
+      "time": 0.04850578308105469,
+      "error": null
+    },
+    "assert find_even_Pair([9, 6, 2, 3, 1], 5) == 4": {
+      "result": true,
+      "time": 0.04604673385620117,
+      "error": null
+    },
+    "assert find_even_Pair([10, 1, 12, 2, 1], 1) == 0": {
+      "result": true,
+      "time": 0.04743218421936035,
+      "error": null
+    },
+    "assert find_even_Pair([1, 3, 8, 5, 2], 4) == 3": {
+      "result": true,
+      "time": 0.04454374313354492,
+      "error": null
+    },
+    "assert find_even_Pair([5, 2, 11, 5, 1], 2) == 0": {
+      "result": true,
+      "time": 0.060086965560913086,
+      "error": null
+    },
+    "assert find_even_Pair([10, 3, 3, 7, 5], 4) == 3": {
+      "result": true,
+      "time": 0.040854692459106445,
+      "error": null
+    },
+    "assert find_even_Pair([2, 7, 4, 1, 4], 4) == 2": {
+      "result": true,
+      "time": 0.04819512367248535,
+      "error": null
+    },
+    "assert find_even_Pair([11, 2, 4, 4, 4, 9, 7], 7) == 9": {
+      "result": true,
+      "time": 0.04955577850341797,
+      "error": null
+    },
+    "assert find_even_Pair([6, 2, 4, 4, 1, 2, 9], 4) == 6": {
+      "result": true,
+      "time": 0.04745078086853027,
+      "error": null
+    },
+    "assert find_even_Pair([9, 6, 8, 6, 4, 2, 13], 4) == 3": {
+      "result": true,
+      "time": 0.04601454734802246,
+      "error": null
+    },
+    "assert find_even_Pair([9, 4, 10, 5, 4, 8, 11], 4) == 2": {
+      "result": true,
+      "time": 0.04587697982788086,
+      "error": null
+    },
+    "assert find_even_Pair([2, 3, 7, 2, 4, 2, 8], 2) == 0": {
+      "result": true,
+      "time": 0.04631638526916504,
+      "error": null
+    },
+    "assert find_even_Pair([3, 2, 4, 4, 5, 5, 13], 7) == 9": {
+      "result": true,
+      "time": 0.046605825424194336,
+      "error": null
+    },
+    "assert find_even_Pair([8, 3, 10, 3, 3, 9, 7], 3) == 1": {
+      "result": true,
+      "time": 0.05243229866027832,
+      "error": null
+    },
+    "assert find_even_Pair([4, 3, 8, 6, 1, 8, 16], 4) == 3": {
+      "result": true,
+      "time": 0.0426487922668457,
+      "error": null
+    },
+    "assert find_even_Pair([7, 6, 5, 3, 2, 1, 15], 5) == 4": {
+      "result": true,
+      "time": 0.047338247299194336,
+      "error": null
+    },
+    "assert find_even_Pair([2, 4, 4, 6, 2, 9, 8], 3) == 3": {
+      "result": true,
+      "time": 0.046231746673583984,
+      "error": null
+    },
+    "assert find_even_Pair([3, 3, 4, 6, 3, 5, 11], 5) == 4": {
+      "result": true,
+      "time": 0.04730343818664551,
+      "error": null
+    },
+    "assert find_even_Pair([8, 6, 8, 1, 2, 9, 13], 3) == 3": {
+      "result": true,
+      "time": 0.06517815589904785,
+      "error": null
+    },
+    "assert find_even_Pair([12, 3, 13, 2, 3, 5, 15], 3) == 1": {
+      "result": true,
+      "time": 0.047582387924194336,
+      "error": null
+    },
+    "assert find_even_Pair([3, 5, 8, 2, 1, 10, 11], 6) == 6": {
+      "result": true,
+      "time": 0.05418539047241211,
+      "error": null
+    },
+    "assert find_even_Pair([6, 3, 4, 5, 3, 6, 12], 2) == 0": {
+      "result": true,
+      "time": 0.051902055740356445,
+      "error": null
+    },
+    "assert find_even_Pair([10, 3, 4, 1, 4, 5, 8], 2) == 0": {
+      "result": true,
+      "time": 0.040343284606933594,
+      "error": null
+    },
+    "assert find_even_Pair([11, 5, 8, 5, 3, 6, 16], 4) == 3": {
+      "result": true,
+      "time": 0.053735971450805664,
+      "error": null
+    },
+    "assert find_even_Pair([5, 6, 8, 6, 2, 1, 16], 6) == 7": {
+      "result": true,
+      "time": 0.04778289794921875,
+      "error": null
+    },
+    "assert find_even_Pair([9, 4, 13, 4, 1, 4, 16], 7) == 9": {
+      "result": true,
+      "time": 0.054662227630615234,
+      "error": null
+    },
+    "assert find_even_Pair([8, 4, 10, 4, 4, 1, 10], 5) == 10": {
+      "result": true,
+      "time": 0.04992938041687012,
+      "error": null
+    },
+    "assert find_even_Pair([6, 6, 6, 3, 3, 7, 11], 3) == 3": {
+      "result": true,
+      "time": 0.04909372329711914,
+      "error": null
+    },
+    "assert find_even_Pair([9, 5, 5, 1, 1, 6, 7], 7) == 15": {
+      "result": true,
+      "time": 0.060029029846191406,
+      "error": null
+    },
+    "assert find_even_Pair([10, 4, 11, 4, 5, 5, 7], 5) == 4": {
+      "result": true,
+      "time": 0.06444692611694336,
+      "error": null
+    },
+    "assert find_even_Pair([5, 5, 8, 5, 1, 3, 15], 4) == 3": {
+      "result": true,
+      "time": 0.06083106994628906,
+      "error": null
+    },
+    "assert find_even_Pair([5, 1, 12, 2, 1, 9, 7], 2) == 1": {
+      "result": true,
+      "time": 0.04806375503540039,
+      "error": null
+    },
+    "assert find_even_Pair([7, 4, 13, 1, 3, 9, 7], 6) == 10": {
+      "result": true,
+      "time": 0.042482614517211914,
+      "error": null
+    },
+    "assert find_even_Pair([2, 7, 9, 5, 2, 7, 14], 7) == 9": {
+      "result": true,
+      "time": 0.04804229736328125,
+      "error": null
+    },
+    "assert find_even_Pair([10, 2, 10, 2, 4, 10, 7], 4) == 6": {
+      "result": true,
+      "time": 0.06116819381713867,
+      "error": null
+    },
+    "assert find_even_Pair([8, 5, 7, 2, 4, 2, 14], 5) == 4": {
+      "result": true,
+      "time": 0.05565166473388672,
+      "error": null
+    },
+    "assert find_even_Pair([10, 1, 6, 3, 1, 1, 11], 7) == 11": {
+      "result": true,
+      "time": 0.0521852970123291,
+      "error": null
+    },
+    "assert find_even_Pair([2, 1, 12, 2, 4, 4, 11], 7) == 11": {
+      "result": true,
+      "time": 0.06289935111999512,
+      "error": null
+    },
+    "assert find_even_Pair([8, 2, 4, 4, 5, 8, 7], 5) == 6": {
+      "result": true,
+      "time": 0.04293012619018555,
+      "error": null
+    },
+    "assert find_even_Pair([7, 6, 3, 1, 3, 1, 8], 7) == 11": {
+      "result": true,
+      "time": 0.04456520080566406,
+      "error": null
+    },
+    "assert find_even_Pair([4, 5, 7], 3) == 1": {
+      "result": true,
+      "time": 0.051705360412597656,
+      "error": null
+    },
+    "assert find_even_Pair([6, 7, 2], 3) == 1": {
+      "result": true,
+      "time": 0.03273773193359375,
+      "error": null
+    },
+    "assert find_even_Pair([1, 3, 4], 1) == 0": {
+      "result": true,
+      "time": 0.04857778549194336,
+      "error": null
+    },
+    "assert find_even_Pair([2, 7, 7], 2) == 0": {
+      "result": true,
+      "time": 0.0347745418548584,
+      "error": null
+    },
+    "assert find_even_Pair([5, 3, 4], 1) == 0": {
+      "result": true,
+      "time": 0.04268455505371094,
+      "error": null
+    },
+    "assert find_even_Pair([5, 3, 2], 3) == 1": {
+      "result": true,
+      "time": 0.03748512268066406,
+      "error": null
+    },
+    "assert find_even_Pair([1, 6, 2], 1) == 0": {
+      "result": true,
+      "time": 0.04495501518249512,
+      "error": null
+    },
+    "assert find_even_Pair([1, 7, 8], 3) == 1": {
+      "result": true,
+      "time": 0.04229617118835449,
+      "error": null
+    },
+    "assert find_even_Pair([3, 2, 4], 3) == 1": {
+      "result": true,
+      "time": 0.04234147071838379,
+      "error": null
+    },
+    "assert find_even_Pair([4, 4, 7], 1) == 0": {
+      "result": true,
+      "time": 0.039832353591918945,
+      "error": null
+    },
+    "assert find_even_Pair([2, 7, 5], 3) == 1": {
+      "result": true,
+      "time": 0.0504302978515625,
+      "error": null
+    },
+    "assert find_even_Pair([5, 7, 4], 1) == 0": {
+      "result": true,
+      "time": 0.04629111289978027,
+      "error": null
+    },
+    "assert find_even_Pair([3, 7, 2], 2) == 1": {
+      "result": true,
+      "time": 0.041298627853393555,
+      "error": null
+    },
+    "assert find_even_Pair([4, 2, 3], 2) == 1": {
+      "result": true,
+      "time": 0.04297995567321777,
+      "error": null
+    },
+    "assert find_even_Pair([2, 7, 7], 1) == 0": {
+      "result": true,
+      "time": 0.043099403381347656,
+      "error": null
+    },
+    "assert find_even_Pair([1, 2, 6], 2) == 0": {
+      "result": true,
+      "time": 0.04577898979187012,
+      "error": null
+    },
+    "assert find_even_Pair([2, 1, 4], 2) == 0": {
+      "result": true,
+      "time": 0.04498791694641113,
+      "error": null
+    },
+    "assert find_even_Pair([3, 4, 4], 2) == 0": {
+      "result": true,
+      "time": 0.0377349853515625,
+      "error": null
+    },
+    "assert find_even_Pair([1, 2, 7], 3) == 1": {
+      "result": true,
+      "time": 0.03650403022766113,
+      "error": null
+    },
+    "assert find_even_Pair([5, 3, 3], 1) == 0": {
+      "result": true,
+      "time": 0.04421186447143555,
+      "error": null
+    },
+    "assert find_even_Pair([4, 3, 5], 2) == 0": {
+      "result": true,
+      "time": 0.04398488998413086,
+      "error": null
+    },
+    "assert find_even_Pair([5, 4, 7], 1) == 0": {
+      "result": true,
+      "time": 0.03822159767150879,
+      "error": null
+    },
+    "assert find_even_Pair([1, 5, 6], 3) == 1": {
+      "result": true,
+      "time": 0.04466104507446289,
+      "error": null
+    },
+    "assert find_even_Pair([3, 3, 5], 3) == 3": {
+      "result": true,
+      "time": 0.048879146575927734,
+      "error": null
+    },
+    "assert find_even_Pair([1, 3, 5], 3) == 3": {
+      "result": true,
+      "time": 0.040337324142456055,
+      "error": null
+    },
+    "assert find_even_Pair([1, 7, 3], 2) == 1": {
+      "result": true,
+      "time": 0.035198211669921875,
+      "error": null
+    },
+    "assert find_even_Pair([5, 6, 7], 3) == 1": {
+      "result": true,
+      "time": 0.03738284111022949,
+      "error": null
+    },
+    "assert find_even_Pair([6, 3, 6], 3) == 1": {
+      "result": true,
+      "time": 0.04712390899658203,
+      "error": null
+    },
+    "assert find_even_Pair([5, 1, 2], 3) == 1": {
+      "result": true,
+      "time": 0.051450490951538086,
+      "error": null
+    },
+    "assert find_even_Pair([5, 2, 3], 3) == 1": {
+      "result": true,
+      "time": 0.039873361587524414,
+      "error": null
+    },
+    "assert find_even_Pair([4, 4, 5], 2) == 1": {
+      "result": true,
+      "time": 0.04625821113586426,
+      "error": null
+    },
+    "assert find_even_Pair([5, 1, 6], 1) == 0": {
+      "result": true,
+      "time": 0.04284954071044922,
+      "error": null
+    },
+    "assert find_even_Pair([4, 4, 6], 2) == 1": {
+      "result": true,
+      "time": 0.03889918327331543,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

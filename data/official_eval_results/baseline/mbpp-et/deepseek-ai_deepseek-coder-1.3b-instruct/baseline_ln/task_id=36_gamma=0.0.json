@@ -1,0 +1,479 @@
+{
+  "code": "def find_Nth_Digit(a, b, n):\n    # Convert the numbers to fractions\n    fraction = a / b\n\n    # Find the length of the fraction\n    length = len(str(fraction))\n\n    # Find the index of the digit in the fraction\n    index = (n - 1) % length\n\n    # Return the nth digit\n    return int(str(fraction)[index])",
+  "results": {
+    "assert find_Nth_Digit(1,2,1) == 5": {
+      "result": false,
+      "time": 0.03939986228942871,
+      "error": null
+    },
+    "assert find_Nth_Digit(3,5,1) == 6": {
+      "result": false,
+      "time": 0.04935646057128906,
+      "error": null
+    },
+    "assert find_Nth_Digit(5,6,5) == 3": {
+      "result": true,
+      "time": 0.0560908317565918,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 5, 4) == 0": {
+      "result": false,
+      "time": 0.032537221908569336,
+      "error": null
+    },
+    "assert find_Nth_Digit(1, 7, 5) == 5": {
+      "result": false,
+      "time": 0.04191851615905762,
+      "error": null
+    },
+    "assert find_Nth_Digit(6, 4, 5) == 0": {
+      "result": false,
+      "time": 0.04358267784118652,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 5, 3) == 0": {
+      "result": false,
+      "time": 0.03839421272277832,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 7, 1) == 4": {
+      "result": false,
+      "time": 0.037299394607543945,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 2, 3) == 0": {
+      "result": true,
+      "time": 0.03958272933959961,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 2, 2) == 0": {
+      "result": false,
+      "time": 0.041567087173461914,
+      "error": null
+    },
+    "assert find_Nth_Digit(6, 2, 6) == 0": {
+      "result": true,
+      "time": 0.04727792739868164,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 7, 4) == 5": {
+      "result": false,
+      "time": 0.047590017318725586,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 1, 6) == 0": {
+      "result": true,
+      "time": 0.043730735778808594,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 4, 2) == 0": {
+      "result": false,
+      "time": 0.03654289245605469,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 6, 6) == 0": {
+      "result": false,
+      "time": 0.040112972259521484,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 4, 3) == 0": {
+      "result": true,
+      "time": 0.04347705841064453,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 4, 3) == 0": {
+      "result": false,
+      "time": 0.04212498664855957,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 2, 2) == 0": {
+      "result": false,
+      "time": 0.05301809310913086,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 1, 2) == 0": {
+      "result": false,
+      "time": 0.039089202880859375,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 5, 3) == 0": {
+      "result": true,
+      "time": 0.04124736785888672,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 2, 6) == 0": {
+      "result": false,
+      "time": 0.04789566993713379,
+      "error": null
+    },
+    "assert find_Nth_Digit(1, 4, 3) == 0": {
+      "result": false,
+      "time": 0.038529157638549805,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 2, 4) == 0": {
+      "result": false,
+      "time": 0.04194784164428711,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 4, 4) == 0": {
+      "result": true,
+      "time": 0.05035257339477539,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 6, 2) == 0": {
+      "result": false,
+      "time": 0.0433347225189209,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 2, 2) == 0": {
+      "result": false,
+      "time": 0.040195465087890625,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 7, 3) == 4": {
+      "result": false,
+      "time": 0.046921730041503906,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 7, 5) == 7": {
+      "result": false,
+      "time": 0.044557809829711914,
+      "error": null
+    },
+    "assert find_Nth_Digit(1, 4, 2) == 5": {
+      "result": false,
+      "time": 0.046292781829833984,
+      "error": null
+    },
+    "assert find_Nth_Digit(6, 3, 5) == 0": {
+      "result": false,
+      "time": 0.044585466384887695,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 6, 6) == 6": {
+      "result": true,
+      "time": 0.03850150108337402,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 4, 5) == 0": {
+      "result": true,
+      "time": 0.03751850128173828,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 7, 4) == 4": {
+      "result": false,
+      "time": 0.04096817970275879,
+      "error": null
+    },
+    "assert find_Nth_Digit(8, 6, 2) == 3": {
+      "result": false,
+      "time": 0.047891855239868164,
+      "error": null
+    },
+    "assert find_Nth_Digit(1, 7, 3) == 2": {
+      "result": false,
+      "time": 0.04340648651123047,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 1, 1) == 20": {
+      "result": false,
+      "time": 0.045377492904663086,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 8, 5) == 0": {
+      "result": false,
+      "time": 0.05087852478027344,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 3, 6) == 3": {
+      "result": true,
+      "time": 0.0392916202545166,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 4, 6) == 0": {
+      "result": true,
+      "time": 0.03730463981628418,
+      "error": null
+    },
+    "assert find_Nth_Digit(7, 5, 4) == 0": {
+      "result": false,
+      "time": 0.044840335845947266,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 7, 6) == 8": {
+      "result": false,
+      "time": 0.03683876991271973,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 1, 3) == 0": {
+      "result": true,
+      "time": 0.052120208740234375,
+      "error": null
+    },
+    "assert find_Nth_Digit(7, 3, 1) == 23": {
+      "result": false,
+      "time": 0.04464554786682129,
+      "error": null
+    },
+    "assert find_Nth_Digit(1, 10, 6) == 0": {
+      "result": false,
+      "time": 0.03930473327636719,
+      "error": null
+    },
+    "assert find_Nth_Digit(7, 5, 2) == 0": {
+      "result": false,
+      "time": 0.04117727279663086,
+      "error": null
+    },
+    "assert find_Nth_Digit(7, 7, 3) == 0": {
+      "result": true,
+      "time": 0.04026174545288086,
+      "error": null
+    },
+    "assert find_Nth_Digit(6, 8, 5) == 0": {
+      "result": true,
+      "time": 0.04648613929748535,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 8, 5) == 0": {
+      "result": false,
+      "time": 0.03656411170959473,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 5, 3) == 0": {
+      "result": false,
+      "time": 0.038889408111572266,
+      "error": null
+    },
+    "assert find_Nth_Digit(1, 10, 2) == 0": {
+      "result": false,
+      "time": 0.040605783462524414,
+      "error": null
+    },
+    "assert find_Nth_Digit(1, 3, 6) == 3": {
+      "result": true,
+      "time": 0.03934431076049805,
+      "error": null
+    },
+    "assert find_Nth_Digit(1, 7, 6) == 7": {
+      "result": false,
+      "time": 0.04093003273010254,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 9, 4) == 2": {
+      "result": true,
+      "time": 0.03364920616149902,
+      "error": null
+    },
+    "assert find_Nth_Digit(6, 8, 3) == 0": {
+      "result": false,
+      "time": 0.037123680114746094,
+      "error": null
+    },
+    "assert find_Nth_Digit(1, 3, 1) == 3": {
+      "result": false,
+      "time": 0.04247403144836426,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 3, 2) == 0": {
+      "result": false,
+      "time": 0.03530716896057129,
+      "error": null
+    },
+    "assert find_Nth_Digit(7, 8, 3) == 5": {
+      "result": false,
+      "time": 0.03752470016479492,
+      "error": null
+    },
+    "assert find_Nth_Digit(7, 9, 4) == 7": {
+      "result": true,
+      "time": 0.04121112823486328,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 2, 2) == 0": {
+      "result": false,
+      "time": 0.04776120185852051,
+      "error": null
+    },
+    "assert find_Nth_Digit(8, 9, 6) == 8": {
+      "result": true,
+      "time": 0.04520702362060547,
+      "error": null
+    },
+    "assert find_Nth_Digit(6, 4, 2) == 0": {
+      "result": false,
+      "time": 0.03784537315368652,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 4, 2) == 0": {
+      "result": false,
+      "time": 0.039298295974731445,
+      "error": null
+    },
+    "assert find_Nth_Digit(6, 9, 4) == 6": {
+      "result": true,
+      "time": 0.030597686767578125,
+      "error": null
+    },
+    "assert find_Nth_Digit(6, 7, 6) == 2": {
+      "result": false,
+      "time": 0.038312435150146484,
+      "error": null
+    },
+    "assert find_Nth_Digit(7, 10, 4) == 0": {
+      "result": true,
+      "time": 0.03510761260986328,
+      "error": null
+    },
+    "assert find_Nth_Digit(9, 11, 8) == 1": {
+      "result": true,
+      "time": 0.0403134822845459,
+      "error": null
+    },
+    "assert find_Nth_Digit(9, 8, 7) == 0": {
+      "result": false,
+      "time": 0.033120155334472656,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 1, 4) == 0": {
+      "result": false,
+      "time": 0.0408935546875,
+      "error": null
+    },
+    "assert find_Nth_Digit(10, 8, 2) == 5": {
+      "result": false,
+      "time": 0.0375208854675293,
+      "error": null
+    },
+    "assert find_Nth_Digit(1, 4, 10) == 0": {
+      "result": false,
+      "time": 0.04464888572692871,
+      "error": null
+    },
+    "assert find_Nth_Digit(7, 8, 5) == 0": {
+      "result": false,
+      "time": 0.03641653060913086,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 6, 9) == 0": {
+      "result": false,
+      "time": 0.04159998893737793,
+      "error": null
+    },
+    "assert find_Nth_Digit(10, 10, 3) == 0": {
+      "result": true,
+      "time": 0.03506875038146973,
+      "error": null
+    },
+    "assert find_Nth_Digit(6, 5, 2) == 0": {
+      "result": false,
+      "time": 0.039269447326660156,
+      "error": null
+    },
+    "assert find_Nth_Digit(6, 7, 3) == 7": {
+      "result": false,
+      "time": 0.0365750789642334,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 7, 6) == 5": {
+      "result": false,
+      "time": 0.03650259971618652,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 5, 3) == 0": {
+      "result": false,
+      "time": 0.030947446823120117,
+      "error": null
+    },
+    "assert find_Nth_Digit(8, 7, 6) == 7": {
+      "result": false,
+      "time": 0.03688240051269531,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 4, 8) == 0": {
+      "result": false,
+      "time": 0.03548383712768555,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 4, 4) == 0": {
+      "result": false,
+      "time": 0.03158092498779297,
+      "error": null
+    },
+    "assert find_Nth_Digit(3, 1, 10) == 0": {
+      "result": false,
+      "time": 0.04002237319946289,
+      "error": null
+    },
+    "assert find_Nth_Digit(1, 5, 1) == 2": {
+      "result": false,
+      "time": 0.037750244140625,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 3, 3) == 6": {
+      "result": true,
+      "time": 0.03994417190551758,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 2, 5) == 0": {
+      "result": false,
+      "time": 0.03692007064819336,
+      "error": null
+    },
+    "assert find_Nth_Digit(4, 9, 3) == 4": {
+      "result": true,
+      "time": 0.03566479682922363,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 5, 10) == 0": {
+      "result": false,
+      "time": 0.04366660118103027,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 8, 10) == 0": {
+      "result": false,
+      "time": 0.039504051208496094,
+      "error": null
+    },
+    "assert find_Nth_Digit(5, 1, 4) == 0": {
+      "result": false,
+      "time": 0.03905200958251953,
+      "error": null
+    },
+    "assert find_Nth_Digit(6, 11, 6) == 4": {
+      "result": true,
+      "time": 0.035889387130737305,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 8, 5) == 0": {
+      "result": true,
+      "time": 0.03808307647705078,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 8, 9) == 0": {
+      "result": true,
+      "time": 0.040625810623168945,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 9, 1) == 2": {
+      "result": false,
+      "time": 0.03894305229187012,
+      "error": null
+    },
+    "assert find_Nth_Digit(9, 5, 6) == 0": {
+      "result": false,
+      "time": 0.035547733306884766,
+      "error": null
+    },
+    "assert find_Nth_Digit(2, 9, 9) == 2": {
+      "result": true,
+      "time": 0.03805279731750488,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.2978723404255319,
+  "general_error": "",
+  "has_testcase_error": false
+}

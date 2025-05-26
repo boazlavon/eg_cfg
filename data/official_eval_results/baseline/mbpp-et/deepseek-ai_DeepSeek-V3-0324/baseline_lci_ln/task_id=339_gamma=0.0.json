@@ -1,0 +1,349 @@
+{
+  "code": "def find_Divisor(start, end):\n    if start == end:\n        return start\n    \n    divisor_counts = {}\n    \n    for num in range(start, end + 1):\n        if num == 0:\n            continue\n        for divisor in range(2, num + 1):\n            if num % divisor == 0:\n                if divisor in divisor_counts:\n                    divisor_counts[divisor] += 1\n                else:\n                    divisor_counts[divisor] = 1\n    \n    max_count = 0\n    max_divisor = 2\n    \n    for divisor in divisor_counts:\n        count = divisor_counts[divisor]\n        if count > max_count:\n            max_count = count\n            max_divisor = divisor\n        elif count == max_count:\n            if divisor > max_divisor:\n                max_divisor = divisor\n    \n    return max_divisor",
+  "results": {
+    "assert find_Divisor(2,2) == 2": {
+      "result": true,
+      "time": 0.07732605934143066,
+      "error": null
+    },
+    "assert find_Divisor(2,5) == 2": {
+      "result": true,
+      "time": 0.07602214813232422,
+      "error": null
+    },
+    "assert find_Divisor(5,10) == 2": {
+      "result": true,
+      "time": 0.0717167854309082,
+      "error": null
+    },
+    "assert find_Divisor(3, 7) == 2": {
+      "result": false,
+      "time": 0.07013082504272461,
+      "error": null
+    },
+    "assert find_Divisor(4, 4) == 4": {
+      "result": true,
+      "time": 0.12161016464233398,
+      "error": null
+    },
+    "assert find_Divisor(4, 3) == 2": {
+      "result": true,
+      "time": 0.11258268356323242,
+      "error": null
+    },
+    "assert find_Divisor(4, 7) == 2": {
+      "result": true,
+      "time": 0.07702970504760742,
+      "error": null
+    },
+    "assert find_Divisor(5, 4) == 2": {
+      "result": true,
+      "time": 0.09058094024658203,
+      "error": null
+    },
+    "assert find_Divisor(6, 2) == 2": {
+      "result": true,
+      "time": 0.0972602367401123,
+      "error": null
+    },
+    "assert find_Divisor(7, 4) == 2": {
+      "result": true,
+      "time": 0.09608149528503418,
+      "error": null
+    },
+    "assert find_Divisor(6, 3) == 2": {
+      "result": true,
+      "time": 0.06955933570861816,
+      "error": null
+    },
+    "assert find_Divisor(5, 1) == 2": {
+      "result": true,
+      "time": 0.04352903366088867,
+      "error": null
+    },
+    "assert find_Divisor(6, 1) == 2": {
+      "result": true,
+      "time": 0.06435036659240723,
+      "error": null
+    },
+    "assert find_Divisor(4, 6) == 2": {
+      "result": true,
+      "time": 0.04221749305725098,
+      "error": null
+    },
+    "assert find_Divisor(6, 4) == 2": {
+      "result": true,
+      "time": 0.05779290199279785,
+      "error": null
+    },
+    "assert find_Divisor(7, 1) == 2": {
+      "result": true,
+      "time": 0.0540008544921875,
+      "error": null
+    },
+    "assert find_Divisor(1, 7) == 2": {
+      "result": true,
+      "time": 0.05546689033508301,
+      "error": null
+    },
+    "assert find_Divisor(1, 6) == 2": {
+      "result": true,
+      "time": 0.04674816131591797,
+      "error": null
+    },
+    "assert find_Divisor(3, 5) == 2": {
+      "result": false,
+      "time": 0.05794477462768555,
+      "error": null
+    },
+    "assert find_Divisor(7, 5) == 2": {
+      "result": true,
+      "time": 0.05555129051208496,
+      "error": null
+    },
+    "assert find_Divisor(1, 1) == 1": {
+      "result": true,
+      "time": 0.05564618110656738,
+      "error": null
+    },
+    "assert find_Divisor(2, 6) == 2": {
+      "result": true,
+      "time": 0.054430246353149414,
+      "error": null
+    },
+    "assert find_Divisor(6, 6) == 6": {
+      "result": true,
+      "time": 0.046889543533325195,
+      "error": null
+    },
+    "assert find_Divisor(3, 1) == 2": {
+      "result": true,
+      "time": 0.049451351165771484,
+      "error": null
+    },
+    "assert find_Divisor(3, 2) == 2": {
+      "result": true,
+      "time": 0.054079294204711914,
+      "error": null
+    },
+    "assert find_Divisor(2, 5) == 2": {
+      "result": true,
+      "time": 0.053525686264038086,
+      "error": null
+    },
+    "assert find_Divisor(1, 4) == 2": {
+      "result": true,
+      "time": 0.0556178092956543,
+      "error": null
+    },
+    "assert find_Divisor(5, 7) == 2": {
+      "result": false,
+      "time": 0.0532994270324707,
+      "error": null
+    },
+    "assert find_Divisor(6, 5) == 2": {
+      "result": true,
+      "time": 0.0629727840423584,
+      "error": null
+    },
+    "assert find_Divisor(3, 10) == 2": {
+      "result": true,
+      "time": 0.05249214172363281,
+      "error": null
+    },
+    "assert find_Divisor(5, 5) == 5": {
+      "result": true,
+      "time": 0.055147647857666016,
+      "error": null
+    },
+    "assert find_Divisor(3, 3) == 3": {
+      "result": true,
+      "time": 0.04725313186645508,
+      "error": null
+    },
+    "assert find_Divisor(6, 7) == 2": {
+      "result": false,
+      "time": 0.05904126167297363,
+      "error": null
+    },
+    "assert find_Divisor(5, 2) == 2": {
+      "result": true,
+      "time": 0.05201005935668945,
+      "error": null
+    },
+    "assert find_Divisor(4, 1) == 2": {
+      "result": true,
+      "time": 0.06164360046386719,
+      "error": null
+    },
+    "assert find_Divisor(2, 7) == 2": {
+      "result": true,
+      "time": 0.05798459053039551,
+      "error": null
+    },
+    "assert find_Divisor(2, 2) == 2": {
+      "result": true,
+      "time": 0.04465913772583008,
+      "error": null
+    },
+    "assert find_Divisor(3, 9) == 2": {
+      "result": false,
+      "time": 0.042969465255737305,
+      "error": null
+    },
+    "assert find_Divisor(1, 5) == 2": {
+      "result": true,
+      "time": 0.04627394676208496,
+      "error": null
+    },
+    "assert find_Divisor(2, 9) == 2": {
+      "result": true,
+      "time": 0.04075026512145996,
+      "error": null
+    },
+    "assert find_Divisor(7, 10) == 2": {
+      "result": true,
+      "time": 0.049529314041137695,
+      "error": null
+    },
+    "assert find_Divisor(5, 3) == 2": {
+      "result": true,
+      "time": 0.03787040710449219,
+      "error": null
+    },
+    "assert find_Divisor(1, 10) == 2": {
+      "result": true,
+      "time": 0.04304051399230957,
+      "error": null
+    },
+    "assert find_Divisor(9, 10) == 2": {
+      "result": false,
+      "time": 0.04149198532104492,
+      "error": null
+    },
+    "assert find_Divisor(4, 12) == 2": {
+      "result": true,
+      "time": 0.04152488708496094,
+      "error": null
+    },
+    "assert find_Divisor(8, 7) == 2": {
+      "result": true,
+      "time": 0.04126262664794922,
+      "error": null
+    },
+    "assert find_Divisor(3, 6) == 2": {
+      "result": false,
+      "time": 0.03821444511413574,
+      "error": null
+    },
+    "assert find_Divisor(7, 6) == 2": {
+      "result": true,
+      "time": 0.04483437538146973,
+      "error": null
+    },
+    "assert find_Divisor(2, 12) == 2": {
+      "result": true,
+      "time": 0.0469818115234375,
+      "error": null
+    },
+    "assert find_Divisor(10, 9) == 2": {
+      "result": true,
+      "time": 0.04263567924499512,
+      "error": null
+    },
+    "assert find_Divisor(5, 15) == 2": {
+      "result": true,
+      "time": 0.039885520935058594,
+      "error": null
+    },
+    "assert find_Divisor(10, 12) == 2": {
+      "result": true,
+      "time": 0.04425239562988281,
+      "error": null
+    },
+    "assert find_Divisor(9, 9) == 9": {
+      "result": true,
+      "time": 0.03288388252258301,
+      "error": null
+    },
+    "assert find_Divisor(3, 12) == 2": {
+      "result": true,
+      "time": 0.039543867111206055,
+      "error": null
+    },
+    "assert find_Divisor(4, 15) == 2": {
+      "result": true,
+      "time": 0.03894519805908203,
+      "error": null
+    },
+    "assert find_Divisor(6, 12) == 2": {
+      "result": true,
+      "time": 0.04527997970581055,
+      "error": null
+    },
+    "assert find_Divisor(9, 6) == 2": {
+      "result": true,
+      "time": 0.0478818416595459,
+      "error": null
+    },
+    "assert find_Divisor(1, 12) == 2": {
+      "result": true,
+      "time": 0.04849863052368164,
+      "error": null
+    },
+    "assert find_Divisor(1, 15) == 2": {
+      "result": true,
+      "time": 0.04332423210144043,
+      "error": null
+    },
+    "assert find_Divisor(4, 11) == 2": {
+      "result": true,
+      "time": 0.039037466049194336,
+      "error": null
+    },
+    "assert find_Divisor(1, 14) == 2": {
+      "result": true,
+      "time": 0.05119180679321289,
+      "error": null
+    },
+    "assert find_Divisor(9, 14) == 2": {
+      "result": true,
+      "time": 0.04676556587219238,
+      "error": null
+    },
+    "assert find_Divisor(6, 10) == 2": {
+      "result": true,
+      "time": 0.0539097785949707,
+      "error": null
+    },
+    "assert find_Divisor(6, 15) == 2": {
+      "result": true,
+      "time": 0.049379587173461914,
+      "error": null
+    },
+    "assert find_Divisor(7, 11) == 2": {
+      "result": true,
+      "time": 0.04088020324707031,
+      "error": null
+    },
+    "assert find_Divisor(7, 15) == 2": {
+      "result": true,
+      "time": 0.04431915283203125,
+      "error": null
+    },
+    "assert find_Divisor(8, 15) == 2": {
+      "result": true,
+      "time": 0.04417228698730469,
+      "error": null
+    },
+    "assert find_Divisor(9, 13) == 2": {
+      "result": false,
+      "time": 0.04679584503173828,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8823529411764706,
+  "general_error": "",
+  "has_testcase_error": false
+}

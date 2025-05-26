@@ -1,0 +1,379 @@
+{
+  "code": "def num_comm_div(a, b):\n    # Find the greatest common divisor (GCD) of a and b\n    def compute_gcd(x, y):\n        while y:\n            temp = y\n            y = x % y\n            x = temp\n        return x\n    \n    gcd_value = compute_gcd(a, b)\n    \n    # Count the number of divisors of the GCD\n    if gcd_value == 0:\n        return 0\n    \n    count = 0\n    divisor = 1\n    \n    while divisor * divisor <= gcd_value:\n        if gcd_value % divisor == 0:\n            if divisor * divisor == gcd_value:\n                count += 1\n            else:\n                count += 2\n        divisor += 1\n    \n    return count",
+  "results": {
+    "assert num_comm_div(2,4) == 2": {
+      "result": true,
+      "time": 0.05286407470703125,
+      "error": null
+    },
+    "assert num_comm_div(2,8) == 2": {
+      "result": true,
+      "time": 0.03976178169250488,
+      "error": null
+    },
+    "assert num_comm_div(12,24) == 6": {
+      "result": true,
+      "time": 0.0419001579284668,
+      "error": null
+    },
+    "assert num_comm_div(6, 9) == 2": {
+      "result": true,
+      "time": 0.03900456428527832,
+      "error": null
+    },
+    "assert num_comm_div(6, 5) == 1": {
+      "result": true,
+      "time": 0.044382572174072266,
+      "error": null
+    },
+    "assert num_comm_div(3, 1) == 1": {
+      "result": true,
+      "time": 0.0379488468170166,
+      "error": null
+    },
+    "assert num_comm_div(1, 6) == 1": {
+      "result": true,
+      "time": 0.043677330017089844,
+      "error": null
+    },
+    "assert num_comm_div(4, 7) == 1": {
+      "result": true,
+      "time": 0.038817405700683594,
+      "error": null
+    },
+    "assert num_comm_div(1, 4) == 1": {
+      "result": true,
+      "time": 0.039947509765625,
+      "error": null
+    },
+    "assert num_comm_div(6, 6) == 4": {
+      "result": true,
+      "time": 0.03407001495361328,
+      "error": null
+    },
+    "assert num_comm_div(1, 7) == 1": {
+      "result": true,
+      "time": 0.037145137786865234,
+      "error": null
+    },
+    "assert num_comm_div(2, 9) == 1": {
+      "result": true,
+      "time": 0.03456521034240723,
+      "error": null
+    },
+    "assert num_comm_div(6, 7) == 1": {
+      "result": true,
+      "time": 0.04384803771972656,
+      "error": null
+    },
+    "assert num_comm_div(3, 7) == 1": {
+      "result": true,
+      "time": 0.039201974868774414,
+      "error": null
+    },
+    "assert num_comm_div(4, 6) == 2": {
+      "result": true,
+      "time": 0.03281569480895996,
+      "error": null
+    },
+    "assert num_comm_div(6, 1) == 1": {
+      "result": true,
+      "time": 0.03736305236816406,
+      "error": null
+    },
+    "assert num_comm_div(6, 2) == 2": {
+      "result": true,
+      "time": 0.039536476135253906,
+      "error": null
+    },
+    "assert num_comm_div(7, 3) == 1": {
+      "result": true,
+      "time": 0.04023551940917969,
+      "error": null
+    },
+    "assert num_comm_div(5, 1) == 1": {
+      "result": true,
+      "time": 0.04118466377258301,
+      "error": null
+    },
+    "assert num_comm_div(1, 3) == 1": {
+      "result": true,
+      "time": 0.04096102714538574,
+      "error": null
+    },
+    "assert num_comm_div(4, 9) == 1": {
+      "result": true,
+      "time": 0.041953325271606445,
+      "error": null
+    },
+    "assert num_comm_div(3, 5) == 1": {
+      "result": true,
+      "time": 0.03440284729003906,
+      "error": null
+    },
+    "assert num_comm_div(6, 3) == 2": {
+      "result": true,
+      "time": 0.03540229797363281,
+      "error": null
+    },
+    "assert num_comm_div(2, 4) == 2": {
+      "result": true,
+      "time": 0.03937554359436035,
+      "error": null
+    },
+    "assert num_comm_div(2, 1) == 1": {
+      "result": true,
+      "time": 0.033115386962890625,
+      "error": null
+    },
+    "assert num_comm_div(7, 2) == 1": {
+      "result": true,
+      "time": 0.03260064125061035,
+      "error": null
+    },
+    "assert num_comm_div(7, 8) == 1": {
+      "result": true,
+      "time": 0.03833961486816406,
+      "error": null
+    },
+    "assert num_comm_div(2, 8) == 2": {
+      "result": true,
+      "time": 0.03446149826049805,
+      "error": null
+    },
+    "assert num_comm_div(1, 11) == 1": {
+      "result": true,
+      "time": 0.03941679000854492,
+      "error": null
+    },
+    "assert num_comm_div(5, 11) == 1": {
+      "result": true,
+      "time": 0.03918266296386719,
+      "error": null
+    },
+    "assert num_comm_div(1, 9) == 1": {
+      "result": true,
+      "time": 0.03731966018676758,
+      "error": null
+    },
+    "assert num_comm_div(7, 7) == 2": {
+      "result": true,
+      "time": 0.04691147804260254,
+      "error": null
+    },
+    "assert num_comm_div(5, 5) == 2": {
+      "result": true,
+      "time": 0.039588212966918945,
+      "error": null
+    },
+    "assert num_comm_div(1, 10) == 1": {
+      "result": true,
+      "time": 0.03340411186218262,
+      "error": null
+    },
+    "assert num_comm_div(5, 9) == 1": {
+      "result": true,
+      "time": 0.03857827186584473,
+      "error": null
+    },
+    "assert num_comm_div(4, 4) == 3": {
+      "result": true,
+      "time": 0.03314495086669922,
+      "error": null
+    },
+    "assert num_comm_div(7, 9) == 1": {
+      "result": true,
+      "time": 0.036852121353149414,
+      "error": null
+    },
+    "assert num_comm_div(2, 10) == 2": {
+      "result": true,
+      "time": 0.0386660099029541,
+      "error": null
+    },
+    "assert num_comm_div(4, 13) == 1": {
+      "result": true,
+      "time": 0.04314994812011719,
+      "error": null
+    },
+    "assert num_comm_div(3, 6) == 2": {
+      "result": true,
+      "time": 0.030342578887939453,
+      "error": null
+    },
+    "assert num_comm_div(5, 7) == 1": {
+      "result": true,
+      "time": 0.0373380184173584,
+      "error": null
+    },
+    "assert num_comm_div(3, 11) == 1": {
+      "result": true,
+      "time": 0.037050724029541016,
+      "error": null
+    },
+    "assert num_comm_div(4, 12) == 3": {
+      "result": true,
+      "time": 0.03837871551513672,
+      "error": null
+    },
+    "assert num_comm_div(1, 5) == 1": {
+      "result": true,
+      "time": 0.03511404991149902,
+      "error": null
+    },
+    "assert num_comm_div(6, 8) == 2": {
+      "result": true,
+      "time": 0.03448939323425293,
+      "error": null
+    },
+    "assert num_comm_div(7, 11) == 1": {
+      "result": true,
+      "time": 0.03604745864868164,
+      "error": null
+    },
+    "assert num_comm_div(14, 19) == 1": {
+      "result": true,
+      "time": 0.03632402420043945,
+      "error": null
+    },
+    "assert num_comm_div(7, 26) == 1": {
+      "result": true,
+      "time": 0.03718090057373047,
+      "error": null
+    },
+    "assert num_comm_div(14, 23) == 1": {
+      "result": true,
+      "time": 0.03326916694641113,
+      "error": null
+    },
+    "assert num_comm_div(8, 28) == 3": {
+      "result": true,
+      "time": 0.0300595760345459,
+      "error": null
+    },
+    "assert num_comm_div(9, 23) == 1": {
+      "result": true,
+      "time": 0.03445005416870117,
+      "error": null
+    },
+    "assert num_comm_div(13, 25) == 1": {
+      "result": true,
+      "time": 0.03580594062805176,
+      "error": null
+    },
+    "assert num_comm_div(17, 21) == 1": {
+      "result": true,
+      "time": 0.03549599647521973,
+      "error": null
+    },
+    "assert num_comm_div(11, 19) == 1": {
+      "result": true,
+      "time": 0.03692626953125,
+      "error": null
+    },
+    "assert num_comm_div(10, 28) == 2": {
+      "result": true,
+      "time": 0.041961669921875,
+      "error": null
+    },
+    "assert num_comm_div(10, 25) == 2": {
+      "result": true,
+      "time": 0.04314064979553223,
+      "error": null
+    },
+    "assert num_comm_div(12, 22) == 2": {
+      "result": true,
+      "time": 0.040082454681396484,
+      "error": null
+    },
+    "assert num_comm_div(7, 23) == 1": {
+      "result": true,
+      "time": 0.0426478385925293,
+      "error": null
+    },
+    "assert num_comm_div(14, 27) == 1": {
+      "result": true,
+      "time": 0.03927922248840332,
+      "error": null
+    },
+    "assert num_comm_div(14, 28) == 4": {
+      "result": true,
+      "time": 0.03364133834838867,
+      "error": null
+    },
+    "assert num_comm_div(17, 27) == 1": {
+      "result": true,
+      "time": 0.037902116775512695,
+      "error": null
+    },
+    "assert num_comm_div(11, 28) == 1": {
+      "result": true,
+      "time": 0.03355216979980469,
+      "error": null
+    },
+    "assert num_comm_div(11, 29) == 1": {
+      "result": true,
+      "time": 0.034002065658569336,
+      "error": null
+    },
+    "assert num_comm_div(15, 25) == 2": {
+      "result": true,
+      "time": 0.03489398956298828,
+      "error": null
+    },
+    "assert num_comm_div(7, 24) == 1": {
+      "result": true,
+      "time": 0.033384084701538086,
+      "error": null
+    },
+    "assert num_comm_div(10, 19) == 1": {
+      "result": true,
+      "time": 0.033905744552612305,
+      "error": null
+    },
+    "assert num_comm_div(9, 19) == 1": {
+      "result": true,
+      "time": 0.040836334228515625,
+      "error": null
+    },
+    "assert num_comm_div(8, 22) == 2": {
+      "result": true,
+      "time": 0.04189944267272949,
+      "error": null
+    },
+    "assert num_comm_div(12, 27) == 2": {
+      "result": true,
+      "time": 0.03799939155578613,
+      "error": null
+    },
+    "assert num_comm_div(7, 19) == 1": {
+      "result": true,
+      "time": 0.036242008209228516,
+      "error": null
+    },
+    "assert num_comm_div(9, 20) == 1": {
+      "result": true,
+      "time": 0.03594708442687988,
+      "error": null
+    },
+    "assert num_comm_div(11, 25) == 1": {
+      "result": true,
+      "time": 0.04311394691467285,
+      "error": null
+    },
+    "assert num_comm_div(8, 24) == 4": {
+      "result": true,
+      "time": 0.043946027755737305,
+      "error": null
+    },
+    "assert num_comm_div(17, 28) == 1": {
+      "result": true,
+      "time": 0.03886222839355469,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

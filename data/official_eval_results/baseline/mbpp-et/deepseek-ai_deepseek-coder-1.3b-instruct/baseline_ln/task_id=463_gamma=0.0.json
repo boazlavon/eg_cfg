@@ -1,0 +1,519 @@
+{
+  "code": "def max_subarray_product(nums):\n    if not nums:\n        return 0\n\n    max_product = curr_max = curr_min = nums[0]\n    for i in range(1, len(nums)):\n        if nums[i] < 0:\n            curr_max, curr_min = curr_min, curr_max\n\n        curr_max = max(nums[i], curr_max * nums[i])\n        curr_min = min(nums[i], curr_min * nums[i])\n\n        max_product = max(max_product, curr_max)\n\n    return max_product\n",
+  "results": {
+    "assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112": {
+      "result": true,
+      "time": 0.03744983673095703,
+      "error": null
+    },
+    "assert max_subarray_product([6, -3, -10, 0, 2]) == 180 ": {
+      "result": true,
+      "time": 0.03234148025512695,
+      "error": null
+    },
+    "assert max_subarray_product([-2, -40, 0, -2, -3]) == 80": {
+      "result": true,
+      "time": 0.03448915481567383,
+      "error": null
+    },
+    "assert max_subarray_product([6, 1, 1, 1, 8, -4, -1]) == 192": {
+      "result": true,
+      "time": 0.03367757797241211,
+      "error": null
+    },
+    "assert max_subarray_product([6, -1, 1, 2, 4, -12, 0]) == 576": {
+      "result": true,
+      "time": 0.04532217979431152,
+      "error": null
+    },
+    "assert max_subarray_product([1, -7, -7, 3, 5, -4, -2]) == 5880": {
+      "result": true,
+      "time": 0.034234046936035156,
+      "error": null
+    },
+    "assert max_subarray_product([1, -5, -4, 2, 4, -3, 3]) == 288": {
+      "result": true,
+      "time": 0.03256964683532715,
+      "error": null
+    },
+    "assert max_subarray_product([3, 1, -2, 2, 11, -10, 1]) == 1320": {
+      "result": true,
+      "time": 0.036649465560913086,
+      "error": null
+    },
+    "assert max_subarray_product([1, -4, -1, 3, 6, -5, -4]) == 1440": {
+      "result": true,
+      "time": 0.030022144317626953,
+      "error": null
+    },
+    "assert max_subarray_product([5, -4, -7, 1, 12, -5, 3]) == 1680": {
+      "result": true,
+      "time": 0.03833723068237305,
+      "error": null
+    },
+    "assert max_subarray_product([5, -7, -7, 3, 8, -5, -7]) == 205800": {
+      "result": true,
+      "time": 0.04135704040527344,
+      "error": null
+    },
+    "assert max_subarray_product([4, -5, -4, 2, 2, -7, -2]) == 4480": {
+      "result": true,
+      "time": 0.03500771522521973,
+      "error": null
+    },
+    "assert max_subarray_product([5, -2, -1, 2, 7, -7, -3]) == 2940": {
+      "result": true,
+      "time": 0.03833174705505371,
+      "error": null
+    },
+    "assert max_subarray_product([1, 2, 1, 3, 3, -4, 1]) == 18": {
+      "result": true,
+      "time": 0.04006052017211914,
+      "error": null
+    },
+    "assert max_subarray_product([2, -3, -1, 5, 4, -6, -7]) == 5040": {
+      "result": true,
+      "time": 0.03278994560241699,
+      "error": null
+    },
+    "assert max_subarray_product([6, 3, -3, 5, 5, -3, -5]) == 4050": {
+      "result": true,
+      "time": 0.03356742858886719,
+      "error": null
+    },
+    "assert max_subarray_product([5, -6, -6, 4, 7, -9, 3]) == 5040": {
+      "result": true,
+      "time": 0.03523445129394531,
+      "error": null
+    },
+    "assert max_subarray_product([1, -1, -1, 4, 3, -7, 1]) == 84": {
+      "result": true,
+      "time": 0.03984546661376953,
+      "error": null
+    },
+    "assert max_subarray_product([2, -3, -2, 4, 11, -4, 1]) == 528": {
+      "result": true,
+      "time": 0.03403353691101074,
+      "error": null
+    },
+    "assert max_subarray_product([2, 2, -1, 5, 2, -12, -2]) == 480": {
+      "result": true,
+      "time": 0.03788042068481445,
+      "error": null
+    },
+    "assert max_subarray_product([5, -3, -3, 3, 3, -4, -6]) == 9720": {
+      "result": true,
+      "time": 0.03672385215759277,
+      "error": null
+    },
+    "assert max_subarray_product([2, -4, -5, 2, 4, -6, -6]) == 11520": {
+      "result": true,
+      "time": 0.03291606903076172,
+      "error": null
+    },
+    "assert max_subarray_product([2, -6, 0, 1, 3, -9, 0]) == 3": {
+      "result": true,
+      "time": 0.03866457939147949,
+      "error": null
+    },
+    "assert max_subarray_product([2, 3, 2, 3, 11, -3, 0]) == 396": {
+      "result": true,
+      "time": 0.03523707389831543,
+      "error": null
+    },
+    "assert max_subarray_product([6, 0, -6, 3, 12, -12, -6]) == 2592": {
+      "result": true,
+      "time": 0.032033681869506836,
+      "error": null
+    },
+    "assert max_subarray_product([5, -7, 0, 2, 11, -8, -1]) == 176": {
+      "result": true,
+      "time": 0.03491663932800293,
+      "error": null
+    },
+    "assert max_subarray_product([1, 3, -6, 1, 9, -8, -2]) == 1296": {
+      "result": true,
+      "time": 0.03775978088378906,
+      "error": null
+    },
+    "assert max_subarray_product([4, 2, -5, 1, 9, -12, -2]) == 4320": {
+      "result": true,
+      "time": 0.039400577545166016,
+      "error": null
+    },
+    "assert max_subarray_product([4, -2, 1, 3, 9, -9, -4]) == 1944": {
+      "result": true,
+      "time": 0.030543088912963867,
+      "error": null
+    },
+    "assert max_subarray_product([1, -5, -1, 5, 4, -6, 3]) == 360": {
+      "result": true,
+      "time": 0.03746509552001953,
+      "error": null
+    },
+    "assert max_subarray_product([4, 0, -2, 1, 12, -11, -3]) == 396": {
+      "result": true,
+      "time": 0.03639030456542969,
+      "error": null
+    },
+    "assert max_subarray_product([5, 2, -6, 3, 6, -6, -5]) == 6480": {
+      "result": true,
+      "time": 0.037746429443359375,
+      "error": null
+    },
+    "assert max_subarray_product([2, -5, -1, 2, 7, -7, -5]) == 4900": {
+      "result": true,
+      "time": 0.03715085983276367,
+      "error": null
+    },
+    "assert max_subarray_product([5, -4, -6, 1, 11, -9, 3]) == 1782": {
+      "result": true,
+      "time": 0.037877798080444336,
+      "error": null
+    },
+    "assert max_subarray_product([2, -1, -5, 5, 3, -9, -6]) == 8100": {
+      "result": true,
+      "time": 0.033566951751708984,
+      "error": null
+    },
+    "assert max_subarray_product([1, 0, -7, 1, 7, -12, -7]) == 588": {
+      "result": true,
+      "time": 0.031126022338867188,
+      "error": null
+    },
+    "assert max_subarray_product([3, -1, -12, 4, 7]) == 1008": {
+      "result": true,
+      "time": 0.03503775596618652,
+      "error": null
+    },
+    "assert max_subarray_product([2, 0, -11, 2, 1]) == 2": {
+      "result": true,
+      "time": 0.04075980186462402,
+      "error": null
+    },
+    "assert max_subarray_product([10, 2, -12, 3, 5]) == 20": {
+      "result": true,
+      "time": 0.04064679145812988,
+      "error": null
+    },
+    "assert max_subarray_product([10, 0, -5, 4, 2]) == 10": {
+      "result": true,
+      "time": 0.04401898384094238,
+      "error": null
+    },
+    "assert max_subarray_product([9, -7, -12, 4, 1]) == 3024": {
+      "result": true,
+      "time": 0.03496670722961426,
+      "error": null
+    },
+    "assert max_subarray_product([2, -5, -10, 2, 1]) == 200": {
+      "result": true,
+      "time": 0.03506588935852051,
+      "error": null
+    },
+    "assert max_subarray_product([4, -5, -13, 2, 1]) == 520": {
+      "result": true,
+      "time": 0.03473234176635742,
+      "error": null
+    },
+    "assert max_subarray_product([5, -8, -7, 3, 1]) == 840": {
+      "result": true,
+      "time": 0.03500080108642578,
+      "error": null
+    },
+    "assert max_subarray_product([1, -4, -7, 3, 7]) == 588": {
+      "result": true,
+      "time": 0.03735685348510742,
+      "error": null
+    },
+    "assert max_subarray_product([10, -8, -7, 3, 1]) == 1680": {
+      "result": true,
+      "time": 0.03848838806152344,
+      "error": null
+    },
+    "assert max_subarray_product([9, -5, -13, 3, 5]) == 8775": {
+      "result": true,
+      "time": 0.03161907196044922,
+      "error": null
+    },
+    "assert max_subarray_product([2, -8, -9, 2, 3]) == 864": {
+      "result": true,
+      "time": 0.03537631034851074,
+      "error": null
+    },
+    "assert max_subarray_product([1, 2, -14, 2, 6]) == 12": {
+      "result": true,
+      "time": 0.03368186950683594,
+      "error": null
+    },
+    "assert max_subarray_product([5, 2, -15, 2, 1]) == 10": {
+      "result": true,
+      "time": 0.029369115829467773,
+      "error": null
+    },
+    "assert max_subarray_product([7, -3, -10, 4, 4]) == 3360": {
+      "result": true,
+      "time": 0.03699898719787598,
+      "error": null
+    },
+    "assert max_subarray_product([6, -4, -13, 1, 4]) == 1248": {
+      "result": true,
+      "time": 0.033685922622680664,
+      "error": null
+    },
+    "assert max_subarray_product([6, -3, -5, 4, 4]) == 1440": {
+      "result": true,
+      "time": 0.03566455841064453,
+      "error": null
+    },
+    "assert max_subarray_product([8, -8, -5, 2, 2]) == 1280": {
+      "result": true,
+      "time": 0.039598941802978516,
+      "error": null
+    },
+    "assert max_subarray_product([7, -8, -11, 1, 1]) == 616": {
+      "result": true,
+      "time": 0.040723323822021484,
+      "error": null
+    },
+    "assert max_subarray_product([3, -3, -12, 3, 6]) == 1944": {
+      "result": true,
+      "time": 0.038369178771972656,
+      "error": null
+    },
+    "assert max_subarray_product([3, -6, -13, 4, 4]) == 3744": {
+      "result": true,
+      "time": 0.035015106201171875,
+      "error": null
+    },
+    "assert max_subarray_product([11, 2, -9, 3, 4]) == 22": {
+      "result": true,
+      "time": 0.0394287109375,
+      "error": null
+    },
+    "assert max_subarray_product([9, -7, -12, 3, 7]) == 15876": {
+      "result": true,
+      "time": 0.03456592559814453,
+      "error": null
+    },
+    "assert max_subarray_product([8, 0, -7, 3, 5]) == 15": {
+      "result": true,
+      "time": 0.05117201805114746,
+      "error": null
+    },
+    "assert max_subarray_product([4, 1, -14, 5, 6]) == 30": {
+      "result": true,
+      "time": 0.03777670860290527,
+      "error": null
+    },
+    "assert max_subarray_product([10, -7, -5, 5, 5]) == 8750": {
+      "result": true,
+      "time": 0.04134058952331543,
+      "error": null
+    },
+    "assert max_subarray_product([3, -5, -14, 4, 2]) == 1680": {
+      "result": true,
+      "time": 0.0362093448638916,
+      "error": null
+    },
+    "assert max_subarray_product([11, -6, -9, 5, 2]) == 5940": {
+      "result": true,
+      "time": 0.04152059555053711,
+      "error": null
+    },
+    "assert max_subarray_product([4, -2, -9, 3, 6]) == 1296": {
+      "result": true,
+      "time": 0.04545307159423828,
+      "error": null
+    },
+    "assert max_subarray_product([5, -6, -10, 1, 5]) == 1500": {
+      "result": true,
+      "time": 0.040059804916381836,
+      "error": null
+    },
+    "assert max_subarray_product([4, 1, -10, 2, 6]) == 12": {
+      "result": true,
+      "time": 0.04606366157531738,
+      "error": null
+    },
+    "assert max_subarray_product([6, -3, -11, 3, 7]) == 4158": {
+      "result": true,
+      "time": 0.045653581619262695,
+      "error": null
+    },
+    "assert max_subarray_product([3, -1, -15, 3, 6]) == 810": {
+      "result": true,
+      "time": 0.03605055809020996,
+      "error": null
+    },
+    "assert max_subarray_product([2, -39, 1, 0, 2]) == 2": {
+      "result": true,
+      "time": 0.04531407356262207,
+      "error": null
+    },
+    "assert max_subarray_product([0, -35, 5, -1, 0]) == 175": {
+      "result": true,
+      "time": 0.03257322311401367,
+      "error": null
+    },
+    "assert max_subarray_product([-2, -45, 1, -1, -3]) == 270": {
+      "result": true,
+      "time": 0.041086435317993164,
+      "error": null
+    },
+    "assert max_subarray_product([3, -38, 1, 3, -4]) == 1368": {
+      "result": true,
+      "time": 0.044754743576049805,
+      "error": null
+    },
+    "assert max_subarray_product([-1, -40, 3, 3, -1]) == 360": {
+      "result": true,
+      "time": 0.04516792297363281,
+      "error": null
+    },
+    "assert max_subarray_product([2, -45, 4, -6, -3]) == 2160": {
+      "result": true,
+      "time": 0.045847177505493164,
+      "error": null
+    },
+    "assert max_subarray_product([-7, -43, 4, -2, -6]) == 14448": {
+      "result": true,
+      "time": 0.04163241386413574,
+      "error": null
+    },
+    "assert max_subarray_product([-1, -43, 5, -6, -3]) == 3870": {
+      "result": true,
+      "time": 0.03548097610473633,
+      "error": null
+    },
+    "assert max_subarray_product([2, -45, 2, 0, -6]) == 2": {
+      "result": true,
+      "time": 0.04198789596557617,
+      "error": null
+    },
+    "assert max_subarray_product([-2, -36, 5, -1, 0]) == 360": {
+      "result": true,
+      "time": 0.04662179946899414,
+      "error": null
+    },
+    "assert max_subarray_product([0, -37, 3, -6, 1]) == 666": {
+      "result": true,
+      "time": 0.048105716705322266,
+      "error": null
+    },
+    "assert max_subarray_product([3, -38, 4, -4, -1]) == 1824": {
+      "result": true,
+      "time": 0.03967785835266113,
+      "error": null
+    },
+    "assert max_subarray_product([-4, -45, 2, -5, -8]) == 14400": {
+      "result": true,
+      "time": 0.040201425552368164,
+      "error": null
+    },
+    "assert max_subarray_product([0, -44, 1, -4, 2]) == 352": {
+      "result": true,
+      "time": 0.041902780532836914,
+      "error": null
+    },
+    "assert max_subarray_product([-3, -44, 3, -2, -7]) == 5544": {
+      "result": true,
+      "time": 0.04453587532043457,
+      "error": null
+    },
+    "assert max_subarray_product([-4, -35, 2, 1, 0]) == 280": {
+      "result": true,
+      "time": 0.0426182746887207,
+      "error": null
+    },
+    "assert max_subarray_product([-7, -36, 5, -5, -2]) == 12600": {
+      "result": true,
+      "time": 0.04284024238586426,
+      "error": null
+    },
+    "assert max_subarray_product([-3, -45, 4, -3, -8]) == 12960": {
+      "result": true,
+      "time": 0.04146099090576172,
+      "error": null
+    },
+    "assert max_subarray_product([-3, -36, 5, -7, -4]) == 15120": {
+      "result": true,
+      "time": 0.039592742919921875,
+      "error": null
+    },
+    "assert max_subarray_product([-2, -38, 3, 2, -6]) == 1368": {
+      "result": true,
+      "time": 0.04140496253967285,
+      "error": null
+    },
+    "assert max_subarray_product([3, -40, 5, -1, -4]) == 600": {
+      "result": true,
+      "time": 0.043401241302490234,
+      "error": null
+    },
+    "assert max_subarray_product([-3, -41, 5, -7, -8]) == 34440": {
+      "result": true,
+      "time": 0.0374753475189209,
+      "error": null
+    },
+    "assert max_subarray_product([2, -39, 5, -5, -4]) == 1950": {
+      "result": true,
+      "time": 0.0476222038269043,
+      "error": null
+    },
+    "assert max_subarray_product([0, -38, 5, 0, 0]) == 5": {
+      "result": true,
+      "time": 0.04505443572998047,
+      "error": null
+    },
+    "assert max_subarray_product([-7, -40, 2, -2, -5]) == 5600": {
+      "result": true,
+      "time": 0.04043912887573242,
+      "error": null
+    },
+    "assert max_subarray_product([2, -43, 1, -7, -7]) == 602": {
+      "result": true,
+      "time": 0.04161858558654785,
+      "error": null
+    },
+    "assert max_subarray_product([-1, -45, 5, -2, 1]) == 450": {
+      "result": true,
+      "time": 0.04368114471435547,
+      "error": null
+    },
+    "assert max_subarray_product([-5, -45, 1, -3, -8]) == 5400": {
+      "result": true,
+      "time": 0.03360557556152344,
+      "error": null
+    },
+    "assert max_subarray_product([1, -37, 1, -4, 0]) == 148": {
+      "result": true,
+      "time": 0.040280818939208984,
+      "error": null
+    },
+    "assert max_subarray_product([-1, -44, 2, -4, 0]) == 352": {
+      "result": true,
+      "time": 0.04435992240905762,
+      "error": null
+    },
+    "assert max_subarray_product([-5, -35, 3, -4, -1]) == 2100": {
+      "result": true,
+      "time": 0.04405713081359863,
+      "error": null
+    },
+    "assert max_subarray_product([-1, -36, 2, -6, -2]) == 864": {
+      "result": true,
+      "time": 0.04292702674865723,
+      "error": null
+    },
+    "assert max_subarray_product([3, -38, 4, -2, 2]) == 1824": {
+      "result": true,
+      "time": 0.04422569274902344,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

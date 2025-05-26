@@ -1,0 +1,64 @@
+{
+  "code": "def even_binomial_Coeff_Sum(n):\n    # Initialize the sum\n    sum_even_binomial_coeff = 0\n\n    # Loop through the range from 0 to n\n    for i in range(n+1):\n        # If the index is even, add the binomial coefficient to the sum\n        if i % 2 == 0:\n            sum_even_binomial_coeff += binomial_coeff(n, i)\n\n    return sum_even_binomial_coeff\n\n# Function to calculate binomial coefficient\ndef binomial_coeff(n, k):\n    # Calculate the binomial coefficient\n    return nCr(n, k) // (k * (n - k))\n\n# Function to calculate nCr\ndef nCr(n, r):\n    # Calculate the binomial coefficient\n    if r > n:\n        return 0\n    else:\n        numerator = 1\n        for i in range(r):\n            numerator = numerator * (n - i)\n        denominator = 1\n        for i in range(r):\n            denominator = denominator * (i + 1)\n        return numerator // denominator",
+  "results": {
+    "assert even_binomial_Coeff_Sum(4) == 8": {
+      "result": false,
+      "time": 0.04189872741699219,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(6) == 32": {
+      "result": false,
+      "time": 0.044339895248413086,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(2) == 2": {
+      "result": false,
+      "time": 0.040056705474853516,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(1) == 1": {
+      "result": false,
+      "time": 0.03773808479309082,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(5) == 16": {
+      "result": false,
+      "time": 0.04386615753173828,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(7) == 64": {
+      "result": false,
+      "time": 0.040471553802490234,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(9) == 256": {
+      "result": false,
+      "time": 0.03194379806518555,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(8) == 128": {
+      "result": false,
+      "time": 0.03882241249084473,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(3) == 4": {
+      "result": false,
+      "time": 0.03914475440979004,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(11) == 1024": {
+      "result": false,
+      "time": 0.03855133056640625,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(10) == 512": {
+      "result": false,
+      "time": 0.04663491249084473,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

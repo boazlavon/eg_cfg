@@ -1,0 +1,519 @@
+{
+  "code": "def find_peak(arr, n):\n    if n == 1:\n        return 0\n    elif n == 2:\n        return 1 if arr[0] > arr[1] else 0\n    else:\n        for i in range(1, n-1):\n            if arr[i] > arr[i-1] and arr[i] > arr[i+1]:\n                return i\n        return -1",
+  "results": {
+    "assert find_peak([1, 3, 20, 4, 1, 0], 6) == 2": {
+      "result": true,
+      "time": 0.048686981201171875,
+      "error": null
+    },
+    "assert find_peak([2, 3, 4, 5, 6], 5) == 4": {
+      "result": false,
+      "time": 0.0458369255065918,
+      "error": null
+    },
+    "assert find_peak([8, 9, 11, 12, 14, 15], 6) == 5 ": {
+      "result": false,
+      "time": 0.04810523986816406,
+      "error": null
+    },
+    "assert find_peak([2, 1, 20, 1, 3, 1], 9) == 4": {
+      "result": false,
+      "time": 0.044068098068237305,
+      "error": null
+    },
+    "assert find_peak([1, 7, 22, 8, 6, 3], 3) == 2": {
+      "result": false,
+      "time": 0.045568227767944336,
+      "error": null
+    },
+    "assert find_peak([5, 2, 24, 9, 5, 3], 4) == 0": {
+      "result": false,
+      "time": 0.0536191463470459,
+      "error": null
+    },
+    "assert find_peak([5, 5, 25, 9, 5, 1], 6) == 2": {
+      "result": true,
+      "time": 0.04667067527770996,
+      "error": null
+    },
+    "assert find_peak([6, 2, 15, 9, 2, 5], 5) == 2": {
+      "result": true,
+      "time": 0.04169917106628418,
+      "error": null
+    },
+    "assert find_peak([6, 8, 17, 1, 5, 4], 9) == 4": {
+      "result": false,
+      "time": 0.04248213768005371,
+      "error": null
+    },
+    "assert find_peak([6, 2, 25, 7, 3, 4], 1) == 0": {
+      "result": true,
+      "time": 0.05070376396179199,
+      "error": null
+    },
+    "assert find_peak([6, 2, 25, 8, 6, 4], 4) == 0": {
+      "result": false,
+      "time": 0.04323101043701172,
+      "error": null
+    },
+    "assert find_peak([1, 7, 22, 4, 4, 1], 3) == 2": {
+      "result": false,
+      "time": 0.048998355865478516,
+      "error": null
+    },
+    "assert find_peak([4, 3, 24, 7, 3, 2], 8) == 0": {
+      "result": false,
+      "time": 0.03296256065368652,
+      "error": null
+    },
+    "assert find_peak([3, 8, 18, 9, 6, 5], 9) == 2": {
+      "result": true,
+      "time": 0.0430750846862793,
+      "error": null
+    },
+    "assert find_peak([5, 5, 20, 2, 5, 3], 4) == 2": {
+      "result": true,
+      "time": 0.05655241012573242,
+      "error": null
+    },
+    "assert find_peak([3, 4, 25, 4, 2, 4], 10) == 2": {
+      "result": true,
+      "time": 0.047013282775878906,
+      "error": null
+    },
+    "assert find_peak([5, 2, 25, 7, 2, 2], 4) == 0": {
+      "result": false,
+      "time": 0.04866385459899902,
+      "error": null
+    },
+    "assert find_peak([6, 1, 20, 1, 4, 3], 5) == 2": {
+      "result": true,
+      "time": 0.0433802604675293,
+      "error": null
+    },
+    "assert find_peak([3, 6, 18, 6, 5, 2], 9) == 2": {
+      "result": true,
+      "time": 0.04462075233459473,
+      "error": null
+    },
+    "assert find_peak([3, 3, 22, 6, 5, 4], 1) == 0": {
+      "result": true,
+      "time": 0.046920061111450195,
+      "error": null
+    },
+    "assert find_peak([4, 5, 23, 2, 2, 3], 1) == 0": {
+      "result": true,
+      "time": 0.04976344108581543,
+      "error": null
+    },
+    "assert find_peak([1, 7, 24, 7, 6, 3], 10) == 2": {
+      "result": true,
+      "time": 0.043595314025878906,
+      "error": null
+    },
+    "assert find_peak([3, 5, 22, 6, 3, 3], 5) == 2": {
+      "result": true,
+      "time": 0.03847098350524902,
+      "error": null
+    },
+    "assert find_peak([1, 1, 25, 5, 5, 3], 8) == 2": {
+      "result": true,
+      "time": 0.04392528533935547,
+      "error": null
+    },
+    "assert find_peak([5, 1, 15, 8, 2, 5], 3) == 0": {
+      "result": false,
+      "time": 0.043341636657714844,
+      "error": null
+    },
+    "assert find_peak([5, 1, 16, 9, 5, 4], 9) == 0": {
+      "result": false,
+      "time": 0.047884225845336914,
+      "error": null
+    },
+    "assert find_peak([3, 7, 16, 9, 4, 5], 10) == 2": {
+      "result": true,
+      "time": 0.044795989990234375,
+      "error": null
+    },
+    "assert find_peak([1, 1, 17, 9, 5, 3], 8) == 2": {
+      "result": true,
+      "time": 0.051301002502441406,
+      "error": null
+    },
+    "assert find_peak([3, 6, 19, 8, 2, 5], 3) == 2": {
+      "result": false,
+      "time": 0.046083927154541016,
+      "error": null
+    },
+    "assert find_peak([1, 1, 18, 1, 4, 5], 6) == 2": {
+      "result": true,
+      "time": 0.04936504364013672,
+      "error": null
+    },
+    "assert find_peak([5, 1, 21, 9, 2, 3], 7) == 0": {
+      "result": false,
+      "time": 0.04798698425292969,
+      "error": null
+    },
+    "assert find_peak([3, 3, 17, 2, 2, 5], 1) == 0": {
+      "result": true,
+      "time": 0.047029972076416016,
+      "error": null
+    },
+    "assert find_peak([1, 4, 17, 8, 2, 5], 4) == 2": {
+      "result": true,
+      "time": 0.05930638313293457,
+      "error": null
+    },
+    "assert find_peak([4, 2, 19, 6, 2, 2], 6) == 2": {
+      "result": true,
+      "time": 0.048639774322509766,
+      "error": null
+    },
+    "assert find_peak([3, 1, 21, 9, 1, 5], 6) == 2": {
+      "result": true,
+      "time": 0.04433035850524902,
+      "error": null
+    },
+    "assert find_peak([3, 2, 20, 2, 4, 1], 10) == 4": {
+      "result": false,
+      "time": 0.049179792404174805,
+      "error": null
+    },
+    "assert find_peak([2, 6, 2, 7, 11], 1) == 0": {
+      "result": true,
+      "time": 0.043744802474975586,
+      "error": null
+    },
+    "assert find_peak([1, 2, 6, 6, 3], 1) == 0": {
+      "result": true,
+      "time": 0.04458260536193848,
+      "error": null
+    },
+    "assert find_peak([7, 3, 8, 9, 8], 2) == 0": {
+      "result": false,
+      "time": 0.050684213638305664,
+      "error": null
+    },
+    "assert find_peak([3, 4, 9, 1, 11], 3) == 2": {
+      "result": false,
+      "time": 0.03812885284423828,
+      "error": null
+    },
+    "assert find_peak([6, 1, 4, 3, 2], 4) == 0": {
+      "result": false,
+      "time": 0.04255032539367676,
+      "error": null
+    },
+    "assert find_peak([5, 6, 9, 3, 7], 1) == 0": {
+      "result": true,
+      "time": 0.04221463203430176,
+      "error": null
+    },
+    "assert find_peak([4, 2, 8, 1, 8], 8) == 0": {
+      "result": false,
+      "time": 0.04684877395629883,
+      "error": null
+    },
+    "assert find_peak([2, 1, 2, 8, 8], 1) == 0": {
+      "result": true,
+      "time": 0.042188167572021484,
+      "error": null
+    },
+    "assert find_peak([2, 5, 9, 8, 2], 8) == 2": {
+      "result": true,
+      "time": 0.04647183418273926,
+      "error": null
+    },
+    "assert find_peak([1, 6, 9, 5, 9], 1) == 0": {
+      "result": true,
+      "time": 0.0460202693939209,
+      "error": null
+    },
+    "assert find_peak([6, 2, 3, 1, 6], 1) == 0": {
+      "result": true,
+      "time": 0.03608131408691406,
+      "error": null
+    },
+    "assert find_peak([3, 3, 9, 5, 6], 7) == 2": {
+      "result": true,
+      "time": 0.03718423843383789,
+      "error": null
+    },
+    "assert find_peak([6, 4, 1, 7, 7], 7) == 3": {
+      "result": false,
+      "time": 0.04277658462524414,
+      "error": null
+    },
+    "assert find_peak([6, 6, 9, 4, 1], 8) == 2": {
+      "result": true,
+      "time": 0.03924417495727539,
+      "error": null
+    },
+    "assert find_peak([5, 5, 6, 6, 10], 1) == 0": {
+      "result": true,
+      "time": 0.04461550712585449,
+      "error": null
+    },
+    "assert find_peak([2, 7, 6, 9, 4], 2) == 1": {
+      "result": false,
+      "time": 0.0345613956451416,
+      "error": null
+    },
+    "assert find_peak([2, 5, 6, 2, 6], 5) == 2": {
+      "result": true,
+      "time": 0.04198479652404785,
+      "error": null
+    },
+    "assert find_peak([1, 8, 6, 9, 6], 10) == 1": {
+      "result": true,
+      "time": 0.045479536056518555,
+      "error": null
+    },
+    "assert find_peak([5, 4, 8, 6, 5], 5) == 2": {
+      "result": true,
+      "time": 0.04028725624084473,
+      "error": null
+    },
+    "assert find_peak([4, 8, 1, 2, 2], 4) == 1": {
+      "result": true,
+      "time": 0.04204893112182617,
+      "error": null
+    },
+    "assert find_peak([2, 1, 4, 8, 2], 3) == 0": {
+      "result": false,
+      "time": 0.04579567909240723,
+      "error": null
+    },
+    "assert find_peak([6, 5, 3, 10, 1], 7) == 3": {
+      "result": true,
+      "time": 0.05175042152404785,
+      "error": null
+    },
+    "assert find_peak([1, 7, 3, 4, 7], 2) == 1": {
+      "result": false,
+      "time": 0.04361391067504883,
+      "error": null
+    },
+    "assert find_peak([3, 1, 5, 10, 9], 5) == 3": {
+      "result": true,
+      "time": 0.049617767333984375,
+      "error": null
+    },
+    "assert find_peak([2, 6, 6, 9, 6], 2) == 1": {
+      "result": false,
+      "time": 0.049369096755981445,
+      "error": null
+    },
+    "assert find_peak([2, 6, 1, 4, 4], 3) == 1": {
+      "result": true,
+      "time": 0.03860306739807129,
+      "error": null
+    },
+    "assert find_peak([1, 4, 4, 6, 1], 6) == 3": {
+      "result": true,
+      "time": 0.04355120658874512,
+      "error": null
+    },
+    "assert find_peak([5, 7, 1, 2, 11], 2) == 1": {
+      "result": false,
+      "time": 0.04713630676269531,
+      "error": null
+    },
+    "assert find_peak([5, 3, 2, 9, 4], 6) == 0": {
+      "result": false,
+      "time": 0.04405498504638672,
+      "error": null
+    },
+    "assert find_peak([1, 1, 6, 8, 3], 2) == 0": {
+      "result": true,
+      "time": 0.04866838455200195,
+      "error": null
+    },
+    "assert find_peak([6, 6, 6, 10, 1], 10) == 1": {
+      "result": false,
+      "time": 0.03396129608154297,
+      "error": null
+    },
+    "assert find_peak([1, 4, 2, 5, 1], 10) == 1": {
+      "result": true,
+      "time": 0.043248891830444336,
+      "error": null
+    },
+    "assert find_peak([1, 6, 5, 7, 5], 1) == 0": {
+      "result": true,
+      "time": 0.04092144966125488,
+      "error": null
+    },
+    "assert find_peak([9, 13, 9, 17, 17, 18], 3) == 1": {
+      "result": true,
+      "time": 0.0428318977355957,
+      "error": null
+    },
+    "assert find_peak([9, 6, 16, 9, 13, 11], 6) == 2": {
+      "result": true,
+      "time": 0.03545188903808594,
+      "error": null
+    },
+    "assert find_peak([12, 7, 7, 17, 11, 10], 9) == 0": {
+      "result": false,
+      "time": 0.04199504852294922,
+      "error": null
+    },
+    "assert find_peak([6, 8, 11, 16, 14, 10], 6) == 3": {
+      "result": true,
+      "time": 0.0505671501159668,
+      "error": null
+    },
+    "assert find_peak([5, 11, 6, 10, 19, 16], 10) == 4": {
+      "result": false,
+      "time": 0.04094648361206055,
+      "error": null
+    },
+    "assert find_peak([6, 4, 15, 14, 15, 14], 5) == 2": {
+      "result": true,
+      "time": 0.0384669303894043,
+      "error": null
+    },
+    "assert find_peak([4, 8, 8, 11, 15, 12], 4) == 1": {
+      "result": false,
+      "time": 0.054132938385009766,
+      "error": null
+    },
+    "assert find_peak([5, 11, 8, 17, 14, 16], 2) == 1": {
+      "result": false,
+      "time": 0.04055452346801758,
+      "error": null
+    },
+    "assert find_peak([6, 6, 9, 8, 11, 18], 5) == 2": {
+      "result": true,
+      "time": 0.04701972007751465,
+      "error": null
+    },
+    "assert find_peak([5, 9, 11, 9, 16, 13], 6) == 2": {
+      "result": true,
+      "time": 0.04148411750793457,
+      "error": null
+    },
+    "assert find_peak([6, 11, 16, 13, 12, 13], 4) == 2": {
+      "result": true,
+      "time": 0.04498887062072754,
+      "error": null
+    },
+    "assert find_peak([13, 4, 14, 17, 11, 20], 6) == 3": {
+      "result": true,
+      "time": 0.043401241302490234,
+      "error": null
+    },
+    "assert find_peak([6, 12, 10, 9, 9, 19], 1) == 0": {
+      "result": true,
+      "time": 0.04602813720703125,
+      "error": null
+    },
+    "assert find_peak([6, 13, 16, 15, 11, 11], 1) == 0": {
+      "result": true,
+      "time": 0.03942155838012695,
+      "error": null
+    },
+    "assert find_peak([11, 12, 12, 14, 12, 13], 2) == 1": {
+      "result": false,
+      "time": 0.04836606979370117,
+      "error": null
+    },
+    "assert find_peak([8, 4, 14, 13, 17, 18], 2) == 0": {
+      "result": false,
+      "time": 0.04952716827392578,
+      "error": null
+    },
+    "assert find_peak([11, 12, 9, 13, 16, 13], 9) == 4": {
+      "result": false,
+      "time": 0.03878355026245117,
+      "error": null
+    },
+    "assert find_peak([13, 8, 9, 9, 15, 10], 7) == 4": {
+      "result": true,
+      "time": 0.05106163024902344,
+      "error": null
+    },
+    "assert find_peak([7, 5, 14, 17, 15, 11], 2) == 0": {
+      "result": false,
+      "time": 0.03745269775390625,
+      "error": null
+    },
+    "assert find_peak([13, 11, 7, 17, 11, 18], 8) == 3": {
+      "result": true,
+      "time": 0.03985953330993652,
+      "error": null
+    },
+    "assert find_peak([6, 14, 15, 13, 12, 14], 4) == 2": {
+      "result": true,
+      "time": 0.04401683807373047,
+      "error": null
+    },
+    "assert find_peak([12, 4, 9, 7, 9, 19], 3) == 0": {
+      "result": false,
+      "time": 0.04945230484008789,
+      "error": null
+    },
+    "assert find_peak([4, 9, 16, 17, 16, 20], 8) == 3": {
+      "result": true,
+      "time": 0.040953874588012695,
+      "error": null
+    },
+    "assert find_peak([4, 12, 13, 11, 10, 20], 3) == 2": {
+      "result": false,
+      "time": 0.05788612365722656,
+      "error": null
+    },
+    "assert find_peak([10, 8, 9, 8, 19, 18], 2) == 0": {
+      "result": false,
+      "time": 0.0478973388671875,
+      "error": null
+    },
+    "assert find_peak([11, 10, 9, 14, 17, 13], 11) == 0": {
+      "result": false,
+      "time": 0.04163336753845215,
+      "error": null
+    },
+    "assert find_peak([10, 6, 8, 14, 15, 16], 1) == 0": {
+      "result": true,
+      "time": 0.04763388633728027,
+      "error": null
+    },
+    "assert find_peak([10, 7, 12, 7, 10, 10], 6) == 2": {
+      "result": true,
+      "time": 0.0395054817199707,
+      "error": null
+    },
+    "assert find_peak([10, 7, 15, 13, 17, 14], 8) == 0": {
+      "result": false,
+      "time": 0.04945635795593262,
+      "error": null
+    },
+    "assert find_peak([6, 4, 9, 13, 11, 12], 4) == 0": {
+      "result": false,
+      "time": 0.04143047332763672,
+      "error": null
+    },
+    "assert find_peak([13, 6, 10, 7, 13, 15], 8) == 0": {
+      "result": false,
+      "time": 0.04475879669189453,
+      "error": null
+    },
+    "assert find_peak([9, 10, 16, 17, 11, 12], 8) == 3": {
+      "result": true,
+      "time": 0.054322242736816406,
+      "error": null
+    },
+    "assert find_peak([3, 8, 8, 10, 16, 17], 2) == 1": {
+      "result": false,
+      "time": 0.04559493064880371,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.5784313725490197,
+  "general_error": "",
+  "has_testcase_error": false
+}

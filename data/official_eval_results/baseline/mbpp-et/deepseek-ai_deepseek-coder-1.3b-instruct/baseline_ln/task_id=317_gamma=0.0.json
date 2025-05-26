@@ -1,0 +1,519 @@
+{
+  "code": "def modified_encode(lst):\n    if isinstance(lst, str):\n        lst = list(lst)\n    result = []\n    current_group = [lst[0]]\n    count = 1\n    for i in range(1, len(lst)):\n        if lst[i] == lst[i-1]:\n            count += 1\n        else:\n            result.append([count, current_group[0]])\n            current_group = [lst[i]]\n            count = 1\n    result.append([count, current_group[0]])\n    return result",
+  "results": {
+    "assert modified_encode([1,1,2,3,4,4,5,1])==[[2, 1], 2, 3, [2, 4], 5, 1]": {
+      "result": false,
+      "time": 0.03874802589416504,
+      "error": null
+    },
+    "assert modified_encode('automatically')==['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', [2, 'l'], 'y']": {
+      "result": false,
+      "time": 0.04449605941772461,
+      "error": null
+    },
+    "assert modified_encode('python')==['p', 'y', 't', 'h', 'o', 'n']": {
+      "result": false,
+      "time": 0.0450747013092041,
+      "error": null
+    },
+    "assert modified_encode([2, 6, 4, 6, 6, 4, 1, 4]) == [2, 6, 4, [2, 6], 4, 1, 4]": {
+      "result": false,
+      "time": 0.031942129135131836,
+      "error": null
+    },
+    "assert modified_encode([5, 3, 6, 7, 3, 3, 6, 3]) == [5, 3, 6, 7, [2, 3], 6, 3]": {
+      "result": false,
+      "time": 0.03581380844116211,
+      "error": null
+    },
+    "assert modified_encode([1, 5, 7, 2, 4, 2, 8, 4]) == [1, 5, 7, 2, 4, 2, 8, 4]": {
+      "result": false,
+      "time": 0.034515380859375,
+      "error": null
+    },
+    "assert modified_encode([4, 5, 5, 6, 7, 7, 3, 1]) == [4, [2, 5], 6, [2, 7], 3, 1]": {
+      "result": false,
+      "time": 0.03516817092895508,
+      "error": null
+    },
+    "assert modified_encode([1, 5, 5, 8, 4, 2, 1, 1]) == [1, [2, 5], 8, 4, 2, [2, 1]]": {
+      "result": false,
+      "time": 0.035201311111450195,
+      "error": null
+    },
+    "assert modified_encode([4, 5, 1, 8, 8, 7, 9, 6]) == [4, 5, 1, [2, 8], 7, 9, 6]": {
+      "result": false,
+      "time": 0.03868842124938965,
+      "error": null
+    },
+    "assert modified_encode([3, 2, 5, 4, 5, 7, 3, 4]) == [3, 2, 5, 4, 5, 7, 3, 4]": {
+      "result": false,
+      "time": 0.035353899002075195,
+      "error": null
+    },
+    "assert modified_encode([1, 4, 5, 8, 4, 3, 7, 6]) == [1, 4, 5, 8, 4, 3, 7, 6]": {
+      "result": false,
+      "time": 0.035881757736206055,
+      "error": null
+    },
+    "assert modified_encode([1, 4, 4, 4, 3, 4, 4, 3]) == [1, [3, 4], 3, [2, 4], 3]": {
+      "result": false,
+      "time": 0.03351712226867676,
+      "error": null
+    },
+    "assert modified_encode([6, 4, 2, 3, 5, 2, 5, 1]) == [6, 4, 2, 3, 5, 2, 5, 1]": {
+      "result": false,
+      "time": 0.03819990158081055,
+      "error": null
+    },
+    "assert modified_encode([1, 2, 2, 3, 5, 5, 6, 4]) == [1, [2, 2], 3, [2, 5], 6, 4]": {
+      "result": false,
+      "time": 0.03746676445007324,
+      "error": null
+    },
+    "assert modified_encode([3, 4, 6, 4, 1, 9, 2, 6]) == [3, 4, 6, 4, 1, 9, 2, 6]": {
+      "result": false,
+      "time": 0.04194307327270508,
+      "error": null
+    },
+    "assert modified_encode([6, 6, 2, 4, 3, 1, 10, 3]) == [[2, 6], 2, 4, 3, 1, 10, 3]": {
+      "result": false,
+      "time": 0.031720638275146484,
+      "error": null
+    },
+    "assert modified_encode([2, 6, 2, 4, 2, 6, 10, 2]) == [2, 6, 2, 4, 2, 6, 10, 2]": {
+      "result": false,
+      "time": 0.04159975051879883,
+      "error": null
+    },
+    "assert modified_encode([2, 3, 5, 3, 5, 8, 3, 3]) == [2, 3, 5, 3, 5, 8, [2, 3]]": {
+      "result": false,
+      "time": 0.03751325607299805,
+      "error": null
+    },
+    "assert modified_encode([2, 1, 6, 7, 6, 9, 4, 5]) == [2, 1, 6, 7, 6, 9, 4, 5]": {
+      "result": false,
+      "time": 0.040352582931518555,
+      "error": null
+    },
+    "assert modified_encode([2, 4, 3, 3, 7, 3, 4, 5]) == [2, 4, [2, 3], 7, 3, 4, 5]": {
+      "result": false,
+      "time": 0.03281903266906738,
+      "error": null
+    },
+    "assert modified_encode([3, 1, 6, 7, 5, 1, 1, 1]) == [3, 1, 6, 7, 5, [3, 1]]": {
+      "result": false,
+      "time": 0.0450742244720459,
+      "error": null
+    },
+    "assert modified_encode([2, 6, 4, 2, 2, 9, 1, 1]) == [2, 6, 4, [2, 2], 9, [2, 1]]": {
+      "result": false,
+      "time": 0.03791451454162598,
+      "error": null
+    },
+    "assert modified_encode([4, 4, 7, 1, 7, 9, 3, 2]) == [[2, 4], 7, 1, 7, 9, 3, 2]": {
+      "result": false,
+      "time": 0.04154539108276367,
+      "error": null
+    },
+    "assert modified_encode([3, 3, 5, 7, 1, 8, 4, 1]) == [[2, 3], 5, 7, 1, 8, 4, 1]": {
+      "result": false,
+      "time": 0.02885293960571289,
+      "error": null
+    },
+    "assert modified_encode([1, 5, 7, 7, 9, 6, 10, 2]) == [1, 5, [2, 7], 9, 6, 10, 2]": {
+      "result": false,
+      "time": 0.03937673568725586,
+      "error": null
+    },
+    "assert modified_encode([1, 5, 7, 4, 2, 7, 10, 5]) == [1, 5, 7, 4, 2, 7, 10, 5]": {
+      "result": false,
+      "time": 0.03374743461608887,
+      "error": null
+    },
+    "assert modified_encode([1, 3, 1, 8, 4, 6, 7, 6]) == [1, 3, 1, 8, 4, 6, 7, 6]": {
+      "result": false,
+      "time": 0.0338289737701416,
+      "error": null
+    },
+    "assert modified_encode([5, 2, 5, 3, 1, 4, 5, 6]) == [5, 2, 5, 3, 1, 4, 5, 6]": {
+      "result": false,
+      "time": 0.03609943389892578,
+      "error": null
+    },
+    "assert modified_encode([5, 4, 3, 2, 3, 8, 10, 1]) == [5, 4, 3, 2, 3, 8, 10, 1]": {
+      "result": false,
+      "time": 0.03374481201171875,
+      "error": null
+    },
+    "assert modified_encode([1, 6, 7, 7, 2, 9, 8, 2]) == [1, 6, [2, 7], 2, 9, 8, 2]": {
+      "result": false,
+      "time": 0.04015040397644043,
+      "error": null
+    },
+    "assert modified_encode([3, 4, 2, 6, 5, 1, 8, 1]) == [3, 4, 2, 6, 5, 1, 8, 1]": {
+      "result": false,
+      "time": 0.03238224983215332,
+      "error": null
+    },
+    "assert modified_encode([5, 2, 2, 2, 3, 6, 4, 1]) == [5, [3, 2], 3, 6, 4, 1]": {
+      "result": false,
+      "time": 0.03561115264892578,
+      "error": null
+    },
+    "assert modified_encode([1, 1, 1, 2, 2, 7, 10, 5]) == [[3, 1], [2, 2], 7, 10, 5]": {
+      "result": false,
+      "time": 0.03633451461791992,
+      "error": null
+    },
+    "assert modified_encode([6, 6, 7, 2, 6, 6, 3, 6]) == [[2, 6], 7, 2, [2, 6], 3, 6]": {
+      "result": false,
+      "time": 0.04320788383483887,
+      "error": null
+    },
+    "assert modified_encode([1, 6, 4, 4, 6, 4, 2, 1]) == [1, 6, [2, 4], 6, 4, 2, 1]": {
+      "result": false,
+      "time": 0.03862452507019043,
+      "error": null
+    },
+    "assert modified_encode([4, 5, 3, 7, 7, 2, 5, 6]) == [4, 5, 3, [2, 7], 2, 5, 6]": {
+      "result": false,
+      "time": 0.03668522834777832,
+      "error": null
+    },
+    "assert modified_encode(\"ttkkgmcrsnthu\") == [[2, 't'], [2, 'k'], 'g', 'm', 'c', 'r', 's', 'n', 't', 'h', 'u']": {
+      "result": false,
+      "time": 0.035360097885131836,
+      "error": null
+    },
+    "assert modified_encode(\"krwodoicscddhwa\") == ['k', 'r', 'w', 'o', 'd', 'o', 'i', 'c', 's', 'c', [2, 'd'], 'h', 'w', 'a']": {
+      "result": false,
+      "time": 0.03624320030212402,
+      "error": null
+    },
+    "assert modified_encode(\"akitkacuw\") == ['a', 'k', 'i', 't', 'k', 'a', 'c', 'u', 'w']": {
+      "result": false,
+      "time": 0.0370023250579834,
+      "error": null
+    },
+    "assert modified_encode(\"dkfjtrvvwvofixfpa\") == ['d', 'k', 'f', 'j', 't', 'r', [2, 'v'], 'w', 'v', 'o', 'f', 'i', 'x', 'f', 'p', 'a']": {
+      "result": false,
+      "time": 0.0333404541015625,
+      "error": null
+    },
+    "assert modified_encode(\"vepecpfuyyhfcujibk\") == ['v', 'e', 'p', 'e', 'c', 'p', 'f', 'u', [2, 'y'], 'h', 'f', 'c', 'u', 'j', 'i', 'b', 'k']": {
+      "result": false,
+      "time": 0.038984060287475586,
+      "error": null
+    },
+    "assert modified_encode(\"auqfopravchex\") == ['a', 'u', 'q', 'f', 'o', 'p', 'r', 'a', 'v', 'c', 'h', 'e', 'x']": {
+      "result": false,
+      "time": 0.038822174072265625,
+      "error": null
+    },
+    "assert modified_encode(\"xvegjsjpuxprj\") == ['x', 'v', 'e', 'g', 'j', 's', 'j', 'p', 'u', 'x', 'p', 'r', 'j']": {
+      "result": false,
+      "time": 0.039414167404174805,
+      "error": null
+    },
+    "assert modified_encode(\"dbdaopbjzt\") == ['d', 'b', 'd', 'a', 'o', 'p', 'b', 'j', 'z', 't']": {
+      "result": false,
+      "time": 0.03508877754211426,
+      "error": null
+    },
+    "assert modified_encode(\"imukzqtcrocbneke\") == ['i', 'm', 'u', 'k', 'z', 'q', 't', 'c', 'r', 'o', 'c', 'b', 'n', 'e', 'k', 'e']": {
+      "result": false,
+      "time": 0.03543567657470703,
+      "error": null
+    },
+    "assert modified_encode(\"hyiudbbuciynos\") == ['h', 'y', 'i', 'u', 'd', [2, 'b'], 'u', 'c', 'i', 'y', 'n', 'o', 's']": {
+      "result": false,
+      "time": 0.03341364860534668,
+      "error": null
+    },
+    "assert modified_encode(\"ayvxxroccdnfjehjdr\") == ['a', 'y', 'v', [2, 'x'], 'r', 'o', [2, 'c'], 'd', 'n', 'f', 'j', 'e', 'h', 'j', 'd', 'r']": {
+      "result": false,
+      "time": 0.03464961051940918,
+      "error": null
+    },
+    "assert modified_encode(\"tcrutndnsdog\") == ['t', 'c', 'r', 'u', 't', 'n', 'd', 'n', 's', 'd', 'o', 'g']": {
+      "result": false,
+      "time": 0.03918170928955078,
+      "error": null
+    },
+    "assert modified_encode(\"ofgeimoyutqtztyv\") == ['o', 'f', 'g', 'e', 'i', 'm', 'o', 'y', 'u', 't', 'q', 't', 'z', 't', 'y', 'v']": {
+      "result": false,
+      "time": 0.035622358322143555,
+      "error": null
+    },
+    "assert modified_encode(\"tghbinyddopzjfyfdh\") == ['t', 'g', 'h', 'b', 'i', 'n', 'y', [2, 'd'], 'o', 'p', 'z', 'j', 'f', 'y', 'f', 'd', 'h']": {
+      "result": false,
+      "time": 0.03734898567199707,
+      "error": null
+    },
+    "assert modified_encode(\"siblqrxzdjmxp\") == ['s', 'i', 'b', 'l', 'q', 'r', 'x', 'z', 'd', 'j', 'm', 'x', 'p']": {
+      "result": false,
+      "time": 0.03688955307006836,
+      "error": null
+    },
+    "assert modified_encode(\"hhyuyibjawnu\") == [[2, 'h'], 'y', 'u', 'y', 'i', 'b', 'j', 'a', 'w', 'n', 'u']": {
+      "result": false,
+      "time": 0.03509259223937988,
+      "error": null
+    },
+    "assert modified_encode(\"qibzpaivlhbqft\") == ['q', 'i', 'b', 'z', 'p', 'a', 'i', 'v', 'l', 'h', 'b', 'q', 'f', 't']": {
+      "result": false,
+      "time": 0.036000967025756836,
+      "error": null
+    },
+    "assert modified_encode(\"jbrnhrapaoefgnwj\") == ['j', 'b', 'r', 'n', 'h', 'r', 'a', 'p', 'a', 'o', 'e', 'f', 'g', 'n', 'w', 'j']": {
+      "result": false,
+      "time": 0.03608965873718262,
+      "error": null
+    },
+    "assert modified_encode(\"ikcutiweywnrsil\") == ['i', 'k', 'c', 'u', 't', 'i', 'w', 'e', 'y', 'w', 'n', 'r', 's', 'i', 'l']": {
+      "result": false,
+      "time": 0.038722991943359375,
+      "error": null
+    },
+    "assert modified_encode(\"tysfsridmqog\") == ['t', 'y', 's', 'f', 's', 'r', 'i', 'd', 'm', 'q', 'o', 'g']": {
+      "result": false,
+      "time": 0.039040565490722656,
+      "error": null
+    },
+    "assert modified_encode(\"tukhxdytoldnwhmf\") == ['t', 'u', 'k', 'h', 'x', 'd', 'y', 't', 'o', 'l', 'd', 'n', 'w', 'h', 'm', 'f']": {
+      "result": false,
+      "time": 0.04088902473449707,
+      "error": null
+    },
+    "assert modified_encode(\"solpzghprsdtcdj\") == ['s', 'o', 'l', 'p', 'z', 'g', 'h', 'p', 'r', 's', 'd', 't', 'c', 'd', 'j']": {
+      "result": false,
+      "time": 0.03987383842468262,
+      "error": null
+    },
+    "assert modified_encode(\"nziivohftgshhy\") == ['n', 'z', [2, 'i'], 'v', 'o', 'h', 'f', 't', 'g', 's', [2, 'h'], 'y']": {
+      "result": false,
+      "time": 0.034960269927978516,
+      "error": null
+    },
+    "assert modified_encode(\"tifozbosfrhqblngbb\") == ['t', 'i', 'f', 'o', 'z', 'b', 'o', 's', 'f', 'r', 'h', 'q', 'b', 'l', 'n', 'g', [2, 'b']]": {
+      "result": false,
+      "time": 0.037548065185546875,
+      "error": null
+    },
+    "assert modified_encode(\"cwcwfnlyxuqetbiqe\") == ['c', 'w', 'c', 'w', 'f', 'n', 'l', 'y', 'x', 'u', 'q', 'e', 't', 'b', 'i', 'q', 'e']": {
+      "result": false,
+      "time": 0.03815603256225586,
+      "error": null
+    },
+    "assert modified_encode(\"tgpquhzrtbjwqf\") == ['t', 'g', 'p', 'q', 'u', 'h', 'z', 'r', 't', 'b', 'j', 'w', 'q', 'f']": {
+      "result": false,
+      "time": 0.030661582946777344,
+      "error": null
+    },
+    "assert modified_encode(\"xazartvqgl\") == ['x', 'a', 'z', 'a', 'r', 't', 'v', 'q', 'g', 'l']": {
+      "result": false,
+      "time": 0.03842568397521973,
+      "error": null
+    },
+    "assert modified_encode(\"pdcmckjsqw\") == ['p', 'd', 'c', 'm', 'c', 'k', 'j', 's', 'q', 'w']": {
+      "result": false,
+      "time": 0.04007315635681152,
+      "error": null
+    },
+    "assert modified_encode(\"ilxlajovvunyra\") == ['i', 'l', 'x', 'l', 'a', 'j', 'o', [2, 'v'], 'u', 'n', 'y', 'r', 'a']": {
+      "result": false,
+      "time": 0.03665733337402344,
+      "error": null
+    },
+    "assert modified_encode(\"xchjbzvsisxtpgec\") == ['x', 'c', 'h', 'j', 'b', 'z', 'v', 's', 'i', 's', 'x', 't', 'p', 'g', 'e', 'c']": {
+      "result": false,
+      "time": 0.03937864303588867,
+      "error": null
+    },
+    "assert modified_encode(\"frgwitctsjnu\") == ['f', 'r', 'g', 'w', 'i', 't', 'c', 't', 's', 'j', 'n', 'u']": {
+      "result": false,
+      "time": 0.03177762031555176,
+      "error": null
+    },
+    "assert modified_encode(\"zthxxtfjdokzy\") == ['z', 't', 'h', [2, 'x'], 't', 'f', 'j', 'd', 'o', 'k', 'z', 'y']": {
+      "result": false,
+      "time": 0.03914070129394531,
+      "error": null
+    },
+    "assert modified_encode(\"ylzyenfjxgxvupq\") == ['y', 'l', 'z', 'y', 'e', 'n', 'f', 'j', 'x', 'g', 'x', 'v', 'u', 'p', 'q']": {
+      "result": false,
+      "time": 0.037029266357421875,
+      "error": null
+    },
+    "assert modified_encode(\"tiizmkgcyhy\") == ['t', [2, 'i'], 'z', 'm', 'k', 'g', 'c', 'y', 'h', 'y']": {
+      "result": false,
+      "time": 0.034920692443847656,
+      "error": null
+    },
+    "assert modified_encode(\"ntyshyqgn\") == ['n', 't', 'y', 's', 'h', 'y', 'q', 'g', 'n']": {
+      "result": false,
+      "time": 0.04041409492492676,
+      "error": null
+    },
+    "assert modified_encode(\"kqljrmt\") == ['k', 'q', 'l', 'j', 'r', 'm', 't']": {
+      "result": false,
+      "time": 0.03853726387023926,
+      "error": null
+    },
+    "assert modified_encode(\"jqtjkwbnflw\") == ['j', 'q', 't', 'j', 'k', 'w', 'b', 'n', 'f', 'l', 'w']": {
+      "result": false,
+      "time": 0.03786945343017578,
+      "error": null
+    },
+    "assert modified_encode(\"kxfauoeqaq\") == ['k', 'x', 'f', 'a', 'u', 'o', 'e', 'q', 'a', 'q']": {
+      "result": false,
+      "time": 0.03356122970581055,
+      "error": null
+    },
+    "assert modified_encode(\"ptlqoqurrkz\") == ['p', 't', 'l', 'q', 'o', 'q', 'u', [2, 'r'], 'k', 'z']": {
+      "result": false,
+      "time": 0.03910231590270996,
+      "error": null
+    },
+    "assert modified_encode(\"ahugbos\") == ['a', 'h', 'u', 'g', 'b', 'o', 's']": {
+      "result": false,
+      "time": 0.0339961051940918,
+      "error": null
+    },
+    "assert modified_encode(\"engaz\") == ['e', 'n', 'g', 'a', 'z']": {
+      "result": false,
+      "time": 0.04167509078979492,
+      "error": null
+    },
+    "assert modified_encode(\"uudyuwe\") == [[2, 'u'], 'd', 'y', 'u', 'w', 'e']": {
+      "result": false,
+      "time": 0.040293216705322266,
+      "error": null
+    },
+    "assert modified_encode(\"perjjvnf\") == ['p', 'e', 'r', [2, 'j'], 'v', 'n', 'f']": {
+      "result": false,
+      "time": 0.041559696197509766,
+      "error": null
+    },
+    "assert modified_encode(\"qshijjmjgkc\") == ['q', 's', 'h', 'i', [2, 'j'], 'm', 'j', 'g', 'k', 'c']": {
+      "result": false,
+      "time": 0.03787827491760254,
+      "error": null
+    },
+    "assert modified_encode(\"yiihfudf\") == ['y', [2, 'i'], 'h', 'f', 'u', 'd', 'f']": {
+      "result": false,
+      "time": 0.036878108978271484,
+      "error": null
+    },
+    "assert modified_encode(\"zsnopjdufhm\") == ['z', 's', 'n', 'o', 'p', 'j', 'd', 'u', 'f', 'h', 'm']": {
+      "result": false,
+      "time": 0.040261030197143555,
+      "error": null
+    },
+    "assert modified_encode(\"nzcbwydznn\") == ['n', 'z', 'c', 'b', 'w', 'y', 'd', 'z', [2, 'n']]": {
+      "result": false,
+      "time": 0.038126468658447266,
+      "error": null
+    },
+    "assert modified_encode(\"vgkf\") == ['v', 'g', 'k', 'f']": {
+      "result": false,
+      "time": 0.0379030704498291,
+      "error": null
+    },
+    "assert modified_encode(\"jahtttxiyxc\") == ['j', 'a', 'h', [3, 't'], 'x', 'i', 'y', 'x', 'c']": {
+      "result": false,
+      "time": 0.03273630142211914,
+      "error": null
+    },
+    "assert modified_encode(\"hzlcnfiktasu\") == ['h', 'z', 'l', 'c', 'n', 'f', 'i', 'k', 't', 'a', 's', 'u']": {
+      "result": false,
+      "time": 0.03287649154663086,
+      "error": null
+    },
+    "assert modified_encode(\"xzqaxbngm\") == ['x', 'z', 'q', 'a', 'x', 'b', 'n', 'g', 'm']": {
+      "result": false,
+      "time": 0.03459024429321289,
+      "error": null
+    },
+    "assert modified_encode(\"doxjssoagwtt\") == ['d', 'o', 'x', 'j', [2, 's'], 'o', 'a', 'g', 'w', [2, 't']]": {
+      "result": false,
+      "time": 0.03692913055419922,
+      "error": null
+    },
+    "assert modified_encode(\"bblp\") == [[2, 'b'], 'l', 'p']": {
+      "result": false,
+      "time": 0.034979820251464844,
+      "error": null
+    },
+    "assert modified_encode(\"dxbiddkvea\") == ['d', 'x', 'b', 'i', [2, 'd'], 'k', 'v', 'e', 'a']": {
+      "result": false,
+      "time": 0.04059171676635742,
+      "error": null
+    },
+    "assert modified_encode(\"dkxxgp\") == ['d', 'k', [2, 'x'], 'g', 'p']": {
+      "result": false,
+      "time": 0.036566972732543945,
+      "error": null
+    },
+    "assert modified_encode(\"ixyvjm\") == ['i', 'x', 'y', 'v', 'j', 'm']": {
+      "result": false,
+      "time": 0.041164398193359375,
+      "error": null
+    },
+    "assert modified_encode(\"yevdp\") == ['y', 'e', 'v', 'd', 'p']": {
+      "result": false,
+      "time": 0.03695082664489746,
+      "error": null
+    },
+    "assert modified_encode(\"ckms\") == ['c', 'k', 'm', 's']": {
+      "result": false,
+      "time": 0.031542062759399414,
+      "error": null
+    },
+    "assert modified_encode(\"kld\") == ['k', 'l', 'd']": {
+      "result": false,
+      "time": 0.040094614028930664,
+      "error": null
+    },
+    "assert modified_encode(\"fzzuolwgfpr\") == ['f', [2, 'z'], 'u', 'o', 'l', 'w', 'g', 'f', 'p', 'r']": {
+      "result": false,
+      "time": 0.032279253005981445,
+      "error": null
+    },
+    "assert modified_encode(\"idvqgsgnmot\") == ['i', 'd', 'v', 'q', 'g', 's', 'g', 'n', 'm', 'o', 't']": {
+      "result": false,
+      "time": 0.03612112998962402,
+      "error": null
+    },
+    "assert modified_encode(\"zrnwfsev\") == ['z', 'r', 'n', 'w', 'f', 's', 'e', 'v']": {
+      "result": false,
+      "time": 0.0342710018157959,
+      "error": null
+    },
+    "assert modified_encode(\"ixqlaznzp\") == ['i', 'x', 'q', 'l', 'a', 'z', 'n', 'z', 'p']": {
+      "result": false,
+      "time": 0.037474870681762695,
+      "error": null
+    },
+    "assert modified_encode(\"zdzpc\") == ['z', 'd', 'z', 'p', 'c']": {
+      "result": false,
+      "time": 0.035277605056762695,
+      "error": null
+    },
+    "assert modified_encode(\"qdhfbeohbifd\") == ['q', 'd', 'h', 'f', 'b', 'e', 'o', 'h', 'b', 'i', 'f', 'd']": {
+      "result": false,
+      "time": 0.04211854934692383,
+      "error": null
+    },
+    "assert modified_encode(\"uesdks\") == ['u', 'e', 's', 'd', 'k', 's']": {
+      "result": false,
+      "time": 0.03729367256164551,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

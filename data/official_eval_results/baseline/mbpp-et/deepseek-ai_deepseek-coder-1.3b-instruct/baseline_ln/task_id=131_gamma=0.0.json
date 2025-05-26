@@ -1,0 +1,519 @@
+{
+  "code": "def reverse_vowels(s):\n    vowels = 'aeiouAEIOU'\n    s = list(s)\n    i, j = 0, len(s) - 1\n    while i < j:\n        if s[i] not in vowels:\n            i += 1\n        elif s[j] not in vowels:\n            j -= 1\n        else:\n            s[i], s[j] = s[j], s[i]\n            i, j = i + 1, j - 1\n    return ''.join(s)\n",
+  "results": {
+    "assert reverse_vowels(\"Python\") == \"Python\"": {
+      "result": true,
+      "time": 0.031581878662109375,
+      "error": null
+    },
+    "assert reverse_vowels(\"USA\") == \"ASU\"": {
+      "result": true,
+      "time": 0.03597831726074219,
+      "error": null
+    },
+    "assert reverse_vowels(\"ab\") == \"ab\"": {
+      "result": true,
+      "time": 0.031356096267700195,
+      "error": null
+    },
+    "assert reverse_vowels(\"fFWLUXPWn\") == \"fFWLUXPWn\"": {
+      "result": true,
+      "time": 0.031505584716796875,
+      "error": null
+    },
+    "assert reverse_vowels(\"usGMY\") == \"usGMY\"": {
+      "result": true,
+      "time": 0.031060218811035156,
+      "error": null
+    },
+    "assert reverse_vowels(\"qDCxmpTm\") == \"qDCxmpTm\"": {
+      "result": true,
+      "time": 0.03698086738586426,
+      "error": null
+    },
+    "assert reverse_vowels(\"QQiege\") == \"QQeegi\"": {
+      "result": true,
+      "time": 0.043457984924316406,
+      "error": null
+    },
+    "assert reverse_vowels(\"vzFhQchsf\") == \"vzFhQchsf\"": {
+      "result": true,
+      "time": 0.0373380184173584,
+      "error": null
+    },
+    "assert reverse_vowels(\"vLdCOgyys\") == \"vLdCOgyys\"": {
+      "result": true,
+      "time": 0.03655433654785156,
+      "error": null
+    },
+    "assert reverse_vowels(\"CaWx\") == \"CaWx\"": {
+      "result": true,
+      "time": 0.03600144386291504,
+      "error": null
+    },
+    "assert reverse_vowels(\"koGh\") == \"koGh\"": {
+      "result": true,
+      "time": 0.03561997413635254,
+      "error": null
+    },
+    "assert reverse_vowels(\"MIWF\") == \"MIWF\"": {
+      "result": true,
+      "time": 0.03807497024536133,
+      "error": null
+    },
+    "assert reverse_vowels(\"qLwOWEmB\") == \"qLwEWOmB\"": {
+      "result": true,
+      "time": 0.03900742530822754,
+      "error": null
+    },
+    "assert reverse_vowels(\"uDBJldwr\") == \"uDBJldwr\"": {
+      "result": true,
+      "time": 0.03669118881225586,
+      "error": null
+    },
+    "assert reverse_vowels(\"lRoq\") == \"lRoq\"": {
+      "result": true,
+      "time": 0.032291412353515625,
+      "error": null
+    },
+    "assert reverse_vowels(\"aawvSvzpA\") == \"AawvSvzpa\"": {
+      "result": true,
+      "time": 0.033081769943237305,
+      "error": null
+    },
+    "assert reverse_vowels(\"LlJLcjTEApYP\") == \"LlJLcjTAEpYP\"": {
+      "result": true,
+      "time": 0.032309770584106445,
+      "error": null
+    },
+    "assert reverse_vowels(\"owKOkH\") == \"OwKokH\"": {
+      "result": true,
+      "time": 0.0359501838684082,
+      "error": null
+    },
+    "assert reverse_vowels(\"aVVXdb\") == \"aVVXdb\"": {
+      "result": true,
+      "time": 0.031954050064086914,
+      "error": null
+    },
+    "assert reverse_vowels(\"XkhxVUKKKSU\") == \"XkhxVUKKKSU\"": {
+      "result": true,
+      "time": 0.03323960304260254,
+      "error": null
+    },
+    "assert reverse_vowels(\"Mar\") == \"Mar\"": {
+      "result": true,
+      "time": 0.034943342208862305,
+      "error": null
+    },
+    "assert reverse_vowels(\"FoxhvIEjICP\") == \"FIxhvEIjoCP\"": {
+      "result": true,
+      "time": 0.03753185272216797,
+      "error": null
+    },
+    "assert reverse_vowels(\"GTFVx\") == \"GTFVx\"": {
+      "result": true,
+      "time": 0.03403306007385254,
+      "error": null
+    },
+    "assert reverse_vowels(\"FldwC\") == \"FldwC\"": {
+      "result": true,
+      "time": 0.03649115562438965,
+      "error": null
+    },
+    "assert reverse_vowels(\"uGDMnW\") == \"uGDMnW\"": {
+      "result": true,
+      "time": 0.03276467323303223,
+      "error": null
+    },
+    "assert reverse_vowels(\"SdbjYdlXz\") == \"SdbjYdlXz\"": {
+      "result": true,
+      "time": 0.04074740409851074,
+      "error": null
+    },
+    "assert reverse_vowels(\"eCRmSspscv\") == \"eCRmSspscv\"": {
+      "result": true,
+      "time": 0.035942792892456055,
+      "error": null
+    },
+    "assert reverse_vowels(\"yaIiJTM\") == \"yiIaJTM\"": {
+      "result": true,
+      "time": 0.035574913024902344,
+      "error": null
+    },
+    "assert reverse_vowels(\"MMn\") == \"MMn\"": {
+      "result": true,
+      "time": 0.0338287353515625,
+      "error": null
+    },
+    "assert reverse_vowels(\"QIwxq\") == \"QIwxq\"": {
+      "result": true,
+      "time": 0.03423905372619629,
+      "error": null
+    },
+    "assert reverse_vowels(\"dfWBz\") == \"dfWBz\"": {
+      "result": true,
+      "time": 0.04010438919067383,
+      "error": null
+    },
+    "assert reverse_vowels(\"IroYwX\") == \"orIYwX\"": {
+      "result": true,
+      "time": 0.035645246505737305,
+      "error": null
+    },
+    "assert reverse_vowels(\"MRrwBnPDAxA\") == \"MRrwBnPDAxA\"": {
+      "result": true,
+      "time": 0.03381180763244629,
+      "error": null
+    },
+    "assert reverse_vowels(\"tNgmRGNxaJz\") == \"tNgmRGNxaJz\"": {
+      "result": true,
+      "time": 0.038459062576293945,
+      "error": null
+    },
+    "assert reverse_vowels(\"DtftyZP\") == \"DtftyZP\"": {
+      "result": true,
+      "time": 0.03589630126953125,
+      "error": null
+    },
+    "assert reverse_vowels(\"yuc\") == \"yuc\"": {
+      "result": true,
+      "time": 0.03525185585021973,
+      "error": null
+    },
+    "assert reverse_vowels(\"RXDS\") == \"RXDS\"": {
+      "result": true,
+      "time": 0.03472328186035156,
+      "error": null
+    },
+    "assert reverse_vowels(\"EMFEUZO\") == \"OMFUEZE\"": {
+      "result": true,
+      "time": 0.0369107723236084,
+      "error": null
+    },
+    "assert reverse_vowels(\"FZPHJTTGS\") == \"FZPHJTTGS\"": {
+      "result": true,
+      "time": 0.034412384033203125,
+      "error": null
+    },
+    "assert reverse_vowels(\"HMUTSLNZ\") == \"HMUTSLNZ\"": {
+      "result": true,
+      "time": 0.04195117950439453,
+      "error": null
+    },
+    "assert reverse_vowels(\"HLXMEVABR\") == \"HLXMAVEBR\"": {
+      "result": true,
+      "time": 0.04275655746459961,
+      "error": null
+    },
+    "assert reverse_vowels(\"TGQKYA\") == \"TGQKYA\"": {
+      "result": true,
+      "time": 0.036847829818725586,
+      "error": null
+    },
+    "assert reverse_vowels(\"VGFGKCXI\") == \"VGFGKCXI\"": {
+      "result": true,
+      "time": 0.040563344955444336,
+      "error": null
+    },
+    "assert reverse_vowels(\"DZYLT\") == \"DZYLT\"": {
+      "result": true,
+      "time": 0.034232139587402344,
+      "error": null
+    },
+    "assert reverse_vowels(\"IAQETTVL\") == \"EAQITTVL\"": {
+      "result": true,
+      "time": 0.03701424598693848,
+      "error": null
+    },
+    "assert reverse_vowels(\"ARGKHR\") == \"ARGKHR\"": {
+      "result": true,
+      "time": 0.0356597900390625,
+      "error": null
+    },
+    "assert reverse_vowels(\"JRR\") == \"JRR\"": {
+      "result": true,
+      "time": 0.04487943649291992,
+      "error": null
+    },
+    "assert reverse_vowels(\"PGI\") == \"PGI\"": {
+      "result": true,
+      "time": 0.045085906982421875,
+      "error": null
+    },
+    "assert reverse_vowels(\"JGBNJJG\") == \"JGBNJJG\"": {
+      "result": true,
+      "time": 0.03702735900878906,
+      "error": null
+    },
+    "assert reverse_vowels(\"QDFVDSYI\") == \"QDFVDSYI\"": {
+      "result": true,
+      "time": 0.04006147384643555,
+      "error": null
+    },
+    "assert reverse_vowels(\"XMIMHX\") == \"XMIMHX\"": {
+      "result": true,
+      "time": 0.034136056900024414,
+      "error": null
+    },
+    "assert reverse_vowels(\"XEXU\") == \"XUXE\"": {
+      "result": true,
+      "time": 0.03464651107788086,
+      "error": null
+    },
+    "assert reverse_vowels(\"CNKKS\") == \"CNKKS\"": {
+      "result": true,
+      "time": 0.032648563385009766,
+      "error": null
+    },
+    "assert reverse_vowels(\"EONE\") == \"EONE\"": {
+      "result": true,
+      "time": 0.03682446479797363,
+      "error": null
+    },
+    "assert reverse_vowels(\"KOQVHNDMQ\") == \"KOQVHNDMQ\"": {
+      "result": true,
+      "time": 0.038748979568481445,
+      "error": null
+    },
+    "assert reverse_vowels(\"MNMGNIZX\") == \"MNMGNIZX\"": {
+      "result": true,
+      "time": 0.0339813232421875,
+      "error": null
+    },
+    "assert reverse_vowels(\"MJGQA\") == \"MJGQA\"": {
+      "result": true,
+      "time": 0.03450894355773926,
+      "error": null
+    },
+    "assert reverse_vowels(\"VVEN\") == \"VVEN\"": {
+      "result": true,
+      "time": 0.02965998649597168,
+      "error": null
+    },
+    "assert reverse_vowels(\"VCNMDZ\") == \"VCNMDZ\"": {
+      "result": true,
+      "time": 0.036093950271606445,
+      "error": null
+    },
+    "assert reverse_vowels(\"IYSKM\") == \"IYSKM\"": {
+      "result": true,
+      "time": 0.04138636589050293,
+      "error": null
+    },
+    "assert reverse_vowels(\"INQX\") == \"INQX\"": {
+      "result": true,
+      "time": 0.04165911674499512,
+      "error": null
+    },
+    "assert reverse_vowels(\"XSD\") == \"XSD\"": {
+      "result": true,
+      "time": 0.0379180908203125,
+      "error": null
+    },
+    "assert reverse_vowels(\"GOC\") == \"GOC\"": {
+      "result": true,
+      "time": 0.03702235221862793,
+      "error": null
+    },
+    "assert reverse_vowels(\"ALP\") == \"ALP\"": {
+      "result": true,
+      "time": 0.030336856842041016,
+      "error": null
+    },
+    "assert reverse_vowels(\"QXSEIV\") == \"QXSIEV\"": {
+      "result": true,
+      "time": 0.034921884536743164,
+      "error": null
+    },
+    "assert reverse_vowels(\"CQS\") == \"CQS\"": {
+      "result": true,
+      "time": 0.03553509712219238,
+      "error": null
+    },
+    "assert reverse_vowels(\"LYLYMDYIW\") == \"LYLYMDYIW\"": {
+      "result": true,
+      "time": 0.03629493713378906,
+      "error": null
+    },
+    "assert reverse_vowels(\"TUKQCR\") == \"TUKQCR\"": {
+      "result": true,
+      "time": 0.03661990165710449,
+      "error": null
+    },
+    "assert reverse_vowels(\"PSOMRVGN\") == \"PSOMRVGN\"": {
+      "result": true,
+      "time": 0.033432722091674805,
+      "error": null
+    },
+    "assert reverse_vowels(\"bhnvyz\") == \"bhnvyz\"": {
+      "result": true,
+      "time": 0.035428762435913086,
+      "error": null
+    },
+    "assert reverse_vowels(\"mlcm\") == \"mlcm\"": {
+      "result": true,
+      "time": 0.035498857498168945,
+      "error": null
+    },
+    "assert reverse_vowels(\"xypwlw\") == \"xypwlw\"": {
+      "result": true,
+      "time": 0.03264641761779785,
+      "error": null
+    },
+    "assert reverse_vowels(\"elv\") == \"elv\"": {
+      "result": true,
+      "time": 0.039179325103759766,
+      "error": null
+    },
+    "assert reverse_vowels(\"vdj\") == \"vdj\"": {
+      "result": true,
+      "time": 0.029556989669799805,
+      "error": null
+    },
+    "assert reverse_vowels(\"rgqnav\") == \"rgqnav\"": {
+      "result": true,
+      "time": 0.03883552551269531,
+      "error": null
+    },
+    "assert reverse_vowels(\"ehdxq\") == \"ehdxq\"": {
+      "result": true,
+      "time": 0.03598809242248535,
+      "error": null
+    },
+    "assert reverse_vowels(\"smosta\") == \"smasto\"": {
+      "result": true,
+      "time": 0.04103970527648926,
+      "error": null
+    },
+    "assert reverse_vowels(\"ipt\") == \"ipt\"": {
+      "result": true,
+      "time": 0.043856143951416016,
+      "error": null
+    },
+    "assert reverse_vowels(\"qxchn\") == \"qxchn\"": {
+      "result": true,
+      "time": 0.044463396072387695,
+      "error": null
+    },
+    "assert reverse_vowels(\"zveqyn\") == \"zveqyn\"": {
+      "result": true,
+      "time": 0.0388491153717041,
+      "error": null
+    },
+    "assert reverse_vowels(\"petloh\") == \"potleh\"": {
+      "result": true,
+      "time": 0.03737950325012207,
+      "error": null
+    },
+    "assert reverse_vowels(\"hsuvzb\") == \"hsuvzb\"": {
+      "result": true,
+      "time": 0.03876900672912598,
+      "error": null
+    },
+    "assert reverse_vowels(\"tzmqau\") == \"tzmqua\"": {
+      "result": true,
+      "time": 0.03703022003173828,
+      "error": null
+    },
+    "assert reverse_vowels(\"orqu\") == \"urqo\"": {
+      "result": true,
+      "time": 0.03320646286010742,
+      "error": null
+    },
+    "assert reverse_vowels(\"teyty\") == \"teyty\"": {
+      "result": true,
+      "time": 0.03674602508544922,
+      "error": null
+    },
+    "assert reverse_vowels(\"woaq\") == \"waoq\"": {
+      "result": true,
+      "time": 0.03173017501831055,
+      "error": null
+    },
+    "assert reverse_vowels(\"tdnn\") == \"tdnn\"": {
+      "result": true,
+      "time": 0.04306936264038086,
+      "error": null
+    },
+    "assert reverse_vowels(\"dblqx\") == \"dblqx\"": {
+      "result": true,
+      "time": 0.03956437110900879,
+      "error": null
+    },
+    "assert reverse_vowels(\"szjz\") == \"szjz\"": {
+      "result": true,
+      "time": 0.03507256507873535,
+      "error": null
+    },
+    "assert reverse_vowels(\"naebhy\") == \"neabhy\"": {
+      "result": true,
+      "time": 0.03778886795043945,
+      "error": null
+    },
+    "assert reverse_vowels(\"wnstj\") == \"wnstj\"": {
+      "result": true,
+      "time": 0.04348325729370117,
+      "error": null
+    },
+    "assert reverse_vowels(\"tdlsp\") == \"tdlsp\"": {
+      "result": true,
+      "time": 0.0359950065612793,
+      "error": null
+    },
+    "assert reverse_vowels(\"zdusyz\") == \"zdusyz\"": {
+      "result": true,
+      "time": 0.03792119026184082,
+      "error": null
+    },
+    "assert reverse_vowels(\"wcg\") == \"wcg\"": {
+      "result": true,
+      "time": 0.040194034576416016,
+      "error": null
+    },
+    "assert reverse_vowels(\"xytjm\") == \"xytjm\"": {
+      "result": true,
+      "time": 0.032970428466796875,
+      "error": null
+    },
+    "assert reverse_vowels(\"pwrweb\") == \"pwrweb\"": {
+      "result": true,
+      "time": 0.03719377517700195,
+      "error": null
+    },
+    "assert reverse_vowels(\"abkug\") == \"ubkag\"": {
+      "result": true,
+      "time": 0.03248858451843262,
+      "error": null
+    },
+    "assert reverse_vowels(\"favpr\") == \"favpr\"": {
+      "result": true,
+      "time": 0.03896689414978027,
+      "error": null
+    },
+    "assert reverse_vowels(\"flac\") == \"flac\"": {
+      "result": true,
+      "time": 0.0389859676361084,
+      "error": null
+    },
+    "assert reverse_vowels(\"ekbh\") == \"ekbh\"": {
+      "result": true,
+      "time": 0.03398489952087402,
+      "error": null
+    },
+    "assert reverse_vowels(\"gvxknk\") == \"gvxknk\"": {
+      "result": true,
+      "time": 0.0408320426940918,
+      "error": null
+    },
+    "assert reverse_vowels(\"dlbsl\") == \"dlbsl\"": {
+      "result": true,
+      "time": 0.04026532173156738,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

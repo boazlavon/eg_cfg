@@ -1,0 +1,504 @@
+{
+  "code": "def all_Bits_Set_In_The_Given_Range(n, l, r):\n    # Iterate through each bit position in the range [l, r]\n    for i in range(l, r + 1):\n        # Check if the i-th bit is set\n        mask = 1 << (i - 1)\n        if n & mask:\n            # If any bit is set, return False\n            return False\n    # If no bits are set in the range, return True\n    return True",
+  "results": {
+    "assert all_Bits_Set_In_The_Given_Range(4,1,2) == True": {
+      "result": true,
+      "time": 0.03833651542663574,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(17,2,4) == True": {
+      "result": true,
+      "time": 0.04076385498046875,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(39,4,6) == False": {
+      "result": true,
+      "time": 0.03591561317443848,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(7, 2, 7) == False": {
+      "result": true,
+      "time": 0.04578900337219238,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(5, 3, 2) == True": {
+      "result": true,
+      "time": 0.044736385345458984,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(6, 3, 2) == True": {
+      "result": true,
+      "time": 0.045319318771362305,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(2, 3, 7) == True": {
+      "result": true,
+      "time": 0.04621171951293945,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(4, 2, 1) == True": {
+      "result": true,
+      "time": 0.03790426254272461,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(4, 4, 1) == False": {
+      "result": false,
+      "time": 0.04230070114135742,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(3, 3, 3) == True": {
+      "result": true,
+      "time": 0.039589881896972656,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(8, 4, 7) == False": {
+      "result": true,
+      "time": 0.041170597076416016,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(7, 3, 2) == True": {
+      "result": true,
+      "time": 0.035765886306762695,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(1, 4, 7) == True": {
+      "result": true,
+      "time": 0.04322457313537598,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(8, 5, 3) == False": {
+      "result": false,
+      "time": 0.03704643249511719,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(9, 5, 5) == True": {
+      "result": true,
+      "time": 0.037059783935546875,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(6, 3, 7) == False": {
+      "result": true,
+      "time": 0.03693723678588867,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(7, 4, 6) == True": {
+      "result": true,
+      "time": 0.04329395294189453,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(8, 3, 3) == True": {
+      "result": true,
+      "time": 0.041524648666381836,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(1, 3, 4) == True": {
+      "result": true,
+      "time": 0.03685879707336426,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(5, 1, 5) == False": {
+      "result": true,
+      "time": 0.035277605056762695,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(3, 4, 1) == False": {
+      "result": false,
+      "time": 0.03733348846435547,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(2, 6, 1) == False": {
+      "result": false,
+      "time": 0.037355899810791016,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(3, 5, 2) == True": {
+      "result": true,
+      "time": 0.031598567962646484,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(7, 6, 2) == False": {
+      "result": false,
+      "time": 0.0342252254486084,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(9, 3, 3) == True": {
+      "result": true,
+      "time": 0.0461268424987793,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(4, 4, 5) == True": {
+      "result": true,
+      "time": 0.04261612892150879,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(9, 1, 7) == False": {
+      "result": true,
+      "time": 0.036733150482177734,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(2, 6, 6) == True": {
+      "result": true,
+      "time": 0.03694748878479004,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(8, 6, 3) == False": {
+      "result": false,
+      "time": 0.035642385482788086,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(3, 3, 1) == False": {
+      "result": false,
+      "time": 0.04649758338928223,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(2, 2, 1) == True": {
+      "result": true,
+      "time": 0.03243398666381836,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(8, 1, 1) == True": {
+      "result": true,
+      "time": 0.03683662414550781,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(1, 4, 3) == True": {
+      "result": true,
+      "time": 0.03819680213928223,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(7, 3, 3) == False": {
+      "result": true,
+      "time": 0.03757047653198242,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(15, 5, 9) == True": {
+      "result": true,
+      "time": 0.036110639572143555,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(14, 4, 6) == False": {
+      "result": true,
+      "time": 0.04397010803222656,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(14, 3, 3) == False": {
+      "result": true,
+      "time": 0.03812813758850098,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(13, 2, 5) == False": {
+      "result": true,
+      "time": 0.039694786071777344,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(20, 5, 9) == False": {
+      "result": true,
+      "time": 0.04344677925109863,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(19, 3, 9) == False": {
+      "result": true,
+      "time": 0.039115190505981445,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(22, 5, 6) == False": {
+      "result": true,
+      "time": 0.045701026916503906,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(15, 3, 8) == False": {
+      "result": true,
+      "time": 0.04300403594970703,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(17, 1, 7) == False": {
+      "result": true,
+      "time": 0.03729414939880371,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(19, 2, 4) == False": {
+      "result": true,
+      "time": 0.03300619125366211,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(14, 5, 3) == False": {
+      "result": false,
+      "time": 0.03588366508483887,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(22, 7, 6) == True": {
+      "result": true,
+      "time": 0.03778409957885742,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(20, 4, 2) == False": {
+      "result": false,
+      "time": 0.03803443908691406,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(13, 6, 6) == True": {
+      "result": true,
+      "time": 0.03669166564941406,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(18, 4, 6) == False": {
+      "result": true,
+      "time": 0.04440641403198242,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(20, 2, 4) == False": {
+      "result": true,
+      "time": 0.049530029296875,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(22, 6, 3) == False": {
+      "result": false,
+      "time": 0.043912649154663086,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(22, 1, 4) == False": {
+      "result": true,
+      "time": 0.05365180969238281,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(17, 7, 3) == False": {
+      "result": false,
+      "time": 0.04291033744812012,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(21, 7, 4) == False": {
+      "result": false,
+      "time": 0.04798555374145508,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(22, 6, 7) == True": {
+      "result": true,
+      "time": 0.0447392463684082,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(20, 2, 2) == True": {
+      "result": true,
+      "time": 0.05265355110168457,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(14, 7, 6) == True": {
+      "result": true,
+      "time": 0.05052065849304199,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(18, 6, 3) == False": {
+      "result": false,
+      "time": 0.05548501014709473,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(22, 4, 5) == False": {
+      "result": true,
+      "time": 0.058821916580200195,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(22, 7, 5) == True": {
+      "result": true,
+      "time": 0.04606342315673828,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(13, 2, 4) == False": {
+      "result": true,
+      "time": 0.047484636306762695,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(12, 5, 5) == True": {
+      "result": true,
+      "time": 0.0534212589263916,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(14, 3, 1) == False": {
+      "result": false,
+      "time": 0.03995633125305176,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(13, 6, 5) == True": {
+      "result": true,
+      "time": 0.04321718215942383,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(17, 5, 6) == False": {
+      "result": true,
+      "time": 0.04652833938598633,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(16, 5, 2) == True": {
+      "result": true,
+      "time": 0.04664444923400879,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(37, 4, 6) == False": {
+      "result": true,
+      "time": 0.04377174377441406,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(41, 7, 10) == True": {
+      "result": true,
+      "time": 0.045778751373291016,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(34, 6, 1) == False": {
+      "result": false,
+      "time": 0.048493385314941406,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(44, 7, 5) == False": {
+      "result": false,
+      "time": 0.04715466499328613,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(43, 1, 3) == False": {
+      "result": true,
+      "time": 0.05364179611206055,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(43, 1, 5) == False": {
+      "result": true,
+      "time": 0.04734683036804199,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(43, 4, 3) == True": {
+      "result": true,
+      "time": 0.03718209266662598,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(38, 3, 1) == False": {
+      "result": false,
+      "time": 0.04733157157897949,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(43, 7, 9) == True": {
+      "result": true,
+      "time": 0.04843759536743164,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(41, 7, 7) == True": {
+      "result": true,
+      "time": 0.04757261276245117,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(37, 8, 6) == True": {
+      "result": true,
+      "time": 0.03988051414489746,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(38, 2, 11) == False": {
+      "result": true,
+      "time": 0.04630303382873535,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(37, 9, 1) == False": {
+      "result": false,
+      "time": 0.04301619529724121,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(43, 3, 11) == False": {
+      "result": true,
+      "time": 0.04249167442321777,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(37, 3, 4) == False": {
+      "result": true,
+      "time": 0.03500485420227051,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(34, 5, 1) == False": {
+      "result": false,
+      "time": 0.035829782485961914,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(44, 6, 8) == False": {
+      "result": true,
+      "time": 0.044165849685668945,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(38, 7, 7) == True": {
+      "result": true,
+      "time": 0.044793128967285156,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(39, 2, 6) == False": {
+      "result": true,
+      "time": 0.036226749420166016,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(40, 8, 10) == True": {
+      "result": true,
+      "time": 0.04346966743469238,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(39, 2, 7) == False": {
+      "result": true,
+      "time": 0.04848456382751465,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(43, 8, 7) == True": {
+      "result": true,
+      "time": 0.04305911064147949,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(36, 3, 1) == True": {
+      "result": true,
+      "time": 0.03764843940734863,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(43, 3, 4) == False": {
+      "result": true,
+      "time": 0.038338422775268555,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(37, 8, 9) == True": {
+      "result": true,
+      "time": 0.04048585891723633,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(44, 3, 7) == False": {
+      "result": true,
+      "time": 0.0423426628112793,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(37, 7, 1) == False": {
+      "result": false,
+      "time": 0.045421600341796875,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(39, 2, 5) == False": {
+      "result": true,
+      "time": 0.04234433174133301,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(39, 7, 5) == False": {
+      "result": false,
+      "time": 0.03862452507019043,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(38, 3, 5) == False": {
+      "result": true,
+      "time": 0.03941655158996582,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(41, 6, 9) == False": {
+      "result": true,
+      "time": 0.03333258628845215,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(41, 5, 2) == False": {
+      "result": false,
+      "time": 0.04247140884399414,
+      "error": null
+    },
+    "assert all_Bits_Set_In_The_Given_Range(36, 8, 6) == True": {
+      "result": true,
+      "time": 0.041487693786621094,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.7777777777777778,
+  "general_error": "",
+  "has_testcase_error": false
+}

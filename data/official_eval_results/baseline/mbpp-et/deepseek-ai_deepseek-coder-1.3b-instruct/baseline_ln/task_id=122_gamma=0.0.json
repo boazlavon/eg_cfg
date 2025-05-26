@@ -1,0 +1,144 @@
+{
+  "code": "def smartNumber(n):\n    i = 1\n    while True:\n        if is_prime(i) and is_product_of_primes(i):\n            n -= 1\n            if n == 0:\n                return i\n        i += 1\n\ndef is_prime(n):\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True\n\ndef is_product_of_primes(n):\n    while n > 9:\n        last_digit = n % 10\n        if not is_prime(last_digit):\n            return False\n        n = n // 10\n    return is_prime(n)",
+  "results": {
+    "assert smartNumber(1) == 30": {
+      "result": false,
+      "time": 0.02973461151123047,
+      "error": null
+    },
+    "assert smartNumber(50) == 273": {
+      "result": false,
+      "time": 0.03212738037109375,
+      "error": null
+    },
+    "assert smartNumber(1000) == 2664": {
+      "result": false,
+      "time": 9.998573780059814,
+      "error": null
+    },
+    "assert smartNumber(5) == 70": {
+      "result": false,
+      "time": 0.03894829750061035,
+      "error": null
+    },
+    "assert smartNumber(2) == 42": {
+      "result": false,
+      "time": 0.03758382797241211,
+      "error": null
+    },
+    "assert smartNumber(6) == 78": {
+      "result": false,
+      "time": 0.035034894943237305,
+      "error": null
+    },
+    "assert smartNumber(3) == 60": {
+      "result": false,
+      "time": 0.029980182647705078,
+      "error": null
+    },
+    "assert smartNumber(4) == 66": {
+      "result": false,
+      "time": 0.03277230262756348,
+      "error": null
+    },
+    "assert smartNumber(49) == 270": {
+      "result": false,
+      "time": 0.03862810134887695,
+      "error": null
+    },
+    "assert smartNumber(48) == 266": {
+      "result": false,
+      "time": 0.039751291275024414,
+      "error": null
+    },
+    "assert smartNumber(45) == 258": {
+      "result": false,
+      "time": 0.04227447509765625,
+      "error": null
+    },
+    "assert smartNumber(55) == 286": {
+      "result": false,
+      "time": 0.04015922546386719,
+      "error": null
+    },
+    "assert smartNumber(54) == 285": {
+      "result": false,
+      "time": 0.03619742393493652,
+      "error": null
+    },
+    "assert smartNumber(53) == 282": {
+      "result": false,
+      "time": 0.04180121421813965,
+      "error": null
+    },
+    "assert smartNumber(46) == 260": {
+      "result": false,
+      "time": 0.039034128189086914,
+      "error": null
+    },
+    "assert smartNumber(47) == 264": {
+      "result": false,
+      "time": 0.03836202621459961,
+      "error": null
+    },
+    "assert smartNumber(51) == 276": {
+      "result": false,
+      "time": 0.05145764350891113,
+      "error": null
+    },
+    "assert smartNumber(52) == 280": {
+      "result": false,
+      "time": 0.04236769676208496,
+      "error": null
+    },
+    "assert smartNumber(995) == 2650": {
+      "result": false,
+      "time": 9.81407904624939,
+      "error": null
+    },
+    "assert smartNumber(1001) == 2665": {
+      "result": false,
+      "time": 10.019845485687256,
+      "error": "Timeout"
+    },
+    "assert smartNumber(1005) == 2670": {
+      "result": false,
+      "time": 9.976746082305908,
+      "error": null
+    },
+    "assert smartNumber(999) == 2660": {
+      "result": false,
+      "time": 10.021783590316772,
+      "error": "Timeout"
+    },
+    "assert smartNumber(996) == 2652": {
+      "result": false,
+      "time": 9.901549100875854,
+      "error": null
+    },
+    "assert smartNumber(997) == 2655": {
+      "result": false,
+      "time": 10.017155885696411,
+      "error": "Timeout"
+    },
+    "assert smartNumber(1004) == 2668": {
+      "result": false,
+      "time": 10.029119968414307,
+      "error": "Timeout"
+    },
+    "assert smartNumber(1003) == 2667": {
+      "result": false,
+      "time": 10.021185398101807,
+      "error": "Timeout"
+    },
+    "assert smartNumber(998) == 2658": {
+      "result": false,
+      "time": 10.02166485786438,
+      "error": "Timeout"
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,504 @@
+{
+  "code": "import math\n\ndef get_gcd(nums):\n    num1 = nums[0]\n    num2 = nums[1]\n    gcd = math.gcd(num1, num2)\n\n    for i in range(2, len(nums)):\n        gcd = math.gcd(gcd, nums[i])\n\n    return gcd\n",
+  "results": {
+    "assert get_gcd([2, 4, 6, 8, 16]) == 2": {
+      "result": true,
+      "time": 0.10438418388366699,
+      "error": null
+    },
+    "assert get_gcd([1, 2, 3]) == 1": {
+      "result": true,
+      "time": 0.08589529991149902,
+      "error": null
+    },
+    "assert get_gcd([2, 4, 6, 8]) == 2 ": {
+      "result": true,
+      "time": 0.0921320915222168,
+      "error": null
+    },
+    "assert get_gcd([4, 6, 9, 10, 12]) == 1": {
+      "result": true,
+      "time": 0.09259486198425293,
+      "error": null
+    },
+    "assert get_gcd([3, 5, 3, 9, 13]) == 1": {
+      "result": true,
+      "time": 0.11716890335083008,
+      "error": null
+    },
+    "assert get_gcd([6, 4, 6, 3, 20]) == 1": {
+      "result": true,
+      "time": 0.08470296859741211,
+      "error": null
+    },
+    "assert get_gcd([1, 2, 3, 9, 17]) == 1": {
+      "result": true,
+      "time": 0.11358499526977539,
+      "error": null
+    },
+    "assert get_gcd([6, 6, 3, 11, 18]) == 1": {
+      "result": true,
+      "time": 0.1009366512298584,
+      "error": null
+    },
+    "assert get_gcd([5, 4, 1, 4, 18]) == 1": {
+      "result": true,
+      "time": 0.08954548835754395,
+      "error": null
+    },
+    "assert get_gcd([6, 7, 2, 5, 20]) == 1": {
+      "result": true,
+      "time": 0.09421968460083008,
+      "error": null
+    },
+    "assert get_gcd([2, 5, 2, 11, 13]) == 1": {
+      "result": true,
+      "time": 0.11461377143859863,
+      "error": null
+    },
+    "assert get_gcd([6, 7, 1, 10, 19]) == 1": {
+      "result": true,
+      "time": 0.08022046089172363,
+      "error": null
+    },
+    "assert get_gcd([2, 4, 3, 11, 16]) == 1": {
+      "result": true,
+      "time": 0.10410809516906738,
+      "error": null
+    },
+    "assert get_gcd([5, 3, 5, 7, 18]) == 1": {
+      "result": true,
+      "time": 0.11423301696777344,
+      "error": null
+    },
+    "assert get_gcd([5, 6, 8, 7, 20]) == 1": {
+      "result": true,
+      "time": 0.10753750801086426,
+      "error": null
+    },
+    "assert get_gcd([6, 9, 5, 13, 20]) == 1": {
+      "result": true,
+      "time": 0.10545873641967773,
+      "error": null
+    },
+    "assert get_gcd([2, 2, 5, 10, 13]) == 1": {
+      "result": true,
+      "time": 0.09143567085266113,
+      "error": null
+    },
+    "assert get_gcd([2, 8, 7, 9, 14]) == 1": {
+      "result": true,
+      "time": 0.10807561874389648,
+      "error": null
+    },
+    "assert get_gcd([3, 4, 6, 10, 14]) == 1": {
+      "result": true,
+      "time": 0.10320043563842773,
+      "error": null
+    },
+    "assert get_gcd([4, 3, 3, 12, 16]) == 1": {
+      "result": true,
+      "time": 0.0964665412902832,
+      "error": null
+    },
+    "assert get_gcd([3, 2, 9, 9, 14]) == 1": {
+      "result": true,
+      "time": 0.09622955322265625,
+      "error": null
+    },
+    "assert get_gcd([7, 7, 9, 10, 13]) == 1": {
+      "result": true,
+      "time": 0.12182760238647461,
+      "error": null
+    },
+    "assert get_gcd([4, 2, 5, 10, 17]) == 1": {
+      "result": true,
+      "time": 0.10716581344604492,
+      "error": null
+    },
+    "assert get_gcd([7, 9, 4, 3, 14]) == 1": {
+      "result": true,
+      "time": 0.10644149780273438,
+      "error": null
+    },
+    "assert get_gcd([5, 7, 2, 3, 11]) == 1": {
+      "result": true,
+      "time": 0.09266233444213867,
+      "error": null
+    },
+    "assert get_gcd([7, 2, 3, 12, 14]) == 1": {
+      "result": true,
+      "time": 0.0829458236694336,
+      "error": null
+    },
+    "assert get_gcd([7, 5, 11, 7, 16]) == 1": {
+      "result": true,
+      "time": 0.08550286293029785,
+      "error": null
+    },
+    "assert get_gcd([6, 4, 11, 8, 13]) == 1": {
+      "result": true,
+      "time": 0.1157064437866211,
+      "error": null
+    },
+    "assert get_gcd([3, 3, 7, 13, 15]) == 1": {
+      "result": true,
+      "time": 0.09477114677429199,
+      "error": null
+    },
+    "assert get_gcd([1, 9, 8, 8, 14]) == 1": {
+      "result": true,
+      "time": 0.0994870662689209,
+      "error": null
+    },
+    "assert get_gcd([5, 4, 3, 7, 16]) == 1": {
+      "result": true,
+      "time": 0.0892789363861084,
+      "error": null
+    },
+    "assert get_gcd([5, 2, 11, 4, 21]) == 1": {
+      "result": true,
+      "time": 0.09483170509338379,
+      "error": null
+    },
+    "assert get_gcd([7, 8, 2, 4, 13]) == 1": {
+      "result": true,
+      "time": 0.08465361595153809,
+      "error": null
+    },
+    "assert get_gcd([5, 7, 3, 5, 19]) == 1": {
+      "result": true,
+      "time": 0.09546422958374023,
+      "error": null
+    },
+    "assert get_gcd([5, 1, 7, 5, 14]) == 1": {
+      "result": true,
+      "time": 0.0991663932800293,
+      "error": null
+    },
+    "assert get_gcd([7, 3, 7, 7, 15]) == 1": {
+      "result": true,
+      "time": 0.0815269947052002,
+      "error": null
+    },
+    "assert get_gcd([6, 2, 5]) == 1": {
+      "result": true,
+      "time": 0.10310006141662598,
+      "error": null
+    },
+    "assert get_gcd([5, 6, 1]) == 1": {
+      "result": true,
+      "time": 0.08872532844543457,
+      "error": null
+    },
+    "assert get_gcd([1, 3, 7]) == 1": {
+      "result": true,
+      "time": 0.10828590393066406,
+      "error": null
+    },
+    "assert get_gcd([4, 5, 2]) == 1": {
+      "result": true,
+      "time": 0.10696172714233398,
+      "error": null
+    },
+    "assert get_gcd([1, 4, 6]) == 1": {
+      "result": true,
+      "time": 0.08323431015014648,
+      "error": null
+    },
+    "assert get_gcd([2, 4, 3]) == 1": {
+      "result": true,
+      "time": 0.08715128898620605,
+      "error": null
+    },
+    "assert get_gcd([2, 2, 2]) == 2": {
+      "result": true,
+      "time": 0.07882881164550781,
+      "error": null
+    },
+    "assert get_gcd([1, 5, 5]) == 1": {
+      "result": true,
+      "time": 0.08524155616760254,
+      "error": null
+    },
+    "assert get_gcd([6, 2, 7]) == 1": {
+      "result": true,
+      "time": 0.10309243202209473,
+      "error": null
+    },
+    "assert get_gcd([3, 5, 3]) == 1": {
+      "result": true,
+      "time": 0.08931326866149902,
+      "error": null
+    },
+    "assert get_gcd([3, 5, 1]) == 1": {
+      "result": true,
+      "time": 0.0985267162322998,
+      "error": null
+    },
+    "assert get_gcd([1, 7, 5]) == 1": {
+      "result": true,
+      "time": 0.0932002067565918,
+      "error": null
+    },
+    "assert get_gcd([4, 5, 8]) == 1": {
+      "result": true,
+      "time": 0.08938002586364746,
+      "error": null
+    },
+    "assert get_gcd([5, 6, 6]) == 1": {
+      "result": true,
+      "time": 0.09960341453552246,
+      "error": null
+    },
+    "assert get_gcd([6, 5, 8]) == 1": {
+      "result": true,
+      "time": 0.10828018188476562,
+      "error": null
+    },
+    "assert get_gcd([1, 4, 1]) == 1": {
+      "result": true,
+      "time": 0.08372616767883301,
+      "error": null
+    },
+    "assert get_gcd([6, 6, 3]) == 3": {
+      "result": true,
+      "time": 0.09118509292602539,
+      "error": null
+    },
+    "assert get_gcd([3, 2, 3]) == 1": {
+      "result": true,
+      "time": 0.07826066017150879,
+      "error": null
+    },
+    "assert get_gcd([1, 7, 1]) == 1": {
+      "result": true,
+      "time": 0.09042215347290039,
+      "error": null
+    },
+    "assert get_gcd([6, 7, 3]) == 1": {
+      "result": true,
+      "time": 0.1056523323059082,
+      "error": null
+    },
+    "assert get_gcd([3, 1, 7]) == 1": {
+      "result": true,
+      "time": 0.08943557739257812,
+      "error": null
+    },
+    "assert get_gcd([1, 4, 5]) == 1": {
+      "result": true,
+      "time": 0.1066749095916748,
+      "error": null
+    },
+    "assert get_gcd([2, 4, 6]) == 2": {
+      "result": true,
+      "time": 0.08784270286560059,
+      "error": null
+    },
+    "assert get_gcd([3, 4, 8]) == 1": {
+      "result": true,
+      "time": 0.0745847225189209,
+      "error": null
+    },
+    "assert get_gcd([5, 2, 3]) == 1": {
+      "result": true,
+      "time": 0.0738680362701416,
+      "error": null
+    },
+    "assert get_gcd([5, 5, 8]) == 1": {
+      "result": true,
+      "time": 0.09658122062683105,
+      "error": null
+    },
+    "assert get_gcd([5, 3, 6]) == 1": {
+      "result": true,
+      "time": 0.08898496627807617,
+      "error": null
+    },
+    "assert get_gcd([5, 4, 6]) == 1": {
+      "result": true,
+      "time": 0.0986793041229248,
+      "error": null
+    },
+    "assert get_gcd([3, 2, 1]) == 1": {
+      "result": true,
+      "time": 0.09185910224914551,
+      "error": null
+    },
+    "assert get_gcd([3, 7, 2]) == 1": {
+      "result": true,
+      "time": 0.09757781028747559,
+      "error": null
+    },
+    "assert get_gcd([1, 7, 8, 12]) == 1": {
+      "result": true,
+      "time": 0.09560728073120117,
+      "error": null
+    },
+    "assert get_gcd([7, 8, 8, 4]) == 1": {
+      "result": true,
+      "time": 0.0881340503692627,
+      "error": null
+    },
+    "assert get_gcd([7, 7, 4, 10]) == 1": {
+      "result": true,
+      "time": 0.07215690612792969,
+      "error": null
+    },
+    "assert get_gcd([3, 1, 4, 11]) == 1": {
+      "result": true,
+      "time": 0.09054398536682129,
+      "error": null
+    },
+    "assert get_gcd([2, 9, 8, 12]) == 1": {
+      "result": true,
+      "time": 0.10446691513061523,
+      "error": null
+    },
+    "assert get_gcd([7, 8, 11, 12]) == 1": {
+      "result": true,
+      "time": 0.08120894432067871,
+      "error": null
+    },
+    "assert get_gcd([6, 2, 10, 4]) == 2": {
+      "result": true,
+      "time": 0.0962975025177002,
+      "error": null
+    },
+    "assert get_gcd([7, 3, 3, 6]) == 1": {
+      "result": true,
+      "time": 0.08123397827148438,
+      "error": null
+    },
+    "assert get_gcd([3, 4, 8, 12]) == 1": {
+      "result": true,
+      "time": 0.11106204986572266,
+      "error": null
+    },
+    "assert get_gcd([6, 4, 1, 10]) == 1": {
+      "result": true,
+      "time": 0.10160279273986816,
+      "error": null
+    },
+    "assert get_gcd([1, 9, 7, 6]) == 1": {
+      "result": true,
+      "time": 0.10657143592834473,
+      "error": null
+    },
+    "assert get_gcd([4, 5, 11, 9]) == 1": {
+      "result": true,
+      "time": 0.10937833786010742,
+      "error": null
+    },
+    "assert get_gcd([6, 6, 5, 5]) == 1": {
+      "result": true,
+      "time": 0.10442852973937988,
+      "error": null
+    },
+    "assert get_gcd([5, 6, 9, 6]) == 1": {
+      "result": true,
+      "time": 0.07189631462097168,
+      "error": null
+    },
+    "assert get_gcd([4, 4, 3, 7]) == 1": {
+      "result": true,
+      "time": 0.09661531448364258,
+      "error": null
+    },
+    "assert get_gcd([3, 8, 4, 9]) == 1": {
+      "result": true,
+      "time": 0.08618688583374023,
+      "error": null
+    },
+    "assert get_gcd([1, 9, 6, 3]) == 1": {
+      "result": true,
+      "time": 0.09939837455749512,
+      "error": null
+    },
+    "assert get_gcd([2, 9, 11, 7]) == 1": {
+      "result": true,
+      "time": 0.11230611801147461,
+      "error": null
+    },
+    "assert get_gcd([3, 3, 6, 9]) == 3": {
+      "result": true,
+      "time": 0.10099983215332031,
+      "error": null
+    },
+    "assert get_gcd([5, 6, 10, 7]) == 1": {
+      "result": true,
+      "time": 0.08299827575683594,
+      "error": null
+    },
+    "assert get_gcd([1, 9, 2, 9]) == 1": {
+      "result": true,
+      "time": 0.0773615837097168,
+      "error": null
+    },
+    "assert get_gcd([3, 5, 4, 6]) == 1": {
+      "result": true,
+      "time": 0.09031033515930176,
+      "error": null
+    },
+    "assert get_gcd([7, 7, 11, 8]) == 1": {
+      "result": true,
+      "time": 0.0975034236907959,
+      "error": null
+    },
+    "assert get_gcd([4, 7, 6, 5]) == 1": {
+      "result": true,
+      "time": 0.06890749931335449,
+      "error": null
+    },
+    "assert get_gcd([7, 8, 4, 7]) == 1": {
+      "result": true,
+      "time": 0.10936355590820312,
+      "error": null
+    },
+    "assert get_gcd([5, 2, 7, 8]) == 1": {
+      "result": true,
+      "time": 0.09441971778869629,
+      "error": null
+    },
+    "assert get_gcd([1, 3, 5, 9]) == 1": {
+      "result": true,
+      "time": 0.08420705795288086,
+      "error": null
+    },
+    "assert get_gcd([1, 2, 9, 12]) == 1": {
+      "result": true,
+      "time": 0.08549666404724121,
+      "error": null
+    },
+    "assert get_gcd([4, 7, 3, 13]) == 1": {
+      "result": true,
+      "time": 0.10026931762695312,
+      "error": null
+    },
+    "assert get_gcd([1, 3, 7, 8]) == 1": {
+      "result": true,
+      "time": 0.07573628425598145,
+      "error": null
+    },
+    "assert get_gcd([7, 1, 11, 3]) == 1": {
+      "result": true,
+      "time": 0.08930301666259766,
+      "error": null
+    },
+    "assert get_gcd([7, 2, 3, 4]) == 1": {
+      "result": true,
+      "time": 0.06494569778442383,
+      "error": null
+    },
+    "assert get_gcd([1, 7, 4, 3]) == 1": {
+      "result": true,
+      "time": 0.07820534706115723,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

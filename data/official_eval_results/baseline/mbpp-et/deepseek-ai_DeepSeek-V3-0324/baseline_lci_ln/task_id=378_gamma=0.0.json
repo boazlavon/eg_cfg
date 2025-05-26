@@ -1,0 +1,519 @@
+{
+  "code": "def move_first(lst):\n    if len(lst) == 0:\n        return lst\n    last_element = lst[-1]\n    new_list = [last_element]\n    for i in range(len(lst) - 1):\n        current_element = lst[i]\n        new_list.append(current_element)\n    return new_list",
+  "results": {
+    "assert move_first([1,2,3,4]) == [4,1,2,3]": {
+      "result": true,
+      "time": 0.040840864181518555,
+      "error": null
+    },
+    "assert move_first([0,1,2,3]) == [3,0,1,2]": {
+      "result": true,
+      "time": 0.0411074161529541,
+      "error": null
+    },
+    "assert move_first([9,8,7,1]) == [1,9,8,7]": {
+      "result": true,
+      "time": 0.040472984313964844,
+      "error": null
+    },
+    "assert move_first([1, 2, 5, 3]) == [3, 1, 2, 5]": {
+      "result": true,
+      "time": 0.04446578025817871,
+      "error": null
+    },
+    "assert move_first([6, 7, 8, 6]) == [6, 6, 7, 8]": {
+      "result": true,
+      "time": 0.04874253273010254,
+      "error": null
+    },
+    "assert move_first([4, 6, 4, 9]) == [9, 4, 6, 4]": {
+      "result": true,
+      "time": 0.03863072395324707,
+      "error": null
+    },
+    "assert move_first([3, 7, 1, 4]) == [4, 3, 7, 1]": {
+      "result": true,
+      "time": 0.03955531120300293,
+      "error": null
+    },
+    "assert move_first([4, 5, 7, 5]) == [5, 4, 5, 7]": {
+      "result": true,
+      "time": 0.04561734199523926,
+      "error": null
+    },
+    "assert move_first([1, 4, 5, 5]) == [5, 1, 4, 5]": {
+      "result": true,
+      "time": 0.04308056831359863,
+      "error": null
+    },
+    "assert move_first([4, 6, 5, 3]) == [3, 4, 6, 5]": {
+      "result": true,
+      "time": 0.04901862144470215,
+      "error": null
+    },
+    "assert move_first([1, 3, 5, 9]) == [9, 1, 3, 5]": {
+      "result": true,
+      "time": 0.039949893951416016,
+      "error": null
+    },
+    "assert move_first([5, 2, 8, 1]) == [1, 5, 2, 8]": {
+      "result": true,
+      "time": 0.03380846977233887,
+      "error": null
+    },
+    "assert move_first([4, 3, 3, 6]) == [6, 4, 3, 3]": {
+      "result": true,
+      "time": 0.05149340629577637,
+      "error": null
+    },
+    "assert move_first([6, 6, 3, 7]) == [7, 6, 6, 3]": {
+      "result": true,
+      "time": 0.04960346221923828,
+      "error": null
+    },
+    "assert move_first([1, 4, 3, 4]) == [4, 1, 4, 3]": {
+      "result": true,
+      "time": 0.04474639892578125,
+      "error": null
+    },
+    "assert move_first([6, 1, 6, 8]) == [8, 6, 1, 6]": {
+      "result": true,
+      "time": 0.04533720016479492,
+      "error": null
+    },
+    "assert move_first([4, 7, 5, 1]) == [1, 4, 7, 5]": {
+      "result": true,
+      "time": 0.0406186580657959,
+      "error": null
+    },
+    "assert move_first([2, 2, 5, 5]) == [5, 2, 2, 5]": {
+      "result": true,
+      "time": 0.04454159736633301,
+      "error": null
+    },
+    "assert move_first([2, 6, 3, 3]) == [3, 2, 6, 3]": {
+      "result": true,
+      "time": 0.03598737716674805,
+      "error": null
+    },
+    "assert move_first([2, 3, 5, 9]) == [9, 2, 3, 5]": {
+      "result": true,
+      "time": 0.04391050338745117,
+      "error": null
+    },
+    "assert move_first([4, 2, 8, 7]) == [7, 4, 2, 8]": {
+      "result": true,
+      "time": 0.04513096809387207,
+      "error": null
+    },
+    "assert move_first([4, 3, 2, 6]) == [6, 4, 3, 2]": {
+      "result": true,
+      "time": 0.0378415584564209,
+      "error": null
+    },
+    "assert move_first([1, 4, 5, 8]) == [8, 1, 4, 5]": {
+      "result": true,
+      "time": 0.04080462455749512,
+      "error": null
+    },
+    "assert move_first([1, 1, 3, 3]) == [3, 1, 1, 3]": {
+      "result": true,
+      "time": 0.040186405181884766,
+      "error": null
+    },
+    "assert move_first([2, 1, 5, 3]) == [3, 2, 1, 5]": {
+      "result": true,
+      "time": 0.04133009910583496,
+      "error": null
+    },
+    "assert move_first([3, 5, 3, 5]) == [5, 3, 5, 3]": {
+      "result": true,
+      "time": 0.04528093338012695,
+      "error": null
+    },
+    "assert move_first([5, 4, 1, 1]) == [1, 5, 4, 1]": {
+      "result": true,
+      "time": 0.06414318084716797,
+      "error": null
+    },
+    "assert move_first([4, 2, 4, 6]) == [6, 4, 2, 4]": {
+      "result": true,
+      "time": 0.04928922653198242,
+      "error": null
+    },
+    "assert move_first([6, 1, 6, 5]) == [5, 6, 1, 6]": {
+      "result": true,
+      "time": 0.054938316345214844,
+      "error": null
+    },
+    "assert move_first([3, 7, 8, 4]) == [4, 3, 7, 8]": {
+      "result": true,
+      "time": 0.04903006553649902,
+      "error": null
+    },
+    "assert move_first([6, 1, 8, 9]) == [9, 6, 1, 8]": {
+      "result": true,
+      "time": 0.04920649528503418,
+      "error": null
+    },
+    "assert move_first([4, 7, 7, 9]) == [9, 4, 7, 7]": {
+      "result": true,
+      "time": 0.058504581451416016,
+      "error": null
+    },
+    "assert move_first([5, 2, 6, 4]) == [4, 5, 2, 6]": {
+      "result": true,
+      "time": 0.05843615531921387,
+      "error": null
+    },
+    "assert move_first([4, 2, 5, 6]) == [6, 4, 2, 5]": {
+      "result": true,
+      "time": 0.049809932708740234,
+      "error": null
+    },
+    "assert move_first([3, 5, 2, 4]) == [4, 3, 5, 2]": {
+      "result": true,
+      "time": 0.04367780685424805,
+      "error": null
+    },
+    "assert move_first([6, 2, 5, 6]) == [6, 6, 2, 5]": {
+      "result": true,
+      "time": 0.05382585525512695,
+      "error": null
+    },
+    "assert move_first([4, 3, 1, 3]) == [3, 4, 3, 1]": {
+      "result": true,
+      "time": 0.05397391319274902,
+      "error": null
+    },
+    "assert move_first([2, 1, 7, 2]) == [2, 2, 1, 7]": {
+      "result": true,
+      "time": 0.06647801399230957,
+      "error": null
+    },
+    "assert move_first([1, 5, 3, 3]) == [3, 1, 5, 3]": {
+      "result": true,
+      "time": 0.039847373962402344,
+      "error": null
+    },
+    "assert move_first([2, 6, 6, 4]) == [4, 2, 6, 6]": {
+      "result": true,
+      "time": 0.05288505554199219,
+      "error": null
+    },
+    "assert move_first([3, 1, 1, 2]) == [2, 3, 1, 1]": {
+      "result": true,
+      "time": 0.04892444610595703,
+      "error": null
+    },
+    "assert move_first([5, 6, 1, 3]) == [3, 5, 6, 1]": {
+      "result": true,
+      "time": 0.05406951904296875,
+      "error": null
+    },
+    "assert move_first([1, 6, 2, 7]) == [7, 1, 6, 2]": {
+      "result": true,
+      "time": 0.04737544059753418,
+      "error": null
+    },
+    "assert move_first([5, 2, 1, 3]) == [3, 5, 2, 1]": {
+      "result": true,
+      "time": 0.045113563537597656,
+      "error": null
+    },
+    "assert move_first([3, 2, 1, 6]) == [6, 3, 2, 1]": {
+      "result": true,
+      "time": 0.06210589408874512,
+      "error": null
+    },
+    "assert move_first([1, 2, 6, 3]) == [3, 1, 2, 6]": {
+      "result": true,
+      "time": 0.05875110626220703,
+      "error": null
+    },
+    "assert move_first([1, 1, 3, 6]) == [6, 1, 1, 3]": {
+      "result": true,
+      "time": 0.06495404243469238,
+      "error": null
+    },
+    "assert move_first([2, 6, 3, 5]) == [5, 2, 6, 3]": {
+      "result": true,
+      "time": 0.06264495849609375,
+      "error": null
+    },
+    "assert move_first([3, 6, 5, 4]) == [4, 3, 6, 5]": {
+      "result": true,
+      "time": 0.052353620529174805,
+      "error": null
+    },
+    "assert move_first([5, 2, 3, 5]) == [5, 5, 2, 3]": {
+      "result": true,
+      "time": 0.03867626190185547,
+      "error": null
+    },
+    "assert move_first([5, 4, 6, 8]) == [8, 5, 4, 6]": {
+      "result": true,
+      "time": 0.04245138168334961,
+      "error": null
+    },
+    "assert move_first([4, 3, 6, 2]) == [2, 4, 3, 6]": {
+      "result": true,
+      "time": 0.04015707969665527,
+      "error": null
+    },
+    "assert move_first([4, 3, 5, 5]) == [5, 4, 3, 5]": {
+      "result": true,
+      "time": 0.04441118240356445,
+      "error": null
+    },
+    "assert move_first([1, 3, 2, 1]) == [1, 1, 3, 2]": {
+      "result": true,
+      "time": 0.040358781814575195,
+      "error": null
+    },
+    "assert move_first([1, 2, 2, 8]) == [8, 1, 2, 2]": {
+      "result": true,
+      "time": 0.043402910232543945,
+      "error": null
+    },
+    "assert move_first([5, 3, 5, 2]) == [2, 5, 3, 5]": {
+      "result": true,
+      "time": 0.03410935401916504,
+      "error": null
+    },
+    "assert move_first([1, 1, 7, 4]) == [4, 1, 1, 7]": {
+      "result": true,
+      "time": 0.05379533767700195,
+      "error": null
+    },
+    "assert move_first([1, 5, 3, 7]) == [7, 1, 5, 3]": {
+      "result": true,
+      "time": 0.04944205284118652,
+      "error": null
+    },
+    "assert move_first([3, 3, 3, 6]) == [6, 3, 3, 3]": {
+      "result": true,
+      "time": 0.045599937438964844,
+      "error": null
+    },
+    "assert move_first([1, 4, 3, 6]) == [6, 1, 4, 3]": {
+      "result": true,
+      "time": 0.04646730422973633,
+      "error": null
+    },
+    "assert move_first([3, 1, 3, 5]) == [5, 3, 1, 3]": {
+      "result": true,
+      "time": 0.05555248260498047,
+      "error": null
+    },
+    "assert move_first([1, 4, 7, 1]) == [1, 1, 4, 7]": {
+      "result": true,
+      "time": 0.04457974433898926,
+      "error": null
+    },
+    "assert move_first([5, 1, 7, 4]) == [4, 5, 1, 7]": {
+      "result": true,
+      "time": 0.03975343704223633,
+      "error": null
+    },
+    "assert move_first([4, 2, 5, 5]) == [5, 4, 2, 5]": {
+      "result": true,
+      "time": 0.04171323776245117,
+      "error": null
+    },
+    "assert move_first([5, 2, 6, 6]) == [6, 5, 2, 6]": {
+      "result": true,
+      "time": 0.0399014949798584,
+      "error": null
+    },
+    "assert move_first([1, 3, 3, 8]) == [8, 1, 3, 3]": {
+      "result": true,
+      "time": 0.03964710235595703,
+      "error": null
+    },
+    "assert move_first([4, 6, 1, 6]) == [6, 4, 6, 1]": {
+      "result": true,
+      "time": 0.05322861671447754,
+      "error": null
+    },
+    "assert move_first([4, 3, 5, 7]) == [7, 4, 3, 5]": {
+      "result": true,
+      "time": 0.04026603698730469,
+      "error": null
+    },
+    "assert move_first([3, 3, 1, 7]) == [7, 3, 3, 1]": {
+      "result": true,
+      "time": 0.052767038345336914,
+      "error": null
+    },
+    "assert move_first([8, 7, 11, 4]) == [4, 8, 7, 11]": {
+      "result": true,
+      "time": 0.035520076751708984,
+      "error": null
+    },
+    "assert move_first([6, 12, 5, 2]) == [2, 6, 12, 5]": {
+      "result": true,
+      "time": 0.037358999252319336,
+      "error": null
+    },
+    "assert move_first([8, 13, 5, 2]) == [2, 8, 13, 5]": {
+      "result": true,
+      "time": 0.05062389373779297,
+      "error": null
+    },
+    "assert move_first([7, 3, 2, 3]) == [3, 7, 3, 2]": {
+      "result": true,
+      "time": 0.04636883735656738,
+      "error": null
+    },
+    "assert move_first([4, 7, 8, 4]) == [4, 4, 7, 8]": {
+      "result": true,
+      "time": 0.043517112731933594,
+      "error": null
+    },
+    "assert move_first([9, 9, 10, 3]) == [3, 9, 9, 10]": {
+      "result": true,
+      "time": 0.04484891891479492,
+      "error": null
+    },
+    "assert move_first([5, 9, 4, 5]) == [5, 5, 9, 4]": {
+      "result": true,
+      "time": 0.05751991271972656,
+      "error": null
+    },
+    "assert move_first([14, 9, 6, 3]) == [3, 14, 9, 6]": {
+      "result": true,
+      "time": 0.04491114616394043,
+      "error": null
+    },
+    "assert move_first([10, 4, 7, 2]) == [2, 10, 4, 7]": {
+      "result": true,
+      "time": 0.04697418212890625,
+      "error": null
+    },
+    "assert move_first([6, 13, 7, 6]) == [6, 6, 13, 7]": {
+      "result": true,
+      "time": 0.03761887550354004,
+      "error": null
+    },
+    "assert move_first([9, 8, 3, 6]) == [6, 9, 8, 3]": {
+      "result": true,
+      "time": 0.038743019104003906,
+      "error": null
+    },
+    "assert move_first([5, 7, 10, 3]) == [3, 5, 7, 10]": {
+      "result": true,
+      "time": 0.0498960018157959,
+      "error": null
+    },
+    "assert move_first([13, 7, 12, 1]) == [1, 13, 7, 12]": {
+      "result": true,
+      "time": 0.04276871681213379,
+      "error": null
+    },
+    "assert move_first([13, 13, 12, 4]) == [4, 13, 13, 12]": {
+      "result": true,
+      "time": 0.04407644271850586,
+      "error": null
+    },
+    "assert move_first([12, 4, 4, 4]) == [4, 12, 4, 4]": {
+      "result": true,
+      "time": 0.04331231117248535,
+      "error": null
+    },
+    "assert move_first([14, 4, 8, 4]) == [4, 14, 4, 8]": {
+      "result": true,
+      "time": 0.05184626579284668,
+      "error": null
+    },
+    "assert move_first([11, 8, 4, 6]) == [6, 11, 8, 4]": {
+      "result": true,
+      "time": 0.061736106872558594,
+      "error": null
+    },
+    "assert move_first([11, 13, 7, 1]) == [1, 11, 13, 7]": {
+      "result": true,
+      "time": 0.03969001770019531,
+      "error": null
+    },
+    "assert move_first([10, 10, 5, 6]) == [6, 10, 10, 5]": {
+      "result": true,
+      "time": 0.0435786247253418,
+      "error": null
+    },
+    "assert move_first([11, 6, 11, 6]) == [6, 11, 6, 11]": {
+      "result": true,
+      "time": 0.03837871551513672,
+      "error": null
+    },
+    "assert move_first([6, 9, 4, 4]) == [4, 6, 9, 4]": {
+      "result": true,
+      "time": 0.041233062744140625,
+      "error": null
+    },
+    "assert move_first([10, 13, 12, 4]) == [4, 10, 13, 12]": {
+      "result": true,
+      "time": 0.03648233413696289,
+      "error": null
+    },
+    "assert move_first([11, 13, 3, 1]) == [1, 11, 13, 3]": {
+      "result": true,
+      "time": 0.032819509506225586,
+      "error": null
+    },
+    "assert move_first([12, 9, 7, 2]) == [2, 12, 9, 7]": {
+      "result": true,
+      "time": 0.04157114028930664,
+      "error": null
+    },
+    "assert move_first([14, 9, 10, 2]) == [2, 14, 9, 10]": {
+      "result": true,
+      "time": 0.0503232479095459,
+      "error": null
+    },
+    "assert move_first([6, 9, 5, 2]) == [2, 6, 9, 5]": {
+      "result": true,
+      "time": 0.037412166595458984,
+      "error": null
+    },
+    "assert move_first([9, 7, 6, 3]) == [3, 9, 7, 6]": {
+      "result": true,
+      "time": 0.04099607467651367,
+      "error": null
+    },
+    "assert move_first([8, 11, 11, 5]) == [5, 8, 11, 11]": {
+      "result": true,
+      "time": 0.043823957443237305,
+      "error": null
+    },
+    "assert move_first([10, 13, 8, 2]) == [2, 10, 13, 8]": {
+      "result": true,
+      "time": 0.04194521903991699,
+      "error": null
+    },
+    "assert move_first([12, 8, 10, 2]) == [2, 12, 8, 10]": {
+      "result": true,
+      "time": 0.044440269470214844,
+      "error": null
+    },
+    "assert move_first([11, 4, 9, 5]) == [5, 11, 4, 9]": {
+      "result": true,
+      "time": 0.05259299278259277,
+      "error": null
+    },
+    "assert move_first([5, 9, 3, 6]) == [6, 5, 9, 3]": {
+      "result": true,
+      "time": 0.041797637939453125,
+      "error": null
+    },
+    "assert move_first([7, 11, 3, 4]) == [4, 7, 11, 3]": {
+      "result": true,
+      "time": 0.0485529899597168,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

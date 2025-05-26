@@ -1,0 +1,519 @@
+{
+  "code": "def replace_max_specialchar(input_string, n):\n    special_chars = [' ', ',', '.']\n    result = []\n    replacement_count = 0\n    for char in input_string:\n        if char in special_chars and replacement_count < n:\n            result.append(':')\n            replacement_count += 1\n        else:\n            result.append(char)\n    return ''.join(result)",
+  "results": {
+    "assert replace_max_specialchar('Python language, Programming language.',2)==('Python:language: Programming language.')": {
+      "result": true,
+      "time": 0.05474066734313965,
+      "error": null
+    },
+    "assert replace_max_specialchar('a b c,d e f',3)==('a:b:c:d e f')": {
+      "result": true,
+      "time": 0.055782318115234375,
+      "error": null
+    },
+    "assert replace_max_specialchar('ram reshma,ram rahim',1)==('ram:reshma,ram rahim')": {
+      "result": true,
+      "time": 0.05464529991149902,
+      "error": null
+    },
+    "assert replace_max_specialchar('.IKoCW,IWjBH.tPnxeZGCFuAPeoeF GFfy.Ia,', 6) == \":IKoCW:IWjBH:tPnxeZGCFuAPeoeF:GFfy:Ia:\"": {
+      "result": true,
+      "time": 0.058409690856933594,
+      "error": null
+    },
+    "assert replace_max_specialchar('LtNIpZjEwDufqBnkcnpISzaNYFJoAhINkbGYMo', 3) == \"LtNIpZjEwDufqBnkcnpISzaNYFJoAhINkbGYMo\"": {
+      "result": true,
+      "time": 0.06906795501708984,
+      "error": null
+    },
+    "assert replace_max_specialchar('pmTRmPQJ,ESIfOl,uT,notlVKdPAdfaWu', 2) == \"pmTRmPQJ:ESIfOl:uT,notlVKdPAdfaWu\"": {
+      "result": true,
+      "time": 0.05380964279174805,
+      "error": null
+    },
+    "assert replace_max_specialchar('wkJhGtZwQvDCt WrRqpDEaMLzqVIffYRmxTudZ,ZV', 2) == \"wkJhGtZwQvDCt:WrRqpDEaMLzqVIffYRmxTudZ:ZV\"": {
+      "result": true,
+      "time": 0.05653953552246094,
+      "error": null
+    },
+    "assert replace_max_specialchar(',doUYFZUmpIK.RFZsIB,PBVKoFFwEmrbAaxAYf', 2) == \":doUYFZUmpIK:RFZsIB,PBVKoFFwEmrbAaxAYf\"": {
+      "result": true,
+      "time": 0.05385613441467285,
+      "error": null
+    },
+    "assert replace_max_specialchar('sxRt,TMqdZkjEwuydBjI Coou,AzqwbEhgi', 4) == \"sxRt:TMqdZkjEwuydBjI:Coou:AzqwbEhgi\"": {
+      "result": true,
+      "time": 0.06177544593811035,
+      "error": null
+    },
+    "assert replace_max_specialchar('BZFTDawKyUPNZDodURJCZvzfKAMsRXFMWJVuhh', 6) == \"BZFTDawKyUPNZDodURJCZvzfKAMsRXFMWJVuhh\"": {
+      "result": true,
+      "time": 0.05518054962158203,
+      "error": null
+    },
+    "assert replace_max_specialchar('zBHqixY eWEuBP,aHXeyTqXVtokRvygwaynCTCF', 4) == \"zBHqixY:eWEuBP:aHXeyTqXVtokRvygwaynCTCF\"": {
+      "result": true,
+      "time": 0.0530242919921875,
+      "error": null
+    },
+    "assert replace_max_specialchar('VtDPiQgEPteAQA.uJDJbwWeLLoSJsVy,x', 3) == \"VtDPiQgEPteAQA:uJDJbwWeLLoSJsVy:x\"": {
+      "result": true,
+      "time": 0.050889015197753906,
+      "error": null
+    },
+    "assert replace_max_specialchar('qzsxTlfxjHBZOtomBAZvodbw.pdUweiUqYs', 7) == \"qzsxTlfxjHBZOtomBAZvodbw:pdUweiUqYs\"": {
+      "result": true,
+      "time": 0.055403947830200195,
+      "error": null
+    },
+    "assert replace_max_specialchar('iiKIJSUquAOELVKwd XbdEUfLSuDPQcwzQFaTAaG.Z', 5) == \"iiKIJSUquAOELVKwd:XbdEUfLSuDPQcwzQFaTAaG:Z\"": {
+      "result": true,
+      "time": 0.0601043701171875,
+      "error": null
+    },
+    "assert replace_max_specialchar('PiMXO,ZpE j sIrhsSnFUz gyL Raj.cJkMQ', 6) == \"PiMXO:ZpE:j:sIrhsSnFUz:gyL:Raj:cJkMQ\"": {
+      "result": true,
+      "time": 0.05583024024963379,
+      "error": null
+    },
+    "assert replace_max_specialchar('bRJnfAmQJZEytTogYQxnkJtqZMgVwMJurKowhAIDk', 3) == \"bRJnfAmQJZEytTogYQxnkJtqZMgVwMJurKowhAIDk\"": {
+      "result": true,
+      "time": 0.046500205993652344,
+      "error": null
+    },
+    "assert replace_max_specialchar('Ep,h.rBFZNgBFvKtDQWtCoVZFbCZMuscvEkswEAZ', 6) == \"Ep:h:rBFZNgBFvKtDQWtCoVZFbCZMuscvEkswEAZ\"": {
+      "result": true,
+      "time": 0.058673858642578125,
+      "error": null
+    },
+    "assert replace_max_specialchar('mzvZSwyhOmeYYmXAfLyPJzqeXXNscussqWWwHHLG', 2) == \"mzvZSwyhOmeYYmXAfLyPJzqeXXNscussqWWwHHLG\"": {
+      "result": true,
+      "time": 0.05373668670654297,
+      "error": null
+    },
+    "assert replace_max_specialchar('.bpNVqiufJMPeRlDFYOiPsLbv PMRRWuUaShF', 5) == \":bpNVqiufJMPeRlDFYOiPsLbv:PMRRWuUaShF\"": {
+      "result": true,
+      "time": 0.053328752517700195,
+      "error": null
+    },
+    "assert replace_max_specialchar('ljZNozHNQzufqCYLXCQvtDlFhJpt.BfjLA,fEknK', 6) == \"ljZNozHNQzufqCYLXCQvtDlFhJpt:BfjLA:fEknK\"": {
+      "result": true,
+      "time": 0.061441898345947266,
+      "error": null
+    },
+    "assert replace_max_specialchar('HPwzEYXaacEKMd,XEOsfLzMDfoWhHztzsmKlPF', 5) == \"HPwzEYXaacEKMd:XEOsfLzMDfoWhHztzsmKlPF\"": {
+      "result": true,
+      "time": 0.05812406539916992,
+      "error": null
+    },
+    "assert replace_max_specialchar('WKfulNXeeTSXxrfgQQQqhPYFEfIHuuExdbITmgaLUe', 2) == \"WKfulNXeeTSXxrfgQQQqhPYFEfIHuuExdbITmgaLUe\"": {
+      "result": true,
+      "time": 0.047084808349609375,
+      "error": null
+    },
+    "assert replace_max_specialchar('VwHAWoPfdWxWhUrNGxDUfdL,.QnVNMYdnnqpwEa', 1) == \"VwHAWoPfdWxWhUrNGxDUfdL:.QnVNMYdnnqpwEa\"": {
+      "result": true,
+      "time": 0.0456385612487793,
+      "error": null
+    },
+    "assert replace_max_specialchar('tvBTmTVav,SPXMMXvRViXcTMxgRRUJwShyINPT', 4) == \"tvBTmTVav:SPXMMXvRViXcTMxgRRUJwShyINPT\"": {
+      "result": true,
+      "time": 0.06409788131713867,
+      "error": null
+    },
+    "assert replace_max_specialchar('FltJPJhXHPrPxscHenb, XUPdAFcBZTIvYn', 6) == \"FltJPJhXHPrPxscHenb::XUPdAFcBZTIvYn\"": {
+      "result": true,
+      "time": 0.052513837814331055,
+      "error": null
+    },
+    "assert replace_max_specialchar('kVzhfoPTBMlFZTvGzpMm YyomtyTiC.PiIRqLxrW', 3) == \"kVzhfoPTBMlFZTvGzpMm:YyomtyTiC:PiIRqLxrW\"": {
+      "result": true,
+      "time": 0.05195260047912598,
+      "error": null
+    },
+    "assert replace_max_specialchar('nfiGpHKoLodDjwuvrfiiJfzrIvlOPTXNCX', 3) == \"nfiGpHKoLodDjwuvrfiiJfzrIvlOPTXNCX\"": {
+      "result": true,
+      "time": 0.07249832153320312,
+      "error": null
+    },
+    "assert replace_max_specialchar('BvYLMqwFEAutDRh eKjyRghf V..jAuIaxf', 1) == \"BvYLMqwFEAutDRh:eKjyRghf V..jAuIaxf\"": {
+      "result": true,
+      "time": 0.0607304573059082,
+      "error": null
+    },
+    "assert replace_max_specialchar('hVzYQTOhZjbngMvzbeBJK pyRH wrNYEAcfveOen', 5) == \"hVzYQTOhZjbngMvzbeBJK:pyRH:wrNYEAcfveOen\"": {
+      "result": true,
+      "time": 0.06439495086669922,
+      "error": null
+    },
+    "assert replace_max_specialchar('TkwbjIMxbEyJIsPTseUigOCPVeC cEeM.BRU', 3) == \"TkwbjIMxbEyJIsPTseUigOCPVeC:cEeM:BRU\"": {
+      "result": true,
+      "time": 0.05244016647338867,
+      "error": null
+    },
+    "assert replace_max_specialchar('XHizDKnkk.BfKVHiSWuofLWvkuHkcanxEh', 2) == \"XHizDKnkk:BfKVHiSWuofLWvkuHkcanxEh\"": {
+      "result": true,
+      "time": 0.05947685241699219,
+      "error": null
+    },
+    "assert replace_max_specialchar('JVDca,SzmpKlxymu YXGV,iVWTOHzUSvVl', 2) == \"JVDca:SzmpKlxymu:YXGV,iVWTOHzUSvVl\"": {
+      "result": true,
+      "time": 0.05146908760070801,
+      "error": null
+    },
+    "assert replace_max_specialchar('e.bYMKeNLiOiocXRLGmsKK,mHbKaoiiiPwTktGSIN', 2) == \"e:bYMKeNLiOiocXRLGmsKK:mHbKaoiiiPwTktGSIN\"": {
+      "result": true,
+      "time": 0.06029367446899414,
+      "error": null
+    },
+    "assert replace_max_specialchar('b.bWxUafqNBCbCJGYxtVLidszsgFXe.ZD', 5) == \"b:bWxUafqNBCbCJGYxtVLidszsgFXe:ZD\"": {
+      "result": true,
+      "time": 0.05538606643676758,
+      "error": null
+    },
+    "assert replace_max_specialchar('XKMYePvVKRSotyPHqPdVUnNrRKDsPT.csL,TW', 7) == \"XKMYePvVKRSotyPHqPdVUnNrRKDsPT:csL:TW\"": {
+      "result": true,
+      "time": 0.05062532424926758,
+      "error": null
+    },
+    "assert replace_max_specialchar('cCJgKNHcQG.SgOMRvpvkbKAzoiRNddjNySo', 2) == \"cCJgKNHcQG:SgOMRvpvkbKAzoiRNddjNySo\"": {
+      "result": true,
+      "time": 0.039089202880859375,
+      "error": null
+    },
+    "assert replace_max_specialchar('zw pnsojfwd ', 2) == \"zw:pnsojfwd:\"": {
+      "result": true,
+      "time": 0.053385019302368164,
+      "error": null
+    },
+    "assert replace_max_specialchar('pndbpf', 2) == \"pndbpf\"": {
+      "result": true,
+      "time": 0.044168949127197266,
+      "error": null
+    },
+    "assert replace_max_specialchar('x jid,jxlhm', 4) == \"x:jid:jxlhm\"": {
+      "result": true,
+      "time": 0.05231595039367676,
+      "error": null
+    },
+    "assert replace_max_specialchar('ptpbrc ttqrtce', 6) == \"ptpbrc:ttqrtce\"": {
+      "result": true,
+      "time": 0.03767681121826172,
+      "error": null
+    },
+    "assert replace_max_specialchar(' opojzpi', 3) == \":opojzpi\"": {
+      "result": true,
+      "time": 0.0498199462890625,
+      "error": null
+    },
+    "assert replace_max_specialchar('kjigqmhmrztnu', 6) == \"kjigqmhmrztnu\"": {
+      "result": true,
+      "time": 0.03963327407836914,
+      "error": null
+    },
+    "assert replace_max_specialchar(',yerkmeiu', 2) == \":yerkmeiu\"": {
+      "result": true,
+      "time": 0.049407005310058594,
+      "error": null
+    },
+    "assert replace_max_specialchar(' qsshupcwg', 8) == \":qsshupcwg\"": {
+      "result": true,
+      "time": 0.043216705322265625,
+      "error": null
+    },
+    "assert replace_max_specialchar('mjo sc jln', 1) == \"mjo:sc jln\"": {
+      "result": true,
+      "time": 0.04386782646179199,
+      "error": null
+    },
+    "assert replace_max_specialchar('ooqltuolkitq', 6) == \"ooqltuolkitq\"": {
+      "result": true,
+      "time": 0.05299019813537598,
+      "error": null
+    },
+    "assert replace_max_specialchar('zpxvsmxjwz', 2) == \"zpxvsmxjwz\"": {
+      "result": true,
+      "time": 0.043605804443359375,
+      "error": null
+    },
+    "assert replace_max_specialchar('mtmcndvmyj', 8) == \"mtmcndvmyj\"": {
+      "result": true,
+      "time": 0.046256065368652344,
+      "error": null
+    },
+    "assert replace_max_specialchar('kxkhgxaoqj ', 6) == \"kxkhgxaoqj:\"": {
+      "result": true,
+      "time": 0.04834747314453125,
+      "error": null
+    },
+    "assert replace_max_specialchar('lvcj,lhiomaorz', 5) == \"lvcj:lhiomaorz\"": {
+      "result": true,
+      "time": 0.047567129135131836,
+      "error": null
+    },
+    "assert replace_max_specialchar('kskyp xq,e ', 7) == \"kskyp:xq:e:\"": {
+      "result": true,
+      "time": 0.054065704345703125,
+      "error": null
+    },
+    "assert replace_max_specialchar('hyuwdzdvh', 6) == \"hyuwdzdvh\"": {
+      "result": true,
+      "time": 0.042122840881347656,
+      "error": null
+    },
+    "assert replace_max_specialchar('rkbahwm', 4) == \"rkbahwm\"": {
+      "result": true,
+      "time": 0.05184531211853027,
+      "error": null
+    },
+    "assert replace_max_specialchar('jfaqo ikuuxfbv', 4) == \"jfaqo:ikuuxfbv\"": {
+      "result": true,
+      "time": 0.04992818832397461,
+      "error": null
+    },
+    "assert replace_max_specialchar('sletvrbns,b', 3) == \"sletvrbns:b\"": {
+      "result": true,
+      "time": 0.04664731025695801,
+      "error": null
+    },
+    "assert replace_max_specialchar('wsmdakt', 8) == \"wsmdakt\"": {
+      "result": true,
+      "time": 0.06085944175720215,
+      "error": null
+    },
+    "assert replace_max_specialchar('ypommyazr jvu', 5) == \"ypommyazr:jvu\"": {
+      "result": true,
+      "time": 0.049101829528808594,
+      "error": null
+    },
+    "assert replace_max_specialchar('kwoak,ierhnh', 5) == \"kwoak:ierhnh\"": {
+      "result": true,
+      "time": 0.04155421257019043,
+      "error": null
+    },
+    "assert replace_max_specialchar('kytag,h,kqc', 6) == \"kytag:h:kqc\"": {
+      "result": true,
+      "time": 0.0474698543548584,
+      "error": null
+    },
+    "assert replace_max_specialchar('euzwetbq nopt ', 5) == \"euzwetbq:nopt:\"": {
+      "result": true,
+      "time": 0.04757976531982422,
+      "error": null
+    },
+    "assert replace_max_specialchar('hjkzhkqripeqev', 8) == \"hjkzhkqripeqev\"": {
+      "result": true,
+      "time": 0.048647165298461914,
+      "error": null
+    },
+    "assert replace_max_specialchar('oliyuofcybhd q', 8) == \"oliyuofcybhd:q\"": {
+      "result": true,
+      "time": 0.04285764694213867,
+      "error": null
+    },
+    "assert replace_max_specialchar('fggq,h', 5) == \"fggq:h\"": {
+      "result": true,
+      "time": 0.043712615966796875,
+      "error": null
+    },
+    "assert replace_max_specialchar('ofngd,mz qbz', 7) == \"ofngd:mz:qbz\"": {
+      "result": true,
+      "time": 0.04570770263671875,
+      "error": null
+    },
+    "assert replace_max_specialchar('cue rvhucbro', 5) == \"cue:rvhucbro\"": {
+      "result": true,
+      "time": 0.04445457458496094,
+      "error": null
+    },
+    "assert replace_max_specialchar('pzskqetyrtlkhib', 4) == \"pzskqetyrtlkhib\"": {
+      "result": true,
+      "time": 0.0431826114654541,
+      "error": null
+    },
+    "assert replace_max_specialchar('nsut, awrq cahs', 7) == \"nsut::awrq:cahs\"": {
+      "result": true,
+      "time": 0.043433189392089844,
+      "error": null
+    },
+    "assert replace_max_specialchar('ezclb ', 7) == \"ezclb:\"": {
+      "result": true,
+      "time": 0.03670310974121094,
+      "error": null
+    },
+    "assert replace_max_specialchar('fxlcfvlp', 1) == \"fxlcfvlp\"": {
+      "result": true,
+      "time": 0.04184746742248535,
+      "error": null
+    },
+    "assert replace_max_specialchar('ehhcvj vvgrzsvtohx', 1) == \"ehhcvj:vvgrzsvtohx\"": {
+      "result": true,
+      "time": 0.04454851150512695,
+      "error": null
+    },
+    "assert replace_max_specialchar('t xuv,ni,cfi,jqhd bgka', 3) == \"t:xuv:ni:cfi,jqhd bgka\"": {
+      "result": true,
+      "time": 0.051032066345214844,
+      "error": null
+    },
+    "assert replace_max_specialchar('yena nffv gvttdxrfkhn i', 6) == \"yena:nffv:gvttdxrfkhn:i\"": {
+      "result": true,
+      "time": 0.04125499725341797,
+      "error": null
+    },
+    "assert replace_max_specialchar('ocirhmevqekgfbwsy', 3) == \"ocirhmevqekgfbwsy\"": {
+      "result": true,
+      "time": 0.04693794250488281,
+      "error": null
+    },
+    "assert replace_max_specialchar('dwwholsbxmovhtrlu', 1) == \"dwwholsbxmovhtrlu\"": {
+      "result": true,
+      "time": 0.044269561767578125,
+      "error": null
+    },
+    "assert replace_max_specialchar('hloysxljctfvc egnqkz', 5) == \"hloysxljctfvc:egnqkz\"": {
+      "result": true,
+      "time": 0.03837299346923828,
+      "error": null
+    },
+    "assert replace_max_specialchar('eusluwjxmatmpepkcay', 3) == \"eusluwjxmatmpepkcay\"": {
+      "result": true,
+      "time": 0.045096635818481445,
+      "error": null
+    },
+    "assert replace_max_specialchar('evqnqj gvistbbimyox', 5) == \"evqnqj:gvistbbimyox\"": {
+      "result": true,
+      "time": 0.05100679397583008,
+      "error": null
+    },
+    "assert replace_max_specialchar('k ,magduauzqzyrmz', 1) == \"k:,magduauzqzyrmz\"": {
+      "result": true,
+      "time": 0.05510711669921875,
+      "error": null
+    },
+    "assert replace_max_specialchar('uuunalfq,d,yvmcdau', 5) == \"uuunalfq:d:yvmcdau\"": {
+      "result": true,
+      "time": 0.04719209671020508,
+      "error": null
+    },
+    "assert replace_max_specialchar('lm jnenxpvbdjsf', 2) == \"lm:jnenxpvbdjsf\"": {
+      "result": true,
+      "time": 0.05069136619567871,
+      "error": null
+    },
+    "assert replace_max_specialchar('hqukmwbbxshgvrrdpygesb', 4) == \"hqukmwbbxshgvrrdpygesb\"": {
+      "result": true,
+      "time": 0.046124935150146484,
+      "error": null
+    },
+    "assert replace_max_specialchar('mfktxvqq fpunmi', 4) == \"mfktxvqq:fpunmi\"": {
+      "result": true,
+      "time": 0.0408780574798584,
+      "error": null
+    },
+    "assert replace_max_specialchar('flubzsagmamcunw', 5) == \"flubzsagmamcunw\"": {
+      "result": true,
+      "time": 0.03998208045959473,
+      "error": null
+    },
+    "assert replace_max_specialchar('ekmpqauxfwxtyfeznm', 2) == \"ekmpqauxfwxtyfeznm\"": {
+      "result": true,
+      "time": 0.03631258010864258,
+      "error": null
+    },
+    "assert replace_max_specialchar('exghlcz,bihbbjtwhlk', 2) == \"exghlcz:bihbbjtwhlk\"": {
+      "result": true,
+      "time": 0.04274630546569824,
+      "error": null
+    },
+    "assert replace_max_specialchar('i,efcfjqfbgtqrbemiiwxnh', 6) == \"i:efcfjqfbgtqrbemiiwxnh\"": {
+      "result": true,
+      "time": 0.05175042152404785,
+      "error": null
+    },
+    "assert replace_max_specialchar('ckptr,wpzdcvhwlsgmwsz', 6) == \"ckptr:wpzdcvhwlsgmwsz\"": {
+      "result": true,
+      "time": 0.0432744026184082,
+      "error": null
+    },
+    "assert replace_max_specialchar(',cp,f fwwg,ncb, rstn', 5) == \":cp:f:fwwg:ncb: rstn\"": {
+      "result": true,
+      "time": 0.04668569564819336,
+      "error": null
+    },
+    "assert replace_max_specialchar('p,baijcsakrrhahczbo', 2) == \"p:baijcsakrrhahczbo\"": {
+      "result": true,
+      "time": 0.04626870155334473,
+      "error": null
+    },
+    "assert replace_max_specialchar('iycecwp,ebdyofw', 5) == \"iycecwp:ebdyofw\"": {
+      "result": true,
+      "time": 0.040505409240722656,
+      "error": null
+    },
+    "assert replace_max_specialchar('qotzbcdzknyqmjrpokjboqcs', 2) == \"qotzbcdzknyqmjrpokjboqcs\"": {
+      "result": true,
+      "time": 0.05984616279602051,
+      "error": null
+    },
+    "assert replace_max_specialchar('xnvfjst,ojvvphdpspx', 6) == \"xnvfjst:ojvvphdpspx\"": {
+      "result": true,
+      "time": 0.049942731857299805,
+      "error": null
+    },
+    "assert replace_max_specialchar('aom,xrhlijcmoxdmd', 1) == \"aom:xrhlijcmoxdmd\"": {
+      "result": true,
+      "time": 0.04012036323547363,
+      "error": null
+    },
+    "assert replace_max_specialchar('lrklgkvcs,tmngw ', 1) == \"lrklgkvcs:tmngw\"": {
+      "result": false,
+      "time": 0.04369807243347168,
+      "error": null
+    },
+    "assert replace_max_specialchar('oqayulsnierqxzhstecwx', 5) == \"oqayulsnierqxzhstecwx\"": {
+      "result": true,
+      "time": 0.05738997459411621,
+      "error": null
+    },
+    "assert replace_max_specialchar('kwkpthdsdxk cnbabburc', 1) == \"kwkpthdsdxk:cnbabburc\"": {
+      "result": true,
+      "time": 0.04658079147338867,
+      "error": null
+    },
+    "assert replace_max_specialchar('wrbjtucgsbthfrqrmluh  q', 5) == \"wrbjtucgsbthfrqrmluh::q\"": {
+      "result": true,
+      "time": 0.039725542068481445,
+      "error": null
+    },
+    "assert replace_max_specialchar('yacosenxkpdzhlloftaknnd', 4) == \"yacosenxkpdzhlloftaknnd\"": {
+      "result": true,
+      "time": 0.054076433181762695,
+      "error": null
+    },
+    "assert replace_max_specialchar('plfozjn,mwqgpjoajav ', 2) == \"plfozjn:mwqgpjoajav:\"": {
+      "result": true,
+      "time": 0.05240511894226074,
+      "error": null
+    },
+    "assert replace_max_specialchar('pj yesgzf mipbbiyzjtnqs', 2) == \"pj:yesgzf:mipbbiyzjtnqs\"": {
+      "result": true,
+      "time": 0.05688309669494629,
+      "error": null
+    },
+    "assert replace_max_specialchar('i aajmspwqlpzronypp', 1) == \"i:aajmspwqlpzronypp\"": {
+      "result": true,
+      "time": 0.04832148551940918,
+      "error": null
+    },
+    "assert replace_max_specialchar('yiqfr nxaugservmc,cltuik', 2) == \"yiqfr:nxaugservmc:cltuik\"": {
+      "result": true,
+      "time": 0.06317591667175293,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9901960784313726,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "def first_Missing_Positive(nums, n):\n    # Separate positive numbers and ignore non-positive numbers\n    positives = [num for num in nums if num > 0]\n    \n    # If there are no positive numbers, the first missing positive is 1\n    if not positives:\n        return 1\n    \n    # Create a set for O(1) lookups\n    num_set = set(positives)\n    \n    # The first missing positive is in the range [1, len(positives) + 1]\n    for i in range(1, len(positives) + 2):\n        if i not in num_set:\n            return i\n    return 1",
+  "results": {
+    "assert first_Missing_Positive([1,2,3,-1,5],5) == 4": {
+      "result": true,
+      "time": 0.04364657402038574,
+      "error": null
+    },
+    "assert first_Missing_Positive([0,-1,-2,1,5,8],6) == 2": {
+      "result": true,
+      "time": 0.031143665313720703,
+      "error": null
+    },
+    "assert first_Missing_Positive([0,1,2,5,-8],5) == 3": {
+      "result": true,
+      "time": 0.041274070739746094,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 6, 8, -2, 9], 2) == 1": {
+      "result": true,
+      "time": 0.035547494888305664,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 6, 5, -1, 8], 1) == 1": {
+      "result": true,
+      "time": 0.03832435607910156,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 1, 1, 4, 9], 3) == 2": {
+      "result": true,
+      "time": 0.03422141075134277,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 5, 5, 3, 6], 3) == 1": {
+      "result": true,
+      "time": 0.03281426429748535,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 2, 6, -5, 6], 3) == 1": {
+      "result": true,
+      "time": 0.04184913635253906,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 6, 6, -3, 2], 2) == 1": {
+      "result": true,
+      "time": 0.03921771049499512,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 5, 3, 0, 9], 1) == 1": {
+      "result": true,
+      "time": 0.04127335548400879,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 6, 2, -2, 3], 4) == 3": {
+      "result": false,
+      "time": 0.040314435958862305,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 2, 3, 2, 10], 2) == 1": {
+      "result": true,
+      "time": 0.03882265090942383,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 7, 5, 3, 2], 2) == 2": {
+      "result": false,
+      "time": 0.03632640838623047,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 1, 1, -3, 4], 1) == 1": {
+      "result": false,
+      "time": 0.03472089767456055,
+      "error": null
+    },
+    "assert first_Missing_Positive([6, 4, 4, 2, 7], 5) == 1": {
+      "result": true,
+      "time": 0.04562807083129883,
+      "error": null
+    },
+    "assert first_Missing_Positive([6, 5, 6, -3, 6], 4) == 1": {
+      "result": true,
+      "time": 0.038016557693481445,
+      "error": null
+    },
+    "assert first_Missing_Positive([6, 7, 1, -3, 9], 5) == 2": {
+      "result": true,
+      "time": 0.040865182876586914,
+      "error": null
+    },
+    "assert first_Missing_Positive([6, 1, 4, -3, 7], 5) == 2": {
+      "result": true,
+      "time": 0.03555464744567871,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 6, 6, -1, 8], 3) == 1": {
+      "result": true,
+      "time": 0.038367509841918945,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 7, 4, 2, 4], 5) == 1": {
+      "result": true,
+      "time": 0.041364192962646484,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, 6, 4, -1, 4], 1) == 1": {
+      "result": true,
+      "time": 0.03369140625,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 6, 4, 0, 6], 1) == 1": {
+      "result": true,
+      "time": 0.041769981384277344,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 3, 4, -4, 3], 4) == 1": {
+      "result": true,
+      "time": 0.04758715629577637,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 1, 6, -1, 2], 5) == 3": {
+      "result": true,
+      "time": 0.04223775863647461,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 4, 1, -3, 3], 2) == 1": {
+      "result": false,
+      "time": 0.04098224639892578,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 6, 4, 0, 8], 5) == 1": {
+      "result": true,
+      "time": 0.03850054740905762,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 1, 7, -5, 8], 3) == 3": {
+      "result": true,
+      "time": 0.042070865631103516,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 1, 4, -1, 1], 3) == 2": {
+      "result": true,
+      "time": 0.03670454025268555,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 3, 7, 1, 3], 5) == 2": {
+      "result": true,
+      "time": 0.044561147689819336,
+      "error": null
+    },
+    "assert first_Missing_Positive([6, 3, 8, 4, 6], 3) == 1": {
+      "result": true,
+      "time": 0.04141712188720703,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 1, 4, 2, 10], 4) == 3": {
+      "result": true,
+      "time": 0.04171872138977051,
+      "error": null
+    },
+    "assert first_Missing_Positive([6, 3, 5, -6, 7], 5) == 1": {
+      "result": true,
+      "time": 0.04208683967590332,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, 3, 6, -1, 3], 2) == 1": {
+      "result": true,
+      "time": 0.041916608810424805,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 5, 3, -6, 5], 4) == 1": {
+      "result": true,
+      "time": 0.03600168228149414,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 2, 7, 0, 6], 3) == 1": {
+      "result": true,
+      "time": 0.037607431411743164,
+      "error": null
+    },
+    "assert first_Missing_Positive([6, 7, 6, -5, 5], 1) == 1": {
+      "result": true,
+      "time": 0.042824745178222656,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, -1, -5, 6, 3, 10], 2) == 1": {
+      "result": true,
+      "time": 0.03644251823425293,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, -6, -7, 6, 1, 8], 3) == 1": {
+      "result": false,
+      "time": 0.03978252410888672,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 1, 2, 4, 2, 4], 4) == 3": {
+      "result": true,
+      "time": 0.031461238861083984,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, -4, 2, 1, 2, 3], 5) == 3": {
+      "result": false,
+      "time": 0.0343327522277832,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, 2, -2, 3, 9, 13], 6) == 1": {
+      "result": true,
+      "time": 0.03649139404296875,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, -3, -6, 5, 3, 8], 3) == 1": {
+      "result": true,
+      "time": 0.03893017768859863,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, 0, 0, 5, 2, 11], 6) == 1": {
+      "result": true,
+      "time": 0.03685879707336426,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, -1, 0, 2, 9, 13], 6) == 3": {
+      "result": true,
+      "time": 0.04284334182739258,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 4, -4, 4, 6, 13], 4) == 1": {
+      "result": true,
+      "time": 0.05493044853210449,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, -3, 3, 1, 7, 7], 5) == 2": {
+      "result": true,
+      "time": 0.05308651924133301,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 1, 2, 6, 6, 10], 6) == 3": {
+      "result": true,
+      "time": 0.04402017593383789,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, -5, 3, 4, 6, 10], 4) == 1": {
+      "result": true,
+      "time": 0.06587100028991699,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, -3, -7, 2, 3, 8], 6) == 1": {
+      "result": true,
+      "time": 0.04279327392578125,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, -6, -2, 6, 4, 9], 1) == 1": {
+      "result": true,
+      "time": 0.058706045150756836,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 0, -1, 2, 6, 7], 6) == 1": {
+      "result": true,
+      "time": 0.04161691665649414,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, -3, -7, 5, 6, 3], 5) == 1": {
+      "result": true,
+      "time": 0.05928945541381836,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, -1, 0, 6, 6, 9], 5) == 1": {
+      "result": true,
+      "time": 0.05307292938232422,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 4, -1, 6, 6, 8], 4) == 1": {
+      "result": true,
+      "time": 0.050110578536987305,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, -4, 3, 2, 9, 13], 4) == 1": {
+      "result": true,
+      "time": 0.05688953399658203,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, -3, 2, 1, 7, 3], 1) == 1": {
+      "result": false,
+      "time": 0.06290507316589355,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, -5, 2, 6, 4, 10], 5) == 1": {
+      "result": true,
+      "time": 0.04514312744140625,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, -2, -5, 6, 8, 13], 3) == 1": {
+      "result": true,
+      "time": 0.05769944190979004,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, -2, -4, 4, 10, 11], 6) == 1": {
+      "result": true,
+      "time": 0.05876326560974121,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, -5, 3, 2, 8, 6], 1) == 1": {
+      "result": true,
+      "time": 0.05189776420593262,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 3, -1, 2, 7, 11], 5) == 1": {
+      "result": true,
+      "time": 0.05481696128845215,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, 4, -6, 6, 9, 6], 4) == 1": {
+      "result": true,
+      "time": 0.05483698844909668,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, -2, 1, 4, 9, 10], 4) == 2": {
+      "result": true,
+      "time": 0.058181047439575195,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, -2, -3, 5, 4, 12], 4) == 1": {
+      "result": true,
+      "time": 0.04936337471008301,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, 3, -2, 3, 6, 10], 1) == 1": {
+      "result": true,
+      "time": 0.05021500587463379,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, 4, -5, 6, 2, 4], 4) == 1": {
+      "result": true,
+      "time": 0.05563807487487793,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 2, -1, 1, 1, 8], 5) == 3": {
+      "result": true,
+      "time": 0.05716419219970703,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, 3, -5, 5, 5, 6], 4) == 1": {
+      "result": true,
+      "time": 0.05862927436828613,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 1, -1, 1, 7, 8], 6) == 3": {
+      "result": true,
+      "time": 0.053931474685668945,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 1, 4, 7, -7], 3) == 2": {
+      "result": true,
+      "time": 0.049024343490600586,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 4, 7, 9, -13], 2) == 1": {
+      "result": true,
+      "time": 0.05169844627380371,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 1, 1, 10, -10], 3) == 2": {
+      "result": true,
+      "time": 0.04783320426940918,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 5, 2, 1, -5], 5) == 3": {
+      "result": true,
+      "time": 0.05246996879577637,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 4, 1, 2, -12], 3) == 2": {
+      "result": false,
+      "time": 0.05795860290527344,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 6, 1, 6, -6], 3) == 2": {
+      "result": true,
+      "time": 0.05936861038208008,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 4, 7, 9, -10], 3) == 1": {
+      "result": true,
+      "time": 0.06082749366760254,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 4, 2, 5, -5], 5) == 1": {
+      "result": true,
+      "time": 0.05067014694213867,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 3, 7, 4, -10], 4) == 1": {
+      "result": true,
+      "time": 0.07021522521972656,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 4, 4, 4, -10], 4) == 1": {
+      "result": true,
+      "time": 0.05229496955871582,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 4, 1, 4, -6], 2) == 2": {
+      "result": true,
+      "time": 0.05056285858154297,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 4, 2, 10, -3], 3) == 1": {
+      "result": true,
+      "time": 0.053143978118896484,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 3, 5, 8, -6], 4) == 1": {
+      "result": true,
+      "time": 0.0575106143951416,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, 1, 5, 10, -3], 3) == 2": {
+      "result": true,
+      "time": 0.0581974983215332,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 5, 1, 7, -11], 1) == 2": {
+      "result": true,
+      "time": 0.0455775260925293,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 1, 3, 4, -3], 1) == 1": {
+      "result": false,
+      "time": 0.0444486141204834,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 6, 1, 2, -13], 1) == 2": {
+      "result": false,
+      "time": 0.0560297966003418,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 5, 4, 6, -6], 1) == 1": {
+      "result": true,
+      "time": 0.04544496536254883,
+      "error": null
+    },
+    "assert first_Missing_Positive([2, 3, 7, 5, -12], 2) == 1": {
+      "result": true,
+      "time": 0.050618886947631836,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 4, 1, 3, -10], 2) == 2": {
+      "result": true,
+      "time": 0.04468202590942383,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 1, 3, 5, -8], 1) == 2": {
+      "result": true,
+      "time": 0.04388165473937988,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 5, 6, 7, -11], 2) == 2": {
+      "result": true,
+      "time": 0.04382801055908203,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 2, 7, 3, -10], 4) == 1": {
+      "result": true,
+      "time": 0.04129672050476074,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 3, 5, 1, -4], 1) == 1": {
+      "result": false,
+      "time": 0.04445195198059082,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 6, 3, 7, -11], 3) == 2": {
+      "result": true,
+      "time": 0.050090789794921875,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 4, 1, 7, -3], 5) == 2": {
+      "result": true,
+      "time": 0.034757137298583984,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, 2, 2, 6, -6], 3) == 1": {
+      "result": true,
+      "time": 0.0389094352722168,
+      "error": null
+    },
+    "assert first_Missing_Positive([1, 2, 6, 5, -12], 5) == 3": {
+      "result": true,
+      "time": 0.0421755313873291,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 5, 6, 3, -4], 4) == 1": {
+      "result": true,
+      "time": 0.03998446464538574,
+      "error": null
+    },
+    "assert first_Missing_Positive([3, 5, 6, 7, -5], 1) == 1": {
+      "result": true,
+      "time": 0.04509735107421875,
+      "error": null
+    },
+    "assert first_Missing_Positive([4, 2, 7, 9, -10], 4) == 1": {
+      "result": true,
+      "time": 0.0416412353515625,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 5, 4, 2, -13], 3) == 1": {
+      "result": true,
+      "time": 0.03424525260925293,
+      "error": null
+    },
+    "assert first_Missing_Positive([5, 3, 1, 9, -8], 4) == 2": {
+      "result": true,
+      "time": 0.03873753547668457,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8921568627450981,
+  "general_error": "",
+  "has_testcase_error": false
+}

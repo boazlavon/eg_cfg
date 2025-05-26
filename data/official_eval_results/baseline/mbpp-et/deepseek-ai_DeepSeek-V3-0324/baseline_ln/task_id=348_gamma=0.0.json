@@ -1,0 +1,74 @@
+{
+  "code": "def find_ways(n):\n    if n % 2 != 0:\n        return 0  # Only even lengths can have balanced sequences\n    m = n // 2\n    # Initialize a DP array to store Catalan numbers\n    dp = [0] * (m + 1)\n    dp[0] = 1\n    for i in range(1, m + 1):\n        dp[i] = 0\n        for j in range(i):\n            dp[i] += dp[j] * dp[i - 1 - j]\n    return dp[m]",
+  "results": {
+    "assert find_ways(4) == 2": {
+      "result": true,
+      "time": 0.03650832176208496,
+      "error": null
+    },
+    "assert find_ways(6) == 5": {
+      "result": true,
+      "time": 0.03803586959838867,
+      "error": null
+    },
+    "assert find_ways(8) == 14": {
+      "result": true,
+      "time": 0.04432034492492676,
+      "error": null
+    },
+    "assert find_ways(1) == 1": {
+      "result": false,
+      "time": 0.03595328330993652,
+      "error": null
+    },
+    "assert find_ways(3) == 1": {
+      "result": false,
+      "time": 0.04737448692321777,
+      "error": null
+    },
+    "assert find_ways(7) == 5": {
+      "result": false,
+      "time": 0.04345417022705078,
+      "error": null
+    },
+    "assert find_ways(9) == 14": {
+      "result": false,
+      "time": 0.0419468879699707,
+      "error": null
+    },
+    "assert find_ways(2) == 1": {
+      "result": true,
+      "time": 0.04521512985229492,
+      "error": null
+    },
+    "assert find_ways(5) == 2": {
+      "result": false,
+      "time": 0.04621553421020508,
+      "error": null
+    },
+    "assert find_ways(10) == 42": {
+      "result": true,
+      "time": 0.040900468826293945,
+      "error": null
+    },
+    "assert find_ways(11) == 42": {
+      "result": false,
+      "time": 0.058855295181274414,
+      "error": null
+    },
+    "assert find_ways(13) == 132": {
+      "result": false,
+      "time": 0.05573463439941406,
+      "error": null
+    },
+    "assert find_ways(12) == 132": {
+      "result": true,
+      "time": 0.06620240211486816,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.46153846153846156,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "def comb_sort(lst):\n    gap = len(lst)\n    swapped = True\n    while gap > 1 or swapped:\n        gap = max(gap // 2, 1)\n        swapped = False\n        for i in range(gap, len(lst), gap):\n            for j in range(i, 0, -gap):\n                if lst[j] < lst[j - gap]:\n                    lst[j], lst[j - gap] = lst[j - gap], lst[j]\n                    swapped = True\n    return lst\n",
+  "results": {
+    "assert comb_sort([5, 15, 37, 25, 79]) == [5, 15, 25, 37, 79]": {
+      "result": true,
+      "time": 0.03090691566467285,
+      "error": null
+    },
+    "assert comb_sort([41, 32, 15, 19, 22]) == [15, 19, 22, 32, 41]": {
+      "result": true,
+      "time": 0.034718990325927734,
+      "error": null
+    },
+    "assert comb_sort([99, 15, 13, 47]) == [13, 15, 47, 99]": {
+      "result": true,
+      "time": 0.04266858100891113,
+      "error": null
+    },
+    "assert comb_sort([7, 10, 39, 29, 78]) == [7, 10, 29, 39, 78]": {
+      "result": true,
+      "time": 0.03219318389892578,
+      "error": null
+    },
+    "assert comb_sort([2, 19, 41, 28, 75]) == [2, 19, 28, 41, 75]": {
+      "result": true,
+      "time": 0.03205251693725586,
+      "error": null
+    },
+    "assert comb_sort([9, 11, 37, 30, 83]) == [9, 11, 30, 37, 83]": {
+      "result": true,
+      "time": 0.0377802848815918,
+      "error": null
+    },
+    "assert comb_sort([2, 10, 37, 27, 76]) == [2, 10, 27, 37, 76]": {
+      "result": true,
+      "time": 0.03862595558166504,
+      "error": null
+    },
+    "assert comb_sort([1, 11, 37, 27, 75]) == [1, 11, 27, 37, 75]": {
+      "result": true,
+      "time": 0.03345799446105957,
+      "error": null
+    },
+    "assert comb_sort([9, 12, 33, 24, 84]) == [9, 12, 24, 33, 84]": {
+      "result": true,
+      "time": 0.04128766059875488,
+      "error": null
+    },
+    "assert comb_sort([10, 14, 41, 25, 82]) == [10, 14, 25, 41, 82]": {
+      "result": true,
+      "time": 0.03738975524902344,
+      "error": null
+    },
+    "assert comb_sort([3, 20, 38, 27, 75]) == [3, 20, 27, 38, 75]": {
+      "result": true,
+      "time": 0.03259468078613281,
+      "error": null
+    },
+    "assert comb_sort([7, 12, 40, 26, 76]) == [7, 12, 26, 40, 76]": {
+      "result": true,
+      "time": 0.041196346282958984,
+      "error": null
+    },
+    "assert comb_sort([2, 19, 38, 24, 84]) == [2, 19, 24, 38, 84]": {
+      "result": true,
+      "time": 0.03223228454589844,
+      "error": null
+    },
+    "assert comb_sort([3, 11, 34, 23, 77]) == [3, 11, 23, 34, 77]": {
+      "result": true,
+      "time": 0.03238701820373535,
+      "error": null
+    },
+    "assert comb_sort([1, 12, 34, 20, 81]) == [1, 12, 20, 34, 81]": {
+      "result": true,
+      "time": 0.037091732025146484,
+      "error": null
+    },
+    "assert comb_sort([6, 15, 38, 26, 77]) == [6, 15, 26, 38, 77]": {
+      "result": true,
+      "time": 0.03290724754333496,
+      "error": null
+    },
+    "assert comb_sort([6, 10, 38, 22, 84]) == [6, 10, 22, 38, 84]": {
+      "result": true,
+      "time": 0.031319379806518555,
+      "error": null
+    },
+    "assert comb_sort([7, 16, 38, 28, 75]) == [7, 16, 28, 38, 75]": {
+      "result": true,
+      "time": 0.03549003601074219,
+      "error": null
+    },
+    "assert comb_sort([1, 14, 37, 26, 75]) == [1, 14, 26, 37, 75]": {
+      "result": true,
+      "time": 0.028682708740234375,
+      "error": null
+    },
+    "assert comb_sort([8, 18, 36, 29, 80]) == [8, 18, 29, 36, 80]": {
+      "result": true,
+      "time": 0.03378915786743164,
+      "error": null
+    },
+    "assert comb_sort([4, 16, 37, 28, 79]) == [4, 16, 28, 37, 79]": {
+      "result": true,
+      "time": 0.04593801498413086,
+      "error": null
+    },
+    "assert comb_sort([8, 11, 37, 24, 84]) == [8, 11, 24, 37, 84]": {
+      "result": true,
+      "time": 0.03848624229431152,
+      "error": null
+    },
+    "assert comb_sort([4, 10, 32, 25, 75]) == [4, 10, 25, 32, 75]": {
+      "result": true,
+      "time": 0.0371248722076416,
+      "error": null
+    },
+    "assert comb_sort([2, 17, 38, 20, 78]) == [2, 17, 20, 38, 78]": {
+      "result": true,
+      "time": 0.04504060745239258,
+      "error": null
+    },
+    "assert comb_sort([1, 16, 41, 30, 82]) == [1, 16, 30, 41, 82]": {
+      "result": true,
+      "time": 0.03999829292297363,
+      "error": null
+    },
+    "assert comb_sort([5, 12, 32, 25, 83]) == [5, 12, 25, 32, 83]": {
+      "result": true,
+      "time": 0.0372319221496582,
+      "error": null
+    },
+    "assert comb_sort([5, 13, 32, 28, 74]) == [5, 13, 28, 32, 74]": {
+      "result": true,
+      "time": 0.03464031219482422,
+      "error": null
+    },
+    "assert comb_sort([6, 20, 40, 26, 79]) == [6, 20, 26, 40, 79]": {
+      "result": true,
+      "time": 0.03859114646911621,
+      "error": null
+    },
+    "assert comb_sort([1, 10, 34, 22, 80]) == [1, 10, 22, 34, 80]": {
+      "result": true,
+      "time": 0.03714728355407715,
+      "error": null
+    },
+    "assert comb_sort([7, 10, 39, 20, 83]) == [7, 10, 20, 39, 83]": {
+      "result": true,
+      "time": 0.03394174575805664,
+      "error": null
+    },
+    "assert comb_sort([1, 20, 38, 24, 74]) == [1, 20, 24, 38, 74]": {
+      "result": true,
+      "time": 0.03194117546081543,
+      "error": null
+    },
+    "assert comb_sort([3, 14, 42, 29, 80]) == [3, 14, 29, 42, 80]": {
+      "result": true,
+      "time": 0.04199957847595215,
+      "error": null
+    },
+    "assert comb_sort([4, 13, 38, 28, 83]) == [4, 13, 28, 38, 83]": {
+      "result": true,
+      "time": 0.0335383415222168,
+      "error": null
+    },
+    "assert comb_sort([2, 20, 33, 24, 80]) == [2, 20, 24, 33, 80]": {
+      "result": true,
+      "time": 0.034195661544799805,
+      "error": null
+    },
+    "assert comb_sort([2, 13, 32, 25, 79]) == [2, 13, 25, 32, 79]": {
+      "result": true,
+      "time": 0.03462553024291992,
+      "error": null
+    },
+    "assert comb_sort([7, 12, 33, 29, 76]) == [7, 12, 29, 33, 76]": {
+      "result": true,
+      "time": 0.034653663635253906,
+      "error": null
+    },
+    "assert comb_sort([42, 36, 20, 21, 24]) == [20, 21, 24, 36, 42]": {
+      "result": true,
+      "time": 0.03547024726867676,
+      "error": null
+    },
+    "assert comb_sort([37, 32, 20, 21, 18]) == [18, 20, 21, 32, 37]": {
+      "result": true,
+      "time": 0.03661847114562988,
+      "error": null
+    },
+    "assert comb_sort([36, 27, 16, 24, 21]) == [16, 21, 24, 27, 36]": {
+      "result": true,
+      "time": 0.036461830139160156,
+      "error": null
+    },
+    "assert comb_sort([42, 27, 11, 19, 25]) == [11, 19, 25, 27, 42]": {
+      "result": true,
+      "time": 0.03280997276306152,
+      "error": null
+    },
+    "assert comb_sort([43, 31, 19, 24, 23]) == [19, 23, 24, 31, 43]": {
+      "result": true,
+      "time": 0.03587651252746582,
+      "error": null
+    },
+    "assert comb_sort([37, 31, 13, 16, 25]) == [13, 16, 25, 31, 37]": {
+      "result": true,
+      "time": 0.033803462982177734,
+      "error": null
+    },
+    "assert comb_sort([40, 34, 14, 17, 26]) == [14, 17, 26, 34, 40]": {
+      "result": true,
+      "time": 0.03316235542297363,
+      "error": null
+    },
+    "assert comb_sort([36, 27, 17, 20, 20]) == [17, 20, 20, 27, 36]": {
+      "result": true,
+      "time": 0.04023408889770508,
+      "error": null
+    },
+    "assert comb_sort([44, 37, 15, 19, 20]) == [15, 19, 20, 37, 44]": {
+      "result": true,
+      "time": 0.0324711799621582,
+      "error": null
+    },
+    "assert comb_sort([44, 32, 11, 14, 23]) == [11, 14, 23, 32, 44]": {
+      "result": true,
+      "time": 0.03555655479431152,
+      "error": null
+    },
+    "assert comb_sort([45, 27, 19, 14, 23]) == [14, 19, 23, 27, 45]": {
+      "result": true,
+      "time": 0.03711700439453125,
+      "error": null
+    },
+    "assert comb_sort([46, 35, 18, 22, 21]) == [18, 21, 22, 35, 46]": {
+      "result": true,
+      "time": 0.032174110412597656,
+      "error": null
+    },
+    "assert comb_sort([40, 31, 10, 20, 25]) == [10, 20, 25, 31, 40]": {
+      "result": true,
+      "time": 0.035860538482666016,
+      "error": null
+    },
+    "assert comb_sort([45, 34, 11, 17, 21]) == [11, 17, 21, 34, 45]": {
+      "result": true,
+      "time": 0.03169965744018555,
+      "error": null
+    },
+    "assert comb_sort([43, 28, 18, 21, 27]) == [18, 21, 27, 28, 43]": {
+      "result": true,
+      "time": 0.034328460693359375,
+      "error": null
+    },
+    "assert comb_sort([40, 34, 14, 16, 22]) == [14, 16, 22, 34, 40]": {
+      "result": true,
+      "time": 0.03449678421020508,
+      "error": null
+    },
+    "assert comb_sort([41, 31, 15, 22, 26]) == [15, 22, 26, 31, 41]": {
+      "result": true,
+      "time": 0.03686642646789551,
+      "error": null
+    },
+    "assert comb_sort([43, 31, 17, 22, 27]) == [17, 22, 27, 31, 43]": {
+      "result": true,
+      "time": 0.029941558837890625,
+      "error": null
+    },
+    "assert comb_sort([44, 29, 18, 22, 19]) == [18, 19, 22, 29, 44]": {
+      "result": true,
+      "time": 0.028366565704345703,
+      "error": null
+    },
+    "assert comb_sort([42, 27, 11, 14, 26]) == [11, 14, 26, 27, 42]": {
+      "result": true,
+      "time": 0.030942678451538086,
+      "error": null
+    },
+    "assert comb_sort([38, 32, 12, 14, 17]) == [12, 14, 17, 32, 38]": {
+      "result": true,
+      "time": 0.03603625297546387,
+      "error": null
+    },
+    "assert comb_sort([46, 33, 18, 14, 18]) == [14, 18, 18, 33, 46]": {
+      "result": true,
+      "time": 0.035315513610839844,
+      "error": null
+    },
+    "assert comb_sort([46, 34, 20, 17, 25]) == [17, 20, 25, 34, 46]": {
+      "result": true,
+      "time": 0.03486180305480957,
+      "error": null
+    },
+    "assert comb_sort([43, 36, 10, 20, 26]) == [10, 20, 26, 36, 43]": {
+      "result": true,
+      "time": 0.035182952880859375,
+      "error": null
+    },
+    "assert comb_sort([43, 28, 11, 20, 24]) == [11, 20, 24, 28, 43]": {
+      "result": true,
+      "time": 0.03319215774536133,
+      "error": null
+    },
+    "assert comb_sort([42, 36, 12, 14, 26]) == [12, 14, 26, 36, 42]": {
+      "result": true,
+      "time": 0.0308990478515625,
+      "error": null
+    },
+    "assert comb_sort([38, 29, 10, 23, 21]) == [10, 21, 23, 29, 38]": {
+      "result": true,
+      "time": 0.033679962158203125,
+      "error": null
+    },
+    "assert comb_sort([41, 30, 19, 14, 18]) == [14, 18, 19, 30, 41]": {
+      "result": true,
+      "time": 0.033373117446899414,
+      "error": null
+    },
+    "assert comb_sort([38, 37, 17, 19, 25]) == [17, 19, 25, 37, 38]": {
+      "result": true,
+      "time": 0.03070378303527832,
+      "error": null
+    },
+    "assert comb_sort([44, 28, 16, 22, 18]) == [16, 18, 22, 28, 44]": {
+      "result": true,
+      "time": 0.0379033088684082,
+      "error": null
+    },
+    "assert comb_sort([41, 31, 13, 14, 23]) == [13, 14, 23, 31, 41]": {
+      "result": true,
+      "time": 0.03448128700256348,
+      "error": null
+    },
+    "assert comb_sort([45, 36, 20, 18, 21]) == [18, 20, 21, 36, 45]": {
+      "result": true,
+      "time": 0.03752779960632324,
+      "error": null
+    },
+    "assert comb_sort([44, 31, 15, 24, 17]) == [15, 17, 24, 31, 44]": {
+      "result": true,
+      "time": 0.03731513023376465,
+      "error": null
+    },
+    "assert comb_sort([97, 13, 17, 45]) == [13, 17, 45, 97]": {
+      "result": true,
+      "time": 0.03344559669494629,
+      "error": null
+    },
+    "assert comb_sort([96, 10, 11, 48]) == [10, 11, 48, 96]": {
+      "result": true,
+      "time": 0.02846837043762207,
+      "error": null
+    },
+    "assert comb_sort([97, 16, 12, 45]) == [12, 16, 45, 97]": {
+      "result": true,
+      "time": 0.03353714942932129,
+      "error": null
+    },
+    "assert comb_sort([95, 13, 16, 51]) == [13, 16, 51, 95]": {
+      "result": true,
+      "time": 0.034442901611328125,
+      "error": null
+    },
+    "assert comb_sort([104, 11, 18, 48]) == [11, 18, 48, 104]": {
+      "result": true,
+      "time": 0.03274083137512207,
+      "error": null
+    },
+    "assert comb_sort([96, 10, 16, 48]) == [10, 16, 48, 96]": {
+      "result": true,
+      "time": 0.034470558166503906,
+      "error": null
+    },
+    "assert comb_sort([95, 18, 8, 52]) == [8, 18, 52, 95]": {
+      "result": true,
+      "time": 0.035782814025878906,
+      "error": null
+    },
+    "assert comb_sort([98, 15, 9, 43]) == [9, 15, 43, 98]": {
+      "result": true,
+      "time": 0.03271126747131348,
+      "error": null
+    },
+    "assert comb_sort([94, 18, 8, 45]) == [8, 18, 45, 94]": {
+      "result": true,
+      "time": 0.03445839881896973,
+      "error": null
+    },
+    "assert comb_sort([100, 11, 16, 47]) == [11, 16, 47, 100]": {
+      "result": true,
+      "time": 0.031102657318115234,
+      "error": null
+    },
+    "assert comb_sort([103, 20, 10, 44]) == [10, 20, 44, 103]": {
+      "result": true,
+      "time": 0.032376766204833984,
+      "error": null
+    },
+    "assert comb_sort([100, 10, 15, 48]) == [10, 15, 48, 100]": {
+      "result": true,
+      "time": 0.03307461738586426,
+      "error": null
+    },
+    "assert comb_sort([100, 12, 15, 46]) == [12, 15, 46, 100]": {
+      "result": true,
+      "time": 0.0315251350402832,
+      "error": null
+    },
+    "assert comb_sort([102, 16, 11, 42]) == [11, 16, 42, 102]": {
+      "result": true,
+      "time": 0.034300804138183594,
+      "error": null
+    },
+    "assert comb_sort([99, 16, 15, 48]) == [15, 16, 48, 99]": {
+      "result": true,
+      "time": 0.03585958480834961,
+      "error": null
+    },
+    "assert comb_sort([95, 14, 14, 42]) == [14, 14, 42, 95]": {
+      "result": true,
+      "time": 0.036209821701049805,
+      "error": null
+    },
+    "assert comb_sort([98, 20, 12, 45]) == [12, 20, 45, 98]": {
+      "result": true,
+      "time": 0.03336834907531738,
+      "error": null
+    },
+    "assert comb_sort([104, 19, 9, 42]) == [9, 19, 42, 104]": {
+      "result": true,
+      "time": 0.03353142738342285,
+      "error": null
+    },
+    "assert comb_sort([100, 12, 16, 48]) == [12, 16, 48, 100]": {
+      "result": true,
+      "time": 0.033865928649902344,
+      "error": null
+    },
+    "assert comb_sort([104, 16, 12, 42]) == [12, 16, 42, 104]": {
+      "result": true,
+      "time": 0.03349161148071289,
+      "error": null
+    },
+    "assert comb_sort([94, 20, 17, 44]) == [17, 20, 44, 94]": {
+      "result": true,
+      "time": 0.02959465980529785,
+      "error": null
+    },
+    "assert comb_sort([97, 16, 16, 43]) == [16, 16, 43, 97]": {
+      "result": true,
+      "time": 0.03339695930480957,
+      "error": null
+    },
+    "assert comb_sort([100, 15, 9, 48]) == [9, 15, 48, 100]": {
+      "result": true,
+      "time": 0.03262615203857422,
+      "error": null
+    },
+    "assert comb_sort([100, 14, 11, 51]) == [11, 14, 51, 100]": {
+      "result": true,
+      "time": 0.03232431411743164,
+      "error": null
+    },
+    "assert comb_sort([98, 14, 9, 52]) == [9, 14, 52, 98]": {
+      "result": true,
+      "time": 0.04523825645446777,
+      "error": null
+    },
+    "assert comb_sort([104, 10, 15, 51]) == [10, 15, 51, 104]": {
+      "result": true,
+      "time": 0.04242968559265137,
+      "error": null
+    },
+    "assert comb_sort([99, 12, 13, 49]) == [12, 13, 49, 99]": {
+      "result": true,
+      "time": 0.04192781448364258,
+      "error": null
+    },
+    "assert comb_sort([94, 14, 11, 49]) == [11, 14, 49, 94]": {
+      "result": true,
+      "time": 0.03615403175354004,
+      "error": null
+    },
+    "assert comb_sort([102, 11, 15, 44]) == [11, 15, 44, 102]": {
+      "result": true,
+      "time": 0.045801401138305664,
+      "error": null
+    },
+    "assert comb_sort([97, 11, 10, 42]) == [10, 11, 42, 97]": {
+      "result": true,
+      "time": 0.04542899131774902,
+      "error": null
+    },
+    "assert comb_sort([102, 13, 17, 45]) == [13, 17, 45, 102]": {
+      "result": true,
+      "time": 0.036363840103149414,
+      "error": null
+    },
+    "assert comb_sort([94, 12, 16, 46]) == [12, 16, 46, 94]": {
+      "result": true,
+      "time": 0.0509638786315918,
+      "error": null
+    },
+    "assert comb_sort([97, 15, 12, 49]) == [12, 15, 49, 97]": {
+      "result": true,
+      "time": 0.0534367561340332,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

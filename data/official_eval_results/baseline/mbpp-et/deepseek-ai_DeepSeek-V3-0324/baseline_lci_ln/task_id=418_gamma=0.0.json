@@ -1,0 +1,519 @@
+{
+  "code": "def Find_Max(lst):\n    max_length = 0\n    max_sublist = None\n    for sublist in lst:\n        current_length = len(sublist)\n        if current_length > max_length:\n            max_length = current_length\n            max_sublist = sublist\n    return max_sublist",
+  "results": {
+    "assert Find_Max([['A'],['A','B'],['A','B','C']]) == ['A','B','C']": {
+      "result": true,
+      "time": 0.033014774322509766,
+      "error": null
+    },
+    "assert Find_Max([[1],[1,2],[1,2,3]]) == [1,2,3]": {
+      "result": true,
+      "time": 0.03679156303405762,
+      "error": null
+    },
+    "assert Find_Max([[1,1],[1,2,3],[1,5,6,1]]) == [1,5,6,1]": {
+      "result": true,
+      "time": 0.03805899620056152,
+      "error": null
+    },
+    "assert Find_Max([['Q'], ['W', 'S'], ['A', 'N', 'N']]) == ['W', 'S']": {
+      "result": false,
+      "time": 0.034166812896728516,
+      "error": null
+    },
+    "assert Find_Max([['T'], ['C', 'Z'], ['N', 'N', 'I']]) == ['T']": {
+      "result": false,
+      "time": 0.03855323791503906,
+      "error": null
+    },
+    "assert Find_Max([['F'], ['G', 'C'], ['F', 'R', 'N']]) == ['G', 'C']": {
+      "result": false,
+      "time": 0.04669785499572754,
+      "error": null
+    },
+    "assert Find_Max([['J'], ['I', 'H'], ['K', 'L', 'H']]) == ['K', 'L', 'H']": {
+      "result": true,
+      "time": 0.03672051429748535,
+      "error": null
+    },
+    "assert Find_Max([['F'], ['U', 'X'], ['J', 'H', 'B']]) == ['U', 'X']": {
+      "result": false,
+      "time": 0.031804800033569336,
+      "error": null
+    },
+    "assert Find_Max([['K'], ['D', 'A'], ['X', 'W', 'P']]) == ['X', 'W', 'P']": {
+      "result": true,
+      "time": 0.04095792770385742,
+      "error": null
+    },
+    "assert Find_Max([['J'], ['T', 'L'], ['C', 'W', 'U']]) == ['T', 'L']": {
+      "result": false,
+      "time": 0.037966251373291016,
+      "error": null
+    },
+    "assert Find_Max([['Y'], ['M', 'Y'], ['O', 'Y', 'R']]) == ['Y']": {
+      "result": false,
+      "time": 0.04347801208496094,
+      "error": null
+    },
+    "assert Find_Max([['E'], ['S', 'X'], ['E', 'G', 'O']]) == ['S', 'X']": {
+      "result": false,
+      "time": 0.03521251678466797,
+      "error": null
+    },
+    "assert Find_Max([['H'], ['S', 'I'], ['T', 'U', 'P']]) == ['T', 'U', 'P']": {
+      "result": true,
+      "time": 0.04158973693847656,
+      "error": null
+    },
+    "assert Find_Max([['F'], ['J', 'N'], ['K', 'P', 'F']]) == ['K', 'P', 'F']": {
+      "result": true,
+      "time": 0.039757490158081055,
+      "error": null
+    },
+    "assert Find_Max([['A'], ['A', 'S'], ['J', 'E', 'M']]) == ['J', 'E', 'M']": {
+      "result": true,
+      "time": 0.04087567329406738,
+      "error": null
+    },
+    "assert Find_Max([['A'], ['L', 'X'], ['Y', 'G', 'C']]) == ['Y', 'G', 'C']": {
+      "result": true,
+      "time": 0.03786754608154297,
+      "error": null
+    },
+    "assert Find_Max([['J'], ['X', 'R'], ['B', 'M', 'L']]) == ['X', 'R']": {
+      "result": false,
+      "time": 0.04097390174865723,
+      "error": null
+    },
+    "assert Find_Max([['X'], ['W', 'Q'], ['L', 'C', 'N']]) == ['X']": {
+      "result": false,
+      "time": 0.0380711555480957,
+      "error": null
+    },
+    "assert Find_Max([['A'], ['R', 'D'], ['T', 'E', 'S']]) == ['T', 'E', 'S']": {
+      "result": true,
+      "time": 0.04319000244140625,
+      "error": null
+    },
+    "assert Find_Max([['B'], ['B', 'G'], ['R', 'C', 'N']]) == ['R', 'C', 'N']": {
+      "result": true,
+      "time": 0.0403141975402832,
+      "error": null
+    },
+    "assert Find_Max([['V'], ['D', 'N'], ['C', 'L', 'B']]) == ['V']": {
+      "result": false,
+      "time": 0.0400242805480957,
+      "error": null
+    },
+    "assert Find_Max([['K'], ['M', 'E'], ['Q', 'K', 'X']]) == ['Q', 'K', 'X']": {
+      "result": true,
+      "time": 0.04265165328979492,
+      "error": null
+    },
+    "assert Find_Max([['M'], ['C', 'T'], ['T', 'C', 'H']]) == ['T', 'C', 'H']": {
+      "result": true,
+      "time": 0.04336190223693848,
+      "error": null
+    },
+    "assert Find_Max([['W'], ['U', 'P'], ['D', 'I', 'J']]) == ['W']": {
+      "result": false,
+      "time": 0.04232072830200195,
+      "error": null
+    },
+    "assert Find_Max([['T'], ['N', 'N'], ['E', 'K', 'R']]) == ['T']": {
+      "result": false,
+      "time": 0.039047956466674805,
+      "error": null
+    },
+    "assert Find_Max([['C'], ['H', 'X'], ['U', 'O', 'N']]) == ['U', 'O', 'N']": {
+      "result": true,
+      "time": 0.03868365287780762,
+      "error": null
+    },
+    "assert Find_Max([['G'], ['H', 'P'], ['U', 'Z', 'C']]) == ['U', 'Z', 'C']": {
+      "result": true,
+      "time": 0.03598451614379883,
+      "error": null
+    },
+    "assert Find_Max([['Z'], ['B', 'S'], ['R', 'Y', 'Y']]) == ['Z']": {
+      "result": false,
+      "time": 0.040396690368652344,
+      "error": null
+    },
+    "assert Find_Max([['L'], ['T', 'Z'], ['L', 'X', 'M']]) == ['T', 'Z']": {
+      "result": false,
+      "time": 0.03679037094116211,
+      "error": null
+    },
+    "assert Find_Max([['S'], ['D', 'Y'], ['Y', 'O', 'I']]) == ['Y', 'O', 'I']": {
+      "result": true,
+      "time": 0.03298783302307129,
+      "error": null
+    },
+    "assert Find_Max([['G'], ['E', 'H'], ['L', 'X', 'K']]) == ['L', 'X', 'K']": {
+      "result": true,
+      "time": 0.042868852615356445,
+      "error": null
+    },
+    "assert Find_Max([['L'], ['L', 'O'], ['L', 'K', 'B']]) == ['L', 'O']": {
+      "result": false,
+      "time": 0.03809356689453125,
+      "error": null
+    },
+    "assert Find_Max([['B'], ['G', 'O'], ['D', 'F', 'G']]) == ['G', 'O']": {
+      "result": false,
+      "time": 0.037816524505615234,
+      "error": null
+    },
+    "assert Find_Max([['O'], ['L', 'N'], ['W', 'B', 'Q']]) == ['W', 'B', 'Q']": {
+      "result": true,
+      "time": 0.03536105155944824,
+      "error": null
+    },
+    "assert Find_Max([['X'], ['I', 'T'], ['L', 'T', 'B']]) == ['X']": {
+      "result": false,
+      "time": 0.03883624076843262,
+      "error": null
+    },
+    "assert Find_Max([['R'], ['X', 'B'], ['Y', 'J', 'I']]) == ['Y', 'J', 'I']": {
+      "result": true,
+      "time": 0.04434609413146973,
+      "error": null
+    },
+    "assert Find_Max([[5], [1, 5], [4, 7, 7]]) == [5]": {
+      "result": false,
+      "time": 0.03402543067932129,
+      "error": null
+    },
+    "assert Find_Max([[2], [5, 7], [6, 2, 8]]) == [6, 2, 8]": {
+      "result": true,
+      "time": 0.04518628120422363,
+      "error": null
+    },
+    "assert Find_Max([[2], [6, 4], [4, 3, 8]]) == [6, 4]": {
+      "result": false,
+      "time": 0.04111289978027344,
+      "error": null
+    },
+    "assert Find_Max([[5], [4, 6], [1, 6, 8]]) == [5]": {
+      "result": false,
+      "time": 0.04100489616394043,
+      "error": null
+    },
+    "assert Find_Max([[5], [3, 6], [5, 5, 8]]) == [5, 5, 8]": {
+      "result": true,
+      "time": 0.04136300086975098,
+      "error": null
+    },
+    "assert Find_Max([[4], [4, 5], [3, 2, 2]]) == [4, 5]": {
+      "result": false,
+      "time": 0.04866647720336914,
+      "error": null
+    },
+    "assert Find_Max([[1], [1, 1], [1, 5, 2]]) == [1, 5, 2]": {
+      "result": true,
+      "time": 0.039220333099365234,
+      "error": null
+    },
+    "assert Find_Max([[1], [1, 7], [2, 5, 7]]) == [2, 5, 7]": {
+      "result": true,
+      "time": 0.03898763656616211,
+      "error": null
+    },
+    "assert Find_Max([[4], [1, 4], [5, 3, 3]]) == [5, 3, 3]": {
+      "result": true,
+      "time": 0.03675341606140137,
+      "error": null
+    },
+    "assert Find_Max([[2], [3, 2], [2, 2, 7]]) == [3, 2]": {
+      "result": false,
+      "time": 0.04531455039978027,
+      "error": null
+    },
+    "assert Find_Max([[5], [3, 5], [5, 5, 7]]) == [5, 5, 7]": {
+      "result": true,
+      "time": 0.03567099571228027,
+      "error": null
+    },
+    "assert Find_Max([[6], [1, 1], [2, 6, 8]]) == [6]": {
+      "result": false,
+      "time": 0.04589056968688965,
+      "error": null
+    },
+    "assert Find_Max([[3], [3, 1], [1, 3, 1]]) == [3, 1]": {
+      "result": false,
+      "time": 0.04233384132385254,
+      "error": null
+    },
+    "assert Find_Max([[2], [6, 5], [4, 6, 5]]) == [6, 5]": {
+      "result": false,
+      "time": 0.03554511070251465,
+      "error": null
+    },
+    "assert Find_Max([[5], [3, 6], [4, 6, 6]]) == [5]": {
+      "result": false,
+      "time": 0.03151297569274902,
+      "error": null
+    },
+    "assert Find_Max([[1], [6, 6], [6, 3, 3]]) == [6, 6]": {
+      "result": false,
+      "time": 0.04391741752624512,
+      "error": null
+    },
+    "assert Find_Max([[5], [6, 1], [3, 3, 6]]) == [6, 1]": {
+      "result": false,
+      "time": 0.039838314056396484,
+      "error": null
+    },
+    "assert Find_Max([[2], [2, 7], [2, 3, 6]]) == [2, 7]": {
+      "result": false,
+      "time": 0.04026341438293457,
+      "error": null
+    },
+    "assert Find_Max([[3], [2, 2], [5, 4, 3]]) == [5, 4, 3]": {
+      "result": true,
+      "time": 0.04184556007385254,
+      "error": null
+    },
+    "assert Find_Max([[4], [2, 6], [3, 6, 7]]) == [4]": {
+      "result": false,
+      "time": 0.04101729393005371,
+      "error": null
+    },
+    "assert Find_Max([[1], [4, 5], [2, 5, 1]]) == [4, 5]": {
+      "result": false,
+      "time": 0.037737131118774414,
+      "error": null
+    },
+    "assert Find_Max([[6], [5, 7], [4, 4, 8]]) == [6]": {
+      "result": false,
+      "time": 0.0411069393157959,
+      "error": null
+    },
+    "assert Find_Max([[5], [3, 7], [1, 5, 8]]) == [5]": {
+      "result": false,
+      "time": 0.03557705879211426,
+      "error": null
+    },
+    "assert Find_Max([[2], [6, 3], [6, 1, 1]]) == [6, 3]": {
+      "result": false,
+      "time": 0.04203915596008301,
+      "error": null
+    },
+    "assert Find_Max([[6], [2, 4], [2, 5, 2]]) == [6]": {
+      "result": false,
+      "time": 0.035385847091674805,
+      "error": null
+    },
+    "assert Find_Max([[2], [6, 4], [2, 7, 3]]) == [6, 4]": {
+      "result": false,
+      "time": 0.03562283515930176,
+      "error": null
+    },
+    "assert Find_Max([[2], [3, 6], [5, 6, 4]]) == [5, 6, 4]": {
+      "result": true,
+      "time": 0.03562450408935547,
+      "error": null
+    },
+    "assert Find_Max([[1], [2, 4], [5, 1, 1]]) == [5, 1, 1]": {
+      "result": true,
+      "time": 0.035123586654663086,
+      "error": null
+    },
+    "assert Find_Max([[6], [4, 6], [3, 6, 1]]) == [6]": {
+      "result": false,
+      "time": 0.03435707092285156,
+      "error": null
+    },
+    "assert Find_Max([[2], [1, 6], [1, 6, 7]]) == [2]": {
+      "result": false,
+      "time": 0.042159080505371094,
+      "error": null
+    },
+    "assert Find_Max([[4], [3, 3], [5, 4, 2]]) == [5, 4, 2]": {
+      "result": true,
+      "time": 0.039259910583496094,
+      "error": null
+    },
+    "assert Find_Max([[1], [5, 2], [5, 1, 6]]) == [5, 2]": {
+      "result": false,
+      "time": 0.049782514572143555,
+      "error": null
+    },
+    "assert Find_Max([[6], [3, 2], [2, 1, 1]]) == [6]": {
+      "result": false,
+      "time": 0.04300403594970703,
+      "error": null
+    },
+    "assert Find_Max([[4, 5], [5, 4, 4], [2, 4, 7, 2]]) == [5, 4, 4]": {
+      "result": false,
+      "time": 0.03656411170959473,
+      "error": null
+    },
+    "assert Find_Max([[1, 2], [1, 1, 5], [1, 8, 7, 1]]) == [1, 8, 7, 1]": {
+      "result": true,
+      "time": 0.04152417182922363,
+      "error": null
+    },
+    "assert Find_Max([[2, 6], [3, 6, 8], [3, 2, 1, 3]]) == [3, 6, 8]": {
+      "result": false,
+      "time": 0.038823843002319336,
+      "error": null
+    },
+    "assert Find_Max([[4, 6], [4, 2, 7], [1, 4, 6, 1]]) == [4, 6]": {
+      "result": false,
+      "time": 0.03904151916503906,
+      "error": null
+    },
+    "assert Find_Max([[1, 6], [5, 4, 1], [4, 6, 8, 3]]) == [5, 4, 1]": {
+      "result": false,
+      "time": 0.03335833549499512,
+      "error": null
+    },
+    "assert Find_Max([[1, 3], [6, 2, 5], [6, 3, 3, 4]]) == [6, 3, 3, 4]": {
+      "result": true,
+      "time": 0.04235959053039551,
+      "error": null
+    },
+    "assert Find_Max([[6, 4], [2, 5, 6], [2, 4, 1, 2]]) == [6, 4]": {
+      "result": false,
+      "time": 0.036630868911743164,
+      "error": null
+    },
+    "assert Find_Max([[3, 5], [3, 7, 4], [2, 6, 1, 5]]) == [3, 7, 4]": {
+      "result": false,
+      "time": 0.04136347770690918,
+      "error": null
+    },
+    "assert Find_Max([[2, 2], [2, 1, 4], [6, 2, 8, 4]]) == [6, 2, 8, 4]": {
+      "result": true,
+      "time": 0.0349278450012207,
+      "error": null
+    },
+    "assert Find_Max([[6, 4], [6, 1, 5], [2, 10, 8, 2]]) == [6, 4]": {
+      "result": false,
+      "time": 0.03110647201538086,
+      "error": null
+    },
+    "assert Find_Max([[6, 2], [2, 7, 7], [3, 7, 11, 5]]) == [6, 2]": {
+      "result": false,
+      "time": 0.03997373580932617,
+      "error": null
+    },
+    "assert Find_Max([[5, 6], [2, 7, 3], [4, 4, 8, 2]]) == [5, 6]": {
+      "result": false,
+      "time": 0.04234194755554199,
+      "error": null
+    },
+    "assert Find_Max([[5, 3], [2, 3, 5], [2, 1, 9, 3]]) == [5, 3]": {
+      "result": false,
+      "time": 0.040472984313964844,
+      "error": null
+    },
+    "assert Find_Max([[3, 4], [4, 1, 3], [5, 1, 9, 6]]) == [5, 1, 9, 6]": {
+      "result": true,
+      "time": 0.04003000259399414,
+      "error": null
+    },
+    "assert Find_Max([[5, 6], [4, 6, 3], [4, 1, 4, 2]]) == [5, 6]": {
+      "result": false,
+      "time": 0.04234719276428223,
+      "error": null
+    },
+    "assert Find_Max([[5, 5], [4, 7, 7], [5, 6, 1, 4]]) == [5, 6, 1, 4]": {
+      "result": true,
+      "time": 0.03936195373535156,
+      "error": null
+    },
+    "assert Find_Max([[2, 6], [6, 4, 5], [3, 5, 10, 3]]) == [6, 4, 5]": {
+      "result": false,
+      "time": 0.0397186279296875,
+      "error": null
+    },
+    "assert Find_Max([[2, 4], [1, 5, 2], [6, 2, 7, 3]]) == [6, 2, 7, 3]": {
+      "result": true,
+      "time": 0.04522585868835449,
+      "error": null
+    },
+    "assert Find_Max([[3, 4], [1, 3, 2], [4, 9, 1, 3]]) == [4, 9, 1, 3]": {
+      "result": true,
+      "time": 0.036057233810424805,
+      "error": null
+    },
+    "assert Find_Max([[4, 4], [2, 3, 3], [4, 6, 8, 5]]) == [4, 6, 8, 5]": {
+      "result": true,
+      "time": 0.03857731819152832,
+      "error": null
+    },
+    "assert Find_Max([[2, 2], [5, 5, 2], [2, 7, 3, 2]]) == [5, 5, 2]": {
+      "result": false,
+      "time": 0.0380864143371582,
+      "error": null
+    },
+    "assert Find_Max([[6, 1], [5, 4, 3], [6, 10, 1, 6]]) == [6, 10, 1, 6]": {
+      "result": true,
+      "time": 0.03330731391906738,
+      "error": null
+    },
+    "assert Find_Max([[5, 4], [1, 6, 3], [6, 1, 11, 5]]) == [6, 1, 11, 5]": {
+      "result": true,
+      "time": 0.03253340721130371,
+      "error": null
+    },
+    "assert Find_Max([[1, 6], [1, 6, 7], [2, 7, 3, 5]]) == [2, 7, 3, 5]": {
+      "result": true,
+      "time": 0.034409284591674805,
+      "error": null
+    },
+    "assert Find_Max([[6, 3], [1, 7, 5], [3, 9, 11, 1]]) == [6, 3]": {
+      "result": false,
+      "time": 0.03597593307495117,
+      "error": null
+    },
+    "assert Find_Max([[2, 2], [1, 6, 1], [1, 2, 7, 1]]) == [2, 2]": {
+      "result": false,
+      "time": 0.042479753494262695,
+      "error": null
+    },
+    "assert Find_Max([[3, 5], [5, 6, 2], [3, 6, 4, 3]]) == [5, 6, 2]": {
+      "result": false,
+      "time": 0.0447843074798584,
+      "error": null
+    },
+    "assert Find_Max([[6, 3], [4, 4, 7], [6, 8, 9, 2]]) == [6, 8, 9, 2]": {
+      "result": true,
+      "time": 0.03669238090515137,
+      "error": null
+    },
+    "assert Find_Max([[6, 4], [1, 1, 5], [1, 5, 2, 3]]) == [6, 4]": {
+      "result": false,
+      "time": 0.03670525550842285,
+      "error": null
+    },
+    "assert Find_Max([[1, 4], [5, 5, 5], [3, 4, 4, 2]]) == [5, 5, 5]": {
+      "result": false,
+      "time": 0.03478407859802246,
+      "error": null
+    },
+    "assert Find_Max([[5, 2], [6, 6, 5], [5, 1, 11, 4]]) == [6, 6, 5]": {
+      "result": false,
+      "time": 0.035094499588012695,
+      "error": null
+    },
+    "assert Find_Max([[1, 4], [5, 3, 2], [1, 4, 4, 2]]) == [5, 3, 2]": {
+      "result": false,
+      "time": 0.03972625732421875,
+      "error": null
+    },
+    "assert Find_Max([[1, 6], [4, 3, 5], [5, 7, 4, 2]]) == [5, 7, 4, 2]": {
+      "result": true,
+      "time": 0.04041409492492676,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.4117647058823529,
+  "general_error": "",
+  "has_testcase_error": false
+}

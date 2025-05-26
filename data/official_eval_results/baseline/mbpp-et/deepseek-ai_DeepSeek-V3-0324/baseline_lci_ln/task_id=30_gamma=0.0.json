@@ -1,0 +1,519 @@
+{
+  "code": "def count_Substring_With_Equal_Ends(s):\n    count = 0\n    n = len(s)\n    for i in range(n):\n        for j in range(i, n):\n            substring = s[i:j+1]\n            first_char = substring[0]\n            last_char = substring[-1]\n            if first_char == last_char:\n                count += 1\n    return count",
+  "results": {
+    "assert count_Substring_With_Equal_Ends(\"abc\") == 3": {
+      "result": true,
+      "time": 0.04531121253967285,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"abcda\") == 6": {
+      "result": true,
+      "time": 0.04903697967529297,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ab\") == 2": {
+      "result": true,
+      "time": 0.06377315521240234,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"rwangims\") == 8": {
+      "result": true,
+      "time": 0.04206037521362305,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"vemhcx\") == 6": {
+      "result": true,
+      "time": 0.061798095703125,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"qqbfp\") == 6": {
+      "result": true,
+      "time": 0.04424405097961426,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"kdovvpec\") == 9": {
+      "result": true,
+      "time": 0.057941436767578125,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"rpnvbiny\") == 9": {
+      "result": true,
+      "time": 0.06090211868286133,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"najlbqf\") == 7": {
+      "result": true,
+      "time": 0.05449366569519043,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ecbleccue\") == 15": {
+      "result": true,
+      "time": 0.062216758728027344,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ezqhy\") == 5": {
+      "result": true,
+      "time": 0.0975637435913086,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ebfdpuz\") == 7": {
+      "result": true,
+      "time": 0.050061941146850586,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"nztkuyc\") == 7": {
+      "result": true,
+      "time": 0.060690879821777344,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"fuwbkmze\") == 8": {
+      "result": true,
+      "time": 0.044165611267089844,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"xhuhl\") == 6": {
+      "result": true,
+      "time": 0.056574106216430664,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"sgw\") == 3": {
+      "result": true,
+      "time": 0.05342507362365723,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"cery\") == 4": {
+      "result": true,
+      "time": 0.05117607116699219,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"kyw\") == 3": {
+      "result": true,
+      "time": 0.04331493377685547,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"bmbppyude\") == 11": {
+      "result": true,
+      "time": 0.04957222938537598,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"phqyhftz\") == 9": {
+      "result": true,
+      "time": 0.05431771278381348,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"gqvv\") == 5": {
+      "result": true,
+      "time": 0.056555986404418945,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"vkrgirfy\") == 9": {
+      "result": true,
+      "time": 0.048372507095336914,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"jcvwa\") == 5": {
+      "result": true,
+      "time": 0.04558444023132324,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"wnzeyzv\") == 8": {
+      "result": true,
+      "time": 0.033643484115600586,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ylpdgv\") == 6": {
+      "result": true,
+      "time": 0.04791402816772461,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"skhy\") == 4": {
+      "result": true,
+      "time": 0.05933046340942383,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"hmlnepc\") == 7": {
+      "result": true,
+      "time": 0.04577755928039551,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ftwedab\") == 7": {
+      "result": true,
+      "time": 0.04408001899719238,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"azviio\") == 7": {
+      "result": true,
+      "time": 0.04497671127319336,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"xexjcy\") == 7": {
+      "result": true,
+      "time": 0.046829938888549805,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"aqhgvt\") == 6": {
+      "result": true,
+      "time": 0.059771060943603516,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"kntfeghzm\") == 9": {
+      "result": true,
+      "time": 0.04506945610046387,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"dbngddq\") == 10": {
+      "result": true,
+      "time": 0.03676867485046387,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"fvcyrzr\") == 8": {
+      "result": true,
+      "time": 0.057037353515625,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"zdwpoc\") == 6": {
+      "result": true,
+      "time": 0.045229196548461914,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"uswb\") == 4": {
+      "result": true,
+      "time": 0.04735565185546875,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"bluamgyzr\") == 9": {
+      "result": true,
+      "time": 0.04219865798950195,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"wwhzj\") == 6": {
+      "result": true,
+      "time": 0.04176735877990723,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"pmnuav\") == 6": {
+      "result": true,
+      "time": 0.048197031021118164,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"alpstd\") == 6": {
+      "result": true,
+      "time": 0.036592721939086914,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"sfn\") == 3": {
+      "result": true,
+      "time": 0.049280405044555664,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"azkc\") == 4": {
+      "result": true,
+      "time": 0.051628828048706055,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"extgizu\") == 7": {
+      "result": true,
+      "time": 0.045012474060058594,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"dmjek\") == 5": {
+      "result": true,
+      "time": 0.050568342208862305,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"cgdihe\") == 6": {
+      "result": true,
+      "time": 0.04257988929748535,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"bfqgqfh\") == 9": {
+      "result": true,
+      "time": 0.038449764251708984,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"rzomghg\") == 8": {
+      "result": true,
+      "time": 0.04646801948547363,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"faowo\") == 6": {
+      "result": true,
+      "time": 0.0411076545715332,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"quk\") == 3": {
+      "result": true,
+      "time": 0.03780937194824219,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"vwdxnzg\") == 7": {
+      "result": true,
+      "time": 0.042098283767700195,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"unepkt\") == 6": {
+      "result": true,
+      "time": 0.03612494468688965,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"oif\") == 3": {
+      "result": true,
+      "time": 0.041448116302490234,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"zbu\") == 3": {
+      "result": true,
+      "time": 0.0489654541015625,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"qvqf\") == 5": {
+      "result": true,
+      "time": 0.04003262519836426,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"zyuvmh\") == 6": {
+      "result": true,
+      "time": 0.042092323303222656,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"hbtdob\") == 7": {
+      "result": true,
+      "time": 0.03863024711608887,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"zxvl\") == 4": {
+      "result": true,
+      "time": 0.04276084899902344,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"vephioadg\") == 9": {
+      "result": true,
+      "time": 0.052275896072387695,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"hdmta\") == 5": {
+      "result": true,
+      "time": 0.039534568786621094,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"htkfx\") == 5": {
+      "result": true,
+      "time": 0.037888288497924805,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ndosqvrb\") == 8": {
+      "result": true,
+      "time": 0.0412900447845459,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"jeo\") == 3": {
+      "result": true,
+      "time": 0.04376554489135742,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"cofuanp\") == 7": {
+      "result": true,
+      "time": 0.045114755630493164,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ctmtimgn\") == 10": {
+      "result": true,
+      "time": 0.03541874885559082,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"isdwrbm\") == 7": {
+      "result": true,
+      "time": 0.04632067680358887,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"hyv\") == 3": {
+      "result": true,
+      "time": 0.05534720420837402,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"kikjetfw\") == 9": {
+      "result": true,
+      "time": 0.04175901412963867,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"qdr\") == 3": {
+      "result": true,
+      "time": 0.051111459732055664,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"bzc\") == 3": {
+      "result": true,
+      "time": 0.04012894630432129,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ninjwn\") == 9": {
+      "result": true,
+      "time": 0.04027843475341797,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"utfh\") == 4": {
+      "result": true,
+      "time": 0.042233943939208984,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"adx\") == 3": {
+      "result": true,
+      "time": 0.04707217216491699,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"xur\") == 3": {
+      "result": true,
+      "time": 0.04012155532836914,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"myny\") == 5": {
+      "result": true,
+      "time": 0.04076361656188965,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"gicm\") == 4": {
+      "result": true,
+      "time": 0.04982805252075195,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"onfqx\") == 5": {
+      "result": true,
+      "time": 0.0387425422668457,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"avkkcz\") == 7": {
+      "result": true,
+      "time": 0.046706199645996094,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"qgaka\") == 6": {
+      "result": true,
+      "time": 0.03752422332763672,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"enb\") == 3": {
+      "result": true,
+      "time": 0.04212808609008789,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"jeb\") == 3": {
+      "result": true,
+      "time": 0.05400800704956055,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"trceq\") == 5": {
+      "result": true,
+      "time": 0.045020341873168945,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"amqssg\") == 7": {
+      "result": true,
+      "time": 0.047789812088012695,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"myiv\") == 4": {
+      "result": true,
+      "time": 0.04939389228820801,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"dtwfri\") == 6": {
+      "result": true,
+      "time": 0.04577922821044922,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"qvecqe\") == 8": {
+      "result": true,
+      "time": 0.05308365821838379,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"sky\") == 3": {
+      "result": true,
+      "time": 0.04398822784423828,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"tviz\") == 4": {
+      "result": true,
+      "time": 0.04050302505493164,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"gcfaei\") == 6": {
+      "result": true,
+      "time": 0.052204132080078125,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"lulvu\") == 7": {
+      "result": true,
+      "time": 0.060990095138549805,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"orvizy\") == 6": {
+      "result": true,
+      "time": 0.059782981872558594,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"bdwd\") == 5": {
+      "result": true,
+      "time": 0.05206179618835449,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"cnnnz\") == 8": {
+      "result": true,
+      "time": 0.05322861671447754,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"lygaap\") == 7": {
+      "result": true,
+      "time": 0.05625557899475098,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ufww\") == 5": {
+      "result": true,
+      "time": 0.05020856857299805,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"csi\") == 3": {
+      "result": true,
+      "time": 0.054131507873535156,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"fczgik\") == 6": {
+      "result": true,
+      "time": 0.05510735511779785,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"ttoixa\") == 7": {
+      "result": true,
+      "time": 0.05330228805541992,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"bacq\") == 4": {
+      "result": true,
+      "time": 0.047055721282958984,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"nnvnj\") == 8": {
+      "result": true,
+      "time": 0.051920413970947266,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"isk\") == 3": {
+      "result": true,
+      "time": 0.06663179397583008,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"cuxiv\") == 5": {
+      "result": true,
+      "time": 0.053090810775756836,
+      "error": null
+    },
+    "assert count_Substring_With_Equal_Ends(\"fjv\") == 3": {
+      "result": true,
+      "time": 0.054102182388305664,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

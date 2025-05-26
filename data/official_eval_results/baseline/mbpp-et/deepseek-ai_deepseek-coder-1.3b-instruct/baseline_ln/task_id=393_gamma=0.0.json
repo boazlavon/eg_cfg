@@ -1,0 +1,519 @@
+{
+  "code": "def max_length_list(lst):\n    max_length = max(len(sub_lst) for sub_lst in lst)\n    max_list = [sub_lst for sub_lst in lst if len(sub_lst) == max_length]\n    return max_length, max_list",
+  "results": {
+    "assert max_length_list([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]])==(3, [13, 15, 17])": {
+      "result": false,
+      "time": 0.04032564163208008,
+      "error": null
+    },
+    "assert max_length_list([[1,2,3,4,5],[1,2,3,4],[1,2,3],[1,2],[1]])==(5,[1,2,3,4,5])": {
+      "result": false,
+      "time": 0.042780399322509766,
+      "error": null
+    },
+    "assert max_length_list([[3,4,5],[6,7,8,9],[10,11,12]])==(4,[6,7,8,9])": {
+      "result": false,
+      "time": 0.037056922912597656,
+      "error": null
+    },
+    "assert max_length_list([[3], [1, 6], [1, 11], [4, 10], [10, 15, 21]]) == (3, [10, 15, 21])": {
+      "result": false,
+      "time": 0.03699469566345215,
+      "error": null
+    },
+    "assert max_length_list([[1], [2, 2], [10, 6], [9, 15], [13, 17, 15]]) == (3, [13, 17, 15])": {
+      "result": false,
+      "time": 0.04231882095336914,
+      "error": null
+    },
+    "assert max_length_list([[5], [6, 5], [2, 8], [4, 10], [11, 14, 20]]) == (3, [11, 14, 20])": {
+      "result": false,
+      "time": 0.04208993911743164,
+      "error": null
+    },
+    "assert max_length_list([[4], [3, 1], [7, 8], [11, 15], [15, 19, 20]]) == (3, [15, 19, 20])": {
+      "result": false,
+      "time": 0.03734898567199707,
+      "error": null
+    },
+    "assert max_length_list([[4], [4, 5], [2, 7], [4, 10], [18, 15, 17]]) == (3, [18, 15, 17])": {
+      "result": false,
+      "time": 0.03395986557006836,
+      "error": null
+    },
+    "assert max_length_list([[1], [1, 2], [4, 8], [12, 9], [9, 12, 14]]) == (3, [9, 12, 14])": {
+      "result": false,
+      "time": 0.04459667205810547,
+      "error": null
+    },
+    "assert max_length_list([[1], [4, 2], [4, 5], [5, 11], [15, 14, 18]]) == (3, [15, 14, 18])": {
+      "result": false,
+      "time": 0.04482626914978027,
+      "error": null
+    },
+    "assert max_length_list([[2], [6, 7], [9, 7], [6, 12], [15, 14, 18]]) == (3, [15, 14, 18])": {
+      "result": false,
+      "time": 0.040395259857177734,
+      "error": null
+    },
+    "assert max_length_list([[1], [3, 6], [6, 10], [11, 8], [14, 14, 22]]) == (3, [14, 14, 22])": {
+      "result": false,
+      "time": 0.04267621040344238,
+      "error": null
+    },
+    "assert max_length_list([[4], [3, 3], [9, 8], [6, 13], [16, 15, 12]]) == (3, [16, 15, 12])": {
+      "result": false,
+      "time": 0.039336204528808594,
+      "error": null
+    },
+    "assert max_length_list([[2], [3, 8], [7, 9], [6, 11], [12, 12, 17]]) == (3, [12, 12, 17])": {
+      "result": false,
+      "time": 0.04054665565490723,
+      "error": null
+    },
+    "assert max_length_list([[3], [2, 1], [3, 4], [11, 8], [17, 16, 19]]) == (3, [17, 16, 19])": {
+      "result": false,
+      "time": 0.0429227352142334,
+      "error": null
+    },
+    "assert max_length_list([[5], [1, 5], [8, 12], [9, 7], [14, 15, 17]]) == (3, [14, 15, 17])": {
+      "result": false,
+      "time": 0.03829765319824219,
+      "error": null
+    },
+    "assert max_length_list([[3], [2, 6], [10, 8], [4, 13], [9, 10, 13]]) == (3, [9, 10, 13])": {
+      "result": false,
+      "time": 0.04331350326538086,
+      "error": null
+    },
+    "assert max_length_list([[2], [4, 7], [6, 8], [8, 6], [9, 14, 19]]) == (3, [9, 14, 19])": {
+      "result": false,
+      "time": 0.03868436813354492,
+      "error": null
+    },
+    "assert max_length_list([[3], [5, 8], [9, 8], [12, 13], [11, 12, 21]]) == (3, [11, 12, 21])": {
+      "result": false,
+      "time": 0.0363309383392334,
+      "error": null
+    },
+    "assert max_length_list([[2], [5, 1], [2, 12], [11, 16], [9, 13, 16]]) == (3, [9, 13, 16])": {
+      "result": false,
+      "time": 0.03444790840148926,
+      "error": null
+    },
+    "assert max_length_list([[4], [3, 2], [4, 5], [10, 13], [12, 17, 14]]) == (3, [12, 17, 14])": {
+      "result": false,
+      "time": 0.04794669151306152,
+      "error": null
+    },
+    "assert max_length_list([[4], [1, 6], [10, 4], [7, 15], [8, 10, 22]]) == (3, [8, 10, 22])": {
+      "result": false,
+      "time": 0.04694843292236328,
+      "error": null
+    },
+    "assert max_length_list([[5], [2, 7], [10, 12], [8, 12], [12, 11, 13]]) == (3, [12, 11, 13])": {
+      "result": false,
+      "time": 0.03517603874206543,
+      "error": null
+    },
+    "assert max_length_list([[4], [5, 2], [3, 7], [11, 16], [13, 18, 22]]) == (3, [13, 18, 22])": {
+      "result": false,
+      "time": 0.03402376174926758,
+      "error": null
+    },
+    "assert max_length_list([[5], [4, 8], [7, 3], [7, 12], [12, 11, 12]]) == (3, [12, 11, 12])": {
+      "result": false,
+      "time": 0.03183865547180176,
+      "error": null
+    },
+    "assert max_length_list([[3], [1, 5], [10, 3], [7, 14], [8, 18, 12]]) == (3, [8, 18, 12])": {
+      "result": false,
+      "time": 0.04035615921020508,
+      "error": null
+    },
+    "assert max_length_list([[3], [2, 8], [4, 7], [8, 13], [15, 13, 20]]) == (3, [15, 13, 20])": {
+      "result": false,
+      "time": 0.03335165977478027,
+      "error": null
+    },
+    "assert max_length_list([[5], [3, 8], [2, 4], [8, 13], [9, 19, 19]]) == (3, [9, 19, 19])": {
+      "result": false,
+      "time": 0.033742666244506836,
+      "error": null
+    },
+    "assert max_length_list([[4], [1, 6], [5, 3], [14, 6], [18, 20, 13]]) == (3, [18, 20, 13])": {
+      "result": false,
+      "time": 0.039092063903808594,
+      "error": null
+    },
+    "assert max_length_list([[5], [2, 3], [2, 9], [5, 13], [9, 16, 20]]) == (3, [9, 16, 20])": {
+      "result": false,
+      "time": 0.03878903388977051,
+      "error": null
+    },
+    "assert max_length_list([[5], [5, 6], [10, 8], [14, 16], [16, 20, 18]]) == (3, [16, 20, 18])": {
+      "result": false,
+      "time": 0.036406755447387695,
+      "error": null
+    },
+    "assert max_length_list([[2], [5, 1], [5, 7], [14, 15], [8, 13, 18]]) == (3, [8, 13, 18])": {
+      "result": false,
+      "time": 0.0412137508392334,
+      "error": null
+    },
+    "assert max_length_list([[5], [5, 6], [4, 4], [8, 11], [15, 17, 12]]) == (3, [15, 17, 12])": {
+      "result": false,
+      "time": 0.03569459915161133,
+      "error": null
+    },
+    "assert max_length_list([[4], [1, 3], [1, 6], [13, 12], [12, 13, 16]]) == (3, [12, 13, 16])": {
+      "result": false,
+      "time": 0.03314065933227539,
+      "error": null
+    },
+    "assert max_length_list([[2], [2, 5], [3, 12], [13, 11], [17, 10, 14]]) == (3, [17, 10, 14])": {
+      "result": false,
+      "time": 0.03772139549255371,
+      "error": null
+    },
+    "assert max_length_list([[1], [4, 1], [4, 7], [13, 6], [18, 11, 19]]) == (3, [18, 11, 19])": {
+      "result": false,
+      "time": 0.03692150115966797,
+      "error": null
+    },
+    "assert max_length_list([[5, 1, 7, 8, 2], [5, 7, 1, 1], [6, 7, 7], [6, 2], [3]]) == (5, [5, 1, 7, 8, 2])": {
+      "result": false,
+      "time": 0.03736114501953125,
+      "error": null
+    },
+    "assert max_length_list([[6, 3, 4, 6, 9], [4, 6, 5, 3], [2, 2, 1], [2, 6], [3]]) == (5, [6, 3, 4, 6, 9])": {
+      "result": false,
+      "time": 0.034765005111694336,
+      "error": null
+    },
+    "assert max_length_list([[6, 7, 5, 8, 8], [1, 1, 4, 6], [4, 1, 4], [2, 2], [1]]) == (5, [6, 7, 5, 8, 8])": {
+      "result": false,
+      "time": 0.030472517013549805,
+      "error": null
+    },
+    "assert max_length_list([[1, 4, 1, 9, 7], [4, 1, 8, 3], [1, 4, 4], [2, 4], [1]]) == (5, [1, 4, 1, 9, 7])": {
+      "result": false,
+      "time": 0.04169440269470215,
+      "error": null
+    },
+    "assert max_length_list([[1, 6, 6, 5, 7], [6, 2, 1, 5], [4, 2, 5], [2, 7], [5]]) == (5, [1, 6, 6, 5, 7])": {
+      "result": false,
+      "time": 0.042871952056884766,
+      "error": null
+    },
+    "assert max_length_list([[5, 2, 7, 1, 2], [5, 3, 2, 3], [3, 5, 2], [2, 5], [6]]) == (5, [5, 2, 7, 1, 2])": {
+      "result": false,
+      "time": 0.03743433952331543,
+      "error": null
+    },
+    "assert max_length_list([[4, 4, 7, 4, 10], [1, 3, 2, 9], [2, 4, 4], [1, 4], [3]]) == (5, [4, 4, 7, 4, 10])": {
+      "result": false,
+      "time": 0.03535270690917969,
+      "error": null
+    },
+    "assert max_length_list([[6, 4, 5, 2, 10], [6, 4, 7, 4], [6, 5, 4], [2, 1], [3]]) == (5, [6, 4, 5, 2, 10])": {
+      "result": false,
+      "time": 0.03183937072753906,
+      "error": null
+    },
+    "assert max_length_list([[3, 2, 5, 7, 10], [3, 6, 7, 1], [1, 5, 3], [1, 6], [5]]) == (5, [3, 2, 5, 7, 10])": {
+      "result": false,
+      "time": 0.03600168228149414,
+      "error": null
+    },
+    "assert max_length_list([[5, 4, 5, 4, 10], [3, 6, 2, 3], [3, 7, 7], [1, 5], [1]]) == (5, [5, 4, 5, 4, 10])": {
+      "result": false,
+      "time": 0.03861856460571289,
+      "error": null
+    },
+    "assert max_length_list([[2, 2, 4, 2, 10], [2, 6, 4, 3], [2, 5, 8], [1, 1], [2]]) == (5, [2, 2, 4, 2, 10])": {
+      "result": false,
+      "time": 0.03411579132080078,
+      "error": null
+    },
+    "assert max_length_list([[6, 1, 4, 1, 7], [2, 3, 4, 5], [3, 4, 6], [2, 4], [6]]) == (5, [6, 1, 4, 1, 7])": {
+      "result": false,
+      "time": 0.03316473960876465,
+      "error": null
+    },
+    "assert max_length_list([[6, 6, 2, 8, 2], [2, 5, 5, 2], [5, 1, 6], [2, 3], [3]]) == (5, [6, 6, 2, 8, 2])": {
+      "result": false,
+      "time": 0.03639554977416992,
+      "error": null
+    },
+    "assert max_length_list([[1, 3, 7, 5, 8], [6, 4, 5, 2], [1, 2, 2], [2, 4], [4]]) == (5, [1, 3, 7, 5, 8])": {
+      "result": false,
+      "time": 0.03436589241027832,
+      "error": null
+    },
+    "assert max_length_list([[6, 2, 1, 2, 9], [6, 3, 7, 1], [5, 1, 8], [1, 4], [5]]) == (5, [6, 2, 1, 2, 9])": {
+      "result": false,
+      "time": 0.0352025032043457,
+      "error": null
+    },
+    "assert max_length_list([[1, 7, 8, 7, 10], [5, 7, 2, 1], [4, 7, 7], [3, 5], [3]]) == (5, [1, 7, 8, 7, 10])": {
+      "result": false,
+      "time": 0.03460192680358887,
+      "error": null
+    },
+    "assert max_length_list([[3, 7, 4, 7, 10], [4, 3, 6, 9], [5, 6, 4], [6, 2], [3]]) == (5, [3, 7, 4, 7, 10])": {
+      "result": false,
+      "time": 0.03459763526916504,
+      "error": null
+    },
+    "assert max_length_list([[4, 6, 6, 6, 9], [1, 1, 8, 2], [1, 2, 3], [1, 2], [5]]) == (5, [4, 6, 6, 6, 9])": {
+      "result": false,
+      "time": 0.03277754783630371,
+      "error": null
+    },
+    "assert max_length_list([[3, 5, 8, 8, 10], [3, 6, 7, 4], [3, 5, 3], [5, 4], [2]]) == (5, [3, 5, 8, 8, 10])": {
+      "result": false,
+      "time": 0.036954641342163086,
+      "error": null
+    },
+    "assert max_length_list([[2, 7, 8, 3, 7], [5, 1, 4, 5], [3, 4, 2], [5, 2], [5]]) == (5, [2, 7, 8, 3, 7])": {
+      "result": false,
+      "time": 0.03519940376281738,
+      "error": null
+    },
+    "assert max_length_list([[6, 1, 1, 8, 4], [1, 6, 4, 4], [3, 4, 4], [1, 1], [4]]) == (5, [6, 1, 1, 8, 4])": {
+      "result": false,
+      "time": 0.03904247283935547,
+      "error": null
+    },
+    "assert max_length_list([[3, 1, 4, 4, 5], [4, 5, 6, 8], [3, 6, 2], [2, 7], [3]]) == (5, [3, 1, 4, 4, 5])": {
+      "result": false,
+      "time": 0.030684471130371094,
+      "error": null
+    },
+    "assert max_length_list([[2, 3, 4, 6, 9], [1, 5, 2, 5], [1, 5, 7], [3, 5], [2]]) == (5, [2, 3, 4, 6, 9])": {
+      "result": false,
+      "time": 0.035447120666503906,
+      "error": null
+    },
+    "assert max_length_list([[5, 6, 1, 9, 2], [4, 3, 3, 7], [3, 3, 6], [6, 4], [5]]) == (5, [5, 6, 1, 9, 2])": {
+      "result": false,
+      "time": 0.03619885444641113,
+      "error": null
+    },
+    "assert max_length_list([[4, 7, 8, 1, 10], [6, 7, 1, 8], [1, 5, 5], [2, 6], [4]]) == (5, [4, 7, 8, 1, 10])": {
+      "result": false,
+      "time": 0.03497195243835449,
+      "error": null
+    },
+    "assert max_length_list([[6, 5, 7, 1, 6], [3, 5, 4, 2], [5, 2, 5], [2, 1], [3]]) == (5, [6, 5, 7, 1, 6])": {
+      "result": false,
+      "time": 0.03578329086303711,
+      "error": null
+    },
+    "assert max_length_list([[4, 4, 8, 9, 7], [2, 3, 6, 3], [3, 1, 3], [4, 5], [4]]) == (5, [4, 4, 8, 9, 7])": {
+      "result": false,
+      "time": 0.039775848388671875,
+      "error": null
+    },
+    "assert max_length_list([[6, 5, 8, 1, 8], [6, 3, 6, 9], [2, 7, 2], [1, 1], [4]]) == (5, [6, 5, 8, 1, 8])": {
+      "result": false,
+      "time": 0.038125038146972656,
+      "error": null
+    },
+    "assert max_length_list([[6, 6, 1, 3, 7], [1, 6, 2, 3], [6, 4, 7], [4, 2], [2]]) == (5, [6, 6, 1, 3, 7])": {
+      "result": false,
+      "time": 0.03601717948913574,
+      "error": null
+    },
+    "assert max_length_list([[6, 6, 7, 8, 2], [2, 3, 8, 2], [5, 6, 2], [6, 2], [1]]) == (5, [6, 6, 7, 8, 2])": {
+      "result": false,
+      "time": 0.03166675567626953,
+      "error": null
+    },
+    "assert max_length_list([[1, 1, 4, 5, 8], [1, 6, 8, 6], [2, 3, 2], [5, 4], [6]]) == (5, [1, 1, 4, 5, 8])": {
+      "result": false,
+      "time": 0.03725624084472656,
+      "error": null
+    },
+    "assert max_length_list([[5, 6, 5, 5, 10], [6, 4, 2, 7], [6, 3, 7], [3, 5], [3]]) == (5, [5, 6, 5, 5, 10])": {
+      "result": false,
+      "time": 0.0358884334564209,
+      "error": null
+    },
+    "assert max_length_list([[2, 3, 6, 2, 9], [1, 2, 8, 5], [2, 5, 7], [1, 2], [4]]) == (5, [2, 3, 6, 2, 9])": {
+      "result": false,
+      "time": 0.03509879112243652,
+      "error": null
+    },
+    "assert max_length_list([[7, 8, 2], [9, 2, 10, 8], [15, 9, 14]]) == (4, [9, 2, 10, 8])": {
+      "result": false,
+      "time": 0.040164947509765625,
+      "error": null
+    },
+    "assert max_length_list([[1, 1, 1], [4, 3, 12, 10], [7, 9, 17]]) == (4, [4, 3, 12, 10])": {
+      "result": false,
+      "time": 0.04022359848022461,
+      "error": null
+    },
+    "assert max_length_list([[1, 2, 8], [11, 4, 12, 4], [12, 9, 10]]) == (4, [11, 4, 12, 4])": {
+      "result": false,
+      "time": 0.04982280731201172,
+      "error": null
+    },
+    "assert max_length_list([[7, 1, 8], [8, 12, 9, 10], [12, 13, 9]]) == (4, [8, 12, 9, 10])": {
+      "result": false,
+      "time": 0.038700103759765625,
+      "error": null
+    },
+    "assert max_length_list([[5, 3, 3], [9, 8, 8, 13], [14, 15, 15]]) == (4, [9, 8, 8, 13])": {
+      "result": false,
+      "time": 0.03448677062988281,
+      "error": null
+    },
+    "assert max_length_list([[5, 4, 2], [3, 3, 4, 4], [14, 16, 12]]) == (4, [3, 3, 4, 4])": {
+      "result": false,
+      "time": 0.047536611557006836,
+      "error": null
+    },
+    "assert max_length_list([[4, 2, 7], [4, 8, 9, 4], [12, 15, 8]]) == (4, [4, 8, 9, 4])": {
+      "result": false,
+      "time": 0.03896188735961914,
+      "error": null
+    },
+    "assert max_length_list([[6, 7, 7], [3, 2, 3, 7], [9, 10, 8]]) == (4, [3, 2, 3, 7])": {
+      "result": false,
+      "time": 0.04787039756774902,
+      "error": null
+    },
+    "assert max_length_list([[4, 6, 4], [1, 4, 11, 6], [9, 9, 11]]) == (4, [1, 4, 11, 6])": {
+      "result": false,
+      "time": 0.038744449615478516,
+      "error": null
+    },
+    "assert max_length_list([[8, 3, 4], [6, 11, 3, 13], [10, 10, 15]]) == (4, [6, 11, 3, 13])": {
+      "result": false,
+      "time": 0.03722262382507324,
+      "error": null
+    },
+    "assert max_length_list([[3, 7, 7], [11, 5, 5, 4], [6, 7, 13]]) == (4, [11, 5, 5, 4])": {
+      "result": false,
+      "time": 0.038005828857421875,
+      "error": null
+    },
+    "assert max_length_list([[8, 2, 3], [11, 2, 12, 10], [10, 16, 9]]) == (4, [11, 2, 12, 10])": {
+      "result": false,
+      "time": 0.03801560401916504,
+      "error": null
+    },
+    "assert max_length_list([[7, 8, 4], [7, 3, 9, 10], [10, 9, 15]]) == (4, [7, 3, 9, 10])": {
+      "result": false,
+      "time": 0.05581474304199219,
+      "error": null
+    },
+    "assert max_length_list([[5, 9, 2], [6, 11, 12, 11], [5, 9, 7]]) == (4, [6, 11, 12, 11])": {
+      "result": false,
+      "time": 0.06446576118469238,
+      "error": null
+    },
+    "assert max_length_list([[2, 8, 8], [3, 5, 13, 4], [12, 14, 14]]) == (4, [3, 5, 13, 4])": {
+      "result": false,
+      "time": 0.04893684387207031,
+      "error": null
+    },
+    "assert max_length_list([[7, 1, 3], [11, 4, 9, 10], [13, 11, 14]]) == (4, [11, 4, 9, 10])": {
+      "result": false,
+      "time": 0.05408477783203125,
+      "error": null
+    },
+    "assert max_length_list([[3, 1, 9], [3, 9, 12, 5], [9, 9, 12]]) == (4, [3, 9, 12, 5])": {
+      "result": false,
+      "time": 0.054312705993652344,
+      "error": null
+    },
+    "assert max_length_list([[2, 6, 5], [1, 5, 5, 12], [13, 14, 17]]) == (4, [1, 5, 5, 12])": {
+      "result": false,
+      "time": 0.046507835388183594,
+      "error": null
+    },
+    "assert max_length_list([[6, 6, 7], [9, 4, 7, 11], [10, 11, 12]]) == (4, [9, 4, 7, 11])": {
+      "result": false,
+      "time": 0.0430295467376709,
+      "error": null
+    },
+    "assert max_length_list([[3, 3, 3], [10, 8, 10, 8], [9, 14, 13]]) == (4, [10, 8, 10, 8])": {
+      "result": false,
+      "time": 0.0477597713470459,
+      "error": null
+    },
+    "assert max_length_list([[1, 5, 6], [7, 3, 8, 4], [11, 12, 12]]) == (4, [7, 3, 8, 4])": {
+      "result": false,
+      "time": 0.05752754211425781,
+      "error": null
+    },
+    "assert max_length_list([[3, 8, 7], [3, 10, 4, 6], [10, 10, 14]]) == (4, [3, 10, 4, 6])": {
+      "result": false,
+      "time": 0.04733133316040039,
+      "error": null
+    },
+    "assert max_length_list([[8, 1, 6], [10, 4, 9, 13], [9, 15, 11]]) == (4, [10, 4, 9, 13])": {
+      "result": false,
+      "time": 0.04734039306640625,
+      "error": null
+    },
+    "assert max_length_list([[5, 3, 1], [7, 8, 8, 8], [11, 15, 15]]) == (4, [7, 8, 8, 8])": {
+      "result": false,
+      "time": 0.04418802261352539,
+      "error": null
+    },
+    "assert max_length_list([[6, 9, 10], [10, 7, 6, 5], [13, 14, 11]]) == (4, [10, 7, 6, 5])": {
+      "result": false,
+      "time": 0.04737973213195801,
+      "error": null
+    },
+    "assert max_length_list([[5, 4, 5], [11, 9, 10, 7], [5, 10, 16]]) == (4, [11, 9, 10, 7])": {
+      "result": false,
+      "time": 0.05226278305053711,
+      "error": null
+    },
+    "assert max_length_list([[6, 6, 8], [7, 10, 3, 12], [7, 6, 17]]) == (4, [7, 10, 3, 12])": {
+      "result": false,
+      "time": 0.049638986587524414,
+      "error": null
+    },
+    "assert max_length_list([[1, 1, 5], [11, 11, 8, 7], [14, 10, 13]]) == (4, [11, 11, 8, 7])": {
+      "result": false,
+      "time": 0.05574178695678711,
+      "error": null
+    },
+    "assert max_length_list([[1, 1, 3], [6, 10, 13, 8], [11, 12, 10]]) == (4, [6, 10, 13, 8])": {
+      "result": false,
+      "time": 0.04823184013366699,
+      "error": null
+    },
+    "assert max_length_list([[1, 8, 3], [11, 12, 4, 4], [7, 12, 10]]) == (4, [11, 12, 4, 4])": {
+      "result": false,
+      "time": 0.04999995231628418,
+      "error": null
+    },
+    "assert max_length_list([[4, 6, 9], [1, 4, 11, 14], [5, 8, 11]]) == (4, [1, 4, 11, 14])": {
+      "result": false,
+      "time": 0.05033445358276367,
+      "error": null
+    },
+    "assert max_length_list([[6, 2, 7], [8, 10, 5, 14], [8, 16, 13]]) == (4, [8, 10, 5, 14])": {
+      "result": false,
+      "time": 0.05001187324523926,
+      "error": null
+    },
+    "assert max_length_list([[8, 1, 7], [5, 7, 7, 13], [7, 7, 16]]) == (4, [5, 7, 7, 13])": {
+      "result": false,
+      "time": 0.053414344787597656,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,499 @@
+{
+  "code": "def check_Validity(a, b, c):\n    # Check if all sides are positive\n    if a <= 0:\n        return False\n    if b <= 0:\n        return False\n    if c <= 0:\n        return False\n    \n    # Check the triangle inequality theorem\n    sum_ab = a + b\n    sum_bc = b + c\n    sum_ac = a + c\n    \n    # Compare each side with the sum of the other two\n    if sum_ab <= c:\n        return False\n    if sum_bc <= a:\n        return False\n    if sum_ac <= b:\n        return False\n    \n    # If all conditions are satisfied, the triangle is valid\n    return True",
+  "results": {
+    "assert check_Validity(1,2,3) == False": {
+      "result": true,
+      "time": 0.03865814208984375,
+      "error": null
+    },
+    "assert check_Validity(2,3,5) == False": {
+      "result": true,
+      "time": 0.04170823097229004,
+      "error": null
+    },
+    "assert check_Validity(7,10,5) == True": {
+      "result": true,
+      "time": 0.042162179946899414,
+      "error": null
+    },
+    "assert check_Validity(3, 1, 5) == False": {
+      "result": true,
+      "time": 0.04790782928466797,
+      "error": null
+    },
+    "assert check_Validity(3, 5, 8) == False": {
+      "result": true,
+      "time": 0.045362234115600586,
+      "error": null
+    },
+    "assert check_Validity(2, 2, 6) == False": {
+      "result": true,
+      "time": 0.034822702407836914,
+      "error": null
+    },
+    "assert check_Validity(5, 7, 5) == True": {
+      "result": true,
+      "time": 0.04136180877685547,
+      "error": null
+    },
+    "assert check_Validity(2, 7, 6) == True": {
+      "result": true,
+      "time": 0.04809284210205078,
+      "error": null
+    },
+    "assert check_Validity(5, 2, 4) == True": {
+      "result": true,
+      "time": 0.04230046272277832,
+      "error": null
+    },
+    "assert check_Validity(2, 4, 5) == True": {
+      "result": true,
+      "time": 0.04352450370788574,
+      "error": null
+    },
+    "assert check_Validity(4, 6, 6) == True": {
+      "result": true,
+      "time": 0.04233908653259277,
+      "error": null
+    },
+    "assert check_Validity(1, 4, 8) == False": {
+      "result": true,
+      "time": 0.04345536231994629,
+      "error": null
+    },
+    "assert check_Validity(1, 4, 4) == True": {
+      "result": true,
+      "time": 0.03615379333496094,
+      "error": null
+    },
+    "assert check_Validity(4, 6, 1) == False": {
+      "result": true,
+      "time": 0.038661956787109375,
+      "error": null
+    },
+    "assert check_Validity(2, 5, 4) == True": {
+      "result": true,
+      "time": 0.03798723220825195,
+      "error": null
+    },
+    "assert check_Validity(3, 5, 3) == True": {
+      "result": true,
+      "time": 0.04469490051269531,
+      "error": null
+    },
+    "assert check_Validity(3, 7, 1) == False": {
+      "result": true,
+      "time": 0.04497551918029785,
+      "error": null
+    },
+    "assert check_Validity(5, 1, 1) == False": {
+      "result": true,
+      "time": 0.041634321212768555,
+      "error": null
+    },
+    "assert check_Validity(4, 5, 6) == True": {
+      "result": true,
+      "time": 0.045183658599853516,
+      "error": null
+    },
+    "assert check_Validity(3, 6, 8) == True": {
+      "result": true,
+      "time": 0.04156088829040527,
+      "error": null
+    },
+    "assert check_Validity(2, 4, 7) == False": {
+      "result": true,
+      "time": 0.052127838134765625,
+      "error": null
+    },
+    "assert check_Validity(6, 5, 7) == True": {
+      "result": true,
+      "time": 0.04300975799560547,
+      "error": null
+    },
+    "assert check_Validity(2, 2, 3) == True": {
+      "result": true,
+      "time": 0.047710418701171875,
+      "error": null
+    },
+    "assert check_Validity(3, 2, 6) == False": {
+      "result": true,
+      "time": 0.03899383544921875,
+      "error": null
+    },
+    "assert check_Validity(6, 6, 2) == True": {
+      "result": true,
+      "time": 0.039948463439941406,
+      "error": null
+    },
+    "assert check_Validity(1, 1, 4) == False": {
+      "result": true,
+      "time": 0.04008960723876953,
+      "error": null
+    },
+    "assert check_Validity(1, 5, 4) == False": {
+      "result": true,
+      "time": 0.039124250411987305,
+      "error": null
+    },
+    "assert check_Validity(5, 3, 7) == True": {
+      "result": true,
+      "time": 0.03935503959655762,
+      "error": null
+    },
+    "assert check_Validity(6, 1, 3) == False": {
+      "result": true,
+      "time": 0.05566120147705078,
+      "error": null
+    },
+    "assert check_Validity(4, 4, 8) == False": {
+      "result": true,
+      "time": 0.04224705696105957,
+      "error": null
+    },
+    "assert check_Validity(6, 2, 3) == False": {
+      "result": true,
+      "time": 0.05169510841369629,
+      "error": null
+    },
+    "assert check_Validity(5, 6, 4) == True": {
+      "result": true,
+      "time": 0.04824256896972656,
+      "error": null
+    },
+    "assert check_Validity(5, 7, 4) == True": {
+      "result": true,
+      "time": 0.04228711128234863,
+      "error": null
+    },
+    "assert check_Validity(5, 6, 6) == True": {
+      "result": true,
+      "time": 0.06413602828979492,
+      "error": null
+    },
+    "assert check_Validity(1, 6, 6) == True": {
+      "result": true,
+      "time": 0.06257843971252441,
+      "error": null
+    },
+    "assert check_Validity(4, 1, 4) == True": {
+      "result": true,
+      "time": 0.0699615478515625,
+      "error": null
+    },
+    "assert check_Validity(4, 4, 10) == False": {
+      "result": true,
+      "time": 0.06590557098388672,
+      "error": null
+    },
+    "assert check_Validity(2, 8, 2) == False": {
+      "result": true,
+      "time": 0.06023740768432617,
+      "error": null
+    },
+    "assert check_Validity(5, 2, 5) == True": {
+      "result": true,
+      "time": 0.06863594055175781,
+      "error": null
+    },
+    "assert check_Validity(7, 3, 3) == False": {
+      "result": true,
+      "time": 0.05532336235046387,
+      "error": null
+    },
+    "assert check_Validity(6, 4, 9) == True": {
+      "result": true,
+      "time": 0.06478404998779297,
+      "error": null
+    },
+    "assert check_Validity(3, 7, 4) == False": {
+      "result": true,
+      "time": 0.06530904769897461,
+      "error": null
+    },
+    "assert check_Validity(3, 4, 3) == True": {
+      "result": true,
+      "time": 0.06508040428161621,
+      "error": null
+    },
+    "assert check_Validity(1, 3, 2) == False": {
+      "result": true,
+      "time": 0.05882382392883301,
+      "error": null
+    },
+    "assert check_Validity(3, 1, 8) == False": {
+      "result": true,
+      "time": 0.06167197227478027,
+      "error": null
+    },
+    "assert check_Validity(5, 4, 6) == True": {
+      "result": true,
+      "time": 0.05304694175720215,
+      "error": null
+    },
+    "assert check_Validity(5, 3, 10) == False": {
+      "result": true,
+      "time": 0.06855535507202148,
+      "error": null
+    },
+    "assert check_Validity(2, 1, 6) == False": {
+      "result": true,
+      "time": 0.052399635314941406,
+      "error": null
+    },
+    "assert check_Validity(2, 4, 10) == False": {
+      "result": true,
+      "time": 0.061830997467041016,
+      "error": null
+    },
+    "assert check_Validity(5, 2, 8) == False": {
+      "result": true,
+      "time": 0.06451606750488281,
+      "error": null
+    },
+    "assert check_Validity(1, 1, 1) == True": {
+      "result": true,
+      "time": 0.06826639175415039,
+      "error": null
+    },
+    "assert check_Validity(2, 3, 8) == False": {
+      "result": true,
+      "time": 0.04273629188537598,
+      "error": null
+    },
+    "assert check_Validity(5, 5, 7) == True": {
+      "result": true,
+      "time": 0.06963205337524414,
+      "error": null
+    },
+    "assert check_Validity(3, 6, 3) == False": {
+      "result": true,
+      "time": 0.057676076889038086,
+      "error": null
+    },
+    "assert check_Validity(2, 7, 1) == False": {
+      "result": true,
+      "time": 0.07002472877502441,
+      "error": null
+    },
+    "assert check_Validity(2, 6, 9) == False": {
+      "result": true,
+      "time": 0.0618748664855957,
+      "error": null
+    },
+    "assert check_Validity(5, 4, 1) == False": {
+      "result": true,
+      "time": 0.0695192813873291,
+      "error": null
+    },
+    "assert check_Validity(1, 4, 9) == False": {
+      "result": true,
+      "time": 0.05774736404418945,
+      "error": null
+    },
+    "assert check_Validity(4, 1, 6) == False": {
+      "result": true,
+      "time": 0.06862759590148926,
+      "error": null
+    },
+    "assert check_Validity(3, 6, 7) == True": {
+      "result": true,
+      "time": 0.06215167045593262,
+      "error": null
+    },
+    "assert check_Validity(6, 2, 4) == False": {
+      "result": true,
+      "time": 0.07353901863098145,
+      "error": null
+    },
+    "assert check_Validity(2, 3, 10) == False": {
+      "result": true,
+      "time": 0.06819367408752441,
+      "error": null
+    },
+    "assert check_Validity(4, 7, 5) == True": {
+      "result": true,
+      "time": 0.05619382858276367,
+      "error": null
+    },
+    "assert check_Validity(7, 2, 6) == True": {
+      "result": true,
+      "time": 0.07105016708374023,
+      "error": null
+    },
+    "assert check_Validity(1, 5, 2) == False": {
+      "result": true,
+      "time": 0.05508852005004883,
+      "error": null
+    },
+    "assert check_Validity(4, 8, 7) == True": {
+      "result": true,
+      "time": 0.06590390205383301,
+      "error": null
+    },
+    "assert check_Validity(1, 7, 1) == False": {
+      "result": true,
+      "time": 0.0573577880859375,
+      "error": null
+    },
+    "assert check_Validity(5, 8, 5) == True": {
+      "result": true,
+      "time": 0.06182527542114258,
+      "error": null
+    },
+    "assert check_Validity(4, 5, 9) == False": {
+      "result": true,
+      "time": 0.04176664352416992,
+      "error": null
+    },
+    "assert check_Validity(2, 12, 8) == False": {
+      "result": true,
+      "time": 0.04662060737609863,
+      "error": null
+    },
+    "assert check_Validity(8, 7, 4) == True": {
+      "result": true,
+      "time": 0.04414105415344238,
+      "error": null
+    },
+    "assert check_Validity(11, 11, 9) == True": {
+      "result": true,
+      "time": 0.049950361251831055,
+      "error": null
+    },
+    "assert check_Validity(2, 12, 2) == False": {
+      "result": true,
+      "time": 0.04275012016296387,
+      "error": null
+    },
+    "assert check_Validity(12, 12, 2) == True": {
+      "result": true,
+      "time": 0.041610002517700195,
+      "error": null
+    },
+    "assert check_Validity(10, 11, 6) == True": {
+      "result": true,
+      "time": 0.04591488838195801,
+      "error": null
+    },
+    "assert check_Validity(6, 8, 10) == True": {
+      "result": true,
+      "time": 0.04890584945678711,
+      "error": null
+    },
+    "assert check_Validity(5, 13, 5) == False": {
+      "result": true,
+      "time": 0.04395008087158203,
+      "error": null
+    },
+    "assert check_Validity(6, 6, 6) == True": {
+      "result": true,
+      "time": 0.03685712814331055,
+      "error": null
+    },
+    "assert check_Validity(11, 8, 2) == False": {
+      "result": true,
+      "time": 0.043062448501586914,
+      "error": null
+    },
+    "assert check_Validity(10, 14, 4) == False": {
+      "result": true,
+      "time": 0.03767204284667969,
+      "error": null
+    },
+    "assert check_Validity(6, 8, 9) == True": {
+      "result": true,
+      "time": 0.04088425636291504,
+      "error": null
+    },
+    "assert check_Validity(7, 8, 10) == True": {
+      "result": true,
+      "time": 0.05213665962219238,
+      "error": null
+    },
+    "assert check_Validity(10, 12, 5) == True": {
+      "result": true,
+      "time": 0.041750192642211914,
+      "error": null
+    },
+    "assert check_Validity(12, 13, 4) == True": {
+      "result": true,
+      "time": 0.04585623741149902,
+      "error": null
+    },
+    "assert check_Validity(8, 10, 2) == False": {
+      "result": true,
+      "time": 0.04599881172180176,
+      "error": null
+    },
+    "assert check_Validity(5, 11, 2) == False": {
+      "result": true,
+      "time": 0.04162311553955078,
+      "error": null
+    },
+    "assert check_Validity(8, 8, 4) == True": {
+      "result": true,
+      "time": 0.04463481903076172,
+      "error": null
+    },
+    "assert check_Validity(7, 12, 7) == True": {
+      "result": true,
+      "time": 0.03631734848022461,
+      "error": null
+    },
+    "assert check_Validity(9, 6, 1) == False": {
+      "result": true,
+      "time": 0.0502467155456543,
+      "error": null
+    },
+    "assert check_Validity(2, 10, 1) == False": {
+      "result": true,
+      "time": 0.057465553283691406,
+      "error": null
+    },
+    "assert check_Validity(4, 13, 6) == False": {
+      "result": true,
+      "time": 0.10997152328491211,
+      "error": null
+    },
+    "assert check_Validity(3, 12, 7) == False": {
+      "result": true,
+      "time": 0.09649443626403809,
+      "error": null
+    },
+    "assert check_Validity(3, 12, 3) == False": {
+      "result": true,
+      "time": 0.058568716049194336,
+      "error": null
+    },
+    "assert check_Validity(5, 12, 5) == False": {
+      "result": true,
+      "time": 0.061266422271728516,
+      "error": null
+    },
+    "assert check_Validity(7, 12, 3) == False": {
+      "result": true,
+      "time": 0.06024980545043945,
+      "error": null
+    },
+    "assert check_Validity(8, 14, 9) == True": {
+      "result": true,
+      "time": 0.05127286911010742,
+      "error": null
+    },
+    "assert check_Validity(12, 8, 5) == True": {
+      "result": true,
+      "time": 0.0625917911529541,
+      "error": null
+    },
+    "assert check_Validity(8, 15, 8) == True": {
+      "result": true,
+      "time": 0.0666646957397461,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

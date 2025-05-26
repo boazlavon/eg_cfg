@@ -1,0 +1,349 @@
+{
+  "code": "import math\n\ndef gcd(a, b):\n    if b == 0:\n        return a\n    else:\n        return gcd(b, a % b)\n\ndef lcm(a, b):\n    return a * b // gcd(a, b)\n\ndef answer(start, end):\n    for i in range(start, end):\n        for j in range(i+1, end+1):\n            if lcm(i, j) <= end:\n                return (i, lcm(i, j))\n    return None",
+  "results": {
+    "assert answer(3,8) == (3,6)": {
+      "result": true,
+      "time": 0.08953046798706055,
+      "error": null
+    },
+    "assert answer(2,6) == (2,4)": {
+      "result": false,
+      "time": 0.08451533317565918,
+      "error": null
+    },
+    "assert answer(1,3) == (1,2)": {
+      "result": true,
+      "time": 0.08586430549621582,
+      "error": null
+    },
+    "assert answer(1, 9) == (1, 2)": {
+      "result": true,
+      "time": 0.0786275863647461,
+      "error": null
+    },
+    "assert answer(2, 11) == (2, 4)": {
+      "result": false,
+      "time": 0.08314967155456543,
+      "error": null
+    },
+    "assert answer(8, 10) == -1": {
+      "result": false,
+      "time": 0.07812976837158203,
+      "error": null
+    },
+    "assert answer(2, 12) == (2, 4)": {
+      "result": false,
+      "time": 0.0777590274810791,
+      "error": null
+    },
+    "assert answer(4, 12) == (4, 8)": {
+      "result": false,
+      "time": 0.08466029167175293,
+      "error": null
+    },
+    "assert answer(8, 6) == -1": {
+      "result": false,
+      "time": 0.0826265811920166,
+      "error": null
+    },
+    "assert answer(3, 10) == (3, 6)": {
+      "result": true,
+      "time": 0.0897836685180664,
+      "error": null
+    },
+    "assert answer(8, 12) == -1": {
+      "result": false,
+      "time": 0.08322572708129883,
+      "error": null
+    },
+    "assert answer(3, 5) == -1": {
+      "result": false,
+      "time": 0.09322714805603027,
+      "error": null
+    },
+    "assert answer(7, 12) == -1": {
+      "result": false,
+      "time": 0.0900876522064209,
+      "error": null
+    },
+    "assert answer(4, 13) == (4, 8)": {
+      "result": false,
+      "time": 0.08687758445739746,
+      "error": null
+    },
+    "assert answer(2, 7) == (2, 4)": {
+      "result": false,
+      "time": 0.07911920547485352,
+      "error": null
+    },
+    "assert answer(2, 5) == (2, 4)": {
+      "result": true,
+      "time": 0.08582401275634766,
+      "error": null
+    },
+    "assert answer(5, 13) == (5, 10)": {
+      "result": true,
+      "time": 0.09275221824645996,
+      "error": null
+    },
+    "assert answer(8, 3) == -1": {
+      "result": false,
+      "time": 0.07637453079223633,
+      "error": null
+    },
+    "assert answer(7, 6) == -1": {
+      "result": false,
+      "time": 0.09111809730529785,
+      "error": null
+    },
+    "assert answer(6, 5) == -1": {
+      "result": false,
+      "time": 0.09104514122009277,
+      "error": null
+    },
+    "assert answer(8, 9) == -1": {
+      "result": false,
+      "time": 0.08135056495666504,
+      "error": null
+    },
+    "assert answer(4, 9) == (4, 8)": {
+      "result": true,
+      "time": 0.0904390811920166,
+      "error": null
+    },
+    "assert answer(7, 5) == -1": {
+      "result": false,
+      "time": 0.08989310264587402,
+      "error": null
+    },
+    "assert answer(8, 8) == -1": {
+      "result": false,
+      "time": 0.08913254737854004,
+      "error": null
+    },
+    "assert answer(5, 5) == -1": {
+      "result": false,
+      "time": 0.0837554931640625,
+      "error": null
+    },
+    "assert answer(1, 8) == (1, 2)": {
+      "result": true,
+      "time": 0.08437442779541016,
+      "error": null
+    },
+    "assert answer(7, 10) == -1": {
+      "result": false,
+      "time": 0.08997321128845215,
+      "error": null
+    },
+    "assert answer(8, 7) == -1": {
+      "result": false,
+      "time": 0.07789039611816406,
+      "error": null
+    },
+    "assert answer(6, 3) == -1": {
+      "result": false,
+      "time": 0.0768582820892334,
+      "error": null
+    },
+    "assert answer(4, 10) == (4, 8)": {
+      "result": true,
+      "time": 0.0800163745880127,
+      "error": null
+    },
+    "assert answer(1, 3) == (1, 2)": {
+      "result": true,
+      "time": 0.08602380752563477,
+      "error": null
+    },
+    "assert answer(5, 2) == -1": {
+      "result": false,
+      "time": 0.08105826377868652,
+      "error": null
+    },
+    "assert answer(6, 9) == -1": {
+      "result": false,
+      "time": 0.08014726638793945,
+      "error": null
+    },
+    "assert answer(3, 9) == (3, 6)": {
+      "result": true,
+      "time": 0.08189916610717773,
+      "error": null
+    },
+    "assert answer(3, 1) == -1": {
+      "result": false,
+      "time": 0.08256006240844727,
+      "error": null
+    },
+    "assert answer(2, 10) == (2, 4)": {
+      "result": false,
+      "time": 0.09415102005004883,
+      "error": null
+    },
+    "assert answer(7, 4) == -1": {
+      "result": false,
+      "time": 0.07829976081848145,
+      "error": null
+    },
+    "assert answer(1, 1) == -1": {
+      "result": false,
+      "time": 0.07685708999633789,
+      "error": null
+    },
+    "assert answer(1, 10) == (1, 2)": {
+      "result": true,
+      "time": 0.08249068260192871,
+      "error": null
+    },
+    "assert answer(6, 7) == -1": {
+      "result": false,
+      "time": 0.08178520202636719,
+      "error": null
+    },
+    "assert answer(5, 11) == (5, 10)": {
+      "result": true,
+      "time": 0.08693742752075195,
+      "error": null
+    },
+    "assert answer(4, 3) == -1": {
+      "result": false,
+      "time": 0.10388040542602539,
+      "error": null
+    },
+    "assert answer(5, 10) == (5, 10)": {
+      "result": true,
+      "time": 0.07898354530334473,
+      "error": null
+    },
+    "assert answer(5, 9) == -1": {
+      "result": false,
+      "time": 0.07811689376831055,
+      "error": null
+    },
+    "assert answer(5, 3) == -1": {
+      "result": false,
+      "time": 0.07712674140930176,
+      "error": null
+    },
+    "assert answer(3, 3) == -1": {
+      "result": false,
+      "time": 0.08345937728881836,
+      "error": null
+    },
+    "assert answer(4, 5) == -1": {
+      "result": false,
+      "time": 0.08095932006835938,
+      "error": null
+    },
+    "assert answer(2, 1) == -1": {
+      "result": false,
+      "time": 0.07644891738891602,
+      "error": null
+    },
+    "assert answer(7, 9) == -1": {
+      "result": false,
+      "time": 0.08201146125793457,
+      "error": null
+    },
+    "assert answer(4, 4) == -1": {
+      "result": false,
+      "time": 0.07669544219970703,
+      "error": null
+    },
+    "assert answer(7, 2) == -1": {
+      "result": false,
+      "time": 0.07336020469665527,
+      "error": null
+    },
+    "assert answer(5, 1) == -1": {
+      "result": false,
+      "time": 0.07462620735168457,
+      "error": null
+    },
+    "assert answer(5, 6) == -1": {
+      "result": false,
+      "time": 0.08232235908508301,
+      "error": null
+    },
+    "assert answer(5, 8) == -1": {
+      "result": false,
+      "time": 0.07138228416442871,
+      "error": null
+    },
+    "assert answer(3, 8) == (3, 6)": {
+      "result": true,
+      "time": 0.07154679298400879,
+      "error": null
+    },
+    "assert answer(6, 8) == -1": {
+      "result": false,
+      "time": 0.09453105926513672,
+      "error": null
+    },
+    "assert answer(4, 7) == -1": {
+      "result": false,
+      "time": 0.07943034172058105,
+      "error": null
+    },
+    "assert answer(4, 2) == -1": {
+      "result": false,
+      "time": 0.08545279502868652,
+      "error": null
+    },
+    "assert answer(3, 7) == (3, 6)": {
+      "result": true,
+      "time": 0.08387351036071777,
+      "error": null
+    },
+    "assert answer(2, 3) == -1": {
+      "result": false,
+      "time": 0.08278918266296387,
+      "error": null
+    },
+    "assert answer(2, 2) == -1": {
+      "result": false,
+      "time": 0.08919262886047363,
+      "error": null
+    },
+    "assert answer(1, 5) == (1, 2)": {
+      "result": true,
+      "time": 0.08305692672729492,
+      "error": null
+    },
+    "assert answer(4, 8) == (4, 8)": {
+      "result": true,
+      "time": 0.08064031600952148,
+      "error": null
+    },
+    "assert answer(1, 6) == (1, 2)": {
+      "result": true,
+      "time": 0.0839240550994873,
+      "error": null
+    },
+    "assert answer(1, 7) == (1, 2)": {
+      "result": true,
+      "time": 0.0929403305053711,
+      "error": null
+    },
+    "assert answer(2, 6) == (2, 4)": {
+      "result": false,
+      "time": 0.0750882625579834,
+      "error": null
+    },
+    "assert answer(4, 6) == -1": {
+      "result": false,
+      "time": 0.07879376411437988,
+      "error": null
+    },
+    "assert answer(5, 4) == -1": {
+      "result": false,
+      "time": 0.07511615753173828,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.29411764705882354,
+  "general_error": "",
+  "has_testcase_error": false
+}

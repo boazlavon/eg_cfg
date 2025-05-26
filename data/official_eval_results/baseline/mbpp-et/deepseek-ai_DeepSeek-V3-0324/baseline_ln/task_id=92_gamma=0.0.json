@@ -1,0 +1,519 @@
+{
+  "code": "def is_undulating(number_str):\n    if len(number_str) < 2:\n        return False\n    \n    # Check if the number alternates between two digits\n    first_char = number_str[0]\n    second_char = number_str[1]\n    \n    if first_char == second_char:\n        return False\n    \n    for i in range(2, len(number_str)):\n        if i % 2 == 0:\n            expected_char = first_char\n        else:\n            expected_char = second_char\n        \n        if number_str[i] != expected_char:\n            return False\n    \n    return True",
+  "results": {
+    "assert is_undulating(\"1212121\") == True": {
+      "result": true,
+      "time": 0.03557562828063965,
+      "error": null
+    },
+    "assert is_undulating(\"1991\") == False": {
+      "result": true,
+      "time": 0.037055015563964844,
+      "error": null
+    },
+    "assert is_undulating(\"121\") == True": {
+      "result": true,
+      "time": 0.041718244552612305,
+      "error": null
+    },
+    "assert is_undulating(\"821762331\") == False": {
+      "result": true,
+      "time": 0.03629016876220703,
+      "error": null
+    },
+    "assert is_undulating(\"320097251\") == False": {
+      "result": true,
+      "time": 0.04346466064453125,
+      "error": null
+    },
+    "assert is_undulating(\"55719077819\") == False": {
+      "result": true,
+      "time": 0.04104971885681152,
+      "error": null
+    },
+    "assert is_undulating(\"4478552\") == False": {
+      "result": true,
+      "time": 0.04343605041503906,
+      "error": null
+    },
+    "assert is_undulating(\"50082161454\") == False": {
+      "result": true,
+      "time": 0.03692913055419922,
+      "error": null
+    },
+    "assert is_undulating(\"76309042\") == False": {
+      "result": true,
+      "time": 0.040303945541381836,
+      "error": null
+    },
+    "assert is_undulating(\"314190063970\") == False": {
+      "result": true,
+      "time": 0.039494991302490234,
+      "error": null
+    },
+    "assert is_undulating(\"053203291\") == False": {
+      "result": true,
+      "time": 0.04381823539733887,
+      "error": null
+    },
+    "assert is_undulating(\"888587793\") == False": {
+      "result": true,
+      "time": 0.04723858833312988,
+      "error": null
+    },
+    "assert is_undulating(\"59445720\") == False": {
+      "result": true,
+      "time": 0.03713083267211914,
+      "error": null
+    },
+    "assert is_undulating(\"052\") == False": {
+      "result": true,
+      "time": 0.041581153869628906,
+      "error": null
+    },
+    "assert is_undulating(\"4847\") == False": {
+      "result": true,
+      "time": 0.03795051574707031,
+      "error": null
+    },
+    "assert is_undulating(\"418122655672\") == False": {
+      "result": true,
+      "time": 0.03997611999511719,
+      "error": null
+    },
+    "assert is_undulating(\"098160505632\") == False": {
+      "result": true,
+      "time": 0.0487368106842041,
+      "error": null
+    },
+    "assert is_undulating(\"087763313\") == False": {
+      "result": true,
+      "time": 0.04232072830200195,
+      "error": null
+    },
+    "assert is_undulating(\"6938593744\") == False": {
+      "result": true,
+      "time": 0.038576364517211914,
+      "error": null
+    },
+    "assert is_undulating(\"0671521\") == False": {
+      "result": true,
+      "time": 0.044066667556762695,
+      "error": null
+    },
+    "assert is_undulating(\"23984320\") == False": {
+      "result": true,
+      "time": 0.04099106788635254,
+      "error": null
+    },
+    "assert is_undulating(\"991429723\") == False": {
+      "result": true,
+      "time": 0.03751325607299805,
+      "error": null
+    },
+    "assert is_undulating(\"4653235468\") == False": {
+      "result": true,
+      "time": 0.036989450454711914,
+      "error": null
+    },
+    "assert is_undulating(\"131\") == True": {
+      "result": true,
+      "time": 0.03295731544494629,
+      "error": null
+    },
+    "assert is_undulating(\"3615082\") == False": {
+      "result": true,
+      "time": 0.043146371841430664,
+      "error": null
+    },
+    "assert is_undulating(\"00150603\") == False": {
+      "result": true,
+      "time": 0.03774595260620117,
+      "error": null
+    },
+    "assert is_undulating(\"37029515\") == False": {
+      "result": true,
+      "time": 0.03726935386657715,
+      "error": null
+    },
+    "assert is_undulating(\"5334\") == False": {
+      "result": true,
+      "time": 0.04344892501831055,
+      "error": null
+    },
+    "assert is_undulating(\"3375\") == False": {
+      "result": true,
+      "time": 0.038968563079833984,
+      "error": null
+    },
+    "assert is_undulating(\"2874300525\") == False": {
+      "result": true,
+      "time": 0.04609870910644531,
+      "error": null
+    },
+    "assert is_undulating(\"728262022966\") == False": {
+      "result": true,
+      "time": 0.0457456111907959,
+      "error": null
+    },
+    "assert is_undulating(\"8655\") == False": {
+      "result": true,
+      "time": 0.04622220993041992,
+      "error": null
+    },
+    "assert is_undulating(\"48185883\") == False": {
+      "result": true,
+      "time": 0.04471158981323242,
+      "error": null
+    },
+    "assert is_undulating(\"67557280456\") == False": {
+      "result": true,
+      "time": 0.03894853591918945,
+      "error": null
+    },
+    "assert is_undulating(\"889831\") == False": {
+      "result": true,
+      "time": 0.04184246063232422,
+      "error": null
+    },
+    "assert is_undulating(\"3239\") == False": {
+      "result": true,
+      "time": 0.04587435722351074,
+      "error": null
+    },
+    "assert is_undulating(\"4299\") == False": {
+      "result": true,
+      "time": 0.0437624454498291,
+      "error": null
+    },
+    "assert is_undulating(\"003022\") == False": {
+      "result": true,
+      "time": 0.041718244552612305,
+      "error": null
+    },
+    "assert is_undulating(\"966482\") == False": {
+      "result": true,
+      "time": 0.05044221878051758,
+      "error": null
+    },
+    "assert is_undulating(\"1101\") == False": {
+      "result": true,
+      "time": 0.043810367584228516,
+      "error": null
+    },
+    "assert is_undulating(\"40058160\") == False": {
+      "result": true,
+      "time": 0.056679725646972656,
+      "error": null
+    },
+    "assert is_undulating(\"286\") == False": {
+      "result": true,
+      "time": 0.04718923568725586,
+      "error": null
+    },
+    "assert is_undulating(\"9406\") == False": {
+      "result": true,
+      "time": 0.04633331298828125,
+      "error": null
+    },
+    "assert is_undulating(\"416\") == False": {
+      "result": true,
+      "time": 0.05240321159362793,
+      "error": null
+    },
+    "assert is_undulating(\"07401\") == False": {
+      "result": true,
+      "time": 0.04967164993286133,
+      "error": null
+    },
+    "assert is_undulating(\"431\") == False": {
+      "result": true,
+      "time": 0.04871535301208496,
+      "error": null
+    },
+    "assert is_undulating(\"38598\") == False": {
+      "result": true,
+      "time": 0.0446772575378418,
+      "error": null
+    },
+    "assert is_undulating(\"67788\") == False": {
+      "result": true,
+      "time": 0.048967599868774414,
+      "error": null
+    },
+    "assert is_undulating(\"825023939\") == False": {
+      "result": true,
+      "time": 0.04556608200073242,
+      "error": null
+    },
+    "assert is_undulating(\"351648\") == False": {
+      "result": true,
+      "time": 0.044976234436035156,
+      "error": null
+    },
+    "assert is_undulating(\"0847445\") == False": {
+      "result": true,
+      "time": 0.050557851791381836,
+      "error": null
+    },
+    "assert is_undulating(\"30562741\") == False": {
+      "result": true,
+      "time": 0.043292999267578125,
+      "error": null
+    },
+    "assert is_undulating(\"6996\") == False": {
+      "result": true,
+      "time": 0.041771888732910156,
+      "error": null
+    },
+    "assert is_undulating(\"59780963\") == False": {
+      "result": true,
+      "time": 0.04043459892272949,
+      "error": null
+    },
+    "assert is_undulating(\"663186\") == False": {
+      "result": true,
+      "time": 0.046382904052734375,
+      "error": null
+    },
+    "assert is_undulating(\"57236\") == False": {
+      "result": true,
+      "time": 0.047071218490600586,
+      "error": null
+    },
+    "assert is_undulating(\"0117018\") == False": {
+      "result": true,
+      "time": 0.05342364311218262,
+      "error": null
+    },
+    "assert is_undulating(\"7246\") == False": {
+      "result": true,
+      "time": 0.03997659683227539,
+      "error": null
+    },
+    "assert is_undulating(\"9596\") == False": {
+      "result": true,
+      "time": 0.05380392074584961,
+      "error": null
+    },
+    "assert is_undulating(\"28479521\") == False": {
+      "result": true,
+      "time": 0.04810190200805664,
+      "error": null
+    },
+    "assert is_undulating(\"037337\") == False": {
+      "result": true,
+      "time": 0.03975653648376465,
+      "error": null
+    },
+    "assert is_undulating(\"90211773\") == False": {
+      "result": true,
+      "time": 0.04297065734863281,
+      "error": null
+    },
+    "assert is_undulating(\"42841516\") == False": {
+      "result": true,
+      "time": 0.04494285583496094,
+      "error": null
+    },
+    "assert is_undulating(\"6786510\") == False": {
+      "result": true,
+      "time": 0.05219006538391113,
+      "error": null
+    },
+    "assert is_undulating(\"81606339\") == False": {
+      "result": true,
+      "time": 0.04661393165588379,
+      "error": null
+    },
+    "assert is_undulating(\"092\") == False": {
+      "result": true,
+      "time": 0.0503232479095459,
+      "error": null
+    },
+    "assert is_undulating(\"15487\") == False": {
+      "result": true,
+      "time": 0.0420072078704834,
+      "error": null
+    },
+    "assert is_undulating(\"36532584\") == False": {
+      "result": true,
+      "time": 0.04037594795227051,
+      "error": null
+    },
+    "assert is_undulating(\"540971\") == False": {
+      "result": true,
+      "time": 0.044328927993774414,
+      "error": null
+    },
+    "assert is_undulating(\"646474411\") == False": {
+      "result": true,
+      "time": 0.03901481628417969,
+      "error": null
+    },
+    "assert is_undulating(\"6465105\") == False": {
+      "result": true,
+      "time": 0.05351519584655762,
+      "error": null
+    },
+    "assert is_undulating(\"01999\") == False": {
+      "result": true,
+      "time": 0.04785346984863281,
+      "error": null
+    },
+    "assert is_undulating(\"2630921\") == False": {
+      "result": true,
+      "time": 0.05420541763305664,
+      "error": null
+    },
+    "assert is_undulating(\"603\") == False": {
+      "result": true,
+      "time": 0.0418243408203125,
+      "error": null
+    },
+    "assert is_undulating(\"466014\") == False": {
+      "result": true,
+      "time": 0.0415952205657959,
+      "error": null
+    },
+    "assert is_undulating(\"8163\") == False": {
+      "result": true,
+      "time": 0.04698443412780762,
+      "error": null
+    },
+    "assert is_undulating(\"61148434\") == False": {
+      "result": true,
+      "time": 0.042908668518066406,
+      "error": null
+    },
+    "assert is_undulating(\"57064642\") == False": {
+      "result": true,
+      "time": 0.05395793914794922,
+      "error": null
+    },
+    "assert is_undulating(\"7597088\") == False": {
+      "result": true,
+      "time": 0.05220794677734375,
+      "error": null
+    },
+    "assert is_undulating(\"595\") == True": {
+      "result": true,
+      "time": 0.04262542724609375,
+      "error": null
+    },
+    "assert is_undulating(\"583718\") == False": {
+      "result": true,
+      "time": 0.04970860481262207,
+      "error": null
+    },
+    "assert is_undulating(\"97858\") == False": {
+      "result": true,
+      "time": 0.04139447212219238,
+      "error": null
+    },
+    "assert is_undulating(\"6789\") == False": {
+      "result": true,
+      "time": 0.042580604553222656,
+      "error": null
+    },
+    "assert is_undulating(\"80070069\") == False": {
+      "result": true,
+      "time": 0.04534029960632324,
+      "error": null
+    },
+    "assert is_undulating(\"53747500\") == False": {
+      "result": true,
+      "time": 0.04486966133117676,
+      "error": null
+    },
+    "assert is_undulating(\"31097\") == False": {
+      "result": true,
+      "time": 0.040119171142578125,
+      "error": null
+    },
+    "assert is_undulating(\"29666\") == False": {
+      "result": true,
+      "time": 0.04504823684692383,
+      "error": null
+    },
+    "assert is_undulating(\"3197532\") == False": {
+      "result": true,
+      "time": 0.05239152908325195,
+      "error": null
+    },
+    "assert is_undulating(\"927\") == False": {
+      "result": true,
+      "time": 0.04190206527709961,
+      "error": null
+    },
+    "assert is_undulating(\"975637\") == False": {
+      "result": true,
+      "time": 0.04236125946044922,
+      "error": null
+    },
+    "assert is_undulating(\"3554\") == False": {
+      "result": true,
+      "time": 0.040448904037475586,
+      "error": null
+    },
+    "assert is_undulating(\"983762\") == False": {
+      "result": true,
+      "time": 0.04551982879638672,
+      "error": null
+    },
+    "assert is_undulating(\"105\") == False": {
+      "result": true,
+      "time": 0.04966902732849121,
+      "error": null
+    },
+    "assert is_undulating(\"143388\") == False": {
+      "result": true,
+      "time": 0.06341147422790527,
+      "error": null
+    },
+    "assert is_undulating(\"594070\") == False": {
+      "result": true,
+      "time": 0.0408017635345459,
+      "error": null
+    },
+    "assert is_undulating(\"91004\") == False": {
+      "result": true,
+      "time": 0.05910086631774902,
+      "error": null
+    },
+    "assert is_undulating(\"508769546\") == False": {
+      "result": true,
+      "time": 0.04428601264953613,
+      "error": null
+    },
+    "assert is_undulating(\"531462\") == False": {
+      "result": true,
+      "time": 0.045845746994018555,
+      "error": null
+    },
+    "assert is_undulating(\"442362\") == False": {
+      "result": true,
+      "time": 0.049875497817993164,
+      "error": null
+    },
+    "assert is_undulating(\"775796\") == False": {
+      "result": true,
+      "time": 0.043974876403808594,
+      "error": null
+    },
+    "assert is_undulating(\"76487\") == False": {
+      "result": true,
+      "time": 0.04072904586791992,
+      "error": null
+    },
+    "assert is_undulating(\"283829\") == False": {
+      "result": true,
+      "time": 0.04558587074279785,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

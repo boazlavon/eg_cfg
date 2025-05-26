@@ -1,0 +1,64 @@
+{
+  "code": "def get_Min_Squares(n):\n    if n <= 3:\n        return n\n    dp = [0] * (n + 1)\n    dp[0] = 0\n    dp[1] = 1\n    dp[2] = 2\n    dp[3] = 3\n    for i in range(4, n + 1):\n        dp[i] = i\n        j = 1\n        while j * j <= i:\n            temp = j * j\n            if temp > i:\n                break\n            val = 1 + dp[i - temp]\n            if val < dp[i]:\n                dp[i] = val\n            j += 1\n    return dp[n]",
+  "results": {
+    "assert get_Min_Squares(6) == 3": {
+      "result": true,
+      "time": 0.05195260047912598,
+      "error": null
+    },
+    "assert get_Min_Squares(2) == 2": {
+      "result": true,
+      "time": 0.05990147590637207,
+      "error": null
+    },
+    "assert get_Min_Squares(4) == 1": {
+      "result": true,
+      "time": 0.05721282958984375,
+      "error": null
+    },
+    "assert get_Min_Squares(3) == 3": {
+      "result": true,
+      "time": 0.057164669036865234,
+      "error": null
+    },
+    "assert get_Min_Squares(10) == 2": {
+      "result": true,
+      "time": 0.0493617057800293,
+      "error": null
+    },
+    "assert get_Min_Squares(5) == 2": {
+      "result": true,
+      "time": 0.052858829498291016,
+      "error": null
+    },
+    "assert get_Min_Squares(7) == 4": {
+      "result": true,
+      "time": 0.059187889099121094,
+      "error": null
+    },
+    "assert get_Min_Squares(9) == 1": {
+      "result": true,
+      "time": 0.057138681411743164,
+      "error": null
+    },
+    "assert get_Min_Squares(8) == 2": {
+      "result": true,
+      "time": 0.05358386039733887,
+      "error": null
+    },
+    "assert get_Min_Squares(1) == 1": {
+      "result": true,
+      "time": 0.0594487190246582,
+      "error": null
+    },
+    "assert get_Min_Squares(11) == 3": {
+      "result": true,
+      "time": 0.053853511810302734,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

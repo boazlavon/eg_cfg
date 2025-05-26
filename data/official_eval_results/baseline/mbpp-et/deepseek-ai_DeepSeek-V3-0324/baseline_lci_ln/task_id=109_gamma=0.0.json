@@ -1,0 +1,519 @@
+{
+  "code": "def odd_Equivalent(s, n):\n    count = 0\n    for i in range(n):\n        rotated = s[i:] + s[:i]\n        decimal = 0\n        length = len(rotated)\n        for j in range(length):\n            bit = int(rotated[j])\n            power = length - j - 1\n            decimal += bit * (2 ** power)\n        if decimal % 2 != 0:\n            count += 1\n    return count",
+  "results": {
+    "assert odd_Equivalent(\"011001\",6) == 3": {
+      "result": true,
+      "time": 0.041015625,
+      "error": null
+    },
+    "assert odd_Equivalent(\"11011\",5) == 4": {
+      "result": true,
+      "time": 0.040039777755737305,
+      "error": null
+    },
+    "assert odd_Equivalent(\"1010\",4) == 2": {
+      "result": true,
+      "time": 0.034876346588134766,
+      "error": null
+    },
+    "assert odd_Equivalent('359859369', 7) == 0": {
+      "result": false,
+      "time": 0.034468889236450195,
+      "error": null
+    },
+    "assert odd_Equivalent('382', 3) == 0": {
+      "result": false,
+      "time": 0.034767866134643555,
+      "error": null
+    },
+    "assert odd_Equivalent('6907', 4) == 0": {
+      "result": false,
+      "time": 0.03442096710205078,
+      "error": null
+    },
+    "assert odd_Equivalent('4861725470', 4) == 1": {
+      "result": false,
+      "time": 0.03062582015991211,
+      "error": null
+    },
+    "assert odd_Equivalent('162635864', 1) == 1": {
+      "result": false,
+      "time": 0.037555694580078125,
+      "error": null
+    },
+    "assert odd_Equivalent('513597339167', 8) == 1": {
+      "result": false,
+      "time": 0.03377866744995117,
+      "error": null
+    },
+    "assert odd_Equivalent('22733630', 2) == 0": {
+      "result": true,
+      "time": 0.03813743591308594,
+      "error": null
+    },
+    "assert odd_Equivalent('78965751', 1) == 0": {
+      "result": false,
+      "time": 0.03635287284851074,
+      "error": null
+    },
+    "assert odd_Equivalent('386348765', 6) == 0": {
+      "result": false,
+      "time": 0.03940868377685547,
+      "error": null
+    },
+    "assert odd_Equivalent('42774053838', 11) == 0": {
+      "result": false,
+      "time": 0.04001045227050781,
+      "error": null
+    },
+    "assert odd_Equivalent('390843807478', 1) == 0": {
+      "result": true,
+      "time": 0.04020810127258301,
+      "error": null
+    },
+    "assert odd_Equivalent('85463911351', 9) == 2": {
+      "result": false,
+      "time": 0.03728127479553223,
+      "error": null
+    },
+    "assert odd_Equivalent('891721922', 2) == 0": {
+      "result": true,
+      "time": 0.039864540100097656,
+      "error": null
+    },
+    "assert odd_Equivalent('33763768', 1) == 0": {
+      "result": true,
+      "time": 0.03524017333984375,
+      "error": null
+    },
+    "assert odd_Equivalent('0470019556', 2) == 0": {
+      "result": true,
+      "time": 0.035713911056518555,
+      "error": null
+    },
+    "assert odd_Equivalent('60350740424', 5) == 0": {
+      "result": false,
+      "time": 0.03575587272644043,
+      "error": null
+    },
+    "assert odd_Equivalent('782545839688', 1) == 0": {
+      "result": true,
+      "time": 0.033095359802246094,
+      "error": null
+    },
+    "assert odd_Equivalent('01693138664', 4) == 1": {
+      "result": true,
+      "time": 0.03785419464111328,
+      "error": null
+    },
+    "assert odd_Equivalent('059193', 5) == 1": {
+      "result": false,
+      "time": 0.03963923454284668,
+      "error": null
+    },
+    "assert odd_Equivalent('28372444', 3) == 0": {
+      "result": true,
+      "time": 0.031941890716552734,
+      "error": null
+    },
+    "assert odd_Equivalent('073909165803', 7) == 1": {
+      "result": false,
+      "time": 0.037589311599731445,
+      "error": null
+    },
+    "assert odd_Equivalent('7835812605', 4) == 0": {
+      "result": false,
+      "time": 0.037300825119018555,
+      "error": null
+    },
+    "assert odd_Equivalent('16415648955', 7) == 2": {
+      "result": false,
+      "time": 0.0280914306640625,
+      "error": null
+    },
+    "assert odd_Equivalent('80546042', 4) == 0": {
+      "result": false,
+      "time": 0.03777742385864258,
+      "error": null
+    },
+    "assert odd_Equivalent('7643480688', 8) == 0": {
+      "result": false,
+      "time": 0.041140079498291016,
+      "error": null
+    },
+    "assert odd_Equivalent('97089506885', 4) == 0": {
+      "result": false,
+      "time": 0.03242826461791992,
+      "error": null
+    },
+    "assert odd_Equivalent('20469', 3) == 0": {
+      "result": false,
+      "time": 0.035967350006103516,
+      "error": null
+    },
+    "assert odd_Equivalent('985080499', 1) == 0": {
+      "result": false,
+      "time": 0.03879046440124512,
+      "error": null
+    },
+    "assert odd_Equivalent('560898', 3) == 0": {
+      "result": false,
+      "time": 0.029870271682739258,
+      "error": null
+    },
+    "assert odd_Equivalent('51802065', 3) == 1": {
+      "result": false,
+      "time": 0.04199337959289551,
+      "error": null
+    },
+    "assert odd_Equivalent('7892', 2) == 0": {
+      "result": false,
+      "time": 0.039714813232421875,
+      "error": null
+    },
+    "assert odd_Equivalent('77777', 5) == 0": {
+      "result": false,
+      "time": 0.03148007392883301,
+      "error": null
+    },
+    "assert odd_Equivalent('500756037043', 7) == 0": {
+      "result": false,
+      "time": 0.04229545593261719,
+      "error": null
+    },
+    "assert odd_Equivalent('34451887', 3) == 0": {
+      "result": false,
+      "time": 0.03736400604248047,
+      "error": null
+    },
+    "assert odd_Equivalent('091479187', 6) == 1": {
+      "result": false,
+      "time": 0.03586006164550781,
+      "error": null
+    },
+    "assert odd_Equivalent('849486362', 6) == 0": {
+      "result": false,
+      "time": 0.03773188591003418,
+      "error": null
+    },
+    "assert odd_Equivalent('9974480', 4) == 0": {
+      "result": false,
+      "time": 0.03426837921142578,
+      "error": null
+    },
+    "assert odd_Equivalent('682433', 5) == 0": {
+      "result": false,
+      "time": 0.038539886474609375,
+      "error": null
+    },
+    "assert odd_Equivalent('048', 3) == 0": {
+      "result": true,
+      "time": 0.040239810943603516,
+      "error": null
+    },
+    "assert odd_Equivalent('10212', 1) == 1": {
+      "result": false,
+      "time": 0.03728461265563965,
+      "error": null
+    },
+    "assert odd_Equivalent('06155360', 2) == 0": {
+      "result": true,
+      "time": 0.03480219841003418,
+      "error": null
+    },
+    "assert odd_Equivalent('158926692', 7) == 1": {
+      "result": false,
+      "time": 0.03409075736999512,
+      "error": null
+    },
+    "assert odd_Equivalent('78362994', 5) == 0": {
+      "result": false,
+      "time": 0.03638648986816406,
+      "error": null
+    },
+    "assert odd_Equivalent('289184', 5) == 1": {
+      "result": false,
+      "time": 0.041690826416015625,
+      "error": null
+    },
+    "assert odd_Equivalent('816066', 4) == 1": {
+      "result": true,
+      "time": 0.03978991508483887,
+      "error": null
+    },
+    "assert odd_Equivalent('96085774', 5) == 0": {
+      "result": false,
+      "time": 0.03870248794555664,
+      "error": null
+    },
+    "assert odd_Equivalent('670050', 5) == 0": {
+      "result": false,
+      "time": 0.03683876991271973,
+      "error": null
+    },
+    "assert odd_Equivalent('128080550', 4) == 1": {
+      "result": true,
+      "time": 0.0389256477355957,
+      "error": null
+    },
+    "assert odd_Equivalent('2113135', 6) == 3": {
+      "result": false,
+      "time": 0.04029083251953125,
+      "error": null
+    },
+    "assert odd_Equivalent('130286528', 9) == 1": {
+      "result": false,
+      "time": 0.04556918144226074,
+      "error": null
+    },
+    "assert odd_Equivalent('67433', 4) == 0": {
+      "result": false,
+      "time": 0.03468060493469238,
+      "error": null
+    },
+    "assert odd_Equivalent('026068291', 5) == 0": {
+      "result": false,
+      "time": 0.03660011291503906,
+      "error": null
+    },
+    "assert odd_Equivalent('51413674', 3) == 1": {
+      "result": false,
+      "time": 0.04439115524291992,
+      "error": null
+    },
+    "assert odd_Equivalent('7692962', 6) == 0": {
+      "result": false,
+      "time": 0.04264330863952637,
+      "error": null
+    },
+    "assert odd_Equivalent('933575241', 1) == 0": {
+      "result": false,
+      "time": 0.0464777946472168,
+      "error": null
+    },
+    "assert odd_Equivalent('507070997', 6) == 0": {
+      "result": false,
+      "time": 0.044792890548706055,
+      "error": null
+    },
+    "assert odd_Equivalent('31692768', 6) == 1": {
+      "result": false,
+      "time": 0.04102778434753418,
+      "error": null
+    },
+    "assert odd_Equivalent('7440763', 2) == 0": {
+      "result": false,
+      "time": 0.03903818130493164,
+      "error": null
+    },
+    "assert odd_Equivalent('35989213', 1) == 0": {
+      "result": false,
+      "time": 0.04298901557922363,
+      "error": null
+    },
+    "assert odd_Equivalent('2866', 4) == 0": {
+      "result": true,
+      "time": 0.0477752685546875,
+      "error": null
+    },
+    "assert odd_Equivalent('53086883', 2) == 0": {
+      "result": false,
+      "time": 0.03731369972229004,
+      "error": null
+    },
+    "assert odd_Equivalent('581', 2) == 0": {
+      "result": false,
+      "time": 0.050908803939819336,
+      "error": null
+    },
+    "assert odd_Equivalent('1490437', 4) == 1": {
+      "result": false,
+      "time": 0.040151357650756836,
+      "error": null
+    },
+    "assert odd_Equivalent('536', 1) == 0": {
+      "result": true,
+      "time": 0.045072317123413086,
+      "error": null
+    },
+    "assert odd_Equivalent('9479630', 4) == 0": {
+      "result": false,
+      "time": 0.03894686698913574,
+      "error": null
+    },
+    "assert odd_Equivalent('6235683', 3) == 0": {
+      "result": false,
+      "time": 0.04145336151123047,
+      "error": null
+    },
+    "assert odd_Equivalent('353193245', 3) == 0": {
+      "result": false,
+      "time": 0.03850150108337402,
+      "error": null
+    },
+    "assert odd_Equivalent('62965', 2) == 0": {
+      "result": false,
+      "time": 0.04468655586242676,
+      "error": null
+    },
+    "assert odd_Equivalent('5031447', 3) == 0": {
+      "result": false,
+      "time": 0.037737369537353516,
+      "error": null
+    },
+    "assert odd_Equivalent('086109', 5) == 1": {
+      "result": false,
+      "time": 0.04398226737976074,
+      "error": null
+    },
+    "assert odd_Equivalent('37222', 2) == 0": {
+      "result": false,
+      "time": 0.03942990303039551,
+      "error": null
+    },
+    "assert odd_Equivalent('831952', 4) == 1": {
+      "result": false,
+      "time": 0.03395199775695801,
+      "error": null
+    },
+    "assert odd_Equivalent('804347539', 8) == 0": {
+      "result": false,
+      "time": 0.03189539909362793,
+      "error": null
+    },
+    "assert odd_Equivalent('05906079', 5) == 0": {
+      "result": false,
+      "time": 0.04086470603942871,
+      "error": null
+    },
+    "assert odd_Equivalent('28473498', 2) == 0": {
+      "result": true,
+      "time": 0.05327606201171875,
+      "error": null
+    },
+    "assert odd_Equivalent('950928367', 5) == 0": {
+      "result": false,
+      "time": 0.047460317611694336,
+      "error": null
+    },
+    "assert odd_Equivalent('878204540', 3) == 0": {
+      "result": false,
+      "time": 0.04092597961425781,
+      "error": null
+    },
+    "assert odd_Equivalent('518328857', 1) == 0": {
+      "result": false,
+      "time": 0.05745863914489746,
+      "error": null
+    },
+    "assert odd_Equivalent('62282', 1) == 0": {
+      "result": true,
+      "time": 0.039351701736450195,
+      "error": null
+    },
+    "assert odd_Equivalent('20928', 3) == 0": {
+      "result": true,
+      "time": 0.0401308536529541,
+      "error": null
+    },
+    "assert odd_Equivalent('9048', 3) == 0": {
+      "result": false,
+      "time": 0.03921031951904297,
+      "error": null
+    },
+    "assert odd_Equivalent('125', 2) == 1": {
+      "result": false,
+      "time": 0.0428624153137207,
+      "error": null
+    },
+    "assert odd_Equivalent('53892866', 5) == 0": {
+      "result": false,
+      "time": 0.041692495346069336,
+      "error": null
+    },
+    "assert odd_Equivalent('01932300', 5) == 1": {
+      "result": false,
+      "time": 0.034360647201538086,
+      "error": null
+    },
+    "assert odd_Equivalent('659521', 1) == 0": {
+      "result": false,
+      "time": 0.043905019760131836,
+      "error": null
+    },
+    "assert odd_Equivalent('8782941', 2) == 0": {
+      "result": false,
+      "time": 0.04720187187194824,
+      "error": null
+    },
+    "assert odd_Equivalent('63558229', 7) == 0": {
+      "result": false,
+      "time": 0.04140782356262207,
+      "error": null
+    },
+    "assert odd_Equivalent('23930834', 1) == 0": {
+      "result": true,
+      "time": 0.036916255950927734,
+      "error": null
+    },
+    "assert odd_Equivalent('2299055', 2) == 0": {
+      "result": false,
+      "time": 0.042385101318359375,
+      "error": null
+    },
+    "assert odd_Equivalent('36474', 4) == 0": {
+      "result": false,
+      "time": 0.04624629020690918,
+      "error": null
+    },
+    "assert odd_Equivalent('3221078', 7) == 1": {
+      "result": false,
+      "time": 0.04866433143615723,
+      "error": null
+    },
+    "assert odd_Equivalent('2812', 3) == 1": {
+      "result": false,
+      "time": 0.05221962928771973,
+      "error": null
+    },
+    "assert odd_Equivalent('8732351', 7) == 1": {
+      "result": false,
+      "time": 0.04344344139099121,
+      "error": null
+    },
+    "assert odd_Equivalent('56878', 5) == 0": {
+      "result": false,
+      "time": 0.0437006950378418,
+      "error": null
+    },
+    "assert odd_Equivalent('094082017', 1) == 0": {
+      "result": false,
+      "time": 0.042661190032958984,
+      "error": null
+    },
+    "assert odd_Equivalent('6552470', 6) == 0": {
+      "result": false,
+      "time": 0.043601036071777344,
+      "error": null
+    },
+    "assert odd_Equivalent('006703', 5) == 0": {
+      "result": false,
+      "time": 0.04194521903991699,
+      "error": null
+    },
+    "assert odd_Equivalent('002789545', 6) == 0": {
+      "result": false,
+      "time": 0.039650678634643555,
+      "error": null
+    },
+    "assert odd_Equivalent('55506', 3) == 0": {
+      "result": false,
+      "time": 0.04085206985473633,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.20588235294117646,
+  "general_error": "",
+  "has_testcase_error": false
+}

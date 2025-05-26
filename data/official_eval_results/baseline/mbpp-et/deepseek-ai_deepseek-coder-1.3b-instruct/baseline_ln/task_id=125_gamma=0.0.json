@@ -1,0 +1,519 @@
+{
+  "code": "def find_length(binary_string, length):\n    max_difference = 0\n    count_0 = 0\n    count_1 = 0\n    for i in range(length):\n        if binary_string[i] == '0':\n            count_0 += 1\n        else:\n            count_1 += 1\n        if count_0 == count_1:\n            max_difference = max(max_difference, count_1)\n    return max_difference",
+  "results": {
+    "assert find_length(\"11000010001\", 11) == 6": {
+      "result": false,
+      "time": 0.036954641342163086,
+      "error": null
+    },
+    "assert find_length(\"10111\", 5) == 1": {
+      "result": true,
+      "time": 0.029706478118896484,
+      "error": null
+    },
+    "assert find_length(\"11011101100101\", 14) == 2 ": {
+      "result": false,
+      "time": 0.0378267765045166,
+      "error": null
+    },
+    "assert find_length('5588348', 6) == 0": {
+      "result": true,
+      "time": 0.0326840877532959,
+      "error": null
+    },
+    "assert find_length('45731861915227', 12) == 0": {
+      "result": true,
+      "time": 0.03554821014404297,
+      "error": null
+    },
+    "assert find_length('907379631930277', 15) == 1": {
+      "result": true,
+      "time": 0.03412795066833496,
+      "error": null
+    },
+    "assert find_length('24805653973522', 7) == 1": {
+      "result": false,
+      "time": 0.03549647331237793,
+      "error": null
+    },
+    "assert find_length('01968127', 6) == 1": {
+      "result": true,
+      "time": 0.029705524444580078,
+      "error": null
+    },
+    "assert find_length('53278843141882', 13) == 0": {
+      "result": true,
+      "time": 0.036806344985961914,
+      "error": null
+    },
+    "assert find_length('051535838', 9) == 1": {
+      "result": true,
+      "time": 0.034679412841796875,
+      "error": null
+    },
+    "assert find_length('67750097667823', 13) == 2": {
+      "result": false,
+      "time": 0.030487775802612305,
+      "error": null
+    },
+    "assert find_length('031601076722', 11) == 1": {
+      "result": true,
+      "time": 0.028714656829833984,
+      "error": null
+    },
+    "assert find_length('74587544703542', 10) == 1": {
+      "result": false,
+      "time": 0.033113718032836914,
+      "error": null
+    },
+    "assert find_length('816412', 6) == 0": {
+      "result": true,
+      "time": 0.032494306564331055,
+      "error": null
+    },
+    "assert find_length('968443598849770', 9) == 0": {
+      "result": true,
+      "time": 0.03160285949707031,
+      "error": null
+    },
+    "assert find_length('48962373866', 6) == 0": {
+      "result": true,
+      "time": 0.03516077995300293,
+      "error": null
+    },
+    "assert find_length('1774711968602', 9) == 0": {
+      "result": true,
+      "time": 0.03434896469116211,
+      "error": null
+    },
+    "assert find_length('9745499332161', 8) == 0": {
+      "result": true,
+      "time": 0.026555776596069336,
+      "error": null
+    },
+    "assert find_length('335909428541161', 14) == 1": {
+      "result": false,
+      "time": 0.03449535369873047,
+      "error": null
+    },
+    "assert find_length('818860663876799', 8) == 1": {
+      "result": false,
+      "time": 0.03159379959106445,
+      "error": null
+    },
+    "assert find_length('43319697992', 6) == 0": {
+      "result": true,
+      "time": 0.03146982192993164,
+      "error": null
+    },
+    "assert find_length('61098977642009', 13) == 2": {
+      "result": false,
+      "time": 0.03228592872619629,
+      "error": null
+    },
+    "assert find_length('6481297882878', 12) == 0": {
+      "result": true,
+      "time": 0.02838301658630371,
+      "error": null
+    },
+    "assert find_length('820564627', 9) == 1": {
+      "result": false,
+      "time": 0.03025221824645996,
+      "error": null
+    },
+    "assert find_length('52387858203590', 6) == 0": {
+      "result": true,
+      "time": 0.03214144706726074,
+      "error": null
+    },
+    "assert find_length('556672032292537', 7) == 1": {
+      "result": false,
+      "time": 0.03299999237060547,
+      "error": null
+    },
+    "assert find_length('13462576303', 6) == 0": {
+      "result": true,
+      "time": 0.03609108924865723,
+      "error": null
+    },
+    "assert find_length('369201833961953', 8) == 1": {
+      "result": false,
+      "time": 0.027402162551879883,
+      "error": null
+    },
+    "assert find_length('281357464957', 6) == 0": {
+      "result": true,
+      "time": 0.031032085418701172,
+      "error": null
+    },
+    "assert find_length('736506785752632', 13) == 1": {
+      "result": false,
+      "time": 0.036644697189331055,
+      "error": null
+    },
+    "assert find_length('75676347893', 7) == 0": {
+      "result": true,
+      "time": 0.033025264739990234,
+      "error": null
+    },
+    "assert find_length('428285974788', 11) == 0": {
+      "result": true,
+      "time": 0.03630328178405762,
+      "error": null
+    },
+    "assert find_length('417906751', 9) == 1": {
+      "result": false,
+      "time": 0.03235626220703125,
+      "error": null
+    },
+    "assert find_length('44426936870', 10) == 0": {
+      "result": true,
+      "time": 0.031265974044799805,
+      "error": null
+    },
+    "assert find_length('72635020277123', 6) == 1": {
+      "result": false,
+      "time": 0.03431987762451172,
+      "error": null
+    },
+    "assert find_length('0514092375', 9) == 1": {
+      "result": true,
+      "time": 0.0353388786315918,
+      "error": null
+    },
+    "assert find_length('4616', 4) == 0": {
+      "result": true,
+      "time": 0.03185629844665527,
+      "error": null
+    },
+    "assert find_length('424675959', 8) == 0": {
+      "result": true,
+      "time": 0.03329753875732422,
+      "error": null
+    },
+    "assert find_length('007437765', 8) == 2": {
+      "result": true,
+      "time": 0.033516645431518555,
+      "error": null
+    },
+    "assert find_length('2378', 2) == 0": {
+      "result": true,
+      "time": 0.031100749969482422,
+      "error": null
+    },
+    "assert find_length('490500', 2) == 0": {
+      "result": true,
+      "time": 0.032083749771118164,
+      "error": null
+    },
+    "assert find_length('055139795', 4) == 1": {
+      "result": true,
+      "time": 0.031760215759277344,
+      "error": null
+    },
+    "assert find_length('492806663', 6) == 1": {
+      "result": false,
+      "time": 0.03133583068847656,
+      "error": null
+    },
+    "assert find_length('176546957', 6) == 0": {
+      "result": true,
+      "time": 0.037930965423583984,
+      "error": null
+    },
+    "assert find_length('8309844', 2) == 0": {
+      "result": true,
+      "time": 0.03363847732543945,
+      "error": null
+    },
+    "assert find_length('578264', 1) == 0": {
+      "result": true,
+      "time": 0.032859086990356445,
+      "error": null
+    },
+    "assert find_length('31412472', 3) == 0": {
+      "result": true,
+      "time": 0.0284726619720459,
+      "error": null
+    },
+    "assert find_length('1560', 2) == 0": {
+      "result": true,
+      "time": 0.031738996505737305,
+      "error": null
+    },
+    "assert find_length('42166840', 8) == 1": {
+      "result": false,
+      "time": 0.03539252281188965,
+      "error": null
+    },
+    "assert find_length('41855', 4) == 0": {
+      "result": true,
+      "time": 0.03267645835876465,
+      "error": null
+    },
+    "assert find_length('06683554', 3) == 1": {
+      "result": true,
+      "time": 0.027725696563720703,
+      "error": null
+    },
+    "assert find_length('915428860', 4) == 0": {
+      "result": true,
+      "time": 0.029823780059814453,
+      "error": null
+    },
+    "assert find_length('0020648', 2) == 2": {
+      "result": false,
+      "time": 0.03146982192993164,
+      "error": null
+    },
+    "assert find_length('942012578', 6) == 1": {
+      "result": false,
+      "time": 0.03814840316772461,
+      "error": null
+    },
+    "assert find_length('41478', 5) == 0": {
+      "result": true,
+      "time": 0.03404808044433594,
+      "error": null
+    },
+    "assert find_length('7688309', 4) == 0": {
+      "result": true,
+      "time": 0.031928062438964844,
+      "error": null
+    },
+    "assert find_length('95446', 3) == 0": {
+      "result": true,
+      "time": 0.03808450698852539,
+      "error": null
+    },
+    "assert find_length('3223', 2) == 0": {
+      "result": true,
+      "time": 0.029445648193359375,
+      "error": null
+    },
+    "assert find_length('5511', 3) == 0": {
+      "result": true,
+      "time": 0.0350191593170166,
+      "error": null
+    },
+    "assert find_length('3194231', 3) == 0": {
+      "result": true,
+      "time": 0.034394025802612305,
+      "error": null
+    },
+    "assert find_length('87422340', 7) == 0": {
+      "result": true,
+      "time": 0.03300762176513672,
+      "error": null
+    },
+    "assert find_length('497500811', 3) == 0": {
+      "result": true,
+      "time": 0.029228687286376953,
+      "error": null
+    },
+    "assert find_length('633330', 2) == 0": {
+      "result": true,
+      "time": 0.032485008239746094,
+      "error": null
+    },
+    "assert find_length('946026', 2) == 0": {
+      "result": true,
+      "time": 0.027460098266601562,
+      "error": null
+    },
+    "assert find_length('85233', 2) == 0": {
+      "result": true,
+      "time": 0.03709816932678223,
+      "error": null
+    },
+    "assert find_length('763817065', 1) == 0": {
+      "result": true,
+      "time": 0.03394508361816406,
+      "error": null
+    },
+    "assert find_length('8028', 4) == 1": {
+      "result": true,
+      "time": 0.0331416130065918,
+      "error": null
+    },
+    "assert find_length('90567', 3) == 1": {
+      "result": true,
+      "time": 0.034610748291015625,
+      "error": null
+    },
+    "assert find_length('294006461', 7) == 2": {
+      "result": false,
+      "time": 0.038041114807128906,
+      "error": null
+    },
+    "assert find_length('431482860658913', 11) == 1": {
+      "result": false,
+      "time": 0.03544020652770996,
+      "error": null
+    },
+    "assert find_length('4103231862329', 11) == 1": {
+      "result": false,
+      "time": 0.034235477447509766,
+      "error": null
+    },
+    "assert find_length('1621676786766', 13) == 0": {
+      "result": true,
+      "time": 0.037072181701660156,
+      "error": null
+    },
+    "assert find_length('04203487887279789', 15) == 1": {
+      "result": false,
+      "time": 0.027220964431762695,
+      "error": null
+    },
+    "assert find_length('5870051729268', 10) == 2": {
+      "result": false,
+      "time": 0.038239479064941406,
+      "error": null
+    },
+    "assert find_length('35543563452', 9) == 0": {
+      "result": true,
+      "time": 0.0407257080078125,
+      "error": null
+    },
+    "assert find_length('4541441833', 9) == 0": {
+      "result": true,
+      "time": 0.02870798110961914,
+      "error": null
+    },
+    "assert find_length('59156308187753', 11) == 1": {
+      "result": false,
+      "time": 0.028547048568725586,
+      "error": null
+    },
+    "assert find_length('20722847473291751', 14) == 1": {
+      "result": true,
+      "time": 0.03878426551818848,
+      "error": null
+    },
+    "assert find_length('3628991552078904', 13) == 1": {
+      "result": false,
+      "time": 0.028868675231933594,
+      "error": null
+    },
+    "assert find_length('680913160474801', 11) == 1": {
+      "result": false,
+      "time": 0.032903194427490234,
+      "error": null
+    },
+    "assert find_length('4329972590535168', 15) == 1": {
+      "result": false,
+      "time": 0.034926414489746094,
+      "error": null
+    },
+    "assert find_length('93700680471473939', 17) == 2": {
+      "result": false,
+      "time": 0.03302717208862305,
+      "error": null
+    },
+    "assert find_length('857433058461049176', 15) == 1": {
+      "result": false,
+      "time": 0.029787302017211914,
+      "error": null
+    },
+    "assert find_length('784492065860560755', 9) == 1": {
+      "result": false,
+      "time": 0.037273406982421875,
+      "error": null
+    },
+    "assert find_length('383455399704', 9) == 0": {
+      "result": true,
+      "time": 0.026127099990844727,
+      "error": null
+    },
+    "assert find_length('6155982988321718', 10) == 0": {
+      "result": true,
+      "time": 0.029935359954833984,
+      "error": null
+    },
+    "assert find_length('86816467754255', 11) == 0": {
+      "result": true,
+      "time": 0.03228354454040527,
+      "error": null
+    },
+    "assert find_length('563877227299078467', 15) == 1": {
+      "result": false,
+      "time": 0.034330129623413086,
+      "error": null
+    },
+    "assert find_length('748437162359', 11) == 0": {
+      "result": true,
+      "time": 0.03547835350036621,
+      "error": null
+    },
+    "assert find_length('48260954493446', 9) == 1": {
+      "result": false,
+      "time": 0.027220964431762695,
+      "error": null
+    },
+    "assert find_length('794709656688486', 15) == 1": {
+      "result": false,
+      "time": 0.028132915496826172,
+      "error": null
+    },
+    "assert find_length('4703483866150187', 10) == 1": {
+      "result": false,
+      "time": 0.0281832218170166,
+      "error": null
+    },
+    "assert find_length('643539974561599169', 9) == 0": {
+      "result": true,
+      "time": 0.029607772827148438,
+      "error": null
+    },
+    "assert find_length('54123029135492', 13) == 1": {
+      "result": false,
+      "time": 0.03646063804626465,
+      "error": null
+    },
+    "assert find_length('30893790725777850', 9) == 1": {
+      "result": true,
+      "time": 0.03405594825744629,
+      "error": null
+    },
+    "assert find_length('411058807271518', 11) == 1": {
+      "result": false,
+      "time": 0.03527092933654785,
+      "error": null
+    },
+    "assert find_length('185507887473953', 15) == 1": {
+      "result": false,
+      "time": 0.03576231002807617,
+      "error": null
+    },
+    "assert find_length('820506037881404', 13) == 1": {
+      "result": false,
+      "time": 0.03247666358947754,
+      "error": null
+    },
+    "assert find_length('672639283957529762', 14) == 0": {
+      "result": true,
+      "time": 0.032576560974121094,
+      "error": null
+    },
+    "assert find_length('07033601245001171', 17) == 2": {
+      "result": true,
+      "time": 0.03363037109375,
+      "error": null
+    },
+    "assert find_length('08013861479211083', 16) == 1": {
+      "result": false,
+      "time": 0.03454923629760742,
+      "error": null
+    },
+    "assert find_length('323429890831373880', 14) == 1": {
+      "result": false,
+      "time": 0.030030488967895508,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6078431372549019,
+  "general_error": "",
+  "has_testcase_error": false
+}

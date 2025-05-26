@@ -1,0 +1,519 @@
+{
+  "code": "def check_k_elements(tuple_list, k):\n    for tup in tuple_list:\n        all_k = True\n        for element in tup:\n            if element != k:\n                all_k = False\n                break\n        if not all_k:\n            return False\n    return True",
+  "results": {
+    "assert check_k_elements([(4, 4), (4, 4, 4), (4, 4), (4, 4, 4, 4), (4, )], 4) == True": {
+      "result": true,
+      "time": 0.04574322700500488,
+      "error": null
+    },
+    "assert check_k_elements([(7, 7, 7), (7, 7)], 7) == True": {
+      "result": true,
+      "time": 0.042937517166137695,
+      "error": null
+    },
+    "assert check_k_elements([(9, 9), (9, 9, 9, 9)], 7) == False": {
+      "result": true,
+      "time": 0.042966365814208984,
+      "error": null
+    },
+    "assert check_k_elements([(2, 1), (1, 2, 5), (3, 6), (8, 9, 8, 6), (1,)], 4) == False": {
+      "result": true,
+      "time": 0.04368448257446289,
+      "error": null
+    },
+    "assert check_k_elements([(6, 4), (3, 8, 3), (4, 8), (7, 3, 2, 9), (9,)], 4) == False": {
+      "result": true,
+      "time": 0.043376922607421875,
+      "error": null
+    },
+    "assert check_k_elements([(1, 6), (2, 7, 8), (8, 8), (5, 4, 6, 4), (7,)], 2) == False": {
+      "result": true,
+      "time": 0.03933310508728027,
+      "error": null
+    },
+    "assert check_k_elements([(9, 5), (2, 7, 1), (8, 5), (1, 9, 5, 9), (1,)], 2) == False": {
+      "result": true,
+      "time": 0.04597759246826172,
+      "error": null
+    },
+    "assert check_k_elements([(5, 6), (5, 9, 1), (9, 9), (9, 7, 7, 6), (5,)], 9) == False": {
+      "result": true,
+      "time": 0.04012441635131836,
+      "error": null
+    },
+    "assert check_k_elements([(1, 9), (7, 6, 4), (2, 7), (3, 7, 7, 5), (2,)], 7) == False": {
+      "result": true,
+      "time": 0.034707069396972656,
+      "error": null
+    },
+    "assert check_k_elements([(7, 3), (6, 7, 9), (2, 4), (2, 9, 3, 5), (3,)], 4) == False": {
+      "result": true,
+      "time": 0.03267407417297363,
+      "error": null
+    },
+    "assert check_k_elements([(5, 8), (9, 5, 6), (9, 7), (2, 6, 1, 6), (9,)], 2) == False": {
+      "result": true,
+      "time": 0.03783726692199707,
+      "error": null
+    },
+    "assert check_k_elements([(2, 9), (1, 3, 7), (1, 8), (7, 5, 1, 5), (7,)], 6) == False": {
+      "result": true,
+      "time": 0.03708243370056152,
+      "error": null
+    },
+    "assert check_k_elements([(2, 2), (2, 5, 8), (1, 1), (4, 2, 5, 7), (6,)], 1) == False": {
+      "result": true,
+      "time": 0.03750014305114746,
+      "error": null
+    },
+    "assert check_k_elements([(7, 7), (7, 9, 2), (3, 3), (7, 9, 2, 4), (8,)], 9) == False": {
+      "result": true,
+      "time": 0.04285931587219238,
+      "error": null
+    },
+    "assert check_k_elements([(8, 3), (3, 9, 8), (5, 6), (1, 1, 6, 3), (4,)], 8) == False": {
+      "result": true,
+      "time": 0.0384066104888916,
+      "error": null
+    },
+    "assert check_k_elements([(3, 2), (4, 1, 3), (7, 5), (7, 6, 5, 1), (9,)], 3) == False": {
+      "result": true,
+      "time": 0.03839254379272461,
+      "error": null
+    },
+    "assert check_k_elements([(1, 2), (4, 9, 8), (5, 8), (8, 3, 2, 1), (8,)], 3) == False": {
+      "result": true,
+      "time": 0.041785240173339844,
+      "error": null
+    },
+    "assert check_k_elements([(9, 2), (8, 6, 9), (6, 7), (6, 9, 9, 7), (7,)], 7) == False": {
+      "result": true,
+      "time": 0.0410161018371582,
+      "error": null
+    },
+    "assert check_k_elements([(6, 3), (8, 4, 8), (2, 6), (4, 5, 6, 7), (1,)], 2) == False": {
+      "result": true,
+      "time": 0.03737688064575195,
+      "error": null
+    },
+    "assert check_k_elements([(4, 3), (6, 9, 6), (7, 4), (7, 4, 9, 4), (6,)], 5) == False": {
+      "result": true,
+      "time": 0.038039207458496094,
+      "error": null
+    },
+    "assert check_k_elements([(1, 9), (7, 4, 3), (7, 4), (6, 2, 3, 5), (9,)], 3) == False": {
+      "result": true,
+      "time": 0.04730057716369629,
+      "error": null
+    },
+    "assert check_k_elements([(1, 9), (6, 9, 3), (1, 4), (4, 5, 9, 2), (5,)], 8) == False": {
+      "result": true,
+      "time": 0.03712272644042969,
+      "error": null
+    },
+    "assert check_k_elements([(2, 6), (8, 5, 1), (5, 6), (1, 3, 8, 2), (7,)], 8) == False": {
+      "result": true,
+      "time": 0.033371925354003906,
+      "error": null
+    },
+    "assert check_k_elements([(5, 1), (3, 1, 3), (5, 2), (7, 7, 1, 4), (5,)], 5) == False": {
+      "result": true,
+      "time": 0.041175127029418945,
+      "error": null
+    },
+    "assert check_k_elements([(4, 8), (4, 5, 7), (5, 5), (7, 8, 4, 8), (8,)], 8) == False": {
+      "result": true,
+      "time": 0.042000770568847656,
+      "error": null
+    },
+    "assert check_k_elements([(2, 3), (4, 1, 1), (8, 4), (2, 2, 9, 5), (6,)], 4) == False": {
+      "result": true,
+      "time": 0.04551291465759277,
+      "error": null
+    },
+    "assert check_k_elements([(5, 2), (2, 4, 5), (6, 6), (6, 9, 4, 3), (8,)], 8) == False": {
+      "result": true,
+      "time": 0.03961324691772461,
+      "error": null
+    },
+    "assert check_k_elements([(2, 8), (2, 5, 2), (3, 9), (6, 5, 2, 9), (4,)], 3) == False": {
+      "result": true,
+      "time": 0.03876829147338867,
+      "error": null
+    },
+    "assert check_k_elements([(7, 5), (5, 5, 8), (1, 1), (7, 8, 9, 1), (7,)], 8) == False": {
+      "result": true,
+      "time": 0.03568434715270996,
+      "error": null
+    },
+    "assert check_k_elements([(2, 8), (2, 4, 2), (1, 1), (8, 3, 1, 8), (7,)], 7) == False": {
+      "result": true,
+      "time": 0.03587675094604492,
+      "error": null
+    },
+    "assert check_k_elements([(9, 7), (3, 5, 6), (1, 5), (5, 5, 7, 8), (3,)], 9) == False": {
+      "result": true,
+      "time": 0.041131019592285156,
+      "error": null
+    },
+    "assert check_k_elements([(2, 7), (6, 2, 8), (2, 5), (3, 1, 7, 3), (2,)], 8) == False": {
+      "result": true,
+      "time": 0.03823590278625488,
+      "error": null
+    },
+    "assert check_k_elements([(1, 7), (8, 1, 5), (8, 5), (7, 8, 3, 9), (1,)], 6) == False": {
+      "result": true,
+      "time": 0.04214310646057129,
+      "error": null
+    },
+    "assert check_k_elements([(2, 8), (8, 1, 4), (4, 2), (9, 4, 3, 6), (6,)], 9) == False": {
+      "result": true,
+      "time": 0.03982186317443848,
+      "error": null
+    },
+    "assert check_k_elements([(4, 1), (7, 6, 2), (2, 6), (1, 9, 1, 7), (9,)], 4) == False": {
+      "result": true,
+      "time": 0.04651784896850586,
+      "error": null
+    },
+    "assert check_k_elements([(8, 3), (4, 9, 8), (4, 2), (4, 1, 8, 7), (6,)], 6) == False": {
+      "result": true,
+      "time": 0.0431516170501709,
+      "error": null
+    },
+    "assert check_k_elements([(2, 11, 4), (3, 3)], 12) == False": {
+      "result": true,
+      "time": 0.05864357948303223,
+      "error": null
+    },
+    "assert check_k_elements([(7, 12, 3), (11, 6)], 12) == False": {
+      "result": true,
+      "time": 0.04278278350830078,
+      "error": null
+    },
+    "assert check_k_elements([(6, 5, 9), (5, 3)], 3) == False": {
+      "result": true,
+      "time": 0.03971385955810547,
+      "error": null
+    },
+    "assert check_k_elements([(6, 10, 2), (4, 4)], 12) == False": {
+      "result": true,
+      "time": 0.03973984718322754,
+      "error": null
+    },
+    "assert check_k_elements([(12, 8, 9), (7, 3)], 4) == False": {
+      "result": true,
+      "time": 0.03937792778015137,
+      "error": null
+    },
+    "assert check_k_elements([(3, 2, 3), (11, 3)], 6) == False": {
+      "result": true,
+      "time": 0.034590959548950195,
+      "error": null
+    },
+    "assert check_k_elements([(3, 11, 4), (12, 5)], 9) == False": {
+      "result": true,
+      "time": 0.040694475173950195,
+      "error": null
+    },
+    "assert check_k_elements([(5, 3, 6), (6, 3)], 5) == False": {
+      "result": true,
+      "time": 0.04359316825866699,
+      "error": null
+    },
+    "assert check_k_elements([(2, 10, 7), (11, 7)], 6) == False": {
+      "result": true,
+      "time": 0.034760475158691406,
+      "error": null
+    },
+    "assert check_k_elements([(6, 2, 4), (9, 3)], 4) == False": {
+      "result": true,
+      "time": 0.0426638126373291,
+      "error": null
+    },
+    "assert check_k_elements([(6, 8, 9), (11, 11)], 9) == False": {
+      "result": true,
+      "time": 0.036307334899902344,
+      "error": null
+    },
+    "assert check_k_elements([(12, 3, 2), (8, 12)], 9) == False": {
+      "result": true,
+      "time": 0.03851008415222168,
+      "error": null
+    },
+    "assert check_k_elements([(10, 12, 7), (2, 7)], 6) == False": {
+      "result": true,
+      "time": 0.04163312911987305,
+      "error": null
+    },
+    "assert check_k_elements([(3, 9, 5), (12, 2)], 2) == False": {
+      "result": true,
+      "time": 0.04163980484008789,
+      "error": null
+    },
+    "assert check_k_elements([(6, 5, 7), (11, 7)], 4) == False": {
+      "result": true,
+      "time": 0.0381770133972168,
+      "error": null
+    },
+    "assert check_k_elements([(8, 2, 10), (6, 2)], 11) == False": {
+      "result": true,
+      "time": 0.03728747367858887,
+      "error": null
+    },
+    "assert check_k_elements([(12, 4, 10), (8, 9)], 10) == False": {
+      "result": true,
+      "time": 0.03928995132446289,
+      "error": null
+    },
+    "assert check_k_elements([(6, 10, 2), (4, 12)], 8) == False": {
+      "result": true,
+      "time": 0.04524564743041992,
+      "error": null
+    },
+    "assert check_k_elements([(7, 7, 12), (7, 9)], 2) == False": {
+      "result": true,
+      "time": 0.03076958656311035,
+      "error": null
+    },
+    "assert check_k_elements([(7, 4, 9), (6, 3)], 4) == False": {
+      "result": true,
+      "time": 0.03200173377990723,
+      "error": null
+    },
+    "assert check_k_elements([(2, 2, 6), (11, 7)], 4) == False": {
+      "result": true,
+      "time": 0.031503915786743164,
+      "error": null
+    },
+    "assert check_k_elements([(9, 5, 3), (3, 9)], 11) == False": {
+      "result": true,
+      "time": 0.03523731231689453,
+      "error": null
+    },
+    "assert check_k_elements([(11, 9, 6), (7, 10)], 6) == False": {
+      "result": true,
+      "time": 0.04001140594482422,
+      "error": null
+    },
+    "assert check_k_elements([(12, 9, 4), (5, 11)], 3) == False": {
+      "result": true,
+      "time": 0.04011273384094238,
+      "error": null
+    },
+    "assert check_k_elements([(11, 7, 10), (9, 8)], 5) == False": {
+      "result": true,
+      "time": 0.03994178771972656,
+      "error": null
+    },
+    "assert check_k_elements([(4, 9, 5), (9, 6)], 5) == False": {
+      "result": true,
+      "time": 0.03926992416381836,
+      "error": null
+    },
+    "assert check_k_elements([(4, 7, 5), (3, 6)], 6) == False": {
+      "result": true,
+      "time": 0.03791952133178711,
+      "error": null
+    },
+    "assert check_k_elements([(6, 11, 9), (8, 2)], 4) == False": {
+      "result": true,
+      "time": 0.039365291595458984,
+      "error": null
+    },
+    "assert check_k_elements([(7, 7, 10), (3, 4)], 11) == False": {
+      "result": true,
+      "time": 0.035652875900268555,
+      "error": null
+    },
+    "assert check_k_elements([(3, 9, 12), (10, 3)], 5) == False": {
+      "result": true,
+      "time": 0.04027295112609863,
+      "error": null
+    },
+    "assert check_k_elements([(12, 6, 11), (3, 6)], 4) == False": {
+      "result": true,
+      "time": 0.037322282791137695,
+      "error": null
+    },
+    "assert check_k_elements([(12, 2, 8), (6, 10)], 3) == False": {
+      "result": true,
+      "time": 0.04617428779602051,
+      "error": null
+    },
+    "assert check_k_elements([(9, 5, 5), (12, 11)], 5) == False": {
+      "result": true,
+      "time": 0.036185264587402344,
+      "error": null
+    },
+    "assert check_k_elements([(12, 14), (9, 7, 8, 12)], 5) == False": {
+      "result": true,
+      "time": 0.03727316856384277,
+      "error": null
+    },
+    "assert check_k_elements([(12, 10), (5, 8, 13, 4)], 2) == False": {
+      "result": true,
+      "time": 0.03234291076660156,
+      "error": null
+    },
+    "assert check_k_elements([(4, 9), (8, 6, 12, 13)], 8) == False": {
+      "result": true,
+      "time": 0.03909111022949219,
+      "error": null
+    },
+    "assert check_k_elements([(14, 12), (4, 13, 8, 5)], 5) == False": {
+      "result": true,
+      "time": 0.036904335021972656,
+      "error": null
+    },
+    "assert check_k_elements([(5, 7), (13, 7, 8, 8)], 9) == False": {
+      "result": true,
+      "time": 0.03837418556213379,
+      "error": null
+    },
+    "assert check_k_elements([(10, 10), (9, 8, 13, 13)], 4) == False": {
+      "result": true,
+      "time": 0.0333249568939209,
+      "error": null
+    },
+    "assert check_k_elements([(11, 12), (8, 4, 4, 6)], 7) == False": {
+      "result": true,
+      "time": 0.030942201614379883,
+      "error": null
+    },
+    "assert check_k_elements([(4, 4), (13, 5, 11, 8)], 7) == False": {
+      "result": true,
+      "time": 0.039658546447753906,
+      "error": null
+    },
+    "assert check_k_elements([(12, 11), (7, 12, 14, 12)], 11) == False": {
+      "result": true,
+      "time": 0.03625917434692383,
+      "error": null
+    },
+    "assert check_k_elements([(11, 5), (14, 13, 14, 6)], 10) == False": {
+      "result": true,
+      "time": 0.03643321990966797,
+      "error": null
+    },
+    "assert check_k_elements([(5, 9), (4, 12, 13, 13)], 2) == False": {
+      "result": true,
+      "time": 0.032620906829833984,
+      "error": null
+    },
+    "assert check_k_elements([(5, 9), (5, 6, 6, 7)], 11) == False": {
+      "result": true,
+      "time": 0.03827238082885742,
+      "error": null
+    },
+    "assert check_k_elements([(14, 7), (10, 8, 5, 5)], 4) == False": {
+      "result": true,
+      "time": 0.036209821701049805,
+      "error": null
+    },
+    "assert check_k_elements([(9, 8), (12, 4, 12, 11)], 7) == False": {
+      "result": true,
+      "time": 0.03753948211669922,
+      "error": null
+    },
+    "assert check_k_elements([(12, 5), (4, 8, 6, 6)], 6) == False": {
+      "result": true,
+      "time": 0.0402376651763916,
+      "error": null
+    },
+    "assert check_k_elements([(9, 10), (4, 8, 7, 10)], 12) == False": {
+      "result": true,
+      "time": 0.03653979301452637,
+      "error": null
+    },
+    "assert check_k_elements([(7, 13), (9, 12, 6, 6)], 12) == False": {
+      "result": true,
+      "time": 0.03938436508178711,
+      "error": null
+    },
+    "assert check_k_elements([(11, 12), (9, 13, 5, 10)], 9) == False": {
+      "result": true,
+      "time": 0.03776669502258301,
+      "error": null
+    },
+    "assert check_k_elements([(5, 9), (6, 11, 14, 4)], 5) == False": {
+      "result": true,
+      "time": 0.03507566452026367,
+      "error": null
+    },
+    "assert check_k_elements([(14, 8), (4, 11, 4, 9)], 6) == False": {
+      "result": true,
+      "time": 0.037539005279541016,
+      "error": null
+    },
+    "assert check_k_elements([(6, 10), (5, 7, 13, 10)], 11) == False": {
+      "result": true,
+      "time": 0.03403329849243164,
+      "error": null
+    },
+    "assert check_k_elements([(9, 6), (12, 6, 14, 8)], 8) == False": {
+      "result": true,
+      "time": 0.03636026382446289,
+      "error": null
+    },
+    "assert check_k_elements([(6, 14), (12, 10, 8, 7)], 12) == False": {
+      "result": true,
+      "time": 0.0364222526550293,
+      "error": null
+    },
+    "assert check_k_elements([(6, 11), (13, 8, 12, 14)], 8) == False": {
+      "result": true,
+      "time": 0.036464691162109375,
+      "error": null
+    },
+    "assert check_k_elements([(9, 14), (6, 11, 10, 8)], 3) == False": {
+      "result": true,
+      "time": 0.03484845161437988,
+      "error": null
+    },
+    "assert check_k_elements([(7, 11), (4, 11, 7, 9)], 4) == False": {
+      "result": true,
+      "time": 0.03638935089111328,
+      "error": null
+    },
+    "assert check_k_elements([(11, 13), (4, 14, 7, 10)], 2) == False": {
+      "result": true,
+      "time": 0.037134647369384766,
+      "error": null
+    },
+    "assert check_k_elements([(10, 10), (6, 12, 14, 9)], 10) == False": {
+      "result": true,
+      "time": 0.03439211845397949,
+      "error": null
+    },
+    "assert check_k_elements([(13, 12), (6, 8, 10, 13)], 8) == False": {
+      "result": true,
+      "time": 0.03200960159301758,
+      "error": null
+    },
+    "assert check_k_elements([(4, 11), (12, 11, 6, 5)], 8) == False": {
+      "result": true,
+      "time": 0.037160634994506836,
+      "error": null
+    },
+    "assert check_k_elements([(4, 12), (8, 7, 9, 11)], 12) == False": {
+      "result": true,
+      "time": 0.03617453575134277,
+      "error": null
+    },
+    "assert check_k_elements([(6, 6), (5, 12, 10, 7)], 3) == False": {
+      "result": true,
+      "time": 0.03650546073913574,
+      "error": null
+    },
+    "assert check_k_elements([(11, 9), (4, 8, 8, 6)], 9) == False": {
+      "result": true,
+      "time": 0.036501407623291016,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

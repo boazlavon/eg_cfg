@@ -1,0 +1,519 @@
+{
+  "code": "def smallest_missing(arr, low, high):\n    if low > high:\n        return high + 1\n    if arr[low] != low:\n        return low\n    mid = (low + high) // 2\n    if arr[mid] == mid:\n        return smallest_missing(arr, mid + 1, high)\n    else:\n        return smallest_missing(arr, low, mid)",
+  "results": {
+    "assert smallest_missing([0, 1, 2, 3, 4, 5, 6], 0, 6) == 7": {
+      "result": true,
+      "time": 0.0521852970123291,
+      "error": null
+    },
+    "assert smallest_missing([0, 1, 2, 6, 9, 11, 15], 0, 6) == 3": {
+      "result": true,
+      "time": 0.0483548641204834,
+      "error": null
+    },
+    "assert smallest_missing([1, 2, 3, 4, 6, 9, 11, 15], 0, 7) == 0": {
+      "result": true,
+      "time": 0.051583290100097656,
+      "error": null
+    },
+    "assert smallest_missing([4, 6, 4, 5, 2, 4, 5], 4, 3) == 4": {
+      "result": true,
+      "time": 0.05602574348449707,
+      "error": null
+    },
+    "assert smallest_missing([4, 5, 6, 2, 8, 9, 11], 1, 8) == 1": {
+      "result": true,
+      "time": 0.051303863525390625,
+      "error": null
+    },
+    "assert smallest_missing([4, 4, 7, 4, 5, 10, 7], 2, 9) == 2": {
+      "result": true,
+      "time": 0.05646967887878418,
+      "error": null
+    },
+    "assert smallest_missing([1, 4, 6, 6, 3, 8, 5], 3, 6) == 3": {
+      "result": true,
+      "time": 0.04977011680603027,
+      "error": null
+    },
+    "assert smallest_missing([2, 3, 5, 8, 9, 6, 8], 4, 9) == 4": {
+      "result": true,
+      "time": 0.05624222755432129,
+      "error": null
+    },
+    "assert smallest_missing([3, 2, 4, 4, 5, 8, 1], 2, 7) == 2": {
+      "result": true,
+      "time": 0.04784965515136719,
+      "error": null
+    },
+    "assert smallest_missing([3, 5, 4, 2, 4, 7, 1], 5, 4) == 5": {
+      "result": true,
+      "time": 0.05433821678161621,
+      "error": null
+    },
+    "assert smallest_missing([4, 1, 1, 7, 1, 1, 8], 4, 9) == 4": {
+      "result": true,
+      "time": 0.05299949645996094,
+      "error": null
+    },
+    "assert smallest_missing([3, 2, 5, 7, 5, 4, 5], 3, 3) == 3": {
+      "result": true,
+      "time": 0.059317827224731445,
+      "error": null
+    },
+    "assert smallest_missing([4, 5, 1, 7, 8, 10, 3], 4, 7) == 4": {
+      "result": true,
+      "time": 0.05091977119445801,
+      "error": null
+    },
+    "assert smallest_missing([4, 6, 3, 4, 6, 9, 2], 2, 8) == 2": {
+      "result": true,
+      "time": 0.054663658142089844,
+      "error": null
+    },
+    "assert smallest_missing([4, 4, 2, 4, 6, 4, 8], 1, 3) == 3": {
+      "result": false,
+      "time": 0.058734893798828125,
+      "error": null
+    },
+    "assert smallest_missing([4, 5, 4, 6, 2, 9, 2], 3, 2) == 3": {
+      "result": true,
+      "time": 0.0524144172668457,
+      "error": null
+    },
+    "assert smallest_missing([1, 4, 6, 1, 1, 6, 11], 2, 3) == 2": {
+      "result": true,
+      "time": 0.059096574783325195,
+      "error": null
+    },
+    "assert smallest_missing([3, 3, 5, 8, 4, 1, 2], 4, 1) == 4": {
+      "result": false,
+      "time": 0.05224251747131348,
+      "error": null
+    },
+    "assert smallest_missing([2, 2, 2, 1, 3, 7, 9], 5, 1) == 5": {
+      "result": false,
+      "time": 0.05505037307739258,
+      "error": null
+    },
+    "assert smallest_missing([5, 4, 2, 2, 2, 9, 9], 3, 6) == 3": {
+      "result": true,
+      "time": 0.04622340202331543,
+      "error": null
+    },
+    "assert smallest_missing([5, 4, 4, 2, 1, 7, 1], 1, 3) == 1": {
+      "result": true,
+      "time": 0.0518956184387207,
+      "error": null
+    },
+    "assert smallest_missing([2, 4, 6, 3, 6, 6, 10], 4, 4) == 4": {
+      "result": true,
+      "time": 0.0436704158782959,
+      "error": null
+    },
+    "assert smallest_missing([5, 4, 4, 1, 7, 5, 9], 2, 2) == 2": {
+      "result": true,
+      "time": 0.04048585891723633,
+      "error": null
+    },
+    "assert smallest_missing([1, 2, 3, 5, 8, 7, 9], 1, 6) == 1": {
+      "result": true,
+      "time": 0.038639068603515625,
+      "error": null
+    },
+    "assert smallest_missing([4, 3, 3, 1, 3, 10, 3], 3, 7) == 3": {
+      "result": true,
+      "time": 0.03908276557922363,
+      "error": null
+    },
+    "assert smallest_missing([3, 1, 1, 2, 4, 6, 2], 4, 6) == 5": {
+      "result": true,
+      "time": 0.043211936950683594,
+      "error": null
+    },
+    "assert smallest_missing([3, 3, 3, 4, 2, 6, 11], 4, 3) == 4": {
+      "result": true,
+      "time": 0.048361778259277344,
+      "error": null
+    },
+    "assert smallest_missing([2, 1, 5, 3, 7, 7, 10], 2, 6) == 2": {
+      "result": true,
+      "time": 0.04903912544250488,
+      "error": null
+    },
+    "assert smallest_missing([1, 5, 6, 1, 4, 9, 8], 1, 3) == 1": {
+      "result": true,
+      "time": 0.039011240005493164,
+      "error": null
+    },
+    "assert smallest_missing([4, 1, 4, 4, 5, 6, 1], 5, 4) == 5": {
+      "result": true,
+      "time": 0.03967690467834473,
+      "error": null
+    },
+    "assert smallest_missing([1, 5, 4, 5, 8, 5, 3], 4, 6) == 6": {
+      "result": false,
+      "time": 0.04298233985900879,
+      "error": null
+    },
+    "assert smallest_missing([1, 4, 4, 1, 5, 1, 4], 5, 1) == 5": {
+      "result": false,
+      "time": 0.046247243881225586,
+      "error": null
+    },
+    "assert smallest_missing([4, 5, 6, 3, 6, 9, 6], 1, 2) == 1": {
+      "result": true,
+      "time": 0.04093122482299805,
+      "error": null
+    },
+    "assert smallest_missing([1, 6, 7, 4, 1, 3, 3], 1, 7) == 1": {
+      "result": true,
+      "time": 0.04270672798156738,
+      "error": null
+    },
+    "assert smallest_missing([4, 6, 4, 4, 7, 6, 3], 3, 3) == 3": {
+      "result": true,
+      "time": 0.044693708419799805,
+      "error": null
+    },
+    "assert smallest_missing([1, 4, 5, 6, 6, 4, 10], 4, 3) == 4": {
+      "result": true,
+      "time": 0.053458213806152344,
+      "error": null
+    },
+    "assert smallest_missing([1, 3, 5, 8, 13, 15, 18], 1, 6) == 1": {
+      "result": true,
+      "time": 0.042897939682006836,
+      "error": null
+    },
+    "assert smallest_missing([1, 5, 4, 7, 6, 6, 14], 2, 2) == 2": {
+      "result": true,
+      "time": 0.05220508575439453,
+      "error": null
+    },
+    "assert smallest_missing([4, 4, 6, 1, 8, 9, 16], 3, 4) == 3": {
+      "result": true,
+      "time": 0.0525968074798584,
+      "error": null
+    },
+    "assert smallest_missing([1, 1, 5, 8, 9, 12, 14], 1, 8) == 2": {
+      "result": true,
+      "time": 0.04794001579284668,
+      "error": null
+    },
+    "assert smallest_missing([5, 6, 7, 10, 7, 15, 11], 5, 3) == 5": {
+      "result": false,
+      "time": 0.04997563362121582,
+      "error": null
+    },
+    "assert smallest_missing([1, 6, 6, 4, 6, 15, 11], 3, 3) == 3": {
+      "result": true,
+      "time": 0.04460501670837402,
+      "error": null
+    },
+    "assert smallest_missing([3, 4, 2, 7, 7, 7, 16], 1, 7) == 3": {
+      "result": false,
+      "time": 0.05176591873168945,
+      "error": null
+    },
+    "assert smallest_missing([1, 6, 3, 1, 8, 15, 17], 1, 5) == 1": {
+      "result": true,
+      "time": 0.0510556697845459,
+      "error": null
+    },
+    "assert smallest_missing([1, 2, 3, 2, 10, 10, 14], 4, 4) == 4": {
+      "result": true,
+      "time": 0.04468035697937012,
+      "error": null
+    },
+    "assert smallest_missing([1, 6, 6, 11, 12, 15, 14], 3, 9) == 3": {
+      "result": true,
+      "time": 0.0542452335357666,
+      "error": null
+    },
+    "assert smallest_missing([1, 1, 6, 11, 6, 6, 13], 4, 7) == 4": {
+      "result": true,
+      "time": 0.04435110092163086,
+      "error": null
+    },
+    "assert smallest_missing([5, 2, 5, 9, 4, 15, 12], 5, 4) == 5": {
+      "result": true,
+      "time": 0.04379153251647949,
+      "error": null
+    },
+    "assert smallest_missing([4, 2, 4, 1, 8, 14, 17], 1, 4) == 1": {
+      "result": true,
+      "time": 0.04230380058288574,
+      "error": null
+    },
+    "assert smallest_missing([5, 4, 7, 7, 12, 16, 16], 3, 5) == 3": {
+      "result": true,
+      "time": 0.04660320281982422,
+      "error": null
+    },
+    "assert smallest_missing([1, 2, 4, 11, 13, 14, 19], 4, 5) == 4": {
+      "result": true,
+      "time": 0.041296958923339844,
+      "error": null
+    },
+    "assert smallest_missing([1, 1, 7, 2, 7, 14, 18], 1, 7) == 2": {
+      "result": true,
+      "time": 0.0438539981842041,
+      "error": null
+    },
+    "assert smallest_missing([1, 1, 4, 5, 12, 16, 12], 2, 8) == 2": {
+      "result": true,
+      "time": 0.052903175354003906,
+      "error": null
+    },
+    "assert smallest_missing([3, 3, 4, 10, 12, 11, 16], 2, 6) == 2": {
+      "result": true,
+      "time": 0.048532962799072266,
+      "error": null
+    },
+    "assert smallest_missing([5, 2, 2, 3, 12, 6, 16], 5, 6) == 5": {
+      "result": true,
+      "time": 0.05762028694152832,
+      "error": null
+    },
+    "assert smallest_missing([1, 3, 6, 11, 4, 6, 16], 5, 5) == 5": {
+      "result": true,
+      "time": 0.05803275108337402,
+      "error": null
+    },
+    "assert smallest_missing([4, 5, 5, 4, 7, 12, 11], 5, 7) == 5": {
+      "result": true,
+      "time": 0.04767179489135742,
+      "error": null
+    },
+    "assert smallest_missing([1, 6, 1, 1, 10, 12, 10], 1, 9) == 1": {
+      "result": true,
+      "time": 0.05846858024597168,
+      "error": null
+    },
+    "assert smallest_missing([5, 5, 6, 3, 4, 14, 10], 3, 2) == 3": {
+      "result": true,
+      "time": 0.052240848541259766,
+      "error": null
+    },
+    "assert smallest_missing([3, 2, 3, 8, 7, 16, 12], 1, 1) == 1": {
+      "result": true,
+      "time": 0.05557513236999512,
+      "error": null
+    },
+    "assert smallest_missing([2, 4, 6, 3, 9, 8, 19], 2, 10) == 4": {
+      "result": false,
+      "time": 0.0547947883605957,
+      "error": null
+    },
+    "assert smallest_missing([2, 1, 4, 2, 6, 10, 15], 4, 7) == 4": {
+      "result": true,
+      "time": 0.0456998348236084,
+      "error": null
+    },
+    "assert smallest_missing([4, 2, 4, 8, 11, 8, 10], 4, 7) == 4": {
+      "result": true,
+      "time": 0.05392599105834961,
+      "error": null
+    },
+    "assert smallest_missing([3, 5, 2, 11, 11, 13, 13], 1, 8) == 3": {
+      "result": false,
+      "time": 0.041261911392211914,
+      "error": null
+    },
+    "assert smallest_missing([5, 3, 7, 8, 10, 13, 20], 5, 1) == 5": {
+      "result": false,
+      "time": 0.03407907485961914,
+      "error": null
+    },
+    "assert smallest_missing([2, 3, 7, 3, 14, 12, 16], 5, 7) == 5": {
+      "result": true,
+      "time": 0.037218570709228516,
+      "error": null
+    },
+    "assert smallest_missing([5, 3, 1, 11, 14, 16, 17], 1, 11) == 1": {
+      "result": true,
+      "time": 0.04157137870788574,
+      "error": null
+    },
+    "assert smallest_missing([3, 3, 1, 1, 11, 10, 10], 2, 5) == 2": {
+      "result": true,
+      "time": 0.038846492767333984,
+      "error": null
+    },
+    "assert smallest_missing([5, 3, 7, 11, 5, 9, 18], 3, 2) == 3": {
+      "result": true,
+      "time": 0.06923580169677734,
+      "error": null
+    },
+    "assert smallest_missing([1, 5, 7, 1, 7, 6, 11, 12], 2, 4) == 2": {
+      "result": true,
+      "time": 0.05808448791503906,
+      "error": null
+    },
+    "assert smallest_missing([1, 1, 5, 6, 2, 8, 8, 18], 2, 9) == 2": {
+      "result": true,
+      "time": 0.06949067115783691,
+      "error": null
+    },
+    "assert smallest_missing([2, 2, 4, 4, 11, 6, 8, 20], 2, 7) == 2": {
+      "result": true,
+      "time": 0.06277227401733398,
+      "error": null
+    },
+    "assert smallest_missing([3, 4, 4, 3, 8, 8, 10, 16], 2, 3) == 2": {
+      "result": true,
+      "time": 0.06660723686218262,
+      "error": null
+    },
+    "assert smallest_missing([1, 2, 7, 8, 3, 13, 10, 19], 2, 11) == 2": {
+      "result": true,
+      "time": 0.05814862251281738,
+      "error": null
+    },
+    "assert smallest_missing([2, 6, 8, 6, 11, 4, 9, 13], 2, 3) == 2": {
+      "result": true,
+      "time": 0.06684231758117676,
+      "error": null
+    },
+    "assert smallest_missing([5, 1, 7, 6, 10, 6, 11, 15], 2, 4) == 2": {
+      "result": true,
+      "time": 0.06496429443359375,
+      "error": null
+    },
+    "assert smallest_missing([6, 6, 7, 2, 9, 5, 15, 17], 5, 7) == 6": {
+      "result": true,
+      "time": 0.06107783317565918,
+      "error": null
+    },
+    "assert smallest_missing([5, 4, 7, 1, 6, 12, 15, 19], 3, 7) == 3": {
+      "result": true,
+      "time": 0.07302069664001465,
+      "error": null
+    },
+    "assert smallest_missing([3, 5, 6, 8, 7, 4, 16, 17], 5, 4) == 5": {
+      "result": true,
+      "time": 0.05489301681518555,
+      "error": null
+    },
+    "assert smallest_missing([2, 7, 7, 8, 5, 6, 7, 20], 3, 2) == 3": {
+      "result": true,
+      "time": 0.04188227653503418,
+      "error": null
+    },
+    "assert smallest_missing([3, 2, 1, 6, 11, 12, 16, 12], 2, 12) == 2": {
+      "result": true,
+      "time": 0.051790475845336914,
+      "error": null
+    },
+    "assert smallest_missing([2, 3, 2, 8, 10, 6, 16, 14], 2, 2) == 3": {
+      "result": true,
+      "time": 0.052580833435058594,
+      "error": null
+    },
+    "assert smallest_missing([4, 3, 3, 6, 2, 6, 13, 17], 3, 5) == 3": {
+      "result": true,
+      "time": 0.05669212341308594,
+      "error": null
+    },
+    "assert smallest_missing([1, 1, 6, 9, 1, 11, 16, 12], 1, 12) == 2": {
+      "result": true,
+      "time": 0.0612185001373291,
+      "error": null
+    },
+    "assert smallest_missing([4, 1, 8, 3, 3, 4, 12, 20], 3, 7) == 4": {
+      "result": true,
+      "time": 0.05967879295349121,
+      "error": null
+    },
+    "assert smallest_missing([3, 3, 4, 9, 2, 10, 13, 17], 1, 3) == 1": {
+      "result": true,
+      "time": 0.04481959342956543,
+      "error": null
+    },
+    "assert smallest_missing([2, 6, 8, 5, 9, 9, 10, 16], 4, 3) == 4": {
+      "result": true,
+      "time": 0.06134295463562012,
+      "error": null
+    },
+    "assert smallest_missing([1, 1, 6, 4, 11, 6, 6, 13], 2, 3) == 2": {
+      "result": true,
+      "time": 0.05458688735961914,
+      "error": null
+    },
+    "assert smallest_missing([2, 3, 3, 5, 1, 9, 7, 12], 5, 6) == 5": {
+      "result": true,
+      "time": 0.0526735782623291,
+      "error": null
+    },
+    "assert smallest_missing([6, 1, 3, 4, 7, 8, 16, 18], 2, 4) == 2": {
+      "result": true,
+      "time": 0.05798768997192383,
+      "error": null
+    },
+    "assert smallest_missing([1, 1, 5, 4, 8, 11, 8, 20], 5, 2) == 5": {
+      "result": false,
+      "time": 0.04883933067321777,
+      "error": null
+    },
+    "assert smallest_missing([6, 6, 1, 2, 4, 10, 15, 16], 2, 12) == 5": {
+      "result": false,
+      "time": 0.05193781852722168,
+      "error": null
+    },
+    "assert smallest_missing([2, 7, 2, 7, 8, 8, 10, 19], 5, 10) == 5": {
+      "result": true,
+      "time": 0.053285837173461914,
+      "error": null
+    },
+    "assert smallest_missing([1, 5, 2, 3, 8, 8, 7, 13], 1, 8) == 4": {
+      "result": false,
+      "time": 0.045247793197631836,
+      "error": null
+    },
+    "assert smallest_missing([4, 6, 8, 7, 2, 6, 7, 17], 2, 7) == 2": {
+      "result": true,
+      "time": 0.06834745407104492,
+      "error": null
+    },
+    "assert smallest_missing([2, 4, 7, 8, 3, 10, 15, 13], 3, 11) == 3": {
+      "result": true,
+      "time": 0.04152846336364746,
+      "error": null
+    },
+    "assert smallest_missing([1, 4, 3, 3, 4, 10, 14, 17], 4, 4) == 5": {
+      "result": true,
+      "time": 0.04483771324157715,
+      "error": null
+    },
+    "assert smallest_missing([3, 3, 2, 6, 1, 4, 14, 19], 3, 12) == 3": {
+      "result": true,
+      "time": 0.05084562301635742,
+      "error": null
+    },
+    "assert smallest_missing([6, 2, 5, 2, 8, 9, 12, 20], 1, 6) == 1": {
+      "result": true,
+      "time": 0.05117011070251465,
+      "error": null
+    },
+    "assert smallest_missing([5, 3, 2, 7, 11, 5, 13, 17], 5, 7) == 6": {
+      "result": true,
+      "time": 0.050055503845214844,
+      "error": null
+    },
+    "assert smallest_missing([6, 2, 5, 4, 11, 9, 16, 17], 1, 12) == 1": {
+      "result": true,
+      "time": 0.05017209053039551,
+      "error": null
+    },
+    "assert smallest_missing([4, 2, 4, 8, 7, 11, 8, 16], 5, 2) == 5": {
+      "result": false,
+      "time": 0.052806854248046875,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8627450980392157,
+  "general_error": "",
+  "has_testcase_error": false
+}

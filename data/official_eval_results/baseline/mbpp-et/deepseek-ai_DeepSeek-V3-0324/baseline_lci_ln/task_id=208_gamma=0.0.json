@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef is_decimal(num_str):\n    pattern = r'^\\d*\\.\\d{2}$'\n    match = re.fullmatch(pattern, num_str)\n    if match:\n        return True\n    else:\n        return False",
+  "results": {
+    "assert is_decimal('123.11') == True": {
+      "result": true,
+      "time": 0.5920777320861816,
+      "error": null
+    },
+    "assert is_decimal('0.21') == True": {
+      "result": true,
+      "time": 0.5752162933349609,
+      "error": null
+    },
+    "assert is_decimal('123.1214') == False": {
+      "result": true,
+      "time": 0.6129593849182129,
+      "error": null
+    },
+    "assert is_decimal(\"8394.446\") == False": {
+      "result": true,
+      "time": 0.5868022441864014,
+      "error": null
+    },
+    "assert is_decimal(\"49462\") == True": {
+      "result": false,
+      "time": 0.5760390758514404,
+      "error": null
+    },
+    "assert is_decimal(\"6415244509\") == True": {
+      "result": false,
+      "time": 0.5919437408447266,
+      "error": null
+    },
+    "assert is_decimal(\"26880356\") == True": {
+      "result": false,
+      "time": 0.5825653076171875,
+      "error": null
+    },
+    "assert is_decimal(\"486558\") == True": {
+      "result": false,
+      "time": 0.6196436882019043,
+      "error": null
+    },
+    "assert is_decimal(\"426441\") == True": {
+      "result": false,
+      "time": 0.5106041431427002,
+      "error": null
+    },
+    "assert is_decimal(\"03.438067\") == False": {
+      "result": true,
+      "time": 0.575655460357666,
+      "error": null
+    },
+    "assert is_decimal(\"869601.13\") == True": {
+      "result": true,
+      "time": 0.5101027488708496,
+      "error": null
+    },
+    "assert is_decimal(\"8396657.17\") == True": {
+      "result": true,
+      "time": 0.5641531944274902,
+      "error": null
+    },
+    "assert is_decimal(\".982\") == False": {
+      "result": true,
+      "time": 0.6130623817443848,
+      "error": null
+    },
+    "assert is_decimal(\".458026.\") == False": {
+      "result": true,
+      "time": 0.5181548595428467,
+      "error": null
+    },
+    "assert is_decimal(\"59279702\") == True": {
+      "result": false,
+      "time": 0.5660607814788818,
+      "error": null
+    },
+    "assert is_decimal(\"486\") == True": {
+      "result": false,
+      "time": 0.5795347690582275,
+      "error": null
+    },
+    "assert is_decimal(\"66817482112\") == True": {
+      "result": false,
+      "time": 0.61541748046875,
+      "error": null
+    },
+    "assert is_decimal(\"206\") == True": {
+      "result": false,
+      "time": 0.5793735980987549,
+      "error": null
+    },
+    "assert is_decimal(\"22.8876\") == False": {
+      "result": true,
+      "time": 0.5641989707946777,
+      "error": null
+    },
+    "assert is_decimal(\"77.8\") == True": {
+      "result": false,
+      "time": 0.5655803680419922,
+      "error": null
+    },
+    "assert is_decimal(\".16001\") == False": {
+      "result": true,
+      "time": 0.46064257621765137,
+      "error": null
+    },
+    "assert is_decimal(\".868\") == False": {
+      "result": true,
+      "time": 0.5627634525299072,
+      "error": null
+    },
+    "assert is_decimal(\"35.7..6.\") == False": {
+      "result": true,
+      "time": 0.5602712631225586,
+      "error": null
+    },
+    "assert is_decimal(\"11607.\") == False": {
+      "result": true,
+      "time": 0.5786476135253906,
+      "error": null
+    },
+    "assert is_decimal(\"6.2\") == True": {
+      "result": false,
+      "time": 0.5837850570678711,
+      "error": null
+    },
+    "assert is_decimal(\"2273353\") == True": {
+      "result": false,
+      "time": 0.5691163539886475,
+      "error": null
+    },
+    "assert is_decimal(\"810.741070\") == False": {
+      "result": true,
+      "time": 0.5736408233642578,
+      "error": null
+    },
+    "assert is_decimal(\"685593347197\") == True": {
+      "result": false,
+      "time": 0.5880701541900635,
+      "error": null
+    },
+    "assert is_decimal(\"93459605\") == True": {
+      "result": false,
+      "time": 0.5277295112609863,
+      "error": null
+    },
+    "assert is_decimal(\"984585205\") == True": {
+      "result": false,
+      "time": 0.584120512008667,
+      "error": null
+    },
+    "assert is_decimal(\".4303807\") == False": {
+      "result": true,
+      "time": 0.5884854793548584,
+      "error": null
+    },
+    "assert is_decimal(\"72447.\") == False": {
+      "result": true,
+      "time": 0.6047701835632324,
+      "error": null
+    },
+    "assert is_decimal(\"9143.74.3365\") == False": {
+      "result": true,
+      "time": 0.5783576965332031,
+      "error": null
+    },
+    "assert is_decimal(\"8505869223\") == True": {
+      "result": false,
+      "time": 0.6119136810302734,
+      "error": null
+    },
+    "assert is_decimal(\"6.17.3804\") == False": {
+      "result": true,
+      "time": 0.5507843494415283,
+      "error": null
+    },
+    "assert is_decimal(\"05.\") == False": {
+      "result": true,
+      "time": 0.588921308517456,
+      "error": null
+    },
+    "assert is_decimal(\"346951\") == True": {
+      "result": false,
+      "time": 0.6206142902374268,
+      "error": null
+    },
+    "assert is_decimal(\"3561003\") == True": {
+      "result": false,
+      "time": 0.55214524269104,
+      "error": null
+    },
+    "assert is_decimal(\"0566914\") == True": {
+      "result": false,
+      "time": 0.5822689533233643,
+      "error": null
+    },
+    "assert is_decimal(\"2678372\") == True": {
+      "result": false,
+      "time": 0.5898733139038086,
+      "error": null
+    },
+    "assert is_decimal(\"427\") == True": {
+      "result": false,
+      "time": 0.5755794048309326,
+      "error": null
+    },
+    "assert is_decimal(\"7.8706\") == False": {
+      "result": true,
+      "time": 0.44405364990234375,
+      "error": null
+    },
+    "assert is_decimal(\"471897441\") == True": {
+      "result": false,
+      "time": 0.6090695858001709,
+      "error": null
+    },
+    "assert is_decimal(\"52393.295\") == False": {
+      "result": true,
+      "time": 0.595026969909668,
+      "error": null
+    },
+    "assert is_decimal(\"4789\") == True": {
+      "result": false,
+      "time": 0.5965592861175537,
+      "error": null
+    },
+    "assert is_decimal(\"7.0701056\") == False": {
+      "result": true,
+      "time": 0.5888574123382568,
+      "error": null
+    },
+    "assert is_decimal(\"273166..\") == False": {
+      "result": true,
+      "time": 0.5648996829986572,
+      "error": null
+    },
+    "assert is_decimal(\"1932\") == True": {
+      "result": false,
+      "time": 0.5525345802307129,
+      "error": null
+    },
+    "assert is_decimal(\"1162\") == True": {
+      "result": false,
+      "time": 0.5742144584655762,
+      "error": null
+    },
+    "assert is_decimal(\"408.9091\") == False": {
+      "result": true,
+      "time": 0.5679636001586914,
+      "error": null
+    },
+    "assert is_decimal(\"9751348\") == True": {
+      "result": false,
+      "time": 0.5599403381347656,
+      "error": null
+    },
+    "assert is_decimal(\"4017.787\") == False": {
+      "result": true,
+      "time": 0.5607149600982666,
+      "error": null
+    },
+    "assert is_decimal(\"1..6102\") == False": {
+      "result": true,
+      "time": 0.5648443698883057,
+      "error": null
+    },
+    "assert is_decimal(\".25937\") == False": {
+      "result": true,
+      "time": 0.5791542530059814,
+      "error": null
+    },
+    "assert is_decimal(\"940.215\") == False": {
+      "result": true,
+      "time": 0.5882751941680908,
+      "error": null
+    },
+    "assert is_decimal(\"06695\") == True": {
+      "result": false,
+      "time": 0.5863966941833496,
+      "error": null
+    },
+    "assert is_decimal(\"73.8.4\") == False": {
+      "result": true,
+      "time": 0.5526673793792725,
+      "error": null
+    },
+    "assert is_decimal(\"249920715\") == True": {
+      "result": false,
+      "time": 0.5865328311920166,
+      "error": null
+    },
+    "assert is_decimal(\"4070\") == True": {
+      "result": false,
+      "time": 0.5647823810577393,
+      "error": null
+    },
+    "assert is_decimal(\"011806375\") == True": {
+      "result": false,
+      "time": 0.5756752490997314,
+      "error": null
+    },
+    "assert is_decimal(\"06295620\") == True": {
+      "result": false,
+      "time": 0.5422587394714355,
+      "error": null
+    },
+    "assert is_decimal(\"07014275\") == True": {
+      "result": false,
+      "time": 0.6146893501281738,
+      "error": null
+    },
+    "assert is_decimal(\"431236\") == True": {
+      "result": false,
+      "time": 0.5846214294433594,
+      "error": null
+    },
+    "assert is_decimal(\"664281818\") == True": {
+      "result": false,
+      "time": 0.559795618057251,
+      "error": null
+    },
+    "assert is_decimal(\"5930.5950\") == False": {
+      "result": true,
+      "time": 0.8599343299865723,
+      "error": null
+    },
+    "assert is_decimal(\".351\") == False": {
+      "result": true,
+      "time": 0.580258846282959,
+      "error": null
+    },
+    "assert is_decimal(\"3601.\") == False": {
+      "result": true,
+      "time": 0.5737128257751465,
+      "error": null
+    },
+    "assert is_decimal(\"9.1925\") == False": {
+      "result": true,
+      "time": 0.5822100639343262,
+      "error": null
+    },
+    "assert is_decimal(\"634847486\") == True": {
+      "result": false,
+      "time": 0.5929160118103027,
+      "error": null
+    },
+    "assert is_decimal(\"72764173\") == True": {
+      "result": false,
+      "time": 0.5616462230682373,
+      "error": null
+    },
+    "assert is_decimal(\"004\") == True": {
+      "result": false,
+      "time": 0.5541212558746338,
+      "error": null
+    },
+    "assert is_decimal(\"28340.2252\") == False": {
+      "result": true,
+      "time": 0.5574605464935303,
+      "error": null
+    },
+    "assert is_decimal(\"562\") == True": {
+      "result": false,
+      "time": 0.585242748260498,
+      "error": null
+    },
+    "assert is_decimal(\"9956.512.\") == False": {
+      "result": true,
+      "time": 0.5594120025634766,
+      "error": null
+    },
+    "assert is_decimal(\"653272980\") == True": {
+      "result": false,
+      "time": 0.5777745246887207,
+      "error": null
+    },
+    "assert is_decimal(\"619786.81562\") == False": {
+      "result": true,
+      "time": 0.606797456741333,
+      "error": null
+    },
+    "assert is_decimal(\"88412\") == True": {
+      "result": false,
+      "time": 0.5637552738189697,
+      "error": null
+    },
+    "assert is_decimal(\"14.42460\") == False": {
+      "result": true,
+      "time": 0.557187557220459,
+      "error": null
+    },
+    "assert is_decimal(\".7599\") == False": {
+      "result": true,
+      "time": 0.5800023078918457,
+      "error": null
+    },
+    "assert is_decimal(\"048241576.6.\") == False": {
+      "result": true,
+      "time": 0.5844159126281738,
+      "error": null
+    },
+    "assert is_decimal(\"28093149642\") == True": {
+      "result": false,
+      "time": 0.5628628730773926,
+      "error": null
+    },
+    "assert is_decimal(\"197926337\") == True": {
+      "result": false,
+      "time": 0.5506467819213867,
+      "error": null
+    },
+    "assert is_decimal(\"1765\") == True": {
+      "result": false,
+      "time": 0.5634355545043945,
+      "error": null
+    },
+    "assert is_decimal(\"4240\") == True": {
+      "result": false,
+      "time": 0.555316686630249,
+      "error": null
+    },
+    "assert is_decimal(\"109812422.\") == False": {
+      "result": true,
+      "time": 0.5581121444702148,
+      "error": null
+    },
+    "assert is_decimal(\"..76\") == False": {
+      "result": true,
+      "time": 0.5603554248809814,
+      "error": null
+    },
+    "assert is_decimal(\"664913.09589\") == False": {
+      "result": true,
+      "time": 0.5753791332244873,
+      "error": null
+    },
+    "assert is_decimal(\".6.5213\") == False": {
+      "result": true,
+      "time": 0.5668432712554932,
+      "error": null
+    },
+    "assert is_decimal(\"3085122\") == True": {
+      "result": false,
+      "time": 0.5696895122528076,
+      "error": null
+    },
+    "assert is_decimal(\".9.1.582969\") == False": {
+      "result": true,
+      "time": 0.5604937076568604,
+      "error": null
+    },
+    "assert is_decimal(\"684517\") == True": {
+      "result": false,
+      "time": 0.559805154800415,
+      "error": null
+    },
+    "assert is_decimal(\"456502\") == True": {
+      "result": false,
+      "time": 0.5812783241271973,
+      "error": null
+    },
+    "assert is_decimal(\"824\") == True": {
+      "result": false,
+      "time": 0.5669002532958984,
+      "error": null
+    },
+    "assert is_decimal(\".268..009497\") == False": {
+      "result": true,
+      "time": 0.5913703441619873,
+      "error": null
+    },
+    "assert is_decimal(\"992\") == True": {
+      "result": false,
+      "time": 0.5887293815612793,
+      "error": null
+    },
+    "assert is_decimal(\"7273431.8\") == True": {
+      "result": false,
+      "time": 0.5755138397216797,
+      "error": null
+    },
+    "assert is_decimal(\"30.98046\") == False": {
+      "result": true,
+      "time": 0.5766510963439941,
+      "error": null
+    },
+    "assert is_decimal(\"19224284\") == True": {
+      "result": false,
+      "time": 0.5707647800445557,
+      "error": null
+    },
+    "assert is_decimal(\"814.03.09\") == False": {
+      "result": true,
+      "time": 0.5477962493896484,
+      "error": null
+    },
+    "assert is_decimal(\"85413197\") == True": {
+      "result": false,
+      "time": 0.5329372882843018,
+      "error": null
+    },
+    "assert is_decimal(\"588887914\") == True": {
+      "result": false,
+      "time": 0.5703232288360596,
+      "error": null
+    },
+    "assert is_decimal(\"90690\") == True": {
+      "result": false,
+      "time": 0.5610537528991699,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.47058823529411764,
+  "general_error": "",
+  "has_testcase_error": false
+}

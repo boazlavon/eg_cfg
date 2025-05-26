@@ -1,0 +1,519 @@
+{
+  "code": "def extract_min_max(tup, k):\n    return tuple(sorted(tup)[:k] + sorted(tup, reverse=True)[:k])",
+  "results": {
+    "assert extract_min_max((5, 20, 3, 7, 6, 8), 2) == (3, 5, 8, 20)": {
+      "result": false,
+      "time": 0.04287004470825195,
+      "error": null
+    },
+    "assert extract_min_max((4, 5, 6, 1, 2, 7), 3) == (1, 2, 4, 5, 6, 7)": {
+      "result": false,
+      "time": 0.0478060245513916,
+      "error": null
+    },
+    "assert extract_min_max((2, 3, 4, 8, 9, 11, 7), 4) == (2, 3, 4, 7, 8, 9, 11)": {
+      "result": false,
+      "time": 0.039446115493774414,
+      "error": null
+    },
+    "assert extract_min_max((3, 23, 6, 8, 11, 3), 6) == (3, 3, 6, 8, 11, 23)": {
+      "result": false,
+      "time": 0.04320526123046875,
+      "error": null
+    },
+    "assert extract_min_max((7, 24, 4, 7, 11, 3), 6) == (3, 4, 7, 7, 11, 24)": {
+      "result": false,
+      "time": 0.04225802421569824,
+      "error": null
+    },
+    "assert extract_min_max((2, 25, 2, 2, 5, 8), 4) == (2, 2, 2, 5, 8, 25)": {
+      "result": false,
+      "time": 0.058878183364868164,
+      "error": null
+    },
+    "assert extract_min_max((9, 25, 6, 3, 9, 8), 3) == (3, 6, 8, 9, 9, 25)": {
+      "result": false,
+      "time": 0.04718136787414551,
+      "error": null
+    },
+    "assert extract_min_max((8, 22, 7, 12, 2, 13), 4) == (2, 7, 8, 12, 13, 22)": {
+      "result": false,
+      "time": 0.03228640556335449,
+      "error": null
+    },
+    "assert extract_min_max((5, 24, 5, 9, 7, 7), 7) == (5, 5, 7, 7, 9, 24)": {
+      "result": false,
+      "time": 0.041196584701538086,
+      "error": null
+    },
+    "assert extract_min_max((6, 18, 4, 5, 11, 11), 3) == (4, 5, 6, 11, 11, 18)": {
+      "result": false,
+      "time": 0.034934043884277344,
+      "error": null
+    },
+    "assert extract_min_max((3, 18, 3, 3, 2, 7), 5) == (2, 3, 3, 3, 7, 18)": {
+      "result": false,
+      "time": 0.046330928802490234,
+      "error": null
+    },
+    "assert extract_min_max((3, 22, 1, 12, 5, 12), 1) == (1, 22)": {
+      "result": true,
+      "time": 0.03894186019897461,
+      "error": null
+    },
+    "assert extract_min_max((6, 19, 2, 10, 11, 11), 7) == (2, 6, 10, 11, 11, 19)": {
+      "result": false,
+      "time": 0.04187607765197754,
+      "error": null
+    },
+    "assert extract_min_max((1, 24, 6, 11, 2, 13), 3) == (1, 2, 6, 11, 13, 24)": {
+      "result": false,
+      "time": 0.03600788116455078,
+      "error": null
+    },
+    "assert extract_min_max((7, 18, 3, 4, 8, 4), 3) == (3, 4, 4, 7, 8, 18)": {
+      "result": false,
+      "time": 0.04299139976501465,
+      "error": null
+    },
+    "assert extract_min_max((5, 15, 8, 7, 3, 9), 1) == (3, 15)": {
+      "result": true,
+      "time": 0.048944950103759766,
+      "error": null
+    },
+    "assert extract_min_max((5, 24, 5, 4, 5, 7), 4) == (4, 5, 5, 5, 7, 24)": {
+      "result": false,
+      "time": 0.04001331329345703,
+      "error": null
+    },
+    "assert extract_min_max((10, 20, 4, 8, 10, 4), 7) == (4, 4, 8, 10, 10, 20)": {
+      "result": false,
+      "time": 0.04383969306945801,
+      "error": null
+    },
+    "assert extract_min_max((9, 16, 8, 6, 6, 8), 1) == (6, 16)": {
+      "result": true,
+      "time": 0.04208660125732422,
+      "error": null
+    },
+    "assert extract_min_max((5, 25, 6, 6, 7, 11), 3) == (5, 6, 6, 7, 11, 25)": {
+      "result": false,
+      "time": 0.03301715850830078,
+      "error": null
+    },
+    "assert extract_min_max((6, 23, 7, 2, 8, 3), 1) == (2, 23)": {
+      "result": true,
+      "time": 0.04203200340270996,
+      "error": null
+    },
+    "assert extract_min_max((4, 19, 3, 8, 6, 12), 7) == (3, 4, 6, 8, 12, 19)": {
+      "result": false,
+      "time": 0.04160475730895996,
+      "error": null
+    },
+    "assert extract_min_max((5, 23, 2, 2, 11, 8), 1) == (2, 23)": {
+      "result": true,
+      "time": 0.03960561752319336,
+      "error": null
+    },
+    "assert extract_min_max((7, 25, 5, 4, 10, 12), 6) == (4, 5, 7, 10, 12, 25)": {
+      "result": false,
+      "time": 0.045337677001953125,
+      "error": null
+    },
+    "assert extract_min_max((8, 16, 8, 2, 3, 12), 4) == (2, 3, 8, 8, 12, 16)": {
+      "result": false,
+      "time": 0.03526473045349121,
+      "error": null
+    },
+    "assert extract_min_max((4, 15, 8, 11, 2, 4), 2) == (2, 4, 11, 15)": {
+      "result": false,
+      "time": 0.043341875076293945,
+      "error": null
+    },
+    "assert extract_min_max((5, 19, 8, 10, 1, 9), 6) == (1, 5, 8, 9, 10, 19)": {
+      "result": false,
+      "time": 0.041048526763916016,
+      "error": null
+    },
+    "assert extract_min_max((9, 24, 7, 3, 5, 10), 1) == (3, 24)": {
+      "result": true,
+      "time": 0.04052615165710449,
+      "error": null
+    },
+    "assert extract_min_max((1, 20, 6, 10, 11, 11), 6) == (1, 6, 10, 11, 11, 20)": {
+      "result": false,
+      "time": 0.04904985427856445,
+      "error": null
+    },
+    "assert extract_min_max((2, 25, 3, 8, 4, 9), 7) == (2, 3, 4, 8, 9, 25)": {
+      "result": false,
+      "time": 0.0469210147857666,
+      "error": null
+    },
+    "assert extract_min_max((3, 17, 3, 11, 4, 3), 2) == (3, 3, 11, 17)": {
+      "result": false,
+      "time": 0.05380821228027344,
+      "error": null
+    },
+    "assert extract_min_max((9, 24, 3, 6, 2, 10), 6) == (2, 3, 6, 9, 10, 24)": {
+      "result": false,
+      "time": 0.04962587356567383,
+      "error": null
+    },
+    "assert extract_min_max((4, 15, 6, 6, 5, 7), 6) == (4, 5, 6, 6, 7, 15)": {
+      "result": false,
+      "time": 0.04216337203979492,
+      "error": null
+    },
+    "assert extract_min_max((10, 20, 5, 5, 3, 6), 6) == (3, 5, 5, 6, 10, 20)": {
+      "result": false,
+      "time": 0.04936385154724121,
+      "error": null
+    },
+    "assert extract_min_max((6, 20, 7, 10, 6, 13), 6) == (6, 6, 7, 10, 13, 20)": {
+      "result": false,
+      "time": 0.04327249526977539,
+      "error": null
+    },
+    "assert extract_min_max((6, 25, 2, 8, 2, 9), 5) == (2, 2, 6, 8, 9, 25)": {
+      "result": false,
+      "time": 0.04210305213928223,
+      "error": null
+    },
+    "assert extract_min_max((9, 3, 3, 5, 7, 10), 3) == (3, 3, 5, 7, 9, 10)": {
+      "result": false,
+      "time": 0.04051494598388672,
+      "error": null
+    },
+    "assert extract_min_max((2, 4, 2, 6, 3, 3), 1) == (2, 6)": {
+      "result": true,
+      "time": 0.0404360294342041,
+      "error": null
+    },
+    "assert extract_min_max((4, 1, 4, 6, 3, 11), 6) == (1, 3, 4, 4, 6, 11)": {
+      "result": false,
+      "time": 0.033699750900268555,
+      "error": null
+    },
+    "assert extract_min_max((6, 9, 11, 6, 6, 10), 2) == (6, 6, 10, 11)": {
+      "result": false,
+      "time": 0.0370938777923584,
+      "error": null
+    },
+    "assert extract_min_max((4, 1, 2, 2, 3, 4), 6) == (1, 2, 2, 3, 4, 4)": {
+      "result": false,
+      "time": 0.048873186111450195,
+      "error": null
+    },
+    "assert extract_min_max((7, 2, 10, 4, 2, 2), 1) == (2, 10)": {
+      "result": true,
+      "time": 0.0392756462097168,
+      "error": null
+    },
+    "assert extract_min_max((6, 2, 4, 1, 5, 3), 6) == (1, 2, 3, 4, 5, 6)": {
+      "result": false,
+      "time": 0.03128194808959961,
+      "error": null
+    },
+    "assert extract_min_max((2, 8, 5, 1, 1, 3), 4) == (1, 1, 2, 3, 5, 8)": {
+      "result": false,
+      "time": 0.03581595420837402,
+      "error": null
+    },
+    "assert extract_min_max((2, 6, 6, 6, 4, 7), 8) == (2, 4, 6, 6, 6, 7)": {
+      "result": false,
+      "time": 0.03316664695739746,
+      "error": null
+    },
+    "assert extract_min_max((5, 8, 1, 5, 3, 6), 6) == (1, 3, 5, 5, 6, 8)": {
+      "result": false,
+      "time": 0.03616976737976074,
+      "error": null
+    },
+    "assert extract_min_max((9, 6, 11, 3, 1, 9), 1) == (1, 11)": {
+      "result": true,
+      "time": 0.036375999450683594,
+      "error": null
+    },
+    "assert extract_min_max((2, 10, 4, 6, 3, 5), 3) == (2, 3, 4, 5, 6, 10)": {
+      "result": false,
+      "time": 0.03734302520751953,
+      "error": null
+    },
+    "assert extract_min_max((4, 9, 5, 1, 1, 8), 4) == (1, 1, 4, 5, 8, 9)": {
+      "result": false,
+      "time": 0.037072181701660156,
+      "error": null
+    },
+    "assert extract_min_max((9, 2, 9, 2, 4, 9), 1) == (2, 9)": {
+      "result": true,
+      "time": 0.03874039649963379,
+      "error": null
+    },
+    "assert extract_min_max((9, 4, 6, 3, 4, 11), 5) == (3, 4, 4, 6, 9, 11)": {
+      "result": false,
+      "time": 0.03607344627380371,
+      "error": null
+    },
+    "assert extract_min_max((3, 7, 10, 3, 3, 3), 2) == (3, 3, 7, 10)": {
+      "result": false,
+      "time": 0.03876090049743652,
+      "error": null
+    },
+    "assert extract_min_max((2, 6, 8, 4, 7, 11), 3) == (2, 4, 6, 7, 8, 11)": {
+      "result": false,
+      "time": 0.03871345520019531,
+      "error": null
+    },
+    "assert extract_min_max((2, 7, 6, 3, 5, 6), 4) == (2, 3, 5, 6, 6, 7)": {
+      "result": false,
+      "time": 0.03558468818664551,
+      "error": null
+    },
+    "assert extract_min_max((2, 7, 7, 5, 6, 3), 1) == (2, 7)": {
+      "result": true,
+      "time": 0.036588191986083984,
+      "error": null
+    },
+    "assert extract_min_max((7, 3, 11, 4, 2, 10), 1) == (2, 11)": {
+      "result": true,
+      "time": 0.032087087631225586,
+      "error": null
+    },
+    "assert extract_min_max((7, 4, 8, 1, 3, 4), 2) == (1, 3, 7, 8)": {
+      "result": false,
+      "time": 0.04153800010681152,
+      "error": null
+    },
+    "assert extract_min_max((2, 4, 9, 1, 5, 6), 8) == (1, 2, 4, 5, 6, 9)": {
+      "result": false,
+      "time": 0.03147172927856445,
+      "error": null
+    },
+    "assert extract_min_max((3, 5, 6, 3, 4, 2), 5) == (2, 3, 3, 4, 5, 6)": {
+      "result": false,
+      "time": 0.033197879791259766,
+      "error": null
+    },
+    "assert extract_min_max((3, 4, 7, 2, 6, 9), 7) == (2, 3, 4, 6, 7, 9)": {
+      "result": false,
+      "time": 0.03426790237426758,
+      "error": null
+    },
+    "assert extract_min_max((1, 5, 8, 6, 1, 11), 5) == (1, 1, 5, 6, 8, 11)": {
+      "result": false,
+      "time": 0.04161477088928223,
+      "error": null
+    },
+    "assert extract_min_max((2, 2, 9, 6, 5, 9), 5) == (2, 2, 5, 6, 9, 9)": {
+      "result": false,
+      "time": 0.03425192832946777,
+      "error": null
+    },
+    "assert extract_min_max((7, 4, 2, 5, 4, 6), 8) == (2, 4, 4, 5, 6, 7)": {
+      "result": false,
+      "time": 0.038622140884399414,
+      "error": null
+    },
+    "assert extract_min_max((8, 2, 4, 3, 7, 6), 4) == (2, 3, 4, 6, 7, 8)": {
+      "result": false,
+      "time": 0.03525853157043457,
+      "error": null
+    },
+    "assert extract_min_max((1, 2, 2, 3, 2, 3), 1) == (1, 3)": {
+      "result": true,
+      "time": 0.03999471664428711,
+      "error": null
+    },
+    "assert extract_min_max((9, 3, 1, 5, 6, 7), 5) == (1, 3, 5, 6, 7, 9)": {
+      "result": false,
+      "time": 0.04232382774353027,
+      "error": null
+    },
+    "assert extract_min_max((4, 1, 10, 2, 4, 8), 7) == (1, 2, 4, 4, 8, 10)": {
+      "result": false,
+      "time": 0.04178786277770996,
+      "error": null
+    },
+    "assert extract_min_max((6, 9, 10, 6, 6, 9), 2) == (6, 6, 9, 10)": {
+      "result": false,
+      "time": 0.04873180389404297,
+      "error": null
+    },
+    "assert extract_min_max((3, 3, 7, 1, 1, 4), 7) == (1, 1, 3, 3, 4, 7)": {
+      "result": false,
+      "time": 0.04219841957092285,
+      "error": null
+    },
+    "assert extract_min_max((3, 3, 6, 6, 7, 15, 3), 3) == (3, 3, 3, 6, 7, 15)": {
+      "result": false,
+      "time": 0.039633989334106445,
+      "error": null
+    },
+    "assert extract_min_max((4, 7, 3, 9, 9, 13, 6), 1) == (3, 13)": {
+      "result": true,
+      "time": 0.036853790283203125,
+      "error": null
+    },
+    "assert extract_min_max((2, 3, 3, 5, 11, 9, 5), 4) == (2, 3, 3, 5, 5, 9, 11)": {
+      "result": false,
+      "time": 0.039559364318847656,
+      "error": null
+    },
+    "assert extract_min_max((5, 6, 3, 10, 7, 16, 5), 4) == (3, 5, 5, 6, 7, 10, 16)": {
+      "result": false,
+      "time": 0.03415179252624512,
+      "error": null
+    },
+    "assert extract_min_max((1, 7, 1, 6, 11, 15, 10), 5) == (1, 1, 6, 7, 10, 11, 15)": {
+      "result": false,
+      "time": 0.036101341247558594,
+      "error": null
+    },
+    "assert extract_min_max((3, 3, 1, 5, 11, 12, 8), 2) == (1, 3, 11, 12)": {
+      "result": false,
+      "time": 0.03982734680175781,
+      "error": null
+    },
+    "assert extract_min_max((6, 2, 4, 7, 5, 8, 5), 1) == (2, 8)": {
+      "result": true,
+      "time": 0.03995084762573242,
+      "error": null
+    },
+    "assert extract_min_max((3, 7, 9, 5, 12, 14, 11), 7) == (3, 5, 7, 9, 11, 12, 14)": {
+      "result": false,
+      "time": 0.04462313652038574,
+      "error": null
+    },
+    "assert extract_min_max((7, 5, 9, 7, 12, 6, 2), 9) == (2, 5, 6, 7, 7, 9, 12)": {
+      "result": false,
+      "time": 0.04092264175415039,
+      "error": null
+    },
+    "assert extract_min_max((6, 4, 6, 3, 6, 16, 12), 5) == (3, 4, 6, 6, 6, 12, 16)": {
+      "result": false,
+      "time": 0.04085350036621094,
+      "error": null
+    },
+    "assert extract_min_max((2, 3, 8, 4, 4, 16, 5), 7) == (2, 3, 4, 4, 5, 8, 16)": {
+      "result": false,
+      "time": 0.0360567569732666,
+      "error": null
+    },
+    "assert extract_min_max((2, 3, 5, 13, 5, 13, 7), 8) == (2, 3, 5, 5, 7, 13, 13)": {
+      "result": false,
+      "time": 0.03778243064880371,
+      "error": null
+    },
+    "assert extract_min_max((4, 7, 5, 4, 7, 9, 5), 5) == (4, 4, 5, 5, 7, 7, 9)": {
+      "result": false,
+      "time": 0.04300284385681152,
+      "error": null
+    },
+    "assert extract_min_max((5, 2, 9, 6, 13, 13, 3), 6) == (2, 3, 5, 6, 9, 13, 13)": {
+      "result": false,
+      "time": 0.04392099380493164,
+      "error": null
+    },
+    "assert extract_min_max((7, 8, 2, 10, 5, 9, 12), 3) == (2, 5, 7, 9, 10, 12)": {
+      "result": false,
+      "time": 0.03526926040649414,
+      "error": null
+    },
+    "assert extract_min_max((7, 1, 4, 13, 7, 12, 4), 5) == (1, 4, 4, 7, 7, 12, 13)": {
+      "result": false,
+      "time": 0.03767585754394531,
+      "error": null
+    },
+    "assert extract_min_max((3, 2, 7, 6, 13, 9, 5), 7) == (2, 3, 5, 6, 7, 9, 13)": {
+      "result": false,
+      "time": 0.03834724426269531,
+      "error": null
+    },
+    "assert extract_min_max((2, 4, 7, 12, 14, 9, 8), 5) == (2, 4, 7, 8, 9, 12, 14)": {
+      "result": false,
+      "time": 0.03996133804321289,
+      "error": null
+    },
+    "assert extract_min_max((6, 6, 6, 8, 12, 6, 7), 3) == (6, 6, 6, 7, 8, 12)": {
+      "result": false,
+      "time": 0.03489804267883301,
+      "error": null
+    },
+    "assert extract_min_max((6, 5, 4, 10, 4, 10, 9), 3) == (4, 4, 5, 9, 10, 10)": {
+      "result": false,
+      "time": 0.044973134994506836,
+      "error": null
+    },
+    "assert extract_min_max((4, 8, 3, 13, 13, 16, 3), 7) == (3, 3, 4, 8, 13, 13, 16)": {
+      "result": false,
+      "time": 0.0358126163482666,
+      "error": null
+    },
+    "assert extract_min_max((4, 2, 7, 8, 7, 11, 6), 6) == (2, 4, 6, 7, 7, 8, 11)": {
+      "result": false,
+      "time": 0.03990054130554199,
+      "error": null
+    },
+    "assert extract_min_max((7, 2, 5, 12, 9, 16, 5), 6) == (2, 5, 5, 7, 9, 12, 16)": {
+      "result": false,
+      "time": 0.03423786163330078,
+      "error": null
+    },
+    "assert extract_min_max((7, 1, 1, 8, 10, 6, 12), 2) == (1, 1, 10, 12)": {
+      "result": false,
+      "time": 0.04391670227050781,
+      "error": null
+    },
+    "assert extract_min_max((4, 4, 2, 7, 5, 8, 4), 7) == (2, 4, 4, 4, 5, 7, 8)": {
+      "result": false,
+      "time": 0.041301727294921875,
+      "error": null
+    },
+    "assert extract_min_max((7, 1, 6, 3, 5, 8, 2), 2) == (1, 2, 7, 8)": {
+      "result": false,
+      "time": 0.04160165786743164,
+      "error": null
+    },
+    "assert extract_min_max((5, 8, 4, 10, 9, 16, 5), 5) == (4, 5, 5, 8, 9, 10, 16)": {
+      "result": false,
+      "time": 0.03538250923156738,
+      "error": null
+    },
+    "assert extract_min_max((5, 6, 4, 8, 8, 6, 10), 3) == (4, 5, 6, 8, 8, 10)": {
+      "result": false,
+      "time": 0.03263998031616211,
+      "error": null
+    },
+    "assert extract_min_max((2, 3, 7, 8, 9, 16, 2), 5) == (2, 2, 3, 7, 8, 9, 16)": {
+      "result": false,
+      "time": 0.0413358211517334,
+      "error": null
+    },
+    "assert extract_min_max((3, 2, 6, 13, 11, 7, 2), 6) == (2, 2, 3, 6, 7, 11, 13)": {
+      "result": false,
+      "time": 0.03093862533569336,
+      "error": null
+    },
+    "assert extract_min_max((5, 8, 4, 10, 4, 16, 9), 9) == (4, 4, 5, 8, 9, 10, 16)": {
+      "result": false,
+      "time": 0.03890109062194824,
+      "error": null
+    },
+    "assert extract_min_max((7, 4, 1, 9, 13, 12, 3), 8) == (1, 3, 4, 7, 9, 12, 13)": {
+      "result": false,
+      "time": 0.04084491729736328,
+      "error": null
+    },
+    "assert extract_min_max((1, 3, 3, 6, 12, 6, 4), 3) == (1, 3, 3, 6, 6, 12)": {
+      "result": false,
+      "time": 0.04403209686279297,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.14705882352941177,
+  "general_error": "",
+  "has_testcase_error": false
+}

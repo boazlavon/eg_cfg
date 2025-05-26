@@ -1,0 +1,519 @@
+{
+  "code": "def binary_search(arr, x):\n    low = 0\n    high = len(arr) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == x:\n            return True\n        elif arr[mid] < x:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return False",
+  "results": {
+    "assert binary_search([1,2,3,5,8], 6) == False": {
+      "result": true,
+      "time": 0.035521507263183594,
+      "error": null
+    },
+    "assert binary_search([7, 8, 9, 10, 13], 10) == True": {
+      "result": true,
+      "time": 0.03565168380737305,
+      "error": null
+    },
+    "assert binary_search([11, 13, 14, 19, 22, 36], 23) == False": {
+      "result": true,
+      "time": 0.03192496299743652,
+      "error": null
+    },
+    "assert binary_search([6, 5, 3, 5, 5], 3) == True": {
+      "result": true,
+      "time": 0.03301835060119629,
+      "error": null
+    },
+    "assert binary_search([2, 4, 7, 6, 7], 9) == False": {
+      "result": true,
+      "time": 0.03293657302856445,
+      "error": null
+    },
+    "assert binary_search([5, 3, 8, 7, 9], 8) == True": {
+      "result": true,
+      "time": 0.035135746002197266,
+      "error": null
+    },
+    "assert binary_search([6, 2, 2, 5, 12], 10) == False": {
+      "result": true,
+      "time": 0.039467573165893555,
+      "error": null
+    },
+    "assert binary_search([2, 6, 6, 2, 5], 3) == False": {
+      "result": true,
+      "time": 0.03584766387939453,
+      "error": null
+    },
+    "assert binary_search([6, 4, 2, 5, 9], 9) == True": {
+      "result": true,
+      "time": 0.037418365478515625,
+      "error": null
+    },
+    "assert binary_search([4, 2, 5, 8, 3], 9) == False": {
+      "result": true,
+      "time": 0.03216266632080078,
+      "error": null
+    },
+    "assert binary_search([2, 4, 1, 9, 7], 11) == False": {
+      "result": true,
+      "time": 0.036885976791381836,
+      "error": null
+    },
+    "assert binary_search([2, 2, 2, 6, 12], 3) == False": {
+      "result": true,
+      "time": 0.032706499099731445,
+      "error": null
+    },
+    "assert binary_search([4, 2, 4, 4, 12], 3) == False": {
+      "result": true,
+      "time": 0.03523135185241699,
+      "error": null
+    },
+    "assert binary_search([2, 2, 1, 4, 11], 8) == False": {
+      "result": true,
+      "time": 0.03382062911987305,
+      "error": null
+    },
+    "assert binary_search([5, 1, 5, 3, 13], 1) == False": {
+      "result": true,
+      "time": 0.034662723541259766,
+      "error": null
+    },
+    "assert binary_search([5, 1, 1, 8, 4], 4) == False": {
+      "result": true,
+      "time": 0.03059244155883789,
+      "error": null
+    },
+    "assert binary_search([1, 6, 8, 1, 12], 1) == True": {
+      "result": true,
+      "time": 0.03631448745727539,
+      "error": null
+    },
+    "assert binary_search([2, 4, 5, 1, 10], 4) == True": {
+      "result": true,
+      "time": 0.03429532051086426,
+      "error": null
+    },
+    "assert binary_search([4, 2, 4, 10, 8], 11) == False": {
+      "result": true,
+      "time": 0.03830289840698242,
+      "error": null
+    },
+    "assert binary_search([1, 2, 6, 6, 10], 7) == False": {
+      "result": true,
+      "time": 0.03324699401855469,
+      "error": null
+    },
+    "assert binary_search([6, 5, 1, 6, 10], 11) == False": {
+      "result": true,
+      "time": 0.034960031509399414,
+      "error": null
+    },
+    "assert binary_search([5, 6, 7, 2, 11], 9) == False": {
+      "result": true,
+      "time": 0.03841042518615723,
+      "error": null
+    },
+    "assert binary_search([6, 3, 4, 6, 5], 2) == False": {
+      "result": true,
+      "time": 0.03301382064819336,
+      "error": null
+    },
+    "assert binary_search([4, 5, 7, 8, 9], 3) == False": {
+      "result": true,
+      "time": 0.03404593467712402,
+      "error": null
+    },
+    "assert binary_search([3, 6, 8, 1, 8], 10) == False": {
+      "result": true,
+      "time": 0.04362916946411133,
+      "error": null
+    },
+    "assert binary_search([6, 4, 1, 6, 3], 11) == False": {
+      "result": true,
+      "time": 0.03690457344055176,
+      "error": null
+    },
+    "assert binary_search([6, 4, 6, 8, 10], 8) == True": {
+      "result": true,
+      "time": 0.036310434341430664,
+      "error": null
+    },
+    "assert binary_search([1, 5, 5, 5, 6], 7) == False": {
+      "result": true,
+      "time": 0.03899073600769043,
+      "error": null
+    },
+    "assert binary_search([4, 5, 6, 6, 6], 9) == False": {
+      "result": true,
+      "time": 0.03560471534729004,
+      "error": null
+    },
+    "assert binary_search([4, 3, 3, 3, 5], 4) == False": {
+      "result": true,
+      "time": 0.03838372230529785,
+      "error": null
+    },
+    "assert binary_search([5, 3, 8, 3, 9], 4) == False": {
+      "result": true,
+      "time": 0.0357513427734375,
+      "error": null
+    },
+    "assert binary_search([6, 5, 5, 10, 5], 7) == False": {
+      "result": true,
+      "time": 0.032224178314208984,
+      "error": null
+    },
+    "assert binary_search([3, 7, 3, 10, 8], 5) == False": {
+      "result": true,
+      "time": 0.03802919387817383,
+      "error": null
+    },
+    "assert binary_search([1, 7, 2, 5, 13], 5) == True": {
+      "result": true,
+      "time": 0.03378105163574219,
+      "error": null
+    },
+    "assert binary_search([6, 7, 2, 2, 11], 10) == False": {
+      "result": true,
+      "time": 0.034637451171875,
+      "error": null
+    },
+    "assert binary_search([2, 3, 5, 7, 13], 5) == True": {
+      "result": true,
+      "time": 0.03931474685668945,
+      "error": null
+    },
+    "assert binary_search([2, 13, 10, 9, 16], 11) == False": {
+      "result": true,
+      "time": 0.036812782287597656,
+      "error": null
+    },
+    "assert binary_search([2, 6, 4, 9, 8], 14) == False": {
+      "result": true,
+      "time": 0.03371453285217285,
+      "error": null
+    },
+    "assert binary_search([9, 4, 13, 9, 10], 7) == False": {
+      "result": true,
+      "time": 0.037015676498413086,
+      "error": null
+    },
+    "assert binary_search([9, 9, 9, 5, 18], 5) == False": {
+      "result": true,
+      "time": 0.03282976150512695,
+      "error": null
+    },
+    "assert binary_search([11, 13, 13, 7, 14], 7) == False": {
+      "result": true,
+      "time": 0.035706520080566406,
+      "error": null
+    },
+    "assert binary_search([4, 3, 7, 13, 9], 15) == False": {
+      "result": true,
+      "time": 0.03801870346069336,
+      "error": null
+    },
+    "assert binary_search([4, 12, 12, 14, 10], 13) == False": {
+      "result": true,
+      "time": 0.029812335968017578,
+      "error": null
+    },
+    "assert binary_search([3, 5, 5, 8, 14], 8) == True": {
+      "result": true,
+      "time": 0.038062334060668945,
+      "error": null
+    },
+    "assert binary_search([12, 7, 6, 6, 9], 14) == False": {
+      "result": true,
+      "time": 0.0347142219543457,
+      "error": null
+    },
+    "assert binary_search([8, 6, 12, 5, 16], 6) == False": {
+      "result": true,
+      "time": 0.03563857078552246,
+      "error": null
+    },
+    "assert binary_search([6, 11, 4, 10, 16], 10) == True": {
+      "result": true,
+      "time": 0.03592991828918457,
+      "error": null
+    },
+    "assert binary_search([5, 11, 10, 7, 15], 12) == False": {
+      "result": true,
+      "time": 0.04017782211303711,
+      "error": null
+    },
+    "assert binary_search([4, 11, 13, 11, 14], 12) == False": {
+      "result": true,
+      "time": 0.0367887020111084,
+      "error": null
+    },
+    "assert binary_search([7, 7, 12, 13, 14], 10) == False": {
+      "result": true,
+      "time": 0.04221081733703613,
+      "error": null
+    },
+    "assert binary_search([2, 9, 6, 13, 18], 14) == False": {
+      "result": true,
+      "time": 0.03328967094421387,
+      "error": null
+    },
+    "assert binary_search([2, 13, 13, 15, 9], 12) == False": {
+      "result": true,
+      "time": 0.030800342559814453,
+      "error": null
+    },
+    "assert binary_search([8, 10, 7, 13, 10], 7) == True": {
+      "result": true,
+      "time": 0.03605842590332031,
+      "error": null
+    },
+    "assert binary_search([6, 3, 10, 13, 14], 14) == True": {
+      "result": true,
+      "time": 0.04027223587036133,
+      "error": null
+    },
+    "assert binary_search([7, 11, 4, 15, 8], 12) == False": {
+      "result": true,
+      "time": 0.03542947769165039,
+      "error": null
+    },
+    "assert binary_search([8, 8, 11, 13, 13], 12) == False": {
+      "result": true,
+      "time": 0.04016518592834473,
+      "error": null
+    },
+    "assert binary_search([2, 7, 8, 11, 11], 13) == False": {
+      "result": true,
+      "time": 0.033210039138793945,
+      "error": null
+    },
+    "assert binary_search([5, 13, 9, 9, 8], 10) == False": {
+      "result": true,
+      "time": 0.03320646286010742,
+      "error": null
+    },
+    "assert binary_search([5, 10, 9, 15, 8], 11) == False": {
+      "result": true,
+      "time": 0.03450584411621094,
+      "error": null
+    },
+    "assert binary_search([8, 11, 13, 5, 10], 15) == False": {
+      "result": true,
+      "time": 0.03847622871398926,
+      "error": null
+    },
+    "assert binary_search([6, 7, 7, 15, 12], 15) == True": {
+      "result": true,
+      "time": 0.03454089164733887,
+      "error": null
+    },
+    "assert binary_search([7, 11, 12, 13, 17], 5) == False": {
+      "result": true,
+      "time": 0.035996198654174805,
+      "error": null
+    },
+    "assert binary_search([2, 7, 6, 13, 12], 13) == True": {
+      "result": true,
+      "time": 0.036591529846191406,
+      "error": null
+    },
+    "assert binary_search([3, 13, 8, 7, 15], 13) == False": {
+      "result": true,
+      "time": 0.03542470932006836,
+      "error": null
+    },
+    "assert binary_search([3, 4, 5, 6, 17], 11) == False": {
+      "result": true,
+      "time": 0.035002708435058594,
+      "error": null
+    },
+    "assert binary_search([5, 11, 13, 9, 16], 6) == False": {
+      "result": true,
+      "time": 0.03357124328613281,
+      "error": null
+    },
+    "assert binary_search([6, 13, 7, 9, 15], 9) == True": {
+      "result": true,
+      "time": 0.03364300727844238,
+      "error": null
+    },
+    "assert binary_search([8, 11, 6, 7, 14], 5) == False": {
+      "result": true,
+      "time": 0.0452272891998291,
+      "error": null
+    },
+    "assert binary_search([2, 7, 12, 12, 17], 12) == True": {
+      "result": true,
+      "time": 0.03271961212158203,
+      "error": null
+    },
+    "assert binary_search([7, 13, 18, 14, 26, 34], 18) == True": {
+      "result": true,
+      "time": 0.030872583389282227,
+      "error": null
+    },
+    "assert binary_search([14, 18, 12, 14, 26, 38], 24) == False": {
+      "result": true,
+      "time": 0.043282508850097656,
+      "error": null
+    },
+    "assert binary_search([6, 17, 17, 15, 20, 33], 20) == True": {
+      "result": true,
+      "time": 0.03350114822387695,
+      "error": null
+    },
+    "assert binary_search([6, 11, 18, 21, 19, 34], 20) == False": {
+      "result": true,
+      "time": 0.03882002830505371,
+      "error": null
+    },
+    "assert binary_search([11, 11, 16, 23, 22, 38], 24) == False": {
+      "result": true,
+      "time": 0.030849218368530273,
+      "error": null
+    },
+    "assert binary_search([8, 16, 16, 24, 24, 37], 22) == False": {
+      "result": true,
+      "time": 0.0345768928527832,
+      "error": null
+    },
+    "assert binary_search([7, 9, 17, 23, 21, 38], 23) == False": {
+      "result": true,
+      "time": 0.035443782806396484,
+      "error": null
+    },
+    "assert binary_search([13, 17, 18, 19, 24, 33], 27) == False": {
+      "result": true,
+      "time": 0.03472304344177246,
+      "error": null
+    },
+    "assert binary_search([8, 10, 9, 14, 22, 40], 24) == False": {
+      "result": true,
+      "time": 0.032343149185180664,
+      "error": null
+    },
+    "assert binary_search([14, 18, 10, 21, 26, 37], 23) == False": {
+      "result": true,
+      "time": 0.03667879104614258,
+      "error": null
+    },
+    "assert binary_search([8, 10, 19, 15, 18, 41], 19) == True": {
+      "result": true,
+      "time": 0.042525291442871094,
+      "error": null
+    },
+    "assert binary_search([13, 16, 19, 24, 22, 39], 21) == False": {
+      "result": true,
+      "time": 0.030733108520507812,
+      "error": null
+    },
+    "assert binary_search([6, 15, 16, 19, 25, 33], 25) == True": {
+      "result": true,
+      "time": 0.02771592140197754,
+      "error": null
+    },
+    "assert binary_search([13, 16, 14, 16, 19, 34], 26) == False": {
+      "result": true,
+      "time": 0.03313136100769043,
+      "error": null
+    },
+    "assert binary_search([16, 12, 9, 14, 26, 41], 26) == True": {
+      "result": true,
+      "time": 0.03300642967224121,
+      "error": null
+    },
+    "assert binary_search([13, 17, 16, 21, 25, 36], 25) == True": {
+      "result": true,
+      "time": 0.028954744338989258,
+      "error": null
+    },
+    "assert binary_search([13, 9, 18, 18, 17, 40], 18) == True": {
+      "result": true,
+      "time": 0.04021143913269043,
+      "error": null
+    },
+    "assert binary_search([15, 8, 14, 24, 25, 39], 26) == False": {
+      "result": true,
+      "time": 0.037123680114746094,
+      "error": null
+    },
+    "assert binary_search([8, 9, 14, 22, 26, 31], 18) == False": {
+      "result": true,
+      "time": 0.03552961349487305,
+      "error": null
+    },
+    "assert binary_search([10, 13, 13, 17, 21, 40], 18) == False": {
+      "result": true,
+      "time": 0.03605222702026367,
+      "error": null
+    },
+    "assert binary_search([9, 8, 11, 17, 17, 31], 28) == False": {
+      "result": true,
+      "time": 0.0319669246673584,
+      "error": null
+    },
+    "assert binary_search([13, 12, 12, 14, 20, 37], 22) == False": {
+      "result": true,
+      "time": 0.031614065170288086,
+      "error": null
+    },
+    "assert binary_search([10, 17, 16, 18, 25, 31], 23) == False": {
+      "result": true,
+      "time": 0.03348088264465332,
+      "error": null
+    },
+    "assert binary_search([14, 11, 17, 15, 27, 39], 28) == False": {
+      "result": true,
+      "time": 0.0318911075592041,
+      "error": null
+    },
+    "assert binary_search([11, 13, 14, 15, 18, 32], 23) == False": {
+      "result": true,
+      "time": 0.03383159637451172,
+      "error": null
+    },
+    "assert binary_search([8, 16, 12, 22, 17, 32], 27) == False": {
+      "result": true,
+      "time": 0.03633403778076172,
+      "error": null
+    },
+    "assert binary_search([13, 18, 18, 16, 24, 32], 20) == False": {
+      "result": true,
+      "time": 0.04427838325500488,
+      "error": null
+    },
+    "assert binary_search([16, 15, 14, 16, 24, 33], 22) == False": {
+      "result": true,
+      "time": 0.03861260414123535,
+      "error": null
+    },
+    "assert binary_search([8, 15, 13, 19, 18, 33], 19) == False": {
+      "result": true,
+      "time": 0.037966012954711914,
+      "error": null
+    },
+    "assert binary_search([10, 8, 12, 17, 17, 39], 25) == False": {
+      "result": true,
+      "time": 0.036895751953125,
+      "error": null
+    },
+    "assert binary_search([8, 18, 16, 20, 24, 33], 26) == False": {
+      "result": true,
+      "time": 0.03760528564453125,
+      "error": null
+    },
+    "assert binary_search([12, 16, 12, 20, 21, 41], 28) == False": {
+      "result": true,
+      "time": 0.034499406814575195,
+      "error": null
+    },
+    "assert binary_search([6, 18, 17, 17, 27, 36], 24) == False": {
+      "result": true,
+      "time": 0.03157687187194824,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

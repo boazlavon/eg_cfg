@@ -1,0 +1,519 @@
+{
+  "code": "from math import prod\n\ndef no_of_subsequences(arr, k):\n    n = len(arr)\n    count = 0\n    for i in range(n):\n        product = 1\n        for j in range(i, n):\n            product *= arr[j]\n            if product < k:\n                count += 1\n    return count",
+  "results": {
+    "assert no_of_subsequences([1,2,3,4], 10) == 11": {
+      "result": false,
+      "time": 0.08061408996582031,
+      "error": null
+    },
+    "assert no_of_subsequences([4,8,7,2], 50) == 9": {
+      "result": false,
+      "time": 0.09029626846313477,
+      "error": null
+    },
+    "assert no_of_subsequences([5,6,7,8], 15) == 4": {
+      "result": true,
+      "time": 0.10837817192077637,
+      "error": null
+    },
+    "assert no_of_subsequences([1, 3, 6, 3], 13) == 9": {
+      "result": false,
+      "time": 0.09687399864196777,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 4, 7, 7], 7) == 4": {
+      "result": false,
+      "time": 0.10133504867553711,
+      "error": null
+    },
+    "assert no_of_subsequences([1, 5, 2, 6], 7) == 7": {
+      "result": false,
+      "time": 0.08855915069580078,
+      "error": null
+    },
+    "assert no_of_subsequences([2, 5, 1, 3], 6) == 9": {
+      "result": false,
+      "time": 0.08388566970825195,
+      "error": null
+    },
+    "assert no_of_subsequences([1, 5, 6, 7], 8) == 7": {
+      "result": false,
+      "time": 0.08930730819702148,
+      "error": null
+    },
+    "assert no_of_subsequences([2, 7, 2, 1], 12) == 9": {
+      "result": false,
+      "time": 0.09845733642578125,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 1, 5, 9], 9) == 7": {
+      "result": false,
+      "time": 0.09114265441894531,
+      "error": null
+    },
+    "assert no_of_subsequences([2, 5, 7, 7], 5) == 2": {
+      "result": false,
+      "time": 0.10998392105102539,
+      "error": null
+    },
+    "assert no_of_subsequences([2, 1, 2, 3], 5) == 9": {
+      "result": false,
+      "time": 0.10945487022399902,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 5, 1, 8], 12) == 7": {
+      "result": false,
+      "time": 0.09922957420349121,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 6, 2, 7], 5) == 2": {
+      "result": true,
+      "time": 0.08663153648376465,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 5, 4, 2], 8) == 5": {
+      "result": false,
+      "time": 0.10072565078735352,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 6, 5, 1], 6) == 7": {
+      "result": false,
+      "time": 0.07738780975341797,
+      "error": null
+    },
+    "assert no_of_subsequences([6, 1, 3, 2], 12) == 11": {
+      "result": false,
+      "time": 0.07993078231811523,
+      "error": null
+    },
+    "assert no_of_subsequences([6, 3, 4, 9], 13) == 5": {
+      "result": true,
+      "time": 0.08344364166259766,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 3, 1, 9], 5) == 5": {
+      "result": false,
+      "time": 0.08826947212219238,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 5, 4, 1], 15) == 7": {
+      "result": false,
+      "time": 0.07953667640686035,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 3, 2, 9], 11) == 7": {
+      "result": false,
+      "time": 0.07707810401916504,
+      "error": null
+    },
+    "assert no_of_subsequences([1, 4, 1, 3], 6) == 11": {
+      "result": false,
+      "time": 0.08572840690612793,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 5, 3, 7], 11) == 4": {
+      "result": true,
+      "time": 0.08137059211730957,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 7, 8, 8], 6) == 1": {
+      "result": true,
+      "time": 0.10204410552978516,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 2, 7, 2], 6) == 6": {
+      "result": false,
+      "time": 0.08253097534179688,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 6, 3, 4], 9) == 4": {
+      "result": true,
+      "time": 0.07507872581481934,
+      "error": null
+    },
+    "assert no_of_subsequences([6, 3, 5, 9], 14) == 4": {
+      "result": true,
+      "time": 0.08427119255065918,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 7, 6, 4], 13) == 4": {
+      "result": true,
+      "time": 0.07982254028320312,
+      "error": null
+    },
+    "assert no_of_subsequences([2, 1, 1, 8], 10) == 11": {
+      "result": false,
+      "time": 0.09974479675292969,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 6, 6, 9], 9) == 4": {
+      "result": false,
+      "time": 0.0869607925415039,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 4, 2, 5], 13) == 8": {
+      "result": false,
+      "time": 0.0829324722290039,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 4, 1, 2], 14) == 11": {
+      "result": false,
+      "time": 0.07377815246582031,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 6, 4, 2], 8) == 6": {
+      "result": false,
+      "time": 0.0676107406616211,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 4, 7, 1], 12) == 7": {
+      "result": false,
+      "time": 0.07090878486633301,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 5, 3, 4], 11) == 4": {
+      "result": true,
+      "time": 0.08054184913635254,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 3, 6, 4], 15) == 6": {
+      "result": false,
+      "time": 0.07716202735900879,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 9, 7, 6], 47) == 8": {
+      "result": false,
+      "time": 0.08026742935180664,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 9, 6, 6], 54) == 10": {
+      "result": false,
+      "time": 0.08337569236755371,
+      "error": null
+    },
+    "assert no_of_subsequences([7, 10, 6, 5], 54) == 8": {
+      "result": false,
+      "time": 0.08583426475524902,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 12, 2, 1], 55) == 13": {
+      "result": false,
+      "time": 0.07909417152404785,
+      "error": null
+    },
+    "assert no_of_subsequences([9, 7, 7, 2], 54) == 8": {
+      "result": false,
+      "time": 0.0803670883178711,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 11, 9, 7], 52) == 4": {
+      "result": true,
+      "time": 0.09000945091247559,
+      "error": null
+    },
+    "assert no_of_subsequences([2, 9, 2, 2], 50) == 14": {
+      "result": false,
+      "time": 0.08207559585571289,
+      "error": null
+    },
+    "assert no_of_subsequences([1, 3, 5, 3], 53) == 15": {
+      "result": false,
+      "time": 0.0920553207397461,
+      "error": null
+    },
+    "assert no_of_subsequences([9, 7, 3, 1], 49) == 11": {
+      "result": false,
+      "time": 0.07456207275390625,
+      "error": null
+    },
+    "assert no_of_subsequences([9, 5, 7, 3], 46) == 9": {
+      "result": false,
+      "time": 0.08529257774353027,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 10, 6, 5], 45) == 6": {
+      "result": false,
+      "time": 0.07893514633178711,
+      "error": null
+    },
+    "assert no_of_subsequences([2, 6, 3, 1], 47) == 15": {
+      "result": false,
+      "time": 0.07774138450622559,
+      "error": null
+    },
+    "assert no_of_subsequences([7, 13, 4, 3], 50) == 8": {
+      "result": false,
+      "time": 0.09530377388000488,
+      "error": null
+    },
+    "assert no_of_subsequences([1, 4, 8, 6], 52) == 13": {
+      "result": false,
+      "time": 0.08348655700683594,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 4, 5, 4], 47) == 10": {
+      "result": false,
+      "time": 0.08563232421875,
+      "error": null
+    },
+    "assert no_of_subsequences([9, 4, 2, 1], 46) == 13": {
+      "result": false,
+      "time": 0.08748793601989746,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 10, 3, 4], 52) == 10": {
+      "result": false,
+      "time": 0.0795907974243164,
+      "error": null
+    },
+    "assert no_of_subsequences([9, 5, 4, 1], 45) == 13": {
+      "result": false,
+      "time": 0.08712053298950195,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 5, 10, 2], 45) == 10": {
+      "result": false,
+      "time": 0.08370041847229004,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 7, 8, 6], 45) == 5": {
+      "result": false,
+      "time": 0.0910947322845459,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 8, 8, 5], 51) == 9": {
+      "result": false,
+      "time": 0.07146358489990234,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 12, 9, 5], 53) == 8": {
+      "result": false,
+      "time": 0.08115386962890625,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 12, 10, 3], 45) == 8": {
+      "result": false,
+      "time": 0.08274674415588379,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 4, 11, 3], 48) == 9": {
+      "result": false,
+      "time": 0.09487795829772949,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 8, 9, 7], 52) == 7": {
+      "result": false,
+      "time": 0.10256171226501465,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 6, 3, 7], 45) == 8": {
+      "result": false,
+      "time": 0.09839344024658203,
+      "error": null
+    },
+    "assert no_of_subsequences([1, 13, 11, 1], 53) == 11": {
+      "result": false,
+      "time": 0.0954897403717041,
+      "error": null
+    },
+    "assert no_of_subsequences([9, 13, 4, 6], 45) == 6": {
+      "result": false,
+      "time": 0.10142636299133301,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 6, 10, 5], 47) == 7": {
+      "result": false,
+      "time": 0.1129305362701416,
+      "error": null
+    },
+    "assert no_of_subsequences([9, 11, 9, 4], 54) == 7": {
+      "result": false,
+      "time": 0.08890223503112793,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 6, 7, 6], 52) == 10": {
+      "result": false,
+      "time": 0.08772826194763184,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 5, 9, 1], 45) == 13": {
+      "result": false,
+      "time": 0.10182809829711914,
+      "error": null
+    },
+    "assert no_of_subsequences([7, 10, 4, 4], 47) == 9": {
+      "result": false,
+      "time": 0.08199334144592285,
+      "error": null
+    },
+    "assert no_of_subsequences([6, 3, 4, 3], 12) == 7": {
+      "result": false,
+      "time": 0.09054231643676758,
+      "error": null
+    },
+    "assert no_of_subsequences([6, 4, 8, 10], 14) == 4": {
+      "result": true,
+      "time": 0.09105157852172852,
+      "error": null
+    },
+    "assert no_of_subsequences([9, 2, 6, 7], 10) == 4": {
+      "result": true,
+      "time": 0.10112881660461426,
+      "error": null
+    },
+    "assert no_of_subsequences([2, 11, 8, 13], 12) == 3": {
+      "result": true,
+      "time": 0.08138203620910645,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 8, 8, 6], 14) == 4": {
+      "result": true,
+      "time": 0.0833885669708252,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 6, 5, 7], 20) == 4": {
+      "result": true,
+      "time": 0.08790922164916992,
+      "error": null
+    },
+    "assert no_of_subsequences([7, 10, 8, 12], 18) == 4": {
+      "result": true,
+      "time": 0.08057856559753418,
+      "error": null
+    },
+    "assert no_of_subsequences([6, 3, 11, 8], 18) == 5": {
+      "result": false,
+      "time": 0.08148193359375,
+      "error": null
+    },
+    "assert no_of_subsequences([2, 1, 4, 5], 10) == 11": {
+      "result": false,
+      "time": 0.08145999908447266,
+      "error": null
+    },
+    "assert no_of_subsequences([7, 1, 12, 13], 15) == 7": {
+      "result": false,
+      "time": 0.08381342887878418,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 8, 2, 3], 16) == 7": {
+      "result": false,
+      "time": 0.08162355422973633,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 9, 11, 5], 16) == 4": {
+      "result": true,
+      "time": 0.08700871467590332,
+      "error": null
+    },
+    "assert no_of_subsequences([7, 4, 9, 10], 19) == 4": {
+      "result": true,
+      "time": 0.07941389083862305,
+      "error": null
+    },
+    "assert no_of_subsequences([9, 10, 8, 4], 12) == 4": {
+      "result": true,
+      "time": 0.08801674842834473,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 9, 5, 3], 18) == 5": {
+      "result": true,
+      "time": 0.08328890800476074,
+      "error": null
+    },
+    "assert no_of_subsequences([5, 8, 7, 5], 15) == 4": {
+      "result": true,
+      "time": 0.08235836029052734,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 11, 7, 4], 14) == 4": {
+      "result": true,
+      "time": 0.08977627754211426,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 10, 7, 3], 14) == 5": {
+      "result": false,
+      "time": 0.10602211952209473,
+      "error": null
+    },
+    "assert no_of_subsequences([7, 11, 8, 7], 13) == 4": {
+      "result": true,
+      "time": 0.07983231544494629,
+      "error": null
+    },
+    "assert no_of_subsequences([2, 5, 5, 5], 10) == 7": {
+      "result": false,
+      "time": 0.0871424674987793,
+      "error": null
+    },
+    "assert no_of_subsequences([9, 9, 5, 4], 17) == 4": {
+      "result": true,
+      "time": 0.0757753849029541,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 7, 4, 5], 17) == 4": {
+      "result": true,
+      "time": 0.08802127838134766,
+      "error": null
+    },
+    "assert no_of_subsequences([2, 4, 5, 6], 20) == 8": {
+      "result": false,
+      "time": 0.07924842834472656,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 7, 6, 5], 10) == 4": {
+      "result": true,
+      "time": 0.08502769470214844,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 10, 9, 8], 17) == 4": {
+      "result": true,
+      "time": 0.08060503005981445,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 5, 11, 9], 19) == 4": {
+      "result": true,
+      "time": 0.08853673934936523,
+      "error": null
+    },
+    "assert no_of_subsequences([4, 5, 4, 4], 15) == 4": {
+      "result": true,
+      "time": 0.08691644668579102,
+      "error": null
+    },
+    "assert no_of_subsequences([9, 5, 10, 12], 17) == 4": {
+      "result": true,
+      "time": 0.0820467472076416,
+      "error": null
+    },
+    "assert no_of_subsequences([7, 3, 9, 9], 16) == 4": {
+      "result": true,
+      "time": 0.07857728004455566,
+      "error": null
+    },
+    "assert no_of_subsequences([3, 4, 11, 6], 15) == 5": {
+      "result": true,
+      "time": 0.08910346031188965,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 9, 10, 11], 20) == 4": {
+      "result": true,
+      "time": 0.08349180221557617,
+      "error": null
+    },
+    "assert no_of_subsequences([10, 8, 5, 11], 17) == 4": {
+      "result": true,
+      "time": 0.08721542358398438,
+      "error": null
+    },
+    "assert no_of_subsequences([8, 11, 4, 12], 20) == 4": {
+      "result": true,
+      "time": 0.0792398452758789,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3431372549019608,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef change_date_format(date):\n    # Regex pattern to match the date format\n    pattern = r\"(\\d{2})-(\\d{2})-(\\d{4})\"\n    \n    # Replace the matched pattern with the desired format\n    new_date = re.sub(pattern, r\"\\3-\\1-\\2\", date)\n    \n    return new_date",
+  "results": {
+    "assert change_date_format(\"2026-01-02\") == '02-01-2026'": {
+      "result": false,
+      "time": 0.6045496463775635,
+      "error": null
+    },
+    "assert change_date_format(\"2020-11-13\") == '13-11-2020'": {
+      "result": false,
+      "time": 0.5047705173492432,
+      "error": null
+    },
+    "assert change_date_format(\"2021-04-26\") == '26-04-2021'": {
+      "result": false,
+      "time": 0.6089160442352295,
+      "error": null
+    },
+    "assert change_date_format(\"98=*2&?+/|\") == \"98=*2&?+/|\"": {
+      "result": true,
+      "time": 0.572209358215332,
+      "error": null
+    },
+    "assert change_date_format(\"@9/:6:*4*/^~<7\") == \"@9/:6:*4*/^~<7\"": {
+      "result": true,
+      "time": 0.5973045825958252,
+      "error": null
+    },
+    "assert change_date_format(\"@0?666^^:6\") == \"@0?666^^:6\"": {
+      "result": true,
+      "time": 0.5771708488464355,
+      "error": null
+    },
+    "assert change_date_format(\"0&-52/9=9~\") == \"0&-52/9=9~\"": {
+      "result": true,
+      "time": 0.5439271926879883,
+      "error": null
+    },
+    "assert change_date_format(\"77%~>0436#|<\") == \"77%~>0436#|<\"": {
+      "result": true,
+      "time": 0.5693883895874023,
+      "error": null
+    },
+    "assert change_date_format(\"48&$-1@#\") == \"48&$-1@#\"": {
+      "result": true,
+      "time": 0.5862646102905273,
+      "error": null
+    },
+    "assert change_date_format(\"5::44-!-74\") == \"5::44-!-74\"": {
+      "result": true,
+      "time": 0.6061322689056396,
+      "error": null
+    },
+    "assert change_date_format(\"^&_#!:\") == \"^&_#!:\"": {
+      "result": true,
+      "time": 0.5797064304351807,
+      "error": null
+    },
+    "assert change_date_format(\"7_82*53!&2+^\") == \"7_82*53!&2+^\"": {
+      "result": true,
+      "time": 0.5570352077484131,
+      "error": null
+    },
+    "assert change_date_format(\"08$^1/_0!<5!*91\") == \"08$^1/_0!<5!*91\"": {
+      "result": true,
+      "time": 0.5656414031982422,
+      "error": null
+    },
+    "assert change_date_format(\"@8:=~%^?#*+@\") == \"@8:=~%^?#*+@\"": {
+      "result": true,
+      "time": 0.5765533447265625,
+      "error": null
+    },
+    "assert change_date_format(\"63:*+_3@3!\") == \"63:*+_3@3!\"": {
+      "result": true,
+      "time": 0.568260669708252,
+      "error": null
+    },
+    "assert change_date_format(\"&^!24!07=%\") == \"&^!24!07=%\"": {
+      "result": true,
+      "time": 0.5763990879058838,
+      "error": null
+    },
+    "assert change_date_format(\"=2~/#!\") == \"=2~/#!\"": {
+      "result": true,
+      "time": 0.5694825649261475,
+      "error": null
+    },
+    "assert change_date_format(\"%2?*~9:#>?->8^\") == \"%2?*~9:#>?->8^\"": {
+      "result": true,
+      "time": 0.5468595027923584,
+      "error": null
+    },
+    "assert change_date_format(\"8/99^#\") == \"8/99^#\"": {
+      "result": true,
+      "time": 0.5488235950469971,
+      "error": null
+    },
+    "assert change_date_format(\"&^&$/1|*@<:--#\") == \"&^&$/1|*@<:--#\"": {
+      "result": true,
+      "time": 0.5697479248046875,
+      "error": null
+    },
+    "assert change_date_format(\"+&2540!6_=:5\") == \"+&2540!6_=:5\"": {
+      "result": true,
+      "time": 0.5566999912261963,
+      "error": null
+    },
+    "assert change_date_format(\"4319~781\") == \"4319~781\"": {
+      "result": true,
+      "time": 0.5877652168273926,
+      "error": null
+    },
+    "assert change_date_format(\"?-_#-|\") == \"?-_#-|\"": {
+      "result": true,
+      "time": 0.5741136074066162,
+      "error": null
+    },
+    "assert change_date_format(\"7005~95-<69\") == \"7005~95-<69\"": {
+      "result": true,
+      "time": 0.5553810596466064,
+      "error": null
+    },
+    "assert change_date_format(\"1-+<+!|+4?\") == \"1-+<+!|+4?\"": {
+      "result": true,
+      "time": 0.5539300441741943,
+      "error": null
+    },
+    "assert change_date_format(\"_-^>34>85|<\") == \"_-^>34>85|<\"": {
+      "result": true,
+      "time": 0.5538685321807861,
+      "error": null
+    },
+    "assert change_date_format(\"!$7+?=/6\") == \"!$7+?=/6\"": {
+      "result": true,
+      "time": 0.5437664985656738,
+      "error": null
+    },
+    "assert change_date_format(\"?83*^~<+?75*3\") == \"?83*^~<+?75*3\"": {
+      "result": true,
+      "time": 0.564594030380249,
+      "error": null
+    },
+    "assert change_date_format(\"%%~?0!712%\") == \"%%~?0!712%\"": {
+      "result": true,
+      "time": 0.6233854293823242,
+      "error": null
+    },
+    "assert change_date_format(\"8-5/$18___!-@=\") == \"8-5/$18___!-@=\"": {
+      "result": true,
+      "time": 0.5812251567840576,
+      "error": null
+    },
+    "assert change_date_format(\"%+40+@@_62|>\") == \"%+40+@@_62|>\"": {
+      "result": true,
+      "time": 0.5937769412994385,
+      "error": null
+    },
+    "assert change_date_format(\"3#%>6:-8^@<485\") == 3#%>6:-8^@<485": {
+      "result": false,
+      "time": 0.589313268661499,
+      "error": null
+    },
+    "assert change_date_format(\"78|:^62~16-*$:|\") == \"78|:^62~16-*$:|\"": {
+      "result": true,
+      "time": 0.5536239147186279,
+      "error": null
+    },
+    "assert change_date_format(\"^#>3=:$69\") == \"^#>3=:$69\"": {
+      "result": true,
+      "time": 0.5704622268676758,
+      "error": null
+    },
+    "assert change_date_format(\"/+?810->7\") == \"/+?810->7\"": {
+      "result": true,
+      "time": 0.5552353858947754,
+      "error": null
+    },
+    "assert change_date_format(\"9|?:97%\") == \"9|?:97%\"": {
+      "result": true,
+      "time": 0.5574929714202881,
+      "error": null
+    },
+    "assert change_date_format(\"1@=84=+>:!~\") == \"1@=84=+>:!~\"": {
+      "result": true,
+      "time": 0.5726737976074219,
+      "error": null
+    },
+    "assert change_date_format(\"~528_+*06|8/~9#\") == \"~528_+*06|8/~9#\"": {
+      "result": true,
+      "time": 0.5265555381774902,
+      "error": null
+    },
+    "assert change_date_format(\">_~9?><?@09!=\") == \">_~9?><?@09!=\"": {
+      "result": true,
+      "time": 0.5615363121032715,
+      "error": null
+    },
+    "assert change_date_format(\"%9|&1<\") == \"%9|&1<\"": {
+      "result": true,
+      "time": 0.5583415031433105,
+      "error": null
+    },
+    "assert change_date_format(\"<:~*2?+%\") == \"<:~*2?+%\"": {
+      "result": true,
+      "time": 0.549752950668335,
+      "error": null
+    },
+    "assert change_date_format(\"67>+&+2~$5<\") == \"67>+&+2~$5<\"": {
+      "result": true,
+      "time": 0.6012370586395264,
+      "error": null
+    },
+    "assert change_date_format(\"~7%3|?~<8\") == \"~7%3|?~<8\"": {
+      "result": true,
+      "time": 0.5943710803985596,
+      "error": null
+    },
+    "assert change_date_format(\"2-:9|&#>5\")  2== \"-:9|&#>5\"": {
+      "result": false,
+      "time": 0.03925895690917969,
+      "error": null
+    },
+    "assert change_date_format(\"#=%34-\") == \"#=%34-\"": {
+      "result": true,
+      "time": 0.58121657371521,
+      "error": null
+    },
+    "assert change_date_format(\"|-^-~//:7\") == \"|-^-~//:7\"": {
+      "result": true,
+      "time": 0.5592083930969238,
+      "error": null
+    },
+    "assert change_date_format(\"-=6:75<~!28-39\") == \"-=6:75<~!28-39\"": {
+      "result": true,
+      "time": 0.5606446266174316,
+      "error": null
+    },
+    "assert change_date_format(\"&?~&|_%_0=5~\") == \"&?~&|_%_0=5~\"": {
+      "result": true,
+      "time": 0.5966193675994873,
+      "error": null
+    },
+    "assert change_date_format(\"/=2|68:$-4$_1|7\") == \"/=2|68:$-4$_1|7\"": {
+      "result": true,
+      "time": 0.584571123123169,
+      "error": null
+    },
+    "assert change_date_format(\"8^4$50!515?\") == \"8^4$50!515?\"": {
+      "result": true,
+      "time": 0.5863728523254395,
+      "error": null
+    },
+    "assert change_date_format(\"43_51-8~\") == \"43_51-8~\"": {
+      "result": true,
+      "time": 0.5389502048492432,
+      "error": null
+    },
+    "assert change_date_format(\"7^7+5>$^\") == \"7^7+5>$^\"": {
+      "result": true,
+      "time": 0.5663976669311523,
+      "error": null
+    },
+    "assert change_date_format(\"9:04#=/&_*#13#\") == \"9:04#=/&_*#13#\"": {
+      "result": true,
+      "time": 0.6289803981781006,
+      "error": null
+    },
+    "assert change_date_format(\"!*8%=-<-+53\") == \"!*8%=-<-+53\"": {
+      "result": true,
+      "time": 0.5635130405426025,
+      "error": null
+    },
+    "assert change_date_format(\":882*%~~6%&?5!|\") == \":882*%~~6%&?5!|\"": {
+      "result": true,
+      "time": 0.5577917098999023,
+      "error": null
+    },
+    "assert change_date_format(\"!%#4^#?:\") == \"!%#4^#?:\"": {
+      "result": true,
+      "time": 0.616152286529541,
+      "error": null
+    },
+    "assert change_date_format(\"027!|*@>-\") == \"027!|*@>-\"": {
+      "result": true,
+      "time": 0.5876882076263428,
+      "error": null
+    },
+    "assert change_date_format(\"!<0=?:#~$:?00:-\") == \"!<0=?:#~$:?00:-\"": {
+      "result": true,
+      "time": 0.5847012996673584,
+      "error": null
+    },
+    "assert change_date_format(\"5:3*9*_1**\") == \"5:3*9*_1**\"": {
+      "result": true,
+      "time": 0.5876343250274658,
+      "error": null
+    },
+    "assert change_date_format(\"88?~69\") == \"88?~69\"": {
+      "result": true,
+      "time": 0.5880227088928223,
+      "error": null
+    },
+    "assert change_date_format(\"$0+/+#8$\") == \"$0+/+#8$\"": {
+      "result": true,
+      "time": 0.6084742546081543,
+      "error": null
+    },
+    "assert change_date_format(\"36+/09~6%%//\") == \"36+/09~6%%//\"": {
+      "result": true,
+      "time": 0.5933125019073486,
+      "error": null
+    },
+    "assert change_date_format(\"@?97>$7\") == \"@?97>$7\"": {
+      "result": true,
+      "time": 0.5831360816955566,
+      "error": null
+    },
+    "assert change_date_format(\"3+9><:$61\") == \"3+9><:$61\"": {
+      "result": true,
+      "time": 0.5600695610046387,
+      "error": null
+    },
+    "assert change_date_format(\"3?|%^4\") == \"3?|%^4\"": {
+      "result": true,
+      "time": 0.5532774925231934,
+      "error": null
+    },
+    "assert change_date_format(\"1_2*69-?*^<76_\") == \"1_2*69-?*^<76_\"": {
+      "result": true,
+      "time": 0.5253427028656006,
+      "error": null
+    },
+    "assert change_date_format(\"%<^-$%0<41\") == \"%<^-$%0<41\"": {
+      "result": true,
+      "time": 0.5437781810760498,
+      "error": null
+    },
+    "assert change_date_format(\"|?@<361\") == \"|?@<361\"": {
+      "result": true,
+      "time": 0.5985867977142334,
+      "error": null
+    },
+    "assert change_date_format(\"5=<8/5+$+\") == \"5=<8/5+$+\"": {
+      "result": true,
+      "time": 0.39302992820739746,
+      "error": null
+    },
+    "assert change_date_format(\"^:<*-0<&>*?5|\") == \"^:<*-0<&>*?5|\"": {
+      "result": true,
+      "time": 0.39305949211120605,
+      "error": null
+    },
+    "assert change_date_format(\"71=064~#~+%4\") == \"71=064~#~+%4\"": {
+      "result": true,
+      "time": 0.34771156311035156,
+      "error": null
+    },
+    "assert change_date_format(\"=*@!#3=\") == \"=*@!#3=\"": {
+      "result": true,
+      "time": 0.5706620216369629,
+      "error": null
+    },
+    "assert change_date_format(\"42557??\") == \"42557??\"": {
+      "result": true,
+      "time": 0.5730085372924805,
+      "error": null
+    },
+    "assert change_date_format(\"4@0~6859&&7:#+\") == \"4@0~6859&&7:#+\"": {
+      "result": true,
+      "time": 0.5357615947723389,
+      "error": null
+    },
+    "assert change_date_format(\"7&^/55>@\") == \"7&^/55>@\"": {
+      "result": true,
+      "time": 0.576230525970459,
+      "error": null
+    },
+    "assert change_date_format(\"/709@34/#1?|\") == \"/709@34/#1?|\"": {
+      "result": true,
+      "time": 0.3988175392150879,
+      "error": null
+    },
+    "assert change_date_format(\":%93<3\") == \":%93<3\"": {
+      "result": true,
+      "time": 0.5842902660369873,
+      "error": null
+    },
+    "assert change_date_format(\"&-_-++>-*+!>370\") == \"&-_-++>-*+!>370\"": {
+      "result": true,
+      "time": 0.5576927661895752,
+      "error": null
+    },
+    "assert change_date_format(\"^+>5!5|??_362\") == \"^+>5!5|??_362\"": {
+      "result": true,
+      "time": 0.4921700954437256,
+      "error": null
+    },
+    "assert change_date_format(\"885-^>7@9_36=3\") == \"885-^>7@9_36=3\"": {
+      "result": true,
+      "time": 0.5928020477294922,
+      "error": null
+    },
+    "assert change_date_format(\"%*&#%*!/34^6*6%\") == \"%*&#%*!/34^6*6%\"": {
+      "result": true,
+      "time": 0.5396215915679932,
+      "error": null
+    },
+    "assert change_date_format(\"2&&*#7_!#\") == \"2&&*#7_!#\"": {
+      "result": true,
+      "time": 0.5848145484924316,
+      "error": null
+    },
+    "assert change_date_format(\"03#6^>?932|-+\") == \"03#6^>?932|-+\"": {
+      "result": true,
+      "time": 0.6385016441345215,
+      "error": null
+    },
+    "assert change_date_format(\"*39+37\") == \"*39+37\"": {
+      "result": true,
+      "time": 0.4102058410644531,
+      "error": null
+    },
+    "assert change_date_format(\"?940-!/$0&|00=\") == \"?940-!/$0&|00=\"": {
+      "result": true,
+      "time": 0.4935445785522461,
+      "error": null
+    },
+    "assert change_date_format(\"*?*?_/7*\") == \"*?*?_/7*\"": {
+      "result": true,
+      "time": 0.5895590782165527,
+      "error": null
+    },
+    "assert change_date_format(\"%@1|/=<_!95<\") == \"%@1|/=<_!95<\"": {
+      "result": true,
+      "time": 0.5925853252410889,
+      "error": null
+    },
+    "assert change_date_format(\"+9@/_>*&7*+*2:#\") == \"+9@/_>*&7*+*2:#\"": {
+      "result": true,
+      "time": 0.5918452739715576,
+      "error": null
+    },
+    "assert change_date_format(\"5>-|=8|+_%-1~3\") == \"5>-|=8|+_%-1~3\"": {
+      "result": true,
+      "time": 0.6324620246887207,
+      "error": null
+    },
+    "assert change_date_format(\"4:+4?06\") == \"4:+4?06\"": {
+      "result": true,
+      "time": 0.5749013423919678,
+      "error": null
+    },
+    "assert change_date_format(\"1:^:>~4:\") == \"1:^:>~4:\"": {
+      "result": true,
+      "time": 0.6064579486846924,
+      "error": null
+    },
+    "assert change_date_format(\"!32_:6&=*|3\") == \"!32_:6&=*|3\"": {
+      "result": true,
+      "time": 0.6659584045410156,
+      "error": null
+    },
+    "assert change_date_format(\"4&^8<>4-\") == \"4&^8<>4-\"": {
+      "result": true,
+      "time": 0.5531008243560791,
+      "error": null
+    },
+    "assert change_date_format(\"5<5$#5#-^^2\") == \"5<5$#5#-^^2\"": {
+      "result": true,
+      "time": 0.6121292114257812,
+      "error": null
+    },
+    "assert change_date_format(\"_3:1$2\") == \"_3:1$2\"": {
+      "result": true,
+      "time": 0.5678784847259521,
+      "error": null
+    },
+    "assert change_date_format(\"/&_6_1-%_<^<6&|\") == \"/&_6_1-%_<^<6&|\"": {
+      "result": true,
+      "time": 0.6222362518310547,
+      "error": null
+    },
+    "assert change_date_format(\"7^17%1/:?@\") == \"7^17%1/:?@\"": {
+      "result": true,
+      "time": 0.6198394298553467,
+      "error": null
+    },
+    "assert change_date_format(\"=524^?\") == \"=524^?\"": {
+      "result": true,
+      "time": 0.6178135871887207,
+      "error": null
+    },
+    "assert change_date_format(\">~=$0>?:\") == \">~=$0>?:\"": {
+      "result": true,
+      "time": 0.5970611572265625,
+      "error": null
+    },
+    "assert change_date_format(\"~=*9020\") == \"~=*9020\"": {
+      "result": true,
+      "time": 0.5102779865264893,
+      "error": null
+    },
+    "assert change_date_format(\"$/-_/-\") == \"$/-_/-\"": {
+      "result": true,
+      "time": 0.5953073501586914,
+      "error": null
+    },
+    "assert change_date_format(\"57319^$4_=3\") == \"57319^$4_=3\"": {
+      "result": true,
+      "time": 0.5985383987426758,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9509803921568627,
+  "general_error": "",
+  "has_testcase_error": false
+}

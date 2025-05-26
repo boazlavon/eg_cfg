@@ -1,0 +1,484 @@
+{
+  "code": "def tn_gp(first_term, common_ratio, n):\n    \"\"\"\n    Calculate the nth term of a geometric series.\n    \n    Parameters:\n    first_term (int/float): The first term of the geometric series.\n    common_ratio (int/float): The common ratio between terms.\n    n (int): The term number to find (1-based index).\n    \n    Returns:\n    int/float: The nth term of the geometric series.\n    \"\"\"\n    return first_term * (common_ratio ** (n - 1))",
+  "results": {
+    "assert tn_gp(1,5,2)==16": {
+      "result": false,
+      "time": 0.035570621490478516,
+      "error": null
+    },
+    "assert tn_gp(1,5,4)==256": {
+      "result": false,
+      "time": 0.03452253341674805,
+      "error": null
+    },
+    "assert tn_gp(2,6,3)==486": {
+      "result": false,
+      "time": 0.035309553146362305,
+      "error": null
+    },
+    "assert tn_gp(3, 9, 6) == 5038848.0": {
+      "result": false,
+      "time": 0.02971482276916504,
+      "error": null
+    },
+    "assert tn_gp(4, 4, 2) == 32.0": {
+      "result": false,
+      "time": 0.037146568298339844,
+      "error": null
+    },
+    "assert tn_gp(2, 5, 4) == 512.0": {
+      "result": false,
+      "time": 0.03657841682434082,
+      "error": null
+    },
+    "assert tn_gp(2, 8, 5) == 156250.0": {
+      "result": false,
+      "time": 0.03610038757324219,
+      "error": null
+    },
+    "assert tn_gp(1, 9, 7) == 5764801.0": {
+      "result": false,
+      "time": 0.03844857215881348,
+      "error": null
+    },
+    "assert tn_gp(2, 9, 5) == 781250.0": {
+      "result": false,
+      "time": 0.03890395164489746,
+      "error": null
+    },
+    "assert tn_gp(4, 9, 5) == 1562500.0": {
+      "result": false,
+      "time": 0.0379025936126709,
+      "error": null
+    },
+    "assert tn_gp(1, 10, 4) == 262144.0": {
+      "result": false,
+      "time": 0.04088616371154785,
+      "error": null
+    },
+    "assert tn_gp(3, 5, 5) == 1875.0": {
+      "result": true,
+      "time": 0.04412126541137695,
+      "error": null
+    },
+    "assert tn_gp(3, 3, 6) == 108.0": {
+      "result": false,
+      "time": 0.041975975036621094,
+      "error": null
+    },
+    "assert tn_gp(2, 8, 6) == 559872.0": {
+      "result": false,
+      "time": 0.03299450874328613,
+      "error": null
+    },
+    "assert tn_gp(3, 3, 3) == 27.0": {
+      "result": true,
+      "time": 0.046803951263427734,
+      "error": null
+    },
+    "assert tn_gp(4, 2, 6) == 24.0": {
+      "result": false,
+      "time": 0.0384221076965332,
+      "error": null
+    },
+    "assert tn_gp(1, 3, 5) == 25.0": {
+      "result": false,
+      "time": 0.03411054611206055,
+      "error": null
+    },
+    "assert tn_gp(5, 3, 3) == 45.0": {
+      "result": true,
+      "time": 0.04060006141662598,
+      "error": null
+    },
+    "assert tn_gp(3, 1, 4) == 3.0": {
+      "result": true,
+      "time": 0.03420376777648926,
+      "error": null
+    },
+    "assert tn_gp(1, 3, 4) == 16.0": {
+      "result": false,
+      "time": 0.03963923454284668,
+      "error": null
+    },
+    "assert tn_gp(3, 4, 6) == 648.0": {
+      "result": false,
+      "time": 0.046402692794799805,
+      "error": null
+    },
+    "assert tn_gp(4, 3, 1) == 4.0": {
+      "result": true,
+      "time": 0.042186737060546875,
+      "error": null
+    },
+    "assert tn_gp(4, 5, 4) == 1024.0": {
+      "result": false,
+      "time": 0.04031729698181152,
+      "error": null
+    },
+    "assert tn_gp(3, 8, 6) == 839808.0": {
+      "result": false,
+      "time": 0.03930997848510742,
+      "error": null
+    },
+    "assert tn_gp(1, 5, 5) == 625.0": {
+      "result": true,
+      "time": 0.03553199768066406,
+      "error": null
+    },
+    "assert tn_gp(3, 10, 2) == 1536.0": {
+      "result": false,
+      "time": 0.0388486385345459,
+      "error": null
+    },
+    "assert tn_gp(1, 3, 3) == 9.0": {
+      "result": true,
+      "time": 0.04049181938171387,
+      "error": null
+    },
+    "assert tn_gp(2, 7, 5) == 31250.0": {
+      "result": false,
+      "time": 0.03520536422729492,
+      "error": null
+    },
+    "assert tn_gp(1, 1, 4) == 1.0": {
+      "result": true,
+      "time": 0.0424191951751709,
+      "error": null
+    },
+    "assert tn_gp(5, 8, 1) == 5.0": {
+      "result": true,
+      "time": 0.03420829772949219,
+      "error": null
+    },
+    "assert tn_gp(5, 2, 3) == 15.0": {
+      "result": false,
+      "time": 0.04336047172546387,
+      "error": null
+    },
+    "assert tn_gp(4, 6, 2) == 128.0": {
+      "result": false,
+      "time": 0.03854179382324219,
+      "error": null
+    },
+    "assert tn_gp(5, 9, 2) == 1280.0": {
+      "result": false,
+      "time": 0.034935712814331055,
+      "error": null
+    },
+    "assert tn_gp(3, 7, 6) == 139968.0": {
+      "result": false,
+      "time": 0.0403447151184082,
+      "error": null
+    },
+    "assert tn_gp(3, 6, 3) == 729.0": {
+      "result": false,
+      "time": 0.0380399227142334,
+      "error": null
+    },
+    "assert tn_gp(4, 3, 2) == 16.0": {
+      "result": false,
+      "time": 0.035520315170288086,
+      "error": null
+    },
+    "assert tn_gp(3, 5, 8) == 12288.0": {
+      "result": false,
+      "time": 0.04530048370361328,
+      "error": null
+    },
+    "assert tn_gp(6, 3, 7) == 294.0": {
+      "result": false,
+      "time": 0.0360567569732666,
+      "error": null
+    },
+    "assert tn_gp(1, 9, 6) == 1679616.0": {
+      "result": false,
+      "time": 0.04100656509399414,
+      "error": null
+    },
+    "assert tn_gp(2, 2, 7) == 14.0": {
+      "result": false,
+      "time": 0.039330482482910156,
+      "error": null
+    },
+    "assert tn_gp(1, 8, 6) == 279936.0": {
+      "result": false,
+      "time": 0.038251638412475586,
+      "error": null
+    },
+    "assert tn_gp(1, 10, 3) == 19683.0": {
+      "result": false,
+      "time": 0.04122662544250488,
+      "error": null
+    },
+    "assert tn_gp(4, 5, 3) == 324.0": {
+      "result": false,
+      "time": 0.04198312759399414,
+      "error": null
+    },
+    "assert tn_gp(6, 9, 3) == 39366.0": {
+      "result": false,
+      "time": 0.036612749099731445,
+      "error": null
+    },
+    "assert tn_gp(6, 1, 8) == 6.0": {
+      "result": true,
+      "time": 0.03736710548400879,
+      "error": null
+    },
+    "assert tn_gp(6, 7, 6) == 279936.0": {
+      "result": false,
+      "time": 0.037230730056762695,
+      "error": null
+    },
+    "assert tn_gp(3, 2, 1) == 3.0": {
+      "result": true,
+      "time": 0.03996896743774414,
+      "error": null
+    },
+    "assert tn_gp(6, 3, 6) == 216.0": {
+      "result": false,
+      "time": 0.03739500045776367,
+      "error": null
+    },
+    "assert tn_gp(3, 4, 5) == 375.0": {
+      "result": false,
+      "time": 0.035774946212768555,
+      "error": null
+    },
+    "assert tn_gp(5, 4, 2) == 40.0": {
+      "result": false,
+      "time": 0.0413053035736084,
+      "error": null
+    },
+    "assert tn_gp(1, 9, 4) == 65536.0": {
+      "result": false,
+      "time": 0.039633989334106445,
+      "error": null
+    },
+    "assert tn_gp(3, 10, 7) == 121060821.0": {
+      "result": false,
+      "time": 0.034972429275512695,
+      "error": null
+    },
+    "assert tn_gp(6, 5, 6) == 7776.0": {
+      "result": false,
+      "time": 0.03807687759399414,
+      "error": null
+    },
+    "assert tn_gp(4, 2, 4) == 16.0": {
+      "result": false,
+      "time": 0.04362845420837402,
+      "error": null
+    },
+    "assert tn_gp(4, 9, 3) == 26244.0": {
+      "result": false,
+      "time": 0.03397727012634277,
+      "error": null
+    },
+    "assert tn_gp(5, 4, 3) == 135.0": {
+      "result": false,
+      "time": 0.04217815399169922,
+      "error": null
+    },
+    "assert tn_gp(2, 5, 5) == 1250.0": {
+      "result": true,
+      "time": 0.03508710861206055,
+      "error": null
+    },
+    "assert tn_gp(1, 10, 1) == 1.0": {
+      "result": true,
+      "time": 0.049652814865112305,
+      "error": null
+    },
+    "assert tn_gp(4, 4, 3) == 108.0": {
+      "result": false,
+      "time": 0.03801393508911133,
+      "error": null
+    },
+    "assert tn_gp(5, 2, 1) == 5.0": {
+      "result": true,
+      "time": 0.03437066078186035,
+      "error": null
+    },
+    "assert tn_gp(4, 6, 8) == 131072.0": {
+      "result": false,
+      "time": 0.04141974449157715,
+      "error": null
+    },
+    "assert tn_gp(3, 2, 9) == 27.0": {
+      "result": false,
+      "time": 0.0333552360534668,
+      "error": null
+    },
+    "assert tn_gp(5, 10, 5) == 9765625.0": {
+      "result": false,
+      "time": 0.040105581283569336,
+      "error": null
+    },
+    "assert tn_gp(1, 2, 3) == 3.0": {
+      "result": false,
+      "time": 0.03617596626281738,
+      "error": null
+    },
+    "assert tn_gp(1, 4, 9) == 729.0": {
+      "result": false,
+      "time": 0.03734612464904785,
+      "error": null
+    },
+    "assert tn_gp(6, 2, 2) == 12.0": {
+      "result": true,
+      "time": 0.03815340995788574,
+      "error": null
+    },
+    "assert tn_gp(6, 7, 7) == 705894.0": {
+      "result": true,
+      "time": 0.03817629814147949,
+      "error": null
+    },
+    "assert tn_gp(2, 11, 6) == 120932352.0": {
+      "result": false,
+      "time": 0.03681588172912598,
+      "error": null
+    },
+    "assert tn_gp(4, 8, 8) == 8388608.0": {
+      "result": true,
+      "time": 0.03744244575500488,
+      "error": null
+    },
+    "assert tn_gp(6, 10, 8) == 805306368.0": {
+      "result": false,
+      "time": 0.03983592987060547,
+      "error": null
+    },
+    "assert tn_gp(3, 3, 2) == 12.0": {
+      "result": false,
+      "time": 0.037507057189941406,
+      "error": null
+    },
+    "assert tn_gp(1, 4, 2) == 8.0": {
+      "result": false,
+      "time": 0.03968000411987305,
+      "error": null
+    },
+    "assert tn_gp(1, 8, 8) == 2097152.0": {
+      "result": true,
+      "time": 0.036774396896362305,
+      "error": null
+    },
+    "assert tn_gp(2, 7, 7) == 235298.0": {
+      "result": true,
+      "time": 0.035030364990234375,
+      "error": null
+    },
+    "assert tn_gp(6, 3, 8) == 384.0": {
+      "result": false,
+      "time": 0.03740954399108887,
+      "error": null
+    },
+    "assert tn_gp(2, 5, 3) == 162.0": {
+      "result": false,
+      "time": 0.03239297866821289,
+      "error": null
+    },
+    "assert tn_gp(4, 4, 8) == 2048.0": {
+      "result": false,
+      "time": 0.04436016082763672,
+      "error": null
+    },
+    "assert tn_gp(5, 8, 4) == 81920.0": {
+      "result": false,
+      "time": 0.04052162170410156,
+      "error": null
+    },
+    "assert tn_gp(2, 1, 7) == 2.0": {
+      "result": true,
+      "time": 0.03882598876953125,
+      "error": null
+    },
+    "assert tn_gp(5, 3, 4) == 80.0": {
+      "result": false,
+      "time": 0.03696846961975098,
+      "error": null
+    },
+    "assert tn_gp(4, 11, 3) == 236196.0": {
+      "result": false,
+      "time": 0.051047325134277344,
+      "error": null
+    },
+    "assert tn_gp(6, 8, 6) == 1679616.0": {
+      "result": false,
+      "time": 0.04360675811767578,
+      "error": null
+    },
+    "assert tn_gp(7, 7, 2) == 448.0": {
+      "result": false,
+      "time": 0.03710341453552246,
+      "error": null
+    },
+    "assert tn_gp(6, 4, 2) == 48.0": {
+      "result": false,
+      "time": 0.03445625305175781,
+      "error": null
+    },
+    "assert tn_gp(4, 1, 3) == 4.0": {
+      "result": true,
+      "time": 0.04189658164978027,
+      "error": null
+    },
+    "assert tn_gp(5, 11, 2) == 5120.0": {
+      "result": false,
+      "time": 0.033814191818237305,
+      "error": null
+    },
+    "assert tn_gp(4, 4, 4) == 256.0": {
+      "result": true,
+      "time": 0.046637535095214844,
+      "error": null
+    },
+    "assert tn_gp(4, 9, 1) == 4.0": {
+      "result": true,
+      "time": 0.035017967224121094,
+      "error": null
+    },
+    "assert tn_gp(6, 5, 5) == 3750.0": {
+      "result": true,
+      "time": 0.031241655349731445,
+      "error": null
+    },
+    "assert tn_gp(7, 5, 6) == 9072.0": {
+      "result": false,
+      "time": 0.040448665618896484,
+      "error": null
+    },
+    "assert tn_gp(1, 3, 1) == 1.0": {
+      "result": true,
+      "time": 0.03869438171386719,
+      "error": null
+    },
+    "assert tn_gp(2, 10, 5) == 3906250.0": {
+      "result": false,
+      "time": 0.03583192825317383,
+      "error": null
+    },
+    "assert tn_gp(6, 9, 4) == 393216.0": {
+      "result": false,
+      "time": 0.04134988784790039,
+      "error": null
+    },
+    "assert tn_gp(3, 4, 8) == 1536.0": {
+      "result": false,
+      "time": 0.03794097900390625,
+      "error": null
+    },
+    "assert tn_gp(7, 4, 6) == 1512.0": {
+      "result": false,
+      "time": 0.037610530853271484,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.2631578947368421,
+  "general_error": "",
+  "has_testcase_error": false
+}

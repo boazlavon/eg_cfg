@@ -1,0 +1,519 @@
+{
+  "code": "def remove_words(word_list, words_to_remove):\n    filtered_list = []\n    for word in word_list:\n        should_include = True\n        for remove_word in words_to_remove:\n            if word == remove_word:\n                should_include = False\n                break\n        if should_include:\n            filtered_list.append(word)\n    return filtered_list",
+  "results": {
+    "assert remove_words(['red', 'green', 'blue', 'white', 'black', 'orange'],['white', 'orange'])==['red', 'green', 'blue', 'black']": {
+      "result": true,
+      "time": 0.04967379570007324,
+      "error": null
+    },
+    "assert remove_words(['red', 'green', 'blue', 'white', 'black', 'orange'],['black', 'orange'])==['red', 'green', 'blue', 'white']": {
+      "result": true,
+      "time": 0.05653119087219238,
+      "error": null
+    },
+    "assert remove_words(['red', 'green', 'blue', 'white', 'black', 'orange'],['blue', 'white'])==['red', 'green', 'black', 'orange']": {
+      "result": true,
+      "time": 0.06101346015930176,
+      "error": null
+    },
+    "assert remove_words(['qfj', 'iwrfga', 'buaerlt', 'zlfmqw', 'zsxcmid', 'sqvdr'], ['jitgpxb', 'ywamjj']) == ['qfj', 'iwrfga', 'buaerlt', 'zlfmqw', 'zsxcmid', 'sqvdr']": {
+      "result": true,
+      "time": 0.057531118392944336,
+      "error": null
+    },
+    "assert remove_words(['vykyodxw', 'ecandbf', 'qmfqnim', 'bly', 'tti', 'bjwnbehoca'], ['snmo', 'zgsypvficvsh']) == ['vykyodxw', 'ecandbf', 'qmfqnim', 'bly', 'tti', 'bjwnbehoca']": {
+      "result": true,
+      "time": 0.04991888999938965,
+      "error": null
+    },
+    "assert remove_words(['qjs', 'qeuyvqgly', 'fcl', 'yiajhyx', 'hfhzw', 'eiq'], ['hgeib', 'hsuw']) == ['qjs', 'qeuyvqgly', 'fcl', 'yiajhyx', 'hfhzw', 'eiq']": {
+      "result": true,
+      "time": 0.049457550048828125,
+      "error": null
+    },
+    "assert remove_words(['utk', 'bmzblbngc', 'wkp', 'hxzl', 'glzlrobl', 'jdwe'], ['lrazbb', 'inuszhbpdeaj']) == ['utk', 'bmzblbngc', 'wkp', 'hxzl', 'glzlrobl', 'jdwe']": {
+      "result": true,
+      "time": 0.04688692092895508,
+      "error": null
+    },
+    "assert remove_words(['ujes', 'rkycjslq', 'lbjcpw', 'cponnosd', 'hammcs', 'ghvi'], ['xeqm', 'ecihfcshx']) == ['ujes', 'rkycjslq', 'lbjcpw', 'cponnosd', 'hammcs', 'ghvi']": {
+      "result": true,
+      "time": 0.04272603988647461,
+      "error": null
+    },
+    "assert remove_words(['tfcdd', 'nnym', 'nyzwwtmoj', 'bnarbch', 'kxu', 'maxncd'], ['nzu', 'xnt']) == ['tfcdd', 'nnym', 'nyzwwtmoj', 'bnarbch', 'kxu', 'maxncd']": {
+      "result": true,
+      "time": 0.03219151496887207,
+      "error": null
+    },
+    "assert remove_words(['jaew', 'nrimyqitl', 'lgeaqi', 'ybsfopt', 'wie', 'kbtjljedzms'], ['hau', 'kvrwciv']) == ['jaew', 'nrimyqitl', 'lgeaqi', 'ybsfopt', 'wie', 'kbtjljedzms']": {
+      "result": true,
+      "time": 0.034764766693115234,
+      "error": null
+    },
+    "assert remove_words(['kmshoj', 'igvpjm', 'mzwatuxh', 'uethrvg', 'prelt', 'efewr'], ['aqrrtsq', 'cxggzynq']) == ['kmshoj', 'igvpjm', 'mzwatuxh', 'uethrvg', 'prelt', 'efewr']": {
+      "result": true,
+      "time": 0.037285566329956055,
+      "error": null
+    },
+    "assert remove_words(['yzpxcaxdu', 'vacmoi', 'ifmcgs', 'tapvt', 'taaeuu', 'aofar'], ['gugxvhkr', 'jqj']) == ['yzpxcaxdu', 'vacmoi', 'ifmcgs', 'tapvt', 'taaeuu', 'aofar']": {
+      "result": true,
+      "time": 0.03428316116333008,
+      "error": null
+    },
+    "assert remove_words(['qkbzvz', 'cnv', 'ggqsjsvrh', 'njugpmsmz', 'kwzmlvtdo', 'xpgdjjro'], ['btvv', 'gfjxjkap']) == ['qkbzvz', 'cnv', 'ggqsjsvrh', 'njugpmsmz', 'kwzmlvtdo', 'xpgdjjro']": {
+      "result": true,
+      "time": 0.03519940376281738,
+      "error": null
+    },
+    "assert remove_words(['cswcrjq', 'xnxihcdr', 'gofkgu', 'kxkaw', 'twa', 'rxpvq'], ['zsgbno', 'aszhdmaocnhe']) == ['cswcrjq', 'xnxihcdr', 'gofkgu', 'kxkaw', 'twa', 'rxpvq']": {
+      "result": true,
+      "time": 0.04146742820739746,
+      "error": null
+    },
+    "assert remove_words(['nxzrdk', 'zkzy', 'lbgvcnrab', 'gchejngjd', 'qxcnlqi', 'hytws'], ['cgdbjl', 'zbvmiief']) == ['nxzrdk', 'zkzy', 'lbgvcnrab', 'gchejngjd', 'qxcnlqi', 'hytws']": {
+      "result": true,
+      "time": 0.03718161582946777,
+      "error": null
+    },
+    "assert remove_words(['mhaqnntk', 'dueovky', 'xxqkoutew', 'xlyyzk', 'rplqyll', 'vfy'], ['cjtrqtfqq', 'xnla']) == ['mhaqnntk', 'dueovky', 'xxqkoutew', 'xlyyzk', 'rplqyll', 'vfy']": {
+      "result": true,
+      "time": 0.03677678108215332,
+      "error": null
+    },
+    "assert remove_words(['knt', 'krtqy', 'zrgqw', 'pqqvii', 'zqex', 'vlqc'], ['zrgv', 'svaqzfpkvhua']) == ['knt', 'krtqy', 'zrgqw', 'pqqvii', 'zqex', 'vlqc']": {
+      "result": true,
+      "time": 0.04195666313171387,
+      "error": null
+    },
+    "assert remove_words(['tva', 'osksactz', 'mdet', 'lnuhnuwuu', 'kkluwrp', 'cnzkeukhwwm'], ['xeylnwe', 'efj']) == ['tva', 'osksactz', 'mdet', 'lnuhnuwuu', 'kkluwrp', 'cnzkeukhwwm']": {
+      "result": true,
+      "time": 0.03248143196105957,
+      "error": null
+    },
+    "assert remove_words(['rzvfkgo', 'tvh', 'oank', 'xjtgnuzli', 'aodd', 'pcvypbrgun'], ['rohaocum', 'yajv']) == ['rzvfkgo', 'tvh', 'oank', 'xjtgnuzli', 'aodd', 'pcvypbrgun']": {
+      "result": true,
+      "time": 0.029645442962646484,
+      "error": null
+    },
+    "assert remove_words(['iakmsyu', 'olbanlm', 'ttbih', 'xkcicoe', 'eswha', 'xilb'], ['oxkogl', 'zlmptde']) == ['iakmsyu', 'olbanlm', 'ttbih', 'xkcicoe', 'eswha', 'xilb']": {
+      "result": true,
+      "time": 0.032559871673583984,
+      "error": null
+    },
+    "assert remove_words(['kzkexwo', 'ldocebp', 'kfzbktfgh', 'imbvdshpq', 'bsy', 'dvwvkdvclxca'], ['jddp', 'ybcbwud']) == ['kzkexwo', 'ldocebp', 'kfzbktfgh', 'imbvdshpq', 'bsy', 'dvwvkdvclxca']": {
+      "result": true,
+      "time": 0.03780198097229004,
+      "error": null
+    },
+    "assert remove_words(['kpffprpi', 'nme', 'reimfnno', 'jtriium', 'shwhan', 'gzsxamcywplp'], ['jsuwjbq', 'kdzjnxijdatn']) == ['kpffprpi', 'nme', 'reimfnno', 'jtriium', 'shwhan', 'gzsxamcywplp']": {
+      "result": true,
+      "time": 0.033863067626953125,
+      "error": null
+    },
+    "assert remove_words(['gqhzbbk', 'lnbxrebc', 'uertpsxvv', 'lscukfdac', 'xgwabesiy', 'rmvqlqgzvvot'], ['oxbmqj', 'umqcvxfsjpk']) == ['gqhzbbk', 'lnbxrebc', 'uertpsxvv', 'lscukfdac', 'xgwabesiy', 'rmvqlqgzvvot']": {
+      "result": true,
+      "time": 0.03381848335266113,
+      "error": null
+    },
+    "assert remove_words(['aosaqq', 'jlocfv', 'lcqyhu', 'wvo', 'jjz', 'idoq'], ['eilwx', 'cmx']) == ['aosaqq', 'jlocfv', 'lcqyhu', 'wvo', 'jjz', 'idoq']": {
+      "result": true,
+      "time": 0.0376434326171875,
+      "error": null
+    },
+    "assert remove_words(['qdaz', 'llpesez', 'ahchm', 'ynxx', 'vdbzeb', 'rslq'], ['xlronkt', 'gety']) == ['qdaz', 'llpesez', 'ahchm', 'ynxx', 'vdbzeb', 'rslq']": {
+      "result": true,
+      "time": 0.037859201431274414,
+      "error": null
+    },
+    "assert remove_words(['blngyg', 'yuzfs', 'etcooyggd', 'ldmssfaic', 'mqtkfzjz', 'fjegbyaxqm'], ['ntt', 'xqpkahygdgdt']) == ['blngyg', 'yuzfs', 'etcooyggd', 'ldmssfaic', 'mqtkfzjz', 'fjegbyaxqm']": {
+      "result": true,
+      "time": 0.03264451026916504,
+      "error": null
+    },
+    "assert remove_words(['rqhxcvyn', 'gzsyaio', 'jitbaf', 'nqihicc', 'btjsryfhf', 'dqluzyhdgoym'], ['krkrsccoc', 'ayuuszchz']) == ['rqhxcvyn', 'gzsyaio', 'jitbaf', 'nqihicc', 'btjsryfhf', 'dqluzyhdgoym']": {
+      "result": true,
+      "time": 0.036557674407958984,
+      "error": null
+    },
+    "assert remove_words(['qlbnawmrj', 'ovowfr', 'siyuhp', 'wgriuin', 'ktmiitk', 'nam'], ['iwmtr', 'ugydpmtctt']) == ['qlbnawmrj', 'ovowfr', 'siyuhp', 'wgriuin', 'ktmiitk', 'nam']": {
+      "result": true,
+      "time": 0.03289318084716797,
+      "error": null
+    },
+    "assert remove_words(['puxk', 'jryja', 'rmtydxf', 'txdblnoqe', 'dwcatqfqq', 'tbnmgqb'], ['jozcxk', 'akbd']) == ['puxk', 'jryja', 'rmtydxf', 'txdblnoqe', 'dwcatqfqq', 'tbnmgqb']": {
+      "result": true,
+      "time": 0.03904318809509277,
+      "error": null
+    },
+    "assert remove_words(['vgm', 'wrsti', 'dhgxife', 'hujott', 'vfordjov', 'dtfqczcil'], ['wnh', 'ileknkr']) == ['vgm', 'wrsti', 'dhgxife', 'hujott', 'vfordjov', 'dtfqczcil']": {
+      "result": true,
+      "time": 0.03226447105407715,
+      "error": null
+    },
+    "assert remove_words(['slnscyycd', 'dhhvysvbg', 'jswrgsopw', 'ehbbv', 'abfmuuvmu', 'xrq'], ['xkanuw', 'mfekp']) == ['slnscyycd', 'dhhvysvbg', 'jswrgsopw', 'ehbbv', 'abfmuuvmu', 'xrq']": {
+      "result": true,
+      "time": 0.03504443168640137,
+      "error": null
+    },
+    "assert remove_words(['jjgmqod', 'vkehdmak', 'bxyx', 'cetsekua', 'labhlq', 'bbo'], ['xji', 'lzwvkyux']) == ['jjgmqod', 'vkehdmak', 'bxyx', 'cetsekua', 'labhlq', 'bbo']": {
+      "result": true,
+      "time": 0.03370523452758789,
+      "error": null
+    },
+    "assert remove_words(['peiklsyi', 'kki', 'lujmjg', 'mvprpchq', 'hvhprvpqi', 'rrhzfksaq'], ['zjnszbsfi', 'btsvzall']) == ['peiklsyi', 'kki', 'lujmjg', 'mvprpchq', 'hvhprvpqi', 'rrhzfksaq']": {
+      "result": true,
+      "time": 0.04007577896118164,
+      "error": null
+    },
+    "assert remove_words(['aonlgkc', 'wczjprju', 'jqw', 'gqc', 'fnryogvyb', 'cxikoepscrt'], ['hhxohw', 'fyg']) == ['aonlgkc', 'wczjprju', 'jqw', 'gqc', 'fnryogvyb', 'cxikoepscrt']": {
+      "result": true,
+      "time": 0.03694415092468262,
+      "error": null
+    },
+    "assert remove_words(['tcxyhiayp', 'swzs', 'jsgntnpmq', 'pcequ', 'ciuvv', 'tssgzuqr'], ['byd', 'miecovzxbrzw']) == ['tcxyhiayp', 'swzs', 'jsgntnpmq', 'pcequ', 'ciuvv', 'tssgzuqr']": {
+      "result": true,
+      "time": 0.03330254554748535,
+      "error": null
+    },
+    "assert remove_words(['cqbtxrz', 'ilwbtjxq', 'ybhr', 'kugort', 'fipiaivv', 'mlkelyyavbdq'], ['jfsn', 'zovoqbqiyvi']) == ['cqbtxrz', 'ilwbtjxq', 'ybhr', 'kugort', 'fipiaivv', 'mlkelyyavbdq']": {
+      "result": true,
+      "time": 0.03770756721496582,
+      "error": null
+    },
+    "assert remove_words(['moxa', 'mdnti', 'eaoiye', 'piz', 'vpcff', 'thdvlgv'], ['exav', 'tkxrkuht']) == ['moxa', 'mdnti', 'eaoiye', 'piz', 'vpcff', 'thdvlgv']": {
+      "result": true,
+      "time": 0.051396846771240234,
+      "error": null
+    },
+    "assert remove_words(['nlpwztx', 'xvjmqdabx', 'eekp', 'twiam', 'vbw', 'how'], ['leealr', 'caseh']) == ['nlpwztx', 'xvjmqdabx', 'eekp', 'twiam', 'vbw', 'how']": {
+      "result": true,
+      "time": 0.04960894584655762,
+      "error": null
+    },
+    "assert remove_words(['bitmixu', 'bjiuzehg', 'erwyo', 'pwvlkm', 'btthcp', 'fqqkup'], ['lsgp', 'bmjthfjgodi']) == ['bitmixu', 'bjiuzehg', 'erwyo', 'pwvlkm', 'btthcp', 'fqqkup']": {
+      "result": true,
+      "time": 0.03580951690673828,
+      "error": null
+    },
+    "assert remove_words(['crwbil', 'ajtowol', 'qii', 'ggn', 'xfegxplim', 'xtpwwygsc'], ['ngicgqfcp', 'efcfl']) == ['crwbil', 'ajtowol', 'qii', 'ggn', 'xfegxplim', 'xtpwwygsc']": {
+      "result": true,
+      "time": 0.034911394119262695,
+      "error": null
+    },
+    "assert remove_words(['bej', 'xzxtd', 'xayku', 'qqqqptwk', 'spudjolqr', 'bqu'], ['poivqmvdu', 'cfjsjxpckscl']) == ['bej', 'xzxtd', 'xayku', 'qqqqptwk', 'spudjolqr', 'bqu']": {
+      "result": true,
+      "time": 0.03336310386657715,
+      "error": null
+    },
+    "assert remove_words(['nrc', 'plexdcy', 'lpvatbkcj', 'ibgmk', 'pxaqykz', 'gdizcbj'], ['qyxbrqdsn', 'zgrdkoilvdx']) == ['nrc', 'plexdcy', 'lpvatbkcj', 'ibgmk', 'pxaqykz', 'gdizcbj']": {
+      "result": true,
+      "time": 0.03969573974609375,
+      "error": null
+    },
+    "assert remove_words(['gun', 'ziwimpa', 'jftnbd', 'vjjptoc', 'uebhk', 'wzh'], ['eyfwmr', 'glgxadaml']) == ['gun', 'ziwimpa', 'jftnbd', 'vjjptoc', 'uebhk', 'wzh']": {
+      "result": true,
+      "time": 0.03421807289123535,
+      "error": null
+    },
+    "assert remove_words(['gyeaerc', 'qxfwkhoud', 'gjbnnmbay', 'vdxiehh', 'rwzifyc', 'buxogww'], ['swahlx', 'dtkcwnw']) == ['gyeaerc', 'qxfwkhoud', 'gjbnnmbay', 'vdxiehh', 'rwzifyc', 'buxogww']": {
+      "result": true,
+      "time": 0.031552791595458984,
+      "error": null
+    },
+    "assert remove_words(['qvzmej', 'squbwgdok', 'ywp', 'srwfc', 'aacyqtp', 'knobmbmygh'], ['qqeue', 'cmougnpq']) == ['qvzmej', 'squbwgdok', 'ywp', 'srwfc', 'aacyqtp', 'knobmbmygh']": {
+      "result": true,
+      "time": 0.03534746170043945,
+      "error": null
+    },
+    "assert remove_words(['wqz', 'okrzceu', 'allv', 'ontoo', 'serlzlv', 'esgjorc'], ['doidfunhb', 'kpbs']) == ['wqz', 'okrzceu', 'allv', 'ontoo', 'serlzlv', 'esgjorc']": {
+      "result": true,
+      "time": 0.034659624099731445,
+      "error": null
+    },
+    "assert remove_words(['utho', 'redf', 'mkuabfo', 'vraoxjci', 'uwydju', 'crl'], ['lzfb', 'xnnl']) == ['utho', 'redf', 'mkuabfo', 'vraoxjci', 'uwydju', 'crl']": {
+      "result": true,
+      "time": 0.032907724380493164,
+      "error": null
+    },
+    "assert remove_words(['xqxk', 'kwvrechto', 'hoxsoape', 'ahytme', 'ermyde', 'rksjzhqo'], ['hmila', 'qjwsbham']) == ['xqxk', 'kwvrechto', 'hoxsoape', 'ahytme', 'ermyde', 'rksjzhqo']": {
+      "result": true,
+      "time": 0.03645586967468262,
+      "error": null
+    },
+    "assert remove_words(['ftz', 'esnoeb', 'nfitlre', 'rqcytrq', 'zgsj', 'brksqp'], ['opsx', 'otcha']) == ['ftz', 'esnoeb', 'nfitlre', 'rqcytrq', 'zgsj', 'brksqp']": {
+      "result": true,
+      "time": 0.03238868713378906,
+      "error": null
+    },
+    "assert remove_words(['obtkca', 'jlzlyc', 'fgnog', 'xjaec', 'qvjrjcy', 'muwrmwytjssw'], ['jpguu', 'jjjb']) == ['obtkca', 'jlzlyc', 'fgnog', 'xjaec', 'qvjrjcy', 'muwrmwytjssw']": {
+      "result": true,
+      "time": 0.03555107116699219,
+      "error": null
+    },
+    "assert remove_words(['jwpigm', 'jtsx', 'fyahe', 'ilqdyqvk', 'jquz', 'pnnwnwu'], ['wpaqruy', 'ycwokxyewgrz']) == ['jwpigm', 'jtsx', 'fyahe', 'ilqdyqvk', 'jquz', 'pnnwnwu']": {
+      "result": true,
+      "time": 0.034938812255859375,
+      "error": null
+    },
+    "assert remove_words(['ukvg', 'rgtw', 'gikrmrjtl', 'iqom', 'pvl', 'yxupdg'], ['ajtbygap', 'dbwfzvwso']) == ['ukvg', 'rgtw', 'gikrmrjtl', 'iqom', 'pvl', 'yxupdg']": {
+      "result": true,
+      "time": 0.03359818458557129,
+      "error": null
+    },
+    "assert remove_words(['nmg', 'hvmauxa', 'eefwhiw', 'huiyeq', 'hcmbu', 'bdug'], ['dga', 'yymrfpie']) == ['nmg', 'hvmauxa', 'eefwhiw', 'huiyeq', 'hcmbu', 'bdug']": {
+      "result": true,
+      "time": 0.02933359146118164,
+      "error": null
+    },
+    "assert remove_words(['uwq', 'lut', 'qlsgppxxe', 'ufaplxcu', 'oacndw', 'wlsyi'], ['xyn', 'zkoxwbrcmbu']) == ['uwq', 'lut', 'qlsgppxxe', 'ufaplxcu', 'oacndw', 'wlsyi']": {
+      "result": true,
+      "time": 0.036624908447265625,
+      "error": null
+    },
+    "assert remove_words(['rnc', 'sxdbhcqv', 'knx', 'tta', 'zihrvbi', 'acsz'], ['coiv', 'uvwliodksr']) == ['rnc', 'sxdbhcqv', 'knx', 'tta', 'zihrvbi', 'acsz']": {
+      "result": true,
+      "time": 0.046932220458984375,
+      "error": null
+    },
+    "assert remove_words(['qotmvk', 'akj', 'lnwjsi', 'ydcvw', 'bfqpgvlqg', 'cyv'], ['uded', 'vfgztmwbf']) == ['qotmvk', 'akj', 'lnwjsi', 'ydcvw', 'bfqpgvlqg', 'cyv']": {
+      "result": true,
+      "time": 0.04046487808227539,
+      "error": null
+    },
+    "assert remove_words(['huhzqsnte', 'drgwj', 'ncq', 'mqlbyxr', 'iglpe', 'mzgomog'], ['tudkr', 'arxjkbajp']) == ['huhzqsnte', 'drgwj', 'ncq', 'mqlbyxr', 'iglpe', 'mzgomog']": {
+      "result": true,
+      "time": 0.034491777420043945,
+      "error": null
+    },
+    "assert remove_words(['xxu', 'ydnq', 'ueonrrk', 'rtble', 'iinkt', 'exisze'], ['mpm', 'qgzcpnecxpma']) == ['xxu', 'ydnq', 'ueonrrk', 'rtble', 'iinkt', 'exisze']": {
+      "result": true,
+      "time": 0.03229689598083496,
+      "error": null
+    },
+    "assert remove_words(['dvhfosn', 'udspwrjrx', 'xup', 'moy', 'vddtirvws', 'cvlsqd'], ['zeubra', 'tphjxjo']) == ['dvhfosn', 'udspwrjrx', 'xup', 'moy', 'vddtirvws', 'cvlsqd']": {
+      "result": true,
+      "time": 0.04006314277648926,
+      "error": null
+    },
+    "assert remove_words(['caj', 'zdshswc', 'vqgi', 'kdjox', 'ftmtoioyi', 'fjz'], ['nofci', 'avfkvkux']) == ['caj', 'zdshswc', 'vqgi', 'kdjox', 'ftmtoioyi', 'fjz']": {
+      "result": true,
+      "time": 0.04459381103515625,
+      "error": null
+    },
+    "assert remove_words(['ktv', 'gcnvf', 'optybdb', 'jioogxc', 'sprtqx', 'ounpofg'], ['hulhmofku', 'zmsb']) == ['ktv', 'gcnvf', 'optybdb', 'jioogxc', 'sprtqx', 'ounpofg']": {
+      "result": true,
+      "time": 0.03742170333862305,
+      "error": null
+    },
+    "assert remove_words(['niznvojf', 'yvpr', 'iqlmcjgyq', 'rprvq', 'dok', 'vhq'], ['lwpivoz', 'zwgyncubnob']) == ['niznvojf', 'yvpr', 'iqlmcjgyq', 'rprvq', 'dok', 'vhq']": {
+      "result": true,
+      "time": 0.036817312240600586,
+      "error": null
+    },
+    "assert remove_words(['ogutlh', 'dthsutobm', 'xxmh', 'dpnteya', 'bleypaidx', 'daghwupofio'], ['iyfv', 'mrasilwsncld']) == ['ogutlh', 'dthsutobm', 'xxmh', 'dpnteya', 'bleypaidx', 'daghwupofio']": {
+      "result": true,
+      "time": 0.032190799713134766,
+      "error": null
+    },
+    "assert remove_words(['dbzjr', 'hqftxrrm', 'uejv', 'vqj', 'tepiadchw', 'fvm'], ['ewubai', 'hyezmpplrcr']) == ['dbzjr', 'hqftxrrm', 'uejv', 'vqj', 'tepiadchw', 'fvm']": {
+      "result": true,
+      "time": 0.036867618560791016,
+      "error": null
+    },
+    "assert remove_words(['mbrbqp', 'gqd', 'nyzimbprc', 'ggycgi', 'ttm', 'dpcdlygpk'], ['ykbq', 'hkeolsvdm']) == ['mbrbqp', 'gqd', 'nyzimbprc', 'ggycgi', 'ttm', 'dpcdlygpk']": {
+      "result": true,
+      "time": 0.035413503646850586,
+      "error": null
+    },
+    "assert remove_words(['qcrltde', 'zqntck', 'qsrbob', 'ayhtro', 'wkzyww', 'mwlnmbzece'], ['wlbpdg', 'cjenbvkjhd']) == ['qcrltde', 'zqntck', 'qsrbob', 'ayhtro', 'wkzyww', 'mwlnmbzece']": {
+      "result": true,
+      "time": 0.034560203552246094,
+      "error": null
+    },
+    "assert remove_words(['doov', 'bzgikujmq', 'bstbu', 'sya', 'pqtlya', 'mgkngpnhno'], ['yyx', 'ehejk']) == ['doov', 'bzgikujmq', 'bstbu', 'sya', 'pqtlya', 'mgkngpnhno']": {
+      "result": true,
+      "time": 0.042433977127075195,
+      "error": null
+    },
+    "assert remove_words(['scaiksup', 'rkcknty', 'auadnhei', 'crb', 'nzbwmgjr', 'svpsq'], ['phut', 'zeedo']) == ['scaiksup', 'rkcknty', 'auadnhei', 'crb', 'nzbwmgjr', 'svpsq']": {
+      "result": true,
+      "time": 0.03859901428222656,
+      "error": null
+    },
+    "assert remove_words(['dxy', 'fzhmyx', 'zlkxrtncw', 'fgvyd', 'xkcjmy', 'imbjnycelfp'], ['cpbr', 'sryvgtckkkbp']) == ['dxy', 'fzhmyx', 'zlkxrtncw', 'fgvyd', 'xkcjmy', 'imbjnycelfp']": {
+      "result": true,
+      "time": 0.03349709510803223,
+      "error": null
+    },
+    "assert remove_words(['uisoq', 'vihlczeco', 'jdtfbl', 'pauvt', 'xpjiwz', 'ipx'], ['ymn', 'djxmcnrp']) == ['uisoq', 'vihlczeco', 'jdtfbl', 'pauvt', 'xpjiwz', 'ipx']": {
+      "result": true,
+      "time": 0.032704830169677734,
+      "error": null
+    },
+    "assert remove_words(['gnow', 'xtrlqod', 'mgsnfdhyn', 'kfd', 'osdew', 'kjouwckrpda'], ['dmzbdq', 'kzdtxzu']) == ['gnow', 'xtrlqod', 'mgsnfdhyn', 'kfd', 'osdew', 'kjouwckrpda']": {
+      "result": true,
+      "time": 0.03548836708068848,
+      "error": null
+    },
+    "assert remove_words(['xjfdo', 'vzsxmqtx', 'nemspwuna', 'ddexcob', 'nncsas', 'gxd'], ['iqrrj', 'gxbcj']) == ['xjfdo', 'vzsxmqtx', 'nemspwuna', 'ddexcob', 'nncsas', 'gxd']": {
+      "result": true,
+      "time": 0.034091949462890625,
+      "error": null
+    },
+    "assert remove_words(['vqlub', 'suatkv', 'xjabzoa', 'njijk', 'zowf', 'nlhtzzigo'], ['gcrgk', 'nkral']) == ['vqlub', 'suatkv', 'xjabzoa', 'njijk', 'zowf', 'nlhtzzigo']": {
+      "result": true,
+      "time": 0.03248405456542969,
+      "error": null
+    },
+    "assert remove_words(['vev', 'llihucew', 'kavrfmxgp', 'silarit', 'ohr', 'grje'], ['qdojijbr', 'zvdtmqjnu']) == ['vev', 'llihucew', 'kavrfmxgp', 'silarit', 'ohr', 'grje']": {
+      "result": true,
+      "time": 0.03832197189331055,
+      "error": null
+    },
+    "assert remove_words(['qflts', 'tazeqaxwy', 'nysxorqax', 'rig', 'gwhy', 'kexmgltbynt'], ['tstmjze', 'ewv']) == ['qflts', 'tazeqaxwy', 'nysxorqax', 'rig', 'gwhy', 'kexmgltbynt']": {
+      "result": true,
+      "time": 0.031975507736206055,
+      "error": null
+    },
+    "assert remove_words(['fondbozqp', 'eucch', 'tezhkvzu', 'qoolxii', 'mxnh', 'xckfta'], ['shlmebdw', 'chmwgqxit']) == ['fondbozqp', 'eucch', 'tezhkvzu', 'qoolxii', 'mxnh', 'xckfta']": {
+      "result": true,
+      "time": 0.033323049545288086,
+      "error": null
+    },
+    "assert remove_words(['vqgoe', 'ewskqjfsl', 'hicuwx', 'sebiqjoq', 'gmnqjls', 'gje'], ['vrnbq', 'otjhgge']) == ['vqgoe', 'ewskqjfsl', 'hicuwx', 'sebiqjoq', 'gmnqjls', 'gje']": {
+      "result": true,
+      "time": 0.0355219841003418,
+      "error": null
+    },
+    "assert remove_words(['ztdyykstp', 'oed', 'fpa', 'invytb', 'gldtxryc', 'drzqdzgj'], ['nkla', 'amalannt']) == ['ztdyykstp', 'oed', 'fpa', 'invytb', 'gldtxryc', 'drzqdzgj']": {
+      "result": true,
+      "time": 0.04002737998962402,
+      "error": null
+    },
+    "assert remove_words(['uqwd', 'vmlo', 'tvarnwb', 'aiw', 'nudzmgvv', 'nombjsfohu'], ['dafwfftc', 'olevyxxf']) == ['uqwd', 'vmlo', 'tvarnwb', 'aiw', 'nudzmgvv', 'nombjsfohu']": {
+      "result": true,
+      "time": 0.03134799003601074,
+      "error": null
+    },
+    "assert remove_words(['whvktws', 'hblarw', 'lopcomqnc', 'gphfzkmuj', 'oahsygrsq', 'ngecgaxpbhug'], ['hbqm', 'ycghbh']) == ['whvktws', 'hblarw', 'lopcomqnc', 'gphfzkmuj', 'oahsygrsq', 'ngecgaxpbhug']": {
+      "result": true,
+      "time": 0.038454294204711914,
+      "error": null
+    },
+    "assert remove_words(['ledponz', 'ukgwno', 'ovfq', 'gijxzfbye', 'utbpul', 'hvrqlgcysn'], ['nxdlvycg', 'zbljmbb']) == ['ledponz', 'ukgwno', 'ovfq', 'gijxzfbye', 'utbpul', 'hvrqlgcysn']": {
+      "result": true,
+      "time": 0.039830923080444336,
+      "error": null
+    },
+    "assert remove_words(['tvdbhtfi', 'dmi', 'pphoeqv', 'tww', 'ynbaaruyp', 'lkgjttjbarol'], ['lty', 'zbaqevvot']) == ['tvdbhtfi', 'dmi', 'pphoeqv', 'tww', 'ynbaaruyp', 'lkgjttjbarol']": {
+      "result": true,
+      "time": 0.03318190574645996,
+      "error": null
+    },
+    "assert remove_words(['vts', 'btfi', 'ugfb', 'wvvc', 'csuzov', 'euyygvriefdu'], ['ukdqlb', 'uvgbffe']) == ['vts', 'btfi', 'ugfb', 'wvvc', 'csuzov', 'euyygvriefdu']": {
+      "result": true,
+      "time": 0.042430877685546875,
+      "error": null
+    },
+    "assert remove_words(['vgpwu', 'jczdnrft', 'iwsvpm', 'nytnbqyn', 'laswpjzd', 'mgpm'], ['lape', 'pcdcxxg']) == ['vgpwu', 'jczdnrft', 'iwsvpm', 'nytnbqyn', 'laswpjzd', 'mgpm']": {
+      "result": true,
+      "time": 0.04227924346923828,
+      "error": null
+    },
+    "assert remove_words(['ctg', 'ecjdg', 'dgeuab', 'mto', 'wspkjsm', 'ofihlcg'], ['cdjndpv', 'shtxom']) == ['ctg', 'ecjdg', 'dgeuab', 'mto', 'wspkjsm', 'ofihlcg']": {
+      "result": true,
+      "time": 0.046683311462402344,
+      "error": null
+    },
+    "assert remove_words(['hxklydmmj', 'xykpcq', 'lpb', 'kiocr', 'agxiooqxu', 'pmi'], ['vpmfth', 'aixqvi']) == ['hxklydmmj', 'xykpcq', 'lpb', 'kiocr', 'agxiooqxu', 'pmi']": {
+      "result": true,
+      "time": 0.03933405876159668,
+      "error": null
+    },
+    "assert remove_words(['ged', 'lpejok', 'wuewlz', 'jnhxr', 'hnuqrk', 'jmwurqvjjbac'], ['cvi', 'fxuizv']) == ['ged', 'lpejok', 'wuewlz', 'jnhxr', 'hnuqrk', 'jmwurqvjjbac']": {
+      "result": true,
+      "time": 0.04064011573791504,
+      "error": null
+    },
+    "assert remove_words(['vbpw', 'saxdrik', 'ltzt', 'fjopd', 'epmrqz', 'iukukrpigt'], ['vfyg', 'mxe']) == ['vbpw', 'saxdrik', 'ltzt', 'fjopd', 'epmrqz', 'iukukrpigt']": {
+      "result": true,
+      "time": 0.0394740104675293,
+      "error": null
+    },
+    "assert remove_words(['mxrik', 'ujae', 'qfw', 'bjbivyobu', 'nbinbprk', 'msscdgtjnl'], ['mamqweh', 'tzskgxs']) == ['mxrik', 'ujae', 'qfw', 'bjbivyobu', 'nbinbprk', 'msscdgtjnl']": {
+      "result": true,
+      "time": 0.035799503326416016,
+      "error": null
+    },
+    "assert remove_words(['yrwcmz', 'sdiacyhvf', 'koo', 'cipx', 'jlgdau', 'dttovyrqrxj'], ['wri', 'zmghgn']) == ['yrwcmz', 'sdiacyhvf', 'koo', 'cipx', 'jlgdau', 'dttovyrqrxj']": {
+      "result": true,
+      "time": 0.04215097427368164,
+      "error": null
+    },
+    "assert remove_words(['ubcpojgz', 'izzf', 'giorbhyr', 'blisxcelv', 'akhdvmrre', 'waxsjguj'], ['gna', 'qhdoho']) == ['ubcpojgz', 'izzf', 'giorbhyr', 'blisxcelv', 'akhdvmrre', 'waxsjguj']": {
+      "result": true,
+      "time": 0.037020206451416016,
+      "error": null
+    },
+    "assert remove_words(['ylns', 'yyiamph', 'dyfov', 'ciohevfp', 'olktys', 'hdbqgwe'], ['edtjgn', 'cilezb']) == ['ylns', 'yyiamph', 'dyfov', 'ciohevfp', 'olktys', 'hdbqgwe']": {
+      "result": true,
+      "time": 0.038561344146728516,
+      "error": null
+    },
+    "assert remove_words(['weshxm', 'svk', 'ohniu', 'qneryfjln', 'qxvs', 'cnmbehcgmzjj'], ['fmnzonyq', 'hqnvy']) == ['weshxm', 'svk', 'ohniu', 'qneryfjln', 'qxvs', 'cnmbehcgmzjj']": {
+      "result": true,
+      "time": 0.03751254081726074,
+      "error": null
+    },
+    "assert remove_words(['nix', 'igcwop', 'lgk', 'mblzeei', 'pgg', 'jgkvlngarssk'], ['unihgvlu', 'zlgu']) == ['nix', 'igcwop', 'lgk', 'mblzeei', 'pgg', 'jgkvlngarssk']": {
+      "result": true,
+      "time": 0.04504036903381348,
+      "error": null
+    },
+    "assert remove_words(['rkduoa', 'swol', 'zdt', 'rcat', 'bvie', 'den'], ['jnu', 'irfwk']) == ['rkduoa', 'swol', 'zdt', 'rcat', 'bvie', 'den']": {
+      "result": true,
+      "time": 0.041953086853027344,
+      "error": null
+    },
+    "assert remove_words(['gxlw', 'jkxc', 'hxomvym', 'cpsr', 'rutg', 'cgevvx'], ['keegf', 'ohou']) == ['gxlw', 'jkxc', 'hxomvym', 'cpsr', 'rutg', 'cgevvx']": {
+      "result": true,
+      "time": 0.04157614707946777,
+      "error": null
+    },
+    "assert remove_words(['iobol', 'lxu', 'khpyfkfap', 'virk', 'chp', 'dqkv'], ['cooylcuk', 'cgcnqp']) == ['iobol', 'lxu', 'khpyfkfap', 'virk', 'chp', 'dqkv']": {
+      "result": true,
+      "time": 0.03800797462463379,
+      "error": null
+    },
+    "assert remove_words(['dsitgd', 'xdq', 'rxgd', 'rfwedcv', 'jms', 'kgtnrtirzp'], ['aydi', 'psropvax']) == ['dsitgd', 'xdq', 'rxgd', 'rfwedcv', 'jms', 'kgtnrtirzp']": {
+      "result": true,
+      "time": 0.04274606704711914,
+      "error": null
+    },
+    "assert remove_words(['bbvpw', 'xyawc', 'cfy', 'isujzvnt', 'lnfeljgkz', 'zeeelicdiv'], ['hpguhmjdu', 'fwnwwvqu']) == ['bbvpw', 'xyawc', 'cfy', 'isujzvnt', 'lnfeljgkz', 'zeeelicdiv']": {
+      "result": true,
+      "time": 0.03728055953979492,
+      "error": null
+    },
+    "assert remove_words(['utxvcvqg', 'xeapoy', 'wvqw', 'otjdndr', 'bmdxfat', 'wqpw'], ['tmyof', 'syirexk']) == ['utxvcvqg', 'xeapoy', 'wvqw', 'otjdndr', 'bmdxfat', 'wqpw']": {
+      "result": true,
+      "time": 0.04320859909057617,
+      "error": null
+    },
+    "assert remove_words(['sair', 'mhaf', 'dadzb', 'amxhoqy', 'xjfba', 'dnofgfbqvv'], ['ldz', 'kytdxgrwq']) == ['sair', 'mhaf', 'dadzb', 'amxhoqy', 'xjfba', 'dnofgfbqvv']": {
+      "result": true,
+      "time": 0.03570985794067383,
+      "error": null
+    },
+    "assert remove_words(['xjf', 'ymieyser', 'ozd', 'hjmamynq', 'trkahpnq', 'sdsepzoqkqe'], ['sihctwatx', 'jaooqtl']) == ['xjf', 'ymieyser', 'ozd', 'hjmamynq', 'trkahpnq', 'sdsepzoqkqe']": {
+      "result": true,
+      "time": 0.037489891052246094,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

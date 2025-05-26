@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef multiple_split(text):\n    # Define the pattern for splitting\n    pattern = r'[\\n*]'\n    \n    # Use re.split to split the text based on the pattern\n    split_result = re.split(pattern, text)\n    \n    # Initialize an empty list to store the cleaned results\n    cleaned_result = []\n    \n    # Iterate through each item in the split_result\n    for item in split_result:\n        # Append the item to cleaned_result if it's not empty\n        if item:\n            cleaned_result.append(item)\n    \n    # Return the cleaned result\n    return cleaned_result",
+  "results": {
+    "assert multiple_split('Forces of the \\ndarkness*are coming into the play.') == ['Forces of the ', 'darkness', 'are coming into the play.']": {
+      "result": true,
+      "time": 0.600632905960083,
+      "error": null
+    },
+    "assert multiple_split('Mi Box runs on the \\n Latest android*which has google assistance and chromecast.') == ['Mi Box runs on the ', ' Latest android', 'which has google assistance and chromecast.']": {
+      "result": true,
+      "time": 0.5774366855621338,
+      "error": null
+    },
+    "assert multiple_split('Certain services\\nare subjected to change*over the seperate subscriptions.') == ['Certain services', 'are subjected to change', 'over the seperate subscriptions.']": {
+      "result": true,
+      "time": 0.5683627128601074,
+      "error": null
+    },
+    "assert multiple_split(\"ddVC@xLw|tC:qNB:?S?#nEvkB=pzj#^/_D%=x@mkbM=<eee|A%VDv\") == ['ddVC@xLw|tC:qNB:?S?#nEvkB=pzj#^/_D%=x@mkbM=<eee|A%VDv']": {
+      "result": true,
+      "time": 0.5864748954772949,
+      "error": null
+    },
+    "assert multiple_split(\"jsgyoSOtpSldP#M<lFeRzmM~LanTpI=x|r:NzK-oC</BX\") == ['jsgyoSOtpSldP#M<lFeRzmM~LanTpI=x|r:NzK-oC</BX']": {
+      "result": true,
+      "time": 0.5424606800079346,
+      "error": null
+    },
+    "assert multiple_split(\"oOkAroCd@BH#R&Z~<IG@MBeMAZw?wfwU#m.Wyxm#mnba+cX!|#wsAG\") == ['oOkAroCd@BH#R&Z~<IG@MBeMAZw?wfwU#m.Wyxm#mnba+cX!|#wsAG']": {
+      "result": true,
+      "time": 0.567838191986084,
+      "error": null
+    },
+    "assert multiple_split(\"<LizXN%!cn=#C@YixX!q=Uui$dHeGdMWY:Zee+CwyMMtwJVDa.m\") == ['<LizXN%!cn=#C@YixX!q=Uui$dHeGdMWY:Zee+CwyMMtwJVDa.m']": {
+      "result": true,
+      "time": 0.6046843528747559,
+      "error": null
+    },
+    "assert multiple_split(\"AYn:oLOILLsdy#^bg?KCgorTgZK<R_M$s&CcJqS@l=tXUM%<\") == ['AYn:oLOILLsdy#^bg?KCgorTgZK<R_M$s&CcJqS@l=tXUM%<']": {
+      "result": true,
+      "time": 0.5779211521148682,
+      "error": null
+    },
+    "assert multiple_split(\"dy^V^He? YR>jqXefVWQlpsXm OtQycaOSfzhaz?/WMN/wE#~/w+Y\") == ['dy^V^He? YR>jqXefVWQlpsXm OtQycaOSfzhaz?/WMN/wE#~/w+Y']": {
+      "result": true,
+      "time": 0.5669903755187988,
+      "error": null
+    },
+    "assert multiple_split(\"Xk~@:I?zV+/ItU/e.gY@Uou=rMUmOPn:eLiGj*o^OHNMJfdf\") == ['Xk~@:I?zV+/ItU/e.gY@Uou=rMUmOPn:eLiGj', 'o^OHNMJfdf']": {
+      "result": true,
+      "time": 0.5632205009460449,
+      "error": null
+    },
+    "assert multiple_split(\"_>!&gVL$%czeMCJGD$XuEQVo>Is:ox:=SCCSSZubF_QbVeZ%~O\") == ['_>!&gVL$%czeMCJGD$XuEQVo>Is:ox:=SCCSSZubF_QbVeZ%~O']": {
+      "result": true,
+      "time": 0.5743649005889893,
+      "error": null
+    },
+    "assert multiple_split(\"gRNnFrpnbbRkYDSxYM+-wTEuwvJl bK=/ oK~rBrTQcwjX/:^\") == ['gRNnFrpnbbRkYDSxYM+-wTEuwvJl bK=/ oK~rBrTQcwjX/:^']": {
+      "result": true,
+      "time": 0.5668151378631592,
+      "error": null
+    },
+    "assert multiple_split(\"kyig~Fcbot_Zo.gB^okRazjRTMcFpIA+rchA%k@sB/SAZ~eN\") == ['kyig~Fcbot_Zo.gB^okRazjRTMcFpIA+rchA%k@sB/SAZ~eN']": {
+      "result": true,
+      "time": 0.5921971797943115,
+      "error": null
+    },
+    "assert multiple_split(\"a~Bu<S<*VVbiwI/w*yDFB|xqzO!#UnfEV I:QD Qrm/>DeOyfJ|E\") == ['a~Bu<S<', 'VVbiwI/w', 'yDFB|xqzO!#UnfEV I:QD Qrm/>DeOyfJ|E']": {
+      "result": true,
+      "time": 0.5749983787536621,
+      "error": null
+    },
+    "assert multiple_split(\"lbqRy~jTBn?F-xc^Cf+AH%@$qDZ#w*#?vN^LRSJ-u#-PaqDI.zObLK\") == ['lbqRy~jTBn?F-xc^Cf+AH%@$qDZ#w', '#?vN^LRSJ-u#-PaqDI.zObLK']": {
+      "result": true,
+      "time": 0.6317093372344971,
+      "error": null
+    },
+    "assert multiple_split(\"h >vI<i*u OeQzQm+:K/#Xy<FQ@FxY@iMNC/j~ouj%yCc\") == ['h >vI<i', 'u OeQzQm+:K/#Xy<FQ@FxY@iMNC/j~ouj%yCc']": {
+      "result": true,
+      "time": 0.5925414562225342,
+      "error": null
+    },
+    "assert multiple_split(\"k_AAV.mu^Xd#XLeK+zuvaB@/axj=CbX%Y&?u^.Qmo%kvX*DOlwm\") == ['k_AAV.mu^Xd#XLeK+zuvaB@/axj=CbX%Y&?u^.Qmo%kvX', 'DOlwm']": {
+      "result": true,
+      "time": 0.579047679901123,
+      "error": null
+    },
+    "assert multiple_split(\"wSGgE_ZwK&tGoCcP=?Ee_tPkOqqV#I?IA!eHb~ gYN!XT /bQ/PmH\") == ['wSGgE_ZwK&tGoCcP=?Ee_tPkOqqV#I?IA!eHb~ gYN!XT /bQ/PmH']": {
+      "result": true,
+      "time": 0.5591185092926025,
+      "error": null
+    },
+    "assert multiple_split(\"+Yb?NBhnH~&+U+N|+$ <VIfQjY!P?@&bl<gwcjT-NIV?T*\") == ['+Yb?NBhnH~&+U+N|+$ <VIfQjY!P?@&bl<gwcjT-NIV?T', '']": {
+      "result": false,
+      "time": 0.5551872253417969,
+      "error": null
+    },
+    "assert multiple_split(\"!xb ~-M>LrWIafy<wYmy WFRdNMmfSa!QE:DUM=XFw@/!\") == ['!xb ~-M>LrWIafy<wYmy WFRdNMmfSa!QE:DUM=XFw@/!']": {
+      "result": true,
+      "time": 0.5832455158233643,
+      "error": null
+    },
+    "assert multiple_split(\"jP|?V_p=R>JrviZoPn?B@T/ZARBX^nILZKuU$&Ep<cMyNb|RL!f:\") == ['jP|?V_p=R>JrviZoPn?B@T/ZARBX^nILZKuU$&Ep<cMyNb|RL!f:']": {
+      "result": true,
+      "time": 0.9906237125396729,
+      "error": null
+    },
+    "assert multiple_split(\"F&uup>R#.Z>X<wM&X=*eGg/zRujC@XQoc=w!k&z*zLj>nj=B^wP\") == ['F&uup>R#.Z>X<wM&X=', 'eGg/zRujC@XQoc=w!k&z', 'zLj>nj=B^wP']": {
+      "result": true,
+      "time": 0.5799329280853271,
+      "error": null
+    },
+    "assert multiple_split(\"f<jqrNOfV-Fafer_^.Fk$zVALJqH/!Xm<FEx<WY:nK|Dw<uS$\") == ['f<jqrNOfV-Fafer_^.Fk$zVALJqH/!Xm<FEx<WY:nK|Dw<uS$']": {
+      "result": true,
+      "time": 0.5850920677185059,
+      "error": null
+    },
+    "assert multiple_split(\"@x>vL-iD+< @Q|*rqvZsNiUqiGts#er$Ii>@cm:T=|-FPg\") == ['@x>vL-iD+< @Q|', 'rqvZsNiUqiGts#er$Ii>@cm:T=|-FPg']": {
+      "result": true,
+      "time": 0.585303544998169,
+      "error": null
+    },
+    "assert multiple_split(\"fXr%w=/uwK>_lHIe>wKR<l!$GkF#%~j:#vFyKrktjTcQurnAp\") == ['fXr%w=/uwK>_lHIe>wKR<l!$GkF#%~j:#vFyKrktjTcQurnAp']": {
+      "result": true,
+      "time": 0.584909200668335,
+      "error": null
+    },
+    "assert multiple_split(\"fZYl/A~p#&i@BkFwMXh:iLODRRccDmxk*v_*aq$pWAcgX+H\") == ['fZYl/A~p#&i@BkFwMXh:iLODRRccDmxk', 'v_', 'aq$pWAcgX+H']": {
+      "result": true,
+      "time": 0.594508171081543,
+      "error": null
+    },
+    "assert multiple_split(\"h !Wcm*yTCwHkrFv%x/N%q#:PwUjmL^dNAww!wYqN-meCe&c%rZ*\") == ['h !Wcm', 'yTCwHkrFv%x/N%q#:PwUjmL^dNAww!wYqN-meCe&c%rZ', '']": {
+      "result": false,
+      "time": 0.550034761428833,
+      "error": null
+    },
+    "assert multiple_split(\":*rP#ZuH!q^~lxrmpscS^BH$gbvnL^UBKT&*r_%RXws*EB\") == [':', 'rP#ZuH!q^~lxrmpscS^BH$gbvnL^UBKT&', 'r_%RXws', 'EB']": {
+      "result": true,
+      "time": 0.5620608329772949,
+      "error": null
+    },
+    "assert multiple_split(\"*+byy+|h?OvYG&%xng@nY#UJQEH~IHft_:ZSqeMc^:yU a\") == ['', '+byy+|h?OvYG&%xng@nY#UJQEH~IHft_:ZSqeMc^:yU a']": {
+      "result": false,
+      "time": 0.5677390098571777,
+      "error": null
+    },
+    "assert multiple_split(\"wdu#Z_SnRnDdwpIA/XL*d*-=!px?_GstrVevgpA~UsGmVZiD&~vp\") == ['wdu#Z_SnRnDdwpIA/XL', 'd', '-=!px?_GstrVevgpA~UsGmVZiD&~vp']": {
+      "result": true,
+      "time": 0.5759451389312744,
+      "error": null
+    },
+    "assert multiple_split(\"KrQGadb.>PKU%liT-Qd?zjaAtuUN=~AAqtY#-EuNb ^bVx>C\") == ['KrQGadb.>PKU%liT-Qd?zjaAtuUN=~AAqtY#-EuNb ^bVx>C']": {
+      "result": true,
+      "time": 0.5401742458343506,
+      "error": null
+    },
+    "assert multiple_split(\"zPwEOk$uT=>on&yoS%yE-a-NvRjfT%qi*g^S+C/ls^m^?>eX!?\") == ['zPwEOk$uT=>on&yoS%yE-a-NvRjfT%qi', 'g^S+C/ls^m^?>eX!?']": {
+      "result": true,
+      "time": 0.5308825969696045,
+      "error": null
+    },
+    "assert multiple_split(\":kl|UewIP_DYYngXu>OkA:uq+Wo==u?>.u@bmbQpgf=grVSJb**gTP\") == [':kl|UewIP_DYYngXu>OkA:uq+Wo==u?>.u@bmbQpgf=grVSJb', '', 'gTP']": {
+      "result": false,
+      "time": 0.5710086822509766,
+      "error": null
+    },
+    "assert multiple_split(\"iI/#>Qlvk.*MfIt?SEtXsPlDvZ#yfGNU%ru~!R|EHpp_WL \") == ['iI/#>Qlvk.', 'MfIt?SEtXsPlDvZ#yfGNU%ru~!R|EHpp_WL ']": {
+      "result": true,
+      "time": 0.507901668548584,
+      "error": null
+    },
+    "assert multiple_split(\"tQAJUYeIFRa~#bgDA<u+:|MMqZDO#.Iv:Ps^|B!s~mZSS!!EJ\") == ['tQAJUYeIFRa~#bgDA<u+:|MMqZDO#.Iv:Ps^|B!s~mZSS!!EJ']": {
+      "result": true,
+      "time": 0.3320131301879883,
+      "error": null
+    },
+    "assert multiple_split(\"I*n?kdgC Z d ^mqY>mqVytXsV@x~bp^oE/oJ&i:vHi+CXpI\") == ['I', 'n?kdgC Z d ^mqY>mqVytXsV@x~bp^oE/oJ&i:vHi+CXpI']": {
+      "result": true,
+      "time": 0.22255730628967285,
+      "error": null
+    },
+    "assert multiple_split(\"T|oik!FcWHWf&fo<Pfn*jZOq|!WyCWJUtbYccO%?vKce_LE:g_~@N@PIuD>ZXnm~r^kFp>./_QwggkxF\") == ['T|oik!FcWHWf&fo<Pfn', 'jZOq|!WyCWJUtbYccO%?vKce_LE:g_~@N@PIuD>ZXnm~r^kFp>./_QwggkxF']": {
+      "result": true,
+      "time": 0.14378666877746582,
+      "error": null
+    },
+    "assert multiple_split(\"jq._R/HKWXmzjIp#_zr%*R|ND.L<DRz_E?$V-d<l*sm?TLjviA=OftJvFB^N%TA#zMGTNRhNEPNyJOtVhu-#\") == ['jq._R/HKWXmzjIp#_zr%', 'R|ND.L<DRz_E?$V-d<l', 'sm?TLjviA=OftJvFB^N%TA#zMGTNRhNEPNyJOtVhu-#']": {
+      "result": true,
+      "time": 0.1373612880706787,
+      "error": null
+    },
+    "assert multiple_split(\"Ti=IjZ<$j>u>Pt*:ykbe>>*NIsQO/~v?$ -M|Zj<M:*kn~-/JUEUz*~X^LsjR+vJNhBlLI%i+OG|Dln*B\") == ['Ti=IjZ<$j>u>Pt', ':ykbe>>', 'NIsQO/~v?$ -M|Zj<M:', 'kn~-/JUEUz', '~X^LsjR+vJNhBlLI%i+OG|Dln', 'B']": {
+      "result": true,
+      "time": 0.14475059509277344,
+      "error": null
+    },
+    "assert multiple_split(\"nory%~A>wztVWJDaSom!Uvb=@*tbb|yENz@.<Ly.$Tj~x/p-e?K>WUG:Z_~dw#e^hSSXsCtQ&E&fpX^NJ><\") == ['nory%~A>wztVWJDaSom!Uvb=@', 'tbb|yENz@.<Ly.$Tj~x/p-e?K>WUG:Z_~dw#e^hSSXsCtQ&E&fpX^NJ><']": {
+      "result": true,
+      "time": 0.1368110179901123,
+      "error": null
+    },
+    "assert multiple_split(\"WwdXZjzCHPTzvpskaJ_Q/=DFyKEN^mhQpVaHX>oGwkGg<+zd~+o@-vFtpuJIXKUoOt-zoazE+!<A>JmIV\") == ['WwdXZjzCHPTzvpskaJ_Q/=DFyKEN^mhQpVaHX>oGwkGg<+zd~+o@-vFtpuJIXKUoOt-zoazE+!<A>JmIV']": {
+      "result": true,
+      "time": 0.09377026557922363,
+      "error": null
+    },
+    "assert multiple_split(\"Y@~O b!EOumYMBB&_mVtwi-IowCP^cBn<~$l<t<gc<C?Z:J=/y&HwN+Iv|jiZu?IWDpQTHk.HeVPHTX$ %^H\") == ['Y@~O b!EOumYMBB&_mVtwi-IowCP^cBn<~$l<t<gc<C?Z:J=/y&HwN+Iv|jiZu?IWDpQTHk.HeVPHTX$ %^H']": {
+      "result": true,
+      "time": 0.1273176670074463,
+      "error": null
+    },
+    "assert multiple_split(\"wmwfyj+|%SU-rEb=ziHL=dHv~j...DCE+RuEk%#YS nk=fRtXw$@T RM%a/^_n_&#=Cz+>VojhNJeQU ?<a>\") == ['wmwfyj+|%SU-rEb=ziHL=dHv~j...DCE+RuEk%#YS nk=fRtXw$@T RM%a/^_n_&#=Cz+>VojhNJeQU ?<a>']": {
+      "result": true,
+      "time": 0.12952899932861328,
+      "error": null
+    },
+    "assert multiple_split(\"Cjk$PL/ODKG>$xbiKe-Af:HS<=cFX:~gCaizw:r<~^*Ny#w:mmK~NT+/|/RLjZ.eB_XZ~SH q*kk<\") == ['Cjk$PL/ODKG>$xbiKe-Af:HS<=cFX:~gCaizw:r<~^', 'Ny#w:mmK~NT+/|/RLjZ.eB_XZ~SH q', 'kk<']": {
+      "result": true,
+      "time": 0.14229297637939453,
+      "error": null
+    },
+    "assert multiple_split(\"uEU >GdR?zQsZ^uxi>_=Z#Kt*hI**oh.dZWRYuefV<cx+a:#h?BnVM.vb<UtNZKrZY*?Jwp&+_Q\") == ['uEU >GdR?zQsZ^uxi>_=Z#Kt', 'hI', '', 'oh.dZWRYuefV<cx+a:#h?BnVM.vb<UtNZKrZY', '?Jwp&+_Q']": {
+      "result": false,
+      "time": 0.13584113121032715,
+      "error": null
+    },
+    "assert multiple_split(\"Mi<Zo*r?cgjdv @<^.JmoiJiG$@Llcpo @pbYEf*L:oYRDZJ:YYH_c!~+ml WGrS?E?=^H@tr*E+alfpVU/\") == ['Mi<Zo', 'r?cgjdv @<^.JmoiJiG$@Llcpo @pbYEf', 'L:oYRDZJ:YYH_c!~+ml WGrS?E?=^H@tr', 'E+alfpVU/']": {
+      "result": true,
+      "time": 0.1275620460510254,
+      "error": null
+    },
+    "assert multiple_split(\"/mqcnk!+QeldpLzbee.^v<-iND:R$dAeVir:%cwPeaD&-i!SO:Pfp&#PJsBbUVmRMnAug+B?N:v\") == ['/mqcnk!+QeldpLzbee.^v<-iND:R$dAeVir:%cwPeaD&-i!SO:Pfp&#PJsBbUVmRMnAug+B?N:v']": {
+      "result": true,
+      "time": 0.13262629508972168,
+      "error": null
+    },
+    "assert multiple_split(\"GSh:uQ^QrQFf&Kgv@db@ObAWXZT&!bk-yk#?HpwSEIAy/ePXbKi-/xLCThNzT.t/@nlld|l!oN#<w%RlWV\") == ['GSh:uQ^QrQFf&Kgv@db@ObAWXZT&!bk-yk#?HpwSEIAy/ePXbKi-/xLCThNzT.t/@nlld|l!oN#<w%RlWV']": {
+      "result": true,
+      "time": 0.13269376754760742,
+      "error": null
+    },
+    "assert multiple_split(\"dEV+H!_TQOAUUmofD&N >Sx@VHg/$>J&K Z-P^i+aT=t&XG-i-YfKK>h%%xe@T*DzUYFwqnNFY?R\") == ['dEV+H!_TQOAUUmofD&N >Sx@VHg/$>J&K Z-P^i+aT=t&XG-i-YfKK>h%%xe@T', 'DzUYFwqnNFY?R']": {
+      "result": true,
+      "time": 0.10274124145507812,
+      "error": null
+    },
+    "assert multiple_split(\"Y:E%!pVGNQJE*Y-HZ=!i/Q_tBWTUmCt-&NVCiBo!mH|DMAx?JxETV|X^g<?oV_XapWWUvtlzXAoYrAyx\") == ['Y:E%!pVGNQJE', 'Y-HZ=!i/Q_tBWTUmCt-&NVCiBo!mH|DMAx?JxETV|X^g<?oV_XapWWUvtlzXAoYrAyx']": {
+      "result": true,
+      "time": 0.09658932685852051,
+      "error": null
+    },
+    "assert multiple_split(\"E-FDNziObZElYvx%B:^Jtg$|sudqc^arayKT&dXngkSJe!qc~>B%L|?l/:_Y_%dMdj~!:nxEzTz\") == ['E-FDNziObZElYvx%B:^Jtg$|sudqc^arayKT&dXngkSJe!qc~>B%L|?l/:_Y_%dMdj~!:nxEzTz']": {
+      "result": true,
+      "time": 0.09319162368774414,
+      "error": null
+    },
+    "assert multiple_split(\"f=dp@&V<k*+hm$k-RW%hEA=qRfj.Fxi^=p!oIcL%^QixrpiSrCBAFRAYdrGM& QIdgkNSAbH|AMwIz#Y-BDs\") == ['f=dp@&V<k', '+hm$k-RW%hEA=qRfj.Fxi^=p!oIcL%^QixrpiSrCBAFRAYdrGM& QIdgkNSAbH|AMwIz#Y-BDs']": {
+      "result": true,
+      "time": 0.09738993644714355,
+      "error": null
+    },
+    "assert multiple_split(\"kqhWbj>Jn@| wnbLIe=|!<viB?=jLCPI:kL UaqWfkI:r w<Z#o^W~X$nlnUHQ^/.vM+Q/STKqa+KJ%&Nnd\") == ['kqhWbj>Jn@| wnbLIe=|!<viB?=jLCPI:kL UaqWfkI:r w<Z#o^W~X$nlnUHQ^/.vM+Q/STKqa+KJ%&Nnd']": {
+      "result": true,
+      "time": 0.09119749069213867,
+      "error": null
+    },
+    "assert multiple_split(\"%MDsr<-vchLd BNZf-ju$-^nyWF#Yrk+.N/N#PKzqiwnwIVw=uoax$WRBcwA.@/U|o :|hu=qytQ\") == ['%MDsr<-vchLd BNZf-ju$-^nyWF#Yrk+.N/N#PKzqiwnwIVw=uoax$WRBcwA.@/U|o :|hu=qytQ']": {
+      "result": true,
+      "time": 0.09306836128234863,
+      "error": null
+    },
+    "assert multiple_split(\"Uuq<q#-SykdF*u%r~onCHoiyjV @*^NCL~.ws>pYs~-r+m=~=zN./H-wX&S~EQ$nyumNT/|QcRq&@y<\") == ['Uuq<q#-SykdF', 'u%r~onCHoiyjV @', '^NCL~.ws>pYs~-r+m=~=zN./H-wX&S~EQ$nyumNT/|QcRq&@y<']": {
+      "result": true,
+      "time": 0.10650801658630371,
+      "error": null
+    },
+    "assert multiple_split(\"G!s~Cce&hcfJ:<@dOvS&t%dYSlKh^QCW:/ FfHWN$PicCS?R?ndMAXPpa*=~-PNtpm$DV?DP./O=SYVOE\") == ['G!s~Cce&hcfJ:<@dOvS&t%dYSlKh^QCW:/ FfHWN$PicCS?R?ndMAXPpa', '=~-PNtpm$DV?DP./O=SYVOE']": {
+      "result": true,
+      "time": 0.09503340721130371,
+      "error": null
+    },
+    "assert multiple_split(\"@~h?SdH.j:rqCgSb+xOiHJPYLjcnJ/ikc?c?BJRt=x?*?Qz*.eZMr+A- @aZf&S@-!SSOMWzoiO\") == ['@~h?SdH.j:rqCgSb+xOiHJPYLjcnJ/ikc?c?BJRt=x?', '?Qz', '.eZMr+A- @aZf&S@-!SSOMWzoiO']": {
+      "result": true,
+      "time": 0.09987092018127441,
+      "error": null
+    },
+    "assert multiple_split(\"R$RxA*dm+Bi~gg+#bXAH%z@BvV*Xm:ItTmr.l$>ink:y<zVWx#TxBI+GJ?aYV$p_-iMG.>H=y ?fv\") == ['R$RxA', 'dm+Bi~gg+#bXAH%z@BvV', 'Xm:ItTmr.l$>ink:y<zVWx#TxBI+GJ?aYV$p_-iMG.>H=y ?fv']": {
+      "result": true,
+      "time": 0.09473419189453125,
+      "error": null
+    },
+    "assert multiple_split(\"zzt<aaT#+wdPo!AbRqYKZ<+aJ?CQw>s=ppUTIW>!wwg_<yTCnuJFD^~w%dBhALHzQyCGu^xzqMw \") == ['zzt<aaT#+wdPo!AbRqYKZ<+aJ?CQw>s=ppUTIW>!wwg_<yTCnuJFD^~w%dBhALHzQyCGu^xzqMw ']": {
+      "result": true,
+      "time": 0.10403990745544434,
+      "error": null
+    },
+    "assert multiple_split(\"C?%F$vDY&iU@Zce^IH%ys^ckfFZH+gfztU_=uUEieG~y=:JOM&RBNKwR&%eTpR~J.E~@tRrBI? QEfeS\") == ['C?%F$vDY&iU@Zce^IH%ys^ckfFZH+gfztU_=uUEieG~y=:JOM&RBNKwR&%eTpR~J.E~@tRrBI? QEfeS']": {
+      "result": true,
+      "time": 0.10554623603820801,
+      "error": null
+    },
+    "assert multiple_split(\"vgplI&PXPTEQAjliojYb%LVSKL> t%n@&c%+VSJCadSno&r>>I!_J.zK<O>cF-U=F#+Cko:-&SnOc\") == ['vgplI&PXPTEQAjliojYb%LVSKL> t%n@&c%+VSJCadSno&r>>I!_J.zK<O>cF-U=F#+Cko:-&SnOc']": {
+      "result": true,
+      "time": 0.09794878959655762,
+      "error": null
+    },
+    "assert multiple_split(\"!wqjnzmY^EtpQOLGO.=hjCBGM~@^f_tuV=!@pZB_hjPOngAkDle$J^VM%i/eF!pbnCD!LH|StCuwq&pr\") == ['!wqjnzmY^EtpQOLGO.=hjCBGM~@^f_tuV=!@pZB_hjPOngAkDle$J^VM%i/eF!pbnCD!LH|StCuwq&pr']": {
+      "result": true,
+      "time": 0.10679006576538086,
+      "error": null
+    },
+    "assert multiple_split(\"MnT=*#rSW~xZti ckYR-=@LBNU_%<ifPND|xBFY/_DLQU.$Lr&mdNt_.SI|Vb$u$.%z>VIt^&C+:_s/oN\") == ['MnT=', '#rSW~xZti ckYR-=@LBNU_%<ifPND|xBFY/_DLQU.$Lr&mdNt_.SI|Vb$u$.%z>VIt^&C+:_s/oN']": {
+      "result": true,
+      "time": 0.10496902465820312,
+      "error": null
+    },
+    "assert multiple_split(\":kzeIfycL= +vv?TdxVY+RP~dJ_%?xX/gaYzm&zjf>K!*>pxR+*&qXxFdYV:Lh^Jm> $wuNXVFDxSJ@ELs\") == [':kzeIfycL= +vv?TdxVY+RP~dJ_%?xX/gaYzm&zjf>K!', '>pxR+', '&qXxFdYV:Lh^Jm> $wuNXVFDxSJ@ELs']": {
+      "result": true,
+      "time": 0.09127521514892578,
+      "error": null
+    },
+    "assert multiple_split(\"SC/cK:|uqz:E#:ACitU>CkmUt_rwW-eM&lIz#GQkt|P_at^z/#x_s+_!SV!<-MFrZ@N<DaVucFHGqwCP jA\") == ['SC/cK:|uqz:E#:ACitU>CkmUt_rwW-eM&lIz#GQkt|P_at^z/#x_s+_!SV!<-MFrZ@N<DaVucFHGqwCP jA']": {
+      "result": true,
+      "time": 0.09348392486572266,
+      "error": null
+    },
+    "assert multiple_split(\"*IH$zoF?$LFuuLuzu?g.ivj/u&cs-ksCB?^udHlAnHmj?AK#K&PRU^LEUz.PGg:CTQaCHJ?/|-?jGX#f.=\") == ['', 'IH$zoF?$LFuuLuzu?g.ivj/u&cs-ksCB?^udHlAnHmj?AK#K&PRU^LEUz.PGg:CTQaCHJ?/|-?jGX#f.=']": {
+      "result": false,
+      "time": 0.08514142036437988,
+      "error": null
+    },
+    "assert multiple_split(\"^oKSjf&CQ_z>jCCQF!+lH@gTg*PmMMm>F~cp$eO%K>?/ gN#$~*F^JcGRed^>q&B-gChtV=M@r^Ua\") == ['^oKSjf&CQ_z>jCCQF!+lH@gTg', 'PmMMm>F~cp$eO%K>?/ gN#$~', 'F^JcGRed^>q&B-gChtV=M@r^Ua']": {
+      "result": true,
+      "time": 0.08753514289855957,
+      "error": null
+    },
+    "assert multiple_split(\"u$!y+JEbsYn*hAVSiIzjBZdTSLVDP^B_Z~sw*aqi|#tif*?:AoT^*QV$ufwE<mJIyt*Dwe$|+GhQAU<Xx\") == ['u$!y+JEbsYn', 'hAVSiIzjBZdTSLVDP^B_Z~sw', 'aqi|#tif', '?:AoT^', 'QV$ufwE<mJIyt', 'Dwe$|+GhQAU<Xx']": {
+      "result": true,
+      "time": 0.09400224685668945,
+      "error": null
+    },
+    "assert multiple_split(\"svVMIv_!oIqHCRP+SUU@PUoeYudLIg~xxbtUI$/x_eoXuc<ThiHR%=ofA@LaKJv&Zt#~#zw~nljQOF\") == ['svVMIv_!oIqHCRP+SUU@PUoeYudLIg~xxbtUI$/x_eoXuc<ThiHR%=ofA@LaKJv&Zt#~#zw~nljQOF']": {
+      "result": true,
+      "time": 0.0848078727722168,
+      "error": null
+    },
+    "assert multiple_split(\"WYV_$h oCaw*/YBz.z+i_>YH:A|z|Eqad|qw-uGJR|.O|.P ePLQDEZGGfNWuW<oWl+a#wpbMU\") == ['WYV_$h oCaw', '/YBz.z+i_>YH:A|z|Eqad|qw-uGJR|.O|.P ePLQDEZGGfNWuW<oWl+a#wpbMU']": {
+      "result": true,
+      "time": 0.08499693870544434,
+      "error": null
+    },
+    "assert multiple_split(\"$P.aGo&y>sBqUll$TugwxmJR@PmQWpInVDqDFx!|Duj:iF-eQMAYe<xKxB%VXy~r>ZGGhI\") == ['$P.aGo&y>sBqUll$TugwxmJR@PmQWpInVDqDFx!|Duj:iF-eQMAYe<xKxB%VXy~r>ZGGhI']": {
+      "result": true,
+      "time": 0.08583354949951172,
+      "error": null
+    },
+    "assert multiple_split(\"xOq%DsNxwbaq=k%z!k<h@=Wh%gM&:|KrJdAxoexDRzMP??+%=htM/=?OSlfjdcqLxoZAUxKpd/\") == ['xOq%DsNxwbaq=k%z!k<h@=Wh%gM&:|KrJdAxoexDRzMP??+%=htM/=?OSlfjdcqLxoZAUxKpd/']": {
+      "result": true,
+      "time": 0.08461594581604004,
+      "error": null
+    },
+    "assert multiple_split(\"pZ/n=zeYa&<IHyWwOpQzILfwh$qNDwSvsD ?B_wK^QY_cCckD!DPuGLW rzcgzerFZ<@k+HhUGlB%\") == ['pZ/n=zeYa&<IHyWwOpQzILfwh$qNDwSvsD ?B_wK^QY_cCckD!DPuGLW rzcgzerFZ<@k+HhUGlB%']": {
+      "result": true,
+      "time": 0.09466314315795898,
+      "error": null
+    },
+    "assert multiple_split(\"wps@+THZHEgV<jVfK~FI|NYNOzFdqBFOBhnwIo/^e=i>Hj=XcH?YwdtIy-~=uolQMc.hpN*\") == ['wps@+THZHEgV<jVfK~FI|NYNOzFdqBFOBhnwIo/^e=i>Hj=XcH?YwdtIy-~=uolQMc.hpN', '']": {
+      "result": false,
+      "time": 0.0886392593383789,
+      "error": null
+    },
+    "assert multiple_split(\"yp>+gGPnXVX^detsbEkM*FZ=%S^ogjn~gdePeRW~ sLn$j|.cpy+YQ#MeED|m?#_x/F.sBp\") == ['yp>+gGPnXVX^detsbEkM', 'FZ=%S^ogjn~gdePeRW~ sLn$j|.cpy+YQ#MeED|m?#_x/F.sBp']": {
+      "result": true,
+      "time": 0.08756494522094727,
+      "error": null
+    },
+    "assert multiple_split(\"SyxUc!!pmZGg%%C-kQ We!hriQ T i>w%dZg.VA+jm#fNl> DPg/X.+ZIkJGsn$RykHB@\") == ['SyxUc!!pmZGg%%C-kQ We!hriQ T i>w%dZg.VA+jm#fNl> DPg/X.+ZIkJGsn$RykHB@']": {
+      "result": true,
+      "time": 0.08989620208740234,
+      "error": null
+    },
+    "assert multiple_split(\"/iXbngcpeNdo:ytk/ cbazM w^rB@!l+Wo J?N^X^itzS>UZA|#TUUWhFpaOGmro!qHWgNL@$\") == ['/iXbngcpeNdo:ytk/ cbazM w^rB@!l+Wo J?N^X^itzS>UZA|#TUUWhFpaOGmro!qHWgNL@$']": {
+      "result": true,
+      "time": 0.09166288375854492,
+      "error": null
+    },
+    "assert multiple_split(\"=QGSRNBOizA*.ZQIMkfFvt^-mUc$WPpgqF:z!xWLb =sJI^m dP~lCnAgyPRTiic=Ziz/G\") == ['=QGSRNBOizA', '.ZQIMkfFvt^-mUc$WPpgqF:z!xWLb =sJI^m dP~lCnAgyPRTiic=Ziz/G']": {
+      "result": true,
+      "time": 0.085357666015625,
+      "error": null
+    },
+    "assert multiple_split(\"#$/s!PBw>^=LaM xbV&e+^QsSIuwN&BNUr=E@G+WMZbyx/DiKt.cwyk$?Jo-F&TG%=TVb#U=g^GFTj\") == ['#$/s!PBw>^=LaM xbV&e+^QsSIuwN&BNUr=E@G+WMZbyx/DiKt.cwyk$?Jo-F&TG%=TVb#U=g^GFTj']": {
+      "result": true,
+      "time": 0.09216785430908203,
+      "error": null
+    },
+    "assert multiple_split(\"W@kSqc<^Mpv^+GYMyBJ~F<lFmpHQzS|>VIBNfi CEfmVdtCChT-DVk%xIhsdX#O?#?K<A\") == ['W@kSqc<^Mpv^+GYMyBJ~F<lFmpHQzS|>VIBNfi CEfmVdtCChT-DVk%xIhsdX#O?#?K<A']": {
+      "result": true,
+      "time": 0.08616209030151367,
+      "error": null
+    },
+    "assert multiple_split(\"U-!czHgMFJMe!/~LTC!#NTq<VQPFe+Gv-/-Jo.T&prSD+Y__bl^y!Wwsx%PKgW<C#zyKM$\") == ['U-!czHgMFJMe!/~LTC!#NTq<VQPFe+Gv-/-Jo.T&prSD+Y__bl^y!Wwsx%PKgW<C#zyKM$']": {
+      "result": true,
+      "time": 0.0812225341796875,
+      "error": null
+    },
+    "assert multiple_split(\"A~FzsEWD=u#Epa Eg/b&?Rk-^<Y^ykKv^^<LfOj%j~/A^+=BH>B~s#a.!bP/!exDr#HF~zCd\") == ['A~FzsEWD=u#Epa Eg/b&?Rk-^<Y^ykKv^^<LfOj%j~/A^+=BH>B~s#a.!bP/!exDr#HF~zCd']": {
+      "result": true,
+      "time": 0.08713579177856445,
+      "error": null
+    },
+    "assert multiple_split(\"wt?gb~P>sr^>nxUsNPtEhFp%k|@BawPbJshkXoCdKSCG ocopaEDp^Kncqm^|^cvrTL=aHa\") == ['wt?gb~P>sr^>nxUsNPtEhFp%k|@BawPbJshkXoCdKSCG ocopaEDp^Kncqm^|^cvrTL=aHa']": {
+      "result": true,
+      "time": 0.0890507698059082,
+      "error": null
+    },
+    "assert multiple_split(\"mO<ah@fekQpUXrwYM-M:vM*>POi$i/Tpo-pm--CSLuzUz|hZ*Q&=Vs*+k@~AlSp=iaNZ-$vGM\") == ['mO<ah@fekQpUXrwYM-M:vM', '>POi$i/Tpo-pm--CSLuzUz|hZ', 'Q&=Vs', '+k@~AlSp=iaNZ-$vGM']": {
+      "result": true,
+      "time": 0.08870935440063477,
+      "error": null
+    },
+    "assert multiple_split(\"d_vfp%.!l-i~FBJUVB-~FKvTCqEpUD#+~un^^snJvRBvpGoMAHFkOVsHA|sUnH<J^ngNrE\") == ['d_vfp%.!l-i~FBJUVB-~FKvTCqEpUD#+~un^^snJvRBvpGoMAHFkOVsHA|sUnH<J^ngNrE']": {
+      "result": true,
+      "time": 0.08358216285705566,
+      "error": null
+    },
+    "assert multiple_split(\"A=sQ>r$gIFZ*fSqG~w-J:?My:~-EH:CVVJDqk/<jnAFa$_P+YhHThlO~<v|=*u*&GAG|R~p_\") == ['A=sQ>r$gIFZ', 'fSqG~w-J:?My:~-EH:CVVJDqk/<jnAFa$_P+YhHThlO~<v|=', 'u', '&GAG|R~p_']": {
+      "result": true,
+      "time": 0.08554887771606445,
+      "error": null
+    },
+    "assert multiple_split(\"j+uU@XquR#@LTUwbVho.s>~XSTZFh&EwW>rGwHS+iw<RF^<Oy#m&mhdsVvweqWJPA*KUX<afK=NOC\") == ['j+uU@XquR#@LTUwbVho.s>~XSTZFh&EwW>rGwHS+iw<RF^<Oy#m&mhdsVvweqWJPA', 'KUX<afK=NOC']": {
+      "result": true,
+      "time": 0.0859231948852539,
+      "error": null
+    },
+    "assert multiple_split(\"!gmGxX-BKyNTUe-Z?U qV!VeV=Fu biQWytXe$<k>EpOVo=wr jlg/QIR:QZdFOA-XV_RJ@B\") == ['!gmGxX-BKyNTUe-Z?U qV!VeV=Fu biQWytXe$<k>EpOVo=wr jlg/QIR:QZdFOA-XV_RJ@B']": {
+      "result": true,
+      "time": 0.07960128784179688,
+      "error": null
+    },
+    "assert multiple_split(\"FHO#Sncf^qgXy=D%>v=wY_pF_xp&L?/pehlo/MGZyxqQGCNAeoM:ctkMO|t?Cea$TpcVu\") == ['FHO#Sncf^qgXy=D%>v=wY_pF_xp&L?/pehlo/MGZyxqQGCNAeoM:ctkMO|t?Cea$TpcVu']": {
+      "result": true,
+      "time": 0.08447742462158203,
+      "error": null
+    },
+    "assert multiple_split(\"D>cdX~ydLCcd$QQqb<?@XUnVdHh*p*vpTPhKY?aWHj-xb@&ujgzWGQsoK?V^a|C*W-lUNfE!^\") == ['D>cdX~ydLCcd$QQqb<?@XUnVdHh', 'p', 'vpTPhKY?aWHj-xb@&ujgzWGQsoK?V^a|C', 'W-lUNfE!^']": {
+      "result": true,
+      "time": 0.09511661529541016,
+      "error": null
+    },
+    "assert multiple_split(\"mCrv/?X@daZqS.ldLG%#iu:^ h~Hg %$LLfMR$GmmAVdsIT.w?AaestHLAZ|nBOWB?LrJtCcxOGCtX\") == ['mCrv/?X@daZqS.ldLG%#iu:^ h~Hg %$LLfMR$GmmAVdsIT.w?AaestHLAZ|nBOWB?LrJtCcxOGCtX']": {
+      "result": true,
+      "time": 0.08731245994567871,
+      "error": null
+    },
+    "assert multiple_split(\"lEkAVdA+!L|brfQ/CMf$ISdBmmY#=JrGV< Lyqdm&+.ZkXDfa:GX$JxcoCid:+zxRdiqh~#vImCcC#\") == ['lEkAVdA+!L|brfQ/CMf$ISdBmmY#=JrGV< Lyqdm&+.ZkXDfa:GX$JxcoCid:+zxRdiqh~#vImCcC#']": {
+      "result": true,
+      "time": 0.0837409496307373,
+      "error": null
+    },
+    "assert multiple_split(\"BxPB/aBDK=wc<h%+DKI*QX@NZE/?Y/ Y~rxMIRFH*d#nJpF-axXZc_mb%XYHp+FFb*: Fv|HbdKN$\") == ['BxPB/aBDK=wc<h%+DKI', 'QX@NZE/?Y/ Y~rxMIRFH', 'd#nJpF-axXZc_mb%XYHp+FFb', ': Fv|HbdKN$']": {
+      "result": true,
+      "time": 0.08616065979003906,
+      "error": null
+    },
+    "assert multiple_split(\"hh&LjQhZ<f:hE ED:d=:OmrUDq #?^smy_O&IJs mO_J?e:H$~U-hqN <!TeP:uGS&r -cjbtSVNqb\") == ['hh&LjQhZ<f:hE ED:d=:OmrUDq #?^smy_O&IJs mO_J?e:H$~U-hqN <!TeP:uGS&r -cjbtSVNqb']": {
+      "result": true,
+      "time": 0.08051085472106934,
+      "error": null
+    },
+    "assert multiple_split(\"e$wc%nmORh^oHo_Bqfn>>RSXh?DMIOvJDy#ZB$t=Lq~geMTd~wH=O*ocA+pUVpt_gBwTT/v=\") == ['e$wc%nmORh^oHo_Bqfn>>RSXh?DMIOvJDy#ZB$t=Lq~geMTd~wH=O', 'ocA+pUVpt_gBwTT/v=']": {
+      "result": true,
+      "time": 0.08319282531738281,
+      "error": null
+    },
+    "assert multiple_split(\"Q #!O??V^B~@ZkH~zizPW@PQVa%kfLV@_BHwVkH.^EE-VkLQ^z_O|AI|:_zDhR|ooST@#|kuJ.N?\") == ['Q #!O??V^B~@ZkH~zizPW@PQVa%kfLV@_BHwVkH.^EE-VkLQ^z_O|AI|:_zDhR|ooST@#|kuJ.N?']": {
+      "result": true,
+      "time": 0.09414339065551758,
+      "error": null
+    },
+    "assert multiple_split(\"%>HteeIV#|N!SeYv^k@&K_fwyPimA?B<X+KRBJji@~*xRSyw%wLK$kqru=qJv?LOgf#xw\") == ['%>HteeIV#|N!SeYv^k@&K_fwyPimA?B<X+KRBJji@~', 'xRSyw%wLK$kqru=qJv?LOgf#xw']": {
+      "result": true,
+      "time": 0.07925605773925781,
+      "error": null
+    },
+    "assert multiple_split(\"ZnIO&@xXzRecm?T$_eIWCe*k:gyOZ^T+|w~@wJ=PND- _m%xsy#&<E/HPNMHnS?Qe%B%hwEY\") == ['ZnIO&@xXzRecm?T$_eIWCe', 'k:gyOZ^T+|w~@wJ=PND- _m%xsy#&<E/HPNMHnS?Qe%B%hwEY']": {
+      "result": true,
+      "time": 0.09340286254882812,
+      "error": null
+    },
+    "assert multiple_split(\"CthkCrhVHUw|hLA#f@&=SxVR:~|jC%IrZ~/*LQFuPEna&CZ:N<a=e-XC?*:DX&sdGpu_U$/T|vC\") == ['CthkCrhVHUw|hLA#f@&=SxVR:~|jC%IrZ~/', 'LQFuPEna&CZ:N<a=e-XC?', ':DX&sdGpu_U$/T|vC']": {
+      "result": true,
+      "time": 0.09782600402832031,
+      "error": null
+    },
+    "assert multiple_split(\"xfr?%DzQP!nuF@|^^kGSJOaIxFi_HvG&rQbo=c*CRjpeWAaqO$>IEM:~CzFQARYJoUgDq/$\") == ['xfr?%DzQP!nuF@|^^kGSJOaIxFi_HvG&rQbo=c', 'CRjpeWAaqO$>IEM:~CzFQARYJoUgDq/$']": {
+      "result": true,
+      "time": 0.09131050109863281,
+      "error": null
+    },
+    "assert multiple_split(\"GxoUGFL^i%M<%&.lq>=S+%ydjeoM@WQ:@$W/ibiJQV?zPP#Grut%o?xEvdAXsz TOnG<~O:-\") == ['GxoUGFL^i%M<%&.lq>=S+%ydjeoM@WQ:@$W/ibiJQV?zPP#Grut%o?xEvdAXsz TOnG<~O:-']": {
+      "result": true,
+      "time": 0.09424519538879395,
+      "error": null
+    },
+    "assert multiple_split(\"-_-!uRMhbuBcI+GS_s#zxSs.Z^/+_OV+ITcGrWlw%v~H#BuiiY&ksDD=Pg_QKYzcrvic:a^OXs\") == ['-_-!uRMhbuBcI+GS_s#zxSs.Z^/+_OV+ITcGrWlw%v~H#BuiiY&ksDD=Pg_QKYzcrvic:a^OXs']": {
+      "result": true,
+      "time": 0.08478760719299316,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9313725490196079,
+  "general_error": "",
+  "has_testcase_error": false
+}

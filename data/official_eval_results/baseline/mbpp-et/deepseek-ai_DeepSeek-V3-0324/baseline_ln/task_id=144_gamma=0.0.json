@@ -1,0 +1,519 @@
+{
+  "code": "def sum_Pairs(arr, n):\n    total = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            total += abs(arr[i] - arr[j])\n    return total",
+  "results": {
+    "assert sum_Pairs([1,8,9,15,16],5) == 74": {
+      "result": true,
+      "time": 0.03624582290649414,
+      "error": null
+    },
+    "assert sum_Pairs([1,2,3,4],4) == 10": {
+      "result": true,
+      "time": 0.032958269119262695,
+      "error": null
+    },
+    "assert sum_Pairs([1,2,3,4,5,7,9,11,14],9) == 188": {
+      "result": true,
+      "time": 0.03399515151977539,
+      "error": null
+    },
+    "assert sum_Pairs([2, 4, 7, 20, 14], 2) == 2": {
+      "result": true,
+      "time": 0.0401921272277832,
+      "error": null
+    },
+    "assert sum_Pairs([1, 8, 11, 18, 18], 4) == 54": {
+      "result": true,
+      "time": 0.034212350845336914,
+      "error": null
+    },
+    "assert sum_Pairs([2, 12, 14, 18, 18], 3) == 24": {
+      "result": true,
+      "time": 0.03401517868041992,
+      "error": null
+    },
+    "assert sum_Pairs([5, 9, 13, 19, 15], 2) == 4": {
+      "result": true,
+      "time": 0.03413867950439453,
+      "error": null
+    },
+    "assert sum_Pairs([4, 12, 7, 11, 21], 2) == 8": {
+      "result": true,
+      "time": 0.029391050338745117,
+      "error": null
+    },
+    "assert sum_Pairs([4, 12, 10, 20, 21], 5) == 84": {
+      "result": false,
+      "time": 0.033857107162475586,
+      "error": null
+    },
+    "assert sum_Pairs([6, 9, 7, 20, 14], 4) == 40": {
+      "result": false,
+      "time": 0.03196001052856445,
+      "error": null
+    },
+    "assert sum_Pairs([4, 4, 10, 14, 18], 1) == 0": {
+      "result": true,
+      "time": 0.03036355972290039,
+      "error": null
+    },
+    "assert sum_Pairs([3, 8, 6, 14, 12], 4) == 31": {
+      "result": false,
+      "time": 0.0330805778503418,
+      "error": null
+    },
+    "assert sum_Pairs([3, 3, 7, 11, 18], 3) == 8": {
+      "result": true,
+      "time": 0.03132033348083496,
+      "error": null
+    },
+    "assert sum_Pairs([2, 5, 8, 10, 13], 3) == 12": {
+      "result": true,
+      "time": 0.031042814254760742,
+      "error": null
+    },
+    "assert sum_Pairs([2, 9, 14, 18, 12], 2) == 7": {
+      "result": true,
+      "time": 0.029387712478637695,
+      "error": null
+    },
+    "assert sum_Pairs([1, 12, 10, 16, 16], 2) == 11": {
+      "result": true,
+      "time": 0.030301570892333984,
+      "error": null
+    },
+    "assert sum_Pairs([1, 12, 11, 11, 19], 3) == 20": {
+      "result": false,
+      "time": 0.035912513732910156,
+      "error": null
+    },
+    "assert sum_Pairs([6, 6, 5, 10, 12], 3) == -2": {
+      "result": false,
+      "time": 0.03311419486999512,
+      "error": null
+    },
+    "assert sum_Pairs([4, 4, 11, 17, 13], 1) == 0": {
+      "result": true,
+      "time": 0.03241682052612305,
+      "error": null
+    },
+    "assert sum_Pairs([6, 13, 10, 19, 15], 5) == 48": {
+      "result": false,
+      "time": 0.034841060638427734,
+      "error": null
+    },
+    "assert sum_Pairs([3, 4, 5, 19, 19], 2) == 1": {
+      "result": true,
+      "time": 0.03907585144042969,
+      "error": null
+    },
+    "assert sum_Pairs([5, 11, 7, 10, 17], 2) == 6": {
+      "result": true,
+      "time": 0.03586840629577637,
+      "error": null
+    },
+    "assert sum_Pairs([1, 7, 10, 18, 13], 5) == 70": {
+      "result": false,
+      "time": 0.0396881103515625,
+      "error": null
+    },
+    "assert sum_Pairs([5, 8, 8, 15, 18], 2) == 3": {
+      "result": true,
+      "time": 0.04124951362609863,
+      "error": null
+    },
+    "assert sum_Pairs([4, 9, 7, 15, 20], 4) == 31": {
+      "result": false,
+      "time": 0.0375218391418457,
+      "error": null
+    },
+    "assert sum_Pairs([2, 9, 7, 15, 12], 5) == 52": {
+      "result": false,
+      "time": 0.038945913314819336,
+      "error": null
+    },
+    "assert sum_Pairs([2, 13, 11, 15, 19], 1) == 0": {
+      "result": true,
+      "time": 0.02828073501586914,
+      "error": null
+    },
+    "assert sum_Pairs([6, 11, 5, 11, 20], 2) == 5": {
+      "result": true,
+      "time": 0.04054665565490723,
+      "error": null
+    },
+    "assert sum_Pairs([2, 3, 11, 15, 21], 5) == 100": {
+      "result": true,
+      "time": 0.03991866111755371,
+      "error": null
+    },
+    "assert sum_Pairs([1, 3, 6, 16, 16], 5) == 86": {
+      "result": true,
+      "time": 0.0361478328704834,
+      "error": null
+    },
+    "assert sum_Pairs([1, 6, 12, 17, 21], 4) == 54": {
+      "result": true,
+      "time": 0.04211711883544922,
+      "error": null
+    },
+    "assert sum_Pairs([3, 12, 11, 16, 13], 5) == 48": {
+      "result": false,
+      "time": 0.031548261642456055,
+      "error": null
+    },
+    "assert sum_Pairs([1, 4, 11, 18, 18], 1) == 0": {
+      "result": true,
+      "time": 0.04107952117919922,
+      "error": null
+    },
+    "assert sum_Pairs([3, 5, 7, 15, 17], 3) == 8": {
+      "result": true,
+      "time": 0.040967702865600586,
+      "error": null
+    },
+    "assert sum_Pairs([5, 9, 12, 14, 21], 2) == 4": {
+      "result": true,
+      "time": 0.04263043403625488,
+      "error": null
+    },
+    "assert sum_Pairs([1, 3, 8, 17, 16], 2) == 2": {
+      "result": true,
+      "time": 0.03193044662475586,
+      "error": null
+    },
+    "assert sum_Pairs([1, 6, 6, 4], 2) == 5": {
+      "result": true,
+      "time": 0.03945136070251465,
+      "error": null
+    },
+    "assert sum_Pairs([5, 6, 1, 7], 4) == 1": {
+      "result": false,
+      "time": 0.03645491600036621,
+      "error": null
+    },
+    "assert sum_Pairs([1, 6, 2, 2], 4) == -1": {
+      "result": false,
+      "time": 0.03542613983154297,
+      "error": null
+    },
+    "assert sum_Pairs([1, 6, 1, 3], 3) == 0": {
+      "result": false,
+      "time": 0.035315752029418945,
+      "error": null
+    },
+    "assert sum_Pairs([4, 7, 2, 8], 4) == 7": {
+      "result": false,
+      "time": 0.03395700454711914,
+      "error": null
+    },
+    "assert sum_Pairs([2, 2, 3, 2], 2) == 0": {
+      "result": true,
+      "time": 0.04300808906555176,
+      "error": null
+    },
+    "assert sum_Pairs([1, 4, 5, 6], 3) == 8": {
+      "result": true,
+      "time": 0.0393977165222168,
+      "error": null
+    },
+    "assert sum_Pairs([1, 7, 2, 6], 3) == 2": {
+      "result": false,
+      "time": 0.03964543342590332,
+      "error": null
+    },
+    "assert sum_Pairs([3, 7, 1, 4], 3) == -4": {
+      "result": false,
+      "time": 0.04103589057922363,
+      "error": null
+    },
+    "assert sum_Pairs([6, 6, 4, 1], 2) == 0": {
+      "result": true,
+      "time": 0.03824615478515625,
+      "error": null
+    },
+    "assert sum_Pairs([5, 5, 2, 8], 3) == -6": {
+      "result": false,
+      "time": 0.03739500045776367,
+      "error": null
+    },
+    "assert sum_Pairs([4, 4, 6, 2], 1) == 0": {
+      "result": true,
+      "time": 0.036864280700683594,
+      "error": null
+    },
+    "assert sum_Pairs([5, 4, 8, 8], 1) == 0": {
+      "result": true,
+      "time": 0.03930330276489258,
+      "error": null
+    },
+    "assert sum_Pairs([6, 1, 4, 5], 3) == -4": {
+      "result": false,
+      "time": 0.03606414794921875,
+      "error": null
+    },
+    "assert sum_Pairs([5, 5, 3, 6], 1) == 0": {
+      "result": true,
+      "time": 0.036783695220947266,
+      "error": null
+    },
+    "assert sum_Pairs([1, 5, 3, 1], 4) == -2": {
+      "result": false,
+      "time": 0.03795576095581055,
+      "error": null
+    },
+    "assert sum_Pairs([5, 3, 1, 7], 1) == 0": {
+      "result": true,
+      "time": 0.04078817367553711,
+      "error": null
+    },
+    "assert sum_Pairs([4, 4, 3, 1], 3) == -2": {
+      "result": false,
+      "time": 0.04010462760925293,
+      "error": null
+    },
+    "assert sum_Pairs([2, 7, 8, 1], 2) == 5": {
+      "result": true,
+      "time": 0.03573036193847656,
+      "error": null
+    },
+    "assert sum_Pairs([2, 5, 6, 8], 1) == 0": {
+      "result": true,
+      "time": 0.04377317428588867,
+      "error": null
+    },
+    "assert sum_Pairs([6, 5, 7, 9], 4) == 11": {
+      "result": false,
+      "time": 0.03568005561828613,
+      "error": null
+    },
+    "assert sum_Pairs([3, 6, 1, 4], 2) == 3": {
+      "result": true,
+      "time": 0.05422472953796387,
+      "error": null
+    },
+    "assert sum_Pairs([5, 6, 3, 4], 4) == -6": {
+      "result": false,
+      "time": 0.04934525489807129,
+      "error": null
+    },
+    "assert sum_Pairs([5, 1, 3, 2], 4) == -7": {
+      "result": false,
+      "time": 0.061942100524902344,
+      "error": null
+    },
+    "assert sum_Pairs([4, 4, 6, 5], 2) == 0": {
+      "result": true,
+      "time": 0.06187772750854492,
+      "error": null
+    },
+    "assert sum_Pairs([4, 1, 7, 4], 3) == 6": {
+      "result": false,
+      "time": 0.05128598213195801,
+      "error": null
+    },
+    "assert sum_Pairs([2, 4, 3, 7], 4) == 14": {
+      "result": false,
+      "time": 0.0478363037109375,
+      "error": null
+    },
+    "assert sum_Pairs([4, 5, 3, 6], 3) == -2": {
+      "result": false,
+      "time": 0.053716421127319336,
+      "error": null
+    },
+    "assert sum_Pairs([6, 1, 7, 7], 3) == 2": {
+      "result": false,
+      "time": 0.04852700233459473,
+      "error": null
+    },
+    "assert sum_Pairs([4, 6, 6, 8], 1) == 0": {
+      "result": true,
+      "time": 0.06613397598266602,
+      "error": null
+    },
+    "assert sum_Pairs([3, 2, 1, 7], 3) == -4": {
+      "result": false,
+      "time": 0.0628209114074707,
+      "error": null
+    },
+    "assert sum_Pairs([2, 2, 4, 3], 3) == 4": {
+      "result": true,
+      "time": 0.050829172134399414,
+      "error": null
+    },
+    "assert sum_Pairs([3, 4, 4, 7], 3) == 2": {
+      "result": true,
+      "time": 0.04303145408630371,
+      "error": null
+    },
+    "assert sum_Pairs([4, 7, 7, 2, 9, 8, 9, 8, 9], 9) == 66": {
+      "result": false,
+      "time": 0.054189443588256836,
+      "error": null
+    },
+    "assert sum_Pairs([5, 5, 7, 4, 7, 6, 7, 7, 14], 4) == -1": {
+      "result": false,
+      "time": 0.05402803421020508,
+      "error": null
+    },
+    "assert sum_Pairs([2, 4, 2, 9, 9, 5, 9, 14, 14], 4) == 19": {
+      "result": false,
+      "time": 0.04617118835449219,
+      "error": null
+    },
+    "assert sum_Pairs([2, 5, 7, 4, 4, 9, 8, 16, 14], 4) == 8": {
+      "result": false,
+      "time": 0.053833723068237305,
+      "error": null
+    },
+    "assert sum_Pairs([4, 2, 8, 3, 2, 10, 13, 7, 17], 7) == 74": {
+      "result": false,
+      "time": 0.054404258728027344,
+      "error": null
+    },
+    "assert sum_Pairs([3, 6, 5, 2, 10, 3, 9, 8, 13], 5) == 20": {
+      "result": false,
+      "time": 0.054036617279052734,
+      "error": null
+    },
+    "assert sum_Pairs([2, 3, 2, 6, 6, 9, 10, 6, 13], 4) == 11": {
+      "result": false,
+      "time": 0.05688214302062988,
+      "error": null
+    },
+    "assert sum_Pairs([1, 4, 4, 9, 6, 2, 14, 10, 19], 7) == 74": {
+      "result": false,
+      "time": 0.05332326889038086,
+      "error": null
+    },
+    "assert sum_Pairs([6, 7, 8, 2, 4, 9, 5, 6, 19], 9) == 100": {
+      "result": false,
+      "time": 0.05841970443725586,
+      "error": null
+    },
+    "assert sum_Pairs([2, 5, 3, 6, 10, 12, 9, 15, 9], 7) == 84": {
+      "result": false,
+      "time": 0.05051374435424805,
+      "error": null
+    },
+    "assert sum_Pairs([6, 5, 2, 9, 7, 4, 9, 10, 18], 5) == 12": {
+      "result": false,
+      "time": 0.055348873138427734,
+      "error": null
+    },
+    "assert sum_Pairs([2, 4, 2, 8, 9, 4, 10, 12, 17], 5) == 36": {
+      "result": false,
+      "time": 0.04510641098022461,
+      "error": null
+    },
+    "assert sum_Pairs([1, 7, 1, 3, 10, 8, 9, 16, 11], 6) == 46": {
+      "result": false,
+      "time": 0.06540989875793457,
+      "error": null
+    },
+    "assert sum_Pairs([4, 6, 4, 6, 4, 10, 8, 14, 14], 8) == 96": {
+      "result": false,
+      "time": 0.04932141304016113,
+      "error": null
+    },
+    "assert sum_Pairs([1, 6, 3, 6, 9, 10, 11, 9, 15], 6) == 57": {
+      "result": false,
+      "time": 0.053696632385253906,
+      "error": null
+    },
+    "assert sum_Pairs([4, 6, 8, 4, 5, 5, 7, 16, 12], 8) == 81": {
+      "result": false,
+      "time": 0.044577836990356445,
+      "error": null
+    },
+    "assert sum_Pairs([4, 3, 6, 2, 3, 5, 5, 7, 9], 4) == -3": {
+      "result": false,
+      "time": 0.04989790916442871,
+      "error": null
+    },
+    "assert sum_Pairs([2, 1, 4, 9, 9, 8, 6, 9, 15], 4) == 24": {
+      "result": false,
+      "time": 0.05600118637084961,
+      "error": null
+    },
+    "assert sum_Pairs([2, 7, 1, 2, 10, 5, 7, 8, 18], 9) == 164": {
+      "result": false,
+      "time": 0.05839419364929199,
+      "error": null
+    },
+    "assert sum_Pairs([5, 7, 7, 2, 7, 11, 8, 13, 11], 7) == 34": {
+      "result": false,
+      "time": 0.04788970947265625,
+      "error": null
+    },
+    "assert sum_Pairs([4, 6, 6, 5, 4, 12, 10, 11, 16], 4) == 3": {
+      "result": false,
+      "time": 0.06649255752563477,
+      "error": null
+    },
+    "assert sum_Pairs([5, 4, 5, 5, 8, 10, 6, 16, 13], 7) == 36": {
+      "result": false,
+      "time": 0.06155753135681152,
+      "error": null
+    },
+    "assert sum_Pairs([6, 2, 1, 8, 4, 8, 7, 14, 17], 6) == 23": {
+      "result": false,
+      "time": 0.050928592681884766,
+      "error": null
+    },
+    "assert sum_Pairs([1, 6, 5, 7, 7, 2, 12, 12, 12], 6) == 10": {
+      "result": false,
+      "time": 0.06485581398010254,
+      "error": null
+    },
+    "assert sum_Pairs([2, 1, 8, 8, 6, 3, 6, 12, 19], 6) == 20": {
+      "result": false,
+      "time": 0.046910762786865234,
+      "error": null
+    },
+    "assert sum_Pairs([1, 5, 6, 1, 8, 12, 6, 9, 9], 8) == 86": {
+      "result": false,
+      "time": 0.05354881286621094,
+      "error": null
+    },
+    "assert sum_Pairs([4, 5, 6, 8, 2, 3, 13, 13, 19], 5) == -2": {
+      "result": false,
+      "time": 0.05530691146850586,
+      "error": null
+    },
+    "assert sum_Pairs([5, 7, 5, 6, 4, 12, 12, 16, 19], 9) == 206": {
+      "result": false,
+      "time": 0.061307668685913086,
+      "error": null
+    },
+    "assert sum_Pairs([2, 4, 3, 2, 8, 4, 13, 12, 17], 7) == 76": {
+      "result": false,
+      "time": 0.055999755859375,
+      "error": null
+    },
+    "assert sum_Pairs([5, 4, 5, 6, 3, 6, 10, 7, 9], 4) == 4": {
+      "result": false,
+      "time": 0.053357601165771484,
+      "error": null
+    },
+    "assert sum_Pairs([2, 3, 5, 4, 8, 8, 12, 9, 15], 9) == 176": {
+      "result": false,
+      "time": 0.0795755386352539,
+      "error": null
+    },
+    "assert sum_Pairs([4, 3, 5, 1, 6, 12, 9, 7, 10], 8) == 77": {
+      "result": false,
+      "time": 0.06915116310119629,
+      "error": null
+    },
+    "assert sum_Pairs([5, 5, 2, 7, 4, 5, 11, 16, 17], 6) == 2": {
+      "result": false,
+      "time": 0.0607149600982666,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.4019607843137255,
+  "general_error": "",
+  "has_testcase_error": false
+}

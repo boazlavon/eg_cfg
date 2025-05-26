@@ -1,0 +1,519 @@
+{
+  "code": "def re_arrange_array(arr, n):\n    # Initialize two pointers\n    left = 0\n    right = n - 1\n    \n    # Loop until the pointers meet\n    while left <= right:\n        # If the left element is negative, move the left pointer\n        if arr[left] < 0:\n            left = left + 1\n        # If the right element is positive, move the right pointer\n        elif arr[right] >= 0:\n            right = right - 1\n        # If the left element is positive and the right element is negative, swap them\n        else:\n            temp = arr[left]\n            arr[left] = arr[right]\n            arr[right] = temp\n            left = left + 1\n            right = right - 1\n    return arr",
+  "results": {
+    "assert re_arrange_array([-1, 2, -3, 4, 5, 6, -7, 8, 9], 9) == [-1, -3, -7, 4, 5, 6, 2, 8, 9]": {
+      "result": false,
+      "time": 0.04746127128601074,
+      "error": null
+    },
+    "assert re_arrange_array([12, -14, -26, 13, 15], 5) == [-14, -26, 12, 13, 15]": {
+      "result": false,
+      "time": 0.04497361183166504,
+      "error": null
+    },
+    "assert re_arrange_array([10, 24, 36, -42, -39, -78, 85], 7) == [-42, -39, -78, 10, 24, 36, 85]": {
+      "result": false,
+      "time": 0.045354366302490234,
+      "error": null
+    },
+    "assert re_arrange_array([-6, 7, -5, 7, 5, 1, -6, 5, 10], 9) == [-6, -5, -6, 7, 5, 1, 7, 5, 10]": {
+      "result": false,
+      "time": 0.040189266204833984,
+      "error": null
+    },
+    "assert re_arrange_array([0, 4, -3, 6, 8, 4, -4, 4, 13], 9) == [-3, -4, 0, 6, 8, 4, 4, 4, 13]": {
+      "result": false,
+      "time": 0.04137253761291504,
+      "error": null
+    },
+    "assert re_arrange_array([-5, 3, 0, 2, 3, 9, -2, 4, 7], 7) == [-5, -2, 0, 2, 3, 9, 3, 4, 7]": {
+      "result": true,
+      "time": 0.03647112846374512,
+      "error": null
+    },
+    "assert re_arrange_array([4, 5, 2, 1, 1, 8, -8, 12, 12], 8) == [-8, 5, 2, 1, 1, 8, 4, 12, 12]": {
+      "result": true,
+      "time": 0.04524660110473633,
+      "error": null
+    },
+    "assert re_arrange_array([-4, 1, -5, 6, 2, 7, -3, 8, 11], 6) == [-4, -5, 1, 6, 2, 7, -3, 8, 11]": {
+      "result": true,
+      "time": 0.03814697265625,
+      "error": null
+    },
+    "assert re_arrange_array([-1, 4, 2, 2, 1, 9, -2, 9, 12], 6) == [-1, 4, 2, 2, 1, 9, -2, 9, 12]": {
+      "result": true,
+      "time": 0.03247261047363281,
+      "error": null
+    },
+    "assert re_arrange_array([1, 3, 2, 1, 10, 7, -5, 10, 5], 6) == [1, 3, 2, 1, 10, 7, -5, 10, 5]": {
+      "result": true,
+      "time": 0.03684592247009277,
+      "error": null
+    },
+    "assert re_arrange_array([2, 3, -4, 5, 3, 9, -11, 13, 13], 9) == [-4, -11, 2, 5, 3, 9, 3, 13, 13]": {
+      "result": false,
+      "time": 0.03977847099304199,
+      "error": null
+    },
+    "assert re_arrange_array([-2, 4, -3, 1, 5, 4, -6, 9, 14], 5) == [-2, -3, 4, 1, 5, 4, -6, 9, 14]": {
+      "result": true,
+      "time": 0.039237022399902344,
+      "error": null
+    },
+    "assert re_arrange_array([-3, 5, 0, 6, 1, 10, -12, 10, 9], 9) == [-3, -12, 0, 6, 1, 10, 5, 10, 9]": {
+      "result": true,
+      "time": 0.04029393196105957,
+      "error": null
+    },
+    "assert re_arrange_array([-5, 6, -1, 3, 4, 1, -10, 4, 6], 4) == [-5, -1, 6, 3, 4, 1, -10, 4, 6]": {
+      "result": true,
+      "time": 0.042116403579711914,
+      "error": null
+    },
+    "assert re_arrange_array([-3, 2, -6, 6, 3, 10, -11, 4, 11], 7) == [-3, -6, -11, 6, 3, 10, 2, 4, 11]": {
+      "result": false,
+      "time": 0.04050850868225098,
+      "error": null
+    },
+    "assert re_arrange_array([2, 4, 2, 5, 5, 11, -2, 7, 14], 5) == [2, 4, 2, 5, 5, 11, -2, 7, 14]": {
+      "result": true,
+      "time": 0.0346834659576416,
+      "error": null
+    },
+    "assert re_arrange_array([-6, 6, -3, 8, 5, 8, -7, 10, 7], 8) == [-6, -3, -7, 8, 5, 8, 6, 10, 7]": {
+      "result": false,
+      "time": 0.039771080017089844,
+      "error": null
+    },
+    "assert re_arrange_array([-4, 7, -4, 8, 1, 9, -4, 11, 13], 6) == [-4, -4, 7, 8, 1, 9, -4, 11, 13]": {
+      "result": true,
+      "time": 0.040593624114990234,
+      "error": null
+    },
+    "assert re_arrange_array([-3, 1, 0, 3, 1, 2, -9, 7, 12], 6) == [-3, 1, 0, 3, 1, 2, -9, 7, 12]": {
+      "result": true,
+      "time": 0.0445253849029541,
+      "error": null
+    },
+    "assert re_arrange_array([-6, 4, 1, 3, 1, 7, -9, 5, 13], 4) == [-6, 4, 1, 3, 1, 7, -9, 5, 13]": {
+      "result": true,
+      "time": 0.03857827186584473,
+      "error": null
+    },
+    "assert re_arrange_array([4, 1, -7, 1, 8, 8, -2, 11, 10], 6) == [-7, 1, 4, 1, 8, 8, -2, 11, 10]": {
+      "result": true,
+      "time": 0.04073500633239746,
+      "error": null
+    },
+    "assert re_arrange_array([1, 4, -6, 9, 7, 3, -10, 9, 14], 5) == [-6, 4, 1, 9, 7, 3, -10, 9, 14]": {
+      "result": true,
+      "time": 0.04454517364501953,
+      "error": null
+    },
+    "assert re_arrange_array([0, 5, -4, 5, 3, 2, -2, 11, 8], 6) == [-4, 5, 0, 5, 3, 2, -2, 11, 8]": {
+      "result": true,
+      "time": 0.03741025924682617,
+      "error": null
+    },
+    "assert re_arrange_array([1, 7, -5, 4, 9, 9, -9, 9, 5], 7) == [-5, -9, 1, 4, 9, 9, 7, 9, 5]": {
+      "result": false,
+      "time": 0.03816986083984375,
+      "error": null
+    },
+    "assert re_arrange_array([4, 4, -7, 9, 5, 2, -5, 5, 13], 8) == [-7, -5, 4, 9, 5, 2, 4, 5, 13]": {
+      "result": false,
+      "time": 0.03611350059509277,
+      "error": null
+    },
+    "assert re_arrange_array([1, 1, -6, 4, 10, 4, -10, 3, 9], 7) == [-6, -10, 1, 4, 10, 4, 1, 3, 9]": {
+      "result": false,
+      "time": 0.03234744071960449,
+      "error": null
+    },
+    "assert re_arrange_array([-1, 1, -7, 8, 7, 11, -6, 11, 9], 9) == [-1, -7, -6, 8, 7, 11, 1, 11, 9]": {
+      "result": false,
+      "time": 0.03327059745788574,
+      "error": null
+    },
+    "assert re_arrange_array([-6, 4, -4, 6, 7, 8, -11, 5, 8], 7) == [-6, -4, -11, 6, 7, 8, 4, 5, 8]": {
+      "result": false,
+      "time": 0.03840517997741699,
+      "error": null
+    },
+    "assert re_arrange_array([-5, 5, -8, 1, 1, 11, -2, 8, 8], 4) == [-5, -8, 5, 1, 1, 11, -2, 8, 8]": {
+      "result": true,
+      "time": 0.035657644271850586,
+      "error": null
+    },
+    "assert re_arrange_array([1, 2, -8, 8, 3, 6, -11, 13, 7], 5) == [-8, 2, 1, 8, 3, 6, -11, 13, 7]": {
+      "result": true,
+      "time": 0.03855443000793457,
+      "error": null
+    },
+    "assert re_arrange_array([-5, 1, 1, 7, 4, 9, -7, 13, 9], 5) == [-5, 1, 1, 7, 4, 9, -7, 13, 9]": {
+      "result": true,
+      "time": 0.03793025016784668,
+      "error": null
+    },
+    "assert re_arrange_array([-4, 7, -5, 5, 5, 7, -10, 13, 12], 5) == [-4, -5, 7, 5, 5, 7, -10, 13, 12]": {
+      "result": true,
+      "time": 0.037416696548461914,
+      "error": null
+    },
+    "assert re_arrange_array([-5, 6, -1, 6, 7, 9, -8, 5, 9], 4) == [-5, -1, 6, 6, 7, 9, -8, 5, 9]": {
+      "result": true,
+      "time": 0.04968142509460449,
+      "error": null
+    },
+    "assert re_arrange_array([-4, 4, -6, 1, 10, 8, -12, 5, 12], 4) == [-4, -6, 4, 1, 10, 8, -12, 5, 12]": {
+      "result": true,
+      "time": 0.046781063079833984,
+      "error": null
+    },
+    "assert re_arrange_array([-3, 1, -4, 9, 10, 8, -2, 6, 5], 5) == [-3, -4, 1, 9, 10, 8, -2, 6, 5]": {
+      "result": true,
+      "time": 0.04001808166503906,
+      "error": null
+    },
+    "assert re_arrange_array([-3, 4, 2, 8, 6, 4, -8, 3, 10], 9) == [-3, -8, 2, 8, 6, 4, 4, 3, 10]": {
+      "result": true,
+      "time": 0.038048744201660156,
+      "error": null
+    },
+    "assert re_arrange_array([11, -17, -21, 9, 15], 1) == [11, -17, -21, 9, 15]": {
+      "result": true,
+      "time": 0.03301215171813965,
+      "error": null
+    },
+    "assert re_arrange_array([15, -19, -28, 9, 20], 4) == [-19, -28, 15, 9, 20]": {
+      "result": false,
+      "time": 0.04822373390197754,
+      "error": null
+    },
+    "assert re_arrange_array([13, -13, -27, 11, 20], 4) == [-13, -27, 13, 11, 20]": {
+      "result": false,
+      "time": 0.0422205924987793,
+      "error": null
+    },
+    "assert re_arrange_array([7, -18, -25, 12, 11], 4) == [-18, -25, 7, 12, 11]": {
+      "result": false,
+      "time": 0.03757023811340332,
+      "error": null
+    },
+    "assert re_arrange_array([8, -15, -23, 12, 10], 5) == [-15, -23, 8, 12, 10]": {
+      "result": false,
+      "time": 0.03695273399353027,
+      "error": null
+    },
+    "assert re_arrange_array([9, -19, -29, 9, 15], 1) == [9, -19, -29, 9, 15]": {
+      "result": true,
+      "time": 0.04085373878479004,
+      "error": null
+    },
+    "assert re_arrange_array([13, -19, -21, 17, 19], 3) == [-19, -21, 13, 17, 19]": {
+      "result": false,
+      "time": 0.038922786712646484,
+      "error": null
+    },
+    "assert re_arrange_array([9, -10, -25, 18, 12], 3) == [-10, -25, 9, 18, 12]": {
+      "result": false,
+      "time": 0.03721332550048828,
+      "error": null
+    },
+    "assert re_arrange_array([14, -17, -22, 18, 13], 2) == [-17, 14, -22, 18, 13]": {
+      "result": true,
+      "time": 0.03501415252685547,
+      "error": null
+    },
+    "assert re_arrange_array([13, -13, -29, 13, 12], 3) == [-13, -29, 13, 13, 12]": {
+      "result": false,
+      "time": 0.03912854194641113,
+      "error": null
+    },
+    "assert re_arrange_array([12, -16, -24, 13, 10], 2) == [-16, 12, -24, 13, 10]": {
+      "result": true,
+      "time": 0.041947126388549805,
+      "error": null
+    },
+    "assert re_arrange_array([17, -16, -21, 11, 10], 5) == [-16, -21, 17, 11, 10]": {
+      "result": false,
+      "time": 0.04005861282348633,
+      "error": null
+    },
+    "assert re_arrange_array([13, -9, -28, 8, 12], 4) == [-9, -28, 13, 8, 12]": {
+      "result": false,
+      "time": 0.03619670867919922,
+      "error": null
+    },
+    "assert re_arrange_array([14, -15, -25, 8, 18], 4) == [-15, -25, 14, 8, 18]": {
+      "result": false,
+      "time": 0.04332399368286133,
+      "error": null
+    },
+    "assert re_arrange_array([11, -13, -23, 9, 13], 1) == [11, -13, -23, 9, 13]": {
+      "result": true,
+      "time": 0.05028843879699707,
+      "error": null
+    },
+    "assert re_arrange_array([8, -9, -26, 17, 15], 2) == [-9, 8, -26, 17, 15]": {
+      "result": true,
+      "time": 0.056592464447021484,
+      "error": null
+    },
+    "assert re_arrange_array([9, -12, -22, 9, 17], 4) == [-12, -22, 9, 9, 17]": {
+      "result": false,
+      "time": 0.055989742279052734,
+      "error": null
+    },
+    "assert re_arrange_array([8, -15, -23, 15, 11], 4) == [-15, -23, 8, 15, 11]": {
+      "result": false,
+      "time": 0.04717302322387695,
+      "error": null
+    },
+    "assert re_arrange_array([7, -18, -28, 17, 19], 4) == [-18, -28, 7, 17, 19]": {
+      "result": false,
+      "time": 0.05524444580078125,
+      "error": null
+    },
+    "assert re_arrange_array([16, -11, -31, 17, 12], 5) == [-11, -31, 16, 17, 12]": {
+      "result": false,
+      "time": 0.05760693550109863,
+      "error": null
+    },
+    "assert re_arrange_array([16, -14, -31, 13, 20], 3) == [-14, -31, 16, 13, 20]": {
+      "result": false,
+      "time": 0.048506975173950195,
+      "error": null
+    },
+    "assert re_arrange_array([10, -9, -25, 12, 17], 2) == [-9, 10, -25, 12, 17]": {
+      "result": true,
+      "time": 0.04545116424560547,
+      "error": null
+    },
+    "assert re_arrange_array([12, -16, -23, 17, 17], 4) == [-16, -23, 12, 17, 17]": {
+      "result": false,
+      "time": 0.053945064544677734,
+      "error": null
+    },
+    "assert re_arrange_array([14, -13, -25, 12, 11], 3) == [-13, -25, 14, 12, 11]": {
+      "result": false,
+      "time": 0.04514908790588379,
+      "error": null
+    },
+    "assert re_arrange_array([17, -13, -22, 11, 19], 3) == [-13, -22, 17, 11, 19]": {
+      "result": false,
+      "time": 0.04783916473388672,
+      "error": null
+    },
+    "assert re_arrange_array([7, -18, -31, 17, 19], 1) == [7, -18, -31, 17, 19]": {
+      "result": true,
+      "time": 0.04428434371948242,
+      "error": null
+    },
+    "assert re_arrange_array([16, -11, -28, 12, 18], 3) == [-11, -28, 16, 12, 18]": {
+      "result": false,
+      "time": 0.05272388458251953,
+      "error": null
+    },
+    "assert re_arrange_array([16, -11, -30, 15, 20], 5) == [-11, -30, 16, 15, 20]": {
+      "result": false,
+      "time": 0.0483403205871582,
+      "error": null
+    },
+    "assert re_arrange_array([11, -13, -29, 17, 12], 1) == [11, -13, -29, 17, 12]": {
+      "result": true,
+      "time": 0.05415606498718262,
+      "error": null
+    },
+    "assert re_arrange_array([13, -13, -30, 14, 19], 3) == [-13, -30, 13, 14, 19]": {
+      "result": false,
+      "time": 0.056005001068115234,
+      "error": null
+    },
+    "assert re_arrange_array([17, -11, -28, 9, 14], 1) == [17, -11, -28, 9, 14]": {
+      "result": true,
+      "time": 0.04565095901489258,
+      "error": null
+    },
+    "assert re_arrange_array([14, -10, -22, 13, 13], 5) == [-10, -22, 14, 13, 13]": {
+      "result": false,
+      "time": 0.04959917068481445,
+      "error": null
+    },
+    "assert re_arrange_array([9, -11, -26, 15, 16], 3) == [-11, -26, 9, 15, 16]": {
+      "result": false,
+      "time": 0.04321694374084473,
+      "error": null
+    },
+    "assert re_arrange_array([15, 19, 35, -39, -41, -82, 84], 5) == [-39, -41, 35, 15, 19, -82, 84]": {
+      "result": false,
+      "time": 0.04769086837768555,
+      "error": null
+    },
+    "assert re_arrange_array([6, 19, 39, -39, -41, -74, 84], 2) == [6, 19, 39, -39, -41, -74, 84]": {
+      "result": true,
+      "time": 0.05573868751525879,
+      "error": null
+    },
+    "assert re_arrange_array([11, 28, 37, -44, -43, -75, 85], 5) == [-44, -43, 37, 11, 28, -75, 85]": {
+      "result": false,
+      "time": 0.0549924373626709,
+      "error": null
+    },
+    "assert re_arrange_array([5, 21, 31, -41, -38, -82, 82], 4) == [-41, 21, 31, 5, -38, -82, 82]": {
+      "result": true,
+      "time": 0.042724609375,
+      "error": null
+    },
+    "assert re_arrange_array([8, 24, 38, -42, -44, -73, 88], 3) == [8, 24, 38, -42, -44, -73, 88]": {
+      "result": true,
+      "time": 0.041237831115722656,
+      "error": null
+    },
+    "assert re_arrange_array([13, 23, 31, -44, -39, -77, 84], 5) == [-44, -39, 31, 13, 23, -77, 84]": {
+      "result": false,
+      "time": 0.04060649871826172,
+      "error": null
+    },
+    "assert re_arrange_array([15, 20, 37, -37, -34, -77, 80], 7) == [-37, -34, -77, 15, 20, 37, 80]": {
+      "result": false,
+      "time": 0.046308040618896484,
+      "error": null
+    },
+    "assert re_arrange_array([12, 27, 40, -46, -44, -76, 87], 5) == [-46, -44, 40, 12, 27, -76, 87]": {
+      "result": false,
+      "time": 0.035782575607299805,
+      "error": null
+    },
+    "assert re_arrange_array([15, 23, 37, -43, -35, -77, 87], 3) == [15, 23, 37, -43, -35, -77, 87]": {
+      "result": true,
+      "time": 0.03754067420959473,
+      "error": null
+    },
+    "assert re_arrange_array([13, 20, 41, -37, -35, -80, 85], 2) == [13, 20, 41, -37, -35, -80, 85]": {
+      "result": true,
+      "time": 0.04556393623352051,
+      "error": null
+    },
+    "assert re_arrange_array([5, 21, 36, -41, -39, -80, 86], 3) == [5, 21, 36, -41, -39, -80, 86]": {
+      "result": true,
+      "time": 0.03479170799255371,
+      "error": null
+    },
+    "assert re_arrange_array([13, 23, 39, -46, -34, -77, 80], 6) == [-46, -34, -77, 13, 23, 39, 80]": {
+      "result": false,
+      "time": 0.04156684875488281,
+      "error": null
+    },
+    "assert re_arrange_array([6, 22, 31, -47, -34, -83, 82], 6) == [-47, -34, -83, 6, 22, 31, 82]": {
+      "result": false,
+      "time": 0.04534912109375,
+      "error": null
+    },
+    "assert re_arrange_array([6, 21, 31, -47, -44, -77, 85], 7) == [-47, -44, -77, 6, 21, 31, 85]": {
+      "result": false,
+      "time": 0.04687237739562988,
+      "error": null
+    },
+    "assert re_arrange_array([7, 28, 34, -40, -43, -76, 84], 7) == [-40, -43, -76, 7, 28, 34, 84]": {
+      "result": false,
+      "time": 0.04165768623352051,
+      "error": null
+    },
+    "assert re_arrange_array([15, 29, 35, -38, -35, -73, 83], 7) == [-38, -35, -73, 15, 29, 35, 83]": {
+      "result": false,
+      "time": 0.046441078186035156,
+      "error": null
+    },
+    "assert re_arrange_array([14, 21, 32, -45, -39, -82, 85], 7) == [-45, -39, -82, 14, 21, 32, 85]": {
+      "result": false,
+      "time": 0.03272676467895508,
+      "error": null
+    },
+    "assert re_arrange_array([9, 21, 39, -37, -36, -77, 85], 6) == [-37, -36, -77, 9, 21, 39, 85]": {
+      "result": false,
+      "time": 0.03742504119873047,
+      "error": null
+    },
+    "assert re_arrange_array([10, 28, 34, -38, -39, -77, 82], 6) == [-38, -39, -77, 10, 28, 34, 82]": {
+      "result": false,
+      "time": 0.041910409927368164,
+      "error": null
+    },
+    "assert re_arrange_array([11, 26, 31, -42, -40, -79, 81], 7) == [-42, -40, -79, 11, 26, 31, 81]": {
+      "result": false,
+      "time": 0.04437708854675293,
+      "error": null
+    },
+    "assert re_arrange_array([11, 29, 35, -44, -44, -73, 86], 4) == [-44, 29, 35, 11, -44, -73, 86]": {
+      "result": true,
+      "time": 0.041825294494628906,
+      "error": null
+    },
+    "assert re_arrange_array([13, 19, 31, -46, -40, -73, 81], 5) == [-46, -40, 31, 13, 19, -73, 81]": {
+      "result": false,
+      "time": 0.04075980186462402,
+      "error": null
+    },
+    "assert re_arrange_array([7, 22, 36, -37, -37, -76, 90], 5) == [-37, -37, 36, 7, 22, -76, 90]": {
+      "result": false,
+      "time": 0.033040523529052734,
+      "error": null
+    },
+    "assert re_arrange_array([11, 19, 31, -45, -39, -77, 82], 3) == [11, 19, 31, -45, -39, -77, 82]": {
+      "result": true,
+      "time": 0.0405421257019043,
+      "error": null
+    },
+    "assert re_arrange_array([13, 21, 32, -40, -36, -73, 80], 4) == [-40, 21, 32, 13, -36, -73, 80]": {
+      "result": true,
+      "time": 0.045886993408203125,
+      "error": null
+    },
+    "assert re_arrange_array([5, 28, 37, -37, -34, -73, 83], 2) == [5, 28, 37, -37, -34, -73, 83]": {
+      "result": true,
+      "time": 0.03945732116699219,
+      "error": null
+    },
+    "assert re_arrange_array([12, 28, 40, -45, -36, -75, 85], 2) == [12, 28, 40, -45, -36, -75, 85]": {
+      "result": true,
+      "time": 0.03908252716064453,
+      "error": null
+    },
+    "assert re_arrange_array([8, 24, 31, -39, -42, -76, 83], 7) == [-39, -42, -76, 8, 24, 31, 83]": {
+      "result": false,
+      "time": 0.04335141181945801,
+      "error": null
+    },
+    "assert re_arrange_array([13, 21, 41, -45, -36, -74, 89], 5) == [-45, -36, 41, 13, 21, -74, 89]": {
+      "result": false,
+      "time": 0.042368412017822266,
+      "error": null
+    },
+    "assert re_arrange_array([11, 28, 33, -39, -43, -80, 80], 3) == [11, 28, 33, -39, -43, -80, 80]": {
+      "result": true,
+      "time": 0.04378628730773926,
+      "error": null
+    },
+    "assert re_arrange_array([10, 27, 38, -39, -42, -80, 81], 7) == [-39, -42, -80, 10, 27, 38, 81]": {
+      "result": false,
+      "time": 0.05198311805725098,
+      "error": null
+    },
+    "assert re_arrange_array([9, 20, 39, -42, -38, -80, 81], 6) == [-42, -38, -80, 9, 20, 39, 81]": {
+      "result": false,
+      "time": 0.039220571517944336,
+      "error": null
+    },
+    "assert re_arrange_array([11, 20, 31, -47, -43, -83, 87], 2) == [11, 20, 31, -47, -43, -83, 87]": {
+      "result": true,
+      "time": 0.03815937042236328,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.45098039215686275,
+  "general_error": "",
+  "has_testcase_error": false
+}

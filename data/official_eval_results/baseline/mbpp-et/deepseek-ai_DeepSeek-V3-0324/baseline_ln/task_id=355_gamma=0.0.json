@@ -1,0 +1,49 @@
+{
+  "code": "import math\n\ndef count_Rectangles(r):\n    if r <= 0:\n        return 0\n    diameter = 2 * r\n    count = 0\n    max_side = int(diameter)  # Since sides are integers, the maximum possible side is floor(2r)\n    for a in range(1, max_side + 1):\n        for b in range(1, max_side + 1):\n            if math.sqrt(a**2 + b**2) <= diameter:\n                count += 1\n    return count",
+  "results": {
+    "assert count_Rectangles(2) == 8": {
+      "result": true,
+      "time": 0.09202027320861816,
+      "error": null
+    },
+    "assert count_Rectangles(1) == 1": {
+      "result": true,
+      "time": 0.08820199966430664,
+      "error": null
+    },
+    "assert count_Rectangles(0) == 0": {
+      "result": true,
+      "time": 0.08893680572509766,
+      "error": null
+    },
+    "assert count_Rectangles(3) == 22": {
+      "result": true,
+      "time": 0.08030915260314941,
+      "error": null
+    },
+    "assert count_Rectangles(6) == 98": {
+      "result": true,
+      "time": 0.08996033668518066,
+      "error": null
+    },
+    "assert count_Rectangles(7) == 139": {
+      "result": true,
+      "time": 0.09795737266540527,
+      "error": null
+    },
+    "assert count_Rectangles(5) == 69": {
+      "result": true,
+      "time": 0.09761524200439453,
+      "error": null
+    },
+    "assert count_Rectangles(4) == 41": {
+      "result": true,
+      "time": 0.11625266075134277,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

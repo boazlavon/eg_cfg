@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef find_char(input_string):\n    # Initialize an empty list to store the matching words\n    matching_words = []\n    \n    # Define the regex pattern to match words of 3, 4, or 5 characters\n    pattern = r'\\b\\w{3,5}\\b'\n    \n    # Use the findall method to find all matches in the input string\n    matches = re.findall(pattern, input_string)\n    \n    # Iterate over each match found\n    for word in matches:\n        # Append each word to the matching_words list\n        matching_words.append(word)\n    \n    # Return the list of matching words\n    return matching_words",
+  "results": {
+    "assert find_char('For the four consumer complaints contact manager AKR reddy') == ['For', 'the', 'four', 'AKR', 'reddy']": {
+      "result": true,
+      "time": 0.5611529350280762,
+      "error": null
+    },
+    "assert find_char('Certain service are subject to change MSR') == ['are', 'MSR']": {
+      "result": true,
+      "time": 0.5781793594360352,
+      "error": null
+    },
+    "assert find_char('Third party legal desclaimers') == ['Third', 'party', 'legal']": {
+      "result": true,
+      "time": 0.5642282962799072,
+      "error": null
+    },
+    "assert find_char(\"xbkGdeDSn snSjDNOnCcMSjzZZvINDGXyYZThSIFOANSerHFWGYtjoOypQpOU\") == []": {
+      "result": true,
+      "time": 0.5851883888244629,
+      "error": null
+    },
+    "assert find_char(\"MeicrHJfDIFImfTeHYnJSqfGgptLOfZfjRdQssqoRJwkWkmQlYYqOnseWZbr\") == []": {
+      "result": true,
+      "time": 0.593900203704834,
+      "error": null
+    },
+    "assert find_char(\"GUCTfCtMvwaaWosKAyvxvutXXDYwHdGJqRbmjdQaBJxjdueVqjQRPZ\") == []": {
+      "result": true,
+      "time": 0.5623779296875,
+      "error": null
+    },
+    "assert find_char(\"GyPrwknsncXhMXVuwaMeeQjfcSrlqx ZytWddSpLqbBtzBCURVVvwyHQg\") == []": {
+      "result": true,
+      "time": 0.5803370475769043,
+      "error": null
+    },
+    "assert find_char(\"zuUaxxDGGdioEXiGvWmeKywKkSIlDGpaqOKswcitQWKYjNpEKqhLbmNyGS\") == []": {
+      "result": true,
+      "time": 0.5062661170959473,
+      "error": null
+    },
+    "assert find_char(\"XMpXFNWQlzKVenZwYnUiHZYTfqQJDxESabeVbJAGCLfWkaaqcBTDrxQGmWEGkj\") == []": {
+      "result": true,
+      "time": 0.5325911045074463,
+      "error": null
+    },
+    "assert find_char(\"SKULcJFRyhosGkueDmetHYBEzoaKEWwQbIvCZytMOyneVDHFYzNOpfoSi\") == []": {
+      "result": true,
+      "time": 0.6036026477813721,
+      "error": null
+    },
+    "assert find_char(\"vwZlYxOL wytbgwnHincggzyuFZNDyJiCSqQJsNQBxqVLBLXTBIWFHTx\") == []": {
+      "result": true,
+      "time": 0.5890698432922363,
+      "error": null
+    },
+    "assert find_char(\"wEZOccVJAWdLBIbNqTRFHAbX xvNcngzwMrxkkIwthxsUSzEicFpCFbimGghux\") == []": {
+      "result": true,
+      "time": 0.5633547306060791,
+      "error": null
+    },
+    "assert find_char(\"DJTjTxeRhwEiIOmURrhzspBvagNfxszJOaQCKRRSEOzzNZldUnpHxpJzyND\") == []": {
+      "result": true,
+      "time": 0.5410506725311279,
+      "error": null
+    },
+    "assert find_char(\"U wKCERrGXiUPMLDkaUAdbIFWg ErjXhjsktOUrooEduJitWt vHBWXMYtx\") == []": {
+      "result": true,
+      "time": 0.4474301338195801,
+      "error": null
+    },
+    "assert find_char(\"nJ XLxZ SHiSrmewXgCECqJtlpWdgBOXJnzoAVbZGhvrnCPYPmMufxtecXbjSZ\") == ['XLxZ']": {
+      "result": true,
+      "time": 0.568500280380249,
+      "error": null
+    },
+    "assert find_char(\"XtAEOefnjCbQIFAwMEfUHtmwhZikLMxIqFMCOdls BWiypFEUAsBobJvfWemW X\") == []": {
+      "result": true,
+      "time": 0.6642441749572754,
+      "error": null
+    },
+    "assert find_char(\"PLUbIBCjfubiCxWJoVNMebhYvzXqhyjlbUDtPeRrJegPqrTETfRoJjTHd uRXRW\") == ['uRXRW']": {
+      "result": true,
+      "time": 0.5189211368560791,
+      "error": null
+    },
+    "assert find_char(\"lCvpJJVSFNkfcgpQpCZlbigVRWFkUIOIELQWZoJ GgyTNCmqnYkCmVfuwnD\") == []": {
+      "result": true,
+      "time": 0.5977981090545654,
+      "error": null
+    },
+    "assert find_char(\"T ZgylFvfTzTlHeawKPaBqVHPfWONoTAixZNvihaeVDtdagiYdLTz IBRyNiW\") == []": {
+      "result": true,
+      "time": 0.5974335670471191,
+      "error": null
+    },
+    "assert find_char(\"DiVUnSWbVBMqJDYbWJEPhygL VHIqG IFWIernmJYOEcanznmBftxImrTCfS y\") == ['VHIqG']": {
+      "result": true,
+      "time": 0.5825481414794922,
+      "error": null
+    },
+    "assert find_char(\"UvZuGaHAfZDJqETqlMxoGNKvGcPVUcVZjJzyrbCAFDjXuCVCLeylutMq\") == []": {
+      "result": true,
+      "time": 0.5530812740325928,
+      "error": null
+    },
+    "assert find_char(\"aRJNfApgZpDdpWAFhcKgRBdSdDiwKnrqTKRZjdQxQbebQosveEzcioeDSFcjnV\") == []": {
+      "result": true,
+      "time": 0.6090490818023682,
+      "error": null
+    },
+    "assert find_char(\"GvSAOjxePvBIrIbVYbwAWFkSS wvezUlGFbxfFTPYhRSZMtQhhHCpEtljIwHx\") == []": {
+      "result": true,
+      "time": 0.5708961486816406,
+      "error": null
+    },
+    "assert find_char(\"OG YKzNzdFDZhcFQMicrdYFftcdqUCyIHkHIzrkpaavzrToWKhzPOxxzoKG\") == []": {
+      "result": true,
+      "time": 0.6089832782745361,
+      "error": null
+    },
+    "assert find_char(\"YzsAaCjGXcTTdMhTVIOaENAJBhbXPfTblfxDuZKBqEgrHqtyRXKJ hUFdp\") == ['hUFdp']": {
+      "result": true,
+      "time": 0.5953490734100342,
+      "error": null
+    },
+    "assert find_char(\"qkcxZSfboIevieEVWfTZXsSlbalTrWBPkeHZEMsXeDYPUAhOQpazVVBMmGgyNe\") == []": {
+      "result": true,
+      "time": 0.5884027481079102,
+      "error": null
+    },
+    "assert find_char(\"jMahuaCIpdiUKnzuIfS knBQOwVlEyhQHziuc StEHAbHxlBmfqxQy tAyYMT\") == []": {
+      "result": true,
+      "time": 0.40703701972961426,
+      "error": null
+    },
+    "assert find_char(\"SkJQtSeusTvuhWZc RgOzlpfezycMhRPKMSsaukQKHWzfaeNdCrCbx tSAYSKk\") == []": {
+      "result": true,
+      "time": 0.5834434032440186,
+      "error": null
+    },
+    "assert find_char(\"iQizosXTSAyaqbBMLqhebNFUXtSyrtYYehGTOIghjtYcBAclHi IhcfypKZi\") == []": {
+      "result": true,
+      "time": 0.5841233730316162,
+      "error": null
+    },
+    "assert find_char(\"UqMAcMmBfpTALLPMiYUXKuDmuSPFlasjKihodQSLgCBPkZBrmhOXxHwNxTuY\") == []": {
+      "result": true,
+      "time": 0.569911003112793,
+      "error": null
+    },
+    "assert find_char(\"HLxlwJwUoAegQPKbivKVjrrNsgSxo pGokLQlbjjlLbcLXweMbjE IBVWlz\") == []": {
+      "result": true,
+      "time": 0.5639948844909668,
+      "error": null
+    },
+    "assert find_char(\"chgNXUiADrreohRKvDWcNgdRAPnzOaQjuvUikwZWAurDgvfInBJozuGroBhLq\") == []": {
+      "result": true,
+      "time": 0.6125447750091553,
+      "error": null
+    },
+    "assert find_char(\"GyoGAAseILKxPbUDHyLZwQmHDVKCLaATKPctGUGiMmcfaDAyy VrvmMxEIQ\") == []": {
+      "result": true,
+      "time": 0.5974380970001221,
+      "error": null
+    },
+    "assert find_char(\"RNpIgJVFIOYGuTkLvPyxfBiujEmFWAg IqqyVbh HrLduWBcGShJMpwlljiQiN\") == []": {
+      "result": true,
+      "time": 0.5747501850128174,
+      "error": null
+    },
+    "assert find_char(\"ZXxXTkTuSCTtQyPJspQDyo XBtxRNHbMJotjnUQGKQQQgqhgqgsDxoVyTrZvE\") == []": {
+      "result": true,
+      "time": 0.6210520267486572,
+      "error": null
+    },
+    "assert find_char(\"uXUBT XDnMAvSNfOfebkPTHgdDcglwIiNkIzsbORWs tVQmzqReIaCyLq\") == ['uXUBT']": {
+      "result": true,
+      "time": 0.5685811042785645,
+      "error": null
+    },
+    "assert find_char(\"hPlbXoP zIktIMObDbJRNvJjUgJLAdyurxjm\") == []": {
+      "result": true,
+      "time": 0.5835056304931641,
+      "error": null
+    },
+    "assert find_char(\"eMgtcnUzSMxkOuuHZKVqMxDNMfyCPdowsaYpCKQH\") == []": {
+      "result": true,
+      "time": 0.5605034828186035,
+      "error": null
+    },
+    "assert find_char(\"QCHzmOgGSSLtXGdgEReCMPsLuSNHzhMkaDSXbj\") == []": {
+      "result": true,
+      "time": 0.5615146160125732,
+      "error": null
+    },
+    "assert find_char(\"UdVtMxZ rowgKQDtYoxtpTIJq DWwyMjzPTdnS\") == []": {
+      "result": true,
+      "time": 0.59344482421875,
+      "error": null
+    },
+    "assert find_char(\"cIYGxqmlmXeFfYOTstNfKEuoyqxZazSKGDjgJlPU\") == []": {
+      "result": true,
+      "time": 0.554739236831665,
+      "error": null
+    },
+    "assert find_char(\"fJNuaAyLjUeqxKbPuhvnPugrfjdWQAHOhPjOkkwJ\") == []": {
+      "result": true,
+      "time": 0.5884592533111572,
+      "error": null
+    },
+    "assert find_char(\"ToLoTxoansSpDcXMihEWRFViNKnDbYjvbYIKLjn\") == []": {
+      "result": true,
+      "time": 0.5762455463409424,
+      "error": null
+    },
+    "assert find_char(\"bCznwmvtIlTCraebDfqNcftsQu SFmIUnAcp\") == []": {
+      "result": true,
+      "time": 0.5796887874603271,
+      "error": null
+    },
+    "assert find_char(\"iUwMjOzJrmZMJi yQvHJeDoFQfdtZuCzUtNnLBylM\") == []": {
+      "result": true,
+      "time": 0.5739471912384033,
+      "error": null
+    },
+    "assert find_char(\"r qJthiyXnGYcPvgoIqfltuoMSscpMHbmhyH\") == []": {
+      "result": true,
+      "time": 0.6140460968017578,
+      "error": null
+    },
+    "assert find_char(\"aTildanViWQoFtuXIkkVDYclQfUGHIIoDiQaXkA\") == []": {
+      "result": true,
+      "time": 0.5818884372711182,
+      "error": null
+    },
+    "assert find_char(\"dYTcrUfvuoGdzSlrcRZgaMqBsLPWDVEVPgfLkCBeHp\") == []": {
+      "result": true,
+      "time": 0.5374915599822998,
+      "error": null
+    },
+    "assert find_char(\"iOgRencxzrSWtfwrybKtfRlHuCumSUpmvhhdPeXtXzDCy\") == []": {
+      "result": true,
+      "time": 0.5771877765655518,
+      "error": null
+    },
+    "assert find_char(\"riXScxPNurSiYMoKrzpAdiuqKVcyUZGJxgQFohycYL\") == []": {
+      "result": true,
+      "time": 0.544609546661377,
+      "error": null
+    },
+    "assert find_char(\"SWLnIwkPmcNATApMPLwxuIaMvTJlXi XBCwxdgYjLIBA\") == []": {
+      "result": true,
+      "time": 0.5931234359741211,
+      "error": null
+    },
+    "assert find_char(\"KqSfnsaEyeHqrBYJOxCiWPuCfYKknfxBAiwWqNTsLpB\") == []": {
+      "result": true,
+      "time": 0.5924513339996338,
+      "error": null
+    },
+    "assert find_char(\"FxTBAbRL YzaSTjbHOHRwHNMHxnqbMpLKlwxyit\") == []": {
+      "result": true,
+      "time": 0.5848367214202881,
+      "error": null
+    },
+    "assert find_char(\"EWPpiDfFGhsUUeTQgJVyhyzIHj QuCpeVWWgsMmnR\") == []": {
+      "result": true,
+      "time": 0.5780813694000244,
+      "error": null
+    },
+    "assert find_char(\"OOdvjasgVJeYdvRhXWsjzGxYUvaBTkwuwtyeT\") == []": {
+      "result": true,
+      "time": 0.565049409866333,
+      "error": null
+    },
+    "assert find_char(\"aMGUNqSHgNLhRdNmDxZHmFhakmvcHXxvfQRVSYQnMiWXP\") == []": {
+      "result": true,
+      "time": 0.5642926692962646,
+      "error": null
+    },
+    "assert find_char(\"YWEFPEoyuqyJphQpJGhYNDiCgYZVDqNtdc zGloU\") == ['zGloU']": {
+      "result": true,
+      "time": 0.5808291435241699,
+      "error": null
+    },
+    "assert find_char(\"DXNAbHeLUHOlmqXqXHrKnyFlUSAkdYFSkDvncSMhU\") == []": {
+      "result": true,
+      "time": 0.5569698810577393,
+      "error": null
+    },
+    "assert find_char(\"knpRTaVZAriWhiZswsGKDAZXjGRwStxUK DskWILH\") == []": {
+      "result": true,
+      "time": 0.5873775482177734,
+      "error": null
+    },
+    "assert find_char(\"gVsnxImLEPZNsfwVyXviISsyGUulBYeoiQOGDnWvuypn\") == []": {
+      "result": true,
+      "time": 0.5402565002441406,
+      "error": null
+    },
+    "assert find_char(\"ZLQRCehWaOeENYsPGVeGjSGuIKkiqBHuHhyzgJYtsygES\") == []": {
+      "result": true,
+      "time": 0.5917882919311523,
+      "error": null
+    },
+    "assert find_char(\"kBtEOPWTCxfiXksukqAAdXGbTSyLwuKtlDVfOX\") == []": {
+      "result": true,
+      "time": 0.5519826412200928,
+      "error": null
+    },
+    "assert find_char(\"sqXVrjeXKOgKLkEhczuvzIqrzJVdppBkrychebqcSbQ\") == []": {
+      "result": true,
+      "time": 0.6082065105438232,
+      "error": null
+    },
+    "assert find_char(\"DuqMgBFKLAprFEBYHWiCgFXTMKCXBvMNWTAMVKWZE\") == []": {
+      "result": true,
+      "time": 0.5894694328308105,
+      "error": null
+    },
+    "assert find_char(\"ICkHnYbXWgFCYiIJVPBXiKlcvtpFoPxQjhehbUM\") == []": {
+      "result": true,
+      "time": 0.570441722869873,
+      "error": null
+    },
+    "assert find_char(\"VoGIzBdSqCdzIQl oROssBLaNoDaFTpcgvZaVgs\") == []": {
+      "result": true,
+      "time": 0.5761203765869141,
+      "error": null
+    },
+    "assert find_char(\"OFqKipMLdRWTcNTdEhXfQvyDiQo FatFowsimNZxoC\") == []": {
+      "result": true,
+      "time": 0.5462419986724854,
+      "error": null
+    },
+    "assert find_char(\"LKmULmcLaIKklYbEjpeJpinLMVJxXUxbYIEo\") == []": {
+      "result": true,
+      "time": 0.5998799800872803,
+      "error": null
+    },
+    "assert find_char(\"cxBsybFWVrVjBSrdeXhkuXQoycPIMZEwrRKendQDExGo\") == []": {
+      "result": true,
+      "time": 0.595949649810791,
+      "error": null
+    },
+    "assert find_char(\"PiNATOXoxUIjJwbgAboIhlDJ\") == []": {
+      "result": true,
+      "time": 0.5895557403564453,
+      "error": null
+    },
+    "assert find_char(\"akulhPpGcaoAUpKNwsLAt fSbry\") == ['fSbry']": {
+      "result": true,
+      "time": 0.5972542762756348,
+      "error": null
+    },
+    "assert find_char(\"qequHOcAwsUHgeImCwAfeIVk znGK\") == ['znGK']": {
+      "result": true,
+      "time": 0.5842480659484863,
+      "error": null
+    },
+    "assert find_char(\"PbJinpMYIjqPVPyXIbymBWWQtr\") == []": {
+      "result": true,
+      "time": 0.5788974761962891,
+      "error": null
+    },
+    "assert find_char(\"GgoVMTxxRZiSggtcVdJbjdszO\") == []": {
+      "result": true,
+      "time": 0.5859289169311523,
+      "error": null
+    },
+    "assert find_char(\"rPdSWWdlpuzlltUSEgiueIidtRIfvnX\") == []": {
+      "result": true,
+      "time": 0.5944936275482178,
+      "error": null
+    },
+    "assert find_char(\"yHCQvesNclfuFcgByZ oN oPWzshNTbx\") == []": {
+      "result": true,
+      "time": 0.5561621189117432,
+      "error": null
+    },
+    "assert find_char(\"YUqTuOknUPqkjEKCJZSwRIdzdbmfPxyqw\") == []": {
+      "result": true,
+      "time": 0.552710771560669,
+      "error": null
+    },
+    "assert find_char(\"TuePzQuMPPwlLCtrJywktHauhcwaELNUt\") == []": {
+      "result": true,
+      "time": 0.6041867733001709,
+      "error": null
+    },
+    "assert find_char(\"cTnRUckATazxjuzphHpXaErUIBX\") == []": {
+      "result": true,
+      "time": 0.5957095623016357,
+      "error": null
+    },
+    "assert find_char(\"NISWAkIFExF HOrdRXjixC LtuOhv\") == []": {
+      "result": true,
+      "time": 0.5740842819213867,
+      "error": null
+    },
+    "assert find_char(\"TomdZoOelHcSHIWhMFLBJVAPbGzDOIb\") == []": {
+      "result": true,
+      "time": 0.5612425804138184,
+      "error": null
+    },
+    "assert find_char(\"oGWBzwUAxAgjvJxSlh nNCCO G\") == ['nNCCO']": {
+      "result": true,
+      "time": 0.564208984375,
+      "error": null
+    },
+    "assert find_char(\"yGkLlCUhKcTqIklhkiHCHwmo\") == []": {
+      "result": true,
+      "time": 0.5747673511505127,
+      "error": null
+    },
+    "assert find_char(\"ZwloaqzxSJKgndgBhBaSEq hxx\") == ['hxx']": {
+      "result": true,
+      "time": 0.5719623565673828,
+      "error": null
+    },
+    "assert find_char(\"kCGZREJINHCdENzeVIRwAchnKYKrCFgO\") == []": {
+      "result": true,
+      "time": 0.5791499614715576,
+      "error": null
+    },
+    "assert find_char(\"rCuy sbGmap RMBxMZFRPzVlExuoHOFM\") == ['rCuy']": {
+      "result": true,
+      "time": 0.5905966758728027,
+      "error": null
+    },
+    "assert find_char(\"Amny QjrHsddGYmduorvOZPAnRPmVKXB\") == ['Amny']": {
+      "result": true,
+      "time": 0.5858120918273926,
+      "error": null
+    },
+    "assert find_char(\"pYPUCvIzeLglTQEOHhCYvpXefr\") == []": {
+      "result": true,
+      "time": 0.5593781471252441,
+      "error": null
+    },
+    "assert find_char(\"QiSddiixdbNqkPDesYPzKEHTVldCIKjh\") == []": {
+      "result": true,
+      "time": 0.577399492263794,
+      "error": null
+    },
+    "assert find_char(\"xwATnyeRFGKrwduCFhOZtvThJqXLiGO\") == []": {
+      "result": true,
+      "time": 0.5495374202728271,
+      "error": null
+    },
+    "assert find_char(\"eoWmiZKwRRAOSuwFhvWmbVPkqxUPePpx\") == []": {
+      "result": true,
+      "time": 0.5550291538238525,
+      "error": null
+    },
+    "assert find_char(\"xbiTpWgLRSsPUJ ebJgsuqQff\") == []": {
+      "result": true,
+      "time": 0.5713119506835938,
+      "error": null
+    },
+    "assert find_char(\"CsIWJaEMBfInpsXxGcZVyUckNWilC\") == []": {
+      "result": true,
+      "time": 0.5620312690734863,
+      "error": null
+    },
+    "assert find_char(\"IhtlPuJNEEOOcGvAJaw BdirBajjyYur\") == []": {
+      "result": true,
+      "time": 0.5873560905456543,
+      "error": null
+    },
+    "assert find_char(\"rQDXJuCrqEemXirYE MMZPIToIgG\") == []": {
+      "result": true,
+      "time": 0.5389490127563477,
+      "error": null
+    },
+    "assert find_char(\"gTKQtekwShhPVlsPMOzQgDSEpsT\") == []": {
+      "result": true,
+      "time": 0.5800092220306396,
+      "error": null
+    },
+    "assert find_char(\"VOKMvewwxJSostCOwsGNGftnd\") == []": {
+      "result": true,
+      "time": 0.5852515697479248,
+      "error": null
+    },
+    "assert find_char(\"EhSyehmbimuqFGDpaVfLFzUr\") == []": {
+      "result": true,
+      "time": 0.6083259582519531,
+      "error": null
+    },
+    "assert find_char(\" VLIBvNYiIudgEmHKRkLpQdUq\") == []": {
+      "result": true,
+      "time": 0.5817739963531494,
+      "error": null
+    },
+    "assert find_char(\"K WPYHlUZAuXmpZIJJThTnhvwrilNhVDL\") == []": {
+      "result": true,
+      "time": 0.5494940280914307,
+      "error": null
+    },
+    "assert find_char(\"uNxBpNWDMGS NBgxPStLmjpK\") == []": {
+      "result": true,
+      "time": 0.549468994140625,
+      "error": null
+    },
+    "assert find_char(\"JEakuAhwSP rgYjTrRNvWw O\") == []": {
+      "result": true,
+      "time": 0.5454931259155273,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

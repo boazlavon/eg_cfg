@@ -1,0 +1,84 @@
+{
+  "code": "def sequence(n):\n    if n == 1 or n == 2:\n        return 1\n    seq = [0] * (n + 1)\n    seq[1] = 1\n    seq[2] = 1\n    for i in range(3, n + 1):\n        term1 = seq[seq[i - 1]]\n        term2 = seq[i - seq[i - 1]]\n        seq[i] = term1 + term2\n    return seq[n]",
+  "results": {
+    "assert sequence(10) == 6": {
+      "result": true,
+      "time": 0.039608001708984375,
+      "error": null
+    },
+    "assert sequence(2) == 1": {
+      "result": true,
+      "time": 0.04185295104980469,
+      "error": null
+    },
+    "assert sequence(3) == 2": {
+      "result": true,
+      "time": 0.03827667236328125,
+      "error": null
+    },
+    "assert sequence(13) == 8": {
+      "result": true,
+      "time": 0.04776763916015625,
+      "error": null
+    },
+    "assert sequence(9) == 5": {
+      "result": true,
+      "time": 0.04148435592651367,
+      "error": null
+    },
+    "assert sequence(5) == 3": {
+      "result": true,
+      "time": 0.03986811637878418,
+      "error": null
+    },
+    "assert sequence(7) == 4": {
+      "result": true,
+      "time": 0.04806208610534668,
+      "error": null
+    },
+    "assert sequence(11) == 7": {
+      "result": true,
+      "time": 0.05198407173156738,
+      "error": null
+    },
+    "assert sequence(8) == 4": {
+      "result": true,
+      "time": 0.04203176498413086,
+      "error": null
+    },
+    "assert sequence(6) == 4": {
+      "result": true,
+      "time": 0.04071521759033203,
+      "error": null
+    },
+    "assert sequence(12) == 7": {
+      "result": true,
+      "time": 0.04324221611022949,
+      "error": null
+    },
+    "assert sequence(15) == 8": {
+      "result": true,
+      "time": 0.04272294044494629,
+      "error": null
+    },
+    "assert sequence(14) == 8": {
+      "result": true,
+      "time": 0.04392600059509277,
+      "error": null
+    },
+    "assert sequence(1) == 1": {
+      "result": true,
+      "time": 0.04068446159362793,
+      "error": null
+    },
+    "assert sequence(4) == 2": {
+      "result": true,
+      "time": 0.043352603912353516,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

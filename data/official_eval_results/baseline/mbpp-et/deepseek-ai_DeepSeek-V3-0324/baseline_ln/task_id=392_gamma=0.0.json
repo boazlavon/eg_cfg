@@ -1,0 +1,139 @@
+{
+  "code": "def get_max_sum(n):\n    if n == 0:\n        return 0\n    # Base case: if n is small, the maximum is n itself\n    if n < 12:\n        return n\n    # Recursive case: compute the sum of f(n/2) + f(n/3) + f(n/4) + f(n/5)\n    sum_parts = get_max_sum(n // 2) + get_max_sum(n // 3) + get_max_sum(n // 4) + get_max_sum(n // 5)\n    # Return the maximum between the sum and n\n    return max(sum_parts, n)",
+  "results": {
+    "assert get_max_sum(60) == 106": {
+      "result": false,
+      "time": 0.04523658752441406,
+      "error": null
+    },
+    "assert get_max_sum(10) == 12": {
+      "result": false,
+      "time": 0.04701852798461914,
+      "error": null
+    },
+    "assert get_max_sum(2) == 2": {
+      "result": true,
+      "time": 0.045334577560424805,
+      "error": null
+    },
+    "assert get_max_sum(57) == 90": {
+      "result": false,
+      "time": 0.04871082305908203,
+      "error": null
+    },
+    "assert get_max_sum(62) == 106": {
+      "result": false,
+      "time": 0.04699826240539551,
+      "error": null
+    },
+    "assert get_max_sum(61) == 106": {
+      "result": false,
+      "time": 0.05686020851135254,
+      "error": null
+    },
+    "assert get_max_sum(55) == 90": {
+      "result": false,
+      "time": 0.042285919189453125,
+      "error": null
+    },
+    "assert get_max_sum(59) == 90": {
+      "result": false,
+      "time": 0.04905557632446289,
+      "error": null
+    },
+    "assert get_max_sum(63) == 106": {
+      "result": false,
+      "time": 0.04351687431335449,
+      "error": null
+    },
+    "assert get_max_sum(64) == 114": {
+      "result": false,
+      "time": 0.044776201248168945,
+      "error": null
+    },
+    "assert get_max_sum(65) == 114": {
+      "result": false,
+      "time": 0.038120269775390625,
+      "error": null
+    },
+    "assert get_max_sum(56) == 90": {
+      "result": false,
+      "time": 0.0425870418548584,
+      "error": null
+    },
+    "assert get_max_sum(58) == 90": {
+      "result": false,
+      "time": 0.04392361640930176,
+      "error": null
+    },
+    "assert get_max_sum(11) == 12": {
+      "result": false,
+      "time": 0.05646800994873047,
+      "error": null
+    },
+    "assert get_max_sum(15) == 18": {
+      "result": true,
+      "time": 0.04806661605834961,
+      "error": null
+    },
+    "assert get_max_sum(7) == 7": {
+      "result": true,
+      "time": 0.061575889587402344,
+      "error": null
+    },
+    "assert get_max_sum(6) == 7": {
+      "result": false,
+      "time": 0.06519341468811035,
+      "error": null
+    },
+    "assert get_max_sum(8) == 9": {
+      "result": false,
+      "time": 0.06174969673156738,
+      "error": null
+    },
+    "assert get_max_sum(9) == 10": {
+      "result": false,
+      "time": 0.05859541893005371,
+      "error": null
+    },
+    "assert get_max_sum(5) == 5": {
+      "result": true,
+      "time": 0.059653520584106445,
+      "error": null
+    },
+    "assert get_max_sum(13) == 16": {
+      "result": false,
+      "time": 0.04549121856689453,
+      "error": null
+    },
+    "assert get_max_sum(14) == 16": {
+      "result": true,
+      "time": 0.034332275390625,
+      "error": null
+    },
+    "assert get_max_sum(12) == 16": {
+      "result": false,
+      "time": 0.03574967384338379,
+      "error": null
+    },
+    "assert get_max_sum(1) == 1": {
+      "result": true,
+      "time": 0.03668212890625,
+      "error": null
+    },
+    "assert get_max_sum(4) == 4": {
+      "result": true,
+      "time": 0.04260611534118652,
+      "error": null
+    },
+    "assert get_max_sum(3) == 3": {
+      "result": true,
+      "time": 0.04569816589355469,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3076923076923077,
+  "general_error": "",
+  "has_testcase_error": false
+}

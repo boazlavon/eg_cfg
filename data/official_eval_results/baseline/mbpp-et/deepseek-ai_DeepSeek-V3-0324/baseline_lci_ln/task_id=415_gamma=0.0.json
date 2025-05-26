@@ -1,0 +1,519 @@
+{
+  "code": "def max_Product(arr):\n    if len(arr) < 2:\n        return None\n    \n    max1 = max(arr[0], arr[1])\n    max2 = min(arr[0], arr[1])\n    min1 = min(arr[0], arr[1])\n    min2 = max(arr[0], arr[1])\n    \n    for i in range(2, len(arr)):\n        current = arr[i]\n        \n        if current > max1:\n            max2 = max1\n            max1 = current\n        elif current > max2:\n            max2 = current\n        \n        if current < min1:\n            min2 = min1\n            min1 = current\n        elif current < min2:\n            min2 = current\n    \n    product_max = max1 * max2\n    product_min = min1 * min2\n    \n    if product_max > product_min:\n        return (max2, max1)\n    else:\n        return (min1, min2)",
+  "results": {
+    "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)": {
+      "result": true,
+      "time": 0.04118704795837402,
+      "error": null
+    },
+    "assert max_Product([0,-1,-2,-4,5,0,-6]) == (-4,-6)": {
+      "result": false,
+      "time": 0.036078691482543945,
+      "error": null
+    },
+    "assert max_Product([1,2,3]) == (2,3)": {
+      "result": true,
+      "time": 0.039800167083740234,
+      "error": null
+    },
+    "assert max_Product([2, 2, 4, 5, 3, 2, 3, 4]) == (4, 5)": {
+      "result": true,
+      "time": 0.038475751876831055,
+      "error": null
+    },
+    "assert max_Product([6, 7, 3, 6, 7, 3, 4, 6]) == (7, 7)": {
+      "result": true,
+      "time": 0.034924983978271484,
+      "error": null
+    },
+    "assert max_Product([6, 5, 3, 6, 8, 5, 11, 7]) == (8, 11)": {
+      "result": true,
+      "time": 0.034284114837646484,
+      "error": null
+    },
+    "assert max_Product([5, 4, 2, 6, 11, 2, 5, 3]) == (6, 11)": {
+      "result": true,
+      "time": 0.0334925651550293,
+      "error": null
+    },
+    "assert max_Product([2, 3, 5, 6, 3, 4, 11, 1]) == (6, 11)": {
+      "result": true,
+      "time": 0.04262661933898926,
+      "error": null
+    },
+    "assert max_Product([2, 7, 6, 2, 4, 3, 10, 2]) == (7, 10)": {
+      "result": true,
+      "time": 0.03609919548034668,
+      "error": null
+    },
+    "assert max_Product([1, 4, 1, 4, 2, 4, 5, 5]) == (5, 5)": {
+      "result": true,
+      "time": 0.03401041030883789,
+      "error": null
+    },
+    "assert max_Product([5, 3, 3, 9, 7, 5, 10, 8]) == (9, 10)": {
+      "result": true,
+      "time": 0.0415802001953125,
+      "error": null
+    },
+    "assert max_Product([5, 2, 3, 2, 8, 3, 11, 1]) == (8, 11)": {
+      "result": true,
+      "time": 0.039023399353027344,
+      "error": null
+    },
+    "assert max_Product([1, 3, 7, 5, 8, 2, 3, 7]) == (7, 8)": {
+      "result": true,
+      "time": 0.03647184371948242,
+      "error": null
+    },
+    "assert max_Product([6, 4, 5, 9, 10, 2, 3, 4]) == (9, 10)": {
+      "result": true,
+      "time": 0.040548086166381836,
+      "error": null
+    },
+    "assert max_Product([6, 3, 2, 6, 12, 5, 11, 7]) == (12, 11)": {
+      "result": false,
+      "time": 0.04356122016906738,
+      "error": null
+    },
+    "assert max_Product([4, 2, 8, 1, 2, 4, 5, 2]) == (8, 5)": {
+      "result": false,
+      "time": 0.04764962196350098,
+      "error": null
+    },
+    "assert max_Product([2, 2, 3, 5, 6, 3, 11, 1]) == (6, 11)": {
+      "result": true,
+      "time": 0.03795194625854492,
+      "error": null
+    },
+    "assert max_Product([5, 2, 7, 8, 4, 2, 11, 9]) == (11, 9)": {
+      "result": false,
+      "time": 0.050478219985961914,
+      "error": null
+    },
+    "assert max_Product([3, 3, 6, 1, 10, 4, 12, 5]) == (10, 12)": {
+      "result": true,
+      "time": 0.039275169372558594,
+      "error": null
+    },
+    "assert max_Product([6, 3, 4, 5, 8, 1, 9, 5]) == (8, 9)": {
+      "result": true,
+      "time": 0.04251503944396973,
+      "error": null
+    },
+    "assert max_Product([6, 6, 2, 3, 3, 5, 7, 9]) == (7, 9)": {
+      "result": true,
+      "time": 0.03327178955078125,
+      "error": null
+    },
+    "assert max_Product([3, 4, 1, 9, 8, 5, 6, 4]) == (9, 8)": {
+      "result": false,
+      "time": 0.03561663627624512,
+      "error": null
+    },
+    "assert max_Product([4, 3, 1, 9, 7, 5, 8, 4]) == (9, 8)": {
+      "result": false,
+      "time": 0.03909420967102051,
+      "error": null
+    },
+    "assert max_Product([6, 7, 2, 4, 10, 4, 11, 1]) == (10, 11)": {
+      "result": true,
+      "time": 0.03910398483276367,
+      "error": null
+    },
+    "assert max_Product([1, 4, 8, 7, 3, 5, 7, 1]) == (8, 7)": {
+      "result": false,
+      "time": 0.03159642219543457,
+      "error": null
+    },
+    "assert max_Product([5, 3, 7, 1, 11, 5, 3, 9]) == (11, 9)": {
+      "result": false,
+      "time": 0.041878700256347656,
+      "error": null
+    },
+    "assert max_Product([6, 5, 6, 3, 10, 3, 13, 3]) == (10, 13)": {
+      "result": true,
+      "time": 0.042261600494384766,
+      "error": null
+    },
+    "assert max_Product([3, 5, 2, 5, 7, 3, 3, 7]) == (7, 7)": {
+      "result": true,
+      "time": 0.042617082595825195,
+      "error": null
+    },
+    "assert max_Product([3, 1, 6, 3, 12, 2, 5, 9]) == (12, 9)": {
+      "result": false,
+      "time": 0.042691707611083984,
+      "error": null
+    },
+    "assert max_Product([6, 1, 5, 4, 7, 1, 12, 1]) == (7, 12)": {
+      "result": true,
+      "time": 0.0399322509765625,
+      "error": null
+    },
+    "assert max_Product([4, 6, 2, 8, 6, 3, 12, 9]) == (12, 9)": {
+      "result": false,
+      "time": 0.037756919860839844,
+      "error": null
+    },
+    "assert max_Product([1, 2, 1, 2, 5, 3, 8, 4]) == (5, 8)": {
+      "result": true,
+      "time": 0.035745859146118164,
+      "error": null
+    },
+    "assert max_Product([5, 2, 1, 6, 3, 3, 7, 3]) == (6, 7)": {
+      "result": true,
+      "time": 0.04368424415588379,
+      "error": null
+    },
+    "assert max_Product([4, 3, 6, 9, 12, 4, 3, 2]) == (9, 12)": {
+      "result": true,
+      "time": 0.04169607162475586,
+      "error": null
+    },
+    "assert max_Product([5, 7, 8, 2, 7, 2, 7, 2]) == (7, 8)": {
+      "result": true,
+      "time": 0.035523414611816406,
+      "error": null
+    },
+    "assert max_Product([5, 7, 3, 4, 2, 2, 3, 9]) == (7, 9)": {
+      "result": true,
+      "time": 0.0344080924987793,
+      "error": null
+    },
+    "assert max_Product([1, 4, 0, -1, 6, 5, -6]) == (6, 5)": {
+      "result": false,
+      "time": 0.04705476760864258,
+      "error": null
+    },
+    "assert max_Product([4, 0, 3, 1, 10, 1, -7]) == (4, 10)": {
+      "result": true,
+      "time": 0.04416370391845703,
+      "error": null
+    },
+    "assert max_Product([2, 2, -2, -6, 1, 1, -9]) == (-6, -9)": {
+      "result": false,
+      "time": 0.043024301528930664,
+      "error": null
+    },
+    "assert max_Product([4, -4, -5, -1, 7, 2, -8]) == (-5, -8)": {
+      "result": false,
+      "time": 0.035724639892578125,
+      "error": null
+    },
+    "assert max_Product([3, -2, -6, 1, 3, 5, -10]) == (-6, -10)": {
+      "result": false,
+      "time": 0.04250907897949219,
+      "error": null
+    },
+    "assert max_Product([5, -4, 0, -4, 3, 1, -1]) == (-4, -4)": {
+      "result": true,
+      "time": 0.03869819641113281,
+      "error": null
+    },
+    "assert max_Product([5, -5, -4, -6, 9, 1, -10]) == (-6, -10)": {
+      "result": false,
+      "time": 0.03507733345031738,
+      "error": null
+    },
+    "assert max_Product([1, -2, -1, -7, 8, 3, -6]) == (-7, -6)": {
+      "result": true,
+      "time": 0.04310202598571777,
+      "error": null
+    },
+    "assert max_Product([4, 0, -5, -1, 3, 4, -6]) == (-5, -6)": {
+      "result": false,
+      "time": 0.04369544982910156,
+      "error": null
+    },
+    "assert max_Product([2, 0, -6, -8, 5, 2, -5]) == (-6, -8)": {
+      "result": false,
+      "time": 0.0363616943359375,
+      "error": null
+    },
+    "assert max_Product([5, -4, -3, -7, 2, 4, -2]) == (-4, -7)": {
+      "result": false,
+      "time": 0.04169178009033203,
+      "error": null
+    },
+    "assert max_Product([1, -2, -3, -2, 10, 4, -2]) == (10, 4)": {
+      "result": false,
+      "time": 0.042687416076660156,
+      "error": null
+    },
+    "assert max_Product([2, -6, -1, 0, 9, 3, -2]) == (9, 3)": {
+      "result": false,
+      "time": 0.03901362419128418,
+      "error": null
+    },
+    "assert max_Product([1, -2, 0, -5, 7, 4, -3]) == (7, 4)": {
+      "result": false,
+      "time": 0.04405379295349121,
+      "error": null
+    },
+    "assert max_Product([2, 0, 2, -8, 7, 2, -3]) == (-8, -3)": {
+      "result": true,
+      "time": 0.0513918399810791,
+      "error": null
+    },
+    "assert max_Product([5, -2, 1, -6, 8, 5, -8]) == (-6, -8)": {
+      "result": false,
+      "time": 0.035951852798461914,
+      "error": null
+    },
+    "assert max_Product([4, -4, -5, -3, 4, 5, -1]) == (4, 5)": {
+      "result": false,
+      "time": 0.037671804428100586,
+      "error": null
+    },
+    "assert max_Product([2, 3, -4, -5, 8, 1, -4]) == (3, 8)": {
+      "result": true,
+      "time": 0.03861069679260254,
+      "error": null
+    },
+    "assert max_Product([3, -1, 1, 1, 2, 4, -11]) == (3, 4)": {
+      "result": true,
+      "time": 0.04004526138305664,
+      "error": null
+    },
+    "assert max_Product([5, -6, 0, -4, 9, 3, -9]) == (-6, -9)": {
+      "result": false,
+      "time": 0.04194235801696777,
+      "error": null
+    },
+    "assert max_Product([3, -5, 0, -9, 8, 4, -4]) == (-5, -9)": {
+      "result": false,
+      "time": 0.03854823112487793,
+      "error": null
+    },
+    "assert max_Product([5, 4, 3, -8, 3, 4, -3]) == (-8, -3)": {
+      "result": true,
+      "time": 0.04023623466491699,
+      "error": null
+    },
+    "assert max_Product([3, -5, -7, -6, 1, 5, -5]) == (-7, -6)": {
+      "result": true,
+      "time": 0.038117408752441406,
+      "error": null
+    },
+    "assert max_Product([2, 1, -5, -4, 6, 4, -8]) == (-5, -8)": {
+      "result": false,
+      "time": 0.042658329010009766,
+      "error": null
+    },
+    "assert max_Product([4, -5, -5, -4, 9, 3, -1]) == (4, 9)": {
+      "result": true,
+      "time": 0.03740835189819336,
+      "error": null
+    },
+    "assert max_Product([3, -6, 3, -8, 5, 1, -9]) == (-8, -9)": {
+      "result": false,
+      "time": 0.04173016548156738,
+      "error": null
+    },
+    "assert max_Product([2, 0, 0, -9, 2, 5, -7]) == (-9, -7)": {
+      "result": true,
+      "time": 0.04489398002624512,
+      "error": null
+    },
+    "assert max_Product([2, -2, 0, -1, 6, 2, -5]) == (2, 6)": {
+      "result": true,
+      "time": 0.031381845474243164,
+      "error": null
+    },
+    "assert max_Product([2, 0, -5, -9, 2, 4, -1]) == (-5, -9)": {
+      "result": false,
+      "time": 0.035073280334472656,
+      "error": null
+    },
+    "assert max_Product([5, 1, -5, -2, 4, 1, -1]) == (5, 4)": {
+      "result": false,
+      "time": 0.04551506042480469,
+      "error": null
+    },
+    "assert max_Product([1, 4, -3, -5, 4, 4, -8]) == (-5, -8)": {
+      "result": false,
+      "time": 0.033945560455322266,
+      "error": null
+    },
+    "assert max_Product([1, -1, -4, -2, 1, 5, -4]) == (-4, -4)": {
+      "result": true,
+      "time": 0.04167318344116211,
+      "error": null
+    },
+    "assert max_Product([2, 0, 1, -7, 1, 2, -6]) == (-7, -6)": {
+      "result": true,
+      "time": 0.040920257568359375,
+      "error": null
+    },
+    "assert max_Product([2, 1, 7]) == (2, 7)": {
+      "result": true,
+      "time": 0.04092884063720703,
+      "error": null
+    },
+    "assert max_Product([2, 3, 8]) == (3, 8)": {
+      "result": true,
+      "time": 0.04675102233886719,
+      "error": null
+    },
+    "assert max_Product([1, 4, 5]) == (4, 5)": {
+      "result": true,
+      "time": 0.03786921501159668,
+      "error": null
+    },
+    "assert max_Product([2, 1, 1]) == (2, 1)": {
+      "result": false,
+      "time": 0.04104971885681152,
+      "error": null
+    },
+    "assert max_Product([1, 5, 8]) == (5, 8)": {
+      "result": true,
+      "time": 0.04439520835876465,
+      "error": null
+    },
+    "assert max_Product([6, 5, 6]) == (6, 6)": {
+      "result": true,
+      "time": 0.032799720764160156,
+      "error": null
+    },
+    "assert max_Product([1, 7, 5]) == (7, 5)": {
+      "result": false,
+      "time": 0.03790998458862305,
+      "error": null
+    },
+    "assert max_Product([2, 7, 3]) == (7, 3)": {
+      "result": false,
+      "time": 0.047547101974487305,
+      "error": null
+    },
+    "assert max_Product([2, 5, 1]) == (2, 5)": {
+      "result": true,
+      "time": 0.04171419143676758,
+      "error": null
+    },
+    "assert max_Product([3, 2, 5]) == (3, 5)": {
+      "result": true,
+      "time": 0.03784346580505371,
+      "error": null
+    },
+    "assert max_Product([5, 3, 3]) == (5, 3)": {
+      "result": false,
+      "time": 0.04518842697143555,
+      "error": null
+    },
+    "assert max_Product([2, 4, 4]) == (4, 4)": {
+      "result": true,
+      "time": 0.03926968574523926,
+      "error": null
+    },
+    "assert max_Product([5, 3, 6]) == (5, 6)": {
+      "result": true,
+      "time": 0.05261492729187012,
+      "error": null
+    },
+    "assert max_Product([6, 5, 2]) == (6, 5)": {
+      "result": false,
+      "time": 0.04118537902832031,
+      "error": null
+    },
+    "assert max_Product([4, 3, 2]) == (4, 3)": {
+      "result": false,
+      "time": 0.03866171836853027,
+      "error": null
+    },
+    "assert max_Product([4, 1, 2]) == (4, 2)": {
+      "result": false,
+      "time": 0.040953636169433594,
+      "error": null
+    },
+    "assert max_Product([6, 2, 1]) == (6, 2)": {
+      "result": false,
+      "time": 0.040966033935546875,
+      "error": null
+    },
+    "assert max_Product([5, 5, 3]) == (5, 5)": {
+      "result": true,
+      "time": 0.03624224662780762,
+      "error": null
+    },
+    "assert max_Product([3, 5, 8]) == (5, 8)": {
+      "result": true,
+      "time": 0.03423714637756348,
+      "error": null
+    },
+    "assert max_Product([2, 6, 5]) == (6, 5)": {
+      "result": false,
+      "time": 0.03409314155578613,
+      "error": null
+    },
+    "assert max_Product([6, 7, 3]) == (6, 7)": {
+      "result": true,
+      "time": 0.03659701347351074,
+      "error": null
+    },
+    "assert max_Product([5, 6, 1]) == (5, 6)": {
+      "result": true,
+      "time": 0.03332877159118652,
+      "error": null
+    },
+    "assert max_Product([1, 6, 4]) == (6, 4)": {
+      "result": false,
+      "time": 0.0346219539642334,
+      "error": null
+    },
+    "assert max_Product([6, 7, 5]) == (6, 7)": {
+      "result": true,
+      "time": 0.03820157051086426,
+      "error": null
+    },
+    "assert max_Product([4, 2, 7]) == (4, 7)": {
+      "result": true,
+      "time": 0.04116630554199219,
+      "error": null
+    },
+    "assert max_Product([5, 2, 5]) == (5, 5)": {
+      "result": true,
+      "time": 0.037322282791137695,
+      "error": null
+    },
+    "assert max_Product([5, 4, 2]) == (5, 4)": {
+      "result": false,
+      "time": 0.04001021385192871,
+      "error": null
+    },
+    "assert max_Product([6, 3, 5]) == (6, 5)": {
+      "result": false,
+      "time": 0.03636765480041504,
+      "error": null
+    },
+    "assert max_Product([4, 5, 3]) == (4, 5)": {
+      "result": true,
+      "time": 0.04082369804382324,
+      "error": null
+    },
+    "assert max_Product([5, 7, 4]) == (5, 7)": {
+      "result": true,
+      "time": 0.037029266357421875,
+      "error": null
+    },
+    "assert max_Product([2, 6, 7]) == (6, 7)": {
+      "result": true,
+      "time": 0.03809380531311035,
+      "error": null
+    },
+    "assert max_Product([2, 2, 8]) == (2, 8)": {
+      "result": true,
+      "time": 0.03642773628234863,
+      "error": null
+    },
+    "assert max_Product([5, 4, 4]) == (5, 4)": {
+      "result": false,
+      "time": 0.048105478286743164,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.5784313725490197,
+  "general_error": "",
+  "has_testcase_error": false
+}

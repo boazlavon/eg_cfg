@@ -1,0 +1,519 @@
+{
+  "code": "def decode_list(lst):\n    result = []\n    for i in lst:\n        if type(i) == list:\n            result.extend([i[1]]*i[0])\n        else:\n            result.extend([i]*i)\n    return result",
+  "results": {
+    "assert decode_list([[2, 1], 2, 3, [2, 4], 5,1])==[1,1,2,3,4,4,5,1]": {
+      "result": false,
+      "time": 0.036821603775024414,
+      "error": null
+    },
+    "assert decode_list(['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', [2, 'l'], 'y'])==['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', 'l', 'l', 'y']": {
+      "result": false,
+      "time": 0.043814897537231445,
+      "error": null
+    },
+    "assert decode_list(['p', 'y', 't', 'h', 'o', 'n'])==['p', 'y', 't', 'h', 'o', 'n']": {
+      "result": false,
+      "time": 0.05930924415588379,
+      "error": null
+    },
+    "assert decode_list([[3, 6], 1, 6, [3, 2], 1, 3]) == [6, 6, 6, 1, 6, 2, 2, 2, 1, 3]": {
+      "result": false,
+      "time": 0.03540301322937012,
+      "error": null
+    },
+    "assert decode_list([[3, 3], 6, 6, [3, 8], 1, 4]) == [3, 3, 3, 6, 6, 8, 8, 8, 1, 4]": {
+      "result": false,
+      "time": 0.04503440856933594,
+      "error": null
+    },
+    "assert decode_list([[3, 3], 4, 8, [2, 6], 10, 5]) == [3, 3, 3, 4, 8, 6, 6, 10, 5]": {
+      "result": false,
+      "time": 0.03827929496765137,
+      "error": null
+    },
+    "assert decode_list([[2, 2], 5, 6, [4, 4], 9, 4]) == [2, 2, 5, 6, 4, 4, 4, 4, 9, 4]": {
+      "result": false,
+      "time": 0.041185617446899414,
+      "error": null
+    },
+    "assert decode_list([[2, 4], 3, 5, [7, 1], 7, 2]) == [4, 4, 3, 5, 1, 1, 1, 1, 1, 1, 1, 7, 2]": {
+      "result": false,
+      "time": 0.03896331787109375,
+      "error": null
+    },
+    "assert decode_list([[3, 4], 1, 5, [6, 6], 6, 4]) == [4, 4, 4, 1, 5, 6, 6, 6, 6, 6, 6, 6, 4]": {
+      "result": false,
+      "time": 0.04341387748718262,
+      "error": null
+    },
+    "assert decode_list([[6, 6], 2, 3, [6, 7], 9, 2]) == [6, 6, 6, 6, 6, 6, 2, 3, 7, 7, 7, 7, 7, 7, 9, 2]": {
+      "result": false,
+      "time": 0.03457450866699219,
+      "error": null
+    },
+    "assert decode_list([[6, 3], 3, 5, [6, 8], 9, 4]) == [3, 3, 3, 3, 3, 3, 3, 5, 8, 8, 8, 8, 8, 8, 9, 4]": {
+      "result": false,
+      "time": 0.04783153533935547,
+      "error": null
+    },
+    "assert decode_list([[4, 4], 3, 6, [3, 5], 4, 6]) == [4, 4, 4, 4, 3, 6, 5, 5, 5, 4, 6]": {
+      "result": false,
+      "time": 0.03532695770263672,
+      "error": null
+    },
+    "assert decode_list([[5, 4], 2, 8, [2, 8], 10, 4]) == [4, 4, 4, 4, 4, 2, 8, 8, 8, 10, 4]": {
+      "result": false,
+      "time": 0.03242921829223633,
+      "error": null
+    },
+    "assert decode_list([[1, 3], 5, 3, [7, 6], 5, 2]) == [3, 5, 3, 6, 6, 6, 6, 6, 6, 6, 5, 2]": {
+      "result": false,
+      "time": 0.04306173324584961,
+      "error": null
+    },
+    "assert decode_list([[5, 2], 4, 4, [7, 6], 3, 5]) == [2, 2, 2, 2, 2, 4, 4, 6, 6, 6, 6, 6, 6, 6, 3, 5]": {
+      "result": false,
+      "time": 0.040780067443847656,
+      "error": null
+    },
+    "assert decode_list([[4, 4], 3, 2, [4, 5], 8, 1]) == [4, 4, 4, 4, 3, 2, 5, 5, 5, 5, 8, 1]": {
+      "result": false,
+      "time": 0.03187370300292969,
+      "error": null
+    },
+    "assert decode_list([[3, 1], 1, 2, [5, 8], 10, 2]) == [1, 1, 1, 1, 2, 8, 8, 8, 8, 8, 10, 2]": {
+      "result": false,
+      "time": 0.037595510482788086,
+      "error": null
+    },
+    "assert decode_list([[1, 5], 7, 4, [5, 9], 2, 3]) == [5, 7, 4, 9, 9, 9, 9, 9, 2, 3]": {
+      "result": false,
+      "time": 0.04299163818359375,
+      "error": null
+    },
+    "assert decode_list([[1, 3], 4, 6, [5, 4], 8, 4]) == [3, 4, 6, 4, 4, 4, 4, 4, 8, 4]": {
+      "result": false,
+      "time": 0.041269540786743164,
+      "error": null
+    },
+    "assert decode_list([[1, 1], 7, 5, [6, 8], 2, 5]) == [1, 7, 5, 8, 8, 8, 8, 8, 8, 2, 5]": {
+      "result": false,
+      "time": 0.03868269920349121,
+      "error": null
+    },
+    "assert decode_list([[4, 3], 1, 3, [5, 7], 4, 2]) == [3, 3, 3, 3, 1, 3, 7, 7, 7, 7, 7, 4, 2]": {
+      "result": false,
+      "time": 0.03930974006652832,
+      "error": null
+    },
+    "assert decode_list([[1, 5], 1, 6, [7, 8], 7, 4]) == [5, 1, 6, 8, 8, 8, 8, 8, 8, 8, 7, 4]": {
+      "result": false,
+      "time": 0.03938102722167969,
+      "error": null
+    },
+    "assert decode_list([[7, 5], 3, 4, [5, 1], 2, 2]) == [5, 5, 5, 5, 5, 5, 5, 3, 4, 1, 1, 1, 1, 1, 2, 2]": {
+      "result": false,
+      "time": 0.04044222831726074,
+      "error": null
+    },
+    "assert decode_list([[4, 4], 6, 4, [7, 4], 6, 1]) == [4, 4, 4, 4, 6, 4, 4, 4, 4, 4, 4, 4, 4, 6, 1]": {
+      "result": false,
+      "time": 0.04421687126159668,
+      "error": null
+    },
+    "assert decode_list([[6, 3], 4, 5, [1, 8], 1, 2]) == [3, 3, 3, 3, 3, 3, 4, 5, 8, 1, 2]": {
+      "result": false,
+      "time": 0.033651113510131836,
+      "error": null
+    },
+    "assert decode_list([[7, 2], 5, 3, [6, 2], 3, 5]) == [2, 2, 2, 2, 2, 2, 2, 5, 3, 2, 2, 2, 2, 2, 2, 3, 5]": {
+      "result": false,
+      "time": 0.036080121994018555,
+      "error": null
+    },
+    "assert decode_list([[6, 1], 1, 6, [5, 1], 5, 4]) == [1, 1, 1, 1, 1, 1, 1, 6, 1, 1, 1, 1, 1, 5, 4]": {
+      "result": false,
+      "time": 0.0395352840423584,
+      "error": null
+    },
+    "assert decode_list([[5, 2], 5, 3, [7, 9], 9, 2]) == [2, 2, 2, 2, 2, 5, 3, 9, 9, 9, 9, 9, 9, 9, 9, 2]": {
+      "result": false,
+      "time": 0.03846859931945801,
+      "error": null
+    },
+    "assert decode_list([[1, 2], 4, 4, [1, 8], 5, 6]) == [2, 4, 4, 8, 5, 6]": {
+      "result": false,
+      "time": 0.04192495346069336,
+      "error": null
+    },
+    "assert decode_list([[5, 2], 2, 8, [5, 2], 8, 4]) == [2, 2, 2, 2, 2, 2, 8, 2, 2, 2, 2, 2, 8, 4]": {
+      "result": false,
+      "time": 0.041611671447753906,
+      "error": null
+    },
+    "assert decode_list([[5, 6], 6, 1, [2, 8], 4, 1]) == [6, 6, 6, 6, 6, 6, 1, 8, 8, 4, 1]": {
+      "result": false,
+      "time": 0.03419947624206543,
+      "error": null
+    },
+    "assert decode_list([[6, 4], 3, 8, [4, 5], 6, 1]) == [4, 4, 4, 4, 4, 4, 3, 8, 5, 5, 5, 5, 6, 1]": {
+      "result": false,
+      "time": 0.04103708267211914,
+      "error": null
+    },
+    "assert decode_list([[6, 6], 2, 6, [4, 6], 9, 2]) == [6, 6, 6, 6, 6, 6, 2, 6, 6, 6, 6, 6, 9, 2]": {
+      "result": false,
+      "time": 0.04736757278442383,
+      "error": null
+    },
+    "assert decode_list([[4, 3], 1, 6, [5, 2], 6, 6]) == [3, 3, 3, 3, 1, 6, 2, 2, 2, 2, 2, 6, 6]": {
+      "result": false,
+      "time": 0.037749290466308594,
+      "error": null
+    },
+    "assert decode_list([[5, 4], 4, 1, [6, 8], 6, 6]) == [4, 4, 4, 4, 4, 4, 1, 8, 8, 8, 8, 8, 8, 6, 6]": {
+      "result": false,
+      "time": 0.040068626403808594,
+      "error": null
+    },
+    "assert decode_list([[6, 5], 4, 6, [5, 1], 1, 3]) == [5, 5, 5, 5, 5, 5, 4, 6, 1, 1, 1, 1, 1, 1, 3]": {
+      "result": false,
+      "time": 0.04003334045410156,
+      "error": null
+    },
+    "assert decode_list(['p', 'c', 'm', 'p', 'e', 'n', 'j', 'j', 'f', 'b', [4, 'o'], 'r']) == ['p', 'c', 'm', 'p', 'e', 'n', 'j', 'j', 'f', 'b', 'o', 'o', 'o', 'o', 'r']": {
+      "result": false,
+      "time": 0.040834903717041016,
+      "error": null
+    },
+    "assert decode_list(['d', 'h', 'o', 'k', 'k', 's', 'c', 'l', 's', 'z', [3, 'w'], 'n']) == ['d', 'h', 'o', 'k', 'k', 's', 'c', 'l', 's', 'z', 'w', 'w', 'w', 'n']": {
+      "result": false,
+      "time": 0.04425835609436035,
+      "error": null
+    },
+    "assert decode_list(['y', 'd', 'd', 'i', 's', 'w', 'y', 'c', 'd', 'a', [3, 'g'], 'l']) == ['y', 'd', 'd', 'i', 's', 'w', 'y', 'c', 'd', 'a', 'g', 'g', 'g', 'l']": {
+      "result": false,
+      "time": 0.03916358947753906,
+      "error": null
+    },
+    "assert decode_list(['w', 'm', 'y', 'q', 'v', 'w', 't', 't', 'j', 'r', [2, 'p'], 'q']) == ['w', 'm', 'y', 'q', 'v', 'w', 't', 't', 'j', 'r', 'p', 'p', 'q']": {
+      "result": false,
+      "time": 0.033622026443481445,
+      "error": null
+    },
+    "assert decode_list(['y', 'a', 'g', 'x', 'e', 'j', 'v', 'w', 'p', 'v', [3, 'p'], 'q']) == ['y', 'a', 'g', 'x', 'e', 'j', 'v', 'w', 'p', 'v', 'p', 'p', 'p', 'q']": {
+      "result": false,
+      "time": 0.0442352294921875,
+      "error": null
+    },
+    "assert decode_list(['q', 'k', 'b', 'y', 'w', 'v', 'k', 'i', 'l', 'r', [5, 'p'], 'c']) == ['q', 'k', 'b', 'y', 'w', 'v', 'k', 'i', 'l', 'r', 'p', 'p', 'p', 'p', 'p', 'c']": {
+      "result": false,
+      "time": 0.04737448692321777,
+      "error": null
+    },
+    "assert decode_list(['p', 'o', 'w', 'o', 'z', 'u', 'c', 'g', 'l', 'e', [7, 'v'], 'm']) == ['p', 'o', 'w', 'o', 'z', 'u', 'c', 'g', 'l', 'e', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'm']": {
+      "result": false,
+      "time": 0.04076409339904785,
+      "error": null
+    },
+    "assert decode_list(['x', 'h', 'q', 'c', 'r', 'p', 's', 'h', 'n', 'f', [6, 'y'], 'r']) == ['x', 'h', 'q', 'c', 'r', 'p', 's', 'h', 'n', 'f', 'y', 'y', 'y', 'y', 'y', 'y', 'r']": {
+      "result": false,
+      "time": 0.043007850646972656,
+      "error": null
+    },
+    "assert decode_list(['g', 'o', 'g', 'c', 't', 'j', 'w', 'j', 'u', 'c', [4, 'i'], 'o']) == ['g', 'o', 'g', 'c', 't', 'j', 'w', 'j', 'u', 'c', 'i', 'i', 'i', 'i', 'o']": {
+      "result": false,
+      "time": 0.04002118110656738,
+      "error": null
+    },
+    "assert decode_list(['b', 'z', 'd', 'c', 'o', 'c', 'a', 'g', 'n', 'v', [5, 'a'], 'f']) == ['b', 'z', 'd', 'c', 'o', 'c', 'a', 'g', 'n', 'v', 'a', 'a', 'a', 'a', 'a', 'f']": {
+      "result": false,
+      "time": 0.03934073448181152,
+      "error": null
+    },
+    "assert decode_list(['o', 'q', 'k', 'h', 'c', 'c', 'd', 'x', 'd', 't', [2, 'h'], 'm']) == ['o', 'q', 'k', 'h', 'c', 'c', 'd', 'x', 'd', 't', 'h', 'h', 'm']": {
+      "result": false,
+      "time": 0.039969444274902344,
+      "error": null
+    },
+    "assert decode_list(['e', 'r', 'm', 'w', 'z', 'm', 'n', 'g', 'c', 'c', [2, 'g'], 'r']) == ['e', 'r', 'm', 'w', 'z', 'm', 'n', 'g', 'c', 'c', 'g', 'g', 'r']": {
+      "result": false,
+      "time": 0.03670930862426758,
+      "error": null
+    },
+    "assert decode_list(['o', 'q', 'e', 'g', 'e', 'a', 'm', 'l', 'a', 'o', [6, 'y'], 'k']) == ['o', 'q', 'e', 'g', 'e', 'a', 'm', 'l', 'a', 'o', 'y', 'y', 'y', 'y', 'y', 'y', 'k']": {
+      "result": false,
+      "time": 0.04304623603820801,
+      "error": null
+    },
+    "assert decode_list(['g', 'e', 'w', 'i', 'a', 'h', 'r', 'v', 'x', 'k', [3, 't'], 'v']) == ['g', 'e', 'w', 'i', 'a', 'h', 'r', 'v', 'x', 'k', 't', 't', 't', 'v']": {
+      "result": false,
+      "time": 0.04282855987548828,
+      "error": null
+    },
+    "assert decode_list(['a', 'a', 'n', 't', 'w', 'f', 'c', 'w', 'x', 's', [1, 'v'], 'z']) == ['a', 'a', 'n', 't', 'w', 'f', 'c', 'w', 'x', 's', 'v', 'z']": {
+      "result": false,
+      "time": 0.03859519958496094,
+      "error": null
+    },
+    "assert decode_list(['c', 'i', 'x', 'y', 'z', 'b', 'q', 'y', 'o', 'f', [2, 'v'], 'u']) == ['c', 'i', 'x', 'y', 'z', 'b', 'q', 'y', 'o', 'f', 'v', 'v', 'u']": {
+      "result": false,
+      "time": 0.03512763977050781,
+      "error": null
+    },
+    "assert decode_list(['g', 'x', 'e', 'o', 'j', 'y', 'i', 'v', 'r', 'm', [4, 'a'], 'p']) == ['g', 'x', 'e', 'o', 'j', 'y', 'i', 'v', 'r', 'm', 'a', 'a', 'a', 'a', 'p']": {
+      "result": false,
+      "time": 0.03249359130859375,
+      "error": null
+    },
+    "assert decode_list(['a', 't', 'a', 't', 'i', 'w', 'i', 'z', 'u', 'z', [4, 'v'], 's']) == ['a', 't', 'a', 't', 'i', 'w', 'i', 'z', 'u', 'z', 'v', 'v', 'v', 'v', 's']": {
+      "result": false,
+      "time": 0.03931713104248047,
+      "error": null
+    },
+    "assert decode_list(['x', 'l', 'z', 'i', 'f', 'x', 's', 'k', 'p', 'p', [7, 'l'], 'd']) == ['x', 'l', 'z', 'i', 'f', 'x', 's', 'k', 'p', 'p', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'd']": {
+      "result": false,
+      "time": 0.04114222526550293,
+      "error": null
+    },
+    "assert decode_list(['n', 'z', 'j', 'b', 'k', 'u', 'p', 'h', 'g', 'l', [6, 'l'], 'i']) == ['n', 'z', 'j', 'b', 'k', 'u', 'p', 'h', 'g', 'l', 'l', 'l', 'l', 'l', 'l', 'l', 'i']": {
+      "result": false,
+      "time": 0.03626513481140137,
+      "error": null
+    },
+    "assert decode_list(['s', 'f', 'y', 'e', 'i', 'h', 's', 'v', 'i', 'i', [7, 'r'], 'r']) == ['s', 'f', 'y', 'e', 'i', 'h', 's', 'v', 'i', 'i', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r']": {
+      "result": false,
+      "time": 0.035344600677490234,
+      "error": null
+    },
+    "assert decode_list(['u', 'j', 'r', 'q', 'p', 'f', 's', 'a', 'q', 'h', [6, 'i'], 'f']) == ['u', 'j', 'r', 'q', 'p', 'f', 's', 'a', 'q', 'h', 'i', 'i', 'i', 'i', 'i', 'i', 'f']": {
+      "result": false,
+      "time": 0.04037284851074219,
+      "error": null
+    },
+    "assert decode_list(['v', 'd', 'y', 'p', 'f', 'a', 'c', 'z', 'n', 'i', [5, 'q'], 'h']) == ['v', 'd', 'y', 'p', 'f', 'a', 'c', 'z', 'n', 'i', 'q', 'q', 'q', 'q', 'q', 'h']": {
+      "result": false,
+      "time": 0.04352593421936035,
+      "error": null
+    },
+    "assert decode_list(['g', 'h', 'i', 'c', 'h', 'p', 't', 'p', 'r', 'h', [1, 'p'], 'y']) == ['g', 'h', 'i', 'c', 'h', 'p', 't', 'p', 'r', 'h', 'p', 'y']": {
+      "result": false,
+      "time": 0.040465593338012695,
+      "error": null
+    },
+    "assert decode_list(['l', 'y', 'm', 's', 'f', 'j', 'o', 's', 'd', 'n', [1, 'k'], 'd']) == ['l', 'y', 'm', 's', 'f', 'j', 'o', 's', 'd', 'n', 'k', 'd']": {
+      "result": false,
+      "time": 0.041562557220458984,
+      "error": null
+    },
+    "assert decode_list(['g', 'w', 'g', 'u', 'g', 't', 'v', 'z', 'm', 'z', [1, 'd'], 'r']) == ['g', 'w', 'g', 'u', 'g', 't', 'v', 'z', 'm', 'z', 'd', 'r']": {
+      "result": false,
+      "time": 0.04323625564575195,
+      "error": null
+    },
+    "assert decode_list(['z', 's', 'j', 'z', 'a', 'i', 'p', 'n', 'c', 'z', [3, 'z'], 'l']) == ['z', 's', 'j', 'z', 'a', 'i', 'p', 'n', 'c', 'z', 'z', 'z', 'z', 'l']": {
+      "result": false,
+      "time": 0.03239011764526367,
+      "error": null
+    },
+    "assert decode_list(['e', 'y', 'e', 't', 'd', 'f', 'b', 'h', 'w', 'g', [7, 'h'], 'x']) == ['e', 'y', 'e', 't', 'd', 'f', 'b', 'h', 'w', 'g', 'h', 'h', 'h', 'h', 'h', 'h', 'h', 'x']": {
+      "result": false,
+      "time": 0.03608250617980957,
+      "error": null
+    },
+    "assert decode_list(['i', 'b', 'm', 'n', 'a', 'o', 'r', 'k', 'd', 'i', [5, 'z'], 'f']) == ['i', 'b', 'm', 'n', 'a', 'o', 'r', 'k', 'd', 'i', 'z', 'z', 'z', 'z', 'z', 'f']": {
+      "result": false,
+      "time": 0.04364442825317383,
+      "error": null
+    },
+    "assert decode_list(['n', 'l', 'v', 'j', 'h', 'r', 'k', 'p', 'l', 'l', [4, 'j'], 'n']) == ['n', 'l', 'v', 'j', 'h', 'r', 'k', 'p', 'l', 'l', 'j', 'j', 'j', 'j', 'n']": {
+      "result": false,
+      "time": 0.04102778434753418,
+      "error": null
+    },
+    "assert decode_list(['c', 'j', 'l', 'r', 's', 'h', 'm', 'w', 'o', 'm', [7, 'h'], 'v']) == ['c', 'j', 'l', 'r', 's', 'h', 'm', 'w', 'o', 'm', 'h', 'h', 'h', 'h', 'h', 'h', 'h', 'v']": {
+      "result": false,
+      "time": 0.03482484817504883,
+      "error": null
+    },
+    "assert decode_list(['h', 'y', 'b', 'h', 'j', 'h', 'q', 'e', 'c', 'w', [2, 'd'], 'd']) == ['h', 'y', 'b', 'h', 'j', 'h', 'q', 'e', 'c', 'w', 'd', 'd', 'd']": {
+      "result": false,
+      "time": 0.04482579231262207,
+      "error": null
+    },
+    "assert decode_list(['k', 'b', 'o', 'l', 'q', 'h', 'o', 'e', 'q', 'g', [6, 'c'], 'z']) == ['k', 'b', 'o', 'l', 'q', 'h', 'o', 'e', 'q', 'g', 'c', 'c', 'c', 'c', 'c', 'c', 'z']": {
+      "result": false,
+      "time": 0.04442715644836426,
+      "error": null
+    },
+    "assert decode_list(['p', 'q', 'i', 'x', 'd', 's']) == ['p', 'q', 'i', 'x', 'd', 's']": {
+      "result": false,
+      "time": 0.042494773864746094,
+      "error": null
+    },
+    "assert decode_list(['s', 'f', 't', 't', 'y', 's']) == ['s', 'f', 't', 't', 'y', 's']": {
+      "result": false,
+      "time": 0.04208493232727051,
+      "error": null
+    },
+    "assert decode_list(['p', 't', 's', 'd', 'e', 'q']) == ['p', 't', 's', 'd', 'e', 'q']": {
+      "result": false,
+      "time": 0.04599881172180176,
+      "error": null
+    },
+    "assert decode_list(['r', 'z', 's', 'u', 'y', 'h']) == ['r', 'z', 's', 'u', 'y', 'h']": {
+      "result": false,
+      "time": 0.038687705993652344,
+      "error": null
+    },
+    "assert decode_list(['c', 'f', 'u', 'n', 'j', 's']) == ['c', 'f', 'u', 'n', 'j', 's']": {
+      "result": false,
+      "time": 0.03510618209838867,
+      "error": null
+    },
+    "assert decode_list(['c', 'a', 'b', 'l', 'x', 'g']) == ['c', 'a', 'b', 'l', 'x', 'g']": {
+      "result": false,
+      "time": 0.03589177131652832,
+      "error": null
+    },
+    "assert decode_list(['h', 't', 'n', 'd', 'v', 'b']) == ['h', 't', 'n', 'd', 'v', 'b']": {
+      "result": false,
+      "time": 0.03703927993774414,
+      "error": null
+    },
+    "assert decode_list(['f', 'h', 'd', 'k', 'd', 'z']) == ['f', 'h', 'd', 'k', 'd', 'z']": {
+      "result": false,
+      "time": 0.03743267059326172,
+      "error": null
+    },
+    "assert decode_list(['t', 'r', 'q', 'l', 'n', 'i']) == ['t', 'r', 'q', 'l', 'n', 'i']": {
+      "result": false,
+      "time": 0.035315513610839844,
+      "error": null
+    },
+    "assert decode_list(['n', 'x', 'p', 'u', 'f', 's']) == ['n', 'x', 'p', 'u', 'f', 's']": {
+      "result": false,
+      "time": 0.03473806381225586,
+      "error": null
+    },
+    "assert decode_list(['k', 'r', 'f', 'z', 'e', 'c']) == ['k', 'r', 'f', 'z', 'e', 'c']": {
+      "result": false,
+      "time": 0.039930105209350586,
+      "error": null
+    },
+    "assert decode_list(['x', 'g', 'u', 'x', 'n', 'a']) == ['x', 'g', 'u', 'x', 'n', 'a']": {
+      "result": false,
+      "time": 0.04430198669433594,
+      "error": null
+    },
+    "assert decode_list(['u', 'q', 'e', 'y', 'c', 'u']) == ['u', 'q', 'e', 'y', 'c', 'u']": {
+      "result": false,
+      "time": 0.04735517501831055,
+      "error": null
+    },
+    "assert decode_list(['a', 'f', 'e', 'x', 'u', 'a']) == ['a', 'f', 'e', 'x', 'u', 'a']": {
+      "result": false,
+      "time": 0.04318356513977051,
+      "error": null
+    },
+    "assert decode_list(['p', 'n', 'd', 'y', 'h', 'q']) == ['p', 'n', 'd', 'y', 'h', 'q']": {
+      "result": false,
+      "time": 0.03297710418701172,
+      "error": null
+    },
+    "assert decode_list(['a', 'j', 'q', 'p', 'w', 'x']) == ['a', 'j', 'q', 'p', 'w', 'x']": {
+      "result": false,
+      "time": 0.05309891700744629,
+      "error": null
+    },
+    "assert decode_list(['t', 'w', 'q', 'm', 'x', 'e']) == ['t', 'w', 'q', 'm', 'x', 'e']": {
+      "result": false,
+      "time": 0.046244144439697266,
+      "error": null
+    },
+    "assert decode_list(['n', 'b', 'z', 's', 'i', 'l']) == ['n', 'b', 'z', 's', 'i', 'l']": {
+      "result": false,
+      "time": 0.042220115661621094,
+      "error": null
+    },
+    "assert decode_list(['y', 'r', 'p', 'a', 'r', 'v']) == ['y', 'r', 'p', 'a', 'r', 'v']": {
+      "result": false,
+      "time": 0.04219794273376465,
+      "error": null
+    },
+    "assert decode_list(['l', 'l', 'x', 'n', 'c', 'n']) == ['l', 'l', 'x', 'n', 'c', 'n']": {
+      "result": false,
+      "time": 0.040605783462524414,
+      "error": null
+    },
+    "assert decode_list(['f', 'c', 't', 'p', 'a', 'f']) == ['f', 'c', 't', 'p', 'a', 'f']": {
+      "result": false,
+      "time": 0.04396510124206543,
+      "error": null
+    },
+    "assert decode_list(['n', 'w', 'c', 'g', 'v', 'a']) == ['n', 'w', 'c', 'g', 'v', 'a']": {
+      "result": false,
+      "time": 0.04562973976135254,
+      "error": null
+    },
+    "assert decode_list(['s', 'r', 'r', 'w', 'n', 'a']) == ['s', 'r', 'r', 'w', 'n', 'a']": {
+      "result": false,
+      "time": 0.04516315460205078,
+      "error": null
+    },
+    "assert decode_list(['f', 'y', 'f', 'e', 't', 'g']) == ['f', 'y', 'f', 'e', 't', 'g']": {
+      "result": false,
+      "time": 0.035660505294799805,
+      "error": null
+    },
+    "assert decode_list(['g', 'e', 'h', 'y', 'h', 'a']) == ['g', 'e', 'h', 'y', 'h', 'a']": {
+      "result": false,
+      "time": 0.054064273834228516,
+      "error": null
+    },
+    "assert decode_list(['s', 'r', 'g', 'u', 'a', 'u']) == ['s', 'r', 'g', 'u', 'a', 'u']": {
+      "result": false,
+      "time": 0.04452943801879883,
+      "error": null
+    },
+    "assert decode_list(['k', 'n', 'k', 'p', 'n', 'e']) == ['k', 'n', 'k', 'p', 'n', 'e']": {
+      "result": false,
+      "time": 0.044059038162231445,
+      "error": null
+    },
+    "assert decode_list(['w', 'n', 'b', 'e', 'n', 'e']) == ['w', 'n', 'b', 'e', 'n', 'e']": {
+      "result": false,
+      "time": 0.04080939292907715,
+      "error": null
+    },
+    "assert decode_list(['z', 'd', 'n', 'f', 'w', 'j']) == ['z', 'd', 'n', 'f', 'w', 'j']": {
+      "result": false,
+      "time": 0.04042315483093262,
+      "error": null
+    },
+    "assert decode_list(['b', 'i', 'u', 'y', 'r', 'u']) == ['b', 'i', 'u', 'y', 'r', 'u']": {
+      "result": false,
+      "time": 0.04215693473815918,
+      "error": null
+    },
+    "assert decode_list(['k', 'y', 'k', 'b', 'z', 'u']) == ['k', 'y', 'k', 'b', 'z', 'u']": {
+      "result": false,
+      "time": 0.05235648155212402,
+      "error": null
+    },
+    "assert decode_list(['i', 'l', 'i', 'o', 'z', 's']) == ['i', 'l', 'i', 'o', 'z', 's']": {
+      "result": false,
+      "time": 0.046715736389160156,
+      "error": null
+    },
+    "assert decode_list(['x', 'z', 'p', 'k', 'c', 'n']) == ['x', 'z', 'p', 'k', 'c', 'n']": {
+      "result": false,
+      "time": 0.036208152770996094,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

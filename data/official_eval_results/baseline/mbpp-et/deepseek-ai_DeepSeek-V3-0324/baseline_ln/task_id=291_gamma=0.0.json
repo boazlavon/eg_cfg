@@ -1,0 +1,254 @@
+{
+  "code": "def count_no_of_ways(n, k):\n    if n == 0:\n        return 0\n    if n == 1:\n        return k\n    if n == 2:\n        return k * k\n    \n    # Initialize dp array\n    dp = [0] * (n + 1)\n    dp[0] = 0\n    dp[1] = k\n    dp[2] = k * k\n    \n    for i in range(3, n + 1):\n        dp[i] = (k - 1) * (dp[i - 1] + dp[i - 2])\n    \n    return dp[n]",
+  "results": {
+    "assert count_no_of_ways(2, 4) == 16": {
+      "result": true,
+      "time": 0.06839275360107422,
+      "error": null
+    },
+    "assert count_no_of_ways(3, 2) == 6": {
+      "result": true,
+      "time": 0.056110382080078125,
+      "error": null
+    },
+    "assert count_no_of_ways(4, 4) == 228": {
+      "result": true,
+      "time": 0.06525015830993652,
+      "error": null
+    },
+    "assert count_no_of_ways(2, 3) == 9": {
+      "result": true,
+      "time": 0.06417489051818848,
+      "error": null
+    },
+    "assert count_no_of_ways(5, 8) == 31360": {
+      "result": true,
+      "time": 0.07079148292541504,
+      "error": null
+    },
+    "assert count_no_of_ways(7, 4) == 12420": {
+      "result": true,
+      "time": 0.0546112060546875,
+      "error": null
+    },
+    "assert count_no_of_ways(3, 1) == 0": {
+      "result": true,
+      "time": 0.061521291732788086,
+      "error": null
+    },
+    "assert count_no_of_ways(5, 7) == 15876": {
+      "result": true,
+      "time": 0.06697344779968262,
+      "error": null
+    },
+    "assert count_no_of_ways(6, 3) == 492": {
+      "result": true,
+      "time": 0.0708472728729248,
+      "error": null
+    },
+    "assert count_no_of_ways(6, 6) == 42150": {
+      "result": true,
+      "time": 0.04445815086364746,
+      "error": null
+    },
+    "assert count_no_of_ways(3, 6) == 210": {
+      "result": true,
+      "time": 0.0655364990234375,
+      "error": null
+    },
+    "assert count_no_of_ways(2, 5) == 25": {
+      "result": true,
+      "time": 0.060453176498413086,
+      "error": null
+    },
+    "assert count_no_of_ways(2, 9) == 81": {
+      "result": true,
+      "time": 0.08505940437316895,
+      "error": null
+    },
+    "assert count_no_of_ways(5, 1) == 0": {
+      "result": true,
+      "time": 0.06081438064575195,
+      "error": null
+    },
+    "assert count_no_of_ways(7, 7) == 749952": {
+      "result": true,
+      "time": 0.054773807525634766,
+      "error": null
+    },
+    "assert count_no_of_ways(3, 3) == 24": {
+      "result": true,
+      "time": 0.0471346378326416,
+      "error": null
+    },
+    "assert count_no_of_ways(2, 8) == 64": {
+      "result": true,
+      "time": 0.05464625358581543,
+      "error": null
+    },
+    "assert count_no_of_ways(7, 3) == 1344": {
+      "result": true,
+      "time": 0.057666778564453125,
+      "error": null
+    },
+    "assert count_no_of_ways(5, 2) == 16": {
+      "result": true,
+      "time": 0.05862927436828613,
+      "error": null
+    },
+    "assert count_no_of_ways(4, 2) == 10": {
+      "result": true,
+      "time": 0.04506397247314453,
+      "error": null
+    },
+    "assert count_no_of_ways(5, 3) == 180": {
+      "result": true,
+      "time": 0.05338430404663086,
+      "error": null
+    },
+    "assert count_no_of_ways(6, 8) == 247352": {
+      "result": true,
+      "time": 0.05573463439941406,
+      "error": null
+    },
+    "assert count_no_of_ways(5, 6) == 7200": {
+      "result": true,
+      "time": 0.04514956474304199,
+      "error": null
+    },
+    "assert count_no_of_ways(7, 9) == 4515840": {
+      "result": true,
+      "time": 0.06837701797485352,
+      "error": null
+    },
+    "assert count_no_of_ways(7, 6) == 246750": {
+      "result": true,
+      "time": 0.03696894645690918,
+      "error": null
+    },
+    "assert count_no_of_ways(2, 2) == 4": {
+      "result": true,
+      "time": 0.05636906623840332,
+      "error": null
+    },
+    "assert count_no_of_ways(6, 9) == 507456": {
+      "result": true,
+      "time": 0.053642988204956055,
+      "error": null
+    },
+    "assert count_no_of_ways(2, 7) == 49": {
+      "result": true,
+      "time": 0.05287313461303711,
+      "error": null
+    },
+    "assert count_no_of_ways(6, 4) == 3276": {
+      "result": true,
+      "time": 0.050217390060424805,
+      "error": null
+    },
+    "assert count_no_of_ways(8, 4) == 47088": {
+      "result": true,
+      "time": 0.06516909599304199,
+      "error": null
+    },
+    "assert count_no_of_ways(3, 4) == 60": {
+      "result": true,
+      "time": 0.05759692192077637,
+      "error": null
+    },
+    "assert count_no_of_ways(3, 7) == 336": {
+      "result": true,
+      "time": 0.0655369758605957,
+      "error": null
+    },
+    "assert count_no_of_ways(2, 1) == 1": {
+      "result": true,
+      "time": 0.055193185806274414,
+      "error": null
+    },
+    "assert count_no_of_ways(2, 6) == 36": {
+      "result": true,
+      "time": 0.053404808044433594,
+      "error": null
+    },
+    "assert count_no_of_ways(7, 5) == 65280": {
+      "result": true,
+      "time": 0.0397486686706543,
+      "error": null
+    },
+    "assert count_no_of_ways(4, 6) == 1230": {
+      "result": true,
+      "time": 0.0508112907409668,
+      "error": null
+    },
+    "assert count_no_of_ways(4, 5) == 580": {
+      "result": true,
+      "time": 0.043552398681640625,
+      "error": null
+    },
+    "assert count_no_of_ways(5, 4) == 864": {
+      "result": true,
+      "time": 0.04896354675292969,
+      "error": null
+    },
+    "assert count_no_of_ways(6, 7) == 109116": {
+      "result": true,
+      "time": 0.03566098213195801,
+      "error": null
+    },
+    "assert count_no_of_ways(8, 1) == 0": {
+      "result": true,
+      "time": 0.041242122650146484,
+      "error": null
+    },
+    "assert count_no_of_ways(8, 6) == 1444500": {
+      "result": true,
+      "time": 0.03790783882141113,
+      "error": null
+    },
+    "assert count_no_of_ways(8, 8) == 15388352": {
+      "result": true,
+      "time": 0.04402780532836914,
+      "error": null
+    },
+    "assert count_no_of_ways(6, 2) == 26": {
+      "result": true,
+      "time": 0.058171987533569336,
+      "error": null
+    },
+    "assert count_no_of_ways(3, 5) == 120": {
+      "result": true,
+      "time": 0.03815889358520508,
+      "error": null
+    },
+    "assert count_no_of_ways(5, 9) == 57024": {
+      "result": true,
+      "time": 0.054467201232910156,
+      "error": null
+    },
+    "assert count_no_of_ways(4, 1) == 0": {
+      "result": true,
+      "time": 0.050193071365356445,
+      "error": null
+    },
+    "assert count_no_of_ways(4, 9) == 6408": {
+      "result": true,
+      "time": 0.04689145088195801,
+      "error": null
+    },
+    "assert count_no_of_ways(9, 6) == 8456250": {
+      "result": true,
+      "time": 0.04981088638305664,
+      "error": null
+    },
+    "assert count_no_of_ways(8, 3) == 3672": {
+      "result": true,
+      "time": 0.039154052734375,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

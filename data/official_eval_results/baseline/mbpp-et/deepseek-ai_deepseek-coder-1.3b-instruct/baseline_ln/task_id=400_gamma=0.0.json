@@ -1,0 +1,519 @@
+{
+  "code": "from collections import Counter\n\ndef extract_freq(lst):\n    freq = Counter(tuple(i) for i in lst)\n    return sum(freq[i] for i in freq)",
+  "results": {
+    "assert extract_freq([(3, 4), (1, 2), (4, 3), (5, 6)] ) == 3": {
+      "result": false,
+      "time": 0.2750895023345947,
+      "error": null
+    },
+    "assert extract_freq([(4, 15), (2, 3), (5, 4), (6, 7)] ) == 4": {
+      "result": true,
+      "time": 0.26633572578430176,
+      "error": null
+    },
+    "assert extract_freq([(5, 16), (2, 3), (6, 5), (6, 9)] ) == 4": {
+      "result": true,
+      "time": 0.294339656829834,
+      "error": null
+    },
+    "assert extract_freq([(2, 5), (3, 2), (5, 1), (10, 4)]) == 4": {
+      "result": true,
+      "time": 0.2868039608001709,
+      "error": null
+    },
+    "assert extract_freq([(6, 7), (6, 1), (3, 2), (3, 10)]) == 4": {
+      "result": true,
+      "time": 0.2850658893585205,
+      "error": null
+    },
+    "assert extract_freq([(3, 2), (3, 6), (4, 5), (2, 5)]) == 4": {
+      "result": true,
+      "time": 0.2692129611968994,
+      "error": null
+    },
+    "assert extract_freq([(3, 4), (1, 1), (7, 1), (8, 6)]) == 4": {
+      "result": true,
+      "time": 0.2671778202056885,
+      "error": null
+    },
+    "assert extract_freq([(7, 3), (3, 2), (4, 5), (8, 3)]) == 4": {
+      "result": true,
+      "time": 0.2668287754058838,
+      "error": null
+    },
+    "assert extract_freq([(8, 4), (1, 3), (8, 2), (10, 5)]) == 4": {
+      "result": true,
+      "time": 0.29334044456481934,
+      "error": null
+    },
+    "assert extract_freq([(3, 5), (5, 4), (3, 7), (5, 11)]) == 4": {
+      "result": true,
+      "time": 0.25110650062561035,
+      "error": null
+    },
+    "assert extract_freq([(5, 9), (6, 3), (6, 7), (3, 6)]) == 3": {
+      "result": false,
+      "time": 0.2593224048614502,
+      "error": null
+    },
+    "assert extract_freq([(7, 6), (6, 3), (7, 4), (1, 2)]) == 4": {
+      "result": true,
+      "time": 0.26300501823425293,
+      "error": null
+    },
+    "assert extract_freq([(3, 2), (5, 6), (2, 6), (2, 2)]) == 4": {
+      "result": true,
+      "time": 0.2806105613708496,
+      "error": null
+    },
+    "assert extract_freq([(7, 5), (3, 5), (4, 4), (4, 11)]) == 4": {
+      "result": true,
+      "time": 0.25479698181152344,
+      "error": null
+    },
+    "assert extract_freq([(8, 5), (2, 4), (1, 3), (3, 10)]) == 4": {
+      "result": true,
+      "time": 0.257448673248291,
+      "error": null
+    },
+    "assert extract_freq([(8, 5), (2, 1), (9, 8), (7, 6)]) == 4": {
+      "result": true,
+      "time": 0.29381632804870605,
+      "error": null
+    },
+    "assert extract_freq([(8, 8), (1, 4), (3, 8), (8, 9)]) == 4": {
+      "result": true,
+      "time": 0.2954998016357422,
+      "error": null
+    },
+    "assert extract_freq([(8, 2), (5, 2), (5, 6), (9, 1)]) == 4": {
+      "result": true,
+      "time": 0.2974703311920166,
+      "error": null
+    },
+    "assert extract_freq([(4, 6), (4, 5), (8, 6), (5, 7)]) == 4": {
+      "result": true,
+      "time": 0.2841317653656006,
+      "error": null
+    },
+    "assert extract_freq([(3, 8), (4, 6), (9, 4), (8, 1)]) == 4": {
+      "result": true,
+      "time": 0.29352617263793945,
+      "error": null
+    },
+    "assert extract_freq([(4, 1), (6, 1), (7, 4), (8, 9)]) == 4": {
+      "result": true,
+      "time": 0.28148388862609863,
+      "error": null
+    },
+    "assert extract_freq([(8, 9), (6, 2), (7, 1), (4, 10)]) == 4": {
+      "result": true,
+      "time": 0.28473472595214844,
+      "error": null
+    },
+    "assert extract_freq([(8, 9), (5, 5), (5, 5), (1, 3)]) == 3": {
+      "result": false,
+      "time": 0.31420326232910156,
+      "error": null
+    },
+    "assert extract_freq([(8, 2), (3, 4), (6, 2), (2, 7)]) == 4": {
+      "result": true,
+      "time": 0.27662229537963867,
+      "error": null
+    },
+    "assert extract_freq([(4, 4), (2, 6), (3, 2), (8, 8)]) == 4": {
+      "result": true,
+      "time": 0.264141321182251,
+      "error": null
+    },
+    "assert extract_freq([(7, 8), (4, 6), (3, 3), (8, 11)]) == 4": {
+      "result": true,
+      "time": 0.2905728816986084,
+      "error": null
+    },
+    "assert extract_freq([(8, 7), (2, 2), (6, 7), (6, 8)]) == 4": {
+      "result": true,
+      "time": 0.24507665634155273,
+      "error": null
+    },
+    "assert extract_freq([(7, 9), (3, 4), (6, 2), (1, 11)]) == 4": {
+      "result": true,
+      "time": 0.28096842765808105,
+      "error": null
+    },
+    "assert extract_freq([(6, 5), (1, 2), (5, 8), (5, 9)]) == 4": {
+      "result": true,
+      "time": 0.3001718521118164,
+      "error": null
+    },
+    "assert extract_freq([(3, 9), (2, 4), (4, 4), (8, 2)]) == 4": {
+      "result": true,
+      "time": 0.2649376392364502,
+      "error": null
+    },
+    "assert extract_freq([(4, 7), (4, 1), (9, 3), (1, 5)]) == 4": {
+      "result": true,
+      "time": 0.2705042362213135,
+      "error": null
+    },
+    "assert extract_freq([(5, 3), (1, 4), (5, 1), (2, 2)]) == 4": {
+      "result": true,
+      "time": 0.2888143062591553,
+      "error": null
+    },
+    "assert extract_freq([(2, 9), (6, 7), (2, 5), (9, 2)]) == 3": {
+      "result": false,
+      "time": 0.2659420967102051,
+      "error": null
+    },
+    "assert extract_freq([(5, 7), (2, 2), (6, 1), (2, 9)]) == 4": {
+      "result": true,
+      "time": 0.28574347496032715,
+      "error": null
+    },
+    "assert extract_freq([(8, 4), (2, 3), (5, 6), (2, 3)]) == 3": {
+      "result": false,
+      "time": 0.2890315055847168,
+      "error": null
+    },
+    "assert extract_freq([(7, 1), (5, 5), (6, 2), (6, 7)]) == 4": {
+      "result": true,
+      "time": 0.28793859481811523,
+      "error": null
+    },
+    "assert extract_freq([(5, 11), (1, 2), (5, 5), (9, 5)]) == 4": {
+      "result": true,
+      "time": 0.30042123794555664,
+      "error": null
+    },
+    "assert extract_freq([(5, 16), (2, 1), (9, 4), (10, 6)]) == 4": {
+      "result": true,
+      "time": 0.2876279354095459,
+      "error": null
+    },
+    "assert extract_freq([(7, 15), (5, 8), (10, 5), (5, 9)]) == 4": {
+      "result": true,
+      "time": 0.286304235458374,
+      "error": null
+    },
+    "assert extract_freq([(8, 14), (4, 4), (2, 4), (3, 9)]) == 4": {
+      "result": true,
+      "time": 0.3218235969543457,
+      "error": null
+    },
+    "assert extract_freq([(3, 13), (4, 4), (4, 6), (9, 5)]) == 4": {
+      "result": true,
+      "time": 0.2838435173034668,
+      "error": null
+    },
+    "assert extract_freq([(2, 17), (5, 7), (2, 5), (4, 5)]) == 4": {
+      "result": true,
+      "time": 0.2602660655975342,
+      "error": null
+    },
+    "assert extract_freq([(8, 18), (3, 5), (8, 3), (1, 7)]) == 4": {
+      "result": true,
+      "time": 0.3079111576080322,
+      "error": null
+    },
+    "assert extract_freq([(9, 20), (5, 7), (3, 2), (1, 12)]) == 4": {
+      "result": true,
+      "time": 0.2933533191680908,
+      "error": null
+    },
+    "assert extract_freq([(3, 20), (3, 3), (7, 6), (8, 5)]) == 4": {
+      "result": true,
+      "time": 0.2891566753387451,
+      "error": null
+    },
+    "assert extract_freq([(9, 16), (2, 1), (2, 6), (6, 10)]) == 4": {
+      "result": true,
+      "time": 0.19530057907104492,
+      "error": null
+    },
+    "assert extract_freq([(3, 11), (6, 1), (2, 3), (9, 10)]) == 4": {
+      "result": true,
+      "time": 0.18394899368286133,
+      "error": null
+    },
+    "assert extract_freq([(8, 17), (3, 8), (8, 1), (8, 8)]) == 4": {
+      "result": true,
+      "time": 0.27381038665771484,
+      "error": null
+    },
+    "assert extract_freq([(6, 18), (7, 5), (2, 2), (3, 7)]) == 4": {
+      "result": true,
+      "time": 0.13700437545776367,
+      "error": null
+    },
+    "assert extract_freq([(3, 14), (7, 1), (7, 4), (8, 8)]) == 4": {
+      "result": true,
+      "time": 0.10505509376525879,
+      "error": null
+    },
+    "assert extract_freq([(8, 11), (1, 1), (9, 2), (11, 8)]) == 3": {
+      "result": false,
+      "time": 0.19743609428405762,
+      "error": null
+    },
+    "assert extract_freq([(5, 15), (7, 4), (3, 3), (11, 3)]) == 4": {
+      "result": true,
+      "time": 0.31517815589904785,
+      "error": null
+    },
+    "assert extract_freq([(9, 12), (2, 6), (7, 8), (2, 3)]) == 4": {
+      "result": true,
+      "time": 0.29802560806274414,
+      "error": null
+    },
+    "assert extract_freq([(3, 13), (4, 2), (3, 1), (2, 8)]) == 4": {
+      "result": true,
+      "time": 0.2806997299194336,
+      "error": null
+    },
+    "assert extract_freq([(8, 11), (1, 1), (4, 4), (2, 3)]) == 4": {
+      "result": true,
+      "time": 0.23279023170471191,
+      "error": null
+    },
+    "assert extract_freq([(6, 17), (1, 8), (3, 2), (1, 3)]) == 4": {
+      "result": true,
+      "time": 0.30365514755249023,
+      "error": null
+    },
+    "assert extract_freq([(8, 13), (6, 1), (2, 9), (5, 11)]) == 4": {
+      "result": true,
+      "time": 0.20191740989685059,
+      "error": null
+    },
+    "assert extract_freq([(1, 11), (2, 7), (10, 1), (3, 8)]) == 4": {
+      "result": true,
+      "time": 0.1835174560546875,
+      "error": null
+    },
+    "assert extract_freq([(5, 15), (4, 4), (4, 8), (2, 9)]) == 4": {
+      "result": true,
+      "time": 0.25630736351013184,
+      "error": null
+    },
+    "assert extract_freq([(4, 18), (6, 1), (5, 2), (6, 3)]) == 4": {
+      "result": true,
+      "time": 0.27921295166015625,
+      "error": null
+    },
+    "assert extract_freq([(1, 12), (5, 3), (7, 5), (2, 6)]) == 4": {
+      "result": true,
+      "time": 0.1905994415283203,
+      "error": null
+    },
+    "assert extract_freq([(5, 13), (3, 7), (4, 7), (2, 11)]) == 4": {
+      "result": true,
+      "time": 0.32895874977111816,
+      "error": null
+    },
+    "assert extract_freq([(1, 15), (1, 2), (8, 3), (4, 10)]) == 4": {
+      "result": true,
+      "time": 0.14736390113830566,
+      "error": null
+    },
+    "assert extract_freq([(4, 15), (4, 8), (3, 9), (3, 7)]) == 4": {
+      "result": true,
+      "time": 0.32379841804504395,
+      "error": null
+    },
+    "assert extract_freq([(1, 17), (4, 5), (6, 4), (9, 5)]) == 4": {
+      "result": true,
+      "time": 0.21252179145812988,
+      "error": null
+    },
+    "assert extract_freq([(9, 17), (4, 2), (7, 3), (9, 2)]) == 4": {
+      "result": true,
+      "time": 0.32651376724243164,
+      "error": null
+    },
+    "assert extract_freq([(7, 15), (5, 8), (5, 5), (4, 10)]) == 4": {
+      "result": true,
+      "time": 0.28249406814575195,
+      "error": null
+    },
+    "assert extract_freq([(7, 13), (2, 2), (5, 5), (4, 8)]) == 4": {
+      "result": true,
+      "time": 0.2894632816314697,
+      "error": null
+    },
+    "assert extract_freq([(9, 15), (5, 5), (3, 5), (7, 9)]) == 4": {
+      "result": true,
+      "time": 0.31461238861083984,
+      "error": null
+    },
+    "assert extract_freq([(2, 21), (2, 1), (11, 10), (4, 4)]) == 4": {
+      "result": true,
+      "time": 0.27878308296203613,
+      "error": null
+    },
+    "assert extract_freq([(10, 21), (2, 7), (1, 7), (11, 11)]) == 4": {
+      "result": true,
+      "time": 0.3000926971435547,
+      "error": null
+    },
+    "assert extract_freq([(6, 17), (5, 1), (7, 2), (5, 10)]) == 4": {
+      "result": true,
+      "time": 0.2985355854034424,
+      "error": null
+    },
+    "assert extract_freq([(2, 18), (1, 5), (3, 1), (2, 10)]) == 4": {
+      "result": true,
+      "time": 0.31923818588256836,
+      "error": null
+    },
+    "assert extract_freq([(4, 14), (3, 3), (9, 6), (2, 4)]) == 4": {
+      "result": true,
+      "time": 0.27152180671691895,
+      "error": null
+    },
+    "assert extract_freq([(9, 11), (3, 5), (10, 2), (7, 7)]) == 4": {
+      "result": true,
+      "time": 0.31235361099243164,
+      "error": null
+    },
+    "assert extract_freq([(3, 18), (4, 4), (3, 7), (2, 10)]) == 4": {
+      "result": true,
+      "time": 0.23659229278564453,
+      "error": null
+    },
+    "assert extract_freq([(9, 12), (4, 3), (6, 3), (4, 14)]) == 4": {
+      "result": true,
+      "time": 0.31070399284362793,
+      "error": null
+    },
+    "assert extract_freq([(1, 13), (4, 4), (4, 1), (10, 10)]) == 4": {
+      "result": true,
+      "time": 0.20653915405273438,
+      "error": null
+    },
+    "assert extract_freq([(2, 16), (6, 5), (5, 10), (10, 10)]) == 4": {
+      "result": true,
+      "time": 0.3122849464416504,
+      "error": null
+    },
+    "assert extract_freq([(10, 11), (3, 3), (5, 7), (7, 8)]) == 4": {
+      "result": true,
+      "time": 0.30291128158569336,
+      "error": null
+    },
+    "assert extract_freq([(6, 20), (2, 7), (4, 6), (3, 9)]) == 4": {
+      "result": true,
+      "time": 0.19988799095153809,
+      "error": null
+    },
+    "assert extract_freq([(3, 18), (4, 3), (11, 5), (9, 11)]) == 4": {
+      "result": true,
+      "time": 0.2858157157897949,
+      "error": null
+    },
+    "assert extract_freq([(7, 15), (4, 5), (3, 5), (5, 14)]) == 4": {
+      "result": true,
+      "time": 0.31192684173583984,
+      "error": null
+    },
+    "assert extract_freq([(1, 18), (5, 8), (1, 4), (1, 12)]) == 4": {
+      "result": true,
+      "time": 0.29794907569885254,
+      "error": null
+    },
+    "assert extract_freq([(6, 21), (1, 2), (1, 8), (11, 14)]) == 4": {
+      "result": true,
+      "time": 0.3241708278656006,
+      "error": null
+    },
+    "assert extract_freq([(6, 11), (4, 2), (6, 6), (11, 10)]) == 4": {
+      "result": true,
+      "time": 0.28470802307128906,
+      "error": null
+    },
+    "assert extract_freq([(7, 16), (6, 7), (10, 2), (2, 8)]) == 4": {
+      "result": true,
+      "time": 0.2969489097595215,
+      "error": null
+    },
+    "assert extract_freq([(10, 21), (2, 5), (3, 8), (11, 4)]) == 4": {
+      "result": true,
+      "time": 0.27094054222106934,
+      "error": null
+    },
+    "assert extract_freq([(8, 18), (6, 7), (4, 5), (4, 12)]) == 4": {
+      "result": true,
+      "time": 0.3105483055114746,
+      "error": null
+    },
+    "assert extract_freq([(4, 13), (2, 3), (3, 2), (10, 6)]) == 3": {
+      "result": false,
+      "time": 0.20705366134643555,
+      "error": null
+    },
+    "assert extract_freq([(3, 20), (6, 6), (4, 6), (10, 6)]) == 4": {
+      "result": true,
+      "time": 0.27655482292175293,
+      "error": null
+    },
+    "assert extract_freq([(10, 21), (3, 7), (4, 7), (1, 9)]) == 4": {
+      "result": true,
+      "time": 0.21879267692565918,
+      "error": null
+    },
+    "assert extract_freq([(4, 11), (3, 7), (8, 4), (9, 14)]) == 4": {
+      "result": true,
+      "time": 0.30144309997558594,
+      "error": null
+    },
+    "assert extract_freq([(4, 17), (3, 4), (4, 4), (1, 8)]) == 4": {
+      "result": true,
+      "time": 0.31447649002075195,
+      "error": null
+    },
+    "assert extract_freq([(6, 12), (2, 6), (8, 4), (6, 10)]) == 4": {
+      "result": true,
+      "time": 0.18290352821350098,
+      "error": null
+    },
+    "assert extract_freq([(7, 19), (5, 2), (5, 3), (9, 5)]) == 4": {
+      "result": true,
+      "time": 0.2871675491333008,
+      "error": null
+    },
+    "assert extract_freq([(1, 16), (1, 2), (11, 8), (10, 7)]) == 4": {
+      "result": true,
+      "time": 0.2921020984649658,
+      "error": null
+    },
+    "assert extract_freq([(7, 21), (6, 7), (3, 9), (2, 13)]) == 4": {
+      "result": true,
+      "time": 0.2192227840423584,
+      "error": null
+    },
+    "assert extract_freq([(7, 12), (3, 7), (11, 4), (7, 6)]) == 4": {
+      "result": true,
+      "time": 0.2808077335357666,
+      "error": null
+    },
+    "assert extract_freq([(10, 17), (7, 3), (9, 5), (4, 12)]) == 4": {
+      "result": true,
+      "time": 0.31110334396362305,
+      "error": null
+    },
+    "assert extract_freq([(8, 16), (2, 5), (11, 10), (5, 14)]) == 4": {
+      "result": true,
+      "time": 0.26104211807250977,
+      "error": null
+    },
+    "assert extract_freq([(9, 18), (5, 2), (3, 2), (7, 11)]) == 4": {
+      "result": true,
+      "time": 0.29009294509887695,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9313725490196079,
+  "general_error": "",
+  "has_testcase_error": false
+}

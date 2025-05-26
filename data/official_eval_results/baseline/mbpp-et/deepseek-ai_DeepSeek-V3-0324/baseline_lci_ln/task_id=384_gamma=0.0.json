@@ -1,0 +1,519 @@
+{
+  "code": "def frequency_Of_Smallest(n, arr):\n    if n == 0:\n        return 0\n    smallest = arr[0]\n    for num in arr:\n        if num < smallest:\n            smallest = num\n    count = 0\n    for num in arr:\n        if num == smallest:\n            count += 1\n    return count",
+  "results": {
+    "assert frequency_Of_Smallest(5,[1,2,3,4,3]) == 1": {
+      "result": true,
+      "time": 0.03695559501647949,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7,[3,1,2,5,6,2,3]) == 1": {
+      "result": true,
+      "time": 0.046344757080078125,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7,[3,3,6,3,7,4,9]) == 3": {
+      "result": true,
+      "time": 0.04443621635437012,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [6, 7, 2, 7, 6]) == 1": {
+      "result": true,
+      "time": 0.04163765907287598,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [6, 1, 6, 1, 5]) == 2": {
+      "result": true,
+      "time": 0.05525851249694824,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [1, 4, 7, 5, 1]) == 1": {
+      "result": false,
+      "time": 0.03868460655212402,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [5, 6, 3, 4, 1]) == 1": {
+      "result": true,
+      "time": 0.04597926139831543,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [4, 2, 1, 5, 8]) == 1": {
+      "result": true,
+      "time": 0.057662248611450195,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [1, 3, 8, 5, 5]) == 1": {
+      "result": true,
+      "time": 0.040547847747802734,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(1, [6, 1, 4, 7, 5]) == 1": {
+      "result": true,
+      "time": 0.04545116424560547,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [2, 7, 5, 8, 6]) == 1": {
+      "result": true,
+      "time": 0.04569816589355469,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(1, [4, 5, 1, 2, 7]) == 1": {
+      "result": true,
+      "time": 0.040152549743652344,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [6, 4, 3, 1, 3]) == 1": {
+      "result": true,
+      "time": 0.053862571716308594,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [2, 3, 8, 3, 6]) == 1": {
+      "result": true,
+      "time": 0.03775334358215332,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [6, 1, 8, 8, 2]) == 1": {
+      "result": true,
+      "time": 0.048351287841796875,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [2, 2, 3, 9, 2]) == 2": {
+      "result": false,
+      "time": 0.03986072540283203,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [3, 4, 3, 9, 7]) == 2": {
+      "result": true,
+      "time": 0.04023170471191406,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [2, 4, 5, 9, 3]) == 1": {
+      "result": true,
+      "time": 0.04056549072265625,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [4, 3, 7, 2, 8]) == 1": {
+      "result": true,
+      "time": 0.05555462837219238,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [4, 7, 1, 8, 4]) == 1": {
+      "result": true,
+      "time": 0.042551517486572266,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [1, 3, 4, 6, 1]) == 2": {
+      "result": true,
+      "time": 0.05744147300720215,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(1, [1, 6, 7, 3, 4]) == 1": {
+      "result": true,
+      "time": 0.05774736404418945,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [4, 1, 4, 5, 4]) == 1": {
+      "result": true,
+      "time": 0.054601430892944336,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [5, 1, 6, 7, 7]) == 1": {
+      "result": true,
+      "time": 0.05981588363647461,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [3, 4, 6, 3, 4]) == 2": {
+      "result": true,
+      "time": 0.053347110748291016,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(1, [2, 6, 1, 4, 5]) == 1": {
+      "result": true,
+      "time": 0.054338932037353516,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [4, 7, 7, 2, 8]) == 1": {
+      "result": true,
+      "time": 0.05562281608581543,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [6, 3, 3, 5, 1]) == 2": {
+      "result": false,
+      "time": 0.050145626068115234,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [2, 4, 2, 4, 3]) == 1": {
+      "result": false,
+      "time": 0.04375648498535156,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [6, 7, 2, 9, 5]) == 1": {
+      "result": true,
+      "time": 0.03913402557373047,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [3, 4, 2, 6, 8]) == 1": {
+      "result": true,
+      "time": 0.048551082611083984,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [6, 1, 2, 6, 2]) == 1": {
+      "result": true,
+      "time": 0.041150569915771484,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [3, 4, 8, 5, 2]) == 1": {
+      "result": true,
+      "time": 0.04472637176513672,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [5, 3, 3, 6, 7]) == 2": {
+      "result": true,
+      "time": 0.0531620979309082,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [1, 2, 8, 1, 1]) == 1": {
+      "result": false,
+      "time": 0.045659780502319336,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [4, 6, 4, 5, 8]) == 1": {
+      "result": false,
+      "time": 0.03911590576171875,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(6, [8, 2, 4, 8, 3, 7, 7]) == 1": {
+      "result": true,
+      "time": 0.03854727745056152,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [1, 5, 1, 7, 6, 5, 3]) == 1": {
+      "result": false,
+      "time": 0.04597735404968262,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7, [3, 5, 4, 10, 7, 5, 3]) == 2": {
+      "result": true,
+      "time": 0.044188737869262695,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [4, 2, 6, 2, 1, 5, 3]) == 1": {
+      "result": true,
+      "time": 0.03888988494873047,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(6, [4, 6, 2, 8, 10, 1, 8]) == 1": {
+      "result": true,
+      "time": 0.044888973236083984,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(6, [3, 1, 3, 7, 2, 4, 5]) == 1": {
+      "result": true,
+      "time": 0.04207253456115723,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [5, 5, 1, 6, 7, 4, 3]) == 1": {
+      "result": true,
+      "time": 0.04389214515686035,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7, [1, 6, 2, 2, 8, 3, 3]) == 1": {
+      "result": true,
+      "time": 0.037628173828125,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [7, 2, 7, 9, 1, 2, 2]) == 1": {
+      "result": true,
+      "time": 0.03741264343261719,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [4, 5, 5, 8, 4, 5, 6]) == 1": {
+      "result": false,
+      "time": 0.03589344024658203,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7, [1, 5, 3, 1, 2, 5, 7]) == 2": {
+      "result": true,
+      "time": 0.043736934661865234,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7, [7, 4, 1, 6, 4, 2, 8]) == 1": {
+      "result": true,
+      "time": 0.0648951530456543,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [5, 3, 5, 1, 2, 2, 7]) == 1": {
+      "result": true,
+      "time": 0.0508270263671875,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [1, 3, 4, 10, 4, 7, 4]) == 1": {
+      "result": true,
+      "time": 0.04713702201843262,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [4, 2, 1, 5, 5, 3, 8]) == 1": {
+      "result": true,
+      "time": 0.04972195625305176,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [5, 6, 2, 10, 3, 7, 4]) == 1": {
+      "result": true,
+      "time": 0.05158185958862305,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [2, 4, 1, 3, 1, 3, 8]) == 1": {
+      "result": false,
+      "time": 0.04658842086791992,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [5, 4, 6, 10, 7, 2, 3]) == 1": {
+      "result": true,
+      "time": 0.04967308044433594,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(6, [2, 4, 3, 8, 1, 1, 8]) == 2": {
+      "result": true,
+      "time": 0.05625796318054199,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [2, 4, 1, 3, 5, 3, 6]) == 1": {
+      "result": true,
+      "time": 0.04174351692199707,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [4, 2, 3, 2, 3, 2, 8]) == 2": {
+      "result": false,
+      "time": 0.061315059661865234,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [6, 2, 4, 9, 5, 6, 5]) == 1": {
+      "result": true,
+      "time": 0.0608210563659668,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [2, 3, 7, 9, 8, 5, 5]) == 1": {
+      "result": true,
+      "time": 0.05474591255187988,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [1, 4, 3, 8, 2, 5, 5]) == 1": {
+      "result": true,
+      "time": 0.051831722259521484,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(6, [8, 4, 2, 2, 11, 3, 2]) == 2": {
+      "result": false,
+      "time": 0.05743265151977539,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(6, [5, 1, 4, 1, 11, 1, 5]) == 3": {
+      "result": true,
+      "time": 0.06324911117553711,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [2, 3, 6, 7, 5, 6, 8]) == 1": {
+      "result": true,
+      "time": 0.05767035484313965,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [1, 3, 4, 9, 3, 5, 3]) == 1": {
+      "result": true,
+      "time": 0.06276774406433105,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [5, 6, 2, 8, 2, 3, 8]) == 2": {
+      "result": true,
+      "time": 0.0598454475402832,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7, [5, 6, 3, 9, 9, 2, 6]) == 1": {
+      "result": true,
+      "time": 0.058649301528930664,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [6, 1, 4, 7, 3, 2, 4]) == 1": {
+      "result": true,
+      "time": 0.04189014434814453,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [3, 3, 1, 10, 9, 2, 6]) == 1": {
+      "result": true,
+      "time": 0.037336111068725586,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [1, 1, 2, 10, 11, 2, 3]) == 2": {
+      "result": true,
+      "time": 0.04475879669189453,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [2, 4, 9, 5, 7, 7, 14]) == 1": {
+      "result": true,
+      "time": 0.033266544342041016,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [7, 7, 5, 2, 11, 8, 12]) == 2": {
+      "result": false,
+      "time": 0.046820878982543945,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [6, 4, 3, 1, 2, 8, 7]) == 1": {
+      "result": true,
+      "time": 0.04517102241516113,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [6, 1, 5, 6, 3, 9, 13]) == 1": {
+      "result": true,
+      "time": 0.042928457260131836,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7, [7, 8, 9, 6, 4, 6, 7]) == 1": {
+      "result": true,
+      "time": 0.04654502868652344,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [7, 6, 7, 8, 12, 6, 9]) == 1": {
+      "result": false,
+      "time": 0.03890562057495117,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [1, 3, 11, 8, 6, 1, 11]) == 1": {
+      "result": false,
+      "time": 0.04575943946838379,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [7, 6, 8, 2, 10, 5, 11]) == 1": {
+      "result": true,
+      "time": 0.03499650955200195,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(5, [3, 8, 8, 3, 8, 9, 12]) == 2": {
+      "result": true,
+      "time": 0.04910135269165039,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [8, 2, 10, 5, 5, 6, 6]) == 1": {
+      "result": true,
+      "time": 0.037813663482666016,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7, [2, 3, 9, 4, 2, 4, 10]) == 2": {
+      "result": true,
+      "time": 0.0450439453125,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [8, 8, 5, 6, 5, 6, 13]) == 2": {
+      "result": true,
+      "time": 0.05175590515136719,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7, [6, 2, 5, 4, 10, 8, 8]) == 1": {
+      "result": true,
+      "time": 0.04042625427246094,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7, [5, 5, 7, 2, 10, 3, 9]) == 1": {
+      "result": true,
+      "time": 0.03775620460510254,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(6, [1, 5, 11, 1, 7, 4, 9]) == 2": {
+      "result": true,
+      "time": 0.03967928886413574,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [4, 3, 6, 5, 9, 9, 5]) == 1": {
+      "result": true,
+      "time": 0.042311668395996094,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(6, [1, 5, 6, 6, 2, 2, 4]) == 1": {
+      "result": true,
+      "time": 0.03206062316894531,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(6, [2, 4, 4, 4, 2, 2, 10]) == 3": {
+      "result": true,
+      "time": 0.03497171401977539,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [2, 2, 8, 4, 11, 9, 8]) == 2": {
+      "result": true,
+      "time": 0.03366351127624512,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(6, [4, 6, 8, 6, 6, 3, 12]) == 1": {
+      "result": true,
+      "time": 0.03675365447998047,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [4, 5, 6, 1, 7, 8, 14]) == 1": {
+      "result": true,
+      "time": 0.04626727104187012,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [2, 8, 1, 1, 10, 4, 7]) == 2": {
+      "result": true,
+      "time": 0.03742837905883789,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [6, 4, 3, 1, 4, 4, 4]) == 1": {
+      "result": true,
+      "time": 0.04928731918334961,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [2, 4, 10, 6, 4, 6, 5]) == 1": {
+      "result": true,
+      "time": 0.03575730323791504,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7, [6, 6, 11, 1, 5, 7, 4]) == 1": {
+      "result": true,
+      "time": 0.041989803314208984,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(6, [2, 8, 5, 6, 12, 6, 11]) == 1": {
+      "result": true,
+      "time": 0.03650617599487305,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [5, 4, 3, 5, 7, 5, 12]) == 1": {
+      "result": true,
+      "time": 0.037230730056762695,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(3, [2, 2, 3, 6, 10, 7, 11]) == 2": {
+      "result": true,
+      "time": 0.03560757637023926,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [8, 7, 5, 5, 7, 7, 7]) == 2": {
+      "result": true,
+      "time": 0.035421133041381836,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [7, 5, 2, 4, 11, 9, 9]) == 1": {
+      "result": true,
+      "time": 0.03567862510681152,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(4, [5, 7, 8, 7, 5, 8, 14]) == 1": {
+      "result": false,
+      "time": 0.04547929763793945,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(7, [6, 3, 11, 1, 8, 5, 6]) == 1": {
+      "result": true,
+      "time": 0.03760671615600586,
+      "error": null
+    },
+    "assert frequency_Of_Smallest(2, [8, 6, 4, 5, 3, 9, 12]) == 1": {
+      "result": true,
+      "time": 0.03549337387084961,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8529411764705882,
+  "general_error": "",
+  "has_testcase_error": false
+}

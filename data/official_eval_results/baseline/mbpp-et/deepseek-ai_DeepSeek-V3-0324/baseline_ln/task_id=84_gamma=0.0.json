@@ -1,0 +1,84 @@
+{
+  "code": "def sequence(n):\n    if n == 1 or n == 2:\n        return 1\n    dp = [0] * (n + 1)\n    dp[1], dp[2] = 1, 1\n    for i in range(3, n + 1):\n        dp[i] = dp[dp[i - 1]] + dp[i - dp[i - 1]]\n    return dp[n]",
+  "results": {
+    "assert sequence(10) == 6": {
+      "result": true,
+      "time": 0.03646659851074219,
+      "error": null
+    },
+    "assert sequence(2) == 1": {
+      "result": true,
+      "time": 0.03860664367675781,
+      "error": null
+    },
+    "assert sequence(3) == 2": {
+      "result": true,
+      "time": 0.035616159439086914,
+      "error": null
+    },
+    "assert sequence(13) == 8": {
+      "result": true,
+      "time": 0.03927445411682129,
+      "error": null
+    },
+    "assert sequence(9) == 5": {
+      "result": true,
+      "time": 0.04386186599731445,
+      "error": null
+    },
+    "assert sequence(5) == 3": {
+      "result": true,
+      "time": 0.0404050350189209,
+      "error": null
+    },
+    "assert sequence(7) == 4": {
+      "result": true,
+      "time": 0.03295564651489258,
+      "error": null
+    },
+    "assert sequence(11) == 7": {
+      "result": true,
+      "time": 0.04505658149719238,
+      "error": null
+    },
+    "assert sequence(8) == 4": {
+      "result": true,
+      "time": 0.03639507293701172,
+      "error": null
+    },
+    "assert sequence(6) == 4": {
+      "result": true,
+      "time": 0.049564361572265625,
+      "error": null
+    },
+    "assert sequence(12) == 7": {
+      "result": true,
+      "time": 0.03151226043701172,
+      "error": null
+    },
+    "assert sequence(15) == 8": {
+      "result": true,
+      "time": 0.04231405258178711,
+      "error": null
+    },
+    "assert sequence(14) == 8": {
+      "result": true,
+      "time": 0.04653787612915039,
+      "error": null
+    },
+    "assert sequence(1) == 1": {
+      "result": true,
+      "time": 0.04378795623779297,
+      "error": null
+    },
+    "assert sequence(4) == 2": {
+      "result": true,
+      "time": 0.04463768005371094,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

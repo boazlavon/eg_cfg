@@ -1,0 +1,519 @@
+{
+  "code": "from collections import Counter\n\ndef get_max_occuring_char(input_string):\n    # Count the occurrences of each character\n    char_count = Counter(input_string)\n    \n    # Find the character with the maximum count\n    max_char = max(char_count.items(), key=lambda x: x[1])[0]\n    \n    return max_char",
+  "results": {
+    "assert get_max_occuring_char(\"data\") == \"a\"": {
+      "result": true,
+      "time": 0.2511098384857178,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"create\") == \"e\"": {
+      "result": true,
+      "time": 0.26366424560546875,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"brilliant girl\") == \"i\"": {
+      "result": true,
+      "time": 0.26477670669555664,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"clvhk\") == c": {
+      "result": false,
+      "time": 0.2541055679321289,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"piclje\") == p": {
+      "result": false,
+      "time": 0.2675931453704834,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"cshqwn\") == c": {
+      "result": false,
+      "time": 0.24904656410217285,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"ktspkzk\") == k": {
+      "result": false,
+      "time": 0.2820889949798584,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"qugtsdmwz\") == q": {
+      "result": false,
+      "time": 0.2677881717681885,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"ietz\") == i": {
+      "result": false,
+      "time": 0.2820594310760498,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"ooi\") == o": {
+      "result": false,
+      "time": 0.2792017459869385,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"hwgquzl\") == h": {
+      "result": false,
+      "time": 0.2602412700653076,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"biwbt\") == b": {
+      "result": false,
+      "time": 0.27437424659729004,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"bnida\") == b": {
+      "result": false,
+      "time": 0.26908040046691895,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"tqybarjy\") == y": {
+      "result": false,
+      "time": 0.3198056221008301,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"aicklssr\") == s": {
+      "result": false,
+      "time": 0.3032710552215576,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"fbgngzqfg\") == g": {
+      "result": false,
+      "time": 0.3150768280029297,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"srgnorl\") == r": {
+      "result": false,
+      "time": 0.27559566497802734,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"gmptgypht\") == g": {
+      "result": false,
+      "time": 0.27942943572998047,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"vfourzx\") == v": {
+      "result": false,
+      "time": 0.26427364349365234,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"eicukxso\") == e": {
+      "result": false,
+      "time": 0.2681407928466797,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"vjgnwp\") == v": {
+      "result": false,
+      "time": 0.25652551651000977,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"ywcjanl\") == y": {
+      "result": false,
+      "time": 0.26684069633483887,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"jjiafs\") == j": {
+      "result": false,
+      "time": 0.24803423881530762,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"mcetvuff\") == f": {
+      "result": false,
+      "time": 0.2704751491546631,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"vjlbkka\") == k": {
+      "result": false,
+      "time": 0.26821064949035645,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"gzgr\") == g": {
+      "result": false,
+      "time": 0.2811579704284668,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"yjrx\") == y": {
+      "result": false,
+      "time": 0.26009130477905273,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"ikmibk\") == i": {
+      "result": false,
+      "time": 0.2790861129760742,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"xme\") == x": {
+      "result": false,
+      "time": 0.26739001274108887,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"zjg\") == z": {
+      "result": false,
+      "time": 0.28227853775024414,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"orlw\") == o": {
+      "result": false,
+      "time": 0.2605936527252197,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"hejsuzoe\") == e": {
+      "result": false,
+      "time": 0.2682762145996094,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"kzy\") == k": {
+      "result": false,
+      "time": 0.28478455543518066,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"ivmdzr\") == i": {
+      "result": false,
+      "time": 0.2634866237640381,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"yho\") == y": {
+      "result": false,
+      "time": 0.2635610103607178,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"solnh\") == s": {
+      "result": false,
+      "time": 0.276033878326416,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"ktl\") == k": {
+      "result": false,
+      "time": 0.25960493087768555,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"vpfadvwj\") == v": {
+      "result": false,
+      "time": 0.28133726119995117,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"bxhnomt\") == b": {
+      "result": false,
+      "time": 0.2788124084472656,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"zgtvigkw\") == g": {
+      "result": false,
+      "time": 0.2651979923248291,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"lqmjtsjru\") == j": {
+      "result": false,
+      "time": 0.26516127586364746,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"tjqbykkc\") == k": {
+      "result": false,
+      "time": 0.27030348777770996,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"txdwto\") == t": {
+      "result": false,
+      "time": 0.2680854797363281,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"eyvlglgffzq\") == l": {
+      "result": false,
+      "time": 0.27222633361816406,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"jkllcxd\") == l": {
+      "result": false,
+      "time": 0.2890486717224121,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"nbcmjjoioeoo\") == o": {
+      "result": false,
+      "time": 0.2915947437286377,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"yhwm\") == y": {
+      "result": false,
+      "time": 0.287508487701416,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"mtmfjwdyjpmf\") == m": {
+      "result": false,
+      "time": 0.30718135833740234,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"naxbxkskuv\") == x": {
+      "result": false,
+      "time": 0.25879454612731934,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"wzgpdt\") == w": {
+      "result": false,
+      "time": 0.27636241912841797,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"mjxed\") == m": {
+      "result": false,
+      "time": 0.3028731346130371,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"lbjfez\") == l": {
+      "result": false,
+      "time": 0.28463292121887207,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"mnfzgorevin\") == n": {
+      "result": false,
+      "time": 0.26741695404052734,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"iznjdrfye\") == i": {
+      "result": false,
+      "time": 0.26032257080078125,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"wrid\") == w": {
+      "result": false,
+      "time": 0.2929673194885254,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"xcjab\") == x": {
+      "result": false,
+      "time": 0.27753257751464844,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"uaazqiumlqg\") == u": {
+      "result": false,
+      "time": 0.2938077449798584,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"yqifmsi\") == i": {
+      "result": false,
+      "time": 0.07948541641235352,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"iheglopq\") == i": {
+      "result": false,
+      "time": 0.2636911869049072,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"tcxi\") == t": {
+      "result": false,
+      "time": 0.26470255851745605,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"xbuvvgdonhn\") == v": {
+      "result": false,
+      "time": 0.19973206520080566,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"evao\") == e": {
+      "result": false,
+      "time": 0.24628686904907227,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"atbyo\") == a": {
+      "result": false,
+      "time": 0.2660064697265625,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"mbaurgl\") == m": {
+      "result": false,
+      "time": 0.3157804012298584,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"qty\") == q": {
+      "result": false,
+      "time": 0.22839117050170898,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"xjgmljppu\") == j": {
+      "result": false,
+      "time": 0.17709589004516602,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"nnafqvmayng\") == n": {
+      "result": false,
+      "time": 0.3182499408721924,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"weu\") == w": {
+      "result": false,
+      "time": 0.17022037506103516,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"ftoooqvkb\") == o": {
+      "result": false,
+      "time": 0.25730323791503906,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"nlbylf kwd\") == l": {
+      "result": false,
+      "time": 0.30525660514831543,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"frv zwnuvnlgd\") == v": {
+      "result": false,
+      "time": 0.29872870445251465,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"hlsehhyzrd\") == h": {
+      "result": false,
+      "time": 0.27718377113342285,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"wkwyrxsjkcvwehsclg\") == w": {
+      "result": false,
+      "time": 0.29468274116516113,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"kl zdpqncgxiu hfkd\") == k": {
+      "result": false,
+      "time": 0.305635929107666,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"uuhptkxwnzpx\") == u": {
+      "result": false,
+      "time": 0.26025891304016113,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"jzaxbekwwv\") == w": {
+      "result": false,
+      "time": 0.2985546588897705,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"svegdbxzmckvgscl\") == s": {
+      "result": false,
+      "time": 0.2525937557220459,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"usskgdtgx v\") == s": {
+      "result": false,
+      "time": 0.2751016616821289,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"pkpeyygpmcrrmwn\") == p": {
+      "result": false,
+      "time": 0.2842872142791748,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"uqitnnsnlenszirbx\") == n": {
+      "result": false,
+      "time": 0.24351215362548828,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"jkxzgekkexafqnkdq\") == k": {
+      "result": false,
+      "time": 0.2687351703643799,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"sxjtqmleelsf\") == s": {
+      "result": false,
+      "time": 0.27580928802490234,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"wdauiusqoflgoarhes\") == a": {
+      "result": false,
+      "time": 0.27709221839904785,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"woxwftpbndmbf\") == w": {
+      "result": false,
+      "time": 0.2744166851043701,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"ipfrfogdonuy rlrx\") == r": {
+      "result": false,
+      "time": 0.28740739822387695,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"zksnbyxuvckfxccm\") == c": {
+      "result": false,
+      "time": 0.29066991806030273,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"qy gxbpr zdgtvn\") ==  ": {
+      "result": false,
+      "time": 0.04976058006286621,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"ibpqxgjzzed\") == z": {
+      "result": false,
+      "time": 0.27867627143859863,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"zqotoxlqbi\") == q": {
+      "result": false,
+      "time": 0.2838737964630127,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"lvmjteaylkxfq\") == l": {
+      "result": false,
+      "time": 0.271411657333374,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"ujgcowucdk\") == u": {
+      "result": false,
+      "time": 0.2866072654724121,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"euatspphhogbigl\") == p": {
+      "result": false,
+      "time": 0.272564172744751,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"crwhtmbmhny\") == h": {
+      "result": false,
+      "time": 0.2783780097961426,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"yvd  knlydvns\") == y": {
+      "result": false,
+      "time": 0.2691960334777832,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"atulbwsnkuykzcq\") == u": {
+      "result": false,
+      "time": 0.27939653396606445,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"xrfutzlqw\") == x": {
+      "result": false,
+      "time": 0.2838726043701172,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"nhrtdclsmjflyrtz\") == r": {
+      "result": false,
+      "time": 0.2730410099029541,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"oomjqpkeh\") == o": {
+      "result": false,
+      "time": 0.2752525806427002,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"shtakfayyeby u\") == y": {
+      "result": false,
+      "time": 0.2800467014312744,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"qwniuwqdld\") == q": {
+      "result": false,
+      "time": 0.28432774543762207,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"czwjkjojkoznde\") == j": {
+      "result": false,
+      "time": 0.2687664031982422,
+      "error": null
+    },
+    "assert get_max_occuring_char(\"jsk qrdblfgeheetet\") == e": {
+      "result": false,
+      "time": 0.27845191955566406,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.029411764705882353,
+  "general_error": "",
+  "has_testcase_error": false
+}

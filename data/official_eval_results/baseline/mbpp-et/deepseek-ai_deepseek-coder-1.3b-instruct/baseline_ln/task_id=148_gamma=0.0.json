@@ -1,0 +1,189 @@
+{
+  "code": "def sum_digits_twoparts(n):\n    # Convert the number to a string to easily access its digits\n    str_n = str(n)\n    length = len(str_n)\n    \n    # Initialize a 2D array to store the maximum sum of digits for each possible number of digits\n    dp = [[0] * (length + 1) for _ in range(length + 1)]\n    \n    # Initialize the first row and the first column\n    for i in range(length + 1):\n        dp[0][i] = i * 1\n        dp[i][0] = i * 1\n    \n    # Fill in the rest of the dp array\n    for i in range(1, length + 1):\n        for j in range(1, length + 1):\n            # If the current digit is less than the previous digit, we can only divide the number into two parts with the previous digit\n            if int(str_n[i - 1]) < int(str_n[j - 1]):\n                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])\n            else:\n                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1] + int(str_n[i - 1]) * 10 + int(str_n[j - 1]) * 1)\n    \n    # Return the maximum sum of digits\n    return dp[length][length]",
+  "results": {
+    "assert sum_digits_twoparts(35)==17": {
+      "result": false,
+      "time": 0.0294191837310791,
+      "error": null
+    },
+    "assert sum_digits_twoparts(7)==7": {
+      "result": false,
+      "time": 0.031920671463012695,
+      "error": null
+    },
+    "assert sum_digits_twoparts(100)==19": {
+      "result": false,
+      "time": 0.03455948829650879,
+      "error": null
+    },
+    "assert sum_digits_twoparts(37) == 19": {
+      "result": false,
+      "time": 0.03183579444885254,
+      "error": null
+    },
+    "assert sum_digits_twoparts(30) == 12": {
+      "result": false,
+      "time": 0.03014349937438965,
+      "error": null
+    },
+    "assert sum_digits_twoparts(38) == 20": {
+      "result": false,
+      "time": 0.030611515045166016,
+      "error": null
+    },
+    "assert sum_digits_twoparts(32) == 14": {
+      "result": false,
+      "time": 0.031046152114868164,
+      "error": null
+    },
+    "assert sum_digits_twoparts(31) == 13": {
+      "result": false,
+      "time": 0.028000831604003906,
+      "error": null
+    },
+    "assert sum_digits_twoparts(35) == 17": {
+      "result": false,
+      "time": 0.03300142288208008,
+      "error": null
+    },
+    "assert sum_digits_twoparts(40) == 13": {
+      "result": false,
+      "time": 0.03908944129943848,
+      "error": null
+    },
+    "assert sum_digits_twoparts(34) == 16": {
+      "result": false,
+      "time": 0.03913307189941406,
+      "error": null
+    },
+    "assert sum_digits_twoparts(36) == 18": {
+      "result": false,
+      "time": 0.03333878517150879,
+      "error": null
+    },
+    "assert sum_digits_twoparts(33) == 15": {
+      "result": false,
+      "time": 0.03467202186584473,
+      "error": null
+    },
+    "assert sum_digits_twoparts(39) == 12": {
+      "result": false,
+      "time": 0.0329442024230957,
+      "error": null
+    },
+    "assert sum_digits_twoparts(12) == 12": {
+      "result": false,
+      "time": 0.02978968620300293,
+      "error": null
+    },
+    "assert sum_digits_twoparts(5) == 5": {
+      "result": false,
+      "time": 0.036460161209106445,
+      "error": null
+    },
+    "assert sum_digits_twoparts(4) == 4": {
+      "result": false,
+      "time": 0.02913355827331543,
+      "error": null
+    },
+    "assert sum_digits_twoparts(8) == 8": {
+      "result": false,
+      "time": 0.029946327209472656,
+      "error": null
+    },
+    "assert sum_digits_twoparts(10) == 10": {
+      "result": false,
+      "time": 0.03769278526306152,
+      "error": null
+    },
+    "assert sum_digits_twoparts(7) == 7": {
+      "result": false,
+      "time": 0.03482794761657715,
+      "error": null
+    },
+    "assert sum_digits_twoparts(6) == 6": {
+      "result": false,
+      "time": 0.03436565399169922,
+      "error": null
+    },
+    "assert sum_digits_twoparts(11) == 11": {
+      "result": false,
+      "time": 0.03344225883483887,
+      "error": null
+    },
+    "assert sum_digits_twoparts(9) == 9": {
+      "result": false,
+      "time": 0.035288333892822266,
+      "error": null
+    },
+    "assert sum_digits_twoparts(2) == 2": {
+      "result": false,
+      "time": 0.03496551513671875,
+      "error": null
+    },
+    "assert sum_digits_twoparts(3) == 3": {
+      "result": false,
+      "time": 0.032648324966430664,
+      "error": null
+    },
+    "assert sum_digits_twoparts(99) == 18": {
+      "result": false,
+      "time": 0.03847360610961914,
+      "error": null
+    },
+    "assert sum_digits_twoparts(101) == 20": {
+      "result": false,
+      "time": 0.03260660171508789,
+      "error": null
+    },
+    "assert sum_digits_twoparts(95) == 23": {
+      "result": false,
+      "time": 0.03509354591369629,
+      "error": null
+    },
+    "assert sum_digits_twoparts(103) == 22": {
+      "result": false,
+      "time": 0.03052353858947754,
+      "error": null
+    },
+    "assert sum_digits_twoparts(102) == 21": {
+      "result": false,
+      "time": 0.032851219177246094,
+      "error": null
+    },
+    "assert sum_digits_twoparts(96) == 24": {
+      "result": false,
+      "time": 0.03673148155212402,
+      "error": null
+    },
+    "assert sum_digits_twoparts(98) == 26": {
+      "result": false,
+      "time": 0.0349574089050293,
+      "error": null
+    },
+    "assert sum_digits_twoparts(100) == 19": {
+      "result": false,
+      "time": 0.03349733352661133,
+      "error": null
+    },
+    "assert sum_digits_twoparts(104) == 23": {
+      "result": false,
+      "time": 0.038149118423461914,
+      "error": null
+    },
+    "assert sum_digits_twoparts(97) == 25": {
+      "result": false,
+      "time": 0.03562617301940918,
+      "error": null
+    },
+    "assert sum_digits_twoparts(105) == 24": {
+      "result": false,
+      "time": 0.03214263916015625,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "def sum_of_alternates(nums):\n    # Extract the sum of alternate chains of tuples\n    sum1 = sum(nums[::2])\n    sum2 = sum(nums[1::2])\n    return sum1, sum2",
+  "results": {
+    "assert sum_of_alternates((5, 6, 3, 6, 10, 34)) == (46, 18)": {
+      "result": false,
+      "time": 0.03631711006164551,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 2, 3, 4, 5)) == (6, 9)": {
+      "result": false,
+      "time": 0.04551124572753906,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 7, 8, 9, 4, 5)) == (21, 18)": {
+      "result": false,
+      "time": 0.03444671630859375,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 2, 7, 9, 10, 34)) == (45, 21)": {
+      "result": false,
+      "time": 0.04026436805725098,
+      "error": null
+    },
+    "assert sum_of_alternates((7, 7, 3, 10, 9, 36)) == (53, 19)": {
+      "result": false,
+      "time": 0.04085946083068848,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 3, 5, 7, 15, 35)) == (45, 24)": {
+      "result": false,
+      "time": 0.030292272567749023,
+      "error": null
+    },
+    "assert sum_of_alternates((5, 5, 1, 1, 12, 32)) == (38, 18)": {
+      "result": false,
+      "time": 0.032299041748046875,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 8, 3, 6, 11, 33)) == (47, 18)": {
+      "result": false,
+      "time": 0.03688645362854004,
+      "error": null
+    },
+    "assert sum_of_alternates((5, 5, 2, 1, 8, 32)) == (38, 15)": {
+      "result": false,
+      "time": 0.03559374809265137,
+      "error": null
+    },
+    "assert sum_of_alternates((10, 9, 5, 3, 9, 32)) == (44, 24)": {
+      "result": false,
+      "time": 0.04013466835021973,
+      "error": null
+    },
+    "assert sum_of_alternates((7, 1, 4, 2, 8, 31)) == (34, 19)": {
+      "result": false,
+      "time": 0.03717374801635742,
+      "error": null
+    },
+    "assert sum_of_alternates((5, 1, 8, 6, 7, 39)) == (46, 20)": {
+      "result": false,
+      "time": 0.03923773765563965,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 4, 2, 5, 10, 32)) == (41, 15)": {
+      "result": false,
+      "time": 0.03938603401184082,
+      "error": null
+    },
+    "assert sum_of_alternates((8, 7, 8, 9, 7, 39)) == (55, 23)": {
+      "result": false,
+      "time": 0.03381919860839844,
+      "error": null
+    },
+    "assert sum_of_alternates((10, 4, 4, 9, 12, 33)) == (46, 26)": {
+      "result": false,
+      "time": 0.03379011154174805,
+      "error": null
+    },
+    "assert sum_of_alternates((9, 10, 8, 10, 9, 29)) == (49, 26)": {
+      "result": false,
+      "time": 0.038237810134887695,
+      "error": null
+    },
+    "assert sum_of_alternates((7, 3, 2, 4, 15, 29)) == (36, 24)": {
+      "result": false,
+      "time": 0.03183889389038086,
+      "error": null
+    },
+    "assert sum_of_alternates((10, 10, 2, 10, 9, 35)) == (55, 21)": {
+      "result": false,
+      "time": 0.0289003849029541,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 6, 2, 5, 12, 31)) == (42, 20)": {
+      "result": false,
+      "time": 0.038779497146606445,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 6, 3, 10, 9, 36)) == (52, 15)": {
+      "result": false,
+      "time": 0.044158935546875,
+      "error": null
+    },
+    "assert sum_of_alternates((7, 3, 3, 7, 8, 35)) == (45, 18)": {
+      "result": false,
+      "time": 0.03641915321350098,
+      "error": null
+    },
+    "assert sum_of_alternates((9, 2, 7, 1, 14, 34)) == (37, 30)": {
+      "result": false,
+      "time": 0.03142976760864258,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 8, 2, 8, 6, 32)) == (48, 12)": {
+      "result": false,
+      "time": 0.031049489974975586,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 3, 3, 8, 15, 32)) == (43, 24)": {
+      "result": false,
+      "time": 0.03259444236755371,
+      "error": null
+    },
+    "assert sum_of_alternates((7, 2, 4, 8, 15, 29)) == (39, 26)": {
+      "result": false,
+      "time": 0.03644752502441406,
+      "error": null
+    },
+    "assert sum_of_alternates((9, 11, 1, 8, 9, 31)) == (50, 19)": {
+      "result": false,
+      "time": 0.03165006637573242,
+      "error": null
+    },
+    "assert sum_of_alternates((2, 9, 5, 8, 11, 29)) == (46, 18)": {
+      "result": false,
+      "time": 0.03760123252868652,
+      "error": null
+    },
+    "assert sum_of_alternates((5, 8, 4, 3, 7, 35)) == (46, 16)": {
+      "result": false,
+      "time": 0.0318608283996582,
+      "error": null
+    },
+    "assert sum_of_alternates((2, 11, 3, 3, 11, 31)) == (45, 16)": {
+      "result": false,
+      "time": 0.029207229614257812,
+      "error": null
+    },
+    "assert sum_of_alternates((10, 3, 5, 8, 5, 32)) == (43, 20)": {
+      "result": false,
+      "time": 0.03020787239074707,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 6, 4, 3, 13, 32)) == (41, 23)": {
+      "result": false,
+      "time": 0.03392386436462402,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 3, 6, 8, 6, 35)) == (46, 16)": {
+      "result": false,
+      "time": 0.03392791748046875,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 2, 6, 4, 14, 36)) == (42, 24)": {
+      "result": false,
+      "time": 0.03085017204284668,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 11, 8, 2, 15, 31)) == (44, 29)": {
+      "result": false,
+      "time": 0.031935691833496094,
+      "error": null
+    },
+    "assert sum_of_alternates((2, 5, 7, 9, 10, 38)) == (52, 19)": {
+      "result": false,
+      "time": 0.03122234344482422,
+      "error": null
+    },
+    "assert sum_of_alternates((7, 10, 7, 5, 5, 34)) == (49, 19)": {
+      "result": false,
+      "time": 0.03279995918273926,
+      "error": null
+    },
+    "assert sum_of_alternates((5, 7, 1, 6, 1)) == (13, 7)": {
+      "result": false,
+      "time": 0.032213687896728516,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 2, 3, 8, 2)) == (10, 11)": {
+      "result": false,
+      "time": 0.025806665420532227,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 4, 7, 6, 5)) == (10, 15)": {
+      "result": false,
+      "time": 0.030965566635131836,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 6, 3, 2, 1)) == (8, 7)": {
+      "result": false,
+      "time": 0.03430652618408203,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 3, 8, 9, 5)) == (12, 16)": {
+      "result": false,
+      "time": 0.03948545455932617,
+      "error": null
+    },
+    "assert sum_of_alternates((2, 3, 7, 4, 8)) == (7, 17)": {
+      "result": false,
+      "time": 0.02993178367614746,
+      "error": null
+    },
+    "assert sum_of_alternates((5, 5, 1, 2, 6)) == (7, 12)": {
+      "result": false,
+      "time": 0.03868722915649414,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 6, 6, 4, 7)) == (10, 17)": {
+      "result": false,
+      "time": 0.03877615928649902,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 3, 8, 8, 5)) == (11, 17)": {
+      "result": false,
+      "time": 0.034752845764160156,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 5, 8, 4, 5)) == (9, 14)": {
+      "result": false,
+      "time": 0.03493356704711914,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 2, 7, 1, 8)) == (3, 18)": {
+      "result": false,
+      "time": 0.04019308090209961,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 1, 3, 3, 6)) == (4, 13)": {
+      "result": false,
+      "time": 0.03540468215942383,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 1, 5, 3, 3)) == (4, 11)": {
+      "result": false,
+      "time": 0.03671622276306152,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 4, 6, 9, 7)) == (13, 16)": {
+      "result": false,
+      "time": 0.03924202919006348,
+      "error": null
+    },
+    "assert sum_of_alternates((5, 7, 2, 1, 8)) == (8, 15)": {
+      "result": false,
+      "time": 0.040781259536743164,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 2, 5, 9, 7)) == (11, 13)": {
+      "result": false,
+      "time": 0.04318070411682129,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 7, 4, 6, 6)) == (13, 13)": {
+      "result": true,
+      "time": 0.03703141212463379,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 2, 2, 5, 7)) == (7, 15)": {
+      "result": false,
+      "time": 0.035314083099365234,
+      "error": null
+    },
+    "assert sum_of_alternates((5, 3, 8, 1, 3)) == (4, 16)": {
+      "result": false,
+      "time": 0.037537336349487305,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 3, 6, 2, 5)) == (5, 12)": {
+      "result": false,
+      "time": 0.0368955135345459,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 5, 5, 2, 9)) == (7, 20)": {
+      "result": false,
+      "time": 0.04257488250732422,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 7, 4, 9, 9)) == (16, 14)": {
+      "result": false,
+      "time": 0.03939080238342285,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 5, 2, 2, 9)) == (7, 14)": {
+      "result": false,
+      "time": 0.03628420829772949,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 1, 3, 1, 1)) == (2, 7)": {
+      "result": false,
+      "time": 0.0394444465637207,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 1, 1, 4, 2)) == (5, 7)": {
+      "result": false,
+      "time": 0.039695024490356445,
+      "error": null
+    },
+    "assert sum_of_alternates((2, 4, 6, 5, 5)) == (9, 13)": {
+      "result": false,
+      "time": 0.035858154296875,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 3, 7, 9, 4)) == (12, 12)": {
+      "result": true,
+      "time": 0.03790545463562012,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 4, 7, 2, 6)) == (6, 14)": {
+      "result": false,
+      "time": 0.040503501892089844,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 3, 6, 3, 5)) == (6, 14)": {
+      "result": false,
+      "time": 0.0404200553894043,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 1, 6, 5, 3)) == (6, 15)": {
+      "result": false,
+      "time": 0.0384829044342041,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 2, 8, 6, 2)) == (8, 13)": {
+      "result": false,
+      "time": 0.03611397743225098,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 5, 7, 5, 8)) == (10, 21)": {
+      "result": false,
+      "time": 0.03476262092590332,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 4, 7, 7, 9)) == (11, 17)": {
+      "result": false,
+      "time": 0.03436756134033203,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 6, 5, 13, 5, 9)) == (28, 11)": {
+      "result": false,
+      "time": 0.03544449806213379,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 2, 4, 4, 1, 9)) == (15, 6)": {
+      "result": false,
+      "time": 0.03232693672180176,
+      "error": null
+    },
+    "assert sum_of_alternates((5, 3, 8, 8, 7, 2)) == (13, 20)": {
+      "result": false,
+      "time": 0.03620266914367676,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 8, 6, 4, 9, 3)) == (15, 18)": {
+      "result": false,
+      "time": 0.043349266052246094,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 9, 11, 14, 3, 1)) == (24, 18)": {
+      "result": false,
+      "time": 0.0402531623840332,
+      "error": null
+    },
+    "assert sum_of_alternates((9, 3, 11, 14, 2, 4)) == (21, 22)": {
+      "result": false,
+      "time": 0.03405261039733887,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 11, 9, 7, 7, 2)) == (20, 22)": {
+      "result": false,
+      "time": 0.0344698429107666,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 2, 8, 6, 4, 3)) == (11, 13)": {
+      "result": false,
+      "time": 0.03400254249572754,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 11, 11, 14, 3, 1)) == (26, 20)": {
+      "result": false,
+      "time": 0.03387165069580078,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 5, 8, 7, 2, 5)) == (17, 11)": {
+      "result": false,
+      "time": 0.03918790817260742,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 2, 3, 9, 3, 10)) == (21, 12)": {
+      "result": false,
+      "time": 0.03938412666320801,
+      "error": null
+    },
+    "assert sum_of_alternates((8, 7, 8, 8, 5, 9)) == (24, 21)": {
+      "result": false,
+      "time": 0.035648345947265625,
+      "error": null
+    },
+    "assert sum_of_alternates((2, 8, 13, 4, 5, 6)) == (18, 20)": {
+      "result": false,
+      "time": 0.03558850288391113,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 12, 10, 7, 7, 5)) == (24, 23)": {
+      "result": false,
+      "time": 0.03596854209899902,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 4, 3, 11, 2, 2)) == (17, 6)": {
+      "result": false,
+      "time": 0.03767132759094238,
+      "error": null
+    },
+    "assert sum_of_alternates((11, 2, 12, 9, 1, 3)) == (14, 24)": {
+      "result": false,
+      "time": 0.03837418556213379,
+      "error": null
+    },
+    "assert sum_of_alternates((9, 5, 6, 8, 7, 7)) == (20, 22)": {
+      "result": false,
+      "time": 0.0412602424621582,
+      "error": null
+    },
+    "assert sum_of_alternates((4, 6, 13, 13, 5, 5)) == (24, 22)": {
+      "result": false,
+      "time": 0.04007673263549805,
+      "error": null
+    },
+    "assert sum_of_alternates((8, 4, 3, 7, 5, 4)) == (15, 16)": {
+      "result": false,
+      "time": 0.033487796783447266,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 9, 8, 11, 4, 7)) == (27, 18)": {
+      "result": false,
+      "time": 0.03979635238647461,
+      "error": null
+    },
+    "assert sum_of_alternates((2, 4, 9, 9, 6, 5)) == (18, 17)": {
+      "result": false,
+      "time": 0.03765988349914551,
+      "error": null
+    },
+    "assert sum_of_alternates((5, 12, 3, 9, 4, 7)) == (28, 12)": {
+      "result": false,
+      "time": 0.038384199142456055,
+      "error": null
+    },
+    "assert sum_of_alternates((10, 3, 10, 9, 9, 4)) == (16, 29)": {
+      "result": false,
+      "time": 0.03601670265197754,
+      "error": null
+    },
+    "assert sum_of_alternates((7, 4, 4, 8, 6, 4)) == (16, 17)": {
+      "result": false,
+      "time": 0.04122781753540039,
+      "error": null
+    },
+    "assert sum_of_alternates((2, 11, 3, 14, 1, 3)) == (28, 6)": {
+      "result": false,
+      "time": 0.03947925567626953,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 10, 9, 9, 7, 3)) == (22, 19)": {
+      "result": false,
+      "time": 0.034392356872558594,
+      "error": null
+    },
+    "assert sum_of_alternates((2, 5, 8, 6, 6, 7)) == (18, 16)": {
+      "result": false,
+      "time": 0.04351091384887695,
+      "error": null
+    },
+    "assert sum_of_alternates((7, 3, 11, 9, 6, 1)) == (13, 24)": {
+      "result": false,
+      "time": 0.04110383987426758,
+      "error": null
+    },
+    "assert sum_of_alternates((2, 4, 9, 8, 1, 6)) == (18, 12)": {
+      "result": false,
+      "time": 0.04204106330871582,
+      "error": null
+    },
+    "assert sum_of_alternates((6, 4, 11, 11, 4, 8)) == (23, 21)": {
+      "result": false,
+      "time": 0.044147491455078125,
+      "error": null
+    },
+    "assert sum_of_alternates((3, 11, 10, 7, 9, 4)) == (22, 22)": {
+      "result": true,
+      "time": 0.0406346321105957,
+      "error": null
+    },
+    "assert sum_of_alternates((1, 9, 6, 5, 5, 8)) == (22, 12)": {
+      "result": false,
+      "time": 0.04168081283569336,
+      "error": null
+    },
+    "assert sum_of_alternates((2, 7, 13, 8, 3, 10)) == (25, 18)": {
+      "result": false,
+      "time": 0.04953622817993164,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.029411764705882353,
+  "general_error": "",
+  "has_testcase_error": false
+}

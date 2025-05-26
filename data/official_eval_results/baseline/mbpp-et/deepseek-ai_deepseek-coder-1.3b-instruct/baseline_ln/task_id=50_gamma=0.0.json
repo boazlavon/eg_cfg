@@ -1,0 +1,519 @@
+{
+  "code": "def min_length_list(lst):\n    min_length = len(lst[0])\n    min_list = lst[0]\n    for l in lst:\n        if len(l) < min_length:\n            min_length = len(l)\n            min_list = l\n    return min_length, min_list\n",
+  "results": {
+    "assert min_length_list([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]])==(1, [0])": {
+      "result": true,
+      "time": 0.03062915802001953,
+      "error": null
+    },
+    "assert min_length_list([[1,2,3,4,5],[1,2,3,4],[1,2,3],[1,2],[1]])==(1,[1])": {
+      "result": true,
+      "time": 0.03218221664428711,
+      "error": null
+    },
+    "assert min_length_list([[3,4,5],[6,7,8,9],[10,11,12],[1,2]])==(2,[1,2])": {
+      "result": true,
+      "time": 0.03590106964111328,
+      "error": null
+    },
+    "assert min_length_list([[4], [5, 6], [8, 11], [9, 6], [16, 19, 16]]) == (1, [4])": {
+      "result": true,
+      "time": 0.031484365463256836,
+      "error": null
+    },
+    "assert min_length_list([[2], [2, 7], [9, 5], [7, 15], [16, 16, 21]]) == (1, [2])": {
+      "result": true,
+      "time": 0.0345151424407959,
+      "error": null
+    },
+    "assert min_length_list([[3], [4, 8], [3, 6], [9, 7], [12, 11, 22]]) == (1, [3])": {
+      "result": true,
+      "time": 0.03139066696166992,
+      "error": null
+    },
+    "assert min_length_list([[4], [4, 3], [7, 6], [7, 7], [11, 11, 17]]) == (1, [4])": {
+      "result": true,
+      "time": 0.03226876258850098,
+      "error": null
+    },
+    "assert min_length_list([[4], [5, 5], [2, 8], [4, 14], [14, 17, 18]]) == (1, [4])": {
+      "result": true,
+      "time": 0.03754019737243652,
+      "error": null
+    },
+    "assert min_length_list([[3], [1, 3], [2, 2], [13, 13], [16, 15, 13]]) == (1, [3])": {
+      "result": true,
+      "time": 0.03155112266540527,
+      "error": null
+    },
+    "assert min_length_list([[5], [6, 1], [6, 2], [5, 9], [17, 17, 16]]) == (1, [5])": {
+      "result": true,
+      "time": 0.03448176383972168,
+      "error": null
+    },
+    "assert min_length_list([[4], [5, 7], [7, 2], [8, 11], [10, 13, 20]]) == (1, [4])": {
+      "result": true,
+      "time": 0.03235435485839844,
+      "error": null
+    },
+    "assert min_length_list([[4], [4, 3], [10, 5], [14, 12], [15, 18, 18]]) == (1, [4])": {
+      "result": true,
+      "time": 0.048195600509643555,
+      "error": null
+    },
+    "assert min_length_list([[2], [4, 3], [4, 6], [6, 10], [15, 11, 14]]) == (1, [2])": {
+      "result": true,
+      "time": 0.03572440147399902,
+      "error": null
+    },
+    "assert min_length_list([[4], [2, 5], [6, 3], [10, 6], [9, 16, 16]]) == (1, [4])": {
+      "result": true,
+      "time": 0.035697221755981445,
+      "error": null
+    },
+    "assert min_length_list([[1], [1, 8], [4, 2], [6, 8], [16, 17, 18]]) == (1, [1])": {
+      "result": true,
+      "time": 0.044072628021240234,
+      "error": null
+    },
+    "assert min_length_list([[4], [3, 1], [6, 4], [10, 13], [15, 16, 19]]) == (1, [4])": {
+      "result": true,
+      "time": 0.04644918441772461,
+      "error": null
+    },
+    "assert min_length_list([[3], [1, 4], [10, 3], [8, 9], [11, 12, 19]]) == (1, [3])": {
+      "result": true,
+      "time": 0.03721261024475098,
+      "error": null
+    },
+    "assert min_length_list([[4], [3, 7], [6, 10], [6, 8], [13, 17, 21]]) == (1, [4])": {
+      "result": true,
+      "time": 0.03823089599609375,
+      "error": null
+    },
+    "assert min_length_list([[2], [5, 7], [3, 5], [11, 9], [12, 20, 20]]) == (1, [2])": {
+      "result": true,
+      "time": 0.04080033302307129,
+      "error": null
+    },
+    "assert min_length_list([[3], [2, 1], [3, 6], [12, 11], [13, 19, 15]]) == (1, [3])": {
+      "result": true,
+      "time": 0.04274344444274902,
+      "error": null
+    },
+    "assert min_length_list([[1], [2, 8], [6, 8], [13, 13], [15, 15, 19]]) == (1, [1])": {
+      "result": true,
+      "time": 0.038461923599243164,
+      "error": null
+    },
+    "assert min_length_list([[3], [5, 7], [7, 9], [6, 14], [9, 16, 17]]) == (1, [3])": {
+      "result": true,
+      "time": 0.04453229904174805,
+      "error": null
+    },
+    "assert min_length_list([[1], [3, 5], [4, 4], [14, 14], [15, 10, 14]]) == (1, [1])": {
+      "result": true,
+      "time": 0.04443168640136719,
+      "error": null
+    },
+    "assert min_length_list([[5], [5, 6], [4, 4], [6, 10], [16, 19, 14]]) == (1, [5])": {
+      "result": true,
+      "time": 0.043241262435913086,
+      "error": null
+    },
+    "assert min_length_list([[4], [1, 2], [10, 6], [5, 9], [8, 15, 20]]) == (1, [4])": {
+      "result": true,
+      "time": 0.0493769645690918,
+      "error": null
+    },
+    "assert min_length_list([[4], [5, 5], [8, 7], [11, 10], [16, 13, 21]]) == (1, [4])": {
+      "result": true,
+      "time": 0.03885936737060547,
+      "error": null
+    },
+    "assert min_length_list([[3], [1, 2], [5, 11], [4, 8], [8, 15, 15]]) == (1, [3])": {
+      "result": true,
+      "time": 0.039621829986572266,
+      "error": null
+    },
+    "assert min_length_list([[3], [2, 6], [1, 12], [5, 15], [17, 18, 12]]) == (1, [3])": {
+      "result": true,
+      "time": 0.05142807960510254,
+      "error": null
+    },
+    "assert min_length_list([[4], [2, 2], [8, 7], [13, 8], [16, 11, 13]]) == (1, [4])": {
+      "result": true,
+      "time": 0.05022478103637695,
+      "error": null
+    },
+    "assert min_length_list([[5], [1, 2], [4, 2], [14, 6], [13, 14, 20]]) == (1, [5])": {
+      "result": true,
+      "time": 0.05443692207336426,
+      "error": null
+    },
+    "assert min_length_list([[5], [1, 4], [5, 3], [8, 8], [9, 18, 16]]) == (1, [5])": {
+      "result": true,
+      "time": 0.06228446960449219,
+      "error": null
+    },
+    "assert min_length_list([[1], [2, 4], [2, 11], [6, 15], [13, 18, 15]]) == (1, [1])": {
+      "result": true,
+      "time": 0.043434858322143555,
+      "error": null
+    },
+    "assert min_length_list([[2], [1, 5], [10, 2], [8, 9], [13, 14, 13]]) == (1, [2])": {
+      "result": true,
+      "time": 0.048455238342285156,
+      "error": null
+    },
+    "assert min_length_list([[2], [3, 3], [3, 4], [13, 12], [15, 18, 15]]) == (1, [2])": {
+      "result": true,
+      "time": 0.0502927303314209,
+      "error": null
+    },
+    "assert min_length_list([[2], [2, 4], [2, 10], [8, 8], [12, 20, 12]]) == (1, [2])": {
+      "result": true,
+      "time": 0.04445385932922363,
+      "error": null
+    },
+    "assert min_length_list([[4], [3, 6], [4, 2], [13, 11], [10, 16, 19]]) == (1, [4])": {
+      "result": true,
+      "time": 0.0627601146697998,
+      "error": null
+    },
+    "assert min_length_list([[2, 6, 3, 9, 9], [4, 2, 4, 1], [6, 1, 8], [6, 7], [1]]) == (1, [1])": {
+      "result": true,
+      "time": 0.04555869102478027,
+      "error": null
+    },
+    "assert min_length_list([[4, 6, 3, 9, 9], [4, 2, 8, 4], [4, 2, 2], [1, 1], [6]]) == (1, [6])": {
+      "result": true,
+      "time": 0.05673098564147949,
+      "error": null
+    },
+    "assert min_length_list([[1, 1, 8, 6, 3], [2, 1, 2, 8], [5, 7, 5], [4, 1], [1]]) == (1, [1])": {
+      "result": true,
+      "time": 0.04600977897644043,
+      "error": null
+    },
+    "assert min_length_list([[4, 3, 7, 6, 9], [5, 4, 5, 2], [6, 7, 8], [1, 1], [3]]) == (1, [3])": {
+      "result": true,
+      "time": 0.045114755630493164,
+      "error": null
+    },
+    "assert min_length_list([[1, 6, 3, 9, 5], [5, 6, 4, 4], [5, 4, 5], [2, 5], [5]]) == (1, [5])": {
+      "result": true,
+      "time": 0.05358004570007324,
+      "error": null
+    },
+    "assert min_length_list([[2, 1, 2, 3, 8], [2, 6, 7, 1], [6, 6, 1], [3, 5], [2]]) == (1, [2])": {
+      "result": true,
+      "time": 0.05415058135986328,
+      "error": null
+    },
+    "assert min_length_list([[6, 5, 6, 8, 10], [3, 5, 1, 2], [4, 3, 2], [4, 3], [4]]) == (1, [4])": {
+      "result": true,
+      "time": 0.06189775466918945,
+      "error": null
+    },
+    "assert min_length_list([[5, 1, 5, 8, 1], [6, 5, 1, 8], [5, 2, 6], [5, 3], [5]]) == (1, [5])": {
+      "result": true,
+      "time": 0.05862736701965332,
+      "error": null
+    },
+    "assert min_length_list([[4, 6, 7, 1, 7], [4, 2, 6, 6], [6, 7, 7], [3, 6], [5]]) == (1, [5])": {
+      "result": true,
+      "time": 0.04197406768798828,
+      "error": null
+    },
+    "assert min_length_list([[3, 1, 4, 1, 4], [2, 5, 1, 7], [3, 5, 8], [5, 1], [3]]) == (1, [3])": {
+      "result": true,
+      "time": 0.054753780364990234,
+      "error": null
+    },
+    "assert min_length_list([[2, 6, 3, 2, 8], [4, 1, 1, 1], [1, 3, 2], [5, 4], [3]]) == (1, [3])": {
+      "result": true,
+      "time": 0.03574228286743164,
+      "error": null
+    },
+    "assert min_length_list([[5, 7, 4, 4, 5], [4, 6, 3, 6], [4, 1, 3], [3, 1], [2]]) == (1, [2])": {
+      "result": true,
+      "time": 0.04281735420227051,
+      "error": null
+    },
+    "assert min_length_list([[3, 1, 7, 5, 10], [2, 3, 5, 2], [1, 5, 8], [5, 5], [5]]) == (1, [5])": {
+      "result": true,
+      "time": 0.042139291763305664,
+      "error": null
+    },
+    "assert min_length_list([[4, 2, 1, 5, 10], [2, 7, 2, 5], [5, 4, 1], [2, 2], [2]]) == (1, [2])": {
+      "result": true,
+      "time": 0.043700456619262695,
+      "error": null
+    },
+    "assert min_length_list([[5, 3, 5, 9, 8], [2, 5, 8, 2], [2, 3, 6], [6, 3], [1]]) == (1, [1])": {
+      "result": true,
+      "time": 0.04315614700317383,
+      "error": null
+    },
+    "assert min_length_list([[3, 5, 1, 4, 2], [6, 6, 1, 9], [3, 1, 5], [2, 4], [5]]) == (1, [5])": {
+      "result": true,
+      "time": 0.03796839714050293,
+      "error": null
+    },
+    "assert min_length_list([[3, 6, 7, 3, 7], [4, 6, 3, 2], [2, 1, 1], [2, 1], [1]]) == (1, [1])": {
+      "result": true,
+      "time": 0.036965370178222656,
+      "error": null
+    },
+    "assert min_length_list([[1, 6, 4, 8, 9], [3, 3, 7, 5], [2, 6, 5], [3, 5], [2]]) == (1, [2])": {
+      "result": true,
+      "time": 0.0381474494934082,
+      "error": null
+    },
+    "assert min_length_list([[3, 4, 1, 7, 8], [6, 6, 4, 3], [1, 5, 2], [6, 6], [4]]) == (1, [4])": {
+      "result": true,
+      "time": 0.03813910484313965,
+      "error": null
+    },
+    "assert min_length_list([[1, 7, 4, 2, 1], [5, 7, 7, 5], [4, 5, 4], [2, 1], [5]]) == (1, [5])": {
+      "result": true,
+      "time": 0.0379338264465332,
+      "error": null
+    },
+    "assert min_length_list([[3, 2, 6, 3, 1], [1, 5, 6, 9], [6, 1, 3], [3, 6], [4]]) == (1, [4])": {
+      "result": true,
+      "time": 0.03647732734680176,
+      "error": null
+    },
+    "assert min_length_list([[4, 1, 4, 9, 1], [3, 7, 8, 3], [2, 2, 6], [1, 5], [6]]) == (1, [6])": {
+      "result": true,
+      "time": 0.039908409118652344,
+      "error": null
+    },
+    "assert min_length_list([[4, 1, 2, 9, 9], [1, 3, 1, 7], [3, 4, 3], [4, 1], [5]]) == (1, [5])": {
+      "result": true,
+      "time": 0.04154539108276367,
+      "error": null
+    },
+    "assert min_length_list([[6, 5, 5, 8, 2], [1, 6, 6, 3], [6, 4, 6], [5, 1], [2]]) == (1, [2])": {
+      "result": true,
+      "time": 0.0362091064453125,
+      "error": null
+    },
+    "assert min_length_list([[1, 6, 1, 4, 10], [1, 6, 8, 9], [4, 5, 2], [2, 3], [5]]) == (1, [5])": {
+      "result": true,
+      "time": 0.0375518798828125,
+      "error": null
+    },
+    "assert min_length_list([[2, 1, 7, 6, 9], [3, 5, 5, 5], [5, 6, 1], [6, 1], [2]]) == (1, [2])": {
+      "result": true,
+      "time": 0.03268313407897949,
+      "error": null
+    },
+    "assert min_length_list([[6, 7, 6, 4, 9], [2, 2, 7, 6], [2, 2, 7], [6, 6], [4]]) == (1, [4])": {
+      "result": true,
+      "time": 0.03268766403198242,
+      "error": null
+    },
+    "assert min_length_list([[2, 3, 7, 2, 1], [6, 3, 3, 4], [6, 3, 2], [1, 4], [6]]) == (1, [6])": {
+      "result": true,
+      "time": 0.035980939865112305,
+      "error": null
+    },
+    "assert min_length_list([[6, 2, 6, 2, 1], [5, 6, 7, 9], [1, 7, 7], [4, 1], [1]]) == (1, [1])": {
+      "result": true,
+      "time": 0.04604697227478027,
+      "error": null
+    },
+    "assert min_length_list([[6, 3, 6, 5, 3], [2, 5, 4, 2], [5, 6, 6], [1, 1], [1]]) == (1, [1])": {
+      "result": true,
+      "time": 0.04261040687561035,
+      "error": null
+    },
+    "assert min_length_list([[2, 7, 6, 8, 6], [1, 5, 4, 5], [3, 5, 7], [5, 6], [1]]) == (1, [1])": {
+      "result": true,
+      "time": 0.049352169036865234,
+      "error": null
+    },
+    "assert min_length_list([[1, 2, 7, 4, 4], [3, 6, 5, 3], [6, 1, 2], [2, 1], [2]]) == (1, [2])": {
+      "result": true,
+      "time": 0.03696632385253906,
+      "error": null
+    },
+    "assert min_length_list([[5, 7, 2, 1, 1], [1, 6, 4, 9], [3, 6, 3], [1, 5], [3]]) == (1, [3])": {
+      "result": true,
+      "time": 0.031134605407714844,
+      "error": null
+    },
+    "assert min_length_list([[8, 3, 4], [7, 8, 6, 4], [14, 14, 13], [2, 7]]) == (2, [2, 7])": {
+      "result": true,
+      "time": 0.04120039939880371,
+      "error": null
+    },
+    "assert min_length_list([[4, 1, 2], [6, 7, 10, 14], [9, 16, 10], [2, 5]]) == (2, [2, 5])": {
+      "result": true,
+      "time": 0.03699088096618652,
+      "error": null
+    },
+    "assert min_length_list([[4, 6, 10], [10, 6, 7, 11], [10, 6, 13], [3, 2]]) == (2, [3, 2])": {
+      "result": true,
+      "time": 0.0333561897277832,
+      "error": null
+    },
+    "assert min_length_list([[1, 1, 8], [3, 6, 9, 10], [14, 16, 14], [1, 7]]) == (2, [1, 7])": {
+      "result": true,
+      "time": 0.03646254539489746,
+      "error": null
+    },
+    "assert min_length_list([[8, 4, 6], [11, 3, 8, 4], [13, 14, 16], [4, 4]]) == (2, [4, 4])": {
+      "result": true,
+      "time": 0.0320279598236084,
+      "error": null
+    },
+    "assert min_length_list([[4, 4, 9], [2, 7, 4, 10], [7, 12, 10], [3, 4]]) == (2, [3, 4])": {
+      "result": true,
+      "time": 0.033509016036987305,
+      "error": null
+    },
+    "assert min_length_list([[7, 2, 4], [6, 6, 13, 6], [14, 12, 15], [4, 7]]) == (2, [4, 7])": {
+      "result": true,
+      "time": 0.04750823974609375,
+      "error": null
+    },
+    "assert min_length_list([[5, 7, 4], [10, 4, 8, 4], [6, 8, 16], [2, 1]]) == (2, [2, 1])": {
+      "result": true,
+      "time": 0.03954887390136719,
+      "error": null
+    },
+    "assert min_length_list([[4, 1, 3], [6, 11, 8, 10], [13, 7, 13], [2, 4]]) == (2, [2, 4])": {
+      "result": true,
+      "time": 0.036238670349121094,
+      "error": null
+    },
+    "assert min_length_list([[4, 3, 5], [6, 8, 12, 14], [12, 15, 7], [2, 4]]) == (2, [2, 4])": {
+      "result": true,
+      "time": 0.03702735900878906,
+      "error": null
+    },
+    "assert min_length_list([[4, 6, 1], [9, 4, 9, 6], [13, 9, 9], [1, 4]]) == (2, [1, 4])": {
+      "result": true,
+      "time": 0.03517889976501465,
+      "error": null
+    },
+    "assert min_length_list([[2, 2, 10], [1, 4, 9, 4], [10, 9, 13], [5, 4]]) == (2, [5, 4])": {
+      "result": true,
+      "time": 0.03236794471740723,
+      "error": null
+    },
+    "assert min_length_list([[8, 8, 2], [1, 7, 3, 13], [5, 13, 13], [4, 4]]) == (2, [4, 4])": {
+      "result": true,
+      "time": 0.03330421447753906,
+      "error": null
+    },
+    "assert min_length_list([[1, 4, 1], [5, 4, 11, 14], [15, 7, 8], [3, 5]]) == (2, [3, 5])": {
+      "result": true,
+      "time": 0.03669595718383789,
+      "error": null
+    },
+    "assert min_length_list([[6, 6, 2], [3, 5, 5, 11], [10, 12, 16], [3, 1]]) == (2, [3, 1])": {
+      "result": true,
+      "time": 0.03299975395202637,
+      "error": null
+    },
+    "assert min_length_list([[8, 5, 1], [5, 10, 5, 9], [15, 11, 14], [1, 2]]) == (2, [1, 2])": {
+      "result": true,
+      "time": 0.03370380401611328,
+      "error": null
+    },
+    "assert min_length_list([[8, 5, 7], [7, 11, 4, 7], [6, 9, 13], [6, 3]]) == (2, [6, 3])": {
+      "result": true,
+      "time": 0.03550314903259277,
+      "error": null
+    },
+    "assert min_length_list([[1, 3, 5], [2, 11, 3, 14], [7, 8, 12], [3, 5]]) == (2, [3, 5])": {
+      "result": true,
+      "time": 0.0334019660949707,
+      "error": null
+    },
+    "assert min_length_list([[4, 7, 8], [6, 7, 6, 10], [11, 10, 9], [2, 1]]) == (2, [2, 1])": {
+      "result": true,
+      "time": 0.03822207450866699,
+      "error": null
+    },
+    "assert min_length_list([[8, 5, 4], [3, 6, 7, 12], [14, 15, 11], [5, 1]]) == (2, [5, 1])": {
+      "result": true,
+      "time": 0.034816741943359375,
+      "error": null
+    },
+    "assert min_length_list([[2, 7, 4], [1, 7, 5, 6], [8, 15, 12], [1, 6]]) == (2, [1, 6])": {
+      "result": true,
+      "time": 0.03882122039794922,
+      "error": null
+    },
+    "assert min_length_list([[7, 9, 1], [10, 2, 13, 9], [13, 12, 12], [2, 5]]) == (2, [2, 5])": {
+      "result": true,
+      "time": 0.03568673133850098,
+      "error": null
+    },
+    "assert min_length_list([[6, 7, 1], [11, 4, 9, 10], [12, 12, 16], [3, 2]]) == (2, [3, 2])": {
+      "result": true,
+      "time": 0.034842729568481445,
+      "error": null
+    },
+    "assert min_length_list([[5, 3, 9], [8, 10, 12, 7], [13, 9, 9], [2, 2]]) == (2, [2, 2])": {
+      "result": true,
+      "time": 0.042968034744262695,
+      "error": null
+    },
+    "assert min_length_list([[6, 6, 2], [2, 6, 9, 14], [13, 12, 12], [4, 3]]) == (2, [4, 3])": {
+      "result": true,
+      "time": 0.039913177490234375,
+      "error": null
+    },
+    "assert min_length_list([[1, 4, 2], [3, 12, 5, 14], [9, 9, 8], [4, 2]]) == (2, [4, 2])": {
+      "result": true,
+      "time": 0.03427267074584961,
+      "error": null
+    },
+    "assert min_length_list([[1, 6, 1], [4, 4, 11, 6], [12, 16, 10], [5, 2]]) == (2, [5, 2])": {
+      "result": true,
+      "time": 0.037734270095825195,
+      "error": null
+    },
+    "assert min_length_list([[3, 6, 9], [9, 6, 12, 14], [9, 11, 10], [2, 3]]) == (2, [2, 3])": {
+      "result": true,
+      "time": 0.031186819076538086,
+      "error": null
+    },
+    "assert min_length_list([[3, 8, 3], [10, 8, 11, 7], [6, 6, 14], [6, 1]]) == (2, [6, 1])": {
+      "result": true,
+      "time": 0.03686118125915527,
+      "error": null
+    },
+    "assert min_length_list([[3, 8, 7], [3, 12, 3, 5], [15, 14, 11], [6, 4]]) == (2, [6, 4])": {
+      "result": true,
+      "time": 0.03910255432128906,
+      "error": null
+    },
+    "assert min_length_list([[6, 2, 4], [10, 8, 6, 11], [11, 8, 8], [5, 2]]) == (2, [5, 2])": {
+      "result": true,
+      "time": 0.04099249839782715,
+      "error": null
+    },
+    "assert min_length_list([[7, 2, 5], [9, 2, 6, 9], [7, 8, 15], [3, 3]]) == (2, [3, 3])": {
+      "result": true,
+      "time": 0.041929006576538086,
+      "error": null
+    },
+    "assert min_length_list([[2, 4, 2], [6, 4, 8, 4], [11, 6, 13], [6, 4]]) == (2, [6, 4])": {
+      "result": true,
+      "time": 0.03562760353088379,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

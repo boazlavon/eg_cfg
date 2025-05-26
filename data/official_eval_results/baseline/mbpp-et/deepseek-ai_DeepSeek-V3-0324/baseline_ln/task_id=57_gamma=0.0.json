@@ -1,0 +1,514 @@
+{
+  "code": "def find_Max_Num(digits, n):\n    # Sort the digits in descending order\n    digits.sort(reverse=True)\n    # Convert each digit to a string and join them\n    max_num = int(''.join(map(str, digits)))\n    return max_num",
+  "results": {
+    "assert find_Max_Num([1,2,3],3) == 321": {
+      "result": true,
+      "time": 0.0319514274597168,
+      "error": null
+    },
+    "assert find_Max_Num([4,5,6,1],4) == 6541": {
+      "result": true,
+      "time": 0.03752398490905762,
+      "error": null
+    },
+    "assert find_Max_Num([1,2,3,9],4) == 9321": {
+      "result": true,
+      "time": 0.0407872200012207,
+      "error": null
+    },
+    "assert find_Max_Num([4, 3, 2], 3) == 432": {
+      "result": true,
+      "time": 0.033039093017578125,
+      "error": null
+    },
+    "assert find_Max_Num([5, 1, 8], 2) == 85": {
+      "result": false,
+      "time": 0.04146695137023926,
+      "error": null
+    },
+    "assert find_Max_Num([2, 2, 5], 1) == 5": {
+      "result": false,
+      "time": 0.039810895919799805,
+      "error": null
+    },
+    "assert find_Max_Num([5, 7, 5], 1) == 7": {
+      "result": false,
+      "time": 0.03635859489440918,
+      "error": null
+    },
+    "assert find_Max_Num([2, 2, 8], 3) == 822": {
+      "result": true,
+      "time": 0.0388333797454834,
+      "error": null
+    },
+    "assert find_Max_Num([5, 1, 4], 1) == 5": {
+      "result": false,
+      "time": 0.03964805603027344,
+      "error": null
+    },
+    "assert find_Max_Num([5, 1, 3], 2) == 53": {
+      "result": false,
+      "time": 0.0359644889831543,
+      "error": null
+    },
+    "assert find_Max_Num([6, 3, 7], 3) == 763": {
+      "result": true,
+      "time": 0.03646540641784668,
+      "error": null
+    },
+    "assert find_Max_Num([2, 4, 1], 2) == 42": {
+      "result": false,
+      "time": 0.03270268440246582,
+      "error": null
+    },
+    "assert find_Max_Num([5, 2, 6], 1) == 6": {
+      "result": false,
+      "time": 0.040462493896484375,
+      "error": null
+    },
+    "assert find_Max_Num([2, 3, 7], 1) == 7": {
+      "result": false,
+      "time": 0.04059314727783203,
+      "error": null
+    },
+    "assert find_Max_Num([1, 3, 3], 3) == 331": {
+      "result": true,
+      "time": 0.04020261764526367,
+      "error": null
+    },
+    "assert find_Max_Num([3, 1, 3], 1) == 3": {
+      "result": false,
+      "time": 0.03561544418334961,
+      "error": null
+    },
+    "assert find_Max_Num([6, 7, 4], 1) == 7": {
+      "result": false,
+      "time": 0.03850102424621582,
+      "error": null
+    },
+    "assert find_Max_Num([2, 5, 8], 1) == 8": {
+      "result": false,
+      "time": 0.040204763412475586,
+      "error": null
+    },
+    "assert find_Max_Num([3, 4, 6], 3) == 643": {
+      "result": true,
+      "time": 0.03614687919616699,
+      "error": null
+    },
+    "assert find_Max_Num([1, 7, 8], 2) == 87": {
+      "result": false,
+      "time": 0.044500112533569336,
+      "error": null
+    },
+    "assert find_Max_Num([5, 7, 2], 2) == 75": {
+      "result": false,
+      "time": 0.03813767433166504,
+      "error": null
+    },
+    "assert find_Max_Num([5, 6, 7], 3) == 765": {
+      "result": true,
+      "time": 0.04219675064086914,
+      "error": null
+    },
+    "assert find_Max_Num([3, 4, 5], 1) == 5": {
+      "result": false,
+      "time": 0.03634357452392578,
+      "error": null
+    },
+    "assert find_Max_Num([2, 7, 1], 3) == 721": {
+      "result": true,
+      "time": 0.03227639198303223,
+      "error": null
+    },
+    "assert find_Max_Num([6, 1, 1], 2) == 61": {
+      "result": false,
+      "time": 0.04120755195617676,
+      "error": null
+    },
+    "assert find_Max_Num([3, 3, 4], 2) == 43": {
+      "result": false,
+      "time": 0.045082807540893555,
+      "error": null
+    },
+    "assert find_Max_Num([2, 5, 4], 1) == 5": {
+      "result": false,
+      "time": 0.03771400451660156,
+      "error": null
+    },
+    "assert find_Max_Num([1, 1, 2], 2) == 21": {
+      "result": false,
+      "time": 0.040609121322631836,
+      "error": null
+    },
+    "assert find_Max_Num([6, 4, 7], 2) == 76": {
+      "result": false,
+      "time": 0.03558540344238281,
+      "error": null
+    },
+    "assert find_Max_Num([1, 3, 2], 2) == 32": {
+      "result": false,
+      "time": 0.038680315017700195,
+      "error": null
+    },
+    "assert find_Max_Num([2, 2, 7], 2) == 72": {
+      "result": false,
+      "time": 0.037763357162475586,
+      "error": null
+    },
+    "assert find_Max_Num([4, 2, 7], 1) == 7": {
+      "result": false,
+      "time": 0.035536766052246094,
+      "error": null
+    },
+    "assert find_Max_Num([1, 4, 3], 3) == 431": {
+      "result": true,
+      "time": 0.04329538345336914,
+      "error": null
+    },
+    "assert find_Max_Num([1, 1, 4], 3) == 411": {
+      "result": true,
+      "time": 0.0368497371673584,
+      "error": null
+    },
+    "assert find_Max_Num([1, 3, 3], 2) == 33": {
+      "result": false,
+      "time": 0.03612112998962402,
+      "error": null
+    },
+    "assert find_Max_Num([1, 9, 11, 5], 2) == 119": {
+      "result": false,
+      "time": 0.03977346420288086,
+      "error": null
+    },
+    "assert find_Max_Num([1, 3, 1, 4], 2) == 43": {
+      "result": false,
+      "time": 0.03739809989929199,
+      "error": null
+    },
+    "assert find_Max_Num([5, 8, 5, 3], 3) == 855": {
+      "result": false,
+      "time": 0.03970217704772949,
+      "error": null
+    },
+    "assert find_Max_Num([4, 2, 8, 1], 4) == 8421": {
+      "result": true,
+      "time": 0.035933494567871094,
+      "error": null
+    },
+    "assert find_Max_Num([2, 8, 11, 2], 3) == 1182": {
+      "result": false,
+      "time": 0.03553509712219238,
+      "error": null
+    },
+    "assert find_Max_Num([2, 10, 10, 6], 1) == 10": {
+      "result": false,
+      "time": 0.03831624984741211,
+      "error": null
+    },
+    "assert find_Max_Num([8, 3, 5, 5], 4) == 8553": {
+      "result": true,
+      "time": 0.0349123477935791,
+      "error": null
+    },
+    "assert find_Max_Num([4, 1, 11, 5], 2) == 115": {
+      "result": false,
+      "time": 0.030843734741210938,
+      "error": null
+    },
+    "assert find_Max_Num([4, 9, 7, 4], 3) == 974": {
+      "result": false,
+      "time": 0.042231082916259766,
+      "error": null
+    },
+    "assert find_Max_Num([1, 10, 11, 2], 4) == 12021": {
+      "result": false,
+      "time": 0.038153648376464844,
+      "error": null
+    },
+    "assert find_Max_Num([9, 7, 5, 2], 2) == 97": {
+      "result": false,
+      "time": 0.04183149337768555,
+      "error": null
+    },
+    "assert find_Max_Num([3, 1, 6, 1], 2) == 63": {
+      "result": false,
+      "time": 0.035927534103393555,
+      "error": null
+    },
+    "assert find_Max_Num([9, 7, 10, 3], 1) == 10": {
+      "result": false,
+      "time": 0.03875160217285156,
+      "error": null
+    },
+    "assert find_Max_Num([3, 5, 3, 3], 4) == 5333": {
+      "result": true,
+      "time": 0.049066781997680664,
+      "error": null
+    },
+    "assert find_Max_Num([2, 8, 9, 1], 3) == 982": {
+      "result": false,
+      "time": 0.03936266899108887,
+      "error": null
+    },
+    "assert find_Max_Num([2, 1, 11, 3], 2) == 113": {
+      "result": false,
+      "time": 0.03475475311279297,
+      "error": null
+    },
+    "assert find_Max_Num([5, 4, 3, 1], 3) == 543": {
+      "result": false,
+      "time": 0.03608107566833496,
+      "error": null
+    },
+    "assert find_Max_Num([3, 6, 10, 2], 1) == 10": {
+      "result": false,
+      "time": 0.0363614559173584,
+      "error": null
+    },
+    "assert find_Max_Num([8, 6, 10, 1], 1) == 10": {
+      "result": false,
+      "time": 0.03255271911621094,
+      "error": null
+    },
+    "assert find_Max_Num([2, 8, 11, 2], 2) == 118": {
+      "result": false,
+      "time": 0.04186844825744629,
+      "error": null
+    },
+    "assert find_Max_Num([1, 2, 7, 2], 3) == 722": {
+      "result": false,
+      "time": 0.04230213165283203,
+      "error": null
+    },
+    "assert find_Max_Num([5, 7, 6, 1], 4) == 7651": {
+      "result": true,
+      "time": 0.0347902774810791,
+      "error": null
+    },
+    "assert find_Max_Num([2, 10, 11, 3], 1) == 11": {
+      "result": false,
+      "time": 0.03757905960083008,
+      "error": null
+    },
+    "assert find_Max_Num([5, 8, 10, 6], 3) == 1086": {
+      "result": false,
+      "time": 0.037058353424072266,
+      "error": null
+    },
+    "assert find_Max_Num([6, 8, 6, 3], 1) == 8": {
+      "result": false,
+      "time": 0.04011654853820801,
+      "error": null
+    },
+    "assert find_Max_Num([3, 4, 4, 2], 2) == 44": {
+      "result": false,
+      "time": 0.03908205032348633,
+      "error": null
+    },
+    "assert find_Max_Num([7, 6, 8, 4], 4) == 8764": {
+      "result": true,
+      "time": 0.036035776138305664,
+      "error": null
+    },
+    "assert find_Max_Num([4, 7, 11, 2], 2) == 117": {
+      "result": false,
+      "time": 0.03663325309753418,
+      "error": null
+    },
+    "assert find_Max_Num([3, 4, 10, 5], 4) == 10543": {
+      "result": true,
+      "time": 0.03661680221557617,
+      "error": null
+    },
+    "assert find_Max_Num([3, 8, 11, 4], 4) == 11843": {
+      "result": true,
+      "time": 0.03981161117553711,
+      "error": null
+    },
+    "assert find_Max_Num([1, 6, 10, 5], 4) == 10651": {
+      "result": true,
+      "time": 0.03871488571166992,
+      "error": null
+    },
+    "assert find_Max_Num([7, 7, 4, 4], 2) == 77": {
+      "result": false,
+      "time": 0.039325714111328125,
+      "error": null
+    },
+    "assert find_Max_Num([2, 2, 4, 2], 1) == 4": {
+      "result": false,
+      "time": 0.05364799499511719,
+      "error": null
+    },
+    "assert find_Max_Num([2, 5, 8, 5], 2) == 85": {
+      "result": false,
+      "time": 0.036650657653808594,
+      "error": null
+    },
+    "assert find_Max_Num([6, 1, 5, 7], 3) == 765": {
+      "result": false,
+      "time": 0.033535003662109375,
+      "error": null
+    },
+    "assert find_Max_Num([5, 2, 7, 12], 4) == 12752": {
+      "result": true,
+      "time": 0.039774179458618164,
+      "error": null
+    },
+    "assert find_Max_Num([1, 1, 8, 7], 3) == 871": {
+      "result": false,
+      "time": 0.040429115295410156,
+      "error": null
+    },
+    "assert find_Max_Num([3, 1, 4, 10], 2) == 104": {
+      "result": false,
+      "time": 0.042649030685424805,
+      "error": null
+    },
+    "assert find_Max_Num([5, 2, 5, 11], 2) == 115": {
+      "result": false,
+      "time": 0.03975486755371094,
+      "error": null
+    },
+    "assert find_Max_Num([5, 3, 4, 5], 1) == 5": {
+      "result": false,
+      "time": 0.0383296012878418,
+      "error": null
+    },
+    "assert find_Max_Num([1, 1, 6, 7], 2) == 76": {
+      "result": false,
+      "time": 0.036913394927978516,
+      "error": null
+    },
+    "assert find_Max_Num([3, 6, 5, 11], 4) == 11653": {
+      "result": true,
+      "time": 0.03774380683898926,
+      "error": null
+    },
+    "assert find_Max_Num([5, 4, 2, 8], 2) == 85": {
+      "result": false,
+      "time": 0.03517723083496094,
+      "error": null
+    },
+    "assert find_Max_Num([2, 5, 5, 6], 4) == 6552": {
+      "result": true,
+      "time": 0.03723621368408203,
+      "error": null
+    },
+    "assert find_Max_Num([5, 5, 4, 4], 4) == 5544": {
+      "result": true,
+      "time": 0.037659645080566406,
+      "error": null
+    },
+    "assert find_Max_Num([1, 7, 8, 7], 1) == 8": {
+      "result": false,
+      "time": 0.03557872772216797,
+      "error": null
+    },
+    "assert find_Max_Num([6, 4, 2, 13], 4) == 13642": {
+      "result": true,
+      "time": 0.04156851768493652,
+      "error": null
+    },
+    "assert find_Max_Num([5, 1, 4, 6], 2) == 65": {
+      "result": false,
+      "time": 0.036725521087646484,
+      "error": null
+    },
+    "assert find_Max_Num([3, 2, 5, 7], 4) == 7532": {
+      "result": true,
+      "time": 0.03694939613342285,
+      "error": null
+    },
+    "assert find_Max_Num([3, 1, 2, 14], 3) == 1432": {
+      "result": false,
+      "time": 0.03572344779968262,
+      "error": null
+    },
+    "assert find_Max_Num([3, 6, 4, 9], 3) == 964": {
+      "result": false,
+      "time": 0.04011416435241699,
+      "error": null
+    },
+    "assert find_Max_Num([3, 5, 6, 13], 3) == 1365": {
+      "result": false,
+      "time": 0.04391169548034668,
+      "error": null
+    },
+    "assert find_Max_Num([4, 1, 4, 11], 4) == 11441": {
+      "result": true,
+      "time": 0.03485870361328125,
+      "error": null
+    },
+    "assert find_Max_Num([4, 7, 7, 7], 2) == 77": {
+      "result": false,
+      "time": 0.03919649124145508,
+      "error": null
+    },
+    "assert find_Max_Num([6, 1, 1, 10], 4) == 10611": {
+      "result": true,
+      "time": 0.03960561752319336,
+      "error": null
+    },
+    "assert find_Max_Num([4, 3, 6, 12], 1) == 12": {
+      "result": false,
+      "time": 0.041083574295043945,
+      "error": null
+    },
+    "assert find_Max_Num([1, 6, 3, 12], 1) == 12": {
+      "result": false,
+      "time": 0.044701576232910156,
+      "error": null
+    },
+    "assert find_Max_Num([6, 2, 1, 10], 1) == 10": {
+      "result": false,
+      "time": 0.0360102653503418,
+      "error": null
+    },
+    "assert find_Max_Num([3, 5, 3, 5], 4) == 5533": {
+      "result": true,
+      "time": 0.040952444076538086,
+      "error": null
+    },
+    "assert find_Max_Num([6, 2, 5, 7], 3) == 765": {
+      "result": false,
+      "time": 0.03657937049865723,
+      "error": null
+    },
+    "assert find_Max_Num([2, 2, 5, 6], 1) == 6": {
+      "result": false,
+      "time": 0.03537273406982422,
+      "error": null
+    },
+    "assert find_Max_Num([6, 4, 3, 10], 2) == 106": {
+      "result": false,
+      "time": 0.04616570472717285,
+      "error": null
+    },
+    "assert find_Max_Num([1, 2, 8, 10], 2) == 108": {
+      "result": false,
+      "time": 0.043949127197265625,
+      "error": null
+    },
+    "assert find_Max_Num([2, 5, 5, 7], 3) == 755": {
+      "result": false,
+      "time": 0.04497218132019043,
+      "error": null
+    },
+    "assert find_Max_Num([2, 7, 8, 4], 4) == 8742": {
+      "result": true,
+      "time": 0.04709887504577637,
+      "error": null
+    },
+    "assert find_Max_Num([3, 6, 6, 5], 3) == 665": {
+      "result": false,
+      "time": 0.04538249969482422,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.297029702970297,
+  "general_error": "",
+  "has_testcase_error": false
+}

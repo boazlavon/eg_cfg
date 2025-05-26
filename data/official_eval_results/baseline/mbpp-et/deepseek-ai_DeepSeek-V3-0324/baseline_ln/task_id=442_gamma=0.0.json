@@ -1,0 +1,519 @@
+{
+  "code": "def positive_count(arr):\n    positive_numbers = sum(1 for num in arr if num > 0)\n    total_numbers = len(arr)\n    ratio = round(positive_numbers / total_numbers, 2)\n    return ratio",
+  "results": {
+    "assert positive_count([0, 1, 2, -1, -5, 6, 0, -3, -2, 3, 4, 6, 8])==0.54": {
+      "result": true,
+      "time": 0.048992156982421875,
+      "error": null
+    },
+    "assert positive_count([2, 1, 2, -1, -5, 6, 4, -3, -2, 3, 4, 6, 8])==0.69": {
+      "result": true,
+      "time": 0.04304671287536621,
+      "error": null
+    },
+    "assert positive_count([2, 4, -6, -9, 11, -12, 14, -5, 17])==0.56": {
+      "result": true,
+      "time": 0.048032283782958984,
+      "error": null
+    },
+    "assert positive_count([3, 4, 3, -3, -7, 6, 2, 2, 2, 8, 1, 3, 4]) == 0.85": {
+      "result": true,
+      "time": 0.04788017272949219,
+      "error": null
+    },
+    "assert positive_count([4, 4, 3, -3, 0, 9, 3, 0, -6, 7, 3, 11, 12]) == 0.69": {
+      "result": true,
+      "time": 0.04297828674316406,
+      "error": null
+    },
+    "assert positive_count([5, 6, 6, -1, -3, 1, 5, -5, -6, 4, 9, 4, 10]) == 0.69": {
+      "result": true,
+      "time": 0.0508577823638916,
+      "error": null
+    },
+    "assert positive_count([2, 1, 5, -1, 0, 4, 2, -2, -3, 6, 5, 10, 13]) == 0.69": {
+      "result": true,
+      "time": 0.045415639877319336,
+      "error": null
+    },
+    "assert positive_count([5, 5, 5, 3, -8, 11, 2, -7, -3, 3, 6, 6, 11]) == 0.77": {
+      "result": true,
+      "time": 0.04812288284301758,
+      "error": null
+    },
+    "assert positive_count([4, 6, 6, 0, -7, 11, 4, -2, -4, 1, 2, 6, 11]) == 0.69": {
+      "result": true,
+      "time": 0.04423832893371582,
+      "error": null
+    },
+    "assert positive_count([2, 6, 5, -3, -3, 1, 3, 2, -3, 3, 1, 8, 7]) == 0.77": {
+      "result": true,
+      "time": 0.05311751365661621,
+      "error": null
+    },
+    "assert positive_count([1, 3, 2, -2, 0, 10, 1, 0, 1, 1, 8, 5, 13]) == 0.77": {
+      "result": true,
+      "time": 0.05658078193664551,
+      "error": null
+    },
+    "assert positive_count([4, 4, 4, -5, -7, 5, 1, -5, 3, 6, 3, 10, 12]) == 0.77": {
+      "result": true,
+      "time": 0.04990124702453613,
+      "error": null
+    },
+    "assert positive_count([4, 1, 7, -4, -3, 8, 1, -7, 3, 6, 5, 3, 3]) == 0.77": {
+      "result": true,
+      "time": 0.06164240837097168,
+      "error": null
+    },
+    "assert positive_count([3, 1, 3, 3, 0, 1, 4, -4, -7, 2, 4, 2, 9]) == 0.77": {
+      "result": true,
+      "time": 0.04373812675476074,
+      "error": null
+    },
+    "assert positive_count([2, 3, 2, -6, -5, 11, 4, -1, -6, 1, 1, 11, 13]) == 0.69": {
+      "result": true,
+      "time": 0.04594731330871582,
+      "error": null
+    },
+    "assert positive_count([1, 4, 3, 2, -4, 9, 2, 1, -7, 5, 8, 8, 13]) == 0.85": {
+      "result": true,
+      "time": 0.047724246978759766,
+      "error": null
+    },
+    "assert positive_count([2, 5, 2, -2, -8, 2, 4, -6, 2, 3, 8, 8, 13]) == 0.77": {
+      "result": true,
+      "time": 0.04606223106384277,
+      "error": null
+    },
+    "assert positive_count([3, 1, 7, -5, -6, 10, 5, 1, -2, 6, 4, 6, 7]) == 0.77": {
+      "result": true,
+      "time": 0.056220293045043945,
+      "error": null
+    },
+    "assert positive_count([5, 2, 2, 3, -3, 3, 4, -6, -3, 7, 5, 2, 13]) == 0.77": {
+      "result": true,
+      "time": 0.043668508529663086,
+      "error": null
+    },
+    "assert positive_count([2, 3, 2, -4, -5, 5, 1, -7, -4, 7, 5, 3, 6]) == 0.69": {
+      "result": true,
+      "time": 0.047499895095825195,
+      "error": null
+    },
+    "assert positive_count([3, 3, 2, -4, -1, 11, 5, -7, -5, 4, 1, 2, 6]) == 0.69": {
+      "result": true,
+      "time": 0.05313754081726074,
+      "error": null
+    },
+    "assert positive_count([5, 4, 7, -6, -10, 9, 5, -8, -5, 3, 4, 10, 6]) == 0.69": {
+      "result": true,
+      "time": 0.03779888153076172,
+      "error": null
+    },
+    "assert positive_count([2, 5, 3, 1, -7, 9, 2, 1, -3, 5, 6, 6, 11]) == 0.85": {
+      "result": true,
+      "time": 0.05228734016418457,
+      "error": null
+    },
+    "assert positive_count([2, 1, 5, -2, -3, 4, 3, -2, 1, 2, 1, 3, 3]) == 0.77": {
+      "result": true,
+      "time": 0.05448794364929199,
+      "error": null
+    },
+    "assert positive_count([5, 5, 4, -4, 0, 7, 1, 2, 0, 4, 3, 9, 9]) == 0.77": {
+      "result": true,
+      "time": 0.04623055458068848,
+      "error": null
+    },
+    "assert positive_count([3, 2, 6, -5, -2, 4, 2, -6, 0, 7, 1, 1, 11]) == 0.69": {
+      "result": true,
+      "time": 0.04114866256713867,
+      "error": null
+    },
+    "assert positive_count([2, 2, 2, -5, -6, 7, 3, 1, 2, 3, 3, 5, 11]) == 0.85": {
+      "result": true,
+      "time": 0.05060577392578125,
+      "error": null
+    },
+    "assert positive_count([4, 2, 7, 1, -9, 5, 4, -5, -5, 3, 8, 10, 10]) == 0.77": {
+      "result": true,
+      "time": 0.04805779457092285,
+      "error": null
+    },
+    "assert positive_count([1, 5, 2, 4, -3, 2, 4, 0, 1, 1, 6, 9, 7]) == 0.85": {
+      "result": true,
+      "time": 0.04426121711730957,
+      "error": null
+    },
+    "assert positive_count([5, 2, 7, 2, -2, 5, 3, -6, -3, 2, 4, 9, 9]) == 0.77": {
+      "result": true,
+      "time": 0.04922127723693848,
+      "error": null
+    },
+    "assert positive_count([3, 5, 5, -1, 0, 8, 4, 1, -1, 2, 3, 9, 9]) == 0.77": {
+      "result": true,
+      "time": 0.04697251319885254,
+      "error": null
+    },
+    "assert positive_count([3, 2, 7, -3, -8, 8, 2, -5, -1, 5, 3, 4, 12]) == 0.69": {
+      "result": true,
+      "time": 0.04494905471801758,
+      "error": null
+    },
+    "assert positive_count([1, 4, 6, -6, -9, 2, 5, -7, 1, 7, 7, 6, 5]) == 0.77": {
+      "result": true,
+      "time": 0.0427093505859375,
+      "error": null
+    },
+    "assert positive_count([4, 3, 5, -6, -2, 3, 5, 2, 2, 6, 8, 1, 9]) == 0.85": {
+      "result": true,
+      "time": 0.045144081115722656,
+      "error": null
+    },
+    "assert positive_count([5, 3, 7, -3, -5, 1, 5, 0, 1, 3, 4, 2, 10]) == 0.77": {
+      "result": true,
+      "time": 0.04093194007873535,
+      "error": null
+    },
+    "assert positive_count([2, 5, 1, 3, -10, 4, 2, -1, -5, 2, 5, 10, 9]) == 0.77": {
+      "result": true,
+      "time": 0.05413699150085449,
+      "error": null
+    },
+    "assert positive_count([3, 1, 2, -2, -9, 5, 1, -4, -7, 8, 1, 7, 9]) == 0.69": {
+      "result": true,
+      "time": 0.05546236038208008,
+      "error": null
+    },
+    "assert positive_count([2, 6, 5, -1, -5, 5, 2, -1, 0, 5, 6, 5, 9]) == 0.69": {
+      "result": true,
+      "time": 0.04945731163024902,
+      "error": null
+    },
+    "assert positive_count([6, 2, 3, -1, -4, 1, 7, -7, 0, 2, 2, 2, 13]) == 0.69": {
+      "result": true,
+      "time": 0.04686141014099121,
+      "error": null
+    },
+    "assert positive_count([2, 4, 2, -5, -10, 10, 4, -2, 3, 4, 3, 11, 7]) == 0.77": {
+      "result": true,
+      "time": 0.04881477355957031,
+      "error": null
+    },
+    "assert positive_count([7, 1, 5, -2, -9, 2, 9, 2, 0, 8, 6, 10, 10]) == 0.77": {
+      "result": true,
+      "time": 0.04137992858886719,
+      "error": null
+    },
+    "assert positive_count([4, 6, 3, 3, -3, 6, 7, -7, -4, 2, 6, 9, 10]) == 0.77": {
+      "result": true,
+      "time": 0.048850297927856445,
+      "error": null
+    },
+    "assert positive_count([6, 1, 2, 1, -8, 6, 2, -8, 0, 6, 1, 4, 11]) == 0.77": {
+      "result": true,
+      "time": 0.054434776306152344,
+      "error": null
+    },
+    "assert positive_count([7, 3, 4, 1, -3, 1, 4, -3, 3, 7, 2, 2, 7]) == 0.85": {
+      "result": true,
+      "time": 0.03893923759460449,
+      "error": null
+    },
+    "assert positive_count([5, 1, 4, 2, -2, 6, 5, 2, 0, 7, 7, 5, 10]) == 0.85": {
+      "result": true,
+      "time": 0.05340218544006348,
+      "error": null
+    },
+    "assert positive_count([6, 1, 4, 4, -3, 3, 9, -2, 1, 6, 2, 5, 12]) == 0.85": {
+      "result": true,
+      "time": 0.04706573486328125,
+      "error": null
+    },
+    "assert positive_count([7, 4, 2, 1, -9, 11, 9, -7, -1, 3, 9, 5, 13]) == 0.77": {
+      "result": true,
+      "time": 0.049326419830322266,
+      "error": null
+    },
+    "assert positive_count([3, 4, 3, -3, -4, 1, 7, -7, -2, 8, 4, 2, 11]) == 0.69": {
+      "result": true,
+      "time": 0.04336285591125488,
+      "error": null
+    },
+    "assert positive_count([1, 2, 5, 4, -5, 8, 8, -8, -3, 2, 8, 5, 12]) == 0.77": {
+      "result": true,
+      "time": 0.05500078201293945,
+      "error": null
+    },
+    "assert positive_count([7, 3, 3, 0, -8, 8, 8, -7, 1, 5, 1, 2, 11]) == 0.77": {
+      "result": true,
+      "time": 0.04751014709472656,
+      "error": null
+    },
+    "assert positive_count([5, 3, 2, -1, -8, 4, 5, -8, -5, 5, 4, 11, 4]) == 0.69": {
+      "result": true,
+      "time": 0.04562735557556152,
+      "error": null
+    },
+    "assert positive_count([5, 4, 5, -3, -8, 4, 6, -3, 2, 1, 7, 1, 6]) == 0.77": {
+      "result": true,
+      "time": 0.04360365867614746,
+      "error": null
+    },
+    "assert positive_count([7, 2, 6, -2, -3, 3, 3, -1, 3, 1, 2, 5, 6]) == 0.77": {
+      "result": true,
+      "time": 0.04618954658508301,
+      "error": null
+    },
+    "assert positive_count([7, 2, 6, 3, -3, 11, 9, -4, -6, 6, 3, 10, 5]) == 0.77": {
+      "result": true,
+      "time": 0.046446800231933594,
+      "error": null
+    },
+    "assert positive_count([7, 6, 7, 0, -2, 6, 2, -5, -4, 6, 7, 6, 4]) == 0.69": {
+      "result": true,
+      "time": 0.040158748626708984,
+      "error": null
+    },
+    "assert positive_count([6, 5, 6, 0, -1, 4, 4, -3, -6, 6, 2, 10, 13]) == 0.69": {
+      "result": true,
+      "time": 0.046888113021850586,
+      "error": null
+    },
+    "assert positive_count([5, 2, 7, -2, -7, 8, 6, -2, -2, 5, 6, 3, 5]) == 0.69": {
+      "result": true,
+      "time": 0.0428469181060791,
+      "error": null
+    },
+    "assert positive_count([6, 2, 6, 2, 0, 11, 4, -2, -2, 1, 6, 6, 12]) == 0.77": {
+      "result": true,
+      "time": 0.04474520683288574,
+      "error": null
+    },
+    "assert positive_count([7, 2, 6, -5, -2, 6, 2, -7, -2, 5, 2, 5, 11]) == 0.69": {
+      "result": true,
+      "time": 0.04073309898376465,
+      "error": null
+    },
+    "assert positive_count([6, 5, 1, 1, 0, 1, 1, 2, 0, 4, 4, 11, 6]) == 0.85": {
+      "result": true,
+      "time": 0.052204132080078125,
+      "error": null
+    },
+    "assert positive_count([4, 5, 2, -5, 0, 3, 2, -2, -7, 7, 4, 11, 3]) == 0.69": {
+      "result": true,
+      "time": 0.053956031799316406,
+      "error": null
+    },
+    "assert positive_count([4, 6, 5, -3, -6, 10, 9, -5, -7, 6, 3, 2, 11]) == 0.69": {
+      "result": true,
+      "time": 0.04893803596496582,
+      "error": null
+    },
+    "assert positive_count([7, 2, 6, -4, -10, 7, 5, -1, -4, 2, 7, 10, 7]) == 0.69": {
+      "result": true,
+      "time": 0.049562931060791016,
+      "error": null
+    },
+    "assert positive_count([4, 3, 6, 1, -6, 7, 8, -4, -7, 1, 3, 6, 12]) == 0.77": {
+      "result": true,
+      "time": 0.04223179817199707,
+      "error": null
+    },
+    "assert positive_count([7, 4, 5, -1, -1, 5, 2, -5, -4, 3, 6, 10, 4]) == 0.69": {
+      "result": true,
+      "time": 0.03906846046447754,
+      "error": null
+    },
+    "assert positive_count([1, 6, 6, -4, 0, 1, 8, -5, -4, 8, 8, 4, 10]) == 0.69": {
+      "result": true,
+      "time": 0.039423465728759766,
+      "error": null
+    },
+    "assert positive_count([4, 2, 3, -4, -4, 5, 8, -5, -4, 1, 3, 3, 5]) == 0.69": {
+      "result": true,
+      "time": 0.03179287910461426,
+      "error": null
+    },
+    "assert positive_count([4, 1, 7, -6, -2, 9, 9, -7, -5, 4, 5, 2, 10]) == 0.69": {
+      "result": true,
+      "time": 0.036168575286865234,
+      "error": null
+    },
+    "assert positive_count([4, 3, 7, 4, -6, 7, 1, 2, -4, 3, 7, 2, 10]) == 0.85": {
+      "result": true,
+      "time": 0.03378605842590332,
+      "error": null
+    },
+    "assert positive_count([7, 2, -3, -5, 9, -10, 10, -8, 22]) == 0.56": {
+      "result": true,
+      "time": 0.04596447944641113,
+      "error": null
+    },
+    "assert positive_count([2, 5, -4, -11, 8, -13, 18, -10, 14]) == 0.56": {
+      "result": true,
+      "time": 0.048972129821777344,
+      "error": null
+    },
+    "assert positive_count([7, 8, -10, -14, 15, -9, 18, 0, 17]) == 0.56": {
+      "result": true,
+      "time": 0.04542660713195801,
+      "error": null
+    },
+    "assert positive_count([4, 4, -4, -9, 11, -15, 18, -7, 14]) == 0.56": {
+      "result": true,
+      "time": 0.05054426193237305,
+      "error": null
+    },
+    "assert positive_count([6, 6, -2, -5, 14, -17, 18, -1, 21]) == 0.56": {
+      "result": true,
+      "time": 0.042754173278808594,
+      "error": null
+    },
+    "assert positive_count([3, 9, -10, -7, 8, -7, 14, -9, 15]) == 0.56": {
+      "result": true,
+      "time": 0.05751824378967285,
+      "error": null
+    },
+    "assert positive_count([2, 9, -2, -10, 7, -9, 13, -3, 12]) == 0.56": {
+      "result": true,
+      "time": 0.04791975021362305,
+      "error": null
+    },
+    "assert positive_count([1, 3, -8, -12, 7, -7, 19, -9, 22]) == 0.56": {
+      "result": true,
+      "time": 0.04760146141052246,
+      "error": null
+    },
+    "assert positive_count([2, 9, -2, -11, 11, -14, 9, -2, 13]) == 0.56": {
+      "result": true,
+      "time": 0.04952216148376465,
+      "error": null
+    },
+    "assert positive_count([3, 1, -5, -13, 11, -16, 18, -6, 15]) == 0.56": {
+      "result": true,
+      "time": 0.0437469482421875,
+      "error": null
+    },
+    "assert positive_count([7, 7, -4, -14, 12, -14, 18, -4, 17]) == 0.56": {
+      "result": true,
+      "time": 0.04851102828979492,
+      "error": null
+    },
+    "assert positive_count([1, 1, -7, -4, 14, -13, 10, -6, 17]) == 0.56": {
+      "result": true,
+      "time": 0.052651166915893555,
+      "error": null
+    },
+    "assert positive_count([7, 3, -2, -4, 10, -14, 13, -3, 12]) == 0.56": {
+      "result": true,
+      "time": 0.04664134979248047,
+      "error": null
+    },
+    "assert positive_count([2, 6, -8, -14, 8, -13, 14, -4, 16]) == 0.56": {
+      "result": true,
+      "time": 0.043998003005981445,
+      "error": null
+    },
+    "assert positive_count([6, 6, -6, -9, 10, -11, 12, -3, 19]) == 0.56": {
+      "result": true,
+      "time": 0.04641914367675781,
+      "error": null
+    },
+    "assert positive_count([2, 2, -7, -13, 8, -14, 10, -8, 15]) == 0.56": {
+      "result": true,
+      "time": 0.04426455497741699,
+      "error": null
+    },
+    "assert positive_count([6, 7, -1, -8, 6, -10, 16, -2, 18]) == 0.56": {
+      "result": true,
+      "time": 0.04834485054016113,
+      "error": null
+    },
+    "assert positive_count([1, 7, -4, -8, 12, -9, 13, -10, 16]) == 0.56": {
+      "result": true,
+      "time": 0.05183982849121094,
+      "error": null
+    },
+    "assert positive_count([1, 4, -7, -12, 10, -17, 10, -7, 15]) == 0.56": {
+      "result": true,
+      "time": 0.04307365417480469,
+      "error": null
+    },
+    "assert positive_count([4, 2, -4, -8, 14, -13, 11, -9, 15]) == 0.56": {
+      "result": true,
+      "time": 0.04714775085449219,
+      "error": null
+    },
+    "assert positive_count([7, 6, -4, -13, 6, -13, 9, -9, 18]) == 0.56": {
+      "result": true,
+      "time": 0.04238486289978027,
+      "error": null
+    },
+    "assert positive_count([5, 3, -6, -10, 9, -17, 9, -8, 20]) == 0.56": {
+      "result": true,
+      "time": 0.0521855354309082,
+      "error": null
+    },
+    "assert positive_count([2, 6, -11, -13, 11, -13, 17, -1, 17]) == 0.56": {
+      "result": true,
+      "time": 0.042760372161865234,
+      "error": null
+    },
+    "assert positive_count([3, 9, -10, -9, 10, -10, 13, -8, 14]) == 0.56": {
+      "result": true,
+      "time": 0.0482327938079834,
+      "error": null
+    },
+    "assert positive_count([6, 7, -8, -14, 8, -11, 13, -9, 18]) == 0.56": {
+      "result": true,
+      "time": 0.044925689697265625,
+      "error": null
+    },
+    "assert positive_count([7, 7, -5, -8, 12, -14, 18, -1, 22]) == 0.56": {
+      "result": true,
+      "time": 0.044962167739868164,
+      "error": null
+    },
+    "assert positive_count([7, 7, -2, -14, 16, -7, 13, -7, 13]) == 0.56": {
+      "result": true,
+      "time": 0.03612470626831055,
+      "error": null
+    },
+    "assert positive_count([2, 1, -1, -9, 8, -17, 17, -4, 20]) == 0.56": {
+      "result": true,
+      "time": 0.04238271713256836,
+      "error": null
+    },
+    "assert positive_count([6, 9, -11, -9, 9, -16, 19, -1, 17]) == 0.56": {
+      "result": true,
+      "time": 0.045328617095947266,
+      "error": null
+    },
+    "assert positive_count([3, 3, -1, -7, 13, -14, 17, -6, 18]) == 0.56": {
+      "result": true,
+      "time": 0.0334172248840332,
+      "error": null
+    },
+    "assert positive_count([6, 4, -9, -12, 13, -8, 15, -5, 16]) == 0.56": {
+      "result": true,
+      "time": 0.038886308670043945,
+      "error": null
+    },
+    "assert positive_count([6, 4, -7, -7, 15, -8, 15, -2, 18]) == 0.56": {
+      "result": true,
+      "time": 0.044527292251586914,
+      "error": null
+    },
+    "assert positive_count([5, 9, -4, -5, 13, -10, 16, -4, 15]) == 0.56": {
+      "result": true,
+      "time": 0.045264244079589844,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

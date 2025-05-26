@@ -1,0 +1,519 @@
+{
+  "code": "def max_product_tuple(tuple_list):\n    max_product = 0\n    for t in tuple_list:\n        product = t[0] * t[1]\n        if product > max_product:\n            max_product = product\n    return max_product",
+  "results": {
+    "assert max_product_tuple([(2, 7), (2, 6), (1, 8), (4, 9)] )==36": {
+      "result": true,
+      "time": 0.04423785209655762,
+      "error": null
+    },
+    "assert max_product_tuple([(10,20), (15,2), (5,10)] )==200": {
+      "result": true,
+      "time": 0.038804054260253906,
+      "error": null
+    },
+    "assert max_product_tuple([(11,44), (10,15), (20,5), (12, 9)] )==484": {
+      "result": true,
+      "time": 0.05199694633483887,
+      "error": null
+    },
+    "assert max_product_tuple([(5, 12), (2, 4), (1, 9), (6, 6)]) == 60": {
+      "result": true,
+      "time": 0.04580998420715332,
+      "error": null
+    },
+    "assert max_product_tuple([(3, 9), (3, 4), (6, 5), (2, 4)]) == 30": {
+      "result": true,
+      "time": 0.054564714431762695,
+      "error": null
+    },
+    "assert max_product_tuple([(2, 2), (3, 11), (2, 12), (4, 14)]) == 56": {
+      "result": true,
+      "time": 0.04338669776916504,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 10), (4, 5), (5, 12), (3, 12)]) == 70": {
+      "result": true,
+      "time": 0.04495048522949219,
+      "error": null
+    },
+    "assert max_product_tuple([(3, 2), (1, 8), (4, 8), (8, 12)]) == 96": {
+      "result": true,
+      "time": 0.0467066764831543,
+      "error": null
+    },
+    "assert max_product_tuple([(3, 6), (2, 9), (2, 3), (2, 10)]) == 20": {
+      "result": true,
+      "time": 0.043456315994262695,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 2), (1, 10), (1, 6), (5, 10)]) == 50": {
+      "result": true,
+      "time": 0.04281473159790039,
+      "error": null
+    },
+    "assert max_product_tuple([(2, 6), (1, 8), (6, 4), (9, 4)]) == 36": {
+      "result": true,
+      "time": 0.044786691665649414,
+      "error": null
+    },
+    "assert max_product_tuple([(2, 10), (5, 3), (6, 10), (7, 7)]) == 60": {
+      "result": true,
+      "time": 0.04143404960632324,
+      "error": null
+    },
+    "assert max_product_tuple([(6, 7), (5, 2), (5, 12), (9, 14)]) == 126": {
+      "result": true,
+      "time": 0.03865528106689453,
+      "error": null
+    },
+    "assert max_product_tuple([(1, 3), (2, 9), (3, 9), (2, 8)]) == 27": {
+      "result": true,
+      "time": 0.0415651798248291,
+      "error": null
+    },
+    "assert max_product_tuple([(3, 3), (4, 5), (2, 5), (7, 10)]) == 70": {
+      "result": true,
+      "time": 0.043595314025878906,
+      "error": null
+    },
+    "assert max_product_tuple([(2, 10), (3, 9), (6, 9), (7, 4)]) == 54": {
+      "result": true,
+      "time": 0.04224872589111328,
+      "error": null
+    },
+    "assert max_product_tuple([(3, 7), (4, 8), (5, 13), (2, 7)]) == 65": {
+      "result": true,
+      "time": 0.0504605770111084,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 12), (4, 6), (3, 8), (6, 6)]) == 84": {
+      "result": true,
+      "time": 0.03768157958984375,
+      "error": null
+    },
+    "assert max_product_tuple([(3, 3), (4, 5), (1, 9), (8, 7)]) == 56": {
+      "result": true,
+      "time": 0.03770160675048828,
+      "error": null
+    },
+    "assert max_product_tuple([(3, 9), (6, 1), (3, 9), (3, 14)]) == 42": {
+      "result": true,
+      "time": 0.03973126411437988,
+      "error": null
+    },
+    "assert max_product_tuple([(3, 9), (2, 4), (4, 6), (6, 11)]) == 66": {
+      "result": true,
+      "time": 0.03258109092712402,
+      "error": null
+    },
+    "assert max_product_tuple([(2, 9), (3, 5), (1, 11), (6, 12)]) == 72": {
+      "result": true,
+      "time": 0.04722785949707031,
+      "error": null
+    },
+    "assert max_product_tuple([(6, 10), (3, 1), (4, 12), (7, 9)]) == 63": {
+      "result": true,
+      "time": 0.04435920715332031,
+      "error": null
+    },
+    "assert max_product_tuple([(2, 5), (4, 7), (2, 8), (5, 11)]) == 55": {
+      "result": true,
+      "time": 0.0422663688659668,
+      "error": null
+    },
+    "assert max_product_tuple([(4, 8), (5, 9), (3, 7), (3, 6)]) == 45": {
+      "result": true,
+      "time": 0.0393674373626709,
+      "error": null
+    },
+    "assert max_product_tuple([(5, 3), (2, 7), (5, 4), (5, 11)]) == 55": {
+      "result": true,
+      "time": 0.040566205978393555,
+      "error": null
+    },
+    "assert max_product_tuple([(2, 3), (3, 8), (5, 7), (7, 12)]) == 84": {
+      "result": true,
+      "time": 0.039751291275024414,
+      "error": null
+    },
+    "assert max_product_tuple([(6, 10), (4, 7), (4, 7), (1, 10)]) == 60": {
+      "result": true,
+      "time": 0.05037808418273926,
+      "error": null
+    },
+    "assert max_product_tuple([(3, 12), (4, 3), (4, 8), (9, 7)]) == 63": {
+      "result": true,
+      "time": 0.04161334037780762,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 11), (6, 9), (1, 11), (5, 12)]) == 77": {
+      "result": true,
+      "time": 0.03793787956237793,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 6), (2, 8), (1, 12), (6, 14)]) == 84": {
+      "result": true,
+      "time": 0.035497188568115234,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 6), (6, 9), (2, 9), (9, 4)]) == 54": {
+      "result": true,
+      "time": 0.03853797912597656,
+      "error": null
+    },
+    "assert max_product_tuple([(3, 10), (4, 8), (2, 5), (3, 4)]) == 32": {
+      "result": true,
+      "time": 0.04056525230407715,
+      "error": null
+    },
+    "assert max_product_tuple([(2, 4), (2, 3), (1, 5), (8, 11)]) == 88": {
+      "result": true,
+      "time": 0.04113292694091797,
+      "error": null
+    },
+    "assert max_product_tuple([(4, 11), (4, 11), (3, 3), (1, 9)]) == 44": {
+      "result": true,
+      "time": 0.05388021469116211,
+      "error": null
+    },
+    "assert max_product_tuple([(4, 12), (1, 8), (4, 8), (5, 4)]) == 48": {
+      "result": true,
+      "time": 0.05545854568481445,
+      "error": null
+    },
+    "assert max_product_tuple([(13, 15), (11, 5), (9, 6)]) == 195": {
+      "result": true,
+      "time": 0.050225257873535156,
+      "error": null
+    },
+    "assert max_product_tuple([(9, 15), (17, 7), (1, 10)]) == 135": {
+      "result": true,
+      "time": 0.06181979179382324,
+      "error": null
+    },
+    "assert max_product_tuple([(9, 18), (12, 5), (5, 14)]) == 162": {
+      "result": true,
+      "time": 0.05787992477416992,
+      "error": null
+    },
+    "assert max_product_tuple([(15, 15), (15, 4), (10, 5)]) == 225": {
+      "result": true,
+      "time": 0.05539298057556152,
+      "error": null
+    },
+    "assert max_product_tuple([(12, 17), (15, 1), (8, 6)]) == 204": {
+      "result": true,
+      "time": 0.045274972915649414,
+      "error": null
+    },
+    "assert max_product_tuple([(13, 23), (15, 7), (2, 9)]) == 299": {
+      "result": true,
+      "time": 0.05149674415588379,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 19), (16, 7), (3, 9)]) == 133": {
+      "result": true,
+      "time": 0.04992032051086426,
+      "error": null
+    },
+    "assert max_product_tuple([(14, 17), (20, 7), (5, 13)]) == 238": {
+      "result": true,
+      "time": 0.05138826370239258,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 25), (19, 1), (6, 5)]) == 175": {
+      "result": true,
+      "time": 0.05985236167907715,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 25), (11, 4), (2, 11)]) == 175": {
+      "result": true,
+      "time": 0.05200672149658203,
+      "error": null
+    },
+    "assert max_product_tuple([(14, 18), (12, 4), (6, 14)]) == 252": {
+      "result": true,
+      "time": 0.07475638389587402,
+      "error": null
+    },
+    "assert max_product_tuple([(13, 20), (14, 5), (4, 11)]) == 260": {
+      "result": true,
+      "time": 0.058135032653808594,
+      "error": null
+    },
+    "assert max_product_tuple([(10, 20), (16, 2), (2, 7)]) == 200": {
+      "result": true,
+      "time": 0.04999351501464844,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 20), (18, 4), (2, 9)]) == 140": {
+      "result": true,
+      "time": 0.05463385581970215,
+      "error": null
+    },
+    "assert max_product_tuple([(5, 18), (17, 2), (9, 11)]) == 99": {
+      "result": true,
+      "time": 0.0410466194152832,
+      "error": null
+    },
+    "assert max_product_tuple([(14, 23), (13, 1), (5, 11)]) == 322": {
+      "result": true,
+      "time": 0.042201995849609375,
+      "error": null
+    },
+    "assert max_product_tuple([(12, 23), (16, 6), (7, 7)]) == 276": {
+      "result": true,
+      "time": 0.06034445762634277,
+      "error": null
+    },
+    "assert max_product_tuple([(10, 19), (12, 1), (7, 10)]) == 190": {
+      "result": true,
+      "time": 0.045952796936035156,
+      "error": null
+    },
+    "assert max_product_tuple([(10, 20), (19, 6), (8, 10)]) == 200": {
+      "result": true,
+      "time": 0.06066632270812988,
+      "error": null
+    },
+    "assert max_product_tuple([(15, 18), (12, 3), (10, 10)]) == 270": {
+      "result": true,
+      "time": 0.049494266510009766,
+      "error": null
+    },
+    "assert max_product_tuple([(8, 24), (18, 3), (8, 11)]) == 192": {
+      "result": true,
+      "time": 0.055710792541503906,
+      "error": null
+    },
+    "assert max_product_tuple([(10, 15), (17, 6), (3, 7)]) == 150": {
+      "result": true,
+      "time": 0.056879281997680664,
+      "error": null
+    },
+    "assert max_product_tuple([(6, 25), (18, 5), (6, 10)]) == 150": {
+      "result": true,
+      "time": 0.0466156005859375,
+      "error": null
+    },
+    "assert max_product_tuple([(15, 20), (13, 6), (10, 10)]) == 300": {
+      "result": true,
+      "time": 0.04982900619506836,
+      "error": null
+    },
+    "assert max_product_tuple([(9, 22), (12, 2), (9, 11)]) == 198": {
+      "result": true,
+      "time": 0.046315670013427734,
+      "error": null
+    },
+    "assert max_product_tuple([(5, 18), (13, 2), (7, 15)]) == 105": {
+      "result": true,
+      "time": 0.060466766357421875,
+      "error": null
+    },
+    "assert max_product_tuple([(15, 24), (10, 7), (9, 11)]) == 360": {
+      "result": true,
+      "time": 0.047438859939575195,
+      "error": null
+    },
+    "assert max_product_tuple([(8, 19), (12, 5), (3, 5)]) == 152": {
+      "result": true,
+      "time": 0.04904508590698242,
+      "error": null
+    },
+    "assert max_product_tuple([(12, 18), (10, 1), (6, 7)]) == 216": {
+      "result": true,
+      "time": 0.056731462478637695,
+      "error": null
+    },
+    "assert max_product_tuple([(14, 18), (16, 7), (6, 7)]) == 252": {
+      "result": true,
+      "time": 0.05109143257141113,
+      "error": null
+    },
+    "assert max_product_tuple([(15, 24), (17, 3), (1, 15)]) == 360": {
+      "result": true,
+      "time": 0.06101226806640625,
+      "error": null
+    },
+    "assert max_product_tuple([(5, 22), (11, 4), (4, 13)]) == 110": {
+      "result": true,
+      "time": 0.052850961685180664,
+      "error": null
+    },
+    "assert max_product_tuple([(15, 21), (13, 6), (8, 11)]) == 315": {
+      "result": true,
+      "time": 0.055739641189575195,
+      "error": null
+    },
+    "assert max_product_tuple([(10, 42), (13, 15), (25, 8), (8, 5)]) == 420": {
+      "result": true,
+      "time": 0.04593372344970703,
+      "error": null
+    },
+    "assert max_product_tuple([(14, 45), (12, 10), (23, 8), (15, 5)]) == 630": {
+      "result": true,
+      "time": 0.04824376106262207,
+      "error": null
+    },
+    "assert max_product_tuple([(16, 43), (14, 18), (20, 9), (12, 13)]) == 688": {
+      "result": true,
+      "time": 0.05603313446044922,
+      "error": null
+    },
+    "assert max_product_tuple([(9, 46), (13, 16), (23, 2), (13, 9)]) == 414": {
+      "result": true,
+      "time": 0.05715513229370117,
+      "error": null
+    },
+    "assert max_product_tuple([(6, 40), (8, 16), (21, 8), (7, 14)]) == 240": {
+      "result": true,
+      "time": 0.05646038055419922,
+      "error": null
+    },
+    "assert max_product_tuple([(14, 46), (11, 15), (17, 4), (8, 11)]) == 644": {
+      "result": true,
+      "time": 0.04402971267700195,
+      "error": null
+    },
+    "assert max_product_tuple([(15, 42), (9, 20), (17, 10), (10, 4)]) == 630": {
+      "result": true,
+      "time": 0.049703121185302734,
+      "error": null
+    },
+    "assert max_product_tuple([(9, 43), (5, 15), (20, 3), (7, 6)]) == 387": {
+      "result": true,
+      "time": 0.03684401512145996,
+      "error": null
+    },
+    "assert max_product_tuple([(14, 44), (15, 18), (20, 2), (11, 9)]) == 616": {
+      "result": true,
+      "time": 0.04295039176940918,
+      "error": null
+    },
+    "assert max_product_tuple([(10, 43), (13, 11), (25, 3), (10, 6)]) == 430": {
+      "result": true,
+      "time": 0.045205116271972656,
+      "error": null
+    },
+    "assert max_product_tuple([(14, 42), (11, 18), (19, 4), (10, 8)]) == 588": {
+      "result": true,
+      "time": 0.037325382232666016,
+      "error": null
+    },
+    "assert max_product_tuple([(11, 46), (13, 11), (19, 1), (11, 10)]) == 506": {
+      "result": true,
+      "time": 0.03648877143859863,
+      "error": null
+    },
+    "assert max_product_tuple([(14, 47), (14, 15), (17, 10), (10, 5)]) == 658": {
+      "result": true,
+      "time": 0.044263601303100586,
+      "error": null
+    },
+    "assert max_product_tuple([(14, 40), (15, 17), (17, 10), (11, 7)]) == 560": {
+      "result": true,
+      "time": 0.04839658737182617,
+      "error": null
+    },
+    "assert max_product_tuple([(8, 40), (8, 15), (25, 6), (8, 11)]) == 320": {
+      "result": true,
+      "time": 0.042438507080078125,
+      "error": null
+    },
+    "assert max_product_tuple([(13, 40), (11, 11), (22, 8), (16, 7)]) == 520": {
+      "result": true,
+      "time": 0.044921159744262695,
+      "error": null
+    },
+    "assert max_product_tuple([(13, 42), (13, 14), (25, 1), (13, 10)]) == 546": {
+      "result": true,
+      "time": 0.04367852210998535,
+      "error": null
+    },
+    "assert max_product_tuple([(13, 45), (12, 15), (25, 6), (15, 5)]) == 585": {
+      "result": true,
+      "time": 0.04856157302856445,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 48), (12, 16), (16, 9), (14, 4)]) == 336": {
+      "result": true,
+      "time": 0.03865694999694824,
+      "error": null
+    },
+    "assert max_product_tuple([(15, 44), (11, 16), (25, 1), (11, 14)]) == 660": {
+      "result": true,
+      "time": 0.03945636749267578,
+      "error": null
+    },
+    "assert max_product_tuple([(13, 44), (8, 13), (18, 9), (13, 4)]) == 572": {
+      "result": true,
+      "time": 0.04115915298461914,
+      "error": null
+    },
+    "assert max_product_tuple([(15, 45), (5, 18), (17, 6), (11, 14)]) == 675": {
+      "result": true,
+      "time": 0.0437474250793457,
+      "error": null
+    },
+    "assert max_product_tuple([(10, 41), (14, 10), (21, 10), (11, 11)]) == 410": {
+      "result": true,
+      "time": 0.04004025459289551,
+      "error": null
+    },
+    "assert max_product_tuple([(15, 45), (9, 18), (17, 7), (13, 6)]) == 675": {
+      "result": true,
+      "time": 0.05071735382080078,
+      "error": null
+    },
+    "assert max_product_tuple([(10, 49), (10, 17), (15, 5), (16, 12)]) == 490": {
+      "result": true,
+      "time": 0.041612863540649414,
+      "error": null
+    },
+    "assert max_product_tuple([(12, 48), (9, 16), (20, 6), (11, 14)]) == 576": {
+      "result": true,
+      "time": 0.03601527214050293,
+      "error": null
+    },
+    "assert max_product_tuple([(9, 47), (9, 12), (23, 7), (16, 8)]) == 423": {
+      "result": true,
+      "time": 0.03816962242126465,
+      "error": null
+    },
+    "assert max_product_tuple([(14, 44), (12, 19), (21, 1), (15, 12)]) == 616": {
+      "result": true,
+      "time": 0.04065680503845215,
+      "error": null
+    },
+    "assert max_product_tuple([(12, 40), (5, 18), (23, 10), (10, 7)]) == 480": {
+      "result": true,
+      "time": 0.04470992088317871,
+      "error": null
+    },
+    "assert max_product_tuple([(16, 40), (6, 20), (18, 3), (12, 5)]) == 640": {
+      "result": true,
+      "time": 0.03848409652709961,
+      "error": null
+    },
+    "assert max_product_tuple([(6, 48), (13, 15), (16, 5), (10, 10)]) == 288": {
+      "result": true,
+      "time": 0.04780745506286621,
+      "error": null
+    },
+    "assert max_product_tuple([(7, 44), (9, 20), (19, 8), (17, 5)]) == 308": {
+      "result": true,
+      "time": 0.03805875778198242,
+      "error": null
+    },
+    "assert max_product_tuple([(13, 46), (14, 16), (25, 10), (9, 10)]) == 598": {
+      "result": true,
+      "time": 0.04882335662841797,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

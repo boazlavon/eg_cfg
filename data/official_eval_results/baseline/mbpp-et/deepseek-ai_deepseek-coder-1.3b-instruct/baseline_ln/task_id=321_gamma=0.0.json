@@ -1,0 +1,519 @@
+{
+  "code": "def find_demlo(num):\n    # Create a list of digits from 1 to 9\n    digits = [str(i) for i in range(1, 10)]\n\n    # Create a list of all possible permutations of the digits\n    all_perms = [''.join(p) for p in permutations(digits, len(digits))]\n\n    # Find the permutation that is less than the given number\n    for perm in all_perms:\n        if int(perm) < int(num):\n            # If the permutation is less than the given number, return it\n            return perm\n\n    # If no such permutation is found, return the largest possible number\n    return max(all_perms)",
+  "results": {
+    "assert find_demlo(\"111111\") == '12345654321'": {
+      "result": false,
+      "time": 0.03901338577270508,
+      "error": null
+    },
+    "assert find_demlo(\"1111\") == '1234321'": {
+      "result": false,
+      "time": 0.036998748779296875,
+      "error": null
+    },
+    "assert find_demlo(\"13333122222\") == '123456789101110987654321'": {
+      "result": false,
+      "time": 0.04041886329650879,
+      "error": null
+    },
+    "assert find_demlo(\"314\") == 12321": {
+      "result": false,
+      "time": 0.040070533752441406,
+      "error": null
+    },
+    "assert find_demlo(\"34715\") == 123454321": {
+      "result": false,
+      "time": 0.04302620887756348,
+      "error": null
+    },
+    "assert find_demlo(\"6261\") == 1234321": {
+      "result": false,
+      "time": 0.0338895320892334,
+      "error": null
+    },
+    "assert find_demlo(\"7933147249\") == 12345678910987654321": {
+      "result": false,
+      "time": 0.0374147891998291,
+      "error": null
+    },
+    "assert find_demlo(\"921\") == 12321": {
+      "result": false,
+      "time": 0.03889656066894531,
+      "error": null
+    },
+    "assert find_demlo(\"36326\") == 123454321": {
+      "result": false,
+      "time": 0.03899884223937988,
+      "error": null
+    },
+    "assert find_demlo(\"969411788973\") == 1234567891011121110987654321": {
+      "result": false,
+      "time": 0.040952444076538086,
+      "error": null
+    },
+    "assert find_demlo(\"536445162384\") == 1234567891011121110987654321": {
+      "result": false,
+      "time": 0.03449273109436035,
+      "error": null
+    },
+    "assert find_demlo(\"61152970046\") == 123456789101110987654321": {
+      "result": false,
+      "time": 0.03622937202453613,
+      "error": null
+    },
+    "assert find_demlo(\"754223385903\") == 1234567891011121110987654321": {
+      "result": false,
+      "time": 0.03899741172790527,
+      "error": null
+    },
+    "assert find_demlo(\"20459\") == 123454321": {
+      "result": false,
+      "time": 0.03665614128112793,
+      "error": null
+    },
+    "assert find_demlo(\"2868802\") == 1234567654321": {
+      "result": false,
+      "time": 0.038967132568359375,
+      "error": null
+    },
+    "assert find_demlo(\"09169358\") == 123456787654321": {
+      "result": false,
+      "time": 0.03898310661315918,
+      "error": null
+    },
+    "assert find_demlo(\"812441796\") == 12345678987654321": {
+      "result": false,
+      "time": 0.03826761245727539,
+      "error": null
+    },
+    "assert find_demlo(\"7554628813\") == 12345678910987654321": {
+      "result": false,
+      "time": 0.0386810302734375,
+      "error": null
+    },
+    "assert find_demlo(\"292586\") == 12345654321": {
+      "result": false,
+      "time": 0.03821921348571777,
+      "error": null
+    },
+    "assert find_demlo(\"238891398160\") == 1234567891011121110987654321": {
+      "result": false,
+      "time": 0.031010866165161133,
+      "error": null
+    },
+    "assert find_demlo(\"45883892\") == 123456787654321": {
+      "result": false,
+      "time": 0.033624887466430664,
+      "error": null
+    },
+    "assert find_demlo(\"76349476\") == 123456787654321": {
+      "result": false,
+      "time": 0.04012346267700195,
+      "error": null
+    },
+    "assert find_demlo(\"91389917640\") == 123456789101110987654321": {
+      "result": false,
+      "time": 0.0415346622467041,
+      "error": null
+    },
+    "assert find_demlo(\"5045050\") == 1234567654321": {
+      "result": false,
+      "time": 0.03291010856628418,
+      "error": null
+    },
+    "assert find_demlo(\"2507271\") == 1234567654321": {
+      "result": false,
+      "time": 0.03584766387939453,
+      "error": null
+    },
+    "assert find_demlo(\"670205896529\") == 1234567891011121110987654321": {
+      "result": false,
+      "time": 0.03349876403808594,
+      "error": null
+    },
+    "assert find_demlo(\"04260339642\") == 123456789101110987654321": {
+      "result": false,
+      "time": 0.0354311466217041,
+      "error": null
+    },
+    "assert find_demlo(\"46290999451\") == 123456789101110987654321": {
+      "result": false,
+      "time": 0.03168129920959473,
+      "error": null
+    },
+    "assert find_demlo(\"489780455458\") == 1234567891011121110987654321": {
+      "result": false,
+      "time": 0.03887152671813965,
+      "error": null
+    },
+    "assert find_demlo(\"14100816633\") == 123456789101110987654321": {
+      "result": false,
+      "time": 0.038303375244140625,
+      "error": null
+    },
+    "assert find_demlo(\"41509\") == 123454321": {
+      "result": false,
+      "time": 0.03469967842102051,
+      "error": null
+    },
+    "assert find_demlo(\"6031691\") == 1234567654321": {
+      "result": false,
+      "time": 0.03545641899108887,
+      "error": null
+    },
+    "assert find_demlo(\"05312406\") == 123456787654321": {
+      "result": false,
+      "time": 0.04059576988220215,
+      "error": null
+    },
+    "assert find_demlo(\"40659280\") == 123456787654321": {
+      "result": false,
+      "time": 0.033263206481933594,
+      "error": null
+    },
+    "assert find_demlo(\"886599\") == 12345654321": {
+      "result": false,
+      "time": 0.03569340705871582,
+      "error": null
+    },
+    "assert find_demlo(\"400569997\") == 12345678987654321": {
+      "result": false,
+      "time": 0.045504093170166016,
+      "error": null
+    },
+    "assert find_demlo(\"6546\") == 1234321": {
+      "result": false,
+      "time": 0.0337371826171875,
+      "error": null
+    },
+    "assert find_demlo(\"9669556\") == 1234567654321": {
+      "result": false,
+      "time": 0.03515505790710449,
+      "error": null
+    },
+    "assert find_demlo(\"525\") == 12321": {
+      "result": false,
+      "time": 0.03624153137207031,
+      "error": null
+    },
+    "assert find_demlo(\"534028\") == 12345654321": {
+      "result": false,
+      "time": 0.03580307960510254,
+      "error": null
+    },
+    "assert find_demlo(\"54406\") == 123454321": {
+      "result": false,
+      "time": 0.03624248504638672,
+      "error": null
+    },
+    "assert find_demlo(\"412175\") == 12345654321": {
+      "result": false,
+      "time": 0.03999781608581543,
+      "error": null
+    },
+    "assert find_demlo(\"813292145\") == 12345678987654321": {
+      "result": false,
+      "time": 0.031236886978149414,
+      "error": null
+    },
+    "assert find_demlo(\"23267\") == 123454321": {
+      "result": false,
+      "time": 0.03869938850402832,
+      "error": null
+    },
+    "assert find_demlo(\"955980687\") == 12345678987654321": {
+      "result": false,
+      "time": 0.03410077095031738,
+      "error": null
+    },
+    "assert find_demlo(\"377295575\") == 12345678987654321": {
+      "result": false,
+      "time": 0.03714871406555176,
+      "error": null
+    },
+    "assert find_demlo(\"565023\") == 12345654321": {
+      "result": false,
+      "time": 0.03852033615112305,
+      "error": null
+    },
+    "assert find_demlo(\"711307\") == 12345654321": {
+      "result": false,
+      "time": 0.03624153137207031,
+      "error": null
+    },
+    "assert find_demlo(\"8465\") == 1234321": {
+      "result": false,
+      "time": 0.034482479095458984,
+      "error": null
+    },
+    "assert find_demlo(\"300917517\") == 12345678987654321": {
+      "result": false,
+      "time": 0.046521902084350586,
+      "error": null
+    },
+    "assert find_demlo(\"49165583\") == 123456787654321": {
+      "result": false,
+      "time": 0.0376133918762207,
+      "error": null
+    },
+    "assert find_demlo(\"5440\") == 1234321": {
+      "result": false,
+      "time": 0.035144805908203125,
+      "error": null
+    },
+    "assert find_demlo(\"2506\") == 1234321": {
+      "result": false,
+      "time": 0.03323030471801758,
+      "error": null
+    },
+    "assert find_demlo(\"28041\") == 123454321": {
+      "result": false,
+      "time": 0.03139352798461914,
+      "error": null
+    },
+    "assert find_demlo(\"601\") == 12321": {
+      "result": false,
+      "time": 0.02977609634399414,
+      "error": null
+    },
+    "assert find_demlo(\"74968\") == 123454321": {
+      "result": false,
+      "time": 0.039066314697265625,
+      "error": null
+    },
+    "assert find_demlo(\"685125541\") == 12345678987654321": {
+      "result": false,
+      "time": 0.03092336654663086,
+      "error": null
+    },
+    "assert find_demlo(\"391432\") == 12345654321": {
+      "result": false,
+      "time": 0.03789687156677246,
+      "error": null
+    },
+    "assert find_demlo(\"556\") == 12321": {
+      "result": false,
+      "time": 0.034503936767578125,
+      "error": null
+    },
+    "assert find_demlo(\"098\") == 12321": {
+      "result": false,
+      "time": 0.03204226493835449,
+      "error": null
+    },
+    "assert find_demlo(\"1582\") == 1234321": {
+      "result": false,
+      "time": 0.031247377395629883,
+      "error": null
+    },
+    "assert find_demlo(\"2395\") == 1234321": {
+      "result": false,
+      "time": 0.03425717353820801,
+      "error": null
+    },
+    "assert find_demlo(\"69419224\") == 123456787654321": {
+      "result": false,
+      "time": 0.03342127799987793,
+      "error": null
+    },
+    "assert find_demlo(\"03001507\") == 123456787654321": {
+      "result": false,
+      "time": 0.0319366455078125,
+      "error": null
+    },
+    "assert find_demlo(\"86258695\") == 123456787654321": {
+      "result": false,
+      "time": 0.028603315353393555,
+      "error": null
+    },
+    "assert find_demlo(\"563\") == 12321": {
+      "result": false,
+      "time": 0.033740997314453125,
+      "error": null
+    },
+    "assert find_demlo(\"595\") == 12321": {
+      "result": false,
+      "time": 0.03199577331542969,
+      "error": null
+    },
+    "assert find_demlo(\"430631\") == 12345654321": {
+      "result": false,
+      "time": 0.03714418411254883,
+      "error": null
+    },
+    "assert find_demlo(\"055\") == 12321": {
+      "result": false,
+      "time": 0.031862497329711914,
+      "error": null
+    },
+    "assert find_demlo(\"950321840\") == 12345678987654321": {
+      "result": false,
+      "time": 0.03711819648742676,
+      "error": null
+    },
+    "assert find_demlo(\"1972915\") == 1234567654321": {
+      "result": false,
+      "time": 0.04067397117614746,
+      "error": null
+    },
+    "assert find_demlo(\"401168003526607\") == 1234567891011121314151413121110987654321": {
+      "result": false,
+      "time": 0.03617382049560547,
+      "error": null
+    },
+    "assert find_demlo(\"012551117219\") == 1234567891011121110987654321": {
+      "result": false,
+      "time": 0.03238844871520996,
+      "error": null
+    },
+    "assert find_demlo(\"87137505987531\") == 123456789101112131413121110987654321": {
+      "result": false,
+      "time": 0.03795576095581055,
+      "error": null
+    },
+    "assert find_demlo(\"6102166707\") == 12345678910987654321": {
+      "result": false,
+      "time": 0.0327601432800293,
+      "error": null
+    },
+    "assert find_demlo(\"632476749608\") == 1234567891011121110987654321": {
+      "result": false,
+      "time": 0.03942251205444336,
+      "error": null
+    },
+    "assert find_demlo(\"164792\") == 12345654321": {
+      "result": false,
+      "time": 0.04835629463195801,
+      "error": null
+    },
+    "assert find_demlo(\"5547443\") == 1234567654321": {
+      "result": false,
+      "time": 0.03399777412414551,
+      "error": null
+    },
+    "assert find_demlo(\"6403950\") == 1234567654321": {
+      "result": false,
+      "time": 0.03233647346496582,
+      "error": null
+    },
+    "assert find_demlo(\"96481919\") == 123456787654321": {
+      "result": false,
+      "time": 0.0371394157409668,
+      "error": null
+    },
+    "assert find_demlo(\"820235998689046\") == 1234567891011121314151413121110987654321": {
+      "result": false,
+      "time": 0.03720831871032715,
+      "error": null
+    },
+    "assert find_demlo(\"2463393889701\") == 12345678910111213121110987654321": {
+      "result": false,
+      "time": 0.03977489471435547,
+      "error": null
+    },
+    "assert find_demlo(\"131189\") == 12345654321": {
+      "result": false,
+      "time": 0.038182735443115234,
+      "error": null
+    },
+    "assert find_demlo(\"40884901416066\") == 123456789101112131413121110987654321": {
+      "result": false,
+      "time": 0.0362248420715332,
+      "error": null
+    },
+    "assert find_demlo(\"0318668337\") == 12345678910987654321": {
+      "result": false,
+      "time": 0.03433370590209961,
+      "error": null
+    },
+    "assert find_demlo(\"0778543\") == 1234567654321": {
+      "result": false,
+      "time": 0.037322282791137695,
+      "error": null
+    },
+    "assert find_demlo(\"244012123159\") == 1234567891011121110987654321": {
+      "result": false,
+      "time": 0.04288363456726074,
+      "error": null
+    },
+    "assert find_demlo(\"26611152350547\") == 123456789101112131413121110987654321": {
+      "result": false,
+      "time": 0.04028797149658203,
+      "error": null
+    },
+    "assert find_demlo(\"187158251\") == 12345678987654321": {
+      "result": false,
+      "time": 0.03983616828918457,
+      "error": null
+    },
+    "assert find_demlo(\"40929528239059\") == 123456789101112131413121110987654321": {
+      "result": false,
+      "time": 0.03651857376098633,
+      "error": null
+    },
+    "assert find_demlo(\"993510524837023\") == 1234567891011121314151413121110987654321": {
+      "result": false,
+      "time": 0.039264678955078125,
+      "error": null
+    },
+    "assert find_demlo(\"50139707169375\") == 123456789101112131413121110987654321": {
+      "result": false,
+      "time": 0.03850913047790527,
+      "error": null
+    },
+    "assert find_demlo(\"884380907\") == 12345678987654321": {
+      "result": false,
+      "time": 0.03596353530883789,
+      "error": null
+    },
+    "assert find_demlo(\"6962813838\") == 12345678910987654321": {
+      "result": false,
+      "time": 0.038069725036621094,
+      "error": null
+    },
+    "assert find_demlo(\"71320292072303\") == 123456789101112131413121110987654321": {
+      "result": false,
+      "time": 0.04131960868835449,
+      "error": null
+    },
+    "assert find_demlo(\"011044637698\") == 1234567891011121110987654321": {
+      "result": false,
+      "time": 0.039469003677368164,
+      "error": null
+    },
+    "assert find_demlo(\"750842273282243\") == 1234567891011121314151413121110987654321": {
+      "result": false,
+      "time": 0.038721323013305664,
+      "error": null
+    },
+    "assert find_demlo(\"7626020824\") == 12345678910987654321": {
+      "result": false,
+      "time": 0.03567624092102051,
+      "error": null
+    },
+    "assert find_demlo(\"6924226757\") == 12345678910987654321": {
+      "result": false,
+      "time": 0.03631734848022461,
+      "error": null
+    },
+    "assert find_demlo(\"478007138454\") == 1234567891011121110987654321": {
+      "result": false,
+      "time": 0.03417348861694336,
+      "error": null
+    },
+    "assert find_demlo(\"84015371563\") == 123456789101110987654321": {
+      "result": false,
+      "time": 0.03397369384765625,
+      "error": null
+    },
+    "assert find_demlo(\"914789910\") == 12345678987654321": {
+      "result": false,
+      "time": 0.03630805015563965,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

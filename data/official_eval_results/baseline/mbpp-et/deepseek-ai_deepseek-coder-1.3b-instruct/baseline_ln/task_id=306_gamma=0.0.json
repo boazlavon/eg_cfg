@@ -1,0 +1,519 @@
+{
+  "code": "def max_sum_increasing_subseq(nums, n, i, k):\n    dp = [0] * n\n    dp[i] = nums[i]\n    for j in range(i):\n        if nums[j] < nums[i]:\n            dp[i] = max(dp[i], dp[j] + nums[i])\n    for j in range(i+1, n):\n        dp[j] = dp[j-1]\n        if nums[j] < nums[i]:\n            dp[j] = max(dp[j], dp[j-2] + nums[j] if j > 1 else nums[j])\n    return max(dp)",
+  "results": {
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 4, 6) == 11": {
+      "result": false,
+      "time": 0.044051408767700195,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 2, 5) == 7": {
+      "result": false,
+      "time": 0.04119086265563965,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([11, 15, 19, 21, 26, 28, 31], 7, 2, 4) == 71": {
+      "result": false,
+      "time": 0.04132342338562012,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([2, 106, 6, 3, 95, 7, 7], 6, 4, 1) == 108": {
+      "result": false,
+      "time": 0.03833937644958496,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 97, 7, 4, 98, 1, 10], 7, 2, 3) == 7": {
+      "result": false,
+      "time": 0.037636756896972656,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 97, 7, 4, 95, 8, 7], 6, 5, 4) == 107": {
+      "result": false,
+      "time": 0.03328657150268555,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 102, 3, 6, 100, 6, 7], 2, 1, 1) == 106": {
+      "result": false,
+      "time": 0.02850651741027832,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 98, 4, 8, 99, 7, 8], 6, 3, 2) == 4": {
+      "result": false,
+      "time": 0.03463292121887207,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 97, 1, 8, 97, 2, 4], 7, 3, 3) == 12": {
+      "result": true,
+      "time": 0.036347150802612305,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([2, 105, 3, 1, 104, 1, 4], 3, 1, 1) == 107": {
+      "result": false,
+      "time": 0.030908584594726562,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([2, 103, 3, 5, 95, 1, 9], 5, 4, 3) == 10": {
+      "result": false,
+      "time": 0.03345370292663574,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 104, 7, 7, 98, 5, 9], 5, 4, 3) == 12": {
+      "result": false,
+      "time": 0.03665781021118164,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 96, 4, 1, 103, 9, 8], 5, 4, 4) == 203": {
+      "result": false,
+      "time": 0.03291058540344238,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 98, 4, 1, 95, 9, 9], 6, 1, 2) == 4": {
+      "result": false,
+      "time": 0.03818774223327637,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 105, 1, 8, 105, 4, 7], 6, 4, 3) == 9": {
+      "result": false,
+      "time": 0.039853811264038086,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 99, 2, 3, 96, 7, 9], 3, 1, 1) == 104": {
+      "result": false,
+      "time": 0.0399627685546875,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 100, 7, 7, 104, 2, 5], 5, 3, 2) == 8": {
+      "result": false,
+      "time": 0.03150153160095215,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 101, 7, 8, 100, 9, 3], 4, 1, 3) == 12": {
+      "result": false,
+      "time": 0.032701969146728516,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 100, 3, 7, 103, 4, 10], 3, 1, 1) == 105": {
+      "result": false,
+      "time": 0.031585693359375,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 103, 4, 7, 103, 6, 2], 6, 2, 5) == 10": {
+      "result": false,
+      "time": 0.036115407943725586,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 98, 6, 4, 96, 7, 1], 6, 3, 1) == 101": {
+      "result": false,
+      "time": 0.04168105125427246,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([2, 105, 6, 8, 99, 4, 7], 7, 6, 5) == 6": {
+      "result": false,
+      "time": 0.03623056411743164,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 99, 6, 7, 98, 5, 3], 7, 5, 3) == 14": {
+      "result": false,
+      "time": 0.03677725791931152,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 97, 7, 6, 100, 6, 5], 3, 2, 2) == 11": {
+      "result": false,
+      "time": 0.034638404846191406,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 102, 4, 8, 95, 2, 7], 5, 2, 3) == 13": {
+      "result": false,
+      "time": 0.03651738166809082,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 102, 4, 8, 102, 5, 4], 2, 1, 1) == 107": {
+      "result": false,
+      "time": 0.032911062240600586,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 105, 7, 6, 100, 6, 1], 7, 3, 2) == 10": {
+      "result": false,
+      "time": 0.03757905960083008,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 96, 2, 8, 104, 5, 4], 6, 1, 1) == 102": {
+      "result": false,
+      "time": 0.033721923828125,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 98, 3, 6, 102, 6, 5], 5, 4, 3) == 10": {
+      "result": false,
+      "time": 0.03794360160827637,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 96, 5, 6, 104, 6, 3], 7, 1, 4) == 203": {
+      "result": false,
+      "time": 0.03565382957458496,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 96, 4, 1, 103, 7, 1], 6, 1, 4) == 205": {
+      "result": false,
+      "time": 0.036306142807006836,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 98, 1, 7, 101, 1, 10], 5, 3, 4) == 204": {
+      "result": false,
+      "time": 0.030486345291137695,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([2, 97, 5, 1, 99, 5, 7], 4, 1, 3) == 1": {
+      "result": false,
+      "time": 0.03809714317321777,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 100, 5, 3, 100, 6, 10], 6, 3, 4) == 109": {
+      "result": false,
+      "time": 0.028583288192749023,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 101, 6, 4, 101, 8, 9], 7, 4, 1) == 106": {
+      "result": false,
+      "time": 0.035996198654174805,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 100, 7, 8, 99, 6, 10], 6, 5, 3) == 16": {
+      "result": false,
+      "time": 0.04638504981994629,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 105, 3, 8, 105, 4, 1], 6, 3, 1) == 111": {
+      "result": false,
+      "time": 0.03667283058166504,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 103, 5, 8, 103, 1, 9], 7, 6, 6) == 22": {
+      "result": false,
+      "time": 0.03904247283935547,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 105, 4, 8, 105, 5, 1], 7, 4, 3) == 12": {
+      "result": false,
+      "time": 0.031195640563964844,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 97, 4, 5, 102, 7, 5], 7, 1, 2) == 4": {
+      "result": false,
+      "time": 0.03617048263549805,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 101, 2, 8, 102, 7, 3], 6, 3, 1) == 106": {
+      "result": false,
+      "time": 0.03605461120605469,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 98, 2, 2, 101, 1, 6], 5, 2, 1) == 104": {
+      "result": false,
+      "time": 0.03441596031188965,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 99, 4, 1, 105, 3, 1], 5, 4, 1) == 103": {
+      "result": false,
+      "time": 0.032973527908325195,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([5, 100, 2, 7, 98, 2, 10], 6, 4, 4) == 110": {
+      "result": false,
+      "time": 0.03977823257446289,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([2, 102, 2, 8, 103, 1, 6], 7, 3, 2) == 2": {
+      "result": false,
+      "time": 0.033095359802246094,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 101, 5, 4, 105, 1, 1], 5, 1, 2) == 9": {
+      "result": false,
+      "time": 0.03313732147216797,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 102, 4, 5, 97, 1, 3], 6, 3, 5) == 1": {
+      "result": false,
+      "time": 0.03824138641357422,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([2, 96, 4, 1, 101, 9, 9], 4, 1, 3) == 1": {
+      "result": false,
+      "time": 0.03476309776306152,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 106, 6, 1, 105, 6, 5], 5, 2, 4) == 114": {
+      "result": false,
+      "time": 0.03773832321166992,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 102, 1, 4, 104, 5, 4], 7, 2, 5) == 9": {
+      "result": false,
+      "time": 0.03453207015991211,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 100, 6, 8, 97, 8, 4], 5, 4, 2) == 9": {
+      "result": false,
+      "time": 0.03432965278625488,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 103, 3, 5, 105, 7, 2], 5, 4, 2) == 3": {
+      "result": false,
+      "time": 0.038701534271240234,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 103, 2, 7, 104, 9, 4], 6, 5, 3) == 13": {
+      "result": false,
+      "time": 0.03973960876464844,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 104, 7, 7, 103, 9, 10], 7, 1, 3) == 13": {
+      "result": false,
+      "time": 0.03566169738769531,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 103, 3, 1, 99, 2, 8], 4, 2, 3) == 1": {
+      "result": false,
+      "time": 0.043959617614746094,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 97, 7, 8, 98, 1, 3], 6, 3, 3) == 16": {
+      "result": false,
+      "time": 0.04468107223510742,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 97, 2, 6, 98, 1, 10], 7, 6, 4) == 196": {
+      "result": false,
+      "time": 0.055214881896972656,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 106, 1, 7, 101, 5, 4], 6, 1, 3) == 10": {
+      "result": false,
+      "time": 0.04472780227661133,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 104, 6, 2, 103, 9, 5], 5, 1, 2) == 6": {
+      "result": false,
+      "time": 0.031642913818359375,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 103, 5, 6, 104, 4, 7], 7, 3, 5) == 4": {
+      "result": false,
+      "time": 0.04201817512512207,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 98, 6, 4, 99, 3, 2], 7, 2, 5) == 3": {
+      "result": false,
+      "time": 0.047480106353759766,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 101, 3, 5, 101, 6, 10], 6, 3, 1) == 104": {
+      "result": false,
+      "time": 0.037988901138305664,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 99, 6, 5, 105, 7, 2], 4, 2, 3) == 8": {
+      "result": false,
+      "time": 0.03424429893493652,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 99, 5, 2, 97, 5, 5], 4, 1, 1) == 102": {
+      "result": false,
+      "time": 0.041787147521972656,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([3, 105, 3, 5, 103, 4, 10], 6, 5, 2) == 3": {
+      "result": false,
+      "time": 0.053811073303222656,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 97, 3, 6, 98, 4, 3], 7, 5, 5) == 7": {
+      "result": false,
+      "time": 0.0356907844543457,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 96, 7, 8, 104, 2, 7], 7, 1, 6) == 13": {
+      "result": false,
+      "time": 0.04528641700744629,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 100, 5, 5, 99, 2, 10], 6, 4, 4) == 105": {
+      "result": false,
+      "time": 0.03822636604309082,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([4, 99, 4, 3, 95, 3, 2], 6, 1, 2) == 4": {
+      "result": false,
+      "time": 0.04378986358642578,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([16, 19, 24, 23, 23, 28, 26], 6, 1, 3) == 58": {
+      "result": false,
+      "time": 0.0461578369140625,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([12, 11, 19, 20, 23, 25, 33], 6, 4, 2) == 31": {
+      "result": false,
+      "time": 0.04781079292297363,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([13, 11, 14, 18, 26, 31, 29], 7, 4, 1) == 11": {
+      "result": false,
+      "time": 0.058129310607910156,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([10, 10, 23, 16, 27, 30, 35], 7, 6, 4) == 60": {
+      "result": false,
+      "time": 0.0602719783782959,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([15, 17, 14, 17, 22, 24, 29], 7, 6, 3) == 32": {
+      "result": false,
+      "time": 0.04835844039916992,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 16, 21, 25, 31, 25, 31], 3, 1, 1) == 22": {
+      "result": false,
+      "time": 0.06076836585998535,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([10, 20, 17, 24, 23, 27, 35], 4, 1, 3) == 54": {
+      "result": false,
+      "time": 0.04779243469238281,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([7, 10, 21, 18, 30, 33, 28], 5, 3, 2) == 38": {
+      "result": false,
+      "time": 0.05951642990112305,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([7, 15, 23, 20, 28, 27, 29], 7, 5, 1) == 22": {
+      "result": false,
+      "time": 0.04524588584899902,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([7, 13, 22, 19, 25, 27, 29], 7, 6, 3) == 39": {
+      "result": false,
+      "time": 0.09701418876647949,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([12, 14, 16, 16, 28, 25, 27], 6, 5, 5) == 67": {
+      "result": false,
+      "time": 0.06382560729980469,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([10, 20, 19, 24, 29, 25, 29], 7, 6, 2) == 29": {
+      "result": true,
+      "time": 0.05241084098815918,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([12, 20, 21, 19, 28, 24, 27], 5, 1, 1) == 32": {
+      "result": false,
+      "time": 0.05777144432067871,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([15, 20, 16, 26, 27, 23, 27], 7, 6, 5) == 58": {
+      "result": false,
+      "time": 0.04643058776855469,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([10, 11, 24, 26, 23, 26, 28], 4, 1, 1) == 21": {
+      "result": false,
+      "time": 0.048812150955200195,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([13, 16, 18, 16, 29, 24, 28], 4, 1, 3) == 29": {
+      "result": false,
+      "time": 0.06300115585327148,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([16, 17, 18, 19, 27, 33, 34], 7, 5, 6) == 164": {
+      "result": false,
+      "time": 0.053470611572265625,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([15, 18, 21, 24, 27, 30, 29], 7, 1, 4) == 60": {
+      "result": false,
+      "time": 0.04878497123718262,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([8, 20, 14, 24, 31, 24, 30], 7, 2, 4) == 59": {
+      "result": false,
+      "time": 0.050409555435180664,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([7, 14, 23, 20, 21, 27, 28], 6, 1, 2) == 44": {
+      "result": false,
+      "time": 0.05788445472717285,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([12, 18, 16, 20, 24, 26, 29], 7, 6, 3) == 50": {
+      "result": false,
+      "time": 0.05069255828857422,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([8, 11, 24, 24, 26, 25, 35], 6, 5, 3) == 43": {
+      "result": false,
+      "time": 0.04585552215576172,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([10, 15, 19, 17, 25, 28, 35], 6, 4, 2) == 44": {
+      "result": false,
+      "time": 0.04689955711364746,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([13, 10, 23, 19, 25, 32, 33], 4, 2, 1) == 10": {
+      "result": false,
+      "time": 0.041484832763671875,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([9, 17, 14, 24, 25, 25, 30], 7, 4, 3) == 50": {
+      "result": false,
+      "time": 0.048813819885253906,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([7, 16, 20, 22, 26, 31, 28], 7, 3, 4) == 91": {
+      "result": false,
+      "time": 0.0495905876159668,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([12, 11, 15, 22, 26, 30, 34], 7, 6, 2) == 27": {
+      "result": false,
+      "time": 0.04545450210571289,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 11, 14, 21, 24, 26, 32], 7, 3, 4) == 76": {
+      "result": false,
+      "time": 0.04746556282043457,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([16, 18, 23, 16, 23, 25, 30], 7, 3, 5) == 82": {
+      "result": false,
+      "time": 0.05153775215148926,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([14, 19, 19, 24, 27, 26, 28], 6, 3, 4) == 84": {
+      "result": false,
+      "time": 0.0652923583984375,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([6, 10, 14, 22, 29, 24, 27], 5, 1, 3) == 38": {
+      "result": false,
+      "time": 0.04246950149536133,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([11, 17, 15, 24, 22, 26, 28], 6, 4, 5) == 78": {
+      "result": false,
+      "time": 0.03276777267456055,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([16, 11, 22, 21, 25, 25, 32], 5, 3, 1) == 11": {
+      "result": false,
+      "time": 0.0451815128326416,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0196078431372549,
+  "general_error": "",
+  "has_testcase_error": false
+}

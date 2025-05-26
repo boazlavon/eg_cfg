@@ -1,0 +1,299 @@
+{
+  "code": "def amicable_numbers_sum(n):\n    def sum_proper_divisors(num):\n        if num == 1:\n            return 0\n        divisors_sum = 1  # 1 is a proper divisor for any num > 1\n        for i in range(2, int(num**0.5) + 1):\n            if num % i == 0:\n                if i == num // i:\n                    divisors_sum += i\n                else:\n                    divisors_sum += i + num // i\n        return divisors_sum\n\n    amicable_sum = 0\n    for a in range(1, n + 1):\n        b = sum_proper_divisors(a)\n        if b > a and sum_proper_divisors(b) == a:\n            amicable_sum += a + b\n    return amicable_sum",
+  "results": {
+    "assert amicable_numbers_sum(999)==504": {
+      "result": true,
+      "time": 0.04326009750366211,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9999)==31626": {
+      "result": true,
+      "time": 0.08884286880493164,
+      "error": null
+    },
+    "assert amicable_numbers_sum(99)==0": {
+      "result": true,
+      "time": 0.04492068290710449,
+      "error": null
+    },
+    "assert amicable_numbers_sum(997) == 504": {
+      "result": true,
+      "time": 0.04699969291687012,
+      "error": null
+    },
+    "assert amicable_numbers_sum(999) == 504": {
+      "result": true,
+      "time": 0.043950557708740234,
+      "error": null
+    },
+    "assert amicable_numbers_sum(998) == 504": {
+      "result": true,
+      "time": 0.04362964630126953,
+      "error": null
+    },
+    "assert amicable_numbers_sum(995) == 504": {
+      "result": true,
+      "time": 0.05449652671813965,
+      "error": null
+    },
+    "assert amicable_numbers_sum(994) == 504": {
+      "result": true,
+      "time": 0.04961681365966797,
+      "error": null
+    },
+    "assert amicable_numbers_sum(1001) == 504": {
+      "result": true,
+      "time": 0.04606175422668457,
+      "error": null
+    },
+    "assert amicable_numbers_sum(1000) == 504": {
+      "result": true,
+      "time": 0.040718793869018555,
+      "error": null
+    },
+    "assert amicable_numbers_sum(1004) == 504": {
+      "result": true,
+      "time": 0.05306553840637207,
+      "error": null
+    },
+    "assert amicable_numbers_sum(1003) == 504": {
+      "result": true,
+      "time": 0.048468828201293945,
+      "error": null
+    },
+    "assert amicable_numbers_sum(1002) == 504": {
+      "result": true,
+      "time": 0.03993701934814453,
+      "error": null
+    },
+    "assert amicable_numbers_sum(996) == 504": {
+      "result": true,
+      "time": 0.046936750411987305,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10106) == 31626": {
+      "result": true,
+      "time": 0.0906980037689209,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10465) == 31626": {
+      "result": true,
+      "time": 0.08185338973999023,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9063) == 31626": {
+      "result": true,
+      "time": 0.09720563888549805,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10085) == 31626": {
+      "result": true,
+      "time": 0.0986945629119873,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10694) == 31626": {
+      "result": true,
+      "time": 0.09763240814208984,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9085) == 31626": {
+      "result": true,
+      "time": 0.09317207336425781,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10769) == 42370": {
+      "result": false,
+      "time": 0.09061813354492188,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9553) == 31626": {
+      "result": true,
+      "time": 0.0952754020690918,
+      "error": null
+    },
+    "assert amicable_numbers_sum(8951) == 31626": {
+      "result": true,
+      "time": 0.08486366271972656,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9393) == 31626": {
+      "result": true,
+      "time": 0.0876312255859375,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10611) == 31626": {
+      "result": true,
+      "time": 0.10388016700744629,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10259) == 31626": {
+      "result": true,
+      "time": 0.08698296546936035,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10565) == 31626": {
+      "result": true,
+      "time": 0.09516429901123047,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9375) == 31626": {
+      "result": true,
+      "time": 0.09062957763671875,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9011) == 31626": {
+      "result": true,
+      "time": 0.09208846092224121,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9714) == 31626": {
+      "result": true,
+      "time": 0.08225154876708984,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9721) == 31626": {
+      "result": true,
+      "time": 0.0886991024017334,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10431) == 31626": {
+      "result": true,
+      "time": 0.10703492164611816,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9299) == 31626": {
+      "result": true,
+      "time": 0.09971094131469727,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9081) == 31626": {
+      "result": true,
+      "time": 0.07465577125549316,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10028) == 31626": {
+      "result": true,
+      "time": 0.093780517578125,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10673) == 31626": {
+      "result": true,
+      "time": 0.08993673324584961,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9992) == 31626": {
+      "result": true,
+      "time": 0.0952613353729248,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9137) == 31626": {
+      "result": true,
+      "time": 0.07725977897644043,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9403) == 31626": {
+      "result": true,
+      "time": 0.07989382743835449,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10549) == 31626": {
+      "result": true,
+      "time": 0.08973312377929688,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10296) == 31626": {
+      "result": true,
+      "time": 0.09085917472839355,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9720) == 31626": {
+      "result": true,
+      "time": 0.08976507186889648,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10664) == 31626": {
+      "result": true,
+      "time": 0.08832693099975586,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9618) == 31626": {
+      "result": true,
+      "time": 0.08805418014526367,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9546) == 31626": {
+      "result": true,
+      "time": 0.09739804267883301,
+      "error": null
+    },
+    "assert amicable_numbers_sum(9050) == 31626": {
+      "result": true,
+      "time": 0.07933163642883301,
+      "error": null
+    },
+    "assert amicable_numbers_sum(10267) == 31626": {
+      "result": true,
+      "time": 0.09050989151000977,
+      "error": null
+    },
+    "assert amicable_numbers_sum(94) == 0": {
+      "result": true,
+      "time": 0.04355597496032715,
+      "error": null
+    },
+    "assert amicable_numbers_sum(103) == 0": {
+      "result": true,
+      "time": 0.036638498306274414,
+      "error": null
+    },
+    "assert amicable_numbers_sum(102) == 0": {
+      "result": true,
+      "time": 0.04789566993713379,
+      "error": null
+    },
+    "assert amicable_numbers_sum(98) == 0": {
+      "result": true,
+      "time": 0.0431218147277832,
+      "error": null
+    },
+    "assert amicable_numbers_sum(96) == 0": {
+      "result": true,
+      "time": 0.036373138427734375,
+      "error": null
+    },
+    "assert amicable_numbers_sum(104) == 0": {
+      "result": true,
+      "time": 0.03805661201477051,
+      "error": null
+    },
+    "assert amicable_numbers_sum(95) == 0": {
+      "result": true,
+      "time": 0.04285907745361328,
+      "error": null
+    },
+    "assert amicable_numbers_sum(101) == 0": {
+      "result": true,
+      "time": 0.050743818283081055,
+      "error": null
+    },
+    "assert amicable_numbers_sum(97) == 0": {
+      "result": true,
+      "time": 0.0457003116607666,
+      "error": null
+    },
+    "assert amicable_numbers_sum(100) == 0": {
+      "result": true,
+      "time": 0.04442095756530762,
+      "error": null
+    },
+    "assert amicable_numbers_sum(99) == 0": {
+      "result": true,
+      "time": 0.04686880111694336,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9827586206896551,
+  "general_error": "",
+  "has_testcase_error": false
+}

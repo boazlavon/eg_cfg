@@ -1,0 +1,519 @@
+{
+  "code": "def month_season(month, day):\n    month = month.lower()\n    if month in [\"december\", \"january\", \"february\"]:\n        season = \"winter\"\n    elif month in [\"march\", \"april\", \"may\"]:\n        season = \"spring\"\n    elif month in [\"june\", \"july\", \"august\"]:\n        season = \"summer\"\n    elif month in [\"september\", \"october\", \"november\"]:\n        season = \"autumn\"\n    else:\n        return \"invalid month\"\n    \n    if month == \"march\":\n        if day >= 20:\n            season = \"spring\"\n        else:\n            season = \"winter\"\n    elif month == \"june\":\n        if day >= 21:\n            season = \"summer\"\n        else:\n            season = \"spring\"\n    elif month == \"september\":\n        if day >= 22:\n            season = \"autumn\"\n        else:\n            season = \"summer\"\n    elif month == \"december\":\n        if day >= 21:\n            season = \"winter\"\n        else:\n            season = \"autumn\"\n    \n    return season",
+  "results": {
+    "assert month_season('January',4)==('winter')": {
+      "result": true,
+      "time": 0.03534555435180664,
+      "error": null
+    },
+    "assert month_season('October',28)==('autumn')": {
+      "result": true,
+      "time": 0.032599687576293945,
+      "error": null
+    },
+    "assert month_season('June',6)==('spring')": {
+      "result": true,
+      "time": 0.033486127853393555,
+      "error": null
+    },
+    "assert month_season('oXaLdmuJOsV', 5) == \"autumn\"": {
+      "result": false,
+      "time": 0.03315567970275879,
+      "error": null
+    },
+    "assert month_season('bEYs', 9) == \"autumn\"": {
+      "result": false,
+      "time": 0.03585004806518555,
+      "error": null
+    },
+    "assert month_season('Bgwy', 9) == \"autumn\"": {
+      "result": false,
+      "time": 0.0371091365814209,
+      "error": null
+    },
+    "assert month_season('hCtgRCOxdtMp', 7) == \"autumn\"": {
+      "result": false,
+      "time": 0.03717470169067383,
+      "error": null
+    },
+    "assert month_season('sCV', 1) == \"autumn\"": {
+      "result": false,
+      "time": 0.033616065979003906,
+      "error": null
+    },
+    "assert month_season('hwx', 8) == \"autumn\"": {
+      "result": false,
+      "time": 0.03672075271606445,
+      "error": null
+    },
+    "assert month_season('wtyRB', 5) == \"autumn\"": {
+      "result": false,
+      "time": 0.04432535171508789,
+      "error": null
+    },
+    "assert month_season('IodXo', 2) == \"autumn\"": {
+      "result": false,
+      "time": 0.04014229774475098,
+      "error": null
+    },
+    "assert month_season('KGF', 9) == \"autumn\"": {
+      "result": false,
+      "time": 0.038707733154296875,
+      "error": null
+    },
+    "assert month_season('VxPhzu', 8) == \"autumn\"": {
+      "result": false,
+      "time": 0.04322648048400879,
+      "error": null
+    },
+    "assert month_season('yJIFMQCybd', 5) == \"autumn\"": {
+      "result": false,
+      "time": 0.043781280517578125,
+      "error": null
+    },
+    "assert month_season('uNjAqflr', 4) == \"autumn\"": {
+      "result": false,
+      "time": 0.0472564697265625,
+      "error": null
+    },
+    "assert month_season('nSBu', 3) == \"autumn\"": {
+      "result": false,
+      "time": 0.04703688621520996,
+      "error": null
+    },
+    "assert month_season('GxrUKSDPVF', 2) == \"autumn\"": {
+      "result": false,
+      "time": 0.04712080955505371,
+      "error": null
+    },
+    "assert month_season('OnHIpsEEHaY', 9) == \"autumn\"": {
+      "result": false,
+      "time": 0.04617118835449219,
+      "error": null
+    },
+    "assert month_season('jiUHCnIadiq', 4) == \"autumn\"": {
+      "result": false,
+      "time": 0.04771733283996582,
+      "error": null
+    },
+    "assert month_season('XFCcPr', 3) == \"autumn\"": {
+      "result": false,
+      "time": 0.04879164695739746,
+      "error": null
+    },
+    "assert month_season('upIAQlGV', 1) == \"autumn\"": {
+      "result": false,
+      "time": 0.03985452651977539,
+      "error": null
+    },
+    "assert month_season('GOan', 2) == \"autumn\"": {
+      "result": false,
+      "time": 0.04272723197937012,
+      "error": null
+    },
+    "assert month_season('rWh', 9) == \"autumn\"": {
+      "result": false,
+      "time": 0.03930330276489258,
+      "error": null
+    },
+    "assert month_season('uSvq', 2) == \"autumn\"": {
+      "result": false,
+      "time": 0.03742194175720215,
+      "error": null
+    },
+    "assert month_season('gbKLIYI', 6) == \"autumn\"": {
+      "result": false,
+      "time": 0.04809117317199707,
+      "error": null
+    },
+    "assert month_season('nsYIRHIALVwp', 2) == \"autumn\"": {
+      "result": false,
+      "time": 0.05408763885498047,
+      "error": null
+    },
+    "assert month_season('IQgZvnQOF', 5) == \"autumn\"": {
+      "result": false,
+      "time": 0.049051761627197266,
+      "error": null
+    },
+    "assert month_season('vMV', 9) == \"autumn\"": {
+      "result": false,
+      "time": 0.0424349308013916,
+      "error": null
+    },
+    "assert month_season('GOKoc', 6) == \"autumn\"": {
+      "result": false,
+      "time": 0.03877091407775879,
+      "error": null
+    },
+    "assert month_season('QXZjYaIQTpVm', 6) == \"autumn\"": {
+      "result": false,
+      "time": 0.0389103889465332,
+      "error": null
+    },
+    "assert month_season('BvOMrzxJ', 6) == \"autumn\"": {
+      "result": false,
+      "time": 0.042279958724975586,
+      "error": null
+    },
+    "assert month_season('uwVRM', 2) == \"autumn\"": {
+      "result": false,
+      "time": 0.03957724571228027,
+      "error": null
+    },
+    "assert month_season('fMRb', 3) == \"autumn\"": {
+      "result": false,
+      "time": 0.03649711608886719,
+      "error": null
+    },
+    "assert month_season('xqLxw', 2) == \"autumn\"": {
+      "result": false,
+      "time": 0.03222537040710449,
+      "error": null
+    },
+    "assert month_season('OpTNFOl', 6) == \"autumn\"": {
+      "result": false,
+      "time": 0.04610943794250488,
+      "error": null
+    },
+    "assert month_season('yZdn', 6) == \"autumn\"": {
+      "result": false,
+      "time": 0.04211163520812988,
+      "error": null
+    },
+    "assert month_season('hhODi', 32) == \"autumn\"": {
+      "result": false,
+      "time": 0.0451967716217041,
+      "error": null
+    },
+    "assert month_season('XYiJmdfzeXpp', 27) == \"autumn\"": {
+      "result": false,
+      "time": 0.03390216827392578,
+      "error": null
+    },
+    "assert month_season('Wrg', 30) == \"autumn\"": {
+      "result": false,
+      "time": 0.034755706787109375,
+      "error": null
+    },
+    "assert month_season('UOynoPZtsJS', 31) == \"autumn\"": {
+      "result": false,
+      "time": 0.04477334022521973,
+      "error": null
+    },
+    "assert month_season('aYYute', 23) == \"autumn\"": {
+      "result": false,
+      "time": 0.04051089286804199,
+      "error": null
+    },
+    "assert month_season('TRtMDTfy', 28) == \"autumn\"": {
+      "result": false,
+      "time": 0.04000997543334961,
+      "error": null
+    },
+    "assert month_season('XiETDIer', 30) == \"autumn\"": {
+      "result": false,
+      "time": 0.037420034408569336,
+      "error": null
+    },
+    "assert month_season('wehBzZ', 23) == \"autumn\"": {
+      "result": false,
+      "time": 0.0436396598815918,
+      "error": null
+    },
+    "assert month_season('jwyiXqQkSw', 23) == \"autumn\"": {
+      "result": false,
+      "time": 0.04204201698303223,
+      "error": null
+    },
+    "assert month_season('wERrHYTTt', 32) == \"autumn\"": {
+      "result": false,
+      "time": 0.04207205772399902,
+      "error": null
+    },
+    "assert month_season('clC', 29) == \"autumn\"": {
+      "result": false,
+      "time": 0.039578914642333984,
+      "error": null
+    },
+    "assert month_season('kkbGqzFdk', 23) == \"autumn\"": {
+      "result": false,
+      "time": 0.04860067367553711,
+      "error": null
+    },
+    "assert month_season('ZkztKpCz', 27) == \"autumn\"": {
+      "result": false,
+      "time": 0.040567636489868164,
+      "error": null
+    },
+    "assert month_season('fQtjprxyCs', 30) == \"autumn\"": {
+      "result": false,
+      "time": 0.04409909248352051,
+      "error": null
+    },
+    "assert month_season('fbdJNsWZ', 27) == \"autumn\"": {
+      "result": false,
+      "time": 0.04089546203613281,
+      "error": null
+    },
+    "assert month_season('CdcdYSBYDor', 28) == \"autumn\"": {
+      "result": false,
+      "time": 0.0452425479888916,
+      "error": null
+    },
+    "assert month_season('dMqPrKoWd', 31) == \"autumn\"": {
+      "result": false,
+      "time": 0.035535335540771484,
+      "error": null
+    },
+    "assert month_season('jtjfPzJFX', 33) == \"autumn\"": {
+      "result": false,
+      "time": 0.04946637153625488,
+      "error": null
+    },
+    "assert month_season('TmSeHQZnQ', 27) == \"autumn\"": {
+      "result": false,
+      "time": 0.04129195213317871,
+      "error": null
+    },
+    "assert month_season('wgwdQsDiTv', 30) == \"autumn\"": {
+      "result": false,
+      "time": 0.042766571044921875,
+      "error": null
+    },
+    "assert month_season('OsyfhFWtpKk', 29) == \"autumn\"": {
+      "result": false,
+      "time": 0.04229378700256348,
+      "error": null
+    },
+    "assert month_season('dhDuJCJLOAu', 26) == \"autumn\"": {
+      "result": false,
+      "time": 0.0373539924621582,
+      "error": null
+    },
+    "assert month_season('vHRuWtiXE', 26) == \"autumn\"": {
+      "result": false,
+      "time": 0.046408891677856445,
+      "error": null
+    },
+    "assert month_season('sCeoECiJ', 25) == \"autumn\"": {
+      "result": false,
+      "time": 0.037920475006103516,
+      "error": null
+    },
+    "assert month_season('glkqDU', 24) == \"autumn\"": {
+      "result": false,
+      "time": 0.03903508186340332,
+      "error": null
+    },
+    "assert month_season('udnwmVXsyeK', 33) == \"autumn\"": {
+      "result": false,
+      "time": 0.04628443717956543,
+      "error": null
+    },
+    "assert month_season('ZaCcicfYK', 24) == \"autumn\"": {
+      "result": false,
+      "time": 0.03849053382873535,
+      "error": null
+    },
+    "assert month_season('EHgHEDrHZut', 24) == \"autumn\"": {
+      "result": false,
+      "time": 0.04736781120300293,
+      "error": null
+    },
+    "assert month_season('vNaVRWrFUtZV', 30) == \"autumn\"": {
+      "result": false,
+      "time": 0.046346187591552734,
+      "error": null
+    },
+    "assert month_season('ozcxxvUPrR', 26) == \"autumn\"": {
+      "result": false,
+      "time": 0.035532474517822266,
+      "error": null
+    },
+    "assert month_season('craz', 23) == \"autumn\"": {
+      "result": false,
+      "time": 0.04862856864929199,
+      "error": null
+    },
+    "assert month_season('ZiUJ', 28) == \"autumn\"": {
+      "result": false,
+      "time": 0.03465557098388672,
+      "error": null
+    },
+    "assert month_season('gKn', 26) == \"autumn\"": {
+      "result": false,
+      "time": 0.040355682373046875,
+      "error": null
+    },
+    "assert month_season('LUaZ', 9) == \"autumn\"": {
+      "result": false,
+      "time": 0.03857684135437012,
+      "error": null
+    },
+    "assert month_season('meTqU', 10) == \"autumn\"": {
+      "result": false,
+      "time": 0.04760932922363281,
+      "error": null
+    },
+    "assert month_season('BPbtWIPb', 3) == \"autumn\"": {
+      "result": false,
+      "time": 0.03524971008300781,
+      "error": null
+    },
+    "assert month_season('IPAjW', 1) == \"autumn\"": {
+      "result": false,
+      "time": 0.042487144470214844,
+      "error": null
+    },
+    "assert month_season('olfIzKDyj', 5) == \"autumn\"": {
+      "result": false,
+      "time": 0.04546332359313965,
+      "error": null
+    },
+    "assert month_season('wlBgWhr', 4) == \"autumn\"": {
+      "result": false,
+      "time": 0.04119873046875,
+      "error": null
+    },
+    "assert month_season('jhbNS', 7) == \"autumn\"": {
+      "result": false,
+      "time": 0.03894996643066406,
+      "error": null
+    },
+    "assert month_season('hEVBXmeDz', 8) == \"autumn\"": {
+      "result": false,
+      "time": 0.038672685623168945,
+      "error": null
+    },
+    "assert month_season('BQSAKeu', 7) == \"autumn\"": {
+      "result": false,
+      "time": 0.036519527435302734,
+      "error": null
+    },
+    "assert month_season('nuX', 11) == \"autumn\"": {
+      "result": false,
+      "time": 0.03802180290222168,
+      "error": null
+    },
+    "assert month_season('mEuGVk', 9) == \"autumn\"": {
+      "result": false,
+      "time": 0.041060447692871094,
+      "error": null
+    },
+    "assert month_season('UAy', 5) == \"autumn\"": {
+      "result": false,
+      "time": 0.03803253173828125,
+      "error": null
+    },
+    "assert month_season('ZeCRh', 1) == \"autumn\"": {
+      "result": false,
+      "time": 0.04175281524658203,
+      "error": null
+    },
+    "assert month_season('Fjf', 4) == \"autumn\"": {
+      "result": false,
+      "time": 0.04513406753540039,
+      "error": null
+    },
+    "assert month_season('nuuEVQHu', 8) == \"autumn\"": {
+      "result": false,
+      "time": 0.04158735275268555,
+      "error": null
+    },
+    "assert month_season('QDJWRu', 5) == \"autumn\"": {
+      "result": false,
+      "time": 0.03983259201049805,
+      "error": null
+    },
+    "assert month_season('ThwMiE', 4) == \"autumn\"": {
+      "result": false,
+      "time": 0.03976249694824219,
+      "error": null
+    },
+    "assert month_season('ldCznP', 1) == \"autumn\"": {
+      "result": false,
+      "time": 0.039374351501464844,
+      "error": null
+    },
+    "assert month_season('DBiskSv', 3) == \"autumn\"": {
+      "result": false,
+      "time": 0.04349255561828613,
+      "error": null
+    },
+    "assert month_season('aSKguJK', 8) == \"autumn\"": {
+      "result": false,
+      "time": 0.03425884246826172,
+      "error": null
+    },
+    "assert month_season('ysLrHEQld', 2) == \"autumn\"": {
+      "result": false,
+      "time": 0.03782844543457031,
+      "error": null
+    },
+    "assert month_season('mFyqMfBLO', 11) == \"autumn\"": {
+      "result": false,
+      "time": 0.04644155502319336,
+      "error": null
+    },
+    "assert month_season('SvIXjOGFo', 3) == \"autumn\"": {
+      "result": false,
+      "time": 0.03750967979431152,
+      "error": null
+    },
+    "assert month_season('rPCFR', 9) == \"autumn\"": {
+      "result": false,
+      "time": 0.04255056381225586,
+      "error": null
+    },
+    "assert month_season('ZjRnJOTlg', 10) == \"autumn\"": {
+      "result": false,
+      "time": 0.039678096771240234,
+      "error": null
+    },
+    "assert month_season('dbVMoIZR', 6) == \"autumn\"": {
+      "result": false,
+      "time": 0.03653597831726074,
+      "error": null
+    },
+    "assert month_season('NyIgIdbG', 10) == \"autumn\"": {
+      "result": false,
+      "time": 0.03963518142700195,
+      "error": null
+    },
+    "assert month_season('DfkVbP', 9) == \"autumn\"": {
+      "result": false,
+      "time": 0.042914390563964844,
+      "error": null
+    },
+    "assert month_season('ihbNhcT', 6) == \"autumn\"": {
+      "result": false,
+      "time": 0.04390859603881836,
+      "error": null
+    },
+    "assert month_season('Wcjp', 3) == \"autumn\"": {
+      "result": false,
+      "time": 0.043477535247802734,
+      "error": null
+    },
+    "assert month_season('zdxXNP', 4) == \"autumn\"": {
+      "result": false,
+      "time": 0.041806936264038086,
+      "error": null
+    },
+    "assert month_season('zxPtS', 2) == \"autumn\"": {
+      "result": false,
+      "time": 0.042732954025268555,
+      "error": null
+    },
+    "assert month_season('RxjTceZ', 8) == \"autumn\"": {
+      "result": false,
+      "time": 0.03948688507080078,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.029411764705882353,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "def concatenate_elements(tuples):\n    result = []\n    for i in range(len(tuples)-1):\n        result.append(tuples[i] + tuples[i+1])\n    return tuple(result)\n",
+  "results": {
+    "assert concatenate_elements((\"DSP \", \"IS \", \"BEST \", \"FOR \", \"ALL \", \"UTS\")) == ('DSP IS ', 'IS BEST ', 'BEST FOR ', 'FOR ALL ', 'ALL UTS')": {
+      "result": true,
+      "time": 0.04000449180603027,
+      "error": null
+    },
+    "assert concatenate_elements((\"RES \", \"IS \", \"BEST \", \"FOR \", \"ALL \", \"QESR\")) == ('RES IS ', 'IS BEST ', 'BEST FOR ', 'FOR ALL ', 'ALL QESR')": {
+      "result": true,
+      "time": 0.044548749923706055,
+      "error": null
+    },
+    "assert concatenate_elements((\"MSAM\", \"IS \", \"BEST \", \"FOR \", \"ALL \", \"SKD\")) == ('MSAMIS ', 'IS BEST ', 'BEST FOR ', 'FOR ALL ', 'ALL SKD')": {
+      "result": true,
+      "time": 0.04662680625915527,
+      "error": null
+    },
+    "assert concatenate_elements(('QQXTQXEZG', 'POITOQ', 'VTUVJN', 'CSIPNYE', 'YEONJ', 'EVZYCDGB')) == ('QQXTQXEZGPOITOQ', 'POITOQVTUVJN', 'VTUVJNCSIPNYE', 'CSIPNYEYEONJ', 'YEONJEVZYCDGB')": {
+      "result": true,
+      "time": 0.04205727577209473,
+      "error": null
+    },
+    "assert concatenate_elements(('WWGYN', 'LZYG IR', 'JW LEZ', 'YSOAB', 'VCPWOZYJG', 'VNISHEBJ')) == ('WWGYNLZYG IR', 'LZYG IRJW LEZ', 'JW LEZYSOAB', 'YSOABVCPWOZYJG', 'VCPWOZYJGVNISHEBJ')": {
+      "result": true,
+      "time": 0.04629683494567871,
+      "error": null
+    },
+    "assert concatenate_elements(('WXAHTG', 'BLAMYC', 'WPQKDDCYE', 'TNSTK R', 'IPRO', 'ZCEWJW')) == ('WXAHTGBLAMYC', 'BLAMYCWPQKDDCYE', 'WPQKDDCYETNSTK R', 'TNSTK RIPRO', 'IPROZCEWJW')": {
+      "result": true,
+      "time": 0.0436708927154541,
+      "error": null
+    },
+    "assert concatenate_elements(('USHLHI', 'RGXBI', 'LBBTVSOQO', 'MTX IOY', 'OYQQXXQBZ', 'NGOWZ')) == ('USHLHIRGXBI', 'RGXBILBBTVSOQO', 'LBBTVSOQOMTX IOY', 'MTX IOYOYQQXXQBZ', 'OYQQXXQBZNGOWZ')": {
+      "result": true,
+      "time": 0.04331564903259277,
+      "error": null
+    },
+    "assert concatenate_elements(('PP ', 'OQIPBP', 'WVMVK', 'VIPPZ', 'CSRBXVG ', 'OCCJ')) == ('PP OQIPBP', 'OQIPBPWVMVK', 'WVMVKVIPPZ', 'VIPPZCSRBXVG ', 'CSRBXVG OCCJ')": {
+      "result": true,
+      "time": 0.04077434539794922,
+      "error": null
+    },
+    "assert concatenate_elements(('HDVUBSD', 'HCTXGOTC', 'BNCPKDAGR', 'SIIOPEFK ', 'OM MXE', 'DPV')) == ('HDVUBSDHCTXGOTC', 'HCTXGOTCBNCPKDAGR', 'BNCPKDAGRSIIOPEFK ', 'SIIOPEFK OM MXE', 'OM MXEDPV')": {
+      "result": true,
+      "time": 0.04420208930969238,
+      "error": null
+    },
+    "assert concatenate_elements(('QSTVWE', 'GCL', 'PWSJNMD', 'NTSSXJAVH', 'HMCFYBW', 'PVKOLQI')) == ('QSTVWEGCL', 'GCLPWSJNMD', 'PWSJNMDNTSSXJAVH', 'NTSSXJAVHHMCFYBW', 'HMCFYBWPVKOLQI')": {
+      "result": true,
+      "time": 0.032350778579711914,
+      "error": null
+    },
+    "assert concatenate_elements(('CIVNZDB', 'JRB', ' MZSQF', 'NWN', 'OBNMAH', 'DRWTJ')) == ('CIVNZDBJRB', 'JRB MZSQF', ' MZSQFNWN', 'NWNOBNMAH', 'OBNMAHDRWTJ')": {
+      "result": true,
+      "time": 0.04174971580505371,
+      "error": null
+    },
+    "assert concatenate_elements(('QBTIAA', 'YLKBEUCA', 'QGMXN', 'FTO ZQKOS', 'YSOCU', 'XPDMT')) == ('QBTIAAYLKBEUCA', 'YLKBEUCAQGMXN', 'QGMXNFTO ZQKOS', 'FTO ZQKOSYSOCU', 'YSOCUXPDMT')": {
+      "result": true,
+      "time": 0.038735151290893555,
+      "error": null
+    },
+    "assert concatenate_elements(('YPX MEKY', 'ZI BIRPDW', 'QNB', 'RPKUUD', 'AACX', 'TFP')) == ('YPX MEKYZI BIRPDW', 'ZI BIRPDWQNB', 'QNBRPKUUD', 'RPKUUDAACX', 'AACXTFP')": {
+      "result": true,
+      "time": 0.03977489471435547,
+      "error": null
+    },
+    "assert concatenate_elements(('GB TDODV', 'LRBBNOPUM', 'OWYV', 'AUTSWR', 'JIGDLP', 'XQSQUN')) == ('GB TDODVLRBBNOPUM', 'LRBBNOPUMOWYV', 'OWYVAUTSWR', 'AUTSWRJIGDLP', 'JIGDLPXQSQUN')": {
+      "result": true,
+      "time": 0.03416085243225098,
+      "error": null
+    },
+    "assert concatenate_elements(('RDZ', 'LGZADERJ', 'JVV', 'QZOLQKB', 'JRTBS', 'RIFZC')) == ('RDZLGZADERJ', 'LGZADERJJVV', 'JVVQZOLQKB', 'QZOLQKBJRTBS', 'JRTBSRIFZC')": {
+      "result": true,
+      "time": 0.03847908973693848,
+      "error": null
+    },
+    "assert concatenate_elements(('WZOTEIHYM', 'DSNUOGN', 'IQZVRIKBN', 'MCYYYCS', 'GWOAIINV', 'EZDFMS')) == ('WZOTEIHYMDSNUOGN', 'DSNUOGNIQZVRIKBN', 'IQZVRIKBNMCYYYCS', 'MCYYYCSGWOAIINV', 'GWOAIINVEZDFMS')": {
+      "result": true,
+      "time": 0.040518999099731445,
+      "error": null
+    },
+    "assert concatenate_elements(('CKMOZ', 'DBTILKPV', 'ORDWHW', 'HKYYFYIK', 'IWRYURNPU', 'DRJDQBY')) == ('CKMOZDBTILKPV', 'DBTILKPVORDWHW', 'ORDWHWHKYYFYIK', 'HKYYFYIKIWRYURNPU', 'IWRYURNPUDRJDQBY')": {
+      "result": true,
+      "time": 0.04263019561767578,
+      "error": null
+    },
+    "assert concatenate_elements(('ITKU', 'LMN', 'OG D', 'AILI', 'AFEIKQ', 'YKM')) == ('ITKULMN', 'LMNOG D', 'OG DAILI', 'AILIAFEIKQ', 'AFEIKQYKM')": {
+      "result": true,
+      "time": 0.044124603271484375,
+      "error": null
+    },
+    "assert concatenate_elements(('CHNIHRAR', 'WFVQM', 'RHEAOUYM', 'RCGGQPN', 'NIHV', 'DOYRN')) == ('CHNIHRARWFVQM', 'WFVQMRHEAOUYM', 'RHEAOUYMRCGGQPN', 'RCGGQPNNIHV', 'NIHVDOYRN')": {
+      "result": true,
+      "time": 0.04246783256530762,
+      "error": null
+    },
+    "assert concatenate_elements(('PZNHQSHRL', 'GKTHUNNNC', 'RAUHHYKVO', 'MEP', 'EPJITEIPX', 'TFPZER')) == ('PZNHQSHRLGKTHUNNNC', 'GKTHUNNNCRAUHHYKVO', 'RAUHHYKVOMEP', 'MEPEPJITEIPX', 'EPJITEIPXTFPZER')": {
+      "result": true,
+      "time": 0.04108023643493652,
+      "error": null
+    },
+    "assert concatenate_elements(('PFXSJXG', 'TGZCH', 'GOHCZLV', 'NOJYDBYYM', 'HJEYXGU', 'CIO')) == ('PFXSJXGTGZCH', 'TGZCHGOHCZLV', 'GOHCZLVNOJYDBYYM', 'NOJYDBYYMHJEYXGU', 'HJEYXGUCIO')": {
+      "result": true,
+      "time": 0.0402376651763916,
+      "error": null
+    },
+    "assert concatenate_elements(('EPL CBBR', 'QSRL', 'KCB', 'FMMGAFG', 'PG MRKECK', 'LGOHJV')) == ('EPL CBBRQSRL', 'QSRLKCB', 'KCBFMMGAFG', 'FMMGAFGPG MRKECK', 'PG MRKECKLGOHJV')": {
+      "result": true,
+      "time": 0.041466712951660156,
+      "error": null
+    },
+    "assert concatenate_elements(('JFWQGJTRW', ' MPYCGM', 'EEU', 'GWBMZSSS', 'SJG', 'XOQFGLD')) == ('JFWQGJTRW MPYCGM', ' MPYCGMEEU', 'EEUGWBMZSSS', 'GWBMZSSSSJG', 'SJGXOQFGLD')": {
+      "result": true,
+      "time": 0.03631162643432617,
+      "error": null
+    },
+    "assert concatenate_elements(('IBVWLHGKY', 'XTXAKAUL', 'WLFBDO', 'MQLEY', 'NGLMUPD', 'ILK')) == ('IBVWLHGKYXTXAKAUL', 'XTXAKAULWLFBDO', 'WLFBDOMQLEY', 'MQLEYNGLMUPD', 'NGLMUPDILK')": {
+      "result": true,
+      "time": 0.043050527572631836,
+      "error": null
+    },
+    "assert concatenate_elements(('ASVYNTNEX', 'DM N YLT', 'ISUXCYG', 'GILJ', 'DVQ', 'ZUEEDHATK')) == ('ASVYNTNEXDM N YLT', 'DM N YLTISUXCYG', 'ISUXCYGGILJ', 'GILJDVQ', 'DVQZUEEDHATK')": {
+      "result": true,
+      "time": 0.04740452766418457,
+      "error": null
+    },
+    "assert concatenate_elements(('BAJ', 'AVPCJ', 'ZXIE', 'YKXSY', 'HIFNX SUJ', 'JKJLGHI')) == ('BAJAVPCJ', 'AVPCJZXIE', 'ZXIEYKXSY', 'YKXSYHIFNX SUJ', 'HIFNX SUJJKJLGHI')": {
+      "result": true,
+      "time": 0.035355329513549805,
+      "error": null
+    },
+    "assert concatenate_elements(('LKJYTK', 'GZWLR PW ', ' GL', 'ZESZ', 'FNVEPSQ', 'KTWQHODW')) == ('LKJYTKGZWLR PW ', 'GZWLR PW  GL', ' GLZESZ', 'ZESZFNVEPSQ', 'FNVEPSQKTWQHODW')": {
+      "result": true,
+      "time": 0.045017242431640625,
+      "error": null
+    },
+    "assert concatenate_elements(('DTFKBCQJ', 'TMR', 'TNDOUM J', 'KIYKMBJR', 'LOVJ', 'AXEGARDN')) == ('DTFKBCQJTMR', 'TMRTNDOUM J', 'TNDOUM JKIYKMBJR', 'KIYKMBJRLOVJ', 'LOVJAXEGARDN')": {
+      "result": true,
+      "time": 0.049103736877441406,
+      "error": null
+    },
+    "assert concatenate_elements((' ANQHPHUI', 'RHQPLJA', 'AI ', 'W PMD GQ', 'JIWDINKPV', 'ZTU')) == (' ANQHPHUIRHQPLJA', 'RHQPLJAAI ', 'AI W PMD GQ', 'W PMD GQJIWDINKPV', 'JIWDINKPVZTU')": {
+      "result": true,
+      "time": 0.03591203689575195,
+      "error": null
+    },
+    "assert concatenate_elements(('EEIB', 'VCGZ', 'ZNCNFLK', 'XMGTVKRTM', 'KYWZ', 'KGLJPNR')) == ('EEIBVCGZ', 'VCGZZNCNFLK', 'ZNCNFLKXMGTVKRTM', 'XMGTVKRTMKYWZ', 'KYWZKGLJPNR')": {
+      "result": true,
+      "time": 0.04296231269836426,
+      "error": null
+    },
+    "assert concatenate_elements(('NJJNNQRR', 'IANQU', 'LHASPUNX', 'KNPOW', 'UJPG BE', 'MXIGOYUL')) == ('NJJNNQRRIANQU', 'IANQULHASPUNX', 'LHASPUNXKNPOW', 'KNPOWUJPG BE', 'UJPG BEMXIGOYUL')": {
+      "result": true,
+      "time": 0.04134678840637207,
+      "error": null
+    },
+    "assert concatenate_elements(('QQV H', 'HUSXQVN', 'EDPUQ', 'LJOL', 'LNQXKNT F', 'XPUVLXQQ')) == ('QQV HHUSXQVN', 'HUSXQVNEDPUQ', 'EDPUQLJOL', 'LJOLLNQXKNT F', 'LNQXKNT FXPUVLXQQ')": {
+      "result": true,
+      "time": 0.05727863311767578,
+      "error": null
+    },
+    "assert concatenate_elements(('ERJCAB', 'IJE', 'GBX', 'GNRBYA', 'VEZHWFXJ', 'UTBMGZ')) == ('ERJCABIJE', 'IJEGBX', 'GBXGNRBYA', 'GNRBYAVEZHWFXJ', 'VEZHWFXJUTBMGZ')": {
+      "result": true,
+      "time": 0.0559544563293457,
+      "error": null
+    },
+    "assert concatenate_elements(('OPHCZ', 'KLAIWC', 'EEUF', 'FWR', 'CC B', 'LYRX')) == ('OPHCZKLAIWC', 'KLAIWCEEUF', 'EEUFFWR', 'FWRCC B', 'CC BLYRX')": {
+      "result": true,
+      "time": 0.04826998710632324,
+      "error": null
+    },
+    "assert concatenate_elements(('ZQGZNBZ', 'SQLX', 'TEJDUXQ', 'LJTSMV', 'JZNRP', 'GRXZJQD')) == ('ZQGZNBZSQLX', 'SQLXTEJDUXQ', 'TEJDUXQLJTSMV', 'LJTSMVJZNRP', 'JZNRPGRXZJQD')": {
+      "result": true,
+      "time": 0.057099103927612305,
+      "error": null
+    },
+    "assert concatenate_elements(('VKGTM', 'NCQPWSQMH', 'AYKWHUXAI', 'AMIMP', 'ZJZCI', 'CEOBM')) == ('VKGTMNCQPWSQMH', 'NCQPWSQMHAYKWHUXAI', 'AYKWHUXAIAMIMP', 'AMIMPZJZCI', 'ZJZCICEOBM')": {
+      "result": true,
+      "time": 0.05508995056152344,
+      "error": null
+    },
+    "assert concatenate_elements(('PLZACNQN', 'KON', 'NAK', 'ZNPUDKQ', 'HGS', 'JLLCHVADF')) == ('PLZACNQNKON', 'KONNAK', 'NAKZNPUDKQ', 'ZNPUDKQHGS', 'HGSJLLCHVADF')": {
+      "result": true,
+      "time": 0.05239558219909668,
+      "error": null
+    },
+    "assert concatenate_elements(('WXSP', 'DNRKU', 'ENOERUR', 'KQCLIVWFO', 'IAHKZ', 'EPX')) == ('WXSPDNRKU', 'DNRKUENOERUR', 'ENOERURKQCLIVWFO', 'KQCLIVWFOIAHKZ', 'IAHKZEPX')": {
+      "result": true,
+      "time": 0.05941057205200195,
+      "error": null
+    },
+    "assert concatenate_elements(('ICFTW', 'QROTI', 'IRCKKON', 'UO VYAYIE', 'QUD', 'ZCWCIFOMA')) == ('ICFTWQROTI', 'QROTIIRCKKON', 'IRCKKONUO VYAYIE', 'UO VYAYIEQUD', 'QUDZCWCIFOMA')": {
+      "result": true,
+      "time": 0.056835174560546875,
+      "error": null
+    },
+    "assert concatenate_elements(('VNVJNOA', 'JVSDBSAFN', 'CZGOPAE', 'W XUZVSP', 'UQPW', 'DOMBKOTML')) == ('VNVJNOAJVSDBSAFN', 'JVSDBSAFNCZGOPAE', 'CZGOPAEW XUZVSP', 'W XUZVSPUQPW', 'UQPWDOMBKOTML')": {
+      "result": true,
+      "time": 0.05623674392700195,
+      "error": null
+    },
+    "assert concatenate_elements((' OIGV', 'FMRZO', 'NVQVGGH', 'GXQRACA', 'XCRNKODAQ', 'RXR')) == (' OIGVFMRZO', 'FMRZONVQVGGH', 'NVQVGGHGXQRACA', 'GXQRACAXCRNKODAQ', 'XCRNKODAQRXR')": {
+      "result": true,
+      "time": 0.0562591552734375,
+      "error": null
+    },
+    "assert concatenate_elements(('ECFY FXEW', 'FZM', 'NJE', ' TMX', 'DTCTGKTJ', 'XFK')) == ('ECFY FXEWFZM', 'FZMNJE', 'NJE TMX', ' TMXDTCTGKTJ', 'DTCTGKTJXFK')": {
+      "result": true,
+      "time": 0.04277515411376953,
+      "error": null
+    },
+    "assert concatenate_elements(('ODFH ANV', 'JCKDJV', 'ZESQGEFW', 'JBFHAJM', 'FDO', 'BFOWTLR')) == ('ODFH ANVJCKDJV', 'JCKDJVZESQGEFW', 'ZESQGEFWJBFHAJM', 'JBFHAJMFDO', 'FDOBFOWTLR')": {
+      "result": true,
+      "time": 0.049921512603759766,
+      "error": null
+    },
+    "assert concatenate_elements(('UTWNGZD', 'ADTVC', 'DEBXSFZ', 'RBDKZ', 'XSU', 'SLEDOOP')) == ('UTWNGZDADTVC', 'ADTVCDEBXSFZ', 'DEBXSFZRBDKZ', 'RBDKZXSU', 'XSUSLEDOOP')": {
+      "result": true,
+      "time": 0.06102347373962402,
+      "error": null
+    },
+    "assert concatenate_elements((' SXHNGCD', 'LOB', 'SNKJIZA', 'MTCQYGXMN', 'MTSVS', 'WRDPRUTU')) == (' SXHNGCDLOB', 'LOBSNKJIZA', 'SNKJIZAMTCQYGXMN', 'MTCQYGXMNMTSVS', 'MTSVSWRDPRUTU')": {
+      "result": true,
+      "time": 0.056597232818603516,
+      "error": null
+    },
+    "assert concatenate_elements(('SLUC', 'TMOQVZX', 'QVSN', 'MUEUCVN', 'XRK', 'WAEJILUL')) == ('SLUCTMOQVZX', 'TMOQVZXQVSN', 'QVSNMUEUCVN', 'MUEUCVNXRK', 'XRKWAEJILUL')": {
+      "result": true,
+      "time": 0.0655510425567627,
+      "error": null
+    },
+    "assert concatenate_elements(('GWVCDHMD', 'OBCL', 'DJSI', 'AYZ', 'AHMPLRI', 'UIAISGJP')) == ('GWVCDHMDOBCL', 'OBCLDJSI', 'DJSIAYZ', 'AYZAHMPLRI', 'AHMPLRIUIAISGJP')": {
+      "result": true,
+      "time": 0.05492353439331055,
+      "error": null
+    },
+    "assert concatenate_elements(('VBRECNZ', 'H WIYD', 'NTVK', 'QBRCRUS', 'TXO', 'ZZD')) == ('VBRECNZH WIYD', 'H WIYDNTVK', 'NTVKQBRCRUS', 'QBRCRUSTXO', 'TXOZZD')": {
+      "result": true,
+      "time": 0.059980154037475586,
+      "error": null
+    },
+    "assert concatenate_elements(('GYONGRB', 'OYWFLDANT', 'GTWBS', 'HLPIZPHT', 'WDV', 'OBULHA')) == ('GYONGRBOYWFLDANT', 'OYWFLDANTGTWBS', 'GTWBSHLPIZPHT', 'HLPIZPHTWDV', 'WDVOBULHA')": {
+      "result": true,
+      "time": 0.0543828010559082,
+      "error": null
+    },
+    "assert concatenate_elements(('HBHRXXWBX', 'ZKLCUUMQF', 'GPNGRLQ', 'NXV M', 'QUKEBMQQ', 'CVC')) == ('HBHRXXWBXZKLCUUMQF', 'ZKLCUUMQFGPNGRLQ', 'GPNGRLQNXV M', 'NXV MQUKEBMQQ', 'QUKEBMQQCVC')": {
+      "result": true,
+      "time": 0.044069528579711914,
+      "error": null
+    },
+    "assert concatenate_elements(('N TR', 'YLLWZJ', 'UAKJAU ', 'GBHQXIH', 'EHZDES', 'QMPRKMJEJ')) == ('N TRYLLWZJ', 'YLLWZJUAKJAU ', 'UAKJAU GBHQXIH', 'GBHQXIHEHZDES', 'EHZDESQMPRKMJEJ')": {
+      "result": true,
+      "time": 0.05912494659423828,
+      "error": null
+    },
+    "assert concatenate_elements(('XYMNWG', 'JVKXSDZZK', 'EECX', 'XKWGPX', 'XCHL', 'ALCVSZKYM')) == ('XYMNWGJVKXSDZZK', 'JVKXSDZZKEECX', 'EECXXKWGPX', 'XKWGPXXCHL', 'XCHLALCVSZKYM')": {
+      "result": true,
+      "time": 0.05791878700256348,
+      "error": null
+    },
+    "assert concatenate_elements(('DJOJ', 'KRIQDMFNJ', 'APD', 'CIASRTTVR', 'ADT', 'NLIF')) == ('DJOJKRIQDMFNJ', 'KRIQDMFNJAPD', 'APDCIASRTTVR', 'CIASRTTVRADT', 'ADTNLIF')": {
+      "result": true,
+      "time": 0.05193352699279785,
+      "error": null
+    },
+    "assert concatenate_elements(('JUT LBE', 'MXQWY', 'HNIAMKJW', 'RZD', 'YWDEP', 'QVNYLRD')) == ('JUT LBEMXQWY', 'MXQWYHNIAMKJW', 'HNIAMKJWRZD', 'RZDYWDEP', 'YWDEPQVNYLRD')": {
+      "result": true,
+      "time": 0.04953479766845703,
+      "error": null
+    },
+    "assert concatenate_elements(('JRCUAYK', 'SRWQIDQZ ', 'UXHJY', 'TGPQIB', 'CASX', 'QBQ')) == ('JRCUAYKSRWQIDQZ ', 'SRWQIDQZ UXHJY', 'UXHJYTGPQIB', 'TGPQIBCASX', 'CASXQBQ')": {
+      "result": true,
+      "time": 0.0652933120727539,
+      "error": null
+    },
+    "assert concatenate_elements(('RMASXBEF', ' GE', 'NLYZGT', ' ENCBGK', 'BXJQIVR', 'GUZJ')) == ('RMASXBEF GE', ' GENLYZGT', 'NLYZGT ENCBGK', ' ENCBGKBXJQIVR', 'BXJQIVRGUZJ')": {
+      "result": true,
+      "time": 0.04877829551696777,
+      "error": null
+    },
+    "assert concatenate_elements((' ONJAED', 'PMMTZ', 'YFU', 'PDKFZKZ', 'AJRNO', 'ZQKCDJK')) == (' ONJAEDPMMTZ', 'PMMTZYFU', 'YFUPDKFZKZ', 'PDKFZKZAJRNO', 'AJRNOZQKCDJK')": {
+      "result": true,
+      "time": 0.06679177284240723,
+      "error": null
+    },
+    "assert concatenate_elements(('MRPMGPN', 'YGHJN', 'QQOD', 'IGEACTYU', 'VDJGGWO', 'VDBNQBZ')) == ('MRPMGPNYGHJN', 'YGHJNQQOD', 'QQODIGEACTYU', 'IGEACTYUVDJGGWO', 'VDJGGWOVDBNQBZ')": {
+      "result": true,
+      "time": 0.047133684158325195,
+      "error": null
+    },
+    "assert concatenate_elements(('MIU', 'TBELCXZMW', 'Q AD', 'QUZJTMZQ', 'HHANXIAT', 'OSRYSCWUI')) == ('MIUTBELCXZMW', 'TBELCXZMWQ AD', 'Q ADQUZJTMZQ', 'QUZJTMZQHHANXIAT', 'HHANXIATOSRYSCWUI')": {
+      "result": true,
+      "time": 0.05735659599304199,
+      "error": null
+    },
+    "assert concatenate_elements(('DTPV', 'YSXIEZSZZ', 'RZRGM U', 'BFMN GPK', 'VVTDQKGVF', 'ZDTY')) == ('DTPVYSXIEZSZZ', 'YSXIEZSZZRZRGM U', 'RZRGM UBFMN GPK', 'BFMN GPKVVTDQKGVF', 'VVTDQKGVFZDTY')": {
+      "result": true,
+      "time": 0.052726030349731445,
+      "error": null
+    },
+    "assert concatenate_elements(('RLAXIPYZ', 'Q YUGYZS', 'M PJEU', ' UNCDP', 'LVS', 'KZMVUCR')) == ('RLAXIPYZQ YUGYZS', 'Q YUGYZSM PJEU', 'M PJEU UNCDP', ' UNCDPLVS', 'LVSKZMVUCR')": {
+      "result": true,
+      "time": 0.05115818977355957,
+      "error": null
+    },
+    "assert concatenate_elements(('DMXCU', 'XSVHIE', 'QACDHF', 'OUX', 'DLAFVEML', 'EPJK')) == ('DMXCUXSVHIE', 'XSVHIEQACDHF', 'QACDHFOUX', 'OUXDLAFVEML', 'DLAFVEMLEPJK')": {
+      "result": true,
+      "time": 0.043825387954711914,
+      "error": null
+    },
+    "assert concatenate_elements(('FHMUB', 'GASKZ', 'TUUGIWTE', 'SI B', 'MCNHWZ', 'ABHSCVSHS')) == ('FHMUBGASKZ', 'GASKZTUUGIWTE', 'TUUGIWTESI B', 'SI BMCNHWZ', 'MCNHWZABHSCVSHS')": {
+      "result": true,
+      "time": 0.055364370346069336,
+      "error": null
+    },
+    "assert concatenate_elements(('PSUVMCMO', 'PJVCZ', 'AYV', 'SWP', 'FKAFLWRMX', 'JGERPPQ')) == ('PSUVMCMOPJVCZ', 'PJVCZAYV', 'AYVSWP', 'SWPFKAFLWRMX', 'FKAFLWRMXJGERPPQ')": {
+      "result": true,
+      "time": 0.04933595657348633,
+      "error": null
+    },
+    "assert concatenate_elements(('XBKO', 'VMY', 'YDYXV', 'PQLUHIT', 'VFI KL', 'KLXKVG')) == ('XBKOVMY', 'VMYYDYXV', 'YDYXVPQLUHIT', 'PQLUHITVFI KL', 'VFI KLKLXKVG')": {
+      "result": true,
+      "time": 0.050095558166503906,
+      "error": null
+    },
+    "assert concatenate_elements(('JQIOI', 'N LPUE', 'THSOQQUXV', 'FSBOTJEL', 'NUU', 'YTBAZTWGY')) == ('JQIOIN LPUE', 'N LPUETHSOQQUXV', 'THSOQQUXVFSBOTJEL', 'FSBOTJELNUU', 'NUUYTBAZTWGY')": {
+      "result": true,
+      "time": 0.058994293212890625,
+      "error": null
+    },
+    "assert concatenate_elements(('UBYNGLURN', 'NDB', 'YS BE', 'LRJ', 'KOIF', 'UMD')) == ('UBYNGLURNNDB', 'NDBYS BE', 'YS BELRJ', 'LRJKOIF', 'KOIFUMD')": {
+      "result": true,
+      "time": 0.05285024642944336,
+      "error": null
+    },
+    "assert concatenate_elements(('PLMXPAZWC', 'JNNMNZDO', 'EGFZ', 'BCUTWX', 'FEWMBGSO', 'FLFRYMUGG')) == ('PLMXPAZWCJNNMNZDO', 'JNNMNZDOEGFZ', 'EGFZBCUTWX', 'BCUTWXFEWMBGSO', 'FEWMBGSOFLFRYMUGG')": {
+      "result": true,
+      "time": 0.04796290397644043,
+      "error": null
+    },
+    "assert concatenate_elements((' FZDNU', 'J R', 'WWQF', 'NQRHF', 'RORVB', 'FCF')) == (' FZDNUJ R', 'J RWWQF', 'WWQFNQRHF', 'NQRHFRORVB', 'RORVBFCF')": {
+      "result": true,
+      "time": 0.04135584831237793,
+      "error": null
+    },
+    "assert concatenate_elements(('DGMKORBC', 'AO ', 'D LLIPRPK', 'GEPEB', 'BCF', 'VJXV')) == ('DGMKORBCAO ', 'AO D LLIPRPK', 'D LLIPRPKGEPEB', 'GEPEBBCF', 'BCFVJXV')": {
+      "result": true,
+      "time": 0.03667807579040527,
+      "error": null
+    },
+    "assert concatenate_elements(('FHGQD', 'AVRARZGLB', 'VZRVLYW', ' YML', 'DURQXRQH', 'SZO')) == ('FHGQDAVRARZGLB', 'AVRARZGLBVZRVLYW', 'VZRVLYW YML', ' YMLDURQXRQH', 'DURQXRQHSZO')": {
+      "result": true,
+      "time": 0.047461748123168945,
+      "error": null
+    },
+    "assert concatenate_elements(('LUQ', 'YWTHVNBI', 'WHNWM', 'JVUJQJT', 'QJKFZBY', 'VZO')) == ('LUQYWTHVNBI', 'YWTHVNBIWHNWM', 'WHNWMJVUJQJT', 'JVUJQJTQJKFZBY', 'QJKFZBYVZO')": {
+      "result": true,
+      "time": 0.04459118843078613,
+      "error": null
+    },
+    "assert concatenate_elements(('CAGSJQS', 'LCGKJAXT', 'PYX JPCPG', 'YWDAVRAT', 'YMQG RFV', 'RLOOMFFLV')) == ('CAGSJQSLCGKJAXT', 'LCGKJAXTPYX JPCPG', 'PYX JPCPGYWDAVRAT', 'YWDAVRATYMQG RFV', 'YMQG RFVRLOOMFFLV')": {
+      "result": true,
+      "time": 0.04380536079406738,
+      "error": null
+    },
+    "assert concatenate_elements(('CYRONYP', 'GCNBWW', 'GTHGU  CA', 'EUMCENRRD', 'QYJVM', 'ESKYE')) == ('CYRONYPGCNBWW', 'GCNBWWGTHGU  CA', 'GTHGU  CAEUMCENRRD', 'EUMCENRRDQYJVM', 'QYJVMESKYE')": {
+      "result": true,
+      "time": 0.04674100875854492,
+      "error": null
+    },
+    "assert concatenate_elements(('DLSSXW', 'RCWXGW', 'JAWWNE', 'KMFWSCQD', 'QVGG', 'XVXLSWDK')) == ('DLSSXWRCWXGW', 'RCWXGWJAWWNE', 'JAWWNEKMFWSCQD', 'KMFWSCQDQVGG', 'QVGGXVXLSWDK')": {
+      "result": true,
+      "time": 0.04554891586303711,
+      "error": null
+    },
+    "assert concatenate_elements(('DYSOZT', 'UCHJKADYS', 'CMYMMM', 'UEWO', 'YXZZ', 'OUO')) == ('DYSOZTUCHJKADYS', 'UCHJKADYSCMYMMM', 'CMYMMMUEWO', 'UEWOYXZZ', 'YXZZOUO')": {
+      "result": true,
+      "time": 0.04095649719238281,
+      "error": null
+    },
+    "assert concatenate_elements(('JVRTXTC', 'KMHXTSKJ', 'WOTZ', 'TFVBKPG', 'YROUMAL', 'FZQ')) == ('JVRTXTCKMHXTSKJ', 'KMHXTSKJWOTZ', 'WOTZTFVBKPG', 'TFVBKPGYROUMAL', 'YROUMALFZQ')": {
+      "result": true,
+      "time": 0.03754782676696777,
+      "error": null
+    },
+    "assert concatenate_elements(('PUOKWS', 'JNBU', 'RUHAV LPW', 'TQFD', 'PIHVUDPFT', 'JKTEUQS')) == ('PUOKWSJNBU', 'JNBURUHAV LPW', 'RUHAV LPWTQFD', 'TQFDPIHVUDPFT', 'PIHVUDPFTJKTEUQS')": {
+      "result": true,
+      "time": 0.04254293441772461,
+      "error": null
+    },
+    "assert concatenate_elements(('QQUCA', 'H RUPSB', 'JWJLNER', 'VBDFMIWLT', 'PLEGGK', 'EMLYJMX')) == ('QQUCAH RUPSB', 'H RUPSBJWJLNER', 'JWJLNERVBDFMIWLT', 'VBDFMIWLTPLEGGK', 'PLEGGKEMLYJMX')": {
+      "result": true,
+      "time": 0.04860043525695801,
+      "error": null
+    },
+    "assert concatenate_elements(('CTGXQBFP', 'AII', 'EQWCONC', 'KAEYV', 'HPF', 'IMRN')) == ('CTGXQBFPAII', 'AIIEQWCONC', 'EQWCONCKAEYV', 'KAEYVHPF', 'HPFIMRN')": {
+      "result": true,
+      "time": 0.046797990798950195,
+      "error": null
+    },
+    "assert concatenate_elements(('SQG', 'JOMF', 'GQTRJ RP', 'F DGXM', 'ZYGYR', 'PBFXJS')) == ('SQGJOMF', 'JOMFGQTRJ RP', 'GQTRJ RPF DGXM', 'F DGXMZYGYR', 'ZYGYRPBFXJS')": {
+      "result": true,
+      "time": 0.04913449287414551,
+      "error": null
+    },
+    "assert concatenate_elements(('LCH', 'LRULNH', 'PTUZRY', 'TY Z', 'GJAIYMVAS', 'VNSKHW')) == ('LCHLRULNH', 'LRULNHPTUZRY', 'PTUZRYTY Z', 'TY ZGJAIYMVAS', 'GJAIYMVASVNSKHW')": {
+      "result": true,
+      "time": 0.04026961326599121,
+      "error": null
+    },
+    "assert concatenate_elements(('FWZ', 'WLSFSALXQ', 'TX J', 'EVQQTRD', 'MMFBNLSW', 'CIG')) == ('FWZWLSFSALXQ', 'WLSFSALXQTX J', 'TX JEVQQTRD', 'EVQQTRDMMFBNLSW', 'MMFBNLSWCIG')": {
+      "result": true,
+      "time": 0.042542219161987305,
+      "error": null
+    },
+    "assert concatenate_elements(('BBVHI', 'YOS', 'ESTOMPJDI', 'MQGLVGF', 'BWD', 'RJGGUGEVU')) == ('BBVHIYOS', 'YOSESTOMPJDI', 'ESTOMPJDIMQGLVGF', 'MQGLVGFBWD', 'BWDRJGGUGEVU')": {
+      "result": true,
+      "time": 0.0392916202545166,
+      "error": null
+    },
+    "assert concatenate_elements(('RASYY', 'RH ', 'ZUAGT', 'DAXCUR', 'GJGKGQ', 'PGU')) == ('RASYYRH ', 'RH ZUAGT', 'ZUAGTDAXCUR', 'DAXCURGJGKGQ', 'GJGKGQPGU')": {
+      "result": true,
+      "time": 0.04266953468322754,
+      "error": null
+    },
+    "assert concatenate_elements(('HKZ', 'CVAZQJKG', 'HBFJIJLE', 'RXTNK', 'WVKV BKRR', 'OKKBQT')) == ('HKZCVAZQJKG', 'CVAZQJKGHBFJIJLE', 'HBFJIJLERXTNK', 'RXTNKWVKV BKRR', 'WVKV BKRROKKBQT')": {
+      "result": true,
+      "time": 0.03965330123901367,
+      "error": null
+    },
+    "assert concatenate_elements(('SQPX', 'UWORM', 'KNSUF', 'KHK ', 'TSW', 'NWX')) == ('SQPXUWORM', 'UWORMKNSUF', 'KNSUFKHK ', 'KHK TSW', 'TSWNWX')": {
+      "result": true,
+      "time": 0.03891634941101074,
+      "error": null
+    },
+    "assert concatenate_elements(('QIDPXXD', 'HAC', 'RFNYQ', 'JZHNHAMUY', 'YKANE', 'VUP')) == ('QIDPXXDHAC', 'HACRFNYQ', 'RFNYQJZHNHAMUY', 'JZHNHAMUYYKANE', 'YKANEVUP')": {
+      "result": true,
+      "time": 0.0457611083984375,
+      "error": null
+    },
+    "assert concatenate_elements(('LVWXYIR', 'RAU', 'TAJXILM', 'OBMPU', 'SVLJWZDRS', 'GIIW')) == ('LVWXYIRRAU', 'RAUTAJXILM', 'TAJXILMOBMPU', 'OBMPUSVLJWZDRS', 'SVLJWZDRSGIIW')": {
+      "result": true,
+      "time": 0.044483184814453125,
+      "error": null
+    },
+    "assert concatenate_elements(('JLRWOKUQ', ' PGNAV ', 'TVAIZB', 'WRXX', 'EALX', 'LWQRBPIP')) == ('JLRWOKUQ PGNAV ', ' PGNAV TVAIZB', 'TVAIZBWRXX', 'WRXXEALX', 'EALXLWQRBPIP')": {
+      "result": true,
+      "time": 0.04680156707763672,
+      "error": null
+    },
+    "assert concatenate_elements(('PVDJRYJ', 'YJSX', 'TWJ', 'MRMBLRPWK', 'GHFUWWALG', 'CZBZNPLLK')) == ('PVDJRYJYJSX', 'YJSXTWJ', 'TWJMRMBLRPWK', 'MRMBLRPWKGHFUWWALG', 'GHFUWWALGCZBZNPLLK')": {
+      "result": true,
+      "time": 0.03507113456726074,
+      "error": null
+    },
+    "assert concatenate_elements(('QEBQCCMG', 'ZEMC', 'WDSJH ', 'ZLZ ', ' M TEPIT', 'DAYHBY')) == ('QEBQCCMGZEMC', 'ZEMCWDSJH ', 'WDSJH ZLZ ', 'ZLZ  M TEPIT', ' M TEPITDAYHBY')": {
+      "result": true,
+      "time": 0.03850507736206055,
+      "error": null
+    },
+    "assert concatenate_elements(('PLE', 'OGEMD', 'TEOMYDL', 'EW CGY', 'MUJIOMI', 'CGDFYTNYG')) == ('PLEOGEMD', 'OGEMDTEOMYDL', 'TEOMYDLEW CGY', 'EW CGYMUJIOMI', 'MUJIOMICGDFYTNYG')": {
+      "result": true,
+      "time": 0.047273874282836914,
+      "error": null
+    },
+    "assert concatenate_elements(('EXVYFKDM', 'RI KX', 'NXSHLQ', 'DQDNAM', 'OTUTVGUHQ', 'SDPX')) == ('EXVYFKDMRI KX', 'RI KXNXSHLQ', 'NXSHLQDQDNAM', 'DQDNAMOTUTVGUHQ', 'OTUTVGUHQSDPX')": {
+      "result": true,
+      "time": 0.043979644775390625,
+      "error": null
+    },
+    "assert concatenate_elements(('JTUO', 'YKLXS', 'WDHXES', 'RBPYE', 'DDI', 'TOFLOK')) == ('JTUOYKLXS', 'YKLXSWDHXES', 'WDHXESRBPYE', 'RBPYEDDI', 'DDITOFLOK')": {
+      "result": true,
+      "time": 0.04082894325256348,
+      "error": null
+    },
+    "assert concatenate_elements(('LJOARJK', ' DRZWRI', 'FVS', 'BCKTR', 'MYYQ', 'XSZCA')) == ('LJOARJK DRZWRI', ' DRZWRIFVS', 'FVSBCKTR', 'BCKTRMYYQ', 'MYYQXSZCA')": {
+      "result": true,
+      "time": 0.036852121353149414,
+      "error": null
+    },
+    "assert concatenate_elements(('ICKZXTH', 'FFKCW', ' BGEN', 'WJM', 'X B', 'FFOHIGSZ')) == ('ICKZXTHFFKCW', 'FFKCW BGEN', ' BGENWJM', 'WJMX B', 'X BFFOHIGSZ')": {
+      "result": true,
+      "time": 0.046324968338012695,
+      "error": null
+    },
+    "assert concatenate_elements(('ENUPAHBPL', 'VQGCRX', 'JAUYI', 'QFQFHCOB', 'POKVFSWYN', 'TYWQ')) == ('ENUPAHBPLVQGCRX', 'VQGCRXJAUYI', 'JAUYIQFQFHCOB', 'QFQFHCOBPOKVFSWYN', 'POKVFSWYNTYWQ')": {
+      "result": true,
+      "time": 0.0429995059967041,
+      "error": null
+    },
+    "assert concatenate_elements(('DPOVOQ', 'VYUC', 'TQQ', 'ZEAJ', 'MDTT', 'SESZT')) == ('DPOVOQVYUC', 'VYUCTQQ', 'TQQZEAJ', 'ZEAJMDTT', 'MDTTSESZT')": {
+      "result": true,
+      "time": 0.044660329818725586,
+      "error": null
+    },
+    "assert concatenate_elements(('FRBM', 'YBJMSMZFV', 'AXFAD', 'QQTV', 'WMVRP FFK', 'MGV')) == ('FRBMYBJMSMZFV', 'YBJMSMZFVAXFAD', 'AXFADQQTV', 'QQTVWMVRP FFK', 'WMVRP FFKMGV')": {
+      "result": true,
+      "time": 0.050545692443847656,
+      "error": null
+    },
+    "assert concatenate_elements(('BHYPQKH', 'HLBCPZ', 'DRQC', 'EPQ LTSI', 'GQBO', 'ZONA')) == ('BHYPQKHHLBCPZ', 'HLBCPZDRQC', 'DRQCEPQ LTSI', 'EPQ LTSIGQBO', 'GQBOZONA')": {
+      "result": true,
+      "time": 0.03712320327758789,
+      "error": null
+    },
+    "assert concatenate_elements(('ZSLJDHL', ' GQWHQC', 'BJVTN', 'EOMU', 'NMMPDE', 'AVAQ')) == ('ZSLJDHL GQWHQC', ' GQWHQCBJVTN', 'BJVTNEOMU', 'EOMUNMMPDE', 'NMMPDEAVAQ')": {
+      "result": true,
+      "time": 0.050641536712646484,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

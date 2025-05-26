@@ -1,0 +1,514 @@
+{
+  "code": "def check_last(arr, n, p):\n    # Perform the operation p times\n    for _ in range(p):\n        # Get the last element of the array\n        last_element = arr[-1]\n        # Calculate the new value to append\n        new_value = last_element * n\n        # Append the new value to the array\n        arr.append(new_value)\n    \n    # Get the last element after performing the operations\n    final_last_element = arr[-1]\n    \n    # Check if the last element is even or odd\n    if final_last_element % 2 == 0:\n        return \"EVEN\"\n    else:\n        return \"ODD\"",
+  "results": {
+    "assert check_last([5,7,10],3,1) == \"ODD\"": {
+      "result": false,
+      "time": 0.056407928466796875,
+      "error": null
+    },
+    "assert check_last([2,3],2,3) == \"EVEN\"": {
+      "result": true,
+      "time": 0.043229103088378906,
+      "error": null
+    },
+    "assert check_last([1,2,3],3,1) == \"ODD\"": {
+      "result": true,
+      "time": 0.03944730758666992,
+      "error": null
+    },
+    "assert check_last([7, 7, 5], 1, 3) == \"EVEN\"": {
+      "result": false,
+      "time": 0.03663134574890137,
+      "error": null
+    },
+    "assert check_last([4, 7, 9], 1, 3) == \"EVEN\"": {
+      "result": false,
+      "time": 0.0365147590637207,
+      "error": null
+    },
+    "assert check_last([5, 6, 12], 1, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.037915706634521484,
+      "error": null
+    },
+    "assert check_last([2, 11, 12], 1, 1) == \"ODD\"": {
+      "result": false,
+      "time": 0.03498697280883789,
+      "error": null
+    },
+    "assert check_last([5, 8, 6], 3, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03740215301513672,
+      "error": null
+    },
+    "assert check_last([2, 8, 9], 3, 1) == \"EVEN\"": {
+      "result": false,
+      "time": 0.03629255294799805,
+      "error": null
+    },
+    "assert check_last([1, 5, 15], 1, 4) == \"EVEN\"": {
+      "result": false,
+      "time": 0.03758430480957031,
+      "error": null
+    },
+    "assert check_last([4, 11, 7], 2, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03798365592956543,
+      "error": null
+    },
+    "assert check_last([5, 3, 13], 2, 2) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03535151481628418,
+      "error": null
+    },
+    "assert check_last([10, 10, 7], 3, 4) == \"EVEN\"": {
+      "result": false,
+      "time": 0.036264896392822266,
+      "error": null
+    },
+    "assert check_last([1, 8, 14], 1, 2) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03440403938293457,
+      "error": null
+    },
+    "assert check_last([9, 7, 11], 1, 6) == \"EVEN\"": {
+      "result": false,
+      "time": 0.03827643394470215,
+      "error": null
+    },
+    "assert check_last([1, 7, 13], 2, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.043295860290527344,
+      "error": null
+    },
+    "assert check_last([7, 7, 7], 3, 5) == \"EVEN\"": {
+      "result": false,
+      "time": 0.03783011436462402,
+      "error": null
+    },
+    "assert check_last([8, 8, 8], 1, 3) == \"EVEN\"": {
+      "result": true,
+      "time": 0.034476518630981445,
+      "error": null
+    },
+    "assert check_last([10, 9, 9], 1, 3) == \"EVEN\"": {
+      "result": false,
+      "time": 0.033203840255737305,
+      "error": null
+    },
+    "assert check_last([9, 4, 13], 1, 3) == \"EVEN\"": {
+      "result": false,
+      "time": 0.038741350173950195,
+      "error": null
+    },
+    "assert check_last([10, 6, 15], 3, 1) == \"EVEN\"": {
+      "result": false,
+      "time": 0.03699898719787598,
+      "error": null
+    },
+    "assert check_last([7, 4, 6], 2, 6) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03965187072753906,
+      "error": null
+    },
+    "assert check_last([2, 10, 10], 2, 3) == \"EVEN\"": {
+      "result": true,
+      "time": 0.035241127014160156,
+      "error": null
+    },
+    "assert check_last([9, 4, 8], 1, 3) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03896069526672363,
+      "error": null
+    },
+    "assert check_last([10, 3, 6], 2, 3) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03673529624938965,
+      "error": null
+    },
+    "assert check_last([3, 11, 8], 3, 2) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03846907615661621,
+      "error": null
+    },
+    "assert check_last([6, 5, 13], 2, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.035759687423706055,
+      "error": null
+    },
+    "assert check_last([10, 12, 12], 3, 3) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03502321243286133,
+      "error": null
+    },
+    "assert check_last([6, 10, 10], 1, 2) == \"EVEN\"": {
+      "result": true,
+      "time": 0.037642478942871094,
+      "error": null
+    },
+    "assert check_last([4, 8, 7], 1, 4) == \"EVEN\"": {
+      "result": false,
+      "time": 0.031041860580444336,
+      "error": null
+    },
+    "assert check_last([4, 11, 10], 3, 3) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03884458541870117,
+      "error": null
+    },
+    "assert check_last([8, 2, 9], 2, 4) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04010820388793945,
+      "error": null
+    },
+    "assert check_last([7, 12, 5], 3, 6) == \"EVEN\"": {
+      "result": false,
+      "time": 0.03561854362487793,
+      "error": null
+    },
+    "assert check_last([4, 3, 8], 1, 4) == \"EVEN\"": {
+      "result": true,
+      "time": 0.0373082160949707,
+      "error": null
+    },
+    "assert check_last([2, 12, 6], 2, 6) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03925728797912598,
+      "error": null
+    },
+    "assert check_last([2, 6, 11], 1, 1) == \"ODD\"": {
+      "result": true,
+      "time": 0.04058265686035156,
+      "error": null
+    },
+    "assert check_last([3, 5], 1, 1) == \"EVEN\"": {
+      "result": false,
+      "time": 0.0369112491607666,
+      "error": null
+    },
+    "assert check_last([6, 3], 1, 3) == \"EVEN\"": {
+      "result": false,
+      "time": 0.03304934501647949,
+      "error": null
+    },
+    "assert check_last([4, 4], 2, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.0379939079284668,
+      "error": null
+    },
+    "assert check_last([1, 6], 2, 2) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04513430595397949,
+      "error": null
+    },
+    "assert check_last([2, 6], 1, 1) == \"ODD\"": {
+      "result": false,
+      "time": 0.045176029205322266,
+      "error": null
+    },
+    "assert check_last([5, 3], 2, 3) == \"EVEN\"": {
+      "result": true,
+      "time": 0.0589754581451416,
+      "error": null
+    },
+    "assert check_last([4, 7], 1, 7) == \"EVEN\"": {
+      "result": false,
+      "time": 0.04724001884460449,
+      "error": null
+    },
+    "assert check_last([1, 3], 2, 8) == \"EVEN\"": {
+      "result": true,
+      "time": 0.05417037010192871,
+      "error": null
+    },
+    "assert check_last([2, 7], 2, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04662609100341797,
+      "error": null
+    },
+    "assert check_last([4, 5], 1, 1) == \"ODD\"": {
+      "result": true,
+      "time": 0.04899001121520996,
+      "error": null
+    },
+    "assert check_last([3, 8], 2, 1) == \"EVEN\"": {
+      "result": true,
+      "time": 0.047516584396362305,
+      "error": null
+    },
+    "assert check_last([6, 5], 1, 8) == \"EVEN\"": {
+      "result": false,
+      "time": 0.0532073974609375,
+      "error": null
+    },
+    "assert check_last([7, 7], 1, 2) == \"EVEN\"": {
+      "result": false,
+      "time": 0.05277562141418457,
+      "error": null
+    },
+    "assert check_last([5, 4], 2, 2) == \"EVEN\"": {
+      "result": true,
+      "time": 0.05266118049621582,
+      "error": null
+    },
+    "assert check_last([3, 8], 2, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.044561147689819336,
+      "error": null
+    },
+    "assert check_last([5, 2], 1, 7) == \"EVEN\"": {
+      "result": true,
+      "time": 0.05030393600463867,
+      "error": null
+    },
+    "assert check_last([6, 3], 1, 1) == \"ODD\"": {
+      "result": true,
+      "time": 0.05931496620178223,
+      "error": null
+    },
+    "assert check_last([1, 7], 2, 6) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04543495178222656,
+      "error": null
+    },
+    "assert check_last([2, 7], 1, 5) == \"EVEN\"": {
+      "result": false,
+      "time": 0.05711197853088379,
+      "error": null
+    },
+    "assert check_last([1, 5], 1, 2) == \"EVEN\"": {
+      "result": false,
+      "time": 0.049475908279418945,
+      "error": null
+    },
+    "assert check_last([4, 2], 1, 2) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04188656806945801,
+      "error": null
+    },
+    "assert check_last([6, 2], 1, 7) == \"EVEN\"": {
+      "result": true,
+      "time": 0.054908037185668945,
+      "error": null
+    },
+    "assert check_last([6, 1], 1, 1) == \"ODD\"": {
+      "result": true,
+      "time": 0.052466392517089844,
+      "error": null
+    },
+    "assert check_last([3, 4], 1, 3) == \"EVEN\"": {
+      "result": true,
+      "time": 0.053528785705566406,
+      "error": null
+    },
+    "assert check_last([6, 6], 1, 1) == \"ODD\"": {
+      "result": false,
+      "time": 0.05077362060546875,
+      "error": null
+    },
+    "assert check_last([4, 7], 2, 7) == \"EVEN\"": {
+      "result": true,
+      "time": 0.05545210838317871,
+      "error": null
+    },
+    "assert check_last([1, 7], 2, 7) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04101443290710449,
+      "error": null
+    },
+    "assert check_last([3, 7], 1, 2) == \"EVEN\"": {
+      "result": false,
+      "time": 0.04821324348449707,
+      "error": null
+    },
+    "assert check_last([6, 4], 1, 2) == \"EVEN\"": {
+      "result": true,
+      "time": 0.05167269706726074,
+      "error": null
+    },
+    "assert check_last([4, 2], 2, 7) == \"EVEN\"": {
+      "result": true,
+      "time": 0.048494577407836914,
+      "error": null
+    },
+    "assert check_last([7, 5], 1, 3) == \"EVEN\"": {
+      "result": false,
+      "time": 0.053295135498046875,
+      "error": null
+    },
+    "assert check_last([4, 8], 2, 7) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04582333564758301,
+      "error": null
+    },
+    "assert check_last([4, 5, 3], 2, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.05319857597351074,
+      "error": null
+    },
+    "assert check_last([4, 7, 7], 1, 2) == \"EVEN\"": {
+      "result": false,
+      "time": 0.058875322341918945,
+      "error": null
+    },
+    "assert check_last([3, 2, 3], 1, 2) == \"EVEN\"": {
+      "result": false,
+      "time": 0.05568337440490723,
+      "error": null
+    },
+    "assert check_last([1, 2, 7], 3, 3) == \"EVEN\"": {
+      "result": false,
+      "time": 0.04403567314147949,
+      "error": null
+    },
+    "assert check_last([3, 4, 7], 3, 5) == \"EVEN\"": {
+      "result": false,
+      "time": 0.05669260025024414,
+      "error": null
+    },
+    "assert check_last([4, 5, 5], 2, 1) == \"EVEN\"": {
+      "result": true,
+      "time": 0.05913734436035156,
+      "error": null
+    },
+    "assert check_last([4, 5, 6], 1, 4) == \"EVEN\"": {
+      "result": true,
+      "time": 0.053688764572143555,
+      "error": null
+    },
+    "assert check_last([4, 3, 5], 2, 6) == \"EVEN\"": {
+      "result": true,
+      "time": 0.05636715888977051,
+      "error": null
+    },
+    "assert check_last([2, 1, 6], 1, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.056955575942993164,
+      "error": null
+    },
+    "assert check_last([6, 5, 4], 3, 1) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04522585868835449,
+      "error": null
+    },
+    "assert check_last([5, 5, 6], 3, 6) == \"EVEN\"": {
+      "result": true,
+      "time": 0.048540353775024414,
+      "error": null
+    },
+    "assert check_last([4, 2, 3], 2, 3) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04356050491333008,
+      "error": null
+    },
+    "assert check_last([6, 6, 2], 2, 6) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04281926155090332,
+      "error": null
+    },
+    "assert check_last([1, 3, 3], 2, 2) == \"EVEN\"": {
+      "result": true,
+      "time": 0.05940532684326172,
+      "error": null
+    },
+    "assert check_last([3, 5, 7], 2, 4) == \"EVEN\"": {
+      "result": true,
+      "time": 0.049141645431518555,
+      "error": null
+    },
+    "assert check_last([1, 2, 2], 3, 6) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04527592658996582,
+      "error": null
+    },
+    "assert check_last([1, 3, 7], 2, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.05419135093688965,
+      "error": null
+    },
+    "assert check_last([4, 7, 7], 3, 3) == \"EVEN\"": {
+      "result": false,
+      "time": 0.03685760498046875,
+      "error": null
+    },
+    "assert check_last([2, 2, 7], 3, 2) == \"EVEN\"": {
+      "result": false,
+      "time": 0.039025306701660156,
+      "error": null
+    },
+    "assert check_last([5, 6, 2], 1, 4) == \"EVEN\"": {
+      "result": true,
+      "time": 0.05110621452331543,
+      "error": null
+    },
+    "assert check_last([5, 7, 7], 3, 2) == \"EVEN\"": {
+      "result": false,
+      "time": 0.041561126708984375,
+      "error": null
+    },
+    "assert check_last([2, 4, 4], 3, 1) == \"ODD\"": {
+      "result": false,
+      "time": 0.0434114933013916,
+      "error": null
+    },
+    "assert check_last([4, 2, 7], 2, 2) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04013395309448242,
+      "error": null
+    },
+    "assert check_last([1, 1, 4], 3, 2) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04866623878479004,
+      "error": null
+    },
+    "assert check_last([3, 7, 2], 3, 6) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04304385185241699,
+      "error": null
+    },
+    "assert check_last([1, 5, 3], 2, 4) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04419088363647461,
+      "error": null
+    },
+    "assert check_last([6, 2, 1], 3, 2) == \"EVEN\"": {
+      "result": false,
+      "time": 0.03945279121398926,
+      "error": null
+    },
+    "assert check_last([5, 7, 6], 3, 1) == \"ODD\"": {
+      "result": false,
+      "time": 0.04139876365661621,
+      "error": null
+    },
+    "assert check_last([2, 7, 8], 1, 6) == \"EVEN\"": {
+      "result": true,
+      "time": 0.04728984832763672,
+      "error": null
+    },
+    "assert check_last([2, 6, 5], 2, 5) == \"EVEN\"": {
+      "result": true,
+      "time": 0.039086103439331055,
+      "error": null
+    },
+    "assert check_last([4, 1, 5], 3, 1) == \"ODD\"": {
+      "result": true,
+      "time": 0.04103517532348633,
+      "error": null
+    },
+    "assert check_last([3, 7, 2], 2, 6) == \"EVEN\"": {
+      "result": true,
+      "time": 0.043949127197265625,
+      "error": null
+    },
+    "assert check_last([1, 7, 4], 1, 6) == \"EVEN\"": {
+      "result": true,
+      "time": 0.03616452217102051,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6534653465346535,
+  "general_error": "",
+  "has_testcase_error": false
+}

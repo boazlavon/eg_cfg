@@ -1,0 +1,519 @@
+{
+  "code": "def re_arrange(arr, n):\n    # Separate positive and negative numbers\n    pos = []\n    neg = []\n    for num in arr:\n        if num >= 0:\n            pos.append(num)\n        else:\n            neg.append(num)\n    \n    # Initialize pointers for pos and neg lists\n    i = 0\n    j = 0\n    k = 0\n    result = []\n    \n    # Merge the lists in alternating fashion\n    while i < len(neg) and j < len(pos):\n        result.append(neg[i])\n        i += 1\n        result.append(pos[j])\n        j += 1\n    \n    # Append remaining negative numbers\n    while i < len(neg):\n        result.append(neg[i])\n        i += 1\n    \n    # Append remaining positive numbers\n    while j < len(pos):\n        result.append(pos[j])\n        j += 1\n    \n    return result",
+  "results": {
+    "assert re_arrange([-5, -2, 5, 2, 4,\t7, 1, 8, 0, -8], 10) == [-5, 5, -2, 2, -8, 4, 7, 1, 8, 0]": {
+      "result": true,
+      "time": 0.04900956153869629,
+      "error": null
+    },
+    "assert re_arrange([1, 2, 3, -4, -1, 4], 6) == [-4, 1, -1, 2, 3, 4]": {
+      "result": true,
+      "time": 0.05013108253479004,
+      "error": null
+    },
+    "assert re_arrange([4, 7, 9, 77, -4, 5, -3, -9], 8) == [-4, 4, -3, 7, -9, 9, 77, 5]": {
+      "result": true,
+      "time": 0.04786062240600586,
+      "error": null
+    },
+    "assert re_arrange([-7, -7, 10, 7, 5, 11, 3, 13, 4, -8], 5) == [-7, 10, -7, 7, 5, 11, 3, 13, 4, -8]": {
+      "result": false,
+      "time": 0.0431976318359375,
+      "error": null
+    },
+    "assert re_arrange([-1, -2, 7, 4, 8, 12, 2, 9, 2, -12], 7) == [-1, 7, -2, 4, 8, 12, 2, 9, 2, -12]": {
+      "result": false,
+      "time": 0.045404911041259766,
+      "error": null
+    },
+    "assert re_arrange([-2, 0, 7, 6, 4, 7, 6, 4, 1, -11], 10) == [-2, 0, -11, 7, 6, 4, 7, 6, 4, 1]": {
+      "result": true,
+      "time": 0.051065921783447266,
+      "error": null
+    },
+    "assert re_arrange([-6, -3, 4, 6, 6, 12, 2, 3, 3, -4], 8) == [-6, 4, -3, 6, 6, 12, 2, 3, 3, -4]": {
+      "result": false,
+      "time": 0.05847573280334473,
+      "error": null
+    },
+    "assert re_arrange([-10, -5, 4, 2, 2, 7, 6, 10, 4, -6], 8) == [-10, 4, -5, 2, 2, 7, 6, 10, 4, -6]": {
+      "result": false,
+      "time": 0.057274580001831055,
+      "error": null
+    },
+    "assert re_arrange([-5, -6, 3, 4, 3, 8, 6, 4, 5, -6], 7) == [-5, 3, -6, 4, 3, 8, 6, 4, 5, -6]": {
+      "result": false,
+      "time": 0.04593658447265625,
+      "error": null
+    },
+    "assert re_arrange([-5, -3, 8, 5, 8, 5, 2, 7, 3, -4], 7) == [-5, 8, -3, 5, 8, 5, 2, 7, 3, -4]": {
+      "result": false,
+      "time": 0.042517900466918945,
+      "error": null
+    },
+    "assert re_arrange([-6, -5, 8, 3, 9, 4, 1, 7, 2, -8], 10) == [-6, 8, -5, 3, -8, 9, 4, 1, 7, 2]": {
+      "result": true,
+      "time": 0.05844426155090332,
+      "error": null
+    },
+    "assert re_arrange([-10, -2, 1, 4, 1, 11, 1, 3, 1, -7], 8) == [-10, 1, -2, 4, 1, 11, 1, 3, 1, -7]": {
+      "result": false,
+      "time": 0.05226325988769531,
+      "error": null
+    },
+    "assert re_arrange([-10, -3, 3, 5, 6, 6, 6, 6, 5, -6], 7) == [-10, 3, -3, 5, 6, 6, 6, 6, 5, -6]": {
+      "result": false,
+      "time": 0.05289268493652344,
+      "error": null
+    },
+    "assert re_arrange([-2, -1, 8, 6, 3, 5, 6, 12, 5, -13], 8) == [-2, 8, -1, 6, 3, 5, 6, 12, 5, -13]": {
+      "result": false,
+      "time": 0.059098243713378906,
+      "error": null
+    },
+    "assert re_arrange([-6, -5, 6, 6, 3, 10, 1, 13, 2, -13], 7) == [-6, 6, -5, 6, 3, 10, 1, 13, 2, -13]": {
+      "result": false,
+      "time": 0.048569440841674805,
+      "error": null
+    },
+    "assert re_arrange([-1, 0, 4, 2, 2, 11, 5, 4, 1, -12], 6) == [-1, 0, 4, 2, 2, 11, 5, 4, 1, -12]": {
+      "result": false,
+      "time": 0.046911001205444336,
+      "error": null
+    },
+    "assert re_arrange([-6, -4, 6, 7, 1, 9, 4, 12, 2, -4], 6) == [-6, 6, -4, 7, 1, 9, 4, 12, 2, -4]": {
+      "result": false,
+      "time": 0.04846811294555664,
+      "error": null
+    },
+    "assert re_arrange([-5, -2, 5, 4, 5, 12, 4, 6, 3, -6], 9) == [-5, 5, -2, 4, 5, 12, 4, 6, 3, -6]": {
+      "result": false,
+      "time": 0.047930002212524414,
+      "error": null
+    },
+    "assert re_arrange([-1, -5, 3, 7, 7, 9, 1, 5, 3, -9], 7) == [-1, 3, -5, 7, 7, 9, 1, 5, 3, -9]": {
+      "result": false,
+      "time": 0.052478790283203125,
+      "error": null
+    },
+    "assert re_arrange([-7, 1, 4, 5, 8, 3, 1, 9, 2, -12], 10) == [-7, 1, -12, 4, 5, 8, 3, 1, 9, 2]": {
+      "result": true,
+      "time": 0.05386662483215332,
+      "error": null
+    },
+    "assert re_arrange([-6, 3, 4, 6, 4, 9, 1, 11, 4, -8], 8) == [-6, 3, 4, 6, 4, 9, 1, 11, 4, -8]": {
+      "result": false,
+      "time": 0.05346846580505371,
+      "error": null
+    },
+    "assert re_arrange([-3, -7, 1, 3, 4, 6, 2, 3, 1, -3], 9) == [-3, 1, -7, 3, 4, 6, 2, 3, 1, -3]": {
+      "result": false,
+      "time": 0.05283761024475098,
+      "error": null
+    },
+    "assert re_arrange([-2, -6, 4, 3, 6, 3, 6, 7, 3, -8], 7) == [-2, 4, -6, 3, 6, 3, 6, 7, 3, -8]": {
+      "result": false,
+      "time": 0.055382490158081055,
+      "error": null
+    },
+    "assert re_arrange([0, -5, 5, 2, 2, 11, 1, 3, 4, -9], 6) == [-5, 0, 5, 2, 2, 11, 1, 3, 4, -9]": {
+      "result": false,
+      "time": 0.05815839767456055,
+      "error": null
+    },
+    "assert re_arrange([-1, 3, 9, 4, 1, 4, 2, 3, 4, -10], 7) == [-1, 3, 9, 4, 1, 4, 2, 3, 4, -10]": {
+      "result": false,
+      "time": 0.05385398864746094,
+      "error": null
+    },
+    "assert re_arrange([-10, -3, 4, 1, 3, 10, 6, 9, 1, -12], 5) == [-10, 4, -3, 1, 3, 10, 6, 9, 1, -12]": {
+      "result": false,
+      "time": 0.053205251693725586,
+      "error": null
+    },
+    "assert re_arrange([-4, 3, 7, 4, 8, 6, 3, 3, 2, -6], 7) == [-4, 3, 7, 4, 8, 6, 3, 3, 2, -6]": {
+      "result": false,
+      "time": 0.05205869674682617,
+      "error": null
+    },
+    "assert re_arrange([-4, 0, 7, 3, 1, 9, 2, 8, 3, -10], 9) == [-4, 0, 7, 3, 1, 9, 2, 8, 3, -10]": {
+      "result": false,
+      "time": 0.052863359451293945,
+      "error": null
+    },
+    "assert re_arrange([-10, 3, 5, 7, 2, 9, 4, 10, 5, -10], 5) == [-10, 3, 5, 7, 2, 9, 4, 10, 5, -10]": {
+      "result": false,
+      "time": 0.05832934379577637,
+      "error": null
+    },
+    "assert re_arrange([-6, -1, 2, 6, 6, 2, 3, 12, 3, -13], 9) == [-6, 2, -1, 6, 6, 2, 3, 12, 3, -13]": {
+      "result": false,
+      "time": 0.06566476821899414,
+      "error": null
+    },
+    "assert re_arrange([-1, 1, 2, 3, 8, 6, 5, 7, 1, -9], 9) == [-1, 1, 2, 3, 8, 6, 5, 7, 1, -9]": {
+      "result": false,
+      "time": 0.05037808418273926,
+      "error": null
+    },
+    "assert re_arrange([-9, -3, 6, 5, 5, 12, 6, 6, 4, -5], 9) == [-9, 6, -3, 5, 5, 12, 6, 6, 4, -5]": {
+      "result": false,
+      "time": 0.06780529022216797,
+      "error": null
+    },
+    "assert re_arrange([-8, -5, 2, 2, 5, 2, 3, 6, 5, -3], 6) == [-8, 2, -5, 2, 5, 2, 3, 6, 5, -3]": {
+      "result": false,
+      "time": 0.04263591766357422,
+      "error": null
+    },
+    "assert re_arrange([0, -1, 3, 7, 2, 5, 1, 6, 2, -5], 8) == [-1, 0, 3, 7, 2, 5, 1, 6, 2, -5]": {
+      "result": false,
+      "time": 0.06501173973083496,
+      "error": null
+    },
+    "assert re_arrange([-5, -7, 5, 1, 5, 2, 4, 11, 3, -11], 7) == [-5, 5, -7, 1, 5, 2, 4, 11, 3, -11]": {
+      "result": false,
+      "time": 0.04979133605957031,
+      "error": null
+    },
+    "assert re_arrange([-1, 0, 2, 3, 6, 10, 1, 10, 2, -9], 8) == [-1, 0, 2, 3, 6, 10, 1, 10, 2, -9]": {
+      "result": false,
+      "time": 0.06751322746276855,
+      "error": null
+    },
+    "assert re_arrange([5, 4, 2, -6, -4, 6], 1) == [5, 4, 2, -6, -4, 6]": {
+      "result": false,
+      "time": 0.04231595993041992,
+      "error": null
+    },
+    "assert re_arrange([1, 3, 7, -1, -1, 3], 1) == [1, 3, 7, -1, -1, 3]": {
+      "result": false,
+      "time": 0.04818129539489746,
+      "error": null
+    },
+    "assert re_arrange([6, 4, 6, 0, 3, 9], 6) == [6, 4, 6, 0, 3, 9]": {
+      "result": true,
+      "time": 0.05476570129394531,
+      "error": null
+    },
+    "assert re_arrange([5, 6, 4, -6, 0, 3], 2) == [5, 6, 4, -6, 0, 3]": {
+      "result": false,
+      "time": 0.057250022888183594,
+      "error": null
+    },
+    "assert re_arrange([3, 2, 6, -2, -3, 7], 6) == [-2, 3, -3, 2, 6, 7]": {
+      "result": true,
+      "time": 0.06621313095092773,
+      "error": null
+    },
+    "assert re_arrange([2, 5, 2, -1, -2, 3], 6) == [-1, 2, -2, 5, 2, 3]": {
+      "result": true,
+      "time": 0.05378842353820801,
+      "error": null
+    },
+    "assert re_arrange([3, 3, 6, -7, 3, 9], 1) == [3, 3, 6, -7, 3, 9]": {
+      "result": false,
+      "time": 0.0475001335144043,
+      "error": null
+    },
+    "assert re_arrange([6, 4, 6, -3, -5, 7], 5) == [-3, 6, -5, 4, 6, 7]": {
+      "result": true,
+      "time": 0.05274534225463867,
+      "error": null
+    },
+    "assert re_arrange([6, 6, 8, 1, -3, 6], 6) == [-3, 6, 6, 8, 1, 6]": {
+      "result": true,
+      "time": 0.04249858856201172,
+      "error": null
+    },
+    "assert re_arrange([3, 5, 3, -1, -2, 8], 6) == [-1, 3, -2, 5, 3, 8]": {
+      "result": true,
+      "time": 0.049432992935180664,
+      "error": null
+    },
+    "assert re_arrange([4, 1, 5, -6, -6, 3], 5) == [-6, 4, -6, 1, 5, 3]": {
+      "result": true,
+      "time": 0.03904294967651367,
+      "error": null
+    },
+    "assert re_arrange([2, 7, 6, -2, -3, 7], 2) == [2, 7, 6, -2, -3, 7]": {
+      "result": false,
+      "time": 0.03612232208251953,
+      "error": null
+    },
+    "assert re_arrange([3, 6, 3, -7, 3, 3], 5) == [-7, 3, 6, 3, 3, 3]": {
+      "result": true,
+      "time": 0.051201820373535156,
+      "error": null
+    },
+    "assert re_arrange([4, 7, 4, -2, -3, 5], 2) == [4, 7, 4, -2, -3, 5]": {
+      "result": false,
+      "time": 0.04487943649291992,
+      "error": null
+    },
+    "assert re_arrange([1, 6, 3, -7, -6, 3], 5) == [-7, 1, -6, 6, 3, 3]": {
+      "result": true,
+      "time": 0.047890663146972656,
+      "error": null
+    },
+    "assert re_arrange([1, 3, 3, -6, 4, 3], 4) == [-6, 1, 3, 3, 4, 3]": {
+      "result": true,
+      "time": 0.049890756607055664,
+      "error": null
+    },
+    "assert re_arrange([5, 6, 5, -4, -3, 2], 4) == [-4, 5, 6, 5, -3, 2]": {
+      "result": false,
+      "time": 0.04072237014770508,
+      "error": null
+    },
+    "assert re_arrange([5, 2, 4, -7, 1, 8], 2) == [5, 2, 4, -7, 1, 8]": {
+      "result": false,
+      "time": 0.04240155220031738,
+      "error": null
+    },
+    "assert re_arrange([2, 4, 3, 1, -2, 8], 3) == [2, 4, 3, 1, -2, 8]": {
+      "result": false,
+      "time": 0.04604053497314453,
+      "error": null
+    },
+    "assert re_arrange([1, 6, 5, 1, -1, 9], 1) == [1, 6, 5, 1, -1, 9]": {
+      "result": false,
+      "time": 0.039112091064453125,
+      "error": null
+    },
+    "assert re_arrange([2, 6, 4, -2, -2, 7], 3) == [2, 6, 4, -2, -2, 7]": {
+      "result": false,
+      "time": 0.04211091995239258,
+      "error": null
+    },
+    "assert re_arrange([1, 6, 4, -4, 3, 1], 6) == [-4, 1, 6, 4, 3, 1]": {
+      "result": true,
+      "time": 0.04957985877990723,
+      "error": null
+    },
+    "assert re_arrange([1, 1, 5, -2, -2, 3], 6) == [-2, 1, -2, 1, 5, 3]": {
+      "result": true,
+      "time": 0.04218029975891113,
+      "error": null
+    },
+    "assert re_arrange([1, 3, 7, -1, 1, 9], 3) == [1, 3, 7, -1, 1, 9]": {
+      "result": false,
+      "time": 0.04379773139953613,
+      "error": null
+    },
+    "assert re_arrange([5, 1, 1, -4, -1, 9], 5) == [-4, 5, -1, 1, 1, 9]": {
+      "result": true,
+      "time": 0.054253339767456055,
+      "error": null
+    },
+    "assert re_arrange([1, 2, 5, -3, -1, 4], 5) == [-3, 1, -1, 2, 5, 4]": {
+      "result": true,
+      "time": 0.03899717330932617,
+      "error": null
+    },
+    "assert re_arrange([5, 3, 5, -7, -3, 9], 6) == [-7, 5, -3, 3, 5, 9]": {
+      "result": true,
+      "time": 0.041658639907836914,
+      "error": null
+    },
+    "assert re_arrange([2, 5, 3, 1, -6, 3], 6) == [-6, 2, 5, 3, 1, 3]": {
+      "result": true,
+      "time": 0.04269075393676758,
+      "error": null
+    },
+    "assert re_arrange([3, 4, 1, -1, -5, 1], 6) == [-1, 3, -5, 4, 1, 1]": {
+      "result": true,
+      "time": 0.03702259063720703,
+      "error": null
+    },
+    "assert re_arrange([6, 7, 5, -6, 1, 4], 4) == [-6, 6, 7, 5, 1, 4]": {
+      "result": true,
+      "time": 0.04076123237609863,
+      "error": null
+    },
+    "assert re_arrange([5, 2, 2, -9, -5, 4], 1) == [5, 2, 2, -9, -5, 4]": {
+      "result": false,
+      "time": 0.046311140060424805,
+      "error": null
+    },
+    "assert re_arrange([3, 1, 8, -6, 0, 7], 5) == [-6, 3, 1, 8, 0, 7]": {
+      "result": true,
+      "time": 0.04450726509094238,
+      "error": null
+    },
+    "assert re_arrange([4, 2, 5, -6, -1, 7], 4) == [-6, 4, 2, 5, -1, 7]": {
+      "result": false,
+      "time": 0.04479670524597168,
+      "error": null
+    },
+    "assert re_arrange([6, 8, 9, 76, -9, 2, -8, -13], 4) == [6, 8, 9, 76, -9, 2, -8, -13]": {
+      "result": false,
+      "time": 0.0425868034362793,
+      "error": null
+    },
+    "assert re_arrange([3, 4, 6, 81, -6, 9, 2, -11], 3) == [3, 4, 6, 81, -6, 9, 2, -11]": {
+      "result": false,
+      "time": 0.04085874557495117,
+      "error": null
+    },
+    "assert re_arrange([1, 8, 10, 80, -5, 7, 0, -10], 5) == [-5, 1, 8, 10, 80, 7, 0, -10]": {
+      "result": false,
+      "time": 0.0444948673248291,
+      "error": null
+    },
+    "assert re_arrange([3, 3, 14, 77, -5, 2, 2, -12], 8) == [-5, 3, -12, 3, 14, 77, 2, 2]": {
+      "result": true,
+      "time": 0.045795440673828125,
+      "error": null
+    },
+    "assert re_arrange([7, 5, 14, 82, -7, 3, 1, -12], 5) == [-7, 7, 5, 14, 82, 3, 1, -12]": {
+      "result": false,
+      "time": 0.04457259178161621,
+      "error": null
+    },
+    "assert re_arrange([7, 2, 7, 73, -8, 5, -5, -6], 6) == [-8, 7, 2, 7, 73, 5, -5, -6]": {
+      "result": false,
+      "time": 0.04642152786254883,
+      "error": null
+    },
+    "assert re_arrange([1, 2, 14, 74, 0, 3, -6, -4], 5) == [1, 2, 14, 74, 0, 3, -6, -4]": {
+      "result": false,
+      "time": 0.05305171012878418,
+      "error": null
+    },
+    "assert re_arrange([7, 10, 4, 77, 1, 7, -6, -7], 5) == [7, 10, 4, 77, 1, 7, -6, -7]": {
+      "result": false,
+      "time": 0.04579353332519531,
+      "error": null
+    },
+    "assert re_arrange([5, 12, 13, 81, -8, 3, 2, -10], 7) == [-8, 5, 12, 13, 81, 3, 2, -10]": {
+      "result": false,
+      "time": 0.0428462028503418,
+      "error": null
+    },
+    "assert re_arrange([6, 2, 10, 75, -5, 3, 1, -6], 7) == [-5, 6, 2, 10, 75, 3, 1, -6]": {
+      "result": false,
+      "time": 0.043479204177856445,
+      "error": null
+    },
+    "assert re_arrange([4, 11, 14, 82, -8, 10, -8, -4], 3) == [4, 11, 14, 82, -8, 10, -8, -4]": {
+      "result": false,
+      "time": 0.04201984405517578,
+      "error": null
+    },
+    "assert re_arrange([6, 12, 12, 72, 1, 4, 0, -8], 5) == [6, 12, 12, 72, 1, 4, 0, -8]": {
+      "result": false,
+      "time": 0.048026323318481445,
+      "error": null
+    },
+    "assert re_arrange([1, 11, 12, 74, 0, 2, -8, -14], 6) == [1, 11, 12, 74, 0, 2, -8, -14]": {
+      "result": false,
+      "time": 0.052285194396972656,
+      "error": null
+    },
+    "assert re_arrange([2, 7, 4, 77, -1, 1, -6, -13], 8) == [-1, 2, -6, 7, -13, 4, 77, 1]": {
+      "result": true,
+      "time": 0.04652118682861328,
+      "error": null
+    },
+    "assert re_arrange([3, 10, 7, 82, -1, 9, -8, -10], 4) == [3, 10, 7, 82, -1, 9, -8, -10]": {
+      "result": false,
+      "time": 0.043901681900024414,
+      "error": null
+    },
+    "assert re_arrange([9, 8, 13, 73, -3, 2, 2, -4], 3) == [9, 8, 13, 73, -3, 2, 2, -4]": {
+      "result": false,
+      "time": 0.05173015594482422,
+      "error": null
+    },
+    "assert re_arrange([3, 2, 12, 80, -6, 6, -2, -11], 8) == [-6, 3, -2, 2, -11, 12, 80, 6]": {
+      "result": true,
+      "time": 0.04813241958618164,
+      "error": null
+    },
+    "assert re_arrange([1, 10, 12, 75, -8, 4, -6, -14], 5) == [-8, 1, 10, 12, 75, 4, -6, -14]": {
+      "result": false,
+      "time": 0.040880680084228516,
+      "error": null
+    },
+    "assert re_arrange([6, 9, 12, 77, 0, 4, 0, -10], 4) == [6, 9, 12, 77, 0, 4, 0, -10]": {
+      "result": false,
+      "time": 0.05178260803222656,
+      "error": null
+    },
+    "assert re_arrange([1, 3, 10, 74, -3, 1, -2, -13], 4) == [1, 3, 10, 74, -3, 1, -2, -13]": {
+      "result": false,
+      "time": 0.04051470756530762,
+      "error": null
+    },
+    "assert re_arrange([3, 8, 13, 81, -6, 10, -1, -14], 3) == [3, 8, 13, 81, -6, 10, -1, -14]": {
+      "result": false,
+      "time": 0.04547905921936035,
+      "error": null
+    },
+    "assert re_arrange([2, 3, 12, 80, -7, 3, -8, -6], 8) == [-7, 2, -8, 3, -6, 12, 80, 3]": {
+      "result": true,
+      "time": 0.05414605140686035,
+      "error": null
+    },
+    "assert re_arrange([1, 6, 14, 78, -2, 2, -7, -6], 4) == [1, 6, 14, 78, -2, 2, -7, -6]": {
+      "result": false,
+      "time": 0.043466806411743164,
+      "error": null
+    },
+    "assert re_arrange([1, 12, 5, 76, -8, 1, -4, -9], 7) == [-8, 1, -4, 12, 5, 76, 1, -9]": {
+      "result": false,
+      "time": 0.05460619926452637,
+      "error": null
+    },
+    "assert re_arrange([9, 4, 8, 74, -7, 9, -8, -12], 7) == [-7, 9, -8, 4, 8, 74, 9, -12]": {
+      "result": false,
+      "time": 0.0483396053314209,
+      "error": null
+    },
+    "assert re_arrange([7, 12, 14, 72, -3, 4, 0, -6], 5) == [-3, 7, 12, 14, 72, 4, 0, -6]": {
+      "result": false,
+      "time": 0.038893938064575195,
+      "error": null
+    },
+    "assert re_arrange([4, 6, 9, 74, -4, 7, -4, -7], 4) == [4, 6, 9, 74, -4, 7, -4, -7]": {
+      "result": false,
+      "time": 0.04785895347595215,
+      "error": null
+    },
+    "assert re_arrange([7, 12, 4, 74, 0, 9, -8, -14], 5) == [7, 12, 4, 74, 0, 9, -8, -14]": {
+      "result": false,
+      "time": 0.044821977615356445,
+      "error": null
+    },
+    "assert re_arrange([2, 5, 14, 73, -5, 5, -4, -7], 3) == [2, 5, 14, 73, -5, 5, -4, -7]": {
+      "result": false,
+      "time": 0.04232072830200195,
+      "error": null
+    },
+    "assert re_arrange([9, 12, 6, 73, -5, 2, 1, -9], 4) == [9, 12, 6, 73, -5, 2, 1, -9]": {
+      "result": false,
+      "time": 0.047939300537109375,
+      "error": null
+    },
+    "assert re_arrange([4, 6, 14, 80, -9, 4, -8, -13], 3) == [4, 6, 14, 80, -9, 4, -8, -13]": {
+      "result": false,
+      "time": 0.04306840896606445,
+      "error": null
+    },
+    "assert re_arrange([6, 10, 10, 75, -7, 4, 0, -12], 7) == [-7, 6, 10, 10, 75, 4, 0, -12]": {
+      "result": false,
+      "time": 0.04194355010986328,
+      "error": null
+    },
+    "assert re_arrange([9, 6, 10, 79, -1, 2, -6, -12], 4) == [9, 6, 10, 79, -1, 2, -6, -12]": {
+      "result": false,
+      "time": 0.04844331741333008,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.28431372549019607,
+  "general_error": "",
+  "has_testcase_error": false
+}

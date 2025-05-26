@@ -1,0 +1,509 @@
+{
+  "code": "def max_Abs_Diff(arr, n):\n    if n < 2:\n        return 0\n    min_val = arr[0]\n    max_val = arr[0]\n    for num in arr[1:]:\n        if num < min_val:\n            min_val = num\n        if num > max_val:\n            max_val = num\n    return max_val - min_val",
+  "results": {
+    "assert max_Abs_Diff((2,1,5,3),4) == 4": {
+      "result": true,
+      "time": 0.041971683502197266,
+      "error": null
+    },
+    "assert max_Abs_Diff((9,3,2,5,1),5) == 8": {
+      "result": true,
+      "time": 0.0453336238861084,
+      "error": null
+    },
+    "assert max_Abs_Diff((3,2,1),3) == 2": {
+      "result": true,
+      "time": 0.03734278678894043,
+      "error": null
+    },
+    "assert max_Abs_Diff((1, 6, 1, 3), 4) == 5": {
+      "result": true,
+      "time": 0.03580522537231445,
+      "error": null
+    },
+    "assert max_Abs_Diff((6, 6, 1, 6), 4) == 5": {
+      "result": true,
+      "time": 0.039731740951538086,
+      "error": null
+    },
+    "assert max_Abs_Diff((1, 4, 10, 8), 1) == 0": {
+      "result": true,
+      "time": 0.03724980354309082,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 5, 9, 2), 2) == 3": {
+      "result": false,
+      "time": 0.03651142120361328,
+      "error": null
+    },
+    "assert max_Abs_Diff((3, 1, 5, 3), 2) == 2": {
+      "result": false,
+      "time": 0.03674602508544922,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 4, 9, 8), 4) == 5": {
+      "result": true,
+      "time": 0.038643836975097656,
+      "error": null
+    },
+    "assert max_Abs_Diff((7, 4, 9, 1), 4) == 8": {
+      "result": true,
+      "time": 0.04191255569458008,
+      "error": null
+    },
+    "assert max_Abs_Diff((7, 3, 7, 5), 3) == 4": {
+      "result": true,
+      "time": 0.03811931610107422,
+      "error": null
+    },
+    "assert max_Abs_Diff((6, 1, 6, 1), 2) == 5": {
+      "result": true,
+      "time": 0.03899979591369629,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 5, 4, 1), 4) == 4": {
+      "result": true,
+      "time": 0.04259228706359863,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 5, 7, 3), 3) == 5": {
+      "result": true,
+      "time": 0.04062509536743164,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 2, 2, 7), 3) == 0": {
+      "result": false,
+      "time": 0.03531622886657715,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 4, 10, 3), 4) == 8": {
+      "result": true,
+      "time": 0.036399126052856445,
+      "error": null
+    },
+    "assert max_Abs_Diff((6, 1, 7, 8), 3) == 6": {
+      "result": false,
+      "time": 0.035533905029296875,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 4, 10, 1), 2) == 2": {
+      "result": false,
+      "time": 0.03649497032165527,
+      "error": null
+    },
+    "assert max_Abs_Diff((3, 1, 8, 2), 3) == 7": {
+      "result": true,
+      "time": 0.037873268127441406,
+      "error": null
+    },
+    "assert max_Abs_Diff((7, 3, 3, 8), 4) == 5": {
+      "result": true,
+      "time": 0.0382692813873291,
+      "error": null
+    },
+    "assert max_Abs_Diff((3, 5, 10, 2), 3) == 7": {
+      "result": false,
+      "time": 0.03727436065673828,
+      "error": null
+    },
+    "assert max_Abs_Diff((7, 3, 1, 4), 1) == 0": {
+      "result": true,
+      "time": 0.03505682945251465,
+      "error": null
+    },
+    "assert max_Abs_Diff((5, 6, 3, 2), 1) == 0": {
+      "result": true,
+      "time": 0.041231393814086914,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 4, 9, 4), 4) == 7": {
+      "result": true,
+      "time": 0.04491376876831055,
+      "error": null
+    },
+    "assert max_Abs_Diff((3, 1, 1, 7), 3) == 2": {
+      "result": false,
+      "time": 0.032453060150146484,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 4, 6, 7), 4) == 5": {
+      "result": true,
+      "time": 0.05143022537231445,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 1, 8, 8), 4) == 7": {
+      "result": true,
+      "time": 0.05023455619812012,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 2, 3, 6), 3) == 2": {
+      "result": false,
+      "time": 0.0568537712097168,
+      "error": null
+    },
+    "assert max_Abs_Diff((7, 5, 7, 7), 3) == 2": {
+      "result": true,
+      "time": 0.053813934326171875,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 2, 4, 6), 2) == 0": {
+      "result": false,
+      "time": 0.0401151180267334,
+      "error": null
+    },
+    "assert max_Abs_Diff((3, 5, 7, 8), 4) == 5": {
+      "result": true,
+      "time": 0.05571484565734863,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 4, 5, 5), 2) == 2": {
+      "result": false,
+      "time": 0.05480670928955078,
+      "error": null
+    },
+    "assert max_Abs_Diff((1, 6, 5, 6), 4) == 5": {
+      "result": true,
+      "time": 0.05697822570800781,
+      "error": null
+    },
+    "assert max_Abs_Diff((5, 2, 9, 1), 2) == 3": {
+      "result": false,
+      "time": 0.04836297035217285,
+      "error": null
+    },
+    "assert max_Abs_Diff((5, 2, 3, 3), 2) == 3": {
+      "result": true,
+      "time": 0.07871055603027344,
+      "error": null
+    },
+    "assert max_Abs_Diff((3, 1, 3, 8), 4) == 7": {
+      "result": true,
+      "time": 0.048975467681884766,
+      "error": null
+    },
+    "assert max_Abs_Diff((10, 2, 5, 7, 6), 2) == 8": {
+      "result": true,
+      "time": 0.050724029541015625,
+      "error": null
+    },
+    "assert max_Abs_Diff((11, 4, 5, 3, 2), 2) == 7": {
+      "result": false,
+      "time": 0.07579588890075684,
+      "error": null
+    },
+    "assert max_Abs_Diff((6, 5, 7, 2, 3), 4) == 5": {
+      "result": true,
+      "time": 0.047775983810424805,
+      "error": null
+    },
+    "assert max_Abs_Diff((13, 3, 1, 9, 4), 4) == 12": {
+      "result": true,
+      "time": 0.04464554786682129,
+      "error": null
+    },
+    "assert max_Abs_Diff((14, 8, 5, 10, 1), 5) == 13": {
+      "result": true,
+      "time": 0.05504775047302246,
+      "error": null
+    },
+    "assert max_Abs_Diff((7, 2, 1, 2, 5), 2) == 5": {
+      "result": false,
+      "time": 0.06694197654724121,
+      "error": null
+    },
+    "assert max_Abs_Diff((9, 1, 5, 6, 3), 1) == 0": {
+      "result": true,
+      "time": 0.0634007453918457,
+      "error": null
+    },
+    "assert max_Abs_Diff((7, 2, 3, 5, 6), 5) == 5": {
+      "result": true,
+      "time": 0.049979448318481445,
+      "error": null
+    },
+    "assert max_Abs_Diff((13, 5, 4, 9, 2), 1) == 0": {
+      "result": true,
+      "time": 0.05448317527770996,
+      "error": null
+    },
+    "assert max_Abs_Diff((12, 8, 3, 6, 3), 3) == 9": {
+      "result": true,
+      "time": 0.05812692642211914,
+      "error": null
+    },
+    "assert max_Abs_Diff((14, 4, 5, 4, 1), 2) == 10": {
+      "result": false,
+      "time": 0.050691843032836914,
+      "error": null
+    },
+    "assert max_Abs_Diff((11, 8, 6, 1, 2), 2) == 3": {
+      "result": false,
+      "time": 0.05797457695007324,
+      "error": null
+    },
+    "assert max_Abs_Diff((6, 1, 1, 3, 3), 5) == 5": {
+      "result": true,
+      "time": 0.06458330154418945,
+      "error": null
+    },
+    "assert max_Abs_Diff((9, 5, 5, 1, 1), 2) == 4": {
+      "result": false,
+      "time": 0.05042219161987305,
+      "error": null
+    },
+    "assert max_Abs_Diff((8, 3, 1, 10, 5), 4) == 9": {
+      "result": true,
+      "time": 0.05608320236206055,
+      "error": null
+    },
+    "assert max_Abs_Diff((5, 8, 2, 8, 3), 3) == 6": {
+      "result": true,
+      "time": 0.05195975303649902,
+      "error": null
+    },
+    "assert max_Abs_Diff((13, 1, 7, 7, 3), 3) == 12": {
+      "result": true,
+      "time": 0.058852195739746094,
+      "error": null
+    },
+    "assert max_Abs_Diff((11, 3, 7, 8, 5), 4) == 8": {
+      "result": true,
+      "time": 0.061151981353759766,
+      "error": null
+    },
+    "assert max_Abs_Diff((11, 7, 2, 1, 6), 3) == 9": {
+      "result": false,
+      "time": 0.055707693099975586,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 3, 3, 3, 1), 2) == 1": {
+      "result": false,
+      "time": 0.04911684989929199,
+      "error": null
+    },
+    "assert max_Abs_Diff((13, 4, 6, 6, 4), 1) == 0": {
+      "result": true,
+      "time": 0.07405829429626465,
+      "error": null
+    },
+    "assert max_Abs_Diff((6, 8, 6, 4, 4), 3) == 2": {
+      "result": false,
+      "time": 0.06914997100830078,
+      "error": null
+    },
+    "assert max_Abs_Diff((12, 1, 3, 8, 3), 1) == 0": {
+      "result": true,
+      "time": 0.05766701698303223,
+      "error": null
+    },
+    "assert max_Abs_Diff((10, 5, 6, 10, 3), 2) == 5": {
+      "result": false,
+      "time": 0.05246782302856445,
+      "error": null
+    },
+    "assert max_Abs_Diff((9, 2, 4, 9, 3), 4) == 7": {
+      "result": true,
+      "time": 0.05395197868347168,
+      "error": null
+    },
+    "assert max_Abs_Diff((6, 2, 7, 8, 5), 5) == 6": {
+      "result": true,
+      "time": 0.05238747596740723,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 6, 3, 8, 6), 1) == 0": {
+      "result": true,
+      "time": 0.06168055534362793,
+      "error": null
+    },
+    "assert max_Abs_Diff((12, 6, 1, 4, 1), 4) == 11": {
+      "result": true,
+      "time": 0.05322384834289551,
+      "error": null
+    },
+    "assert max_Abs_Diff((8, 3, 6, 10, 4), 2) == 5": {
+      "result": false,
+      "time": 0.0493922233581543,
+      "error": null
+    },
+    "assert max_Abs_Diff((9, 5, 7, 2, 4), 3) == 4": {
+      "result": false,
+      "time": 0.059777259826660156,
+      "error": null
+    },
+    "assert max_Abs_Diff((8, 5, 5, 4, 3), 5) == 5": {
+      "result": true,
+      "time": 0.08355426788330078,
+      "error": null
+    },
+    "assert max_Abs_Diff((9, 8, 2, 7, 6), 5) == 7": {
+      "result": true,
+      "time": 0.06222033500671387,
+      "error": null
+    },
+    "assert max_Abs_Diff((10, 1, 2, 4, 4), 2) == 9": {
+      "result": true,
+      "time": 0.0722208023071289,
+      "error": null
+    },
+    "assert max_Abs_Diff((1, 5, 6), 1) == 0": {
+      "result": true,
+      "time": 0.034064292907714844,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 7, 4), 1) == 0": {
+      "result": true,
+      "time": 0.036760568618774414,
+      "error": null
+    },
+    "assert max_Abs_Diff((1, 5, 5), 3) == 4": {
+      "result": true,
+      "time": 0.03436422348022461,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 7, 2), 3) == 5": {
+      "result": true,
+      "time": 0.03716754913330078,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 2, 2), 2) == 0": {
+      "result": true,
+      "time": 0.03430342674255371,
+      "error": null
+    },
+    "assert max_Abs_Diff((5, 4, 2), 2) == 1": {
+      "result": false,
+      "time": 0.043411970138549805,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 7, 1), 3) == 6": {
+      "result": true,
+      "time": 0.03636360168457031,
+      "error": null
+    },
+    "assert max_Abs_Diff((8, 4, 6), 3) == 4": {
+      "result": true,
+      "time": 0.031006574630737305,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 5, 4), 2) == 1": {
+      "result": true,
+      "time": 0.03851795196533203,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 4, 2), 1) == 0": {
+      "result": true,
+      "time": 0.034863948822021484,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 3, 3), 3) == 1": {
+      "result": true,
+      "time": 0.03818249702453613,
+      "error": null
+    },
+    "assert max_Abs_Diff((7, 4, 1), 1) == 0": {
+      "result": true,
+      "time": 0.040438175201416016,
+      "error": null
+    },
+    "assert max_Abs_Diff((3, 3, 3), 1) == 0": {
+      "result": true,
+      "time": 0.03601551055908203,
+      "error": null
+    },
+    "assert max_Abs_Diff((5, 4, 4), 3) == 1": {
+      "result": true,
+      "time": 0.037667274475097656,
+      "error": null
+    },
+    "assert max_Abs_Diff((8, 5, 6), 1) == 0": {
+      "result": true,
+      "time": 0.03415036201477051,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 2, 6), 2) == 2": {
+      "result": false,
+      "time": 0.03637242317199707,
+      "error": null
+    },
+    "assert max_Abs_Diff((8, 7, 6), 1) == 0": {
+      "result": true,
+      "time": 0.037229299545288086,
+      "error": null
+    },
+    "assert max_Abs_Diff((8, 2, 4), 2) == 6": {
+      "result": true,
+      "time": 0.043859243392944336,
+      "error": null
+    },
+    "assert max_Abs_Diff((5, 6, 1), 2) == 1": {
+      "result": false,
+      "time": 0.03652238845825195,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 2, 6), 1) == 0": {
+      "result": true,
+      "time": 0.03641796112060547,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 4, 1), 1) == 0": {
+      "result": true,
+      "time": 0.04810810089111328,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 4, 2), 1) == 0": {
+      "result": true,
+      "time": 0.031032323837280273,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 6, 1), 1) == 0": {
+      "result": true,
+      "time": 0.03725767135620117,
+      "error": null
+    },
+    "assert max_Abs_Diff((8, 1, 4), 2) == 7": {
+      "result": true,
+      "time": 0.03722190856933594,
+      "error": null
+    },
+    "assert max_Abs_Diff((5, 2, 3), 1) == 0": {
+      "result": true,
+      "time": 0.039198875427246094,
+      "error": null
+    },
+    "assert max_Abs_Diff((3, 7, 1), 2) == 4": {
+      "result": false,
+      "time": 0.03670930862426758,
+      "error": null
+    },
+    "assert max_Abs_Diff((2, 3, 1), 2) == 1": {
+      "result": false,
+      "time": 0.05421924591064453,
+      "error": null
+    },
+    "assert max_Abs_Diff((6, 7, 6), 1) == 0": {
+      "result": true,
+      "time": 0.05141043663024902,
+      "error": null
+    },
+    "assert max_Abs_Diff((4, 6, 4), 2) == 2": {
+      "result": true,
+      "time": 0.03762459754943848,
+      "error": null
+    },
+    "assert max_Abs_Diff((1, 6, 3), 3) == 5": {
+      "result": true,
+      "time": 0.04151463508605957,
+      "error": null
+    },
+    "assert max_Abs_Diff((7, 5, 5), 3) == 2": {
+      "result": true,
+      "time": 0.049147844314575195,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.73,
+  "general_error": "",
+  "has_testcase_error": false
+}

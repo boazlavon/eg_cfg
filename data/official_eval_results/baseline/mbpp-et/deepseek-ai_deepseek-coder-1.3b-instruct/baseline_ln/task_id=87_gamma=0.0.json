@@ -1,0 +1,519 @@
+{
+  "code": "def merge_dictionaries_three(dict1, dict2, dict3):\n    merged_dict = {**dict1, **dict2, **dict3}\n    return merged_dict",
+  "results": {
+    "assert merge_dictionaries_three({ \"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\" }, { \"G\": \"Green\", \"W\": \"White\" },{ \"O\": \"Orange\", \"W\": \"White\", \"B\": \"Black\" })=={'B': 'Black', 'R': 'Red', 'P': 'Pink', 'G': 'Green', 'W': 'White', 'O': 'Orange'}": {
+      "result": true,
+      "time": 0.051776885986328125,
+      "error": null
+    },
+    "assert merge_dictionaries_three({ \"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\" }, { \"G\": \"Green\", \"W\": \"White\" },{\"L\":\"lavender\",\"B\":\"Blue\"})=={'W': 'White', 'P': 'Pink', 'B': 'Black', 'R': 'Red', 'G': 'Green', 'L': 'lavender'}": {
+      "result": false,
+      "time": 0.04067826271057129,
+      "error": null
+    },
+    "assert merge_dictionaries_three({ \"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\" },{\"L\":\"lavender\",\"B\":\"Blue\"},{ \"G\": \"Green\", \"W\": \"White\" })=={'B': 'Black', 'P': 'Pink', 'R': 'Red', 'G': 'Green', 'L': 'lavender', 'W': 'White'}": {
+      "result": false,
+      "time": 0.04508161544799805,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'C': 'dTrUJgn', 'P': 'TUZqlp'}, {'V': 'wCBlH', 'Q': 'BcYSjZvqS'}, {'F': 'dGyakiNNLsgm', 'V': 'KqLICQziG', 'C': 'OWqAK'}) == {'F': 'dGyakiNNLsgm', 'V': 'wCBlH', 'C': 'dTrUJgn', 'Q': 'BcYSjZvqS', 'P': 'TUZqlp'}": {
+      "result": false,
+      "time": 0.03984189033508301,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'K': 'toJDxzj', 'J': 'IusAq', 'V': 'Wrej'}, {'Q': 'RaBVTuE', 'X': 'dljoJU'}, {'A': 'oasBn', 'U': 'vfZYTLGeF', 'E': 'pHOqwMwJn'}) == {'A': 'oasBn', 'U': 'vfZYTLGeF', 'E': 'pHOqwMwJn', 'Q': 'RaBVTuE', 'X': 'dljoJU', 'K': 'toJDxzj', 'J': 'IusAq', 'V': 'Wrej'}": {
+      "result": true,
+      "time": 0.036041975021362305,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'F': 'gbYWIU', 'V': 'YuW'}, {'N': 'NKr', 'O': 'uDGT'}, {'J': 'rUaCrEmI', 'X': 'OZXO', 'B': 'GkV'}) == {'J': 'rUaCrEmI', 'X': 'OZXO', 'B': 'GkV', 'N': 'NKr', 'O': 'uDGT', 'F': 'gbYWIU', 'V': 'YuW'}": {
+      "result": true,
+      "time": 0.04808688163757324,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'S': 'ELvMAh', 'F': 'ITe', 'T': 'mVfcTHJ'}, {'W': 'xNdcRAKXT', 'Q': 'zkrUx'}, {'Q': 'VONUqnLFF', 'H': 'tdFoc', 'Z': 'Fnqk'}) == {'Q': 'zkrUx', 'H': 'tdFoc', 'Z': 'Fnqk', 'W': 'xNdcRAKXT', 'S': 'ELvMAh', 'F': 'ITe', 'T': 'mVfcTHJ'}": {
+      "result": false,
+      "time": 0.04221653938293457,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'X': 'lQqG', 'S': 'dUabzTwLV', 'M': 'tSEpjqNem'}, {'J': 'YZXw', 'U': 'URhlHoAL'}, {'O': 'EqZY', 'T': 'PAa'}) == {'O': 'EqZY', 'T': 'PAa', 'J': 'YZXw', 'U': 'URhlHoAL', 'X': 'lQqG', 'S': 'dUabzTwLV', 'M': 'tSEpjqNem'}": {
+      "result": true,
+      "time": 0.04087948799133301,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'M': 'rzMbrL', 'R': 'MkcXs', 'K': 'ITNNp'}, {'D': 'GhF', 'Q': 'eLzBSkDB'}, {'X': 'kVvzCtm', 'U': 'Meh', 'P': 'lfTLCwXJv'}) == {'X': 'kVvzCtm', 'U': 'Meh', 'P': 'lfTLCwXJv', 'D': 'GhF', 'Q': 'eLzBSkDB', 'M': 'rzMbrL', 'R': 'MkcXs', 'K': 'ITNNp'}": {
+      "result": true,
+      "time": 0.04388284683227539,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'O': 'VQrCDHVUG', 'C': 'eTGZpWmjL', 'T': 'hTrJnpF'}, {'Q': 'wwfwXciZb', 'D': 'tjLWyohXQ'}, {'X': 'Fsqg', 'V': 'QvpQ', 'Z': 'uZzxJmtq'}) == {'X': 'Fsqg', 'V': 'QvpQ', 'Z': 'uZzxJmtq', 'Q': 'wwfwXciZb', 'D': 'tjLWyohXQ', 'O': 'VQrCDHVUG', 'C': 'eTGZpWmjL', 'T': 'hTrJnpF'}": {
+      "result": true,
+      "time": 0.04534649848937988,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'V': 'fpMTslH', 'A': 'JOhBSYsAR', 'L': 'xHCwos'}, {'G': 'NYOnsm', 'R': 'byujQk'}, {'X': 'PBbkwhoQ', 'C': 'cIkHB'}) == {'X': 'PBbkwhoQ', 'C': 'cIkHB', 'G': 'NYOnsm', 'R': 'byujQk', 'V': 'fpMTslH', 'A': 'JOhBSYsAR', 'L': 'xHCwos'}": {
+      "result": true,
+      "time": 0.041350603103637695,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Q': 'tlTRiqrA', 'X': 'StwpgClr', 'B': 'xJpuBml'}, {'R': 'bdmC', 'V': 'PqrgHsC'}, {'D': 'Vtjx', 'S': 'BeeTSU', 'U': 'twbBG'}) == {'D': 'Vtjx', 'S': 'BeeTSU', 'U': 'twbBG', 'R': 'bdmC', 'V': 'PqrgHsC', 'Q': 'tlTRiqrA', 'X': 'StwpgClr', 'B': 'xJpuBml'}": {
+      "result": true,
+      "time": 0.03892183303833008,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'I': 'gBIGQNrn', 'O': 'WsMDw', 'G': 'HHZruCF'}, {'T': 'JUeuxUtZ', 'E': 'BOTqtELA'}, {'X': 'CTrepJ', 'G': 'OwRnIX', 'E': 'WpOaZYHq'}) == {'X': 'CTrepJ', 'G': 'HHZruCF', 'E': 'BOTqtELA', 'T': 'JUeuxUtZ', 'I': 'gBIGQNrn', 'O': 'WsMDw'}": {
+      "result": false,
+      "time": 0.04351449012756348,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'H': 'LjQW', 'Y': 'QRZOQk', 'D': 'prg'}, {'T': 'RNzyT', 'Y': 'KflvZMUZH'}, {'G': 'UJKHlkXzr', 'V': 'mWZjnt'}) == {'G': 'UJKHlkXzr', 'V': 'mWZjnt', 'T': 'RNzyT', 'Y': 'QRZOQk', 'H': 'LjQW', 'D': 'prg'}": {
+      "result": false,
+      "time": 0.04931759834289551,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'P': 'OhXj', 'G': 'EGjgPeXh', 'Q': 'AXAOapOck'}, {'C': 'qCcwFbGdB', 'M': 'vZwIltm'}, {'I': 'NxqLXMGRc', 'K': 'nCpkh', 'S': 'eSBsK'}) == {'I': 'NxqLXMGRc', 'K': 'nCpkh', 'S': 'eSBsK', 'C': 'qCcwFbGdB', 'M': 'vZwIltm', 'P': 'OhXj', 'G': 'EGjgPeXh', 'Q': 'AXAOapOck'}": {
+      "result": true,
+      "time": 0.040335893630981445,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'N': 'NJE', 'F': 'DBq', 'I': 'SOz'}, {'A': 'omXviz', 'B': 'zWRkr'}, {'N': 'KcdKrnV', 'H': 'TtNNPZah', 'P': 'kpHXgpY'}) == {'N': 'NJE', 'H': 'TtNNPZah', 'P': 'kpHXgpY', 'A': 'omXviz', 'B': 'zWRkr', 'F': 'DBq', 'I': 'SOz'}": {
+      "result": false,
+      "time": 0.04135727882385254,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'E': 'avRV', 'X': 'WBeWFxVEY', 'W': 'FRA'}, {'O': 'Hotyi', 'S': 'IPjWqh'}, {'J': 'JTkkyq', 'P': 'Uwvh', 'A': 'VjTNgzEtw'}) == {'J': 'JTkkyq', 'P': 'Uwvh', 'A': 'VjTNgzEtw', 'O': 'Hotyi', 'S': 'IPjWqh', 'E': 'avRV', 'X': 'WBeWFxVEY', 'W': 'FRA'}": {
+      "result": true,
+      "time": 0.03860592842102051,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'G': 'XDEECw', 'A': 'Uct', 'R': 'BEjtJiziz'}, {'L': 'FQDVhZ', 'S': 'MVpxHjecc'}, {'W': 'KrDoBWyAOkW', 'U': 'HFJ', 'Q': 'jAlsW'}) == {'W': 'KrDoBWyAOkW', 'U': 'HFJ', 'Q': 'jAlsW', 'L': 'FQDVhZ', 'S': 'MVpxHjecc', 'G': 'XDEECw', 'A': 'Uct', 'R': 'BEjtJiziz'}": {
+      "result": true,
+      "time": 0.04570269584655762,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'E': 'yjsH', 'T': 'ueO', 'H': 'MDR'}, {'M': 'PnWTJAx', 'E': 'QyV'}, {'P': 'HjuWNVJRc', 'X': 'XkW', 'I': 'zEq'}) == {'P': 'HjuWNVJRc', 'X': 'XkW', 'I': 'zEq', 'M': 'PnWTJAx', 'E': 'yjsH', 'T': 'ueO', 'H': 'MDR'}": {
+      "result": false,
+      "time": 0.05445408821105957,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'O': 'hVgV', 'X': 'MiDeeYGsV', 'E': 'EYQndL'}, {'K': 'vcN', 'T': 'vpcaTvt'}, {'T': 'pJiP', 'L': 'VStFq', 'P': 'ImCdbwIP'}) == {'T': 'vpcaTvt', 'L': 'VStFq', 'P': 'ImCdbwIP', 'K': 'vcN', 'O': 'hVgV', 'X': 'MiDeeYGsV', 'E': 'EYQndL'}": {
+      "result": false,
+      "time": 0.05396389961242676,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Q': 'TmrrwI', 'Z': 'BoPrFRiRd'}, {'Y': 'PvXKZ', 'X': 'iJVt'}, {'R': 'tICBRQM', 'U': 'UcoMCsWYb', 'B': 'TEDjs'}) == {'R': 'tICBRQM', 'U': 'UcoMCsWYb', 'B': 'TEDjs', 'Y': 'PvXKZ', 'X': 'iJVt', 'Q': 'TmrrwI', 'Z': 'BoPrFRiRd'}": {
+      "result": true,
+      "time": 0.04760003089904785,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'C': 'YhVRtMDDU', 'Q': 'vHpzrhc', 'P': 'IIxor'}, {'J': 'aEIcdvr', 'S': 'GLqVhq'}, {'Q': 'FRw', 'L': 'yRUBIyD', 'H': 'OPnZW'}) == {'Q': 'vHpzrhc', 'L': 'yRUBIyD', 'H': 'OPnZW', 'J': 'aEIcdvr', 'S': 'GLqVhq', 'C': 'YhVRtMDDU', 'P': 'IIxor'}": {
+      "result": false,
+      "time": 0.03509068489074707,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'D': 'dEvfbqST', 'A': 'deZJ', 'E': 'RnxXzh'}, {'Q': 'BVenBFao', 'H': 'dgsSpkDB'}, {'V': 'zTnmPrBHbnrG', 'C': 'rnPpoBqv', 'G': 'NmyOGk'}) == {'V': 'zTnmPrBHbnrG', 'C': 'rnPpoBqv', 'G': 'NmyOGk', 'Q': 'BVenBFao', 'H': 'dgsSpkDB', 'D': 'dEvfbqST', 'A': 'deZJ', 'E': 'RnxXzh'}": {
+      "result": true,
+      "time": 0.042116641998291016,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'F': 'IBhNcy', 'C': 'yXBMQq', 'E': 'wkRGPh'}, {'C': 'UdSTxNbNU', 'Q': 'qMUyx'}, {'K': 'IpbIYVufYRG', 'Z': 'sjuV'}) == {'K': 'IpbIYVufYRG', 'Z': 'sjuV', 'C': 'yXBMQq', 'Q': 'qMUyx', 'F': 'IBhNcy', 'E': 'wkRGPh'}": {
+      "result": false,
+      "time": 0.04869389533996582,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'C': 'iJLqnC', 'J': 'jCmt'}, {'W': 'MHrfjmid', 'L': 'gRALTpnF'}, {'E': 'fYwLeKTIrLj', 'R': 'Vjn', 'B': 'SwRvRLVg'}) == {'E': 'fYwLeKTIrLj', 'R': 'Vjn', 'B': 'SwRvRLVg', 'W': 'MHrfjmid', 'L': 'gRALTpnF', 'C': 'iJLqnC', 'J': 'jCmt'}": {
+      "result": true,
+      "time": 0.04811429977416992,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'V': 'aNeioSong', 'B': 'Wqz', 'M': 'QOCP'}, {'R': 'vwmLpLk', 'S': 'whWZPr'}, {'Q': 'QeBb', 'W': 'rlNb', 'U': 'tOLqyUG'}) == {'Q': 'QeBb', 'W': 'rlNb', 'U': 'tOLqyUG', 'R': 'vwmLpLk', 'S': 'whWZPr', 'V': 'aNeioSong', 'B': 'Wqz', 'M': 'QOCP'}": {
+      "result": true,
+      "time": 0.04019021987915039,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'F': 'EXZHYCMpT', 'Y': 'aFU', 'V': 'OGgu'}, {'N': 'sHlclDQ', 'H': 'BzOfDW'}, {'Q': 'Klobijzkr', 'U': 'wDBXNk', 'N': 'shKwoAx'}) == {'Q': 'Klobijzkr', 'U': 'wDBXNk', 'N': 'sHlclDQ', 'H': 'BzOfDW', 'F': 'EXZHYCMpT', 'Y': 'aFU', 'V': 'OGgu'}": {
+      "result": false,
+      "time": 0.04618406295776367,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'K': 'KCoPWyxc', 'Z': 'sKVbj', 'S': 'WkzdEKdQg'}, {'D': 'YOYamC', 'S': 'nHsHTPk'}, {'D': 'tapaIcYfWGzr', 'R': 'ZDHlzordb', 'F': 'aRz'}) == {'D': 'YOYamC', 'R': 'ZDHlzordb', 'F': 'aRz', 'S': 'WkzdEKdQg', 'K': 'KCoPWyxc', 'Z': 'sKVbj'}": {
+      "result": false,
+      "time": 0.03480792045593262,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'C': 'iQPqq', 'M': 'eqpMj', 'Q': 'LGPlw'}, {'H': 'HqAaWRp', 'U': 'haK'}, {'U': 'KAPKSCpVFB', 'H': 'QNoj', 'G': 'igmLmi'}) == {'U': 'haK', 'H': 'HqAaWRp', 'G': 'igmLmi', 'C': 'iQPqq', 'M': 'eqpMj', 'Q': 'LGPlw'}": {
+      "result": false,
+      "time": 0.03153705596923828,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'F': 'Sgktc', 'X': 'ELuqLeOaf', 'A': 'KDALfN'}, {'C': 'wgPvgBE', 'Z': 'CZFdZkUVI'}, {'F': 'SQGMtO', 'H': 'jPPtPX', 'U': 'YAzZfE'}) == {'F': 'Sgktc', 'H': 'jPPtPX', 'U': 'YAzZfE', 'C': 'wgPvgBE', 'Z': 'CZFdZkUVI', 'X': 'ELuqLeOaf', 'A': 'KDALfN'}": {
+      "result": false,
+      "time": 0.03687906265258789,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'J': 'NxogbBg', 'F': 'jSmNoduI', 'E': 'uOMbt'}, {'U': 'UjOM', 'L': 'ucnOcCIDo'}, {'Y': 'fRMfpOZda', 'F': 'ClXzZGTT', 'Z': 'MSm'}) == {'Y': 'fRMfpOZda', 'F': 'jSmNoduI', 'Z': 'MSm', 'U': 'UjOM', 'L': 'ucnOcCIDo', 'J': 'NxogbBg', 'E': 'uOMbt'}": {
+      "result": false,
+      "time": 0.037191152572631836,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'L': 'juWPZZHsz', 'M': 'JVyHUMuA', 'S': 'HKDQSE'}, {'L': 'SaE', 'Q': 'AvMUpnOv'}, {'Y': 'LZWXz', 'R': 'kphUGeCV'}) == {'Y': 'LZWXz', 'R': 'kphUGeCV', 'L': 'juWPZZHsz', 'Q': 'AvMUpnOv', 'M': 'JVyHUMuA', 'S': 'HKDQSE'}": {
+      "result": false,
+      "time": 0.03801417350769043,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'J': 'jzD', 'G': 'yIB', 'T': 'wPeAghqkI'}, {'M': 'XRVTmOpK', 'G': 'Owk'}, {'I': 'msT', 'U': 'BCYtVKU'}) == {'I': 'msT', 'U': 'BCYtVKU', 'M': 'XRVTmOpK', 'G': 'yIB', 'J': 'jzD', 'T': 'wPeAghqkI'}": {
+      "result": false,
+      "time": 0.03720974922180176,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'D': 'YIfXh', 'I': 'UCXS', 'T': 'SXh'}, {'Q': 'WKUbs', 'X': 'qQPiyYrF'}, {'J': 'DFNJygzBefv', 'V': 'ppK', 'D': 'GNHNvKJZ'}) == {'J': 'DFNJygzBefv', 'V': 'ppK', 'D': 'YIfXh', 'Q': 'WKUbs', 'X': 'qQPiyYrF', 'I': 'UCXS', 'T': 'SXh'}": {
+      "result": false,
+      "time": 0.03546309471130371,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Q': 'PuXkfMi', 'E': 'FDVhA', 'G': 'jRfF'}, {'W': 'JrnZJgT', 'S': 'lON'}, {'J': 'upcgin', 'V': 'xIRXqLGXe', 'I': 'vBDYrw'}) == {'J': 'upcgin', 'V': 'xIRXqLGXe', 'I': 'vBDYrw', 'W': 'JrnZJgT', 'S': 'lON', 'Q': 'PuXkfMi', 'E': 'FDVhA', 'G': 'jRfF'}": {
+      "result": true,
+      "time": 0.031647443771362305,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'M': 'eWX', 'V': 'BGGiKfl', 'W': 'AWmxddDh'}, {'J': 'eMHSjVHCB', 'Q': 'XNIiABZJ'}, {'D': 'Bmy', 'I': 'LDuktTAsY'}) == {'D': 'Bmy', 'I': 'LDuktTAsY', 'J': 'eMHSjVHCB', 'Q': 'XNIiABZJ', 'M': 'eWX', 'V': 'BGGiKfl', 'W': 'AWmxddDh'}": {
+      "result": true,
+      "time": 0.03594636917114258,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Y': 'SIZN', 'W': 'wbz', 'H': 'NrSwnWEpZ'}, {'U': 'liJEzWvar', 'G': 'arXkMveVl'}, {'I': 'vdodavhfya', 'U': 'MQYuLXp'}) == {'I': 'vdodavhfya', 'U': 'liJEzWvar', 'G': 'arXkMveVl', 'Y': 'SIZN', 'W': 'wbz', 'H': 'NrSwnWEpZ'}": {
+      "result": false,
+      "time": 0.038346290588378906,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'T': 'KeS', 'V': 'Rxb', 'Y': 'riMuJ'}, {'T': 'VOLkHjdOL', 'A': 'JEynWrW'}, {'W': 'gqfdu', 'S': 'tgSOrQH'}) == {'W': 'gqfdu', 'S': 'tgSOrQH', 'T': 'KeS', 'A': 'JEynWrW', 'V': 'Rxb', 'Y': 'riMuJ'}": {
+      "result": false,
+      "time": 0.0355534553527832,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'G': 'kYoTgGS', 'N': 'fLzX', 'J': 'jHhFiOvwu'}, {'A': 'uMgBc', 'J': 'GpVcLN'}, {'G': 'lyg', 'K': 'pxbYYnVni'}) == {'G': 'kYoTgGS', 'K': 'pxbYYnVni', 'A': 'uMgBc', 'J': 'jHhFiOvwu', 'N': 'fLzX'}": {
+      "result": false,
+      "time": 0.04348921775817871,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'B': 'ZcrfLAU', 'V': 'QYPg', 'T': 'WNGfoNCg'}, {'B': 'fIljJiqq', 'R': 'yHwD'}, {'U': 'sblfwrkhal', 'E': 'uegyNPjOh'}) == {'U': 'sblfwrkhal', 'E': 'uegyNPjOh', 'B': 'ZcrfLAU', 'R': 'yHwD', 'V': 'QYPg', 'T': 'WNGfoNCg'}": {
+      "result": false,
+      "time": 0.03516221046447754,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'X': 'lrKdg', 'D': 'Yuqovpvt', 'B': 'PSempQq'}, {'Q': 'WcxYvVnH', 'H': 'RffbagHkq'}, {'P': 'wztxxc', 'Q': 'HDdpjQJiq'}) == {'P': 'wztxxc', 'Q': 'WcxYvVnH', 'H': 'RffbagHkq', 'X': 'lrKdg', 'D': 'Yuqovpvt', 'B': 'PSempQq'}": {
+      "result": false,
+      "time": 0.036110639572143555,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'J': 'qcYr', 'I': 'NoYcYF', 'Z': 'gogsQc'}, {'P': 'Vami', 'B': 'DaD'}, {'Q': 'frtprwjrmpuz', 'O': 'zAEnhqs'}) == {'Q': 'frtprwjrmpuz', 'O': 'zAEnhqs', 'P': 'Vami', 'B': 'DaD', 'J': 'qcYr', 'I': 'NoYcYF', 'Z': 'gogsQc'}": {
+      "result": true,
+      "time": 0.03239583969116211,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'C': 'TEM', 'R': 'CfM', 'H': 'PoM'}, {'H': 'FieHAASN', 'J': 'Khkt'}, {'M': 'gypmuxvt', 'X': 'pdsBARdK'}) == {'M': 'gypmuxvt', 'X': 'pdsBARdK', 'H': 'PoM', 'J': 'Khkt', 'C': 'TEM', 'R': 'CfM'}": {
+      "result": false,
+      "time": 0.04071354866027832,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'L': 'pMu', 'J': 'GpXzvY', 'G': 'OUhN'}, {'A': 'igvnAC', 'G': 'ZIDiKT'}, {'I': 'kafwksvvn', 'P': 'FCS'}) == {'I': 'kafwksvvn', 'P': 'FCS', 'A': 'igvnAC', 'G': 'OUhN', 'L': 'pMu', 'J': 'GpXzvY'}": {
+      "result": false,
+      "time": 0.03486323356628418,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'B': 'rKBvtaG', 'Y': 'Rdqh', 'A': 'hnybeHx'}, {'L': 'zjR', 'H': 'rtUlTywT'}, {'C': 'fcnden', 'H': 'MaT'}) == {'C': 'fcnden', 'H': 'rtUlTywT', 'L': 'zjR', 'B': 'rKBvtaG', 'Y': 'Rdqh', 'A': 'hnybeHx'}": {
+      "result": false,
+      "time": 0.03411555290222168,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'X': 'dYHCX', 'Y': 'EJNsmgSQ', 'W': 'MksVfq'}, {'Q': 'znJtRsvjm', 'X': 'WIT'}, {'C': 'pgbjpqp', 'H': 'lmknTp'}) == {'C': 'pgbjpqp', 'H': 'lmknTp', 'Q': 'znJtRsvjm', 'X': 'dYHCX', 'Y': 'EJNsmgSQ', 'W': 'MksVfq'}": {
+      "result": false,
+      "time": 0.03379487991333008,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Q': 'EUcR', 'F': 'prx'}, {'O': 'GOXa', 'W': 'hfj'}, {'V': 'daymrou', 'A': 'uljVPQOc'}) == {'V': 'daymrou', 'A': 'uljVPQOc', 'O': 'GOXa', 'W': 'hfj', 'Q': 'EUcR', 'F': 'prx'}": {
+      "result": true,
+      "time": 0.0460205078125,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Y': 'aCCgQ', 'S': 'reU', 'P': 'HvXGukgZ'}, {'W': 'UfNKageA', 'P': 'WNVVzUp'}, {'I': 'tuz', 'Q': 'qXz'}) == {'I': 'tuz', 'Q': 'qXz', 'W': 'UfNKageA', 'P': 'HvXGukgZ', 'Y': 'aCCgQ', 'S': 'reU'}": {
+      "result": false,
+      "time": 0.04043936729431152,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'O': 'cES', 'L': 'SMTEsR', 'V': 'weEuDu'}, {'Q': 'cIkLVH', 'N': 'nrrnBWu'}, {'Z': 'zvbzplrbhdyt', 'S': 'BtQL'}) == {'Z': 'zvbzplrbhdyt', 'S': 'BtQL', 'Q': 'cIkLVH', 'N': 'nrrnBWu', 'O': 'cES', 'L': 'SMTEsR', 'V': 'weEuDu'}": {
+      "result": true,
+      "time": 0.03340339660644531,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'M': 'DNAS', 'G': 'yZIgubur', 'T': 'PCAr'}, {'Z': 'Gludx', 'L': 'XAODhLtUl'}, {'X': 'qoichwfcstvw', 'I': 'Qjbuc'}) == {'X': 'qoichwfcstvw', 'I': 'Qjbuc', 'Z': 'Gludx', 'L': 'XAODhLtUl', 'M': 'DNAS', 'G': 'yZIgubur', 'T': 'PCAr'}": {
+      "result": true,
+      "time": 0.03997325897216797,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'J': 'bzxYZc', 'A': 'BHxBim', 'S': 'ADoVXHjiH'}, {'Q': 'nVLeRBgux', 'L': 'Svezca'}, {'F': 'trlndyyxuax', 'U': 'qwigFkDg'}) == {'F': 'trlndyyxuax', 'U': 'qwigFkDg', 'Q': 'nVLeRBgux', 'L': 'Svezca', 'J': 'bzxYZc', 'A': 'BHxBim', 'S': 'ADoVXHjiH'}": {
+      "result": true,
+      "time": 0.038222551345825195,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'F': 'qiITOtF', 'Q': 'wOxywsA', 'T': 'ACG'}, {'F': 'FbwYRR', 'C': 'JClwRw'}, {'V': 'wieqvujfj', 'F': 'AHCXH'}) == {'V': 'wieqvujfj', 'F': 'qiITOtF', 'C': 'JClwRw', 'Q': 'wOxywsA', 'T': 'ACG'}": {
+      "result": false,
+      "time": 0.033026933670043945,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'W': 'Lmada', 'D': 'yHKehBq', 'V': 'Vxf'}, {'O': 'pAknejPZc', 'P': 'QRujgab'}, {'W': 'vek', 'N': 'CaatJIHVu'}) == {'W': 'Lmada', 'N': 'CaatJIHVu', 'O': 'pAknejPZc', 'P': 'QRujgab', 'D': 'yHKehBq', 'V': 'Vxf'}": {
+      "result": false,
+      "time": 0.032013654708862305,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'I': 'RHbfjPAj', 'E': 'GLMARdh', 'F': 'rljy'}, {'Q': 'qEgIiUMs', 'L': 'jmj'}, {'H': 'llgrmknbjma', 'B': 'NWGQt'}) == {'H': 'llgrmknbjma', 'B': 'NWGQt', 'Q': 'qEgIiUMs', 'L': 'jmj', 'I': 'RHbfjPAj', 'E': 'GLMARdh', 'F': 'rljy'}": {
+      "result": true,
+      "time": 0.03499150276184082,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Y': 'RitwewkJB', 'B': 'VtIArP', 'H': 'vCOBOLn'}, {'G': 'BrnT', 'T': 'DoG'}, {'Z': 'viyxrqjyx', 'M': 'ihSRMoVh'}) == {'Z': 'viyxrqjyx', 'M': 'ihSRMoVh', 'G': 'BrnT', 'T': 'DoG', 'Y': 'RitwewkJB', 'B': 'VtIArP', 'H': 'vCOBOLn'}": {
+      "result": true,
+      "time": 0.031343936920166016,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'B': 'cuwna', 'R': 'kpTyXpX', 'Q': 'SnJdmIej'}, {'A': 'Geo', 'H': 'DTA'}, {'G': 'rvnemoonaodl', 'S': 'rGpD'}) == {'G': 'rvnemoonaodl', 'S': 'rGpD', 'A': 'Geo', 'H': 'DTA', 'B': 'cuwna', 'R': 'kpTyXpX', 'Q': 'SnJdmIej'}": {
+      "result": true,
+      "time": 0.03200221061706543,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'J': 'EVoS', 'B': 'MqYTorff', 'E': 'CeluMS'}, {'K': 'URPiR', 'C': 'iInhhS'}, {'Y': 'yeqomej', 'O': 'TgR'}) == {'Y': 'yeqomej', 'O': 'TgR', 'K': 'URPiR', 'C': 'iInhhS', 'J': 'EVoS', 'B': 'MqYTorff', 'E': 'CeluMS'}": {
+      "result": true,
+      "time": 0.035423994064331055,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'G': 'VpfcO', 'A': 'JYWI', 'S': 'ASrU'}, {'D': 'MWmPiE', 'Q': 'ogcz'}, {'E': 'uqvmfcev', 'K': 'iAKx'}) == {'E': 'uqvmfcev', 'K': 'iAKx', 'D': 'MWmPiE', 'Q': 'ogcz', 'G': 'VpfcO', 'A': 'JYWI', 'S': 'ASrU'}": {
+      "result": true,
+      "time": 0.03237462043762207,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'R': 'zMdLpGLW', 'Q': 'CtOzL'}, {'E': 'ZGx', 'L': 'ZDRAX'}, {'Z': 'nhzu', 'W': 'LRTtMfU'}) == {'Z': 'nhzu', 'W': 'LRTtMfU', 'E': 'ZGx', 'L': 'ZDRAX', 'R': 'zMdLpGLW', 'Q': 'CtOzL'}": {
+      "result": true,
+      "time": 0.027538776397705078,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'V': 'QCHqDBX', 'R': 'MhWzVAoS', 'U': 'cJezExK'}, {'V': 'IdF', 'Z': 'GKMjtFmFK'}, {'V': 'vqwdefzlpy', 'X': 'qxJFkZkF'}) == {'V': 'QCHqDBX', 'X': 'qxJFkZkF', 'Z': 'GKMjtFmFK', 'R': 'MhWzVAoS', 'U': 'cJezExK'}": {
+      "result": false,
+      "time": 0.03850054740905762,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'P': 'eOaEiJ', 'U': 'GTqooT', 'O': 'tow'}, {'Q': 'HtuQ'}, {'T': 'zdsgcea', 'E': 'QRmyt'}) == {'T': 'zdsgcea', 'E': 'QRmyt', 'Q': 'HtuQ', 'P': 'eOaEiJ', 'U': 'GTqooT', 'O': 'tow'}": {
+      "result": true,
+      "time": 0.035192012786865234,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'V': 'CpUGXthG', 'T': 'FhuHeixW', 'I': 'NXuPD'}, {'I': 'LQmyBvjz', 'O': 'VPIBBEgXl'}, {'W': 'xkuturok', 'N': 'MueYcAVzB'}) == {'W': 'xkuturok', 'N': 'MueYcAVzB', 'I': 'NXuPD', 'O': 'VPIBBEgXl', 'V': 'CpUGXthG', 'T': 'FhuHeixW'}": {
+      "result": false,
+      "time": 0.03951454162597656,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'L': 'cHJo', 'U': 'lUK'}, {'Z': 'nvSw', 'X': 'iGNV'}, {'Q': 'ljkviz', 'Z': 'irquDsMdX'}) == {'Q': 'ljkviz', 'Z': 'nvSw', 'X': 'iGNV', 'L': 'cHJo', 'U': 'lUK'}": {
+      "result": false,
+      "time": 0.03883647918701172,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'K': 'rWNm', 'W': 'lXGmr', 'U': 'gcY'}, {'Y': 'muLCinYd', 'X': 'lFeVvKCfz'}, {'U': 'nwodnhw', 'S': 'OdqVPF'}) == {'U': 'gcY', 'S': 'OdqVPF', 'Y': 'muLCinYd', 'X': 'lFeVvKCfz', 'K': 'rWNm', 'W': 'lXGmr'}": {
+      "result": false,
+      "time": 0.041693687438964844,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Q': 'cgqb', 'W': 'epUInPvwE'}, {'Y': 'QUhkupz', 'H': 'tZqmuIvw'}, {'R': 'fvvg', 'Z': 'dgf'}) == {'R': 'fvvg', 'Z': 'dgf', 'Y': 'QUhkupz', 'H': 'tZqmuIvw', 'Q': 'cgqb', 'W': 'epUInPvwE'}": {
+      "result": true,
+      "time": 0.031694650650024414,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'P': 'zkluxWW', 'D': 'bLQhTPl', 'G': 'fiYoba'}, {'E': 'pJkkTXdbr'}, {'A': 'xti', 'X': 'SXHt'}) == {'A': 'xti', 'X': 'SXHt', 'E': 'pJkkTXdbr', 'P': 'zkluxWW', 'D': 'bLQhTPl', 'G': 'fiYoba'}": {
+      "result": true,
+      "time": 0.0432133674621582,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'T': 'bCSSBNX', 'Q': 'CvjG', 'M': 'tAPGNNnPC'}, {'O': 'ESsFuOQj', 'J': 'UUxUMDwju'}, {'B': 'qor', 'N': 'qBhzJgz'}) == {'B': 'qor', 'N': 'qBhzJgz', 'O': 'ESsFuOQj', 'J': 'UUxUMDwju', 'T': 'bCSSBNX', 'Q': 'CvjG', 'M': 'tAPGNNnPC'}": {
+      "result": true,
+      "time": 0.03899025917053223,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'C': 'pgih', 'D': 'iYEdg', 'K': 'RcgDu'}, {'V': 'IfFnWmuw', 'R': 'qPpPKv'}, {'P': 'nyyemrrwodhz', 'G': 'PYTBwN'}) == {'P': 'nyyemrrwodhz', 'G': 'PYTBwN', 'V': 'IfFnWmuw', 'R': 'qPpPKv', 'C': 'pgih', 'D': 'iYEdg', 'K': 'RcgDu'}": {
+      "result": true,
+      "time": 0.04268336296081543,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'L': 'drNM', 'Q': 'QNhUivfP', 'X': 'WnhgBBuq'}, {'K': 'ZYKAop', 'E': 'zbpNh'}, {'N': 'rid', 'F': 'BwuRD'}) == {'N': 'rid', 'F': 'BwuRD', 'K': 'ZYKAop', 'E': 'zbpNh', 'L': 'drNM', 'Q': 'QNhUivfP', 'X': 'WnhgBBuq'}": {
+      "result": true,
+      "time": 0.03690528869628906,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'F': 'KAJZf', 'C': 'JsItypOIn', 'G': 'TXaWf'}, {'F': 'sgxqpfb', 'P': 'rma'}, {'L': 'nJIl', 'M': 'HpBZRgXto'}) == {'L': 'nJIl', 'M': 'HpBZRgXto', 'F': 'KAJZf', 'P': 'rma', 'C': 'JsItypOIn', 'G': 'TXaWf'}": {
+      "result": false,
+      "time": 0.04045677185058594,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'D': 'yfi', 'I': 'WnWgWu', 'Q': 'ijh'}, {'X': 'idbm', 'K': 'yrhnjnb'}, {'V': 'YWFtct', 'J': 'VrsGRUDG'}) == {'V': 'YWFtct', 'J': 'VrsGRUDG', 'X': 'idbm', 'K': 'yrhnjnb', 'D': 'yfi', 'I': 'WnWgWu', 'Q': 'ijh'}": {
+      "result": true,
+      "time": 0.03919196128845215,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'T': 'sGm', 'X': 'qwIxgNETG', 'F': 'JIcWZk'}, {'I': 'jhpn', 'C': 'bRzUaR'}, {'Z': 'bNjAXFe', 'C': 'pXEdJGaw'}) == {'Z': 'bNjAXFe', 'C': 'bRzUaR', 'I': 'jhpn', 'T': 'sGm', 'X': 'qwIxgNETG', 'F': 'JIcWZk'}": {
+      "result": false,
+      "time": 0.03186845779418945,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'U': 'FBOslsaFK', 'B': 'EkHQVRGt', 'L': 'piVkslJ'}, {'A': 'gkwgtwiegi', 'S': 'LiPvvODU'}, {'P': 'EljO', 'S': 'efJCkiI'}) == {'P': 'EljO', 'S': 'LiPvvODU', 'A': 'gkwgtwiegi', 'U': 'FBOslsaFK', 'B': 'EkHQVRGt', 'L': 'piVkslJ'}": {
+      "result": false,
+      "time": 0.03723430633544922,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Q': 'EGhEOd', 'T': 'QNZRd', 'X': 'qRZvdi'}, {'M': 'kszhpjnctv', 'H': 'HfIQr'}, {'L': 'IZjAyxBgA', 'G': 'KJEHZy'}) == {'L': 'IZjAyxBgA', 'G': 'KJEHZy', 'M': 'kszhpjnctv', 'H': 'HfIQr', 'Q': 'EGhEOd', 'T': 'QNZRd', 'X': 'qRZvdi'}": {
+      "result": true,
+      "time": 0.04259014129638672,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'R': 'Koya', 'G': 'sHBl'}, {'D': 'jqy', 'R': 'UxG'}, {'T': 'slxXt', 'A': 'ycl'}) == {'T': 'slxXt', 'A': 'ycl', 'D': 'jqy', 'R': 'Koya', 'G': 'sHBl'}": {
+      "result": false,
+      "time": 0.041860342025756836,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'J': 'lbi', 'M': 'OMpipGRUP', 'E': 'acp'}, {'S': 'gnxnyej', 'W': 'jPeBt'}, {'W': 'QqkMBwM', 'H': 'sSt'}) == {'W': 'jPeBt', 'H': 'sSt', 'S': 'gnxnyej', 'J': 'lbi', 'M': 'OMpipGRUP', 'E': 'acp'}": {
+      "result": false,
+      "time": 0.04103541374206543,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'M': 'BobUbZh', 'K': 'OYojMIGJ', 'Z': 'EVaeyuOYY'}, {'N': 'cklf', 'X': 'gsziB'}, {'U': 'BpWJZeI', 'Y': 'YkZAQ'}) == {'U': 'BpWJZeI', 'Y': 'YkZAQ', 'N': 'cklf', 'X': 'gsziB', 'M': 'BobUbZh', 'K': 'OYojMIGJ', 'Z': 'EVaeyuOYY'}": {
+      "result": true,
+      "time": 0.04093766212463379,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'L': 'yaIP', 'K': 'Fkg', 'Y': 'oVspcrq'}, {'Z': 'tnavvqr', 'D': 'RarGbd'}, {'T': 'ejBnTF', 'E': 'lSvKKPFc'}) == {'T': 'ejBnTF', 'E': 'lSvKKPFc', 'Z': 'tnavvqr', 'D': 'RarGbd', 'L': 'yaIP', 'K': 'Fkg', 'Y': 'oVspcrq'}": {
+      "result": true,
+      "time": 0.03837871551513672,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'M': 'OjEMGSG', 'V': 'DHkZ', 'H': 'zIruarC'}, {'X': 'udkshzhxa', 'V': 'mJXjvOg'}, {'F': 'Tphat', 'S': 'cIMiblF'}) == {'F': 'Tphat', 'S': 'cIMiblF', 'X': 'udkshzhxa', 'V': 'DHkZ', 'M': 'OjEMGSG', 'H': 'zIruarC'}": {
+      "result": false,
+      "time": 0.04207777976989746,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'T': 'AcwlxDB', 'U': 'RRlKsPGuo', 'X': 'BaixJ'}, {'O': 'fpkcrv', 'I': 'nLsTAQM'}, {'J': 'OhQCUUJJ', 'Y': 'ijH'}) == {'J': 'OhQCUUJJ', 'Y': 'ijH', 'O': 'fpkcrv', 'I': 'nLsTAQM', 'T': 'AcwlxDB', 'U': 'RRlKsPGuo', 'X': 'BaixJ'}": {
+      "result": true,
+      "time": 0.0399174690246582,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'D': 'VDeKcl', 'R': 'NTaYhTrVT', 'Q': 'pAPsHg'}, {'V': 'tvehrybevsx', 'L': 'OBw'}, {'J': 'yYqjsEEc', 'P': 'cewECiPLe'}) == {'J': 'yYqjsEEc', 'P': 'cewECiPLe', 'V': 'tvehrybevsx', 'L': 'OBw', 'D': 'VDeKcl', 'R': 'NTaYhTrVT', 'Q': 'pAPsHg'}": {
+      "result": true,
+      "time": 0.03575944900512695,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'W': 'nSqnyUj', 'T': 'zFrPBqpv', 'C': 'vfVkOEdiw'}, {'F': 'udtedzpusora', 'X': 'oLO'}, {'O': 'KGTFXLxbS', 'T': 'frwrIo'}) == {'O': 'KGTFXLxbS', 'T': 'zFrPBqpv', 'F': 'udtedzpusora', 'X': 'oLO', 'W': 'nSqnyUj', 'C': 'vfVkOEdiw'}": {
+      "result": false,
+      "time": 0.0389409065246582,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'K': 'OFwrg', 'F': 'qdHT', 'R': 'rZGbDsxNW'}, {'K': 'vbrmuqdequqg', 'D': 'bXzSjy'}, {'N': 'CAVzoh', 'F': 'VuabSflix'}) == {'N': 'CAVzoh', 'F': 'qdHT', 'K': 'OFwrg', 'D': 'bXzSjy', 'R': 'rZGbDsxNW'}": {
+      "result": false,
+      "time": 0.05954599380493164,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'J': 'yMJQTzc', 'M': 'dWWKlUWi', 'G': 'tQI'}, {'W': 'jiapnmpvzs', 'I': 'AHr'}, {'E': 'nky', 'A': 'zRcQBDL'}) == {'E': 'nky', 'A': 'zRcQBDL', 'W': 'jiapnmpvzs', 'I': 'AHr', 'J': 'yMJQTzc', 'M': 'dWWKlUWi', 'G': 'tQI'}": {
+      "result": true,
+      "time": 0.05060267448425293,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'X': 'hNUZBD', 'M': 'vtynCy', 'L': 'ydPxLDJ'}, {'K': 'fbxatzi', 'M': 'DtyHfIL'}, {'W': 'MkIrt', 'M': 'YEE'}) == {'W': 'MkIrt', 'M': 'vtynCy', 'K': 'fbxatzi', 'X': 'hNUZBD', 'L': 'ydPxLDJ'}": {
+      "result": false,
+      "time": 0.037541866302490234,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'F': 'WDui', 'I': 'MOlSIbjAd', 'C': 'JEJwzvBn'}, {'Q': 'nzznzqfytvta', 'L': 'ePWNYPkPh'}, {'L': 'VYPUzDQ', 'H': 'rFMyyaA'}) == {'L': 'ePWNYPkPh', 'H': 'rFMyyaA', 'Q': 'nzznzqfytvta', 'F': 'WDui', 'I': 'MOlSIbjAd', 'C': 'JEJwzvBn'}": {
+      "result": false,
+      "time": 0.03518342971801758,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'G': 'Hkahl', 'K': 'YQA', 'N': 'pfxSlhTMk'}, {'I': 'higsnxtdbyep', 'W': 'zxVg'}, {'H': 'bdOqDQhI', 'K': 'bFByHr'}) == {'H': 'bdOqDQhI', 'K': 'YQA', 'I': 'higsnxtdbyep', 'W': 'zxVg', 'G': 'Hkahl', 'N': 'pfxSlhTMk'}": {
+      "result": false,
+      "time": 0.03613400459289551,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'B': 'bIBzeK', 'M': 'ClSYRQ', 'H': 'DrrocGEn'}, {'K': 'mvxdebcf', 'L': 'VbIhsliaG'}, {'N': 'bFs', 'L': 'ovfifUbon'}) == {'N': 'bFs', 'L': 'VbIhsliaG', 'K': 'mvxdebcf', 'B': 'bIBzeK', 'M': 'ClSYRQ', 'H': 'DrrocGEn'}": {
+      "result": false,
+      "time": 0.03035902976989746,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Y': 'ppZoHR', 'R': 'PJVe', 'B': 'nnYVyeley'}, {'B': 'lelclaf', 'M': 'UXFgk'}, {'P': 'MzXcVA', 'U': 'PfS'}) == {'P': 'MzXcVA', 'U': 'PfS', 'B': 'nnYVyeley', 'M': 'UXFgk', 'Y': 'ppZoHR', 'R': 'PJVe'}": {
+      "result": false,
+      "time": 0.03454470634460449,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'X': 'MBhI', 'F': 'kte', 'U': 'pyrZq'}, {'S': 'wdlbbvyet', 'W': 'zNBVi'}, {'Z': 'lldaKIr', 'D': 'LEatkjYU'}) == {'Z': 'lldaKIr', 'D': 'LEatkjYU', 'S': 'wdlbbvyet', 'W': 'zNBVi', 'X': 'MBhI', 'F': 'kte', 'U': 'pyrZq'}": {
+      "result": true,
+      "time": 0.03792095184326172,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'L': 'eUGufN', 'P': 'rErlpVr', 'I': 'KFlElGIG'}, {'K': 'mkn', 'J': 'RNtll'}, {'W': 'CId', 'L': 'LwxHVXgs'}) == {'W': 'CId', 'L': 'eUGufN', 'K': 'mkn', 'J': 'RNtll', 'P': 'rErlpVr', 'I': 'KFlElGIG'}": {
+      "result": false,
+      "time": 0.03273487091064453,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'R': 'kHn', 'S': 'VlCqaZBJ', 'X': 'MSkNCtM'}, {'D': 'evswy', 'Y': 'EIkzVdcl'}, {'F': 'xOP', 'C': 'JwaisQz'}) == {'F': 'xOP', 'C': 'JwaisQz', 'D': 'evswy', 'Y': 'EIkzVdcl', 'R': 'kHn', 'S': 'VlCqaZBJ', 'X': 'MSkNCtM'}": {
+      "result": true,
+      "time": 0.03189682960510254,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'R': 'zwT', 'S': 'frXXhHH', 'X': 'BvzZRp'}, {'I': 'nlzoro', 'N': 'nVvfVfgz'}, {'B': 'qkyYYWOb', 'W': 'utwFDZTMR'}) == {'B': 'qkyYYWOb', 'W': 'utwFDZTMR', 'I': 'nlzoro', 'N': 'nVvfVfgz', 'R': 'zwT', 'S': 'frXXhHH', 'X': 'BvzZRp'}": {
+      "result": true,
+      "time": 0.03223419189453125,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'A': 'zYrVrmuQI', 'Q': 'XXTXyU', 'R': 'WzGVbQv'}, {'E': 'czk', 'B': 'COWGrVD'}, {'Z': 'YDeScGiwb', 'U': 'qMrGLK'}) == {'Z': 'YDeScGiwb', 'U': 'qMrGLK', 'E': 'czk', 'B': 'COWGrVD', 'A': 'zYrVrmuQI', 'Q': 'XXTXyU', 'R': 'WzGVbQv'}": {
+      "result": true,
+      "time": 0.038298845291137695,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'W': 'lKuSRiyR', 'P': 'cTafbrh', 'V': 'vxR'}, {'W': 'dvihztlybqba', 'F': 'zTXW'}, {'W': 'xGwDM', 'E': 'uQwxzbg'}) == {'W': 'lKuSRiyR', 'E': 'uQwxzbg', 'F': 'zTXW', 'P': 'cTafbrh', 'V': 'vxR'}": {
+      "result": false,
+      "time": 0.037019968032836914,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Z': 'KBgj', 'K': 'lYuIKpd', 'E': 'rcDsUGflH'}, {'V': 'rrxifijflcn', 'A': 'pAhLr'}, {'S': 'JBDGBo', 'F': 'jkFucK'}) == {'S': 'JBDGBo', 'F': 'jkFucK', 'V': 'rrxifijflcn', 'A': 'pAhLr', 'Z': 'KBgj', 'K': 'lYuIKpd', 'E': 'rcDsUGflH'}": {
+      "result": true,
+      "time": 0.034288644790649414,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'B': 'KJnA', 'W': 'npbPwPy', 'R': 'ZCBCRkZ'}, {'N': 'nca', 'C': 'ykQ'}, {'S': 'BlTZBm', 'K': 'DdflQ'}) == {'S': 'BlTZBm', 'K': 'DdflQ', 'N': 'nca', 'C': 'ykQ', 'B': 'KJnA', 'W': 'npbPwPy', 'R': 'ZCBCRkZ'}": {
+      "result": true,
+      "time": 0.03789544105529785,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'X': 'osA', 'V': 'zzfDp', 'U': 'FKwUqxa'}, {'Q': 'vczebxgfhfk', 'G': 'PivJtXRc'}, {'J': 'WWuzJQR', 'U': 'Pvmca'}) == {'J': 'WWuzJQR', 'U': 'FKwUqxa', 'Q': 'vczebxgfhfk', 'G': 'PivJtXRc', 'X': 'osA', 'V': 'zzfDp'}": {
+      "result": false,
+      "time": 0.04237866401672363,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'O': 'jKGfcw', 'R': 'LIRKU', 'I': 'qSL'}, {'H': 'jndzsw', 'S': 'OSfZAt'}, {'V': 'WRLHqycDY', 'T': 'tiayws'}) == {'V': 'WRLHqycDY', 'T': 'tiayws', 'H': 'jndzsw', 'S': 'OSfZAt', 'O': 'jKGfcw', 'R': 'LIRKU', 'I': 'qSL'}": {
+      "result": true,
+      "time": 0.041764020919799805,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'J': 'mnH', 'G': 'OOWpwTvT', 'P': 'EHGFM'}, {'J': 'agd', 'G': 'sICq'}, {'L': 'fmFsoW', 'A': 'wufCatMW'}) == {'L': 'fmFsoW', 'A': 'wufCatMW', 'J': 'mnH', 'G': 'OOWpwTvT', 'P': 'EHGFM'}": {
+      "result": false,
+      "time": 0.03547787666320801,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'Q': 'VRNKcdN', 'K': 'dqiALaIuu', 'F': 'iRzBJF'}, {'K': 'bcpoixekdibm', 'B': 'yOCuFPd'}, {'D': 'gyPNjiiA', 'J': 'rglWbqHF'}) == {'D': 'gyPNjiiA', 'J': 'rglWbqHF', 'K': 'dqiALaIuu', 'B': 'yOCuFPd', 'Q': 'VRNKcdN', 'F': 'iRzBJF'}": {
+      "result": false,
+      "time": 0.03911995887756348,
+      "error": null
+    },
+    "assert merge_dictionaries_three({'S': 'jeOBr', 'J': 'sYPG', 'C': 'zjw'}, {'D': 'whj', 'R': 'jHLJyErfh'}, {'U': 'NOAdZJQ', 'Q': 'rjnjJmEcY'}) == {'U': 'NOAdZJQ', 'Q': 'rjnjJmEcY', 'D': 'whj', 'R': 'jHLJyErfh', 'S': 'jeOBr', 'J': 'sYPG', 'C': 'zjw'}": {
+      "result": true,
+      "time": 0.03223729133605957,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.4803921568627451,
+  "general_error": "",
+  "has_testcase_error": false
+}

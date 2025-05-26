@@ -1,0 +1,519 @@
+{
+  "code": "def pancake_sort(arr):\n    def flip(arr, k):\n        for i in range(k//2):\n            arr[i], arr[k-i-1] = arr[k-i-1], arr[i]\n\n    n = len(arr)\n    res = []\n    for i in range(n, 0, -1):\n        m = arr.index(i)\n        flip(arr, m+1)\n        res.append((m+1, i))\n        if i > 1:\n            flip(arr, i)\n            res.append((i, arr[i-1]))\n    return res",
+  "results": {
+    "assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]": {
+      "result": false,
+      "time": 0.03734278678894043,
+      "error": null
+    },
+    "assert pancake_sort([98, 12, 54, 36, 85]) == [12, 36, 54, 85, 98]": {
+      "result": false,
+      "time": 0.0343015193939209,
+      "error": null
+    },
+    "assert pancake_sort([41, 42, 32, 12, 23]) == [12, 23, 32, 41, 42]": {
+      "result": false,
+      "time": 0.03688406944274902,
+      "error": null
+    },
+    "assert pancake_sort([14, 76, 23, 38, 72]) == [14, 23, 38, 72, 76]": {
+      "result": false,
+      "time": 0.038236141204833984,
+      "error": null
+    },
+    "assert pancake_sort([18, 80, 28, 39, 71]) == [18, 28, 39, 71, 80]": {
+      "result": false,
+      "time": 0.039104461669921875,
+      "error": null
+    },
+    "assert pancake_sort([10, 78, 29, 33, 65]) == [10, 29, 33, 65, 78]": {
+      "result": false,
+      "time": 0.04081845283508301,
+      "error": null
+    },
+    "assert pancake_sort([19, 74, 30, 37, 73]) == [19, 30, 37, 73, 74]": {
+      "result": false,
+      "time": 0.03749275207519531,
+      "error": null
+    },
+    "assert pancake_sort([10, 82, 27, 43, 69]) == [10, 27, 43, 69, 82]": {
+      "result": false,
+      "time": 0.03746151924133301,
+      "error": null
+    },
+    "assert pancake_sort([11, 84, 23, 33, 72]) == [11, 23, 33, 72, 84]": {
+      "result": false,
+      "time": 0.038429975509643555,
+      "error": null
+    },
+    "assert pancake_sort([10, 75, 20, 38, 65]) == [10, 20, 38, 65, 75]": {
+      "result": false,
+      "time": 0.03799772262573242,
+      "error": null
+    },
+    "assert pancake_sort([10, 75, 29, 42, 69]) == [10, 29, 42, 69, 75]": {
+      "result": false,
+      "time": 0.0411992073059082,
+      "error": null
+    },
+    "assert pancake_sort([20, 83, 23, 35, 69]) == [20, 23, 35, 69, 83]": {
+      "result": false,
+      "time": 0.0374143123626709,
+      "error": null
+    },
+    "assert pancake_sort([11, 82, 28, 33, 71]) == [11, 28, 33, 71, 82]": {
+      "result": false,
+      "time": 0.038680315017700195,
+      "error": null
+    },
+    "assert pancake_sort([18, 80, 25, 38, 70]) == [18, 25, 38, 70, 80]": {
+      "result": false,
+      "time": 0.04073905944824219,
+      "error": null
+    },
+    "assert pancake_sort([18, 77, 25, 34, 64]) == [18, 25, 34, 64, 77]": {
+      "result": false,
+      "time": 0.03195762634277344,
+      "error": null
+    },
+    "assert pancake_sort([15, 75, 26, 33, 73]) == [15, 26, 33, 73, 75]": {
+      "result": false,
+      "time": 0.03586745262145996,
+      "error": null
+    },
+    "assert pancake_sort([14, 79, 27, 42, 74]) == [14, 27, 42, 74, 79]": {
+      "result": false,
+      "time": 0.03785061836242676,
+      "error": null
+    },
+    "assert pancake_sort([18, 75, 20, 40, 73]) == [18, 20, 40, 73, 75]": {
+      "result": false,
+      "time": 0.039021968841552734,
+      "error": null
+    },
+    "assert pancake_sort([17, 83, 27, 43, 73]) == [17, 27, 43, 73, 83]": {
+      "result": false,
+      "time": 0.031867027282714844,
+      "error": null
+    },
+    "assert pancake_sort([19, 75, 29, 41, 66]) == [19, 29, 41, 66, 75]": {
+      "result": false,
+      "time": 0.03276228904724121,
+      "error": null
+    },
+    "assert pancake_sort([19, 81, 25, 34, 74]) == [19, 25, 34, 74, 81]": {
+      "result": false,
+      "time": 0.04669904708862305,
+      "error": null
+    },
+    "assert pancake_sort([14, 80, 21, 35, 73]) == [14, 21, 35, 73, 80]": {
+      "result": false,
+      "time": 0.03061366081237793,
+      "error": null
+    },
+    "assert pancake_sort([17, 79, 25, 36, 70]) == [17, 25, 36, 70, 79]": {
+      "result": false,
+      "time": 0.03104996681213379,
+      "error": null
+    },
+    "assert pancake_sort([10, 84, 23, 42, 68]) == [10, 23, 42, 68, 84]": {
+      "result": false,
+      "time": 0.03821516036987305,
+      "error": null
+    },
+    "assert pancake_sort([13, 81, 23, 33, 69]) == [13, 23, 33, 69, 81]": {
+      "result": false,
+      "time": 0.02996993064880371,
+      "error": null
+    },
+    "assert pancake_sort([20, 76, 30, 40, 73]) == [20, 30, 40, 73, 76]": {
+      "result": false,
+      "time": 0.04558372497558594,
+      "error": null
+    },
+    "assert pancake_sort([12, 80, 20, 43, 67]) == [12, 20, 43, 67, 80]": {
+      "result": false,
+      "time": 0.0399622917175293,
+      "error": null
+    },
+    "assert pancake_sort([18, 82, 21, 43, 66]) == [18, 21, 43, 66, 82]": {
+      "result": false,
+      "time": 0.04022336006164551,
+      "error": null
+    },
+    "assert pancake_sort([16, 83, 24, 33, 68]) == [16, 24, 33, 68, 83]": {
+      "result": false,
+      "time": 0.03264141082763672,
+      "error": null
+    },
+    "assert pancake_sort([17, 82, 27, 41, 74]) == [17, 27, 41, 74, 82]": {
+      "result": false,
+      "time": 0.03442955017089844,
+      "error": null
+    },
+    "assert pancake_sort([14, 78, 20, 33, 68]) == [14, 20, 33, 68, 78]": {
+      "result": false,
+      "time": 0.03461790084838867,
+      "error": null
+    },
+    "assert pancake_sort([12, 79, 28, 41, 74]) == [12, 28, 41, 74, 79]": {
+      "result": false,
+      "time": 0.042684316635131836,
+      "error": null
+    },
+    "assert pancake_sort([14, 80, 29, 39, 72]) == [14, 29, 39, 72, 80]": {
+      "result": false,
+      "time": 0.032849788665771484,
+      "error": null
+    },
+    "assert pancake_sort([11, 74, 25, 42, 72]) == [11, 25, 42, 72, 74]": {
+      "result": false,
+      "time": 0.033358097076416016,
+      "error": null
+    },
+    "assert pancake_sort([14, 77, 21, 38, 65]) == [14, 21, 38, 65, 77]": {
+      "result": false,
+      "time": 0.03558707237243652,
+      "error": null
+    },
+    "assert pancake_sort([13, 83, 22, 41, 67]) == [13, 22, 41, 67, 83]": {
+      "result": false,
+      "time": 0.03544950485229492,
+      "error": null
+    },
+    "assert pancake_sort([103, 12, 52, 36, 82]) == [12, 36, 52, 82, 103]": {
+      "result": false,
+      "time": 0.036798715591430664,
+      "error": null
+    },
+    "assert pancake_sort([93, 10, 55, 40, 85]) == [10, 40, 55, 85, 93]": {
+      "result": false,
+      "time": 0.036060333251953125,
+      "error": null
+    },
+    "assert pancake_sort([95, 7, 59, 33, 85]) == [7, 33, 59, 85, 95]": {
+      "result": false,
+      "time": 0.04084277153015137,
+      "error": null
+    },
+    "assert pancake_sort([98, 13, 57, 31, 80]) == [13, 31, 57, 80, 98]": {
+      "result": false,
+      "time": 0.0329740047454834,
+      "error": null
+    },
+    "assert pancake_sort([93, 9, 56, 35, 84]) == [9, 35, 56, 84, 93]": {
+      "result": false,
+      "time": 0.0332798957824707,
+      "error": null
+    },
+    "assert pancake_sort([102, 8, 52, 32, 88]) == [8, 32, 52, 88, 102]": {
+      "result": false,
+      "time": 0.03823399543762207,
+      "error": null
+    },
+    "assert pancake_sort([97, 15, 51, 41, 87]) == [15, 41, 51, 87, 97]": {
+      "result": false,
+      "time": 0.042890071868896484,
+      "error": null
+    },
+    "assert pancake_sort([103, 8, 50, 36, 80]) == [8, 36, 50, 80, 103]": {
+      "result": false,
+      "time": 0.031308650970458984,
+      "error": null
+    },
+    "assert pancake_sort([102, 17, 54, 40, 84]) == [17, 40, 54, 84, 102]": {
+      "result": false,
+      "time": 0.0368192195892334,
+      "error": null
+    },
+    "assert pancake_sort([102, 10, 50, 38, 84]) == [10, 38, 50, 84, 102]": {
+      "result": false,
+      "time": 0.037362098693847656,
+      "error": null
+    },
+    "assert pancake_sort([101, 13, 51, 39, 86]) == [13, 39, 51, 86, 101]": {
+      "result": false,
+      "time": 0.03544902801513672,
+      "error": null
+    },
+    "assert pancake_sort([101, 7, 52, 40, 85]) == [7, 40, 52, 85, 101]": {
+      "result": false,
+      "time": 0.0424962043762207,
+      "error": null
+    },
+    "assert pancake_sort([93, 15, 58, 32, 85]) == [15, 32, 58, 85, 93]": {
+      "result": false,
+      "time": 0.0370028018951416,
+      "error": null
+    },
+    "assert pancake_sort([102, 15, 52, 41, 81]) == [15, 41, 52, 81, 102]": {
+      "result": false,
+      "time": 0.04135441780090332,
+      "error": null
+    },
+    "assert pancake_sort([103, 14, 58, 32, 90]) == [14, 32, 58, 90, 103]": {
+      "result": false,
+      "time": 0.04159665107727051,
+      "error": null
+    },
+    "assert pancake_sort([94, 14, 49, 34, 89]) == [14, 34, 49, 89, 94]": {
+      "result": false,
+      "time": 0.03038191795349121,
+      "error": null
+    },
+    "assert pancake_sort([94, 15, 59, 38, 87]) == [15, 38, 59, 87, 94]": {
+      "result": false,
+      "time": 0.04234504699707031,
+      "error": null
+    },
+    "assert pancake_sort([103, 10, 53, 38, 85]) == [10, 38, 53, 85, 103]": {
+      "result": false,
+      "time": 0.038424015045166016,
+      "error": null
+    },
+    "assert pancake_sort([93, 7, 58, 31, 85]) == [7, 31, 58, 85, 93]": {
+      "result": false,
+      "time": 0.035694122314453125,
+      "error": null
+    },
+    "assert pancake_sort([95, 10, 50, 37, 83]) == [10, 37, 50, 83, 95]": {
+      "result": false,
+      "time": 0.043538570404052734,
+      "error": null
+    },
+    "assert pancake_sort([102, 7, 54, 34, 90]) == [7, 34, 54, 90, 102]": {
+      "result": false,
+      "time": 0.032645225524902344,
+      "error": null
+    },
+    "assert pancake_sort([101, 8, 55, 36, 89]) == [8, 36, 55, 89, 101]": {
+      "result": false,
+      "time": 0.03665328025817871,
+      "error": null
+    },
+    "assert pancake_sort([101, 14, 54, 34, 88]) == [14, 34, 54, 88, 101]": {
+      "result": false,
+      "time": 0.04299330711364746,
+      "error": null
+    },
+    "assert pancake_sort([100, 10, 58, 39, 88]) == [10, 39, 58, 88, 100]": {
+      "result": false,
+      "time": 0.03673124313354492,
+      "error": null
+    },
+    "assert pancake_sort([93, 17, 56, 36, 88]) == [17, 36, 56, 88, 93]": {
+      "result": false,
+      "time": 0.0406184196472168,
+      "error": null
+    },
+    "assert pancake_sort([100, 16, 50, 38, 86]) == [16, 38, 50, 86, 100]": {
+      "result": false,
+      "time": 0.03665757179260254,
+      "error": null
+    },
+    "assert pancake_sort([100, 14, 54, 32, 89]) == [14, 32, 54, 89, 100]": {
+      "result": false,
+      "time": 0.03963804244995117,
+      "error": null
+    },
+    "assert pancake_sort([93, 12, 54, 34, 85]) == [12, 34, 54, 85, 93]": {
+      "result": false,
+      "time": 0.04589724540710449,
+      "error": null
+    },
+    "assert pancake_sort([95, 17, 49, 34, 89]) == [17, 34, 49, 89, 95]": {
+      "result": false,
+      "time": 0.03687405586242676,
+      "error": null
+    },
+    "assert pancake_sort([98, 11, 59, 38, 89]) == [11, 38, 59, 89, 98]": {
+      "result": false,
+      "time": 0.04004836082458496,
+      "error": null
+    },
+    "assert pancake_sort([102, 11, 59, 39, 81]) == [11, 39, 59, 81, 102]": {
+      "result": false,
+      "time": 0.03437542915344238,
+      "error": null
+    },
+    "assert pancake_sort([100, 8, 55, 32, 90]) == [8, 32, 55, 90, 100]": {
+      "result": false,
+      "time": 0.035285234451293945,
+      "error": null
+    },
+    "assert pancake_sort([93, 11, 55, 37, 84]) == [11, 37, 55, 84, 93]": {
+      "result": false,
+      "time": 0.03793191909790039,
+      "error": null
+    },
+    "assert pancake_sort([44, 47, 28, 14, 20]) == [14, 20, 28, 44, 47]": {
+      "result": false,
+      "time": 0.03500008583068848,
+      "error": null
+    },
+    "assert pancake_sort([39, 38, 27, 16, 27]) == [16, 27, 27, 38, 39]": {
+      "result": false,
+      "time": 0.03747296333312988,
+      "error": null
+    },
+    "assert pancake_sort([42, 40, 29, 16, 25]) == [16, 25, 29, 40, 42]": {
+      "result": false,
+      "time": 0.04156160354614258,
+      "error": null
+    },
+    "assert pancake_sort([39, 38, 34, 12, 28]) == [12, 28, 34, 38, 39]": {
+      "result": false,
+      "time": 0.034897804260253906,
+      "error": null
+    },
+    "assert pancake_sort([41, 38, 29, 8, 18]) == [8, 18, 29, 38, 41]": {
+      "result": false,
+      "time": 0.03340864181518555,
+      "error": null
+    },
+    "assert pancake_sort([37, 44, 37, 12, 28]) == [12, 28, 37, 37, 44]": {
+      "result": false,
+      "time": 0.04081392288208008,
+      "error": null
+    },
+    "assert pancake_sort([46, 38, 29, 7, 23]) == [7, 23, 29, 38, 46]": {
+      "result": false,
+      "time": 0.03731894493103027,
+      "error": null
+    },
+    "assert pancake_sort([40, 47, 33, 10, 23]) == [10, 23, 33, 40, 47]": {
+      "result": false,
+      "time": 0.034641265869140625,
+      "error": null
+    },
+    "assert pancake_sort([46, 44, 29, 12, 18]) == [12, 18, 29, 44, 46]": {
+      "result": false,
+      "time": 0.03743457794189453,
+      "error": null
+    },
+    "assert pancake_sort([38, 40, 30, 17, 18]) == [17, 18, 30, 38, 40]": {
+      "result": false,
+      "time": 0.0377657413482666,
+      "error": null
+    },
+    "assert pancake_sort([43, 47, 29, 12, 21]) == [12, 21, 29, 43, 47]": {
+      "result": false,
+      "time": 0.03591346740722656,
+      "error": null
+    },
+    "assert pancake_sort([46, 46, 37, 11, 26]) == [11, 26, 37, 46, 46]": {
+      "result": false,
+      "time": 0.0381159782409668,
+      "error": null
+    },
+    "assert pancake_sort([38, 42, 28, 15, 19]) == [15, 19, 28, 38, 42]": {
+      "result": false,
+      "time": 0.03722333908081055,
+      "error": null
+    },
+    "assert pancake_sort([38, 43, 32, 13, 25]) == [13, 25, 32, 38, 43]": {
+      "result": false,
+      "time": 0.04028463363647461,
+      "error": null
+    },
+    "assert pancake_sort([40, 44, 34, 15, 20]) == [15, 20, 34, 40, 44]": {
+      "result": false,
+      "time": 0.03729677200317383,
+      "error": null
+    },
+    "assert pancake_sort([46, 39, 36, 9, 21]) == [9, 21, 36, 39, 46]": {
+      "result": false,
+      "time": 0.03733181953430176,
+      "error": null
+    },
+    "assert pancake_sort([39, 47, 30, 15, 26]) == [15, 26, 30, 39, 47]": {
+      "result": false,
+      "time": 0.03807663917541504,
+      "error": null
+    },
+    "assert pancake_sort([37, 47, 33, 9, 25]) == [9, 25, 33, 37, 47]": {
+      "result": false,
+      "time": 0.0417022705078125,
+      "error": null
+    },
+    "assert pancake_sort([46, 47, 35, 16, 20]) == [16, 20, 35, 46, 47]": {
+      "result": false,
+      "time": 0.04016709327697754,
+      "error": null
+    },
+    "assert pancake_sort([45, 44, 28, 12, 22]) == [12, 22, 28, 44, 45]": {
+      "result": false,
+      "time": 0.038002729415893555,
+      "error": null
+    },
+    "assert pancake_sort([40, 47, 27, 9, 28]) == [9, 27, 28, 40, 47]": {
+      "result": false,
+      "time": 0.03513979911804199,
+      "error": null
+    },
+    "assert pancake_sort([39, 38, 29, 15, 23]) == [15, 23, 29, 38, 39]": {
+      "result": false,
+      "time": 0.035082101821899414,
+      "error": null
+    },
+    "assert pancake_sort([46, 46, 30, 15, 25]) == [15, 25, 30, 46, 46]": {
+      "result": false,
+      "time": 0.03993368148803711,
+      "error": null
+    },
+    "assert pancake_sort([38, 45, 36, 15, 22]) == [15, 22, 36, 38, 45]": {
+      "result": false,
+      "time": 0.03153038024902344,
+      "error": null
+    },
+    "assert pancake_sort([36, 46, 30, 9, 23]) == [9, 23, 30, 36, 46]": {
+      "result": false,
+      "time": 0.0438690185546875,
+      "error": null
+    },
+    "assert pancake_sort([44, 39, 35, 9, 27]) == [9, 27, 35, 39, 44]": {
+      "result": false,
+      "time": 0.033951520919799805,
+      "error": null
+    },
+    "assert pancake_sort([43, 38, 30, 17, 22]) == [17, 22, 30, 38, 43]": {
+      "result": false,
+      "time": 0.040029287338256836,
+      "error": null
+    },
+    "assert pancake_sort([43, 47, 34, 12, 19]) == [12, 19, 34, 43, 47]": {
+      "result": false,
+      "time": 0.04036712646484375,
+      "error": null
+    },
+    "assert pancake_sort([46, 47, 30, 7, 28]) == [7, 28, 30, 46, 47]": {
+      "result": false,
+      "time": 0.03864622116088867,
+      "error": null
+    },
+    "assert pancake_sort([37, 38, 32, 11, 22]) == [11, 22, 32, 37, 38]": {
+      "result": false,
+      "time": 0.0371706485748291,
+      "error": null
+    },
+    "assert pancake_sort([39, 47, 37, 16, 24]) == [16, 24, 37, 39, 47]": {
+      "result": false,
+      "time": 0.03892970085144043,
+      "error": null
+    },
+    "assert pancake_sort([45, 41, 27, 8, 22]) == [8, 22, 27, 41, 45]": {
+      "result": false,
+      "time": 0.03526568412780762,
+      "error": null
+    },
+    "assert pancake_sort([37, 38, 30, 17, 18]) == [17, 18, 30, 37, 38]": {
+      "result": false,
+      "time": 0.03245997428894043,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

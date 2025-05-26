@@ -1,0 +1,519 @@
+{
+  "code": "from collections import OrderedDict\n\ndef first_non_repeating_character(s):\n    char_count = OrderedDict()\n    for char in s:\n        char_count[char] = char_count.get(char, 0) + 1\n    for char, count in char_count.items():\n        if count == 1:\n            return char\n    return None",
+  "results": {
+    "assert first_non_repeating_character(\"abcabc\") == None": {
+      "result": true,
+      "time": 0.27699756622314453,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"abc\") == \"a\"": {
+      "result": true,
+      "time": 0.28574132919311523,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ababc\") == \"c\"": {
+      "result": true,
+      "time": 0.2843005657196045,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"lvbkblwbzvm\") == \"k\"": {
+      "result": true,
+      "time": 0.298475980758667,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"bojlxknd\") == \"b\"": {
+      "result": true,
+      "time": 0.2897162437438965,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ynzxn\") == \"y\"": {
+      "result": true,
+      "time": 0.2916839122772217,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"qdtx\") == \"q\"": {
+      "result": true,
+      "time": 0.27669501304626465,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"vrcd\") == \"v\"": {
+      "result": true,
+      "time": 0.29393434524536133,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"fthejmrwcgf\") == \"t\"": {
+      "result": true,
+      "time": 0.2958548069000244,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"xnwghagriwbc\") == \"x\"": {
+      "result": true,
+      "time": 0.2687041759490967,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"qlhidwxc\") == \"q\"": {
+      "result": true,
+      "time": 0.2804899215698242,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"sdm\") == \"s\"": {
+      "result": true,
+      "time": 0.27131152153015137,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"zeoa\") == \"z\"": {
+      "result": true,
+      "time": 0.28686094284057617,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"jvmqjwhlp\") == \"v\"": {
+      "result": true,
+      "time": 0.28063368797302246,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"juo\") == j": {
+      "result": false,
+      "time": 0.27251124382019043,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"dccbzted\") == \"b\"": {
+      "result": true,
+      "time": 0.2802557945251465,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"zwyxqoirj\") == \"z\"": {
+      "result": true,
+      "time": 0.2635054588317871,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"azheziswlzk\") == \"a\"": {
+      "result": true,
+      "time": 0.30166196823120117,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"zbibcuw\") == \"z\"": {
+      "result": true,
+      "time": 0.28314852714538574,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"lmq\") == \"l\"": {
+      "result": true,
+      "time": 0.2847757339477539,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"hwd\") == \"h\"": {
+      "result": true,
+      "time": 0.2901036739349365,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"vxazudpp\") == \"v\"": {
+      "result": true,
+      "time": 0.2642829418182373,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"fehvotmmnvvx\") == f": {
+      "result": false,
+      "time": 0.27179765701293945,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ftwamp\") == f": {
+      "result": false,
+      "time": 0.28064966201782227,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"mjl\") == \"m\"": {
+      "result": true,
+      "time": 0.28246426582336426,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"jqmg\") == j": {
+      "result": false,
+      "time": 0.2678108215332031,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"aplo\") == \"a\"": {
+      "result": true,
+      "time": 0.27242326736450195,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"wrp\") == \"w\"": {
+      "result": true,
+      "time": 0.26407384872436523,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ycaimusvf\") == \"y\"": {
+      "result": true,
+      "time": 0.26941370964050293,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"iycaohglbt\") == i": {
+      "result": false,
+      "time": 0.26378464698791504,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"vuetk\") == \"v\"": {
+      "result": true,
+      "time": 0.2816476821899414,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"hglttyrsbz\") == \"h\"": {
+      "result": true,
+      "time": 0.27445530891418457,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"zuondj\") == \"z\"": {
+      "result": true,
+      "time": 0.291532039642334,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"anovx\") == \"a\"": {
+      "result": true,
+      "time": 0.2672858238220215,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"wsvudggvb\") == \"w\"": {
+      "result": true,
+      "time": 0.2733340263366699,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"jejqsrosa\") == \"e\"": {
+      "result": true,
+      "time": 0.2925407886505127,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"dyzsbvr\") == \"d\"": {
+      "result": true,
+      "time": 0.2683854103088379,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"kbjmtwd\") == \"k\"": {
+      "result": true,
+      "time": 0.31249284744262695,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"iwfgna\") == i": {
+      "result": false,
+      "time": 0.2827491760253906,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"rdco\") == \"r\"": {
+      "result": true,
+      "time": 0.28907012939453125,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"onjzhm\") == \"o\"": {
+      "result": true,
+      "time": 0.29477357864379883,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"pmxwhk\") == \"p\"": {
+      "result": true,
+      "time": 0.3055870532989502,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"bgbw\") == \"g\"": {
+      "result": true,
+      "time": 0.27349090576171875,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"idruvo\") == i": {
+      "result": false,
+      "time": 0.1637258529663086,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"zfaoan\") == \"z\"": {
+      "result": true,
+      "time": 0.2930290699005127,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"xcgom\") == \"x\"": {
+      "result": true,
+      "time": 0.292102575302124,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"wicji\") == \"w\"": {
+      "result": true,
+      "time": 0.27777552604675293,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"zlq\") == \"z\"": {
+      "result": true,
+      "time": 0.2886037826538086,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"jhzf\") == j": {
+      "result": false,
+      "time": 0.2925689220428467,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"koouixoan\") == \"k\"": {
+      "result": true,
+      "time": 0.3076901435852051,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ebgavyab\") == \"e\"": {
+      "result": true,
+      "time": 0.27257537841796875,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"jncau\") == j": {
+      "result": false,
+      "time": 0.28675198554992676,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"chfmbe\") == \"c\"": {
+      "result": true,
+      "time": 0.31849193572998047,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ofcrh\") == \"o\"": {
+      "result": true,
+      "time": 0.29023003578186035,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"gmqsha\") == \"g\"": {
+      "result": true,
+      "time": 0.21943259239196777,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"qczrolpvp\") == \"q\"": {
+      "result": true,
+      "time": 0.28843092918395996,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"zhpupq\") == \"z\"": {
+      "result": true,
+      "time": 0.2735722064971924,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"xwthzd\") == \"x\"": {
+      "result": true,
+      "time": 0.2951385974884033,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"qjtvt\") == \"q\"": {
+      "result": true,
+      "time": 0.2991297245025635,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"qtugswye\") == \"q\"": {
+      "result": true,
+      "time": 0.2763090133666992,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"utzya\") == \"u\"": {
+      "result": true,
+      "time": 0.3054201602935791,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"mrkl\") == \"m\"": {
+      "result": true,
+      "time": 0.2857699394226074,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"iaeczpnsi\") == \"a\"": {
+      "result": true,
+      "time": 0.33444643020629883,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"evl\") == \"e\"": {
+      "result": true,
+      "time": 0.29101109504699707,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"motlfnggf\") == \"m\"": {
+      "result": true,
+      "time": 0.29720067977905273,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"emnx\") == \"e\"": {
+      "result": true,
+      "time": 0.28668689727783203,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ulthvztw\") == \"u\"": {
+      "result": true,
+      "time": 0.30725860595703125,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ltgkuwgqp\") == \"l\"": {
+      "result": true,
+      "time": 0.26337385177612305,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ffska\") == \"s\"": {
+      "result": true,
+      "time": 0.2896738052368164,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"emtg\") == \"e\"": {
+      "result": true,
+      "time": 0.2554614543914795,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"tqrbyigr\") == \"t\"": {
+      "result": true,
+      "time": 0.4955742359161377,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"vvd\") == \"d\"": {
+      "result": true,
+      "time": 0.2842111587524414,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ydijb\") == \"y\"": {
+      "result": true,
+      "time": 0.2751584053039551,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"bnprekbdc\") == \"n\"": {
+      "result": true,
+      "time": 0.29070281982421875,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ehazrnbm\") == \"e\"": {
+      "result": true,
+      "time": 0.26800060272216797,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"htw\") == \"h\"": {
+      "result": true,
+      "time": 0.2764871120452881,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"wjp\") == \"w\"": {
+      "result": true,
+      "time": 0.2955453395843506,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"tauennh\") == \"t\"": {
+      "result": true,
+      "time": 0.28032588958740234,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ktbph\") == \"k\"": {
+      "result": true,
+      "time": 0.2858552932739258,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"fko\") == f": {
+      "result": false,
+      "time": 0.21480083465576172,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ngiulgg\") == \"n\"": {
+      "result": true,
+      "time": 0.28508496284484863,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"vwo\") == \"v\"": {
+      "result": true,
+      "time": 0.2919189929962158,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"kisshrfjr\") == \"k\"": {
+      "result": true,
+      "time": 0.265852689743042,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"rdtdf\") == \"r\"": {
+      "result": true,
+      "time": 0.2967219352722168,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"zxno\") == \"z\"": {
+      "result": true,
+      "time": 0.285503625869751,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"atlh\") == \"a\"": {
+      "result": true,
+      "time": 0.32240796089172363,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"huicml\") == \"h\"": {
+      "result": true,
+      "time": 0.3033909797668457,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"uwnvioc\") == \"u\"": {
+      "result": true,
+      "time": 0.29481077194213867,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ieubrdsf\") == i": {
+      "result": false,
+      "time": 0.30603718757629395,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"vbryggyrr\") == \"v\"": {
+      "result": true,
+      "time": 0.28903889656066895,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ixlzxgb\") == i": {
+      "result": false,
+      "time": 0.28194379806518555,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"mkepobqw\") == \"m\"": {
+      "result": true,
+      "time": 0.3013179302215576,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"jnybhzqos\") == j": {
+      "result": false,
+      "time": 0.29748082160949707,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"fka\") == f": {
+      "result": false,
+      "time": 0.27326488494873047,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"fgvdcntzt\") == f": {
+      "result": false,
+      "time": 0.28029417991638184,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"xphq\") == \"x\"": {
+      "result": true,
+      "time": 0.27610015869140625,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"ysz\") == \"y\"": {
+      "result": true,
+      "time": 0.2852592468261719,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"rdnpkqtzf\") == \"r\"": {
+      "result": true,
+      "time": 0.2712433338165283,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"lzqrc\") == \"l\"": {
+      "result": true,
+      "time": 0.27555346488952637,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"mcehozioe\") == \"m\"": {
+      "result": true,
+      "time": 0.2841320037841797,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"mbpoe\") == \"m\"": {
+      "result": true,
+      "time": 0.27866387367248535,
+      "error": null
+    },
+    "assert first_non_repeating_character(\"uiqnvtjtr\") == \"u\"": {
+      "result": true,
+      "time": 0.2743344306945801,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8529411764705882,
+  "general_error": "",
+  "has_testcase_error": false
+}

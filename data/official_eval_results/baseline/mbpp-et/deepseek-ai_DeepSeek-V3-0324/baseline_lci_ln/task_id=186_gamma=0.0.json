@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef check_literals(text, patterns):\n    # Initialize a flag to track if any pattern is found\n    found = False\n    \n    # Iterate over each pattern in the list\n    for pattern in patterns:\n        # Compile the regular expression pattern\n        regex = re.compile(re.escape(pattern))\n        \n        # Search for the pattern in the text\n        match = regex.search(text)\n        \n        # If a match is found, set the flag to True and break the loop\n        if match:\n            found = True\n            break\n    \n    # Return the appropriate result based on the flag\n    if found:\n        return \"Matched!\"\n    else:\n        return \"Not Matched!\"",
+  "results": {
+    "assert check_literals('The quick brown fox jumps over the lazy dog.',['fox']) == 'Matched!'": {
+      "result": true,
+      "time": 0.5840513706207275,
+      "error": null
+    },
+    "assert check_literals('The quick brown fox jumps over the lazy dog.',['horse']) == 'Not Matched!'": {
+      "result": true,
+      "time": 0.584381103515625,
+      "error": null
+    },
+    "assert check_literals('The quick brown fox jumps over the lazy dog.',['lazy']) == 'Matched!'": {
+      "result": true,
+      "time": 0.6209094524383545,
+      "error": null
+    },
+    "assert check_literals('jcoQkxifCQhT.mC GlptEQpcLvMBRvkcEBWPwnhYBdUZqAjB', ['pneptbk']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5720956325531006,
+      "error": null
+    },
+    "assert check_literals('aYJv LsvjEUMalPdnnScw.tUSKtNPVOobatjnrjSV', ['qsvkqe']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5813219547271729,
+      "error": null
+    },
+    "assert check_literals('iYJOjidwS iKzEKYSpOxzzPPYLNLjLRTYgnXiKGeIWAwR', ['hflulj']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5741641521453857,
+      "error": null
+    },
+    "assert check_literals('VwAB DOoKcDFFUMxPipuyyvhsAwiqXAZQfEqLlfB', ['zzj']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5532517433166504,
+      "error": null
+    },
+    "assert check_literals('wfPQWhpkOFtFDUcgayppVwEnTlQMQroZqSXWzsSppW U', ['mxfjbfdx']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5677328109741211,
+      "error": null
+    },
+    "assert check_literals('CrKVQkLhWbWfHurjaCqPDBaUZLlhtVOgbpAAhhHIty.TO.w', ['mzuss']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5643320083618164,
+      "error": null
+    },
+    "assert check_literals('EQvVxqO vLmXmugYiJIrZLZrdrwkYdADieSUyXnVHDWl', ['gutdqne']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5632989406585693,
+      "error": null
+    },
+    "assert check_literals('Wb wzlmJqMzKJKd.nnmtOfiMmnOSCpHKNeutFHMEriZ', ['crku']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5693485736846924,
+      "error": null
+    },
+    "assert check_literals('NthIJPIXiA iaMyeUtgkKTLltAaB.sNrYnZmnDHwVx', ['egmy']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5765542984008789,
+      "error": null
+    },
+    "assert check_literals('OuAncgZAtukmbTx.fLvXskjHFDRLenNbcldPQyAO', ['lkltxdii']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5664863586425781,
+      "error": null
+    },
+    "assert check_literals('fRLoFhDmOyocxBfjoxmOQpXQKTJOqWczZDLCnqm', ['lojh']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5740833282470703,
+      "error": null
+    },
+    "assert check_literals('pVlkTDlDHZ.OjCXrQhWueVTJcGIWJUqVjMwcvQujOJV', ['ecgm']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5819692611694336,
+      "error": null
+    },
+    "assert check_literals('WzzzIadtRwmdWjHdzQhEApnAaVxMdXy.nhkmfOlNIQuqb', ['qnc']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5630934238433838,
+      "error": null
+    },
+    "assert check_literals('yxGljKKz.UpBgKJEmDEBSfC y Cto.AqURGWgRn', ['uqezifs']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.565648078918457,
+      "error": null
+    },
+    "assert check_literals('XcrnCt.JYnz.jWEXkrmmUZUCBKFekvRbdDFXRlWkX', ['luybzv']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5703010559082031,
+      "error": null
+    },
+    "assert check_literals('HEyVQlbsLaAaswqntWWqmzZK RYoUjVSbAUYNXy', ['gxppea']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5786170959472656,
+      "error": null
+    },
+    "assert check_literals('XE RLNjvnmcJhhngWarbCtOmEqZE.OhMTnJUidx', ['thvpsmkkf']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.610623836517334,
+      "error": null
+    },
+    "assert check_literals('q WzYEwSzmkkhVZWtyyIBOdxIcxTNyIDRZqk pU.', ['wngxi']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5963776111602783,
+      "error": null
+    },
+    "assert check_literals('ElhpTzJFQdnSyESQvRVDxocOqfqDJMYcBIstaSxyj', ['lrf']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6147441864013672,
+      "error": null
+    },
+    "assert check_literals('GUEAHVlXgRzMmuPTeRgRmBXcVKqUmesvKGCEHZWNwKL', ['nqduh']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5735433101654053,
+      "error": null
+    },
+    "assert check_literals('zownypGgnw.LWYkuQkxiGPPAwqeBKKRuaaRAmgrZH', ['ahvn']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5822498798370361,
+      "error": null
+    },
+    "assert check_literals('zvX sHMTpwiHWLHZyyQqWZgCerjg ZP UCdpHMjTv', ['pbslmostc']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5680708885192871,
+      "error": null
+    },
+    "assert check_literals('oJelLXohgiWchfKlTpkTZqLfCmNDrWCbItgGcJ X', ['cswyu']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5667600631713867,
+      "error": null
+    },
+    "assert check_literals('vpXgeNhHqKlkujGncSnVvYvCBlufaeUNRb .KdGK', ['nxu']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5830018520355225,
+      "error": null
+    },
+    "assert check_literals('uCgmXANpKAhMgMWQvVEg FHkDzYRxeHsGThiNxFcijD', ['nnkff']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5433883666992188,
+      "error": null
+    },
+    "assert check_literals('qAO POuLLEpj ZfPYnapfJvCtRIgovHloBAuvvWpyxu', ['ityjofe']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5709667205810547,
+      "error": null
+    },
+    "assert check_literals('iHrMRmhVLHjsqkgtuxJJnOumJDdSDSMLimylsIijJvsNj', ['jrenplz']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5731847286224365,
+      "error": null
+    },
+    "assert check_literals('JJ  Wg.c  AHSerDhgySLRk. YlmYCXYfjOQUqk', ['oljdga']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5720787048339844,
+      "error": null
+    },
+    "assert check_literals('lYShAHbpGRDjbIKuAJMWmSSXRCBrskgVOxwUjNfW', ['ssvxyzya']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5544216632843018,
+      "error": null
+    },
+    "assert check_literals('iLOAzLgyQQebcZEPfBVFynqfLUS.MGhOsEtJNmuNXCvD', ['kkpwrkq']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5888409614562988,
+      "error": null
+    },
+    "assert check_literals('avnqVrJKlZUbgknrgrMsOsZJnrAbTymSeFYSuMTZohO', ['atkxmtuut']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6131546497344971,
+      "error": null
+    },
+    "assert check_literals('JVVU.wYcD GriLAoHIoRWxGpjXBe sYafvLRcjds', ['dbjtuh']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5390827655792236,
+      "error": null
+    },
+    "assert check_literals('HDuBIOUWBTHaZyDr.B DnWhzQGxvDoZthVNLSNTkWDzrzHW', ['awh']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5553500652313232,
+      "error": null
+    },
+    "assert check_literals('sDkhGqYTcq gtVClponPIpQsiVOETXyWCLsoZZwXY', ['pqsfn']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5915725231170654,
+      "error": null
+    },
+    "assert check_literals('XMjDdY.iaVhQND.KtAqWlnyFIeVaTFf.aNpBRQvzXU', ['ldi']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5750305652618408,
+      "error": null
+    },
+    "assert check_literals('ZTmhVUZXtWgEzlPUPtUEQpUzCVrEvuySUWVuNpF RsT TQWY', ['mzvai']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5581099987030029,
+      "error": null
+    },
+    "assert check_literals('LYov yfC oEzSvgMzmvt.HwEcQS.avGkyDIQYLd', ['bqm']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5684692859649658,
+      "error": null
+    },
+    "assert check_literals('Mgar.GhVFxugEUeziofoHEFGVLVgcgEzspOGxgFDoQlzBb', ['bkfpugm']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5644054412841797,
+      "error": null
+    },
+    "assert check_literals('zqjcELJupjqzdSyEAXAecKV hxSzz.EervmsOIKivBS', ['ehkcrw']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5979776382446289,
+      "error": null
+    },
+    "assert check_literals('ixUzNwEzcSsgjuFVglOmnsnVDbMQNvbJxLYF k.EgVuT', ['shqbvkxs']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6078343391418457,
+      "error": null
+    },
+    "assert check_literals('oHBnDzrKAfLmvZSOoCcMHsPAyygOVkOuReYxxitCvmXtjdl', ['mmpybes']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5999867916107178,
+      "error": null
+    },
+    "assert check_literals('lRjjyXYttAJFoECVk UgSQOgDxJjPwspyipuNxvmZno', ['arpdf']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.4927346706390381,
+      "error": null
+    },
+    "assert check_literals('RMNYCbFqeBoUyDXucFVAKYOzGZONaMBfxUtIAxruLwlxo', ['hupgari']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5874440670013428,
+      "error": null
+    },
+    "assert check_literals(' hHtzvSe.gOGdvVMuxZJdidUhBFcTqGOYpyf.Uui', ['xqjysgxk']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.41861796379089355,
+      "error": null
+    },
+    "assert check_literals(' meSYiywtvFJiLmKRBuqFajP qrwRgjqlp.SoTtEHp.qus', ['tdmqzneg']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.578526496887207,
+      "error": null
+    },
+    "assert check_literals('HDrQLbbRTSZLbDxuzbaIywesmIXnmGq YbpxFaxtia', ['dtxoxazq']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5966277122497559,
+      "error": null
+    },
+    "assert check_literals('RJbAkqcmZZmAMYTBruBMijWRVhaTWxfHSEfAyZtgz.dtnGSa', ['xqfjtzgp']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5847067832946777,
+      "error": null
+    },
+    "assert check_literals('oyxkElwahFRnk FcZXVsUOVmmQ j. xAhZmLzobwomP', ['purgb']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5779509544372559,
+      "error": null
+    },
+    "assert check_literals('vkZfdIzIqrWMYcCibnJucrTTnNLtvkhdGMbhp EyhtbSiNH', ['zjk']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5925076007843018,
+      "error": null
+    },
+    "assert check_literals('eEaPxtbtx TYDrqiOnydvXXjURHFhezQkQtNjQGk d', ['nmsdgf']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5964851379394531,
+      "error": null
+    },
+    "assert check_literals('oXZiuouvWwUPGsXOWbzvrLDThDTWTscqzyjFnmlqJWObZdzr', ['knyxnlt']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.591679573059082,
+      "error": null
+    },
+    "assert check_literals('hoHZFLdqp tMMZqQPFuPhbRovlRKl.fwLRcvOPCmvmMGaG p', ['tywzxg']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5823414325714111,
+      "error": null
+    },
+    "assert check_literals('ettrPOLWbjkJpbnFEpPofXcC bwtFvQEJgyhBIvAETlpv', ['vkamjxga']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5881469249725342,
+      "error": null
+    },
+    "assert check_literals('tSMDusXbvTedFBxkOjTVAkweguyqZWosxcLBUAvJYx', ['hdx']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5685515403747559,
+      "error": null
+    },
+    "assert check_literals('xelibpVZKqiTNGvdDoMdaukhGaKyleRXlec JXLiQ', ['dhpz']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5884609222412109,
+      "error": null
+    },
+    "assert check_literals('gDIAEeTykNRzS Fx.ryg EbcxJJilotwqkvkSfybDTdiOVe', ['fnu']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6008930206298828,
+      "error": null
+    },
+    "assert check_literals('vFZPmDncgrWszooVCOVJnRoXmIYdUyvzpp eodsDVUYI', ['mcn']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5691466331481934,
+      "error": null
+    },
+    "assert check_literals('VzVyPiqGAEzwkQIXnuXqOHusocGGImDcIHepUPjfYzUJX', ['btyrcz']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5978538990020752,
+      "error": null
+    },
+    "assert check_literals('tCImnczUvySiNPsmUeL.IePkNUn jlBPyuOoXIRftz.gvW', ['rvedlnq']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5713295936584473,
+      "error": null
+    },
+    "assert check_literals('dcKevSgYG.gcJpLDICfiOQHWqgDE.Yzt OkdHYFWgyFSf', ['ohfamjvbl']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5924837589263916,
+      "error": null
+    },
+    "assert check_literals('.qmtMEylwYeIFZtHHcBWybULUOU kFXeYfO.JZye', ['unuyo']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5346348285675049,
+      "error": null
+    },
+    "assert check_literals('hLKKPAZlpuMTPrNuKXLiikSjjONqQgMqYG DhFoHW', ['revkd']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5865135192871094,
+      "error": null
+    },
+    "assert check_literals('LAmnFquBxzsBQMwCbBJLlik UuXoGbQyLMZ CWGNje.n', ['coau']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6072609424591064,
+      "error": null
+    },
+    "assert check_literals('ERqCwDyHWxuqQjPvxF.qLreEDCOntUyjZwxuo CLg', ['snidz']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5371367931365967,
+      "error": null
+    },
+    "assert check_literals('uynzJDUwkOGGXP bjKU sYUtBjkQaFurTnRozmbCEcDNc', ['tuoape']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5797491073608398,
+      "error": null
+    },
+    "assert check_literals('GooODlBVQUmzEQTUejabkGDFEnDitR.NoefPelyHjVna', ['djihfv']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.4102048873901367,
+      "error": null
+    },
+    "assert check_literals('RofkrUCOsIhueYgqCp chcgRFVYZKniMwItxLQiKoUH', ['gpegqr']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.4221031665802002,
+      "error": null
+    },
+    "assert check_literals('vt OhXdbVkmsnCOzDTkfvwwuhfnOmdJLXuR hFUBn', ['qonbnv']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.4907047748565674,
+      "error": null
+    },
+    "assert check_literals('hCwDPXxNhrfRIRDHsHYxaWKA.eMKAYSQdvpmlsKprvb', ['fympvd']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6048543453216553,
+      "error": null
+    },
+    "assert check_literals('qQJjxEsuHuTUYMHOTgKfNGvpeiJOPPomvHe.ngMpVs', ['mvfyh']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6012437343597412,
+      "error": null
+    },
+    "assert check_literals('QDGdXBEiDumBAIWVlfhVfEfeRUOrhvlCiwHKGixnhBuO', ['tem']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.3627793788909912,
+      "error": null
+    },
+    "assert check_literals('bXIAvBUjuuVRHmqxjMlqjfRkdeFkxDKtizdnGFwtMUQRMx', ['xlhfxaqj']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6039083003997803,
+      "error": null
+    },
+    "assert check_literals(' zOiPtv SyUbARoooKHQYHpvjwrAayHsP.PSyHAMWh', ['iibbwncw']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5758681297302246,
+      "error": null
+    },
+    "assert check_literals('CfMooYGVkwXqDteNgDYHaRBjjZCOwCiIxFHnGOpEt', ['xkjp']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5805282592773438,
+      "error": null
+    },
+    "assert check_literals('jOGSkmSD.bRBmaHWDU KcrmwPRcsJmz.bTWzxfFTvVc', ['jrusiow']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5763368606567383,
+      "error": null
+    },
+    "assert check_literals('eRQUBSMPwRBRoxrqKIFOwMeBLqEkwAOlprVBgmzErprPa', ['woumic']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.48873424530029297,
+      "error": null
+    },
+    "assert check_literals('toyAlVkvxccgZetkAjZIbnWwySzjbOxOOFsYaGlHAANKIiTV', ['gjnmuntk']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5842251777648926,
+      "error": null
+    },
+    "assert check_literals('jZBZCrwRHR YmxbTkW. mvkfDToUAecMlEKCQq.quSP', ['uxzrjds']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5692489147186279,
+      "error": null
+    },
+    "assert check_literals('cYRmRKdLiDNoLsXnUTyHyqdCTGlclzaXTIxRizqv', ['alkenek']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6036961078643799,
+      "error": null
+    },
+    "assert check_literals('u.hJPJbBMPBEgCNcJ.tRinQOxmxtpvUctoEOia.KwGTFSH.', ['ogjya']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6195447444915771,
+      "error": null
+    },
+    "assert check_literals('qpKoYmYscRRWRYtAqlKVeDHRHYcmKVXcrAPeHhgxbKHPk', ['yod']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.617706298828125,
+      "error": null
+    },
+    "assert check_literals('KnVmChQnGUXyFoUfTLVCEo KlaZR.NooCdDGsKSqn', ['idkg']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5674104690551758,
+      "error": null
+    },
+    "assert check_literals('igUswexteRWQehDENYRlaUsccoJxOWmJuzQWdNB.kwEZD', ['njychrp']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.584315299987793,
+      "error": null
+    },
+    "assert check_literals('nYfb Tt eIvbUaqErXWZFMyMrJl.XAzkUpHXWSLuUFHVW', ['skoxs']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5602538585662842,
+      "error": null
+    },
+    "assert check_literals('tslAasJMQmhRizCNHBLyydqDOZbBeTrdbzLUcjTlqV', ['ila']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5709400177001953,
+      "error": null
+    },
+    "assert check_literals('mkUSevVzzLcKmchWvyvnHURMz yWrhJNWYInQJWJBhIdzD', ['hzvvpdcji']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5686671733856201,
+      "error": null
+    },
+    "assert check_literals('PuBrNu.eHGFnhHPLpegyAqysxOLoYFroylOuehv u', ['opiys']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6259481906890869,
+      "error": null
+    },
+    "assert check_literals('KgyoITXDmrOgCHgRpzFhYEPshmceRMBw.NvbvfZ', ['vlmzkb']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5639379024505615,
+      "error": null
+    },
+    "assert check_literals('yrkTPRPitBNCP. EOjifDjXWxSulSYtbjleXZQvpgalAStI', ['saivu']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5781466960906982,
+      "error": null
+    },
+    "assert check_literals('aidYrCfItqS RMPobREngijzof yPnysDHnWNzntVqUzUPAx', ['cxyvhri']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.603337287902832,
+      "error": null
+    },
+    "assert check_literals('wm.GdIkdGOEYzL.HTPmZHE.fzLYcSuQhgwyprcdvgifUhYMk', ['jxiazhy']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5805292129516602,
+      "error": null
+    },
+    "assert check_literals('AlvHRWxefwPPZaLmlHyrKwvfkGkvYYNsQd aPOYiiwveR', ['xbwfdqnoi']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5651898384094238,
+      "error": null
+    },
+    "assert check_literals('oTWsDhsPFlTQwIIKXyyVqLGnqYRvxhwVhmpQUqSCR.syq', ['mgsgfbzl']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5764071941375732,
+      "error": null
+    },
+    "assert check_literals('TfhDMgbkbEjkVKACWanfRs LjuGEzbWgNBGhdG Ag', ['regndhtyw']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5733785629272461,
+      "error": null
+    },
+    "assert check_literals('dUNilKZjDyCFjraVHpvmdgTv mPZxQeygmsdnxldpIx s', ['tzo']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6025903224945068,
+      "error": null
+    },
+    "assert check_literals('WrnYNgVoTAfdUJySi FgjZOmM.nsMiLJK.ooBq.N', ['khgpota']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6214790344238281,
+      "error": null
+    },
+    "assert check_literals('TRWyQKYeHbduZvcVYStJaV MDThszAkSBTHWlFJlE', ['rnulvhr']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.6046969890594482,
+      "error": null
+    },
+    "assert check_literals('Lye KmlXJOnnNhhs.eSymgmzpFviT J SUUihLJCWu', ['tgggoqeuk']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.5969514846801758,
+      "error": null
+    },
+    "assert check_literals('vIxjEtSmEGVvIhgnJlO PNCegWs aBejSypNsnAIZeds', ['iacianp']) == \"Not Matched!\"": {
+      "result": true,
+      "time": 0.8310043811798096,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

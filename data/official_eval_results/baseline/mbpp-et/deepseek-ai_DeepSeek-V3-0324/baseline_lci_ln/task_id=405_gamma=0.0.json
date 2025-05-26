@@ -1,0 +1,519 @@
+{
+  "code": "def check_tuplex(tuplex, element):\n    found = False\n    for item in tuplex:\n        if item == element:\n            found = True\n            break\n    return found",
+  "results": {
+    "assert check_tuplex((\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\", \"e\"),'r')==True": {
+      "result": true,
+      "time": 0.044158935546875,
+      "error": null
+    },
+    "assert check_tuplex((\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\", \"e\"),'5')==False": {
+      "result": true,
+      "time": 0.03493189811706543,
+      "error": null
+    },
+    "assert check_tuplex((\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\",\"e\"),3)==True": {
+      "result": true,
+      "time": 0.03513216972351074,
+      "error": null
+    },
+    "assert check_tuplex(('y', 2, 'f', 'e', 'h', 'y', 'e', 'o', 'v', 'r'), 'p') == False": {
+      "result": true,
+      "time": 0.03658246994018555,
+      "error": null
+    },
+    "assert check_tuplex(('p', 6, 'a', 'i', 't', 'q', 'e', 'g', 'r', 'z'), 'f') == False": {
+      "result": true,
+      "time": 0.04827880859375,
+      "error": null
+    },
+    "assert check_tuplex(('d', 8, 'y', 'z', 'r', 'j', 'h', 'q', 'y', 'n'), 's') == False": {
+      "result": true,
+      "time": 0.05860567092895508,
+      "error": null
+    },
+    "assert check_tuplex(('h', 7, 'a', 'i', 'w', 'o', 'v', 'q', 'a', 'a'), 'e') == False": {
+      "result": true,
+      "time": 0.0550081729888916,
+      "error": null
+    },
+    "assert check_tuplex(('q', 2, 'a', 'y', 'y', 'b', 't', 'q', 'c', 'l'), 'n') == False": {
+      "result": true,
+      "time": 0.05639028549194336,
+      "error": null
+    },
+    "assert check_tuplex(('r', 4, 'e', 'v', 'q', 'k', 'y', 'r', 'a', 'c'), 'o') == False": {
+      "result": true,
+      "time": 0.0522305965423584,
+      "error": null
+    },
+    "assert check_tuplex(('b', 6, 'q', 'h', 'f', 'x', 'n', 'p', 'k', 'x'), 'k') == True": {
+      "result": true,
+      "time": 0.053262948989868164,
+      "error": null
+    },
+    "assert check_tuplex(('l', 5, 'x', 'k', 'd', 'v', 'd', 'b', 'd', 'f'), 'w') == False": {
+      "result": true,
+      "time": 0.047026634216308594,
+      "error": null
+    },
+    "assert check_tuplex(('r', 6, 'm', 'h', 'h', 'y', 'r', 'c', 'u', 'h'), 'y') == True": {
+      "result": true,
+      "time": 0.05279850959777832,
+      "error": null
+    },
+    "assert check_tuplex(('u', 3, 'f', 'g', 'p', 'a', 'c', 'q', 'b', 'm'), 'i') == False": {
+      "result": true,
+      "time": 0.047690629959106445,
+      "error": null
+    },
+    "assert check_tuplex(('j', 1, 'z', 'h', 'b', 'y', 'e', 'p', 'r', 'e'), 'x') == False": {
+      "result": true,
+      "time": 0.05569601058959961,
+      "error": null
+    },
+    "assert check_tuplex(('f', 6, 'c', 'w', 'y', 'r', 'x', 'm', 'h', 'j'), 'd') == False": {
+      "result": true,
+      "time": 0.056397438049316406,
+      "error": null
+    },
+    "assert check_tuplex(('f', 1, 'z', 'w', 'l', 'a', 'q', 'n', 'l', 'b'), 'h') == False": {
+      "result": true,
+      "time": 0.043996572494506836,
+      "error": null
+    },
+    "assert check_tuplex(('r', 3, 'l', 'i', 'n', 'k', 'd', 'i', 'k', 'c'), 't') == False": {
+      "result": true,
+      "time": 0.05549907684326172,
+      "error": null
+    },
+    "assert check_tuplex(('l', 8, 'z', 'i', 'w', 'w', 'o', 'f', 'c', 'w'), 'f') == True": {
+      "result": true,
+      "time": 0.058002471923828125,
+      "error": null
+    },
+    "assert check_tuplex(('i', 6, 'u', 'z', 'a', 'p', 'y', 'i', 'e', 'f'), 'w') == False": {
+      "result": true,
+      "time": 0.057099103927612305,
+      "error": null
+    },
+    "assert check_tuplex(('u', 2, 'f', 'f', 'x', 'i', 'k', 'k', 'i', 't'), 'o') == False": {
+      "result": true,
+      "time": 0.06799149513244629,
+      "error": null
+    },
+    "assert check_tuplex(('r', 4, 'u', 'i', 's', 'm', 'a', 'o', 'k', 'w'), 'm') == True": {
+      "result": true,
+      "time": 0.051313161849975586,
+      "error": null
+    },
+    "assert check_tuplex(('n', 8, 'w', 'u', 'v', 't', 'n', 'x', 'q', 'a'), 'l') == False": {
+      "result": true,
+      "time": 0.05733156204223633,
+      "error": null
+    },
+    "assert check_tuplex(('a', 3, 'd', 'd', 'z', 'b', 'k', 'i', 'n', 'b'), 'v') == False": {
+      "result": true,
+      "time": 0.05270576477050781,
+      "error": null
+    },
+    "assert check_tuplex(('v', 8, 't', 's', 'z', 'c', 'j', 'f', 'j', 'o'), 'y') == False": {
+      "result": true,
+      "time": 0.05324387550354004,
+      "error": null
+    },
+    "assert check_tuplex(('c', 6, 'f', 'f', 'y', 'p', 'j', 'v', 'b', 'k'), 'e') == False": {
+      "result": true,
+      "time": 0.04782533645629883,
+      "error": null
+    },
+    "assert check_tuplex(('w', 6, 'b', 'x', 'y', 'q', 'v', 'o', 'i', 's'), 'c') == False": {
+      "result": true,
+      "time": 0.05274176597595215,
+      "error": null
+    },
+    "assert check_tuplex(('y', 3, 'g', 'u', 'l', 'e', 't', 'z', 'a', 'g'), 'j') == False": {
+      "result": true,
+      "time": 0.05443739891052246,
+      "error": null
+    },
+    "assert check_tuplex(('i', 5, 'y', 'h', 'o', 'x', 'j', 'i', 'j', 'n'), 't') == False": {
+      "result": true,
+      "time": 0.07327747344970703,
+      "error": null
+    },
+    "assert check_tuplex(('x', 7, 'g', 'p', 'c', 't', 'f', 'o', 'j', 'f'), 'z') == False": {
+      "result": true,
+      "time": 0.04471778869628906,
+      "error": null
+    },
+    "assert check_tuplex(('u', 3, 'd', 't', 'm', 'k', 'm', 'm', 'u', 'd'), 'h') == False": {
+      "result": true,
+      "time": 0.05093669891357422,
+      "error": null
+    },
+    "assert check_tuplex(('x', 5, 'n', 'x', 'b', 's', 'h', 'a', 'p', 's'), 'z') == False": {
+      "result": true,
+      "time": 0.04688286781311035,
+      "error": null
+    },
+    "assert check_tuplex(('t', 8, 'c', 'a', 'm', 'i', 'o', 'h', 'a', 'c'), 'g') == False": {
+      "result": true,
+      "time": 0.04634881019592285,
+      "error": null
+    },
+    "assert check_tuplex(('o', 4, 'r', 'u', 'v', 'z', 'g', 'b', 'e', 'e'), 'j') == False": {
+      "result": true,
+      "time": 0.0549464225769043,
+      "error": null
+    },
+    "assert check_tuplex(('q', 5, 'z', 'o', 'f', 'v', 'd', 'c', 'p', 's'), 'n') == False": {
+      "result": true,
+      "time": 0.05144548416137695,
+      "error": null
+    },
+    "assert check_tuplex(('j', 7, 'u', 'g', 'r', 'r', 't', 'c', 'k', 'l'), 'j') == True": {
+      "result": true,
+      "time": 0.03990054130554199,
+      "error": null
+    },
+    "assert check_tuplex(('z', 6, 'j', 'r', 'n', 'c', 'v', 'j', 'k', 'h'), 'b') == False": {
+      "result": true,
+      "time": 0.07026457786560059,
+      "error": null
+    },
+    "assert check_tuplex(('e', 5, 'x', 'b', 'l', 'q', 'q', 'w', 'u', 'f'), '0') == False": {
+      "result": true,
+      "time": 0.05806875228881836,
+      "error": null
+    },
+    "assert check_tuplex(('p', 5, 'j', 'v', 'f', 's', 'x', 'v', 'q', 'n'), '7') == False": {
+      "result": true,
+      "time": 0.041497230529785156,
+      "error": null
+    },
+    "assert check_tuplex(('j', 7, 'c', 'f', 'p', 'p', 'i', 'b', 'l', 'i'), '8') == False": {
+      "result": true,
+      "time": 0.056442975997924805,
+      "error": null
+    },
+    "assert check_tuplex(('j', 2, 'a', 't', 'o', 't', 'k', 'e', 'g', 'z'), '0') == False": {
+      "result": true,
+      "time": 0.05066227912902832,
+      "error": null
+    },
+    "assert check_tuplex(('y', 4, 'w', 'c', 'c', 'r', 'b', 'x', 'i', 'x'), '8') == False": {
+      "result": true,
+      "time": 0.045012712478637695,
+      "error": null
+    },
+    "assert check_tuplex(('c', 2, 'u', 'o', 'z', 'e', 'i', 'l', 'x', 'd'), '2') == False": {
+      "result": true,
+      "time": 0.045459747314453125,
+      "error": null
+    },
+    "assert check_tuplex(('s', 1, 'd', 's', 'r', 'j', 't', 'n', 'k', 'n'), '6') == False": {
+      "result": true,
+      "time": 0.054412126541137695,
+      "error": null
+    },
+    "assert check_tuplex(('w', 8, 'u', 'q', 't', 'c', 'z', 'l', 'd', 's'), '9') == False": {
+      "result": true,
+      "time": 0.05459260940551758,
+      "error": null
+    },
+    "assert check_tuplex(('s', 1, 'b', 'u', 'y', 'c', 'z', 't', 'u', 't'), '8') == False": {
+      "result": true,
+      "time": 0.061260223388671875,
+      "error": null
+    },
+    "assert check_tuplex(('p', 8, 'k', 'm', 'm', 'g', 'h', 'j', 't', 'm'), '8') == False": {
+      "result": true,
+      "time": 0.05242657661437988,
+      "error": null
+    },
+    "assert check_tuplex(('s', 5, 'w', 'x', 'w', 'k', 'l', 'h', 'g', 'k'), '1') == False": {
+      "result": true,
+      "time": 0.05445718765258789,
+      "error": null
+    },
+    "assert check_tuplex(('c', 4, 'i', 'd', 'o', 's', 'p', 'm', 'r', 'c'), '8') == False": {
+      "result": true,
+      "time": 0.0454401969909668,
+      "error": null
+    },
+    "assert check_tuplex(('s', 1, 'l', 's', 'u', 'j', 'q', 't', 'w', 'f'), '8') == False": {
+      "result": true,
+      "time": 0.05318021774291992,
+      "error": null
+    },
+    "assert check_tuplex(('n', 2, 'f', 'n', 'j', 'y', 'c', 'n', 'm', 'h'), '5') == False": {
+      "result": true,
+      "time": 0.05800008773803711,
+      "error": null
+    },
+    "assert check_tuplex(('q', 3, 'c', 'n', 'o', 'e', 'o', 'x', 'w', 'm'), '0') == False": {
+      "result": true,
+      "time": 0.04467487335205078,
+      "error": null
+    },
+    "assert check_tuplex(('p', 6, 'z', 'b', 'r', 'n', 'b', 'q', 'u', 'n'), '7') == False": {
+      "result": true,
+      "time": 0.03799152374267578,
+      "error": null
+    },
+    "assert check_tuplex(('a', 1, 'w', 'w', 'k', 's', 'j', 'h', 'm', 'm'), '6') == False": {
+      "result": true,
+      "time": 0.04139304161071777,
+      "error": null
+    },
+    "assert check_tuplex(('f', 2, 'd', 'c', 'v', 'g', 'q', 'k', 'm', 'w'), '5') == False": {
+      "result": true,
+      "time": 0.045116424560546875,
+      "error": null
+    },
+    "assert check_tuplex(('u', 5, 'l', 'k', 'p', 'y', 'u', 'y', 'u', 'b'), '2') == False": {
+      "result": true,
+      "time": 0.04508543014526367,
+      "error": null
+    },
+    "assert check_tuplex(('o', 4, 's', 'e', 't', 'b', 'f', 'c', 'n', 'b'), '2') == False": {
+      "result": true,
+      "time": 0.03551769256591797,
+      "error": null
+    },
+    "assert check_tuplex(('h', 6, 'm', 'v', 'c', 'j', 'q', 'i', 'k', 'j'), '0') == False": {
+      "result": true,
+      "time": 0.03513312339782715,
+      "error": null
+    },
+    "assert check_tuplex(('e', 3, 'f', 's', 'u', 'v', 'g', 'q', 'a', 'n'), '3') == False": {
+      "result": true,
+      "time": 0.03465008735656738,
+      "error": null
+    },
+    "assert check_tuplex(('b', 8, 'h', 'g', 'm', 'e', 'v', 't', 'o', 'g'), '5') == False": {
+      "result": true,
+      "time": 0.048265933990478516,
+      "error": null
+    },
+    "assert check_tuplex(('p', 5, 'v', 'e', 'c', 'b', 't', 'm', 'r', 'b'), '3') == False": {
+      "result": true,
+      "time": 0.03765130043029785,
+      "error": null
+    },
+    "assert check_tuplex(('l', 8, 'f', 'g', 'j', 'i', 'f', 'i', 'h', 'g'), '5') == False": {
+      "result": true,
+      "time": 0.042344093322753906,
+      "error": null
+    },
+    "assert check_tuplex(('e', 3, 'y', 't', 'x', 'b', 'y', 's', 'o', 'j'), '3') == False": {
+      "result": true,
+      "time": 0.05473208427429199,
+      "error": null
+    },
+    "assert check_tuplex(('j', 7, 'n', 'u', 'e', 'z', 'm', 'y', 'm', 'z'), '7') == False": {
+      "result": true,
+      "time": 0.04163384437561035,
+      "error": null
+    },
+    "assert check_tuplex(('h', 2, 'w', 'x', 'z', 'f', 'p', 'g', 'm', 'r'), '9') == False": {
+      "result": true,
+      "time": 0.04012274742126465,
+      "error": null
+    },
+    "assert check_tuplex(('j', 3, 'v', 'j', 'l', 'l', 'u', 'f', 'd', 'o'), '5') == False": {
+      "result": true,
+      "time": 0.045888423919677734,
+      "error": null
+    },
+    "assert check_tuplex(('b', 2, 'b', 'q', 'n', 't', 'a', 'k', 'u', 'u'), '7') == False": {
+      "result": true,
+      "time": 0.0468292236328125,
+      "error": null
+    },
+    "assert check_tuplex(('r', 2, 'w', 'q', 's', 'k', 'p', 'r', 'f', 'u'), '6') == False": {
+      "result": true,
+      "time": 0.04436206817626953,
+      "error": null
+    },
+    "assert check_tuplex(('p', 8, 'o', 'k', 't', 't', 'w', 'b', 'i', 'a'), '5') == False": {
+      "result": true,
+      "time": 0.04376626014709473,
+      "error": null
+    },
+    "assert check_tuplex(('z', 1, 'y', 'o', 'e', 'm', 'k', 'j', 'o', 'i'), '2') == False": {
+      "result": true,
+      "time": 0.04417276382446289,
+      "error": null
+    },
+    "assert check_tuplex(('y', 3, 'p', 'x', 'i', 'f', 'y', 'x', 'm', 'n'), 7) == False": {
+      "result": true,
+      "time": 0.034569740295410156,
+      "error": null
+    },
+    "assert check_tuplex(('s', 7, 'e', 'x', 'y', 'z', 'i', 'o', 'g', 'p'), 6) == False": {
+      "result": true,
+      "time": 0.03922891616821289,
+      "error": null
+    },
+    "assert check_tuplex(('u', 8, 'q', 'q', 'm', 'g', 'q', 'y', 'b', 'm'), 8) == True": {
+      "result": true,
+      "time": 0.04178190231323242,
+      "error": null
+    },
+    "assert check_tuplex(('l', 1, 's', 'n', 'e', 'h', 'o', 'f', 'n', 'u'), 5) == False": {
+      "result": true,
+      "time": 0.03678607940673828,
+      "error": null
+    },
+    "assert check_tuplex(('o', 8, 'b', 'h', 's', 'l', 'w', 'o', 'd', 'c'), 8) == True": {
+      "result": true,
+      "time": 0.0455477237701416,
+      "error": null
+    },
+    "assert check_tuplex(('q', 7, 'c', 'k', 'c', 't', 's', 'y', 'j', 'p'), 2) == False": {
+      "result": true,
+      "time": 0.044350385665893555,
+      "error": null
+    },
+    "assert check_tuplex(('k', 5, 'k', 'v', 'p', 'u', 'p', 'g', 'g', 'o'), 7) == False": {
+      "result": true,
+      "time": 0.045578718185424805,
+      "error": null
+    },
+    "assert check_tuplex(('i', 2, 'r', 'r', 'y', 'u', 's', 'o', 't', 'v'), 8) == False": {
+      "result": true,
+      "time": 0.04156661033630371,
+      "error": null
+    },
+    "assert check_tuplex(('i', 7, 'w', 'h', 'v', 'm', 'e', 'f', 'e', 'o'), 3) == False": {
+      "result": true,
+      "time": 0.03818035125732422,
+      "error": null
+    },
+    "assert check_tuplex(('x', 3, 'y', 'b', 'f', 'g', 'b', 'g', 'q', 'k'), 2) == False": {
+      "result": true,
+      "time": 0.03979134559631348,
+      "error": null
+    },
+    "assert check_tuplex(('o', 6, 'k', 'u', 's', 'r', 'q', 'p', 'j', 't'), 4) == False": {
+      "result": true,
+      "time": 0.04250168800354004,
+      "error": null
+    },
+    "assert check_tuplex(('a', 4, 'u', 'n', 'm', 'y', 'a', 'v', 'r', 'e'), 1) == False": {
+      "result": true,
+      "time": 0.04832625389099121,
+      "error": null
+    },
+    "assert check_tuplex(('m', 2, 'y', 'u', 'r', 'y', 'w', 'i', 'j', 'x'), 8) == False": {
+      "result": true,
+      "time": 0.03941178321838379,
+      "error": null
+    },
+    "assert check_tuplex(('q', 8, 'h', 'n', 'v', 't', 'w', 'q', 'j', 'f'), 2) == False": {
+      "result": true,
+      "time": 0.041094303131103516,
+      "error": null
+    },
+    "assert check_tuplex(('f', 5, 'p', 'v', 'i', 'n', 'l', 'q', 'o', 'd'), 6) == False": {
+      "result": true,
+      "time": 0.04903602600097656,
+      "error": null
+    },
+    "assert check_tuplex(('t', 3, 's', 'l', 'i', 'j', 't', 'h', 'd', 'z'), 7) == False": {
+      "result": true,
+      "time": 0.045056819915771484,
+      "error": null
+    },
+    "assert check_tuplex(('q', 3, 'p', 'n', 'r', 'u', 'v', 'm', 'o', 'g'), 2) == False": {
+      "result": true,
+      "time": 0.047751426696777344,
+      "error": null
+    },
+    "assert check_tuplex(('z', 5, 'c', 's', 'g', 'a', 't', 'k', 'n', 'p'), 7) == False": {
+      "result": true,
+      "time": 0.04822111129760742,
+      "error": null
+    },
+    "assert check_tuplex(('w', 1, 'f', 'g', 's', 'o', 's', 'g', 't', 'v'), 6) == False": {
+      "result": true,
+      "time": 0.051450490951538086,
+      "error": null
+    },
+    "assert check_tuplex(('l', 3, 'l', 'h', 'x', 'd', 'w', 't', 'p', 'o'), 1) == False": {
+      "result": true,
+      "time": 0.04613780975341797,
+      "error": null
+    },
+    "assert check_tuplex(('r', 7, 'k', 'r', 't', 'g', 'q', 'b', 'f', 'k'), 3) == False": {
+      "result": true,
+      "time": 0.05108809471130371,
+      "error": null
+    },
+    "assert check_tuplex(('g', 1, 't', 'i', 'l', 'w', 'o', 'x', 'j', 'm'), 4) == False": {
+      "result": true,
+      "time": 0.03970623016357422,
+      "error": null
+    },
+    "assert check_tuplex(('a', 4, 'x', 'u', 'm', 'r', 'x', 'y', 'b', 's'), 2) == False": {
+      "result": true,
+      "time": 0.058350563049316406,
+      "error": null
+    },
+    "assert check_tuplex(('c', 7, 'b', 't', 'v', 'b', 'h', 'v', 'u', 'm'), 4) == False": {
+      "result": true,
+      "time": 0.03686261177062988,
+      "error": null
+    },
+    "assert check_tuplex(('w', 5, 'z', 'z', 'j', 'y', 'i', 'p', 'f', 'm'), 5) == True": {
+      "result": true,
+      "time": 0.042127370834350586,
+      "error": null
+    },
+    "assert check_tuplex(('j', 4, 'y', 'v', 'h', 'k', 'j', 'f', 'f', 'q'), 3) == False": {
+      "result": true,
+      "time": 0.0359652042388916,
+      "error": null
+    },
+    "assert check_tuplex(('x', 1, 'z', 'a', 'm', 'c', 'z', 'f', 'h', 't'), 8) == False": {
+      "result": true,
+      "time": 0.04979515075683594,
+      "error": null
+    },
+    "assert check_tuplex(('s', 1, 'f', 'l', 'v', 'x', 'a', 'w', 'n', 'y'), 8) == False": {
+      "result": true,
+      "time": 0.04557323455810547,
+      "error": null
+    },
+    "assert check_tuplex(('h', 5, 'm', 'm', 'q', 'z', 'z', 'v', 'z', 'h'), 3) == False": {
+      "result": true,
+      "time": 0.043384552001953125,
+      "error": null
+    },
+    "assert check_tuplex(('o', 1, 'n', 'f', 'l', 'n', 'o', 'k', 'u', 'n'), 6) == False": {
+      "result": true,
+      "time": 0.037420034408569336,
+      "error": null
+    },
+    "assert check_tuplex(('k', 8, 'b', 'u', 's', 'q', 'f', 'g', 'k', 'k'), 6) == False": {
+      "result": true,
+      "time": 0.047924041748046875,
+      "error": null
+    },
+    "assert check_tuplex(('u', 7, 'c', 'b', 't', 'y', 'c', 'm', 'q', 'e'), 2) == False": {
+      "result": true,
+      "time": 0.04252338409423828,
+      "error": null
+    },
+    "assert check_tuplex(('b', 6, 'e', 'x', 'b', 'h', 'v', 'g', 't', 'l'), 7) == False": {
+      "result": true,
+      "time": 0.04643559455871582,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

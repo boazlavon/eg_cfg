@@ -1,0 +1,49 @@
+{
+  "code": "def count_Num(n):\n    count = 0\n    for num in range(1 << (n + 1)):  # Check all numbers up to 2^(n+1)\n        if (num & 1) and (num & (1 << n)):  # Check if both 0th and nth bits are set\n            count += 1\n    return count",
+  "results": {
+    "assert count_Num(2) == 1": {
+      "result": false,
+      "time": 0.060160160064697266,
+      "error": null
+    },
+    "assert count_Num(3) == 2": {
+      "result": false,
+      "time": 0.06894731521606445,
+      "error": null
+    },
+    "assert count_Num(1) == 1": {
+      "result": true,
+      "time": 0.06375980377197266,
+      "error": null
+    },
+    "assert count_Num(4) == 4": {
+      "result": false,
+      "time": 0.07026410102844238,
+      "error": null
+    },
+    "assert count_Num(6) == 16": {
+      "result": false,
+      "time": 0.05845928192138672,
+      "error": null
+    },
+    "assert count_Num(7) == 32": {
+      "result": false,
+      "time": 0.06507563591003418,
+      "error": null
+    },
+    "assert count_Num(5) == 8": {
+      "result": false,
+      "time": 0.06517601013183594,
+      "error": null
+    },
+    "assert count_Num(8) == 64": {
+      "result": false,
+      "time": 0.06795692443847656,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.125,
+  "general_error": "",
+  "has_testcase_error": false
+}

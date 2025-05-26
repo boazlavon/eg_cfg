@@ -1,0 +1,514 @@
+{
+  "code": "def frequency_Of_Largest(n, arr):\n    if n == 0:\n        return 0\n    max_value = arr[0]\n    for num in arr:\n        if num > max_value:\n            max_value = num\n    frequency = 0\n    for num in arr:\n        if num == max_value:\n            frequency += 1\n    return frequency",
+  "results": {
+    "assert frequency_Of_Largest(5,[1,2,3,4,4]) == 2": {
+      "result": true,
+      "time": 0.038748741149902344,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3,[5,6,5]) == 1": {
+      "result": true,
+      "time": 0.03854036331176758,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4,[2,7,7,7]) == 3": {
+      "result": true,
+      "time": 0.04387354850769043,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [2, 6, 7, 9, 2]) == 1": {
+      "result": true,
+      "time": 0.03812766075134277,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [6, 6, 1, 3, 1]) == 2": {
+      "result": true,
+      "time": 0.03582191467285156,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [1, 2, 4, 2, 2]) == 1": {
+      "result": true,
+      "time": 0.03844642639160156,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [3, 4, 5, 2, 1]) == 1": {
+      "result": true,
+      "time": 0.04374408721923828,
+      "error": null
+    },
+    "assert frequency_Of_Largest(5, [4, 4, 2, 8, 5]) == 1": {
+      "result": true,
+      "time": 0.04430198669433594,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [4, 3, 6, 9, 1]) == 1": {
+      "result": true,
+      "time": 0.04125833511352539,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [2, 5, 3, 4, 7]) == 1": {
+      "result": true,
+      "time": 0.04506707191467285,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [3, 6, 1, 3, 4]) == 1": {
+      "result": true,
+      "time": 0.03858137130737305,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [3, 7, 3, 8, 7]) == 1": {
+      "result": true,
+      "time": 0.03753519058227539,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [6, 3, 5, 5, 3]) == 1": {
+      "result": true,
+      "time": 0.038596391677856445,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [4, 6, 3, 7, 5]) == 1": {
+      "result": true,
+      "time": 0.0293424129486084,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [3, 6, 8, 3, 6]) == 1": {
+      "result": true,
+      "time": 0.03460288047790527,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [3, 1, 4, 7, 1]) == 1": {
+      "result": true,
+      "time": 0.03501391410827637,
+      "error": null
+    },
+    "assert frequency_Of_Largest(5, [4, 1, 5, 7, 6]) == 1": {
+      "result": true,
+      "time": 0.04257392883300781,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [3, 1, 3, 3, 7]) == 1": {
+      "result": true,
+      "time": 0.04621267318725586,
+      "error": null
+    },
+    "assert frequency_Of_Largest(5, [6, 3, 8, 2, 5]) == 1": {
+      "result": true,
+      "time": 0.05374717712402344,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [6, 3, 1, 7, 1]) == 1": {
+      "result": true,
+      "time": 0.04851722717285156,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [2, 4, 5, 4, 9]) == 1": {
+      "result": true,
+      "time": 0.041820526123046875,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [1, 2, 6, 1, 4]) == 1": {
+      "result": true,
+      "time": 0.03942465782165527,
+      "error": null
+    },
+    "assert frequency_Of_Largest(5, [2, 5, 4, 6, 4]) == 1": {
+      "result": true,
+      "time": 0.0346982479095459,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [1, 2, 8, 8, 7]) == 1": {
+      "result": false,
+      "time": 0.03845095634460449,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [5, 7, 8, 4, 3]) == 1": {
+      "result": true,
+      "time": 0.03537106513977051,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [4, 5, 6, 7, 5]) == 1": {
+      "result": true,
+      "time": 0.04456591606140137,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [6, 7, 1, 2, 1]) == 1": {
+      "result": true,
+      "time": 0.04257369041442871,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [5, 4, 6, 5, 2]) == 1": {
+      "result": true,
+      "time": 0.040107011795043945,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [6, 2, 7, 4, 3]) == 1": {
+      "result": true,
+      "time": 0.03248953819274902,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [1, 3, 4, 3, 9]) == 1": {
+      "result": true,
+      "time": 0.03676247596740723,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [1, 3, 8, 4, 9]) == 1": {
+      "result": true,
+      "time": 0.04593825340270996,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [5, 3, 5, 3, 2]) == 1": {
+      "result": false,
+      "time": 0.034644365310668945,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [6, 7, 5, 8, 4]) == 1": {
+      "result": true,
+      "time": 0.03986692428588867,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [2, 1, 2, 5, 8]) == 1": {
+      "result": true,
+      "time": 0.03660702705383301,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [2, 2, 4, 6, 7]) == 2": {
+      "result": false,
+      "time": 0.02870011329650879,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [5, 2, 7, 3, 6]) == 1": {
+      "result": true,
+      "time": 0.03481769561767578,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [1, 7, 2]) == 1": {
+      "result": true,
+      "time": 0.032347917556762695,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [10, 11, 1]) == 1": {
+      "result": true,
+      "time": 0.0318760871887207,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [2, 8, 7]) == 1": {
+      "result": true,
+      "time": 0.035254716873168945,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [1, 6, 6]) == 2": {
+      "result": true,
+      "time": 0.03617215156555176,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [3, 1, 5]) == 1": {
+      "result": true,
+      "time": 0.03351616859436035,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [6, 9, 5]) == 1": {
+      "result": true,
+      "time": 0.033118247985839844,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [8, 8, 6]) == 2": {
+      "result": true,
+      "time": 0.030274629592895508,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [8, 5, 3]) == 1": {
+      "result": true,
+      "time": 0.034087419509887695,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [6, 8, 4]) == 1": {
+      "result": true,
+      "time": 0.037833213806152344,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [7, 2, 5]) == 1": {
+      "result": true,
+      "time": 0.0365910530090332,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [8, 5, 2]) == 1": {
+      "result": true,
+      "time": 0.035971641540527344,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [2, 8, 5]) == 1": {
+      "result": true,
+      "time": 0.03362607955932617,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [5, 5, 10]) == 1": {
+      "result": true,
+      "time": 0.033659934997558594,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [9, 2, 1]) == 1": {
+      "result": true,
+      "time": 0.03538346290588379,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [5, 3, 8]) == 1": {
+      "result": true,
+      "time": 0.03667402267456055,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [2, 2, 9]) == 1": {
+      "result": true,
+      "time": 0.032439470291137695,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [8, 2, 3]) == 1": {
+      "result": true,
+      "time": 0.0326390266418457,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [2, 11, 10]) == 1": {
+      "result": true,
+      "time": 0.034131526947021484,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [5, 5, 4]) == 2": {
+      "result": true,
+      "time": 0.038648366928100586,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [7, 10, 5]) == 1": {
+      "result": true,
+      "time": 0.03628182411193848,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [8, 8, 9]) == 1": {
+      "result": true,
+      "time": 0.03703141212463379,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [3, 3, 3]) == 1": {
+      "result": false,
+      "time": 0.03966951370239258,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [1, 3, 9]) == 1": {
+      "result": true,
+      "time": 0.031232357025146484,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [4, 1, 10]) == 1": {
+      "result": true,
+      "time": 0.039760589599609375,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [4, 6, 5]) == 1": {
+      "result": true,
+      "time": 0.034067630767822266,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [8, 2, 7]) == 1": {
+      "result": true,
+      "time": 0.0377345085144043,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [1, 5, 2]) == 1": {
+      "result": true,
+      "time": 0.03875613212585449,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [7, 4, 7]) == 2": {
+      "result": true,
+      "time": 0.03956890106201172,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [4, 6, 3]) == 1": {
+      "result": true,
+      "time": 0.034955501556396484,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [10, 7, 8]) == 1": {
+      "result": true,
+      "time": 0.03895115852355957,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [7, 1, 9]) == 1": {
+      "result": true,
+      "time": 0.04016852378845215,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [6, 9, 4]) == 1": {
+      "result": true,
+      "time": 0.04496455192565918,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [2, 3, 12, 8]) == 1": {
+      "result": true,
+      "time": 0.03446197509765625,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [3, 9, 11, 11]) == 1": {
+      "result": false,
+      "time": 0.03754258155822754,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [1, 10, 4, 8]) == 1": {
+      "result": true,
+      "time": 0.04237008094787598,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [1, 9, 5, 11]) == 1": {
+      "result": true,
+      "time": 0.037601470947265625,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [5, 2, 8, 10]) == 1": {
+      "result": true,
+      "time": 0.03550291061401367,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [1, 7, 7, 7]) == 2": {
+      "result": false,
+      "time": 0.03683280944824219,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [4, 4, 10, 2]) == 2": {
+      "result": false,
+      "time": 0.04264473915100098,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [3, 7, 8, 2]) == 1": {
+      "result": true,
+      "time": 0.03328824043273926,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [6, 9, 8, 5]) == 1": {
+      "result": true,
+      "time": 0.03943181037902832,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [6, 11, 3, 8]) == 1": {
+      "result": true,
+      "time": 0.03369307518005371,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [6, 3, 8, 5]) == 1": {
+      "result": true,
+      "time": 0.03415036201477051,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [7, 5, 2, 10]) == 1": {
+      "result": true,
+      "time": 0.03857898712158203,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [4, 3, 8, 5]) == 1": {
+      "result": true,
+      "time": 0.0337831974029541,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [5, 5, 4, 6]) == 2": {
+      "result": false,
+      "time": 0.039829254150390625,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [7, 7, 7, 3]) == 3": {
+      "result": true,
+      "time": 0.04207324981689453,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [1, 10, 5, 9]) == 1": {
+      "result": true,
+      "time": 0.03795623779296875,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [4, 7, 6, 12]) == 1": {
+      "result": true,
+      "time": 0.04058408737182617,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [7, 3, 10, 8]) == 1": {
+      "result": true,
+      "time": 0.03940248489379883,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [3, 9, 3, 12]) == 1": {
+      "result": true,
+      "time": 0.03617095947265625,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [5, 9, 10, 4]) == 1": {
+      "result": true,
+      "time": 0.03336000442504883,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [2, 3, 2, 11]) == 1": {
+      "result": true,
+      "time": 0.04261922836303711,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [6, 8, 9, 7]) == 1": {
+      "result": true,
+      "time": 0.03744339942932129,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [1, 6, 8, 12]) == 1": {
+      "result": true,
+      "time": 0.040135860443115234,
+      "error": null
+    },
+    "assert frequency_Of_Largest(2, [3, 11, 7, 9]) == 1": {
+      "result": true,
+      "time": 0.046478986740112305,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [7, 2, 7, 12]) == 1": {
+      "result": true,
+      "time": 0.036270856857299805,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [5, 2, 7, 10]) == 1": {
+      "result": true,
+      "time": 0.045690059661865234,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [7, 7, 3, 3]) == 2": {
+      "result": true,
+      "time": 0.06509661674499512,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [7, 2, 6, 5]) == 1": {
+      "result": true,
+      "time": 0.04412698745727539,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [1, 9, 12, 11]) == 1": {
+      "result": true,
+      "time": 0.05293607711791992,
+      "error": null
+    },
+    "assert frequency_Of_Largest(1, [5, 6, 8, 11]) == 1": {
+      "result": true,
+      "time": 0.04069781303405762,
+      "error": null
+    },
+    "assert frequency_Of_Largest(4, [4, 2, 7, 9]) == 1": {
+      "result": true,
+      "time": 0.03767967224121094,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [7, 3, 2, 2]) == 1": {
+      "result": true,
+      "time": 0.05396413803100586,
+      "error": null
+    },
+    "assert frequency_Of_Largest(3, [6, 2, 11, 7]) == 1": {
+      "result": true,
+      "time": 0.05601978302001953,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9207920792079208,
+  "general_error": "",
+  "has_testcase_error": false
+}

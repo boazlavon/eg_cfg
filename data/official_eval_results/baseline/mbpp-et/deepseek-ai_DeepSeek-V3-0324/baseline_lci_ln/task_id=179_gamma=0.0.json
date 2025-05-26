@@ -1,0 +1,124 @@
+{
+  "code": "def is_num_keith(n):\n    if n < 10:\n        return False\n    \n    digits = []\n    temp = n\n    while temp > 0:\n        digit = temp % 10\n        digits.append(digit)\n        temp = temp // 10\n    \n    digits.reverse()\n    \n    sequence = []\n    for d in digits:\n        sequence.append(d)\n    \n    sum_sequence = 0\n    while sum_sequence < n:\n        sum_sequence = 0\n        start = len(sequence) - len(digits)\n        for i in range(start, len(sequence)):\n            sum_sequence += sequence[i]\n        \n        sequence.append(sum_sequence)\n        \n        if sum_sequence == n:\n            return True\n    \n    return False",
+  "results": {
+    "assert is_num_keith(14) == True": {
+      "result": true,
+      "time": 0.04314279556274414,
+      "error": null
+    },
+    "assert is_num_keith(12) == False": {
+      "result": true,
+      "time": 0.0343778133392334,
+      "error": null
+    },
+    "assert is_num_keith(197) == True": {
+      "result": true,
+      "time": 0.03765439987182617,
+      "error": null
+    },
+    "assert is_num_keith(18) == False": {
+      "result": true,
+      "time": 0.04413294792175293,
+      "error": null
+    },
+    "assert is_num_keith(16) == False": {
+      "result": true,
+      "time": 0.03762316703796387,
+      "error": null
+    },
+    "assert is_num_keith(9) == True": {
+      "result": false,
+      "time": 0.03516125679016113,
+      "error": null
+    },
+    "assert is_num_keith(13) == False": {
+      "result": true,
+      "time": 0.04509687423706055,
+      "error": null
+    },
+    "assert is_num_keith(17) == False": {
+      "result": true,
+      "time": 0.039361000061035156,
+      "error": null
+    },
+    "assert is_num_keith(10) == False": {
+      "result": true,
+      "time": 0.0435638427734375,
+      "error": null
+    },
+    "assert is_num_keith(11) == False": {
+      "result": true,
+      "time": 0.04728126525878906,
+      "error": null
+    },
+    "assert is_num_keith(15) == False": {
+      "result": true,
+      "time": 0.04625296592712402,
+      "error": null
+    },
+    "assert is_num_keith(19) == True": {
+      "result": true,
+      "time": 0.04904007911682129,
+      "error": null
+    },
+    "assert is_num_keith(7) == True": {
+      "result": false,
+      "time": 0.05158281326293945,
+      "error": null
+    },
+    "assert is_num_keith(8) == True": {
+      "result": false,
+      "time": 0.04512357711791992,
+      "error": null
+    },
+    "assert is_num_keith(200) == False": {
+      "result": true,
+      "time": 0.046430349349975586,
+      "error": null
+    },
+    "assert is_num_keith(194) == False": {
+      "result": true,
+      "time": 0.03970193862915039,
+      "error": null
+    },
+    "assert is_num_keith(195) == False": {
+      "result": true,
+      "time": 0.04417777061462402,
+      "error": null
+    },
+    "assert is_num_keith(198) == False": {
+      "result": true,
+      "time": 0.04508233070373535,
+      "error": null
+    },
+    "assert is_num_keith(192) == False": {
+      "result": true,
+      "time": 0.0415804386138916,
+      "error": null
+    },
+    "assert is_num_keith(201) == False": {
+      "result": true,
+      "time": 0.04647254943847656,
+      "error": null
+    },
+    "assert is_num_keith(196) == False": {
+      "result": true,
+      "time": 0.04164266586303711,
+      "error": null
+    },
+    "assert is_num_keith(199) == False": {
+      "result": true,
+      "time": 0.0430607795715332,
+      "error": null
+    },
+    "assert is_num_keith(193) == False": {
+      "result": true,
+      "time": 0.03590106964111328,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8695652173913043,
+  "general_error": "",
+  "has_testcase_error": false
+}

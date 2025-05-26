@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef remove_splchar(input_string):\n    return re.sub(r'[^a-zA-Z0-9]', '', input_string)",
+  "results": {
+    "assert remove_splchar('python  @#&^%$*program123')==('pythonprogram123')": {
+      "result": true,
+      "time": 0.6093084812164307,
+      "error": null
+    },
+    "assert remove_splchar('python %^$@!^&*()  programming24%$^^()    language')==('pythonprogramming24language')": {
+      "result": true,
+      "time": 0.5630791187286377,
+      "error": null
+    },
+    "assert remove_splchar('python   ^%&^()(+_)(_^&67)                  program')==('python67program')": {
+      "result": true,
+      "time": 0.5515072345733643,
+      "error": null
+    },
+    "assert remove_splchar(\"!|lacg4p-*7uy?iwib*sb5poa~5|@y\") == \"lacg4p7uyiwibsb5poa5y\"": {
+      "result": true,
+      "time": 0.5701770782470703,
+      "error": null
+    },
+    "assert remove_splchar(\"3j~/~f38<bdr@9tac6y|=\") == \"3jf38bdr9tac6y\"": {
+      "result": true,
+      "time": 0.5775885581970215,
+      "error": null
+    },
+    "assert remove_splchar(\"/~|5<g5*0*|bj+k>!qy<+u4*\") == \"5g50bjkqyu4\"": {
+      "result": true,
+      "time": 0.574286937713623,
+      "error": null
+    },
+    "assert remove_splchar(\"?9$:sbrmpfg|/+g~n3ndo3o|t6<6\") == \"9sbrmpfggn3ndo3ot66\"": {
+      "result": true,
+      "time": 0.5647892951965332,
+      "error": null
+    },
+    "assert remove_splchar(\"uub#$bz7g2eidh *u+!6p-9=br\") == \"uubbz7g2eidhu6p9br\"": {
+      "result": true,
+      "time": 0.577427864074707,
+      "error": null
+    },
+    "assert remove_splchar(\"|398%zuk | @ 1rc>i31- l\") == \"398zuk1rci31l\"": {
+      "result": true,
+      "time": 0.569735050201416,
+      "error": null
+    },
+    "assert remove_splchar(\"li6#:$su/msi=+p%~<1a8j\") == \"li6sumsip1a8j\"": {
+      "result": true,
+      "time": 0.5721931457519531,
+      "error": null
+    },
+    "assert remove_splchar(\"st!9@ogt<4m1@:ipk!rvh&n\") == \"st9ogt4m1ipkrvhn\"": {
+      "result": true,
+      "time": 0.5854063034057617,
+      "error": null
+    },
+    "assert remove_splchar(\"kubd?g!-8y_:h <?c55t1@&aj*~^l>\") == \"kubdg8yhc55t1ajl\"": {
+      "result": true,
+      "time": 0.5552036762237549,
+      "error": null
+    },
+    "assert remove_splchar(\"+wy90e793=mq*3rb9r1:2\") == \"wy90e793mq3rb9r12\"": {
+      "result": true,
+      "time": 0.5798158645629883,
+      "error": null
+    },
+    "assert remove_splchar(\"0x7@h%kj|~uh#c7+5kqd1663#ljuf\") == \"0x7hkjuhc75kqd1663ljuf\"": {
+      "result": true,
+      "time": 0.5907688140869141,
+      "error": null
+    },
+    "assert remove_splchar(\"~wb~b7t/&@a&=vi://q04/&gp=8\") == \"wbb7taviq04gp8\"": {
+      "result": true,
+      "time": 0.5733327865600586,
+      "error": null
+    },
+    "assert remove_splchar(\"7t~/ g+%5&jo8aaaruwva5l7|d5tre\") == \"7tg5jo8aaaruwva5l7d5tre\"": {
+      "result": true,
+      "time": 0.57537841796875,
+      "error": null
+    },
+    "assert remove_splchar(\"x:%>mb9jz//?aa_&m>v/b/f=\") == \"xmb9jzaamvbf\"": {
+      "result": true,
+      "time": 0.5775201320648193,
+      "error": null
+    },
+    "assert remove_splchar(\"~yys~o?pq~6es/t-<u?8>1jchwmw\") == \"yysopq6estu81jchwmw\"": {
+      "result": true,
+      "time": 0.5452425479888916,
+      "error": null
+    },
+    "assert remove_splchar(\"$exwzpe&j1a-+_79h hptk9q><\") == \"exwzpej1a79hhptk9q\"": {
+      "result": true,
+      "time": 0.6011598110198975,
+      "error": null
+    },
+    "assert remove_splchar(\"49m@@_7_r49ir^k!hi:7wt@4*\") == \"49m7r49irkhi7wt4\"": {
+      "result": true,
+      "time": 0.6060140132904053,
+      "error": null
+    },
+    "assert remove_splchar(\"3|r3c9y!35uzlwuy1^y9l\") == \"3r3c9y35uzlwuy1y9l\"": {
+      "result": true,
+      "time": 0.5631935596466064,
+      "error": null
+    },
+    "assert remove_splchar(\"t0ml47~ne~1dn!m#%ip|yqu4hsm\") == \"t0ml47ne1dnmipyqu4hsm\"": {
+      "result": true,
+      "time": 0.5830111503601074,
+      "error": null
+    },
+    "assert remove_splchar(\"?!y-x-rqqugux-mt9o<n~\") == \"yxrqquguxmt9on\"": {
+      "result": true,
+      "time": 0.5790829658508301,
+      "error": null
+    },
+    "assert remove_splchar(\"-b*|?5!u%0fdti!:xm*1>w\") == \"b5u0fdtixm1w\"": {
+      "result": true,
+      "time": 0.5679526329040527,
+      "error": null
+    },
+    "assert remove_splchar(\"% +2$=?6tidj+$|<a$-vc~+u4:#@o\") == \"26tidjavcu4o\"": {
+      "result": true,
+      "time": 0.5816750526428223,
+      "error": null
+    },
+    "assert remove_splchar(\"3gyi$_6sq6rj@ec4dj4>og\") == \"3gyi6sq6rjec4dj4og\"": {
+      "result": true,
+      "time": 0.5487422943115234,
+      "error": null
+    },
+    "assert remove_splchar(\"^&+3d+n?<ayiy=?g|2e -5h2: o$\") == \"3dnayiyg2e5h2o\"": {
+      "result": true,
+      "time": 0.48655247688293457,
+      "error": null
+    },
+    "assert remove_splchar(\" f^o3xk/4:xq+q16b^g~__$4\") == \"fo3xk4xqq16bg4\"": {
+      "result": true,
+      "time": 0.5959692001342773,
+      "error": null
+    },
+    "assert remove_splchar(\"?z31vn%:1c4$!!/z:_$5m^1\") == \"z31vn1c4z5m1\"": {
+      "result": true,
+      "time": 0.5787181854248047,
+      "error": null
+    },
+    "assert remove_splchar(\"3lxlhz#g:3kpv~#^gf+?1yq\") == \"3lxlhzg3kpvgf1yq\"": {
+      "result": true,
+      "time": 0.5697200298309326,
+      "error": null
+    },
+    "assert remove_splchar(\"#zu$0@n9r#%#o_f1zv6v3nj#+2358:\") == \"zu0n9rof1zv6v3nj2358\"": {
+      "result": true,
+      "time": 0.5787887573242188,
+      "error": null
+    },
+    "assert remove_splchar(\"va9+0g6hkfxyqo68&r=yto: &\") == \"va90g6hkfxyqo68ryto\"": {
+      "result": true,
+      "time": 0.5691955089569092,
+      "error": null
+    },
+    "assert remove_splchar(\"1s-fi1r$0=2p3g0qbjh>?l89\") == \"1sfi1r02p3g0qbjhl89\"": {
+      "result": true,
+      "time": 0.5135102272033691,
+      "error": null
+    },
+    "assert remove_splchar(\"75<<82/z51c??_=|v9-uyl42!q\") == \"7582z51cv9uyl42q\"": {
+      "result": true,
+      "time": 0.5910985469818115,
+      "error": null
+    },
+    "assert remove_splchar(\"30j@h1^9emm 1et6?2j/$0u>\") == \"30jh19emm1et62j0u\"": {
+      "result": true,
+      "time": 0.5589396953582764,
+      "error": null
+    },
+    "assert remove_splchar(\"*fo%=d$^epa=adtku7+ul7tw+9o\") == \"fodepaadtku7ul7tw9o\"": {
+      "result": true,
+      "time": 0.5624213218688965,
+      "error": null
+    },
+    "assert remove_splchar(\"%ee1q|>#k?2s}@w93k6!kja>!t<%89)?i>^u:<po>kz:cny\") == \"ee1qk2sw93k6kjat89iupokzcny\"": {
+      "result": true,
+      "time": 0.6066160202026367,
+      "error": null
+    },
+    "assert remove_splchar(\"g-g#{:!>hi(_<# _?al)0cf7>={d?6#s6q&m159$)fvzah_3+[/h>\") == \"gghial0cf7d6s6qm159fvzah3h\"": {
+      "result": true,
+      "time": 0.5528361797332764,
+      "error": null
+    },
+    "assert remove_splchar(\"d2wjdcf=o&(>ud{-4+@/9>9lz[cx5vqu/^%>~^wx3k2[{e\") == \"d2wjdcfoud499lzcx5vquwx3k2e\"": {
+      "result": true,
+      "time": 0.6060774326324463,
+      "error": null
+    },
+    "assert remove_splchar(\">43@vt_*=fo/d) 1>w5l66l{4hrd-7_>@{|fr)zpc9ipjbz=|>\") == \"43vtfod1w5l66l4hrd7frzpc9ipjbz\"": {
+      "result": true,
+      "time": 0.5952510833740234,
+      "error": null
+    },
+    "assert remove_splchar(\"ry@]&_|*i8]=fm-+q<lv<?b8%4zy|@%03^g#-}-4#w47>>!_e\") == \"ryi8fmqlvb84zy03g4w47e\"": {
+      "result": true,
+      "time": 0.49361348152160645,
+      "error": null
+    },
+    "assert remove_splchar(\"r/$blu1_mgwo}mg7!:d%^z&7|=>e$@laiq[$~b#-4|&2&%]wz01}@e\") == \"rblu1mgwomg7dz7elaiqb42wz01e\"": {
+      "result": true,
+      "time": 0.5881345272064209,
+      "error": null
+    },
+    "assert remove_splchar(\"6v<]~?:8q_3ru#nu2>=|v*9bc>&m>*/15={[2a^|-[u)*s$\") == \"6v8q3runu2v9bcm152aus\"": {
+      "result": true,
+      "time": 0.5999422073364258,
+      "error": null
+    },
+    "assert remove_splchar(\"]r!f_xbn d=8/+f82<k]up-}+jsr9&$+{+=2%=h>2v~)n23)y8\") == \"rfxbnd8f82kupjsr92h2vn23y8\"": {
+      "result": true,
+      "time": 0.5151495933532715,
+      "error": null
+    },
+    "assert remove_splchar(\"$&96:<*zq0!u/g^6k*30ynwyvn/_2[xja~i=r3fbe#n&6@7d(8=?y&\") == \"96zq0ug6k30ynwyvn2xjair3fben67d8y\"": {
+      "result": true,
+      "time": 0.578657865524292,
+      "error": null
+    },
+    "assert remove_splchar(\"1?x6$)$ibk=t@9xx igtr2<u$5&o21t!7gg)]ki*a>z<>{\") == \"1x6ibkt9xxigtr2u5o21t7ggkiaz\"": {
+      "result": true,
+      "time": 0.6096134185791016,
+      "error": null
+    },
+    "assert remove_splchar(\"]w@po80f_*fhwj>[?qjcwv1zshq?~+b%nx<[s$l5nx>hk{$\") == \"wpo80ffhwjqjcwv1zshqbnxsl5nxhk\"": {
+      "result": true,
+      "time": 0.46398472785949707,
+      "error": null
+    },
+    "assert remove_splchar(\">)%:b_74a{<u1([o/urj3/<[|~b9)q!c8|hua>^@*?sk+vfqv4>[e[\") == \"b74au1ourj3b9qc8huaskvfqv4e\"": {
+      "result": true,
+      "time": 0.573967456817627,
+      "error": null
+    },
+    "assert remove_splchar(\"w4/&3p2r_fz 3sq!-e@$|>u#<!cuuun{<gx|&jeuuhq(^-mz\") == \"w43p2rfz3sqeucuuungxjeuuhqmz\"": {
+      "result": true,
+      "time": 0.5812540054321289,
+      "error": null
+    },
+    "assert remove_splchar(\"h$e!bhojaxeu%5vf[3y1qvc<&a[xz8#>)f|tb=u=<]n/h]o!yj:x\") == \"hebhojaxeu5vf3y1qvcaxz8ftbunhoyjx\"": {
+      "result": true,
+      "time": 0.5949966907501221,
+      "error": null
+    },
+    "assert remove_splchar(\"r-~l<gf&9]|$7au[w_|tj)u<92f4+o>w>~1o&i|f)9:(3->me|\") == \"rlgf97auwtju92f4ow1oif93me\"": {
+      "result": true,
+      "time": 0.606630802154541,
+      "error": null
+    },
+    "assert remove_splchar(\"g(<*ey*<:{c0&!&!~/*=z)+!!>~]$r<t{mb*!h4pvz4 n0:|-m0c{s\") == \"geyc0zrtmbh4pvz4n0m0cs\"": {
+      "result": true,
+      "time": 0.34927868843078613,
+      "error": null
+    },
+    "assert remove_splchar(\"v<03zr_og5u#46#5q{9vx|4sufe55/?:^{0r&nf[b9([r9s9/bmtc\") == \"v03zrog5u465q9vx4sufe550rnfb9r9s9bmtc\"": {
+      "result": true,
+      "time": 0.5831761360168457,
+      "error": null
+    },
+    "assert remove_splchar(\"k5~6%{>z69w|1@$y2)n<hm$h0|z6x:&et7pz$@(^1-]o42arp@5\") == \"k56z69w1y2nhmh0z6xet7pz1o42arp5\"": {
+      "result": true,
+      "time": 0.5911865234375,
+      "error": null
+    },
+    "assert remove_splchar(\"/[>l)4:hl~f?bs>n?!p!z9&*lio&|%xi1hcbi9^02*!(q]24\") == \"l4hlfbsnpz9lioxi1hcbi902q24\"": {
+      "result": true,
+      "time": 0.5589468479156494,
+      "error": null
+    },
+    "assert remove_splchar(\">?^u/_+6{98}k)8)nmnr:yr+|>g<$<{-wq9|&>0v$&5~>w6j{n31\") == \"u698k8nmnryrgwq90v5w6jn31\"": {
+      "result": true,
+      "time": 0.5756783485412598,
+      "error": null
+    },
+    "assert remove_splchar(\">4 ^v)u{yq(})m]l{:y[~+ez9y[p]1d^y*~-fa{l]q0x:jyhdb!$\") == \"4vuyqmlyez9yp1dyfalq0xjyhdb\"": {
+      "result": true,
+      "time": 0.5666923522949219,
+      "error": null
+    },
+    "assert remove_splchar(\"5?ubge}>6}z&rs9$y@(|>gp3pc3j@<z_z]z{n~{%jnemf3af_#:(\") == \"5ubge6zrs9ygp3pc3jzzznjnemf3af\"": {
+      "result": true,
+      "time": 0.6352367401123047,
+      "error": null
+    },
+    "assert remove_splchar(\"u5x=d:b5}:(}*#$a9<zm1dp>l1#{<s=mwu3ty{l$s/p84b3heyo{7o\") == \"u5xdb5a9zm1dpl1smwu3tylsp84b3heyo7o\"": {
+      "result": true,
+      "time": 0.5931684970855713,
+      "error": null
+    },
+    "assert remove_splchar(\"w:?{wf+ur9::wjg1v|)5pto$*8ua^g-}rn+*|uj<xqez5>-*]>\") == \"wwfur9wjg1v5pto8uagrnujxqez5\"": {
+      "result": true,
+      "time": 0.595381498336792,
+      "error": null
+    },
+    "assert remove_splchar(\"r@c}&ygn]:(<s5r/|<riwt#7k#6fo5[4<s(0n2w>df-/=e4y6!g?m\") == \"rcygns5rriwt7k6fo54s0n2wdfe4y6gm\"": {
+      "result": true,
+      "time": 0.5484054088592529,
+      "error": null
+    },
+    "assert remove_splchar(\"xxj^-:l!y(o+8*>%[#-jcg?|y{_nabm#4xe|j28=[$<tz[9g0k+~3}\") == \"xxjlyo8jcgynabm4xej28tz9g0k3\"": {
+      "result": true,
+      "time": 0.6130919456481934,
+      "error": null
+    },
+    "assert remove_splchar(\"hbgthvhzb45 l-s h}2mhjzf]f31i11{{>)j)6s<a36d6\") == \"hbgthvhzb45lsh2mhjzff31i11j6sa36d6\"": {
+      "result": true,
+      "time": 0.5639402866363525,
+      "error": null
+    },
+    "assert remove_splchar(\"c#m#/0m_am|@y@9+l&+3xu[jg8x*$-^#*i3-73+/!->p~44]\") == \"cm0mamy9l3xujg8xi373p44\"": {
+      "result": true,
+      "time": 0.5649251937866211,
+      "error": null
+    },
+    "assert remove_splchar(\"}vt=f*9)c2[?32+|i>><2p4tl[//<9s7vxs^i-tj?e$1 v:[\") == \"vtf9c232i2p4tl9s7vxsitje1v\"": {
+      "result": true,
+      "time": 0.5788440704345703,
+      "error": null
+    },
+    "assert remove_splchar(\"]7&%px) 7cuma9#am<ig/}<4~2f3k#sgj9zkgu?6aee/3tl\") == \"7px7cuma9amig42f3ksgj9zkgu6aee3tl\"": {
+      "result": true,
+      "time": 0.6089868545532227,
+      "error": null
+    },
+    "assert remove_splchar(\"ap8>}<h~&x{m02=(3>r2&z</7!28[hhfr@l3@%d%6a8>8~=oan\") == \"ap8hxm023r2z728hhfrl3d6a88oan\"": {
+      "result": true,
+      "time": 0.5784106254577637,
+      "error": null
+    },
+    "assert remove_splchar(\"ng)n8l[bc_1<9o{6|q-k ^ab(^jq7}k- kj$u(btw)mg \") == \"ngn8lbc19o6qkabjq7kkjubtwmg\"": {
+      "result": true,
+      "time": 0.5870096683502197,
+      "error": null
+    },
+    "assert remove_splchar(\"f?>>!$45]]tk!x$$d6ge0i8o[k{]_-3*y#%=n[n7e7bh: vd$!:8#%\") == \"f45tkxd6ge0i8ok3ynn7e7bhvd8\"": {
+      "result": true,
+      "time": 0.5988142490386963,
+      "error": null
+    },
+    "assert remove_splchar(\"#}y!g5j4v}lxfu84d54 2tra^]3~za4|&<96igco<{?lr43r\") == \"yg5j4vlxfu84d542tra3za496igcolr43r\"": {
+      "result": true,
+      "time": 0.5391058921813965,
+      "error": null
+    },
+    "assert remove_splchar(\"^$td0k=q1z<f(b2|c}p-8=n|1@!%x=11q @w{s${nkt3>%zp+\") == \"td0kq1zfb2cp8n1x11qwsnkt3zp\"": {
+      "result": true,
+      "time": 0.35273075103759766,
+      "error": null
+    },
+    "assert remove_splchar(\"&1c^2-#<]>rnb ocwd=h#c:wikcf)xom?!n&tm$lmq!/rpnm}\") == \"1c2rnbocwdhcwikcfxomntmlmqrpnm\"": {
+      "result": true,
+      "time": 0.6013567447662354,
+      "error": null
+    },
+    "assert remove_splchar(\">a*b=2?o)bkd@<#w>/k_=/<?)8>4>>  z61z%s^(%}9=0i+7$b]\") == \"ab2obkdwk84z61zs90i7b\"": {
+      "result": true,
+      "time": 0.6159651279449463,
+      "error": null
+    },
+    "assert remove_splchar(\"<<5!/%g_4x99$x{gu)^&jwxc)d3md|)3v?isk m8ca)b{lz)r4/<%2tgn\") == \"5g4x99xgujwxcd3md3viskm8cablzr42tgn\"": {
+      "result": true,
+      "time": 0.32601380348205566,
+      "error": null
+    },
+    "assert remove_splchar(\":#>fmx<{dc01$ /<2znx0/6[s{95%jqc$kk74#qr!f2|^1g?<$y7|>\") == \"fmxdc012znx06s95jqckk74qrf21gy7\"": {
+      "result": true,
+      "time": 0.44281578063964844,
+      "error": null
+    },
+    "assert remove_splchar(\"^4|#_($_yi<&tgn^(_u7i#6&l5)88:!w5y_)vw=4fu+10xk{>$w6*\") == \"4yitgnu7i6l588w5yvw4fu10xkw6\"": {
+      "result": true,
+      "time": 0.4670417308807373,
+      "error": null
+    },
+    "assert remove_splchar(\"/x9/8m$4-zck0r:%*ei^3yt*j>a3jljq>[$jb3@@p[!<6p[o[\") == \"x98m4zck0rei3ytja3jljqjb3p6po\"": {
+      "result": true,
+      "time": 0.3923330307006836,
+      "error": null
+    },
+    "assert remove_splchar(\"ayx]8m-n@$/o[3d|x+v)>v]p}hlt$y=>$_=->t>f=4bt)-} \") == \"ayx8mno3dxvvphltytf4bt\"": {
+      "result": true,
+      "time": 0.48169898986816406,
+      "error": null
+    },
+    "assert remove_splchar(\"%vc5u63ih]bdy&h#jt/@!<&4oa=_]v]&?mc<5<_w<<sx]f$v$lv\") == \"vc5u63ihbdyhjt4oavmc5wsxfvlv\"": {
+      "result": true,
+      "time": 0.4258131980895996,
+      "error": null
+    },
+    "assert remove_splchar(\"2[$u@i<4(vn09/i$ih{g4<%s&s&/l3<pxr|ao~[@gu24xa4jgv\") == \"2ui4vn09iihg4ssl3pxraogu24xa4jgv\"": {
+      "result": true,
+      "time": 0.36663389205932617,
+      "error": null
+    },
+    "assert remove_splchar(\"**~]fdz-d6m|n-q %}/5o(3pa^f=9$<yr[pcwq[j+y?f58ol!\") == \"fdzd6mnq5o3paf9yrpcwqjyf58ol\"": {
+      "result": true,
+      "time": 0.5379595756530762,
+      "error": null
+    },
+    "assert remove_splchar(\"84ibj~{6@[fat%<c{jl|vo#:k]mg>!8f:?]>m2u+txqtf+{$\") == \"84ibj6fatcjlvokmg8fm2utxqtf\"": {
+      "result": true,
+      "time": 0.3625147342681885,
+      "error": null
+    },
+    "assert remove_splchar(\"b4r:9*$~l#0i+9&2]l*@}9(-h<*o)1%@ltuw_&b~>vwsixq=-y#r86\") == \"b4r9l0i92l9ho1ltuwbvwsixqyr86\"": {
+      "result": true,
+      "time": 0.6166567802429199,
+      "error": null
+    },
+    "assert remove_splchar(\"-g?c[t(qi!<k>4<0q[k>x/_$zj2r9_?|c>rm@6n>8bhmhxphem@\") == \"gctqik40qkxzj2r9crm6n8bhmhxphem\"": {
+      "result": true,
+      "time": 0.41931605339050293,
+      "error": null
+    },
+    "assert remove_splchar(\"%94^ts?]zy|>i>b>4a3n7_8b13yl(ls4t{2vi*=kbi**:16[/\") == \"94tszyib4a3n78b13ylls4t2vikbi16\"": {
+      "result": true,
+      "time": 0.4223489761352539,
+      "error": null
+    },
+    "assert remove_splchar(\"9i<4#bj/nyo4&4(ozbi8)*p3uxt*s5r}f~t~m*{<6t>3}>x)=\") == \"9i4bjnyo44ozbi8p3uxts5rftm6t3x\"": {
+      "result": true,
+      "time": 0.411959171295166,
+      "error": null
+    },
+    "assert remove_splchar(\"ge95)$<q[klc%<|bdiy(<z-3</i77i8-itx4bw<y</x3km26iz\") == \"ge95qklcbdiyz3i77i8itx4bwyx3km26iz\"": {
+      "result": true,
+      "time": 0.48831868171691895,
+      "error": null
+    },
+    "assert remove_splchar(\"+::=o2|db^#>{jq9>(/73*t ^)i(%/bw%d<>:yyd*00g8j0&xe/phh \") == \"o2dbjq973tibwdyyd00g8j0xephh\"": {
+      "result": true,
+      "time": 0.3486793041229248,
+      "error": null
+    },
+    "assert remove_splchar(\"u%)<~&&0]gd>zo =0@880u41jjvex(w:|$&n*!kv<5py8um&r^x7~gf\") == \"u0gdzo0880u41jjvexwnkv5py8umrx7gf\"": {
+      "result": true,
+      "time": 0.4634716510772705,
+      "error": null
+    },
+    "assert remove_splchar(\"{&?x}/gllw3] l8l{}[$/ g[# upl:f|d$w+y2}#x#xahh@u\") == \"xgllw3l8lguplfdwy2xxahhu\"": {
+      "result": true,
+      "time": 0.6418321132659912,
+      "error": null
+    },
+    "assert remove_splchar(\"+b!$0@o3c}b%~@#|/<0d=l1f_(]=#+3j@/r_)wzy9|4]]>vugt(\") == \"b0o3cb0dl1f3jrwzy94vugt\"": {
+      "result": true,
+      "time": 0.5857763290405273,
+      "error": null
+    },
+    "assert remove_splchar(\"r}+q3cqrn]w?{e7!{^]p/#l^<1lx_@iix{-fbp9$+k!k&9{%h{*j\") == \"rq3cqrnwe7pl1lxiixfbp9kk9hj\"": {
+      "result": true,
+      "time": 0.4544234275817871,
+      "error": null
+    },
+    "assert remove_splchar(\"r4v7qp~j0?_6<9m</:_1{?p_wqxn9[kxq7k/&*3<(r?~cmdmm~\") == \"r4v7qpj069m1pwqxn9kxq7k3rcmdmm\"": {
+      "result": true,
+      "time": 0.6561334133148193,
+      "error": null
+    },
+    "assert remove_splchar(\">c/{(<o=1w3a!iy:zfv^7xc(s<ce+!!xy^mwt#oam[}~%<w^-d-_sx*/\") == \"co1w3aiyzfv7xcscexymwtoamwdsx\"": {
+      "result": true,
+      "time": 0.2101118564605713,
+      "error": null
+    },
+    "assert remove_splchar(\"&re$a<|>->vp!x3+gry x|b6g<[k->_(=gh|?lk/?k|-3asn\") == \"reavpx3gryxb6gkghlkk3asn\"": {
+      "result": true,
+      "time": 0.37412190437316895,
+      "error": null
+    },
+    "assert remove_splchar(\"ik=r?_]i$o+85z#y@?(1%z9<_(c8 6pp0#p1(/?no*ms&1(yy1z7=n^\") == \"ikrio85zy1z9c86pp0p1noms1yy1z7n\"": {
+      "result": true,
+      "time": 0.2822844982147217,
+      "error": null
+    },
+    "assert remove_splchar(\"?)(g0q|b=m<)t-d+]>|d7q0?n<1||h)8al<=-hzon5}f6/&<\") == \"g0qbmtdd7q0n1h8alhzon5f6\"": {
+      "result": true,
+      "time": 0.10713863372802734,
+      "error": null
+    },
+    "assert remove_splchar(\"k+s0ezea+2g(1m1)jq< y1~y3-v*f3%ha!=!w[<fpz>$@tf[fv)os\") == \"ks0ezea2g1m1jqy1y3vf3hawfpztffvos\"": {
+      "result": true,
+      "time": 0.5894691944122314,
+      "error": null
+    },
+    "assert remove_splchar(\"nt2}6]&u<=nc-j[6)ccg8f7>2i$+9]@9b^>~>tcb^&i{m5f</\") == \"nt26uncj6ccg8f72i99btcbim5f\"": {
+      "result": true,
+      "time": 0.5589091777801514,
+      "error": null
+    },
+    "assert remove_splchar(\"7(ijk6{}}][<s+l2yo&s@ip&x{w:>)6bqox> o_mk5=(/]!>n@-)j13w=\") == \"7ijk6sl2yosipxw6bqoxomk5nj13w\"": {
+      "result": true,
+      "time": 0.2750358581542969,
+      "error": null
+    },
+    "assert remove_splchar(\")7zv9sku&^]&l!}?<j!&:4>$l7wm6&m-= <x98~i:fq>-ku2y\") == \"7zv9skulj4l7wm6mx98ifqku2y\"": {
+      "result": true,
+      "time": 0.5744593143463135,
+      "error": null
+    },
+    "assert remove_splchar(\"p![ ^7|9drir}^t?}zxrmjyht:9jh|ip <zg$9ghw1^9]!li\") == \"p79drirtzxrmjyht9jhipzg9ghw19li\"": {
+      "result": true,
+      "time": 0.5687105655670166,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

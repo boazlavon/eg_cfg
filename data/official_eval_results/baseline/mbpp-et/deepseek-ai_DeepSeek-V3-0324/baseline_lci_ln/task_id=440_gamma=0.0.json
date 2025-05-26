@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef find_adverb_position(sentence):\n    # Initialize variables to store adverb information\n    adverb_start = None\n    adverb_end = None\n    adverb_word = None\n    \n    # Define a regular expression pattern to match adverbs ending with 'ly'\n    pattern = r'\\b\\w+ly\\b'\n    \n    # Search for the first adverb in the sentence\n    match = re.search(pattern, sentence)\n    \n    # If a match is found, extract the adverb and its positions\n    if match:\n        adverb_start = match.start()\n        adverb_end = match.end()\n        adverb_word = match.group()\n    \n    # Return the adverb information as a tuple\n    return (adverb_start, adverb_end, adverb_word)",
+  "results": {
+    "assert find_adverb_position(\"clearly!! we can see the sky\")==(0, 7, 'clearly')": {
+      "result": true,
+      "time": 0.42405152320861816,
+      "error": null
+    },
+    "assert find_adverb_position(\"seriously!! there are many roses\")==(0, 9, 'seriously')": {
+      "result": true,
+      "time": 0.6088199615478516,
+      "error": null
+    },
+    "assert find_adverb_position(\"unfortunately!! sita is going to home\")==(0, 13, 'unfortunately')": {
+      "result": true,
+      "time": 0.4798445701599121,
+      "error": null
+    },
+    "assert find_adverb_position(\":>z^sp-sr-@ea_=&c+l!g?ef#hx=!p|\") == None": {
+      "result": false,
+      "time": 0.6745784282684326,
+      "error": null
+    },
+    "assert find_adverb_position(\"xuo=!|>$b*nf%m~^@@bcb~ha/g>$f!%?\") == None": {
+      "result": false,
+      "time": 0.4648873805999756,
+      "error": null
+    },
+    "assert find_adverb_position(\"qe!hly_^syucrnddll@lnx:k\") == (3, 6, 'hly')": {
+      "result": false,
+      "time": 0.6704423427581787,
+      "error": null
+    },
+    "assert find_adverb_position(\"-s^ xhf%--q!_~h/-llm:| byv_d!y^jm\") == None": {
+      "result": false,
+      "time": 0.5111720561981201,
+      "error": null
+    },
+    "assert find_adverb_position(\"ue<%%gpu>|=ff|:~ax*db/+#wu?+\") == None": {
+      "result": false,
+      "time": 0.4661729335784912,
+      "error": null
+    },
+    "assert find_adverb_position(\"~k=|eu %%cv=+p&jjw*#ml%~j>gou=rzt\") == None": {
+      "result": false,
+      "time": 0.5782387256622314,
+      "error": null
+    },
+    "assert find_adverb_position(\" uon-vyphvv|=bm#i?cftv@jg#%u?\") == None": {
+      "result": false,
+      "time": 0.6345322132110596,
+      "error": null
+    },
+    "assert find_adverb_position(\"x/:vz?-:oovl>&go w y%<ek#y?xk\") == None": {
+      "result": false,
+      "time": 0.5773077011108398,
+      "error": null
+    },
+    "assert find_adverb_position(\"fd#g+f-^cy+%~h!bc/gbkc:ii>f\") == None": {
+      "result": false,
+      "time": 0.5835707187652588,
+      "error": null
+    },
+    "assert find_adverb_position(\"isx%$t+jvzezikh^cz yj*!r&iq@:#g\") == None": {
+      "result": false,
+      "time": 0.6139917373657227,
+      "error": null
+    },
+    "assert find_adverb_position(\"gcw%n=*v/ntewjjq+=fx#nd=@#$=fsa\") == None": {
+      "result": false,
+      "time": 0.6068160533905029,
+      "error": null
+    },
+    "assert find_adverb_position(\"m^ @?dpo##%=q=c=ce!/zpiqslx$<&y$q\") == None": {
+      "result": false,
+      "time": 0.5589601993560791,
+      "error": null
+    },
+    "assert find_adverb_position(\"pl_demzcgnyi@#n!ta<exqtzd yq\") == None": {
+      "result": false,
+      "time": 0.5994133949279785,
+      "error": null
+    },
+    "assert find_adverb_position(\"n/%lo#s~lxt->o<*^h+?teozp%*cp!y% \") == None": {
+      "result": false,
+      "time": 0.605818510055542,
+      "error": null
+    },
+    "assert find_adverb_position(\"ye>_scozi>&ag&?wmwq!_>&l|x^l$s!!b\") == None": {
+      "result": false,
+      "time": 0.5939340591430664,
+      "error": null
+    },
+    "assert find_adverb_position(\"=trr*b$dv^$?gzahf_wm?k/birp&c>*^h\") == None": {
+      "result": false,
+      "time": 0.5090012550354004,
+      "error": null
+    },
+    "assert find_adverb_position(\"!/at^saes% =^d|i<@j~xb+|ud s\") == None": {
+      "result": false,
+      "time": 0.580970287322998,
+      "error": null
+    },
+    "assert find_adverb_position(\"d:z--_pkvyk!++iab!|>ck|+acy%\") == None": {
+      "result": false,
+      "time": 0.6146483421325684,
+      "error": null
+    },
+    "assert find_adverb_position(\"zh/iob>m!:<a~dq&fh#%dm/:>jj=#<=k\") == None": {
+      "result": false,
+      "time": 0.5623161792755127,
+      "error": null
+    },
+    "assert find_adverb_position(\"p?m@/-gl <v$uw$b%ubmh+%l@\") == None": {
+      "result": false,
+      "time": 0.5736448764801025,
+      "error": null
+    },
+    "assert find_adverb_position(\"f??rpqh&<pre_f!ux#q>n?^z\") == None": {
+      "result": false,
+      "time": 0.5950584411621094,
+      "error": null
+    },
+    "assert find_adverb_position(\"!|r&np^ s#x?$odp_/|poppd%:v|!m u\") == None": {
+      "result": false,
+      "time": 0.576364278793335,
+      "error": null
+    },
+    "assert find_adverb_position(\"!*o:  h f!bd$>ja</e~_pi!pv>o\") == None": {
+      "result": false,
+      "time": 0.6290266513824463,
+      "error": null
+    },
+    "assert find_adverb_position(\"~_u@c^>~xb/z-a^:w@kuw:end\") == None": {
+      "result": false,
+      "time": 0.572974443435669,
+      "error": null
+    },
+    "assert find_adverb_position(\">fgx&!>s!wz-$+rd~|q@:?s+/og*\") == None": {
+      "result": false,
+      "time": 0.5102453231811523,
+      "error": null
+    },
+    "assert find_adverb_position(\"i/?/v@j^_y@sjk>gk%%hktlx?:z-\") == None": {
+      "result": false,
+      "time": 0.6009922027587891,
+      "error": null
+    },
+    "assert find_adverb_position(\"@ylkbhr?>g#ngb+b*%k|j!xt\") == None": {
+      "result": false,
+      "time": 0.5750548839569092,
+      "error": null
+    },
+    "assert find_adverb_position(\"admfr<mizaw@j$f/j>o>a*bzu-x<\") == None": {
+      "result": false,
+      "time": 0.5836269855499268,
+      "error": null
+    },
+    "assert find_adverb_position(\"mrmt|nl *mscv/d%%j%qp&cyx<#*og\") == None": {
+      "result": false,
+      "time": 0.61753249168396,
+      "error": null
+    },
+    "assert find_adverb_position(\"svy>y_s|%?e_p:th_h=zrach~:u\") == None": {
+      "result": false,
+      "time": 0.6096217632293701,
+      "error": null
+    },
+    "assert find_adverb_position(\"+?xr:ok$vtnv=uovx> +y<>of !mj%-<\") == None": {
+      "result": false,
+      "time": 0.5606727600097656,
+      "error": null
+    },
+    "assert find_adverb_position(\"s=gg*=$o$?-yqo*yvue*+ *i#%ke+b\") == None": {
+      "result": false,
+      "time": 0.5819437503814697,
+      "error": null
+    },
+    "assert find_adverb_position(\"~y:%m#^zuix>cj!_wu#w&?zfs\") == None": {
+      "result": false,
+      "time": 0.580040693283081,
+      "error": null
+    },
+    "assert find_adverb_position(\"?|km*kdx@rryo<?pq-#co#q+vohuqc::\") == None": {
+      "result": false,
+      "time": 0.5975632667541504,
+      "error": null
+    },
+    "assert find_adverb_position(\"e:?<!_?% cpbb*i#wk_w~id^%^?/\") == None": {
+      "result": false,
+      "time": 0.5530319213867188,
+      "error": null
+    },
+    "assert find_adverb_position(\"|en_/^hgz @fs/tw<@ l$ jr:v^fj-*\") == None": {
+      "result": false,
+      "time": 0.5767943859100342,
+      "error": null
+    },
+    "assert find_adverb_position(\"j$ *@zgxymzw~v!j_<:@|gngtb$gzc$y\") == None": {
+      "result": false,
+      "time": 0.5768051147460938,
+      "error": null
+    },
+    "assert find_adverb_position(\"!t?mjq|cbxr/m&nd$oyqt+<s:>p\") == None": {
+      "result": false,
+      "time": 0.5938413143157959,
+      "error": null
+    },
+    "assert find_adverb_position(\"si+u/>w:s-hhub #@rvo&e|-gm=!:^\") == None": {
+      "result": false,
+      "time": 0.5909097194671631,
+      "error": null
+    },
+    "assert find_adverb_position(\"cx| qy~$mgko   =<+!xk^| --$fxngdd_ix\") == None": {
+      "result": false,
+      "time": 0.5780923366546631,
+      "error": null
+    },
+    "assert find_adverb_position(\"*=m_<_blk-|~%?%%b*jqp:ee|g$!w:hv \") == None": {
+      "result": false,
+      "time": 0.6013774871826172,
+      "error": null
+    },
+    "assert find_adverb_position(\"nz_bab<>|=/jqi&|meuhrm+*t|k_#ivjz~o\") == None": {
+      "result": false,
+      "time": 0.6079885959625244,
+      "error": null
+    },
+    "assert find_adverb_position(\"f/:ndgy+bhbaqoc$#wds_&bxfl>%@cxskzr\") == None": {
+      "result": false,
+      "time": 0.5602729320526123,
+      "error": null
+    },
+    "assert find_adverb_position(\"jg*l-=%fow?psc@z>orlgl |%c>tihuw_-#!\") == None": {
+      "result": false,
+      "time": 0.6151266098022461,
+      "error": null
+    },
+    "assert find_adverb_position(\"y!beb_e%ta<rml**@:y>bmfn<&!\") == None": {
+      "result": false,
+      "time": 0.587752103805542,
+      "error": null
+    },
+    "assert find_adverb_position(\"wcqqlwmrav&bu!eqay!%:<wrra=tj|t\") == None": {
+      "result": false,
+      "time": 0.5742578506469727,
+      "error": null
+    },
+    "assert find_adverb_position(\"~xpnkiu!lm^yg?nx!krmdw*+~r/#dba|#lu\") == None": {
+      "result": false,
+      "time": 0.3893249034881592,
+      "error": null
+    },
+    "assert find_adverb_position(\"|$gqmt-<i&!czu^:tzal|^k:yor?|w\") == None": {
+      "result": false,
+      "time": 0.521909236907959,
+      "error": null
+    },
+    "assert find_adverb_position(\"<<kt@e_kx~o|+aq<tcq/|ku|kzyvgw=~-/s\") == None": {
+      "result": false,
+      "time": 0.6323657035827637,
+      "error": null
+    },
+    "assert find_adverb_position(\"i>?d#>ezpahup$*u%-~!qx/r*g<qrc#|&re\") == None": {
+      "result": false,
+      "time": 0.46347999572753906,
+      "error": null
+    },
+    "assert find_adverb_position(\"~=wxxg?_^f<qwzy<j#<p$p%sk$l /&!/\") == None": {
+      "result": false,
+      "time": 0.6112885475158691,
+      "error": null
+    },
+    "assert find_adverb_position(\"|/w_@%kn?~ev^ :$@usois~*+ll|-gxc_s# \") == None": {
+      "result": false,
+      "time": 0.45526909828186035,
+      "error": null
+    },
+    "assert find_adverb_position(\"sz?odi%w:$^  uaugr=lqsl<t%l_\") == None": {
+      "result": false,
+      "time": 0.5877506732940674,
+      "error": null
+    },
+    "assert find_adverb_position(\" :bf|cy-gnh|l-*-&:bta&r-e| >e#%mpa\") == None": {
+      "result": false,
+      "time": 0.600224494934082,
+      "error": null
+    },
+    "assert find_adverb_position(\"$?ud$npym#df-nk+w*bjm#@fh<a|^wxsarv\") == None": {
+      "result": false,
+      "time": 0.6098129749298096,
+      "error": null
+    },
+    "assert find_adverb_position(\"-ivfmy+>d&rzui=:n_&~-hj+-g?+ep\") == None": {
+      "result": false,
+      "time": 0.5765562057495117,
+      "error": null
+    },
+    "assert find_adverb_position(\"o=zws !wyf%_o:jhf=du>ru%@~w\") == None": {
+      "result": false,
+      "time": 0.614323616027832,
+      "error": null
+    },
+    "assert find_adverb_position(\"<gdi$#i^~ wdb*~+##thdu> _w:xbxx%%\") == None": {
+      "result": false,
+      "time": 0.49761247634887695,
+      "error": null
+    },
+    "assert find_adverb_position(\"gn ucnlp%d|k?#ikk& *czny%b&-zd/opt&\") == None": {
+      "result": false,
+      "time": 0.615422248840332,
+      "error": null
+    },
+    "assert find_adverb_position(\"ew~gk=&$%gi ^i|&e >evbgaz?qf#c\") == None": {
+      "result": false,
+      "time": 0.6180248260498047,
+      "error": null
+    },
+    "assert find_adverb_position(\"&z%/!_<q?aj^a#a<byf|:u=a?&n?x-nafb-?\") == None": {
+      "result": false,
+      "time": 0.6137340068817139,
+      "error": null
+    },
+    "assert find_adverb_position(\"*?|cjk$ahq+rdcm/b? ^cs*%!dk>trq%\") == None": {
+      "result": false,
+      "time": 0.6109344959259033,
+      "error": null
+    },
+    "assert find_adverb_position(\"=tid>#_*u>aw!?mh*acdqig&drvkgq/&\") == None": {
+      "result": false,
+      "time": 0.5993640422821045,
+      "error": null
+    },
+    "assert find_adverb_position(\"t*&?>qyf:_cam?#j|$eant%a@izt\") == None": {
+      "result": false,
+      "time": 0.6165013313293457,
+      "error": null
+    },
+    "assert find_adverb_position(\"n*d_-xkrt@%^crmi%l!o+_f*coc<\") == None": {
+      "result": false,
+      "time": 0.3231818675994873,
+      "error": null
+    },
+    "assert find_adverb_position(\"-hy/+|w-|/ ^axvh+=q:@>=f-bwdooc+tln \") == None": {
+      "result": false,
+      "time": 0.36211562156677246,
+      "error": null
+    },
+    "assert find_adverb_position(\"==ffu>:$*%=-iob|<t#<vp=cr+mehp<ar:r$sia\") == None": {
+      "result": false,
+      "time": 0.5839443206787109,
+      "error": null
+    },
+    "assert find_adverb_position(\"_!h$sc>-d!^i!:?%d%:oz!lhh?_pr*t ^k#qqris\") == None": {
+      "result": false,
+      "time": 0.6096882820129395,
+      "error": null
+    },
+    "assert find_adverb_position(\"/:=h_xf:un+w?mgo//x>%*b%ql~*^n*cz* :j\") == None": {
+      "result": false,
+      "time": 0.6142961978912354,
+      "error": null
+    },
+    "assert find_adverb_position(\"uh/#off&/zgz_|!*=@=fay|s*_x##axc~$rfz|?%<_\") == None": {
+      "result": false,
+      "time": 0.5710482597351074,
+      "error": null
+    },
+    "assert find_adverb_position(\"v-ia@|uco/$~u?wp+<|!*wnrhgw~qien_-u\") == None": {
+      "result": false,
+      "time": 0.576237678527832,
+      "error": null
+    },
+    "assert find_adverb_position(\"s*>f~te/jv ddda*t_!w~<n?co@yo*>i$*z^ s:!ew\") == None": {
+      "result": false,
+      "time": 0.6047046184539795,
+      "error": null
+    },
+    "assert find_adverb_position(\":nvu=s&~wwc|^aay<~y= ~avr%utkzaq=g ~_y<\") == None": {
+      "result": false,
+      "time": 0.5896604061126709,
+      "error": null
+    },
+    "assert find_adverb_position(\"e%%m&ft?/llpk@aci>jy@u_*=b^gf+xbjq>=\") == None": {
+      "result": false,
+      "time": 0.6119279861450195,
+      "error": null
+    },
+    "assert find_adverb_position(\"-=u#=s=inll!=%%gpt#dv*+vm@c?ex?#bq:&>yma\") == None": {
+      "result": false,
+      "time": 0.5940189361572266,
+      "error": null
+    },
+    "assert find_adverb_position(\"$#_x|e#+nj|&ga-jyj>$_>-  yd?tn~w&_|i/hw\") == None": {
+      "result": false,
+      "time": 0.5179688930511475,
+      "error": null
+    },
+    "assert find_adverb_position(\"oymn/_ %kj&eky%<gj? @x~oe#k~h_#i@$#hkaj\") == None": {
+      "result": false,
+      "time": 0.5748250484466553,
+      "error": null
+    },
+    "assert find_adverb_position(\"zd>db^/sx#niuulk~ev$k/jqvvl:+qwu#\") == None": {
+      "result": false,
+      "time": 0.5738213062286377,
+      "error": null
+    },
+    "assert find_adverb_position(\"gu=vaez/*#xq#rcxjq!~dy+ln!&$<iuy=/@| \") == None": {
+      "result": false,
+      "time": 0.6201996803283691,
+      "error": null
+    },
+    "assert find_adverb_position(\"k_|@&t-@:jm_p<_q-iksc-ivyt?$-w-_x\") == None": {
+      "result": false,
+      "time": 0.5725080966949463,
+      "error": null
+    },
+    "assert find_adverb_position(\"v $npen*i_t h@wrwj?yt~:rc%!:jhxk^\") == None": {
+      "result": false,
+      "time": 0.5745089054107666,
+      "error": null
+    },
+    "assert find_adverb_position(\"li-i%*c =hq$vy>-ll|%i>wvhy+r+&bk!<\") == None": {
+      "result": false,
+      "time": 0.5654146671295166,
+      "error": null
+    },
+    "assert find_adverb_position(\"-/y_- kxmxsgr-q#bqyi<v$wmta:qaxtkww/ai-\") == None": {
+      "result": false,
+      "time": 0.5654850006103516,
+      "error": null
+    },
+    "assert find_adverb_position(\"&xs|^:pa|o/!hi~uw=&pk%?^~v^itw/glew<\") == None": {
+      "result": false,
+      "time": 0.6207907199859619,
+      "error": null
+    },
+    "assert find_adverb_position(\"deudv_-pg^b->=hg/~nl?hnke!^o%ncsd% hrs!w\") == None": {
+      "result": false,
+      "time": 0.6012392044067383,
+      "error": null
+    },
+    "assert find_adverb_position(\"b$sfdxe:+>yn!:#ww*@y~u-!w$|:-fz-*v\") == None": {
+      "result": false,
+      "time": 0.5495476722717285,
+      "error": null
+    },
+    "assert find_adverb_position(\"^*xm->rsqefa#_<+c$dpd<+ba-a#iv|hg\") == None": {
+      "result": false,
+      "time": 0.5990288257598877,
+      "error": null
+    },
+    "assert find_adverb_position(\"^^*: ~e*a#q+ysq_f+i/#dty|av|-ltxk!\") == None": {
+      "result": false,
+      "time": 0.5986578464508057,
+      "error": null
+    },
+    "assert find_adverb_position(\">+m|gpbv+b-v:b*</yr gsb|_ppg/jn/ce-\") == None": {
+      "result": false,
+      "time": 0.5665574073791504,
+      "error": null
+    },
+    "assert find_adverb_position(\"xs# apt|$_!?wlpad$>~!_ozbr%z?x!iybohx>>+$\") == None": {
+      "result": false,
+      "time": 0.5729913711547852,
+      "error": null
+    },
+    "assert find_adverb_position(\"@= v?g|j>cq %o/k#ct~iofj/>$x/j<hw_/=fizya&\") == None": {
+      "result": false,
+      "time": 0.55967116355896,
+      "error": null
+    },
+    "assert find_adverb_position(\"kocr#/s&+#z~o&g>!tos%$wrz#=ln:@rz%\") == None": {
+      "result": false,
+      "time": 0.6000101566314697,
+      "error": null
+    },
+    "assert find_adverb_position(\"zt l@ycwyn|<x>bj|hgr<&<b~jzpb?isd~s\") == None": {
+      "result": false,
+      "time": 0.5910699367523193,
+      "error": null
+    },
+    "assert find_adverb_position(\"@+tswaulqpvnpku<e<jmof _*bvh+<#e|arcbm!\") == None": {
+      "result": false,
+      "time": 0.5912911891937256,
+      "error": null
+    },
+    "assert find_adverb_position(\"de*eih_tfgx:pf!_zwo&mc/n>hkdf<jlvl\") == None": {
+      "result": false,
+      "time": 0.5956497192382812,
+      "error": null
+    },
+    "assert find_adverb_position(\"*nifrjlg=o_bz~?x<wq>h_^x+mc_aci|o^$/|c/_y~\") == None": {
+      "result": false,
+      "time": 0.5648658275604248,
+      "error": null
+    },
+    "assert find_adverb_position(\"i?>@|?s~v$y- kc/r^e-e_d-!v$@$c?fi\") == None": {
+      "result": false,
+      "time": 0.5699179172515869,
+      "error": null
+    },
+    "assert find_adverb_position(\"j*o:g+p=*=av:^o&<@-av&$tkw/mza!iv|sw_f_:$g\") == None": {
+      "result": false,
+      "time": 0.5965688228607178,
+      "error": null
+    },
+    "assert find_adverb_position(\"#-@%!wq&w&!h!ta@vo~fkr?<=hz/#c+f#uvnd#d\") == None": {
+      "result": false,
+      "time": 0.5521030426025391,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.029411764705882353,
+  "general_error": "",
+  "has_testcase_error": false
+}

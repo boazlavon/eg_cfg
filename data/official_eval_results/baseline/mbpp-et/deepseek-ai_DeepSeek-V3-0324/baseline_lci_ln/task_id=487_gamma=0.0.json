@@ -1,0 +1,519 @@
+{
+  "code": "def sort_tuple(tuples_list):\n    # Create a list to store the sorted tuples\n    sorted_list = []\n    \n    # Create a list to store the last elements of each tuple\n    last_elements = []\n    \n    # Extract the last element from each tuple and store in last_elements\n    for t in tuples_list:\n        last_element = t[-1]\n        last_elements.append(last_element)\n    \n    # Pair each tuple with its last element\n    paired_list = []\n    for i in range(len(tuples_list)):\n        pair = (last_elements[i], tuples_list[i])\n        paired_list.append(pair)\n    \n    # Sort the paired list based on the last element\n    sorted_pairs = []\n    for pair in sorted(paired_list):\n        sorted_pairs.append(pair)\n    \n    # Extract the tuples from the sorted pairs\n    for pair in sorted_pairs:\n        original_tuple = pair[1]\n        sorted_list.append(original_tuple)\n    \n    return sorted_list",
+  "results": {
+    "assert sort_tuple([(1, 3), (3, 2), (2, 1)] ) == [(2, 1), (3, 2), (1, 3)]": {
+      "result": true,
+      "time": 0.037872314453125,
+      "error": null
+    },
+    "assert sort_tuple([(2, 4), (3, 3), (1, 1)] ) == [(1, 1), (3, 3), (2, 4)]": {
+      "result": true,
+      "time": 0.03656005859375,
+      "error": null
+    },
+    "assert sort_tuple([(3, 9), (6, 7), (4, 3)] ) == [(4, 3), (6, 7), (3, 9)]": {
+      "result": true,
+      "time": 0.04338645935058594,
+      "error": null
+    },
+    "assert sort_tuple([(5, 7), (1, 5), (7, 2)]) == [(7, 2), (1, 5), (5, 7)]": {
+      "result": true,
+      "time": 0.039417266845703125,
+      "error": null
+    },
+    "assert sort_tuple([(6, 5), (5, 5), (4, 1)]) == [(4, 1), (6, 5), (5, 5)]": {
+      "result": false,
+      "time": 0.04173445701599121,
+      "error": null
+    },
+    "assert sort_tuple([(1, 2), (1, 4), (1, 2)]) == [(1, 2), (1, 2), (1, 4)]": {
+      "result": true,
+      "time": 0.0520021915435791,
+      "error": null
+    },
+    "assert sort_tuple([(3, 6), (4, 1), (7, 4)]) == [(4, 1), (7, 4), (3, 6)]": {
+      "result": true,
+      "time": 0.058519840240478516,
+      "error": null
+    },
+    "assert sort_tuple([(5, 7), (8, 1), (5, 1)]) == [(8, 1), (5, 1), (5, 7)]": {
+      "result": false,
+      "time": 0.05480813980102539,
+      "error": null
+    },
+    "assert sort_tuple([(4, 8), (3, 4), (1, 5)]) == [(3, 4), (1, 5), (4, 8)]": {
+      "result": true,
+      "time": 0.059157609939575195,
+      "error": null
+    },
+    "assert sort_tuple([(6, 1), (7, 3), (4, 5)]) == [(6, 1), (7, 3), (4, 5)]": {
+      "result": true,
+      "time": 0.04598498344421387,
+      "error": null
+    },
+    "assert sort_tuple([(4, 4), (2, 6), (2, 1)]) == [(2, 1), (4, 4), (2, 6)]": {
+      "result": true,
+      "time": 0.059610605239868164,
+      "error": null
+    },
+    "assert sort_tuple([(1, 4), (8, 3), (6, 1)]) == [(6, 1), (8, 3), (1, 4)]": {
+      "result": true,
+      "time": 0.06220698356628418,
+      "error": null
+    },
+    "assert sort_tuple([(2, 5), (2, 5), (4, 3)]) == [(4, 3), (2, 5), (2, 5)]": {
+      "result": true,
+      "time": 0.06186342239379883,
+      "error": null
+    },
+    "assert sort_tuple([(5, 1), (2, 2), (5, 3)]) == [(5, 1), (2, 2), (5, 3)]": {
+      "result": true,
+      "time": 0.04635453224182129,
+      "error": null
+    },
+    "assert sort_tuple([(3, 6), (8, 2), (1, 1)]) == [(1, 1), (8, 2), (3, 6)]": {
+      "result": true,
+      "time": 0.057351112365722656,
+      "error": null
+    },
+    "assert sort_tuple([(1, 1), (2, 4), (3, 1)]) == [(1, 1), (3, 1), (2, 4)]": {
+      "result": true,
+      "time": 0.05099225044250488,
+      "error": null
+    },
+    "assert sort_tuple([(1, 3), (2, 7), (7, 5)]) == [(1, 3), (7, 5), (2, 7)]": {
+      "result": true,
+      "time": 0.0635981559753418,
+      "error": null
+    },
+    "assert sort_tuple([(6, 4), (3, 7), (5, 2)]) == [(5, 2), (6, 4), (3, 7)]": {
+      "result": true,
+      "time": 0.0504605770111084,
+      "error": null
+    },
+    "assert sort_tuple([(6, 4), (1, 7), (2, 5)]) == [(6, 4), (2, 5), (1, 7)]": {
+      "result": true,
+      "time": 0.05817699432373047,
+      "error": null
+    },
+    "assert sort_tuple([(4, 7), (4, 7), (3, 5)]) == [(3, 5), (4, 7), (4, 7)]": {
+      "result": true,
+      "time": 0.05561971664428711,
+      "error": null
+    },
+    "assert sort_tuple([(4, 2), (3, 1), (6, 4)]) == [(3, 1), (4, 2), (6, 4)]": {
+      "result": true,
+      "time": 0.04218864440917969,
+      "error": null
+    },
+    "assert sort_tuple([(1, 7), (2, 2), (7, 1)]) == [(7, 1), (2, 2), (1, 7)]": {
+      "result": true,
+      "time": 0.034612178802490234,
+      "error": null
+    },
+    "assert sort_tuple([(5, 3), (6, 5), (2, 1)]) == [(2, 1), (5, 3), (6, 5)]": {
+      "result": true,
+      "time": 0.04294848442077637,
+      "error": null
+    },
+    "assert sort_tuple([(6, 1), (7, 5), (1, 5)]) == [(6, 1), (7, 5), (1, 5)]": {
+      "result": false,
+      "time": 0.03419232368469238,
+      "error": null
+    },
+    "assert sort_tuple([(5, 6), (6, 6), (4, 4)]) == [(4, 4), (5, 6), (6, 6)]": {
+      "result": true,
+      "time": 0.04279017448425293,
+      "error": null
+    },
+    "assert sort_tuple([(3, 8), (3, 6), (4, 1)]) == [(4, 1), (3, 6), (3, 8)]": {
+      "result": true,
+      "time": 0.03401350975036621,
+      "error": null
+    },
+    "assert sort_tuple([(6, 8), (5, 7), (1, 1)]) == [(1, 1), (5, 7), (6, 8)]": {
+      "result": true,
+      "time": 0.043703556060791016,
+      "error": null
+    },
+    "assert sort_tuple([(1, 5), (6, 6), (7, 2)]) == [(7, 2), (1, 5), (6, 6)]": {
+      "result": true,
+      "time": 0.03153491020202637,
+      "error": null
+    },
+    "assert sort_tuple([(1, 4), (8, 2), (1, 1)]) == [(1, 1), (8, 2), (1, 4)]": {
+      "result": true,
+      "time": 0.038330078125,
+      "error": null
+    },
+    "assert sort_tuple([(1, 1), (5, 2), (2, 1)]) == [(1, 1), (2, 1), (5, 2)]": {
+      "result": true,
+      "time": 0.040520429611206055,
+      "error": null
+    },
+    "assert sort_tuple([(3, 5), (8, 5), (2, 2)]) == [(2, 2), (3, 5), (8, 5)]": {
+      "result": true,
+      "time": 0.042862892150878906,
+      "error": null
+    },
+    "assert sort_tuple([(3, 8), (4, 1), (2, 2)]) == [(4, 1), (2, 2), (3, 8)]": {
+      "result": true,
+      "time": 0.03492140769958496,
+      "error": null
+    },
+    "assert sort_tuple([(2, 2), (6, 5), (6, 3)]) == [(2, 2), (6, 3), (6, 5)]": {
+      "result": true,
+      "time": 0.037238359451293945,
+      "error": null
+    },
+    "assert sort_tuple([(4, 1), (8, 5), (4, 4)]) == [(4, 1), (4, 4), (8, 5)]": {
+      "result": true,
+      "time": 0.047339677810668945,
+      "error": null
+    },
+    "assert sort_tuple([(1, 8), (6, 7), (2, 1)]) == [(2, 1), (6, 7), (1, 8)]": {
+      "result": true,
+      "time": 0.03452491760253906,
+      "error": null
+    },
+    "assert sort_tuple([(1, 5), (4, 6), (6, 1)]) == [(6, 1), (1, 5), (4, 6)]": {
+      "result": true,
+      "time": 0.04545283317565918,
+      "error": null
+    },
+    "assert sort_tuple([(6, 8), (5, 3), (6, 4)]) == [(5, 3), (6, 4), (6, 8)]": {
+      "result": true,
+      "time": 0.03589153289794922,
+      "error": null
+    },
+    "assert sort_tuple([(4, 1), (6, 6), (1, 2)]) == [(4, 1), (1, 2), (6, 6)]": {
+      "result": true,
+      "time": 0.0450434684753418,
+      "error": null
+    },
+    "assert sort_tuple([(2, 9), (2, 3), (3, 3)]) == [(2, 3), (3, 3), (2, 9)]": {
+      "result": true,
+      "time": 0.03763890266418457,
+      "error": null
+    },
+    "assert sort_tuple([(4, 2), (2, 1), (4, 1)]) == [(2, 1), (4, 1), (4, 2)]": {
+      "result": true,
+      "time": 0.03855752944946289,
+      "error": null
+    },
+    "assert sort_tuple([(3, 4), (7, 2), (3, 3)]) == [(7, 2), (3, 3), (3, 4)]": {
+      "result": true,
+      "time": 0.03573489189147949,
+      "error": null
+    },
+    "assert sort_tuple([(6, 5), (1, 1), (1, 6)]) == [(1, 1), (6, 5), (1, 6)]": {
+      "result": true,
+      "time": 0.045078277587890625,
+      "error": null
+    },
+    "assert sort_tuple([(4, 4), (2, 3), (2, 5)]) == [(2, 3), (4, 4), (2, 5)]": {
+      "result": true,
+      "time": 0.03939175605773926,
+      "error": null
+    },
+    "assert sort_tuple([(6, 7), (8, 6), (4, 3)]) == [(4, 3), (8, 6), (6, 7)]": {
+      "result": true,
+      "time": 0.042176008224487305,
+      "error": null
+    },
+    "assert sort_tuple([(3, 1), (7, 6), (5, 4)]) == [(3, 1), (5, 4), (7, 6)]": {
+      "result": true,
+      "time": 0.0389251708984375,
+      "error": null
+    },
+    "assert sort_tuple([(1, 5), (5, 7), (5, 2)]) == [(5, 2), (1, 5), (5, 7)]": {
+      "result": true,
+      "time": 0.036615848541259766,
+      "error": null
+    },
+    "assert sort_tuple([(6, 8), (4, 2), (5, 6)]) == [(4, 2), (5, 6), (6, 8)]": {
+      "result": true,
+      "time": 0.0492701530456543,
+      "error": null
+    },
+    "assert sort_tuple([(4, 7), (1, 5), (4, 4)]) == [(4, 4), (1, 5), (4, 7)]": {
+      "result": true,
+      "time": 0.039037466049194336,
+      "error": null
+    },
+    "assert sort_tuple([(6, 3), (4, 7), (6, 2)]) == [(6, 2), (6, 3), (4, 7)]": {
+      "result": true,
+      "time": 0.04201960563659668,
+      "error": null
+    },
+    "assert sort_tuple([(7, 7), (7, 7), (1, 3)]) == [(1, 3), (7, 7), (7, 7)]": {
+      "result": true,
+      "time": 0.042642831802368164,
+      "error": null
+    },
+    "assert sort_tuple([(2, 8), (8, 4), (2, 3)]) == [(2, 3), (8, 4), (2, 8)]": {
+      "result": true,
+      "time": 0.036226511001586914,
+      "error": null
+    },
+    "assert sort_tuple([(2, 4), (3, 5), (3, 1)]) == [(3, 1), (2, 4), (3, 5)]": {
+      "result": true,
+      "time": 0.03407549858093262,
+      "error": null
+    },
+    "assert sort_tuple([(5, 1), (8, 6), (5, 4)]) == [(5, 1), (5, 4), (8, 6)]": {
+      "result": true,
+      "time": 0.03129696846008301,
+      "error": null
+    },
+    "assert sort_tuple([(2, 3), (5, 3), (4, 4)]) == [(2, 3), (5, 3), (4, 4)]": {
+      "result": true,
+      "time": 0.048188209533691406,
+      "error": null
+    },
+    "assert sort_tuple([(4, 9), (6, 2), (6, 5)]) == [(6, 2), (6, 5), (4, 9)]": {
+      "result": true,
+      "time": 0.05293536186218262,
+      "error": null
+    },
+    "assert sort_tuple([(5, 8), (2, 7), (1, 2)]) == [(1, 2), (2, 7), (5, 8)]": {
+      "result": true,
+      "time": 0.05732893943786621,
+      "error": null
+    },
+    "assert sort_tuple([(4, 2), (5, 6), (4, 5)]) == [(4, 2), (4, 5), (5, 6)]": {
+      "result": true,
+      "time": 0.05000638961791992,
+      "error": null
+    },
+    "assert sort_tuple([(1, 8), (4, 8), (3, 4)]) == [(3, 4), (1, 8), (4, 8)]": {
+      "result": true,
+      "time": 0.0373997688293457,
+      "error": null
+    },
+    "assert sort_tuple([(3, 8), (7, 8), (2, 4)]) == [(2, 4), (3, 8), (7, 8)]": {
+      "result": true,
+      "time": 0.03771638870239258,
+      "error": null
+    },
+    "assert sort_tuple([(3, 9), (2, 8), (4, 3)]) == [(4, 3), (2, 8), (3, 9)]": {
+      "result": true,
+      "time": 0.03638029098510742,
+      "error": null
+    },
+    "assert sort_tuple([(7, 6), (8, 6), (5, 5)]) == [(5, 5), (7, 6), (8, 6)]": {
+      "result": true,
+      "time": 0.0372161865234375,
+      "error": null
+    },
+    "assert sort_tuple([(6, 5), (1, 4), (5, 4)]) == [(1, 4), (5, 4), (6, 5)]": {
+      "result": true,
+      "time": 0.03391098976135254,
+      "error": null
+    },
+    "assert sort_tuple([(4, 4), (4, 1), (4, 1)]) == [(4, 1), (4, 1), (4, 4)]": {
+      "result": true,
+      "time": 0.04662466049194336,
+      "error": null
+    },
+    "assert sort_tuple([(7, 6), (4, 2), (6, 4)]) == [(4, 2), (6, 4), (7, 6)]": {
+      "result": true,
+      "time": 0.04045510292053223,
+      "error": null
+    },
+    "assert sort_tuple([(6, 1), (6, 4), (3, 3)]) == [(6, 1), (3, 3), (6, 4)]": {
+      "result": true,
+      "time": 0.03459000587463379,
+      "error": null
+    },
+    "assert sort_tuple([(4, 6), (5, 4), (6, 3)]) == [(6, 3), (5, 4), (4, 6)]": {
+      "result": true,
+      "time": 0.039872169494628906,
+      "error": null
+    },
+    "assert sort_tuple([(3, 7), (3, 1), (3, 2)]) == [(3, 1), (3, 2), (3, 7)]": {
+      "result": true,
+      "time": 0.039563655853271484,
+      "error": null
+    },
+    "assert sort_tuple([(6, 8), (8, 8), (2, 2)]) == [(2, 2), (6, 8), (8, 8)]": {
+      "result": true,
+      "time": 0.03728795051574707,
+      "error": null
+    },
+    "assert sort_tuple([(2, 1), (1, 7), (5, 1)]) == [(2, 1), (5, 1), (1, 7)]": {
+      "result": true,
+      "time": 0.04723405838012695,
+      "error": null
+    },
+    "assert sort_tuple([(5, 5), (5, 6), (8, 7)]) == [(5, 5), (5, 6), (8, 7)]": {
+      "result": true,
+      "time": 0.03675198554992676,
+      "error": null
+    },
+    "assert sort_tuple([(8, 13), (2, 2), (4, 7)]) == [(2, 2), (4, 7), (8, 13)]": {
+      "result": true,
+      "time": 0.03559684753417969,
+      "error": null
+    },
+    "assert sort_tuple([(8, 13), (5, 7), (4, 3)]) == [(4, 3), (5, 7), (8, 13)]": {
+      "result": true,
+      "time": 0.03815317153930664,
+      "error": null
+    },
+    "assert sort_tuple([(6, 11), (2, 8), (6, 6)]) == [(6, 6), (2, 8), (6, 11)]": {
+      "result": true,
+      "time": 0.03922128677368164,
+      "error": null
+    },
+    "assert sort_tuple([(7, 9), (10, 2), (6, 5)]) == [(10, 2), (6, 5), (7, 9)]": {
+      "result": true,
+      "time": 0.03845024108886719,
+      "error": null
+    },
+    "assert sort_tuple([(5, 8), (2, 10), (3, 5)]) == [(3, 5), (5, 8), (2, 10)]": {
+      "result": true,
+      "time": 0.02986764907836914,
+      "error": null
+    },
+    "assert sort_tuple([(5, 8), (3, 10), (7, 1)]) == [(7, 1), (5, 8), (3, 10)]": {
+      "result": true,
+      "time": 0.042371273040771484,
+      "error": null
+    },
+    "assert sort_tuple([(5, 5), (7, 5), (6, 7)]) == [(5, 5), (7, 5), (6, 7)]": {
+      "result": true,
+      "time": 0.040910959243774414,
+      "error": null
+    },
+    "assert sort_tuple([(6, 7), (2, 11), (3, 8)]) == [(6, 7), (3, 8), (2, 11)]": {
+      "result": true,
+      "time": 0.02816915512084961,
+      "error": null
+    },
+    "assert sort_tuple([(3, 9), (5, 4), (7, 3)]) == [(7, 3), (5, 4), (3, 9)]": {
+      "result": true,
+      "time": 0.033648014068603516,
+      "error": null
+    },
+    "assert sort_tuple([(7, 5), (9, 10), (7, 8)]) == [(7, 5), (7, 8), (9, 10)]": {
+      "result": true,
+      "time": 0.0385282039642334,
+      "error": null
+    },
+    "assert sort_tuple([(3, 10), (5, 4), (6, 3)]) == [(6, 3), (5, 4), (3, 10)]": {
+      "result": true,
+      "time": 0.03323864936828613,
+      "error": null
+    },
+    "assert sort_tuple([(8, 6), (7, 8), (3, 4)]) == [(3, 4), (8, 6), (7, 8)]": {
+      "result": true,
+      "time": 0.03036952018737793,
+      "error": null
+    },
+    "assert sort_tuple([(1, 11), (2, 6), (7, 8)]) == [(2, 6), (7, 8), (1, 11)]": {
+      "result": true,
+      "time": 0.03626871109008789,
+      "error": null
+    },
+    "assert sort_tuple([(4, 13), (4, 10), (8, 7)]) == [(8, 7), (4, 10), (4, 13)]": {
+      "result": true,
+      "time": 0.03368091583251953,
+      "error": null
+    },
+    "assert sort_tuple([(5, 5), (10, 6), (8, 2)]) == [(8, 2), (5, 5), (10, 6)]": {
+      "result": true,
+      "time": 0.03288912773132324,
+      "error": null
+    },
+    "assert sort_tuple([(7, 4), (1, 11), (9, 7)]) == [(7, 4), (9, 7), (1, 11)]": {
+      "result": true,
+      "time": 0.03527045249938965,
+      "error": null
+    },
+    "assert sort_tuple([(7, 12), (4, 6), (6, 4)]) == [(6, 4), (4, 6), (7, 12)]": {
+      "result": true,
+      "time": 0.03646492958068848,
+      "error": null
+    },
+    "assert sort_tuple([(6, 9), (1, 8), (5, 7)]) == [(5, 7), (1, 8), (6, 9)]": {
+      "result": true,
+      "time": 0.032790184020996094,
+      "error": null
+    },
+    "assert sort_tuple([(4, 5), (4, 10), (2, 4)]) == [(2, 4), (4, 5), (4, 10)]": {
+      "result": true,
+      "time": 0.03254365921020508,
+      "error": null
+    },
+    "assert sort_tuple([(7, 13), (3, 3), (1, 5)]) == [(3, 3), (1, 5), (7, 13)]": {
+      "result": true,
+      "time": 0.04038357734680176,
+      "error": null
+    },
+    "assert sort_tuple([(1, 6), (1, 11), (7, 3)]) == [(7, 3), (1, 6), (1, 11)]": {
+      "result": true,
+      "time": 0.042334794998168945,
+      "error": null
+    },
+    "assert sort_tuple([(4, 12), (3, 11), (6, 7)]) == [(6, 7), (3, 11), (4, 12)]": {
+      "result": true,
+      "time": 0.03360128402709961,
+      "error": null
+    },
+    "assert sort_tuple([(3, 8), (4, 2), (5, 5)]) == [(4, 2), (5, 5), (3, 8)]": {
+      "result": true,
+      "time": 0.04033231735229492,
+      "error": null
+    },
+    "assert sort_tuple([(7, 13), (2, 12), (7, 2)]) == [(7, 2), (2, 12), (7, 13)]": {
+      "result": true,
+      "time": 0.03667283058166504,
+      "error": null
+    },
+    "assert sort_tuple([(2, 13), (11, 7), (9, 1)]) == [(9, 1), (11, 7), (2, 13)]": {
+      "result": true,
+      "time": 0.03527975082397461,
+      "error": null
+    },
+    "assert sort_tuple([(6, 4), (9, 11), (2, 4)]) == [(6, 4), (2, 4), (9, 11)]": {
+      "result": false,
+      "time": 0.033525705337524414,
+      "error": null
+    },
+    "assert sort_tuple([(1, 7), (9, 7), (6, 8)]) == [(1, 7), (9, 7), (6, 8)]": {
+      "result": true,
+      "time": 0.03923511505126953,
+      "error": null
+    },
+    "assert sort_tuple([(8, 8), (8, 4), (9, 2)]) == [(9, 2), (8, 4), (8, 8)]": {
+      "result": true,
+      "time": 0.03711533546447754,
+      "error": null
+    },
+    "assert sort_tuple([(5, 5), (4, 5), (5, 3)]) == [(5, 3), (5, 5), (4, 5)]": {
+      "result": false,
+      "time": 0.039994001388549805,
+      "error": null
+    },
+    "assert sort_tuple([(4, 12), (11, 4), (3, 2)]) == [(3, 2), (11, 4), (4, 12)]": {
+      "result": true,
+      "time": 0.036559104919433594,
+      "error": null
+    },
+    "assert sort_tuple([(6, 11), (4, 11), (7, 6)]) == [(7, 6), (6, 11), (4, 11)]": {
+      "result": false,
+      "time": 0.038951873779296875,
+      "error": null
+    },
+    "assert sort_tuple([(1, 12), (8, 4), (2, 8)]) == [(8, 4), (2, 8), (1, 12)]": {
+      "result": true,
+      "time": 0.03338766098022461,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9411764705882353,
+  "general_error": "",
+  "has_testcase_error": false
+}

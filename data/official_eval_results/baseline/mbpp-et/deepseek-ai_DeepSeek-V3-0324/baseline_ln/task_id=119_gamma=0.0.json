@@ -1,0 +1,519 @@
+{
+  "code": "def search(nums, n):\n    left, right = 0, n - 1\n    while left < right:\n        mid = (left + right) // 2\n        if mid % 2 == 1:\n            mid -= 1  # Ensure mid is even to compare pairs\n        if nums[mid] == nums[mid + 1]:\n            left = mid + 2\n        else:\n            right = mid\n    return nums[left]",
+  "results": {
+    "assert search([1,1,2,2,3],5) == 3": {
+      "result": true,
+      "time": 0.043035030364990234,
+      "error": null
+    },
+    "assert search([1,1,3,3,4,4,5,5,7,7,8],11) == 8": {
+      "result": true,
+      "time": 0.03747725486755371,
+      "error": null
+    },
+    "assert search([1,2,2,3,3,4,4],7) == 1": {
+      "result": true,
+      "time": 0.03759956359863281,
+      "error": null
+    },
+    "assert search([1, 6, 2, 3, 7], 4) == 6": {
+      "result": false,
+      "time": 0.04262852668762207,
+      "error": null
+    },
+    "assert search([4, 2, 7, 5, 7], 2) == 6": {
+      "result": false,
+      "time": 0.029845476150512695,
+      "error": null
+    },
+    "assert search([5, 2, 3, 1, 5], 5) == 0": {
+      "result": false,
+      "time": 0.05503201484680176,
+      "error": null
+    },
+    "assert search([6, 3, 5, 4, 1], 4) == 4": {
+      "result": false,
+      "time": 0.047026634216308594,
+      "error": null
+    },
+    "assert search([2, 3, 3, 6, 2], 1) == 2": {
+      "result": true,
+      "time": 0.03944969177246094,
+      "error": null
+    },
+    "assert search([5, 6, 6, 1, 8], 2) == 3": {
+      "result": false,
+      "time": 0.0374302864074707,
+      "error": null
+    },
+    "assert search([6, 4, 5, 6, 1], 5) == 0": {
+      "result": false,
+      "time": 0.043349266052246094,
+      "error": null
+    },
+    "assert search([5, 4, 1, 1, 8], 2) == 1": {
+      "result": false,
+      "time": 0.054479122161865234,
+      "error": null
+    },
+    "assert search([1, 5, 5, 1, 2], 1) == 1": {
+      "result": true,
+      "time": 0.046175241470336914,
+      "error": null
+    },
+    "assert search([5, 6, 6, 3, 1], 5) == 7": {
+      "result": false,
+      "time": 0.0409398078918457,
+      "error": null
+    },
+    "assert search([5, 6, 5, 2, 7], 1) == 5": {
+      "result": true,
+      "time": 0.04564952850341797,
+      "error": null
+    },
+    "assert search([2, 4, 7, 2, 2], 1) == 2": {
+      "result": true,
+      "time": 0.039022207260131836,
+      "error": null
+    },
+    "assert search([1, 1, 6, 1, 4], 4) == 7": {
+      "result": false,
+      "time": 0.04057741165161133,
+      "error": null
+    },
+    "assert search([5, 2, 2, 5, 4], 5) == 4": {
+      "result": false,
+      "time": 0.048915863037109375,
+      "error": null
+    },
+    "assert search([4, 4, 1, 4, 7], 3) == 1": {
+      "result": true,
+      "time": 0.03951668739318848,
+      "error": null
+    },
+    "assert search([4, 3, 6, 1, 2], 1) == 4": {
+      "result": true,
+      "time": 0.037854671478271484,
+      "error": null
+    },
+    "assert search([2, 5, 7, 4, 7], 1) == 2": {
+      "result": true,
+      "time": 0.03569340705871582,
+      "error": null
+    },
+    "assert search([2, 2, 5, 4, 5], 2) == 0": {
+      "result": false,
+      "time": 0.03740191459655762,
+      "error": null
+    },
+    "assert search([1, 1, 3, 2, 3], 3) == 3": {
+      "result": true,
+      "time": 0.04282999038696289,
+      "error": null
+    },
+    "assert search([3, 3, 7, 6, 3], 5) == 2": {
+      "result": false,
+      "time": 0.04497408866882324,
+      "error": null
+    },
+    "assert search([1, 2, 3, 7, 4], 5) == 3": {
+      "result": false,
+      "time": 0.03799772262573242,
+      "error": null
+    },
+    "assert search([1, 1, 7, 4, 1], 1) == 1": {
+      "result": true,
+      "time": 0.04184293746948242,
+      "error": null
+    },
+    "assert search([2, 2, 5, 5, 5], 1) == 2": {
+      "result": true,
+      "time": 0.03870034217834473,
+      "error": null
+    },
+    "assert search([2, 1, 4, 1, 3], 2) == 3": {
+      "result": false,
+      "time": 0.03576922416687012,
+      "error": null
+    },
+    "assert search([5, 6, 3, 3, 5], 4) == 3": {
+      "result": false,
+      "time": 0.04085969924926758,
+      "error": null
+    },
+    "assert search([6, 2, 3, 6, 3], 2) == 4": {
+      "result": false,
+      "time": 0.04588437080383301,
+      "error": null
+    },
+    "assert search([5, 3, 7, 2, 4], 3) == 1": {
+      "result": false,
+      "time": 0.04220175743103027,
+      "error": null
+    },
+    "assert search([1, 3, 7, 3, 7], 4) == 6": {
+      "result": false,
+      "time": 0.035814523696899414,
+      "error": null
+    },
+    "assert search([4, 4, 3, 7, 5], 3) == 3": {
+      "result": true,
+      "time": 0.04003548622131348,
+      "error": null
+    },
+    "assert search([1, 1, 4, 3, 4], 3) == 4": {
+      "result": true,
+      "time": 0.04524683952331543,
+      "error": null
+    },
+    "assert search([4, 4, 4, 4, 7], 2) == 0": {
+      "result": false,
+      "time": 0.03931450843811035,
+      "error": null
+    },
+    "assert search([3, 2, 6, 6, 7], 2) == 1": {
+      "result": false,
+      "time": 0.03953218460083008,
+      "error": null
+    },
+    "assert search([3, 1, 1, 6, 2], 1) == 3": {
+      "result": true,
+      "time": 0.03997159004211426,
+      "error": null
+    },
+    "assert search([3, 6, 7, 7, 3, 2, 1, 4, 6, 9, 4], 9) == 7": {
+      "result": false,
+      "time": 0.041808128356933594,
+      "error": null
+    },
+    "assert search([4, 5, 7, 2, 7, 5, 3, 7, 3, 12, 7], 9) == 1": {
+      "result": false,
+      "time": 0.03343367576599121,
+      "error": null
+    },
+    "assert search([1, 3, 5, 6, 9, 7, 4, 10, 3, 11, 13], 11) == 4": {
+      "result": false,
+      "time": 0.03419637680053711,
+      "error": null
+    },
+    "assert search([4, 5, 3, 6, 4, 1, 10, 10, 5, 11, 6], 10) == 15": {
+      "result": false,
+      "time": 0.0410921573638916,
+      "error": null
+    },
+    "assert search([6, 6, 2, 5, 1, 1, 5, 2, 12, 6, 10], 8) == 0": {
+      "result": false,
+      "time": 0.04422187805175781,
+      "error": null
+    },
+    "assert search([5, 3, 5, 3, 7, 7, 6, 2, 4, 6, 10], 6) == 0": {
+      "result": false,
+      "time": 0.047145843505859375,
+      "error": null
+    },
+    "assert search([6, 3, 1, 2, 7, 5, 7, 5, 5, 11, 11], 8) == 6": {
+      "result": true,
+      "time": 0.05069875717163086,
+      "error": null
+    },
+    "assert search([5, 2, 3, 4, 5, 3, 7, 10, 9, 6, 12], 8) == 11": {
+      "result": false,
+      "time": 0.04995298385620117,
+      "error": null
+    },
+    "assert search([2, 1, 5, 7, 5, 1, 4, 8, 4, 11, 8], 11) == 14": {
+      "result": false,
+      "time": 0.050041913986206055,
+      "error": null
+    },
+    "assert search([6, 3, 8, 4, 5, 6, 1, 4, 3, 8, 8], 8) == 15": {
+      "result": false,
+      "time": 0.05968904495239258,
+      "error": null
+    },
+    "assert search([3, 5, 2, 3, 5, 6, 9, 5, 12, 6, 11], 11) == 9": {
+      "result": false,
+      "time": 0.05196881294250488,
+      "error": null
+    },
+    "assert search([4, 1, 8, 1, 2, 1, 4, 8, 2, 4, 4], 9) == 1": {
+      "result": false,
+      "time": 0.05257916450500488,
+      "error": null
+    },
+    "assert search([5, 6, 7, 8, 4, 6, 4, 6, 12, 2, 11], 9) == 0": {
+      "result": false,
+      "time": 0.059303998947143555,
+      "error": null
+    },
+    "assert search([4, 2, 4, 6, 3, 2, 4, 3, 2, 2, 6], 7) == 1": {
+      "result": false,
+      "time": 0.054117441177368164,
+      "error": null
+    },
+    "assert search([6, 2, 3, 5, 7, 5, 2, 5, 10, 7, 5], 7) == 2": {
+      "result": false,
+      "time": 0.05314016342163086,
+      "error": null
+    },
+    "assert search([4, 6, 2, 1, 3, 6, 3, 1, 10, 4, 12], 7) == 7": {
+      "result": false,
+      "time": 0.05165553092956543,
+      "error": null
+    },
+    "assert search([6, 5, 1, 1, 7, 5, 10, 4, 5, 6, 8], 7) == 11": {
+      "result": false,
+      "time": 0.0697486400604248,
+      "error": null
+    },
+    "assert search([3, 6, 1, 6, 3, 4, 3, 10, 2, 7, 4], 8) == 12": {
+      "result": false,
+      "time": 0.043985605239868164,
+      "error": null
+    },
+    "assert search([5, 2, 1, 7, 2, 2, 7, 6, 9, 12, 11], 7) == 6": {
+      "result": false,
+      "time": 0.05169415473937988,
+      "error": null
+    },
+    "assert search([5, 5, 8, 1, 1, 2, 8, 10, 9, 4, 9], 7) == 2": {
+      "result": false,
+      "time": 0.04761028289794922,
+      "error": null
+    },
+    "assert search([6, 5, 3, 3, 1, 5, 2, 8, 7, 7, 4], 9) == 10": {
+      "result": false,
+      "time": 0.059041738510131836,
+      "error": null
+    },
+    "assert search([5, 6, 8, 7, 9, 8, 3, 4, 5, 10, 10], 8) == 10": {
+      "result": false,
+      "time": 0.04768204689025879,
+      "error": null
+    },
+    "assert search([4, 6, 1, 2, 1, 5, 8, 7, 7, 9, 7], 7) == 13": {
+      "result": false,
+      "time": 0.05455470085144043,
+      "error": null
+    },
+    "assert search([2, 5, 2, 4, 3, 9, 2, 1, 11, 5, 6], 9) == 3": {
+      "result": false,
+      "time": 0.060151100158691406,
+      "error": null
+    },
+    "assert search([5, 6, 2, 1, 8, 6, 10, 3, 6, 5, 7], 8) == 7": {
+      "result": false,
+      "time": 0.05922555923461914,
+      "error": null
+    },
+    "assert search([2, 1, 6, 7, 4, 4, 5, 6, 8, 12, 6], 6) == 2": {
+      "result": true,
+      "time": 0.05258297920227051,
+      "error": null
+    },
+    "assert search([4, 3, 2, 4, 7, 2, 8, 1, 5, 11, 13], 7) == 12": {
+      "result": false,
+      "time": 0.057740211486816406,
+      "error": null
+    },
+    "assert search([2, 2, 3, 3, 6, 1, 1, 6, 9, 9, 9], 9) == 9": {
+      "result": false,
+      "time": 0.06503796577453613,
+      "error": null
+    },
+    "assert search([3, 4, 8, 3, 5, 6, 7, 10, 4, 6, 6], 8) == 2": {
+      "result": false,
+      "time": 0.048239946365356445,
+      "error": null
+    },
+    "assert search([1, 6, 8, 1, 3, 2, 6, 9, 12, 9, 13], 9) == 12": {
+      "result": false,
+      "time": 0.04616689682006836,
+      "error": null
+    },
+    "assert search([4, 5, 1, 4, 6, 1, 10, 3, 5, 6, 5], 6) == 3": {
+      "result": false,
+      "time": 0.04741692543029785,
+      "error": null
+    },
+    "assert search([6, 1, 3, 8, 8, 6, 10, 10, 10, 10, 7], 7) == 8": {
+      "result": false,
+      "time": 0.0623929500579834,
+      "error": null
+    },
+    "assert search([1, 6, 8, 3, 7, 7, 6, 10, 11, 9, 5], 9) == 11": {
+      "result": false,
+      "time": 0.05211162567138672,
+      "error": null
+    },
+    "assert search([2, 2, 1, 8, 3, 3, 8], 2) == 0": {
+      "result": false,
+      "time": 0.05450129508972168,
+      "error": null
+    },
+    "assert search([4, 5, 6, 3, 7, 8, 5], 6) == 11": {
+      "result": false,
+      "time": 0.05627274513244629,
+      "error": null
+    },
+    "assert search([6, 5, 6, 5, 4, 3, 6], 2) == 3": {
+      "result": false,
+      "time": 0.05143904685974121,
+      "error": null
+    },
+    "assert search([2, 3, 7, 2, 3, 1, 4], 5) == 7": {
+      "result": false,
+      "time": 0.06242084503173828,
+      "error": null
+    },
+    "assert search([1, 4, 3, 4, 3, 1, 3], 3) == 6": {
+      "result": false,
+      "time": 0.0468897819519043,
+      "error": null
+    },
+    "assert search([3, 6, 4, 1, 3, 6, 8], 4) == 0": {
+      "result": false,
+      "time": 0.048299312591552734,
+      "error": null
+    },
+    "assert search([1, 1, 2, 7, 3, 9, 7], 6) == 15": {
+      "result": false,
+      "time": 0.04086494445800781,
+      "error": null
+    },
+    "assert search([4, 5, 7, 1, 1, 1, 3], 5) == 6": {
+      "result": false,
+      "time": 0.047402381896972656,
+      "error": null
+    },
+    "assert search([3, 5, 4, 3, 5, 8, 9], 5) == 4": {
+      "result": false,
+      "time": 0.060228586196899414,
+      "error": null
+    },
+    "assert search([4, 3, 2, 2, 7, 1, 6], 5) == 0": {
+      "result": false,
+      "time": 0.04954385757446289,
+      "error": null
+    },
+    "assert search([3, 3, 7, 3, 7, 8, 5], 7) == 14": {
+      "result": false,
+      "time": 0.0604853630065918,
+      "error": null
+    },
+    "assert search([1, 3, 5, 1, 7, 1, 3], 4) == 6": {
+      "result": false,
+      "time": 0.04319620132446289,
+      "error": null
+    },
+    "assert search([6, 6, 4, 8, 5, 3, 5], 3) == 4": {
+      "result": true,
+      "time": 0.05171370506286621,
+      "error": null
+    },
+    "assert search([1, 7, 7, 1, 8, 5, 4], 2) == 6": {
+      "result": false,
+      "time": 0.04255342483520508,
+      "error": null
+    },
+    "assert search([1, 6, 1, 8, 7, 5, 1], 7) == 13": {
+      "result": false,
+      "time": 0.03654670715332031,
+      "error": null
+    },
+    "assert search([5, 1, 7, 1, 3, 8, 4], 5) == 1": {
+      "result": false,
+      "time": 0.04576611518859863,
+      "error": null
+    },
+    "assert search([1, 2, 7, 7, 4, 6, 7], 3) == 4": {
+      "result": false,
+      "time": 0.03634810447692871,
+      "error": null
+    },
+    "assert search([6, 1, 1, 2, 2, 5, 5], 7) == 6": {
+      "result": true,
+      "time": 0.0434117317199707,
+      "error": null
+    },
+    "assert search([4, 5, 7, 4, 4, 3, 5], 3) == 6": {
+      "result": false,
+      "time": 0.049036502838134766,
+      "error": null
+    },
+    "assert search([5, 4, 2, 3, 1, 8, 7], 6) == 9": {
+      "result": false,
+      "time": 0.04391884803771973,
+      "error": null
+    },
+    "assert search([1, 1, 6, 1, 1, 6, 5], 6) == 0": {
+      "result": false,
+      "time": 0.041726112365722656,
+      "error": null
+    },
+    "assert search([6, 6, 1, 1, 8, 7, 2], 7) == 13": {
+      "result": false,
+      "time": 0.04379916191101074,
+      "error": null
+    },
+    "assert search([4, 2, 1, 7, 1, 7, 6], 5) == 1": {
+      "result": false,
+      "time": 0.041265249252319336,
+      "error": null
+    },
+    "assert search([6, 3, 2, 4, 5, 8, 4], 7) == 10": {
+      "result": false,
+      "time": 0.03827071189880371,
+      "error": null
+    },
+    "assert search([5, 2, 4, 4, 4, 9, 7], 4) == 7": {
+      "result": false,
+      "time": 0.03978085517883301,
+      "error": null
+    },
+    "assert search([2, 2, 1, 3, 6, 6, 8], 6) == 2": {
+      "result": false,
+      "time": 0.04172325134277344,
+      "error": null
+    },
+    "assert search([4, 2, 2, 4, 8, 5, 3], 3) == 4": {
+      "result": true,
+      "time": 0.03794980049133301,
+      "error": null
+    },
+    "assert search([4, 7, 2, 3, 6, 7, 6], 7) == 5": {
+      "result": false,
+      "time": 0.051529884338378906,
+      "error": null
+    },
+    "assert search([4, 2, 5, 7, 2, 4, 6], 7) == 4": {
+      "result": true,
+      "time": 0.03959512710571289,
+      "error": null
+    },
+    "assert search([3, 4, 4, 8, 8, 1, 6], 3) == 3": {
+      "result": true,
+      "time": 0.04205155372619629,
+      "error": null
+    },
+    "assert search([1, 5, 5, 3, 1, 5, 4], 2) == 4": {
+      "result": false,
+      "time": 0.048330068588256836,
+      "error": null
+    },
+    "assert search([6, 6, 3, 6, 5, 5, 8], 7) == 13": {
+      "result": false,
+      "time": 0.04391980171203613,
+      "error": null
+    },
+    "assert search([6, 2, 3, 6, 1, 1, 5], 6) == 1": {
+      "result": false,
+      "time": 0.047051191329956055,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.22549019607843138,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,519 @@
+{
+  "code": "def sum_three_smallest_nums(nums):\n    nums = [i for i in nums if i > 0]\n    if len(nums) < 3:\n        return \"List should have at least 3 positive numbers\"\n    else:\n        return sum(sorted(nums)[:3])",
+  "results": {
+    "assert sum_three_smallest_nums([10,20,30,40,50,60,7]) == 37": {
+      "result": true,
+      "time": 0.04033088684082031,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1,2,3,4,5]) == 6": {
+      "result": true,
+      "time": 0.0389103889465332,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([0,1,2,3,4,5]) == 6": {
+      "result": true,
+      "time": 0.03148818016052246,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([13, 24, 35, 45, 51, 56, 2]) == 39": {
+      "result": true,
+      "time": 0.03054642677307129,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([15, 22, 33, 35, 49, 60, 12]) == 49": {
+      "result": true,
+      "time": 0.04112362861633301,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([8, 23, 33, 45, 48, 57, 2]) == 33": {
+      "result": true,
+      "time": 0.04188084602355957,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([15, 15, 31, 42, 46, 62, 8]) == 38": {
+      "result": true,
+      "time": 0.04408550262451172,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 19, 29, 38, 55, 65, 12]) == 36": {
+      "result": true,
+      "time": 0.035375356674194336,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([7, 19, 25, 37, 49, 62, 12]) == 38": {
+      "result": true,
+      "time": 0.0399935245513916,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([14, 25, 25, 42, 51, 63, 9]) == 48": {
+      "result": true,
+      "time": 0.04744386672973633,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([12, 21, 26, 43, 45, 62, 11]) == 44": {
+      "result": true,
+      "time": 0.04234790802001953,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([6, 25, 35, 39, 46, 62, 7]) == 38": {
+      "result": true,
+      "time": 0.0426936149597168,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([9, 25, 28, 38, 52, 56, 11]) == 45": {
+      "result": true,
+      "time": 0.03782033920288086,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([12, 16, 35, 41, 50, 61, 3]) == 31": {
+      "result": true,
+      "time": 0.03868222236633301,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([8, 24, 33, 36, 45, 64, 4]) == 36": {
+      "result": true,
+      "time": 0.04273700714111328,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([15, 25, 25, 43, 48, 59, 6]) == 46": {
+      "result": true,
+      "time": 0.03655052185058594,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([15, 17, 31, 36, 51, 65, 4]) == 36": {
+      "result": true,
+      "time": 0.03337597846984863,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([11, 20, 27, 45, 48, 59, 7]) == 38": {
+      "result": true,
+      "time": 0.03730130195617676,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([7, 15, 35, 37, 46, 60, 9]) == 31": {
+      "result": true,
+      "time": 0.03734445571899414,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([15, 18, 31, 37, 52, 64, 11]) == 44": {
+      "result": true,
+      "time": 0.036768198013305664,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([6, 24, 33, 44, 45, 65, 8]) == 38": {
+      "result": true,
+      "time": 0.03909802436828613,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([6, 17, 26, 40, 48, 56, 5]) == 28": {
+      "result": true,
+      "time": 0.03947305679321289,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([11, 17, 33, 36, 50, 56, 11]) == 39": {
+      "result": true,
+      "time": 0.033601999282836914,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([15, 19, 26, 41, 53, 65, 5]) == 39": {
+      "result": true,
+      "time": 0.041610002517700195,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([6, 24, 29, 38, 48, 59, 6]) == 36": {
+      "result": true,
+      "time": 0.03237271308898926,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 23, 28, 39, 46, 57, 12]) == 40": {
+      "result": true,
+      "time": 0.04532432556152344,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 17, 35, 40, 53, 61, 8]) == 30": {
+      "result": true,
+      "time": 0.046219825744628906,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([6, 21, 35, 38, 50, 57, 8]) == 35": {
+      "result": true,
+      "time": 0.049217939376831055,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([12, 21, 35, 37, 45, 56, 7]) == 40": {
+      "result": true,
+      "time": 0.038190364837646484,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([14, 24, 31, 35, 48, 63, 7]) == 45": {
+      "result": true,
+      "time": 0.03829312324523926,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([10, 24, 33, 42, 55, 63, 12]) == 46": {
+      "result": true,
+      "time": 0.04271411895751953,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([13, 16, 34, 44, 50, 56, 12]) == 41": {
+      "result": true,
+      "time": 0.04660534858703613,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([11, 25, 28, 35, 53, 61, 9]) == 45": {
+      "result": true,
+      "time": 0.039499759674072266,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([12, 22, 27, 45, 47, 63, 2]) == 36": {
+      "result": true,
+      "time": 0.048377275466918945,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([8, 19, 30, 45, 54, 58, 11]) == 38": {
+      "result": true,
+      "time": 0.04643750190734863,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([13, 25, 34, 45, 54, 58, 3]) == 41": {
+      "result": true,
+      "time": 0.04934430122375488,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([2, 6, 2, 4, 4]) == 8": {
+      "result": true,
+      "time": 0.046813011169433594,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 4, 5, 8, 4]) == 9": {
+      "result": true,
+      "time": 0.05727219581604004,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 3, 5, 5, 8]) == 12": {
+      "result": true,
+      "time": 0.038491010665893555,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 5, 1, 9, 8]) == 10": {
+      "result": true,
+      "time": 0.04044938087463379,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([2, 1, 2, 3, 9]) == 5": {
+      "result": true,
+      "time": 0.04433703422546387,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([6, 7, 1, 1, 2]) == 4": {
+      "result": true,
+      "time": 0.04445505142211914,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([3, 1, 7, 2, 1]) == 4": {
+      "result": true,
+      "time": 0.0438539981842041,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 1, 1, 6, 2]) == 4": {
+      "result": true,
+      "time": 0.04471468925476074,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 7, 5, 9, 8]) == 13": {
+      "result": true,
+      "time": 0.04052615165710449,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 7, 8, 3, 7]) == 15": {
+      "result": true,
+      "time": 0.04184079170227051,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([6, 4, 6, 1, 1]) == 6": {
+      "result": true,
+      "time": 0.045079708099365234,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([3, 6, 7, 7, 2]) == 11": {
+      "result": true,
+      "time": 0.04700350761413574,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 3, 3, 3, 8]) == 9": {
+      "result": true,
+      "time": 0.04477667808532715,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 3, 1, 8, 3]) == 7": {
+      "result": true,
+      "time": 0.04472613334655762,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 6, 3, 8, 5]) == 9": {
+      "result": true,
+      "time": 0.04235363006591797,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 2, 7, 1, 7]) == 8": {
+      "result": true,
+      "time": 0.04597163200378418,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([2, 1, 6, 3, 1]) == 4": {
+      "result": true,
+      "time": 0.04306435585021973,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 7, 7, 8, 10]) == 15": {
+      "result": true,
+      "time": 0.04910683631896973,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([3, 1, 7, 2, 4]) == 6": {
+      "result": true,
+      "time": 0.04279279708862305,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 1, 6, 3, 1]) == 5": {
+      "result": true,
+      "time": 0.04515647888183594,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 6, 7, 3, 8]) == 13": {
+      "result": true,
+      "time": 0.04366254806518555,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 3, 2, 4, 3]) == 8": {
+      "result": true,
+      "time": 0.04439878463745117,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 1, 4, 8, 2]) == 7": {
+      "result": true,
+      "time": 0.04022550582885742,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 3, 3, 7, 10]) == 11": {
+      "result": true,
+      "time": 0.033876657485961914,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 2, 1, 4, 6]) == 7": {
+      "result": true,
+      "time": 0.04044008255004883,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 7, 8, 6, 10]) == 14": {
+      "result": true,
+      "time": 0.04166889190673828,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([3, 1, 6, 9, 8]) == 10": {
+      "result": true,
+      "time": 0.042208194732666016,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([3, 2, 7, 8, 9]) == 12": {
+      "result": true,
+      "time": 0.043349266052246094,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([2, 4, 2, 1, 4]) == 5": {
+      "result": true,
+      "time": 0.05035901069641113,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([2, 5, 4, 9, 1]) == 7": {
+      "result": true,
+      "time": 0.0415494441986084,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 4, 8, 4, 6]) == 12": {
+      "result": true,
+      "time": 0.046907901763916016,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 1, 4, 1, 7]) == 6": {
+      "result": true,
+      "time": 0.04222989082336426,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([3, 5, 3, 1, 9]) == 7": {
+      "result": true,
+      "time": 0.050669193267822266,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 2, 1, 4, 6, 10]) == 4": {
+      "result": true,
+      "time": 0.045084238052368164,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 2, 5, 7, 6, 7]) == 12": {
+      "result": true,
+      "time": 0.03835916519165039,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 5, 2, 8, 7, 9]) == 11": {
+      "result": true,
+      "time": 0.04171419143676758,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 1, 5, 8, 9, 3]) == 5": {
+      "result": true,
+      "time": 0.05420184135437012,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([3, 4, 7, 7, 9, 7]) == 14": {
+      "result": true,
+      "time": 0.04686260223388672,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([2, 6, 1, 8, 4, 7]) == 7": {
+      "result": true,
+      "time": 0.04896426200866699,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([2, 4, 1, 5, 6, 8]) == 7": {
+      "result": true,
+      "time": 0.04509615898132324,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 1, 6, 8, 7, 7]) == 12": {
+      "result": true,
+      "time": 0.035460710525512695,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 5, 7, 5, 1, 10]) == 11": {
+      "result": true,
+      "time": 0.04637408256530762,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([3, 2, 5, 2, 9, 3]) == 7": {
+      "result": true,
+      "time": 0.03734016418457031,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 4, 7, 2, 8, 10]) == 11": {
+      "result": true,
+      "time": 0.03981900215148926,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 4, 3, 7, 2, 8]) == 9": {
+      "result": true,
+      "time": 0.04122114181518555,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([2, 2, 5, 2, 2, 5]) == 6": {
+      "result": true,
+      "time": 0.04209423065185547,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 1, 1, 1, 6, 8]) == 3": {
+      "result": true,
+      "time": 0.03190755844116211,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 6, 5, 4, 7, 10]) == 14": {
+      "result": true,
+      "time": 0.038268327713012695,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 3, 6, 3, 6, 5]) == 11": {
+      "result": true,
+      "time": 0.041197776794433594,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 2, 4, 8, 2, 2]) == 6": {
+      "result": true,
+      "time": 0.03534650802612305,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 6, 1, 6, 4, 1]) == 3": {
+      "result": true,
+      "time": 0.03874802589416504,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 1, 6, 3, 4, 10]) == 8": {
+      "result": true,
+      "time": 0.034379005432128906,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 2, 1, 5, 9, 4]) == 4": {
+      "result": true,
+      "time": 0.04211759567260742,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 4, 4, 8, 2, 5]) == 10": {
+      "result": true,
+      "time": 0.05031609535217285,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 6, 4, 1, 5, 10]) == 6": {
+      "result": true,
+      "time": 0.04243111610412598,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 6, 2, 3, 6, 8]) == 10": {
+      "result": true,
+      "time": 0.03277993202209473,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 5, 6, 6, 2, 9]) == 11": {
+      "result": true,
+      "time": 0.03605055809020996,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 2, 2, 2, 5, 1]) == 4": {
+      "result": true,
+      "time": 0.043408870697021484,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 3, 6, 5, 8, 3]) == 7": {
+      "result": true,
+      "time": 0.03449106216430664,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([2, 1, 1, 4, 8, 9]) == 4": {
+      "result": true,
+      "time": 0.04073286056518555,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([3, 5, 6, 7, 6, 2]) == 10": {
+      "result": true,
+      "time": 0.03979206085205078,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([3, 5, 7, 4, 4, 8]) == 11": {
+      "result": true,
+      "time": 0.037288665771484375,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([4, 2, 1, 3, 2, 3]) == 5": {
+      "result": true,
+      "time": 0.032895803451538086,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([1, 5, 4, 5, 7, 4]) == 9": {
+      "result": true,
+      "time": 0.04272603988647461,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([2, 2, 2, 3, 5, 8]) == 6": {
+      "result": true,
+      "time": 0.04631471633911133,
+      "error": null
+    },
+    "assert sum_three_smallest_nums([5, 1, 4, 3, 6, 5]) == 8": {
+      "result": true,
+      "time": 0.03591036796569824,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

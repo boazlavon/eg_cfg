@@ -1,0 +1,519 @@
+{
+  "code": "def list_split(lst, n):\n    return [lst[i:i+n] for i in range(0, len(lst), n)]",
+  "results": {
+    "assert list_split(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'],3)==[['a', 'd', 'g', 'j', 'm'], ['b', 'e', 'h', 'k', 'n'], ['c', 'f', 'i', 'l']] ": {
+      "result": false,
+      "time": 0.03682541847229004,
+      "error": null
+    },
+    "assert list_split([1,2,3,4,5,6,7,8,9,10,11,12,13,14],3)==[[1,4,7,10,13], [2,5,8,11,14], [3,6,9,12]] ": {
+      "result": false,
+      "time": 0.03323531150817871,
+      "error": null
+    },
+    "assert list_split(['python','java','C','C++','DBMS','SQL'],2)==[['python', 'C', 'DBMS'], ['java', 'C++', 'SQL']] ": {
+      "result": false,
+      "time": 0.03684878349304199,
+      "error": null
+    },
+    "assert list_split(['j', 'q', 'l', 'd', 'n', 'j', 'm', 'j', 'b', 'w', 'v', 'u', 'q', 'z'], 6) == [['j', 'm', 'q'], ['q', 'j', 'z'], ['l', 'b'], ['d', 'w'], ['n', 'v'], ['j', 'u']]": {
+      "result": false,
+      "time": 0.0341036319732666,
+      "error": null
+    },
+    "assert list_split(['j', 's', 'n', 'f', 's', 'q', 'f', 'v', 'k', 'd', 'q', 'm', 'c', 'q'], 2) == [['j', 'n', 's', 'f', 'k', 'q', 'c'], ['s', 'f', 'q', 'v', 'd', 'm', 'q']]": {
+      "result": false,
+      "time": 0.03578829765319824,
+      "error": null
+    },
+    "assert list_split(['h', 'k', 't', 'a', 'b', 'p', 'h', 's', 'y', 'm', 'x', 'f', 'u', 'f'], 4) == [['h', 'b', 'y', 'u'], ['k', 'p', 'm', 'f'], ['t', 'h', 'x'], ['a', 's', 'f']]": {
+      "result": false,
+      "time": 0.032251834869384766,
+      "error": null
+    },
+    "assert list_split(['x', 'j', 'w', 'x', 'b', 'x', 'w', 'm', 'b', 'b', 'y', 'p', 'g', 'o'], 6) == [['x', 'w', 'g'], ['j', 'm', 'o'], ['w', 'b'], ['x', 'b'], ['b', 'y'], ['x', 'p']]": {
+      "result": false,
+      "time": 0.04030442237854004,
+      "error": null
+    },
+    "assert list_split(['u', 'j', 'm', 'i', 'h', 't', 'q', 'c', 'w', 'e', 'y', 'o', 'o', 'e'], 2) == [['u', 'm', 'h', 'q', 'w', 'y', 'o'], ['j', 'i', 't', 'c', 'e', 'o', 'e']]": {
+      "result": false,
+      "time": 0.03565812110900879,
+      "error": null
+    },
+    "assert list_split(['s', 'z', 'j', 'y', 'c', 'p', 'i', 'd', 'l', 'v', 'o', 'k', 'y', 'a'], 3) == [['s', 'y', 'i', 'v', 'y'], ['z', 'c', 'd', 'o', 'a'], ['j', 'p', 'l', 'k']]": {
+      "result": false,
+      "time": 0.04088330268859863,
+      "error": null
+    },
+    "assert list_split(['p', 'o', 'u', 'd', 'r', 'w', 'b', 'u', 'j', 't', 'a', 'v', 'c', 'b'], 8) == [['p', 'j'], ['o', 't'], ['u', 'a'], ['d', 'v'], ['r', 'c'], ['w', 'b'], ['b'], ['u']]": {
+      "result": false,
+      "time": 0.0350797176361084,
+      "error": null
+    },
+    "assert list_split(['v', 'e', 'z', 'w', 'u', 'h', 'j', 'o', 'f', 'n', 't', 'p', 'u', 'k'], 6) == [['v', 'j', 'u'], ['e', 'o', 'k'], ['z', 'f'], ['w', 'n'], ['u', 't'], ['h', 'p']]": {
+      "result": false,
+      "time": 0.03619694709777832,
+      "error": null
+    },
+    "assert list_split(['d', 'l', 'p', 'v', 'j', 'k', 'v', 'p', 'b', 'f', 'i', 'w', 'b', 'r'], 5) == [['d', 'k', 'i'], ['l', 'v', 'w'], ['p', 'p', 'b'], ['v', 'b', 'r'], ['j', 'f']]": {
+      "result": false,
+      "time": 0.034036874771118164,
+      "error": null
+    },
+    "assert list_split(['k', 'u', 'c', 't', 'n', 'd', 'y', 'e', 'n', 'b', 'f', 'z', 'k', 'm'], 5) == [['k', 'd', 'f'], ['u', 'y', 'z'], ['c', 'e', 'k'], ['t', 'n', 'm'], ['n', 'b']]": {
+      "result": false,
+      "time": 0.041051387786865234,
+      "error": null
+    },
+    "assert list_split(['b', 'm', 'f', 'p', 'p', 'v', 'p', 'n', 'v', 'h', 'g', 'h', 'h', 'l'], 7) == [['b', 'n'], ['m', 'v'], ['f', 'h'], ['p', 'g'], ['p', 'h'], ['v', 'h'], ['p', 'l']]": {
+      "result": false,
+      "time": 0.03632164001464844,
+      "error": null
+    },
+    "assert list_split(['w', 'j', 'm', 'h', 'y', 'c', 'k', 'e', 'v', 's', 'f', 'q', 'l', 'p'], 8) == [['w', 'v'], ['j', 's'], ['m', 'f'], ['h', 'q'], ['y', 'l'], ['c', 'p'], ['k'], ['e']]": {
+      "result": false,
+      "time": 0.037360429763793945,
+      "error": null
+    },
+    "assert list_split(['v', 'g', 'm', 'i', 'v', 'u', 'b', 'i', 'b', 'c', 'j', 'j', 's', 'z'], 5) == [['v', 'u', 'j'], ['g', 'b', 'j'], ['m', 'i', 's'], ['i', 'b', 'z'], ['v', 'c']]": {
+      "result": false,
+      "time": 0.04031014442443848,
+      "error": null
+    },
+    "assert list_split(['z', 'm', 'x', 'r', 'i', 't', 'p', 'o', 'u', 'n', 'a', 'j', 'e', 'i'], 2) == [['z', 'x', 'i', 'p', 'u', 'a', 'e'], ['m', 'r', 't', 'o', 'n', 'j', 'i']]": {
+      "result": false,
+      "time": 0.03468680381774902,
+      "error": null
+    },
+    "assert list_split(['q', 'p', 'l', 't', 'i', 'd', 'k', 'x', 'n', 'j', 'g', 'i', 'k', 'l'], 8) == [['q', 'n'], ['p', 'j'], ['l', 'g'], ['t', 'i'], ['i', 'k'], ['d', 'l'], ['k'], ['x']]": {
+      "result": false,
+      "time": 0.037914276123046875,
+      "error": null
+    },
+    "assert list_split(['g', 'j', 'q', 'y', 's', 'g', 'l', 'x', 't', 't', 'c', 's', 'm', 'h'], 8) == [['g', 't'], ['j', 't'], ['q', 'c'], ['y', 's'], ['s', 'm'], ['g', 'h'], ['l'], ['x']]": {
+      "result": false,
+      "time": 0.03507375717163086,
+      "error": null
+    },
+    "assert list_split(['d', 'i', 'b', 's', 'b', 'g', 'g', 'i', 'l', 'd', 'm', 'y', 'x', 'z'], 5) == [['d', 'g', 'm'], ['i', 'g', 'y'], ['b', 'i', 'x'], ['s', 'l', 'z'], ['b', 'd']]": {
+      "result": false,
+      "time": 0.02951502799987793,
+      "error": null
+    },
+    "assert list_split(['p', 'l', 's', 'w', 'l', 'p', 'f', 'd', 'w', 'i', 'j', 'l', 'h', 'n'], 3) == [['p', 'w', 'f', 'i', 'h'], ['l', 'l', 'd', 'j', 'n'], ['s', 'p', 'w', 'l']]": {
+      "result": false,
+      "time": 0.03432273864746094,
+      "error": null
+    },
+    "assert list_split(['m', 'n', 'b', 'b', 'k', 'g', 'u', 'n', 'q', 'q', 'd', 't', 'y', 'a'], 3) == [['m', 'b', 'u', 'q', 'y'], ['n', 'k', 'n', 'd', 'a'], ['b', 'g', 'q', 't']]": {
+      "result": false,
+      "time": 0.03494405746459961,
+      "error": null
+    },
+    "assert list_split(['c', 'p', 'e', 't', 'q', 'o', 'o', 'i', 'p', 'x', 'r', 'y', 'y', 'j'], 2) == [['c', 'e', 'q', 'o', 'p', 'r', 'y'], ['p', 't', 'o', 'i', 'x', 'y', 'j']]": {
+      "result": false,
+      "time": 0.041815757751464844,
+      "error": null
+    },
+    "assert list_split(['j', 'r', 'o', 'f', 'f', 'u', 'x', 't', 'p', 'o', 'c', 'f', 'x', 'f'], 8) == [['j', 'p'], ['r', 'o'], ['o', 'c'], ['f', 'f'], ['f', 'x'], ['u', 'f'], ['x'], ['t']]": {
+      "result": false,
+      "time": 0.03824806213378906,
+      "error": null
+    },
+    "assert list_split(['b', 'j', 'a', 'u', 'q', 'c', 't', 'd', 'h', 'a', 'x', 'r', 'x', 'o'], 8) == [['b', 'h'], ['j', 'a'], ['a', 'x'], ['u', 'r'], ['q', 'x'], ['c', 'o'], ['t'], ['d']]": {
+      "result": false,
+      "time": 0.037723541259765625,
+      "error": null
+    },
+    "assert list_split(['n', 'r', 'r', 'j', 'e', 't', 'f', 's', 'x', 'x', 'y', 'b', 'e', 'z'], 6) == [['n', 'f', 'e'], ['r', 's', 'z'], ['r', 'x'], ['j', 'x'], ['e', 'y'], ['t', 'b']]": {
+      "result": false,
+      "time": 0.03352022171020508,
+      "error": null
+    },
+    "assert list_split(['b', 'w', 'u', 'r', 'f', 'h', 't', 'o', 'f', 'm', 'k', 'g', 'l', 'f'], 6) == [['b', 't', 'l'], ['w', 'o', 'f'], ['u', 'f'], ['r', 'm'], ['f', 'k'], ['h', 'g']]": {
+      "result": false,
+      "time": 0.03672647476196289,
+      "error": null
+    },
+    "assert list_split(['y', 'j', 'o', 'd', 'f', 'x', 'n', 'p', 'd', 'a', 'a', 's', 'l', 't'], 2) == [['y', 'o', 'f', 'n', 'd', 'a', 'l'], ['j', 'd', 'x', 'p', 'a', 's', 't']]": {
+      "result": false,
+      "time": 0.03271079063415527,
+      "error": null
+    },
+    "assert list_split(['f', 'v', 'h', 'k', 'c', 'x', 'r', 'l', 'z', 'x', 'j', 'r', 'f', 'l'], 5) == [['f', 'x', 'j'], ['v', 'r', 'r'], ['h', 'l', 'f'], ['k', 'z', 'l'], ['c', 'x']]": {
+      "result": false,
+      "time": 0.03274869918823242,
+      "error": null
+    },
+    "assert list_split(['b', 'j', 'd', 'm', 'v', 't', 'g', 'o', 'q', 'd', 'l', 'p', 'b', 'w'], 5) == [['b', 't', 'l'], ['j', 'g', 'p'], ['d', 'o', 'b'], ['m', 'q', 'w'], ['v', 'd']]": {
+      "result": false,
+      "time": 0.036081790924072266,
+      "error": null
+    },
+    "assert list_split(['y', 'y', 'i', 'q', 'x', 'w', 'r', 'o', 'i', 't', 'd', 't', 'k', 'f'], 6) == [['y', 'r', 'k'], ['y', 'o', 'f'], ['i', 'i'], ['q', 't'], ['x', 'd'], ['w', 't']]": {
+      "result": false,
+      "time": 0.035825252532958984,
+      "error": null
+    },
+    "assert list_split(['q', 'j', 'i', 'c', 'u', 'v', 'd', 'l', 'v', 'r', 'k', 'k', 'u', 'c'], 1) == [['q', 'j', 'i', 'c', 'u', 'v', 'd', 'l', 'v', 'r', 'k', 'k', 'u', 'c']]": {
+      "result": false,
+      "time": 0.03620743751525879,
+      "error": null
+    },
+    "assert list_split(['p', 't', 'c', 'h', 'b', 'y', 'n', 'z', 'k', 'p', 'z', 'f', 'w', 'z'], 6) == [['p', 'n', 'w'], ['t', 'z', 'z'], ['c', 'k'], ['h', 'p'], ['b', 'z'], ['y', 'f']]": {
+      "result": false,
+      "time": 0.03592967987060547,
+      "error": null
+    },
+    "assert list_split(['h', 'n', 'a', 'p', 'n', 't', 'z', 'u', 'j', 'n', 'z', 'w', 'a', 'h'], 5) == [['h', 't', 'z'], ['n', 'z', 'w'], ['a', 'u', 'a'], ['p', 'j', 'h'], ['n', 'n']]": {
+      "result": false,
+      "time": 0.03528904914855957,
+      "error": null
+    },
+    "assert list_split(['h', 'g', 'h', 'v', 'j', 'm', 'f', 'y', 'y', 'a', 'r', 'z', 'h', 'c'], 1) == [['h', 'g', 'h', 'v', 'j', 'm', 'f', 'y', 'y', 'a', 'r', 'z', 'h', 'c']]": {
+      "result": false,
+      "time": 0.03777575492858887,
+      "error": null
+    },
+    "assert list_split(['p', 'b', 'e', 't', 'q', 'y', 'f', 'o', 'r', 'i', 'r', 'b', 's', 'r'], 4) == [['p', 'q', 'r', 's'], ['b', 'y', 'i', 'r'], ['e', 'f', 'r'], ['t', 'o', 'b']]": {
+      "result": false,
+      "time": 0.034529924392700195,
+      "error": null
+    },
+    "assert list_split([1, 7, 6, 6, 6, 7, 2, 13, 14, 8, 7, 15, 11, 13], 8) == [[1, 14], [7, 8], [6, 7], [6, 15], [6, 11], [7, 13], [2], [13]]": {
+      "result": false,
+      "time": 0.03631401062011719,
+      "error": null
+    },
+    "assert list_split([2, 1, 6, 6, 3, 2, 10, 5, 6, 8, 8, 14, 15, 18], 4) == [[2, 3, 6, 15], [1, 2, 8, 18], [6, 10, 8], [6, 5, 14]]": {
+      "result": false,
+      "time": 0.03931999206542969,
+      "error": null
+    },
+    "assert list_split([3, 2, 3, 6, 4, 11, 9, 8, 13, 9, 7, 10, 10, 9], 6) == [[3, 9, 10], [2, 8, 9], [3, 13], [6, 9], [4, 7], [11, 10]]": {
+      "result": false,
+      "time": 0.040659189224243164,
+      "error": null
+    },
+    "assert list_split([6, 3, 7, 9, 3, 5, 8, 4, 10, 12, 12, 15, 14, 13], 4) == [[6, 3, 10, 14], [3, 5, 12, 13], [7, 8, 12], [9, 4, 15]]": {
+      "result": false,
+      "time": 0.032387495040893555,
+      "error": null
+    },
+    "assert list_split([1, 5, 4, 5, 7, 3, 8, 8, 12, 9, 15, 9, 18, 15], 4) == [[1, 7, 12, 18], [5, 3, 9, 15], [4, 8, 15], [5, 8, 9]]": {
+      "result": false,
+      "time": 0.03390336036682129,
+      "error": null
+    },
+    "assert list_split([4, 6, 4, 5, 9, 2, 4, 4, 12, 15, 10, 15, 16, 13], 1) == [[4, 6, 4, 5, 9, 2, 4, 4, 12, 15, 10, 15, 16, 13]]": {
+      "result": false,
+      "time": 0.037407636642456055,
+      "error": null
+    },
+    "assert list_split([4, 5, 5, 1, 3, 9, 5, 12, 14, 13, 13, 12, 12, 16], 1) == [[4, 5, 5, 1, 3, 9, 5, 12, 14, 13, 13, 12, 12, 16]]": {
+      "result": false,
+      "time": 0.03500676155090332,
+      "error": null
+    },
+    "assert list_split([5, 2, 2, 4, 7, 11, 3, 3, 12, 5, 13, 14, 16, 16], 3) == [[5, 4, 3, 5, 16], [2, 7, 3, 13, 16], [2, 11, 12, 14]]": {
+      "result": false,
+      "time": 0.03730654716491699,
+      "error": null
+    },
+    "assert list_split([3, 4, 8, 6, 10, 8, 8, 8, 10, 13, 7, 17, 17, 16], 4) == [[3, 10, 10, 17], [4, 8, 13, 16], [8, 8, 7], [6, 8, 17]]": {
+      "result": false,
+      "time": 0.034966468811035156,
+      "error": null
+    },
+    "assert list_split([1, 7, 5, 4, 2, 3, 11, 10, 6, 11, 14, 11, 8, 12], 4) == [[1, 2, 6, 8], [7, 3, 11, 12], [5, 11, 14], [4, 10, 11]]": {
+      "result": false,
+      "time": 0.031826019287109375,
+      "error": null
+    },
+    "assert list_split([2, 1, 4, 8, 6, 1, 3, 6, 11, 15, 8, 7, 8, 10], 4) == [[2, 6, 11, 8], [1, 1, 15, 10], [4, 3, 8], [8, 6, 7]]": {
+      "result": false,
+      "time": 0.03608107566833496,
+      "error": null
+    },
+    "assert list_split([1, 5, 8, 4, 3, 5, 9, 3, 6, 12, 8, 13, 12, 9], 8) == [[1, 6], [5, 12], [8, 8], [4, 13], [3, 12], [5, 9], [9], [3]]": {
+      "result": false,
+      "time": 0.033289194107055664,
+      "error": null
+    },
+    "assert list_split([6, 6, 8, 5, 2, 7, 8, 13, 14, 10, 6, 9, 14, 14], 5) == [[6, 7, 6], [6, 8, 9], [8, 13, 14], [5, 14, 14], [2, 10]]": {
+      "result": false,
+      "time": 0.031121492385864258,
+      "error": null
+    },
+    "assert list_split([3, 4, 8, 9, 6, 11, 6, 9, 6, 12, 6, 17, 18, 17], 3) == [[3, 9, 6, 12, 18], [4, 6, 9, 6, 17], [8, 11, 6, 17]]": {
+      "result": false,
+      "time": 0.034578561782836914,
+      "error": null
+    },
+    "assert list_split([4, 5, 4, 9, 10, 6, 12, 4, 10, 9, 16, 13, 17, 10], 8) == [[4, 10], [5, 9], [4, 16], [9, 13], [10, 17], [6, 10], [12], [4]]": {
+      "result": false,
+      "time": 0.03183889389038086,
+      "error": null
+    },
+    "assert list_split([1, 5, 5, 3, 6, 10, 3, 10, 12, 15, 12, 10, 14, 16], 2) == [[1, 5, 6, 3, 12, 12, 14], [5, 3, 10, 10, 15, 10, 16]]": {
+      "result": false,
+      "time": 0.03214907646179199,
+      "error": null
+    },
+    "assert list_split([5, 5, 8, 7, 3, 5, 9, 9, 5, 5, 9, 12, 11, 16], 3) == [[5, 7, 9, 5, 11], [5, 3, 9, 9, 16], [8, 5, 5, 12]]": {
+      "result": false,
+      "time": 0.04157686233520508,
+      "error": null
+    },
+    "assert list_split([6, 3, 8, 2, 6, 3, 5, 7, 5, 6, 13, 17, 14, 17], 3) == [[6, 2, 5, 6, 14], [3, 6, 7, 13, 17], [8, 3, 5, 17]]": {
+      "result": false,
+      "time": 0.04391646385192871,
+      "error": null
+    },
+    "assert list_split([5, 4, 6, 6, 8, 3, 4, 12, 6, 15, 12, 11, 9, 17], 2) == [[5, 6, 8, 4, 6, 12, 9], [4, 6, 3, 12, 15, 11, 17]]": {
+      "result": false,
+      "time": 0.0424196720123291,
+      "error": null
+    },
+    "assert list_split([3, 1, 3, 9, 5, 6, 6, 4, 11, 11, 10, 14, 10, 17], 7) == [[3, 4], [1, 11], [3, 11], [9, 10], [5, 14], [6, 10], [6, 17]]": {
+      "result": false,
+      "time": 0.047846317291259766,
+      "error": null
+    },
+    "assert list_split([4, 3, 1, 3, 7, 10, 10, 5, 5, 11, 11, 14, 17, 9], 4) == [[4, 7, 5, 17], [3, 10, 11, 9], [1, 10, 11], [3, 5, 14]]": {
+      "result": false,
+      "time": 0.03279471397399902,
+      "error": null
+    },
+    "assert list_split([2, 3, 8, 9, 4, 9, 11, 12, 11, 15, 13, 10, 11, 17], 7) == [[2, 12], [3, 11], [8, 15], [9, 13], [4, 10], [9, 11], [11, 17]]": {
+      "result": false,
+      "time": 0.03760099411010742,
+      "error": null
+    },
+    "assert list_split([2, 5, 3, 1, 5, 8, 3, 7, 10, 5, 14, 15, 14, 11], 4) == [[2, 5, 10, 14], [5, 8, 5, 11], [3, 3, 14], [1, 7, 15]]": {
+      "result": false,
+      "time": 0.04148745536804199,
+      "error": null
+    },
+    "assert list_split([5, 7, 6, 6, 9, 9, 4, 10, 4, 11, 12, 15, 9, 11], 6) == [[5, 4, 9], [7, 10, 11], [6, 4], [6, 11], [9, 12], [9, 15]]": {
+      "result": false,
+      "time": 0.0440828800201416,
+      "error": null
+    },
+    "assert list_split([5, 2, 7, 6, 5, 6, 5, 6, 5, 6, 13, 17, 12, 16], 7) == [[5, 6], [2, 5], [7, 6], [6, 13], [5, 17], [6, 12], [5, 16]]": {
+      "result": false,
+      "time": 0.03208732604980469,
+      "error": null
+    },
+    "assert list_split([5, 2, 4, 4, 1, 10, 3, 13, 11, 8, 12, 14, 9, 13], 3) == [[5, 4, 3, 8, 9], [2, 1, 13, 12, 13], [4, 10, 11, 14]]": {
+      "result": false,
+      "time": 0.04602456092834473,
+      "error": null
+    },
+    "assert list_split([1, 4, 7, 2, 7, 8, 12, 4, 12, 5, 12, 9, 9, 16], 7) == [[1, 4], [4, 12], [7, 5], [2, 12], [7, 9], [8, 9], [12, 16]]": {
+      "result": false,
+      "time": 0.033844709396362305,
+      "error": null
+    },
+    "assert list_split([4, 5, 7, 5, 6, 7, 9, 6, 8, 11, 6, 15, 15, 18], 6) == [[4, 9, 15], [5, 6, 18], [7, 8], [5, 11], [6, 6], [7, 15]]": {
+      "result": false,
+      "time": 0.03916049003601074,
+      "error": null
+    },
+    "assert list_split([6, 1, 1, 9, 8, 11, 10, 5, 10, 7, 7, 9, 13, 9], 3) == [[6, 9, 10, 7, 13], [1, 8, 5, 7, 9], [1, 11, 10, 9]]": {
+      "result": false,
+      "time": 0.041956186294555664,
+      "error": null
+    },
+    "assert list_split([3, 5, 8, 1, 7, 3, 7, 13, 10, 15, 9, 12, 12, 14], 5) == [[3, 3, 9], [5, 7, 12], [8, 13, 12], [1, 10, 14], [7, 15]]": {
+      "result": false,
+      "time": 0.035649776458740234,
+      "error": null
+    },
+    "assert list_split([5, 5, 4, 8, 9, 9, 8, 5, 7, 13, 6, 8, 17, 19], 3) == [[5, 8, 8, 13, 17], [5, 9, 5, 6, 19], [4, 9, 7, 8]]": {
+      "result": false,
+      "time": 0.04620242118835449,
+      "error": null
+    },
+    "assert list_split([2, 4, 6, 5, 4, 5, 5, 13, 7, 7, 9, 16, 16, 10], 7) == [[2, 13], [4, 7], [6, 7], [5, 9], [4, 16], [5, 16], [5, 10]]": {
+      "result": false,
+      "time": 0.04236268997192383,
+      "error": null
+    },
+    "assert list_split([3, 5, 5, 1, 5, 8, 5, 12, 14, 7, 10, 15, 12, 15], 4) == [[3, 5, 14, 12], [5, 8, 7, 15], [5, 5, 10], [1, 12, 15]]": {
+      "result": false,
+      "time": 0.047632455825805664,
+      "error": null
+    },
+    "assert list_split(['mldawzqafgqy', 'hjxingcz', 'F', 'O<@YV>', 'WUOU', 'ASTU'], 2) == [['mldawzqafgqy', 'F', 'WUOU'], ['hjxingcz', 'O<@YV>', 'ASTU']]": {
+      "result": false,
+      "time": 0.03589463233947754,
+      "error": null
+    },
+    "assert list_split(['jxwlgjrckp', 'ygn', 'W', 'TOSJ/JB~', 'TAM', 'ZPYWLK'], 4) == [['jxwlgjrckp', 'TAM'], ['ygn', 'ZPYWLK'], ['W'], ['TOSJ/JB~']]": {
+      "result": false,
+      "time": 0.0370943546295166,
+      "error": null
+    },
+    "assert list_split(['zzczoyjvne', 'uyy', 'B', '*>C>', 'KETDI', 'PFDYPK'], 6) == [['zzczoyjvne'], ['uyy'], ['B'], ['*>C>'], ['KETDI'], ['PFDYPK']]": {
+      "result": false,
+      "time": 0.04565238952636719,
+      "error": null
+    },
+    "assert list_split(['pflcapycprf', 'foz', 'P', '-$%PNP:', 'KKI', 'LJUQIH'], 5) == [['pflcapycprf', 'LJUQIH'], ['foz'], ['P'], ['-$%PNP:'], ['KKI']]": {
+      "result": false,
+      "time": 0.046752214431762695,
+      "error": null
+    },
+    "assert list_split(['aqzshftajzav', 'sqlmrk', 'U', 'OO!KZTC', 'WRBM', 'ZGT'], 4) == [['aqzshftajzav', 'WRBM'], ['sqlmrk', 'ZGT'], ['U'], ['OO!KZTC']]": {
+      "result": false,
+      "time": 0.04010486602783203,
+      "error": null
+    },
+    "assert list_split(['xnepknc', 'yvpjhfky', 'D', 'XCHE', 'VKH', 'VYY'], 1) == [['xnepknc', 'yvpjhfky', 'D', 'XCHE', 'VKH', 'VYY']]": {
+      "result": false,
+      "time": 0.04104137420654297,
+      "error": null
+    },
+    "assert list_split(['rlbvnzwbbwg', 'yvd', 'B', 'HF<HC', 'PMRELUQ', 'UKEAHLH'], 4) == [['rlbvnzwbbwg', 'PMRELUQ'], ['yvd', 'UKEAHLH'], ['B'], ['HF<HC']]": {
+      "result": false,
+      "time": 0.04502463340759277,
+      "error": null
+    },
+    "assert list_split(['wom', 'odh', 'M', '_ZVM', 'ONNGKAO', 'FGOHBQPK'], 7) == [['wom'], ['odh'], ['M'], ['_ZVM'], ['ONNGKAO'], ['FGOHBQPK'], []]": {
+      "result": false,
+      "time": 0.04283881187438965,
+      "error": null
+    },
+    "assert list_split(['hcujy', 'ftu', 'T', '<LL>KJ', 'UGDLK', 'VEC'], 7) == [['hcujy'], ['ftu'], ['T'], ['<LL>KJ'], ['UGDLK'], ['VEC'], []]": {
+      "result": false,
+      "time": 0.03870105743408203,
+      "error": null
+    },
+    "assert list_split(['rrhhrpcssoql', 'rqfjytod', 'I', 'YA&$R', 'NYV', 'LHVZWFPJA'], 3) == [['rrhhrpcssoql', 'YA&$R'], ['rqfjytod', 'NYV'], ['I', 'LHVZWFPJA']]": {
+      "result": false,
+      "time": 0.03835034370422363,
+      "error": null
+    },
+    "assert list_split(['vgeciikehj', 'vsxucvfb', 'H', '>UA', 'AJFSSVKI', 'JZP'], 2) == [['vgeciikehj', 'H', 'AJFSSVKI'], ['vsxucvfb', '>UA', 'JZP']]": {
+      "result": false,
+      "time": 0.03629493713378906,
+      "error": null
+    },
+    "assert list_split(['tpimgzkzrc', 'ytm', 'Y', 'B-+-SHJ', 'PKUN', 'GQBHT'], 5) == [['tpimgzkzrc', 'GQBHT'], ['ytm'], ['Y'], ['B-+-SHJ'], ['PKUN']]": {
+      "result": false,
+      "time": 0.045845985412597656,
+      "error": null
+    },
+    "assert list_split(['zjdsfcnfs', 'pfnuxdal', 'I', '#S>^', 'CFFWC', 'AJGBG'], 2) == [['zjdsfcnfs', 'I', 'CFFWC'], ['pfnuxdal', '#S>^', 'AJGBG']]": {
+      "result": false,
+      "time": 0.03362154960632324,
+      "error": null
+    },
+    "assert list_split(['huyb', 'wgvyu', 'E', 'L&P', 'YEDISE', 'RUJEDJ'], 3) == [['huyb', 'L&P'], ['wgvyu', 'YEDISE'], ['E', 'RUJEDJ']]": {
+      "result": false,
+      "time": 0.03980112075805664,
+      "error": null
+    },
+    "assert list_split(['kuk', 'tactevqo', 'L', '>RU=E', 'DBIU', 'BRZ'], 6) == [['kuk'], ['tactevqo'], ['L'], ['>RU=E'], ['DBIU'], ['BRZ']]": {
+      "result": false,
+      "time": 0.03753185272216797,
+      "error": null
+    },
+    "assert list_split(['qxqkppyenhqc', 'kackpnmg', 'U', '^<LZ/', 'PAH', 'IXWHEGL'], 3) == [['qxqkppyenhqc', '^<LZ/'], ['kackpnmg', 'PAH'], ['U', 'IXWHEGL']]": {
+      "result": false,
+      "time": 0.048227548599243164,
+      "error": null
+    },
+    "assert list_split(['cgk', 'uzmezww', 'P', 'UFUZNT', 'WOEPJ', 'YHEXMO'], 7) == [['cgk'], ['uzmezww'], ['P'], ['UFUZNT'], ['WOEPJ'], ['YHEXMO'], []]": {
+      "result": false,
+      "time": 0.03709888458251953,
+      "error": null
+    },
+    "assert list_split(['sckskgqqom', 'orbqe', 'J', 'J<+&', 'XEVBTEX', 'JTR'], 2) == [['sckskgqqom', 'J', 'XEVBTEX'], ['orbqe', 'J<+&', 'JTR']]": {
+      "result": false,
+      "time": 0.04419684410095215,
+      "error": null
+    },
+    "assert list_split(['nkndpuyc', 'ufjv', 'D', '_/QNG>-', 'SZACNRA', 'VCSB'], 1) == [['nkndpuyc', 'ufjv', 'D', '_/QNG>-', 'SZACNRA', 'VCSB']]": {
+      "result": false,
+      "time": 0.04701542854309082,
+      "error": null
+    },
+    "assert list_split(['eiqi', 'bpvkpkm', 'U', 'P*:D|JDEE', 'FLFEQADYF', 'SKI'], 5) == [['eiqi', 'SKI'], ['bpvkpkm'], ['U'], ['P*:D|JDEE'], ['FLFEQADYF']]": {
+      "result": false,
+      "time": 0.04057765007019043,
+      "error": null
+    },
+    "assert list_split(['uqfbqo', 'ygyykebkp', 'G', 'D_JL/', 'BBHWSSTWN', 'KSLTRM'], 3) == [['uqfbqo', 'D_JL/'], ['ygyykebkp', 'BBHWSSTWN'], ['G', 'KSLTRM']]": {
+      "result": false,
+      "time": 0.037902116775512695,
+      "error": null
+    },
+    "assert list_split(['ptkalnuif', 'frhje', 'E', 'JCSF<:B', 'YLHFRIVGN', 'FKM'], 2) == [['ptkalnuif', 'E', 'YLHFRIVGN'], ['frhje', 'JCSF<:B', 'FKM']]": {
+      "result": false,
+      "time": 0.046282291412353516,
+      "error": null
+    },
+    "assert list_split(['fthdke', 'vczvnb', 'Y', 'V-H^N', 'OIQB', 'QOLQYGUY'], 3) == [['fthdke', 'V-H^N'], ['vczvnb', 'OIQB'], ['Y', 'QOLQYGUY']]": {
+      "result": false,
+      "time": 0.044585227966308594,
+      "error": null
+    },
+    "assert list_split(['ccjtgkfqti', 'xqu', 'O', 'O<@D_W', 'TEHKWQPO', 'NVRTJ'], 2) == [['ccjtgkfqti', 'O', 'TEHKWQPO'], ['xqu', 'O<@D_W', 'NVRTJ']]": {
+      "result": false,
+      "time": 0.04011130332946777,
+      "error": null
+    },
+    "assert list_split(['kjqifx', 'gnztfgx', 'C', '<%ZWTVI', 'QHV', 'WVAXRVY'], 3) == [['kjqifx', '<%ZWTVI'], ['gnztfgx', 'QHV'], ['C', 'WVAXRVY']]": {
+      "result": false,
+      "time": 0.04170513153076172,
+      "error": null
+    },
+    "assert list_split(['mkrzv', 'okll', 'S', 'GXU^IH=Z', 'MAERAVIBB', 'CNTHT'], 1) == [['mkrzv', 'okll', 'S', 'GXU^IH=Z', 'MAERAVIBB', 'CNTHT']]": {
+      "result": false,
+      "time": 0.043875694274902344,
+      "error": null
+    },
+    "assert list_split(['ykqmukk', 'sproluv', 'V', 'V=R@RY$/P', 'GKDNPCP', 'IIIJSOS'], 4) == [['ykqmukk', 'GKDNPCP'], ['sproluv', 'IIIJSOS'], ['V'], ['V=R@RY$/P']]": {
+      "result": false,
+      "time": 0.04576230049133301,
+      "error": null
+    },
+    "assert list_split(['wmly', 'pgwkis', 'U', 'D>_JRTN%', 'KDLJL', 'SOAG'], 1) == [['wmly', 'pgwkis', 'U', 'D>_JRTN%', 'KDLJL', 'SOAG']]": {
+      "result": false,
+      "time": 0.044339895248413086,
+      "error": null
+    },
+    "assert list_split(['glnxgopgguih', 'kzm', 'B', 'M>L', 'JAWI', 'HCRHSEGZK'], 4) == [['glnxgopgguih', 'JAWI'], ['kzm', 'HCRHSEGZK'], ['B'], ['M>L']]": {
+      "result": false,
+      "time": 0.04614567756652832,
+      "error": null
+    },
+    "assert list_split(['lwxugh', 'yhaycqrm', 'U', 'VK:', 'IRU', 'NFTDBDIBN'], 4) == [['lwxugh', 'IRU'], ['yhaycqrm', 'NFTDBDIBN'], ['U'], ['VK:']]": {
+      "result": false,
+      "time": 0.03913521766662598,
+      "error": null
+    },
+    "assert list_split(['mjtqyin', 'xzeiwcy', 'I', '*~$~', 'YJUUHQ', 'BJOQ'], 7) == [['mjtqyin'], ['xzeiwcy'], ['I'], ['*~$~'], ['YJUUHQ'], ['BJOQ'], []]": {
+      "result": false,
+      "time": 0.035398006439208984,
+      "error": null
+    },
+    "assert list_split(['cjxznkyts', 'tdqih', 'X', '!J+L*', 'OIR', 'THFQX'], 1) == [['cjxznkyts', 'tdqih', 'X', '!J+L*', 'OIR', 'THFQX']]": {
+      "result": false,
+      "time": 0.045740604400634766,
+      "error": null
+    },
+    "assert list_split(['vabqxvvhbbk', 'wxd', 'C', '&JVU', 'HIABYZ', 'BBLSXUFRY'], 1) == [['vabqxvvhbbk', 'wxd', 'C', '&JVU', 'HIABYZ', 'BBLSXUFRY']]": {
+      "result": false,
+      "time": 0.051749467849731445,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

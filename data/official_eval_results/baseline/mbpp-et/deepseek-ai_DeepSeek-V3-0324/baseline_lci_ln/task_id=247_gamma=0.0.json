@@ -1,0 +1,519 @@
+{
+  "code": "def lps(s):\n    n = len(s)\n    dp = [[0 for _ in range(n)] for _ in range(n)]\n    \n    for i in range(n):\n        dp[i][i] = 1\n    \n    for cl in range(2, n + 1):\n        for i in range(n - cl + 1):\n            j = i + cl - 1\n            if s[i] == s[j] and cl == 2:\n                dp[i][j] = 2\n            elif s[i] == s[j]:\n                dp[i][j] = dp[i + 1][j - 1] + 2\n            else:\n                dp[i][j] = max(dp[i][j - 1], dp[i + 1][j])\n    \n    return dp[0][n - 1]",
+  "results": {
+    "assert lps(\"TENS FOR TENS\") == 5 ": {
+      "result": true,
+      "time": 0.039984703063964844,
+      "error": null
+    },
+    "assert lps(\"CARDIO FOR CARDS\") == 7": {
+      "result": true,
+      "time": 0.036878347396850586,
+      "error": null
+    },
+    "assert lps(\"PART OF THE JOURNEY IS PART\") == 9 ": {
+      "result": true,
+      "time": 0.0357668399810791,
+      "error": null
+    },
+    "assert lps(\"YTKXPC PB\") == 3": {
+      "result": true,
+      "time": 0.03605937957763672,
+      "error": null
+    },
+    "assert lps(\"FQFNSQCSAZLBTH HHR\") == 3": {
+      "result": true,
+      "time": 0.035764217376708984,
+      "error": null
+    },
+    "assert lps(\" YPORNJLM\") == 1": {
+      "result": true,
+      "time": 0.03309988975524902,
+      "error": null
+    },
+    "assert lps(\"DMJFXP HMRGBRL\") == 3": {
+      "result": true,
+      "time": 0.028093576431274414,
+      "error": null
+    },
+    "assert lps(\"H QTYTKSNOTLBMO\") == 3": {
+      "result": true,
+      "time": 0.03485703468322754,
+      "error": null
+    },
+    "assert lps(\"KAE LDQWAVTN\") == 3": {
+      "result": true,
+      "time": 0.03474617004394531,
+      "error": null
+    },
+    "assert lps(\"QVGJBMNFVEYVL\") == 3": {
+      "result": true,
+      "time": 0.03674769401550293,
+      "error": null
+    },
+    "assert lps(\"ZYZVBNQJGXRJ\") == 3": {
+      "result": true,
+      "time": 0.038617849349975586,
+      "error": null
+    },
+    "assert lps(\"NPERGREB GFJVYZ B\") == 5": {
+      "result": true,
+      "time": 0.03325605392456055,
+      "error": null
+    },
+    "assert lps(\"TEQHCCQHGVP  \") == 4": {
+      "result": true,
+      "time": 0.037539005279541016,
+      "error": null
+    },
+    "assert lps(\"ZWFBNQVIPTTCS\") == 2": {
+      "result": true,
+      "time": 0.037010908126831055,
+      "error": null
+    },
+    "assert lps(\"VFFSKMQAREVCO\") == 4": {
+      "result": true,
+      "time": 0.03429150581359863,
+      "error": null
+    },
+    "assert lps(\"ZEIWYHA VAOAMEO\") == 5": {
+      "result": true,
+      "time": 0.03582763671875,
+      "error": null
+    },
+    "assert lps(\"LERFGNYXPKBLLMIWIT\") == 3": {
+      "result": true,
+      "time": 0.044527292251586914,
+      "error": null
+    },
+    "assert lps(\"FRJZICIDWGORHSH WV\") == 5": {
+      "result": true,
+      "time": 0.03439521789550781,
+      "error": null
+    },
+    "assert lps(\"KNXQCLJEBVZE\") == 3": {
+      "result": true,
+      "time": 0.03650784492492676,
+      "error": null
+    },
+    "assert lps(\"FWROYEDJSGJ\") == 3": {
+      "result": true,
+      "time": 0.047083139419555664,
+      "error": null
+    },
+    "assert lps(\"LKYFVZXUVRORE\") == 3": {
+      "result": true,
+      "time": 0.044190168380737305,
+      "error": null
+    },
+    "assert lps(\"WWIC PIGTSZLBBMDY\") == 3": {
+      "result": true,
+      "time": 0.044641733169555664,
+      "error": null
+    },
+    "assert lps(\" VMORXHYDN\") == 1": {
+      "result": true,
+      "time": 0.038568735122680664,
+      "error": null
+    },
+    "assert lps(\"TWALS IRMPOH  \") == 3": {
+      "result": true,
+      "time": 0.047628164291381836,
+      "error": null
+    },
+    "assert lps(\"RJUKCJNSJJXAFEQ \") == 5": {
+      "result": true,
+      "time": 0.03870844841003418,
+      "error": null
+    },
+    "assert lps(\"UJUUXZLOCTJHIGVZG\") == 4": {
+      "result": true,
+      "time": 0.04520535469055176,
+      "error": null
+    },
+    "assert lps(\"IPRZCKQVPNN MTNTEQ\") == 5": {
+      "result": true,
+      "time": 0.03909707069396973,
+      "error": null
+    },
+    "assert lps(\"DQYYLJJOUIAP\") == 2": {
+      "result": true,
+      "time": 0.040508270263671875,
+      "error": null
+    },
+    "assert lps(\" YXYAS KEM\") == 5": {
+      "result": true,
+      "time": 0.04562568664550781,
+      "error": null
+    },
+    "assert lps(\"ZQWSABROE GWK \") == 3": {
+      "result": true,
+      "time": 0.040399789810180664,
+      "error": null
+    },
+    "assert lps(\"MZPYIHRE ALWROVJ\") == 3": {
+      "result": true,
+      "time": 0.04385828971862793,
+      "error": null
+    },
+    "assert lps(\"SEIYFLFSF\") == 5": {
+      "result": true,
+      "time": 0.03495907783508301,
+      "error": null
+    },
+    "assert lps(\" UCICFMFIVNQSBY T\") == 7": {
+      "result": true,
+      "time": 0.04196643829345703,
+      "error": null
+    },
+    "assert lps(\"OWSFJQNYCDJ\") == 3": {
+      "result": true,
+      "time": 0.03910017013549805,
+      "error": null
+    },
+    "assert lps(\"WBZO GZMIKNW\") == 5": {
+      "result": true,
+      "time": 0.038136959075927734,
+      "error": null
+    },
+    "assert lps(\"ANPJMWJNMFCESEF\") == 5": {
+      "result": true,
+      "time": 0.046240806579589844,
+      "error": null
+    },
+    "assert lps(\" IGCTUDRVJRDLNZ\") == 5": {
+      "result": true,
+      "time": 0.046181440353393555,
+      "error": null
+    },
+    "assert lps(\" AMDFJXLTO OBUULYCNDU\") == 7": {
+      "result": true,
+      "time": 0.0426030158996582,
+      "error": null
+    },
+    "assert lps(\"MZHIHEFUVZYHCIBKSSO \") == 5": {
+      "result": true,
+      "time": 0.04634380340576172,
+      "error": null
+    },
+    "assert lps(\"IEBHICQTEXGJFRJBBNR\") == 5": {
+      "result": true,
+      "time": 0.04383349418640137,
+      "error": null
+    },
+    "assert lps(\"TMI JHKUCNJU KL\") == 5": {
+      "result": true,
+      "time": 0.04697990417480469,
+      "error": null
+    },
+    "assert lps(\"CHIDCWYFHMUFK\") == 3": {
+      "result": true,
+      "time": 0.041129350662231445,
+      "error": null
+    },
+    "assert lps(\"TRLWNCSECSI CZOH\") == 5": {
+      "result": true,
+      "time": 0.04534316062927246,
+      "error": null
+    },
+    "assert lps(\"QGBLSBJAPI TISHGRTTS\") == 7": {
+      "result": true,
+      "time": 0.04625654220581055,
+      "error": null
+    },
+    "assert lps(\"YBQYMVGY FVAT EKMDEI\") == 5": {
+      "result": true,
+      "time": 0.04725050926208496,
+      "error": null
+    },
+    "assert lps(\"MJYGTK BJWRPBBB\") == 4": {
+      "result": true,
+      "time": 0.04436492919921875,
+      "error": null
+    },
+    "assert lps(\"GWBRXGOCIUKGB\") == 5": {
+      "result": true,
+      "time": 0.054236412048339844,
+      "error": null
+    },
+    "assert lps(\"WMYGTMWRTJSEVRTLAEDFH\") == 5": {
+      "result": true,
+      "time": 0.04562735557556152,
+      "error": null
+    },
+    "assert lps(\"BNZTYWWURYZTNZ\") == 8": {
+      "result": true,
+      "time": 0.03826570510864258,
+      "error": null
+    },
+    "assert lps(\"XHVPRITCYGNF\") == 1": {
+      "result": true,
+      "time": 0.04778122901916504,
+      "error": null
+    },
+    "assert lps(\"HDXSBFHJ CQQIFVWEOF\") == 4": {
+      "result": true,
+      "time": 0.038659095764160156,
+      "error": null
+    },
+    "assert lps(\"ONZLDHZNPRPR\") == 5": {
+      "result": true,
+      "time": 0.046415090560913086,
+      "error": null
+    },
+    "assert lps(\"ESUU C EUTYTT\") == 5": {
+      "result": true,
+      "time": 0.039038658142089844,
+      "error": null
+    },
+    "assert lps(\"HCL RRSMBBHSWSY\") == 4": {
+      "result": true,
+      "time": 0.040811777114868164,
+      "error": null
+    },
+    "assert lps(\"MFTSLUYBMMUVBGA\") == 4": {
+      "result": true,
+      "time": 0.04611635208129883,
+      "error": null
+    },
+    "assert lps(\"ZNXKGTDKVV SZWX\") == 5": {
+      "result": true,
+      "time": 0.04854893684387207,
+      "error": null
+    },
+    "assert lps(\"BAVRKMLWYEXTIUI\") == 3": {
+      "result": true,
+      "time": 0.05163455009460449,
+      "error": null
+    },
+    "assert lps(\"VVQRUAMCDIUF\") == 3": {
+      "result": true,
+      "time": 0.04242396354675293,
+      "error": null
+    },
+    "assert lps(\"GQSAFVSKHBSIXKESQMXUH\") == 7": {
+      "result": true,
+      "time": 0.03641700744628906,
+      "error": null
+    },
+    "assert lps(\"SVIUFJIOU VXTHAGJ\") == 5": {
+      "result": true,
+      "time": 0.03497314453125,
+      "error": null
+    },
+    "assert lps(\"OG LMPMOEXFH OBWBFQCK\") == 7": {
+      "result": true,
+      "time": 0.035428524017333984,
+      "error": null
+    },
+    "assert lps(\"OMJSEMQUQTVS\") == 5": {
+      "result": true,
+      "time": 0.04227161407470703,
+      "error": null
+    },
+    "assert lps(\"ZLXGSNWHKTHNOPE\") == 5": {
+      "result": true,
+      "time": 0.04108691215515137,
+      "error": null
+    },
+    "assert lps(\"AYFI YIHPCAYJUUVEXLFL\") == 5": {
+      "result": true,
+      "time": 0.048343658447265625,
+      "error": null
+    },
+    "assert lps(\"EMTWUENODHOGZWSZCG\") == 5": {
+      "result": true,
+      "time": 0.04796957969665527,
+      "error": null
+    },
+    "assert lps(\"MWCJMPWJEAEPAWRRUHVW\") == 7": {
+      "result": true,
+      "time": 0.04311800003051758,
+      "error": null
+    },
+    "assert lps(\"LIITRYDPRUJEJXT\") == 5": {
+      "result": true,
+      "time": 0.03476834297180176,
+      "error": null
+    },
+    "assert lps(\"LMOONCHBJFLVRIH\") == 4": {
+      "result": true,
+      "time": 0.04105997085571289,
+      "error": null
+    },
+    "assert lps(\"RIORS JDWFEXMTENLDTO\") == 7": {
+      "result": true,
+      "time": 0.037085533142089844,
+      "error": null
+    },
+    "assert lps(\"GJYQOBBP RZF U OSKLAVSZS\") == 5": {
+      "result": true,
+      "time": 0.03939032554626465,
+      "error": null
+    },
+    "assert lps(\"VDJHWPBCWODFN LESHZFQNIVHSA\") == 7": {
+      "result": true,
+      "time": 0.03250455856323242,
+      "error": null
+    },
+    "assert lps(\"PCQLWUCRVWNBLTGZNNVKVFVCSKH\") == 7": {
+      "result": true,
+      "time": 0.03619790077209473,
+      "error": null
+    },
+    "assert lps(\"OJEANAC CRX JT GSRLFBM GNUDKD\") == 9": {
+      "result": true,
+      "time": 0.03925204277038574,
+      "error": null
+    },
+    "assert lps(\"HCKTYOEPZWTMUHG RRBCZFPUDZII\") == 6": {
+      "result": true,
+      "time": 0.04454636573791504,
+      "error": null
+    },
+    "assert lps(\"DOTYLKIINZRPHABQDHV ELSVU \") == 5": {
+      "result": true,
+      "time": 0.03311800956726074,
+      "error": null
+    },
+    "assert lps(\"QTVPM WZ  FXCNWRPOFLVCLWLTFWTQ\") == 13": {
+      "result": true,
+      "time": 0.036520957946777344,
+      "error": null
+    },
+    "assert lps(\"HAMBTRDLZJQMRVEHOOGGOIPNJEQ \") == 8": {
+      "result": true,
+      "time": 0.03224921226501465,
+      "error": null
+    },
+    "assert lps(\"MVWJOUBUJGJVDJMTFLSAHTDCOVHV\") == 9": {
+      "result": true,
+      "time": 0.03390359878540039,
+      "error": null
+    },
+    "assert lps(\"ECLPBVRAZAUOTSFADSWUMDCEXLEUDPX\") == 9": {
+      "result": true,
+      "time": 0.038341522216796875,
+      "error": null
+    },
+    "assert lps(\"EYBNMNEDFRZZNBVIUYKMX AOPTKDDLKRH\") == 8": {
+      "result": true,
+      "time": 0.04252982139587402,
+      "error": null
+    },
+    "assert lps(\"RJVSGK GDDQFXSRBKFDX UYWE HCOAQVU\") == 9": {
+      "result": true,
+      "time": 0.03905344009399414,
+      "error": null
+    },
+    "assert lps(\"TISOVXUM YEMBMKWTPUVUROBKP\") == 9": {
+      "result": true,
+      "time": 0.0340266227722168,
+      "error": null
+    },
+    "assert lps(\"B OGRAXFJTTWHJSWCIKKYICUQZTKNSSU\") == 8": {
+      "result": true,
+      "time": 0.041162729263305664,
+      "error": null
+    },
+    "assert lps(\"Z PAHLGPJQMWIVEOZP DLCCNWWWCA\") == 7": {
+      "result": true,
+      "time": 0.0420987606048584,
+      "error": null
+    },
+    "assert lps(\"JLUNZFQYWALTELAKEYGSFV TIWRALF\") == 11": {
+      "result": true,
+      "time": 0.03378629684448242,
+      "error": null
+    },
+    "assert lps(\"REEJYDKGRJHPMTYNLBLPNOQEMNB\") == 7": {
+      "result": true,
+      "time": 0.036646366119384766,
+      "error": null
+    },
+    "assert lps(\"GSEJIZIIVBFNUGIHNAALNUEULEVXKGU\") == 10": {
+      "result": true,
+      "time": 0.03698849678039551,
+      "error": null
+    },
+    "assert lps(\"DPUUVOLCNATRFDSVLUECGRSQV\") == 5": {
+      "result": true,
+      "time": 0.04232048988342285,
+      "error": null
+    },
+    "assert lps(\"MMZOULSVTHISLRFJDHHNZUFX\") == 7": {
+      "result": true,
+      "time": 0.03654003143310547,
+      "error": null
+    },
+    "assert lps(\"UNKWMFNRIQVKSYGTNDGGMNESN\") == 8": {
+      "result": true,
+      "time": 0.04198575019836426,
+      "error": null
+    },
+    "assert lps(\"LXFGQLAXATHAUVV  IGJA RIKIZ\") == 5": {
+      "result": true,
+      "time": 0.0422971248626709,
+      "error": null
+    },
+    "assert lps(\"ZWFRBUUBKFOPCZBYOMFAPROSZCW\") == 9": {
+      "result": true,
+      "time": 0.04550957679748535,
+      "error": null
+    },
+    "assert lps(\"SSNXLQMLGOVFWVCZWARKJACXMJ\") == 7": {
+      "result": true,
+      "time": 0.03850746154785156,
+      "error": null
+    },
+    "assert lps(\"GUFT RQOYMMPVRBXJLOROJIDJWMRKYYQJ\") == 11": {
+      "result": true,
+      "time": 0.034905195236206055,
+      "error": null
+    },
+    "assert lps(\"DRHRKDOVLUWTFIDSQZZOXBJKKVAGRWMA\") == 8": {
+      "result": true,
+      "time": 0.03207206726074219,
+      "error": null
+    },
+    "assert lps(\"YWLSJKHFDLKCLFGIJOJBUHUR GBYVHV\") == 9": {
+      "result": true,
+      "time": 0.0608675479888916,
+      "error": null
+    },
+    "assert lps(\"SSOSLVYFKXYZLTYBTYSIHRQ F\") == 7": {
+      "result": true,
+      "time": 0.039806365966796875,
+      "error": null
+    },
+    "assert lps(\"W  ZJYOTEGHHQPWQDSN VHHIWR\") == 9": {
+      "result": true,
+      "time": 0.04232001304626465,
+      "error": null
+    },
+    "assert lps(\"BAQPYAFMGIRXJVF HYBZXVUVCETO CYB\") == 9": {
+      "result": true,
+      "time": 0.035099029541015625,
+      "error": null
+    },
+    "assert lps(\"BBQWKZAQVUTCXWGABUVCVTKUPPWJ\") == 9": {
+      "result": true,
+      "time": 0.03975391387939453,
+      "error": null
+    },
+    "assert lps(\"L ZNONIHKZHMNL NVIOXHEJ UECSE\") == 9": {
+      "result": true,
+      "time": 0.046819448471069336,
+      "error": null
+    },
+    "assert lps(\"YKENFGPSFKSQRCZEXSABNIGZNZTUINFLW\") == 9": {
+      "result": true,
+      "time": 0.0402216911315918,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

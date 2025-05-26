@@ -1,0 +1,519 @@
+{
+  "code": "def find_first_duplicate(arr):\n    seen = set()\n    for num in arr:\n        if num in seen:\n            return num\n        seen.add(num)\n    return -1",
+  "results": {
+    "assert find_first_duplicate(([1, 2, 3, 4, 4, 5]))==4": {
+      "result": true,
+      "time": 0.04822134971618652,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 2, 3, 4])==-1": {
+      "result": true,
+      "time": 0.0435481071472168,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 1, 2, 3, 3, 2, 2])==1": {
+      "result": true,
+      "time": 0.04392218589782715,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 6, 8, 1, 3, 5]) == 3": {
+      "result": true,
+      "time": 0.054234981536865234,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 7, 4, 2, 5, 3]) == 5": {
+      "result": true,
+      "time": 0.03874540328979492,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 5, 5, 6, 1, 5]) == 5": {
+      "result": true,
+      "time": 0.03870797157287598,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 5, 6, 8, 7, 9]) == -1": {
+      "result": true,
+      "time": 0.040880680084228516,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 6, 5, 9, 6, 2]) == 6": {
+      "result": true,
+      "time": 0.03997683525085449,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 3, 8, 3, 6, 6]) == 3": {
+      "result": true,
+      "time": 0.03563737869262695,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 1, 3, 2, 2, 4]) == 2": {
+      "result": true,
+      "time": 0.03471636772155762,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 6, 8, 1, 8, 5]) == 8": {
+      "result": true,
+      "time": 0.038587331771850586,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 2, 1, 1, 1, 4]) == 2": {
+      "result": true,
+      "time": 0.0394749641418457,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 7, 8, 9, 1, 6]) == -1": {
+      "result": true,
+      "time": 0.038919925689697266,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 3, 3, 6, 1, 5]) == 3": {
+      "result": true,
+      "time": 0.03763175010681152,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 2, 5, 9, 6, 2]) == 2": {
+      "result": true,
+      "time": 0.04322099685668945,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 2, 1, 4, 2, 7]) == 2": {
+      "result": true,
+      "time": 0.03732728958129883,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 5, 8, 8, 5, 4]) == 8": {
+      "result": true,
+      "time": 0.03955888748168945,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 5, 6, 1, 5, 8]) == 5": {
+      "result": true,
+      "time": 0.037757158279418945,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 4, 1, 8, 3, 4]) == 4": {
+      "result": true,
+      "time": 0.039672136306762695,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 6, 3, 8, 6, 5]) == 6": {
+      "result": true,
+      "time": 0.03580594062805176,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 4, 8, 7, 9, 10]) == -1": {
+      "result": true,
+      "time": 0.03368949890136719,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 6, 6, 6, 9, 2]) == 6": {
+      "result": true,
+      "time": 0.03934597969055176,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 5, 2, 7, 6, 6]) == 6": {
+      "result": true,
+      "time": 0.03945517539978027,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 7, 1, 5, 9, 9]) == 5": {
+      "result": true,
+      "time": 0.03680586814880371,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 5, 5, 8, 1, 5]) == 5": {
+      "result": true,
+      "time": 0.03687691688537598,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 3, 5, 5, 5, 4]) == 5": {
+      "result": true,
+      "time": 0.04031205177307129,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 3, 1, 5, 8, 7]) == 1": {
+      "result": true,
+      "time": 0.03835320472717285,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 4, 7, 3, 8, 10]) == 4": {
+      "result": true,
+      "time": 0.041898250579833984,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 3, 2, 4, 8, 1]) == -1": {
+      "result": true,
+      "time": 0.035881757736206055,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 7, 3, 8, 5, 7]) == 7": {
+      "result": true,
+      "time": 0.03544354438781738,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 7, 8, 3, 8, 5]) == 8": {
+      "result": true,
+      "time": 0.04524827003479004,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 6, 2, 7, 5, 2]) == 2": {
+      "result": true,
+      "time": 0.038034677505493164,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 4, 8, 8, 5, 3]) == 4": {
+      "result": true,
+      "time": 0.03808450698852539,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 6, 1, 8, 9, 4]) == -1": {
+      "result": true,
+      "time": 0.03807568550109863,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 5, 7, 9, 1, 4]) == 5": {
+      "result": true,
+      "time": 0.039571285247802734,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 5, 2, 9, 9, 4]) == 9": {
+      "result": true,
+      "time": 0.037613630294799805,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 5, 5, 8]) == 5": {
+      "result": true,
+      "time": 0.03878140449523926,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 5, 4, 2]) == 2": {
+      "result": true,
+      "time": 0.03749418258666992,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 7, 7, 2]) == 7": {
+      "result": true,
+      "time": 0.03601717948913574,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 3, 6, 4]) == -1": {
+      "result": true,
+      "time": 0.04266929626464844,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 5, 8, 6]) == -1": {
+      "result": true,
+      "time": 0.041234731674194336,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 3, 3, 7]) == 3": {
+      "result": true,
+      "time": 0.03588581085205078,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 6, 1, 6]) == 6": {
+      "result": true,
+      "time": 0.03326749801635742,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 1, 7, 6]) == 6": {
+      "result": true,
+      "time": 0.03523564338684082,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 7, 1, 3]) == 1": {
+      "result": true,
+      "time": 0.03994417190551758,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 7, 3, 5]) == -1": {
+      "result": true,
+      "time": 0.03731250762939453,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 5, 1, 9]) == -1": {
+      "result": true,
+      "time": 0.03422093391418457,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 4, 4, 3]) == 4": {
+      "result": true,
+      "time": 0.041445255279541016,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 5, 1, 7]) == -1": {
+      "result": true,
+      "time": 0.037514448165893555,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 2, 3, 4]) == 4": {
+      "result": true,
+      "time": 0.04340553283691406,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 3, 6, 8]) == 3": {
+      "result": true,
+      "time": 0.0347599983215332,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 7, 6, 7]) == 7": {
+      "result": true,
+      "time": 0.03645014762878418,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 3, 5, 6]) == -1": {
+      "result": true,
+      "time": 0.04369044303894043,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 2, 5, 1]) == 2": {
+      "result": true,
+      "time": 0.03812980651855469,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 5, 8, 8]) == 8": {
+      "result": true,
+      "time": 0.03910422325134277,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 7, 7, 8]) == 7": {
+      "result": true,
+      "time": 0.04474925994873047,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 5, 3, 4]) == -1": {
+      "result": true,
+      "time": 0.03475379943847656,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 2, 7, 5]) == -1": {
+      "result": true,
+      "time": 0.04452395439147949,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 2, 4, 9]) == 4": {
+      "result": true,
+      "time": 0.03841209411621094,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 6, 4, 5]) == 4": {
+      "result": true,
+      "time": 0.0371401309967041,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 4, 5, 3]) == 4": {
+      "result": true,
+      "time": 0.03742098808288574,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 1, 5, 5]) == 5": {
+      "result": true,
+      "time": 0.0358121395111084,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 5, 3, 9]) == -1": {
+      "result": true,
+      "time": 0.04305410385131836,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 7, 7, 2]) == 7": {
+      "result": true,
+      "time": 0.036406517028808594,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 1, 8, 3]) == -1": {
+      "result": true,
+      "time": 0.03693366050720215,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 5, 7, 9]) == -1": {
+      "result": true,
+      "time": 0.04112720489501953,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 1, 7, 1]) == 1": {
+      "result": true,
+      "time": 0.034952402114868164,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 4, 4, 1]) == 4": {
+      "result": true,
+      "time": 0.029998064041137695,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 4, 5, 9]) == 4": {
+      "result": true,
+      "time": 0.04131484031677246,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 6, 3, 6, 5, 7, 1]) == 6": {
+      "result": true,
+      "time": 0.04005241394042969,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 1, 4, 8, 4, 3, 4]) == 4": {
+      "result": true,
+      "time": 0.03525996208190918,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 1, 6, 8, 6, 6, 4]) == 1": {
+      "result": true,
+      "time": 0.03784465789794922,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 3, 7, 1, 3, 5, 5]) == 3": {
+      "result": true,
+      "time": 0.037481069564819336,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 2, 3, 2, 8, 1, 5]) == 2": {
+      "result": true,
+      "time": 0.045552730560302734,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 5, 4, 5, 8, 6, 7]) == 5": {
+      "result": true,
+      "time": 0.03323078155517578,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 4, 1, 6, 1, 2, 3]) == 1": {
+      "result": true,
+      "time": 0.03684806823730469,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 4, 3, 2, 6, 7, 5]) == 3": {
+      "result": true,
+      "time": 0.03941011428833008,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 5, 7, 8, 6, 2, 3]) == 5": {
+      "result": true,
+      "time": 0.04059648513793945,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 2, 2, 3, 1, 4, 7]) == 2": {
+      "result": true,
+      "time": 0.03763747215270996,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 5, 6, 3, 5, 5, 5]) == 5": {
+      "result": true,
+      "time": 0.04460287094116211,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 6, 1, 4, 3, 5, 5]) == 5": {
+      "result": true,
+      "time": 0.03544497489929199,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 5, 2, 8, 2, 5, 3]) == 2": {
+      "result": true,
+      "time": 0.03503298759460449,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 6, 1, 5, 3, 5, 6]) == 5": {
+      "result": true,
+      "time": 0.033684492111206055,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 3, 4, 1, 3, 3, 1]) == 3": {
+      "result": true,
+      "time": 0.03598976135253906,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 1, 3, 2, 3, 5, 5]) == 3": {
+      "result": true,
+      "time": 0.04260826110839844,
+      "error": null
+    },
+    "assert find_first_duplicate([1, 5, 3, 6, 4, 3, 7]) == 3": {
+      "result": true,
+      "time": 0.03918743133544922,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 6, 1, 7, 8, 3, 3]) == 3": {
+      "result": true,
+      "time": 0.03844451904296875,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 2, 2, 7, 2, 4, 7]) == 2": {
+      "result": true,
+      "time": 0.03744244575500488,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 2, 6, 5, 7, 2, 7]) == 5": {
+      "result": true,
+      "time": 0.035161733627319336,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 4, 7, 7, 6, 2, 3]) == 7": {
+      "result": true,
+      "time": 0.03513693809509277,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 1, 4, 6, 1, 2, 6]) == 1": {
+      "result": true,
+      "time": 0.03939199447631836,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 4, 6, 4, 5, 6, 7]) == 6": {
+      "result": true,
+      "time": 0.037001609802246094,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 2, 1, 1, 8, 2, 7]) == 1": {
+      "result": true,
+      "time": 0.04314994812011719,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 4, 6, 6, 3, 1, 7]) == 6": {
+      "result": true,
+      "time": 0.035436153411865234,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 1, 1, 4, 4, 7, 2]) == 1": {
+      "result": true,
+      "time": 0.03849387168884277,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 3, 4, 6, 4, 5, 1]) == 4": {
+      "result": true,
+      "time": 0.05031275749206543,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 6, 6, 1, 6, 1, 5]) == 6": {
+      "result": true,
+      "time": 0.03240966796875,
+      "error": null
+    },
+    "assert find_first_duplicate([3, 5, 1, 6, 2, 7, 2]) == 2": {
+      "result": true,
+      "time": 0.032685279846191406,
+      "error": null
+    },
+    "assert find_first_duplicate([5, 5, 7, 6, 6, 2, 2]) == 5": {
+      "result": true,
+      "time": 0.04116940498352051,
+      "error": null
+    },
+    "assert find_first_duplicate([4, 6, 1, 5, 7, 3, 6]) == 6": {
+      "result": true,
+      "time": 0.03877592086791992,
+      "error": null
+    },
+    "assert find_first_duplicate([6, 4, 2, 1, 1, 7, 1]) == 1": {
+      "result": true,
+      "time": 0.03418779373168945,
+      "error": null
+    },
+    "assert find_first_duplicate([2, 2, 6, 1, 2, 4, 2]) == 2": {
+      "result": true,
+      "time": 0.041515350341796875,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

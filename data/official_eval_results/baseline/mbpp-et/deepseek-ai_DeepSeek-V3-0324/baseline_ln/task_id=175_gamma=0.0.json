@@ -1,0 +1,519 @@
+{
+  "code": "def is_valid_parenthese(s):\n    stack = []\n    mapping = {\")\": \"(\", \"}\": \"{\", \"]\": \"[\"}\n    for char in s:\n        if char in mapping:\n            top_element = stack.pop() if stack else '#'\n            if mapping[char] != top_element:\n                return False\n        else:\n            stack.append(char)\n    return not stack",
+  "results": {
+    "assert is_valid_parenthese(\"(){}[]\")==True": {
+      "result": true,
+      "time": 0.049627065658569336,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"()[{)}\")==False": {
+      "result": true,
+      "time": 0.04102754592895508,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"()\")==True": {
+      "result": true,
+      "time": 0.03870368003845215,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"](<\") == False": {
+      "result": true,
+      "time": 0.04993033409118652,
+      "error": null
+    },
+    "assert is_valid_parenthese(\">{]\") == False": {
+      "result": true,
+      "time": 0.04227900505065918,
+      "error": null
+    },
+    "assert is_valid_parenthese(\">){}(]]{({\") == False": {
+      "result": true,
+      "time": 0.043572425842285156,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"[<[)><\") == False": {
+      "result": true,
+      "time": 0.04326367378234863,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"}[}([<{(}()\") == False": {
+      "result": true,
+      "time": 0.03949570655822754,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"](}<<>})\") == False": {
+      "result": true,
+      "time": 0.04210376739501953,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<><>>]]\") == False": {
+      "result": true,
+      "time": 0.04022049903869629,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"){)\") == False": {
+      "result": true,
+      "time": 0.040255069732666016,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<(}][()[\") == False": {
+      "result": true,
+      "time": 0.04727673530578613,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{{>\") == False": {
+      "result": true,
+      "time": 0.048445701599121094,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"]><)<})(\") == False": {
+      "result": true,
+      "time": 0.049332618713378906,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"><(])<)<\") == False": {
+      "result": true,
+      "time": 0.04687857627868652,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<()>[(<{}{\") == False": {
+      "result": true,
+      "time": 0.04785799980163574,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"]})<)])><)(\") == False": {
+      "result": true,
+      "time": 0.04589986801147461,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"}]})<{())\") == False": {
+      "result": true,
+      "time": 0.06137847900390625,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"((>><))\") == False": {
+      "result": true,
+      "time": 0.04651141166687012,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{>[<(<[(]\") == False": {
+      "result": true,
+      "time": 0.0527193546295166,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")}<[>]>})\") == False": {
+      "result": true,
+      "time": 0.04946470260620117,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")<(>[{>{(}<\") == False": {
+      "result": true,
+      "time": 0.0464935302734375,
+      "error": null
+    },
+    "assert is_valid_parenthese(\">]](<\") == False": {
+      "result": true,
+      "time": 0.04460000991821289,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<[]}][[)[[)<\") == False": {
+      "result": true,
+      "time": 0.04364466667175293,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"[](<)>[)><}(\") == False": {
+      "result": true,
+      "time": 0.04100656509399414,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<}[{]{]\") == False": {
+      "result": true,
+      "time": 0.040772199630737305,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{[>}{(>{(\") == False": {
+      "result": true,
+      "time": 0.040167808532714844,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"](}<>{\") == False": {
+      "result": true,
+      "time": 0.04027271270751953,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"><)})>>\") == False": {
+      "result": true,
+      "time": 0.0413212776184082,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"][]<[<\") == False": {
+      "result": true,
+      "time": 0.045185089111328125,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<}[<{]><<]>\") == False": {
+      "result": true,
+      "time": 0.041823625564575195,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")}<{\") == False": {
+      "result": true,
+      "time": 0.05157613754272461,
+      "error": null
+    },
+    "assert is_valid_parenthese(\">}])<][{{\") == False": {
+      "result": true,
+      "time": 0.05909085273742676,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"}{{))\") == False": {
+      "result": true,
+      "time": 0.04452395439147949,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"])<(){<[(<\") == False": {
+      "result": true,
+      "time": 0.042275190353393555,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"]}(){>]<}\") == False": {
+      "result": true,
+      "time": 0.04653429985046387,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"(<<<(<[)[\") == False": {
+      "result": true,
+      "time": 0.04289603233337402,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"(>[{]]]{(\") == False": {
+      "result": true,
+      "time": 0.049538373947143555,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<>)}(\") == False": {
+      "result": true,
+      "time": 0.04287528991699219,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"][>}{({]\") == False": {
+      "result": true,
+      "time": 0.044634342193603516,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{><[\") == False": {
+      "result": true,
+      "time": 0.043744802474975586,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"){><{[\") == False": {
+      "result": true,
+      "time": 0.04310321807861328,
+      "error": null
+    },
+    "assert is_valid_parenthese(\">]}]\") == False": {
+      "result": true,
+      "time": 0.0501713752746582,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"({}([<>][))\") == False": {
+      "result": true,
+      "time": 0.04018998146057129,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"]}[(>\") == False": {
+      "result": true,
+      "time": 0.03929948806762695,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"}<{}])}(\") == False": {
+      "result": true,
+      "time": 0.04438519477844238,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<{}}({>\") == False": {
+      "result": true,
+      "time": 0.03998613357543945,
+      "error": null
+    },
+    "assert is_valid_parenthese(\">])>()}}>])>\") == False": {
+      "result": true,
+      "time": 0.03766655921936035,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")(<()[[({(]\") == False": {
+      "result": true,
+      "time": 0.04709148406982422,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{)<<\") == False": {
+      "result": true,
+      "time": 0.044921875,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{<{]\") == False": {
+      "result": true,
+      "time": 0.0430295467376709,
+      "error": null
+    },
+    "assert is_valid_parenthese(\">[}[<)[<)){\") == False": {
+      "result": true,
+      "time": 0.03599047660827637,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<<[<<)[){(\") == False": {
+      "result": true,
+      "time": 0.04120326042175293,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"][((]{{)[(]{\") == False": {
+      "result": true,
+      "time": 0.03400278091430664,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{>}){\") == False": {
+      "result": true,
+      "time": 0.041496992111206055,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"[>[]>>{[{[}]\") == False": {
+      "result": true,
+      "time": 0.0420229434967041,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")][}<}\") == False": {
+      "result": true,
+      "time": 0.04507303237915039,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<>)>)]>(<\") == False": {
+      "result": true,
+      "time": 0.06681108474731445,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"({]>>([>}}\") == False": {
+      "result": true,
+      "time": 0.05843806266784668,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"(>>]}}(\") == False": {
+      "result": true,
+      "time": 0.05100512504577637,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<>)>)>(<>)>]\") == False": {
+      "result": true,
+      "time": 0.06572866439819336,
+      "error": null
+    },
+    "assert is_valid_parenthese(\">(]>{()[}}>\") == False": {
+      "result": true,
+      "time": 0.051885366439819336,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")[[}[{}<\") == False": {
+      "result": true,
+      "time": 0.05174398422241211,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"}><>}[(]}((<\") == False": {
+      "result": true,
+      "time": 0.05245018005371094,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"}})\") == False": {
+      "result": true,
+      "time": 0.05075883865356445,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{(()[<>}\") == False": {
+      "result": true,
+      "time": 0.05151033401489258,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<([}]({]])}]\") == False": {
+      "result": true,
+      "time": 0.053621530532836914,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{(){([{[\") == False": {
+      "result": true,
+      "time": 0.0512387752532959,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"((}{]}(])\") == False": {
+      "result": true,
+      "time": 0.056855201721191406,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"}]<[\") == False": {
+      "result": true,
+      "time": 0.046365976333618164,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{<(>\") == False": {
+      "result": true,
+      "time": 0.051261186599731445,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{]><){\") == False": {
+      "result": true,
+      "time": 0.06212186813354492,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{>[[[]\") == False": {
+      "result": true,
+      "time": 0.04457592964172363,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"<{)(\") == False": {
+      "result": true,
+      "time": 0.053180694580078125,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{[)}>)\") == False": {
+      "result": true,
+      "time": 0.049492597579956055,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{]{()[\") == False": {
+      "result": true,
+      "time": 0.04102444648742676,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")]<{{\") == False": {
+      "result": true,
+      "time": 0.04683709144592285,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{])[((\") == False": {
+      "result": true,
+      "time": 0.05981111526489258,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"[(}}}\") == False": {
+      "result": true,
+      "time": 0.04790139198303223,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"({}\") == False": {
+      "result": true,
+      "time": 0.05163145065307617,
+      "error": null
+    },
+    "assert is_valid_parenthese(\">}])[{\") == False": {
+      "result": true,
+      "time": 0.05099606513977051,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")><{]<\") == False": {
+      "result": true,
+      "time": 0.057997703552246094,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"}>{}){\") == False": {
+      "result": true,
+      "time": 0.04723048210144043,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")]>(\") == False": {
+      "result": true,
+      "time": 0.056059837341308594,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"[])(\") == False": {
+      "result": true,
+      "time": 0.0528264045715332,
+      "error": null
+    },
+    "assert is_valid_parenthese(\">>[({\") == False": {
+      "result": true,
+      "time": 0.055498600006103516,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"[])\") == False": {
+      "result": true,
+      "time": 0.05499768257141113,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{}(>\") == False": {
+      "result": true,
+      "time": 0.05285191535949707,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"([]\") == False": {
+      "result": true,
+      "time": 0.0402524471282959,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"[)(}}}\") == False": {
+      "result": true,
+      "time": 0.04794955253601074,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"]<>\") == False": {
+      "result": true,
+      "time": 0.050606727600097656,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"{}](>[\") == False": {
+      "result": true,
+      "time": 0.05533742904663086,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"]})\") == False": {
+      "result": true,
+      "time": 0.05715513229370117,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")}[{<[\") == False": {
+      "result": true,
+      "time": 0.04064607620239258,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"[<}{]\") == False": {
+      "result": true,
+      "time": 0.04085183143615723,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"})>{\") == False": {
+      "result": true,
+      "time": 0.043363094329833984,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")])]\") == False": {
+      "result": true,
+      "time": 0.041310787200927734,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")]]\") == False": {
+      "result": true,
+      "time": 0.0434567928314209,
+      "error": null
+    },
+    "assert is_valid_parenthese(\")({\") == False": {
+      "result": true,
+      "time": 0.05290722846984863,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"}}(\") == False": {
+      "result": true,
+      "time": 0.03972268104553223,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"]{)[[<\") == False": {
+      "result": true,
+      "time": 0.04677557945251465,
+      "error": null
+    },
+    "assert is_valid_parenthese(\"(>{]\") == False": {
+      "result": true,
+      "time": 0.040109872817993164,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

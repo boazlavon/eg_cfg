@@ -1,0 +1,519 @@
+{
+  "code": "def char_frequency(str1):\n    freq_dict = {}\n    for n in str1:\n        keys = freq_dict.keys()\n        if n in keys:\n            freq_dict[n] += 1\n        else:\n            freq_dict[n] = 1\n    return freq_dict\n",
+  "results": {
+    "assert char_frequency('python')=={'p': 1, 'y': 1, 't': 1, 'h': 1, 'o': 1, 'n': 1}": {
+      "result": true,
+      "time": 0.05551338195800781,
+      "error": null
+    },
+    "assert char_frequency('program')=={'p': 1, 'r': 2, 'o': 1, 'g': 1, 'a': 1, 'm': 1}": {
+      "result": true,
+      "time": 0.040220022201538086,
+      "error": null
+    },
+    "assert char_frequency('language')=={'l': 1, 'a': 2, 'n': 1, 'g': 2, 'u': 1, 'e': 1}": {
+      "result": true,
+      "time": 0.042920827865600586,
+      "error": null
+    },
+    "assert char_frequency(\"ohcg\") == {'o': 1, 'h': 1, 'c': 1, 'g': 1}": {
+      "result": true,
+      "time": 0.042938232421875,
+      "error": null
+    },
+    "assert char_frequency(\"ciqdb\") == {'c': 1, 'i': 1, 'q': 1, 'd': 1, 'b': 1}": {
+      "result": true,
+      "time": 0.04589676856994629,
+      "error": null
+    },
+    "assert char_frequency(\"eunvxsyw\") == {'e': 1, 'u': 1, 'n': 1, 'v': 1, 'x': 1, 's': 1, 'y': 1, 'w': 1}": {
+      "result": true,
+      "time": 0.04768657684326172,
+      "error": null
+    },
+    "assert char_frequency(\"auby\") == {'a': 1, 'u': 1, 'b': 1, 'y': 1}": {
+      "result": true,
+      "time": 0.04185605049133301,
+      "error": null
+    },
+    "assert char_frequency(\"ucetopvcdmfs\") == {'u': 1, 'c': 2, 'e': 1, 't': 1, 'o': 1, 'p': 1, 'v': 1, 'd': 1, 'm': 1, 'f': 1, 's': 1}": {
+      "result": true,
+      "time": 0.04220843315124512,
+      "error": null
+    },
+    "assert char_frequency(\"zqna\") == {'z': 1, 'q': 1, 'n': 1, 'a': 1}": {
+      "result": true,
+      "time": 0.04407358169555664,
+      "error": null
+    },
+    "assert char_frequency(\"htjzitgq\") == {'h': 1, 't': 2, 'j': 1, 'z': 1, 'i': 1, 'g': 1, 'q': 1}": {
+      "result": true,
+      "time": 0.04662799835205078,
+      "error": null
+    },
+    "assert char_frequency(\"vzrj\") == {'v': 1, 'z': 1, 'r': 1, 'j': 1}": {
+      "result": true,
+      "time": 0.03841519355773926,
+      "error": null
+    },
+    "assert char_frequency(\"vjrkvyd\") == {'v': 2, 'j': 1, 'r': 1, 'k': 1, 'y': 1, 'd': 1}": {
+      "result": true,
+      "time": 0.04909920692443848,
+      "error": null
+    },
+    "assert char_frequency(\"wmukkq\") == {'w': 1, 'm': 1, 'u': 1, 'k': 2, 'q': 1}": {
+      "result": true,
+      "time": 0.0495760440826416,
+      "error": null
+    },
+    "assert char_frequency(\"ywxzn\") == {'y': 1, 'w': 1, 'x': 1, 'z': 1, 'n': 1}": {
+      "result": true,
+      "time": 0.038812875747680664,
+      "error": null
+    },
+    "assert char_frequency(\"czttupfyhqu\") == {'c': 1, 'z': 1, 't': 2, 'u': 2, 'p': 1, 'f': 1, 'y': 1, 'h': 1, 'q': 1}": {
+      "result": true,
+      "time": 0.04233145713806152,
+      "error": null
+    },
+    "assert char_frequency(\"gctpjvvn\") == {'g': 1, 'c': 1, 't': 1, 'p': 1, 'j': 1, 'v': 2, 'n': 1}": {
+      "result": true,
+      "time": 0.05403470993041992,
+      "error": null
+    },
+    "assert char_frequency(\"wvhlque\") == {'w': 1, 'v': 1, 'h': 1, 'l': 1, 'q': 1, 'u': 1, 'e': 1}": {
+      "result": true,
+      "time": 0.04239010810852051,
+      "error": null
+    },
+    "assert char_frequency(\"uoezym\") == {'u': 1, 'o': 1, 'e': 1, 'z': 1, 'y': 1, 'm': 1}": {
+      "result": true,
+      "time": 0.0493931770324707,
+      "error": null
+    },
+    "assert char_frequency(\"edcknewzla\") == {'e': 2, 'd': 1, 'c': 1, 'k': 1, 'n': 1, 'w': 1, 'z': 1, 'l': 1, 'a': 1}": {
+      "result": true,
+      "time": 0.044483184814453125,
+      "error": null
+    },
+    "assert char_frequency(\"slrn\") == {'s': 1, 'l': 1, 'r': 1, 'n': 1}": {
+      "result": true,
+      "time": 0.0518031120300293,
+      "error": null
+    },
+    "assert char_frequency(\"hqjrstmngyu\") == {'h': 1, 'q': 1, 'j': 1, 'r': 1, 's': 1, 't': 1, 'm': 1, 'n': 1, 'g': 1, 'y': 1, 'u': 1}": {
+      "result": true,
+      "time": 0.043495893478393555,
+      "error": null
+    },
+    "assert char_frequency(\"hoksxbmhvo\") == {'h': 2, 'o': 2, 'k': 1, 's': 1, 'x': 1, 'b': 1, 'm': 1, 'v': 1}": {
+      "result": true,
+      "time": 0.048834800720214844,
+      "error": null
+    },
+    "assert char_frequency(\"gfhrvnyskvpm\") == {'g': 1, 'f': 1, 'h': 1, 'r': 1, 'v': 2, 'n': 1, 'y': 1, 's': 1, 'k': 1, 'p': 1, 'm': 1}": {
+      "result": true,
+      "time": 0.042977094650268555,
+      "error": null
+    },
+    "assert char_frequency(\"gdahhvhlo\") == {'g': 1, 'd': 1, 'a': 1, 'h': 3, 'v': 1, 'l': 1, 'o': 1}": {
+      "result": true,
+      "time": 0.03329873085021973,
+      "error": null
+    },
+    "assert char_frequency(\"bcjbwpsk\") == {'b': 2, 'c': 1, 'j': 1, 'w': 1, 'p': 1, 's': 1, 'k': 1}": {
+      "result": true,
+      "time": 0.03892660140991211,
+      "error": null
+    },
+    "assert char_frequency(\"lykrhw\") == {'l': 1, 'y': 1, 'k': 1, 'r': 1, 'h': 1, 'w': 1}": {
+      "result": true,
+      "time": 0.043126821517944336,
+      "error": null
+    },
+    "assert char_frequency(\"tzbtpeh\") == {'t': 2, 'z': 1, 'b': 1, 'p': 1, 'e': 1, 'h': 1}": {
+      "result": true,
+      "time": 0.036676883697509766,
+      "error": null
+    },
+    "assert char_frequency(\"pjqxuzqp\") == {'p': 2, 'j': 1, 'q': 2, 'x': 1, 'u': 1, 'z': 1}": {
+      "result": true,
+      "time": 0.044713735580444336,
+      "error": null
+    },
+    "assert char_frequency(\"xbsklyzxlgqf\") == {'x': 2, 'b': 1, 's': 1, 'k': 1, 'l': 2, 'y': 1, 'z': 1, 'g': 1, 'q': 1, 'f': 1}": {
+      "result": true,
+      "time": 0.04655313491821289,
+      "error": null
+    },
+    "assert char_frequency(\"utjms\") == {'u': 1, 't': 1, 'j': 1, 'm': 1, 's': 1}": {
+      "result": true,
+      "time": 0.04047966003417969,
+      "error": null
+    },
+    "assert char_frequency(\"qkvaynmbbhu\") == {'q': 1, 'k': 1, 'v': 1, 'a': 1, 'y': 1, 'n': 1, 'm': 1, 'b': 2, 'h': 1, 'u': 1}": {
+      "result": true,
+      "time": 0.04979658126831055,
+      "error": null
+    },
+    "assert char_frequency(\"emwejqiuuuea\") == {'e': 3, 'm': 1, 'w': 1, 'j': 1, 'q': 1, 'i': 1, 'u': 3, 'a': 1}": {
+      "result": true,
+      "time": 0.050787925720214844,
+      "error": null
+    },
+    "assert char_frequency(\"ppinr\") == {'p': 2, 'i': 1, 'n': 1, 'r': 1}": {
+      "result": true,
+      "time": 0.043587684631347656,
+      "error": null
+    },
+    "assert char_frequency(\"wcapet\") == {'w': 1, 'c': 1, 'a': 1, 'p': 1, 'e': 1, 't': 1}": {
+      "result": true,
+      "time": 0.0542142391204834,
+      "error": null
+    },
+    "assert char_frequency(\"uonsurwjpymw\") == {'u': 2, 'o': 1, 'n': 1, 's': 1, 'r': 1, 'w': 2, 'j': 1, 'p': 1, 'y': 1, 'm': 1}": {
+      "result": true,
+      "time": 0.04147911071777344,
+      "error": null
+    },
+    "assert char_frequency(\"nojrwcoavspj\") == {'n': 1, 'o': 2, 'j': 2, 'r': 1, 'w': 1, 'c': 1, 'a': 1, 'v': 1, 's': 1, 'p': 1}": {
+      "result": true,
+      "time": 0.04812788963317871,
+      "error": null
+    },
+    "assert char_frequency(\"ezltdrvah\") == {'e': 1, 'z': 1, 'l': 1, 't': 1, 'd': 1, 'r': 1, 'v': 1, 'a': 1, 'h': 1}": {
+      "result": true,
+      "time": 0.04004979133605957,
+      "error": null
+    },
+    "assert char_frequency(\"enrkjmlui\") == {'e': 1, 'n': 1, 'r': 1, 'k': 1, 'j': 1, 'm': 1, 'l': 1, 'u': 1, 'i': 1}": {
+      "result": true,
+      "time": 0.04661273956298828,
+      "error": null
+    },
+    "assert char_frequency(\"kgkvnm\") == {'k': 2, 'g': 1, 'v': 1, 'n': 1, 'm': 1}": {
+      "result": true,
+      "time": 0.05123424530029297,
+      "error": null
+    },
+    "assert char_frequency(\"uaimr\") == {'u': 1, 'a': 1, 'i': 1, 'm': 1, 'r': 1}": {
+      "result": true,
+      "time": 0.043665170669555664,
+      "error": null
+    },
+    "assert char_frequency(\"sfsrrz\") == {'s': 2, 'f': 1, 'r': 2, 'z': 1}": {
+      "result": true,
+      "time": 0.044165849685668945,
+      "error": null
+    },
+    "assert char_frequency(\"lrutxvoleih\") == {'l': 2, 'r': 1, 'u': 1, 't': 1, 'x': 1, 'v': 1, 'o': 1, 'e': 1, 'i': 1, 'h': 1}": {
+      "result": true,
+      "time": 0.04144763946533203,
+      "error": null
+    },
+    "assert char_frequency(\"aqntujx\") == {'a': 1, 'q': 1, 'n': 1, 't': 1, 'u': 1, 'j': 1, 'x': 1}": {
+      "result": true,
+      "time": 0.04965567588806152,
+      "error": null
+    },
+    "assert char_frequency(\"guawkqq\") == {'g': 1, 'u': 1, 'a': 1, 'w': 1, 'k': 1, 'q': 2}": {
+      "result": true,
+      "time": 0.051030635833740234,
+      "error": null
+    },
+    "assert char_frequency(\"pcd\") == {'p': 1, 'c': 1, 'd': 1}": {
+      "result": true,
+      "time": 0.04611015319824219,
+      "error": null
+    },
+    "assert char_frequency(\"vnrgocvy\") == {'v': 2, 'n': 1, 'r': 1, 'g': 1, 'o': 1, 'c': 1, 'y': 1}": {
+      "result": true,
+      "time": 0.044486284255981445,
+      "error": null
+    },
+    "assert char_frequency(\"puv\") == {'p': 1, 'u': 1, 'v': 1}": {
+      "result": true,
+      "time": 0.04506683349609375,
+      "error": null
+    },
+    "assert char_frequency(\"jqfhurbxsgka\") == {'j': 1, 'q': 1, 'f': 1, 'h': 1, 'u': 1, 'r': 1, 'b': 1, 'x': 1, 's': 1, 'g': 1, 'k': 1, 'a': 1}": {
+      "result": true,
+      "time": 0.04284095764160156,
+      "error": null
+    },
+    "assert char_frequency(\"hipegfbeizt\") == {'h': 1, 'i': 2, 'p': 1, 'e': 2, 'g': 1, 'f': 1, 'b': 1, 'z': 1, 't': 1}": {
+      "result": true,
+      "time": 0.04939699172973633,
+      "error": null
+    },
+    "assert char_frequency(\"dpwojqgto\") == {'d': 1, 'p': 1, 'w': 1, 'o': 2, 'j': 1, 'q': 1, 'g': 1, 't': 1}": {
+      "result": true,
+      "time": 0.05568814277648926,
+      "error": null
+    },
+    "assert char_frequency(\"yoyaktrhgu\") == {'y': 2, 'o': 1, 'a': 1, 'k': 1, 't': 1, 'r': 1, 'h': 1, 'g': 1, 'u': 1}": {
+      "result": true,
+      "time": 0.04726552963256836,
+      "error": null
+    },
+    "assert char_frequency(\"ejfruh\") == {'e': 1, 'j': 1, 'f': 1, 'r': 1, 'u': 1, 'h': 1}": {
+      "result": true,
+      "time": 0.04321932792663574,
+      "error": null
+    },
+    "assert char_frequency(\"eyz\") == {'e': 1, 'y': 1, 'z': 1}": {
+      "result": true,
+      "time": 0.0455014705657959,
+      "error": null
+    },
+    "assert char_frequency(\"nqpbiniz\") == {'n': 2, 'q': 1, 'p': 1, 'b': 1, 'i': 2, 'z': 1}": {
+      "result": true,
+      "time": 0.04552960395812988,
+      "error": null
+    },
+    "assert char_frequency(\"djcbawo\") == {'d': 1, 'j': 1, 'c': 1, 'b': 1, 'a': 1, 'w': 1, 'o': 1}": {
+      "result": true,
+      "time": 0.041544198989868164,
+      "error": null
+    },
+    "assert char_frequency(\"qsbuzk\") == {'q': 1, 's': 1, 'b': 1, 'u': 1, 'z': 1, 'k': 1}": {
+      "result": true,
+      "time": 0.04423689842224121,
+      "error": null
+    },
+    "assert char_frequency(\"txtbdsgrc\") == {'t': 2, 'x': 1, 'b': 1, 'd': 1, 's': 1, 'g': 1, 'r': 1, 'c': 1}": {
+      "result": true,
+      "time": 0.04044032096862793,
+      "error": null
+    },
+    "assert char_frequency(\"zwgqbzzhzfn\") == {'z': 4, 'w': 1, 'g': 1, 'q': 1, 'b': 1, 'h': 1, 'f': 1, 'n': 1}": {
+      "result": true,
+      "time": 0.04052257537841797,
+      "error": null
+    },
+    "assert char_frequency(\"xwkpwkowea\") == {'x': 1, 'w': 3, 'k': 2, 'p': 1, 'o': 1, 'e': 1, 'a': 1}": {
+      "result": true,
+      "time": 0.04850578308105469,
+      "error": null
+    },
+    "assert char_frequency(\"rmitpwytd\") == {'r': 1, 'm': 1, 'i': 1, 't': 2, 'p': 1, 'w': 1, 'y': 1, 'd': 1}": {
+      "result": true,
+      "time": 0.05151796340942383,
+      "error": null
+    },
+    "assert char_frequency(\"feh\") == {'f': 1, 'e': 1, 'h': 1}": {
+      "result": true,
+      "time": 0.05480051040649414,
+      "error": null
+    },
+    "assert char_frequency(\"phuxodgw\") == {'p': 1, 'h': 1, 'u': 1, 'x': 1, 'o': 1, 'd': 1, 'g': 1, 'w': 1}": {
+      "result": true,
+      "time": 0.04993748664855957,
+      "error": null
+    },
+    "assert char_frequency(\"mwzfqgbifoan\") == {'m': 1, 'w': 1, 'z': 1, 'f': 2, 'q': 1, 'g': 1, 'b': 1, 'i': 1, 'o': 1, 'a': 1, 'n': 1}": {
+      "result": true,
+      "time": 0.04091954231262207,
+      "error": null
+    },
+    "assert char_frequency(\"xjvscn\") == {'x': 1, 'j': 1, 'v': 1, 's': 1, 'c': 1, 'n': 1}": {
+      "result": true,
+      "time": 0.04699087142944336,
+      "error": null
+    },
+    "assert char_frequency(\"mdhcd\") == {'m': 1, 'd': 2, 'h': 1, 'c': 1}": {
+      "result": true,
+      "time": 0.04708075523376465,
+      "error": null
+    },
+    "assert char_frequency(\"mctbbwmjaepv\") == {'m': 2, 'c': 1, 't': 1, 'b': 2, 'w': 1, 'j': 1, 'a': 1, 'e': 1, 'p': 1, 'v': 1}": {
+      "result": true,
+      "time": 0.04271674156188965,
+      "error": null
+    },
+    "assert char_frequency(\"ktzpvrg\") == {'k': 1, 't': 1, 'z': 1, 'p': 1, 'v': 1, 'r': 1, 'g': 1}": {
+      "result": true,
+      "time": 0.048902034759521484,
+      "error": null
+    },
+    "assert char_frequency(\"zppuoriebny\") == {'z': 1, 'p': 2, 'u': 1, 'o': 1, 'r': 1, 'i': 1, 'e': 1, 'b': 1, 'n': 1, 'y': 1}": {
+      "result": true,
+      "time": 0.0552515983581543,
+      "error": null
+    },
+    "assert char_frequency(\"rzxl\") == {'r': 1, 'z': 1, 'x': 1, 'l': 1}": {
+      "result": true,
+      "time": 0.04211258888244629,
+      "error": null
+    },
+    "assert char_frequency(\"jsmr\") == {'j': 1, 's': 1, 'm': 1, 'r': 1}": {
+      "result": true,
+      "time": 0.04329228401184082,
+      "error": null
+    },
+    "assert char_frequency(\"bvmvemmwgf\") == {'b': 1, 'v': 2, 'm': 3, 'e': 1, 'w': 1, 'g': 1, 'f': 1}": {
+      "result": true,
+      "time": 0.04528617858886719,
+      "error": null
+    },
+    "assert char_frequency(\"ygwmt\") == {'y': 1, 'g': 1, 'w': 1, 'm': 1, 't': 1}": {
+      "result": true,
+      "time": 0.04074597358703613,
+      "error": null
+    },
+    "assert char_frequency(\"zwynw\") == {'z': 1, 'w': 2, 'y': 1, 'n': 1}": {
+      "result": true,
+      "time": 0.04848003387451172,
+      "error": null
+    },
+    "assert char_frequency(\"kjm\") == {'k': 1, 'j': 1, 'm': 1}": {
+      "result": true,
+      "time": 0.0544123649597168,
+      "error": null
+    },
+    "assert char_frequency(\"oznng\") == {'o': 1, 'z': 1, 'n': 2, 'g': 1}": {
+      "result": true,
+      "time": 0.04517364501953125,
+      "error": null
+    },
+    "assert char_frequency(\"wzwtl\") == {'w': 2, 'z': 1, 't': 1, 'l': 1}": {
+      "result": true,
+      "time": 0.050414323806762695,
+      "error": null
+    },
+    "assert char_frequency(\"zkrhaq\") == {'z': 1, 'k': 1, 'r': 1, 'h': 1, 'a': 1, 'q': 1}": {
+      "result": true,
+      "time": 0.03204989433288574,
+      "error": null
+    },
+    "assert char_frequency(\"acwi\") == {'a': 1, 'c': 1, 'w': 1, 'i': 1}": {
+      "result": true,
+      "time": 0.042768001556396484,
+      "error": null
+    },
+    "assert char_frequency(\"cie\") == {'c': 1, 'i': 1, 'e': 1}": {
+      "result": true,
+      "time": 0.04850006103515625,
+      "error": null
+    },
+    "assert char_frequency(\"ipvo\") == {'i': 1, 'p': 1, 'v': 1, 'o': 1}": {
+      "result": true,
+      "time": 0.04947161674499512,
+      "error": null
+    },
+    "assert char_frequency(\"irclactjd\") == {'i': 1, 'r': 1, 'c': 2, 'l': 1, 'a': 1, 't': 1, 'j': 1, 'd': 1}": {
+      "result": true,
+      "time": 0.044431447982788086,
+      "error": null
+    },
+    "assert char_frequency(\"tcrhxbftq\") == {'t': 2, 'c': 1, 'r': 1, 'h': 1, 'x': 1, 'b': 1, 'f': 1, 'q': 1}": {
+      "result": true,
+      "time": 0.04573225975036621,
+      "error": null
+    },
+    "assert char_frequency(\"xgsjaclf\") == {'x': 1, 'g': 1, 's': 1, 'j': 1, 'a': 1, 'c': 1, 'l': 1, 'f': 1}": {
+      "result": true,
+      "time": 0.04547572135925293,
+      "error": null
+    },
+    "assert char_frequency(\"rrct\") == {'r': 2, 'c': 1, 't': 1}": {
+      "result": true,
+      "time": 0.04865860939025879,
+      "error": null
+    },
+    "assert char_frequency(\"xpdbgkqc\") == {'x': 1, 'p': 1, 'd': 1, 'b': 1, 'g': 1, 'k': 1, 'q': 1, 'c': 1}": {
+      "result": true,
+      "time": 0.04856395721435547,
+      "error": null
+    },
+    "assert char_frequency(\"tup\") == {'t': 1, 'u': 1, 'p': 1}": {
+      "result": true,
+      "time": 0.044776201248168945,
+      "error": null
+    },
+    "assert char_frequency(\"ybkskt\") == {'y': 1, 'b': 1, 'k': 2, 's': 1, 't': 1}": {
+      "result": true,
+      "time": 0.05094480514526367,
+      "error": null
+    },
+    "assert char_frequency(\"rqajpp\") == {'r': 1, 'q': 1, 'a': 1, 'j': 1, 'p': 2}": {
+      "result": true,
+      "time": 0.04620218276977539,
+      "error": null
+    },
+    "assert char_frequency(\"nrdfkquzf\") == {'n': 1, 'r': 1, 'd': 1, 'f': 2, 'k': 1, 'q': 1, 'u': 1, 'z': 1}": {
+      "result": true,
+      "time": 0.056707143783569336,
+      "error": null
+    },
+    "assert char_frequency(\"coplotlru\") == {'c': 1, 'o': 2, 'p': 1, 'l': 2, 't': 1, 'r': 1, 'u': 1}": {
+      "result": true,
+      "time": 0.041217803955078125,
+      "error": null
+    },
+    "assert char_frequency(\"vymgypmf\") == {'v': 1, 'y': 2, 'm': 2, 'g': 1, 'p': 1, 'f': 1}": {
+      "result": true,
+      "time": 0.05024361610412598,
+      "error": null
+    },
+    "assert char_frequency(\"dbibolkyqzj\") == {'d': 1, 'b': 2, 'i': 1, 'o': 1, 'l': 1, 'k': 1, 'y': 1, 'q': 1, 'z': 1, 'j': 1}": {
+      "result": true,
+      "time": 0.044783830642700195,
+      "error": null
+    },
+    "assert char_frequency(\"ydpttyzy\") == {'y': 3, 'd': 1, 'p': 1, 't': 2, 'z': 1}": {
+      "result": true,
+      "time": 0.04092717170715332,
+      "error": null
+    },
+    "assert char_frequency(\"gcidcmivfl\") == {'g': 1, 'c': 2, 'i': 2, 'd': 1, 'm': 1, 'v': 1, 'f': 1, 'l': 1}": {
+      "result": true,
+      "time": 0.04449820518493652,
+      "error": null
+    },
+    "assert char_frequency(\"wsouky\") == {'w': 1, 's': 1, 'o': 1, 'u': 1, 'k': 1, 'y': 1}": {
+      "result": true,
+      "time": 0.039638519287109375,
+      "error": null
+    },
+    "assert char_frequency(\"aak\") == {'a': 2, 'k': 1}": {
+      "result": true,
+      "time": 0.04453897476196289,
+      "error": null
+    },
+    "assert char_frequency(\"sylvkiwe\") == {'s': 1, 'y': 1, 'l': 1, 'v': 1, 'k': 1, 'i': 1, 'w': 1, 'e': 1}": {
+      "result": true,
+      "time": 0.044730186462402344,
+      "error": null
+    },
+    "assert char_frequency(\"xagfnnmaxaw\") == {'x': 2, 'a': 3, 'g': 1, 'f': 1, 'n': 2, 'm': 1, 'w': 1}": {
+      "result": true,
+      "time": 0.03153586387634277,
+      "error": null
+    },
+    "assert char_frequency(\"xxsfj\") == {'x': 2, 's': 1, 'f': 1, 'j': 1}": {
+      "result": true,
+      "time": 0.03995370864868164,
+      "error": null
+    },
+    "assert char_frequency(\"ggscyauom\") == {'g': 2, 's': 1, 'c': 1, 'y': 1, 'a': 1, 'u': 1, 'o': 1, 'm': 1}": {
+      "result": true,
+      "time": 0.04796433448791504,
+      "error": null
+    },
+    "assert char_frequency(\"yilaljnrxx\") == {'y': 1, 'i': 1, 'l': 2, 'a': 1, 'j': 1, 'n': 1, 'r': 1, 'x': 2}": {
+      "result": true,
+      "time": 0.04543590545654297,
+      "error": null
+    },
+    "assert char_frequency(\"xflz\") == {'x': 1, 'f': 1, 'l': 1, 'z': 1}": {
+      "result": true,
+      "time": 0.04415535926818848,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

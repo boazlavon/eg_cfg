@@ -1,0 +1,519 @@
+{
+  "code": "import re\n\ndef remove_whitespaces(input_string):\n    return re.sub(r'\\s+', '', input_string)",
+  "results": {
+    "assert remove_whitespaces(' Google    Flutter ') == 'GoogleFlutter'": {
+      "result": true,
+      "time": 0.4551229476928711,
+      "error": null
+    },
+    "assert remove_whitespaces(' Google    Dart ') == 'GoogleDart'": {
+      "result": true,
+      "time": 0.6597232818603516,
+      "error": null
+    },
+    "assert remove_whitespaces(' iOS    Swift ') == 'iOSSwift'": {
+      "result": true,
+      "time": 0.5602397918701172,
+      "error": null
+    },
+    "assert remove_whitespaces(\" TcFTVmzfTCLevjzZBIAedd\") == \"TcFTVmzfTCLevjzZBIAedd\"": {
+      "result": true,
+      "time": 0.5745012760162354,
+      "error": null
+    },
+    "assert remove_whitespaces(\" wTgRcawFxOwbOgyy\") == \"wTgRcawFxOwbOgyy\"": {
+      "result": true,
+      "time": 0.5932154655456543,
+      "error": null
+    },
+    "assert remove_whitespaces(\"jKnIMvSSr YzuqBbjmacU\") == \"jKnIMvSSrYzuqBbjmacU\"": {
+      "result": true,
+      "time": 0.5403642654418945,
+      "error": null
+    },
+    "assert remove_whitespaces(\"lSwkIcsVmLYZRGjPMDlZg\") == \"lSwkIcsVmLYZRGjPMDlZg\"": {
+      "result": true,
+      "time": 0.6268424987792969,
+      "error": null
+    },
+    "assert remove_whitespaces(\"zVVIDMcwZxoVQoMWyZLJhg\") == \"zVVIDMcwZxoVQoMWyZLJhg\"": {
+      "result": true,
+      "time": 0.5739967823028564,
+      "error": null
+    },
+    "assert remove_whitespaces(\"lbvJnZhjdhOdSptHsef\") == \"lbvJnZhjdhOdSptHsef\"": {
+      "result": true,
+      "time": 0.4501988887786865,
+      "error": null
+    },
+    "assert remove_whitespaces(\"wQDjZawmsyzkAhH\") == \"wQDjZawmsyzkAhH\"": {
+      "result": true,
+      "time": 0.4197988510131836,
+      "error": null
+    },
+    "assert remove_whitespaces(\"RZKsqVBpuoFFXjBgpukY\") == \"RZKsqVBpuoFFXjBgpukY\"": {
+      "result": true,
+      "time": 0.3741881847381592,
+      "error": null
+    },
+    "assert remove_whitespaces(\"MfnjLgeyIvybrbeHrBHBqf\") == \"MfnjLgeyIvybrbeHrBHBqf\"": {
+      "result": true,
+      "time": 0.30347704887390137,
+      "error": null
+    },
+    "assert remove_whitespaces(\"FmoVMbEpejpNVyA\") == \"FmoVMbEpejpNVyA\"": {
+      "result": true,
+      "time": 0.15064048767089844,
+      "error": null
+    },
+    "assert remove_whitespaces(\"rUeizsFTfiYaezi\") == \"rUeizsFTfiYaezi\"": {
+      "result": true,
+      "time": 0.17795681953430176,
+      "error": null
+    },
+    "assert remove_whitespaces(\"BAwIHPMfjKvNIUDN\") == \"BAwIHPMfjKvNIUDN\"": {
+      "result": true,
+      "time": 0.37966322898864746,
+      "error": null
+    },
+    "assert remove_whitespaces(\"alOFtDlgmqpEBFF\") == \"alOFtDlgmqpEBFF\"": {
+      "result": true,
+      "time": 0.49517035484313965,
+      "error": null
+    },
+    "assert remove_whitespaces(\"TeDRVDJPPpKKikbmWblgcFn\") == \"TeDRVDJPPpKKikbmWblgcFn\"": {
+      "result": true,
+      "time": 0.29178667068481445,
+      "error": null
+    },
+    "assert remove_whitespaces(\"ajlAKJaWPAfzeIUUgOpMRZj\") == \"ajlAKJaWPAfzeIUUgOpMRZj\"": {
+      "result": true,
+      "time": 0.4787898063659668,
+      "error": null
+    },
+    "assert remove_whitespaces(\"WcSFKCxCswQxITnfALuzt \") == \"WcSFKCxCswQxITnfALuzt\"": {
+      "result": true,
+      "time": 0.38873863220214844,
+      "error": null
+    },
+    "assert remove_whitespaces(\"sRXzOauDPTPrfVb\") == \"sRXzOauDPTPrfVb\"": {
+      "result": true,
+      "time": 0.32504749298095703,
+      "error": null
+    },
+    "assert remove_whitespaces(\"eRGlRDjdHikiBfA\") == \"eRGlRDjdHikiBfA\"": {
+      "result": true,
+      "time": 0.4274325370788574,
+      "error": null
+    },
+    "assert remove_whitespaces(\"TjgXahxSLOxUXZMQOPLkKM\") == \"TjgXahxSLOxUXZMQOPLkKM\"": {
+      "result": true,
+      "time": 0.3488636016845703,
+      "error": null
+    },
+    "assert remove_whitespaces(\"kkgzBDkipuWC loaDxsUww\") == \"kkgzBDkipuWCloaDxsUww\"": {
+      "result": true,
+      "time": 0.5069372653961182,
+      "error": null
+    },
+    "assert remove_whitespaces(\"GvDoPRMNZyLqkUuIikqTZeFh\") == \"GvDoPRMNZyLqkUuIikqTZeFh\"": {
+      "result": true,
+      "time": 0.32965517044067383,
+      "error": null
+    },
+    "assert remove_whitespaces(\"zcCBeDoEGTqscza\") == \"zcCBeDoEGTqscza\"": {
+      "result": true,
+      "time": 0.5352046489715576,
+      "error": null
+    },
+    "assert remove_whitespaces(\"DwbXwnDmkZJPyPjaLzc\") == \"DwbXwnDmkZJPyPjaLzc\"": {
+      "result": true,
+      "time": 0.3967466354370117,
+      "error": null
+    },
+    "assert remove_whitespaces(\"lRwrZ PaSjsgaMOGT\") == \"lRwrZPaSjsgaMOGT\"": {
+      "result": true,
+      "time": 0.5435636043548584,
+      "error": null
+    },
+    "assert remove_whitespaces(\"CLbIlDmMvLyOMUXNtZhapUK\") == \"CLbIlDmMvLyOMUXNtZhapUK\"": {
+      "result": true,
+      "time": 0.33318114280700684,
+      "error": null
+    },
+    "assert remove_whitespaces(\"YkANjxZAbhFBStwf\") == \"YkANjxZAbhFBStwf\"": {
+      "result": true,
+      "time": 0.5381207466125488,
+      "error": null
+    },
+    "assert remove_whitespaces(\"gaDRczcPCXyQdfvuhAOxCnKr\") == \"gaDRczcPCXyQdfvuhAOxCnKr\"": {
+      "result": true,
+      "time": 0.5122530460357666,
+      "error": null
+    },
+    "assert remove_whitespaces(\"jcnQkSSPFrJKGTFrOfB\") == \"jcnQkSSPFrJKGTFrOfB\"": {
+      "result": true,
+      "time": 0.6495866775512695,
+      "error": null
+    },
+    "assert remove_whitespaces(\"gjuODOYaikIYaUODEhZaoG\") == \"gjuODOYaikIYaUODEhZaoG\"": {
+      "result": true,
+      "time": 0.43311119079589844,
+      "error": null
+    },
+    "assert remove_whitespaces(\"BmXwFeGrmaUnfBrymCGY\") == \"BmXwFeGrmaUnfBrymCGY\"": {
+      "result": true,
+      "time": 0.42853522300720215,
+      "error": null
+    },
+    "assert remove_whitespaces(\"hlhFIKxZavvYAYFFebPzBQ \") == \"hlhFIKxZavvYAYFFebPzBQ\"": {
+      "result": true,
+      "time": 0.549079179763794,
+      "error": null
+    },
+    "assert remove_whitespaces(\"vHYQOgKIOof TouOCoT\") == \"vHYQOgKIOofTouOCoT\"": {
+      "result": true,
+      "time": 0.49844884872436523,
+      "error": null
+    },
+    "assert remove_whitespaces(\"wmtyBXguTiHjXqT\") == \"wmtyBXguTiHjXqT\"": {
+      "result": true,
+      "time": 0.36619997024536133,
+      "error": null
+    },
+    "assert remove_whitespaces(\"wznyjrkFqByqqDGItREh\") == \"wznyjrkFqByqqDGItREh\"": {
+      "result": true,
+      "time": 0.5112602710723877,
+      "error": null
+    },
+    "assert remove_whitespaces(\"DwxYLpBMDwHpHSAVzEt\") == \"DwxYLpBMDwHpHSAVzEt\"": {
+      "result": true,
+      "time": 0.6190152168273926,
+      "error": null
+    },
+    "assert remove_whitespaces(\"ZgVdIRBwqJBk\") == \"ZgVdIRBwqJBk\"": {
+      "result": true,
+      "time": 0.6750080585479736,
+      "error": null
+    },
+    "assert remove_whitespaces(\"IMRmlmcitcFpAzkC\") == \"IMRmlmcitcFpAzkC\"": {
+      "result": true,
+      "time": 0.44827842712402344,
+      "error": null
+    },
+    "assert remove_whitespaces(\"coSJAwWRqocCtjzIeKH\") == \"coSJAwWRqocCtjzIeKH\"": {
+      "result": true,
+      "time": 0.5938148498535156,
+      "error": null
+    },
+    "assert remove_whitespaces(\"isNvxXKixZYTRzgp\") == \"isNvxXKixZYTRzgp\"": {
+      "result": true,
+      "time": 0.5592730045318604,
+      "error": null
+    },
+    "assert remove_whitespaces(\"bEcYryoZYMiRhBl\") == \"bEcYryoZYMiRhBl\"": {
+      "result": true,
+      "time": 0.4329683780670166,
+      "error": null
+    },
+    "assert remove_whitespaces(\"ynwrXbFsdOElHKHVFl jO\") == \"ynwrXbFsdOElHKHVFljO\"": {
+      "result": true,
+      "time": 0.3680438995361328,
+      "error": null
+    },
+    "assert remove_whitespaces(\"cbqZtPSHiQzZmlQZ\") == \"cbqZtPSHiQzZmlQZ\"": {
+      "result": true,
+      "time": 0.15372085571289062,
+      "error": null
+    },
+    "assert remove_whitespaces(\"UJ JTpiifPbHIlbuJIx\") == \"UJJTpiifPbHIlbuJIx\"": {
+      "result": true,
+      "time": 0.25922250747680664,
+      "error": null
+    },
+    "assert remove_whitespaces(\"efTgokGyugWvJQ\") == \"efTgokGyugWvJQ\"": {
+      "result": true,
+      "time": 0.2661712169647217,
+      "error": null
+    },
+    "assert remove_whitespaces(\"OFSLaWWFaw BcQ\") == \"OFSLaWWFawBcQ\"": {
+      "result": true,
+      "time": 0.12191987037658691,
+      "error": null
+    },
+    "assert remove_whitespaces(\"yeEDhpfFblOtczje\") == \"yeEDhpfFblOtczje\"": {
+      "result": true,
+      "time": 0.30249929428100586,
+      "error": null
+    },
+    "assert remove_whitespaces(\"kUycvzmjNTKvfwwGT\") == \"kUycvzmjNTKvfwwGT\"": {
+      "result": true,
+      "time": 0.2809629440307617,
+      "error": null
+    },
+    "assert remove_whitespaces(\"jlaePgPapExM\") == \"jlaePgPapExM\"": {
+      "result": true,
+      "time": 0.5384726524353027,
+      "error": null
+    },
+    "assert remove_whitespaces(\"BIeoTPjbdzem\") == \"BIeoTPjbdzem\"": {
+      "result": true,
+      "time": 0.5283219814300537,
+      "error": null
+    },
+    "assert remove_whitespaces(\" MPmB lRfCoX\") == \"MPmBlRfCoX\"": {
+      "result": true,
+      "time": 0.5534076690673828,
+      "error": null
+    },
+    "assert remove_whitespaces(\"ikenXJlmViJrbZrwYExr\") == \"ikenXJlmViJrbZrwYExr\"": {
+      "result": true,
+      "time": 0.4509541988372803,
+      "error": null
+    },
+    "assert remove_whitespaces(\"BMflQkEhy ZYRrxsIl\") == \"BMflQkEhyZYRrxsIl\"": {
+      "result": true,
+      "time": 0.557274580001831,
+      "error": null
+    },
+    "assert remove_whitespaces(\"MrSdFzBwWoquDTKGFPmj\") == \"MrSdFzBwWoquDTKGFPmj\"": {
+      "result": true,
+      "time": 0.3344228267669678,
+      "error": null
+    },
+    "assert remove_whitespaces(\"OSZFRnMOCu nOx lZ\") == \"OSZFRnMOCunOxlZ\"": {
+      "result": true,
+      "time": 0.3436148166656494,
+      "error": null
+    },
+    "assert remove_whitespaces(\"FQay UyzCCCRowYNGXx\") == \"FQayUyzCCCRowYNGXx\"": {
+      "result": true,
+      "time": 0.30797696113586426,
+      "error": null
+    },
+    "assert remove_whitespaces(\"SlXfEcsOnMkpLBmrb\") == \"SlXfEcsOnMkpLBmrb\"": {
+      "result": true,
+      "time": 0.4977145195007324,
+      "error": null
+    },
+    "assert remove_whitespaces(\"HnpHkYTKL AEZlIMlFQ\") == \"HnpHkYTKLAEZlIMlFQ\"": {
+      "result": true,
+      "time": 0.475083589553833,
+      "error": null
+    },
+    "assert remove_whitespaces(\"rPxCHzYvOfTMpHL\") == \"rPxCHzYvOfTMpHL\"": {
+      "result": true,
+      "time": 0.40287184715270996,
+      "error": null
+    },
+    "assert remove_whitespaces(\"LmrTtwRfVZvOYvUVoh\") == \"LmrTtwRfVZvOYvUVoh\"": {
+      "result": true,
+      "time": 0.48406195640563965,
+      "error": null
+    },
+    "assert remove_whitespaces(\"ETJGwDQyPQXYus\") == \"ETJGwDQyPQXYus\"": {
+      "result": true,
+      "time": 0.4993739128112793,
+      "error": null
+    },
+    "assert remove_whitespaces(\"tCAhoODBbJcmuEARaTAp\") == \"tCAhoODBbJcmuEARaTAp\"": {
+      "result": true,
+      "time": 0.48727917671203613,
+      "error": null
+    },
+    "assert remove_whitespaces(\" fYOaykAAbPhegj\") == \"fYOaykAAbPhegj\"": {
+      "result": true,
+      "time": 0.6319034099578857,
+      "error": null
+    },
+    "assert remove_whitespaces(\"mbyJJaeXysZqukReCS\") == \"mbyJJaeXysZqukReCS\"": {
+      "result": true,
+      "time": 0.6539099216461182,
+      "error": null
+    },
+    "assert remove_whitespaces(\"HBDhwmPDmAoJzkcICp\") == \"HBDhwmPDmAoJzkcICp\"": {
+      "result": true,
+      "time": 0.567495584487915,
+      "error": null
+    },
+    "assert remove_whitespaces(\"dtRsawCCVubeTIHTcIUs\") == \"dtRsawCCVubeTIHTcIUs\"": {
+      "result": true,
+      "time": 0.5820283889770508,
+      "error": null
+    },
+    "assert remove_whitespaces(\"WKvlYdrMnqfmBocNmCbXm\") == \"WKvlYdrMnqfmBocNmCbXm\"": {
+      "result": true,
+      "time": 0.6130762100219727,
+      "error": null
+    },
+    "assert remove_whitespaces(\"XkIULgiy GvrJBun\") == \"XkIULgiyGvrJBun\"": {
+      "result": true,
+      "time": 0.5865068435668945,
+      "error": null
+    },
+    "assert remove_whitespaces(\"znJlRkqdQy\") == \"znJlRkqdQy\"": {
+      "result": true,
+      "time": 0.5825798511505127,
+      "error": null
+    },
+    "assert remove_whitespaces(\"cOQQaYhQGTEJqxFKm\") == \"cOQQaYhQGTEJqxFKm\"": {
+      "result": true,
+      "time": 0.5817043781280518,
+      "error": null
+    },
+    "assert remove_whitespaces(\"wlHKnbDMDPosgTSqj\") == \"wlHKnbDMDPosgTSqj\"": {
+      "result": true,
+      "time": 0.583371639251709,
+      "error": null
+    },
+    "assert remove_whitespaces(\"zSyoBnvtLEPm\") == \"zSyoBnvtLEPm\"": {
+      "result": true,
+      "time": 0.5776050090789795,
+      "error": null
+    },
+    "assert remove_whitespaces(\"SKLrLfMDZS\") == \"SKLrLfMDZS\"": {
+      "result": true,
+      "time": 0.5440499782562256,
+      "error": null
+    },
+    "assert remove_whitespaces(\"hkdLUDMCBuhF\") == \"hkdLUDMCBuhF\"": {
+      "result": true,
+      "time": 0.6081094741821289,
+      "error": null
+    },
+    "assert remove_whitespaces(\" QeuvRbGBNVI\") == \"QeuvRbGBNVI\"": {
+      "result": true,
+      "time": 0.6048614978790283,
+      "error": null
+    },
+    "assert remove_whitespaces(\"iPElhkx RC\") == \"iPElhkxRC\"": {
+      "result": true,
+      "time": 0.5673165321350098,
+      "error": null
+    },
+    "assert remove_whitespaces(\"ulOxKGxTR\") == \"ulOxKGxTR\"": {
+      "result": true,
+      "time": 0.5786728858947754,
+      "error": null
+    },
+    "assert remove_whitespaces(\"gTzvBHuXgkaCnbCJZV\") == \"gTzvBHuXgkaCnbCJZV\"": {
+      "result": true,
+      "time": 0.5879335403442383,
+      "error": null
+    },
+    "assert remove_whitespaces(\"TxjEkKvVWRdGxqK\") == \"TxjEkKvVWRdGxqK\"": {
+      "result": true,
+      "time": 0.5857431888580322,
+      "error": null
+    },
+    "assert remove_whitespaces(\"cSoqPJTyHVVKo\") == \"cSoqPJTyHVVKo\"": {
+      "result": true,
+      "time": 0.5858104228973389,
+      "error": null
+    },
+    "assert remove_whitespaces(\"akwFdHEXUKatXQJMv\") == \"akwFdHEXUKatXQJMv\"": {
+      "result": true,
+      "time": 0.5657997131347656,
+      "error": null
+    },
+    "assert remove_whitespaces(\"WPNJtyWXhHQGx\") == \"WPNJtyWXhHQGx\"": {
+      "result": true,
+      "time": 0.595339298248291,
+      "error": null
+    },
+    "assert remove_whitespaces(\"bcFNmneaNFmhu\") == \"bcFNmneaNFmhu\"": {
+      "result": true,
+      "time": 0.5907716751098633,
+      "error": null
+    },
+    "assert remove_whitespaces(\"tdmIzUrhBiBjf\") == \"tdmIzUrhBiBjf\"": {
+      "result": true,
+      "time": 0.5397083759307861,
+      "error": null
+    },
+    "assert remove_whitespaces(\"wexUGirsSVWalssC\") == \"wexUGirsSVWalssC\"": {
+      "result": true,
+      "time": 0.5765137672424316,
+      "error": null
+    },
+    "assert remove_whitespaces(\"HqIuHnmaGOp\") == \"HqIuHnmaGOp\"": {
+      "result": true,
+      "time": 0.6023223400115967,
+      "error": null
+    },
+    "assert remove_whitespaces(\"oVDMOeIAeRlHmVKdh\") == \"oVDMOeIAeRlHmVKdh\"": {
+      "result": true,
+      "time": 0.5667266845703125,
+      "error": null
+    },
+    "assert remove_whitespaces(\"HgashlOsLphk\") == \"HgashlOsLphk\"": {
+      "result": true,
+      "time": 0.5725035667419434,
+      "error": null
+    },
+    "assert remove_whitespaces(\"nLAjyvTlcVoxce\") == \"nLAjyvTlcVoxce\"": {
+      "result": true,
+      "time": 0.5851848125457764,
+      "error": null
+    },
+    "assert remove_whitespaces(\"NoNknsvaSg\") == \"NoNknsvaSg\"": {
+      "result": true,
+      "time": 0.5918974876403809,
+      "error": null
+    },
+    "assert remove_whitespaces(\"ENxJThkOfZdQ\") == \"ENxJThkOfZdQ\"": {
+      "result": true,
+      "time": 0.5910079479217529,
+      "error": null
+    },
+    "assert remove_whitespaces(\"SnuqxTiFWvOxZLV\") == \"SnuqxTiFWvOxZLV\"": {
+      "result": true,
+      "time": 0.5651836395263672,
+      "error": null
+    },
+    "assert remove_whitespaces(\"ORaaLoywoRvas SYyz\") == \"ORaaLoywoRvasSYyz\"": {
+      "result": true,
+      "time": 0.600043773651123,
+      "error": null
+    },
+    "assert remove_whitespaces(\"ZmXHmCdMNBYvF\") == \"ZmXHmCdMNBYvF\"": {
+      "result": true,
+      "time": 0.572150707244873,
+      "error": null
+    },
+    "assert remove_whitespaces(\"PFNSTcjODx BpSi\") == \"PFNSTcjODxBpSi\"": {
+      "result": true,
+      "time": 0.5516736507415771,
+      "error": null
+    },
+    "assert remove_whitespaces(\"xdTiiFLWJW\") == \"xdTiiFLWJW\"": {
+      "result": true,
+      "time": 0.556574821472168,
+      "error": null
+    },
+    "assert remove_whitespaces(\"oQXlXXqZWTURhgAph\") == \"oQXlXXqZWTURhgAph\"": {
+      "result": true,
+      "time": 0.573101282119751,
+      "error": null
+    },
+    "assert remove_whitespaces(\"LrsQBaLMiVnMQDw \") == \"LrsQBaLMiVnMQDw\"": {
+      "result": true,
+      "time": 0.5614686012268066,
+      "error": null
+    },
+    "assert remove_whitespaces(\"XKDIFnyNZ\") == \"XKDIFnyNZ\"": {
+      "result": true,
+      "time": 0.5834743976593018,
+      "error": null
+    },
+    "assert remove_whitespaces(\"peZMSACltYTzDeh\") == \"peZMSACltYTzDeh\"": {
+      "result": true,
+      "time": 0.5694715976715088,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}
