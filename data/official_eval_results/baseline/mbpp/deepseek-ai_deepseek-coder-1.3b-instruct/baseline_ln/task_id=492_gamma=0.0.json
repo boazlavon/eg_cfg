@@ -1,0 +1,27 @@
+{
+  "code": "def binary_search(arr, x):\n    low = 0\n    high = len(arr) - 1\n    mid = 0\n\n    while low <= high:\n        mid = (high + low) // 2\n\n        # If x is greater, ignore left half\n        if arr[mid] < x:\n            low = mid + 1\n\n        # If x is smaller, ignore right half\n        elif arr[mid] > x:\n            high = mid - 1\n\n        # x is present at mid\n        else:\n            return True\n\n    # If we reach here, then the element was not present\n    return False\n",
+  "results": {
+    "assert binary_search([1,2,3,5,8], 6) == False": {
+      "result": true,
+      "time": 0.062004804611206055,
+      "error": null
+    },
+    "assert binary_search([7, 8, 9, 10, 13], 10) == True": {
+      "result": true,
+      "time": 0.06794452667236328,
+      "error": null
+    },
+    "assert binary_search([11, 13, 14, 19, 22, 36], 23) == False": {
+      "result": true,
+      "time": 0.06280016899108887,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {},
+  "retry": -1,
+  "random_seed": -1
+}

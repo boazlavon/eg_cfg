@@ -1,0 +1,27 @@
+{
+  "code": "def cal_electbill(kwh):\n    # Constants\n    BILL_PER_KWH = 0.15\n    BILL_PER_KWH_OVER_50 = 0.10\n    BILL_PER_KWH_OVER_100 = 0.05\n\n    # Calculate bill for kwh under 50\n    bill_under_50 = min(kwh, 50) * BILL_PER_KWH\n\n    # Calculate bill for kwh over 50 but under 100\n    kwh_over_50 = max(0, kwh - 50)\n    bill_over_50 = kwh_over_50 * BILL_PER_KWH_OVER_50\n\n    # Calculate bill for kwh over 100\n    kwh_over_100 = max(0, kwh - 100)\n    bill_over_100 = kwh_over_100 * BILL_PER_KWH_OVER_100\n\n    # Total bill\n    total_bill = bill_under_50 + bill_over_50 + bill_over_100\n\n    return total_bill",
+  "results": {
+    "assert cal_electbill(75)==246.25": {
+      "result": false,
+      "time": 0.18036150932312012,
+      "error": null
+    },
+    "assert cal_electbill(265)==1442.75": {
+      "result": false,
+      "time": 0.18949246406555176,
+      "error": null
+    },
+    "assert cal_electbill(100)==327.5": {
+      "result": false,
+      "time": 0.161482572555542,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "tokens_count": 312,
+  "retry": 0,
+  "random_seed": 559
+}

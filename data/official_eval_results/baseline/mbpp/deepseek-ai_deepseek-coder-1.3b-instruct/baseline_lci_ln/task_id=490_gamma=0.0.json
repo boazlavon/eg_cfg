@@ -1,0 +1,27 @@
+{
+  "code": "def extract_symmetric(lst):\n    symmetric_pairs = set()\n    for pair in lst:\n        if pair == (pair[1], pair[0]):\n            symmetric_pairs.add(pair)\n    return symmetric_pairs",
+  "results": {
+    "assert extract_symmetric([(6, 7), (2, 3), (7, 6), (9, 8), (10, 2), (8, 9)] ) == {(8, 9), (6, 7)}": {
+      "result": false,
+      "time": 0.2344648838043213,
+      "error": null
+    },
+    "assert extract_symmetric([(7, 8), (3, 4), (8, 7), (10, 9), (11, 3), (9, 10)] ) == {(9, 10), (7, 8)}": {
+      "result": false,
+      "time": 0.21539545059204102,
+      "error": null
+    },
+    "assert extract_symmetric([(8, 9), (4, 5), (9, 8), (11, 10), (12, 4), (10, 11)] ) == {(8, 9), (10, 11)}": {
+      "result": false,
+      "time": 0.25188255310058594,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "tokens_count": 85,
+  "retry": 0,
+  "random_seed": 559
+}

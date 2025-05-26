@@ -1,0 +1,33 @@
+{
+  "code": "def find_longest_repeating_subseq(s):\n    n = len(s)\n    dp = [[0] * n for _ in range(n)]\n    longest = 0\n\n    # Precompute longest common suffixes\n    for i in range(n-1, -1, -1):\n        for j in range(i+1, n):\n            if s[i] == s[j]:\n                dp[i][j] = dp[i+1][j-1] + 2\n                longest = max(longest, dp[i][j])\n            else:\n                dp[i][j] = max(dp[i+1][j], dp[i][j-1])\n\n    return longest",
+  "results": {
+    "assert find_longest_repeating_subseq(\"AABEBCDD\") == 3": {
+      "result": false,
+      "time": 0.06908464431762695,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"aabb\") == 2": {
+      "result": true,
+      "time": 0.07037973403930664,
+      "error": null
+    },
+    "assert find_longest_repeating_subseq(\"aab\") == 1": {
+      "result": false,
+      "time": 0.06703758239746094,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:59:22",
+    "input_tokens": 817,
+    "output_tokens": 221,
+    "end_time": "2025-05-26 10:59:30",
+    "duration": "0:00:08.065950"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

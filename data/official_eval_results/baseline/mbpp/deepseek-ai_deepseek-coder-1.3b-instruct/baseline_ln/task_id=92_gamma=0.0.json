@@ -1,0 +1,33 @@
+{
+  "code": "def is_undulating(num):\n    # Convert the number to a string to easily access individual digits\n    num_str = str(num)\n    \n    # Iterate over the string, skipping the first two characters\n    for i in range(2, len(num_str)):\n        # If the current and next characters are the same, the number is undulating\n        if num_str[i] == num_str[i-1] == num_str[i-2]:\n            return True\n    \n    # If we've made it through the loop without finding an undulating number, return False\n    return False",
+  "results": {
+    "assert is_undulating(\"1212121\") == True": {
+      "result": false,
+      "time": 0.07406258583068848,
+      "error": null
+    },
+    "assert is_undulating(\"1991\") == False": {
+      "result": true,
+      "time": 0.05481410026550293,
+      "error": null
+    },
+    "assert is_undulating(\"121\") == True": {
+      "result": false,
+      "time": 0.05457448959350586,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:27:03",
+    "input_tokens": 787,
+    "output_tokens": 185,
+    "end_time": "2025-05-26 10:27:09",
+    "duration": "0:00:06.463783"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

@@ -1,0 +1,33 @@
+{
+  "code": "import heapq\n\ndef find_minimum_range(arrays):\n    min_range = float('inf')\n    max_element = float('-inf')\n    for array in arrays:\n        min_heap = []\n        for num in array:\n            heapq.heappush(min_heap, num)\n            max_element = max(max_element, num)\n        while min_heap[0] < max_element:\n            min_range = min(min_range, max_element - heapq.heappop(min_heap))\n            max_element = max(max_element, array[0] + len(min_heap))\n    return (min_range, max_element)",
+  "results": {
+    "assert find_minimum_range([[3, 6, 8, 10, 15], [1, 5, 12], [4, 8, 15, 16], [2, 6]]) == (4, 6)": {
+      "result": false,
+      "time": 0.21532273292541504,
+      "error": null
+    },
+    "assert find_minimum_range([[ 2, 3, 4, 8, 10, 15 ], [1, 5, 12], [7, 8, 15, 16], [3, 6]]) == (4, 7)": {
+      "result": false,
+      "time": 0.21014690399169922,
+      "error": null
+    },
+    "assert find_minimum_range([[4, 7, 9, 11, 16], [2, 6, 13], [5, 9, 16, 17], [3, 7]]) == (5, 7)": {
+      "result": false,
+      "time": 0.20461344718933105,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:32:13",
+    "input_tokens": 943,
+    "output_tokens": 214,
+    "end_time": "2025-05-26 10:32:21",
+    "duration": "0:00:08.249057"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

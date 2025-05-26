@@ -1,0 +1,33 @@
+{
+  "code": "def split_lowerstring(s):\n    return [s[i:j] for i, j in zip([0]+[x+1 for x in range(len(s)) if s[x] == s[x+1].lower()], [x for x in range(len(s)) if s[x] == s[x+1].lower()]+[len(s)])]",
+  "results": {
+    "assert split_lowerstring(\"AbCd\")==['bC','d']": {
+      "result": false,
+      "time": 0.07179760932922363,
+      "error": null
+    },
+    "assert split_lowerstring(\"Python\")==['y', 't', 'h', 'o', 'n']": {
+      "result": false,
+      "time": 0.07025480270385742,
+      "error": null
+    },
+    "assert split_lowerstring(\"Programming\")==['r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g']": {
+      "result": false,
+      "time": 0.0739741325378418,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:41:17",
+    "input_tokens": 824,
+    "output_tokens": 105,
+    "end_time": "2025-05-26 10:41:21",
+    "duration": "0:00:03.829339"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def find_Divisor(start, end):\n    # Create a dictionary to store the count of each number\n    count_dict = {}\n    for i in range(start, end+1):\n        if i in count_dict:\n            count_dict[i] += 1\n        else:\n            count_dict[i] = 1\n\n    # Find the maximum occurring number\n    max_count = max(count_dict.values())\n    max_nums = [num for num, count in count_dict.items() if count == max_count]\n\n    # Return the maximum occurring number\n    return max(max_nums)",
+  "results": {
+    "assert find_Divisor(2,2) == 2": {
+      "result": true,
+      "time": 0.06939053535461426,
+      "error": null
+    },
+    "assert find_Divisor(2,5) == 2": {
+      "result": false,
+      "time": 0.06464266777038574,
+      "error": null
+    },
+    "assert find_Divisor(5,10) == 2": {
+      "result": false,
+      "time": 0.06364822387695312,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 11:09:35",
+    "input_tokens": 784,
+    "output_tokens": 167,
+    "end_time": "2025-05-26 11:09:41",
+    "duration": "0:00:06.085113"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

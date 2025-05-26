@@ -1,0 +1,33 @@
+{
+  "code": "def decode_list(lst):\n    result = []\n    for i in lst:\n        if type(i) == list:\n            result.extend([i[1]]*i[0])\n        else:\n            result.extend([i]*i)\n    return result",
+  "results": {
+    "assert decode_list([[2, 1], 2, 3, [2, 4], 5,1])==[1,1,2,3,4,4,5,1]": {
+      "result": false,
+      "time": 0.17638468742370605,
+      "error": null
+    },
+    "assert decode_list(['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', [2, 'l'], 'y'])==['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', 'l', 'l', 'y']": {
+      "result": false,
+      "time": 0.17541885375976562,
+      "error": null
+    },
+    "assert decode_list(['p', 'y', 't', 'h', 'o', 'n'])==['p', 'y', 't', 'h', 'o', 'n']": {
+      "result": false,
+      "time": 0.15630793571472168,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:41:59",
+    "input_tokens": 918,
+    "output_tokens": 81,
+    "end_time": "2025-05-26 10:42:02",
+    "duration": "0:00:03.460048"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

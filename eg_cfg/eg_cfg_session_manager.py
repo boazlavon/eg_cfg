@@ -12,6 +12,7 @@ from mbpp_utils import (
     format_mbpp_prompt,
     load_mbpp_problems,
     load_mbpp_et_problems,
+    load_humaneval_problems,
     run_tests,
     extract_function_signature,
 )
@@ -140,13 +141,25 @@ class EgCfgSessionManager:
         )
         self.stats_manager = StatisticsManager()
         assert self.session_config.dataset in AVAILABLE_DATASETS
-        assert self.session_config.dataset in (DATASET__MBPP, DATASET__MBPP_ET)
-        if self.session_config.dataset in (DATASET__MBPP, DATASET__MBPP_ET):
+        assert self.session_config.dataset in (
+            DATASET__MBPP,
+            DATASET__MBPP_ET,
+            DATASET__HUMANEVAL,
+        )
+        if self.session_config.dataset == DATASET__MBPP:
+            self.problems = load_mbpp_problems()  # uses test_list
+            self.eval_dataset = (
+                self.problems
+            )  # uses eval_test_list in humaneval, test_list in mbpp
+        if self.session_config.dataset == DATASET__MBPP_ET:
             self.problems = load_mbpp_problems()
-            if self.session_config.dataset == DATASET__MBPP_ET:
-                self.eval_dataset = load_mbpp_et_problems()
-            if self.session_config.dataset == DATASET__MBPP:
-                self.eval_dataset = self.problems
+            self.eval_dataset = load_mbpp_et_problems()
+        if self.session_config.dataset == DATASET__HUMANEVAL:
+            self.problems = load_humaneval_problems()
+            self.eval_dataset = (
+                self.problems
+            )  # uses eval_test_list in humaneval, test_list in mbpp
+
         self.problems = list(self.problems.items())
         if self.session_config.start_idx and self.session_config.end_idx:
             self.problems = self.problems[
@@ -164,7 +177,7 @@ class EgCfgSessionManager:
         dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
         results_dir = os.path.join(
             self.session_config.results_dir,
-            MBPP_DATASET_NAME,
+            self.session_config.dataset,
             session_config.model_name.replace("/", "_"),
             dynamic_signals_str,
         )
@@ -177,7 +190,7 @@ class EgCfgSessionManager:
         os.makedirs(results_dir, exist_ok=True)
         solved_tasks_cache_dir = os.path.join(
             self.session_config.results_dir,
-            MBPP_DATASET_NAME,
+            self.session_config.dataset,
             self.session_config.model_name.replace("/", "_"),
             SOLVED_TASKS_CACHE_DIRNAME,
         )
@@ -224,9 +237,14 @@ class EgCfgSessionManager:
                 pass
             print(f"task_id: {task_id}")
             pprint.pprint(problem)
-            # test_cases = problem["test_list"]
             eval_problem = self.eval_dataset[task_id]
-            test_cases = eval_problem["test_list"]
+            if self.session_config.dataset in (DATASET__MBPP, DATASET__MBPP_ET):
+                test_cases_to_eval = eval_problem["test_list"]
+            if self.session_config.dataset in (
+                DATASET__HUMANEVAL,
+                DATASET__HUMANEVAL_ET,
+            ):
+                test_cases_to_eval = eval_problem["eval_test_list"]
 
             solution = None
             general_error = None
@@ -238,7 +256,7 @@ class EgCfgSessionManager:
                 DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME,
             ):
                 solution = official_results[task_id]["generation"]
-                solution_results = run_tests(solution, test_cases)
+                solution_results = run_tests(solution, test_cases_to_eval)
                 solution_entry = format_results(
                     solution, solution_results, general_error, tb
                 )
@@ -282,7 +300,7 @@ class EgCfgSessionManager:
         self, problem, gamma, function_signature=None
     ):
         # use problem test list here since in MBPP-ET we are not allowed to use the "hidden tests"
-        test_cases = problem["test_list"]
+        test_cases_to_prompt = problem["test_list"]
         use_eg_cfg = True
         use_detector = True
         if (
@@ -333,7 +351,7 @@ class EgCfgSessionManager:
                 "tokenizer": self.tokenizer,
                 "device": self.device,
                 "function_signature": function_signature,
-                "test_cases": test_cases,
+                "test_cases": test_cases_to_prompt,
                 "initial_prompt": prompt,
                 "dynamic_signals_types": dynamic_signals_types,
                 "bs_candidates_count": self.inference_session.inference_session_config[
@@ -364,7 +382,9 @@ class EgCfgSessionManager:
                 initial_prompt_input_ids_len = calculate_tokens_length(
                     self.tokenizer, prompt
                 )
-                function_name, _, _ = parse_mbpp_assert_statement(test_cases[0])
+                function_name, _, _ = parse_mbpp_assert_statement(
+                    test_cases_to_prompt[0]
+                )
                 detector_kwargs = {
                     "tokenizer": self.tokenizer,
                     "initial_prompt_input_ids_len": initial_prompt_input_ids_len,
@@ -486,7 +506,10 @@ class EgCfgSessionManager:
         task_id = problem["task_id"]
         # test_cases = problem["test_list"]
         eval_problem = self.eval_dataset[task_id]
-        test_cases = eval_problem["test_list"]
+        if self.session_config.dataset in (DATASET__MBPP, DATASET__MBPP_ET):
+            test_cases_to_eval = eval_problem["test_list"]
+        if self.session_config.dataset in (DATASET__HUMANEVAL, DATASET__HUMANEVAL_ET):
+            test_cases_to_eval = eval_problem["eval_test_list"]
         self.stats_manager.set_current_key((task_id, gamma))
         start_time = datetime.now()
         start_time_str = start_time.strftime("%Y-%m-%d %H:%M:%S")
@@ -559,7 +582,7 @@ class EgCfgSessionManager:
                 if not self.session_config.is_prod:
                     raise e
 
-            solution_results = run_tests(solution, test_cases)
+            solution_results = run_tests(solution, test_cases_to_eval)
             solution_entry = format_results(
                 solution, solution_results, general_error, tb
             )
@@ -686,7 +709,6 @@ class EgCfgSessionManager:
                 inference_session_config,
             )
             self.resolve_baseline_solved_entries()
-
         for _, problem in self.problems:
             for inference_session_config in self.inference_sessions_configs:
                 self.setup_inference_session(

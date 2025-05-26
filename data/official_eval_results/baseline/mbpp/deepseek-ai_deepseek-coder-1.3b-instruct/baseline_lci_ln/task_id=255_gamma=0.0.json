@@ -1,0 +1,27 @@
+{
+  "code": "from itertools import combinations\n\ndef combinations_colors(colors, num):\n    result = []\n    for r in range(num+1):\n        result.extend(combinations(colors, r))\n    return result\n\n# Test cases\nprint(combinations_colors([\"Red\", \"Green\", \"Blue\"], 1))\nprint(combinations_colors([\"Red\", \"Green\", \"Blue\"], 2))\nprint(combinations_colors([\"Red\", \"Green\", \"Blue\"], 3))",
+  "results": {
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],1)==[('Red',), ('Green',), ('Blue',)]": {
+      "result": false,
+      "time": 0.1574850082397461,
+      "error": null
+    },
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],2)==[('Red', 'Red'), ('Red', 'Green'), ('Red', 'Blue'), ('Green', 'Green'), ('Green', 'Blue'), ('Blue', 'Blue')]": {
+      "result": false,
+      "time": 0.17490196228027344,
+      "error": null
+    },
+    "assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],3)==[('Red', 'Red', 'Red'), ('Red', 'Red', 'Green'), ('Red', 'Red', 'Blue'), ('Red', 'Green', 'Green'), ('Red', 'Green', 'Blue'), ('Red', 'Blue', 'Blue'), ('Green', 'Green', 'Green'), ('Green', 'Green', 'Blue'), ('Green', 'Blue', 'Blue'), ('Blue', 'Blue', 'Blue')]": {
+      "result": false,
+      "time": 0.19495558738708496,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "tokens_count": 142,
+  "retry": 0,
+  "random_seed": 559
+}

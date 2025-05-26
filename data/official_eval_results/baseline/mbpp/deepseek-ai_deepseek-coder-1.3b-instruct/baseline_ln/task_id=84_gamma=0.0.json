@@ -1,0 +1,33 @@
+{
+  "code": "def sequence(n):\n    if n == 1:\n        return 1\n    elif n == 2:\n        return 1\n    else:\n        sequence = [1, 1]\n        for i in range(2, n):\n            sequence.append(sequence[i-sequence[i-1]] + sequence[i-sequence[i-2]])\n        return sequence[-1]\n\n# Test cases\nprint(sequence(10))  # Output: 6\nprint(sequence(2))  # Output: 1\nprint(sequence(3))  # Output: 2",
+  "results": {
+    "assert sequence(10) == 6": {
+      "result": true,
+      "time": 0.07678341865539551,
+      "error": null
+    },
+    "assert sequence(2) == 1": {
+      "result": true,
+      "time": 0.05775904655456543,
+      "error": null
+    },
+    "assert sequence(3) == 2": {
+      "result": true,
+      "time": 0.0614771842956543,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:41:47",
+    "input_tokens": 770,
+    "output_tokens": 160,
+    "end_time": "2025-05-26 10:41:53",
+    "duration": "0:00:05.934908"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

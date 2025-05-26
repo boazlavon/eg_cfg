@@ -1,0 +1,27 @@
+{
+  "code": "def largest_palindrome(nums, k):\n    def is_palindrome(n):\n        return str(n) == str(n)[::-1]\n\n    palindromes = [num for num in nums if is_palindrome(num)]\n    largest_palindromes = sorted(palindromes, reverse=True)[:k]\n    return max(largest_palindromes)\n",
+  "results": {
+    "assert largest_palindrome([1, 232, 54545, 999991], 4) == 54545": {
+      "result": true,
+      "time": 0.14628243446350098,
+      "error": null
+    },
+    "assert largest_palindrome([1, 2, 3, 4, 5, 50], 6) == 5": {
+      "result": true,
+      "time": 234.34509897232056,
+      "error": null
+    },
+    "assert largest_palindrome([1, 3, 7, 9, 45], 5)  == 9": {
+      "result": true,
+      "time": 238.5198392868042,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {},
+  "retry": -1,
+  "random_seed": -1
+}

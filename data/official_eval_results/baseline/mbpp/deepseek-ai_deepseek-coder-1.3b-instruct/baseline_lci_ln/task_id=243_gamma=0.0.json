@@ -1,0 +1,27 @@
+{
+  "code": "def sort_on_occurence(lst):\n    # Create a dictionary to store the count of each element\n    count_dict = {}\n    for tup in lst:\n        if tup[0] in count_dict:\n            count_dict[tup[0]] += 1\n        else:\n            count_dict[tup[0]] = 1\n\n    # Sort the list based on the count of the first element\n    lst.sort(key=lambda x: count_dict[x[0]], reverse=True)\n\n    return lst",
+  "results": {
+    "assert sort_on_occurence([(1, 'Jake'), (2, 'Bob'), (1, 'Cara')]) == [(1, 'Jake', 'Cara', 2), (2, 'Bob', 1)]": {
+      "result": false,
+      "time": 0.2497997283935547,
+      "error": null
+    },
+    "assert sort_on_occurence([('b', 'ball'), ('a', 'arm'), ('b', 'b'), ('a', 'ant')]) == [('b', 'ball', 'b', 2), ('a', 'arm', 'ant', 2)]": {
+      "result": false,
+      "time": 0.25153207778930664,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'Mark'), (3, 'Maze'), (2, 'Sara')]) == [(2, 'Mark', 'Sara', 2), (3, 'Maze', 1)]": {
+      "result": false,
+      "time": 0.2477104663848877,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "tokens_count": 148,
+  "retry": 0,
+  "random_seed": 559
+}

@@ -1,0 +1,33 @@
+{
+  "code": "def next_smallest_palindrome(n):\n    n = str(n)\n    if len(n) == 1:\n        return int(n + n)\n    elif len(n) == 2:\n        if n[0] == '9' and n[1] == '9':\n            return int(n + '0' + n[::-1])\n        elif n[0] < '9' and n[1] > '9':\n            return int(n + '9' + n[::-1])\n        else:\n            return int(n + n[::-1])\n    else:\n        if n[0] == '9' and n[1] == '9' and n[2] == '9':\n            return int(n + '0' + n[2::-1])\n        elif n[0] < '9' and n[1] > '9' and n[2] > '9':\n            return int(n + '9' + n[2::-1])\n        else:\n            return int(n + n[2::-1])",
+  "results": {
+    "assert next_smallest_palindrome(99)==101": {
+      "result": false,
+      "time": 0.06716442108154297,
+      "error": null
+    },
+    "assert next_smallest_palindrome(1221)==1331": {
+      "result": false,
+      "time": 0.06601881980895996,
+      "error": null
+    },
+    "assert next_smallest_palindrome(120)==121": {
+      "result": false,
+      "time": 0.06283164024353027,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:39:07",
+    "input_tokens": 802,
+    "output_tokens": 280,
+    "end_time": "2025-05-26 10:39:16",
+    "duration": "0:00:09.679983"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

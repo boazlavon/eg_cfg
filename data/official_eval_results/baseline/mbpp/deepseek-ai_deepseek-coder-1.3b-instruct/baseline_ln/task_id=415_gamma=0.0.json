@@ -1,0 +1,33 @@
+{
+  "code": "def max_Product(arr):\n    n = len(arr)\n    max_ending_here = max_ending_so_far = max_product = arr[0]\n    min_ending_here = min_ending_so_far = min_product = arr[0]\n\n    for i in range(1, n):\n        if arr[i] > 0:\n            max_ending_here = max(arr[i], max_ending_here * arr[i])\n            min_ending_here = min(arr[i], min_ending_so_far * arr[i])\n        else:\n            max_ending_here = max(arr[i], min_ending_so_far * arr[i])\n            min_ending_here = min(arr[i], max_ending_so_far * arr[i])\n\n        max_product = max(max_product, max_ending_here)\n        min_product = min(min_product, min_ending_here)\n\n    return (max_product, min_product)",
+  "results": {
+    "assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)": {
+      "result": false,
+      "time": 0.07119560241699219,
+      "error": null
+    },
+    "assert max_Product([0,-1,-2,-4,5,0,-6]) == (-4,-6)": {
+      "result": false,
+      "time": 0.06984448432922363,
+      "error": null
+    },
+    "assert max_Product([1,2,3]) == (2,3)": {
+      "result": false,
+      "time": 0.07273697853088379,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:30:54",
+    "input_tokens": 818,
+    "output_tokens": 266,
+    "end_time": "2025-05-26 10:31:03",
+    "duration": "0:00:09.086999"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

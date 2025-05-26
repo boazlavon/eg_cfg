@@ -1,0 +1,27 @@
+{
+  "code": "def areEquivalent(num1, num2):\n    def sum_of_divisors(n):\n        result = 1\n        i = 2\n        while i * i <= n:\n            if n % i:\n                i += 1\n            else:\n                if i * (n // i) == n:\n                    result += i + n//i\n                else:\n                    result += i\n                i += 1\n        return result\n\n    return sum_of_divisors(num1) == sum_of_divisors(num2)\n",
+  "results": {
+    "assert areEquivalent(36,57) == False": {
+      "result": true,
+      "time": 0.05943107604980469,
+      "error": null
+    },
+    "assert areEquivalent(2,4) == False": {
+      "result": true,
+      "time": 0.05523490905761719,
+      "error": null
+    },
+    "assert areEquivalent(23,47) == True": {
+      "result": true,
+      "time": 0.05953788757324219,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {},
+  "retry": -1,
+  "random_seed": -1
+}

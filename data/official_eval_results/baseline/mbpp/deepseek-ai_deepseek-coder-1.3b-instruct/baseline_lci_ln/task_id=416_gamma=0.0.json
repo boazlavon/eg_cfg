@@ -1,0 +1,27 @@
+{
+  "code": "def breakSum(num):\n    if num == 0:\n        return 0\n    dp = [0] * (num + 1)\n    for i in range(1, num + 1):\n        dp[i] = max(dp[i - 1], dp[i - 2] + num[i - 2])\n    return dp[num]\n\ndef maxSumDividingThree(num):\n    num = [int(i) for i in str(num)]\n    return breakSum(num)\n\n# Test cases\nassert maxSumDividingThree(12) == 13\nassert maxSumDividingThree(24) == 27\nassert maxSumDividingThree(23) == 23",
+  "results": {
+    "assert breakSum(12) == 13": {
+      "result": false,
+      "time": 0.11836695671081543,
+      "error": null
+    },
+    "assert breakSum(24) == 27": {
+      "result": false,
+      "time": 0.14957833290100098,
+      "error": null
+    },
+    "assert breakSum(23) == 23": {
+      "result": false,
+      "time": 0.1417677402496338,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "tokens_count": 229,
+  "retry": 0,
+  "random_seed": 559
+}

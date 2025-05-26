@@ -1,0 +1,33 @@
+{
+  "code": "def max_sum_rectangular_grid(grid, n):\n    m, p = len(grid), len(grid[0])\n    prefix = [[0] * p for _ in range(m)]\n    for i in range(m):\n        for j in range(p):\n            if i == 0:\n                prefix[i][j] = grid[i][j]\n            else:\n                prefix[i][j] = prefix[i-1][j] + grid[i][j]\n    max_sum = float('-inf')\n    for i in range(m):\n        for j in range(p):\n            for k in range(j+1, p+1):\n                total = prefix[i][k] - (prefix[i][j] if j > 0 else 0)\n                for l in range(i+1, n+1):\n                    if total == prefix[l-1][k] - (prefix[l-1][j] if j > 0 else 0):\n                        max_sum = max(max_sum, total)\n    return max_sum",
+  "results": {
+    "assert max_sum_rectangular_grid([ [1, 4, 5], [2, 0, 0 ] ], 3) == 7": {
+      "result": false,
+      "time": 0.07257342338562012,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([ [ 1, 2, 3, 4, 5], [ 6, 7, 8, 9, 10] ], 5) == 24": {
+      "result": false,
+      "time": 0.06029796600341797,
+      "error": null
+    },
+    "assert max_sum_rectangular_grid([ [7, 9, 11, 15, 19], [21, 25, 28, 31, 32] ], 5) == 81": {
+      "result": false,
+      "time": 0.06158161163330078,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 11:10:49",
+    "input_tokens": 899,
+    "output_tokens": 267,
+    "end_time": "2025-05-26 11:10:58",
+    "duration": "0:00:09.110607"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

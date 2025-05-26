@@ -1,0 +1,33 @@
+{
+  "code": "def max_sum_increasing_subseq(nums, n, i, k):\n    dp = [0] * n\n    dp[i] = nums[i]\n    for j in range(i):\n        if nums[j] < nums[i]:\n            dp[i] = max(dp[i], dp[j] + nums[i])\n    for j in range(i+1, n):\n        dp[j] = dp[j-1]\n        if nums[j] < nums[i]:\n            dp[j] = max(dp[j], dp[j-2] + nums[j] if j > 1 else nums[j])\n    return max(dp)",
+  "results": {
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 4, 6) == 11": {
+      "result": false,
+      "time": 0.08590221405029297,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 2, 5) == 7": {
+      "result": false,
+      "time": 0.08916258811950684,
+      "error": null
+    },
+    "assert max_sum_increasing_subseq([11, 15, 19, 21, 26, 28, 31], 7, 2, 4) == 71": {
+      "result": false,
+      "time": 0.09175395965576172,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 11:15:21",
+    "input_tokens": 913,
+    "output_tokens": 192,
+    "end_time": "2025-05-26 11:15:28",
+    "duration": "0:00:07.019881"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

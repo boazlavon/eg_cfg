@@ -1,0 +1,33 @@
+{
+  "code": "def rearrange_bigger(num):\n    num_str = str(num)\n    sorted_str = ''.join(sorted(num_str, reverse=True))\n    for i in range(len(sorted_str)):\n        if sorted_str[i] < sorted_str[i + 1]:\n            break\n    else:\n        return False\n\n    for j in range(len(sorted_str) - 1, -1, -1):\n        if sorted_str[j] > sorted_str[i]:\n            sorted_str = sorted_str[:j] + sorted_str[i + 1:j + 1][::-1] + sorted_str[j + 1:]\n            break\n\n    return int(sorted_str)",
+  "results": {
+    "assert rearrange_bigger(12)==21": {
+      "result": false,
+      "time": 0.16765475273132324,
+      "error": null
+    },
+    "assert rearrange_bigger(10)==False": {
+      "result": false,
+      "time": 0.16520476341247559,
+      "error": null
+    },
+    "assert rearrange_bigger(102)==120": {
+      "result": false,
+      "time": 0.16497159004211426,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:35:24",
+    "input_tokens": 795,
+    "output_tokens": 207,
+    "end_time": "2025-05-26 10:40:18",
+    "duration": "0:04:53.407688"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

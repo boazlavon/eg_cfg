@@ -1,0 +1,28 @@
+{
+  "code": "import re\n\ndef text_match_word(text):\n    pattern = r'\\b\\w+\\b\\.$'\n    match = re.search(pattern, text)\n    if match:\n        return 'Found a match!'\n    else:\n        return 'Not matched!'",
+  "results": {
+    "assert text_match_word(\"python.\")==('Found a match!')": {
+      "result": true,
+      "time": 0.21962594985961914,
+      "error": null
+    },
+    "assert text_match_word(\"  lang  .\")==('Not matched!')": {
+      "result": true,
+      "time": 0.2298581600189209,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 11:11:50",
+    "input_tokens": 800,
+    "output_tokens": 116,
+    "end_time": "2025-05-26 11:11:55",
+    "duration": "0:00:05.205194"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

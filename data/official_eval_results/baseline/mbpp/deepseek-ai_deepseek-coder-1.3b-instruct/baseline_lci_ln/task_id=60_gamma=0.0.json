@@ -1,0 +1,27 @@
+{
+  "code": "def max_len_sub(arr, target):\n    n = len(arr)\n    dp = [0] * n\n    dp2 = [0] * n\n    max_len = 0\n    max_idx = -1\n\n    for i in range(n):\n        dp[i] = 1 + dp[i-1] if arr[i] < target else 1\n        if arr[i] < target:\n            dp2[i] = dp[i-1] + 1\n        else:\n            dp2[i] = 1\n\n        if dp[i] > max_len:\n            max_len = dp[i]\n            max_idx = i\n\n    return max_len",
+  "results": {
+    "assert max_len_sub([2, 5, 6, 3, 7, 6, 5, 8], 8) == 5": {
+      "result": false,
+      "time": 0.1344127655029297,
+      "error": null
+    },
+    "assert max_len_sub([-2, -1, 5, -1, 4, 0, 3], 7) == 4": {
+      "result": false,
+      "time": 0.13373613357543945,
+      "error": null
+    },
+    "assert max_len_sub([9, 11, 13, 15, 18], 5) == 1": {
+      "result": true,
+      "time": 0.1303703784942627,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "tokens_count": 190,
+  "retry": 0,
+  "random_seed": 559
+}

@@ -1,0 +1,27 @@
+{
+  "code": "def even_bit_toggle_number(n):\n    # Convert the number to binary and toggle the even bits\n    binary = bin(n)[2:]  # Remove the '0b' prefix\n    toggled_binary = ''.join('1' if i % 2 == 0 else '0' for i in binary)\n    \n    # Convert the toggled binary back to decimal\n    toggled_number = int(toggled_binary, 2)\n    \n    return toggled_number\n\n# Test cases\nassert even_bit_toggle_number(10) == 0\nassert even_bit_toggle_number(20) == 30\nassert even_bit_toggle_number(30) == 20",
+  "results": {
+    "assert even_bit_toggle_number(10) == 0": {
+      "result": false,
+      "time": 0.11975479125976562,
+      "error": null
+    },
+    "assert even_bit_toggle_number(20) == 30": {
+      "result": false,
+      "time": 0.13093924522399902,
+      "error": null
+    },
+    "assert even_bit_toggle_number(30) == 20": {
+      "result": false,
+      "time": 0.13586807250976562,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "tokens_count": 185,
+  "retry": 0,
+  "random_seed": 559
+}

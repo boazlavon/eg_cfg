@@ -1,0 +1,33 @@
+{
+  "code": "def num_comm_div(num1, num2):\n    if num1 > num2:\n        num = num1\n        den = num2\n    else:\n        num = num2\n        den = num1\n    rem = num % den\n    while rem != 0:\n        num = den\n        den = rem\n        rem = num % den\n    return den",
+  "results": {
+    "assert num_comm_div(2,4) == 2": {
+      "result": true,
+      "time": 0.0813140869140625,
+      "error": null
+    },
+    "assert num_comm_div(2,8) == 2": {
+      "result": true,
+      "time": 0.07115316390991211,
+      "error": null
+    },
+    "assert num_comm_div(12,24) == 6": {
+      "result": false,
+      "time": 0.07130908966064453,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6666666666666666,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 11:16:03",
+    "input_tokens": 789,
+    "output_tokens": 111,
+    "end_time": "2025-05-26 11:16:07",
+    "duration": "0:00:03.911575"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

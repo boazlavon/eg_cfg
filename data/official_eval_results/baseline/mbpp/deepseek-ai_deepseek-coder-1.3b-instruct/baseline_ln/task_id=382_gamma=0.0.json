@@ -1,0 +1,33 @@
+{
+  "code": "def find_rotation_count(arr):\n    # The array is circularly sorted if the last element is greater than the first\n    if arr[-1] > arr[0]:\n        return 0\n\n    # Binary search to find the rotation point\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] > arr[mid + 1]:\n            return mid + 1\n        else:\n            if arr[mid] < arr[left]:\n                right = mid - 1\n            else:\n                left = mid + 1",
+  "results": {
+    "assert find_rotation_count([8, 9, 10, 1, 2, 3, 4, 5, 6, 7]) == 3": {
+      "result": true,
+      "time": 0.16064763069152832,
+      "error": null
+    },
+    "assert find_rotation_count([8, 9, 10,2, 5, 6]) == 3": {
+      "result": true,
+      "time": 0.13735198974609375,
+      "error": null
+    },
+    "assert find_rotation_count([2, 5, 6, 8, 9, 10]) == 0": {
+      "result": true,
+      "time": 0.12909889221191406,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:08:11",
+    "input_tokens": 843,
+    "output_tokens": 171,
+    "end_time": "2025-05-26 10:28:21",
+    "duration": "0:20:10.377209"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

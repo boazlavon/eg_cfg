@@ -1,0 +1,33 @@
+{
+  "code": "def even_binomial_Coeff_Sum(n):\n    # Initialize the sum\n    sum_even_binomial_coeff = 0\n\n    # Loop through the range from 0 to n\n    for i in range(n+1):\n        # If the index is even, add the binomial coefficient to the sum\n        if i % 2 == 0:\n            sum_even_binomial_coeff += binomial_coeff(n, i)\n\n    return sum_even_binomial_coeff\n\n# Function to calculate binomial coefficient\ndef binomial_coeff(n, k):\n    # Calculate the binomial coefficient\n    return nCr(n, k) // (k * (n - k))\n\n# Function to calculate nCr\ndef nCr(n, r):\n    # Calculate the binomial coefficient\n    if r > n:\n        return 0\n    else:\n        numerator = 1\n        for i in range(r):\n            numerator = numerator * (n - i)\n        denominator = 1\n        for i in range(r):\n            denominator = denominator * (i + 1)\n        return numerator // denominator",
+  "results": {
+    "assert even_binomial_Coeff_Sum(4) == 8": {
+      "result": false,
+      "time": 0.0813896656036377,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(6) == 32": {
+      "result": false,
+      "time": 0.07465195655822754,
+      "error": null
+    },
+    "assert even_binomial_Coeff_Sum(2) == 2": {
+      "result": false,
+      "time": 0.0598752498626709,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:46:54",
+    "input_tokens": 795,
+    "output_tokens": 305,
+    "end_time": "2025-05-26 10:47:05",
+    "duration": "0:00:11.153630"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

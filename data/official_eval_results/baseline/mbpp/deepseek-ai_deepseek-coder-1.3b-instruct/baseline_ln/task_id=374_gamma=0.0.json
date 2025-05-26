@@ -1,0 +1,33 @@
+{
+  "code": "def permute_string(s):\n    if len(s) == 1:\n        return [s]\n    else:\n        perms = []\n        for i in range(len(s)):\n            char = s[i]\n            remaining = s[:i] + s[i+1:]\n            for p in permute_string(remaining):\n                perms.append(char + p)\n        return perms",
+  "results": {
+    "assert permute_string('ab')==['ab', 'ba']": {
+      "result": true,
+      "time": 0.06672978401184082,
+      "error": null
+    },
+    "assert permute_string('abc')==['abc', 'bac', 'bca', 'acb', 'cab', 'cba']": {
+      "result": false,
+      "time": 0.07253074645996094,
+      "error": null
+    },
+    "assert permute_string('abcd')==['abcd', 'bacd', 'bcad', 'bcda', 'acbd', 'cabd', 'cbad', 'cbda', 'acdb', 'cadb', 'cdab', 'cdba', 'abdc', 'badc', 'bdac', 'bdca', 'adbc', 'dabc', 'dbac', 'dbca', 'adcb', 'dacb', 'dcab', 'dcba']": {
+      "result": false,
+      "time": 0.0714411735534668,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.3333333333333333,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:08:35",
+    "input_tokens": 901,
+    "output_tokens": 127,
+    "end_time": "2025-05-26 10:08:42",
+    "duration": "0:00:07.423596"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

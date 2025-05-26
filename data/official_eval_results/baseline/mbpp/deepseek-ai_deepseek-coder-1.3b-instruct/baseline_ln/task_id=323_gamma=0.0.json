@@ -1,0 +1,33 @@
+{
+  "code": "def re_arrange(arr, n):\n    # Separate positive and negative numbers\n    pos = [x for x in arr if x >= 0]\n    neg = [x for x in arr if x < 0]\n\n    # Rearrange the array\n    result = []\n    while pos or neg:\n        if pos:\n            result.append(pos.pop(0))\n        if neg:\n            result.append(neg.pop(0))\n\n    return result",
+  "results": {
+    "assert re_arrange([-5, -2, 5, 2, 4,\t7, 1, 8, 0, -8], 10) == [-5, 5, -2, 2, -8, 4, 7, 1, 8, 0]": {
+      "result": false,
+      "time": 0.07352471351623535,
+      "error": null
+    },
+    "assert re_arrange([1, 2, 3, -4, -1, 4], 6) == [-4, 1, -1, 2, 3, 4]": {
+      "result": false,
+      "time": 0.0644373893737793,
+      "error": null
+    },
+    "assert re_arrange([4, 7, 9, 77, -4, 5, -3, -9], 8) == [-4, 4, -3, 7, -9, 9, 77, 5]": {
+      "result": false,
+      "time": 0.07175827026367188,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:50:43",
+    "input_tokens": 925,
+    "output_tokens": 137,
+    "end_time": "2025-05-26 10:50:49",
+    "duration": "0:00:05.239538"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

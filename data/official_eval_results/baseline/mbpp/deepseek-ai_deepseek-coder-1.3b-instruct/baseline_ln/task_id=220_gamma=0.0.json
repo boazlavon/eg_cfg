@@ -1,0 +1,33 @@
+{
+  "code": "def replace_max_specialchar(text, n):\n    special_chars = [' ', ',', '.']\n    max_occurrences = {}\n\n    # Count the occurrences of each special character\n    for char in special_chars:\n        max_occurrences[char] = text.count(char)\n\n    # Sort the special characters by their count in descending order\n    sorted_chars = sorted(max_occurrences.items(), key=lambda x: x[1], reverse=True)\n\n    # Replace the maximum n occurrences of each special character with a colon\n    for i in range(n):\n        text = text.replace(sorted_chars[i][0], ':')\n\n    return text",
+  "results": {
+    "assert replace_max_specialchar('Python language, Programming language.',2)==('Python:language: Programming language.')": {
+      "result": false,
+      "time": 0.0656425952911377,
+      "error": null
+    },
+    "assert replace_max_specialchar('a b c,d e f',3)==('a:b:c:d e f')": {
+      "result": false,
+      "time": 0.05831718444824219,
+      "error": null
+    },
+    "assert replace_max_specialchar('ram reshma,ram rahim',1)==('ram:reshma,ram rahim')": {
+      "result": false,
+      "time": 0.05360984802246094,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 11:11:32",
+    "input_tokens": 842,
+    "output_tokens": 190,
+    "end_time": "2025-05-26 11:11:39",
+    "duration": "0:00:06.760149"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

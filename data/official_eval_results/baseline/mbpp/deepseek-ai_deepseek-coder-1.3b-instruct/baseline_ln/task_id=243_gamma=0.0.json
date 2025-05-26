@@ -1,0 +1,33 @@
+{
+  "code": "def sort_on_occurence(lst):\n    from collections import Counter\n    c = Counter(x[0] for x in lst)\n    lst.sort(key=lambda x: (c[x[0]], x))\n    return lst",
+  "results": {
+    "assert sort_on_occurence([(1, 'Jake'), (2, 'Bob'), (1, 'Cara')]) == [(1, 'Jake', 'Cara', 2), (2, 'Bob', 1)]": {
+      "result": false,
+      "time": 0.21050500869750977,
+      "error": null
+    },
+    "assert sort_on_occurence([('b', 'ball'), ('a', 'arm'), ('b', 'b'), ('a', 'ant')]) == [('b', 'ball', 'b', 2), ('a', 'arm', 'ant', 2)]": {
+      "result": false,
+      "time": 0.2106173038482666,
+      "error": null
+    },
+    "assert sort_on_occurence([(2, 'Mark'), (3, 'Maze'), (2, 'Sara')]) == [(2, 'Mark', 'Sara', 2), (3, 'Maze', 1)]": {
+      "result": false,
+      "time": 0.21275568008422852,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 10:15:59",
+    "input_tokens": 923,
+    "output_tokens": 78,
+    "end_time": "2025-05-26 10:16:03",
+    "duration": "0:00:03.533601"
+  },
+  "retry": 0,
+  "random_seed": 379
+}
