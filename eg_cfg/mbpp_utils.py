@@ -216,7 +216,7 @@ def format_simple_mbpp_prompt(problem, function_signature):
     ).strip()
 
 
-def format_custom_mbpp_prompt(problem, function_signature):
+def format_custom_mbpp_prompt(problem):
     formatted_test_cases = ""
     for test in problem["test_list"]:
         formatted_test_cases += black.format_str(
@@ -233,23 +233,18 @@ def format_custom_mbpp_prompt(problem, function_signature):
 
 
 def format_mbpp_prompt(problem, simple_prompt=False):
-    function_signature = extract_function_signature(problem["code"])
-    assert function_signature, "Function signature could not be extracted."
+    function_signature = None
     if simple_prompt:
+        function_signature = extract_function_signature(problem["code"])
+        assert function_signature, "Function signature could not be extracted."
         prompt = format_simple_mbpp_prompt(problem, function_signature)
     else:
-        prompt = format_custom_mbpp_prompt(problem, function_signature)
+        prompt = format_custom_mbpp_prompt(problem)
     return (prompt, function_signature)
 
 
 def load_mbpp_problems():
     test_ds = load_dataset("google-research-datasets/mbpp", "full", split="test")
-    problems = OrderedDict((example["task_id"], example) for example in test_ds)
-    return problems
-
-
-def load_mbpp_et_problems():
-    test_ds = load_dataset("dz1/CodeScore-MBPP-ET")
     problems = OrderedDict((example["task_id"], example) for example in test_ds)
     return problems
 
@@ -274,7 +269,7 @@ def extract_asserts_for_candidate_function(test_string: str) -> list[str]:
         found_asserts = assert_pattern.findall(check_body)
 
         # Strip trailing whitespace from each found assert statement
-        assert_statements = [stmt.rstrip() for stmt in found_asserts]
+        assert_statements = [stmt.strip() for stmt in found_asserts]
 
     return assert_statements
 
@@ -291,7 +286,7 @@ def test_case_to_assert(invocation: str, expected: str) -> str:
 
 
 def load_humaneval_problems():
-    with open("data/humaneval.json", "r") as f:
+    with open("data/humaneval/humaneval.json", "r") as f:
         test_ds = json.load(f)
     problems = OrderedDict()
     for task_id, example in test_ds.items():
@@ -307,6 +302,7 @@ def load_humaneval_problems():
         ]
 
         new_example = {
+            "task_id": task_id,
             "text": instruction_text,
             "code": example["code"],
             "test_list": test_cases,

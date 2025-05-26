@@ -11,7 +11,6 @@ import random
 from mbpp_utils import (
     format_mbpp_prompt,
     load_mbpp_problems,
-    load_mbpp_et_problems,
     load_humaneval_problems,
     run_tests,
     extract_function_signature,
@@ -54,11 +53,6 @@ def format_results(solution, results, general_error, tb=None):
     if tb is not None:
         entry["tb"] = tb
     return entry
-
-
-def get_solution_filepath(results_dir, task_id, gamma):
-    filename = FILENAME_TEMPLATE.format(task_id=task_id, gamma=gamma)
-    return os.path.join(results_dir, filename)
 
 
 class StatisticsManager:
@@ -143,7 +137,6 @@ class EgCfgSessionManager:
         assert self.session_config.dataset in AVAILABLE_DATASETS
         assert self.session_config.dataset in (
             DATASET__MBPP,
-            DATASET__MBPP_ET,
             DATASET__HUMANEVAL,
         )
         if self.session_config.dataset == DATASET__MBPP:
@@ -151,9 +144,6 @@ class EgCfgSessionManager:
             self.eval_dataset = (
                 self.problems
             )  # uses eval_test_list in humaneval, test_list in mbpp
-        if self.session_config.dataset == DATASET__MBPP_ET:
-            self.problems = load_mbpp_problems()
-            self.eval_dataset = load_mbpp_et_problems()
         if self.session_config.dataset == DATASET__HUMANEVAL:
             self.problems = load_humaneval_problems()
             self.eval_dataset = (
@@ -206,6 +196,12 @@ class EgCfgSessionManager:
         print("Setting inference session config:")
         pprint.pprint(self.inference_session)
 
+    def get_solution_filepath(self, results_dir, task_id, gamma):
+        if self.session_config.dataset == DATASET__HUMANEVAL:
+            task_id = task_id.replace("/", "_")
+        filename = FILENAME_TEMPLATE.format(task_id=task_id, gamma=gamma)
+        return os.path.join(results_dir, filename)
+
     def resolve_baseline_solved_entries(self):
         gamma = 0.0
         if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
@@ -227,7 +223,7 @@ class EgCfgSessionManager:
                 in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
             ) and (not task_id in official_passed_task_ids):
                 continue
-            solution_entry_path = get_solution_filepath(
+            solution_entry_path = self.get_solution_filepath(
                 self.inference_session.results_dir, task_id, gamma
             )
             if os.path.exists(solution_entry_path):
@@ -238,12 +234,9 @@ class EgCfgSessionManager:
             print(f"task_id: {task_id}")
             pprint.pprint(problem)
             eval_problem = self.eval_dataset[task_id]
-            if self.session_config.dataset in (DATASET__MBPP, DATASET__MBPP_ET):
+            if self.session_config.dataset in (DATASET__MBPP,):
                 test_cases_to_eval = eval_problem["test_list"]
-            if self.session_config.dataset in (
-                DATASET__HUMANEVAL,
-                DATASET__HUMANEVAL_ET,
-            ):
+            if self.session_config.dataset in (DATASET__HUMANEVAL,):
                 test_cases_to_eval = eval_problem["eval_test_list"]
 
             solution = None
@@ -278,7 +271,7 @@ class EgCfgSessionManager:
                 ]
                 for baseline_dir in BASELINE_DIRS:
                     results_dir = os.path.join(baseline_trial_base, baseline_dir)
-                    bs_solution_entry_path = get_solution_filepath(
+                    bs_solution_entry_path = self.get_solution_filepath(
                         results_dir,
                         task_id,
                         gamma=0.0,
@@ -288,7 +281,7 @@ class EgCfgSessionManager:
                     with open(bs_solution_entry_path) as f:
                         bs_solution_entry = json.load(f)
                     for gamma in (0, 0.0):
-                        solution_entry_path = get_solution_filepath(
+                        solution_entry_path = self.get_solution_filepath(
                             self.inference_session.results_dir, task_id, gamma
                         )
                         with open(solution_entry_path, "w") as f:
@@ -504,11 +497,10 @@ class EgCfgSessionManager:
 
     def solve_problem_with_eg_cfg_wrapper(self, problem, gamma):
         task_id = problem["task_id"]
-        # test_cases = problem["test_list"]
         eval_problem = self.eval_dataset[task_id]
-        if self.session_config.dataset in (DATASET__MBPP, DATASET__MBPP_ET):
+        if self.session_config.dataset in (DATASET__MBPP,):
             test_cases_to_eval = eval_problem["test_list"]
-        if self.session_config.dataset in (DATASET__HUMANEVAL, DATASET__HUMANEVAL_ET):
+        if self.session_config.dataset in (DATASET__HUMANEVAL,):
             test_cases_to_eval = eval_problem["eval_test_list"]
         self.stats_manager.set_current_key((task_id, gamma))
         start_time = datetime.now()
@@ -618,7 +610,7 @@ class EgCfgSessionManager:
         )
         for gamma in self.session_config.gammas:
             print(f"task_id={task_id}, gamma={gamma}")
-            solution_entry_path = get_solution_filepath(
+            solution_entry_path = self.get_solution_filepath(
                 self.inference_session.results_dir, task_id, gamma
             )
 
@@ -704,12 +696,19 @@ class EgCfgSessionManager:
                 print(f"Failed Solving Problem task_id={task_id} (gamma={gamma})")
 
     def solve(self):
-        for inference_session_config in self.inference_sessions_configs:
-            self.setup_inference_session(
-                inference_session_config,
-            )
-            self.resolve_baseline_solved_entries()
+        if self.session_config.dataset != DATASET__HUMANEVAL:
+            for inference_session_config in self.inference_sessions_configs:
+                self.setup_inference_session(
+                    inference_session_config,
+                )
+                self.resolve_baseline_solved_entries()
         for _, problem in self.problems:
+            if self.session_config.dataset == DATASET__HUMANEVAL:
+                if not problem["test_list"]:
+                    task_id = problem["task_id"]
+                    print(f"No test for {task_id}")
+                    continue
+
             for inference_session_config in self.inference_sessions_configs:
                 self.setup_inference_session(
                     inference_session_config,
