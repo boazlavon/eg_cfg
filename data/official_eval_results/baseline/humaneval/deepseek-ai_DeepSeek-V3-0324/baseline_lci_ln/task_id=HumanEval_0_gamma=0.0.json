@@ -1,0 +1,53 @@
+{
+  "code": "from typing import List\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            distance = abs(numbers[i] - numbers[j])\n            if distance < threshold:\n                return True\n    return False",
+  "results": {
+    "assert has_close_elements([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) == True": {
+      "result": true,
+      "time": 0.08820867538452148,
+      "error": null
+    },
+    "assert has_close_elements([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) == False": {
+      "result": true,
+      "time": 0.0859229564666748,
+      "error": null
+    },
+    "assert has_close_elements([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) == True": {
+      "result": true,
+      "time": 0.08854961395263672,
+      "error": null
+    },
+    "assert has_close_elements([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) == False": {
+      "result": true,
+      "time": 0.09087753295898438,
+      "error": null
+    },
+    "assert has_close_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) == True": {
+      "result": true,
+      "time": 0.09085726737976074,
+      "error": null
+    },
+    "assert has_close_elements([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) == True": {
+      "result": true,
+      "time": 0.08840608596801758,
+      "error": null
+    },
+    "assert has_close_elements([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) == False": {
+      "result": true,
+      "time": 0.09377717971801758,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:02:41",
+    "guidance_input_tokens": 622,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:02:55",
+    "duration": "0:00:13.772189"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

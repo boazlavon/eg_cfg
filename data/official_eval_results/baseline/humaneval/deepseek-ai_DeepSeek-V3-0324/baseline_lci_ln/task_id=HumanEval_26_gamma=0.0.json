@@ -1,0 +1,33 @@
+{
+  "code": "def remove_duplicates(numbers):\n    frequency = {}\n    for num in numbers:\n        if num in frequency:\n            frequency[num] += 1\n        else:\n            frequency[num] = 1\n    result = []\n    for num in numbers:\n        if frequency[num] == 1:\n            result.append(num)\n    return result",
+  "results": {
+    "assert remove_duplicates([]) == []": {
+      "result": true,
+      "time": 0.07023024559020996,
+      "error": null
+    },
+    "assert remove_duplicates([1, 2, 3, 4]) == [1, 2, 3, 4]": {
+      "result": true,
+      "time": 0.05399012565612793,
+      "error": null
+    },
+    "assert remove_duplicates([1, 2, 3, 2, 4, 3, 5]) == [1, 4, 5]": {
+      "result": true,
+      "time": 0.051918745040893555,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:06:47",
+    "guidance_input_tokens": 585,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:06:52",
+    "duration": "0:00:04.547784"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

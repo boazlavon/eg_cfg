@@ -1,0 +1,38 @@
+{
+  "code": "def filter_by_substring(strings, substring):\n    filtered_list = []\n    for string in strings:\n        if substring in string:\n            filtered_list.append(string)\n    return filtered_list",
+  "results": {
+    "assert filter_by_substring([], 'john') == []": {
+      "result": true,
+      "time": 0.05499100685119629,
+      "error": null
+    },
+    "assert filter_by_substring(['xxx', 'asd', 'xxy', 'john doe', 'xxxAAA', 'xxx'], 'xxx') == ['xxx', 'xxxAAA', 'xxx']": {
+      "result": true,
+      "time": 0.05569815635681152,
+      "error": null
+    },
+    "assert filter_by_substring(['xxx', 'asd', 'aaaxxy', 'john doe', 'xxxAAA', 'xxx'], 'xx') == ['xxx', 'aaaxxy', 'xxxAAA', 'xxx']": {
+      "result": true,
+      "time": 0.05410933494567871,
+      "error": null
+    },
+    "assert filter_by_substring(['grunt', 'trumpet', 'prune', 'gruesome'], 'run') == ['grunt', 'prune']": {
+      "result": true,
+      "time": 0.05266380310058594,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:04:16",
+    "guidance_input_tokens": 592,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:04:21",
+    "duration": "0:00:05.334545"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

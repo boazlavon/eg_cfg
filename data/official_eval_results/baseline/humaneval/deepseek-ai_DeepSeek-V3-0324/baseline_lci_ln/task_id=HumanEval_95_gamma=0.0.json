@@ -1,0 +1,53 @@
+{
+  "code": "def check_dict_case(d):\n    if not d:\n        return False\n    all_lower = True\n    all_upper = True\n    for key in d:\n        if not isinstance(key, str):\n            return False\n    for key in d:\n        if not key.islower():\n            all_lower = False\n            break\n    if all_lower:\n        return True\n    for key in d:\n        if not key.isupper():\n            all_upper = False\n            break\n    if all_upper:\n        return True\n    return False",
+  "results": {
+    "assert check_dict_case({\"p\":\"pineapple\", \"b\":\"banana\"}) == True, \"First test error: \" + str(check_dict_case({\"p\":\"pineapple\", \"b\":\"banana\"}))": {
+      "result": true,
+      "time": 0.053000450134277344,
+      "error": null
+    },
+    "assert check_dict_case({\"p\":\"pineapple\", \"A\":\"banana\", \"B\":\"banana\"}) == False, \"Second test error: \" + str(check_dict_case({\"p\":\"pineapple\", \"A\":\"banana\", \"B\":\"banana\"}))": {
+      "result": true,
+      "time": 0.050734519958496094,
+      "error": null
+    },
+    "assert check_dict_case({\"p\":\"pineapple\", 5:\"banana\", \"a\":\"apple\"}) == False, \"Third test error: \" + str(check_dict_case({\"p\":\"pineapple\", 5:\"banana\", \"a\":\"apple\"}))": {
+      "result": true,
+      "time": 0.05499410629272461,
+      "error": null
+    },
+    "assert check_dict_case({\"Name\":\"John\", \"Age\":\"36\", \"City\":\"Houston\"}) == False, \"Fourth test error: \" + str(check_dict_case({\"Name\":\"John\", \"Age\":\"36\", \"City\":\"Houston\"}))": {
+      "result": true,
+      "time": 0.05187654495239258,
+      "error": null
+    },
+    "assert check_dict_case({\"STATE\":\"NC\", \"ZIP\":\"12345\" }) == True, \"Fifth test error: \" + str(check_dict_case({\"STATE\":\"NC\", \"ZIP\":\"12345\" }))": {
+      "result": true,
+      "time": 0.05240774154663086,
+      "error": null
+    },
+    "assert check_dict_case({\"fruit\":\"Orange\", \"taste\":\"Sweet\" }) == True, \"Fourth test error: \" + str(check_dict_case({\"fruit\":\"Orange\", \"taste\":\"Sweet\" }))": {
+      "result": true,
+      "time": 0.05268073081970215,
+      "error": null
+    },
+    "assert check_dict_case({}) == False, \"1st edge test error: \" + str(check_dict_case({}))": {
+      "result": true,
+      "time": 0.052260637283325195,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:37:52",
+    "guidance_input_tokens": 660,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:37:59",
+    "duration": "0:00:06.523622"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

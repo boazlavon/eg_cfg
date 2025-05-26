@@ -1,0 +1,23 @@
+{
+  "code": "def decode_shift(s):\n    decoded = []\n    for char in s:\n        if char.isalpha():\n            if char == 'a':\n                decoded_char = 'z'\n            elif char == 'A':\n                decoded_char = 'Z'\n            else:\n                shifted_code = ord(char) - 1\n                decoded_char = chr(shifted_code)\n        else:\n            decoded_char = char\n        decoded.append(decoded_char)\n    decoded_string = ''.join(decoded)\n    return decoded_string",
+  "results": {
+    "assert decode_shift(copy.deepcopy(encoded_str)) == str": {
+      "result": false,
+      "time": 0.05329608917236328,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:33:10",
+    "guidance_input_tokens": 522,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:33:15",
+    "duration": "0:00:04.873998"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

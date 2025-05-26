@@ -1,0 +1,53 @@
+{
+  "code": "def select_words(s, n):\n    words = s.split()\n    result = []\n    vowels = \"aeiouAEIOU\"\n    for word in words:\n        consonant_count = 0\n        for char in word:\n            if char not in vowels:\n                consonant_count += 1\n        if consonant_count == n:\n            result.append(word)\n    return result",
+  "results": {
+    "assert select_words(\"Mary had a little lamb\", 4) == [\"little\"], \"First test error: \" + str(select_words(\"Mary had a little lamb\", 4))": {
+      "result": true,
+      "time": 0.05728650093078613,
+      "error": null
+    },
+    "assert select_words(\"Mary had a little lamb\", 3) == [\"Mary\", \"lamb\"], \"Second test error: \" + str(select_words(\"Mary had a little lamb\", 3))": {
+      "result": true,
+      "time": 0.04840445518493652,
+      "error": null
+    },
+    "assert select_words(\"simple white space\", 2) == [], \"Third test error: \" + str(select_words(\"simple white space\", 2))": {
+      "result": true,
+      "time": 0.04299521446228027,
+      "error": null
+    },
+    "assert select_words(\"Hello world\", 4) == [\"world\"], \"Fourth test error: \" + str(select_words(\"Hello world\", 4))": {
+      "result": true,
+      "time": 0.04814887046813965,
+      "error": null
+    },
+    "assert select_words(\"Uncle sam\", 3) == [\"Uncle\"], \"Fifth test error: \" + str(select_words(\"Uncle sam\", 3))": {
+      "result": true,
+      "time": 0.051905155181884766,
+      "error": null
+    },
+    "assert select_words(\"\", 4) == [], \"1st edge test error: \" + str(select_words(\"\", 4))": {
+      "result": true,
+      "time": 0.05176997184753418,
+      "error": null
+    },
+    "assert select_words(\"a b c d e f\", 1) == [\"b\", \"c\", \"d\", \"f\"], \"2nd edge test error: \" + str(select_words(\"a b c d e f\", 1))": {
+      "result": true,
+      "time": 0.04350686073303223,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:39:57",
+    "guidance_input_tokens": 659,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:40:01",
+    "duration": "0:00:04.464551"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

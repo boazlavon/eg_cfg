@@ -1,0 +1,38 @@
+{
+  "code": "import hashlib\n\ndef string_to_md5(text):\n    if text == '':\n        return None\n    md5_hash = hashlib.md5()\n    encoded_text = text.encode('utf-8')\n    md5_hash.update(encoded_text)\n    hex_digest = md5_hash.hexdigest()\n    return hex_digest",
+  "results": {
+    "assert string_to_md5('Hello world') == '3e25960a79dbc69b674cd4ec67a72c62'": {
+      "result": true,
+      "time": 0.07786893844604492,
+      "error": null
+    },
+    "assert string_to_md5('') == None": {
+      "result": true,
+      "time": 0.0784757137298584,
+      "error": null
+    },
+    "assert string_to_md5('A B C') == '0ef78513b0cb8cef12743f5aeb35f888'": {
+      "result": true,
+      "time": 0.07404088973999023,
+      "error": null
+    },
+    "assert string_to_md5('password') == '5f4dcc3b5aa765d61d8327deb882cf99'": {
+      "result": true,
+      "time": 0.07609748840332031,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:45:07",
+    "guidance_input_tokens": 579,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:45:10",
+    "duration": "0:00:02.997922"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

@@ -1,0 +1,38 @@
+{
+  "code": "def unique_digits(x):\n    result = []\n    for num in x:\n        has_even_digit = False\n        temp = num\n        while temp > 0:\n            digit = temp % 10\n            if digit % 2 == 0:\n                has_even_digit = True\n                break\n            temp = temp // 10\n        if not has_even_digit:\n            result.append(num)\n    result.sort()\n    return result",
+  "results": {
+    "assert unique_digits([15, 33, 1422, 1]) == [1, 15, 33]": {
+      "result": true,
+      "time": 0.049713850021362305,
+      "error": null
+    },
+    "assert unique_digits([152, 323, 1422, 10]) == []": {
+      "result": true,
+      "time": 0.05143165588378906,
+      "error": null
+    },
+    "assert unique_digits([12345, 2033, 111, 151]) == [111, 151]": {
+      "result": true,
+      "time": 0.052620649337768555,
+      "error": null
+    },
+    "assert unique_digits([135, 103, 31]) == [31, 135]": {
+      "result": true,
+      "time": 0.05498242378234863,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:38:33",
+    "guidance_input_tokens": 605,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:38:36",
+    "duration": "0:00:03.520265"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

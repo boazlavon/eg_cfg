@@ -1,0 +1,17 @@
+{
+  "code": "def find_zero(xs):\n    degree = len(xs) - 1\n    if degree % 2 != 0:\n        raise ValueError(\"The number of coefficients must be even.\")\n    if xs[-1] == 0:\n        raise ValueError(\"The largest coefficient must be non-zero.\")\n    def poly(x):\n        result = 0\n        for i in range(len(xs)):\n            term = xs[i] * (x ** (degree - i))\n            result += term\n        return result\n    left = -1.0\n    right = 1.0\n    while poly(left) * poly(right) > 0:\n        left *= 2\n        right *= 2\n    for _ in range(100):\n        mid = (left + right) / 2\n        if poly(mid) == 0:\n            return mid\n        if poly(left) * poly(mid) < 0:\n            right = mid\n        else:\n            left = mid\n    return (left + right) / 2",
+  "results": {},
+  "passed": true,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": true,
+  "stats": {
+    "start_time": "2025-05-26 20:08:55",
+    "guidance_input_tokens": 673,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:09:00",
+    "duration": "0:00:05.239817"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

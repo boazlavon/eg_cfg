@@ -1,0 +1,38 @@
+{
+  "code": "def decimal_to_binary(decimal):\n    if decimal == 0:\n        binary_str = \"0\"\n    else:\n        binary_str = \"\"\n        num = decimal\n        while num > 0:\n            remainder = num % 2\n            binary_str = str(remainder) + binary_str\n            num = num // 2\n    return \"db\" + binary_str + \"db\"",
+  "results": {
+    "assert decimal_to_binary(0) == \"db0db\"": {
+      "result": true,
+      "time": 0.04596424102783203,
+      "error": null
+    },
+    "assert decimal_to_binary(32) == \"db100000db\"": {
+      "result": true,
+      "time": 0.04877638816833496,
+      "error": null
+    },
+    "assert decimal_to_binary(103) == \"db1100111db\"": {
+      "result": true,
+      "time": 0.049242496490478516,
+      "error": null
+    },
+    "assert decimal_to_binary(15) == \"db1111db\", \"This prints if this assert fails 1 (good for debugging!)\"": {
+      "result": true,
+      "time": 0.04591798782348633,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:35:46",
+    "guidance_input_tokens": 621,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:35:50",
+    "duration": "0:00:04.763683"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

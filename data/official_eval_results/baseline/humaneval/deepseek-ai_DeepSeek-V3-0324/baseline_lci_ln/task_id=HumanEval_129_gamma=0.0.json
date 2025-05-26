@@ -1,0 +1,73 @@
+{
+  "code": "def minPath(grid, k):\n    n = len(grid)\n    min_path = None\n    for i in range(n):\n        for j in range(n):\n            path = []\n            path.append(grid[i][j])\n            queue = []\n            queue.append((i, j, path))\n            while queue:\n                x, y, current_path = queue.pop(0)\n                if len(current_path) == k:\n                    if min_path is None or current_path < min_path:\n                        min_path = current_path.copy()\n                    continue\n                for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]:\n                    nx = x + dx\n                    ny = y + dy\n                    if 0 <= nx < n and 0 <= ny < n:\n                        new_path = current_path.copy()\n                        new_path.append(grid[nx][ny])\n                        queue.append((nx, ny, new_path))\n    return min_path",
+  "results": {
+    "assert minPath([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3) == [1, 2, 1]": {
+      "result": true,
+      "time": 0.05351090431213379,
+      "error": null
+    },
+    "assert minPath([[5, 9, 3], [4, 1, 6], [7, 8, 2]], 1) == [1]": {
+      "result": true,
+      "time": 0.054167985916137695,
+      "error": null
+    },
+    "assert minPath([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]], 4) == [1, 2, 1, 2]": {
+      "result": true,
+      "time": 0.05179953575134277,
+      "error": null
+    },
+    "assert minPath([[6, 4, 13, 10], [5, 7, 12, 1], [3, 16, 11, 15], [8, 14, 9, 2]], 7) == [1, 10, 1, 10, 1, 10, 1]": {
+      "result": true,
+      "time": 0.07011198997497559,
+      "error": null
+    },
+    "assert minPath([[8, 14, 9, 2], [6, 4, 13, 15], [5, 7, 1, 12], [3, 10, 11, 16]], 5) == [1, 7, 1, 7, 1]": {
+      "result": true,
+      "time": 0.05636882781982422,
+      "error": null
+    },
+    "assert minPath([[11, 8, 7, 2], [5, 16, 14, 4], [9, 3, 15, 6], [12, 13, 10, 1]], 9) == [1, 6, 1, 6, 1, 6, 1, 6, 1]": {
+      "result": true,
+      "time": 0.6004934310913086,
+      "error": null
+    },
+    "assert minPath([[12, 13, 10, 1], [9, 3, 15, 6], [5, 16, 14, 4], [11, 8, 7, 2]], 12) == [1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6]": {
+      "result": false,
+      "time": 10.042835235595703,
+      "error": "Timeout"
+    },
+    "assert minPath([[2, 7, 4], [3, 1, 5], [6, 8, 9]], 8) == [1, 3, 1, 3, 1, 3, 1, 3]": {
+      "result": true,
+      "time": 0.06911945343017578,
+      "error": null
+    },
+    "assert minPath([[6, 1, 5], [3, 8, 9], [2, 7, 4]], 8) == [1, 5, 1, 5, 1, 5, 1, 5]": {
+      "result": true,
+      "time": 0.06633520126342773,
+      "error": null
+    },
+    "assert minPath([[1, 2], [3, 4]], 10) == [1, 2, 1, 2, 1, 2, 1, 2, 1, 2]": {
+      "result": true,
+      "time": 0.053870201110839844,
+      "error": null
+    },
+    "assert minPath([[1, 3], [3, 2]], 10) == [1, 3, 1, 3, 1, 3, 1, 3, 1, 3]": {
+      "result": true,
+      "time": 0.05179572105407715,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9090909090909091,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:41:29",
+    "guidance_input_tokens": 857,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:41:46",
+    "duration": "0:00:17.097108"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

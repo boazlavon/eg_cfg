@@ -1,0 +1,58 @@
+{
+  "code": "def even_odd_palindrome(n):\n    def is_palindrome(x):\n        original = x\n        reversed_num = 0\n        while x > 0:\n            digit = x % 10\n            reversed_num = reversed_num * 10 + digit\n            x = x // 10\n        return original == reversed_num\n    \n    even_count = 0\n    odd_count = 0\n    for num in range(1, n + 1):\n        if is_palindrome(num):\n            if num % 2 == 0:\n                even_count += 1\n            else:\n                odd_count += 1\n    return (even_count, odd_count)",
+  "results": {
+    "assert even_odd_palindrome(123) == (8, 13)": {
+      "result": true,
+      "time": 0.061321258544921875,
+      "error": null
+    },
+    "assert even_odd_palindrome(12) == (4, 6)": {
+      "result": true,
+      "time": 0.053108930587768555,
+      "error": null
+    },
+    "assert even_odd_palindrome(3) == (1, 2)": {
+      "result": true,
+      "time": 0.051029205322265625,
+      "error": null
+    },
+    "assert even_odd_palindrome(63) == (6, 8)": {
+      "result": true,
+      "time": 0.050743818283081055,
+      "error": null
+    },
+    "assert even_odd_palindrome(25) == (5, 6)": {
+      "result": true,
+      "time": 0.05321359634399414,
+      "error": null
+    },
+    "assert even_odd_palindrome(19) == (4, 6)": {
+      "result": true,
+      "time": 0.05344891548156738,
+      "error": null
+    },
+    "assert even_odd_palindrome(9) == (4, 5), \"This prints if this assert fails 1 (good for debugging!)\"": {
+      "result": true,
+      "time": 0.047791481018066406,
+      "error": null
+    },
+    "assert even_odd_palindrome(1) == (0, 1), \"This prints if this assert fails 2 (also good for debugging!)\"": {
+      "result": true,
+      "time": 0.05349373817443848,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:38:41",
+    "guidance_input_tokens": 689,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:38:48",
+    "duration": "0:00:06.214259"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

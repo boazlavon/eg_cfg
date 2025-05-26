@@ -1,0 +1,68 @@
+{
+  "code": "def tri(n):\n    if n == 0:\n        return [1]\n    if n == 1:\n        return [1, 3]\n    tribonacci = [1, 3]\n    for i in range(2, n + 1):\n        if i % 2 == 0:\n            value = 1 + i // 2\n        else:\n            value = tribonacci[i - 1] + tribonacci[i - 2] + (1 + (i + 1) // 2 if i + 1 <= n else 0)\n        tribonacci.append(value)\n    return tribonacci",
+  "results": {
+    "assert tri(3) == [1, 3, 2.0, 8.0]": {
+      "result": false,
+      "time": 0.051963090896606445,
+      "error": null
+    },
+    "assert tri(4) == [1, 3, 2.0, 8.0, 3.0]": {
+      "result": true,
+      "time": 0.05327439308166504,
+      "error": null
+    },
+    "assert tri(5) == [1, 3, 2.0, 8.0, 3.0, 15.0]": {
+      "result": false,
+      "time": 0.05172133445739746,
+      "error": null
+    },
+    "assert tri(6) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0]": {
+      "result": true,
+      "time": 0.053139448165893555,
+      "error": null
+    },
+    "assert tri(7) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0]": {
+      "result": false,
+      "time": 0.05341291427612305,
+      "error": null
+    },
+    "assert tri(8) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0]": {
+      "result": true,
+      "time": 0.051030874252319336,
+      "error": null
+    },
+    "assert tri(9) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0]": {
+      "result": false,
+      "time": 0.05131411552429199,
+      "error": null
+    },
+    "assert tri(20) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0, 6.0, 48.0, 7.0, 63.0, 8.0, 80.0, 9.0, 99.0, 10.0, 120.0, 11.0]": {
+      "result": true,
+      "time": 0.05294489860534668,
+      "error": null
+    },
+    "assert tri(0) == [1]": {
+      "result": true,
+      "time": 0.053075551986694336,
+      "error": null
+    },
+    "assert tri(1) == [1, 3]": {
+      "result": true,
+      "time": 0.05182218551635742,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.6,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:41:46",
+    "guidance_input_tokens": 707,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:41:52",
+    "duration": "0:00:05.790171"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

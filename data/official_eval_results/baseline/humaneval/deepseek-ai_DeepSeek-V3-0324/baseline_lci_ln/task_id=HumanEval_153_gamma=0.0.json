@@ -1,0 +1,63 @@
+{
+  "code": "def Strongest_Extension(class_name, extensions):\n    max_strength = None\n    strongest_extension = None\n    \n    for extension in extensions:\n        cap = 0\n        sm = 0\n        \n        for char in extension:\n            if char.isupper():\n                cap += 1\n            elif char.islower():\n                sm += 1\n        \n        strength = cap - sm\n        \n        if max_strength is None or strength > max_strength:\n            max_strength = strength\n            strongest_extension = extension\n    \n    result = class_name + '.' + strongest_extension\n    return result",
+  "results": {
+    "assert Strongest_Extension('Watashi', ['tEN', 'niNE', 'eIGHt8OKe']) == 'Watashi.eIGHt8OKe'": {
+      "result": true,
+      "time": 0.05508589744567871,
+      "error": null
+    },
+    "assert Strongest_Extension('Boku123', ['nani', 'NazeDa', 'YEs.WeCaNe', '32145tggg']) == 'Boku123.YEs.WeCaNe'": {
+      "result": true,
+      "time": 0.05046224594116211,
+      "error": null
+    },
+    "assert Strongest_Extension('__YESIMHERE', ['t', 'eMptY', 'nothing', 'zeR00', 'NuLl__', '123NoooneB321']) == '__YESIMHERE.NuLl__'": {
+      "result": true,
+      "time": 0.05095529556274414,
+      "error": null
+    },
+    "assert Strongest_Extension('K', ['Ta', 'TAR', 't234An', 'cosSo']) == 'K.TAR'": {
+      "result": true,
+      "time": 0.05086398124694824,
+      "error": null
+    },
+    "assert Strongest_Extension('__HAHA', ['Tab', '123', '781345', '-_-']) == '__HAHA.123'": {
+      "result": true,
+      "time": 0.052642107009887695,
+      "error": null
+    },
+    "assert Strongest_Extension('YameRore', ['HhAas', 'okIWILL123', 'WorkOut', 'Fails', '-_-']) == 'YameRore.okIWILL123'": {
+      "result": true,
+      "time": 0.05335545539855957,
+      "error": null
+    },
+    "assert Strongest_Extension('finNNalLLly', ['Die', 'NowW', 'Wow', 'WoW']) == 'finNNalLLly.WoW'": {
+      "result": true,
+      "time": 0.05765986442565918,
+      "error": null
+    },
+    "assert Strongest_Extension('_', ['Bb', '91245']) == '_.Bb'": {
+      "result": true,
+      "time": 0.05469846725463867,
+      "error": null
+    },
+    "assert Strongest_Extension('Sp', ['671235', 'Bb']) == 'Sp.671235'": {
+      "result": true,
+      "time": 0.054175376892089844,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:43:59",
+    "guidance_input_tokens": 745,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:44:01",
+    "duration": "0:00:02.283982"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

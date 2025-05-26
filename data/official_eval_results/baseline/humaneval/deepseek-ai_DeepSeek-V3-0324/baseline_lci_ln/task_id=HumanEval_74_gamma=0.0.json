@@ -1,0 +1,63 @@
+{
+  "code": "def total_match(lst1, lst2):\n    def count_chars(lst):\n        total = 0\n        for s in lst:\n            total += len(s)\n        return total\n    \n    count1 = count_chars(lst1)\n    count2 = count_chars(lst2)\n    \n    if count1 < count2:\n        return lst1\n    elif count2 < count1:\n        return lst2\n    else:\n        return lst1",
+  "results": {
+    "assert total_match([], []) == []": {
+      "result": true,
+      "time": 0.05863070487976074,
+      "error": null
+    },
+    "assert total_match(['hi', 'admin'], ['hi', 'hi']) == ['hi', 'hi']": {
+      "result": true,
+      "time": 0.05596351623535156,
+      "error": null
+    },
+    "assert total_match(['hi', 'admin'], ['hi', 'hi', 'admin', 'project']) == ['hi', 'admin']": {
+      "result": true,
+      "time": 0.05427217483520508,
+      "error": null
+    },
+    "assert total_match(['4'], ['1', '2', '3', '4', '5']) == ['4']": {
+      "result": true,
+      "time": 0.0541532039642334,
+      "error": null
+    },
+    "assert total_match(['hi', 'admin'], ['hI', 'Hi']) == ['hI', 'Hi']": {
+      "result": true,
+      "time": 0.0519711971282959,
+      "error": null
+    },
+    "assert total_match(['hi', 'admin'], ['hI', 'hi', 'hi']) == ['hI', 'hi', 'hi']": {
+      "result": true,
+      "time": 0.051528215408325195,
+      "error": null
+    },
+    "assert total_match(['hi', 'admin'], ['hI', 'hi', 'hii']) == ['hi', 'admin']": {
+      "result": true,
+      "time": 0.05274391174316406,
+      "error": null
+    },
+    "assert total_match([], ['this']) == []": {
+      "result": true,
+      "time": 0.0531461238861084,
+      "error": null
+    },
+    "assert total_match(['this'], []) == []": {
+      "result": true,
+      "time": 0.05415678024291992,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:35:13",
+    "guidance_input_tokens": 674,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:35:15",
+    "duration": "0:00:02.446524"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

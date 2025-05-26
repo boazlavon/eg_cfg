@@ -1,0 +1,43 @@
+{
+  "code": "def closest_integer(value):\n    number = float(value)\n    integer_part = int(number)\n    decimal_part = number - integer_part\n    if decimal_part == 0:\n        return integer_part\n    absolute_decimal = abs(decimal_part)\n    if absolute_decimal > 0.5:\n        if number > 0:\n            rounded = integer_part + 1\n        else:\n            rounded = integer_part - 1\n    elif absolute_decimal < 0.5:\n        rounded = integer_part\n    else:\n        if number > 0:\n            rounded = integer_part + 1\n        else:\n            rounded = integer_part - 1\n    return rounded",
+  "results": {
+    "assert closest_integer(\"10\") == 10, \"Test 1\"": {
+      "result": true,
+      "time": 0.06199955940246582,
+      "error": null
+    },
+    "assert closest_integer(\"14.5\") == 15, \"Test 2\"": {
+      "result": true,
+      "time": 0.04632234573364258,
+      "error": null
+    },
+    "assert closest_integer(\"-15.5\") == -16, \"Test 3\"": {
+      "result": true,
+      "time": 0.050933122634887695,
+      "error": null
+    },
+    "assert closest_integer(\"15.3\") == 15, \"Test 3\"": {
+      "result": true,
+      "time": 0.0536806583404541,
+      "error": null
+    },
+    "assert closest_integer(\"0\") == 0, \"Test 0\"": {
+      "result": true,
+      "time": 0.05064868927001953,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:38:11",
+    "guidance_input_tokens": 582,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:38:15",
+    "duration": "0:00:03.847395"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

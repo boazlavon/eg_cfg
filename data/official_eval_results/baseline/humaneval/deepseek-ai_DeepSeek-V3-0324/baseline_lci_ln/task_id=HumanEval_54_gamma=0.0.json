@@ -1,0 +1,53 @@
+{
+  "code": "def same_chars(s0, s1):\n    chars0 = {}\n    for char in s0:\n        if char in chars0:\n            chars0[char] += 1\n        else:\n            chars0[char] = 1\n    chars1 = {}\n    for char in s1:\n        if char in chars1:\n            chars1[char] += 1\n        else:\n            chars1[char] = 1\n    if len(chars0) != len(chars1):\n        return False\n    for char in chars0:\n        if char not in chars1:\n            return False\n    return True",
+  "results": {
+    "assert same_chars('eabcdzzzz', 'dddzzzzzzzddeddabc') == True": {
+      "result": true,
+      "time": 0.054473161697387695,
+      "error": null
+    },
+    "assert same_chars('abcd', 'dddddddabc') == True": {
+      "result": true,
+      "time": 0.0522003173828125,
+      "error": null
+    },
+    "assert same_chars('dddddddabc', 'abcd') == True": {
+      "result": true,
+      "time": 0.048174142837524414,
+      "error": null
+    },
+    "assert same_chars('eabcd', 'dddddddabc') == False": {
+      "result": true,
+      "time": 0.05060553550720215,
+      "error": null
+    },
+    "assert same_chars('abcd', 'dddddddabcf') == False": {
+      "result": true,
+      "time": 0.052139997482299805,
+      "error": null
+    },
+    "assert same_chars('eabcdzzzz', 'dddzzzzzzzddddabc') == False": {
+      "result": true,
+      "time": 0.05182456970214844,
+      "error": null
+    },
+    "assert same_chars('aabb', 'aaccc') == False": {
+      "result": true,
+      "time": 0.04952359199523926,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:33:22",
+    "guidance_input_tokens": 644,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:33:25",
+    "duration": "0:00:02.662099"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

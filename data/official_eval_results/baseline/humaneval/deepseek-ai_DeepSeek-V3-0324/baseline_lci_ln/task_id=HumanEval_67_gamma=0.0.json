@@ -1,0 +1,53 @@
+{
+  "code": "def fruit_distribution(s, n):\n    parts = s.split()\n    apples = 0\n    oranges = 0\n    mangoes = 0\n    for i in range(len(parts)):\n        if parts[i] == \"apples\":\n            apples = int(parts[i-1])\n        if parts[i] == \"oranges\":\n            oranges = int(parts[i-1])\n    mangoes = n - apples - oranges\n    return mangoes",
+  "results": {
+    "assert fruit_distribution(\"5 apples and 6 oranges\",19) == 8": {
+      "result": true,
+      "time": 0.05184197425842285,
+      "error": null
+    },
+    "assert fruit_distribution(\"5 apples and 6 oranges\",21) == 10": {
+      "result": true,
+      "time": 0.05463290214538574,
+      "error": null
+    },
+    "assert fruit_distribution(\"0 apples and 1 oranges\",3) == 2": {
+      "result": true,
+      "time": 0.0540463924407959,
+      "error": null
+    },
+    "assert fruit_distribution(\"1 apples and 0 oranges\",3) == 2": {
+      "result": true,
+      "time": 0.05074477195739746,
+      "error": null
+    },
+    "assert fruit_distribution(\"2 apples and 3 oranges\",100) == 95": {
+      "result": true,
+      "time": 0.05245089530944824,
+      "error": null
+    },
+    "assert fruit_distribution(\"2 apples and 3 oranges\",5) == 0": {
+      "result": true,
+      "time": 0.051593780517578125,
+      "error": null
+    },
+    "assert fruit_distribution(\"1 apples and 100 oranges\",120) == 19": {
+      "result": true,
+      "time": 0.05231666564941406,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:34:42",
+    "guidance_input_tokens": 691,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:34:45",
+    "duration": "0:00:02.753902"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

@@ -1,0 +1,63 @@
+{
+  "code": "def reverse_delete(s, c):\n    result_chars = []\n    for char in s:\n        should_keep = True\n        for c_char in c:\n            if char == c_char:\n                should_keep = False\n                break\n        if should_keep:\n            result_chars.append(char)\n    result_str = ''.join(result_chars)\n    is_palindrome = True\n    length = len(result_str)\n    for i in range(length // 2):\n        if result_str[i] != result_str[length - 1 - i]:\n            is_palindrome = False\n            break\n    return (result_str, is_palindrome)",
+  "results": {
+    "assert reverse_delete(\"abcde\",\"ae\") == ('bcd',False)": {
+      "result": true,
+      "time": 0.05184578895568848,
+      "error": null
+    },
+    "assert reverse_delete(\"abcdef\", \"b\") == ('acdef',False)": {
+      "result": true,
+      "time": 0.05379915237426758,
+      "error": null
+    },
+    "assert reverse_delete(\"abcdedcba\",\"ab\") == ('cdedc',True)": {
+      "result": true,
+      "time": 0.0534212589263916,
+      "error": null
+    },
+    "assert reverse_delete(\"dwik\",\"w\") == ('dik',False)": {
+      "result": true,
+      "time": 0.05508756637573242,
+      "error": null
+    },
+    "assert reverse_delete(\"a\",\"a\") == ('',True)": {
+      "result": true,
+      "time": 0.052358388900756836,
+      "error": null
+    },
+    "assert reverse_delete(\"abcdedcba\",\"\") == ('abcdedcba',True)": {
+      "result": true,
+      "time": 0.05426645278930664,
+      "error": null
+    },
+    "assert reverse_delete(\"abcdedcba\",\"v\") == ('abcdedcba',True)": {
+      "result": true,
+      "time": 0.05288863182067871,
+      "error": null
+    },
+    "assert reverse_delete(\"vabba\",\"v\") == ('abba',True)": {
+      "result": true,
+      "time": 0.05425071716308594,
+      "error": null
+    },
+    "assert reverse_delete(\"mamma\", \"mia\") == (\"\", True)": {
+      "result": true,
+      "time": 0.05309438705444336,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:39:03",
+    "guidance_input_tokens": 642,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:39:07",
+    "duration": "0:00:04.228099"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

@@ -1,0 +1,58 @@
+{
+  "code": "def pluck(arr):\n    if not arr:\n        return []\n    smallest_even = None\n    smallest_index = None\n    for index in range(len(arr)):\n        value = arr[index]\n        if value % 2 == 0:\n            if smallest_even is None or value < smallest_even:\n                smallest_even = value\n                smallest_index = index\n    if smallest_even is None:\n        return []\n    return [smallest_even, smallest_index]",
+  "results": {
+    "assert pluck([4,2,3]) == [2, 1], \"Error\"": {
+      "result": true,
+      "time": 0.051459550857543945,
+      "error": null
+    },
+    "assert pluck([1,2,3]) == [2, 1], \"Error\"": {
+      "result": true,
+      "time": 0.0510706901550293,
+      "error": null
+    },
+    "assert pluck([]) == [], \"Error\"": {
+      "result": true,
+      "time": 0.05181479454040527,
+      "error": null
+    },
+    "assert pluck([5, 0, 3, 0, 4, 2]) == [0, 1], \"Error\"": {
+      "result": true,
+      "time": 0.05179309844970703,
+      "error": null
+    },
+    "assert pluck([1, 2, 3, 0, 5, 3]) == [0, 3], \"Error\"": {
+      "result": true,
+      "time": 0.054714202880859375,
+      "error": null
+    },
+    "assert pluck([5, 4, 8, 4 ,8]) == [4, 1], \"Error\"": {
+      "result": true,
+      "time": 0.05381059646606445,
+      "error": null
+    },
+    "assert pluck([7, 6, 7, 1]) == [6, 1], \"Error\"": {
+      "result": true,
+      "time": 0.05122852325439453,
+      "error": null
+    },
+    "assert pluck([7, 9, 7, 1]) == [], \"Error\"": {
+      "result": true,
+      "time": 0.05228877067565918,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:34:45",
+    "guidance_input_tokens": 788,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:34:48",
+    "duration": "0:00:03.041914"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

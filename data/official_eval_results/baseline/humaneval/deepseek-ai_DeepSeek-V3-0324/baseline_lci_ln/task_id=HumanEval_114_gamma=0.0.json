@@ -1,0 +1,78 @@
+{
+  "code": "def minSubArraySum(nums):\n    current_min = nums[0]\n    global_min = nums[0]\n    for num in nums[1:]:\n        current_min = min(num, current_min + num)\n        global_min = min(global_min, current_min)\n    return global_min",
+  "results": {
+    "assert minSubArraySum([2, 3, 4, 1, 2, 4]) == 1, \"This prints if this assert fails 1 (good for debugging!)\"": {
+      "result": true,
+      "time": 0.05364227294921875,
+      "error": null
+    },
+    "assert minSubArraySum([-1, -2, -3]) == -6": {
+      "result": true,
+      "time": 0.05265212059020996,
+      "error": null
+    },
+    "assert minSubArraySum([-1, -2, -3, 2, -10]) == -14": {
+      "result": true,
+      "time": 0.0506138801574707,
+      "error": null
+    },
+    "assert minSubArraySum([-9999999999999999]) == -9999999999999999": {
+      "result": true,
+      "time": 0.050658226013183594,
+      "error": null
+    },
+    "assert minSubArraySum([0, 10, 20, 1000000]) == 0": {
+      "result": true,
+      "time": 0.050626277923583984,
+      "error": null
+    },
+    "assert minSubArraySum([-1, -2, -3, 10, -5]) == -6": {
+      "result": true,
+      "time": 0.049542903900146484,
+      "error": null
+    },
+    "assert minSubArraySum([100, -1, -2, -3, 10, -5]) == -6": {
+      "result": true,
+      "time": 0.05103302001953125,
+      "error": null
+    },
+    "assert minSubArraySum([10, 11, 13, 8, 3, 4]) == 3": {
+      "result": true,
+      "time": 0.050894975662231445,
+      "error": null
+    },
+    "assert minSubArraySum([100, -33, 32, -1, 0, -2]) == -33": {
+      "result": true,
+      "time": 0.051984548568725586,
+      "error": null
+    },
+    "assert minSubArraySum([-10]) == -10, \"This prints if this assert fails 2 (also good for debugging!)\"": {
+      "result": true,
+      "time": 0.05318117141723633,
+      "error": null
+    },
+    "assert minSubArraySum([7]) == 7": {
+      "result": true,
+      "time": 0.052661895751953125,
+      "error": null
+    },
+    "assert minSubArraySum([1, -1]) == -1": {
+      "result": true,
+      "time": 0.05008196830749512,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:39:12",
+    "guidance_input_tokens": 571,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:39:15",
+    "duration": "0:00:02.759472"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

@@ -1,0 +1,78 @@
+{
+  "code": "def is_prime(n):\n    if n <= 1:\n        return False\n    if n == 2:\n        return True\n    if n % 2 == 0:\n        return False\n    max_divisor = int(n ** 0.5) + 1\n    for i in range(3, max_divisor, 2):\n        if n % i == 0:\n            return False\n    return True",
+  "results": {
+    "assert is_prime(6) == False": {
+      "result": true,
+      "time": 0.05940079689025879,
+      "error": null
+    },
+    "assert is_prime(101) == True": {
+      "result": true,
+      "time": 0.04958295822143555,
+      "error": null
+    },
+    "assert is_prime(11) == True": {
+      "result": true,
+      "time": 0.05155539512634277,
+      "error": null
+    },
+    "assert is_prime(13441) == True": {
+      "result": true,
+      "time": 0.05107831954956055,
+      "error": null
+    },
+    "assert is_prime(61) == True": {
+      "result": true,
+      "time": 0.05223989486694336,
+      "error": null
+    },
+    "assert is_prime(4) == False": {
+      "result": true,
+      "time": 0.05107688903808594,
+      "error": null
+    },
+    "assert is_prime(1) == False": {
+      "result": true,
+      "time": 0.049657583236694336,
+      "error": null
+    },
+    "assert is_prime(5) == True": {
+      "result": true,
+      "time": 0.05308103561401367,
+      "error": null
+    },
+    "assert is_prime(17) == True": {
+      "result": true,
+      "time": 0.048537254333496094,
+      "error": null
+    },
+    "assert is_prime(5 * 17) == False": {
+      "result": true,
+      "time": 0.050504446029663086,
+      "error": null
+    },
+    "assert is_prime(11 * 7) == False": {
+      "result": true,
+      "time": 0.05072903633117676,
+      "error": null
+    },
+    "assert is_prime(13441 * 19) == False": {
+      "result": true,
+      "time": 0.05213141441345215,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:08:49",
+    "guidance_input_tokens": 590,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:08:55",
+    "duration": "0:00:05.736662"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

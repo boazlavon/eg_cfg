@@ -1,0 +1,148 @@
+{
+  "code": "def file_name_check(file_name):\n    # Check the number of dots\n    dot_count = file_name.count('.')\n    if dot_count != 1:\n        return 'No'\n    \n    # Split the file name into name and extension\n    parts = file_name.split('.')\n    name_part = parts[0]\n    extension_part = parts[1]\n    \n    # Check if the name part is empty\n    if not name_part:\n        return 'No'\n    \n    # Check if the name part starts with a Latin alphabet letter\n    first_char = name_part[0]\n    if not ((first_char >= 'a' and first_char <= 'z') or (first_char >= 'A' and first_char <= 'Z')):\n        return 'No'\n    \n    # Check the number of digits in the name part\n    digit_count = 0\n    for char in name_part:\n        if char >= '0' and char <= '9':\n            digit_count += 1\n    if digit_count > 3:\n        return 'No'\n    \n    # Check the extension\n    valid_extensions = ['txt', 'exe', 'dll']\n    if extension_part not in valid_extensions:\n        return 'No'\n    \n    # If all checks pass\n    return 'Yes'",
+  "results": {
+    "assert file_name_check(\"example.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.054963111877441406,
+      "error": null
+    },
+    "assert file_name_check(\"1example.dll\") == 'No'": {
+      "result": true,
+      "time": 0.05650496482849121,
+      "error": null
+    },
+    "assert file_name_check('s1sdf3.asd') == 'No'": {
+      "result": true,
+      "time": 0.05051994323730469,
+      "error": null
+    },
+    "assert file_name_check('K.dll') == 'Yes'": {
+      "result": true,
+      "time": 0.05228114128112793,
+      "error": null
+    },
+    "assert file_name_check('MY16FILE3.exe') == 'Yes'": {
+      "result": true,
+      "time": 0.05279111862182617,
+      "error": null
+    },
+    "assert file_name_check('His12FILE94.exe') == 'No'": {
+      "result": true,
+      "time": 0.043337106704711914,
+      "error": null
+    },
+    "assert file_name_check('_Y.txt') == 'No'": {
+      "result": true,
+      "time": 0.04335927963256836,
+      "error": null
+    },
+    "assert file_name_check('?aREYA.exe') == 'No'": {
+      "result": true,
+      "time": 0.04587435722351074,
+      "error": null
+    },
+    "assert file_name_check('/this_is_valid.dll') == 'No'": {
+      "result": true,
+      "time": 0.05037260055541992,
+      "error": null
+    },
+    "assert file_name_check('this_is_valid.wow') == 'No'": {
+      "result": true,
+      "time": 0.050119876861572266,
+      "error": null
+    },
+    "assert file_name_check('this_is_valid.txt') == 'Yes'": {
+      "result": true,
+      "time": 0.05304670333862305,
+      "error": null
+    },
+    "assert file_name_check('this_is_valid.txtexe') == 'No'": {
+      "result": true,
+      "time": 0.05159139633178711,
+      "error": null
+    },
+    "assert file_name_check('#this2_i4s_5valid.ten') == 'No'": {
+      "result": true,
+      "time": 0.05010485649108887,
+      "error": null
+    },
+    "assert file_name_check('@this1_is6_valid.exe') == 'No'": {
+      "result": true,
+      "time": 0.049592018127441406,
+      "error": null
+    },
+    "assert file_name_check('this_is_12valid.6exe4.txt') == 'No'": {
+      "result": true,
+      "time": 0.050933837890625,
+      "error": null
+    },
+    "assert file_name_check('all.exe.txt') == 'No'": {
+      "result": true,
+      "time": 0.053673505783081055,
+      "error": null
+    },
+    "assert file_name_check('I563_No.exe') == 'Yes'": {
+      "result": true,
+      "time": 0.05225563049316406,
+      "error": null
+    },
+    "assert file_name_check('Is3youfault.txt') == 'Yes'": {
+      "result": true,
+      "time": 0.05155229568481445,
+      "error": null
+    },
+    "assert file_name_check('no_one#knows.dll') == 'Yes'": {
+      "result": true,
+      "time": 0.051882028579711914,
+      "error": null
+    },
+    "assert file_name_check('1I563_Yes3.exe') == 'No'": {
+      "result": true,
+      "time": 0.046499013900756836,
+      "error": null
+    },
+    "assert file_name_check('I563_Yes3.txtt') == 'No'": {
+      "result": true,
+      "time": 0.05229020118713379,
+      "error": null
+    },
+    "assert file_name_check('final..txt') == 'No'": {
+      "result": true,
+      "time": 0.05009269714355469,
+      "error": null
+    },
+    "assert file_name_check('final132') == 'No'": {
+      "result": true,
+      "time": 0.051358699798583984,
+      "error": null
+    },
+    "assert file_name_check('_f4indsartal132.') == 'No'": {
+      "result": true,
+      "time": 0.050005197525024414,
+      "error": null
+    },
+    "assert file_name_check('.txt') == 'No'": {
+      "result": true,
+      "time": 0.04860854148864746,
+      "error": null
+    },
+    "assert file_name_check('s.') == 'No'": {
+      "result": true,
+      "time": 0.05234217643737793,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:42:36",
+    "guidance_input_tokens": 692,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:42:41",
+    "duration": "0:00:04.805501"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

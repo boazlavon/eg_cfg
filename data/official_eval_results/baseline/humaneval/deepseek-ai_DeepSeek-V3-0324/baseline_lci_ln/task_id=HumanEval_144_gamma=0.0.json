@@ -1,0 +1,83 @@
+{
+  "code": "def simplify(x, n):\n    # Split x into numerator and denominator\n    x_parts = x.split('/')\n    x_num = int(x_parts[0])\n    x_den = int(x_parts[1])\n    \n    # Split n into numerator and denominator\n    n_parts = n.split('/')\n    n_num = int(n_parts[0])\n    n_den = int(n_parts[1])\n    \n    # Multiply the numerators and denominators\n    product_num = x_num * n_num\n    product_den = x_den * n_den\n    \n    # Check if the product is a whole number\n    remainder = product_num % product_den\n    is_whole_number = remainder == 0\n    \n    return is_whole_number",
+  "results": {
+    "assert simplify(\"1/5\", \"5/1\") == True, 'test1'": {
+      "result": true,
+      "time": 0.05237627029418945,
+      "error": null
+    },
+    "assert simplify(\"1/6\", \"2/1\") == False, 'test2'": {
+      "result": true,
+      "time": 0.051581382751464844,
+      "error": null
+    },
+    "assert simplify(\"5/1\", \"3/1\") == True, 'test3'": {
+      "result": true,
+      "time": 0.05204486846923828,
+      "error": null
+    },
+    "assert simplify(\"7/10\", \"10/2\") == False, 'test4'": {
+      "result": true,
+      "time": 0.05210757255554199,
+      "error": null
+    },
+    "assert simplify(\"2/10\", \"50/10\") == True, 'test5'": {
+      "result": true,
+      "time": 0.05119037628173828,
+      "error": null
+    },
+    "assert simplify(\"7/2\", \"4/2\") == True, 'test6'": {
+      "result": true,
+      "time": 0.052983760833740234,
+      "error": null
+    },
+    "assert simplify(\"11/6\", \"6/1\") == True, 'test7'": {
+      "result": true,
+      "time": 0.047202348709106445,
+      "error": null
+    },
+    "assert simplify(\"2/3\", \"5/2\") == False, 'test8'": {
+      "result": true,
+      "time": 0.05228161811828613,
+      "error": null
+    },
+    "assert simplify(\"5/2\", \"3/5\") == False, 'test9'": {
+      "result": true,
+      "time": 0.04924726486206055,
+      "error": null
+    },
+    "assert simplify(\"2/4\", \"8/4\") == True, 'test10'": {
+      "result": true,
+      "time": 0.05565595626831055,
+      "error": null
+    },
+    "assert simplify(\"2/4\", \"4/2\") == True, 'test11'": {
+      "result": true,
+      "time": 0.05494379997253418,
+      "error": null
+    },
+    "assert simplify(\"1/5\", \"5/1\") == True, 'test12'": {
+      "result": true,
+      "time": 0.05639839172363281,
+      "error": null
+    },
+    "assert simplify(\"1/5\", \"1/5\") == False, 'test13'": {
+      "result": true,
+      "time": 0.06467247009277344,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:42:51",
+    "guidance_input_tokens": 635,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:42:57",
+    "duration": "0:00:06.423435"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

@@ -1,0 +1,53 @@
+{
+  "code": "def modp(n, p):\n    if n == 0:\n        return 1\n    current_result = 1\n    current_base = 2\n    remaining_power = n\n    while remaining_power > 0:\n        is_odd = remaining_power % 2 == 1\n        if is_odd:\n            current_result = (current_result * current_base) % p\n        squared_base = current_base * current_base\n        current_base = squared_base % p\n        remaining_power = remaining_power // 2\n    return current_result",
+  "results": {
+    "assert modp(3, 5) == 3": {
+      "result": true,
+      "time": 0.0503695011138916,
+      "error": null
+    },
+    "assert modp(1101, 101) == 2": {
+      "result": true,
+      "time": 0.049556732177734375,
+      "error": null
+    },
+    "assert modp(0, 101) == 1": {
+      "result": true,
+      "time": 0.060019731521606445,
+      "error": null
+    },
+    "assert modp(3, 11) == 8": {
+      "result": true,
+      "time": 0.05959796905517578,
+      "error": null
+    },
+    "assert modp(100, 101) == 1": {
+      "result": true,
+      "time": 0.05376744270324707,
+      "error": null
+    },
+    "assert modp(30, 5) == 4": {
+      "result": true,
+      "time": 0.05171847343444824,
+      "error": null
+    },
+    "assert modp(31, 5) == 3": {
+      "result": true,
+      "time": 0.04520916938781738,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:32:58",
+    "guidance_input_tokens": 600,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:33:10",
+    "duration": "0:00:11.822392"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

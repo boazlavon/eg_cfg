@@ -1,0 +1,43 @@
+{
+  "code": "def parse_music(music_string: str) -> List[int]:\n    notes = music_string.split()\n    beats = []\n    for note in notes:\n        if note == 'o':\n            beat = 4\n        elif note == 'o|':\n            beat = 2\n        elif note == '.|':\n            beat = 1\n        beats.append(beat)\n    return beats",
+  "results": {
+    "assert parse_music('') == []": {
+      "result": false,
+      "time": 0.05138278007507324,
+      "error": null
+    },
+    "assert parse_music('o o o o') == [4, 4, 4, 4]": {
+      "result": false,
+      "time": 0.05016922950744629,
+      "error": null
+    },
+    "assert parse_music('.| .| .| .|') == [1, 1, 1, 1]": {
+      "result": false,
+      "time": 0.050392866134643555,
+      "error": null
+    },
+    "assert parse_music('o| o| .| .| o o o o') == [2, 2, 1, 1, 4, 4, 4, 4]": {
+      "result": false,
+      "time": 0.05070233345031738,
+      "error": null
+    },
+    "assert parse_music('o| .| o| .| o o| o o|') == [2, 1, 2, 1, 4, 2, 4, 2]": {
+      "result": false,
+      "time": 0.05399584770202637,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:05:36",
+    "guidance_input_tokens": 663,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:05:41",
+    "duration": "0:00:04.461799"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

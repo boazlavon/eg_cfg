@@ -1,0 +1,58 @@
+{
+  "code": "def factorize(n):\n    factors = []\n    divisor = 2\n    while n > 1:\n        while n % divisor == 0:\n            factors.append(divisor)\n            n = n // divisor\n        divisor += 1\n    return factors",
+  "results": {
+    "assert factorize(2) == [2]": {
+      "result": true,
+      "time": 0.0523989200592041,
+      "error": null
+    },
+    "assert factorize(4) == [2, 2]": {
+      "result": true,
+      "time": 0.0531620979309082,
+      "error": null
+    },
+    "assert factorize(8) == [2, 2, 2]": {
+      "result": true,
+      "time": 0.05127835273742676,
+      "error": null
+    },
+    "assert factorize(3 * 19) == [3, 19]": {
+      "result": true,
+      "time": 0.0521235466003418,
+      "error": null
+    },
+    "assert factorize(3 * 19 * 3 * 19) == [3, 3, 19, 19]": {
+      "result": true,
+      "time": 0.051314353942871094,
+      "error": null
+    },
+    "assert factorize(3 * 19 * 3 * 19 * 3 * 19) == [3, 3, 3, 19, 19, 19]": {
+      "result": true,
+      "time": 0.050454139709472656,
+      "error": null
+    },
+    "assert factorize(3 * 19 * 19 * 19) == [3, 19, 19, 19]": {
+      "result": true,
+      "time": 0.05107402801513672,
+      "error": null
+    },
+    "assert factorize(3 * 2 * 3) == [2, 3, 3]": {
+      "result": true,
+      "time": 0.05364680290222168,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:06:36",
+    "guidance_input_tokens": 619,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:06:47",
+    "duration": "0:00:10.744075"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

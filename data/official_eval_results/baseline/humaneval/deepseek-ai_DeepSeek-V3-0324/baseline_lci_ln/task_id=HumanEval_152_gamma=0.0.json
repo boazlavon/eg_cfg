@@ -1,0 +1,38 @@
+{
+  "code": "def compare(game, guess):\n    differences = []\n    for i in range(len(game)):\n        game_score = game[i]\n        guess_score = guess[i]\n        difference = abs(game_score - guess_score)\n        differences.append(difference)\n    return differences",
+  "results": {
+    "assert compare([1,2,3,4,5,1],[1,2,3,4,2,-2])==[0,0,0,0,3,3], \"This prints if this assert fails 1 (good for debugging!)\"": {
+      "result": true,
+      "time": 0.06740069389343262,
+      "error": null
+    },
+    "assert compare([0,0,0,0,0,0],[0,0,0,0,0,0])==[0,0,0,0,0,0], \"This prints if this assert fails 1 (good for debugging!)\"": {
+      "result": true,
+      "time": 0.052463531494140625,
+      "error": null
+    },
+    "assert compare([1,2,3],[-1,-2,-3])==[2,4,6], \"This prints if this assert fails 1 (good for debugging!)\"": {
+      "result": true,
+      "time": 0.05313611030578613,
+      "error": null
+    },
+    "assert compare([1,2,3,5],[-1,2,3,4])==[2,0,0,1], \"This prints if this assert fails 1 (good for debugging!)\"": {
+      "result": true,
+      "time": 0.05496788024902344,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:43:57",
+    "guidance_input_tokens": 707,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:43:59",
+    "duration": "0:00:01.694448"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

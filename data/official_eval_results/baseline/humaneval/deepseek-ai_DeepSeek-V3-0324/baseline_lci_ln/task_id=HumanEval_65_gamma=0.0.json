@@ -1,0 +1,43 @@
+{
+  "code": "def circular_shift(x, shift):\n    s = str(x)\n    length = len(s)\n    if shift >= length:\n        reversed_s = s[::-1]\n        return reversed_s\n    shifted_s = s[-shift:] + s[:-shift]\n    return shifted_s",
+  "results": {
+    "assert circular_shift(100, 2) == \"001\"": {
+      "result": true,
+      "time": 0.054312705993652344,
+      "error": null
+    },
+    "assert circular_shift(12, 2) == \"12\"": {
+      "result": false,
+      "time": 0.05283308029174805,
+      "error": null
+    },
+    "assert circular_shift(97, 8) == \"79\"": {
+      "result": true,
+      "time": 0.04909181594848633,
+      "error": null
+    },
+    "assert circular_shift(12, 1) == \"21\", \"This prints if this assert fails 1 (good for debugging!)\"": {
+      "result": true,
+      "time": 0.05265235900878906,
+      "error": null
+    },
+    "assert circular_shift(11, 101) == \"11\", \"This prints if this assert fails 2 (also good for debugging!)\"": {
+      "result": true,
+      "time": 0.05154538154602051,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:34:36",
+    "guidance_input_tokens": 584,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:34:40",
+    "duration": "0:00:03.873589"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

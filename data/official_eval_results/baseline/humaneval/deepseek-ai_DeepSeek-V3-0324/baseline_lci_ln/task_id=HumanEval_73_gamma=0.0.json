@@ -1,0 +1,58 @@
+{
+  "code": "def smallest_change(arr):\n    n = len(arr)\n    changes = 0\n    left = 0\n    right = n - 1\n    while left < right:\n        if arr[left] != arr[right]:\n            changes += 1\n        left += 1\n        right -= 1\n    return changes",
+  "results": {
+    "assert smallest_change([1,2,3,5,4,7,9,6]) == 4": {
+      "result": true,
+      "time": 0.055063486099243164,
+      "error": null
+    },
+    "assert smallest_change([1, 2, 3, 4, 3, 2, 2]) == 1": {
+      "result": true,
+      "time": 0.0535128116607666,
+      "error": null
+    },
+    "assert smallest_change([1, 4, 2]) == 1": {
+      "result": true,
+      "time": 0.04693198204040527,
+      "error": null
+    },
+    "assert smallest_change([1, 4, 4, 2]) == 1": {
+      "result": true,
+      "time": 0.055251359939575195,
+      "error": null
+    },
+    "assert smallest_change([1, 2, 3, 2, 1]) == 0": {
+      "result": true,
+      "time": 0.05613899230957031,
+      "error": null
+    },
+    "assert smallest_change([3, 1, 1, 3]) == 0": {
+      "result": true,
+      "time": 0.05639219284057617,
+      "error": null
+    },
+    "assert smallest_change([1]) == 0": {
+      "result": true,
+      "time": 0.05418729782104492,
+      "error": null
+    },
+    "assert smallest_change([0, 1]) == 1": {
+      "result": true,
+      "time": 0.05425405502319336,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:35:10",
+    "guidance_input_tokens": 633,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:35:12",
+    "duration": "0:00:02.090268"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

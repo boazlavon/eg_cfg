@@ -1,0 +1,58 @@
+{
+  "code": "def monotonic(l):\n    if len(l) <= 1:\n        return True\n    increasing = True\n    decreasing = True\n    for i in range(len(l) - 1):\n        current = l[i]\n        next_val = l[i + 1]\n        if current > next_val:\n            increasing = False\n        if current < next_val:\n            decreasing = False\n    return increasing or decreasing",
+  "results": {
+    "assert monotonic([1, 2, 4, 10]) == True": {
+      "result": true,
+      "time": 0.054863691329956055,
+      "error": null
+    },
+    "assert monotonic([1, 2, 4, 20]) == True": {
+      "result": true,
+      "time": 0.05525326728820801,
+      "error": null
+    },
+    "assert monotonic([1, 20, 4, 10]) == False": {
+      "result": true,
+      "time": 0.052014827728271484,
+      "error": null
+    },
+    "assert monotonic([4, 1, 0, -10]) == True": {
+      "result": true,
+      "time": 0.051869869232177734,
+      "error": null
+    },
+    "assert monotonic([4, 1, 1, 0]) == True": {
+      "result": true,
+      "time": 0.05132150650024414,
+      "error": null
+    },
+    "assert monotonic([1, 2, 3, 2, 5, 60]) == False": {
+      "result": true,
+      "time": 0.05626106262207031,
+      "error": null
+    },
+    "assert monotonic([1, 2, 3, 4, 5, 60]) == True": {
+      "result": true,
+      "time": 0.048094987869262695,
+      "error": null
+    },
+    "assert monotonic([9, 9, 9, 9]) == True": {
+      "result": true,
+      "time": 0.05029106140136719,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:33:35",
+    "guidance_input_tokens": 585,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:33:40",
+    "duration": "0:00:05.690741"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

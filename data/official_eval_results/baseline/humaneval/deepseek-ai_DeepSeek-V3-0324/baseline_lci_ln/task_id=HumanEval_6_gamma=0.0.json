@@ -1,0 +1,33 @@
+{
+  "code": "def parse_nested_parens(paren_string):\n    groups = paren_string.split()\n    max_depths = []\n    for group in groups:\n        current_depth = 0\n        max_depth = 0\n        for char in group:\n            if char == '(':\n                current_depth += 1\n                if current_depth > max_depth:\n                    max_depth = current_depth\n            elif char == ')':\n                current_depth -= 1\n        max_depths.append(max_depth)\n    return max_depths",
+  "results": {
+    "assert parse_nested_parens('(()()) ((())) () ((())()())') == [2, 3, 1, 3]": {
+      "result": true,
+      "time": 0.054518938064575195,
+      "error": null
+    },
+    "assert parse_nested_parens('() (()) ((())) (((())))') == [1, 2, 3, 4]": {
+      "result": true,
+      "time": 0.05585026741027832,
+      "error": null
+    },
+    "assert parse_nested_parens('(()(())((())))') == [4]": {
+      "result": true,
+      "time": 0.053331851959228516,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:04:11",
+    "guidance_input_tokens": 612,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:04:16",
+    "duration": "0:00:04.713226"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

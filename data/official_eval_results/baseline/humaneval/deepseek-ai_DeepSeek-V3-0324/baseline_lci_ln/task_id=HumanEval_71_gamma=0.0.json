@@ -1,0 +1,63 @@
+{
+  "code": "def triangle_area(a, b, c):\n    is_valid = (a + b > c) and (a + c > b) and (b + c > a)\n    if not is_valid:\n        return -1\n    s = (a + b + c) / 2\n    area_squared = s * (s - a) * (s - b) * (s - c)\n    area = area_squared ** 0.5\n    rounded_area = round(area, 2)\n    return rounded_area",
+  "results": {
+    "assert triangle_area(3, 4, 5) == 6.00, \"This prints if this assert fails 1 (good for debugging!)\"": {
+      "result": true,
+      "time": 0.05323982238769531,
+      "error": null
+    },
+    "assert triangle_area(1, 2, 10) == -1": {
+      "result": true,
+      "time": 0.05557727813720703,
+      "error": null
+    },
+    "assert triangle_area(4, 8, 5) == 8.18": {
+      "result": true,
+      "time": 0.052397966384887695,
+      "error": null
+    },
+    "assert triangle_area(2, 2, 2) == 1.73": {
+      "result": true,
+      "time": 0.04436802864074707,
+      "error": null
+    },
+    "assert triangle_area(1, 2, 3) == -1": {
+      "result": true,
+      "time": 0.05260348320007324,
+      "error": null
+    },
+    "assert triangle_area(10, 5, 7) == 16.25": {
+      "result": true,
+      "time": 0.05074906349182129,
+      "error": null
+    },
+    "assert triangle_area(2, 6, 3) == -1": {
+      "result": true,
+      "time": 0.05246853828430176,
+      "error": null
+    },
+    "assert triangle_area(1, 1, 1) == 0.43, \"This prints if this assert fails 2 (also good for debugging!)\"": {
+      "result": true,
+      "time": 0.05159425735473633,
+      "error": null
+    },
+    "assert triangle_area(2, 2, 10) == -1": {
+      "result": true,
+      "time": 0.054552316665649414,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:34:56",
+    "guidance_input_tokens": 599,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:35:07",
+    "duration": "0:00:11.525383"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

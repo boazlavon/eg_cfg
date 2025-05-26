@@ -1,0 +1,53 @@
+{
+  "code": "def hex_key(num):\n    count = 0\n    primes = {'2', '3', '5', '7', 'B', 'D'}\n    for digit in num:\n        if digit in primes:\n            count += 1\n    return count",
+  "results": {
+    "assert hex_key(\"AB\") == 1, \"First test error: \" + str(hex_key(\"AB\"))": {
+      "result": true,
+      "time": 0.05632901191711426,
+      "error": null
+    },
+    "assert hex_key(\"1077E\") == 2, \"Second test error: \" + str(hex_key(\"1077E\"))": {
+      "result": true,
+      "time": 0.053806304931640625,
+      "error": null
+    },
+    "assert hex_key(\"ABED1A33\") == 4, \"Third test error: \" + str(hex_key(\"ABED1A33\"))": {
+      "result": true,
+      "time": 0.05364656448364258,
+      "error": null
+    },
+    "assert hex_key(\"2020\") == 2, \"Fourth test error: \" + str(hex_key(\"2020\"))": {
+      "result": true,
+      "time": 0.051995277404785156,
+      "error": null
+    },
+    "assert hex_key(\"123456789ABCDEF0\") == 6, \"Fifth test error: \" + str(hex_key(\"123456789ABCDEF0\"))": {
+      "result": true,
+      "time": 0.05385899543762207,
+      "error": null
+    },
+    "assert hex_key(\"112233445566778899AABBCCDDEEFF00\") == 12, \"Sixth test error: \" + str(hex_key(\"112233445566778899AABBCCDDEEFF00\"))": {
+      "result": true,
+      "time": 0.05218315124511719,
+      "error": null
+    },
+    "assert hex_key([]) == 0": {
+      "result": true,
+      "time": 0.05291604995727539,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:35:42",
+    "guidance_input_tokens": 772,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:35:46",
+    "duration": "0:00:03.728015"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

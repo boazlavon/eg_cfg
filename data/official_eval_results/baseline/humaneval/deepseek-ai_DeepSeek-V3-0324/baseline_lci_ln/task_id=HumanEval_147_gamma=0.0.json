@@ -1,0 +1,38 @@
+{
+  "code": "def get_max_triples(n):\n    a = []\n    for i in range(1, n + 1):\n        value = i * i - i + 1\n        a.append(value)\n    rem_counts = [0, 0, 0]\n    for num in a:\n        rem = num % 3\n        rem_counts[rem] += 1\n    count = 0\n    for i in range(3):\n        for j in range(i, 3):\n            for k in range(j, 3):\n                if (i + j + k) % 3 == 0:\n                    if i == j == k:\n                        count += rem_counts[i] * (rem_counts[i] - 1) * (rem_counts[i] - 2) // 6\n                    elif i == j:\n                        count += rem_counts[i] * (rem_counts[i] - 1) * rem_counts[k] // 2\n                    elif j == k:\n                        count += rem_counts[j] * (rem_counts[j] - 1) * rem_counts[i] // 2\n                    else:\n                        count += rem_counts[i] * rem_counts[j] * rem_counts[k]\n    return count",
+  "results": {
+    "assert get_max_triples(5) == 1": {
+      "result": true,
+      "time": 0.053117990493774414,
+      "error": null
+    },
+    "assert get_max_triples(6) == 4": {
+      "result": true,
+      "time": 0.04887819290161133,
+      "error": null
+    },
+    "assert get_max_triples(10) == 36": {
+      "result": true,
+      "time": 0.04682588577270508,
+      "error": null
+    },
+    "assert get_max_triples(100) == 53361": {
+      "result": true,
+      "time": 0.04428291320800781,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:43:08",
+    "guidance_input_tokens": 649,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:43:43",
+    "duration": "0:00:35.022969"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

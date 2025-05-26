@@ -1,0 +1,43 @@
+{
+  "code": "def move_one_ball(arr):\n    if not arr:\n        return True\n    n = len(arr)\n    pivot = 0\n    for i in range(n - 1):\n        if arr[i] > arr[i + 1]:\n            pivot = i + 1\n            break\n    rotated = arr[pivot:] + arr[:pivot]\n    for i in range(n - 1):\n        if rotated[i] > rotated[i + 1]:\n            return False\n    return True",
+  "results": {
+    "assert move_one_ball([3, 4, 5, 1, 2])==True, \"This prints if this assert fails 1 (good for debugging!)\"": {
+      "result": true,
+      "time": 0.05162525177001953,
+      "error": null
+    },
+    "assert move_one_ball([3, 5, 10, 1, 2])==True": {
+      "result": true,
+      "time": 0.05295538902282715,
+      "error": null
+    },
+    "assert move_one_ball([4, 3, 1, 2])==False": {
+      "result": true,
+      "time": 0.05574774742126465,
+      "error": null
+    },
+    "assert move_one_ball([3, 5, 4, 1, 2])==False, \"This prints if this assert fails 2 (also good for debugging!)\"": {
+      "result": true,
+      "time": 0.05045723915100098,
+      "error": null
+    },
+    "assert move_one_ball([])==True": {
+      "result": true,
+      "time": 0.050159454345703125,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:38:52",
+    "guidance_input_tokens": 768,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:38:56",
+    "duration": "0:00:04.373149"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

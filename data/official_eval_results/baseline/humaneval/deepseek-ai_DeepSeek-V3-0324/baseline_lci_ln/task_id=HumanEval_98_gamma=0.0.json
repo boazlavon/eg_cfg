@@ -1,0 +1,53 @@
+{
+  "code": "def count_upper(s):\n    vowels = {'A', 'E', 'I', 'O', 'U'}\n    count = 0\n    for i in range(len(s)):\n        if i % 2 == 0:\n            char = s[i]\n            if char.isupper() and char in vowels:\n                count += 1\n    return count",
+  "results": {
+    "assert count_upper('aBCdEf')  == 1": {
+      "result": true,
+      "time": 0.05316734313964844,
+      "error": null
+    },
+    "assert count_upper('abcdefg') == 0": {
+      "result": true,
+      "time": 0.05015921592712402,
+      "error": null
+    },
+    "assert count_upper('dBBE') == 0": {
+      "result": true,
+      "time": 0.053365468978881836,
+      "error": null
+    },
+    "assert count_upper('B')  == 0": {
+      "result": true,
+      "time": 0.05011272430419922,
+      "error": null
+    },
+    "assert count_upper('U')  == 1": {
+      "result": true,
+      "time": 0.05463147163391113,
+      "error": null
+    },
+    "assert count_upper('') == 0": {
+      "result": true,
+      "time": 0.05112624168395996,
+      "error": null
+    },
+    "assert count_upper('EEEE') == 2": {
+      "result": true,
+      "time": 0.053498029708862305,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:38:09",
+    "guidance_input_tokens": 559,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:38:11",
+    "duration": "0:00:02.374483"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

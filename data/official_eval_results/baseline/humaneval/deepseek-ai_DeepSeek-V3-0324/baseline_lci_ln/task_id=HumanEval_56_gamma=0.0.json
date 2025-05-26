@@ -1,0 +1,38 @@
+{
+  "code": "def correct_bracketing(brackets: str):\n    balance = 0\n    for char in brackets:\n        if char == '<':\n            balance = balance + 1\n        else:\n            balance = balance - 1\n        if balance < 0:\n            return False\n    if balance == 0:\n        return True\n    else:\n        return False",
+  "results": {
+    "assert correct_bracketing(\"<>\")": {
+      "result": true,
+      "time": 0.04949331283569336,
+      "error": null
+    },
+    "assert correct_bracketing(\"<<><>>\")": {
+      "result": true,
+      "time": 0.0459446907043457,
+      "error": null
+    },
+    "assert correct_bracketing(\"<><><<><>><>\")": {
+      "result": true,
+      "time": 0.04928016662597656,
+      "error": null
+    },
+    "assert correct_bracketing(\"<><><<<><><>><>><<><><<>>>\")": {
+      "result": true,
+      "time": 0.0540616512298584,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:33:31",
+    "guidance_input_tokens": 591,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:33:35",
+    "duration": "0:00:03.602649"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

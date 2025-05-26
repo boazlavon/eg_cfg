@@ -1,0 +1,48 @@
+{
+  "code": "def order_by_points(nums):\n    if not nums:\n        return []\n    \n    sums = []\n    for num in nums:\n        absolute_num = abs(num)\n        digit_sum = 0\n        while absolute_num > 0:\n            digit = absolute_num % 10\n            digit_sum += digit\n            absolute_num = absolute_num // 10\n        sums.append(digit_sum)\n    \n    indexed_nums = []\n    for i in range(len(nums)):\n        indexed_nums.append((sums[i], i, nums[i]))\n    \n    sorted_nums = sorted(indexed_nums, key=lambda x: (x[0], x[1]))\n    \n    result = []\n    for item in sorted_nums:\n        result.append(item[2])\n    \n    return result",
+  "results": {
+    "assert order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]": {
+      "result": false,
+      "time": 0.05203962326049805,
+      "error": null
+    },
+    "assert order_by_points([1234,423,463,145,2,423,423,53,6,37,3457,3,56,0,46]) == [0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]": {
+      "result": true,
+      "time": 0.05394577980041504,
+      "error": null
+    },
+    "assert order_by_points([]) == []": {
+      "result": true,
+      "time": 0.05595803260803223,
+      "error": null
+    },
+    "assert order_by_points([1, -11, -32, 43, 54, -98, 2, -3]) == [-3, -32, -98, -11, 1, 2, 43, 54]": {
+      "result": false,
+      "time": 0.04965376853942871,
+      "error": null
+    },
+    "assert order_by_points([1,2,3,4,5,6,7,8,9,10,11]) == [1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]": {
+      "result": true,
+      "time": 0.05208468437194824,
+      "error": null
+    },
+    "assert order_by_points([0,6,6,-76,-21,23,4]) == [-76, -21, 0, 4, 23, 6, 6]": {
+      "result": false,
+      "time": 0.053605079650878906,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.5,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:42:57",
+    "guidance_input_tokens": 611,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:43:06",
+    "duration": "0:00:08.593316"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

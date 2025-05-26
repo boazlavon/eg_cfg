@@ -1,0 +1,58 @@
+{
+  "code": "def split_words(txt):\n    if ' ' in txt:\n        words = []\n        current_word = ''\n        for char in txt:\n            if char == ' ':\n                if current_word:\n                    words.append(current_word)\n                    current_word = ''\n            else:\n                current_word += char\n        if current_word:\n            words.append(current_word)\n        return words\n    elif ',' in txt:\n        words = []\n        current_word = ''\n        for char in txt:\n            if char == ',':\n                if current_word:\n                    words.append(current_word)\n                    current_word = ''\n            else:\n                current_word += char\n        if current_word:\n            words.append(current_word)\n        return words\n    else:\n        count = 0\n        for char in txt:\n            if 'a' <= char <= 'z':\n                order = ord(char) - ord('a')\n                if order % 2 != 0:\n                    count += 1\n        return count",
+  "results": {
+    "assert split_words(\"Hello world!\") == [\"Hello\",\"world!\"]": {
+      "result": true,
+      "time": 0.052460670471191406,
+      "error": null
+    },
+    "assert split_words(\"Hello,world!\") == [\"Hello\",\"world!\"]": {
+      "result": true,
+      "time": 0.051156044006347656,
+      "error": null
+    },
+    "assert split_words(\"Hello world,!\") == [\"Hello\",\"world,!\"]": {
+      "result": true,
+      "time": 0.05254411697387695,
+      "error": null
+    },
+    "assert split_words(\"Hello,Hello,world !\") == [\"Hello,Hello,world\",\"!\"]": {
+      "result": true,
+      "time": 0.05208921432495117,
+      "error": null
+    },
+    "assert split_words(\"abcdef\") == 3": {
+      "result": true,
+      "time": 0.054628849029541016,
+      "error": null
+    },
+    "assert split_words(\"aaabb\") == 2": {
+      "result": true,
+      "time": 0.051172733306884766,
+      "error": null
+    },
+    "assert split_words(\"aaaBb\") == 1": {
+      "result": true,
+      "time": 0.05055642127990723,
+      "error": null
+    },
+    "assert split_words(\"\") == 0": {
+      "result": true,
+      "time": 0.05176973342895508,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:40:57",
+    "guidance_input_tokens": 622,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:41:08",
+    "duration": "0:00:11.660901"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

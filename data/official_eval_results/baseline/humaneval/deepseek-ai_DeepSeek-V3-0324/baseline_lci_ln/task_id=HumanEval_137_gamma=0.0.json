@@ -1,0 +1,58 @@
+{
+  "code": "def compare_one(a, b):\n    def convert_to_float(value):\n        if isinstance(value, str):\n            value = value.replace(',', '.')\n        return float(value)\n    \n    a_float = convert_to_float(a)\n    b_float = convert_to_float(b)\n    \n    if a_float > b_float:\n        return a\n    elif b_float > a_float:\n        return b\n    else:\n        return None",
+  "results": {
+    "assert compare_one(1, 2) == 2": {
+      "result": true,
+      "time": 0.053667545318603516,
+      "error": null
+    },
+    "assert compare_one(1, 2.5) == 2.5": {
+      "result": true,
+      "time": 0.05191326141357422,
+      "error": null
+    },
+    "assert compare_one(2, 3) == 3": {
+      "result": true,
+      "time": 0.044721126556396484,
+      "error": null
+    },
+    "assert compare_one(5, 6) == 6": {
+      "result": true,
+      "time": 0.047907114028930664,
+      "error": null
+    },
+    "assert compare_one(1, \"2,3\") == \"2,3\"": {
+      "result": true,
+      "time": 0.049573659896850586,
+      "error": null
+    },
+    "assert compare_one(\"5,1\", \"6\") == \"6\"": {
+      "result": true,
+      "time": 0.04596972465515137,
+      "error": null
+    },
+    "assert compare_one(\"1\", \"2\") == \"2\"": {
+      "result": true,
+      "time": 0.049353837966918945,
+      "error": null
+    },
+    "assert compare_one(\"1\", 1) == None": {
+      "result": true,
+      "time": 0.05051898956298828,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:42:15",
+    "guidance_input_tokens": 620,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:42:20",
+    "duration": "0:00:05.294001"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

@@ -1,0 +1,53 @@
+{
+  "code": "def sort_array(array):\n    if not array:\n        return array.copy()\n    first = array[0]\n    last = array[-1]\n    sum_value = first + last\n    sorted_array = array.copy()\n    if sum_value % 2 == 1:\n        sorted_array.sort()\n    else:\n        sorted_array.sort(reverse=True)\n    return sorted_array",
+  "results": {
+    "assert sort_array([]) == [], \"Error\"": {
+      "result": true,
+      "time": 0.05066657066345215,
+      "error": null
+    },
+    "assert sort_array([5]) == [5], \"Error\"": {
+      "result": true,
+      "time": 0.05473446846008301,
+      "error": null
+    },
+    "assert sort_array([2, 4, 3, 0, 1, 5]) == [0, 1, 2, 3, 4, 5], \"Error\"": {
+      "result": true,
+      "time": 0.04738640785217285,
+      "error": null
+    },
+    "assert sort_array([2, 4, 3, 0, 1, 5, 6]) == [6, 5, 4, 3, 2, 1, 0], \"Error\"": {
+      "result": true,
+      "time": 0.054509878158569336,
+      "error": null
+    },
+    "assert sort_array([2, 1]) == [1, 2], \"Error\"": {
+      "result": true,
+      "time": 0.053011178970336914,
+      "error": null
+    },
+    "assert sort_array([15, 42, 87, 32 ,11, 0]) == [0, 11, 15, 32, 42, 87], \"Error\"": {
+      "result": true,
+      "time": 0.0486607551574707,
+      "error": null
+    },
+    "assert sort_array([21, 14, 23, 11]) == [23, 21, 14, 11], \"Error\"": {
+      "result": true,
+      "time": 0.04195547103881836,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:37:12",
+    "guidance_input_tokens": 682,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:37:15",
+    "duration": "0:00:03.045374"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

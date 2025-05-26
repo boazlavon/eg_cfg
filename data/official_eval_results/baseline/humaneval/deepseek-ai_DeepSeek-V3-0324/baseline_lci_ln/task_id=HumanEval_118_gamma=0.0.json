@@ -1,0 +1,83 @@
+{
+  "code": "def get_closest_vowel(word):\n    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}\n    length = len(word)\n    for i in range(length - 2, 0, -1):\n        current_char = word[i]\n        if current_char in vowels:\n            left_char = word[i - 1]\n            right_char = word[i + 1]\n            if left_char not in vowels and right_char not in vowels:\n                return current_char\n    return \"\"",
+  "results": {
+    "assert get_closest_vowel(\"yogurt\") == \"u\"": {
+      "result": true,
+      "time": 0.05215954780578613,
+      "error": null
+    },
+    "assert get_closest_vowel(\"full\") == \"u\"": {
+      "result": true,
+      "time": 0.054196834564208984,
+      "error": null
+    },
+    "assert get_closest_vowel(\"easy\") == \"\"": {
+      "result": true,
+      "time": 0.05352187156677246,
+      "error": null
+    },
+    "assert get_closest_vowel(\"eAsy\") == \"\"": {
+      "result": true,
+      "time": 0.05127096176147461,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ali\") == \"\"": {
+      "result": true,
+      "time": 0.0508112907409668,
+      "error": null
+    },
+    "assert get_closest_vowel(\"bad\") == \"a\"": {
+      "result": true,
+      "time": 0.04777717590332031,
+      "error": null
+    },
+    "assert get_closest_vowel(\"most\") == \"o\"": {
+      "result": true,
+      "time": 0.05238533020019531,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ab\") == \"\"": {
+      "result": true,
+      "time": 0.05540966987609863,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ba\") == \"\"": {
+      "result": true,
+      "time": 0.05233955383300781,
+      "error": null
+    },
+    "assert get_closest_vowel(\"quick\") == \"\"": {
+      "result": true,
+      "time": 0.05303955078125,
+      "error": null
+    },
+    "assert get_closest_vowel(\"anime\") == \"i\"": {
+      "result": true,
+      "time": 0.05578875541687012,
+      "error": null
+    },
+    "assert get_closest_vowel(\"Asia\") == \"\"": {
+      "result": true,
+      "time": 0.051859378814697266,
+      "error": null
+    },
+    "assert get_closest_vowel(\"Above\") == \"o\"": {
+      "result": true,
+      "time": 0.05222892761230469,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:40:01",
+    "guidance_input_tokens": 627,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:40:05",
+    "duration": "0:00:03.810792"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

@@ -1,0 +1,63 @@
+{
+  "code": "def triples_sum_to_zero(l):\n    if len(l) < 3:\n        return False\n    for i in range(len(l)):\n        for j in range(i + 1, len(l)):\n            for k in range(j + 1, len(l)):\n                if l[i] + l[j] + l[k] == 0:\n                    return True\n    return False",
+  "results": {
+    "assert triples_sum_to_zero([1, 3, 5, 0]) == False": {
+      "result": true,
+      "time": 0.054926156997680664,
+      "error": null
+    },
+    "assert triples_sum_to_zero([1, 3, 5, -1]) == False": {
+      "result": true,
+      "time": 0.05124521255493164,
+      "error": null
+    },
+    "assert triples_sum_to_zero([1, 3, -2, 1]) == True": {
+      "result": true,
+      "time": 0.046677350997924805,
+      "error": null
+    },
+    "assert triples_sum_to_zero([1, 2, 3, 7]) == False": {
+      "result": true,
+      "time": 0.05005002021789551,
+      "error": null
+    },
+    "assert triples_sum_to_zero([1, 2, 5, 7]) == False": {
+      "result": true,
+      "time": 0.052503108978271484,
+      "error": null
+    },
+    "assert triples_sum_to_zero([2, 4, -5, 3, 9, 7]) == True": {
+      "result": true,
+      "time": 0.05580496788024902,
+      "error": null
+    },
+    "assert triples_sum_to_zero([1]) == False": {
+      "result": true,
+      "time": 0.052741050720214844,
+      "error": null
+    },
+    "assert triples_sum_to_zero([1, 3, 5, -100]) == False": {
+      "result": true,
+      "time": 0.052138328552246094,
+      "error": null
+    },
+    "assert triples_sum_to_zero([100, 3, 5, -100]) == False": {
+      "result": true,
+      "time": 0.04765796661376953,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:32:04",
+    "guidance_input_tokens": 657,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:32:16",
+    "duration": "0:00:12.228510"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

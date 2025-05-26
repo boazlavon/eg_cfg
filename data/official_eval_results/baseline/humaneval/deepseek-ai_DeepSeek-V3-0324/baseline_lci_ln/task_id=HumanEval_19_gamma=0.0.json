@@ -1,0 +1,43 @@
+{
+  "code": "def sort_numbers(numbers: str) -> str:\n    word_to_num = {\n        'zero': 0,\n        'one': 1,\n        'two': 2,\n        'three': 3,\n        'four': 4,\n        'five': 5,\n        'six': 6,\n        'seven': 7,\n        'eight': 8,\n        'nine': 9\n    }\n    words = numbers.split()\n    num_list = []\n    for word in words:\n        num = word_to_num[word]\n        num_list.append(num)\n    sorted_nums = sorted(num_list)\n    sorted_words = []\n    for num in sorted_nums:\n        for word, value in word_to_num.items():\n            if value == num:\n                sorted_words.append(word)\n                break\n    result = ' '.join(sorted_words)\n    return result",
+  "results": {
+    "assert sort_numbers('') == ''": {
+      "result": true,
+      "time": 0.05449986457824707,
+      "error": null
+    },
+    "assert sort_numbers('three') == 'three'": {
+      "result": true,
+      "time": 0.050160884857177734,
+      "error": null
+    },
+    "assert sort_numbers('three five nine') == 'three five nine'": {
+      "result": true,
+      "time": 0.051013946533203125,
+      "error": null
+    },
+    "assert sort_numbers('five zero four seven nine eight') == 'zero four five seven eight nine'": {
+      "result": true,
+      "time": 0.046997785568237305,
+      "error": null
+    },
+    "assert sort_numbers('six five four three two one zero') == 'zero one two three four five six'": {
+      "result": true,
+      "time": 0.047894954681396484,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:05:51",
+    "guidance_input_tokens": 601,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:05:57",
+    "duration": "0:00:05.956759"
+  },
+  "retry": 0,
+  "random_seed": 379
+}

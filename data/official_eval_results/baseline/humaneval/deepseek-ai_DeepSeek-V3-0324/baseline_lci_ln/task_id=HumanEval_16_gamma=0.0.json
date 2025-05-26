@@ -1,0 +1,43 @@
+{
+  "code": "def count_distinct_characters(string: str) -> int:\n    distinct_chars = set()\n    for char in string:\n        lower_char = char.lower()\n        distinct_chars.add(lower_char)\n    return len(distinct_chars)",
+  "results": {
+    "assert count_distinct_characters('') == 0": {
+      "result": true,
+      "time": 0.047452688217163086,
+      "error": null
+    },
+    "assert count_distinct_characters('abcde') == 5": {
+      "result": true,
+      "time": 0.05395627021789551,
+      "error": null
+    },
+    "assert count_distinct_characters('abcde' + 'cade' + 'CADE') == 5": {
+      "result": true,
+      "time": 0.04772782325744629,
+      "error": null
+    },
+    "assert count_distinct_characters('aaaaAAAAaaaa') == 1": {
+      "result": true,
+      "time": 0.05258607864379883,
+      "error": null
+    },
+    "assert count_distinct_characters('Jerry jERRY JeRRRY') == 5": {
+      "result": true,
+      "time": 0.05773162841796875,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-26 20:05:24",
+    "guidance_input_tokens": 575,
+    "guidance_output_tokens": 0,
+    "end_time": "2025-05-26 20:05:36",
+    "duration": "0:00:12.352078"
+  },
+  "retry": 0,
+  "random_seed": 379
+}
