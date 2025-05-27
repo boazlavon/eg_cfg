@@ -1,9 +1,9 @@
 {
-  "code": "def decode_shift(s: str):\n    decoded_chars = []\n    for c in s:\n        ascii_val = ord(c)\n        shifted_val = ascii_val - 1\n        new_char = chr(shifted_val)\n        decoded_chars.append(new_char)\n    decoded_str = ''.join(decoded_chars)\n    return decoded_str",
+  "code": "def decode_shift(s):\n    decoded = []\n    for char in s:\n        if char.isalpha():\n            if char.islower():\n                shift = 1\n                new_ord = ord(char) - shift\n                if new_ord < ord('a'):\n                    new_ord = ord('z') - (ord('a') - new_ord - 1)\n            else:\n                shift = 1\n                new_ord = ord(char) - shift\n                if new_ord < ord('A'):\n                    new_ord = ord('Z') - (ord('A') - new_ord - 1)\n            decoded_char = chr(new_ord)\n            decoded.append(decoded_char)\n        else:\n            decoded.append(char)\n    return ''.join(decoded)",
   "results": {
-    "\n\nMETADATA = {}\n\n\ndef check(decode_shift):\n    from random import randint, choice\n    import copy\n    import string\n\n    letters = string.ascii_lowercase\n    for _ in range(100):\n        str = ''.join(choice(letters) for i in range(randint(10, 20)))\n        encoded_str = encode_shift(str)\n        assert decode_shift(copy.deepcopy(encoded_str)) == str\n\n\ncheck(decode_shift)": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    from random import randint, choice\n    import copy\n    import string\n\n    letters = string.ascii_lowercase\n    for _ in range(100):\n        str = ''.join(choice(letters) for i in range(randint(10, 20)))\n        encoded_str = encode_shift(str)\n        assert candidate(copy.deepcopy(encoded_str)) == str\n\n\ncheck(decode_shift)": {
       "result": false,
-      "time": 0.1013638973236084,
+      "time": 0.09909415245056152,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:43:24",
+    "start_time": "2025-05-27 19:22:33",
     "guidance_input_tokens": 522,
-    "guidance_output_tokens": 95,
-    "end_time": "2025-05-27 17:43:26",
-    "duration": "0:00:01.834343"
+    "guidance_output_tokens": 185,
+    "end_time": "2025-05-27 19:22:36",
+    "duration": "0:00:03.733894"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

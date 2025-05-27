@@ -1,9 +1,9 @@
 {
-  "code": "def string_xor(a: str, b: str) -> str:\n    result = \"\"\n    for i in range(len(a)):\n        char_a = a[i]\n        char_b = b[i]\n        if char_a != char_b:\n            result += \"1\"\n        else:\n            result += \"0\"\n    return result",
+  "code": "def string_xor(a, b):\n    result = []\n    for i in range(len(a)):\n        char_a = a[i]\n        char_b = b[i]\n        if char_a == char_b:\n            xor_result = '0'\n        else:\n            xor_result = '1'\n        result.append(xor_result)\n    return ''.join(result)",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(string_xor):\n    assert string_xor('111000', '101010') == '010010'\n    assert string_xor('1', '1') == '0'\n    assert string_xor('0101', '0000') == '0101'\n\ncheck(string_xor)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('111000', '101010') == '010010'\n    assert candidate('1', '1') == '0'\n    assert candidate('0101', '0000') == '0101'\n\ncheck(string_xor)": {
       "result": true,
-      "time": 0.058995962142944336,
+      "time": 0.056282758712768555,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:36:54",
+    "start_time": "2025-05-27 19:28:13",
     "guidance_input_tokens": 575,
-    "guidance_output_tokens": 146,
-    "end_time": "2025-05-27 17:36:59",
-    "duration": "0:00:05.333843"
+    "guidance_output_tokens": 193,
+    "end_time": "2025-05-27 19:28:17",
+    "duration": "0:00:03.973018"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

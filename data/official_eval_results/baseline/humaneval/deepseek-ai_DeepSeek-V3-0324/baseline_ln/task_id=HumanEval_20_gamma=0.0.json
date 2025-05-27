@@ -1,9 +1,9 @@
 {
-  "code": "from typing import List, Tuple\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    numbers_sorted = sorted(numbers)\n    min_diff = float('inf')\n    result = (numbers_sorted[0], numbers_sorted[1])\n    \n    for i in range(len(numbers_sorted) - 1):\n        current_diff = numbers_sorted[i + 1] - numbers_sorted[i]\n        if current_diff < min_diff:\n            min_diff = current_diff\n            result = (numbers_sorted[i], numbers_sorted[i + 1])\n    return result",
+  "code": "from typing import List, Tuple\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    sorted_numbers = sorted(numbers)\n    min_diff = float('inf')\n    result = (0.0, 0.0)\n    \n    for i in range(len(sorted_numbers) - 1):\n        diff = sorted_numbers[i+1] - sorted_numbers[i]\n        if diff < min_diff:\n            min_diff = diff\n            result = (sorted_numbers[i], sorted_numbers[i+1])\n    \n    return result",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(find_closest_elements):\n    assert find_closest_elements([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]) == (3.9, 4.0)\n    assert find_closest_elements([1.0, 2.0, 5.9, 4.0, 5.0]) == (5.0, 5.9)\n    assert find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]) == (2.0, 2.2)\n    assert find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]) == (2.0, 2.0)\n    assert find_closest_elements([1.1, 2.2, 3.1, 4.1, 5.1]) == (2.2, 3.1)\n\n\ncheck(find_closest_elements)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]) == (3.9, 4.0)\n    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0]) == (5.0, 5.9)\n    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]) == (2.0, 2.2)\n    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]) == (2.0, 2.0)\n    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1]) == (2.2, 3.1)\n\n\ncheck(find_closest_elements)": {
       "result": true,
-      "time": 0.09913253784179688,
+      "time": 0.10637307167053223,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:51:47",
+    "start_time": "2025-05-27 19:40:28",
     "guidance_input_tokens": 816,
-    "guidance_output_tokens": 133,
-    "end_time": "2025-05-27 17:51:50",
-    "duration": "0:00:02.966304"
+    "guidance_output_tokens": 120,
+    "end_time": "2025-05-27 19:40:31",
+    "duration": "0:00:02.711063"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

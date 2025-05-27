@@ -1,9 +1,9 @@
 {
-  "code": "def cycpattern_check(a, b):\n    b_length = len(b)\n    if b_length == 0:\n        return False\n    rotated_strings = []\n    for i in range(b_length):\n        rotated_part1 = b[i:]\n        rotated_part2 = b[:i]\n        rotated_string = rotated_part1 + rotated_part2\n        rotated_strings.append(rotated_string)\n    for rotated in rotated_strings:\n        if rotated in a:\n            return True\n    return False",
+  "code": "def cycpattern_check(a, b):\n    rotations = []\n    length_b = len(b)\n    for i in range(length_b):\n        first_part = b[i:]\n        second_part = b[:i]\n        rotation = first_part + second_part\n        rotations.append(rotation)\n    found = False\n    for rotation in rotations:\n        if rotation in a:\n            found = True\n            break\n    return found",
   "results": {
-    "def check(cycpattern_check):\n\n    # Check some simple cases\n    #assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    #assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert  cycpattern_check(\"xyzw\",\"xyw\") == False , \"test #0\"\n    assert  cycpattern_check(\"yello\",\"ell\") == True , \"test #1\"\n    assert  cycpattern_check(\"whattup\",\"ptut\") == False , \"test #2\"\n    assert  cycpattern_check(\"efef\",\"fee\") == True , \"test #3\"\n    assert  cycpattern_check(\"abab\",\"aabb\") == False , \"test #4\"\n    assert  cycpattern_check(\"winemtt\",\"tinem\") == True , \"test #5\"\n\n\ncheck(cycpattern_check)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    #assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    #assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert  candidate(\"xyzw\",\"xyw\") == False , \"test #0\"\n    assert  candidate(\"yello\",\"ell\") == True , \"test #1\"\n    assert  candidate(\"whattup\",\"ptut\") == False , \"test #2\"\n    assert  candidate(\"efef\",\"fee\") == True , \"test #3\"\n    assert  candidate(\"abab\",\"aabb\") == False , \"test #4\"\n    assert  candidate(\"winemtt\",\"tinem\") == True , \"test #5\"\n\n\ncheck(cycpattern_check)": {
       "result": true,
-      "time": 0.05894589424133301,
+      "time": 0.052552223205566406,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:42:46",
+    "start_time": "2025-05-27 19:23:44",
     "guidance_input_tokens": 613,
-    "guidance_output_tokens": 125,
-    "end_time": "2025-05-27 17:42:49",
-    "duration": "0:00:03.188316"
+    "guidance_output_tokens": 375,
+    "end_time": "2025-05-27 19:23:54",
+    "duration": "0:00:10.247377"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

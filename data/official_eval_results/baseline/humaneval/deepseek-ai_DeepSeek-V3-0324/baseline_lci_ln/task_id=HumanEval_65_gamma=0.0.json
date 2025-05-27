@@ -1,9 +1,9 @@
 {
-  "code": "def circular_shift(x, shift):\n    s = str(x)\n    length = len(s)\n    if shift > length:\n        reversed_s = \"\"\n        for i in range(length):\n            reversed_s = s[i] + reversed_s\n        return reversed_s\n    shifted_part = s[-shift:]\n    remaining_part = s[:-shift]\n    result = shifted_part + remaining_part\n    return result",
+  "code": "def circular_shift(x, shift):\n    s = str(x)\n    length = len(s)\n    if shift > length:\n        reversed_s = s[::-1]\n        return reversed_s\n    else:\n        left_part = s[:-shift]\n        right_part = s[-shift:]\n        shifted_s = right_part + left_part\n        return shifted_s",
   "results": {
-    "def check(circular_shift):\n\n    # Check some simple cases\n    assert circular_shift(100, 2) == \"001\"\n    assert circular_shift(12, 2) == \"12\"\n    assert circular_shift(97, 8) == \"79\"\n    assert circular_shift(12, 1) == \"21\", \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert circular_shift(11, 101) == \"11\", \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(circular_shift)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(100, 2) == \"001\"\n    assert candidate(12, 2) == \"12\"\n    assert candidate(97, 8) == \"79\"\n    assert candidate(12, 1) == \"21\", \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(11, 101) == \"11\", \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(circular_shift)": {
       "result": true,
-      "time": 0.05756568908691406,
+      "time": 0.05232882499694824,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:43:37",
+    "start_time": "2025-05-27 19:18:34",
     "guidance_input_tokens": 584,
-    "guidance_output_tokens": 88,
-    "end_time": "2025-05-27 17:43:38",
-    "duration": "0:00:01.678409"
+    "guidance_output_tokens": 241,
+    "end_time": "2025-05-27 19:18:39",
+    "duration": "0:00:05.629738"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

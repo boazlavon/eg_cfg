@@ -1,9 +1,9 @@
 {
-  "code": "def add(lst):\n    total = 0\n    for i in range(len(lst)):\n        if i % 2 != 0:\n            if lst[i] % 2 == 0:\n                total += lst[i]\n    return total",
+  "code": "def add(lst):\n    total = 0\n    index = 0\n    while index < len(lst):\n        if index % 2 != 0:\n            current_value = lst[index]\n            if current_value % 2 == 0:\n                total = total + current_value\n        index = index + 1\n    return total",
   "results": {
-    "def check(add):\n\n    # Check some simple cases\n    assert add([4, 88]) == 88\n    assert add([4, 5, 6, 7, 2, 122]) == 122\n    assert add([4, 0, 6, 7]) == 0\n    assert add([4, 4, 6, 8]) == 12\n\n    # Check some edge cases that are easy to work out by hand.\n    \n\ncheck(add)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([4, 88]) == 88\n    assert candidate([4, 5, 6, 7, 2, 122]) == 122\n    assert candidate([4, 0, 6, 7]) == 0\n    assert candidate([4, 4, 6, 8]) == 12\n\n    # Check some edge cases that are easy to work out by hand.\n    \n\ncheck(add)": {
       "result": true,
-      "time": 0.05359244346618652,
+      "time": 0.054097890853881836,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:41:08",
+    "start_time": "2025-05-27 19:26:13",
     "guidance_input_tokens": 542,
-    "guidance_output_tokens": 66,
-    "end_time": "2025-05-27 17:41:10",
-    "duration": "0:00:01.932375"
+    "guidance_output_tokens": 91,
+    "end_time": "2025-05-27 19:26:16",
+    "duration": "0:00:02.800965"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

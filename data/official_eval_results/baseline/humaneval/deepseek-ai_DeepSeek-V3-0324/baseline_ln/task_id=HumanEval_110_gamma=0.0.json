@@ -1,9 +1,9 @@
 {
-  "code": "def exchange(lst1, lst2):\n    count_odd_lst1 = sum(1 for num in lst1 if num % 2 != 0)\n    count_even_lst2 = sum(1 for num in lst2 if num % 2 == 0)\n    \n    if count_odd_lst1 <= count_even_lst2:\n        return \"YES\"\n    else:\n        return \"NO\"",
+  "code": "def exchange(lst1, lst2):\n    odd_in_lst1 = sum(1 for num in lst1 if num % 2 != 0)\n    even_in_lst2 = sum(1 for num in lst2 if num % 2 == 0)\n    return \"YES\" if odd_in_lst1 <= even_in_lst2 else \"NO\"",
   "results": {
-    "def check(exchange):\n\n    # Check some simple cases\n    assert exchange([1, 2, 3, 4], [1, 2, 3, 4]) == \"YES\"\n    assert exchange([1, 2, 3, 4], [1, 5, 3, 4]) == \"NO\"\n    assert exchange([1, 2, 3, 4], [2, 1, 4, 3]) == \"YES\" \n    assert exchange([5, 7, 3], [2, 6, 4]) == \"YES\"\n    assert exchange([5, 7, 3], [2, 6, 3]) == \"NO\" \n    assert exchange([3, 2, 6, 1, 8, 9], [3, 5, 5, 1, 1, 1]) == \"NO\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert exchange([100, 200], [200, 200]) == \"YES\"\n\n\ncheck(exchange)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([1, 2, 3, 4], [1, 2, 3, 4]) == \"YES\"\n    assert candidate([1, 2, 3, 4], [1, 5, 3, 4]) == \"NO\"\n    assert candidate([1, 2, 3, 4], [2, 1, 4, 3]) == \"YES\" \n    assert candidate([5, 7, 3], [2, 6, 4]) == \"YES\"\n    assert candidate([5, 7, 3], [2, 6, 3]) == \"NO\" \n    assert candidate([3, 2, 6, 1, 8, 9], [3, 5, 5, 1, 1, 1]) == \"NO\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate([100, 200], [200, 200]) == \"YES\"\n\n\ncheck(exchange)": {
       "result": true,
-      "time": 0.06011605262756348,
+      "time": 0.060170650482177734,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:50:58",
+    "start_time": "2025-05-27 19:32:31",
     "guidance_input_tokens": 837,
-    "guidance_output_tokens": 94,
-    "end_time": "2025-05-27 17:51:00",
-    "duration": "0:00:02.110423"
+    "guidance_output_tokens": 92,
+    "end_time": "2025-05-27 19:32:33",
+    "duration": "0:00:02.698491"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

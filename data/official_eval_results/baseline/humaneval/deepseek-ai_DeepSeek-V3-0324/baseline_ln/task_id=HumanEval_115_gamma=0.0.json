@@ -1,9 +1,9 @@
 {
-  "code": "def max_fill(grid, capacity):\n    total_lowers = 0\n    for row in grid:\n        water_units = sum(row)\n        if water_units > 0:\n            lowers = (water_units + capacity - 1) // capacity  # Equivalent to math.ceil(water_units / capacity)\n            total_lowers += lowers\n    return total_lowers",
+  "code": "def max_fill(grid, capacity):\n    total_lowers = 0\n    for row in grid:\n        water_units = sum(row)\n        if water_units > 0:\n            lowers = (water_units + capacity - 1) // capacity\n            total_lowers += lowers\n    return total_lowers",
   "results": {
-    "def check(max_fill):\n\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert max_fill([[0,0,1,0], [0,1,0,0], [1,1,1,1]], 1) == 6, \"Error\"\n    assert max_fill([[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]], 2) == 5, \"Error\"\n    assert max_fill([[0,0,0], [0,0,0]], 5) == 0, \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert max_fill([[1,1,1,1], [1,1,1,1]], 2) == 4, \"Error\"\n    assert max_fill([[1,1,1,1], [1,1,1,1]], 9) == 2, \"Error\"\n\n\ncheck(max_fill)": {
+    "def check(candidate):\n\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate([[0,0,1,0], [0,1,0,0], [1,1,1,1]], 1) == 6, \"Error\"\n    assert candidate([[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]], 2) == 5, \"Error\"\n    assert candidate([[0,0,0], [0,0,0]], 5) == 0, \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate([[1,1,1,1], [1,1,1,1]], 2) == 4, \"Error\"\n    assert candidate([[1,1,1,1], [1,1,1,1]], 9) == 2, \"Error\"\n\n\ncheck(max_fill)": {
       "result": true,
-      "time": 0.05535554885864258,
+      "time": 0.056572675704956055,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:49:05",
+    "start_time": "2025-05-27 19:38:31",
     "guidance_input_tokens": 863,
-    "guidance_output_tokens": 87,
-    "end_time": "2025-05-27 17:49:07",
-    "duration": "0:00:02.155461"
+    "guidance_output_tokens": 73,
+    "end_time": "2025-05-27 19:38:32",
+    "duration": "0:00:01.663167"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

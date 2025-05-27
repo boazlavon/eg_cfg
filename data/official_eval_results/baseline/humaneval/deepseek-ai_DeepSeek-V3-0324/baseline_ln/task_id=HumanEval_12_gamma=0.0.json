@@ -1,9 +1,9 @@
 {
-  "code": "from typing import List, Optional\n\ndef longest(strings: List[str]) -> Optional[str]:\n    if not strings:\n        return None\n    return max(strings, key=lambda x: len(x), default=None)",
+  "code": "from typing import List, Optional\n\ndef longest(strings: List[str]) -> Optional[str]:\n    if not strings:\n        return None\n    longest_str = strings[0]\n    for s in strings[1:]:\n        if len(s) > len(longest_str):\n            longest_str = s\n    return longest_str",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(longest):\n    assert longest([]) == None\n    assert longest(['x', 'y', 'z']) == 'x'\n    assert longest(['x', 'yyy', 'zzzz', 'www', 'kkkk', 'abc']) == 'zzzz'\n\ncheck(longest)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([]) == None\n    assert candidate(['x', 'y', 'z']) == 'x'\n    assert candidate(['x', 'yyy', 'zzzz', 'www', 'kkkk', 'abc']) == 'zzzz'\n\ncheck(longest)": {
       "result": true,
-      "time": 0.11071419715881348,
+      "time": 0.09794068336486816,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:49:51",
+    "start_time": "2025-05-27 19:34:38",
     "guidance_input_tokens": 750,
-    "guidance_output_tokens": 49,
-    "end_time": "2025-05-27 17:49:53",
-    "duration": "0:00:01.706140"
+    "guidance_output_tokens": 72,
+    "end_time": "2025-05-27 19:34:40",
+    "duration": "0:00:02.019552"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

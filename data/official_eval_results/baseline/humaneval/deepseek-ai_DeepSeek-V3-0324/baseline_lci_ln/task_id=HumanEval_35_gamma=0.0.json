@@ -1,9 +1,9 @@
 {
-  "code": "def max_element(l):\n    if not l:\n        return None\n    max_val = l[0]\n    for num in l[1:]:\n        if num > max_val:\n            max_val = num\n    return max_val",
+  "code": "def max_element(l):\n    if len(l) == 0:\n        return None\n    max_val = l[0]\n    for i in range(len(l)):\n        temp = l[i]\n        if temp > max_val:\n            max_val = temp\n    return max_val",
   "results": {
-    "\n\nMETADATA = {}\n\n\ndef check(max_element):\n    assert max_element([1, 2, 3]) == 3\n    assert max_element([5, 3, -5, 2, -3, 3, 9, 0, 124, 1, -10]) == 124\n\ncheck(max_element)": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([1, 2, 3]) == 3\n    assert candidate([5, 3, -5, 2, -3, 3, 9, 0, 124, 1, -10]) == 124\n\ncheck(max_element)": {
       "result": true,
-      "time": 0.05426979064941406,
+      "time": 0.05324983596801758,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:44:16",
+    "start_time": "2025-05-27 19:25:59",
     "guidance_input_tokens": 584,
-    "guidance_output_tokens": 69,
-    "end_time": "2025-05-27 17:44:18",
-    "duration": "0:00:01.979332"
+    "guidance_output_tokens": 312,
+    "end_time": "2025-05-27 19:26:04",
+    "duration": "0:00:05.414025"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

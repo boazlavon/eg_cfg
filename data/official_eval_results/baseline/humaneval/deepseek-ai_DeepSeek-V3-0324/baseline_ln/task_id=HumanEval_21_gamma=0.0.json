@@ -1,23 +1,23 @@
 {
-  "code": "def rescale_to_unit(numbers: List[float]) -> List[float]:\n    min_val = min(numbers)\n    max_val = max(numbers)\n    return [(x - min_val) / (max_val - min_val) for x in numbers]",
+  "code": "def rescale_to_unit(numbers):\n    min_val = min(numbers)\n    max_val = max(numbers)\n    if min_val == max_val:\n        return [0.0] * len(numbers)\n    return [(x - min_val) / (max_val - min_val) for x in numbers]",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(rescale_to_unit):\n    assert rescale_to_unit([2.0, 49.9]) == [0.0, 1.0]\n    assert rescale_to_unit([100.0, 49.9]) == [1.0, 0.0]\n    assert rescale_to_unit([1.0, 2.0, 3.0, 4.0, 5.0]) == [0.0, 0.25, 0.5, 0.75, 1.0]\n    assert rescale_to_unit([2.0, 1.0, 5.0, 3.0, 4.0]) == [0.25, 0.0, 1.0, 0.5, 0.75]\n    assert rescale_to_unit([12.0, 11.0, 15.0, 13.0, 14.0]) == [0.25, 0.0, 1.0, 0.5, 0.75]\n\ncheck(rescale_to_unit)": {
-      "result": false,
-      "time": 0.05921339988708496,
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([2.0, 49.9]) == [0.0, 1.0]\n    assert candidate([100.0, 49.9]) == [1.0, 0.0]\n    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0]) == [0.0, 0.25, 0.5, 0.75, 1.0]\n    assert candidate([2.0, 1.0, 5.0, 3.0, 4.0]) == [0.25, 0.0, 1.0, 0.5, 0.75]\n    assert candidate([12.0, 11.0, 15.0, 13.0, 14.0]) == [0.25, 0.0, 1.0, 0.5, 0.75]\n\ncheck(rescale_to_unit)": {
+      "result": true,
+      "time": 0.06039738655090332,
       "error": null
     }
   },
-  "passed": false,
-  "accuracy": 0.0,
+  "passed": true,
+  "accuracy": 1.0,
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:54:30",
+    "start_time": "2025-05-27 19:39:01",
     "guidance_input_tokens": 774,
-    "guidance_output_tokens": 57,
-    "end_time": "2025-05-27 17:54:31",
-    "duration": "0:00:01.607856"
+    "guidance_output_tokens": 178,
+    "end_time": "2025-05-27 19:39:11",
+    "duration": "0:00:09.398660"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

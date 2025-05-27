@@ -1,9 +1,9 @@
 {
-  "code": "def fib(n):\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    a = 0\n    b = 1\n    for _ in range(2, n + 1):\n        c = a + b\n        a = b\n        b = c\n    return b",
+  "code": "def fib(n):\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    a = 0\n    b = 1\n    for i in range(2, n+1):\n        c = a + b\n        a = b\n        b = c\n    return b",
   "results": {
-    "\n\nMETADATA = {}\n\n\ndef check(fib):\n    assert fib(10) == 55\n    assert fib(1) == 1\n    assert fib(8) == 21\n    assert fib(11) == 89\n    assert fib(12) == 144\n\n\ncheck(fib)": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(10) == 55\n    assert candidate(1) == 1\n    assert candidate(8) == 21\n    assert candidate(11) == 89\n    assert candidate(12) == 144\n\n\ncheck(fib)": {
       "result": true,
-      "time": 0.05554819107055664,
+      "time": 0.05423712730407715,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:45:09",
+    "start_time": "2025-05-27 19:16:18",
     "guidance_input_tokens": 553,
-    "guidance_output_tokens": 91,
-    "end_time": "2025-05-27 17:45:11",
-    "duration": "0:00:01.813714"
+    "guidance_output_tokens": 321,
+    "end_time": "2025-05-27 19:16:28",
+    "duration": "0:00:10.343147"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

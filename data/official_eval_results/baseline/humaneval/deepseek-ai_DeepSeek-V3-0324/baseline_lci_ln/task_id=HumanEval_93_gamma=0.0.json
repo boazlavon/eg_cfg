@@ -1,9 +1,9 @@
 {
-  "code": "def encode(message):\n    encoded_chars = []\n    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}\n    for char in message:\n        new_char = char\n        if char in vowels:\n            if char.islower():\n                base = ord('a')\n            else:\n                base = ord('A')\n            current_pos = ord(char) - base\n            new_pos = (current_pos + 2) % 26\n            new_char = chr(base + new_pos)\n        swapped_case = new_char.swapcase()\n        encoded_chars.append(swapped_case)\n    encoded_message = ''.join(encoded_chars)\n    return encoded_message",
+  "code": "def encode(message):\n    result = []\n    vowels = {'a', 'e', 'i', 'o', 'u'}\n    for char in message:\n        if char.lower() in vowels:\n            if char.islower():\n                new_char = chr(((ord(char) - ord('a') + 2) % 26) + ord('a'))\n                new_char = new_char.upper()\n            else:\n                new_char = chr(((ord(char) - ord('A') + 2) % 26) + ord('A'))\n                new_char = new_char.lower()\n            result.append(new_char)\n        else:\n            if char.islower():\n                new_char = char.upper()\n            else:\n                new_char = char.lower()\n            result.append(new_char)\n    encoded_message = ''.join(result)\n    return encoded_message",
   "results": {
-    "def check(encode):\n\n    # Check some simple cases\n    assert encode('TEST') == 'tgst', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert encode('Mudasir') == 'mWDCSKR', \"This prints if this assert fails 2 (good for debugging!)\"\n    assert encode('YES') == 'ygs', \"This prints if this assert fails 3 (good for debugging!)\"\n    \n    # Check some edge cases that are easy to work out by hand.\n    assert encode('This is a message') == 'tHKS KS C MGSSCGG', \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert encode(\"I DoNt KnOw WhAt tO WrItE\") == 'k dQnT kNqW wHcT Tq wRkTg', \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(encode)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('TEST') == 'tgst', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('Mudasir') == 'mWDCSKR', \"This prints if this assert fails 2 (good for debugging!)\"\n    assert candidate('YES') == 'ygs', \"This prints if this assert fails 3 (good for debugging!)\"\n    \n    # Check some edge cases that are easy to work out by hand.\n    assert candidate('This is a message') == 'tHKS KS C MGSSCGG', \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(\"I DoNt KnOw WhAt tO WrItE\") == 'k dQnT kNqW wHcT Tq wRkTg', \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(encode)": {
       "result": true,
-      "time": 0.05681562423706055,
+      "time": 0.052579641342163086,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:39:51",
+    "start_time": "2025-05-27 19:22:04",
     "guidance_input_tokens": 603,
-    "guidance_output_tokens": 174,
-    "end_time": "2025-05-27 17:39:54",
-    "duration": "0:00:03.343615"
+    "guidance_output_tokens": 177,
+    "end_time": "2025-05-27 19:22:07",
+    "duration": "0:00:03.722740"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

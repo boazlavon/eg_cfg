@@ -1,9 +1,9 @@
 {
-  "code": "from typing import List\n\ndef rolling_max(numbers: List[int]) -> List[int]:\n    if not numbers:\n        return []\n    max_so_far = numbers[0]\n    result = [max_so_far]\n    for num in numbers[1:]:\n        if num > max_so_far:\n            max_so_far = num\n        result.append(max_so_far)\n    return result",
+  "code": "def rolling_max(numbers):\n    if not numbers:\n        return []\n    rolling_max_list = []\n    current_max = numbers[0]\n    for num in numbers:\n        if num > current_max:\n            current_max = num\n        rolling_max_list.append(current_max)\n    return rolling_max_list",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(rolling_max):\n    assert rolling_max([]) == []\n    assert rolling_max([1, 2, 3, 4]) == [1, 2, 3, 4]\n    assert rolling_max([4, 3, 2, 1]) == [4, 4, 4, 4]\n    assert rolling_max([3, 2, 3, 100, 3]) == [3, 3, 3, 100, 100]\n\ncheck(rolling_max)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([]) == []\n    assert candidate([1, 2, 3, 4]) == [1, 2, 3, 4]\n    assert candidate([4, 3, 2, 1]) == [4, 4, 4, 4]\n    assert candidate([3, 2, 3, 100, 3]) == [3, 3, 3, 100, 100]\n\ncheck(rolling_max)": {
       "result": true,
-      "time": 0.10821795463562012,
+      "time": 0.05789613723754883,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:53:13",
+    "start_time": "2025-05-27 19:37:24",
     "guidance_input_tokens": 746,
-    "guidance_output_tokens": 93,
-    "end_time": "2025-05-27 17:53:15",
-    "duration": "0:00:01.657525"
+    "guidance_output_tokens": 65,
+    "end_time": "2025-05-27 19:37:27",
+    "duration": "0:00:03.233311"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

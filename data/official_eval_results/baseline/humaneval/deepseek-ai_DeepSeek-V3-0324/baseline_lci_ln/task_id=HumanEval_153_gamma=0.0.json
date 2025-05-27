@@ -1,0 +1,23 @@
+{
+  "code": "def Strongest_Extension(class_name, extensions):\n    max_strength = None\n    strongest_extension = None\n    for extension in extensions:\n        cap = 0\n        sm = 0\n        for char in extension:\n            if char.isupper():\n                cap += 1\n            elif char.islower():\n                sm += 1\n        strength = cap - sm\n        if max_strength is None or strength > max_strength:\n            max_strength = strength\n            strongest_extension = extension\n    result = class_name + \".\" + strongest_extension\n    return result",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('Watashi', ['tEN', 'niNE', 'eIGHt8OKe']) == 'Watashi.eIGHt8OKe'\n    assert candidate('Boku123', ['nani', 'NazeDa', 'YEs.WeCaNe', '32145tggg']) == 'Boku123.YEs.WeCaNe'\n    assert candidate('__YESIMHERE', ['t', 'eMptY', 'nothing', 'zeR00', 'NuLl__', '123NoooneB321']) == '__YESIMHERE.NuLl__'\n    assert candidate('K', ['Ta', 'TAR', 't234An', 'cosSo']) == 'K.TAR'\n    assert candidate('__HAHA', ['Tab', '123', '781345', '-_-']) == '__HAHA.123'\n    assert candidate('YameRore', ['HhAas', 'okIWILL123', 'WorkOut', 'Fails', '-_-']) == 'YameRore.okIWILL123'\n    assert candidate('finNNalLLly', ['Die', 'NowW', 'Wow', 'WoW']) == 'finNNalLLly.WoW'\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate('_', ['Bb', '91245']) == '_.Bb'\n    assert candidate('Sp', ['671235', 'Bb']) == 'Sp.671235'\n    \n\ncheck(Strongest_Extension)": {
+      "result": true,
+      "time": 0.059081315994262695,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:25:24",
+    "guidance_input_tokens": 745,
+    "guidance_output_tokens": 132,
+    "end_time": "2025-05-27 19:25:29",
+    "duration": "0:00:04.405211"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

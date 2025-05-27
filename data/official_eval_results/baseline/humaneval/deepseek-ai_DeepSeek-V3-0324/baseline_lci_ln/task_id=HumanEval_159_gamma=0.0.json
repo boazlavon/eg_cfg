@@ -1,9 +1,9 @@
 {
-  "code": "def eat(number, need, remaining):\n    total_eaten = number\n    additional_carrots = 0\n    if remaining >= need:\n        additional_carrots = need\n    else:\n        additional_carrots = remaining\n    total_eaten = total_eaten + additional_carrots\n    carrots_left = remaining - additional_carrots\n    return [total_eaten, carrots_left]",
+  "code": "def eat(number, need, remaining):\n    total_eaten = number\n    carrots_left = remaining\n    if need <= remaining:\n        total_eaten += need\n        carrots_left -= need\n    else:\n        total_eaten += remaining\n        carrots_left = 0\n    return [total_eaten, carrots_left]",
   "results": {
-    "def check(eat):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert eat(5, 6, 10) == [11, 4], \"Error\"\n    assert eat(4, 8, 9) == [12, 1], \"Error\"\n    assert eat(1, 10, 10) == [11, 0], \"Error\"\n    assert eat(2, 11, 5) == [7, 0], \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert eat(4, 5, 7) == [9, 2], \"Error\"\n    assert eat(4, 5, 1) == [5, 0], \"Error\"\n\n\ncheck(eat)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(5, 6, 10) == [11, 4], \"Error\"\n    assert candidate(4, 8, 9) == [12, 1], \"Error\"\n    assert candidate(1, 10, 10) == [11, 0], \"Error\"\n    assert candidate(2, 11, 5) == [7, 0], \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(4, 5, 7) == [9, 2], \"Error\"\n    assert candidate(4, 5, 1) == [5, 0], \"Error\"\n\n\ncheck(eat)": {
       "result": true,
-      "time": 0.06515312194824219,
+      "time": 0.0547940731048584,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:39:08",
+    "start_time": "2025-05-27 19:21:30",
     "guidance_input_tokens": 742,
-    "guidance_output_tokens": 370,
-    "end_time": "2025-05-27 17:39:13",
-    "duration": "0:00:04.769276"
+    "guidance_output_tokens": 156,
+    "end_time": "2025-05-27 19:21:34",
+    "duration": "0:00:04.660888"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

@@ -1,9 +1,9 @@
 {
   "code": "def rounded_avg(n, m):\n    if n > m:\n        return -1\n    total = 0\n    count = 0\n    for num in range(n, m + 1):\n        total += num\n        count += 1\n    average = total / count\n    rounded = round(average)\n    binary_str = bin(rounded)\n    return binary_str",
   "results": {
-    "def check(rounded_avg):\n\n    # Check some simple cases\n    assert rounded_avg(1, 5) == \"0b11\"\n    assert rounded_avg(7, 13) == \"0b1010\"\n    assert rounded_avg(964,977) == \"0b1111001010\"\n    assert rounded_avg(996,997) == \"0b1111100100\"\n    assert rounded_avg(560,851) == \"0b1011000010\"\n    assert rounded_avg(185,546) == \"0b101101110\"\n    assert rounded_avg(362,496) == \"0b110101101\"\n    assert rounded_avg(350,902) == \"0b1001110010\"\n    assert rounded_avg(197,233) == \"0b11010111\"\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert rounded_avg(7, 5) == -1\n    assert rounded_avg(5, 1) == -1\n    assert rounded_avg(5, 5) == \"0b101\"\n\n\ncheck(rounded_avg)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(1, 5) == \"0b11\"\n    assert candidate(7, 13) == \"0b1010\"\n    assert candidate(964,977) == \"0b1111001010\"\n    assert candidate(996,997) == \"0b1111100100\"\n    assert candidate(560,851) == \"0b1011000010\"\n    assert candidate(185,546) == \"0b101101110\"\n    assert candidate(362,496) == \"0b110101101\"\n    assert candidate(350,902) == \"0b1001110010\"\n    assert candidate(197,233) == \"0b11010111\"\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(7, 5) == -1\n    assert candidate(5, 1) == -1\n    assert candidate(5, 5) == \"0b101\"\n\n\ncheck(rounded_avg)": {
       "result": true,
-      "time": 0.054396867752075195,
+      "time": 0.054064273834228516,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:41:15",
+    "start_time": "2025-05-27 19:24:55",
     "guidance_input_tokens": 624,
-    "guidance_output_tokens": 226,
-    "end_time": "2025-05-27 17:41:19",
-    "duration": "0:00:03.188409"
+    "guidance_output_tokens": 86,
+    "end_time": "2025-05-27 19:25:01",
+    "duration": "0:00:05.628049"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

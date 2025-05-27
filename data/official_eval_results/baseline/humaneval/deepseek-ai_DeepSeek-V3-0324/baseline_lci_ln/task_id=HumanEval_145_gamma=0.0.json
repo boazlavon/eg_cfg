@@ -1,9 +1,9 @@
 {
-  "code": "def order_by_points(nums):\n    if not nums:\n        return []\n    def sum_digits(n):\n        n = abs(n)\n        s = 0\n        while n > 0:\n            s += n % 10\n            n = n // 10\n        return s\n    decorated = []\n    for i, num in enumerate(nums):\n        decorated.append((sum_digits(num), i, num))\n    decorated.sort()\n    return [num for (s, i, num) in decorated]",
+  "code": "def order_by_points(nums):\n    if not nums:\n        return []\n    \n    # Step 1: Create a list of tuples containing (index, number, sum_of_digits)\n    processed = []\n    for index in range(len(nums)):\n        num = nums[index]\n        # Calculate sum of digits\n        abs_num = abs(num)\n        sum_digits = 0\n        while abs_num > 0:\n            digit = abs_num % 10\n            sum_digits += digit\n            abs_num = abs_num // 10\n        processed.append((index, num, sum_digits))\n    \n    # Step 2: Sort the processed list first by sum_digits, then by original index\n    sorted_list = []\n    for i in range(len(processed)):\n        current_min = i\n        for j in range(i + 1, len(processed)):\n            if processed[j][2] < processed[current_min][2]:\n                current_min = j\n            elif processed[j][2] == processed[current_min][2]:\n                if processed[j][0] < processed[current_min][0]:\n                    current_min = j\n        processed[i], processed[current_min] = processed[current_min], processed[i]\n        sorted_list.append(processed[i][1])\n    \n    return sorted_list",
   "results": {
-    "def check(order_by_points):\n\n    # Check some simple cases\n    assert order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]\n    assert order_by_points([1234,423,463,145,2,423,423,53,6,37,3457,3,56,0,46]) == [0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]\n    assert order_by_points([]) == []\n    assert order_by_points([1, -11, -32, 43, 54, -98, 2, -3]) == [-3, -32, -98, -11, 1, 2, 43, 54]\n    assert order_by_points([1,2,3,4,5,6,7,8,9,10,11]) == [1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]\n    assert order_by_points([0,6,6,-76,-21,23,4]) == [-76, -21, 0, 4, 23, 6, 6]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(order_by_points)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]\n    assert candidate([1234,423,463,145,2,423,423,53,6,37,3457,3,56,0,46]) == [0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]\n    assert candidate([]) == []\n    assert candidate([1, -11, -32, 43, 54, -98, 2, -3]) == [-3, -32, -98, -11, 1, 2, 43, 54]\n    assert candidate([1,2,3,4,5,6,7,8,9,10,11]) == [1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]\n    assert candidate([0,6,6,-76,-21,23,4]) == [-76, -21, 0, 4, 23, 6, 6]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(order_by_points)": {
       "result": false,
-      "time": 0.05544686317443848,
+      "time": 0.05442404747009277,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:36:19",
+    "start_time": "2025-05-27 19:19:42",
     "guidance_input_tokens": 611,
-    "guidance_output_tokens": 2048,
-    "end_time": "2025-05-27 17:36:47",
-    "duration": "0:00:28.289433"
+    "guidance_output_tokens": 380,
+    "end_time": "2025-05-27 19:19:56",
+    "duration": "0:00:14.742473"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

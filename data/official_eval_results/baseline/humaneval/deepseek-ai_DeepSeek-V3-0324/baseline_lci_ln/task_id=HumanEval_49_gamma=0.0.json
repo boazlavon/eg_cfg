@@ -1,9 +1,9 @@
 {
-  "code": "def modp(n, p):\n    if n == 0:\n        return 1\n    result = 1\n    base = 2\n    exponent = n\n    while exponent > 0:\n        if exponent % 2 == 1:\n            result = (result * base) % p\n        base = (base * base) % p\n        exponent = exponent // 2\n    return result",
+  "code": "def modp(n, p):\n    if n == 0:\n        return 1\n    result = 1\n    for _ in range(n):\n        result = (result * 2) % p\n    return result",
   "results": {
-    "\n\nMETADATA = {}\n\n\ndef check(modp):\n    assert modp(3, 5) == 3\n    assert modp(1101, 101) == 2\n    assert modp(0, 101) == 1\n    assert modp(3, 11) == 8\n    assert modp(100, 101) == 1\n    assert modp(30, 5) == 4\n    assert modp(31, 5) == 3\n\n\ncheck(modp)": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(3, 5) == 3\n    assert candidate(1101, 101) == 2\n    assert candidate(0, 101) == 1\n    assert candidate(3, 11) == 8\n    assert candidate(100, 101) == 1\n    assert candidate(30, 5) == 4\n    assert candidate(31, 5) == 3\n\n\ncheck(modp)": {
       "result": true,
-      "time": 0.05615115165710449,
+      "time": 0.056296348571777344,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:41:51",
+    "start_time": "2025-05-27 19:15:28",
     "guidance_input_tokens": 604,
-    "guidance_output_tokens": 2048,
-    "end_time": "2025-05-27 17:42:21",
-    "duration": "0:00:29.133428"
+    "guidance_output_tokens": 534,
+    "end_time": "2025-05-27 19:15:38",
+    "duration": "0:00:09.204501"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

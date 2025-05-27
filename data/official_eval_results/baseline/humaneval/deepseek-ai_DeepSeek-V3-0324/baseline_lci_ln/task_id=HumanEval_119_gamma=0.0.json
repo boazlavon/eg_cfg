@@ -1,23 +1,23 @@
 {
-  "code": "def match_parens(lst):\n    str1 = lst[0]\n    str2 = lst[1]",
+  "code": "def match_parens(lst):\n    def is_balanced(s):\n        balance = 0\n        for char in s:\n            if char == '(':\n                balance += 1\n            else:\n                balance -= 1\n            if balance < 0:\n                return False\n        return balance == 0\n    s1 = lst[0]\n    s2 = lst[1]\n    combined1 = s1 + s2\n    combined2 = s2 + s1\n    balanced1 = is_balanced(combined1)\n    balanced2 = is_balanced(combined2)\n    result = 'Yes' if balanced1 or balanced2 else 'No'\n    return result",
   "results": {
-    "def check(match_parens):\n\n    # Check some simple cases\n    assert match_parens(['()(', ')']) == 'Yes'\n    assert match_parens([')', ')']) == 'No'\n    assert match_parens(['(()(())', '())())']) == 'No'\n    assert match_parens([')())', '(()()(']) == 'Yes'\n    assert match_parens(['(())))', '(()())((']) == 'Yes'\n    assert match_parens(['()', '())']) == 'No'\n    assert match_parens(['(()(', '()))()']) == 'Yes'\n    assert match_parens(['((((', '((())']) == 'No'\n    assert match_parens([')(()', '(()(']) == 'No'\n    assert match_parens([')(', ')(']) == 'No'\n    \n\n    # Check some edge cases that are easy to work out by hand.\n    assert match_parens(['(', ')']) == 'Yes'\n    assert match_parens([')', '(']) == 'Yes' \n\n\ncheck(match_parens)": {
-      "result": false,
-      "time": 0.05918455123901367,
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(['()(', ')']) == 'Yes'\n    assert candidate([')', ')']) == 'No'\n    assert candidate(['(()(())', '())())']) == 'No'\n    assert candidate([')())', '(()()(']) == 'Yes'\n    assert candidate(['(())))', '(()())((']) == 'Yes'\n    assert candidate(['()', '())']) == 'No'\n    assert candidate(['(()(', '()))()']) == 'Yes'\n    assert candidate(['((((', '((())']) == 'No'\n    assert candidate([')(()', '(()(']) == 'No'\n    assert candidate([')(', ')(']) == 'No'\n    \n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(['(', ')']) == 'Yes'\n    assert candidate([')', '(']) == 'Yes' \n\n\ncheck(match_parens)": {
+      "result": true,
+      "time": 0.05164146423339844,
       "error": null
     }
   },
-  "passed": false,
-  "accuracy": 0.0,
+  "passed": true,
+  "accuracy": 1.0,
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:41:25",
+    "start_time": "2025-05-27 19:15:44",
     "guidance_input_tokens": 645,
-    "guidance_output_tokens": 326,
-    "end_time": "2025-05-27 17:41:29",
-    "duration": "0:00:03.990958"
+    "guidance_output_tokens": 723,
+    "end_time": "2025-05-27 19:15:56",
+    "duration": "0:00:12.648962"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

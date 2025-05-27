@@ -1,9 +1,9 @@
 {
-  "code": "def monotonic(l):\n    increasing = True\n    decreasing = True\n    for i in range(len(l) - 1):\n        first = l[i]\n        second = l[i + 1]\n        if second < first:\n            increasing = False\n        if second > first:\n            decreasing = False\n    return increasing or decreasing",
+  "code": "def monotonic(l):\n    if len(l) <= 1:\n        return True\n    direction = None\n    for i in range(len(l) - 1):\n        current = l[i]\n        next_val = l[i + 1]\n        if current == next_val:\n            continue\n        if direction is None:\n            if current < next_val:\n                direction = 'increasing'\n            else:\n                direction = 'decreasing'\n        else:\n            if (direction == 'increasing' and current > next_val) or (direction == 'decreasing' and current < next_val):\n                return False\n    return True",
   "results": {
-    "\n\nMETADATA = {}\n\n\ndef check(monotonic):\n    assert monotonic([1, 2, 4, 10]) == True\n    assert monotonic([1, 2, 4, 20]) == True\n    assert monotonic([1, 20, 4, 10]) == False\n    assert monotonic([4, 1, 0, -10]) == True\n    assert monotonic([4, 1, 1, 0]) == True\n    assert monotonic([1, 2, 3, 2, 5, 60]) == False\n    assert monotonic([1, 2, 3, 4, 5, 60]) == True\n    assert monotonic([9, 9, 9, 9]) == True\n\n\ncheck(monotonic)": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([1, 2, 4, 10]) == True\n    assert candidate([1, 2, 4, 20]) == True\n    assert candidate([1, 20, 4, 10]) == False\n    assert candidate([4, 1, 0, -10]) == True\n    assert candidate([4, 1, 1, 0]) == True\n    assert candidate([1, 2, 3, 2, 5, 60]) == False\n    assert candidate([1, 2, 3, 4, 5, 60]) == True\n    assert candidate([9, 9, 9, 9]) == True\n\n\ncheck(monotonic)": {
       "result": true,
-      "time": 0.05851912498474121,
+      "time": 0.05920886993408203,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:44:41",
+    "start_time": "2025-05-27 19:20:42",
     "guidance_input_tokens": 587,
-    "guidance_output_tokens": 92,
-    "end_time": "2025-05-27 17:44:43",
-    "duration": "0:00:01.738072"
+    "guidance_output_tokens": 152,
+    "end_time": "2025-05-27 19:20:46",
+    "duration": "0:00:04.350505"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

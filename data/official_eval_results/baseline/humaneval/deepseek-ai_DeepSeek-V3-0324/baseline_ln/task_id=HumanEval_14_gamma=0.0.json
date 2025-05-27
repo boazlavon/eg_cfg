@@ -1,9 +1,9 @@
 {
-  "code": "def all_prefixes(string: str) -> list[str]:\n    return [string[:i] for i in range(1, len(string)+1)]",
+  "code": "def all_prefixes(string: str) -> list[str]:\n    return [string[:i+1] for i in range(len(string))]",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(all_prefixes):\n    assert all_prefixes('') == []\n    assert all_prefixes('asdfgh') == ['a', 'as', 'asd', 'asdf', 'asdfg', 'asdfgh']\n    assert all_prefixes('WWW') == ['W', 'WW', 'WWW']\n\ncheck(all_prefixes)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == []\n    assert candidate('asdfgh') == ['a', 'as', 'asd', 'asdf', 'asdfg', 'asdfgh']\n    assert candidate('WWW') == ['W', 'WW', 'WWW']\n\ncheck(all_prefixes)": {
       "result": true,
-      "time": 0.05991077423095703,
+      "time": 0.060872554779052734,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:53:33",
+    "start_time": "2025-05-27 19:34:17",
     "guidance_input_tokens": 709,
-    "guidance_output_tokens": 36,
-    "end_time": "2025-05-27 17:53:35",
-    "duration": "0:00:02.091638"
+    "guidance_output_tokens": 33,
+    "end_time": "2025-05-27 19:34:19",
+    "duration": "0:00:02.210195"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

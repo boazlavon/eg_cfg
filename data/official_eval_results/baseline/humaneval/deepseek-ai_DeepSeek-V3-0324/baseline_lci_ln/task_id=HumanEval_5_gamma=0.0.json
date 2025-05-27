@@ -1,9 +1,9 @@
 {
-  "code": "def intersperse(numbers, delimeter):\n    result = []\n    if not numbers:\n        return result\n    for i in range(len(numbers)):\n        result.append(numbers[i])\n        if i != len(numbers) - 1:\n            result.append(delimeter)\n    return result",
+  "code": "def intersperse(numbers, delimeter):\n    result = []\n    if len(numbers) == 0:\n        return result\n    result.append(numbers[0])\n    for i in range(1, len(numbers)):\n        result.append(delimeter)\n        result.append(numbers[i])\n    return result",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(intersperse):\n    assert intersperse([], 7) == []\n    assert intersperse([5, 6, 3, 2], 8) == [5, 8, 6, 8, 3, 8, 2]\n    assert intersperse([2, 2, 2], 2) == [2, 2, 2, 2, 2]\n\ncheck(intersperse)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([], 7) == []\n    assert candidate([5, 6, 3, 2], 8) == [5, 8, 6, 8, 3, 8, 2]\n    assert candidate([2, 2, 2], 2) == [2, 2, 2, 2, 2]\n\ncheck(intersperse)": {
       "result": true,
-      "time": 0.05964541435241699,
+      "time": 0.05799722671508789,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:41:05",
+    "start_time": "2025-05-27 19:22:58",
     "guidance_input_tokens": 593,
-    "guidance_output_tokens": 83,
-    "end_time": "2025-05-27 17:41:08",
-    "duration": "0:00:02.877309"
+    "guidance_output_tokens": 66,
+    "end_time": "2025-05-27 19:23:01",
+    "duration": "0:00:02.161320"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

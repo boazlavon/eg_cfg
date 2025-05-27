@@ -1,9 +1,9 @@
 {
-  "code": "def closest_integer(value):\n    float_value = float(value)\n    floor_value = int(float_value)\n    ceil_value = floor_value + 1\n    difference_floor = abs(float_value - floor_value)\n    difference_ceil = abs(float_value - ceil_value)\n    if difference_floor < difference_ceil:\n        return floor_value\n    elif difference_ceil < difference_floor:\n        return ceil_value\n    else:\n        if float_value > 0:\n            return ceil_value\n        else:\n            return floor_value",
+  "code": "def closest_integer(value):\n    number = float(value)\n    floor_value = int(number)\n    ceiling_value = floor_value + 1\n    distance_to_floor = abs(number - floor_value)\n    distance_to_ceiling = abs(ceiling_value - number)\n    \n    if distance_to_floor < distance_to_ceiling:\n        return floor_value\n    elif distance_to_ceiling < distance_to_floor:\n        return ceiling_value\n    else:\n        if number >= 0:\n            return ceiling_value\n        else:\n            return floor_value",
   "results": {
-    "def check(closest_integer):\n\n    # Check some simple cases\n    assert closest_integer(\"10\") == 10, \"Test 1\"\n    assert closest_integer(\"14.5\") == 15, \"Test 2\"\n    assert closest_integer(\"-15.5\") == -16, \"Test 3\"\n    assert closest_integer(\"15.3\") == 15, \"Test 3\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert closest_integer(\"0\") == 0, \"Test 0\"\n\n\ncheck(closest_integer)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"10\") == 10, \"Test 1\"\n    assert candidate(\"14.5\") == 15, \"Test 2\"\n    assert candidate(\"-15.5\") == -16, \"Test 3\"\n    assert candidate(\"15.3\") == 15, \"Test 3\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(\"0\") == 0, \"Test 0\"\n\n\ncheck(closest_integer)": {
       "result": false,
-      "time": 0.05096769332885742,
+      "time": 0.05385756492614746,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:37:39",
+    "start_time": "2025-05-27 19:16:10",
     "guidance_input_tokens": 583,
-    "guidance_output_tokens": 114,
-    "end_time": "2025-05-27 17:37:46",
-    "duration": "0:00:07.207911"
+    "guidance_output_tokens": 421,
+    "end_time": "2025-05-27 19:16:18",
+    "duration": "0:00:07.331371"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

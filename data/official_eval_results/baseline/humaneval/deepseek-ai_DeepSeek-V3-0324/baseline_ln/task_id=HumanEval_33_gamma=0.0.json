@@ -1,9 +1,9 @@
 {
-  "code": "def sort_third(l):\n    indices_divisible_by_three = [i for i in range(len(l)) if i % 3 == 0]\n    elements_to_sort = [l[i] for i in indices_divisible_by_three]\n    elements_sorted = sorted(elements_to_sort)\n    for idx, sorted_idx in enumerate(indices_divisible_by_three):\n        l[sorted_idx] = elements_sorted[idx]\n    return l",
+  "code": "def sort_third(l):\n    # Extract elements at indices divisible by 3\n    divisible_by_three = l[::3]\n    # Sort these elements\n    sorted_elements = sorted(divisible_by_three)\n    # Create a new list by replacing elements at indices divisible by 3 with sorted values\n    result = l.copy()\n    for i in range(len(sorted_elements)):\n        result[i * 3] = sorted_elements[i]\n    return result",
   "results": {
-    "\n\nMETADATA = {}\n\n\ndef check(sort_third):\n    assert tuple(sort_third([1, 2, 3])) == tuple(sort_third([1, 2, 3]))\n    assert tuple(sort_third([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])) == tuple(sort_third([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]))\n    assert tuple(sort_third([5, 8, -12, 4, 23, 2, 3, 11, 12, -10])) == tuple(sort_third([5, 8, -12, 4, 23, 2, 3, 11, 12, -10]))\n    assert tuple(sort_third([5, 6, 3, 4, 8, 9, 2])) == tuple([2, 6, 3, 4, 8, 9, 5])\n    assert tuple(sort_third([5, 8, 3, 4, 6, 9, 2])) == tuple([2, 8, 3, 4, 6, 9, 5])\n    assert tuple(sort_third([5, 6, 9, 4, 8, 3, 2])) == tuple([2, 6, 9, 4, 8, 3, 5])\n    assert tuple(sort_third([5, 6, 3, 4, 8, 9, 2, 1])) == tuple([2, 6, 3, 4, 8, 9, 5, 1])\n\n\ncheck(sort_third)": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert tuple(candidate([1, 2, 3])) == tuple(sort_third([1, 2, 3]))\n    assert tuple(candidate([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])) == tuple(sort_third([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]))\n    assert tuple(candidate([5, 8, -12, 4, 23, 2, 3, 11, 12, -10])) == tuple(sort_third([5, 8, -12, 4, 23, 2, 3, 11, 12, -10]))\n    assert tuple(candidate([5, 6, 3, 4, 8, 9, 2])) == tuple([2, 6, 3, 4, 8, 9, 5])\n    assert tuple(candidate([5, 8, 3, 4, 6, 9, 2])) == tuple([2, 8, 3, 4, 6, 9, 5])\n    assert tuple(candidate([5, 6, 9, 4, 8, 3, 2])) == tuple([2, 6, 9, 4, 8, 3, 5])\n    assert tuple(candidate([5, 6, 3, 4, 8, 9, 2, 1])) == tuple([2, 6, 3, 4, 8, 9, 5, 1])\n\n\ncheck(sort_third)": {
       "result": true,
-      "time": 0.06077265739440918,
+      "time": 0.062075138092041016,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:53:24",
+    "start_time": "2025-05-27 19:40:03",
     "guidance_input_tokens": 803,
-    "guidance_output_tokens": 100,
-    "end_time": "2025-05-27 17:53:27",
-    "duration": "0:00:02.207235"
+    "guidance_output_tokens": 105,
+    "end_time": "2025-05-27 19:40:06",
+    "duration": "0:00:02.446064"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

@@ -1,9 +1,9 @@
 {
   "code": "def parse_nested_parens(paren_string: str) -> list[int]:\n    groups = paren_string.split()\n    result = []\n    for group in groups:\n        max_depth = 0\n        current_depth = 0\n        for char in group:\n            if char == '(':\n                current_depth += 1\n                if current_depth > max_depth:\n                    max_depth = current_depth\n            elif char == ')':\n                current_depth -= 1\n        result.append(max_depth)\n    return result",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(parse_nested_parens):\n    assert parse_nested_parens('(()()) ((())) () ((())()())') == [2, 3, 1, 3]\n    assert parse_nested_parens('() (()) ((())) (((())))') == [1, 2, 3, 4]\n    assert parse_nested_parens('(()(())((())))') == [4]\n\ncheck(parse_nested_parens)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('(()()) ((())) () ((())()())') == [2, 3, 1, 3]\n    assert candidate('() (()) ((())) (((())))') == [1, 2, 3, 4]\n    assert candidate('(()(())((())))') == [4]\n\ncheck(parse_nested_parens)": {
       "result": true,
-      "time": 0.06008648872375488,
+      "time": 0.058010101318359375,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:52:24",
+    "start_time": "2025-05-27 19:39:18",
     "guidance_input_tokens": 764,
-    "guidance_output_tokens": 110,
-    "end_time": "2025-05-27 17:52:27",
-    "duration": "0:00:03.060734"
+    "guidance_output_tokens": 228,
+    "end_time": "2025-05-27 19:39:25",
+    "duration": "0:00:06.448545"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

@@ -1,22 +1,23 @@
 {
-  "code": null,
+  "code": "def incr_list(l: list):\n    return [x + 1 for x in l]",
   "results": {
-    "\n\nMETADATA = {}\n\n\ndef check(incr_list):\n    assert incr_list([]) == []\n    assert incr_list([3, 2, 1]) == [4, 3, 2]\n    assert incr_list([5, 2, 5, 2, 3, 3, 9, 0, 123]) == [6, 3, 6, 3, 4, 4, 10, 1, 124]\n\n\ncheck(incr_list)": {
-      "result": false,
-      "time": -1,
-      "error": "GenerationError"
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([]) == []\n    assert candidate([3, 2, 1]) == [4, 3, 2]\n    assert candidate([5, 2, 5, 2, 3, 3, 9, 0, 123]) == [6, 3, 6, 3, 4, 4, 10, 1, 124]\n\n\ncheck(incr_list)": {
+      "result": true,
+      "time": 0.05804586410522461,
+      "error": null
     }
   },
-  "passed": false,
-  "accuracy": 0.0,
-  "general_error": "<class 'AssertionError'>",
-  "has_testcase_error": true,
-  "tb": "Traceback (most recent call last):\n  File \"/home/ai_center/ai_users/boazlavon/data/code/web/clean4/eg_cfg/eg_cfg/eg_cfg_session_manager.py\", line 566, in solve_problem_with_eg_cfg_wrapper\n    solution = self.solve_problem_with_eg_cfg(problem, gamma)\n  File \"/home/ai_center/ai_users/boazlavon/data/code/web/clean4/eg_cfg/eg_cfg/eg_cfg_session_manager.py\", line 483, in solve_problem_with_eg_cfg\n    _, solution, completion_tokens = complex_qwen_query(\n  File \"/home/ai_center/ai_users/boazlavon/data/code/web/clean4/eg_cfg/eg_cfg/inference_endpoint_utils.py\", line 158, in complex_qwen_query\n    assert answer_start_until_code\nAssertionError\n",
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:55:06",
-    "end_time": "2025-05-27 17:55:16",
-    "duration": "0:00:09.816329"
+    "start_time": "2025-05-27 19:37:27",
+    "guidance_input_tokens": 766,
+    "guidance_output_tokens": 26,
+    "end_time": "2025-05-27 19:37:29",
+    "duration": "0:00:01.471195"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

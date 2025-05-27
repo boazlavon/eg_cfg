@@ -1,9 +1,9 @@
 {
   "code": "def choose_num(x, y):\n    start = min(x, y)\n    end = max(x, y)\n    for num in range(end, start - 1, -1):\n        if num % 2 == 0:\n            return num\n    return -1",
   "results": {
-    "def check(choose_num):\n\n    # Check some simple cases\n    assert choose_num(12, 15) == 14\n    assert choose_num(13, 12) == -1\n    assert choose_num(33, 12354) == 12354\n    assert choose_num(5234, 5233) == -1\n    assert choose_num(6, 29) == 28\n    assert choose_num(27, 10) == -1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert choose_num(7, 7) == -1\n    assert choose_num(546, 546) == 546\n\n\ncheck(choose_num)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(12, 15) == 14\n    assert candidate(13, 12) == -1\n    assert candidate(33, 12354) == 12354\n    assert candidate(5234, 5233) == -1\n    assert candidate(6, 29) == 28\n    assert candidate(27, 10) == -1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(7, 7) == -1\n    assert candidate(546, 546) == 546\n\n\ncheck(choose_num)": {
       "result": false,
-      "time": 0.06171584129333496,
+      "time": 0.05915331840515137,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:49:15",
+    "start_time": "2025-05-27 19:32:11",
     "guidance_input_tokens": 739,
-    "guidance_output_tokens": 63,
-    "end_time": "2025-05-27 17:49:20",
-    "duration": "0:00:04.770549"
+    "guidance_output_tokens": 62,
+    "end_time": "2025-05-27 19:32:13",
+    "duration": "0:00:02.337660"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

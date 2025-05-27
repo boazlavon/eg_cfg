@@ -1,9 +1,9 @@
 {
-  "code": "def file_name_check(file_name):\n    parts = file_name.split('.')\n    if len(parts) != 2:\n        return 'No'\n    name_part, extension_part = parts\n    if not name_part:\n        return 'No'\n    if not name_part[0].isalpha():\n        return 'No'\n    if extension_part not in ['txt', 'exe', 'dll']:\n        return 'No'\n    digit_count = sum(1 for char in file_name if char.isdigit())\n    if digit_count > 3:\n        return 'No'\n    return 'Yes'",
+  "code": "def file_name_check(file_name):\n    # Check for exactly one dot\n    if file_name.count('.') != 1:\n        return 'No'\n    \n    parts = file_name.split('.')\n    before_dot = parts[0]\n    after_dot = parts[1]\n    \n    # Check if before_dot is empty or does not start with a letter\n    if not before_dot or not before_dot[0].isalpha():\n        return 'No'\n    \n    # Check if after_dot is one of the allowed extensions\n    if after_dot not in ['txt', 'exe', 'dll']:\n        return 'No'\n    \n    # Check if there are more than three digits in the file_name\n    digit_count = sum(1 for c in file_name if c.isdigit())\n    if digit_count > 3:\n        return 'No'\n    \n    return 'Yes'",
   "results": {
-    "def check(file_name_check):\n\n    # Check some simple cases\n    assert file_name_check(\"example.txt\") == 'Yes'\n    assert file_name_check(\"1example.dll\") == 'No'\n    assert file_name_check('s1sdf3.asd') == 'No'\n    assert file_name_check('K.dll') == 'Yes'\n    assert file_name_check('MY16FILE3.exe') == 'Yes'\n    assert file_name_check('His12FILE94.exe') == 'No'\n    assert file_name_check('_Y.txt') == 'No'\n    assert file_name_check('?aREYA.exe') == 'No'\n    assert file_name_check('/this_is_valid.dll') == 'No'\n    assert file_name_check('this_is_valid.wow') == 'No'\n    assert file_name_check('this_is_valid.txt') == 'Yes'\n    assert file_name_check('this_is_valid.txtexe') == 'No'\n    assert file_name_check('#this2_i4s_5valid.ten') == 'No'\n    assert file_name_check('@this1_is6_valid.exe') == 'No'\n    assert file_name_check('this_is_12valid.6exe4.txt') == 'No'\n    assert file_name_check('all.exe.txt') == 'No'\n    assert file_name_check('I563_No.exe') == 'Yes'\n    assert file_name_check('Is3youfault.txt') == 'Yes'\n    assert file_name_check('no_one#knows.dll') == 'Yes'\n    assert file_name_check('1I563_Yes3.exe') == 'No'\n    assert file_name_check('I563_Yes3.txtt') == 'No'\n    assert file_name_check('final..txt') == 'No'\n    assert file_name_check('final132') == 'No'\n    assert file_name_check('_f4indsartal132.') == 'No'\n    \n        \n\n    # Check some edge cases that are easy to work out by hand.\n    assert file_name_check('.txt') == 'No'\n    assert file_name_check('s.') == 'No'\n\n\ncheck(file_name_check)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"example.txt\") == 'Yes'\n    assert candidate(\"1example.dll\") == 'No'\n    assert candidate('s1sdf3.asd') == 'No'\n    assert candidate('K.dll') == 'Yes'\n    assert candidate('MY16FILE3.exe') == 'Yes'\n    assert candidate('His12FILE94.exe') == 'No'\n    assert candidate('_Y.txt') == 'No'\n    assert candidate('?aREYA.exe') == 'No'\n    assert candidate('/this_is_valid.dll') == 'No'\n    assert candidate('this_is_valid.wow') == 'No'\n    assert candidate('this_is_valid.txt') == 'Yes'\n    assert candidate('this_is_valid.txtexe') == 'No'\n    assert candidate('#this2_i4s_5valid.ten') == 'No'\n    assert candidate('@this1_is6_valid.exe') == 'No'\n    assert candidate('this_is_12valid.6exe4.txt') == 'No'\n    assert candidate('all.exe.txt') == 'No'\n    assert candidate('I563_No.exe') == 'Yes'\n    assert candidate('Is3youfault.txt') == 'Yes'\n    assert candidate('no_one#knows.dll') == 'Yes'\n    assert candidate('1I563_Yes3.exe') == 'No'\n    assert candidate('I563_Yes3.txtt') == 'No'\n    assert candidate('final..txt') == 'No'\n    assert candidate('final132') == 'No'\n    assert candidate('_f4indsartal132.') == 'No'\n    \n        \n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate('.txt') == 'No'\n    assert candidate('s.') == 'No'\n\n\ncheck(file_name_check)": {
       "result": true,
-      "time": 0.06041145324707031,
+      "time": 0.05872941017150879,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:55:03",
+    "start_time": "2025-05-27 19:36:34",
     "guidance_input_tokens": 855,
-    "guidance_output_tokens": 129,
-    "end_time": "2025-05-27 17:55:06",
-    "duration": "0:00:02.470855"
+    "guidance_output_tokens": 194,
+    "end_time": "2025-05-27 19:36:39",
+    "duration": "0:00:04.238510"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

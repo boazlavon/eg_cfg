@@ -1,9 +1,9 @@
 {
-  "code": "def filter_integers(values):\n    filtered = []\n    for value in values:\n        if type(value) == int:\n            filtered.append(value)\n    return filtered",
+  "code": "def filter_integers(values):\n    output = []\n    for val in values:\n        if isinstance(val, int) and not isinstance(val, bool):\n            output.append(val)\n    return output",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(filter_integers):\n    assert filter_integers([]) == []\n    assert filter_integers([4, {}, [], 23.2, 9, 'adasd']) == [4, 9]\n    assert filter_integers([3, 'c', 3, 3, 'a', 'b']) == [3, 3, 3]\n\ncheck(filter_integers)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([]) == []\n    assert candidate([4, {}, [], 23.2, 9, 'adasd']) == [4, 9]\n    assert candidate([3, 'c', 3, 3, 'a', 'b']) == [3, 3, 3]\n\ncheck(filter_integers)": {
       "result": true,
-      "time": 0.05956125259399414,
+      "time": 0.05576729774475098,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:41:29",
+    "start_time": "2025-05-27 19:23:24",
     "guidance_input_tokens": 590,
-    "guidance_output_tokens": 155,
-    "end_time": "2025-05-27 17:41:32",
-    "duration": "0:00:02.672634"
+    "guidance_output_tokens": 211,
+    "end_time": "2025-05-27 19:23:31",
+    "duration": "0:00:06.916606"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

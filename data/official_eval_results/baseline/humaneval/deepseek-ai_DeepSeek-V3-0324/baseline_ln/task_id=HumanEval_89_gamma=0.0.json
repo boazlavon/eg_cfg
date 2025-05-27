@@ -1,9 +1,9 @@
 {
-  "code": "def encrypt(s):\n    encrypted = []\n    for char in s:\n        if char.isalpha():\n            shift = 2 * 2  # Two multiplied by two places\n            if char.islower():\n                encrypted_char = chr(((ord(char) - ord('a') + shift) % 26) + ord('a'))\n            else:\n                encrypted_char = chr(((ord(char) - ord('A') + shift) % 26) + ord('A'))\n            encrypted.append(encrypted_char)\n        else:\n            encrypted.append(char)\n    return ''.join(encrypted)",
+  "code": "def encrypt(s):\n    result = []\n    for char in s:\n        if 'a' <= char <= 'z':\n            shifted_char = chr(((ord(char) - ord('a') + 4) % 26) + ord('a'))\n            result.append(shifted_char)\n        elif 'A' <= char <= 'Z':\n            shifted_char = chr(((ord(char) - ord('A') + 4) % 26) + ord('A'))\n            result.append(shifted_char)\n        else:\n            result.append(char)\n    return ''.join(result)",
   "results": {
-    "def check(encrypt):\n\n    # Check some simple cases\n    assert encrypt('hi') == 'lm', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert encrypt('asdfghjkl') == 'ewhjklnop', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert encrypt('gf') == 'kj', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert encrypt('et') == 'ix', \"This prints if this assert fails 1 (good for debugging!)\"\n\n    assert encrypt('faewfawefaewg')=='jeiajeaijeiak', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert encrypt('hellomyfriend')=='lippsqcjvmirh', \"This prints if this assert fails 2 (good for debugging!)\"\n    assert encrypt('dxzdlmnilfuhmilufhlihufnmlimnufhlimnufhfucufh')=='hbdhpqrmpjylqmpyjlpmlyjrqpmqryjlpmqryjljygyjl', \"This prints if this assert fails 3 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert encrypt('a')=='e', \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(encrypt)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('hi') == 'lm', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('asdfghjkl') == 'ewhjklnop', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('gf') == 'kj', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('et') == 'ix', \"This prints if this assert fails 1 (good for debugging!)\"\n\n    assert candidate('faewfawefaewg')=='jeiajeaijeiak', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('hellomyfriend')=='lippsqcjvmirh', \"This prints if this assert fails 2 (good for debugging!)\"\n    assert candidate('dxzdlmnilfuhmilufhlihufnmlimnufhlimnufhfucufh')=='hbdhpqrmpjylqmpyjlpmlyjrqpmqryjlpmqryjljygyjl', \"This prints if this assert fails 3 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate('a')=='e', \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(encrypt)": {
       "result": true,
-      "time": 0.05974459648132324,
+      "time": 0.06037092208862305,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:50:12",
+    "start_time": "2025-05-27 19:38:06",
     "guidance_input_tokens": 754,
-    "guidance_output_tokens": 127,
-    "end_time": "2025-05-27 17:50:14",
-    "duration": "0:00:02.088609"
+    "guidance_output_tokens": 126,
+    "end_time": "2025-05-27 19:38:08",
+    "duration": "0:00:02.581551"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

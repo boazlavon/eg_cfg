@@ -1,9 +1,9 @@
 {
-  "code": "def concatenate(strings: list[str]) -> str:\n    return ''.join(strings)",
+  "code": "from typing import List\n\ndef concatenate(strings: List[str]) -> str:\n    return ''.join(strings)",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(concatenate):\n    assert concatenate([]) == ''\n    assert concatenate(['x', 'y', 'z']) == 'xyz'\n    assert concatenate(['x', 'y', 'z', 'w', 'k']) == 'xyzwk'\n\ncheck(concatenate)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([]) == ''\n    assert candidate(['x', 'y', 'z']) == 'xyz'\n    assert candidate(['x', 'y', 'z', 'w', 'k']) == 'xyzwk'\n\ncheck(concatenate)": {
       "result": true,
-      "time": 0.06081891059875488,
+      "time": 0.09344100952148438,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:50:29",
+    "start_time": "2025-05-27 19:36:22",
     "guidance_input_tokens": 712,
-    "guidance_output_tokens": 24,
-    "end_time": "2025-05-27 17:50:30",
-    "duration": "0:00:00.938097"
+    "guidance_output_tokens": 29,
+    "end_time": "2025-05-27 19:36:23",
+    "duration": "0:00:01.205724"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

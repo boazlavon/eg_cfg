@@ -1,9 +1,9 @@
 {
-  "code": "def is_palindrome(text):\n    length = len(text)\n    if length == 0:\n        return True\n    for i in range(length // 2):\n        opposite_index = length - 1 - i\n        if text[i] != text[opposite_index]:\n            return False\n    return True",
+  "code": "def is_palindrome(text):\n    if len(text) == 0:\n        return True\n    cleaned_text = \"\"\n    for char in text.lower():\n        if char.isalnum():\n            cleaned_text += char\n    left = 0\n    right = len(cleaned_text) - 1\n    while left < right:\n        if cleaned_text[left] != cleaned_text[right]:\n            return False\n        left += 1\n        right -= 1\n    return True",
   "results": {
-    "\n\nMETADATA = {}\n\n\ndef check(is_palindrome):\n    assert is_palindrome('') == True\n    assert is_palindrome('aba') == True\n    assert is_palindrome('aaaaa') == True\n    assert is_palindrome('zbcd') == False\n    assert is_palindrome('xywyx') == True\n    assert is_palindrome('xywyz') == False\n    assert is_palindrome('xywzx') == False\n\n\ncheck(is_palindrome)": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate('') == True\n    assert candidate('aba') == True\n    assert candidate('aaaaa') == True\n    assert candidate('zbcd') == False\n    assert candidate('xywyx') == True\n    assert candidate('xywyz') == False\n    assert candidate('xywzx') == False\n\n\ncheck(is_palindrome)": {
       "result": true,
-      "time": 0.05787396430969238,
+      "time": 0.053093671798706055,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:43:15",
+    "start_time": "2025-05-27 19:23:08",
     "guidance_input_tokens": 576,
-    "guidance_output_tokens": 70,
-    "end_time": "2025-05-27 17:43:16",
-    "duration": "0:00:01.283279"
+    "guidance_output_tokens": 339,
+    "end_time": "2025-05-27 19:23:18",
+    "duration": "0:00:09.568455"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

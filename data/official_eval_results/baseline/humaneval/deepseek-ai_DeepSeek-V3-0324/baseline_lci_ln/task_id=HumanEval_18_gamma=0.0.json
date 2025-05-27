@@ -1,9 +1,9 @@
 {
-  "code": "def how_many_times(string, substring):\n    if not substring:\n        return 0\n    count = 0\n    substring_length = len(substring)\n    string_length = len(string)\n    for i in range(string_length - substring_length + 1):\n        current_substring = string[i:i+substring_length]\n        if current_substring == substring:\n            count += 1\n    return count",
+  "code": "def how_many_times(string, substring):\n    count = 0\n    substring_length = len(substring)\n    string_length = len(string)\n    for i in range(string_length - substring_length + 1):\n        current_substring = string[i:i+substring_length]\n        if current_substring == substring:\n            count += 1\n    return count",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(how_many_times):\n    assert how_many_times('', 'x') == 0\n    assert how_many_times('xyxyxyx', 'x') == 4\n    assert how_many_times('cacacacac', 'cac') == 4\n    assert how_many_times('john doe', 'john') == 1\n\ncheck(how_many_times)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('', 'x') == 0\n    assert candidate('xyxyxyx', 'x') == 4\n    assert candidate('cacacacac', 'cac') == 4\n    assert candidate('john doe', 'john') == 1\n\ncheck(how_many_times)": {
       "result": true,
-      "time": 0.05613255500793457,
+      "time": 0.04794144630432129,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:37:25",
+    "start_time": "2025-05-27 19:15:56",
     "guidance_input_tokens": 598,
-    "guidance_output_tokens": 110,
-    "end_time": "2025-05-27 17:37:27",
-    "duration": "0:00:01.979297"
+    "guidance_output_tokens": 261,
+    "end_time": "2025-05-27 19:16:02",
+    "duration": "0:00:05.746502"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

@@ -1,9 +1,9 @@
 {
-  "code": "def by_length(arr):\n    filtered = []\n    for num in arr:\n        if 1 <= num <= 9:\n            filtered.append(num)\n    sorted_filtered = sorted(filtered)\n    reversed_sorted = sorted_filtered[::-1]\n    number_names = [\"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\"]\n    result = []\n    for num in reversed_sorted:\n        name = number_names[num - 1]\n        result.append(name)\n    return result",
+  "code": "def by_length(arr):\n    filtered_numbers = []\n    for num in arr:\n        if 1 <= num <= 9:\n            filtered_numbers.append(num)\n    \n    filtered_numbers.sort()\n    \n    reversed_numbers = []\n    for num in reversed(filtered_numbers):\n        reversed_numbers.append(num)\n    \n    digit_names = {\n        1: \"One\",\n        2: \"Two\",\n        3: \"Three\",\n        4: \"Four\",\n        5: \"Five\",\n        6: \"Six\",\n        7: \"Seven\",\n        8: \"Eight\",\n        9: \"Nine\"\n    }\n    \n    result = []\n    for num in reversed_numbers:\n        name = digit_names.get(num)\n        result.append(name)\n    \n    return result",
   "results": {
-    "def check(by_length):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert by_length([2, 1, 1, 4, 5, 8, 2, 3]) == [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"], \"Error\"\n    assert by_length([]) == [], \"Error\"\n    assert by_length([1, -1 , 55]) == ['One'], \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert by_length([1, -1, 3, 2]) == [\"Three\", \"Two\", \"One\"]\n    assert by_length([9, 4, 8]) == [\"Nine\", \"Eight\", \"Four\"]\n\n\ncheck(by_length)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate([2, 1, 1, 4, 5, 8, 2, 3]) == [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"], \"Error\"\n    assert candidate([]) == [], \"Error\"\n    assert candidate([1, -1 , 55]) == ['One'], \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate([1, -1, 3, 2]) == [\"Three\", \"Two\", \"One\"]\n    assert candidate([9, 4, 8]) == [\"Nine\", \"Eight\", \"Four\"]\n\n\ncheck(by_length)": {
       "result": true,
-      "time": 0.05617070198059082,
+      "time": 0.05699491500854492,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:44:37",
+    "start_time": "2025-05-27 19:26:33",
     "guidance_input_tokens": 748,
-    "guidance_output_tokens": 117,
-    "end_time": "2025-05-27 17:44:39",
-    "duration": "0:00:02.117962"
+    "guidance_output_tokens": 171,
+    "end_time": "2025-05-27 19:26:40",
+    "duration": "0:00:06.597061"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

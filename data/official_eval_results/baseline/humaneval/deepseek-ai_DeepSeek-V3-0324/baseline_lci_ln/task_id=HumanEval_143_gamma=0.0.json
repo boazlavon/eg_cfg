@@ -1,9 +1,9 @@
 {
   "code": "def words_in_sentence(sentence):\n    words = sentence.split()\n    result = []\n    for word in words:\n        length = len(word)\n        if length < 2:\n            continue\n        is_prime = True\n        for i in range(2, length):\n            if length % i == 0:\n                is_prime = False\n                break\n        if is_prime:\n            result.append(word)\n    return ' '.join(result)",
   "results": {
-    "def check(words_in_sentence):\n\n    # Check some simple cases\n    assert words_in_sentence(\"This is a test\") == \"is\"\n    assert words_in_sentence(\"lets go for swimming\") == \"go for\"\n    assert words_in_sentence(\"there is no place available here\") == \"there is no place\"\n    assert words_in_sentence(\"Hi I am Hussein\") == \"Hi am Hussein\"\n    assert words_in_sentence(\"go for it\") == \"go for it\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert words_in_sentence(\"here\") == \"\"\n    assert words_in_sentence(\"here is\") == \"is\"\n\n\ncheck(words_in_sentence)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"This is a test\") == \"is\"\n    assert candidate(\"lets go for swimming\") == \"go for\"\n    assert candidate(\"there is no place available here\") == \"there is no place\"\n    assert candidate(\"Hi I am Hussein\") == \"Hi am Hussein\"\n    assert candidate(\"go for it\") == \"go for it\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(\"here\") == \"\"\n    assert candidate(\"here is\") == \"is\"\n\n\ncheck(words_in_sentence)": {
       "result": true,
-      "time": 0.054757118225097656,
+      "time": 0.0569612979888916,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:44:26",
+    "start_time": "2025-05-27 19:25:38",
     "guidance_input_tokens": 630,
     "guidance_output_tokens": 96,
-    "end_time": "2025-05-27 17:44:28",
-    "duration": "0:00:01.912679"
+    "end_time": "2025-05-27 19:25:40",
+    "duration": "0:00:02.060758"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

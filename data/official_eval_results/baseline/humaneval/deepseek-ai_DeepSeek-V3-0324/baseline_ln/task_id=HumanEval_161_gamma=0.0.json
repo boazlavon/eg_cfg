@@ -1,9 +1,9 @@
 {
-  "code": "def solve(s):\n    has_letters = any(c.isalpha() for c in s)\n    if not has_letters:\n        return s[::-1]\n    else:\n        result = []\n        for char in s:\n            if char.isalpha():\n                if char.islower():\n                    result.append(char.upper())\n                else:\n                    result.append(char.lower())\n            else:\n                result.append(char)\n        return ''.join(result)",
+  "code": "def solve(s):\n    has_letters = any(c.isalpha() for c in s)\n    if not has_letters:\n        return s[::-1]\n    result = []\n    for char in s:\n        if char.isalpha():\n            if char.islower():\n                result.append(char.upper())\n            else:\n                result.append(char.lower())\n        else:\n            result.append(char)\n    return ''.join(result)",
   "results": {
-    "def check(solve):\n\n    # Check some simple cases\n    assert solve(\"AsDf\") == \"aSdF\"\n    assert solve(\"1234\") == \"4321\"\n    assert solve(\"ab\") == \"AB\"\n    assert solve(\"#a@C\") == \"#A@c\"\n    assert solve(\"#AsdfW^45\") == \"#aSDFw^45\"\n    assert solve(\"#6@2\") == \"2@6#\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert solve(\"#$a^D\") == \"#$A^d\"\n    assert solve(\"#ccc\") == \"#CCC\"\n\n    # Don't remove this line:\n\ncheck(solve)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"AsDf\") == \"aSdF\"\n    assert candidate(\"1234\") == \"4321\"\n    assert candidate(\"ab\") == \"AB\"\n    assert candidate(\"#a@C\") == \"#A@c\"\n    assert candidate(\"#AsdfW^45\") == \"#aSDFw^45\"\n    assert candidate(\"#6@2\") == \"2@6#\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(\"#$a^D\") == \"#$A^d\"\n    assert candidate(\"#ccc\") == \"#CCC\"\n\n    # Don't remove this line:\n\ncheck(solve)": {
       "result": true,
-      "time": 0.05879640579223633,
+      "time": 0.07334327697753906,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:55:58",
+    "start_time": "2025-05-27 19:38:12",
     "guidance_input_tokens": 750,
-    "guidance_output_tokens": 92,
-    "end_time": "2025-05-27 17:56:00",
-    "duration": "0:00:01.815531"
+    "guidance_output_tokens": 89,
+    "end_time": "2025-05-27 19:38:14",
+    "duration": "0:00:02.541133"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

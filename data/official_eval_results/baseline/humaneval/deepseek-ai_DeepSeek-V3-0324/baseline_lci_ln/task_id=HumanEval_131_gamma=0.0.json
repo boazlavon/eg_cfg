@@ -1,9 +1,9 @@
 {
-  "code": "def digits(n):\n    product = 1\n    has_odd = False\n    while n > 0:\n        digit = n % 10\n        if digit % 2 != 0:\n            product = product * digit\n            has_odd = True\n        n = n // 10\n    if not has_odd:\n        return 0\n    else:\n        return product",
+  "code": "def digits(n):\n    product = 1\n    has_odd = False\n    num = n\n    while num > 0:\n        digit = num % 10\n        if digit % 2 != 0:\n            has_odd = True\n            product = product * digit\n        num = num // 10\n    if not has_odd:\n        return 0\n    return product",
   "results": {
-    "def check(digits):\n\n    # Check some simple cases\n    assert digits(5) == 5\n    assert digits(54) == 5\n    assert digits(120) ==1\n    assert digits(5014) == 5\n    assert digits(98765) == 315\n    assert digits(5576543) == 2625\n\n    # Check some edge cases that are easy to work out by hand.\n    assert digits(2468) == 0\n\n\ncheck(digits)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(5) == 5\n    assert candidate(54) == 5\n    assert candidate(120) ==1\n    assert candidate(5014) == 5\n    assert candidate(98765) == 315\n    assert candidate(5576543) == 2625\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(2468) == 0\n\n\ncheck(digits)": {
       "result": true,
-      "time": 0.06114530563354492,
+      "time": 0.052484989166259766,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:39:27",
+    "start_time": "2025-05-27 19:18:12",
     "guidance_input_tokens": 553,
-    "guidance_output_tokens": 104,
-    "end_time": "2025-05-27 17:39:29",
-    "duration": "0:00:02.399648"
+    "guidance_output_tokens": 107,
+    "end_time": "2025-05-27 19:18:14",
+    "duration": "0:00:02.029584"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

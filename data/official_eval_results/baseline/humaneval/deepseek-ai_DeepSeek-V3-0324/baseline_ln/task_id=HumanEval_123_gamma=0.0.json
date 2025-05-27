@@ -1,9 +1,9 @@
 {
-  "code": "def get_odd_collatz(n):\n    sequence = [n]\n    current = n\n    while current != 1:\n        if current % 2 == 0:\n            current = current // 2\n        else:\n            current = 3 * current + 1\n        sequence.append(current)\n    odd_numbers = [x for x in sequence if x % 2 != 0]\n    odd_numbers_sorted = sorted(odd_numbers)\n    return odd_numbers_sorted",
+  "code": "def get_odd_collatz(n):\n    collatz_sequence = [n]\n    while n != 1:\n        if n % 2 == 0:\n            n = n // 2\n        else:\n            n = 3 * n + 1\n        collatz_sequence.append(n)\n    odd_numbers = sorted([x for x in collatz_sequence if x % 2 != 0])\n    return odd_numbers",
   "results": {
-    "def check(get_odd_collatz):\n\n    # Check some simple cases\n    assert get_odd_collatz(14) == [1, 5, 7, 11, 13, 17]\n    assert get_odd_collatz(5) == [1, 5]\n    assert get_odd_collatz(12) == [1, 3, 5], \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert get_odd_collatz(1) == [1], \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(get_odd_collatz)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(14) == [1, 5, 7, 11, 13, 17]\n    assert candidate(5) == [1, 5]\n    assert candidate(12) == [1, 3, 5], \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(1) == [1], \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(get_odd_collatz)": {
       "result": true,
-      "time": 0.05372905731201172,
+      "time": 0.05687999725341797,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:49:24",
+    "start_time": "2025-05-27 19:38:46",
     "guidance_input_tokens": 870,
-    "guidance_output_tokens": 106,
-    "end_time": "2025-05-27 17:49:26",
-    "duration": "0:00:02.143122"
+    "guidance_output_tokens": 98,
+    "end_time": "2025-05-27 19:38:50",
+    "duration": "0:00:03.571324"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

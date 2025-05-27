@@ -1,9 +1,9 @@
 {
   "code": "def filter_by_substring(strings: list[str], substring: str) -> list[str]:\n    return [s for s in strings if substring in s]",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(filter_by_substring):\n    assert filter_by_substring([], 'john') == []\n    assert filter_by_substring(['xxx', 'asd', 'xxy', 'john doe', 'xxxAAA', 'xxx'], 'xxx') == ['xxx', 'xxxAAA', 'xxx']\n    assert filter_by_substring(['xxx', 'asd', 'aaaxxy', 'john doe', 'xxxAAA', 'xxx'], 'xx') == ['xxx', 'aaaxxy', 'xxxAAA', 'xxx']\n    assert filter_by_substring(['grunt', 'trumpet', 'prune', 'gruesome'], 'run') == ['grunt', 'prune']\n\ncheck(filter_by_substring)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([], 'john') == []\n    assert candidate(['xxx', 'asd', 'xxy', 'john doe', 'xxxAAA', 'xxx'], 'xxx') == ['xxx', 'xxxAAA', 'xxx']\n    assert candidate(['xxx', 'asd', 'aaaxxy', 'john doe', 'xxxAAA', 'xxx'], 'xx') == ['xxx', 'aaaxxy', 'xxxAAA', 'xxx']\n    assert candidate(['grunt', 'trumpet', 'prune', 'gruesome'], 'run') == ['grunt', 'prune']\n\ncheck(filter_by_substring)": {
       "result": true,
-      "time": 0.05969595909118652,
+      "time": 0.0571439266204834,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:48:53",
+    "start_time": "2025-05-27 19:38:57",
     "guidance_input_tokens": 744,
     "guidance_output_tokens": 37,
-    "end_time": "2025-05-27 17:48:55",
-    "duration": "0:00:01.258526"
+    "end_time": "2025-05-27 19:38:59",
+    "duration": "0:00:02.293979"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

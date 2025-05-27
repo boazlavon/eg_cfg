@@ -1,9 +1,9 @@
 {
-  "code": "def greatest_common_divisor(a: int, b: int) -> int:\n    while b != 0:\n        remainder = a % b\n        a = b\n        b = remainder\n    return a",
+  "code": "def greatest_common_divisor(a, b):\n    while b != 0:\n        temp = b\n        b = a % b\n        a = temp\n    return a",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(greatest_common_divisor):\n    assert greatest_common_divisor(3, 7) == 1\n    assert greatest_common_divisor(10, 15) == 5\n    assert greatest_common_divisor(49, 14) == 7\n    assert greatest_common_divisor(144, 60) == 12\n\ncheck(greatest_common_divisor)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate(3, 7) == 1\n    assert candidate(10, 15) == 5\n    assert candidate(49, 14) == 7\n    assert candidate(144, 60) == 12\n\ncheck(greatest_common_divisor)": {
       "result": true,
-      "time": 0.05926990509033203,
+      "time": 0.04927420616149902,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:38:02",
+    "start_time": "2025-05-27 19:21:46",
     "guidance_input_tokens": 575,
-    "guidance_output_tokens": 69,
-    "end_time": "2025-05-27 17:38:04",
-    "duration": "0:00:01.967814"
+    "guidance_output_tokens": 57,
+    "end_time": "2025-05-27 19:21:49",
+    "duration": "0:00:02.678405"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

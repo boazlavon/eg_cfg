@@ -1,9 +1,9 @@
 {
-  "code": "def remove_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    result = \"\"\n    for char in text:\n        is_vowel = False\n        for vowel in vowels:\n            if char == vowel:\n                is_vowel = True\n                break\n        if not is_vowel:\n            result = result + char\n    return result",
+  "code": "def remove_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    result = \"\"\n    for char in text:\n        if char not in vowels:\n            result += char\n    return result",
   "results": {
-    "\n\nMETADATA = {}\n\n\ndef check(remove_vowels):\n    assert remove_vowels('') == ''\n    assert remove_vowels(\"abcdef\\nghijklm\") == 'bcdf\\nghjklm'\n    assert remove_vowels('fedcba') == 'fdcb'\n    assert remove_vowels('eeeee') == ''\n    assert remove_vowels('acBAA') == 'cB'\n    assert remove_vowels('EcBOO') == 'cB'\n    assert remove_vowels('ybcd') == 'ybcd'\n\n\ncheck(remove_vowels)": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate('') == ''\n    assert candidate(\"abcdef\\nghijklm\") == 'bcdf\\nghjklm'\n    assert candidate('fedcba') == 'fdcb'\n    assert candidate('eeeee') == ''\n    assert candidate('acBAA') == 'cB'\n    assert candidate('EcBOO') == 'cB'\n    assert candidate('ybcd') == 'ybcd'\n\n\ncheck(remove_vowels)": {
       "result": true,
-      "time": 0.056860923767089844,
+      "time": 0.056822776794433594,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:38:49",
+    "start_time": "2025-05-27 19:21:28",
     "guidance_input_tokens": 603,
-    "guidance_output_tokens": 94,
-    "end_time": "2025-05-27 17:38:51",
-    "duration": "0:00:01.600690"
+    "guidance_output_tokens": 47,
+    "end_time": "2025-05-27 19:21:30",
+    "duration": "0:00:01.954348"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

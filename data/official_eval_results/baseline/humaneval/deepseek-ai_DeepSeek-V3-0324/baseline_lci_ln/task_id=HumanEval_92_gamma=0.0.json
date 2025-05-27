@@ -1,9 +1,9 @@
 {
-  "code": "def any_int(x, y, z):\n    x_is_int = isinstance(x, int)\n    y_is_int = isinstance(y, int)\n    z_is_int = isinstance(z, int)\n    all_integers = x_is_int and y_is_int and z_is_int\n    if not all_integers:\n        return False\n    sum_xy = x + y\n    sum_xz = x + z\n    sum_yz = y + z\n    check_xy = sum_xy == z\n    check_xz = sum_xz == y\n    check_yz = sum_yz == x\n    any_condition = check_xy or check_xz or check_yz\n    return any_condition",
+  "code": "def any_int(x, y, z):\n    are_integers = isinstance(x, int) and isinstance(y, int) and isinstance(z, int)\n    if not are_integers:\n        return False\n    sum_xy = x + y\n    sum_yz = y + z\n    sum_xz = x + z\n    x_is_sum = x == sum_yz\n    y_is_sum = y == sum_xz\n    z_is_sum = z == sum_xy\n    return x_is_sum or y_is_sum or z_is_sum",
   "results": {
-    "def check(any_int):\n\n    # Check some simple cases\n    assert any_int(2, 3, 1)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert any_int(2.5, 2, 3)==False, \"This prints if this assert fails 2 (good for debugging!)\"\n    assert any_int(1.5, 5, 3.5)==False, \"This prints if this assert fails 3 (good for debugging!)\"\n    assert any_int(2, 6, 2)==False, \"This prints if this assert fails 4 (good for debugging!)\"\n    assert any_int(4, 2, 2)==True, \"This prints if this assert fails 5 (good for debugging!)\"\n    assert any_int(2.2, 2.2, 2.2)==False, \"This prints if this assert fails 6 (good for debugging!)\"\n    assert any_int(-4, 6, 2)==True, \"This prints if this assert fails 7 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert any_int(2,1,1)==True, \"This prints if this assert fails 8 (also good for debugging!)\"\n    assert any_int(3,4,7)==True, \"This prints if this assert fails 9 (also good for debugging!)\"\n    assert any_int(3.0,4,7)==False, \"This prints if this assert fails 10 (also good for debugging!)\"\n\n\ncheck(any_int)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(2, 3, 1)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(2.5, 2, 3)==False, \"This prints if this assert fails 2 (good for debugging!)\"\n    assert candidate(1.5, 5, 3.5)==False, \"This prints if this assert fails 3 (good for debugging!)\"\n    assert candidate(2, 6, 2)==False, \"This prints if this assert fails 4 (good for debugging!)\"\n    assert candidate(4, 2, 2)==True, \"This prints if this assert fails 5 (good for debugging!)\"\n    assert candidate(2.2, 2.2, 2.2)==False, \"This prints if this assert fails 6 (good for debugging!)\"\n    assert candidate(-4, 6, 2)==True, \"This prints if this assert fails 7 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(2,1,1)==True, \"This prints if this assert fails 8 (also good for debugging!)\"\n    assert candidate(3,4,7)==True, \"This prints if this assert fails 9 (also good for debugging!)\"\n    assert candidate(3.0,4,7)==False, \"This prints if this assert fails 10 (also good for debugging!)\"\n\n\ncheck(any_int)": {
       "result": true,
-      "time": 0.05228781700134277,
+      "time": 0.054258108139038086,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:39:48",
+    "start_time": "2025-05-27 19:17:25",
     "guidance_input_tokens": 612,
-    "guidance_output_tokens": 170,
-    "end_time": "2025-05-27 17:39:51",
-    "duration": "0:00:02.570997"
+    "guidance_output_tokens": 326,
+    "end_time": "2025-05-27 19:17:30",
+    "duration": "0:00:04.755283"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

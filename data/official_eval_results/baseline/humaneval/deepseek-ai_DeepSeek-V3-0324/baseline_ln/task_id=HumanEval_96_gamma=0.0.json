@@ -1,22 +1,23 @@
 {
-  "code": null,
+  "code": "import math\n\ndef count_up_to(n):\n    if n < 2:\n        return []\n    \n    primes = []\n    for num in range(2, n):\n        is_prime = True\n        for i in range(2, int(math.sqrt(num)) + 1):\n            if num % i == 0:\n                is_prime = False\n                break\n        if is_prime:\n            primes.append(num)\n    return primes",
   "results": {
-    "def check(count_up_to):\n\n    assert count_up_to(5) == [2,3]\n    assert count_up_to(6) == [2,3,5]\n    assert count_up_to(7) == [2,3,5]\n    assert count_up_to(10) == [2,3,5,7]\n    assert count_up_to(0) == []\n    assert count_up_to(22) == [2,3,5,7,11,13,17,19]\n    assert count_up_to(1) == []\n    assert count_up_to(18) == [2,3,5,7,11,13,17]\n    assert count_up_to(47) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43]\n    assert count_up_to(101) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]\n\n\ncheck(count_up_to)": {
-      "result": false,
-      "time": -1,
-      "error": "GenerationError"
+    "def check(candidate):\n\n    assert candidate(5) == [2,3]\n    assert candidate(6) == [2,3,5]\n    assert candidate(7) == [2,3,5]\n    assert candidate(10) == [2,3,5,7]\n    assert candidate(0) == []\n    assert candidate(22) == [2,3,5,7,11,13,17,19]\n    assert candidate(1) == []\n    assert candidate(18) == [2,3,5,7,11,13,17]\n    assert candidate(47) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43]\n    assert candidate(101) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]\n\n\ncheck(count_up_to)": {
+      "result": true,
+      "time": 0.08005762100219727,
+      "error": null
     }
   },
-  "passed": false,
-  "accuracy": 0.0,
-  "general_error": "<class 'AssertionError'>",
-  "has_testcase_error": true,
-  "tb": "Traceback (most recent call last):\n  File \"/home/ai_center/ai_users/boazlavon/data/code/web/clean4/eg_cfg/eg_cfg/eg_cfg_session_manager.py\", line 566, in solve_problem_with_eg_cfg_wrapper\n    solution = self.solve_problem_with_eg_cfg(problem, gamma)\n  File \"/home/ai_center/ai_users/boazlavon/data/code/web/clean4/eg_cfg/eg_cfg/eg_cfg_session_manager.py\", line 483, in solve_problem_with_eg_cfg\n    _, solution, completion_tokens = complex_qwen_query(\n  File \"/home/ai_center/ai_users/boazlavon/data/code/web/clean4/eg_cfg/eg_cfg/inference_endpoint_utils.py\", line 158, in complex_qwen_query\n    assert answer_start_until_code\nAssertionError\n",
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:52:37",
-    "end_time": "2025-05-27 17:52:43",
-    "duration": "0:00:05.624297"
+    "start_time": "2025-05-27 19:36:08",
+    "guidance_input_tokens": 788,
+    "guidance_output_tokens": 95,
+    "end_time": "2025-05-27 19:36:10",
+    "duration": "0:00:01.881681"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

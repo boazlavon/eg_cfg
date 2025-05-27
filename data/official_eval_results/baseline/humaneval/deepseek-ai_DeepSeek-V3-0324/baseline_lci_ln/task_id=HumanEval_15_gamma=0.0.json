@@ -1,9 +1,9 @@
 {
-  "code": "def string_sequence(n):\n    result = \"\"\n    for i in range(n + 1):\n        num_str = str(i)\n        if i > 0:\n            result = result + \" \" + num_str\n        else:\n            result = num_str\n    return result",
+  "code": "def string_sequence(n):\n    result_string = \"\"\n    max_number = n\n    iteration_count = max_number + 1\n    \n    for current_number in range(iteration_count):\n        number_str = str(current_number)\n        \n        if result_string == \"\":\n            result_string = number_str\n        else:\n            space_char = \" \"\n            result_string = result_string + space_char + number_str\n    \n    return result_string",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(string_sequence):\n    assert string_sequence(0) == '0'\n    assert string_sequence(3) == '0 1 2 3'\n    assert string_sequence(10) == '0 1 2 3 4 5 6 7 8 9 10'\n\ncheck(string_sequence)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate(0) == '0'\n    assert candidate(3) == '0 1 2 3'\n    assert candidate(10) == '0 1 2 3 4 5 6 7 8 9 10'\n\ncheck(string_sequence)": {
       "result": true,
-      "time": 0.05172467231750488,
+      "time": 0.04790186882019043,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:43:30",
+    "start_time": "2025-05-27 19:17:11",
     "guidance_input_tokens": 574,
-    "guidance_output_tokens": 79,
-    "end_time": "2025-05-27 17:43:32",
-    "duration": "0:00:01.899262"
+    "guidance_output_tokens": 333,
+    "end_time": "2025-05-27 19:17:16",
+    "duration": "0:00:04.539076"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

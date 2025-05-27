@@ -1,9 +1,9 @@
 {
-  "code": "def rolling_max(numbers):\n    rolling_max_list = []\n    current_max = None\n    for num in numbers:\n        if current_max is None:\n            current_max = num\n        else:\n            if num > current_max:\n                current_max = num\n        rolling_max_list.append(current_max)\n    return rolling_max_list",
+  "code": "def rolling_max(numbers):\n    max_values = []\n    current_max = None\n    for num in numbers:\n        if current_max is None:\n            current_max = num\n        else:\n            if num > current_max:\n                current_max = num\n        max_values.append(current_max)\n    return max_values",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(rolling_max):\n    assert rolling_max([]) == []\n    assert rolling_max([1, 2, 3, 4]) == [1, 2, 3, 4]\n    assert rolling_max([4, 3, 2, 1]) == [4, 4, 4, 4]\n    assert rolling_max([3, 2, 3, 100, 3]) == [3, 3, 3, 100, 100]\n\ncheck(rolling_max)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([]) == []\n    assert candidate([1, 2, 3, 4]) == [1, 2, 3, 4]\n    assert candidate([4, 3, 2, 1]) == [4, 4, 4, 4]\n    assert candidate([3, 2, 3, 100, 3]) == [3, 3, 3, 100, 100]\n\ncheck(rolling_max)": {
       "result": true,
-      "time": 0.055831193923950195,
+      "time": 0.04967689514160156,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:38:57",
+    "start_time": "2025-05-27 19:16:53",
     "guidance_input_tokens": 594,
-    "guidance_output_tokens": 86,
-    "end_time": "2025-05-27 17:38:59",
-    "duration": "0:00:02.185413"
+    "guidance_output_tokens": 83,
+    "end_time": "2025-05-27 19:16:55",
+    "duration": "0:00:01.419131"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

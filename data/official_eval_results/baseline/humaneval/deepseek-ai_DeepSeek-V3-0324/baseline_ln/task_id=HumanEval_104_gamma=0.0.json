@@ -1,9 +1,9 @@
 {
-  "code": "def unique_digits(x):\n    result = []\n    for num in x:\n        all_odd = True\n        for digit in str(num):\n            if int(digit) % 2 == 0:\n                all_odd = False\n                break\n        if all_odd:\n            result.append(num)\n    result.sort()\n    return result",
+  "code": "def unique_digits(x):\n    def has_even_digit(num):\n        for digit in str(num):\n            if int(digit) % 2 == 0:\n                return True\n        return False\n    \n    result = [num for num in x if not has_even_digit(num)]\n    result.sort()\n    return result",
   "results": {
-    "def check(unique_digits):\n\n    # Check some simple cases\n    assert unique_digits([15, 33, 1422, 1]) == [1, 15, 33]\n    assert unique_digits([152, 323, 1422, 10]) == []\n    assert unique_digits([12345, 2033, 111, 151]) == [111, 151]\n    assert unique_digits([135, 103, 31]) == [31, 135]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(unique_digits)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([15, 33, 1422, 1]) == [1, 15, 33]\n    assert candidate([152, 323, 1422, 10]) == []\n    assert candidate([12345, 2033, 111, 151]) == [111, 151]\n    assert candidate([135, 103, 31]) == [31, 135]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(unique_digits)": {
       "result": true,
-      "time": 0.05588364601135254,
+      "time": 0.05720257759094238,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:51:38",
+    "start_time": "2025-05-27 19:40:24",
     "guidance_input_tokens": 757,
-    "guidance_output_tokens": 78,
-    "end_time": "2025-05-27 17:51:40",
-    "duration": "0:00:01.816485"
+    "guidance_output_tokens": 75,
+    "end_time": "2025-05-27 19:40:26",
+    "duration": "0:00:01.878342"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

@@ -1,9 +1,9 @@
 {
-  "code": "def digitSum(s):\n    return sum(ord(char) for char in s if char.isupper())",
+  "code": "def digitSum(s):\n    total = 0\n    for char in s:\n        if char.isupper():\n            total += ord(char)\n    return total",
   "results": {
-    "def check(digitSum):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert digitSum(\"\") == 0, \"Error\"\n    assert digitSum(\"abAB\") == 131, \"Error\"\n    assert digitSum(\"abcCd\") == 67, \"Error\"\n    assert digitSum(\"helloE\") == 69, \"Error\"\n    assert digitSum(\"woArBld\") == 131, \"Error\"\n    assert digitSum(\"aAaaaXa\") == 153, \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert digitSum(\" How are yOu?\") == 151, \"Error\"\n    assert digitSum(\"You arE Very Smart\") == 327, \"Error\"\n\n\ncheck(digitSum)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(\"\") == 0, \"Error\"\n    assert candidate(\"abAB\") == 131, \"Error\"\n    assert candidate(\"abcCd\") == 67, \"Error\"\n    assert candidate(\"helloE\") == 69, \"Error\"\n    assert candidate(\"woArBld\") == 131, \"Error\"\n    assert candidate(\"aAaaaXa\") == 153, \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(\" How are yOu?\") == 151, \"Error\"\n    assert candidate(\"You arE Very Smart\") == 327, \"Error\"\n\n\ncheck(digitSum)": {
       "result": true,
-      "time": 0.06365537643432617,
+      "time": 0.0630486011505127,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:55:25",
+    "start_time": "2025-05-27 19:39:25",
     "guidance_input_tokens": 756,
-    "guidance_output_tokens": 26,
-    "end_time": "2025-05-27 17:55:27",
-    "duration": "0:00:01.640075"
+    "guidance_output_tokens": 38,
+    "end_time": "2025-05-27 19:39:27",
+    "duration": "0:00:02.380646"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

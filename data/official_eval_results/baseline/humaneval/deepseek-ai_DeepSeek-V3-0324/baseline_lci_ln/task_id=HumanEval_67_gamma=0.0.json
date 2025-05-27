@@ -1,9 +1,9 @@
 {
-  "code": "def fruit_distribution(s, n):\n    apples = 0\n    oranges = 0\n    parts = s.split()\n    for i in range(len(parts)):\n        if parts[i] == \"apples\":\n            apples = int(parts[i-1])\n        if parts[i] == \"oranges\":\n            oranges = int(parts[i-1])\n    mangoes = n - apples - oranges\n    return mangoes",
+  "code": "def fruit_distribution(s, n):\n    apple_count = 0\n    orange_count = 0\n    words = s.split()\n    for i in range(len(words)):\n        if words[i] == \"apples\":\n            apple_count = int(words[i-1])\n        elif words[i] == \"oranges\":\n            orange_count = int(words[i-1])\n    mango_count = n - apple_count - orange_count\n    return mango_count",
   "results": {
-    "def check(fruit_distribution):\n\n    # Check some simple cases\n    assert fruit_distribution(\"5 apples and 6 oranges\",19) == 8\n    assert fruit_distribution(\"5 apples and 6 oranges\",21) == 10\n    assert fruit_distribution(\"0 apples and 1 oranges\",3) == 2\n    assert fruit_distribution(\"1 apples and 0 oranges\",3) == 2\n    assert fruit_distribution(\"2 apples and 3 oranges\",100) == 95\n    assert fruit_distribution(\"2 apples and 3 oranges\",5) == 0\n    assert fruit_distribution(\"1 apples and 100 oranges\",120) == 19\n\ncheck(fruit_distribution)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"5 apples and 6 oranges\",19) == 8\n    assert candidate(\"5 apples and 6 oranges\",21) == 10\n    assert candidate(\"0 apples and 1 oranges\",3) == 2\n    assert candidate(\"1 apples and 0 oranges\",3) == 2\n    assert candidate(\"2 apples and 3 oranges\",100) == 95\n    assert candidate(\"2 apples and 3 oranges\",5) == 0\n    assert candidate(\"1 apples and 100 oranges\",120) == 19\n\ncheck(fruit_distribution)": {
       "result": true,
-      "time": 0.05470442771911621,
+      "time": 0.054100990295410156,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:36:47",
+    "start_time": "2025-05-27 19:18:09",
     "guidance_input_tokens": 691,
-    "guidance_output_tokens": 95,
-    "end_time": "2025-05-27 17:36:50",
-    "duration": "0:00:02.251982"
+    "guidance_output_tokens": 99,
+    "end_time": "2025-05-27 19:18:12",
+    "duration": "0:00:02.249824"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

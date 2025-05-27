@@ -1,9 +1,9 @@
 {
   "code": "def find_max(words):\n    max_unique = -1\n    result = \"\"\n    for word in words:\n        unique_chars = len(set(word))\n        if unique_chars > max_unique:\n            max_unique = unique_chars\n            result = word\n        elif unique_chars == max_unique:\n            if word < result:\n                result = word\n    return result",
   "results": {
-    "def check(find_max):\n\n    # Check some simple cases\n    assert (find_max([\"name\", \"of\", \"string\"]) == \"string\"), \"t1\"\n    assert (find_max([\"name\", \"enam\", \"game\"]) == \"enam\"), 't2'\n    assert (find_max([\"aaaaaaa\", \"bb\", \"cc\"]) == \"aaaaaaa\"), 't3'\n    assert (find_max([\"abc\", \"cba\"]) == \"abc\"), 't4'\n    assert (find_max([\"play\", \"this\", \"game\", \"of\",\"footbott\"]) == \"footbott\"), 't5'\n    assert (find_max([\"we\", \"are\", \"gonna\", \"rock\"]) == \"gonna\"), 't6'\n    assert (find_max([\"we\", \"are\", \"a\", \"mad\", \"nation\"]) == \"nation\"), 't7'\n    assert (find_max([\"this\", \"is\", \"a\", \"prrk\"]) == \"this\"), 't8'\n\n    # Check some edge cases that are easy to work out by hand.\n    assert (find_max([\"b\"]) == \"b\"), 't9'\n    assert (find_max([\"play\", \"play\", \"play\"]) == \"play\"), 't10'\n\n\ncheck(find_max)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert (candidate([\"name\", \"of\", \"string\"]) == \"string\"), \"t1\"\n    assert (candidate([\"name\", \"enam\", \"game\"]) == \"enam\"), 't2'\n    assert (candidate([\"aaaaaaa\", \"bb\", \"cc\"]) == \"aaaaaaa\"), 't3'\n    assert (candidate([\"abc\", \"cba\"]) == \"abc\"), 't4'\n    assert (candidate([\"play\", \"this\", \"game\", \"of\",\"footbott\"]) == \"footbott\"), 't5'\n    assert (candidate([\"we\", \"are\", \"gonna\", \"rock\"]) == \"gonna\"), 't6'\n    assert (candidate([\"we\", \"are\", \"a\", \"mad\", \"nation\"]) == \"nation\"), 't7'\n    assert (candidate([\"this\", \"is\", \"a\", \"prrk\"]) == \"this\"), 't8'\n\n    # Check some edge cases that are easy to work out by hand.\n    assert (candidate([\"b\"]) == \"b\"), 't9'\n    assert (candidate([\"play\", \"play\", \"play\"]) == \"play\"), 't10'\n\n\ncheck(find_max)": {
       "result": true,
-      "time": 0.05997061729431152,
+      "time": 0.0524599552154541,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:51:05",
+    "start_time": "2025-05-27 19:36:53",
     "guidance_input_tokens": 765,
-    "guidance_output_tokens": 82,
-    "end_time": "2025-05-27 17:51:10",
-    "duration": "0:00:05.106104"
+    "guidance_output_tokens": 83,
+    "end_time": "2025-05-27 19:36:55",
+    "duration": "0:00:02.056560"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

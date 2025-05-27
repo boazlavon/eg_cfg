@@ -1,23 +1,23 @@
 {
-  "code": "def starts_one_ends(n):\n    if n == 1:\n        return 1\n    total_numbers = 10 ** n\n    first_digit_not_one = 9\n    remaining_digits = n - 1\n    numbers_not_starting_with_one = first_digit_not_one * (10 ** remaining_digits)\n    numbers_starting_with_one = total_numbers - numbers_not_starting_with_one\n    last_digit_not_one = 9\n    numbers_not_ending_with_one = (10 ** (n - 1)) * last_digit_not_one\n    numbers_ending_with_one = total_numbers - numbers_not_ending_with_one\n    numbers_starting_and_ending_with_one = 10 ** (n - 2)\n    if n == 2:\n        numbers_starting_and_ending_with_one = 1\n    result = numbers_starting_with_one + numbers_ending_with_one - numbers_starting_and_ending_with_one\n    return result",
+  "code": "def starts_one_ends(n):\n    if n < 1:\n        return 0\n    if n == 1:\n        return 1\n    total_numbers = 9 * 10 ** (n - 1)\n    starts_with_one = 10 ** (n - 1)\n    ends_with_one = 9 * 10 ** (n - 2)\n    both = 10 ** (n - 2)\n    result = starts_with_one + ends_with_one - both\n    return result",
   "results": {
-    "def check(starts_one_ends):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert starts_one_ends(1) == 1\n    assert starts_one_ends(2) == 18\n    assert starts_one_ends(3) == 180\n    assert starts_one_ends(4) == 1800\n    assert starts_one_ends(5) == 18000\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(starts_one_ends)": {
-      "result": false,
-      "time": 0.05895042419433594,
+    "def check(candidate):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(1) == 1\n    assert candidate(2) == 18\n    assert candidate(3) == 180\n    assert candidate(4) == 1800\n    assert candidate(5) == 18000\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(starts_one_ends)": {
+      "result": true,
+      "time": 0.054491281509399414,
       "error": null
     }
   },
-  "passed": false,
-  "accuracy": 0.0,
+  "passed": true,
+  "accuracy": 1.0,
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:41:42",
+    "start_time": "2025-05-27 19:24:47",
     "guidance_input_tokens": 531,
-    "guidance_output_tokens": 222,
-    "end_time": "2025-05-27 17:41:45",
-    "duration": "0:00:03.601962"
+    "guidance_output_tokens": 131,
+    "end_time": "2025-05-27 19:24:50",
+    "duration": "0:00:03.436874"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

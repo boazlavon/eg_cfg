@@ -1,9 +1,9 @@
 {
   "code": "def parse_music(music_string: str) -> list[int]:\n    note_map = {'o': 4, 'o|': 2, '.|': 1}\n    notes = music_string.split()\n    beats = []\n    for note in notes:\n        beats.append(note_map[note])\n    return beats",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(parse_music):\n    assert parse_music('') == []\n    assert parse_music('o o o o') == [4, 4, 4, 4]\n    assert parse_music('.| .| .| .|') == [1, 1, 1, 1]\n    assert parse_music('o| o| .| .| o o o o') == [2, 2, 1, 1, 4, 4, 4, 4]\n    assert parse_music('o| .| o| .| o o| o o|') == [2, 1, 2, 1, 4, 2, 4, 2]\n\ncheck(parse_music)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == []\n    assert candidate('o o o o') == [4, 4, 4, 4]\n    assert candidate('.| .| .| .|') == [1, 1, 1, 1]\n    assert candidate('o| o| .| .| o o o o') == [2, 2, 1, 1, 4, 4, 4, 4]\n    assert candidate('o| .| o| .| o o| o o|') == [2, 1, 2, 1, 4, 2, 4, 2]\n\ncheck(parse_music)": {
       "result": true,
-      "time": 0.058528900146484375,
+      "time": 0.05971193313598633,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:56:57",
+    "start_time": "2025-05-27 19:35:05",
     "guidance_input_tokens": 815,
-    "guidance_output_tokens": 72,
-    "end_time": "2025-05-27 17:56:59",
-    "duration": "0:00:01.936099"
+    "guidance_output_tokens": 218,
+    "end_time": "2025-05-27 19:35:11",
+    "duration": "0:00:06.331745"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

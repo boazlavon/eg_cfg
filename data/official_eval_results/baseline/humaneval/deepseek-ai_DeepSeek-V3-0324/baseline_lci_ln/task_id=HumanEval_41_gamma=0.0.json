@@ -1,9 +1,9 @@
 {
-  "code": "def car_race_collision(n: int):\n    collisions = 0\n    left_to_right_cars = n\n    right_to_left_cars = n\n    for i in range(left_to_right_cars):\n        for j in range(right_to_left_cars):\n            collisions += 1\n    return collisions",
+  "code": "def car_race_collision(n: int):\n    collision_count = 0\n    for i in range(1, n + 1):\n        for j in range(1, n + 1):\n            collision = True\n            collision_count += 1\n    return collision_count",
   "results": {
-    "\n\nMETADATA = {}\n\n\ndef check(car_race_collision):\n    assert car_race_collision(2) == 4\n    assert car_race_collision(3) == 9\n    assert car_race_collision(4) == 16\n    assert car_race_collision(8) == 64\n    assert car_race_collision(10) == 100\n\n\ncheck(car_race_collision)": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(2) == 4\n    assert candidate(3) == 9\n    assert candidate(4) == 16\n    assert candidate(8) == 64\n    assert candidate(10) == 100\n\n\ncheck(car_race_collision)": {
       "result": true,
-      "time": 0.0562746524810791,
+      "time": 0.05073857307434082,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:45:18",
+    "start_time": "2025-05-27 19:16:39",
     "guidance_input_tokens": 630,
-    "guidance_output_tokens": 94,
-    "end_time": "2025-05-27 17:45:20",
-    "duration": "0:00:01.854447"
+    "guidance_output_tokens": 86,
+    "end_time": "2025-05-27 19:16:41",
+    "duration": "0:00:02.097694"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

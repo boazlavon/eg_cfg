@@ -1,9 +1,9 @@
 {
-  "code": "def pluck(arr):\n    smallest_even = None\n    smallest_index = -1\n    for index, num in enumerate(arr):\n        if num % 2 == 0:\n            if smallest_even is None or num < smallest_even:\n                smallest_even = num\n                smallest_index = index\n    if smallest_even is not None:\n        return [smallest_even, smallest_index]\n    else:\n        return []",
+  "code": "def pluck(arr):\n    if not arr:\n        return []\n    smallest_even = None\n    smallest_index = -1\n    for index, num in enumerate(arr):\n        if num % 2 == 0:\n            if smallest_even is None or num < smallest_even:\n                smallest_even = num\n                smallest_index = index\n    if smallest_index == -1:\n        return []\n    return [smallest_even, smallest_index]",
   "results": {
-    "def check(pluck):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert pluck([4,2,3]) == [2, 1], \"Error\"\n    assert pluck([1,2,3]) == [2, 1], \"Error\"\n    assert pluck([]) == [], \"Error\"\n    assert pluck([5, 0, 3, 0, 4, 2]) == [0, 1], \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert pluck([1, 2, 3, 0, 5, 3]) == [0, 3], \"Error\"\n    assert pluck([5, 4, 8, 4 ,8]) == [4, 1], \"Error\"\n    assert pluck([7, 6, 7, 1]) == [6, 1], \"Error\"\n    assert pluck([7, 9, 7, 1]) == [], \"Error\"\n\n\ncheck(pluck)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate([4,2,3]) == [2, 1], \"Error\"\n    assert candidate([1,2,3]) == [2, 1], \"Error\"\n    assert candidate([]) == [], \"Error\"\n    assert candidate([5, 0, 3, 0, 4, 2]) == [0, 1], \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate([1, 2, 3, 0, 5, 3]) == [0, 3], \"Error\"\n    assert candidate([5, 4, 8, 4 ,8]) == [4, 1], \"Error\"\n    assert candidate([7, 6, 7, 1]) == [6, 1], \"Error\"\n    assert candidate([7, 9, 7, 1]) == [], \"Error\"\n\n\ncheck(pluck)": {
       "result": true,
-      "time": 0.059320926666259766,
+      "time": 0.05671429634094238,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:57:05",
+    "start_time": "2025-05-27 19:35:23",
     "guidance_input_tokens": 951,
-    "guidance_output_tokens": 96,
-    "end_time": "2025-05-27 17:57:06",
-    "duration": "0:00:01.745764"
+    "guidance_output_tokens": 189,
+    "end_time": "2025-05-27 19:35:32",
+    "duration": "0:00:08.531052"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

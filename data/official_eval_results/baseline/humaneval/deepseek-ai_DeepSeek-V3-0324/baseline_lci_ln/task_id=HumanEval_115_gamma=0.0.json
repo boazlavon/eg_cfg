@@ -1,9 +1,9 @@
 {
-  "code": "def max_fill(grid, capacity):\n    total_fills = 0\n    for row in grid:\n        row_water = sum(row)\n        fills = 0\n        if row_water > 0:\n            if capacity >= row_water:\n                fills = 1\n            else:\n                fills = row_water // capacity\n                remaining = row_water % capacity\n                if remaining > 0:\n                    fills += 1\n        total_fills += fills\n    return total_fills",
+  "code": "def max_fill(grid, capacity):\n    total_operations = 0\n    for row in grid:\n        water_in_row = sum(row)\n        if water_in_row == 0:\n            continue\n        operations = water_in_row // capacity\n        remaining_water = water_in_row % capacity\n        if remaining_water > 0:\n            operations += 1\n        total_operations += operations\n    return total_operations",
   "results": {
-    "def check(max_fill):\n\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert max_fill([[0,0,1,0], [0,1,0,0], [1,1,1,1]], 1) == 6, \"Error\"\n    assert max_fill([[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]], 2) == 5, \"Error\"\n    assert max_fill([[0,0,0], [0,0,0]], 5) == 0, \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert max_fill([[1,1,1,1], [1,1,1,1]], 2) == 4, \"Error\"\n    assert max_fill([[1,1,1,1], [1,1,1,1]], 9) == 2, \"Error\"\n\n\ncheck(max_fill)": {
+    "def check(candidate):\n\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate([[0,0,1,0], [0,1,0,0], [1,1,1,1]], 1) == 6, \"Error\"\n    assert candidate([[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]], 2) == 5, \"Error\"\n    assert candidate([[0,0,0], [0,0,0]], 5) == 0, \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate([[1,1,1,1], [1,1,1,1]], 2) == 4, \"Error\"\n    assert candidate([[1,1,1,1], [1,1,1,1]], 9) == 2, \"Error\"\n\n\ncheck(max_fill)": {
       "result": true,
-      "time": 0.05797863006591797,
+      "time": 0.05336737632751465,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:43:26",
+    "start_time": "2025-05-27 19:16:35",
     "guidance_input_tokens": 711,
-    "guidance_output_tokens": 199,
-    "end_time": "2025-05-27 17:43:29",
-    "duration": "0:00:02.982898"
+    "guidance_output_tokens": 113,
+    "end_time": "2025-05-27 19:16:39",
+    "duration": "0:00:03.281587"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

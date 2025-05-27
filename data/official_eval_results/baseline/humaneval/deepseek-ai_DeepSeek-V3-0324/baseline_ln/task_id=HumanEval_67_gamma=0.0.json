@@ -1,9 +1,9 @@
 {
-  "code": "def fruit_distribution(s, n):\n    import re\n    numbers = list(map(int, re.findall(r'\\d+', s)))\n    mangoes = n - sum(numbers)\n    return mangoes",
+  "code": "def fruit_distribution(s, n):\n    import re\n    nums = list(map(int, re.findall(r'\\d+', s)))\n    return n - sum(nums)",
   "results": {
-    "def check(fruit_distribution):\n\n    # Check some simple cases\n    assert fruit_distribution(\"5 apples and 6 oranges\",19) == 8\n    assert fruit_distribution(\"5 apples and 6 oranges\",21) == 10\n    assert fruit_distribution(\"0 apples and 1 oranges\",3) == 2\n    assert fruit_distribution(\"1 apples and 0 oranges\",3) == 2\n    assert fruit_distribution(\"2 apples and 3 oranges\",100) == 95\n    assert fruit_distribution(\"2 apples and 3 oranges\",5) == 0\n    assert fruit_distribution(\"1 apples and 100 oranges\",120) == 19\n\ncheck(fruit_distribution)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"5 apples and 6 oranges\",19) == 8\n    assert candidate(\"5 apples and 6 oranges\",21) == 10\n    assert candidate(\"0 apples and 1 oranges\",3) == 2\n    assert candidate(\"1 apples and 0 oranges\",3) == 2\n    assert candidate(\"2 apples and 3 oranges\",100) == 95\n    assert candidate(\"2 apples and 3 oranges\",5) == 0\n    assert candidate(\"1 apples and 100 oranges\",120) == 19\n\ncheck(fruit_distribution)": {
       "result": true,
-      "time": 0.09630846977233887,
+      "time": 0.1015784740447998,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:51:24",
+    "start_time": "2025-05-27 19:32:38",
     "guidance_input_tokens": 854,
-    "guidance_output_tokens": 136,
-    "end_time": "2025-05-27 17:51:29",
-    "duration": "0:00:04.704526"
+    "guidance_output_tokens": 42,
+    "end_time": "2025-05-27 19:32:40",
+    "duration": "0:00:01.732246"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

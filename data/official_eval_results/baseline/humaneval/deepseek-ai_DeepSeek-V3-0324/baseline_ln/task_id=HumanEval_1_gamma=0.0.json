@@ -1,9 +1,9 @@
 {
-  "code": "def separate_paren_groups(paren_string: str) -> list[str]:\n    result = []\n    current_group = []\n    balance = 0\n\n    for char in paren_string.replace(\" \", \"\"):\n        if char == '(':\n            balance += 1\n            current_group.append(char)\n        elif char == ')':\n            balance -= 1\n            current_group.append(char)\n            if balance == 0:\n                result.append(''.join(current_group))\n                current_group = []\n\n    return result",
+  "code": "from typing import List\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    result = []\n    current_group = []\n    balance = 0\n    \n    for char in paren_string:\n        if char == ' ':\n            continue\n        if char == '(':\n            balance += 1\n            current_group.append(char)\n        elif char == ')':\n            balance -= 1\n            current_group.append(char)\n            if balance == 0:\n                result.append(''.join(current_group))\n                current_group = []\n    \n    return result",
   "results": {
-    "\n\nMETADATA = {'author': 'jt','dataset': 'test'\n}\n\n\ndef check(separate_paren_groups):\n    assert separate_paren_groups('(()()) ((())) () ((())()())') == ['(()())', '((()))', '()', '((())()())']\n    assert separate_paren_groups('() (()) ((())) (((())))') == ['()', '(())', '((()))', '(((())))']\n    assert separate_paren_groups('(()(())((())))') == ['(()(())((())))']\n    assert separate_paren_groups('( ) (( )) (( )( ))') == ['()', '(())', '(()())']\n\ncheck(separate_paren_groups)": {
+    "\n\nMETADATA = {'author': 'jt','dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('(()()) ((())) () ((())()())') == ['(()())', '((()))', '()', '((())()())']\n    assert candidate('() (()) ((())) (((())))') == ['()', '(())', '((()))', '(((())))']\n    assert candidate('(()(())((())))') == ['(()(())((())))']\n    assert candidate('( ) (( )) (( )( ))') == ['()', '(())', '(()())']\n\ncheck(separate_paren_groups)": {
       "result": true,
-      "time": 0.06056070327758789,
+      "time": 0.09533500671386719,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:53:00",
+    "start_time": "2025-05-27 19:32:46",
     "guidance_input_tokens": 766,
-    "guidance_output_tokens": 108,
-    "end_time": "2025-05-27 17:53:02",
-    "duration": "0:00:01.970372"
+    "guidance_output_tokens": 121,
+    "end_time": "2025-05-27 19:32:49",
+    "duration": "0:00:02.739593"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

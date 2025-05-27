@@ -1,9 +1,9 @@
 {
-  "code": "def sort_numbers(numbers: str) -> str:\n    word_to_num = {\n        'zero': 0,\n        'one': 1,\n        'two': 2,\n        'three': 3,\n        'four': 4,\n        'five': 5,\n        'six': 6,\n        'seven': 7,\n        'eight': 8,\n        'nine': 9\n    }\n    num_list = numbers.split()\n    sorted_words = sorted(num_list, key=lambda x: word_to_num[x])\n    return ' '.join(sorted_words)",
+  "code": "def sort_numbers(numbers: str) -> str:\n    word_to_num = {\n        'zero': 0,\n        'one': 1,\n        'two': 2,\n        'three': 3,\n        'four': 4,\n        'five': 5,\n        'six': 6,\n        'seven': 7,\n        'eight': 8,\n        'nine': 9\n    }\n    num_list = numbers.split()\n    sorted_list = sorted(num_list, key=lambda x: word_to_num[x])\n    return ' '.join(sorted_list)",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(sort_numbers):\n    assert sort_numbers('') == ''\n    assert sort_numbers('three') == 'three'\n    assert sort_numbers('three five nine') == 'three five nine'\n    assert sort_numbers('five zero four seven nine eight') == 'zero four five seven eight nine'\n    assert sort_numbers('six five four three two one zero') == 'zero one two three four five six'\n\ncheck(sort_numbers)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == ''\n    assert candidate('three') == 'three'\n    assert candidate('three five nine') == 'three five nine'\n    assert candidate('five zero four seven nine eight') == 'zero four five seven eight nine'\n    assert candidate('six five four three two one zero') == 'zero one two three four five six'\n\ncheck(sort_numbers)": {
       "result": true,
-      "time": 0.06096005439758301,
+      "time": 0.06463623046875,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:55:27",
+    "start_time": "2025-05-27 19:36:50",
     "guidance_input_tokens": 753,
     "guidance_output_tokens": 126,
-    "end_time": "2025-05-27 17:55:29",
-    "duration": "0:00:01.984339"
+    "end_time": "2025-05-27 19:36:53",
+    "duration": "0:00:02.556588"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

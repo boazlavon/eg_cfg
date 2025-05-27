@@ -1,9 +1,9 @@
 {
-  "code": "def count_nums(arr):\n    count = 0\n    for num in arr:\n        sum_digits = 0\n        num_str = str(num)\n        for i, digit in enumerate(num_str):\n            if i == 0 and digit == '-':\n                continue\n            if i == 1 and num_str[0] == '-':\n                sum_digits -= int(digit)\n            else:\n                sum_digits += int(digit)\n        if sum_digits > 0:\n            count += 1\n    return count",
+  "code": "def count_nums(arr):\n    count = 0\n    for num in arr:\n        if num == 0:\n            continue\n        sum_digits = 0\n        s = str(num)\n        for i, c in enumerate(s):\n            if i == 0 and c == '-':\n                continue\n            if i == 1 and s[0] == '-':\n                sum_digits -= int(c)\n            else:\n                sum_digits += int(c)\n        if sum_digits > 0:\n            count += 1\n    return count",
   "results": {
-    "def check(count_nums):\n\n    # Check some simple cases\n    assert count_nums([]) == 0\n    assert count_nums([-1, -2, 0]) == 0\n    assert count_nums([1, 1, 2, -2, 3, 4, 5]) == 6\n    assert count_nums([1, 6, 9, -6, 0, 1, 5]) == 5\n    assert count_nums([1, 100, 98, -7, 1, -1]) == 4\n    assert count_nums([12, 23, 34, -45, -56, 0]) == 5\n    assert count_nums([-0, 1**0]) == 1\n    assert count_nums([1]) == 1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(count_nums)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([]) == 0\n    assert candidate([-1, -2, 0]) == 0\n    assert candidate([1, 1, 2, -2, 3, 4, 5]) == 6\n    assert candidate([1, 6, 9, -6, 0, 1, 5]) == 5\n    assert candidate([1, 100, 98, -7, 1, -1]) == 4\n    assert candidate([12, 23, 34, -45, -56, 0]) == 5\n    assert candidate([-0, 1**0]) == 1\n    assert candidate([1]) == 1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(count_nums)": {
       "result": true,
-      "time": 0.059999942779541016,
+      "time": 0.058320045471191406,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:49:29",
+    "start_time": "2025-05-27 19:31:48",
     "guidance_input_tokens": 778,
-    "guidance_output_tokens": 242,
-    "end_time": "2025-05-27 17:49:33",
-    "duration": "0:00:04.339669"
+    "guidance_output_tokens": 123,
+    "end_time": "2025-05-27 19:31:55",
+    "duration": "0:00:07.197802"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

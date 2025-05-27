@@ -1,23 +1,22 @@
 {
-  "code": "def Strongest_Extension(class_name, extensions):\n    def calculate_strength(extension):\n        CAP = sum(1 for char in extension if char.isupper())\n        SM = sum(1 for char in extension if char.islower())\n        return CAP - SM\n    \n    max_strength = -float('inf')\n    strongest_extension = extensions[0]\n    \n    for extension in extensions:\n        current_strength = calculate_strength(extension)\n        if current_strength > max_strength:\n            max_strength = current_strength\n            strongest_extension = extension\n    \n    return f\"{class_name}.{strongest_extension}\"",
+  "code": null,
   "results": {
-    "def check(Strongest_Extension):\n\n    # Check some simple cases\n    assert Strongest_Extension('Watashi', ['tEN', 'niNE', 'eIGHt8OKe']) == 'Watashi.eIGHt8OKe'\n    assert Strongest_Extension('Boku123', ['nani', 'NazeDa', 'YEs.WeCaNe', '32145tggg']) == 'Boku123.YEs.WeCaNe'\n    assert Strongest_Extension('__YESIMHERE', ['t', 'eMptY', 'nothing', 'zeR00', 'NuLl__', '123NoooneB321']) == '__YESIMHERE.NuLl__'\n    assert Strongest_Extension('K', ['Ta', 'TAR', 't234An', 'cosSo']) == 'K.TAR'\n    assert Strongest_Extension('__HAHA', ['Tab', '123', '781345', '-_-']) == '__HAHA.123'\n    assert Strongest_Extension('YameRore', ['HhAas', 'okIWILL123', 'WorkOut', 'Fails', '-_-']) == 'YameRore.okIWILL123'\n    assert Strongest_Extension('finNNalLLly', ['Die', 'NowW', 'Wow', 'WoW']) == 'finNNalLLly.WoW'\n\n    # Check some edge cases that are easy to work out by hand.\n    assert Strongest_Extension('_', ['Bb', '91245']) == '_.Bb'\n    assert Strongest_Extension('Sp', ['671235', 'Bb']) == 'Sp.671235'\n    \n\ncheck(Strongest_Extension)": {
-      "result": true,
-      "time": 0.061083316802978516,
-      "error": null
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('Watashi', ['tEN', 'niNE', 'eIGHt8OKe']) == 'Watashi.eIGHt8OKe'\n    assert candidate('Boku123', ['nani', 'NazeDa', 'YEs.WeCaNe', '32145tggg']) == 'Boku123.YEs.WeCaNe'\n    assert candidate('__YESIMHERE', ['t', 'eMptY', 'nothing', 'zeR00', 'NuLl__', '123NoooneB321']) == '__YESIMHERE.NuLl__'\n    assert candidate('K', ['Ta', 'TAR', 't234An', 'cosSo']) == 'K.TAR'\n    assert candidate('__HAHA', ['Tab', '123', '781345', '-_-']) == '__HAHA.123'\n    assert candidate('YameRore', ['HhAas', 'okIWILL123', 'WorkOut', 'Fails', '-_-']) == 'YameRore.okIWILL123'\n    assert candidate('finNNalLLly', ['Die', 'NowW', 'Wow', 'WoW']) == 'finNNalLLly.WoW'\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate('_', ['Bb', '91245']) == '_.Bb'\n    assert candidate('Sp', ['671235', 'Bb']) == 'Sp.671235'\n    \n\ncheck(Strongest_Extension)": {
+      "result": false,
+      "time": -1,
+      "error": "GenerationError"
     }
   },
-  "passed": true,
-  "accuracy": 1.0,
-  "general_error": null,
-  "has_testcase_error": false,
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": "<class 'AssertionError'>",
+  "has_testcase_error": true,
+  "tb": "Traceback (most recent call last):\n  File \"/home/ai_center/ai_users/boazlavon/data/code/web/clean4/eg_cfg/eg_cfg/eg_cfg_session_manager.py\", line 565, in solve_problem_with_eg_cfg_wrapper\n    solution = self.solve_problem_with_eg_cfg(problem, gamma)\n  File \"/home/ai_center/ai_users/boazlavon/data/code/web/clean4/eg_cfg/eg_cfg/eg_cfg_session_manager.py\", line 482, in solve_problem_with_eg_cfg\n    _, solution, completion_tokens = complex_qwen_query(\n  File \"/home/ai_center/ai_users/boazlavon/data/code/web/clean4/eg_cfg/eg_cfg/inference_endpoint_utils.py\", line 158, in complex_qwen_query\n    assert answer_start_until_code\nAssertionError\n",
   "stats": {
-    "start_time": "2025-05-27 17:50:31",
-    "guidance_input_tokens": 908,
-    "guidance_output_tokens": 144,
-    "end_time": "2025-05-27 17:50:34",
-    "duration": "0:00:02.240581"
+    "start_time": "2025-05-27 19:36:41",
+    "end_time": "2025-05-27 19:36:50",
+    "duration": "0:00:09.182370"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

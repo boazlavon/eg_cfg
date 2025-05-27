@@ -1,9 +1,9 @@
 {
-  "code": "def flip_case(string):\n    result = []\n    for char in string:\n        if char.islower():\n            new_char = char.upper()\n        elif char.isupper():\n            new_char = char.lower()\n        else:\n            new_char = char\n        result.append(new_char)\n    return ''.join(result)",
+  "code": "def flip_case(string):\n    result = []\n    for char in string:\n        if char.islower():\n            new_char = char.upper()\n        elif char.isupper():\n            new_char = char.lower()\n        else:\n            new_char = char\n        result.append(new_char)\n    flipped_string = ''.join(result)\n    return flipped_string",
   "results": {
-    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(flip_case):\n    assert flip_case('') == ''\n    assert flip_case('Hello!') == 'hELLO!'\n    assert flip_case('These violent delights have violent ends') == 'tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS'\n\ncheck(flip_case)": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == ''\n    assert candidate('Hello!') == 'hELLO!'\n    assert candidate('These violent delights have violent ends') == 'tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS'\n\ncheck(flip_case)": {
       "result": true,
-      "time": 0.056792259216308594,
+      "time": 0.05457162857055664,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:41:04",
+    "start_time": "2025-05-27 19:26:53",
     "guidance_input_tokens": 551,
-    "guidance_output_tokens": 68,
-    "end_time": "2025-05-27 17:41:05",
-    "duration": "0:00:01.480457"
+    "guidance_output_tokens": 95,
+    "end_time": "2025-05-27 19:26:55",
+    "duration": "0:00:02.364420"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

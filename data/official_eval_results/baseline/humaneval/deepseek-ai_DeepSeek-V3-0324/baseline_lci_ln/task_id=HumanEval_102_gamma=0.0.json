@@ -1,9 +1,9 @@
 {
-  "code": "def choose_num(x, y):\n    start = min(x, y)\n    end = max(x, y)\n    largest_even = -1\n    current_num = end\n    while current_num >= start:\n        is_even = current_num % 2 == 0\n        if is_even:\n            largest_even = current_num\n            break\n        current_num -= 1\n    return largest_even",
+  "code": "def choose_num(x, y):\n    start = min(x, y)\n    end = max(x, y)\n    largest_even = -1\n    for num in range(start, end + 1):\n        if num % 2 == 0:\n            if num > largest_even:\n                largest_even = num\n    return largest_even",
   "results": {
-    "def check(choose_num):\n\n    # Check some simple cases\n    assert choose_num(12, 15) == 14\n    assert choose_num(13, 12) == -1\n    assert choose_num(33, 12354) == 12354\n    assert choose_num(5234, 5233) == -1\n    assert choose_num(6, 29) == 28\n    assert choose_num(27, 10) == -1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert choose_num(7, 7) == -1\n    assert choose_num(546, 546) == 546\n\n\ncheck(choose_num)": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(12, 15) == 14\n    assert candidate(13, 12) == -1\n    assert candidate(33, 12354) == 12354\n    assert candidate(5234, 5233) == -1\n    assert candidate(6, 29) == 28\n    assert candidate(27, 10) == -1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(7, 7) == -1\n    assert candidate(546, 546) == 546\n\n\ncheck(choose_num)": {
       "result": false,
-      "time": 0.05712628364562988,
+      "time": 0.04825901985168457,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:42:43",
+    "start_time": "2025-05-27 19:21:21",
     "guidance_input_tokens": 576,
-    "guidance_output_tokens": 108,
-    "end_time": "2025-05-27 17:42:46",
-    "duration": "0:00:02.153074"
+    "guidance_output_tokens": 309,
+    "end_time": "2025-05-27 19:21:26",
+    "duration": "0:00:05.133903"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }

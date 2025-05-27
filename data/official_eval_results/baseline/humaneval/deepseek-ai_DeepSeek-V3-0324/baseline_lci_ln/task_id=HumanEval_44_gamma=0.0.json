@@ -1,9 +1,9 @@
 {
-  "code": "def change_base(x, base):\n    if x == 0:\n        return '0'\n    digits = []\n    while x > 0:\n        remainder = x % base\n        digits.append(remainder)\n        x = x // base\n    digits.reverse()\n    result = ''\n    for digit in digits:\n        result += str(digit)\n    return result",
+  "code": "def change_base(x, base):\n    if x == 0:\n        return '0'\n    digits = []\n    n = x\n    while n > 0:\n        remainder = n % base\n        digits.append(str(remainder))\n        n = n // base\n    digits.reverse()\n    result = ''.join(digits)\n    return result",
   "results": {
-    "\n\nMETADATA = {}\n\n\ndef check(change_base):\n    assert change_base(8, 3) == \"22\"\n    assert change_base(9, 3) == \"100\"\n    assert change_base(234, 2) == \"11101010\"\n    assert change_base(16, 2) == \"10000\"\n    assert change_base(8, 2) == \"1000\"\n    assert change_base(7, 2) == \"111\"\n    for x in range(2, 8):\n        assert change_base(x, x + 1) == str(x)\n\n\ncheck(change_base)": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(8, 3) == \"22\"\n    assert candidate(9, 3) == \"100\"\n    assert candidate(234, 2) == \"11101010\"\n    assert candidate(16, 2) == \"10000\"\n    assert candidate(8, 2) == \"1000\"\n    assert candidate(7, 2) == \"111\"\n    for x in range(2, 8):\n        assert candidate(x, x + 1) == str(x)\n\n\ncheck(change_base)": {
       "result": true,
-      "time": 0.05163216590881348,
+      "time": 0.04564499855041504,
       "error": null
     }
   },
@@ -12,12 +12,12 @@
   "general_error": null,
   "has_testcase_error": false,
   "stats": {
-    "start_time": "2025-05-27 17:43:29",
+    "start_time": "2025-05-27 19:15:23",
     "guidance_input_tokens": 590,
-    "guidance_output_tokens": 81,
-    "end_time": "2025-05-27 17:43:30",
-    "duration": "0:00:01.795423"
+    "guidance_output_tokens": 237,
+    "end_time": "2025-05-27 19:15:28",
+    "duration": "0:00:05.151126"
   },
   "retry": 0,
-  "random_seed": 726
+  "random_seed": 1038
 }
