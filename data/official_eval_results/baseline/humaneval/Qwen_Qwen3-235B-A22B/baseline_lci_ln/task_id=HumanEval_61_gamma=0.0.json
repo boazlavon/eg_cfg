@@ -1,0 +1,23 @@
+{
+  "code": "def correct_bracketing(brackets: str):\n    # Initialize a variable to track the balance of brackets\n    balance = 0\n    # Loop through each character in the brackets string\n    for char in brackets:\n        # If the character is an opening bracket, increment the balance\n        if char == '(':\n            balance = balance + 1\n        # If the character is a closing bracket, decrement the balance\n        elif char == ')':\n            balance = balance - 1\n            # If at any point the balance goes negative, there are unmatched brackets\n            if balance < 0:\n                return False\n    # After processing all characters, check if the balance is zero\n    if balance == 0:\n        return True\n    else:\n        return False",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(\"()\")\n    assert candidate(\"(()())\")\n    assert candidate(\"()()(()())()\")\n    assert candidate(\"()()((()()())())(()()(()))\")\n    assert not candidate(\"((()())))\")\n    assert not candidate(\")(()\")\n    assert not candidate(\"(\")\n    assert not candidate(\"((((\")\n    assert not candidate(\")\")\n    assert not candidate(\"(()\")\n    assert not candidate(\"()()(()())())(()\")\n    assert not candidate(\"()()(()())()))()\")\n\n\ncheck(correct_bracketing)": {
+      "result": true,
+      "time": 0.05899834632873535,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:21:32",
+    "guidance_input_tokens": 587,
+    "guidance_output_tokens": 166,
+    "end_time": "2025-05-27 19:21:35",
+    "duration": "0:00:02.176930"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

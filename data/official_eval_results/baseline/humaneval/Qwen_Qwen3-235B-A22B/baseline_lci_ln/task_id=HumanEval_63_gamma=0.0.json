@@ -1,0 +1,23 @@
+{
+  "code": "def fibfib(n: int):\n    if n == 0 or n == 1:\n        result = 0\n    elif n == 2:\n        result = 1\n    else:\n        a = 0\n        b = 0\n        c = 1\n        for i in range(3, n + 1):\n            current = a + b + c\n            a = b\n            b = c\n            c = current\n        result = c\n    return result",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(2) == 1\n    assert candidate(1) == 0\n    assert candidate(5) == 4\n    assert candidate(8) == 24\n    assert candidate(10) == 81\n    assert candidate(12) == 274\n    assert candidate(14) == 927\n\n\ncheck(fibfib)": {
+      "result": true,
+      "time": 0.0580291748046875,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:15:32",
+    "guidance_input_tokens": 640,
+    "guidance_output_tokens": 435,
+    "end_time": "2025-05-27 19:15:38",
+    "duration": "0:00:05.861820"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

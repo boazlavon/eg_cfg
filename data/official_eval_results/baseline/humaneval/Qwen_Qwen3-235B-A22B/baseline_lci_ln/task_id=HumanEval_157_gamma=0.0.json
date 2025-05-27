@@ -1,0 +1,23 @@
+{
+  "code": "# Step 1: Define the function with given signature\ndef right_angle_triangle(a, b, c):\n    # Step 2: Sort the sides to identify the hypotenuse\n    sides = [a, b, c]\n    sides.sort()\n    # Step 3: Assign the sorted sides to individual variables\n    side1 = sides[0]\n    side2 = sides[1]\n    hypotenuse = sides[2]\n    # Step 4: Calculate squares of all sides\n    square_side1 = side1 ** 2\n    square_side2 = side2 ** 2\n    square_hypotenuse = hypotenuse ** 2\n    # Step 5: Check if Pythagorean theorem holds\n    if square_side1 + square_side2 == square_hypotenuse:\n        return True\n    else:\n        return False",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(3, 4, 5) == True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(1, 2, 3) == False\n    assert candidate(10, 6, 8) == True\n    assert candidate(2, 2, 2) == False\n    assert candidate(7, 24, 25) == True\n    assert candidate(10, 5, 7) == False\n    assert candidate(5, 12, 13) == True\n    assert candidate(15, 8, 17) == True\n    assert candidate(48, 55, 73) == True\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(1, 1, 1) == False, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(2, 2, 10) == False\n\n\ncheck(right_angle_triangle)": {
+      "result": true,
+      "time": 0.06144309043884277,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:28:25",
+    "guidance_input_tokens": 586,
+    "guidance_output_tokens": 193,
+    "end_time": "2025-05-27 19:28:29",
+    "duration": "0:00:03.394458"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

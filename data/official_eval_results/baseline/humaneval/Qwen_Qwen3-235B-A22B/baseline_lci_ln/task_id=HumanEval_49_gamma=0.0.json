@@ -1,0 +1,23 @@
+{
+  "code": "def modp(n: int, p: int):\n    base = 2\n    result = 1\n    while n > 0:\n        if n % 2 == 1:\n            result = result * base\n            result = result % p\n        base = base * base\n        base = base % p\n        n = n // 2\n    return result",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(3, 5) == 3\n    assert candidate(1101, 101) == 2\n    assert candidate(0, 101) == 1\n    assert candidate(3, 11) == 8\n    assert candidate(100, 101) == 1\n    assert candidate(30, 5) == 4\n    assert candidate(31, 5) == 3\n\n\ncheck(modp)": {
+      "result": true,
+      "time": 0.06097531318664551,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:22:00",
+    "guidance_input_tokens": 612,
+    "guidance_output_tokens": 328,
+    "end_time": "2025-05-27 19:22:05",
+    "duration": "0:00:04.781743"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

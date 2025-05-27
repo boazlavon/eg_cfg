@@ -1,0 +1,23 @@
+{
+  "code": "def next_smallest(lst):\n    list_length = len(lst)\n    if list_length == 0:\n        return None\n    \n    first_min = lst[0]\n    second_min = None\n    \n    index = 1\n    while index < list_length:\n        current_number = lst[index]\n        \n        if current_number < first_min:\n            previous_first_min = first_min\n            second_min = previous_first_min\n            first_min = current_number\n        else:\n            if current_number != first_min:\n                if second_min is None:\n                    second_min = current_number\n                else:\n                    if current_number < second_min:\n                        second_min = current_number\n        \n        index = index + 1\n    \n    return second_min",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([1, 2, 3, 4, 5]) == 2\n    assert candidate([5, 1, 4, 3, 2]) == 2\n    assert candidate([]) == None\n    assert candidate([1, 1]) == None\n    assert candidate([1,1,1,1,0]) == 1\n    assert candidate([1, 0**0]) == None\n    assert candidate([-35, 34, 12, -45]) == -35\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(next_smallest)": {
+      "result": true,
+      "time": 0.06089448928833008,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:20:29",
+    "guidance_input_tokens": 600,
+    "guidance_output_tokens": 988,
+    "end_time": "2025-05-27 19:20:39",
+    "duration": "0:00:10.602724"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

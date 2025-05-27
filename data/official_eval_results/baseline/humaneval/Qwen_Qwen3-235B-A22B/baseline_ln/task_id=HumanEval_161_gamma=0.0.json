@@ -1,0 +1,23 @@
+{
+  "code": "def solve(s):\n    result = ''\n    has_letters = any(c.isalpha() for c in s)\n    \n    if not has_letters:\n        return s[::-1]\n    \n    for c in s:\n        if c.isalpha():\n            result += c.swapcase()\n        else:\n            result += c\n            \n    return result",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"AsDf\") == \"aSdF\"\n    assert candidate(\"1234\") == \"4321\"\n    assert candidate(\"ab\") == \"AB\"\n    assert candidate(\"#a@C\") == \"#A@c\"\n    assert candidate(\"#AsdfW^45\") == \"#aSDFw^45\"\n    assert candidate(\"#6@2\") == \"2@6#\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(\"#$a^D\") == \"#$A^d\"\n    assert candidate(\"#ccc\") == \"#CCC\"\n\n    # Don't remove this line:\n\ncheck(solve)": {
+      "result": true,
+      "time": 0.06116652488708496,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:20:13",
+    "guidance_input_tokens": 794,
+    "guidance_output_tokens": 784,
+    "end_time": "2025-05-27 19:20:22",
+    "duration": "0:00:08.610046"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

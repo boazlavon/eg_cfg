@@ -1,0 +1,23 @@
+{
+  "code": "def circular_shift(x, shift):\n    s = str(x)\n    n = len(s)\n    shift = shift % n\n    if shift == 0:\n        return s\n    return s[-shift:] + s[:-shift]",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(100, 2) == \"001\"\n    assert candidate(12, 2) == \"12\"\n    assert candidate(97, 8) == \"79\"\n    assert candidate(12, 1) == \"21\", \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(11, 101) == \"11\", \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(circular_shift)": {
+      "result": false,
+      "time": 0.058182716369628906,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:25:46",
+    "guidance_input_tokens": 777,
+    "guidance_output_tokens": 631,
+    "end_time": "2025-05-27 19:26:02",
+    "duration": "0:00:15.283104"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

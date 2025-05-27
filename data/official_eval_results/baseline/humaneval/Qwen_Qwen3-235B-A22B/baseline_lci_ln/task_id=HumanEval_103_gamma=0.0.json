@@ -1,0 +1,23 @@
+{
+  "code": "def rounded_avg(n, m):\n    if n > m:\n        return -1\n    total_sum = 0\n    count = 0\n    current = n\n    while current <= m:\n        total_sum += current\n        count += 1\n        current += 1\n    average = total_sum / count\n    rounded_average = round(average)\n    binary_representation = bin(rounded_average)\n    return binary_representation",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(1, 5) == \"0b11\"\n    assert candidate(7, 13) == \"0b1010\"\n    assert candidate(964,977) == \"0b1111001010\"\n    assert candidate(996,997) == \"0b1111100100\"\n    assert candidate(560,851) == \"0b1011000010\"\n    assert candidate(185,546) == \"0b101101110\"\n    assert candidate(362,496) == \"0b110101101\"\n    assert candidate(350,902) == \"0b1001110010\"\n    assert candidate(197,233) == \"0b11010111\"\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(7, 5) == -1\n    assert candidate(5, 1) == -1\n    assert candidate(5, 5) == \"0b101\"\n\n\ncheck(rounded_avg)": {
+      "result": true,
+      "time": 0.06191658973693848,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:23:18",
+    "guidance_input_tokens": 626,
+    "guidance_output_tokens": 107,
+    "end_time": "2025-05-27 19:23:20",
+    "duration": "0:00:01.612442"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

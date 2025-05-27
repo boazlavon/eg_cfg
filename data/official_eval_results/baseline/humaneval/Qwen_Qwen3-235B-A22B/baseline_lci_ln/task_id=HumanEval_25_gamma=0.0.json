@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List\n\ndef factorize(n: int) -> List[int]:\n    result = []\n    divisor = 2\n    remainder = n\n    while divisor <= remainder:\n        while remainder % divisor == 0:\n            result.append(divisor)\n            quotient = remainder // divisor\n            remainder = quotient\n        divisor += 1\n    return result",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate(2) == [2]\n    assert candidate(4) == [2, 2]\n    assert candidate(8) == [2, 2, 2]\n    assert candidate(3 * 19) == [3, 19]\n    assert candidate(3 * 19 * 3 * 19) == [3, 3, 19, 19]\n    assert candidate(3 * 19 * 3 * 19 * 3 * 19) == [3, 3, 3, 19, 19, 19]\n    assert candidate(3 * 19 * 19 * 19) == [3, 19, 19, 19]\n    assert candidate(3 * 2 * 3) == [2, 3, 3]\n\ncheck(factorize)": {
+      "result": true,
+      "time": 0.10770416259765625,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:20:39",
+    "guidance_input_tokens": 619,
+    "guidance_output_tokens": 380,
+    "end_time": "2025-05-27 19:20:44",
+    "duration": "0:00:04.881766"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

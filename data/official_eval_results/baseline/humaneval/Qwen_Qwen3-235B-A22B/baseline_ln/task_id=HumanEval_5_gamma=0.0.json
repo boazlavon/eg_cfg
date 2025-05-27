@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List\n\ndef intersperse(numbers: List[int], delimeter: int) -> List[int]:\n    if not numbers:\n        return []\n    \n    result = []\n    for i in range(len(numbers) - 1):\n        result.append(numbers[i])\n        result.append(delimeter)\n    result.append(numbers[-1])\n    \n    return result",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([], 7) == []\n    assert candidate([5, 6, 3, 2], 8) == [5, 8, 6, 8, 3, 8, 2]\n    assert candidate([2, 2, 2], 2) == [2, 2, 2, 2, 2]\n\ncheck(intersperse)": {
+      "result": true,
+      "time": 0.0942683219909668,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:25:05",
+    "guidance_input_tokens": 781,
+    "guidance_output_tokens": 319,
+    "end_time": "2025-05-27 19:25:09",
+    "duration": "0:00:04.127187"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

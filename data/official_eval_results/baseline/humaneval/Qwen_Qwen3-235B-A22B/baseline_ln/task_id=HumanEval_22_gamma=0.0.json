@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List, Any\n\ndef filter_integers(values: List[Any]) -> List[int]:\n    return [v for v in values if isinstance(v, int)]",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([]) == []\n    assert candidate([4, {}, [], 23.2, 9, 'adasd']) == [4, 9]\n    assert candidate([3, 'c', 3, 3, 'a', 'b']) == [3, 3, 3]\n\ncheck(filter_integers)": {
+      "result": true,
+      "time": 0.10341739654541016,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:18:46",
+    "guidance_input_tokens": 779,
+    "guidance_output_tokens": 40,
+    "end_time": "2025-05-27 19:18:47",
+    "duration": "0:00:01.201538"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

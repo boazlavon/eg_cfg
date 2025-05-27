@@ -1,0 +1,23 @@
+{
+  "code": "def is_simple_power(x, n):\n    if n == 1:\n        return x == 1\n    if n == -1:\n        return x == 1 or x == -1\n    if n == 0:\n        return x == 0 or x == 1  # 0^0 is undefined, but 0^k=0 for k>0\n    if x == 0:\n        return n != 0\n    if x == 1:\n        return True\n    current = n\n    visited = set()\n    while abs(current) <= abs(x):\n        if current == x:\n            return True\n        visited.add(current)\n        current *= n\n        if current in visited:  # Prevent infinite loop for repeating values\n            break\n    return False",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(16, 2)== True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(143214, 16)== False, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(4, 2)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(9, 3)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(16, 4)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(24, 2)==False, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(128, 4)==False, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(12, 6)==False, \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(1, 1)==True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(1, 12)==True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(is_simple_power)": {
+      "result": true,
+      "time": 0.055849552154541016,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:22:42",
+    "guidance_input_tokens": 818,
+    "guidance_output_tokens": 496,
+    "end_time": "2025-05-27 19:22:48",
+    "duration": "0:00:06.557671"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

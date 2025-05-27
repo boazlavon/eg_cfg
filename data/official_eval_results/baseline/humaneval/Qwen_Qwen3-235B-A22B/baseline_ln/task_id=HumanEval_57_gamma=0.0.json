@@ -1,0 +1,23 @@
+{
+  "code": "def monotonic(l: list):\n    return all(x <= y for x, y in zip(l, l[1:])) or all(x >= y for x, y in zip(l, l[1:]))",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([1, 2, 4, 10]) == True\n    assert candidate([1, 2, 4, 20]) == True\n    assert candidate([1, 20, 4, 10]) == False\n    assert candidate([4, 1, 0, -10]) == True\n    assert candidate([4, 1, 1, 0]) == True\n    assert candidate([1, 2, 3, 2, 5, 60]) == False\n    assert candidate([1, 2, 3, 4, 5, 60]) == True\n    assert candidate([9, 9, 9, 9]) == True\n\n\ncheck(monotonic)": {
+      "result": true,
+      "time": 0.04858279228210449,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:18:09",
+    "guidance_input_tokens": 784,
+    "guidance_output_tokens": 50,
+    "end_time": "2025-05-27 19:18:11",
+    "duration": "0:00:01.276513"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

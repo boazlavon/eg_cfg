@@ -1,0 +1,23 @@
+{
+  "code": "def split_words(txt):\n    result = []\n    has_whitespace = ' ' in txt\n    if has_whitespace:\n        split_by_space = ' '\n        words = txt.split(split_by_space)\n        result = words\n    else:\n        has_comma = ',' in txt\n        if has_comma:\n            split_by_comma = ','\n            words = txt.split(split_by_comma)\n            result = words\n        else:\n            count = 0\n            for char in txt:\n                is_lower = char.islower()\n                if is_lower:\n                    subtracted_ord = ord(char) - ord('a')\n                    remainder = subtracted_ord % 2\n                    is_odd = remainder == 1\n                    if is_odd:\n                        count = count + 1\n            result = count\n    return result",
+  "results": {
+    "def check(candidate):\n\n    assert candidate(\"Hello world!\") == [\"Hello\",\"world!\"]\n    assert candidate(\"Hello,world!\") == [\"Hello\",\"world!\"]\n    assert candidate(\"Hello world,!\") == [\"Hello\",\"world,!\"]\n    assert candidate(\"Hello,Hello,world !\") == [\"Hello,Hello,world\",\"!\"]\n    assert candidate(\"abcdef\") == 3\n    assert candidate(\"aaabb\") == 2\n    assert candidate(\"aaaBb\") == 1\n    assert candidate(\"\") == 0\n\ncheck(split_words)": {
+      "result": true,
+      "time": 0.05965065956115723,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:32:22",
+    "guidance_input_tokens": 616,
+    "guidance_output_tokens": 2048,
+    "end_time": "2025-05-27 19:32:41",
+    "duration": "0:00:19.218181"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

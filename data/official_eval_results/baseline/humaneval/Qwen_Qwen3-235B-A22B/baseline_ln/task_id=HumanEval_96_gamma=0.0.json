@@ -1,0 +1,23 @@
+{
+  "code": "import math\n\ndef count_up_to(n):\n    def is_prime(num):\n        if num < 2:\n            return False\n        for i in range(2, int(math.sqrt(num)) + 1):\n            if num % i == 0:\n                return False\n        return True\n\n    result = []\n    for i in range(2, n):\n        if is_prime(i):\n            result.append(i)\n    return result",
+  "results": {
+    "def check(candidate):\n\n    assert candidate(5) == [2,3]\n    assert candidate(6) == [2,3,5]\n    assert candidate(7) == [2,3,5]\n    assert candidate(10) == [2,3,5,7]\n    assert candidate(0) == []\n    assert candidate(22) == [2,3,5,7,11,13,17,19]\n    assert candidate(1) == []\n    assert candidate(18) == [2,3,5,7,11,13,17]\n    assert candidate(47) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43]\n    assert candidate(101) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]\n\n\ncheck(count_up_to)": {
+      "result": true,
+      "time": 0.0807492733001709,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:27:30",
+    "guidance_input_tokens": 838,
+    "guidance_output_tokens": 314,
+    "end_time": "2025-05-27 19:27:35",
+    "duration": "0:00:04.433579"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

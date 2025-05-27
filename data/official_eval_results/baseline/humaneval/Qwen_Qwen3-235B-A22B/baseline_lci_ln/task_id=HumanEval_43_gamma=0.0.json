@@ -1,0 +1,23 @@
+{
+  "code": "def pairs_sum_to_zero(l):\n    seen = set()\n    for num in l:\n        complement = -num\n        if complement in seen:\n            return True\n        seen.add(num)\n    return False",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([1, 3, 5, 0]) == False\n    assert candidate([1, 3, -2, 1]) == False\n    assert candidate([1, 2, 3, 7]) == False\n    assert candidate([2, 4, -5, 3, 5, 7]) == True\n    assert candidate([1]) == False\n\n    assert candidate([-3, 9, -1, 3, 2, 30]) == True\n    assert candidate([-3, 9, -1, 3, 2, 31]) == True\n    assert candidate([-3, 9, -1, 4, 2, 30]) == False\n    assert candidate([-3, 9, -1, 4, 2, 31]) == False\n\n\ncheck(pairs_sum_to_zero)": {
+      "result": true,
+      "time": 0.05953478813171387,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:17:05",
+    "guidance_input_tokens": 649,
+    "guidance_output_tokens": 70,
+    "end_time": "2025-05-27 19:17:07",
+    "duration": "0:00:01.392709"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

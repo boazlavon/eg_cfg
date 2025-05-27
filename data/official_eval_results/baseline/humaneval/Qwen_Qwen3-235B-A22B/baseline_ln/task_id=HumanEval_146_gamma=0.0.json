@@ -1,0 +1,23 @@
+{
+  "code": "def specialFilter(nums):\n    count = 0\n    for num in nums:\n        if num > 10:\n            s = str(num)\n            if s[0] in {'1', '3', '5', '7', '9'} and s[-1] in {'1', '3', '5', '7', '9'}:\n                count += 1\n    return count",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([5, -2, 1, -5]) == 0  \n    assert candidate([15, -73, 14, -15]) == 1\n    assert candidate([33, -2, -3, 45, 21, 109]) == 2\n    assert candidate([43, -12, 93, 125, 121, 109]) == 4\n    assert candidate([71, -2, -33, 75, 21, 19]) == 3\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate([1]) == 0              \n    assert candidate([]) == 0                   \n\n\ncheck(specialFilter)": {
+      "result": true,
+      "time": 0.050572872161865234,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:25:16",
+    "guidance_input_tokens": 816,
+    "guidance_output_tokens": 1317,
+    "end_time": "2025-05-27 19:25:30",
+    "duration": "0:00:13.950964"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

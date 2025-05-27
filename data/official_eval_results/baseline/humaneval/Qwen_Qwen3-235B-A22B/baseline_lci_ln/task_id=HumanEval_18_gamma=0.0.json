@@ -1,0 +1,23 @@
+{
+  "code": "def how_many_times(string: str, substring: str) -> int:\n    count = 0\n    string_length = len(string)\n    substring_length = len(substring)\n    i = 0\n    while i <= string_length - substring_length:\n        current_slice = string[i:i + substring_length]\n        if current_slice == substring:\n            count += 1\n        i += 1\n    return count",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('', 'x') == 0\n    assert candidate('xyxyxyx', 'x') == 4\n    assert candidate('cacacacac', 'cac') == 4\n    assert candidate('john doe', 'john') == 1\n\ncheck(how_many_times)": {
+      "result": true,
+      "time": 0.05792045593261719,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:24:13",
+    "guidance_input_tokens": 586,
+    "guidance_output_tokens": 2048,
+    "end_time": "2025-05-27 19:24:30",
+    "duration": "0:00:16.393195"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

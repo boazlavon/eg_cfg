@@ -1,0 +1,23 @@
+{
+  "code": "# No additional code is needed. The final version of the function is already provided.\n# Ensure that the function is the last code block in the output.\ndef vowels_count(s):\n    count = 0\n    middle_vowels = ['a', 'e', 'i', 'o', 'u']\n    last_index = len(s) - 1\n    for i, char in enumerate(s):\n        char_lower = char.lower()\n        if char_lower in middle_vowels:\n            count += 1\n        elif char_lower == 'y' and i == last_index:\n            count += 1\n    return count",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"abcde\") == 2, \"Test 1\"\n    assert candidate(\"Alone\") == 3, \"Test 2\"\n    assert candidate(\"key\") == 2, \"Test 3\"\n    assert candidate(\"bye\") == 1, \"Test 4\"\n    assert candidate(\"keY\") == 2, \"Test 5\"\n    assert candidate(\"bYe\") == 1, \"Test 6\"\n    assert candidate(\"ACEDY\") == 3, \"Test 7\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(vowels_count)": {
+      "result": true,
+      "time": 0.06010103225708008,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:29:22",
+    "guidance_input_tokens": 610,
+    "guidance_output_tokens": 2136,
+    "end_time": "2025-05-27 19:29:47",
+    "duration": "0:00:25.043977"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

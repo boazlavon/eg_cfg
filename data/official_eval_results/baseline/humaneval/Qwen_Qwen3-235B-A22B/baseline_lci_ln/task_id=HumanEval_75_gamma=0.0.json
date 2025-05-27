@@ -1,0 +1,23 @@
+{
+  "code": "def is_multiply_prime(a):\n    is_prime = {}\n    is_prime[1] = False\n    for i in range(2, a):\n        is_prime[i] = True\n    for i in range(2, a):\n        if is_prime[i]:\n            for j in range(i * i, a, i):\n                is_prime[j] = False\n    factors = []\n    n = a\n    for i in range(2, a + 1):\n        if is_prime[i]:\n            while n % i == 0:\n                factors.append(i)\n                n = n // i\n    if len(factors) == 3:\n        return True\n    else:\n        return False",
+  "results": {
+    "def check(candidate):\n\n    assert candidate(5) == False\n    assert candidate(30) == True\n    assert candidate(8) == True\n    assert candidate(10) == False\n    assert candidate(125) == True\n    assert candidate(3 * 5 * 7) == True\n    assert candidate(3 * 6 * 7) == False\n    assert candidate(9 * 9 * 9) == False\n    assert candidate(11 * 9 * 9) == False\n    assert candidate(11 * 13 * 7) == True\n\n\ncheck(is_multiply_prime)": {
+      "result": false,
+      "time": 0.05737781524658203,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:30:09",
+    "guidance_input_tokens": 588,
+    "guidance_output_tokens": 366,
+    "end_time": "2025-05-27 19:30:15",
+    "duration": "0:00:05.230287"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

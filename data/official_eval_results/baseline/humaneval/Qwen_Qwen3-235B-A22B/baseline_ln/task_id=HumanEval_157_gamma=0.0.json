@@ -1,0 +1,23 @@
+{
+  "code": "import math\ndef right_angle_triangle(a, b, c):\n    sides = sorted([a, b, c])\n    return math.isclose(sides[0]**2 + sides[1]**2, sides[2]**2)",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(3, 4, 5) == True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(1, 2, 3) == False\n    assert candidate(10, 6, 8) == True\n    assert candidate(2, 2, 2) == False\n    assert candidate(7, 24, 25) == True\n    assert candidate(10, 5, 7) == False\n    assert candidate(5, 12, 13) == True\n    assert candidate(15, 8, 17) == True\n    assert candidate(48, 55, 73) == True\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(1, 1, 1) == False, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(2, 2, 10) == False\n\n\ncheck(right_angle_triangle)": {
+      "result": true,
+      "time": 0.06992077827453613,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:17:11",
+    "guidance_input_tokens": 792,
+    "guidance_output_tokens": 189,
+    "end_time": "2025-05-27 19:17:15",
+    "duration": "0:00:03.171925"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

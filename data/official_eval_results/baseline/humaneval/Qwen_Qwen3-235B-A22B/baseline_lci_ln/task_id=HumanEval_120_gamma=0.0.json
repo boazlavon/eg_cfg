@@ -1,0 +1,23 @@
+{
+  "code": "def maximum(arr, k):\n    if k == 0:\n        return []\n    if not arr:\n        return []\n    if k > len(arr):\n        k = len(arr)\n    result = []\n    arr_copy = []\n    for num in arr:\n        arr_copy.append(num)\n    while len(result) < k:\n        current_max = arr_copy[0]\n        current_max_index = 0\n        for i in range(1, len(arr_copy)):\n            if arr_copy[i] > current_max:\n                current_max = arr_copy[i]\n                current_max_index = i\n        result.append(current_max)\n        arr_copy.pop(current_max_index)\n    result.sort()\n    return result",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([-3, -4, 5], 3) == [-4, -3, 5]\n    assert candidate([4, -4, 4], 2) == [4, 4]\n    assert candidate([-3, 2, 1, 2, -1, -2, 1], 1) == [2]\n    assert candidate([123, -123, 20, 0 , 1, 2, -3], 3) == [2, 20, 123]\n    assert candidate([-123, 20, 0 , 1, 2, -3], 4) == [0, 1, 2, 20]\n    assert candidate([5, 15, 0, 3, -13, -8, 0], 7) == [-13, -8, 0, 0, 3, 5, 15]\n    assert candidate([-1, 0, 2, 5, 3, -10], 2) == [3, 5]\n    assert candidate([1, 0, 5, -7], 1) == [5]\n    assert candidate([4, -4], 2) == [-4, 4]\n    assert candidate([-10, 10], 2) == [-10, 10]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate([1, 2, 3, -23, 243, -400, 0], 0) == []\n\n\ncheck(maximum)": {
+      "result": true,
+      "time": 0.06308484077453613,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:19:00",
+    "guidance_input_tokens": 700,
+    "guidance_output_tokens": 149,
+    "end_time": "2025-05-27 19:19:02",
+    "duration": "0:00:02.375838"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

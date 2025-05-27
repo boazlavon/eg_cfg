@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List\n\ndef mean_absolute_deviation(numbers: List[float]) -> float:\n    mean = sum(numbers) / len(numbers)\n    absolute_deviations = [abs(num - mean) for num in numbers]\n    return sum(absolute_deviations) / len(numbers)",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert abs(candidate([1.0, 2.0, 3.0]) - 2.0/3.0) < 1e-6\n    assert abs(candidate([1.0, 2.0, 3.0, 4.0]) - 1.0) < 1e-6\n    assert abs(candidate([1.0, 2.0, 3.0, 4.0, 5.0]) - 6.0/5.0) < 1e-6\n\n\ncheck(mean_absolute_deviation)": {
+      "result": true,
+      "time": 0.0950169563293457,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:26:57",
+    "guidance_input_tokens": 801,
+    "guidance_output_tokens": 2048,
+    "end_time": "2025-05-27 19:27:16",
+    "duration": "0:00:18.853362"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

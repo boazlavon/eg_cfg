@@ -1,0 +1,23 @@
+{
+  "code": "def pluck(arr):\n    smallest_value = None\n    smallest_index = -1\n    for i in range(len(arr)):\n        current_value = arr[i]\n        if current_value % 2 == 0:\n            if smallest_value is None:\n                smallest_value = current_value\n                smallest_index = i\n            else:\n                if current_value < smallest_value:\n                    smallest_value = current_value\n                    smallest_index = i\n    if smallest_value is None:\n        return []\n    else:\n        return [smallest_value, smallest_index]",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate([4,2,3]) == [2, 1], \"Error\"\n    assert candidate([1,2,3]) == [2, 1], \"Error\"\n    assert candidate([]) == [], \"Error\"\n    assert candidate([5, 0, 3, 0, 4, 2]) == [0, 1], \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate([1, 2, 3, 0, 5, 3]) == [0, 3], \"Error\"\n    assert candidate([5, 4, 8, 4 ,8]) == [4, 1], \"Error\"\n    assert candidate([7, 6, 7, 1]) == [6, 1], \"Error\"\n    assert candidate([7, 9, 7, 1]) == [], \"Error\"\n\n\ncheck(pluck)": {
+      "result": true,
+      "time": 0.05749344825744629,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:28:35",
+    "guidance_input_tokens": 787,
+    "guidance_output_tokens": 233,
+    "end_time": "2025-05-27 19:28:39",
+    "duration": "0:00:03.752012"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

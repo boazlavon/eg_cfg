@@ -1,0 +1,23 @@
+{
+  "code": "def make_palindrome(string: str) -> str:\n    if not string:\n        return ''\n    n = len(string)\n    for i in range(n):\n        if string[i:] == string[i:][::-1]:\n            return string + string[:i][::-1]\n    return string + string[::-1]",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == ''\n    assert candidate('x') == 'x'\n    assert candidate('xyz') == 'xyzyx'\n    assert candidate('xyx') == 'xyx'\n    assert candidate('jerry') == 'jerryrrej'\n\ncheck(make_palindrome)": {
+      "result": true,
+      "time": 0.06056475639343262,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:23:50",
+    "guidance_input_tokens": 804,
+    "guidance_output_tokens": 141,
+    "end_time": "2025-05-27 19:23:53",
+    "duration": "0:00:02.333936"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

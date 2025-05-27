@@ -1,0 +1,23 @@
+{
+  "code": "def f(n):\n    result = []\n    index = 1\n    while index <= n:\n        if index % 2 == 0:\n            factorial = 1\n            multiplier = 1\n            while multiplier <= index:\n                product = factorial * multiplier\n                factorial = product\n                multiplier = multiplier + 1\n            result.append(factorial)\n        else:\n            summation = 0\n            adder = 1\n            while adder <= index:\n                sum_value = summation + adder\n                summation = sum_value\n                adder = adder + 1\n            result.append(summation)\n        index = index + 1\n    return result",
+  "results": {
+    "def check(candidate):\n\n    assert candidate(5) == [1, 2, 6, 24, 15]\n    assert candidate(7) == [1, 2, 6, 24, 15, 720, 28]\n    assert candidate(1) == [1]\n    assert candidate(3) == [1, 2, 6]\n\ncheck(f)": {
+      "result": true,
+      "time": 0.0603792667388916,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:25:44",
+    "guidance_input_tokens": 605,
+    "guidance_output_tokens": 566,
+    "end_time": "2025-05-27 19:25:51",
+    "duration": "0:00:07.013601"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

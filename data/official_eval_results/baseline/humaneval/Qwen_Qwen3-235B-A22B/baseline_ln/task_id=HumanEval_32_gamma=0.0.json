@@ -1,0 +1,23 @@
+{
+  "code": "from scipy.optimize import fsolve\nimport numpy as np\n\ndef find_zero(xs: list):\n    # Create a polynomial function from the coefficients\n    def poly(x):\n        return np.polyval(xs, x)\n    \n    # Use fsolve to find the root, starting with an initial guess of 0\n    zero_point = fsolve(poly, 0)[0]\n    return round(zero_point, 2)",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    import math\n    import random\n    rng = random.Random(42)\n    import copy\n    for _ in range(100):\n        ncoeff = 2 * rng.randint(1, 4)\n        coeffs = []\n        for _ in range(ncoeff):\n            coeff = rng.randint(-10, 10)\n            if coeff == 0:\n                coeff = 1\n            coeffs.append(coeff)\n        solution = candidate(copy.deepcopy(coeffs))\n        assert math.fabs(poly(coeffs, solution)) < 1e-4\n\n\ncheck(find_zero)": {
+      "result": false,
+      "time": 0.9159226417541504,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:22:23",
+    "guidance_input_tokens": 866,
+    "guidance_output_tokens": 94,
+    "end_time": "2025-05-27 19:22:25",
+    "duration": "0:00:02.636794"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

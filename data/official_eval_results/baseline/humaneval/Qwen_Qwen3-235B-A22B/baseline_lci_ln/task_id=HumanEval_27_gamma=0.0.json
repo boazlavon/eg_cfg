@@ -1,0 +1,23 @@
+{
+  "code": "def flip_case(string: str) -> str:\n    # Initialize an empty list to store the characters\n    result = []\n    \n    # Iterate through each character in the input string\n    for character in string:\n        # Check if the character is uppercase\n        if character.isupper():\n            # Convert to lowercase and add to result\n            converted_char = character.lower()\n            result.append(converted_char)\n        else:\n            # Check if the character is lowercase\n            if character.islower():\n                # Convert to uppercase and add to result\n                converted_char = character.upper()\n                result.append(converted_char)\n            else:\n                # If not a letter, just add it as is\n                result.append(character)\n    \n    # Join the list of characters into a string\n    flipped_string = ''.join(result)\n    \n    # Return the flipped case string\n    return flipped_string",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == ''\n    assert candidate('Hello!') == 'hELLO!'\n    assert candidate('These violent delights have violent ends') == 'tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS'\n\ncheck(flip_case)": {
+      "result": true,
+      "time": 0.05800199508666992,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:17:18",
+    "guidance_input_tokens": 548,
+    "guidance_output_tokens": 214,
+    "end_time": "2025-05-27 19:17:22",
+    "duration": "0:00:03.617071"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

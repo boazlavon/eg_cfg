@@ -1,0 +1,23 @@
+{
+  "code": "def count_nums(arr):\n    count = 0\n    for number in arr:\n        string_representation = str(number)\n        is_negative = string_representation[0] == '-'\n        digits = []\n        for index, character in enumerate(string_representation):\n            if character.isdigit():\n                digit = int(character)\n                if is_negative and index == 1:\n                    negative_digit = -digit\n                    digits.append(negative_digit)\n                else:\n                    digits.append(digit)\n        sum_of_digits = sum(digits)\n        if sum_of_digits > 0:\n            count += 1\n    return count",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([]) == 0\n    assert candidate([-1, -2, 0]) == 0\n    assert candidate([1, 1, 2, -2, 3, 4, 5]) == 6\n    assert candidate([1, 6, 9, -6, 0, 1, 5]) == 5\n    assert candidate([1, 100, 98, -7, 1, -1]) == 4\n    assert candidate([12, 23, 34, -45, -56, 0]) == 5\n    assert candidate([-0, 1**0]) == 1\n    assert candidate([1]) == 1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(count_nums)": {
+      "result": true,
+      "time": 0.061087846755981445,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:27:02",
+    "guidance_input_tokens": 621,
+    "guidance_output_tokens": 228,
+    "end_time": "2025-05-27 19:27:05",
+    "duration": "0:00:02.993119"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

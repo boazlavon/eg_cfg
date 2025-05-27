@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List, Any\n\ndef filter_integers(values: List[Any]) -> List[int]:\n    result = []\n    for item in values:\n        is_integer = isinstance(item, int)\n        if is_integer:\n            result.append(item)\n    return result",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([]) == []\n    assert candidate([4, {}, [], 23.2, 9, 'adasd']) == [4, 9]\n    assert candidate([3, 'c', 3, 3, 'a', 'b']) == [3, 3, 3]\n\ncheck(filter_integers)": {
+      "result": true,
+      "time": 0.11820578575134277,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:26:02",
+    "guidance_input_tokens": 584,
+    "guidance_output_tokens": 2048,
+    "end_time": "2025-05-27 19:26:22",
+    "duration": "0:00:20.057246"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def add_elements(arr, k):\n    # Take the first k elements\n    sliced_arr = arr[:k]\n    \n    # Filter elements with at most two digits\n    filtered_elements = [num for num in sliced_arr if abs(num) < 100]\n    \n    # Sum the filtered elements\n    return sum(filtered_elements)",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([1,-2,-3,41,57,76,87,88,99], 3) == -4\n    assert candidate([111,121,3,4000,5,6], 2) == 0\n    assert candidate([11,21,3,90,5,6,7,8,9], 4) == 125\n    assert candidate([111,21,3,4000,5,6,7,8,9], 4) == 24, \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate([1], 1) == 1, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(add_elements)": {
+      "result": true,
+      "time": 0.05731534957885742,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:26:39",
+    "guidance_input_tokens": 821,
+    "guidance_output_tokens": 572,
+    "end_time": "2025-05-27 19:26:46",
+    "duration": "0:00:07.209519"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List\nfrom collections import Counter\n\ndef remove_duplicates(numbers: List[int]) -> List[int]:\n    counts = {}\n    for num in numbers:\n        if num in counts:\n            counts[num] += 1\n        else:\n            counts[num] = 1\n    result = []\n    for num in numbers:\n        if counts[num] == 1:\n            result.append(num)\n    return result",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([]) == []\n    assert candidate([1, 2, 3, 4]) == [1, 2, 3, 4]\n    assert candidate([1, 2, 3, 2, 4, 3, 5]) == [1, 4, 5]\n\ncheck(remove_duplicates)": {
+      "result": true,
+      "time": 0.09702658653259277,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:27:46",
+    "guidance_input_tokens": 578,
+    "guidance_output_tokens": 91,
+    "end_time": "2025-05-27 19:27:48",
+    "duration": "0:00:01.908417"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List\n\ndef mean_absolute_deviation(numbers: List[float]) -> float:\n    # Step 1: Calculate the mean of the list\n    total_sum = 0.0\n    for number in numbers:\n        total_sum += number\n    count = len(numbers)\n    mean = total_sum / count\n    \n    # Step 2: Calculate absolute differences\n    absolute_differences = []\n    for number in numbers:\n        difference = number - mean\n        absolute_difference = abs(difference)\n        absolute_differences.append(absolute_difference)\n    \n    # Step 3: Calculate average of absolute differences\n    sum_of_absolute_differences = 0.0\n    for absolute_difference in absolute_differences:\n        sum_of_absolute_differences += absolute_difference\n    average_absolute_deviation = sum_of_absolute_differences / count\n    \n    return average_absolute_deviation\n\nassert mean_absolute_deviation([1.0, 2.0, 3.0, 4.0]) == 1.0",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert abs(candidate([1.0, 2.0, 3.0]) - 2.0/3.0) < 1e-6\n    assert abs(candidate([1.0, 2.0, 3.0, 4.0]) - 1.0) < 1e-6\n    assert abs(candidate([1.0, 2.0, 3.0, 4.0, 5.0]) - 6.0/5.0) < 1e-6\n\n\ncheck(mean_absolute_deviation)": {
+      "result": true,
+      "time": 0.09638595581054688,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:31:36",
+    "guidance_input_tokens": 606,
+    "guidance_output_tokens": 260,
+    "end_time": "2025-05-27 19:31:40",
+    "duration": "0:00:03.900755"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

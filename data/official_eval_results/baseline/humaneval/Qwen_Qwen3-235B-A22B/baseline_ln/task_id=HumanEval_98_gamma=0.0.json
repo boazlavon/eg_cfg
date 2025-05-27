@@ -1,0 +1,23 @@
+{
+  "code": "def count_upper(s):\n    count = 0\n    vowels = {'A', 'E', 'I', 'O', 'U'}\n    for i in range(0, len(s), 2):\n        if s[i] in vowels:\n            count += 1\n    return count",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('aBCdEf')  == 1\n    assert candidate('abcdefg') == 0\n    assert candidate('dBBE') == 0\n    assert candidate('B')  == 0\n    assert candidate('U')  == 1\n    assert candidate('') == 0\n    assert candidate('EEEE') == 2\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(count_upper)": {
+      "result": true,
+      "time": 0.051497697830200195,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:15:27",
+    "guidance_input_tokens": 757,
+    "guidance_output_tokens": 448,
+    "end_time": "2025-05-27 19:15:33",
+    "duration": "0:00:06.684645"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def check_if_last_char_is_a_letter(txt):\n    if not txt or txt[-1] not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ':\n        return False\n    return txt[-2] == ' ' if len(txt) > 1 else True",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"apple\") == False\n    assert candidate(\"apple pi e\") == True\n    assert candidate(\"eeeee\") == False\n    assert candidate(\"A\") == True\n    assert candidate(\"Pumpkin pie \") == False\n    assert candidate(\"Pumpkin pie 1\") == False\n    assert candidate(\"\") == False\n    assert candidate(\"eeeee e \") == False\n    assert candidate(\"apple pie\") == False\n    assert candidate(\"apple pi e \") == False\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(check_if_last_char_is_a_letter)": {
+      "result": true,
+      "time": 0.057465553283691406,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:28:08",
+    "guidance_input_tokens": 815,
+    "guidance_output_tokens": 223,
+    "end_time": "2025-05-27 19:28:11",
+    "duration": "0:00:03.118143"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

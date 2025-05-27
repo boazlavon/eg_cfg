@@ -1,0 +1,23 @@
+{
+  "code": "def correct_bracketing(brackets: str) -> bool:\n    count = 0\n    for bracket in brackets:\n        if bracket == '<':\n            count += 1\n        elif bracket == '>':\n            count -= 1\n            if count < 0:\n                return False\n    return count == 0",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(\"<>\")\n    assert candidate(\"<<><>>\")\n    assert candidate(\"<><><<><>><>\")\n    assert candidate(\"<><><<<><><>><>><<><><<>>>\")\n    assert not candidate(\"<<<><>>>>\")\n    assert not candidate(\"><<>\")\n    assert not candidate(\"<\")\n    assert not candidate(\"<<<<\")\n    assert not candidate(\">\")\n    assert not candidate(\"<<>\")\n    assert not candidate(\"<><><<><>><>><<>\")\n    assert not candidate(\"<><><<><>><>>><>\")\n\n\ncheck(correct_bracketing)": {
+      "result": true,
+      "time": 0.05482935905456543,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:16:28",
+    "guidance_input_tokens": 783,
+    "guidance_output_tokens": 161,
+    "end_time": "2025-05-27 19:16:31",
+    "duration": "0:00:02.438874"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

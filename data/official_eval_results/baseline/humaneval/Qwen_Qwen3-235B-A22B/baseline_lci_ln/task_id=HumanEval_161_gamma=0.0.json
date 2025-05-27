@@ -1,0 +1,23 @@
+{
+  "code": "def solve(s):\n    has_letters = False\n    result = \"\"\n    for char in s:\n        if char.isalpha():\n            has_letters = True\n            break\n    if has_letters:\n        for char in s:\n            if char.islower():\n                upper = char.upper()\n                result += upper\n            elif char.isupper():\n                lower = char.lower()\n                result += lower\n            else:\n                result += char\n    else:\n        reversed_s = \"\"\n        for char in s:\n            reversed_s = char + reversed_s\n        result = reversed_s\n    return result",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"AsDf\") == \"aSdF\"\n    assert candidate(\"1234\") == \"4321\"\n    assert candidate(\"ab\") == \"AB\"\n    assert candidate(\"#a@C\") == \"#A@c\"\n    assert candidate(\"#AsdfW^45\") == \"#aSDFw^45\"\n    assert candidate(\"#6@2\") == \"2@6#\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(\"#$a^D\") == \"#$A^d\"\n    assert candidate(\"#ccc\") == \"#CCC\"\n\n    # Don't remove this line:\n\ncheck(solve)": {
+      "result": true,
+      "time": 0.0604710578918457,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:22:58",
+    "guidance_input_tokens": 588,
+    "guidance_output_tokens": 127,
+    "end_time": "2025-05-27 19:23:00",
+    "duration": "0:00:01.854557"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

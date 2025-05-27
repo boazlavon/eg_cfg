@@ -1,0 +1,23 @@
+{
+  "code": "def fizz_buzz(n: int):\n    count = 0\n    for i in range(n):\n        if i % 11 == 0 or i % 13 == 0:\n            digit_str = str(i)\n            seven_count = digit_str.count('7')\n            count += seven_count\n    return count",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate(50) == 0\n    assert candidate(78) == 2\n    assert candidate(79) == 3\n    assert candidate(100) == 3\n    assert candidate(200) == 6\n    assert candidate(4000) == 192\n    assert candidate(10000) == 639\n    assert candidate(100000) == 8026\n\n\ncheck(fizz_buzz)": {
+      "result": true,
+      "time": 0.07265496253967285,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:15:38",
+    "guidance_input_tokens": 582,
+    "guidance_output_tokens": 232,
+    "end_time": "2025-05-27 19:15:41",
+    "duration": "0:00:03.420283"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

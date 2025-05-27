@@ -1,0 +1,23 @@
+{
+  "code": "def get_closest_vowel(word):\n    vowels = ['a', 'e', 'i', 'o', 'u']\n    result = ''\n    length = len(word)\n    index = length - 2\n    while index >= 1:\n        current_char = word[index]\n        if current_char in vowels:\n            previous_char = word[index - 1]\n            next_char = word[index + 1]\n            if previous_char not in vowels and next_char not in vowels:\n                result = current_char\n                break\n        index = index - 1\n    return result",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"yogurt\") == \"u\"\n    assert candidate(\"full\") == \"u\"\n    assert candidate(\"easy\") == \"\"\n    assert candidate(\"eAsy\") == \"\"\n    assert candidate(\"ali\") == \"\"\n    assert candidate(\"bad\") == \"a\"\n    assert candidate(\"most\") == \"o\"\n    assert candidate(\"ab\") == \"\"\n    assert candidate(\"ba\") == \"\"\n    assert candidate(\"quick\") == \"\"\n    assert candidate(\"anime\") == \"i\"\n    assert candidate(\"Asia\") == \"\"\n    assert candidate(\"Above\") == \"o\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(get_closest_vowel)": {
+      "result": true,
+      "time": 0.05780458450317383,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:26:00",
+    "guidance_input_tokens": 625,
+    "guidance_output_tokens": 126,
+    "end_time": "2025-05-27 19:26:02",
+    "duration": "0:00:01.969446"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

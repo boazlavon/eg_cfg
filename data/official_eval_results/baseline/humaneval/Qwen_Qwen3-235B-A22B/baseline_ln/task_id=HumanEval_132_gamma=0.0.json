@@ -1,0 +1,23 @@
+{
+  "code": "def is_nested(string):\n    count = 0\n    for char in string:\n        if char == '[':\n            count += 1\n        elif char == ']':\n            if count > 1:\n                return True\n            count -= 1\n    return False",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('[[]]') == True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('[]]]]]]][[[[[]') == False\n    assert candidate('[][]') == False\n    assert candidate(('[]')) == False\n    assert candidate('[[[[]]]]') == True\n    assert candidate('[]]]]]]]]]]') == False\n    assert candidate('[][][[]]') == True\n    assert candidate('[[]') == False\n    assert candidate('[]]') == False\n    assert candidate('[[]][[') == True\n    assert candidate('[[][]]') == True\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate('') == False, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate('[[[[[[[[') == False\n    assert candidate(']]]]]]]]') == False\n\n\ncheck(is_nested)": {
+      "result": false,
+      "time": 0.05783367156982422,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:26:37",
+    "guidance_input_tokens": 879,
+    "guidance_output_tokens": 121,
+    "end_time": "2025-05-27 19:26:39",
+    "duration": "0:00:02.405933"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

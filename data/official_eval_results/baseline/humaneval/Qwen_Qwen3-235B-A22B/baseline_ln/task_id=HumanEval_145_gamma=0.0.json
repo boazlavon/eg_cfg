@@ -1,0 +1,23 @@
+{
+  "code": "def order_by_points(nums):\n    def digit_sum(n):\n        return sum(int(d) for d in str(abs(n)))\n    \n    # Use the index as a secondary key to maintain order for elements with the same digit sum\n    return sorted(nums, key=lambda x: (digit_sum(x), nums.index(x)))",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]\n    assert candidate([1234,423,463,145,2,423,423,53,6,37,3457,3,56,0,46]) == [0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]\n    assert candidate([]) == []\n    assert candidate([1, -11, -32, 43, 54, -98, 2, -3]) == [-3, -32, -98, -11, 1, 2, 43, 54]\n    assert candidate([1,2,3,4,5,6,7,8,9,10,11]) == [1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]\n    assert candidate([0,6,6,-76,-21,23,4]) == [-76, -21, 0, 4, 23, 6, 6]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(order_by_points)": {
+      "result": false,
+      "time": 0.055871009826660156,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:24:21",
+    "guidance_input_tokens": 809,
+    "guidance_output_tokens": 203,
+    "end_time": "2025-05-27 19:24:24",
+    "duration": "0:00:03.059230"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

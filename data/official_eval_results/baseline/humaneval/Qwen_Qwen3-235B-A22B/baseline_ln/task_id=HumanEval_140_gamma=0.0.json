@@ -1,0 +1,23 @@
+{
+  "code": "import re\n\ndef fix_spaces(text):\n    # Replace more than 2 consecutive spaces with -\n    text = re.sub(r' {3,}', '-', text)\n    # Replace remaining spaces with _\n    text = text.replace(' ', '_')\n    return text",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"Example\") == \"Example\", \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(\"Mudasir Hanif \") == \"Mudasir_Hanif_\", \"This prints if this assert fails 2 (good for debugging!)\"\n    assert candidate(\"Yellow Yellow  Dirty  Fellow\") == \"Yellow_Yellow__Dirty__Fellow\", \"This prints if this assert fails 3 (good for debugging!)\"\n    \n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(\"Exa   mple\") == \"Exa-mple\", \"This prints if this assert fails 4 (good for debugging!)\"\n    assert candidate(\"   Exa 1 2 2 mple\") == \"-Exa_1_2_2_mple\", \"This prints if this assert fails 4 (good for debugging!)\"\n\n\ncheck(fix_spaces)": {
+      "result": true,
+      "time": 0.08617424964904785,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:16:58",
+    "guidance_input_tokens": 789,
+    "guidance_output_tokens": 77,
+    "end_time": "2025-05-27 19:16:59",
+    "duration": "0:00:01.778168"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

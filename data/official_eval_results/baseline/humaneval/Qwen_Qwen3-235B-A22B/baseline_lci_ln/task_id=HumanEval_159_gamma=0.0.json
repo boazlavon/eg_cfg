@@ -1,0 +1,23 @@
+{
+  "code": "def eat(number, need, remaining):\n    # Step 1: Calculate the desired total consumption\n    desired_total = number + need\n    \n    # Step 2: Determine how many carrots are available\n    available_carrots = remaining\n    \n    # Step 3: Calculate how many carrots the rabbit will eat\n    if available_carrots >= need:\n        # Full consumption possible\n        actual_eaten = number + need\n        carrots_left = available_carrots - need\n    else:\n        # Only partial consumption possible\n        actual_eaten = number + available_carrots\n        carrots_left = 0\n    \n    return [actual_eaten, carrots_left]",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(5, 6, 10) == [11, 4], \"Error\"\n    assert candidate(4, 8, 9) == [12, 1], \"Error\"\n    assert candidate(1, 10, 10) == [11, 0], \"Error\"\n    assert candidate(2, 11, 5) == [7, 0], \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(4, 5, 7) == [9, 2], \"Error\"\n    assert candidate(4, 5, 1) == [5, 0], \"Error\"\n\n\ncheck(eat)": {
+      "result": true,
+      "time": 0.059064626693725586,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:20:44",
+    "guidance_input_tokens": 752,
+    "guidance_output_tokens": 2048,
+    "end_time": "2025-05-27 19:21:03",
+    "duration": "0:00:19.046550"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

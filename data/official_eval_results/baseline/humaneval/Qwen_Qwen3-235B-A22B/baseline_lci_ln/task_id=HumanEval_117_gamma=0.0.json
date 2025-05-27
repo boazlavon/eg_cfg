@@ -1,0 +1,23 @@
+{
+  "code": "def select_words(s, n):\n    # Convert the string to a list of words\n    words_list = s.split()\n    # Initialize a list to store words with exactly n consonants\n    result_words = []\n    # Iterate through each word in the list\n    for word in words_list:\n        # Convert the word to lowercase to check vowels uniformly\n        lowercase_word = word.lower()\n        # Initialize a counter for consonants in the word\n        consonant_count = 0\n        # Iterate through each character in the word\n        for char in lowercase_word:\n            # Check if the character is a consonant\n            if char in \"bcdfghjklmnpqrstvwxyz\":\n                consonant_count += 1\n        # If the consonant count matches n, add the word to the result list\n        if consonant_count == n:\n            result_words.append(word)\n    # Return the list of words with exactly n consonants\n    return result_words",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"Mary had a little lamb\", 4) == [\"little\"], \"First test error: \" + str(candidate(\"Mary had a little lamb\", 4))      \n    assert candidate(\"Mary had a little lamb\", 3) == [\"Mary\", \"lamb\"], \"Second test error: \" + str(candidate(\"Mary had a little lamb\", 3))  \n    assert candidate(\"simple white space\", 2) == [], \"Third test error: \" + str(candidate(\"simple white space\", 2))      \n    assert candidate(\"Hello world\", 4) == [\"world\"], \"Fourth test error: \" + str(candidate(\"Hello world\", 4))  \n    assert candidate(\"Uncle sam\", 3) == [\"Uncle\"], \"Fifth test error: \" + str(candidate(\"Uncle sam\", 3))\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(\"\", 4) == [], \"1st edge test error: \" + str(candidate(\"\", 4))\n    assert candidate(\"a b c d e f\", 1) == [\"b\", \"c\", \"d\", \"f\"], \"2nd edge test error: \" + str(candidate(\"a b c d e f\", 1))\n\n\ncheck(select_words)": {
+      "result": true,
+      "time": 0.06132626533508301,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:25:51",
+    "guidance_input_tokens": 657,
+    "guidance_output_tokens": 208,
+    "end_time": "2025-05-27 19:25:54",
+    "duration": "0:00:02.915077"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def digits(n):\n    result = 1\n    has_odd = False\n    current = n\n    \n    while current > 0:\n        digit = current % 10\n        current = current // 10\n        \n        if digit % 2 == 1:\n            result = result * digit\n            has_odd = True\n    \n    if has_odd:\n        return result\n    else:\n        return 0",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(5) == 5\n    assert candidate(54) == 5\n    assert candidate(120) ==1\n    assert candidate(5014) == 5\n    assert candidate(98765) == 315\n    assert candidate(5576543) == 2625\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(2468) == 0\n\n\ncheck(digits)": {
+      "result": true,
+      "time": 0.05765867233276367,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:17:13",
+    "guidance_input_tokens": 553,
+    "guidance_output_tokens": 442,
+    "end_time": "2025-05-27 19:17:18",
+    "duration": "0:00:05.411224"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

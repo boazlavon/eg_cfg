@@ -1,0 +1,23 @@
+{
+  "code": "def encrypt(s):\n    result = ''\n    for char in s:\n        if 'a' <= char <= 'z':\n            # Calculate the shift (4 positions)\n            shift = (ord(char) - ord('a') + 4) % 26\n            result += chr(ord('a') + shift)\n        elif 'A' <= char <= 'Z':\n            # Calculate the shift for uppercase (4 positions)\n            shift = (ord(char) - ord('A') + 4) % 26\n            result += chr(ord('A') + shift)\n        else:\n            # Non-alphabetic characters are unchanged\n            result += char\n    return result",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('hi') == 'lm', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('asdfghjkl') == 'ewhjklnop', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('gf') == 'kj', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('et') == 'ix', \"This prints if this assert fails 1 (good for debugging!)\"\n\n    assert candidate('faewfawefaewg')=='jeiajeaijeiak', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate('hellomyfriend')=='lippsqcjvmirh', \"This prints if this assert fails 2 (good for debugging!)\"\n    assert candidate('dxzdlmnilfuhmilufhlihufnmlimnufhlimnufhfucufh')=='hbdhpqrmpjylqmpyjlpmlyjrqpmqryjlpmqryjljygyjl', \"This prints if this assert fails 3 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate('a')=='e', \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(encrypt)": {
+      "result": true,
+      "time": 0.05799460411071777,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:23:03",
+    "guidance_input_tokens": 793,
+    "guidance_output_tokens": 2292,
+    "end_time": "2025-05-27 19:23:30",
+    "duration": "0:00:27.382671"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

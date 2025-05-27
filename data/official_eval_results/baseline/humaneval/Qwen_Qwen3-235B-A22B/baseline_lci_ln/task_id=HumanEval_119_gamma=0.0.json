@@ -1,0 +1,23 @@
+{
+  "code": "def match_parens(lst):\n    str1 = lst[0]\n    str2 = lst[1]\n    possible_combinations = []\n    combination1 = str1 + str2\n    possible_combinations.append(combination1)\n    combination2 = str2 + str1\n    possible_combinations.append(combination2)\n    for combo in possible_combinations:\n        balance = 0\n        is_balanced = True\n        for char in combo:\n            if char == '(':\n                balance += 1\n            else:\n                balance -= 1\n            if balance < 0:\n                is_balanced = False\n                break\n        if is_balanced and balance == 0:\n            return 'Yes'\n    return 'No'",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(['()(', ')']) == 'Yes'\n    assert candidate([')', ')']) == 'No'\n    assert candidate(['(()(())', '())())']) == 'No'\n    assert candidate([')())', '(()()(']) == 'Yes'\n    assert candidate(['(())))', '(()())((']) == 'Yes'\n    assert candidate(['()', '())']) == 'No'\n    assert candidate(['(()(', '()))()']) == 'Yes'\n    assert candidate(['((((', '((())']) == 'No'\n    assert candidate([')(()', '(()(']) == 'No'\n    assert candidate([')(', ')(']) == 'No'\n    \n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(['(', ')']) == 'Yes'\n    assert candidate([')', '(']) == 'Yes' \n\n\ncheck(match_parens)": {
+      "result": true,
+      "time": 0.055092573165893555,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:29:55",
+    "guidance_input_tokens": 639,
+    "guidance_output_tokens": 159,
+    "end_time": "2025-05-27 19:29:58",
+    "duration": "0:00:02.559324"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

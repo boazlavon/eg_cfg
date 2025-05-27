@@ -1,0 +1,23 @@
+{
+  "code": "def is_happy(s):\n    if len(s) < 3:\n        return False\n    for i in range(len(s) - 2):\n        a = s[i]\n        b = s[i + 1]\n        c = s[i + 2]\n        if a == b or a == c or b == c:\n            return False\n    return True",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(\"a\") == False , \"a\"\n    assert candidate(\"aa\") == False , \"aa\"\n    assert candidate(\"abcd\") == True , \"abcd\"\n    assert candidate(\"aabb\") == False , \"aabb\"\n    assert candidate(\"adb\") == True , \"adb\"\n    assert candidate(\"xyy\") == False , \"xyy\"\n    assert candidate(\"iopaxpoi\") == True , \"iopaxpoi\"\n    assert candidate(\"iopaxioi\") == False , \"iopaxioi\"\n\ncheck(is_happy)": {
+      "result": true,
+      "time": 0.06357288360595703,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:29:09",
+    "guidance_input_tokens": 592,
+    "guidance_output_tokens": 497,
+    "end_time": "2025-05-27 19:29:14",
+    "duration": "0:00:05.324453"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

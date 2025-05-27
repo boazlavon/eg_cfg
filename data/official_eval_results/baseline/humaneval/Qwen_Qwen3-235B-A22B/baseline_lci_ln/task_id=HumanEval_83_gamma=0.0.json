@@ -1,0 +1,23 @@
+{
+  "code": "def starts_one_ends(n):\n    # Step 1: Total n-digit numbers\n    lower_bound = 10 ** (n - 1)\n    upper_bound = (10 ** n) - 1\n    total_numbers = upper_bound - lower_bound + 1\n\n    # Step 2: Count numbers that start with 1\n    # n-digit numbers starting with 1 range from 10^(n-1) to 2*10^(n-1)-1\n    start = 10 ** (n - 1)\n    end = 2 * (10 ** (n - 1)) - 1\n    numbers_starting_with_1 = max(0, min(upper_bound, end) - max(lower_bound, start) + 1)\n\n    # Step 3: Count numbers that end with 1\n    # First number >= lower_bound that ends with 1\n    first_number_ending_with_1 = lower_bound + ((10 - (lower_bound % 10)) % 10)\n    if first_number_ending_with_1 % 10 != 1:\n        first_number_ending_with_1 += (1 - (first_number_ending_with_1 % 10)) % 10\n\n    # If it's still not ending with 1, add the difference manually\n    while first_number_ending_with_1 % 10 != 1:\n        first_number_ending_with_1 += 1\n\n    # Count how many numbers end with 1\n    numbers_ending_with_1 = 0\n    current = first_number_ending_with_1\n    while current <= upper_bound:\n        numbers_ending_with_1 += 1\n        current += 10\n\n    # Step 4: Count numbers that both start and end with 1\n    # These must be counted separately to avoid double-counting\n    numbers_start_and_end_with_1 = 0\n    current = start\n    while current <= end:\n        if current % 10 == 1:\n            numbers_start_and_end_with_1 += 1\n        current += 1\n\n    # Step 5: Apply inclusion-exclusion principle\n    result = numbers_starting_with_1 + numbers_ending_with_1 - numbers_start_and_end_with_1\n    return result",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(1) == 1\n    assert candidate(2) == 18\n    assert candidate(3) == 180\n    assert candidate(4) == 1800\n    assert candidate(5) == 18000\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(starts_one_ends)": {
+      "result": false,
+      "time": 0.05893754959106445,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:27:33",
+    "guidance_input_tokens": 527,
+    "guidance_output_tokens": 667,
+    "end_time": "2025-05-27 19:27:41",
+    "duration": "0:00:08.032991"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

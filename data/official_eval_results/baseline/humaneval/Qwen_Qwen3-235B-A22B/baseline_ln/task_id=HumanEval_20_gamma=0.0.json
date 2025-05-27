@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List, Tuple\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    # Sort the list to make it easier to find closest adjacent elements\n    numbers.sort()\n    \n    # Initialize minimum difference to a large number\n    min_diff = float('inf')\n    closest_pair = (None, None)\n    \n    # Iterate through the list and compare adjacent elements\n    for i in range(len(numbers) - 1):\n        current_diff = numbers[i+1] - numbers[i]\n        if current_diff < min_diff:\n            min_diff = current_diff\n            closest_pair = (numbers[i], numbers[i+1])\n    \n    return closest_pair",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]) == (3.9, 4.0)\n    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0]) == (5.0, 5.9)\n    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]) == (2.0, 2.2)\n    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]) == (2.0, 2.0)\n    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1]) == (2.2, 3.1)\n\n\ncheck(find_closest_elements)": {
+      "result": true,
+      "time": 0.10010838508605957,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:22:30",
+    "guidance_input_tokens": 851,
+    "guidance_output_tokens": 535,
+    "end_time": "2025-05-27 19:22:36",
+    "duration": "0:00:05.998086"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

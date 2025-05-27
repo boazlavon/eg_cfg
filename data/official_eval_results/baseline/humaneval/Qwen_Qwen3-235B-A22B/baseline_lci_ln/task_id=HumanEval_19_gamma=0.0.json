@@ -1,0 +1,23 @@
+{
+  "code": "def sort_numbers(numbers: str) -> str:\n    list_of_numbers = numbers.split(' ')\n    zero = 'zero'\n    one = 'one'\n    two = 'two'\n    three = 'three'\n    four = 'four'\n    five = 'five'\n    six = 'six'\n    seven = 'seven'\n    eight = 'eight'\n    nine = 'nine'\n    list_of_numbers.sort(key=zero)\n    list_of_numbers.sort(key=one)\n    list_of_numbers.sort(key=two)\n    list_of_numbers.sort(key=three)\n    list_of_numbers.sort(key=four)\n    list_of_numbers.sort(key=five)\n    list_of_numbers.sort(key=six)\n    list_of_numbers.sort(key=seven)\n    list_of_numbers.sort(key=eight)\n    list_of_numbers.sort(key=nine)\n    joined_list_of_numbers = ' '.join(list_of_numbers)\n    return joined_list_of_numbers\n\nsort_numbers('three one five')",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == ''\n    assert candidate('three') == 'three'\n    assert candidate('three five nine') == 'three five nine'\n    assert candidate('five zero four seven nine eight') == 'zero four five seven eight nine'\n    assert candidate('six five four three two one zero') == 'zero one two three four five six'\n\ncheck(sort_numbers)": {
+      "result": false,
+      "time": 0.06772613525390625,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:25:09",
+    "guidance_input_tokens": 598,
+    "guidance_output_tokens": 1261,
+    "end_time": "2025-05-27 19:25:20",
+    "duration": "0:00:11.129430"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

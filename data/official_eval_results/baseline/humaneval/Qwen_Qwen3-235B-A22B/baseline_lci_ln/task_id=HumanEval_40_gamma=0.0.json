@@ -1,0 +1,23 @@
+{
+  "code": "def triples_sum_to_zero(l: list):\n    for i in range(len(l)):\n        for j in range(len(l)):\n            for k in range(len(l)):\n                sum = l[i] + l[j] + l[k]\n                if sum == 0:\n                    return True\n    return False",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert candidate([1, 3, 5, 0]) == False\n    assert candidate([1, 3, 5, -1]) == False\n    assert candidate([1, 3, -2, 1]) == True\n    assert candidate([1, 2, 3, 7]) == False\n    assert candidate([1, 2, 5, 7]) == False\n    assert candidate([2, 4, -5, 3, 9, 7]) == True\n    assert candidate([1]) == False\n    assert candidate([1, 3, 5, -100]) == False\n    assert candidate([100, 3, 5, -100]) == False\n\n\ncheck(triples_sum_to_zero)": {
+      "result": false,
+      "time": 0.06395316123962402,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:23:00",
+    "guidance_input_tokens": 651,
+    "guidance_output_tokens": 432,
+    "end_time": "2025-05-27 19:23:05",
+    "duration": "0:00:05.279504"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

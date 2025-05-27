@@ -1,0 +1,23 @@
+{
+  "code": "import math\n\ndef max_fill(grid, capacity):\n    total_water_per_well = []\n    for well in grid:\n        total_water = 0\n        for cell in well:\n            total_water += cell\n        total_water_per_well.append(total_water)\n    \n    times_lowered_per_well = []\n    for water_amount in total_water_per_well:\n        if capacity == 0:\n            times = float('inf')\n        else:\n            division = water_amount / capacity\n            times = math.ceil(division)\n        times_lowered_per_well.append(times)\n    \n    max_times = 0\n    for times in times_lowered_per_well:\n        if times > max_times:\n            max_times = times\n    \n    return max_times",
+  "results": {
+    "def check(candidate):\n\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate([[0,0,1,0], [0,1,0,0], [1,1,1,1]], 1) == 6, \"Error\"\n    assert candidate([[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]], 2) == 5, \"Error\"\n    assert candidate([[0,0,0], [0,0,0]], 5) == 0, \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate([[1,1,1,1], [1,1,1,1]], 2) == 4, \"Error\"\n    assert candidate([[1,1,1,1], [1,1,1,1]], 9) == 2, \"Error\"\n\n\ncheck(max_fill)": {
+      "result": false,
+      "time": 0.09245705604553223,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:22:07",
+    "guidance_input_tokens": 704,
+    "guidance_output_tokens": 1063,
+    "end_time": "2025-05-27 19:22:18",
+    "duration": "0:00:11.075363"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

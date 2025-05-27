@@ -1,0 +1,23 @@
+{
+  "code": "def is_simple_power(x, n):\n    if x < 1 or n < 1:\n        return False\n    if n == 1:\n        return x == 1\n    current = n\n    while current < x:\n        current = current * n\n    return current == x",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(16, 2)== True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(143214, 16)== False, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(4, 2)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(9, 3)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(16, 4)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(24, 2)==False, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(128, 4)==False, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate(12, 6)==False, \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(1, 1)==True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate(1, 12)==True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(is_simple_power)": {
+      "result": false,
+      "time": 0.05627846717834473,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:20:20",
+    "guidance_input_tokens": 612,
+    "guidance_output_tokens": 316,
+    "end_time": "2025-05-27 19:20:24",
+    "duration": "0:00:04.043730"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

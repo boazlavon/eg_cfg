@@ -1,0 +1,23 @@
+{
+  "code": "def unique_digits(x):\n    result = []\n    for number in x:\n        has_even = False\n        num_str = str(number)\n        for ch in num_str:\n            digit = int(ch)\n            if digit % 2 == 0:\n                has_even = True\n                break\n        if not has_even:\n            result.append(number)\n    sorted_result = sorted(result)\n    return sorted_result",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate([15, 33, 1422, 1]) == [1, 15, 33]\n    assert candidate([152, 323, 1422, 10]) == []\n    assert candidate([12345, 2033, 111, 151]) == [111, 151]\n    assert candidate([135, 103, 31]) == [31, 135]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(unique_digits)": {
+      "result": true,
+      "time": 0.05934023857116699,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:20:02",
+    "guidance_input_tokens": 611,
+    "guidance_output_tokens": 325,
+    "end_time": "2025-05-27 19:20:07",
+    "duration": "0:00:04.932484"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

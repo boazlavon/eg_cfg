@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List\n\ndef rescale_to_unit(numbers: List[float]) -> List[float]:\n    # Step 1: Find the minimum and maximum values in the list\n    min_value = numbers[0]\n    max_value = numbers[0]\n\n    # Step 2: Iterate over the list to find the true min and max\n    for number in numbers:\n        if number < min_value:\n            min_value = number\n        if number > max_value:\n            max_value = number\n\n    # Step 3: Calculate the range (difference between max and min)\n    range_value = max_value - min_value\n\n    # Step 4: Create an empty list to store the scaled results\n    scaled_result = []\n\n    # Step 5: Iterate over each number in the input list\n    for number in numbers:\n        # Step 6: Subtract the minimum value from the current number\n        shifted_value = number - min_value\n        # Step 7: Divide the shifted value by the range to get scaled value\n        scaled_value = shifted_value / range_value\n        # Step 8: Append the scaled value to the result list\n        scaled_result.append(scaled_value)\n\n    # Step 9: Return the final list of scaled values\n    return scaled_result",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([2.0, 49.9]) == [0.0, 1.0]\n    assert candidate([100.0, 49.9]) == [1.0, 0.0]\n    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0]) == [0.0, 0.25, 0.5, 0.75, 1.0]\n    assert candidate([2.0, 1.0, 5.0, 3.0, 4.0]) == [0.25, 0.0, 1.0, 0.5, 0.75]\n    assert candidate([12.0, 11.0, 15.0, 13.0, 14.0]) == [0.25, 0.0, 1.0, 0.5, 0.75]\n\ncheck(rescale_to_unit)": {
+      "result": true,
+      "time": 0.10131549835205078,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:26:34",
+    "guidance_input_tokens": 619,
+    "guidance_output_tokens": 318,
+    "end_time": "2025-05-27 19:26:39",
+    "duration": "0:00:05.347972"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

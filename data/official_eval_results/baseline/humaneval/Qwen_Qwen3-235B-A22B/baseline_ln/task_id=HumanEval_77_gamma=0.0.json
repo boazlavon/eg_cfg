@@ -1,0 +1,23 @@
+{
+  "code": "def iscube(a):\n    if a < 0:\n        a = -a\n        n = round(a ** (1/3))\n        return n ** 3 == a\n    elif a == 0:\n        return True\n    else:\n        n = round(a ** (1/3))\n        return n ** 3 == a",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(1) == True, \"First test error: \" + str(candidate(1))\n    assert candidate(2) == False, \"Second test error: \" + str(candidate(2))\n    assert candidate(-1) == True, \"Third test error: \" + str(candidate(-1))\n    assert candidate(64) == True, \"Fourth test error: \" + str(candidate(64))\n    assert candidate(180) == False, \"Fifth test error: \" + str(candidate(180))\n    assert candidate(1000) == True, \"Sixth test error: \" + str(candidate(1000))\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(0) == True, \"1st edge test error: \" + str(candidate(0))\n    assert candidate(1729) == False, \"2nd edge test error: \" + str(candidate(1728))\n\n\ncheck(iscube)": {
+      "result": true,
+      "time": 0.056423187255859375,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:21:14",
+    "guidance_input_tokens": 790,
+    "guidance_output_tokens": 361,
+    "end_time": "2025-05-27 19:21:18",
+    "duration": "0:00:04.820973"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

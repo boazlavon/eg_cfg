@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    # Step 1: Remove all spaces from the input string\n    filtered_string = ''\n    for char in paren_string:\n        if char != ' ':\n            filtered_string += char\n\n    # Step 2: Initialize tracking variables\n    current_group = ''\n    result_list = []\n    nesting_level = 0\n\n    # Step 3: Process each character in the filtered string\n    for symbol in filtered_string:\n        # Append the current symbol to the current group\n        current_group += symbol\n\n        # Step 4: Update the nesting level\n        if symbol == '(':\n            nesting_level += 1\n        elif symbol == ')':\n            nesting_level -= 1\n\n        # Step 5: Check if we've completed a balanced group\n        if nesting_level == 0:\n            # Add completed group to the result list\n            result_list.append(current_group)\n            # Reset current group for the next one\n            current_group = ''\n\n    return result_list",
+  "results": {
+    "\n\nMETADATA = {'author': 'jt','dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('(()()) ((())) () ((())()())') == ['(()())', '((()))', '()', '((())()())']\n    assert candidate('() (()) ((())) (((())))') == ['()', '(())', '((()))', '(((())))']\n    assert candidate('(()(())((())))') == ['(()(())((())))']\n    assert candidate('( ) (( )) (( )( ))') == ['()', '(())', '(()())']\n\ncheck(separate_paren_groups)": {
+      "result": true,
+      "time": 0.095245361328125,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:26:57",
+    "guidance_input_tokens": 605,
+    "guidance_output_tokens": 358,
+    "end_time": "2025-05-27 19:27:02",
+    "duration": "0:00:04.510771"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

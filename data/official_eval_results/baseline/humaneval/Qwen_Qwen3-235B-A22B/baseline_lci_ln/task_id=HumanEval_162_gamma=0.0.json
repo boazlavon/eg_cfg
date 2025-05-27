@@ -1,0 +1,23 @@
+{
+  "code": "# Step 8: Return the result\ndef string_to_md5(text):\n    import hashlib\n    if text == \"\":\n        return None\n    encoded_text = text.encode()\n    md5_hash = hashlib.md5()\n    md5_hash.update(encoded_text)\n    hex_digest = md5_hash.hexdigest()\n    return hex_digest",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('Hello world') == '3e25960a79dbc69b674cd4ec67a72c62'\n    assert candidate('') == None\n    assert candidate('A B C') == '0ef78513b0cb8cef12743f5aeb35f888'\n    assert candidate('password') == '5f4dcc3b5aa765d61d8327deb882cf99'\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(string_to_md5)": {
+      "result": true,
+      "time": 0.08747100830078125,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:19:54",
+    "guidance_input_tokens": 584,
+    "guidance_output_tokens": 384,
+    "end_time": "2025-05-27 19:19:58",
+    "duration": "0:00:04.237061"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

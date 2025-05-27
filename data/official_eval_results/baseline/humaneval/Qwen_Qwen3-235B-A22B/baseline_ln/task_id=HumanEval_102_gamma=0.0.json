@@ -1,0 +1,23 @@
+{
+  "code": "def choose_num(x, y):\n    if x > y:\n        return -1\n    # Find the maximum even number in the range\n    # Start from the smaller of x and y and go downwards\n    # Since we want the biggest even number\n    for num in range(y, x - 1, -1):\n        if num % 2 == 0:\n            return num\n    return -1",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(12, 15) == 14\n    assert candidate(13, 12) == -1\n    assert candidate(33, 12354) == 12354\n    assert candidate(5234, 5233) == -1\n    assert candidate(6, 29) == 28\n    assert candidate(27, 10) == -1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(7, 7) == -1\n    assert candidate(546, 546) == 546\n\n\ncheck(choose_num)": {
+      "result": true,
+      "time": 0.04790544509887695,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:27:40",
+    "guidance_input_tokens": 784,
+    "guidance_output_tokens": 94,
+    "end_time": "2025-05-27 19:27:43",
+    "duration": "0:00:03.088394"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

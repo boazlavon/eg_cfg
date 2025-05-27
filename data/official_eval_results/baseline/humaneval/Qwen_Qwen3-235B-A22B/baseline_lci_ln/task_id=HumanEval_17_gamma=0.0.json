@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List\n\ndef parse_music(music_string: str) -> List[int]:\n    result = []\n    music_notes = music_string.split()\n    for note in music_notes:\n        if note == 'o':\n            duration = 4\n            result.append(duration)\n        elif note == 'o|':\n            duration = 2\n            result.append(duration)\n        elif note == '.|':\n            duration = 1\n            result.append(duration)\n    return result",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == []\n    assert candidate('o o o o') == [4, 4, 4, 4]\n    assert candidate('.| .| .| .|') == [1, 1, 1, 1]\n    assert candidate('o| o| .| .| o o o o') == [2, 2, 1, 1, 4, 4, 4, 4]\n    assert candidate('o| .| o| .| o o| o o|') == [2, 1, 2, 1, 4, 2, 4, 2]\n\ncheck(parse_music)": {
+      "result": true,
+      "time": 0.10759878158569336,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:24:40",
+    "guidance_input_tokens": 658,
+    "guidance_output_tokens": 294,
+    "end_time": "2025-05-27 19:24:46",
+    "duration": "0:00:05.497735"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

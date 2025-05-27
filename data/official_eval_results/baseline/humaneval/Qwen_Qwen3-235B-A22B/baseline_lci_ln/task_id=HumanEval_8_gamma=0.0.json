@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List, Tuple\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    sum_value = 0\n    product_value = 1\n    \n    for number in numbers:\n        sum_value = sum_value + number\n        product_value = product_value * number\n        \n    return (sum_value, product_value)",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([]) == (0, 1)\n    assert candidate([1, 1, 1]) == (3, 1)\n    assert candidate([100, 0]) == (100, 0)\n    assert candidate([3, 5, 7]) == (3 + 5 + 7, 3 * 5 * 7)\n    assert candidate([10]) == (10, 10)\n\ncheck(sum_product)": {
+      "result": true,
+      "time": 0.09931063652038574,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:23:05",
+    "guidance_input_tokens": 604,
+    "guidance_output_tokens": 220,
+    "end_time": "2025-05-27 19:23:08",
+    "duration": "0:00:03.353054"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

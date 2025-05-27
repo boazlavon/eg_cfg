@@ -1,0 +1,23 @@
+{
+  "code": "def total_match(lst1, lst2):\n    # Calculate total characters in lst1\n    total_chars1 = 0\n    for string in lst1:\n        length = len(string)\n        total_chars1 += length\n\n    # Calculate total characters in lst2\n    total_chars2 = 0\n    for string in lst2:\n        length = len(string)\n        total_chars2 += length\n\n    # Compare totals and return appropriate list\n    if total_chars1 < total_chars2:\n        return lst1\n    else:\n        return lst2",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert candidate([], []) == []\n    assert candidate(['hi', 'admin'], ['hi', 'hi']) == ['hi', 'hi']\n    assert candidate(['hi', 'admin'], ['hi', 'hi', 'admin', 'project']) == ['hi', 'admin']\n    assert candidate(['4'], ['1', '2', '3', '4', '5']) == ['4']\n    assert candidate(['hi', 'admin'], ['hI', 'Hi']) == ['hI', 'Hi']\n    assert candidate(['hi', 'admin'], ['hI', 'hi', 'hi']) == ['hI', 'hi', 'hi']\n    assert candidate(['hi', 'admin'], ['hI', 'hi', 'hii']) == ['hi', 'admin']\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert candidate([], ['this']) == []\n    assert candidate(['this'], []) == []\n\n\ncheck(total_match)": {
+      "result": false,
+      "time": 0.06014394760131836,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:24:46",
+    "guidance_input_tokens": 669,
+    "guidance_output_tokens": 121,
+    "end_time": "2025-05-27 19:24:48",
+    "duration": "0:00:02.040991"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

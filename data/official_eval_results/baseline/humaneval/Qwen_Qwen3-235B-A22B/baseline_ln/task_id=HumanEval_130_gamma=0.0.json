@@ -1,0 +1,23 @@
+{
+  "code": "def tri(n):\n    sequence = [0] * (n + 1)\n    sequence[0] = 1\n    if n >= 1:\n        sequence[1] = 3\n    if n >= 2:\n        sequence[2] = 2\n    if n >= 3:\n        sequence[3] = 8\n    if n >= 4:\n        sequence[4] = 3\n    for i in range(5, n + 1):\n        if i % 2 == 0:\n            sequence[i] = 1 + i // 2\n        else:\n            sequence[i] = sequence[i - 1] + sequence[i - 2] + sequence[i + 1]\n    return sequence",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    \n    assert candidate(3) == [1, 3, 2.0, 8.0]\n    assert candidate(4) == [1, 3, 2.0, 8.0, 3.0]\n    assert candidate(5) == [1, 3, 2.0, 8.0, 3.0, 15.0]\n    assert candidate(6) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0]\n    assert candidate(7) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0]\n    assert candidate(8) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0]\n    assert candidate(9) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0]\n    assert candidate(20) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0, 6.0, 48.0, 7.0, 63.0, 8.0, 80.0, 9.0, 99.0, 10.0, 120.0, 11.0]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert candidate(0) == [1]\n    assert candidate(1) == [1, 3]\n\ncheck(tri)": {
+      "result": false,
+      "time": 0.05680131912231445,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:21:00",
+    "guidance_input_tokens": 990,
+    "guidance_output_tokens": 655,
+    "end_time": "2025-05-27 19:21:08",
+    "duration": "0:00:07.817371"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

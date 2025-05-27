@@ -1,0 +1,23 @@
+{
+  "code": "def sort_third(l: list):\n    # Step 1: Create a copy of the input list to avoid modifying it\n    result = l.copy()\n    \n    # Step 2: Find all indices divisible by three\n    indices_divisible_by_three = []\n    for index in range(len(l)):\n        if index % 3 == 0:\n            indices_divisible_by_three.append(index)\n    \n    # Step 3: Extract values at these indices\n    values_at_divisible_indices = []\n    for index in indices_divisible_by_three:\n        value = l[index]\n        values_at_divisible_indices.append(value)\n    \n    # Step 4: Sort these values\n    values_at_divisible_indices.sort()\n    \n    # Step 5: Replace the values at the divisible indices with the sorted values\n    for i in range(len(indices_divisible_by_three)):\n        index = indices_divisible_by_three[i]\n        value = values_at_divisible_indices[i]\n        result[index] = value\n    \n    return result",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(candidate):\n    assert tuple(candidate([1, 2, 3])) == tuple(sort_third([1, 2, 3]))\n    assert tuple(candidate([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])) == tuple(sort_third([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]))\n    assert tuple(candidate([5, 8, -12, 4, 23, 2, 3, 11, 12, -10])) == tuple(sort_third([5, 8, -12, 4, 23, 2, 3, 11, 12, -10]))\n    assert tuple(candidate([5, 6, 3, 4, 8, 9, 2])) == tuple([2, 6, 3, 4, 8, 9, 5])\n    assert tuple(candidate([5, 8, 3, 4, 6, 9, 2])) == tuple([2, 8, 3, 4, 6, 9, 5])\n    assert tuple(candidate([5, 6, 9, 4, 8, 3, 2])) == tuple([2, 6, 9, 4, 8, 3, 5])\n    assert tuple(candidate([5, 6, 3, 4, 8, 9, 2, 1])) == tuple([2, 6, 3, 4, 8, 9, 5, 1])\n\n\ncheck(sort_third)": {
+      "result": true,
+      "time": 0.060265541076660156,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:19:45",
+    "guidance_input_tokens": 645,
+    "guidance_output_tokens": 422,
+    "end_time": "2025-05-27 19:19:50",
+    "duration": "0:00:05.344490"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

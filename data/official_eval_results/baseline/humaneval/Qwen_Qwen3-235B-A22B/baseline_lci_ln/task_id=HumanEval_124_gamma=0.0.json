@@ -1,0 +1,23 @@
+{
+  "code": "def valid_date(date):\n    if date == '':\n        return False\n    parts = date.split('-')\n    if len(parts) != 3:\n        return False\n    month_str = parts[0]\n    day_str = parts[1]\n    year_str = parts[2]\n    if not month_str.isdigit():\n        return False\n    if not day_str.isdigit():\n        return False\n    if not year_str.isdigit():\n        return False\n    month = int(month_str)\n    day = int(day_str)\n    year = int(year_str)\n    if month < 1 or month > 12:\n        return False\n    if day < 1:\n        return False\n    if month in [1, 3, 5, 7, 8, 10, 12]:\n        max_days = 31\n    elif month == 2:\n        max_days = 29\n    else:\n        max_days = 30\n    if day > max_days:\n        return False\n    return True",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate('03-11-2000') == True\n\n    assert candidate('15-01-2012') == False\n\n    assert candidate('04-0-2040') == False\n\n    assert candidate('06-04-2020') == True\n\n    assert candidate('01-01-2007') == True\n\n    assert candidate('03-32-2011') == False\n\n    assert candidate('') == False\n\n    assert candidate('04-31-3000') == False\n\n    assert candidate('06-06-2005') == True\n\n    assert candidate('21-31-2000') == False\n\n    assert candidate('04-12-2003') == True\n\n    assert candidate('04122003') == False\n\n    assert candidate('20030412') == False\n\n    assert candidate('2003-04') == False\n\n    assert candidate('2003-04-12') == False\n\n    assert candidate('04-2003') == False\n\ncheck(valid_date)": {
+      "result": true,
+      "time": 0.056706905364990234,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:25:38",
+    "guidance_input_tokens": 757,
+    "guidance_output_tokens": 498,
+    "end_time": "2025-05-27 19:25:44",
+    "duration": "0:00:05.266981"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

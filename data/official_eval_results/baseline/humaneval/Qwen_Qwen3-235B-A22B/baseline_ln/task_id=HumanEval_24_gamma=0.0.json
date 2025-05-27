@@ -1,0 +1,23 @@
+{
+  "code": "def largest_divisor(n: int) -> int:\n    for i in range(n//2, 0, -1):\n        if n % i == 0:\n            return i\n    return 0",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate(3) == 1\n    assert candidate(7) == 1\n    assert candidate(10) == 5\n    assert candidate(100) == 50\n    assert candidate(49) == 7\n\ncheck(largest_divisor)": {
+      "result": true,
+      "time": 0.04861187934875488,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:24:43",
+    "guidance_input_tokens": 748,
+    "guidance_output_tokens": 56,
+    "end_time": "2025-05-27 19:24:45",
+    "duration": "0:00:01.283951"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

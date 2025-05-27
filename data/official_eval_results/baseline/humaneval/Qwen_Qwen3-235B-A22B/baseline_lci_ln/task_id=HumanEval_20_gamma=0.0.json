@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List, Tuple\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    sorted_numbers = sorted(numbers)\n    min_diff = float('inf')\n    closest_pair = (0, 0)\n\n    for i in range(len(sorted_numbers) - 1):\n        first = sorted_numbers[i]\n        second = sorted_numbers[i + 1]\n        diff = second - first\n\n        if diff < min_diff:\n            min_diff = diff\n            closest_pair = (first, second)\n\n    return closest_pair",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]) == (3.9, 4.0)\n    assert candidate([1.0, 2.0, 5.9, 4.0, 5.0]) == (5.0, 5.9)\n    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]) == (2.0, 2.2)\n    assert candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]) == (2.0, 2.0)\n    assert candidate([1.1, 2.2, 3.1, 4.1, 5.1]) == (2.2, 3.1)\n\n\ncheck(find_closest_elements)": {
+      "result": true,
+      "time": 0.09912347793579102,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:22:46",
+    "guidance_input_tokens": 656,
+    "guidance_output_tokens": 306,
+    "end_time": "2025-05-27 19:22:50",
+    "duration": "0:00:04.075746"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def longest(strings: List[str]) -> Optional[str]:\n    if len(strings) == 0:\n        return None\n    longest_string = strings[0]\n    for string in strings[1:]:\n        current_length = len(string)\n        longest_length = len(longest_string)\n        if current_length > longest_length:\n            longest_string = string\n    return longest_string",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate([]) == None\n    assert candidate(['x', 'y', 'z']) == 'x'\n    assert candidate(['x', 'yyy', 'zzzz', 'www', 'kkkk', 'abc']) == 'zzzz'\n\ncheck(longest)": {
+      "result": false,
+      "time": 0.05918383598327637,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:15:28",
+    "guidance_input_tokens": 594,
+    "guidance_output_tokens": 321,
+    "end_time": "2025-05-27 19:15:32",
+    "duration": "0:00:03.899603"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

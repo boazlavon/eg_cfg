@@ -1,0 +1,23 @@
+{
+  "code": "def int_to_mini_roman(number):\n    val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]\n    syms = [\"M\", \"CM\", \"D\", \"CD\", \"C\", \"XC\", \"L\", \"XL\", \"X\", \"IX\", \"V\", \"IV\", \"I\"]\n    roman_numeral = \"\"\n    for i in range(len(val)):\n        value = val[i]\n        symbol = syms[i]\n        while number >= value:\n            roman_numeral += symbol\n            number -= value\n    return roman_numeral.lower()",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(19) == 'xix'\n    assert candidate(152) == 'clii'\n    assert candidate(251) == 'ccli'\n    assert candidate(426) == 'cdxxvi'\n    assert candidate(500) == 'd'\n    assert candidate(1) == 'i'\n    assert candidate(4) == 'iv'\n    assert candidate(43) == 'xliii'\n    assert candidate(90) == 'xc'\n    assert candidate(94) == 'xciv'\n    assert candidate(532) == 'dxxxii'\n    assert candidate(900) == 'cm'\n    assert candidate(994) == 'cmxciv'\n    assert candidate(1000) == 'm'\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(int_to_mini_roman)": {
+      "result": true,
+      "time": 0.05567622184753418,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:28:11",
+    "guidance_input_tokens": 601,
+    "guidance_output_tokens": 1050,
+    "end_time": "2025-05-27 19:28:22",
+    "duration": "0:00:11.304399"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

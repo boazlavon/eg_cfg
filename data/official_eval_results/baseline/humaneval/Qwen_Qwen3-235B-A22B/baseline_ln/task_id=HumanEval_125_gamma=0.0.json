@@ -1,0 +1,23 @@
+{
+  "code": "def split_words(txt):\n    if ' ' in txt:\n        return txt.split()\n    elif ',' in txt:\n        return txt.split(',')\n    else:\n        count = 0\n        for c in txt:\n            if c.islower():\n                if (ord(c) - ord('a')) % 2 == 1:\n                    count += 1\n        return count",
+  "results": {
+    "def check(candidate):\n\n    assert candidate(\"Hello world!\") == [\"Hello\",\"world!\"]\n    assert candidate(\"Hello,world!\") == [\"Hello\",\"world!\"]\n    assert candidate(\"Hello world,!\") == [\"Hello\",\"world,!\"]\n    assert candidate(\"Hello,Hello,world !\") == [\"Hello,Hello,world\",\"!\"]\n    assert candidate(\"abcdef\") == 3\n    assert candidate(\"aaabb\") == 2\n    assert candidate(\"aaaBb\") == 1\n    assert candidate(\"\") == 0\n\ncheck(split_words)": {
+      "result": true,
+      "time": 0.05392956733703613,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:15:22",
+    "guidance_input_tokens": 822,
+    "guidance_output_tokens": 323,
+    "end_time": "2025-05-27 19:15:27",
+    "duration": "0:00:04.137134"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}

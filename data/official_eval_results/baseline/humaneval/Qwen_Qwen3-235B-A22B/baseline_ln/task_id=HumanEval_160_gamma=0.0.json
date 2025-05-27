@@ -1,0 +1,23 @@
+{
+  "code": "from functools import reduce\n\ndef do_algebra(operator, operand):\n    # Combine operations into a single function using reduce\n    def apply_operation(result, index):\n        op = operator[index]\n        num = operand[index + 1]\n        if op == '+':\n            return result + num\n        elif op == '-':\n            return result - num\n        elif op == '*':\n            return result * num\n        elif op == '//':\n            return result // num\n        elif op == '**':\n            return result ** num\n        else:\n            raise ValueError(f\"Unsupported operator: {op}\")\n    \n    # Start reduce with initial value and index pairs\n    return reduce(apply_operation, range(len(operator)), operand[0])",
+  "results": {
+    "def check(candidate):\n\n    # Check some simple cases\n    assert candidate(['**', '*', '+'], [2, 3, 4, 5]) == 37\n    assert candidate(['+', '*', '-'], [2, 3, 4, 5]) == 9\n    assert candidate(['//', '*'], [7, 3, 4]) == 8, \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(do_algebra)": {
+      "result": false,
+      "time": 0.08801841735839844,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 19:26:52",
+    "guidance_input_tokens": 882,
+    "guidance_output_tokens": 173,
+    "end_time": "2025-05-27 19:26:55",
+    "duration": "0:00:02.753118"
+  },
+  "retry": 0,
+  "random_seed": 1038
+}
