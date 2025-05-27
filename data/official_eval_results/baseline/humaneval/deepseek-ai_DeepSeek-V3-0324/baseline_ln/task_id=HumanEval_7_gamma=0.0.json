@@ -1,0 +1,23 @@
+{
+  "code": "def filter_by_substring(strings: list[str], substring: str) -> list[str]:\n    return [s for s in strings if substring in s]",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(filter_by_substring):\n    assert filter_by_substring([], 'john') == []\n    assert filter_by_substring(['xxx', 'asd', 'xxy', 'john doe', 'xxxAAA', 'xxx'], 'xxx') == ['xxx', 'xxxAAA', 'xxx']\n    assert filter_by_substring(['xxx', 'asd', 'aaaxxy', 'john doe', 'xxxAAA', 'xxx'], 'xx') == ['xxx', 'aaaxxy', 'xxxAAA', 'xxx']\n    assert filter_by_substring(['grunt', 'trumpet', 'prune', 'gruesome'], 'run') == ['grunt', 'prune']\n\ncheck(filter_by_substring)": {
+      "result": true,
+      "time": 0.05969595909118652,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:48:53",
+    "guidance_input_tokens": 744,
+    "guidance_output_tokens": 37,
+    "end_time": "2025-05-27 17:48:55",
+    "duration": "0:00:01.258526"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

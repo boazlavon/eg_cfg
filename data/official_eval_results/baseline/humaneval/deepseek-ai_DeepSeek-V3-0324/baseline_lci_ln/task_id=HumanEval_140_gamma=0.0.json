@@ -1,0 +1,23 @@
+{
+  "code": "def fix_spaces(text):\n    result = []\n    i = 0\n    while i < len(text):\n        if text[i] == ' ':\n            j = i\n            while j < len(text) and text[j] == ' ':\n                j += 1\n            space_count = j - i\n            if space_count > 2:\n                replacement = '-'\n            else:\n                replacement = '_'\n            result.append(replacement)\n            i = j\n        else:\n            result.append(text[i])\n            i += 1\n    fixed_text = ''.join(result)\n    return fixed_text",
+  "results": {
+    "def check(fix_spaces):\n\n    # Check some simple cases\n    assert fix_spaces(\"Example\") == \"Example\", \"This prints if this assert fails 1 (good for debugging!)\"\n    assert fix_spaces(\"Mudasir Hanif \") == \"Mudasir_Hanif_\", \"This prints if this assert fails 2 (good for debugging!)\"\n    assert fix_spaces(\"Yellow Yellow  Dirty  Fellow\") == \"Yellow_Yellow__Dirty__Fellow\", \"This prints if this assert fails 3 (good for debugging!)\"\n    \n    # Check some edge cases that are easy to work out by hand.\n    assert fix_spaces(\"Exa   mple\") == \"Exa-mple\", \"This prints if this assert fails 4 (good for debugging!)\"\n    assert fix_spaces(\"   Exa 1 2 2 mple\") == \"-Exa_1_2_2_mple\", \"This prints if this assert fails 4 (good for debugging!)\"\n\n\ncheck(fix_spaces)": {
+      "result": false,
+      "time": 0.05733919143676758,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:39:32",
+    "guidance_input_tokens": 591,
+    "guidance_output_tokens": 144,
+    "end_time": "2025-05-27 17:39:34",
+    "duration": "0:00:02.903041"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List, Optional\n\ndef longest(strings: List[str]) -> Optional[str]:\n    if not strings:\n        return None\n    return max(strings, key=lambda x: len(x), default=None)",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(longest):\n    assert longest([]) == None\n    assert longest(['x', 'y', 'z']) == 'x'\n    assert longest(['x', 'yyy', 'zzzz', 'www', 'kkkk', 'abc']) == 'zzzz'\n\ncheck(longest)": {
+      "result": true,
+      "time": 0.11071419715881348,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:49:51",
+    "guidance_input_tokens": 750,
+    "guidance_output_tokens": 49,
+    "end_time": "2025-05-27 17:49:53",
+    "duration": "0:00:01.706140"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

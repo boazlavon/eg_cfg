@@ -1,0 +1,23 @@
+{
+  "code": "def check_if_last_char_is_a_letter(txt):\n    if not txt:\n        return False\n    last_char = txt[-1]\n    if not last_char.isalpha():\n        return False\n    if len(txt) == 1:\n        return True\n    if txt[-2] == ' ':\n        return True\n    return False",
+  "results": {
+    "def check(check_if_last_char_is_a_letter):\n\n    # Check some simple cases\n    assert check_if_last_char_is_a_letter(\"apple\") == False\n    assert check_if_last_char_is_a_letter(\"apple pi e\") == True\n    assert check_if_last_char_is_a_letter(\"eeeee\") == False\n    assert check_if_last_char_is_a_letter(\"A\") == True\n    assert check_if_last_char_is_a_letter(\"Pumpkin pie \") == False\n    assert check_if_last_char_is_a_letter(\"Pumpkin pie 1\") == False\n    assert check_if_last_char_is_a_letter(\"\") == False\n    assert check_if_last_char_is_a_letter(\"eeeee e \") == False\n    assert check_if_last_char_is_a_letter(\"apple pie\") == False\n    assert check_if_last_char_is_a_letter(\"apple pi e \") == False\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(check_if_last_char_is_a_letter)": {
+      "result": true,
+      "time": 0.06251764297485352,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:53:29",
+    "guidance_input_tokens": 782,
+    "guidance_output_tokens": 78,
+    "end_time": "2025-05-27 17:53:30",
+    "duration": "0:00:01.681938"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

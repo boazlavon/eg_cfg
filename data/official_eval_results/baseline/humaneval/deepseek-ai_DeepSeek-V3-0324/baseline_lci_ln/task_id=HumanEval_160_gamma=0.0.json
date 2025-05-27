@@ -1,0 +1,23 @@
+{
+  "code": "def do_algebra(operator, operand):\n    if len(operand) == 0:\n        return 0\n    result = operand[0]\n    for i in range(len(operator)):\n        current_operator = operator[i]\n        current_operand = operand[i+1]\n        if current_operator == '+':\n            result = result + current_operand\n        elif current_operator == '-':\n            result = result - current_operand\n        elif current_operator == '*':\n            result = result * current_operand\n        elif current_operator == '//':\n            result = result // current_operand\n        elif current_operator == '**':\n            result = result ** current_operand\n    return result",
+  "results": {
+    "def check(do_algebra):\n\n    # Check some simple cases\n    assert do_algebra(['**', '*', '+'], [2, 3, 4, 5]) == 37\n    assert do_algebra(['+', '*', '-'], [2, 3, 4, 5]) == 9\n    assert do_algebra(['//', '*'], [7, 3, 4]) == 8, \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(do_algebra)": {
+      "result": false,
+      "time": 0.05632185935974121,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:37:06",
+    "guidance_input_tokens": 679,
+    "guidance_output_tokens": 161,
+    "end_time": "2025-05-27 17:37:09",
+    "duration": "0:00:02.346265"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

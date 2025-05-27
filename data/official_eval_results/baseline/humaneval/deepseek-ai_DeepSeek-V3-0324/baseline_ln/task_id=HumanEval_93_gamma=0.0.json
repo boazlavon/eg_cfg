@@ -1,0 +1,23 @@
+{
+  "code": "def encode(message):\n    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}\n    encoded = []\n    for char in message:\n        if char in vowels:\n            # Replace vowel with letter 2 places ahead\n            new_char = chr(ord(char) + 2)\n            # Handle wrapping around for 'y' and 'Y' (next to 'a' and 'A')\n            if char == 'y':\n                new_char = 'a'\n            elif char == 'Y':\n                new_char = 'A'\n            elif char.lower() == 'u':\n                new_char = 'w' if char.islower() else 'W'\n            elif char.lower() == 'o':\n                new_char = 'q' if char.islower() else 'Q'\n            elif char.lower() == 'i':\n                new_char = 'k' if char.islower() else 'K'\n            elif char.lower() == 'e':\n                new_char = 'g' if char.islower() else 'G'\n            elif char.lower() == 'a':\n                new_char = 'c' if char.islower() else 'C'\n            encoded.append(new_char)\n        else:\n            # Swap case of non-vowel letters\n            encoded.append(char.swapcase())\n    return ''.join(encoded)",
+  "results": {
+    "def check(encode):\n\n    # Check some simple cases\n    assert encode('TEST') == 'tgst', \"This prints if this assert fails 1 (good for debugging!)\"\n    assert encode('Mudasir') == 'mWDCSKR', \"This prints if this assert fails 2 (good for debugging!)\"\n    assert encode('YES') == 'ygs', \"This prints if this assert fails 3 (good for debugging!)\"\n    \n    # Check some edge cases that are easy to work out by hand.\n    assert encode('This is a message') == 'tHKS KS C MGSSCGG', \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert encode(\"I DoNt KnOw WhAt tO WrItE\") == 'k dQnT kNqW wHcT Tq wRkTg', \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(encode)": {
+      "result": false,
+      "time": 0.060645341873168945,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:52:30",
+    "guidance_input_tokens": 755,
+    "guidance_output_tokens": 293,
+    "end_time": "2025-05-27 17:52:36",
+    "duration": "0:00:05.172433"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def sort_even(l: list):\n    even_indices = l[::2]\n    even_indices_sorted = sorted(even_indices)\n    result = []\n    for i in range(len(l)):\n        if i % 2 == 0:\n            result.append(even_indices_sorted[i//2])\n        else:\n            result.append(l[i])\n    return result",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(sort_even):\n    assert tuple(sort_even([1, 2, 3])) == tuple([1, 2, 3])\n    assert tuple(sort_even([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])) == tuple([-10, 3, -5, 2, -3, 3, 5, 0, 9, 1, 123])\n    assert tuple(sort_even([5, 8, -12, 4, 23, 2, 3, 11, 12, -10])) == tuple([-12, 8, 3, 4, 5, 2, 12, 11, 23, -10])\n\n\ncheck(sort_even)": {
+      "result": true,
+      "time": 0.05750441551208496,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:51:42",
+    "guidance_input_tokens": 776,
+    "guidance_output_tokens": 154,
+    "end_time": "2025-05-27 17:51:46",
+    "duration": "0:00:03.738099"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def correct_bracketing(brackets):\n    count = 0\n    for char in brackets:\n        if char == \"<\":\n            count += 1\n        else:\n            count -= 1\n        if count < 0:\n            return False\n    return count == 0",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(correct_bracketing):\n    assert correct_bracketing(\"<>\")\n    assert correct_bracketing(\"<<><>>\")\n    assert correct_bracketing(\"<><><<><>><>\")\n    assert correct_bracketing(\"<><><<<><><>><>><<><><<>>>\")\n    assert not correct_bracketing(\"<<<><>>>>\")\n    assert not correct_bracketing(\"><<>\")\n    assert not correct_bracketing(\"<\")\n    assert not correct_bracketing(\"<<<<\")\n    assert not correct_bracketing(\">\")\n    assert not correct_bracketing(\"<<>\")\n    assert not correct_bracketing(\"<><><<><>><>><<>\")\n    assert not correct_bracketing(\"<><><<><>><>>><>\")\n\n\ncheck(correct_bracketing)": {
+      "result": true,
+      "time": 0.05664706230163574,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:44:24",
+    "guidance_input_tokens": 594,
+    "guidance_output_tokens": 65,
+    "end_time": "2025-05-27 17:44:26",
+    "duration": "0:00:02.149826"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

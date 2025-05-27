@@ -1,0 +1,23 @@
+{
+  "code": "def change_base(x: int, base: int) -> str:\n    if x == 0:\n        return '0'\n    digits = []\n    while x > 0:\n        digits.append(str(x % base))\n        x = x // base\n    return ''.join(reversed(digits))",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(change_base):\n    assert change_base(8, 3) == \"22\"\n    assert change_base(9, 3) == \"100\"\n    assert change_base(234, 2) == \"11101010\"\n    assert change_base(16, 2) == \"10000\"\n    assert change_base(8, 2) == \"1000\"\n    assert change_base(7, 2) == \"111\"\n    for x in range(2, 8):\n        assert change_base(x, x + 1) == str(x)\n\n\ncheck(change_base)": {
+      "result": true,
+      "time": 0.06095385551452637,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:49:10",
+    "guidance_input_tokens": 742,
+    "guidance_output_tokens": 66,
+    "end_time": "2025-05-27 17:49:11",
+    "duration": "0:00:01.520348"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

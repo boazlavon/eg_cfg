@@ -1,0 +1,23 @@
+{
+  "code": "def decode_cyclic(s: str):\n    groups = []\n    group_size = 3\n    for i in range(0, len(s), group_size):\n        group = s[i:i + group_size]\n        groups.append(group)\n    decoded_groups = []\n    for group in groups:\n        if len(group) == 3:\n            first_char = group[0]\n            second_char = group[1]\n            third_char = group[2]\n            decoded_group = second_char + third_char + first_char\n            decoded_groups.append(decoded_group)\n        else:\n            decoded_groups.append(group)\n    decoded_string = ''.join(decoded_groups)\n    return decoded_string",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(decode_cyclic):\n    from random import randint, choice\n    import string\n\n    letters = string.ascii_lowercase\n    for _ in range(100):\n        str = ''.join(choice(letters) for i in range(randint(10, 20)))\n        encoded_str = encode_cyclic(str)\n        assert decode_cyclic(encoded_str) == str\n\n\ncheck(decode_cyclic)": {
+      "result": false,
+      "time": 0.10477876663208008,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:40:06",
+    "guidance_input_tokens": 522,
+    "guidance_output_tokens": 148,
+    "end_time": "2025-05-27 17:40:08",
+    "duration": "0:00:02.594049"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def monotonic(l):\n    increasing = True\n    decreasing = True\n    for i in range(len(l) - 1):\n        first = l[i]\n        second = l[i + 1]\n        if second < first:\n            increasing = False\n        if second > first:\n            decreasing = False\n    return increasing or decreasing",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(monotonic):\n    assert monotonic([1, 2, 4, 10]) == True\n    assert monotonic([1, 2, 4, 20]) == True\n    assert monotonic([1, 20, 4, 10]) == False\n    assert monotonic([4, 1, 0, -10]) == True\n    assert monotonic([4, 1, 1, 0]) == True\n    assert monotonic([1, 2, 3, 2, 5, 60]) == False\n    assert monotonic([1, 2, 3, 4, 5, 60]) == True\n    assert monotonic([9, 9, 9, 9]) == True\n\n\ncheck(monotonic)": {
+      "result": true,
+      "time": 0.05851912498474121,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:44:41",
+    "guidance_input_tokens": 587,
+    "guidance_output_tokens": 92,
+    "end_time": "2025-05-27 17:44:43",
+    "duration": "0:00:01.738072"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

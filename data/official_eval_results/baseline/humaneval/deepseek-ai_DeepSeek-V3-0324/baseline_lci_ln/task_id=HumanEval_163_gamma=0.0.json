@@ -1,0 +1,23 @@
+{
+  "code": "def generate_integers(a, b):\n    start = min(a, b)\n    end = max(a, b)\n    result = []\n    for number in range(start, end + 1):\n        if number % 2 == 0:\n            result.append(number)\n    return result",
+  "results": {
+    "def check(generate_integers):\n\n    # Check some simple cases\n    assert generate_integers(2, 10) == [2, 4, 6, 8], \"Test 1\"\n    assert generate_integers(10, 2) == [2, 4, 6, 8], \"Test 2\"\n    assert generate_integers(132, 2) == [2, 4, 6, 8], \"Test 3\"\n    assert generate_integers(17,89) == [], \"Test 4\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(generate_integers)": {
+      "result": false,
+      "time": 0.059474945068359375,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:39:23",
+    "guidance_input_tokens": 666,
+    "guidance_output_tokens": 65,
+    "end_time": "2025-05-27 17:39:27",
+    "duration": "0:00:03.502150"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

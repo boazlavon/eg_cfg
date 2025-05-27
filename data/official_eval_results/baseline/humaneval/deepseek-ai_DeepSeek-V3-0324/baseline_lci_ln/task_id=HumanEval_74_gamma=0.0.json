@@ -1,0 +1,23 @@
+{
+  "code": "def total_match(lst1, lst2):\n    count1 = 0\n    for string in lst1:\n        count1 = count1 + len(string)\n    count2 = 0\n    for string in lst2:\n        count2 = count2 + len(string)\n    if count1 < count2:\n        return lst1\n    elif count2 < count1:\n        return lst2\n    else:\n        return lst1",
+  "results": {
+    "def check(total_match):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert total_match([], []) == []\n    assert total_match(['hi', 'admin'], ['hi', 'hi']) == ['hi', 'hi']\n    assert total_match(['hi', 'admin'], ['hi', 'hi', 'admin', 'project']) == ['hi', 'admin']\n    assert total_match(['4'], ['1', '2', '3', '4', '5']) == ['4']\n    assert total_match(['hi', 'admin'], ['hI', 'Hi']) == ['hI', 'Hi']\n    assert total_match(['hi', 'admin'], ['hI', 'hi', 'hi']) == ['hI', 'hi', 'hi']\n    assert total_match(['hi', 'admin'], ['hI', 'hi', 'hii']) == ['hi', 'admin']\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert total_match([], ['this']) == []\n    assert total_match(['this'], []) == []\n\n\ncheck(total_match)": {
+      "result": true,
+      "time": 0.06065988540649414,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:40:12",
+    "guidance_input_tokens": 674,
+    "guidance_output_tokens": 96,
+    "end_time": "2025-05-27 17:40:14",
+    "duration": "0:00:02.116518"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

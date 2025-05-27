@@ -1,0 +1,23 @@
+{
+  "code": "def move_one_ball(arr):\n    if not arr:\n        return True\n    n = len(arr)\n    sorted_arr = sorted(arr)\n    for k in range(n):\n        shifted_arr = [arr[(i - k) % n] for i in range(n)]\n        if shifted_arr == sorted_arr:\n            return True\n    return False",
+  "results": {
+    "def check(move_one_ball):\n\n    # Check some simple cases\n    assert move_one_ball([3, 4, 5, 1, 2])==True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert move_one_ball([3, 5, 10, 1, 2])==True\n    assert move_one_ball([4, 3, 1, 2])==False\n    # Check some edge cases that are easy to work out by hand.\n    assert move_one_ball([3, 5, 4, 1, 2])==False, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert move_one_ball([])==True\n\ncheck(move_one_ball)": {
+      "result": true,
+      "time": 0.060669898986816406,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:54:57",
+    "guidance_input_tokens": 931,
+    "guidance_output_tokens": 77,
+    "end_time": "2025-05-27 17:55:00",
+    "duration": "0:00:03.147438"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

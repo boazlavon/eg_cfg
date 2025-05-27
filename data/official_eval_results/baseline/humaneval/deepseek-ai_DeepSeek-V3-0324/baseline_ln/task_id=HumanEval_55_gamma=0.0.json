@@ -1,0 +1,23 @@
+{
+  "code": "def fib(n: int) -> int:\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(fib):\n    assert fib(10) == 55\n    assert fib(1) == 1\n    assert fib(8) == 21\n    assert fib(11) == 89\n    assert fib(12) == 144\n\n\ncheck(fib)": {
+      "result": true,
+      "time": 0.07894062995910645,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:55:17",
+    "guidance_input_tokens": 705,
+    "guidance_output_tokens": 77,
+    "end_time": "2025-05-27 17:55:19",
+    "duration": "0:00:01.707814"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

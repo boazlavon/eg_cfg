@@ -1,0 +1,23 @@
+{
+  "code": "def below_zero(operations):\n    balance = 0\n    for operation in operations:\n        balance += operation\n        if balance < 0:\n            return True\n    return False",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(below_zero):\n    assert below_zero([]) == False\n    assert below_zero([1, 2, -3, 1, 2, -3]) == False\n    assert below_zero([1, 2, -4, 5, 6]) == True\n    assert below_zero([1, -1, 2, -2, 5, -5, 4, -4]) == False\n    assert below_zero([1, -1, 2, -2, 5, -5, 4, -5]) == True\n    assert below_zero([1, -2, 2, -2, 5, -5, 4, -4]) == True\n\ncheck(below_zero)": {
+      "result": true,
+      "time": 0.05548834800720215,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:42:53",
+    "guidance_input_tokens": 612,
+    "guidance_output_tokens": 58,
+    "end_time": "2025-05-27 17:42:54",
+    "duration": "0:00:01.377566"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

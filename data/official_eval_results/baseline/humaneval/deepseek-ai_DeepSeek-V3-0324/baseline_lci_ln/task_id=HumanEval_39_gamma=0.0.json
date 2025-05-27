@@ -1,0 +1,23 @@
+{
+  "code": "def prime_fib(n):\n    def is_prime(num):\n        if num <= 1:\n            return False\n        if num == 2:\n            return True\n        if num % 2 == 0:\n            return False\n        for i in range(3, int(num ** 0.5) + 1, 2):\n            if num % i == 0:\n                return False\n        return True\n\n    count = 0\n    a = 1\n    b = 1\n    while count < n:\n        c = a + b\n        a = b\n        b = c\n        if is_prime(b):\n            count += 1\n            if count == n:\n                return b\n    return -1",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(prime_fib):\n    assert prime_fib(1) == 2\n    assert prime_fib(2) == 3\n    assert prime_fib(3) == 5\n    assert prime_fib(4) == 13\n    assert prime_fib(5) == 89\n    assert prime_fib(6) == 233\n    assert prime_fib(7) == 1597\n    assert prime_fib(8) == 28657\n    assert prime_fib(9) == 514229\n    assert prime_fib(10) == 433494437\n\n\ncheck(prime_fib)": {
+      "result": true,
+      "time": 0.05502176284790039,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:45:01",
+    "guidance_input_tokens": 595,
+    "guidance_output_tokens": 161,
+    "end_time": "2025-05-27 17:45:04",
+    "duration": "0:00:02.477592"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

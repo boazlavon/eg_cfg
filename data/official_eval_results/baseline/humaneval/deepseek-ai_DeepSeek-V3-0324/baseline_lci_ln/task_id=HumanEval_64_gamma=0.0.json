@@ -1,0 +1,23 @@
+{
+  "code": "def vowels_count(s):\n    vowels = ['a', 'e', 'i', 'o', 'u']\n    count = 0\n    s_lower = s.lower()\n    for char in s_lower:\n        if char in vowels:\n            count += 1\n    if len(s_lower) > 0 and s_lower[-1] == 'y':\n        count += 1\n    return count",
+  "results": {
+    "def check(vowels_count):\n\n    # Check some simple cases\n    assert vowels_count(\"abcde\") == 2, \"Test 1\"\n    assert vowels_count(\"Alone\") == 3, \"Test 2\"\n    assert vowels_count(\"key\") == 2, \"Test 3\"\n    assert vowels_count(\"bye\") == 1, \"Test 4\"\n    assert vowels_count(\"keY\") == 2, \"Test 5\"\n    assert vowels_count(\"bYe\") == 1, \"Test 6\"\n    assert vowels_count(\"ACEDY\") == 3, \"Test 7\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(vowels_count)": {
+      "result": true,
+      "time": 0.05936288833618164,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:41:45",
+    "guidance_input_tokens": 612,
+    "guidance_output_tokens": 93,
+    "end_time": "2025-05-27 17:41:47",
+    "duration": "0:00:02.117101"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

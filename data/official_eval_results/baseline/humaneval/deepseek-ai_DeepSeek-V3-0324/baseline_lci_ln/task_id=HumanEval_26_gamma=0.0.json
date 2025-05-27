@@ -1,0 +1,23 @@
+{
+  "code": "def remove_duplicates(numbers):\n    counts = {}\n    for num in numbers:\n        if num in counts:\n            counts[num] += 1\n        else:\n            counts[num] = 1\n    result = []\n    for num in numbers:\n        if counts[num] == 1:\n            result.append(num)\n    return result",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(remove_duplicates):\n    assert remove_duplicates([]) == []\n    assert remove_duplicates([1, 2, 3, 4]) == [1, 2, 3, 4]\n    assert remove_duplicates([1, 2, 3, 2, 4, 3, 5]) == [1, 4, 5]\n\ncheck(remove_duplicates)": {
+      "result": true,
+      "time": 0.06038236618041992,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:40:04",
+    "guidance_input_tokens": 585,
+    "guidance_output_tokens": 75,
+    "end_time": "2025-05-27 17:40:06",
+    "duration": "0:00:01.573212"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

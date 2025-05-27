@@ -1,0 +1,23 @@
+{
+  "code": "def circular_shift(x, shift):\n    s = str(x)\n    length = len(s)\n    if shift > length:\n        reversed_s = \"\"\n        for i in range(length):\n            reversed_s = s[i] + reversed_s\n        return reversed_s\n    shifted_part = s[-shift:]\n    remaining_part = s[:-shift]\n    result = shifted_part + remaining_part\n    return result",
+  "results": {
+    "def check(circular_shift):\n\n    # Check some simple cases\n    assert circular_shift(100, 2) == \"001\"\n    assert circular_shift(12, 2) == \"12\"\n    assert circular_shift(97, 8) == \"79\"\n    assert circular_shift(12, 1) == \"21\", \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert circular_shift(11, 101) == \"11\", \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(circular_shift)": {
+      "result": true,
+      "time": 0.05756568908691406,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:43:37",
+    "guidance_input_tokens": 584,
+    "guidance_output_tokens": 88,
+    "end_time": "2025-05-27 17:43:38",
+    "duration": "0:00:01.678409"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

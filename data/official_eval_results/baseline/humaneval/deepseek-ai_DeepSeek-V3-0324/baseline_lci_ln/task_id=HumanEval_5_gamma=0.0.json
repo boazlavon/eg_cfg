@@ -1,0 +1,23 @@
+{
+  "code": "def intersperse(numbers, delimeter):\n    result = []\n    if not numbers:\n        return result\n    for i in range(len(numbers)):\n        result.append(numbers[i])\n        if i != len(numbers) - 1:\n            result.append(delimeter)\n    return result",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(intersperse):\n    assert intersperse([], 7) == []\n    assert intersperse([5, 6, 3, 2], 8) == [5, 8, 6, 8, 3, 8, 2]\n    assert intersperse([2, 2, 2], 2) == [2, 2, 2, 2, 2]\n\ncheck(intersperse)": {
+      "result": true,
+      "time": 0.05964541435241699,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:41:05",
+    "guidance_input_tokens": 593,
+    "guidance_output_tokens": 83,
+    "end_time": "2025-05-27 17:41:08",
+    "duration": "0:00:02.877309"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

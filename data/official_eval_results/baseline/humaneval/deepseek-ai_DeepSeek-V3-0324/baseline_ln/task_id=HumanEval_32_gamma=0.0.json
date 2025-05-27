@@ -1,0 +1,23 @@
+{
+  "code": "def find_zero(xs):\n    def poly(x):\n        return sum(c * (x ** i) for i, c in enumerate(xs))\n    \n    left = -1.0\n    right = 1.0\n    while poly(left) * poly(right) > 0:\n        left *= 2\n        right *= 2\n    \n    for _ in range(100):\n        mid = (left + right) / 2\n        if poly(mid) == 0:\n            return mid\n        if poly(left) * poly(mid) < 0:\n            right = mid\n        else:\n            left = mid\n    return (left + right) / 2",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(find_zero):\n    import math\n    import random\n    rng = random.Random(42)\n    import copy\n    for _ in range(100):\n        ncoeff = 2 * rng.randint(1, 4)\n        coeffs = []\n        for _ in range(ncoeff):\n            coeff = rng.randint(-10, 10)\n            if coeff == 0:\n                coeff = 1\n            coeffs.append(coeff)\n        solution = find_zero(copy.deepcopy(coeffs))\n        assert math.fabs(poly(coeffs, solution)) < 1e-4\n\n\ncheck(find_zero)": {
+      "result": false,
+      "time": 0.09433293342590332,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:55:37",
+    "guidance_input_tokens": 826,
+    "guidance_output_tokens": 150,
+    "end_time": "2025-05-27 17:55:41",
+    "duration": "0:00:03.593569"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

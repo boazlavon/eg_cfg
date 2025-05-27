@@ -1,0 +1,23 @@
+{
+  "code": "def common(l1, l2):\n    common_elements = []\n    for item in l1:\n        if item in l2 and item not in common_elements:\n            common_elements.append(item)\n    common_elements_sorted = sorted(common_elements)\n    return common_elements_sorted",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(common):\n    assert common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121]) == [1, 5, 653]\n    assert common([5, 3, 2, 8], [3, 2]) == [2, 3]\n    assert common([4, 3, 2, 8], [3, 2, 4]) == [2, 3, 4]\n    assert common([4, 3, 2, 8], []) == []\n\n\ncheck(common)": {
+      "result": true,
+      "time": 0.05433249473571777,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:43:52",
+    "guidance_input_tokens": 616,
+    "guidance_output_tokens": 282,
+    "end_time": "2025-05-27 17:43:57",
+    "duration": "0:00:04.834343"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def bf(planet1, planet2):\n    solar_system = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"]\n    if planet1 not in solar_system or planet2 not in solar_system:\n        return ()\n    index1 = solar_system.index(planet1)\n    index2 = solar_system.index(planet2)\n    start = min(index1, index2)\n    end = max(index1, index2)\n    planets_between = []\n    for i in range(start + 1, end):\n        planet = solar_system[i]\n        planets_between.append(planet)\n    return tuple(planets_between)",
+  "results": {
+    "def check(bf):\n\n    # Check some simple cases\n    assert bf(\"Jupiter\", \"Neptune\") == (\"Saturn\", \"Uranus\"), \"First test error: \" + str(len(bf(\"Jupiter\", \"Neptune\")))      \n    assert bf(\"Earth\", \"Mercury\") == (\"Venus\",), \"Second test error: \" + str(bf(\"Earth\", \"Mercury\"))  \n    assert bf(\"Mercury\", \"Uranus\") == (\"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"), \"Third test error: \" + str(bf(\"Mercury\", \"Uranus\"))      \n    assert bf(\"Neptune\", \"Venus\") == (\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\"), \"Fourth test error: \" + str(bf(\"Neptune\", \"Venus\"))  \n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert bf(\"Earth\", \"Earth\") == ()\n    assert bf(\"Mars\", \"Earth\") == ()\n    assert bf(\"Jupiter\", \"Makemake\") == ()\n\n\ncheck(bf)": {
+      "result": true,
+      "time": 0.05820608139038086,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:40:14",
+    "guidance_input_tokens": 687,
+    "guidance_output_tokens": 159,
+    "end_time": "2025-05-27 17:40:16",
+    "duration": "0:00:02.325526"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

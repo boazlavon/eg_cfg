@@ -1,0 +1,23 @@
+{
+  "code": "def mean_absolute_deviation(numbers):\n    total = 0.0\n    count = 0\n    for num in numbers:\n        total += num\n        count += 1\n    mean = total / count\n    absolute_deviations = []\n    for num in numbers:\n        deviation = num - mean\n        absolute_deviation = abs(deviation)\n        absolute_deviations.append(absolute_deviation)\n    mad_total = 0.0\n    mad_count = 0\n    for deviation in absolute_deviations:\n        mad_total += deviation\n        mad_count += 1\n    mad = mad_total / mad_count\n    return mad",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(mean_absolute_deviation):\n    assert abs(mean_absolute_deviation([1.0, 2.0, 3.0]) - 2.0/3.0) < 1e-6\n    assert abs(mean_absolute_deviation([1.0, 2.0, 3.0, 4.0]) - 1.0) < 1e-6\n    assert abs(mean_absolute_deviation([1.0, 2.0, 3.0, 4.0, 5.0]) - 6.0/5.0) < 1e-6\n\n\ncheck(mean_absolute_deviation)": {
+      "result": true,
+      "time": 0.05704760551452637,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:44:35",
+    "guidance_input_tokens": 610,
+    "guidance_output_tokens": 143,
+    "end_time": "2025-05-27 17:44:37",
+    "duration": "0:00:02.022281"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

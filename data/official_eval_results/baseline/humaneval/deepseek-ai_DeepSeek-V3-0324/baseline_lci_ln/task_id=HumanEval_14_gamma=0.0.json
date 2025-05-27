@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List\n\ndef all_prefixes(string: str) -> List[str]:\n    prefixes = []\n    length = len(string)\n    for i in range(1, length + 1):\n        current_prefix = string[:i]\n        prefixes.append(current_prefix)\n    return prefixes",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(all_prefixes):\n    assert all_prefixes('') == []\n    assert all_prefixes('asdfgh') == ['a', 'as', 'asd', 'asdf', 'asdfg', 'asdfgh']\n    assert all_prefixes('WWW') == ['W', 'WW', 'WWW']\n\ncheck(all_prefixes)": {
+      "result": true,
+      "time": 0.09821462631225586,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:40:08",
+    "guidance_input_tokens": 557,
+    "guidance_output_tokens": 63,
+    "end_time": "2025-05-27 17:40:10",
+    "duration": "0:00:01.518923"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

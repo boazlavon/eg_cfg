@@ -1,0 +1,23 @@
+{
+  "code": "def flip_case(string):\n    result = []\n    for char in string:\n        if char.islower():\n            new_char = char.upper()\n        elif char.isupper():\n            new_char = char.lower()\n        else:\n            new_char = char\n        result.append(new_char)\n    return ''.join(result)",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(flip_case):\n    assert flip_case('') == ''\n    assert flip_case('Hello!') == 'hELLO!'\n    assert flip_case('These violent delights have violent ends') == 'tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS'\n\ncheck(flip_case)": {
+      "result": true,
+      "time": 0.056792259216308594,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:41:04",
+    "guidance_input_tokens": 551,
+    "guidance_output_tokens": 68,
+    "end_time": "2025-05-27 17:41:05",
+    "duration": "0:00:01.480457"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

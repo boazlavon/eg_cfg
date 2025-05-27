@@ -1,0 +1,23 @@
+{
+  "code": "def largest_prime_factor(n):\n    current = n\n    largest_factor = 1\n    factor = 2\n    while current > 1:\n        while current % factor == 0:\n            largest_factor = factor\n            current = current // factor\n        factor += 1\n    return largest_factor",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(largest_prime_factor):\n    assert largest_prime_factor(15) == 5\n    assert largest_prime_factor(27) == 3\n    assert largest_prime_factor(63) == 7\n    assert largest_prime_factor(330) == 11\n    assert largest_prime_factor(13195) == 29\n\n\ncheck(largest_prime_factor)": {
+      "result": true,
+      "time": 0.05858135223388672,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:40:53",
+    "guidance_input_tokens": 565,
+    "guidance_output_tokens": 69,
+    "end_time": "2025-05-27 17:40:55",
+    "duration": "0:00:01.479578"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

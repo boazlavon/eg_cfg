@@ -1,0 +1,23 @@
+{
+  "code": "def is_nested(string):\n    stack = []\n    has_nested = False\n    for char in string:\n        if char == '[':\n            stack.append(char)\n        elif char == ']':\n            if len(stack) > 1:\n                has_nested = True\n            if stack:\n                stack.pop()\n    return has_nested",
+  "results": {
+    "def check(is_nested):\n\n    # Check some simple cases\n    assert is_nested('[[]]') == True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert is_nested('[]]]]]]][[[[[]') == False\n    assert is_nested('[][]') == False\n    assert is_nested(('[]')) == False\n    assert is_nested('[[[[]]]]') == True\n    assert is_nested('[]]]]]]]]]]') == False\n    assert is_nested('[][][[]]') == True\n    assert is_nested('[[]') == False\n    assert is_nested('[]]') == False\n    assert is_nested('[[]][[') == True\n    assert is_nested('[[][]]') == True\n\n    # Check some edge cases that are easy to work out by hand.\n    assert is_nested('') == False, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert is_nested('[[[[[[[[') == False\n    assert is_nested(']]]]]]]]') == False\n\n\ncheck(is_nested)": {
+      "result": false,
+      "time": 0.055983781814575195,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:37:59",
+    "guidance_input_tokens": 702,
+    "guidance_output_tokens": 80,
+    "end_time": "2025-05-27 17:38:00",
+    "duration": "0:00:01.547179"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def count_distinct_characters(string):\n    distinct_chars = set()\n    for char in string:\n        lower_char = char.lower()\n        distinct_chars.add(lower_char)\n    count = len(distinct_chars)\n    return count",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(count_distinct_characters):\n    assert count_distinct_characters('') == 0\n    assert count_distinct_characters('abcde') == 5\n    assert count_distinct_characters('abcde' + 'cade' + 'CADE') == 5\n    assert count_distinct_characters('aaaaAAAAaaaa') == 1\n    assert count_distinct_characters('Jerry jERRY JeRRRY') == 5\n\ncheck(count_distinct_characters)": {
+      "result": true,
+      "time": 0.056318044662475586,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:39:18",
+    "guidance_input_tokens": 576,
+    "guidance_output_tokens": 73,
+    "end_time": "2025-05-27 17:39:19",
+    "duration": "0:00:01.645949"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

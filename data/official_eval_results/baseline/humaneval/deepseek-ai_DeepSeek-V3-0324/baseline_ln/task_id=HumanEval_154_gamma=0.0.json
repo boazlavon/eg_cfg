@@ -1,0 +1,23 @@
+{
+  "code": "def cycpattern_check(a, b):\n    if not b:\n        return True\n    len_b = len(b)\n    doubled_b = b + b\n    for i in range(len_b):\n        rotated = doubled_b[i:i+len_b]\n        if rotated in a:\n            return True\n    return False",
+  "results": {
+    "def check(cycpattern_check):\n\n    # Check some simple cases\n    #assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    #assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert  cycpattern_check(\"xyzw\",\"xyw\") == False , \"test #0\"\n    assert  cycpattern_check(\"yello\",\"ell\") == True , \"test #1\"\n    assert  cycpattern_check(\"whattup\",\"ptut\") == False , \"test #2\"\n    assert  cycpattern_check(\"efef\",\"fee\") == True , \"test #3\"\n    assert  cycpattern_check(\"abab\",\"aabb\") == False , \"test #4\"\n    assert  cycpattern_check(\"winemtt\",\"tinem\") == True , \"test #5\"\n\n\ncheck(cycpattern_check)": {
+      "result": true,
+      "time": 0.05980420112609863,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:49:20",
+    "guidance_input_tokens": 776,
+    "guidance_output_tokens": 72,
+    "end_time": "2025-05-27 17:49:24",
+    "duration": "0:00:03.790818"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def check_dict_case(dict):\n    if not dict:\n        return False\n    all_lower = True\n    all_upper = True\n    for key in dict.keys():\n        if not isinstance(key, str):\n            return False\n        if not key.islower():\n            all_lower = False\n        if not key.isupper():\n            all_upper = False\n    return all_lower or all_upper",
+  "results": {
+    "def check(check_dict_case):\n\n    # Check some simple cases\n    assert check_dict_case({\"p\":\"pineapple\", \"b\":\"banana\"}) == True, \"First test error: \" + str(check_dict_case({\"p\":\"pineapple\", \"b\":\"banana\"}))\n    assert check_dict_case({\"p\":\"pineapple\", \"A\":\"banana\", \"B\":\"banana\"}) == False, \"Second test error: \" + str(check_dict_case({\"p\":\"pineapple\", \"A\":\"banana\", \"B\":\"banana\"}))\n    assert check_dict_case({\"p\":\"pineapple\", 5:\"banana\", \"a\":\"apple\"}) == False, \"Third test error: \" + str(check_dict_case({\"p\":\"pineapple\", 5:\"banana\", \"a\":\"apple\"}))\n    assert check_dict_case({\"Name\":\"John\", \"Age\":\"36\", \"City\":\"Houston\"}) == False, \"Fourth test error: \" + str(check_dict_case({\"Name\":\"John\", \"Age\":\"36\", \"City\":\"Houston\"}))\n    assert check_dict_case({\"STATE\":\"NC\", \"ZIP\":\"12345\" }) == True, \"Fifth test error: \" + str(check_dict_case({\"STATE\":\"NC\", \"ZIP\":\"12345\" }))      \n    assert check_dict_case({\"fruit\":\"Orange\", \"taste\":\"Sweet\" }) == True, \"Fourth test error: \" + str(check_dict_case({\"fruit\":\"Orange\", \"taste\":\"Sweet\" }))      \n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert check_dict_case({}) == False, \"1st edge test error: \" + str(check_dict_case({}))\n\n\ncheck(check_dict_case)": {
+      "result": true,
+      "time": 0.05727100372314453,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:37:27",
+    "guidance_input_tokens": 660,
+    "guidance_output_tokens": 103,
+    "end_time": "2025-05-27 17:37:29",
+    "duration": "0:00:02.010271"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

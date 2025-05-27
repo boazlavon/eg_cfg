@@ -1,0 +1,23 @@
+{
+  "code": "def below_threshold(l: list, t: int):\n    return all(x < t for x in l)",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(below_threshold):\n    assert below_threshold([1, 2, 4, 10], 100)\n    assert not below_threshold([1, 20, 4, 10], 5)\n    assert below_threshold([1, 20, 4, 10], 21)\n    assert below_threshold([1, 20, 4, 10], 22)\n    assert below_threshold([1, 8, 4, 10], 11)\n    assert not below_threshold([1, 8, 4, 10], 10)\n\n\ncheck(below_threshold)": {
+      "result": true,
+      "time": 0.06079506874084473,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:54:26",
+    "guidance_input_tokens": 736,
+    "guidance_output_tokens": 58,
+    "end_time": "2025-05-27 17:54:28",
+    "duration": "0:00:02.546324"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def words_string(s):\n    words = []\n    current_word = \"\"\n    for char in s:\n        if char == \" \" or char == \",\":\n            if current_word != \"\":\n                words.append(current_word)\n                current_word = \"\"\n        else:\n            current_word += char\n    if current_word != \"\":\n        words.append(current_word)\n    return words",
+  "results": {
+    "def check(words_string):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert words_string(\"Hi, my name is John\") == [\"Hi\", \"my\", \"name\", \"is\", \"John\"]\n    assert words_string(\"One, two, three, four, five, six\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]\n    assert words_string(\"Hi, my name\") == [\"Hi\", \"my\", \"name\"]\n    assert words_string(\"One,, two, three, four, five, six,\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert words_string(\"\") == []\n    assert words_string(\"ahmed     , gamal\") == [\"ahmed\", \"gamal\"]\n\n\ncheck(words_string)": {
+      "result": true,
+      "time": 0.05212831497192383,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:39:29",
+    "guidance_input_tokens": 599,
+    "guidance_output_tokens": 95,
+    "end_time": "2025-05-27 17:39:32",
+    "duration": "0:00:02.396558"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

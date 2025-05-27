@@ -1,0 +1,23 @@
+{
+  "code": "def bf(planet1, planet2):\n    planets_order = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"]\n    \n    if planet1 not in planets_order or planet2 not in planets_order:\n        return ()\n    \n    index1 = planets_order.index(planet1)\n    index2 = planets_order.index(planet2)\n    \n    start = min(index1, index2)\n    end = max(index1, index2)\n    \n    if end - start <= 1:\n        return ()\n    \n    result = planets_order[start + 1 : end]\n    \n    if index1 > index2:\n        result = result[::-1]\n    \n    return tuple(result)",
+  "results": {
+    "def check(bf):\n\n    # Check some simple cases\n    assert bf(\"Jupiter\", \"Neptune\") == (\"Saturn\", \"Uranus\"), \"First test error: \" + str(len(bf(\"Jupiter\", \"Neptune\")))      \n    assert bf(\"Earth\", \"Mercury\") == (\"Venus\",), \"Second test error: \" + str(bf(\"Earth\", \"Mercury\"))  \n    assert bf(\"Mercury\", \"Uranus\") == (\"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"), \"Third test error: \" + str(bf(\"Mercury\", \"Uranus\"))      \n    assert bf(\"Neptune\", \"Venus\") == (\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\"), \"Fourth test error: \" + str(bf(\"Neptune\", \"Venus\"))  \n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert bf(\"Earth\", \"Earth\") == ()\n    assert bf(\"Mars\", \"Earth\") == ()\n    assert bf(\"Jupiter\", \"Makemake\") == ()\n\n\ncheck(bf)": {
+      "result": false,
+      "time": 0.06070518493652344,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:49:49",
+    "guidance_input_tokens": 850,
+    "guidance_output_tokens": 162,
+    "end_time": "2025-05-27 17:49:51",
+    "duration": "0:00:02.106215"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

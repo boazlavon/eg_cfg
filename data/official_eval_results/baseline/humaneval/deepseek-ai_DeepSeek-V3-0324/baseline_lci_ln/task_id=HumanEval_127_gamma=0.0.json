@@ -1,0 +1,23 @@
+{
+  "code": "def intersection(interval1, interval2):\n    start1, end1 = interval1\n    start2, end2 = interval2\n    intersection_start = max(start1, start2)\n    intersection_end = min(end1, end2)\n    if intersection_start > intersection_end:\n        return \"NO\"\n    length = intersection_end - intersection_start + 1\n    if length <= 1:\n        return \"NO\"\n    is_prime = True\n    for i in range(2, length):\n        if length % i == 0:\n            is_prime = False\n            break\n    if is_prime:\n        return \"YES\"\n    else:\n        return \"NO\"",
+  "results": {
+    "def check(intersection):\n\n    # Check some simple cases\n    assert intersection((1, 2), (2, 3)) == \"NO\"\n    assert intersection((-1, 1), (0, 4)) == \"NO\"\n    assert intersection((-3, -1), (-5, 5)) == \"YES\"\n    assert intersection((-2, 2), (-4, 0)) == \"YES\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert intersection((-11, 2), (-1, -1)) == \"NO\"\n    assert intersection((1, 2), (3, 5)) == \"NO\"\n    assert intersection((1, 2), (1, 2)) == \"NO\"\n    assert intersection((-2, -2), (-3, -2)) == \"NO\"\n\n\ncheck(intersection)": {
+      "result": false,
+      "time": 0.05632305145263672,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:41:21",
+    "guidance_input_tokens": 797,
+    "guidance_output_tokens": 146,
+    "end_time": "2025-05-27 17:41:24",
+    "duration": "0:00:02.889580"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

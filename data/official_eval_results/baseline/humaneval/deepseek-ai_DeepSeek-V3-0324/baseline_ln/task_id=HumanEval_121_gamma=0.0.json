@@ -1,0 +1,23 @@
+{
+  "code": "def solution(lst):\n    sum_odd_even_pos = 0\n    for index, num in enumerate(lst):\n        if index % 2 == 0 and num % 2 != 0:\n            sum_odd_even_pos += num\n    return sum_odd_even_pos",
+  "results": {
+    "def check(solution):\n\n    # Check some simple cases\n    assert solution([5, 8, 7, 1])    == 12\n    assert solution([3, 3, 3, 3, 3]) == 9\n    assert solution([30, 13, 24, 321]) == 0\n    assert solution([5, 9]) == 5\n    assert solution([2, 4, 8]) == 0\n    assert solution([30, 13, 23, 32]) == 23\n    assert solution([3, 13, 2, 9]) == 3\n\n    # Check some edge cases that are easy to work out by hand.\n\n\ncheck(solution)": {
+      "result": true,
+      "time": 0.07167935371398926,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:53:11",
+    "guidance_input_tokens": 742,
+    "guidance_output_tokens": 66,
+    "end_time": "2025-05-27 17:53:13",
+    "duration": "0:00:01.907307"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

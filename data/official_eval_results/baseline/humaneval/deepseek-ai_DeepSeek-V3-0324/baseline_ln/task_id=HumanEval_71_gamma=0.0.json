@@ -1,0 +1,23 @@
+{
+  "code": "import math\n\ndef triangle_area(a, b, c):\n    if a + b > c and a + c > b and b + c > a:\n        s = (a + b + c) / 2\n        area = math.sqrt(s * (s - a) * (s - b) * (s - c))\n        return round(area, 2)\n    else:\n        return -1",
+  "results": {
+    "def check(triangle_area):\n\n    # Check some simple cases\n    assert triangle_area(3, 4, 5) == 6.00, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert triangle_area(1, 2, 10) == -1\n    assert triangle_area(4, 8, 5) == 8.18\n    assert triangle_area(2, 2, 2) == 1.73\n    assert triangle_area(1, 2, 3) == -1\n    assert triangle_area(10, 5, 7) == 16.25\n    assert triangle_area(2, 6, 3) == -1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert triangle_area(1, 1, 1) == 0.43, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert triangle_area(2, 2, 10) == -1\n\n\ncheck(triangle_area)": {
+      "result": true,
+      "time": 0.0968177318572998,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:48:57",
+    "guidance_input_tokens": 762,
+    "guidance_output_tokens": 92,
+    "end_time": "2025-05-27 17:48:59",
+    "duration": "0:00:01.778774"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

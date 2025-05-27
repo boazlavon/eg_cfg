@@ -1,0 +1,23 @@
+{
+  "code": "def compare(game, guess):\n    differences = []\n    for i in range(len(game)):\n        actual = game[i]\n        predicted = guess[i]\n        difference = abs(actual - predicted)\n        differences.append(difference)\n    return differences",
+  "results": {
+    "def check(compare):\n\n    # Check some simple cases\n    assert compare([1,2,3,4,5,1],[1,2,3,4,2,-2])==[0,0,0,0,3,3], \"This prints if this assert fails 1 (good for debugging!)\"\n    assert compare([0,0,0,0,0,0],[0,0,0,0,0,0])==[0,0,0,0,0,0], \"This prints if this assert fails 1 (good for debugging!)\"\n    assert compare([1,2,3],[-1,-2,-3])==[2,4,6], \"This prints if this assert fails 1 (good for debugging!)\"\n    assert compare([1,2,3,5],[-1,2,3,4])==[2,0,0,1], \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(compare)": {
+      "result": true,
+      "time": 0.05200767517089844,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:37:11",
+    "guidance_input_tokens": 707,
+    "guidance_output_tokens": 54,
+    "end_time": "2025-05-27 17:37:12",
+    "duration": "0:00:01.519292"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

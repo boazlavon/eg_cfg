@@ -1,0 +1,23 @@
+{
+  "code": "from typing import List, Tuple\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    numbers_sorted = sorted(numbers)\n    min_diff = float('inf')\n    result = (numbers_sorted[0], numbers_sorted[1])\n    \n    for i in range(len(numbers_sorted) - 1):\n        current_diff = numbers_sorted[i + 1] - numbers_sorted[i]\n        if current_diff < min_diff:\n            min_diff = current_diff\n            result = (numbers_sorted[i], numbers_sorted[i + 1])\n    return result",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(find_closest_elements):\n    assert find_closest_elements([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]) == (3.9, 4.0)\n    assert find_closest_elements([1.0, 2.0, 5.9, 4.0, 5.0]) == (5.0, 5.9)\n    assert find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]) == (2.0, 2.2)\n    assert find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]) == (2.0, 2.0)\n    assert find_closest_elements([1.1, 2.2, 3.1, 4.1, 5.1]) == (2.2, 3.1)\n\n\ncheck(find_closest_elements)": {
+      "result": true,
+      "time": 0.09913253784179688,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:51:47",
+    "guidance_input_tokens": 816,
+    "guidance_output_tokens": 133,
+    "end_time": "2025-05-27 17:51:50",
+    "duration": "0:00:02.966304"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

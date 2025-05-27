@@ -1,0 +1,23 @@
+{
+  "code": "def maximum(arr, k):\n    arr_sorted = sorted(arr)\n    result = arr_sorted[-k:]\n    return result",
+  "results": {
+    "def check(maximum):\n\n    # Check some simple cases\n    assert maximum([-3, -4, 5], 3) == [-4, -3, 5]\n    assert maximum([4, -4, 4], 2) == [4, 4]\n    assert maximum([-3, 2, 1, 2, -1, -2, 1], 1) == [2]\n    assert maximum([123, -123, 20, 0 , 1, 2, -3], 3) == [2, 20, 123]\n    assert maximum([-123, 20, 0 , 1, 2, -3], 4) == [0, 1, 2, 20]\n    assert maximum([5, 15, 0, 3, -13, -8, 0], 7) == [-13, -8, 0, 0, 3, 5, 15]\n    assert maximum([-1, 0, 2, 5, 3, -10], 2) == [3, 5]\n    assert maximum([1, 0, 5, -7], 1) == [5]\n    assert maximum([4, -4], 2) == [-4, 4]\n    assert maximum([-10, 10], 2) == [-10, 10]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert maximum([1, 2, 3, -23, 243, -400, 0], 0) == []\n\n\ncheck(maximum)": {
+      "result": false,
+      "time": 0.06201982498168945,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:53:55",
+    "guidance_input_tokens": 857,
+    "guidance_output_tokens": 32,
+    "end_time": "2025-05-27 17:53:56",
+    "duration": "0:00:01.069908"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

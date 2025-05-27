@@ -1,0 +1,23 @@
+{
+  "code": "import math\n\ndef largest_prime_factor(n):\n    max_prime = -1\n    while n % 2 == 0:\n        max_prime = 2\n        n = n // 2\n    for i in range(3, int(math.sqrt(n)) + 1, 2):\n        while n % i == 0:\n            max_prime = i\n            n = n // i\n    if n > 2:\n        max_prime = n\n    return max_prime",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(largest_prime_factor):\n    assert largest_prime_factor(15) == 5\n    assert largest_prime_factor(27) == 3\n    assert largest_prime_factor(63) == 7\n    assert largest_prime_factor(330) == 11\n    assert largest_prime_factor(13195) == 29\n\n\ncheck(largest_prime_factor)": {
+      "result": true,
+      "time": 0.08057522773742676,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:49:35",
+    "guidance_input_tokens": 717,
+    "guidance_output_tokens": 107,
+    "end_time": "2025-05-27 17:49:37",
+    "duration": "0:00:01.944612"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

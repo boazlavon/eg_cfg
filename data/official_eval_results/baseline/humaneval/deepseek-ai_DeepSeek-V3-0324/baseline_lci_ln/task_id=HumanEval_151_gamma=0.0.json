@@ -1,0 +1,23 @@
+{
+  "code": "def double_the_difference(lst):\n    result = 0\n    for num in lst:\n        if num > 0 and isinstance(num, int) and num % 2 != 0:\n            square = num * num\n            result += square\n    return result",
+  "results": {
+    "def check(double_the_difference):\n\n    # Check some simple cases\n    assert double_the_difference([]) == 0 , \"This prints if this assert fails 1 (good for debugging!)\"\n    assert double_the_difference([5, 4]) == 25 , \"This prints if this assert fails 2 (good for debugging!)\"\n    assert double_the_difference([0.1, 0.2, 0.3]) == 0 , \"This prints if this assert fails 3 (good for debugging!)\"\n    assert double_the_difference([-10, -20, -30]) == 0 , \"This prints if this assert fails 4 (good for debugging!)\"\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert double_the_difference([-1, -2, 8]) == 0, \"This prints if this assert fails 5 (also good for debugging!)\"\n    assert double_the_difference([0.2, 3, 5]) == 34, \"This prints if this assert fails 6 (also good for debugging!)\"\n    lst = list(range(-99, 100, 2))\n    odd_sum = sum([i**2 for i in lst if i%2!=0 and i > 0])\n    assert double_the_difference(lst) == odd_sum , \"This prints if this assert fails 7 (good for debugging!)\"\n\n\ncheck(double_the_difference)": {
+      "result": true,
+      "time": 0.05715680122375488,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:41:32",
+    "guidance_input_tokens": 713,
+    "guidance_output_tokens": 62,
+    "end_time": "2025-05-27 17:41:34",
+    "duration": "0:00:02.429183"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

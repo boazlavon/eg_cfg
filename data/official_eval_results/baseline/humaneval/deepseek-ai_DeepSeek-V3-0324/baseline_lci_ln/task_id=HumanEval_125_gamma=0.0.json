@@ -1,0 +1,23 @@
+{
+  "code": "def split_words(txt):\n    if ' ' in txt:\n        result = []\n        current_word = ''\n        for char in txt:\n            if char == ' ':\n                result.append(current_word)\n                current_word = ''\n            else:\n                current_word = current_word + char\n        if current_word:\n            result.append(current_word)\n        return result\n    elif ',' in txt:\n        result = []\n        current_word = ''\n        for char in txt:\n            if char == ',':\n                result.append(current_word)\n                current_word = ''\n            else:\n                current_word = current_word + char\n        if current_word:\n            result.append(current_word)\n        return result\n    else:\n        count = 0\n        for char in txt:\n            lowercase_char = char.lower()\n            if 'a' <= lowercase_char <= 'z':\n                char_ord = ord(lowercase_char) - ord('a')\n                if char_ord % 2 != 0:\n                    count = count + 1\n        return count",
+  "results": {
+    "def check(split_words):\n\n    assert split_words(\"Hello world!\") == [\"Hello\",\"world!\"]\n    assert split_words(\"Hello,world!\") == [\"Hello\",\"world!\"]\n    assert split_words(\"Hello world,!\") == [\"Hello\",\"world,!\"]\n    assert split_words(\"Hello,Hello,world !\") == [\"Hello,Hello,world\",\"!\"]\n    assert split_words(\"abcdef\") == 3\n    assert split_words(\"aaabb\") == 2\n    assert split_words(\"aaaBb\") == 1\n    assert split_words(\"\") == 0\n\ncheck(split_words)": {
+      "result": false,
+      "time": 0.0607912540435791,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:41:10",
+    "guidance_input_tokens": 622,
+    "guidance_output_tokens": 236,
+    "end_time": "2025-05-27 17:41:14",
+    "duration": "0:00:03.221341"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

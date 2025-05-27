@@ -1,0 +1,23 @@
+{
+  "code": "def will_it_fly(q, w):\n    # Check if the list is balanced (palindromic)\n    is_balanced = True\n    length = len(q)\n    for i in range(length // 2):\n        left = q[i]\n        right = q[length - 1 - i]\n        if left != right:\n            is_balanced = False\n            break\n    \n    # Calculate the sum of the elements\n    total = 0\n    for num in q:\n        total = total + num\n    \n    # Check if the sum is less than or equal to w\n    is_light_enough = total <= w\n    \n    # Determine if the object will fly\n    return is_balanced and is_light_enough",
+  "results": {
+    "def check(will_it_fly):\n\n    # Check some simple cases\n    assert will_it_fly([3, 2, 3], 9) is True\n    assert will_it_fly([1, 2], 5) is False\n    assert will_it_fly([3], 5) is True\n    assert will_it_fly([3, 2, 3], 1) is False\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert will_it_fly([1, 2, 3], 6) is False\n    assert will_it_fly([5], 5) is True\n\n\ncheck(will_it_fly)": {
+      "result": true,
+      "time": 0.059017181396484375,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:38:59",
+    "guidance_input_tokens": 703,
+    "guidance_output_tokens": 175,
+    "end_time": "2025-05-27 17:39:07",
+    "duration": "0:00:07.806438"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

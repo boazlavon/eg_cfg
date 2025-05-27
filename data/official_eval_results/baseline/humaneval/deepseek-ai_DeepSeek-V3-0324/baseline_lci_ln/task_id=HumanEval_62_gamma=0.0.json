@@ -1,0 +1,23 @@
+{
+  "code": "def derivative(xs):\n    result = []\n    for i in range(1, len(xs)):\n        coeff = xs[i]\n        power = i\n        derivative_coeff = coeff * power\n        result.append(derivative_coeff)\n    return result",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(derivative):\n    assert derivative([3, 1, 2, 4, 5]) == [1, 4, 12, 20]\n    assert derivative([1, 2, 3]) == [2, 6]\n    assert derivative([3, 2, 1]) == [2, 2]\n    assert derivative([3, 2, 1, 0, 4]) == [2, 2, 0, 16]\n    assert derivative([1]) == []\n\n\ncheck(derivative)": {
+      "result": true,
+      "time": 0.05827665328979492,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:43:38",
+    "guidance_input_tokens": 609,
+    "guidance_output_tokens": 62,
+    "end_time": "2025-05-27 17:43:48",
+    "duration": "0:00:09.296885"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

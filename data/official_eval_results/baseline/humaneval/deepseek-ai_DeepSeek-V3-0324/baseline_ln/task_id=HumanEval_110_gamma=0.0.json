@@ -1,0 +1,23 @@
+{
+  "code": "def exchange(lst1, lst2):\n    count_odd_lst1 = sum(1 for num in lst1 if num % 2 != 0)\n    count_even_lst2 = sum(1 for num in lst2 if num % 2 == 0)\n    \n    if count_odd_lst1 <= count_even_lst2:\n        return \"YES\"\n    else:\n        return \"NO\"",
+  "results": {
+    "def check(exchange):\n\n    # Check some simple cases\n    assert exchange([1, 2, 3, 4], [1, 2, 3, 4]) == \"YES\"\n    assert exchange([1, 2, 3, 4], [1, 5, 3, 4]) == \"NO\"\n    assert exchange([1, 2, 3, 4], [2, 1, 4, 3]) == \"YES\" \n    assert exchange([5, 7, 3], [2, 6, 4]) == \"YES\"\n    assert exchange([5, 7, 3], [2, 6, 3]) == \"NO\" \n    assert exchange([3, 2, 6, 1, 8, 9], [3, 5, 5, 1, 1, 1]) == \"NO\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert exchange([100, 200], [200, 200]) == \"YES\"\n\n\ncheck(exchange)": {
+      "result": true,
+      "time": 0.06011605262756348,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:50:58",
+    "guidance_input_tokens": 837,
+    "guidance_output_tokens": 94,
+    "end_time": "2025-05-27 17:51:00",
+    "duration": "0:00:02.110423"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

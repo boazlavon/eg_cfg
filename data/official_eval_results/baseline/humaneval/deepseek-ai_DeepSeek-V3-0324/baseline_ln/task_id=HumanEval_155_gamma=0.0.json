@@ -1,0 +1,23 @@
+{
+  "code": "def even_odd_count(num):\n    even = 0\n    odd = 0\n    for digit in str(abs(num)):\n        if int(digit) % 2 == 0:\n            even += 1\n        else:\n            odd += 1\n    return (even, odd)",
+  "results": {
+    "def check(even_odd_count):\n\n    # Check some simple cases\n    assert even_odd_count(7) == (0, 1)\n    assert even_odd_count(-78) == (1, 1)\n    assert even_odd_count(3452) == (2, 2)\n    assert even_odd_count(346211) == (3, 3)\n    assert even_odd_count(-345821) == (3, 3)\n    assert even_odd_count(-2) == (1, 0)\n    assert even_odd_count(-45347) == (2, 3)\n    assert even_odd_count(0) == (1, 0)\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(even_odd_count)": {
+      "result": true,
+      "time": 0.06442475318908691,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:52:27",
+    "guidance_input_tokens": 720,
+    "guidance_output_tokens": 67,
+    "end_time": "2025-05-27 17:52:30",
+    "duration": "0:00:03.404838"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def will_it_fly(q, w):\n    is_balanced = q == q[::-1]\n    sum_elements = sum(q)\n    return is_balanced and sum_elements <= w",
+  "results": {
+    "def check(will_it_fly):\n\n    # Check some simple cases\n    assert will_it_fly([3, 2, 3], 9) is True\n    assert will_it_fly([1, 2], 5) is False\n    assert will_it_fly([3], 5) is True\n    assert will_it_fly([3, 2, 3], 1) is False\n\n\n    # Check some edge cases that are easy to work out by hand.\n    assert will_it_fly([1, 2, 3], 6) is False\n    assert will_it_fly([5], 5) is True\n\n\ncheck(will_it_fly)": {
+      "result": true,
+      "time": 0.059239864349365234,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:56:59",
+    "guidance_input_tokens": 866,
+    "guidance_output_tokens": 45,
+    "end_time": "2025-05-27 17:57:03",
+    "duration": "0:00:03.848905"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def decimal_to_binary(decimal):\n    if decimal == 0:\n        binary_str = '0'\n    else:\n        binary_digits = []\n        num = decimal\n        while num > 0:\n            remainder = num % 2\n            binary_digits.append(str(remainder))\n            num = num // 2\n        binary_digits.reverse()\n        binary_str = ''.join(binary_digits)\n    result = 'db' + binary_str + 'db'\n    return result",
+  "results": {
+    "def check(decimal_to_binary):\n\n    # Check some simple cases\n    assert decimal_to_binary(0) == \"db0db\"\n    assert decimal_to_binary(32) == \"db100000db\"\n    assert decimal_to_binary(103) == \"db1100111db\"\n    assert decimal_to_binary(15) == \"db1111db\", \"This prints if this assert fails 1 (good for debugging!)\"\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n\n\ncheck(decimal_to_binary)": {
+      "result": true,
+      "time": 0.05750536918640137,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:41:34",
+    "guidance_input_tokens": 621,
+    "guidance_output_tokens": 231,
+    "end_time": "2025-05-27 17:41:38",
+    "duration": "0:00:04.034973"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

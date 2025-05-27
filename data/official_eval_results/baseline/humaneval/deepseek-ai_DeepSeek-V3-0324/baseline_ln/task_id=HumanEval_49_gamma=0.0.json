@@ -1,0 +1,23 @@
+{
+  "code": "def modp(n: int, p: int) -> int:\n    if n == 0:\n        return 1 % p\n    result = 1\n    for _ in range(n):\n        result = (result * 2) % p\n    return result",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(modp):\n    assert modp(3, 5) == 3\n    assert modp(1101, 101) == 2\n    assert modp(0, 101) == 1\n    assert modp(3, 11) == 8\n    assert modp(100, 101) == 1\n    assert modp(30, 5) == 4\n    assert modp(31, 5) == 3\n\n\ncheck(modp)": {
+      "result": true,
+      "time": 0.05327153205871582,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:53:53",
+    "guidance_input_tokens": 756,
+    "guidance_output_tokens": 62,
+    "end_time": "2025-05-27 17:53:55",
+    "duration": "0:00:01.377026"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

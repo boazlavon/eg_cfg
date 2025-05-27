@@ -1,0 +1,23 @@
+{
+  "code": "def decode_shift(s: str) -> str:\n    decoded = []\n    for char in s:\n        if char.isalpha():\n            if char == 'a':\n                decoded_char = 'z'\n            elif char == 'A':\n                decoded_char = 'Z'\n            else:\n                decoded_char = chr(ord(char) - 1)\n            decoded.append(decoded_char)\n        else:\n            decoded.append(char)\n    return ''.join(decoded)",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(decode_shift):\n    from random import randint, choice\n    import copy\n    import string\n\n    letters = string.ascii_lowercase\n    for _ in range(100):\n        str = ''.join(choice(letters) for i in range(randint(10, 20)))\n        encoded_str = encode_shift(str)\n        assert decode_shift(copy.deepcopy(encoded_str)) == str\n\n\ncheck(decode_shift)": {
+      "result": false,
+      "time": 0.10566091537475586,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:49:53",
+    "guidance_input_tokens": 685,
+    "guidance_output_tokens": 149,
+    "end_time": "2025-05-27 17:49:56",
+    "duration": "0:00:02.710822"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

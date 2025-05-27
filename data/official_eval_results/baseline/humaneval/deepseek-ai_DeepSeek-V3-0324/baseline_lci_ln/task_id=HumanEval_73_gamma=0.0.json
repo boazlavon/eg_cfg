@@ -1,0 +1,23 @@
+{
+  "code": "def smallest_change(arr):\n    left = 0\n    right = len(arr) - 1\n    changes = 0\n    while left < right:\n        if arr[left] != arr[right]:\n            changes += 1\n        left += 1\n        right -= 1\n    return changes",
+  "results": {
+    "def check(smallest_change):\n\n    # Check some simple cases\n    assert smallest_change([1,2,3,5,4,7,9,6]) == 4\n    assert smallest_change([1, 2, 3, 4, 3, 2, 2]) == 1\n    assert smallest_change([1, 4, 2]) == 1\n    assert smallest_change([1, 4, 4, 2]) == 1\n\n    # Check some edge cases that are easy to work out by hand.\n    assert smallest_change([1, 2, 3, 2, 1]) == 0\n    assert smallest_change([3, 1, 1, 3]) == 0\n    assert smallest_change([1]) == 0\n    assert smallest_change([0, 1]) == 1\n\n\ncheck(smallest_change)": {
+      "result": true,
+      "time": 0.055170297622680664,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:45:12",
+    "guidance_input_tokens": 633,
+    "guidance_output_tokens": 174,
+    "end_time": "2025-05-27 17:45:16",
+    "duration": "0:00:03.287525"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

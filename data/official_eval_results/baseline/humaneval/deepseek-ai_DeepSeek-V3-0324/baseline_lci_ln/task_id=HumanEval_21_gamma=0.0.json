@@ -1,0 +1,23 @@
+{
+  "code": "def rescale_to_unit(numbers):\n    min_num = min(numbers)\n    max_num = max(numbers)\n    result = []\n    for num in numbers:\n        rescaled_num = (num - min_num) / (max_num - min_num)\n        result.append(rescaled_num)\n    return result",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(rescale_to_unit):\n    assert rescale_to_unit([2.0, 49.9]) == [0.0, 1.0]\n    assert rescale_to_unit([100.0, 49.9]) == [1.0, 0.0]\n    assert rescale_to_unit([1.0, 2.0, 3.0, 4.0, 5.0]) == [0.0, 0.25, 0.5, 0.75, 1.0]\n    assert rescale_to_unit([2.0, 1.0, 5.0, 3.0, 4.0]) == [0.25, 0.0, 1.0, 0.5, 0.75]\n    assert rescale_to_unit([12.0, 11.0, 15.0, 13.0, 14.0]) == [0.25, 0.0, 1.0, 0.5, 0.75]\n\ncheck(rescale_to_unit)": {
+      "result": true,
+      "time": 0.05793428421020508,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:42:40",
+    "guidance_input_tokens": 622,
+    "guidance_output_tokens": 127,
+    "end_time": "2025-05-27 17:42:43",
+    "duration": "0:00:03.203761"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

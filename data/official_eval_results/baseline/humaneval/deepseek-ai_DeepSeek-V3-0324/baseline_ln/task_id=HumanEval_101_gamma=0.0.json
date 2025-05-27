@@ -1,0 +1,23 @@
+{
+  "code": "import re\ndef words_string(s):\n    return re.split(r', | |,', s)",
+  "results": {
+    "def check(words_string):\n\n    # Check some simple cases\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\n    assert words_string(\"Hi, my name is John\") == [\"Hi\", \"my\", \"name\", \"is\", \"John\"]\n    assert words_string(\"One, two, three, four, five, six\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]\n    assert words_string(\"Hi, my name\") == [\"Hi\", \"my\", \"name\"]\n    assert words_string(\"One,, two, three, four, five, six,\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]\n\n    # Check some edge cases that are easy to work out by hand.\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\n    assert words_string(\"\") == []\n    assert words_string(\"ahmed     , gamal\") == [\"ahmed\", \"gamal\"]\n\n\ncheck(words_string)": {
+      "result": false,
+      "time": 0.09138202667236328,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:50:49",
+    "guidance_input_tokens": 762,
+    "guidance_output_tokens": 26,
+    "end_time": "2025-05-27 17:50:50",
+    "duration": "0:00:01.653270"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

@@ -1,0 +1,23 @@
+{
+  "code": "def separate_paren_groups(paren_string: str) -> list[str]:\n    cleaned_string = paren_string.replace(' ', '')\n    groups = []\n    current_group = []\n    balance = 0\n    for char in cleaned_string:\n        if char == '(':\n            balance += 1\n            current_group.append(char)\n        elif char == ')':\n            balance -= 1\n            current_group.append(char)\n            if balance == 0:\n                group_str = ''.join(current_group)\n                groups.append(group_str)\n                current_group = []\n    return groups",
+  "results": {
+    "\n\nMETADATA = {'author': 'jt','dataset': 'test'\n}\n\n\ndef check(separate_paren_groups):\n    assert separate_paren_groups('(()()) ((())) () ((())()())') == ['(()())', '((()))', '()', '((())()())']\n    assert separate_paren_groups('() (()) ((())) (((())))') == ['()', '(())', '((()))', '(((())))']\n    assert separate_paren_groups('(()(())((())))') == ['(()(())((())))']\n    assert separate_paren_groups('( ) (( )) (( )( ))') == ['()', '(())', '(()())']\n\ncheck(separate_paren_groups)": {
+      "result": true,
+      "time": 0.05765342712402344,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:44:01",
+    "guidance_input_tokens": 614,
+    "guidance_output_tokens": 140,
+    "end_time": "2025-05-27 17:44:04",
+    "duration": "0:00:03.407684"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

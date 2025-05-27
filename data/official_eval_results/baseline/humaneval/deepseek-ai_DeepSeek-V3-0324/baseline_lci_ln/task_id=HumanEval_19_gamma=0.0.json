@@ -1,0 +1,23 @@
+{
+  "code": "def sort_numbers(numbers):\n    num_to_val = {\n        'zero': 0,\n        'one': 1,\n        'two': 2,\n        'three': 3,\n        'four': 4,\n        'five': 5,\n        'six': 6,\n        'seven': 7,\n        'eight': 8,\n        'nine': 9\n    }\n    num_list = numbers.split()\n    sorted_nums = sorted(num_list, key=lambda x: num_to_val[x])\n    result = ' '.join(sorted_nums)\n    return result",
+  "results": {
+    "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(sort_numbers):\n    assert sort_numbers('') == ''\n    assert sort_numbers('three') == 'three'\n    assert sort_numbers('three five nine') == 'three five nine'\n    assert sort_numbers('five zero four seven nine eight') == 'zero four five seven eight nine'\n    assert sort_numbers('six five four three two one zero') == 'zero one two three four five six'\n\ncheck(sort_numbers)": {
+      "result": true,
+      "time": 0.05719113349914551,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:42:34",
+    "guidance_input_tokens": 601,
+    "guidance_output_tokens": 127,
+    "end_time": "2025-05-27 17:42:36",
+    "duration": "0:00:02.301547"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

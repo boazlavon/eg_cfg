@@ -1,0 +1,23 @@
+{
+  "code": "def fruit_distribution(s, n):\n    import re\n    numbers = list(map(int, re.findall(r'\\d+', s)))\n    mangoes = n - sum(numbers)\n    return mangoes",
+  "results": {
+    "def check(fruit_distribution):\n\n    # Check some simple cases\n    assert fruit_distribution(\"5 apples and 6 oranges\",19) == 8\n    assert fruit_distribution(\"5 apples and 6 oranges\",21) == 10\n    assert fruit_distribution(\"0 apples and 1 oranges\",3) == 2\n    assert fruit_distribution(\"1 apples and 0 oranges\",3) == 2\n    assert fruit_distribution(\"2 apples and 3 oranges\",100) == 95\n    assert fruit_distribution(\"2 apples and 3 oranges\",5) == 0\n    assert fruit_distribution(\"1 apples and 100 oranges\",120) == 19\n\ncheck(fruit_distribution)": {
+      "result": true,
+      "time": 0.09630846977233887,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:51:24",
+    "guidance_input_tokens": 854,
+    "guidance_output_tokens": 136,
+    "end_time": "2025-05-27 17:51:29",
+    "duration": "0:00:04.704526"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

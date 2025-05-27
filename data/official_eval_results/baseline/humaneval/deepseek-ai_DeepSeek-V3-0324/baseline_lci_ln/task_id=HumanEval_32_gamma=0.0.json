@@ -1,0 +1,23 @@
+{
+  "code": "def find_zero(xs):\n    highest_power = len(xs) - 1\n    if highest_power % 2 != 0:\n        raise ValueError(\"List must have an even number of coefficients\")\n    if all(coeff == 0 for coeff in xs):\n        raise ValueError(\"All coefficients cannot be zero\")\n    largest_non_zero_coeff = max(abs(coeff) for coeff in xs if coeff != 0)\n    if largest_non_zero_coeff == 0:\n        raise ValueError(\"At least one non-zero coefficient is required\")\n    def poly(x):\n        result = 0\n        for i in range(len(xs)):\n            power = len(xs) - 1 - i\n            term = xs[i] * (x ** power)\n            result += term\n        return result\n    left = -1000.0\n    right = 1000.0\n    while abs(left - right) > 1e-6:\n        mid = (left + right) / 2\n        if poly(mid) * poly(left) <= 0:\n            right = mid\n        else:\n            left = mid\n    return (left + right) / 2",
+  "results": {
+    "\n\nMETADATA = {}\n\n\ndef check(find_zero):\n    import math\n    import random\n    rng = random.Random(42)\n    import copy\n    for _ in range(100):\n        ncoeff = 2 * rng.randint(1, 4)\n        coeffs = []\n        for _ in range(ncoeff):\n            coeff = rng.randint(-10, 10)\n            if coeff == 0:\n                coeff = 1\n            coeffs.append(coeff)\n        solution = find_zero(copy.deepcopy(coeffs))\n        assert math.fabs(poly(coeffs, solution)) < 1e-4\n\n\ncheck(find_zero)": {
+      "result": false,
+      "time": 0.08965587615966797,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:38:31",
+    "guidance_input_tokens": 674,
+    "guidance_output_tokens": 585,
+    "end_time": "2025-05-27 17:38:39",
+    "duration": "0:00:08.149084"
+  },
+  "retry": 0,
+  "random_seed": 726
+}

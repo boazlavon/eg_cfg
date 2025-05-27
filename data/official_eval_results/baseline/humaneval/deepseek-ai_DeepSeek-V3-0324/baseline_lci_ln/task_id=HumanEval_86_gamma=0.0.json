@@ -1,0 +1,23 @@
+{
+  "code": "def anti_shuffle(s):\n    words = s.split(' ')\n    ordered_words = []\n    for word in words:\n        if word == '':\n            ordered_words.append('')\n            continue\n        characters = list(word)\n        sorted_characters = sorted(characters, key=lambda x: ord(x))\n        ordered_word = ''.join(sorted_characters)\n        ordered_words.append(ordered_word)\n    ordered_string = ' '.join(ordered_words)\n    return ordered_string",
+  "results": {
+    "def check(anti_shuffle):\n\n    # Check some simple cases\n    assert anti_shuffle('Hi') == 'Hi'\n    assert anti_shuffle('hello') == 'ehllo'\n    assert anti_shuffle('number') == 'bemnru'\n    assert anti_shuffle('abcd') == 'abcd'\n    assert anti_shuffle('Hello World!!!') == 'Hello !!!Wdlor'\n    assert anti_shuffle('') == ''\n    assert anti_shuffle('Hi. My name is Mister Robot. How are you?') == '.Hi My aemn is Meirst .Rboot How aer ?ouy'\n    # Check some edge cases that are easy to work out by hand.\n    assert True\n\n\ncheck(anti_shuffle)": {
+      "result": true,
+      "time": 0.05724740028381348,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": null,
+  "has_testcase_error": false,
+  "stats": {
+    "start_time": "2025-05-27 17:40:55",
+    "guidance_input_tokens": 613,
+    "guidance_output_tokens": 116,
+    "end_time": "2025-05-27 17:40:57",
+    "duration": "0:00:02.246609"
+  },
+  "retry": 0,
+  "random_seed": 726
+}
