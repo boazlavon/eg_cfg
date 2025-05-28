@@ -94,6 +94,7 @@ def complex_qwen_query(
     post_requests_retries=HTTP_REQUEST_TO_LLM_RETRIES_COUNT,
     verbose=False,
     stop_condition=COMPLEX_QUERY_STOP_CONDITION,
+    function_name=None
 ):
     inference_endpoint_api_key = os.environ.get("FW_KEY")
     inference_endpoint_url = os.environ.get("FW_ENDPOINT_URL")
@@ -123,14 +124,19 @@ def complex_qwen_query(
             post_requests_retries=post_requests_retries,
             verbose=verbose,
         )
-        data = response.json()
-        completion_tokens = data["usage"]["completion_tokens"]
+        if type(response) == type(''):
+            raw_text = response
+            completion_tokens = 0
+        else:
+            data = response.json()
+            completion_tokens = data["usage"]["completion_tokens"]
+            raw_text = data["choices"][0]["text"]
         total_completion_tokens += completion_tokens
-        raw_text = data["choices"][0]["text"]
         raw_text = raw_text.replace(
             "<python>", INSTRUCT_MODEL_PYTHON_CODE_START_TOK
         ).replace("</python>", CODE_BORDER_TOKEN)
-        function_name = extract_function_name(function_signature)
+        if function_name is None:
+            function_name = extract_function_name(function_signature)
         matches = extract_matching_blocks(raw_text, verbose=True)
         if not matches:
             continue
@@ -369,17 +375,32 @@ def inference_endpoint_utils__post_request_retries(
                 print(
                     f"[INFO] Sending request #{retry_idx + 1}/{post_requests_retries} (timeout={timeout}sec)"
                 )
-            response = requests.post(
-                url,
-                headers=headers,
-                data=data,
-                timeout=timeout,
-            )
-            if response.status_code != HTTP_SUCCESS_CODE:
-                print(
-                    f"[ERROR] Exception on request #{retry_idx + 1}: Code: {response.status_code}"
+            FW_API = True
+            TOGETHER_API = False
+            if FW_API:
+                response = requests.post(
+                    url,
+                    headers=headers,
+                    data=data,
+                    timeout=timeout,
                 )
-                continue
+                if response.status_code != HTTP_SUCCESS_CODE:
+                    print(
+                        f"[ERROR] Exception on request #{retry_idx + 1}: Code: {response.status_code}"
+                    )
+                    continue
+            elif TOGETHER_API:
+                from together import Together 
+                MODEL = "deepseek-ai/DeepSeek-V3"
+                TOGETHER_API_KEY="336eb530c887de2681599e2f3b4c767fd514ccb6e379bd9404039cac1297460e"
+                client = Together(api_key=TOGETHER_API_KEY)
+                data_dict = json.loads(data)
+                data_dict['model'] = MODEL
+                response = client.completions.create(**data_dict)
+                answer = response.choices[0].text
+                return answer
+                prompt_tokens = 0
+                completion_tokens = 0
             # Success
             break
         except Exception as e:
@@ -470,7 +491,7 @@ def inference_endpoint_utils__sample_code_beam_search(
 
 
 def extract_eg_cfg_start_prefix(
-    prompt, model_name, eg_cfg_injection_manager, function_signature
+    prompt, model_name, eg_cfg_injection_manager, function_signature, function_name=None
 ):
     assert model_name in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
     answer_start_until_code, _, completion_tokens = complex_qwen_query(
@@ -480,6 +501,7 @@ def extract_eg_cfg_start_prefix(
         temperture=eg_cfg_injection_manager.adapter.temperature,
         max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
         verbose=True,
+        function_name=function_name
     )
     return answer_start_until_code, completion_tokens
 
@@ -493,6 +515,7 @@ def inference_endpoint_eg_cfg(
     max_tokens=PSEUDO_BEAM_SEARCH_MAX_TOKENS,
     debug=True,
     do_sample=False,
+    function_name=None
 ):
     stats_manager = eg_cfg_injection_manager.adapter.stats_manager
     new_text = ""
@@ -505,7 +528,7 @@ def inference_endpoint_eg_cfg(
     executable_partial_program_code, new_code = None, None
 
     answer_start_until_code, completion_tokens = extract_eg_cfg_start_prefix(
-        prompt, model_name, eg_cfg_injection_manager, function_signature
+        prompt, model_name, eg_cfg_injection_manager, function_signature, function_name
     )
 
     inputs = tokenizer(prompt, return_tensors="pt")
@@ -519,7 +542,8 @@ def inference_endpoint_eg_cfg(
 
     if model_name in (QWEN3_253B_MODEL_NAME_HF, DEEPSEEK_V3_0324_MODEL_NAME_HF):
         # now we have the starting ```python
-        function_name = extract_function_name(function_signature)
+        if function_name is None:
+            function_name = extract_function_name(function_signature)
         prompt += f"def {function_name}("
         new_text += f"def {function_name}("
         code_borders_tokens_count += 1

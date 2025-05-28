@@ -9,6 +9,12 @@ from datasets import load_dataset
 from collections import OrderedDict
 from consts import *
 
+TEST_CASES_INSTRUCTION = """
+Write a Python function that satisfies the following test cases:
+>>> Test Cases:
+{test_cases}
+"""
+
 CUSTOM_INSTRUCTION_TEXT = """\
 You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer
 ### Instruction:
@@ -89,6 +95,81 @@ def compute_value(a, b, c):
 ### Response:
 """
 
+DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION_TMP = """
+>>>> Test Cases:
+{test_cases}
+"""
+
+DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION = """
+>>> Test Cases:
+{test_cases}
+"""
+
+DEEPSEEK_INSTRUCT_TEMPLATE =  """\
+You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer
+### Instruction:
+Please refer the given examples and generate a python function for my problem.
+Examples are listed as follows:
+
+- Example 1:
+>>> Problem:
+Write a function to find the similar elements from the given two tuple lists.
+>>> Test Cases:
+assert similar_elements((3, 4, 5, 6),(5, 7, 4, 10)) == (4, 5)
+assert similar_elements((1, 2, 3, 4),(5, 4, 3, 7)) == (3, 4)
+assert similar_elements((11, 12, 14, 13),(17, 15, 14, 13)) == (13, 14)
+
+>>> Code:
+```python
+def similar_elements(test_tup1, test_tup2):
+  res = tuple(set(test_tup1) & set(test_tup2))
+  return (res)
+```
+
+- Example 2:
+>>> Problem:
+Write a python function to identify non-prime numbers.
+>>> Test Cases:
+assert is_not_prime(2) == False
+assert is_not_prime(10) == True
+assert is_not_prime(35) == True
+
+>>> Code:
+```python
+import math
+def is_not_prime(n):
+    result = False
+    for i in range(2,int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            result = True
+    return result
+```
+
+- Example 3:
+>>> Problem:
+Write a function to find the largest integers from a given list of numbers using heap queue algorithm.
+>>> Test Cases:
+assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],3)==[85, 75, 65]
+assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],2)==[85, 75]
+assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],5)==[85, 75, 65, 58, 35]
+
+>>> Code:
+```python
+import heapq as hq
+def heap_queue_largest(nums,n):
+  largest_nums = hq.nlargest(n, nums)
+  return largest_nums
+```
+
+Here is my problem:
+>>> Problem:
+{problem_text}
+>>>> Test Cases:
+{test_cases}
+
+### Response:
+"""
+
 
 TASK_HEADER = "### Task"
 GOAL_INSTRUCTION = (
@@ -135,7 +216,7 @@ def evaluate_solution(code, test_case, timeout=10):
     test_passed = False
     error = None
     test_code = f"{code}\n{test_case}"
-    test_code = black.format_str(test_code, mode=black.FileMode(line_length=1024))
+    # test_code = black.format_str(test_code, mode=black.FileMode(line_length=1024))
 
     with tempfile.NamedTemporaryFile(suffix=".py", mode="w") as temp_file:
         temp_file.write(test_code)
@@ -217,27 +298,44 @@ def format_simple_mbpp_prompt(problem, function_signature):
 
 
 def format_custom_mbpp_prompt(problem):
-    formatted_test_cases = ""
-    for test in problem["test_list"]:
-        formatted_test_cases += black.format_str(
-            test, mode=black.FileMode(line_length=1024)
+    test_cases = '\n'.join(problem["test_list"])
+    prompt_template = CUSTOM_INSTRUCTION_TEXT
+    if test_cases:
+        prompt = prompt_template.format(
+            problem_text=problem["text"],
+            test_cases=test_cases,
         )
-
-    prompt = CUSTOM_INSTRUCTION_TEXT.format(
-        problem_text=problem["text"],
-        # function_signature=function_signature,
-        test_cases=formatted_test_cases,
-    )
-
+    else:
+        prompt_template = prompt_template.replace(TEST_CASES_INSTRUCTION, '') 
+        prompt = prompt_template.format(
+            problem_text=problem["text"],
+        )
     return prompt
 
+def format_deepseek_instruct_mbpp_prompt(problem):
+    test_cases = '\n'.join(problem["test_list"])
+    prompt_template = DEEPSEEK_INSTRUCT_TEMPLATE
+    if test_cases:
+        prompt = prompt_template.format(
+            problem_text=problem["text"],
+            test_cases=test_cases,
+        )
+        prompt = prompt.replace('>>>>', '>>>')
+    else:
+        prompt_template = prompt_template.replace(DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION_TMP, '') 
+        prompt = prompt_template.format(
+            problem_text=problem["text"],
+        )
+    return prompt
 
-def format_mbpp_prompt(problem, simple_prompt=False):
+def format_mbpp_prompt(problem, deepseek_instruct=False):
     function_signature = None
-    if simple_prompt:
-        function_signature = extract_function_signature(problem["code"])
-        assert function_signature, "Function signature could not be extracted."
-        prompt = format_simple_mbpp_prompt(problem, function_signature)
+    if deepseek_instruct:
+        prompt = format_deepseek_instruct_mbpp_prompt(problem)
+    # if simple_prompt:
+    #     function_signature = extract_function_signature(problem["code"])
+    #     assert function_signature, "Function signature could not be extracted."
+    #     prompt = format_simple_mbpp_prompt(problem, function_signature)
     else:
         prompt = format_custom_mbpp_prompt(problem)
     return (prompt, function_signature)
@@ -300,13 +398,24 @@ def load_humaneval_problems():
             test_case_to_assert(invocation, expected)
             for (invocation, expected) in example["test_list"]
         ]
+        function_name = example['entry_point']
+        eval_tests = []
+        for eval_test in eval_test_list:
+            eval_test = eval_test.replace('candidate', function_name)
+            eval_tests.append(eval_test)
+            
+        raw_test = example['test']
+        raw_test = f"{raw_test}\ncheck({function_name})"
+        raw_test = [raw_test]
 
         new_example = {
             "task_id": task_id,
             "text": instruction_text,
             "code": example["code"],
             "test_list": test_cases,
-            "eval_test_list": eval_test_list,
+            "eval_test_list": raw_test,
+            # "eval_test_list": eval_tests,
+            "entry_point": function_name,
         }
         problems[task_id] = new_example
 

@@ -308,6 +308,19 @@ def generate_grid_configs(inference_session_grid_json, session_config_json):
         build_inference_session_config(inference_args)
         for inference_args in ParameterGrid(inference_param_grid)
     ]
+
+    partial_execution_session_grid_args = {
+        'n': [False], 
+        'p': [True], 
+        'g': ['line_guidance'],
+        'd': [None],
+        'prompt_type': ['deepseek_instruct', 'long_code'], 
+    } 
+    partial_sessions_configs = [
+        build_inference_session_config(inference_args)
+        for inference_args in ParameterGrid(partial_execution_session_grid_args)
+    ]
+    # inference_sessions_configs = inference_sessions_configs + partial_sessions_configs
     session_config = Namespace(**session_config)
     return session_config, inference_sessions_configs
 
