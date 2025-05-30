@@ -306,4 +306,5 @@ We gratefully acknowledge the authors of the following works for their implement
 
 ## 🧾 License
 This software is provided for non-commercial use only.
-For commercial use, you must obtain a commercial license by contacting Ramot(yair.eran@ramot.org).
+
+For commercial use, you must obtain a commercial license by contacting Ramot - Technology Transfer Company of Tel Aviv University (yair.eran@ramot.org).
