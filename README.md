@@ -43,6 +43,8 @@ EG-CFG supports any causal language model that provides token-level log probabil
 | DeepSeek-V3-0324    | Baseline LLM      | 82.8     | 64.8        | 0.0        | 0.0           |
 | DeepSeek-V3-0324    | **EG-CFG (Ours)** | **96.6** | **73.0**    | **80.23**  | **23.30**     |
 | GPT-4o              | LPW               | 84.4     | 65.3        | N/A        | N/A           |
+| Claude-Sonnet-3.5   | QualityFlow       | 94.2     | N/A         | N/A        | N/A           |
+| GPT-4               | MetaGPT           | 87.7     | N/A         | N/A        | N/A           |
 
 ### HumanEval and HumanEval-ET
 
@@ -54,9 +56,6 @@ EG-CFG supports any causal language model that provides token-level log probabil
 | DeepSeek-V3-0324 | MGDebugger        | 87.20         | 81.09            | 25.39     | 9.44        |
 | DeepSeek-V3-0324 | LPW               | 95.12         | 84.74            | 68.02     | 26.89       |
 | GPT-4o           | LPW               | 98.2          | 84.8             | N/A       | N/A         |
-
-> RSR: Relative Success Rate = Accuracy gain over baseline normalized to full success (see paper Sec. 4.1)
-> See full tables and ablations in the [paper](link).
 
 > RSR: Relative Success Rate = Accuracy gain over baseline normalized to full success (see paper Sec. 4.1)
 > See full tables and ablations in the [paper](link).
