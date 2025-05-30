@@ -34,24 +34,29 @@ EG-CFG supports any causal language model that provides token-level log probabil
 
 ---
 ## 📊 Benchmark Results
-MBPP and MBPP-ET
-| Model               | Method            | MBPP (%) | RSR (%)   | MBPP-ET (%) | RSR (%)   |
-| ------------------- | ----------------- | -------- | --------- | ----------- | --------- |
-| DeepSeek-Coder 1.3B | Baseline LLM      | 49.4     | 0.0       | 42.6        | 0.0       |
-| DeepSeek-Coder 1.3B | EG-CFG (Ours)     | 83.2     | 66.79     | 59.8        | 29.96     |
-| DeepSeek-V3-0324    | Baseline LLM      | 82.8     | 0.0       | 64.8        | 0.0       |
-| DeepSeek-V3-0324    | **EG-CFG (Ours)** | **96.6** | **80.23** | **73.0**    | **23.30** |
-| GPT-4o              | LPW               | 84.4     | N/A       | 65.3        | N/A       |
+### MBPP and MBPP-ET
 
-HumanEval and HumanEval-ET
-| Model            | Method            | HumanEval (%) | RSR (%)   | HumanEval-ET (%) | RSR (%)   |
-| ---------------- | ----------------- | ------------- | --------- | ---------------- | --------- |
-| DeepSeek-V3-0324 | Baseline LLM      | 82.92         | 0.0       | 79.20            | 0.0       |
-| DeepSeek-V3-0324 | **EG-CFG (Ours)** | **96.95**     | **78.54** | **87.19**        | **38.56** |
-| DeepSeek-V3-0324 | MapCoder          | 96.95         | 81.88     | 81.70            | 12.02     |
-| DeepSeek-V3-0324 | MGDebugger        | 87.20         | 25.39     | 81.09            | 9.44      |
-| DeepSeek-V3-0324 | LPW               | 95.12         | 68.02     | 84.74            | 26.89     |
-| GPT-4o           | LPW               | 98.2          | N/A       | 84.8             | N/A       |
+| Model               | Method            | MBPP (%) | MBPP-ET (%) | RSR (MBPP) | RSR (MBPP-ET) |
+| ------------------- | ----------------- | -------- | ----------- | ---------- | ------------- |
+| DeepSeek-Coder 1.3B | Baseline LLM      | 49.4     | 42.6        | 0.0        | 0.0           |
+| DeepSeek-Coder 1.3B | EG-CFG (Ours)     | 83.2     | 59.8        | 66.79      | 29.96         |
+| DeepSeek-V3-0324    | Baseline LLM      | 82.8     | 64.8        | 0.0        | 0.0           |
+| DeepSeek-V3-0324    | **EG-CFG (Ours)** | **96.6** | **73.0**    | **80.23**  | **23.30**     |
+| GPT-4o              | LPW               | 84.4     | 65.3        | N/A        | N/A           |
+
+### HumanEval and HumanEval-ET
+
+| Model            | Method            | HumanEval (%) | HumanEval-ET (%) | RSR (HE)  | RSR (HE-ET) |
+| ---------------- | ----------------- | ------------- | ---------------- | --------- | ----------- |
+| DeepSeek-V3-0324 | Baseline LLM      | 82.92         | 79.20            | 0.0       | 0.0         |
+| DeepSeek-V3-0324 | **EG-CFG (Ours)** | **96.95**     | **87.19**        | **78.54** | **38.56**   |
+| DeepSeek-V3-0324 | MapCoder          | 96.95         | 81.70            | 81.88     | 12.02       |
+| DeepSeek-V3-0324 | MGDebugger        | 87.20         | 81.09            | 25.39     | 9.44        |
+| DeepSeek-V3-0324 | LPW               | 95.12         | 84.74            | 68.02     | 26.89       |
+| GPT-4o           | LPW               | 98.2          | 84.8             | N/A       | N/A         |
+
+> RSR: Relative Success Rate = Accuracy gain over baseline normalized to full success (see paper Sec. 4.1)
+> See full tables and ablations in the [paper](link).
 
 > RSR: Relative Success Rate = Accuracy gain over baseline normalized to full success (see paper Sec. 4.1)
 > See full tables and ablations in the [paper](link).
