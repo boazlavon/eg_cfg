@@ -243,8 +243,16 @@ The canonical format allows us to easily manipulate the trace to retain only the
 ---
 
 ## 📚 Data
+We evaluate EG-CFG on three widely used Python code generation benchmarks:
 
-We evaluate EG-CFG on the **MBPP (Mostly Basic Python Problems)** benchmark [Austin et al., 2021] — a widely used dataset of Python programming tasks. Each task includes a natural language description, a target function name, and a set of unit tests.
+🔹 MBPP
+The MBPP (Mostly Basic Python Problems) benchmark [Austin et al., 2021] includes 500 Python tasks, each with a natural language description, function name, and 3 unit tests. It is a popular dataset for evaluating basic code generation.
+
+🔹 HumanEval
+The HumanEval benchmark [Chen et al., 2021] consists of 164 hand-written Python programming tasks with hidden test cases. Each task defines a function signature and problem description, designed to measure functional correctness.
+
+🔹 MBPP-ET & HumanEval-ET
+We also evaluate on MBPP-ET and HumanEval-ET, extended test suites proposed in CodeScore [Dong et al., 2025]. These enhancements add more challenging edge cases and improve coverage, offering better estimates of real-world generalization.
 
 ### 🧾 Prompt Format
 
@@ -298,6 +306,21 @@ We gratefully acknowledge the authors of the following works for their implement
   author={Liu, Aixin and Feng, Bei and Xue, Bing and Wang, Bingxuan and others},
   journal={arXiv preprint arXiv:2412.19437},
   year={2024}
+}
+@article{chen2021evaluating,
+  title={Evaluating large language models trained on code},
+  author={Chen, Mark and Tworek, Jerry and Jun, Heewoo and Yuan, Qiming and Pinto, Henrique Ponde de Oliveira and Kaplan, Jared and Edwards, Harri and Burda, Yuri and Joseph, Nicholas and Brockman, Greg and others},
+  journal={arXiv preprint arXiv:2107.03374},
+  year={2021}
+}
+@article{dong2025codescore,
+  title={CodeScore: Evaluating Code Generation by Learning Code Execution},
+  author={Dong, Yihong and Ding, Jiazheng and Jiang, Xue and Li, Ge and Li, Zhuo and Jin, Zhi},
+  journal={ACM Transactions on Software Engineering and Methodology},
+  volume={34},
+  number={3},
+  pages={1--22},
+  year={2025}
 }
 ```
 
