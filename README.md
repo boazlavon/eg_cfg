@@ -305,4 +305,5 @@ We gratefully acknowledge the authors of the following works for their implement
 - [x] Result tables + reproducibility
 
 ## 🧾 License
-This software is provided for non-commercial use only. For commercial use, you must obtain a commercial license by contacting Ramot(yair.eran@ramot.org).
+This software is provided for non-commercial use only.
+For commercial use, you must obtain a commercial license by contacting Ramot(yair.eran@ramot.org).
