@@ -53,9 +53,6 @@ HumanEval and HumanEval-ET
 | DeepSeek-V3-0324 | LPW               | 95.12         | 68.02     | 84.74            | 26.89     |
 | GPT-4o           | LPW               | 98.2          | N/A       | 84.8             | N/A       |
 
-![MBPP Results](./figures/mbpp_chart.png)
-![HumanEval Results](./figures/humaneval_chart.png)
-
 > RSR: Relative Success Rate = Accuracy gain over baseline normalized to full success (see paper Sec. 4.1)
 > See full tables and ablations in the [paper](link).
 
