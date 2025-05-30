@@ -6,10 +6,16 @@ EG-CFG is a decoding-time algorithm for code generation that incorporates real-t
 
 ## 🚀 Highlights
 
-- 📈 **New SOTA on MBPP, MBPP-ET & HumanEval-ET benchmarks** using open models DeepSeek-V3-0324.
-- ⚡ Real-time execution feedback integrated during decoding
-- 🛠️ Fully configurable pipeline: local or endpoint inference
-- 🔁 Reproducible and extensible for code generation research
+📈 **New state-of-the-art (SOTA)** results:
+- **MBPP**: 96.6%
+- **MBPP-ET**: 73.0%
+- **HumanEval-ET**: 87.19%
+
+✅ All achieved using **open-source models** only (DeepSeek-V3-0324)
+
+⚡ Real-time execution feedback integrated during decoding  
+🛠️ Fully configurable pipeline: local or endpoint inference  
+🔁 Reproducible and extensible for code generation research  
 
 ---
 ## 🧠 Models
@@ -28,16 +34,26 @@ EG-CFG supports any causal language model that provides token-level log probabil
 
 ---
 ## 📊 Benchmark Results
+MBPP and MBPP-ET
+| Model               | Method            | MBPP (%) | RSR (%)   | MBPP-ET (%) | RSR (%)   |
+| ------------------- | ----------------- | -------- | --------- | ----------- | --------- |
+| DeepSeek-Coder 1.3B | Baseline LLM      | 49.4     | 0.0       | 42.6        | 0.0       |
+| DeepSeek-Coder 1.3B | EG-CFG (Ours)     | 83.2     | 66.79     | 59.8        | 29.96     |
+| DeepSeek-V3-0324    | Baseline LLM      | 82.8     | 0.0       | 64.8        | 0.0       |
+| DeepSeek-V3-0324    | **EG-CFG (Ours)** | **96.6** | **80.23** | **73.0**    | **23.30** |
+| GPT-4o              | LPW               | 84.4     | N/A       | 65.3        | N/A       |
 
-| Model                 | Method        | Accuracy (%) | RSR (%) |
-|----------------------|---------------|--------------|---------|
-| DeepSeek-Coder 1.3B  | Baseline LLM  | 49.4         | 0.00    |
-| DeepSeek-Coder 1.3B  | EG-CFG (Ours)       | 83.2         | 66.79   |
-| DeepSeek-V3-0324     | Baseline LLM  | 82.8         | 0.00    |
-| DeepSeek-V3-0324     | **EG-CFG (Ours)**    | **96.6**     | 80.23   |
-| Claude-Sonnet-3.5    | QualityFlow   | 94.2         | –       |
-| GPT-4                | MetaGPT       | 87.7         | –       |
+HumanEval and HumanEval-ET
+| Model            | Method            | HumanEval (%) | RSR (%)   | HumanEval-ET (%) | RSR (%)   |
+| ---------------- | ----------------- | ------------- | --------- | ---------------- | --------- |
+| DeepSeek-V3-0324 | Baseline LLM      | 82.92         | 0.0       | 79.20            | 0.0       |
+| DeepSeek-V3-0324 | **EG-CFG (Ours)** | **96.95**     | **78.54** | **87.19**        | **38.56** |
+| DeepSeek-V3-0324 | MapCoder          | 96.95         | 81.88     | 81.70            | 12.02     |
+| DeepSeek-V3-0324 | MGDebugger        | 87.20         | 25.39     | 81.09            | 9.44      |
+| DeepSeek-V3-0324 | LPW               | 95.12         | 68.02     | 84.74            | 26.89     |
+| GPT-4o           | LPW               | 98.2          | N/A       | 84.8             | N/A       |
 
+> RSR: Relative Success Rate = Accuracy gain over baseline normalized to full success (see paper Sec. 4.1)
 > See full tables and ablations in the [paper](link).
 
 ### Evaluation Limitations
