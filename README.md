@@ -246,12 +246,15 @@ The canonical format allows us to easily manipulate the trace to retain only the
 We evaluate EG-CFG on three widely used Python code generation benchmarks:
 
 🔹 MBPP
+
 The MBPP (Mostly Basic Python Problems) benchmark [Austin et al., 2021] includes 500 Python tasks, each with a natural language description, function name, and 3 unit tests. It is a popular dataset for evaluating basic code generation.
 
 🔹 HumanEval
+
 The HumanEval benchmark [Chen et al., 2021] consists of 164 hand-written Python programming tasks with hidden test cases. Each task defines a function signature and problem description, designed to measure functional correctness.
 
 🔹 MBPP-ET & HumanEval-ET
+
 We also evaluate on MBPP-ET and HumanEval-ET, extended test suites proposed in CodeScore [Dong et al., 2025]. These enhancements add more challenging edge cases and improve coverage, offering better estimates of real-world generalization.
 
 ### 🧾 Prompt Format
