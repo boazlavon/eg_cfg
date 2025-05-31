@@ -326,19 +326,6 @@ We gratefully acknowledge the authors of the following works for their implement
   year={2025}
 }
 ```
-
----
-
-## 📜 Citation
-
-```bibtex
-@inproceedings{lavon2025egcfg,
-  title={Execution-Guided Line-by-Line Code Generation},
-  author={Lavon, Boaz and Katz Shahar and Wolf, Lior}
-}
-```
-
-
 ---
 
 ## ✅ ML Code Checklist
