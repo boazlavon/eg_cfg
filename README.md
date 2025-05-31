@@ -334,9 +334,7 @@ We gratefully acknowledge the authors of the following works for their implement
 ```bibtex
 @inproceedings{lavon2025egcfg,
   title={Execution-Guided Line-by-Line Code Generation},
-  author={Lavon, Boaz and Katz Shahar and Wolf, Lior},
-  booktitle={NeurIPS 2025},
-  year={2025}
+  author={Lavon, Boaz and Katz Shahar and Wolf, Lior}
 }
 ```
 
