@@ -11,6 +11,7 @@ import random
 from mbpp_utils import (
     format_mbpp_prompt,
     load_mbpp_problems,
+    load_humaneval_problems,
     run_tests,
     extract_function_signature,
 )
@@ -52,11 +53,6 @@ def format_results(solution, results, general_error, tb=None):
     if tb is not None:
         entry["tb"] = tb
     return entry
-
-
-def get_solution_filepath(results_dir, task_id, gamma):
-    filename = FILENAME_TEMPLATE.format(task_id=task_id, gamma=gamma)
-    return os.path.join(results_dir, filename)
 
 
 class StatisticsManager:
@@ -138,7 +134,22 @@ class EgCfgSessionManager:
             debug=self.session_config.debug_mode,
         )
         self.stats_manager = StatisticsManager()
-        self.problems = load_mbpp_problems()
+        assert self.session_config.dataset in AVAILABLE_DATASETS
+        assert self.session_config.dataset in (
+            DATASET__MBPP,
+            DATASET__HUMANEVAL,
+        )
+        if self.session_config.dataset == DATASET__MBPP:
+            self.problems = load_mbpp_problems()  # uses test_list
+            self.eval_dataset = (
+                self.problems
+            )  # uses eval_test_list in humaneval, test_list in mbpp
+        if self.session_config.dataset == DATASET__HUMANEVAL:
+            self.problems = load_humaneval_problems()
+            self.eval_dataset = (
+                self.problems
+            )  # uses eval_test_list in humaneval, test_list in mbpp
+
         self.problems = list(self.problems.items())
         if self.session_config.start_idx and self.session_config.end_idx:
             self.problems = self.problems[
@@ -156,7 +167,7 @@ class EgCfgSessionManager:
         dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
         results_dir = os.path.join(
             self.session_config.results_dir,
-            MBPP_DATASET_NAME,
+            self.session_config.dataset,
             session_config.model_name.replace("/", "_"),
             dynamic_signals_str,
         )
@@ -169,7 +180,7 @@ class EgCfgSessionManager:
         os.makedirs(results_dir, exist_ok=True)
         solved_tasks_cache_dir = os.path.join(
             self.session_config.results_dir,
-            MBPP_DATASET_NAME,
+            self.session_config.dataset,
             self.session_config.model_name.replace("/", "_"),
             SOLVED_TASKS_CACHE_DIRNAME,
         )
@@ -185,17 +196,27 @@ class EgCfgSessionManager:
         print("Setting inference session config:")
         pprint.pprint(self.inference_session)
 
+    def get_solution_filepath(self, results_dir, task_id, gamma):
+        if self.session_config.dataset == DATASET__HUMANEVAL:
+            task_id = task_id.replace("/", "_")
+        filename = FILENAME_TEMPLATE.format(task_id=task_id, gamma=gamma)
+        return os.path.join(results_dir, filename)
+
     def resolve_baseline_solved_entries(self):
         gamma = 0.0
-        if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
-            official_passed_task_ids = DEEPSEEK_V3_0324_SOLVED_TASK_IDS
-        elif self.session_config.model_name == QWEN3_253B_MODEL_NAME_HF:
-            official_passed_task_ids = QWEN3_SOLVED_TASK_IDS
-        else:
-            official_passed_task_ids, official_results = load_official_results(
-                self.session_config.model_name
-            )
-        if not official_passed_task_ids:
+        if self.session_config.dataset == DATASET__MBPP:
+            if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
+                official_passed_task_ids = DEEPSEEK_V3_0324_SOLVED_TASK_IDS
+            elif self.session_config.model_name == QWEN3_253B_MODEL_NAME_HF:
+                official_passed_task_ids = QWEN3_SOLVED_TASK_IDS
+            else:
+                official_passed_task_ids, official_results = load_official_results(
+                    self.session_config.model_name
+                )
+        if self.session_config.dataset == DATASET__HUMANEVAL:
+            official_passed_task_ids = []
+        
+        if not official_passed_task_ids and (self.session_config.model_name not in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)):
             return
         if self.session_config.is_prod:
             random.shuffle(official_passed_task_ids)
@@ -206,7 +227,7 @@ class EgCfgSessionManager:
                 in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
             ) and (not task_id in official_passed_task_ids):
                 continue
-            solution_entry_path = get_solution_filepath(
+            solution_entry_path = self.get_solution_filepath(
                 self.inference_session.results_dir, task_id, gamma
             )
             if os.path.exists(solution_entry_path):
@@ -216,8 +237,6 @@ class EgCfgSessionManager:
                 pass
             print(f"task_id: {task_id}")
             pprint.pprint(problem)
-            test_cases = problem["test_list"]
-
             solution = None
             general_error = None
             tb = None
@@ -227,8 +246,14 @@ class EgCfgSessionManager:
                 DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
                 DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME,
             ):
+                eval_problem = self.eval_dataset[task_id]
+                if self.session_config.dataset in (DATASET__MBPP,):
+                    test_cases_to_eval = eval_problem["test_list"]
+                if self.session_config.dataset in (DATASET__HUMANEVAL,):
+                    test_cases_to_eval = eval_problem["eval_test_list"]
+
                 solution = official_results[task_id]["generation"]
-                solution_results = run_tests(solution, test_cases)
+                solution_results = run_tests(solution, test_cases_to_eval)
                 solution_entry = format_results(
                     solution, solution_results, general_error, tb
                 )
@@ -245,12 +270,14 @@ class EgCfgSessionManager:
                 DEEPSEEK_V3_0324_MODEL_NAME_HF,
                 QWEN3_253B_MODEL_NAME_HF,
             ):
+                # if task_id not in UNSOLVED_HUMANEVAL_TASKS[self.session_config.model_name]:
+                #     continue
                 baseline_trial_base = BASELINE_TRIALS_BASE[
-                    self.session_config.model_name
+                    (self.session_config.model_name, self.session_config.dataset)
                 ]
                 for baseline_dir in BASELINE_DIRS:
                     results_dir = os.path.join(baseline_trial_base, baseline_dir)
-                    bs_solution_entry_path = get_solution_filepath(
+                    bs_solution_entry_path = self.get_solution_filepath(
                         results_dir,
                         task_id,
                         gamma=0.0,
@@ -260,7 +287,7 @@ class EgCfgSessionManager:
                     with open(bs_solution_entry_path) as f:
                         bs_solution_entry = json.load(f)
                     for gamma in (0, 0.0):
-                        solution_entry_path = get_solution_filepath(
+                        solution_entry_path = self.get_solution_filepath(
                             self.inference_session.results_dir, task_id, gamma
                         )
                         with open(solution_entry_path, "w") as f:
@@ -271,7 +298,7 @@ class EgCfgSessionManager:
     def build_eg_cfg_injection_manager_and_prompt(
         self, problem, gamma, function_signature=None
     ):
-        test_cases = problem["test_list"]
+        test_cases_to_prompt = problem["test_list"]
         use_eg_cfg = True
         use_detector = True
         if (
@@ -285,27 +312,31 @@ class EgCfgSessionManager:
             PROMPT_TYPE__DEEPSEEK_BASE,
             PROMPT_TYPE__DEEPSEEK_INSTRUCT,
         ):
-            if (
-                self.inference_session.inference_session_config["prompt_type"]
-                == PROMPT_TYPE__DEEPSEEK_BASE
-            ):
-                prompts_path = os.path.join(
-                    MAIN_DATA_DIR, DEEPSEEK_PROMPT_DIRNAME, MBPP_BASE_PROMPT_FILENAME
-                )
-                end_string = DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_END
-            if (
-                self.inference_session.inference_session_config["prompt_type"]
-                == PROMPT_TYPE__DEEPSEEK_INSTRUCT
-            ):
-                prompts_path = os.path.join(
-                    MAIN_DATA_DIR,
-                    DEEPSEEK_PROMPT_DIRNAME,
-                    MBPP_INSTRUCT_PROMPT_FILENAME,
-                )
+            if self.session_config.dataset == DATASET__MBPP:
+                if (
+                    self.inference_session.inference_session_config["prompt_type"]
+                    == PROMPT_TYPE__DEEPSEEK_BASE
+                ):
+                    prompts_path = os.path.join(
+                        MAIN_DATA_DIR, DEEPSEEK_PROMPT_DIRNAME, MBPP_BASE_PROMPT_FILENAME
+                    )
+                    end_string = DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_END
+                if (
+                    self.inference_session.inference_session_config["prompt_type"]
+                    == PROMPT_TYPE__DEEPSEEK_INSTRUCT
+                ):
+                    prompts_path = os.path.join(
+                        MAIN_DATA_DIR,
+                        DEEPSEEK_PROMPT_DIRNAME,
+                        MBPP_INSTRUCT_PROMPT_FILENAME,
+                    )
+                    end_string = CODE_BORDER_TOKEN
+                with open(prompts_path, "r") as f:
+                    prompts = json.load(f)
+                    prompt = prompts[str(problem["task_id"])]
+            elif self.session_config.dataset == DATASET__HUMANEVAL:
+                prompt, _ = format_mbpp_prompt(problem, True)
                 end_string = CODE_BORDER_TOKEN
-            with open(prompts_path, "r") as f:
-                prompts = json.load(f)
-                prompt = prompts[str(problem["task_id"])]
 
         print(self.inference_session.inference_session_config)
         dynamic_signals_types = [
@@ -322,7 +353,7 @@ class EgCfgSessionManager:
                 "tokenizer": self.tokenizer,
                 "device": self.device,
                 "function_signature": function_signature,
-                "test_cases": test_cases,
+                "test_cases": test_cases_to_prompt,
                 "initial_prompt": prompt,
                 "dynamic_signals_types": dynamic_signals_types,
                 "bs_candidates_count": self.inference_session.inference_session_config[
@@ -353,7 +384,12 @@ class EgCfgSessionManager:
                 initial_prompt_input_ids_len = calculate_tokens_length(
                     self.tokenizer, prompt
                 )
-                function_name, _, _ = parse_mbpp_assert_statement(test_cases[0])
+                if problem.get('entry_point'):
+                    function_name = problem.get('entry_point')
+                else:
+                    function_name, _, _ = parse_mbpp_assert_statement(
+                        test_cases_to_prompt[0]
+                    )
                 detector_kwargs = {
                     "tokenizer": self.tokenizer,
                     "initial_prompt_input_ids_len": initial_prompt_input_ids_len,
@@ -432,6 +468,7 @@ class EgCfgSessionManager:
                     self.session_config.model_name,
                     eg_cfg_injection_manager,
                     function_signature,
+                    function_name=problem.get('entry_point')
                 )
             else:  # gamma == 0
                 # We resolve all gamma == 0.0. BUT it can be here in case we disable
@@ -447,6 +484,7 @@ class EgCfgSessionManager:
                     temperture=eg_cfg_injection_manager.adapter.temperature,
                     max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
                     verbose=True,
+                    function_name=problem.get('entry_point')
                 )
                 if self.stats_manager is not None:
                     self.stats_manager.increate_counter(
@@ -473,7 +511,11 @@ class EgCfgSessionManager:
 
     def solve_problem_with_eg_cfg_wrapper(self, problem, gamma):
         task_id = problem["task_id"]
-        test_cases = problem["test_list"]
+        eval_problem = self.eval_dataset[task_id]
+        if self.session_config.dataset in (DATASET__MBPP,):
+            test_cases_to_eval = eval_problem["test_list"]
+        if self.session_config.dataset in (DATASET__HUMANEVAL,):
+            test_cases_to_eval = eval_problem["eval_test_list"]
         self.stats_manager.set_current_key((task_id, gamma))
         start_time = datetime.now()
         start_time_str = start_time.strftime("%Y-%m-%d %H:%M:%S")
@@ -546,7 +588,7 @@ class EgCfgSessionManager:
                 if not self.session_config.is_prod:
                     raise e
 
-            solution_results = run_tests(solution, test_cases)
+            solution_results = run_tests(solution, test_cases_to_eval)
             solution_entry = format_results(
                 solution, solution_results, general_error, tb
             )
@@ -582,7 +624,7 @@ class EgCfgSessionManager:
         )
         for gamma in self.session_config.gammas:
             print(f"task_id={task_id}, gamma={gamma}")
-            solution_entry_path = get_solution_filepath(
+            solution_entry_path = self.get_solution_filepath(
                 self.inference_session.results_dir, task_id, gamma
             )
 
@@ -673,8 +715,9 @@ class EgCfgSessionManager:
                 inference_session_config,
             )
             self.resolve_baseline_solved_entries()
-
         for _, problem in self.problems:
+            # if problem['task_id'] not in UNSOLVED_HUMANEVAL_TASKS[self.session_config.model_name]:
+            #     continue
             for inference_session_config in self.inference_sessions_configs:
                 self.setup_inference_session(
                     inference_session_config,

@@ -142,6 +142,7 @@ def build_session_config(args):
         "is_prod": args["prod"],
         "results_dir": args["results_dir"],
         "deployment_type": args["deployment_type"],
+        "dataset": args["dataset"],
         "start_idx": args.get("start_idx", SESSION_CONFIGS_DEFAULT_VALUES["start_idx"]),
         "end_idx": args.get("end_idx", SESSION_CONFIGS_DEFAULT_VALUES["end_idx"]),
         "retries_count": args.get(
@@ -251,6 +252,13 @@ def get_cmdline_args():
         help="Deployment type. Options: %(choices)s",
     )
     parser.add_argument(
+        "--dataset",
+        type=str,
+        choices=AVAILABLE_DATASETS,
+        required=True,
+        help="Dataset. Options: %(choices)s",
+    )
+    parser.add_argument(
         "--r", type=int, default=1, help="Number of retry attempts per gamma value"
     )
     parser.add_argument("--start-idx", type=int, default=0, help="start idx")
@@ -300,6 +308,19 @@ def generate_grid_configs(inference_session_grid_json, session_config_json):
         build_inference_session_config(inference_args)
         for inference_args in ParameterGrid(inference_param_grid)
     ]
+
+    partial_execution_session_grid_args = {
+        'n': [False], 
+        'p': [True], 
+        'g': ['line_guidance'],
+        'd': [None],
+        'prompt_type': ['deepseek_instruct', 'long_code'], 
+    } 
+    partial_sessions_configs = [
+        build_inference_session_config(inference_args)
+        for inference_args in ParameterGrid(partial_execution_session_grid_args)
+    ]
+    # inference_sessions_configs = inference_sessions_configs + partial_sessions_configs
     session_config = Namespace(**session_config)
     return session_config, inference_sessions_configs
 
