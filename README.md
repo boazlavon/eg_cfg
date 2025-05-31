@@ -298,17 +298,17 @@ We gratefully acknowledge the authors of the following works for their implement
   journal={arXiv preprint arXiv:2401.14196},
   year={2024}
 }
-@article{austin2021program,
-  title={Program synthesis with large language models},
-  author={Austin, Jacob and Odena, Augustus and Nye, Maxwell and Bosma, Maarten and Michalewski, Henryk and Dohan, David and Jiang, Ellen and Cai, Carrie and Terry, Michael and Le, Quoc and others},
-  journal={arXiv preprint arXiv:2108.07732},
-  year={2021}
-}
 @article{liu2024deepseekv3,
   title={DeepSeek-V3 Technical Report},
   author={Liu, Aixin and Feng, Bei and Xue, Bing and Wang, Bingxuan and others},
   journal={arXiv preprint arXiv:2412.19437},
   year={2024}
+}
+@article{austin2021program,
+  title={Program synthesis with large language models},
+  author={Austin, Jacob and Odena, Augustus and Nye, Maxwell and Bosma, Maarten and Michalewski, Henryk and Dohan, David and Jiang, Ellen and Cai, Carrie and Terry, Michael and Le, Quoc and others},
+  journal={arXiv preprint arXiv:2108.07732},
+  year={2021}
 }
 @article{chen2021evaluating,
   title={Evaluating large language models trained on code},
