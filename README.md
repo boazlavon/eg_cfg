@@ -143,6 +143,7 @@ Defines runtime setup per session:
 | `model_name`              | Model to use (local path or HuggingFace hub name)            |
 | `gammas`                  | CFG guidance strengths                                       |
 | `deployment_type`         | `"local"` or `"inference_endpoint"`                          |
+| `dataset`                 | `"mbpp"` or `"humaneval"`                                    |
 | `results_dir`             | Root directory for saving results                            |
 | `inference_endpoint_url`  | (if endpoint) API URL for inference                          |
 | `inference_endpoint_api_key` | (if endpoint) API key for Fireworks                       |
@@ -165,6 +166,7 @@ For example:
   "results_dir": "trials/local_results",
   "model_name": "deepseek-ai/deepseek-coder-1.3b-instruct",
   "deployment_type": "local",
+  "dataset": "mbpp",
   ...
 }
 ```
