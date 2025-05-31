@@ -1,0 +1,724 @@
+{
+  "code": "import re\n\ndef valid_date(date):\n    if not date:\n        return False\n    pattern = r'^\\d{2}-\\d{2}-\\d{4}$'\n    if not re.match(pattern, date):\n        return False\n    month, day, year = map(int, date.split('-'))\n    if month < 1 or month > 12:\n        return False\n    if month in [1, 3, 5, 7, 8, 10, 12]:\n        if day < 1 or day > 31:\n            return False\n    elif month in [4, 6, 9, 11]:\n        if day < 1 or day > 30:\n            return False\n    elif month == 2:\n        if day < 1 or day > 29:\n            return False\n    return True",
+  "results": {
+    "assert valid_date(\"152020823\") == False": {
+      "result": true,
+      "time": 0.16778159141540527,
+      "error": null
+    },
+    "assert valid_date(\"15-2-6158\") == False": {
+      "result": true,
+      "time": 0.27533411979675293,
+      "error": null
+    },
+    "assert valid_date(\"9~*&:@08@??1%=7\") == False": {
+      "result": true,
+      "time": 0.22530388832092285,
+      "error": null
+    },
+    "assert valid_date('04-2003') == False": {
+      "result": true,
+      "time": 0.14530587196350098,
+      "error": null
+    },
+    "assert valid_date(\"10-15-2951\") == True": {
+      "result": true,
+      "time": 0.15987348556518555,
+      "error": null
+    },
+    "assert valid_date(\"03-15-957\") == True": {
+      "result": false,
+      "time": 0.14843201637268066,
+      "error": null
+    },
+    "assert valid_date(\"07-2-5707\") == True": {
+      "result": false,
+      "time": 0.10434198379516602,
+      "error": null
+    },
+    "assert valid_date(\"00-10-1292\") == False": {
+      "result": true,
+      "time": 0.1252145767211914,
+      "error": null
+    },
+    "assert valid_date(\"07-1-7237\") == True": {
+      "result": false,
+      "time": 0.12229371070861816,
+      "error": null
+    },
+    "assert valid_date(\"03-27-2895\") == True": {
+      "result": true,
+      "time": 0.13080930709838867,
+      "error": null
+    },
+    "assert valid_date(\"!-5?|/\") == False": {
+      "result": true,
+      "time": 0.20183110237121582,
+      "error": null
+    },
+    "assert valid_date(\"#3:5?4+|3?=/5?3\") == False": {
+      "result": true,
+      "time": 0.24435114860534668,
+      "error": null
+    },
+    "assert valid_date(\"02-3-4779\") == True": {
+      "result": false,
+      "time": 0.1382443904876709,
+      "error": null
+    },
+    "assert valid_date(\"01-36-1682\") == False": {
+      "result": true,
+      "time": 0.1977229118347168,
+      "error": null
+    },
+    "assert valid_date(\"tb\") == False": {
+      "result": true,
+      "time": 0.10381340980529785,
+      "error": null
+    },
+    "assert valid_date(\"65?:!\") == False": {
+      "result": true,
+      "time": 0.21262288093566895,
+      "error": null
+    },
+    "assert valid_date(\"!&5*~\") == False": {
+      "result": true,
+      "time": 0.13479399681091309,
+      "error": null
+    },
+    "assert valid_date(\"496928724496\") == False": {
+      "result": true,
+      "time": 0.10062956809997559,
+      "error": null
+    },
+    "assert valid_date(\"+81:37-8!8\") == False": {
+      "result": true,
+      "time": 0.12313199043273926,
+      "error": null
+    },
+    "assert valid_date('04-31-3000') == False": {
+      "result": true,
+      "time": 0.25999903678894043,
+      "error": null
+    },
+    "assert valid_date(\"89728\") == False": {
+      "result": true,
+      "time": 0.08797025680541992,
+      "error": null
+    },
+    "assert valid_date(\"17-29-6002\") == False": {
+      "result": true,
+      "time": 0.1923842430114746,
+      "error": null
+    },
+    "assert valid_date(\"6%-2!/1$=\") == False": {
+      "result": true,
+      "time": 0.22457361221313477,
+      "error": null
+    },
+    "assert valid_date(\"@86@2&*18-3!$4\") == False": {
+      "result": true,
+      "time": 0.30008888244628906,
+      "error": null
+    },
+    "assert valid_date(\"%+5^74&^$?\") == False": {
+      "result": true,
+      "time": 0.22967910766601562,
+      "error": null
+    },
+    "assert valid_date(\"/1|?@/#/|\") == False": {
+      "result": true,
+      "time": 0.3003060817718506,
+      "error": null
+    },
+    "assert valid_date(\"3058229043\") == False": {
+      "result": true,
+      "time": 0.17822051048278809,
+      "error": null
+    },
+    "assert valid_date(\"-6!@\") == False": {
+      "result": true,
+      "time": 0.17467403411865234,
+      "error": null
+    },
+    "assert valid_date(\"17-13-2769\") == False": {
+      "result": true,
+      "time": 0.12911033630371094,
+      "error": null
+    },
+    "assert valid_date(\"81346880\") == False": {
+      "result": true,
+      "time": 0.27874207496643066,
+      "error": null
+    },
+    "assert valid_date(\"1|=@:\") == False": {
+      "result": true,
+      "time": 0.24697208404541016,
+      "error": null
+    },
+    "assert valid_date(\"?2-5%21$:\") == False": {
+      "result": true,
+      "time": 0.2979578971862793,
+      "error": null
+    },
+    "assert valid_date('21-31-2000') == False": {
+      "result": true,
+      "time": 0.2746281623840332,
+      "error": null
+    },
+    "assert valid_date(\"#~+18=\") == False": {
+      "result": true,
+      "time": 0.28881311416625977,
+      "error": null
+    },
+    "assert valid_date(\"32|1@94\") == False": {
+      "result": true,
+      "time": 0.27591466903686523,
+      "error": null
+    },
+    "assert valid_date(\"15-1-1527\") == False": {
+      "result": true,
+      "time": 0.20915699005126953,
+      "error": null
+    },
+    "assert valid_date(\"dvt\") == False": {
+      "result": true,
+      "time": 0.26372289657592773,
+      "error": null
+    },
+    "assert valid_date(\"8~8+*/\") == False": {
+      "result": true,
+      "time": 0.2771570682525635,
+      "error": null
+    },
+    "assert valid_date(\"946216\") == False": {
+      "result": true,
+      "time": 0.25011229515075684,
+      "error": null
+    },
+    "assert valid_date(\"$#7\") == False": {
+      "result": true,
+      "time": 0.21030831336975098,
+      "error": null
+    },
+    "assert valid_date(\"*5:444%=62#-9\") == False": {
+      "result": true,
+      "time": 0.17520642280578613,
+      "error": null
+    },
+    "assert valid_date(\"=8_2&-!3$~2/33\") == False": {
+      "result": true,
+      "time": 0.29708266258239746,
+      "error": null
+    },
+    "assert valid_date('') == False": {
+      "result": true,
+      "time": 0.2423872947692871,
+      "error": null
+    },
+    "assert valid_date(\"@=6\") == False": {
+      "result": true,
+      "time": 0.2888493537902832,
+      "error": null
+    },
+    "assert valid_date('15-01-2012') == False": {
+      "result": true,
+      "time": 0.1163339614868164,
+      "error": null
+    },
+    "assert valid_date(\"!?0|+1:|&=6?_2\") == False": {
+      "result": true,
+      "time": 0.16659879684448242,
+      "error": null
+    },
+    "assert valid_date(\"9:|=+$6$#*5\") == False": {
+      "result": true,
+      "time": 0.17934036254882812,
+      "error": null
+    },
+    "assert valid_date(\"787890\") == False": {
+      "result": true,
+      "time": 0.2081775665283203,
+      "error": null
+    },
+    "assert valid_date(\"5+#$!@~02!~$4%7\") == False": {
+      "result": true,
+      "time": 0.1711413860321045,
+      "error": null
+    },
+    "assert valid_date(\"01-12-7681\") == True": {
+      "result": true,
+      "time": 0.1374073028564453,
+      "error": null
+    },
+    "assert valid_date(\"07-38-1109\") == False": {
+      "result": true,
+      "time": 0.12317109107971191,
+      "error": null
+    },
+    "assert valid_date(\"/1:$/1*:6=!^5\") == False": {
+      "result": true,
+      "time": 0.21792221069335938,
+      "error": null
+    },
+    "assert valid_date(\"x\") == False": {
+      "result": true,
+      "time": 0.17098283767700195,
+      "error": null
+    },
+    "assert valid_date(\"%:*7^|4\") == False": {
+      "result": true,
+      "time": 0.10048437118530273,
+      "error": null
+    },
+    "assert valid_date(\"12-37-5174\") == False": {
+      "result": true,
+      "time": 0.2271137237548828,
+      "error": null
+    },
+    "assert valid_date('04-12-2003') == True": {
+      "result": true,
+      "time": 0.152754545211792,
+      "error": null
+    },
+    "assert valid_date(\"%_%5|7-041144$:\") == False": {
+      "result": true,
+      "time": 0.2008056640625,
+      "error": null
+    },
+    "assert valid_date(\"09-37-3863\") == False": {
+      "result": true,
+      "time": 0.25964808464050293,
+      "error": null
+    },
+    "assert valid_date(\"#0~!!&_3$^\") == False": {
+      "result": true,
+      "time": 0.18023395538330078,
+      "error": null
+    },
+    "assert valid_date(\"907387\") == False": {
+      "result": true,
+      "time": 0.189072847366333,
+      "error": null
+    },
+    "assert valid_date(\"^$?@=#/_^6\") == False": {
+      "result": true,
+      "time": 0.29525136947631836,
+      "error": null
+    },
+    "assert valid_date('01-01-2007') == True": {
+      "result": true,
+      "time": 0.2912943363189697,
+      "error": null
+    },
+    "assert valid_date('06-04-2020') == True": {
+      "result": true,
+      "time": 0.17586493492126465,
+      "error": null
+    },
+    "assert valid_date(\"09-26-7422\") == True": {
+      "result": true,
+      "time": 0.2269725799560547,
+      "error": null
+    },
+    "assert valid_date(\"4%2_9:7@#:-4\") == False": {
+      "result": true,
+      "time": 0.2562711238861084,
+      "error": null
+    },
+    "assert valid_date(\"!*^3%/*/|:^/!6\") == False": {
+      "result": true,
+      "time": 0.2863278388977051,
+      "error": null
+    },
+    "assert valid_date('03-32-2011') == False": {
+      "result": true,
+      "time": 0.23581933975219727,
+      "error": null
+    },
+    "assert valid_date(\"05-3-4654\") == True": {
+      "result": false,
+      "time": 0.2827634811401367,
+      "error": null
+    },
+    "assert valid_date(\"/*_#6$$:9!\") == False": {
+      "result": true,
+      "time": 0.21367144584655762,
+      "error": null
+    },
+    "assert valid_date(\"8#012%7\") == False": {
+      "result": true,
+      "time": 0.23742961883544922,
+      "error": null
+    },
+    "assert valid_date(\"00-33-325\") == False": {
+      "result": true,
+      "time": 0.2488269805908203,
+      "error": null
+    },
+    "assert valid_date(\"07-24-6153\") == True": {
+      "result": true,
+      "time": 0.2991020679473877,
+      "error": null
+    },
+    "assert valid_date(\"33&5$+??\") == False": {
+      "result": true,
+      "time": 0.28981924057006836,
+      "error": null
+    },
+    "assert valid_date(\"142@6!4=/|@7\") == False": {
+      "result": true,
+      "time": 0.22596406936645508,
+      "error": null
+    },
+    "assert valid_date(\"18-4-5532\") == False": {
+      "result": true,
+      "time": 0.20367765426635742,
+      "error": null
+    },
+    "assert valid_date(\"j\") == False": {
+      "result": true,
+      "time": 0.2898705005645752,
+      "error": null
+    },
+    "assert valid_date(\"*7:+3*0#~0\") == False": {
+      "result": true,
+      "time": 0.26998186111450195,
+      "error": null
+    },
+    "assert valid_date(\"16-12-4616\") == False": {
+      "result": true,
+      "time": 0.21749472618103027,
+      "error": null
+    },
+    "assert valid_date(\"19-32-6633\") == False": {
+      "result": true,
+      "time": 0.16876935958862305,
+      "error": null
+    },
+    "assert valid_date(\"00-10-2109\") == False": {
+      "result": true,
+      "time": 0.07951688766479492,
+      "error": null
+    },
+    "assert valid_date(\"$0:591=8:~:5/!\") == False": {
+      "result": true,
+      "time": 0.2428121566772461,
+      "error": null
+    },
+    "assert valid_date(\"2=26~-~0\") == False": {
+      "result": true,
+      "time": 0.2615847587585449,
+      "error": null
+    },
+    "assert valid_date(\"40/#70^\") == False": {
+      "result": true,
+      "time": 0.21858572959899902,
+      "error": null
+    },
+    "assert valid_date(\"?/3~=!\") == False": {
+      "result": true,
+      "time": 0.11550760269165039,
+      "error": null
+    },
+    "assert valid_date(\"qu\") == False": {
+      "result": true,
+      "time": 0.15308475494384766,
+      "error": null
+    },
+    "assert valid_date(\"08-19-2738\") == True": {
+      "result": true,
+      "time": 0.29056739807128906,
+      "error": null
+    },
+    "assert valid_date(\"19-19-1656\") == False": {
+      "result": true,
+      "time": 0.29724836349487305,
+      "error": null
+    },
+    "assert valid_date('2003-04') == False": {
+      "result": true,
+      "time": 0.28673434257507324,
+      "error": null
+    },
+    "assert valid_date(\"05-14-1215\") == True": {
+      "result": true,
+      "time": 0.17663359642028809,
+      "error": null
+    },
+    "assert valid_date(\"9739~4-_3510|3\") == False": {
+      "result": true,
+      "time": 0.15175271034240723,
+      "error": null
+    },
+    "assert valid_date(\"18-36-13\") == False": {
+      "result": true,
+      "time": 0.27898192405700684,
+      "error": null
+    },
+    "assert valid_date(\"03-38-9986\") == False": {
+      "result": true,
+      "time": 0.21611833572387695,
+      "error": null
+    },
+    "assert valid_date(\"=-*9486\") == False": {
+      "result": true,
+      "time": 0.22637653350830078,
+      "error": null
+    },
+    "assert valid_date(\"1^!?3+\") == False": {
+      "result": true,
+      "time": 0.18197417259216309,
+      "error": null
+    },
+    "assert valid_date(\"76434488\") == False": {
+      "result": true,
+      "time": 0.26874327659606934,
+      "error": null
+    },
+    "assert valid_date(\"11-36-6667\") == False": {
+      "result": true,
+      "time": 0.23363232612609863,
+      "error": null
+    },
+    "assert valid_date(\"#?71-/#9:%91%77\") == False": {
+      "result": true,
+      "time": 0.1741015911102295,
+      "error": null
+    },
+    "assert valid_date(\"04-17-4753\") == True": {
+      "result": true,
+      "time": 0.3010571002960205,
+      "error": null
+    },
+    "assert valid_date(\"36924\") == False": {
+      "result": true,
+      "time": 0.19727182388305664,
+      "error": null
+    },
+    "assert valid_date(\"467279042980\") == False": {
+      "result": true,
+      "time": 0.20189166069030762,
+      "error": null
+    },
+    "assert valid_date(\"02-14-8921\") == True": {
+      "result": true,
+      "time": 0.23350214958190918,
+      "error": null
+    },
+    "assert valid_date(\"$~@6$~\") == False": {
+      "result": true,
+      "time": 0.286177396774292,
+      "error": null
+    },
+    "assert valid_date(\"2/$7:471/!0#\") == False": {
+      "result": true,
+      "time": 0.15339398384094238,
+      "error": null
+    },
+    "assert valid_date(\"_&4=$#1-*7*8/_\") == False": {
+      "result": true,
+      "time": 0.1800706386566162,
+      "error": null
+    },
+    "assert valid_date(\"62@*%34#2\") == False": {
+      "result": true,
+      "time": 0.28696393966674805,
+      "error": null
+    },
+    "assert valid_date(\"!?%!29&4-20-=\") == False": {
+      "result": true,
+      "time": 0.22183728218078613,
+      "error": null
+    },
+    "assert valid_date(\"2118829671\") == False": {
+      "result": true,
+      "time": 0.21240520477294922,
+      "error": null
+    },
+    "assert valid_date(\"09-40-5143\") == False": {
+      "result": true,
+      "time": 0.2888309955596924,
+      "error": null
+    },
+    "assert valid_date(\"/4__8#01+\") == False": {
+      "result": true,
+      "time": 0.11731386184692383,
+      "error": null
+    },
+    "assert valid_date(\"^-47?6_=%\") == False": {
+      "result": true,
+      "time": 0.17555928230285645,
+      "error": null
+    },
+    "assert valid_date(\"?74^~@9/39\") == False": {
+      "result": true,
+      "time": 0.29019927978515625,
+      "error": null
+    },
+    "assert valid_date(\"_9=+@_-+\") == False": {
+      "result": true,
+      "time": 0.2157447338104248,
+      "error": null
+    },
+    "assert valid_date(\"+04&%2\") == False": {
+      "result": true,
+      "time": 0.30233025550842285,
+      "error": null
+    },
+    "assert valid_date('03-11-2000') == True": {
+      "result": true,
+      "time": 0.2663435935974121,
+      "error": null
+    },
+    "assert valid_date(\"/26~%9$\") == False": {
+      "result": true,
+      "time": 0.19157981872558594,
+      "error": null
+    },
+    "assert valid_date(\"aby\") == False": {
+      "result": true,
+      "time": 0.1673414707183838,
+      "error": null
+    },
+    "assert valid_date(\"_-2%%=$+\") == False": {
+      "result": true,
+      "time": 0.30693769454956055,
+      "error": null
+    },
+    "assert valid_date(\"xm\") == False": {
+      "result": true,
+      "time": 0.16026902198791504,
+      "error": null
+    },
+    "assert valid_date(\"622654210301\") == False": {
+      "result": true,
+      "time": 0.23066449165344238,
+      "error": null
+    },
+    "assert valid_date('06-06-2005') == True": {
+      "result": true,
+      "time": 0.26882195472717285,
+      "error": null
+    },
+    "assert valid_date(\"05-26-7803\") == True": {
+      "result": true,
+      "time": 0.19425010681152344,
+      "error": null
+    },
+    "assert valid_date('2003-04-12') == False": {
+      "result": true,
+      "time": 0.3023226261138916,
+      "error": null
+    },
+    "assert valid_date(\"||&!%6%2_$&_9\") == False": {
+      "result": true,
+      "time": 0.26011109352111816,
+      "error": null
+    },
+    "assert valid_date('20030412') == False": {
+      "result": true,
+      "time": 0.24868154525756836,
+      "error": null
+    },
+    "assert valid_date(\"04582\") == False": {
+      "result": true,
+      "time": 0.13779115676879883,
+      "error": null
+    },
+    "assert valid_date(\"1~@\") == False": {
+      "result": true,
+      "time": 0.19147157669067383,
+      "error": null
+    },
+    "assert valid_date(\"00-34-5915\") == False": {
+      "result": true,
+      "time": 0.1709737777709961,
+      "error": null
+    },
+    "assert valid_date(\"596063116\") == False": {
+      "result": true,
+      "time": 0.15421485900878906,
+      "error": null
+    },
+    "assert valid_date(\"09-26-6048\") == True": {
+      "result": true,
+      "time": 0.22871613502502441,
+      "error": null
+    },
+    "assert valid_date('04-0-2040') == False": {
+      "result": true,
+      "time": 0.15431499481201172,
+      "error": null
+    },
+    "assert valid_date(\"?_2~634-6\") == False": {
+      "result": true,
+      "time": 0.24311280250549316,
+      "error": null
+    },
+    "assert valid_date(\"^1*!^?\") == False": {
+      "result": true,
+      "time": 0.16659975051879883,
+      "error": null
+    },
+    "assert valid_date(\"1&!56&!?:08%^+8\") == False": {
+      "result": true,
+      "time": 0.26833343505859375,
+      "error": null
+    },
+    "assert valid_date(\"06-38-5638\") == False": {
+      "result": true,
+      "time": 0.28155016899108887,
+      "error": null
+    },
+    "assert valid_date(\":90:^=!*:+8+?\") == False": {
+      "result": true,
+      "time": 0.26314592361450195,
+      "error": null
+    },
+    "assert valid_date('04122003') == False": {
+      "result": true,
+      "time": 0.2593517303466797,
+      "error": null
+    },
+    "assert valid_date(\"^/?$25\") == False": {
+      "result": true,
+      "time": 0.2376415729522705,
+      "error": null
+    },
+    "assert valid_date(\"10-4-1092\") == True": {
+      "result": false,
+      "time": 0.19202136993408203,
+      "error": null
+    },
+    "assert valid_date(\"3!8:99443^:94\") == False": {
+      "result": true,
+      "time": 0.28055906295776367,
+      "error": null
+    },
+    "assert valid_date(\"19-24-2294\") == False": {
+      "result": true,
+      "time": 0.17189836502075195,
+      "error": null
+    },
+    "assert valid_date(\"713472149\") == False": {
+      "result": true,
+      "time": 0.22522926330566406,
+      "error": null
+    },
+    "assert valid_date(\":8?@243|\") == False": {
+      "result": true,
+      "time": 0.11672687530517578,
+      "error": null
+    },
+    "assert valid_date(\"12-14-575\") == True": {
+      "result": false,
+      "time": 0.2986741065979004,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.951048951048951,
+  "general_error": "",
+  "has_testcase_error": false
+}

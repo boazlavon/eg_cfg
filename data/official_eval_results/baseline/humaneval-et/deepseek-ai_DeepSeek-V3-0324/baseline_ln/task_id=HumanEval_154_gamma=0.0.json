@@ -1,0 +1,639 @@
+{
+  "code": "def cycpattern_check(a, b):\n    if len(b) == 0:\n        return True\n    double_b = b + b\n    for i in range(len(b)):\n        rotated = double_b[i:i+len(b)]\n        if rotated in a:\n            return True\n    return False",
+  "results": {
+    "assert cycpattern_check('miuckhm', 'u') == True": {
+      "result": true,
+      "time": 0.03066873550415039,
+      "error": null
+    },
+    "assert cycpattern_check('mswt', '') == True": {
+      "result": true,
+      "time": 0.027495622634887695,
+      "error": null
+    },
+    "assert cycpattern_check('dzuakxphc', 'eiyxoi') == False": {
+      "result": true,
+      "time": 0.028533935546875,
+      "error": null
+    },
+    "assert cycpattern_check(\"whattup\",\"ptut\") == False , \"test #2\"": {
+      "result": true,
+      "time": 0.03200721740722656,
+      "error": null
+    },
+    "assert cycpattern_check('qoeigpgbv', 'vqoeigpg') == False": {
+      "result": true,
+      "time": 0.03395843505859375,
+      "error": null
+    },
+    "assert cycpattern_check('olu', 'ljhv') == False": {
+      "result": true,
+      "time": 0.0303652286529541,
+      "error": null
+    },
+    "assert cycpattern_check('fhlkdjjv', 'h') == True": {
+      "result": true,
+      "time": 0.028769731521606445,
+      "error": null
+    },
+    "assert cycpattern_check(\"winemtt\",\"tinem\") == True , \"test #5\"": {
+      "result": true,
+      "time": 0.03086709976196289,
+      "error": null
+    },
+    "assert cycpattern_check('pvyhk', '') == True": {
+      "result": true,
+      "time": 0.03091740608215332,
+      "error": null
+    },
+    "assert cycpattern_check('cdotyg', 'pkztdszbv') == False": {
+      "result": true,
+      "time": 0.02839803695678711,
+      "error": null
+    },
+    "assert cycpattern_check('apj', '') == True": {
+      "result": true,
+      "time": 0.032607316970825195,
+      "error": null
+    },
+    "assert cycpattern_check('nsjbhmah', 'ips') == False": {
+      "result": true,
+      "time": 0.03165459632873535,
+      "error": null
+    },
+    "assert cycpattern_check('ejdlz', 'hvzlpk') == False": {
+      "result": true,
+      "time": 0.027605533599853516,
+      "error": null
+    },
+    "assert cycpattern_check('clfjew', '') == True": {
+      "result": true,
+      "time": 0.025663137435913086,
+      "error": null
+    },
+    "assert cycpattern_check('zdpjz', 'chk') == False": {
+      "result": true,
+      "time": 0.031606435775756836,
+      "error": null
+    },
+    "assert cycpattern_check('odh', 'lnkdlkzf') == False": {
+      "result": true,
+      "time": 0.0325007438659668,
+      "error": null
+    },
+    "assert cycpattern_check('speh', '') == True": {
+      "result": true,
+      "time": 0.03009819984436035,
+      "error": null
+    },
+    "assert cycpattern_check('hvi', 'sncya') == False": {
+      "result": true,
+      "time": 0.03106403350830078,
+      "error": null
+    },
+    "assert cycpattern_check('thxmdw', 'md') == True": {
+      "result": true,
+      "time": 0.03414654731750488,
+      "error": null
+    },
+    "assert cycpattern_check('vkpfjsrdj', 'mvbxs') == False": {
+      "result": true,
+      "time": 0.03043079376220703,
+      "error": null
+    },
+    "assert cycpattern_check('qvotaf', 'dbtwlrpc') == False": {
+      "result": true,
+      "time": 0.025752782821655273,
+      "error": null
+    },
+    "assert cycpattern_check('gdanqtehkman', 'd') == True": {
+      "result": true,
+      "time": 0.0280301570892334,
+      "error": null
+    },
+    "assert cycpattern_check('gska', 'dzfx') == False": {
+      "result": true,
+      "time": 0.025191068649291992,
+      "error": null
+    },
+    "assert cycpattern_check('iyeftdjiot', 'vjykf') == False": {
+      "result": true,
+      "time": 0.029948711395263672,
+      "error": null
+    },
+    "assert cycpattern_check('yvgtp', 'rnr') == False": {
+      "result": true,
+      "time": 0.03204703330993652,
+      "error": null
+    },
+    "assert cycpattern_check('xbzjr', 'usoqjpxf') == False": {
+      "result": true,
+      "time": 0.027980566024780273,
+      "error": null
+    },
+    "assert cycpattern_check('wwp', '') == True": {
+      "result": true,
+      "time": 0.030502796173095703,
+      "error": null
+    },
+    "assert cycpattern_check('zrrswz', 'wz') == True": {
+      "result": true,
+      "time": 0.02937936782836914,
+      "error": null
+    },
+    "assert cycpattern_check(\"yello\",\"ell\") == True , \"test #1\"": {
+      "result": true,
+      "time": 0.03242897987365723,
+      "error": null
+    },
+    "assert cycpattern_check('banrgdcy', 'srtpzyeje') == False": {
+      "result": true,
+      "time": 0.029507160186767578,
+      "error": null
+    },
+    "assert cycpattern_check('ikefkmoa', 'ulbtr') == False": {
+      "result": true,
+      "time": 0.027367353439331055,
+      "error": null
+    },
+    "assert cycpattern_check('ohfsdcdrb', 'dssy') == False": {
+      "result": true,
+      "time": 0.028985023498535156,
+      "error": null
+    },
+    "assert cycpattern_check('kijxeiefll', 'onty') == False": {
+      "result": true,
+      "time": 0.030533313751220703,
+      "error": null
+    },
+    "assert cycpattern_check('xnlzyfvkj', 'y') == True": {
+      "result": true,
+      "time": 0.02919459342956543,
+      "error": null
+    },
+    "assert cycpattern_check('mtpimss', 'zgbybzmjx') == False": {
+      "result": true,
+      "time": 0.03001856803894043,
+      "error": null
+    },
+    "assert cycpattern_check('popi', 'grftit') == False": {
+      "result": true,
+      "time": 0.032311201095581055,
+      "error": null
+    },
+    "assert cycpattern_check('stpdotkrn', 'myyi') == False": {
+      "result": true,
+      "time": 0.02760481834411621,
+      "error": null
+    },
+    "assert cycpattern_check('lwyzj', 'j') == True": {
+      "result": true,
+      "time": 0.02901625633239746,
+      "error": null
+    },
+    "assert cycpattern_check('bysxmw', 'hjgoq') == False": {
+      "result": true,
+      "time": 0.03211855888366699,
+      "error": null
+    },
+    "assert cycpattern_check('ixddsxgkk', 'lyjkdi') == False": {
+      "result": true,
+      "time": 0.03386092185974121,
+      "error": null
+    },
+    "assert cycpattern_check('degqdvtpv', 'cpty') == False": {
+      "result": true,
+      "time": 0.02903008460998535,
+      "error": null
+    },
+    "assert cycpattern_check('ysypr', 'y') == True": {
+      "result": true,
+      "time": 0.028476715087890625,
+      "error": null
+    },
+    "assert cycpattern_check('fhhtufjm', 'h') == True": {
+      "result": true,
+      "time": 0.030871152877807617,
+      "error": null
+    },
+    "assert cycpattern_check('swfzkdt', 'wbfwmysg') == False": {
+      "result": true,
+      "time": 0.0294034481048584,
+      "error": null
+    },
+    "assert cycpattern_check('mkhwrdq', 'dqmk') == False": {
+      "result": true,
+      "time": 0.02836751937866211,
+      "error": null
+    },
+    "assert cycpattern_check('aeblifuvq', 'fu') == True": {
+      "result": true,
+      "time": 0.024103879928588867,
+      "error": null
+    },
+    "assert cycpattern_check('kwjq', '') == True": {
+      "result": true,
+      "time": 0.028411149978637695,
+      "error": null
+    },
+    "assert cycpattern_check('pzfltnmdv', 'z') == True": {
+      "result": true,
+      "time": 0.026320695877075195,
+      "error": null
+    },
+    "assert cycpattern_check('ldqy', '') == True": {
+      "result": true,
+      "time": 0.02936577796936035,
+      "error": null
+    },
+    "assert cycpattern_check('fscep', 'smzflog') == False": {
+      "result": true,
+      "time": 0.02870655059814453,
+      "error": null
+    },
+    "assert cycpattern_check('pkevxvtko', 'opkevxv') == False": {
+      "result": true,
+      "time": 0.028026342391967773,
+      "error": null
+    },
+    "assert cycpattern_check('gocosorphe', 'o') == True": {
+      "result": true,
+      "time": 0.02967381477355957,
+      "error": null
+    },
+    "assert cycpattern_check('yjciwqpa', 'p') == True": {
+      "result": true,
+      "time": 0.028646469116210938,
+      "error": null
+    },
+    "assert cycpattern_check('qsbestm', 'mqsb') == False": {
+      "result": true,
+      "time": 0.03298187255859375,
+      "error": null
+    },
+    "assert cycpattern_check('airx', 'zvzguuim') == False": {
+      "result": true,
+      "time": 0.026957035064697266,
+      "error": null
+    },
+    "assert cycpattern_check('sptocbu', 't') == True": {
+      "result": true,
+      "time": 0.03139090538024902,
+      "error": null
+    },
+    "assert cycpattern_check('gnqqedypxcvm', 'dsmymg') == False": {
+      "result": true,
+      "time": 0.03136873245239258,
+      "error": null
+    },
+    "assert cycpattern_check('olqdcyhcfskz', 'vtzeosybd') == False": {
+      "result": true,
+      "time": 0.026631593704223633,
+      "error": null
+    },
+    "assert cycpattern_check('ijpfr', '') == True": {
+      "result": true,
+      "time": 0.027811527252197266,
+      "error": null
+    },
+    "assert cycpattern_check('otet', 'fxq') == False": {
+      "result": true,
+      "time": 0.028425931930541992,
+      "error": null
+    },
+    "assert cycpattern_check('uhj', 'kiis') == False": {
+      "result": true,
+      "time": 0.029670000076293945,
+      "error": null
+    },
+    "assert cycpattern_check('mmokbj', 'k') == True": {
+      "result": true,
+      "time": 0.03157305717468262,
+      "error": null
+    },
+    "assert cycpattern_check('qvaf', 'a') == True": {
+      "result": true,
+      "time": 0.029145002365112305,
+      "error": null
+    },
+    "assert cycpattern_check('ivlocszsv', 'zsviv') == False": {
+      "result": true,
+      "time": 0.026889801025390625,
+      "error": null
+    },
+    "assert cycpattern_check('bvs', 'gpn') == False": {
+      "result": true,
+      "time": 0.03066873550415039,
+      "error": null
+    },
+    "assert cycpattern_check('kuaqmgei', 'pmbnsjxf') == False": {
+      "result": true,
+      "time": 0.029606342315673828,
+      "error": null
+    },
+    "assert cycpattern_check('rzfgprhc', 'ovw') == False": {
+      "result": true,
+      "time": 0.029262542724609375,
+      "error": null
+    },
+    "assert cycpattern_check('cwemasn', 'hmbqd') == False": {
+      "result": true,
+      "time": 0.03226327896118164,
+      "error": null
+    },
+    "assert cycpattern_check('xuodej', 'pzd') == False": {
+      "result": true,
+      "time": 0.03000354766845703,
+      "error": null
+    },
+    "assert cycpattern_check('hqa', '') == True": {
+      "result": true,
+      "time": 0.030170202255249023,
+      "error": null
+    },
+    "assert cycpattern_check('lmokmz', '') == True": {
+      "result": true,
+      "time": 0.0321192741394043,
+      "error": null
+    },
+    "assert cycpattern_check('xkr', 'zxrospj') == False": {
+      "result": true,
+      "time": 0.03121185302734375,
+      "error": null
+    },
+    "assert cycpattern_check(\"abab\",\"aabb\") == False , \"test #4\"": {
+      "result": true,
+      "time": 0.029074907302856445,
+      "error": null
+    },
+    "assert cycpattern_check('hzim', '') == True": {
+      "result": true,
+      "time": 0.028007030487060547,
+      "error": null
+    },
+    "assert cycpattern_check('hdd', 'iwarxbpv') == False": {
+      "result": true,
+      "time": 0.02702951431274414,
+      "error": null
+    },
+    "assert cycpattern_check('pjyhnno', 'acy') == False": {
+      "result": true,
+      "time": 0.03484201431274414,
+      "error": null
+    },
+    "assert cycpattern_check('yemkrxrol', 'ujsgzrpoz') == False": {
+      "result": true,
+      "time": 0.029306888580322266,
+      "error": null
+    },
+    "assert cycpattern_check('xrvifoo', 'iskxmwpcj') == False": {
+      "result": true,
+      "time": 0.025934934616088867,
+      "error": null
+    },
+    "assert cycpattern_check('qctnlrz', 'rzq') == False": {
+      "result": true,
+      "time": 0.024372339248657227,
+      "error": null
+    },
+    "assert cycpattern_check('kjs', '') == True": {
+      "result": true,
+      "time": 0.028762340545654297,
+      "error": null
+    },
+    "assert cycpattern_check('dtdpcmym', '') == True": {
+      "result": true,
+      "time": 0.028686046600341797,
+      "error": null
+    },
+    "assert cycpattern_check('bpmycgia', 'giab') == False": {
+      "result": true,
+      "time": 0.028131723403930664,
+      "error": null
+    },
+    "assert cycpattern_check('kfzvwjgla', 'w') == True": {
+      "result": true,
+      "time": 0.03101205825805664,
+      "error": null
+    },
+    "assert cycpattern_check('daa', 'nbsmd') == False": {
+      "result": true,
+      "time": 0.03288102149963379,
+      "error": null
+    },
+    "assert cycpattern_check('xiqrez', 'mxo') == False": {
+      "result": true,
+      "time": 0.030246257781982422,
+      "error": null
+    },
+    "assert cycpattern_check('mhuedkr', 'azukwsx') == False": {
+      "result": true,
+      "time": 0.03187870979309082,
+      "error": null
+    },
+    "assert cycpattern_check('qnhfrfy', 'opispht') == False": {
+      "result": true,
+      "time": 0.0320286750793457,
+      "error": null
+    },
+    "assert cycpattern_check('dirav', 'xje') == False": {
+      "result": true,
+      "time": 0.03036355972290039,
+      "error": null
+    },
+    "assert cycpattern_check('etmojix', 'ix') == True": {
+      "result": true,
+      "time": 0.026426076889038086,
+      "error": null
+    },
+    "assert cycpattern_check(\"xyzw\",\"xyw\") == False , \"test #0\"": {
+      "result": true,
+      "time": 0.028580427169799805,
+      "error": null
+    },
+    "assert cycpattern_check('utdeggjmwq', 'kuohw') == False": {
+      "result": true,
+      "time": 0.032416582107543945,
+      "error": null
+    },
+    "assert cycpattern_check('mvylvzy', 'fbaz') == False": {
+      "result": true,
+      "time": 0.03229689598083496,
+      "error": null
+    },
+    "assert cycpattern_check('ipq', '') == True": {
+      "result": true,
+      "time": 0.030719280242919922,
+      "error": null
+    },
+    "assert cycpattern_check('nyasoi', 'y') == True": {
+      "result": true,
+      "time": 0.03078174591064453,
+      "error": null
+    },
+    "assert cycpattern_check('lojuycqdt', 'bthnnlt') == False": {
+      "result": true,
+      "time": 0.028637170791625977,
+      "error": null
+    },
+    "assert cycpattern_check(\"efef\",\"fee\") == True , \"test #3\"": {
+      "result": true,
+      "time": 0.029447555541992188,
+      "error": null
+    },
+    "assert cycpattern_check('hntzyxm', 'xm') == True": {
+      "result": true,
+      "time": 0.02980828285217285,
+      "error": null
+    },
+    "assert cycpattern_check('efjyv', '') == True": {
+      "result": true,
+      "time": 0.02978825569152832,
+      "error": null
+    },
+    "assert cycpattern_check('wouvr', 'srxkwhxp') == False": {
+      "result": true,
+      "time": 0.02904677391052246,
+      "error": null
+    },
+    "assert cycpattern_check('msqtf', '') == True": {
+      "result": true,
+      "time": 0.02929377555847168,
+      "error": null
+    },
+    "assert cycpattern_check('uihevce', 'i') == True": {
+      "result": true,
+      "time": 0.03127455711364746,
+      "error": null
+    },
+    "assert cycpattern_check('uwj', '') == True": {
+      "result": true,
+      "time": 0.025728940963745117,
+      "error": null
+    },
+    "assert cycpattern_check('wpspuoxzlfg', 'zskxv') == False": {
+      "result": true,
+      "time": 0.02857375144958496,
+      "error": null
+    },
+    "assert cycpattern_check('eerbgryz', 'xuwnkt') == False": {
+      "result": true,
+      "time": 0.03081345558166504,
+      "error": null
+    },
+    "assert cycpattern_check('cbiofnpxp', 'npxp') == True": {
+      "result": true,
+      "time": 0.03157472610473633,
+      "error": null
+    },
+    "assert cycpattern_check('ffqbsib', 'xizzfg') == False": {
+      "result": true,
+      "time": 0.02786111831665039,
+      "error": null
+    },
+    "assert cycpattern_check('gkrplyo', 'yo') == True": {
+      "result": true,
+      "time": 0.02844095230102539,
+      "error": null
+    },
+    "assert cycpattern_check('rrvih', 'awwjuad') == False": {
+      "result": true,
+      "time": 0.03295254707336426,
+      "error": null
+    },
+    "assert cycpattern_check('ztfkiw', 'olmfon') == False": {
+      "result": true,
+      "time": 0.028435468673706055,
+      "error": null
+    },
+    "assert cycpattern_check('owmnkolrb', 'mzpi') == False": {
+      "result": true,
+      "time": 0.029430150985717773,
+      "error": null
+    },
+    "assert cycpattern_check('bbhdgzok', '') == True": {
+      "result": true,
+      "time": 0.031057357788085938,
+      "error": null
+    },
+    "assert cycpattern_check('wlmereo', 'eo') == True": {
+      "result": true,
+      "time": 0.03133344650268555,
+      "error": null
+    },
+    "assert cycpattern_check('gcsuapog', 'a') == True": {
+      "result": true,
+      "time": 0.034451961517333984,
+      "error": null
+    },
+    "assert cycpattern_check('joptnm', 'nm') == True": {
+      "result": true,
+      "time": 0.0273129940032959,
+      "error": null
+    },
+    "assert cycpattern_check('kwxztfkco', 'okwxztf') == False": {
+      "result": true,
+      "time": 0.031925201416015625,
+      "error": null
+    },
+    "assert cycpattern_check('smbhw', '') == True": {
+      "result": true,
+      "time": 0.03140854835510254,
+      "error": null
+    },
+    "assert cycpattern_check('bysv', 's') == True": {
+      "result": true,
+      "time": 0.02703404426574707,
+      "error": null
+    },
+    "assert cycpattern_check('dzsrlkkv', 'xpcf') == False": {
+      "result": true,
+      "time": 0.02778911590576172,
+      "error": null
+    },
+    "assert cycpattern_check('ckpg', '') == True": {
+      "result": true,
+      "time": 0.028084516525268555,
+      "error": null
+    },
+    "assert cycpattern_check('dmln', 'tvglh') == False": {
+      "result": true,
+      "time": 0.030918598175048828,
+      "error": null
+    },
+    "assert cycpattern_check('swqoexhsby', '') == True": {
+      "result": true,
+      "time": 0.028239011764526367,
+      "error": null
+    },
+    "assert cycpattern_check('pbjzx', 'imhhhann') == False": {
+      "result": true,
+      "time": 0.03023052215576172,
+      "error": null
+    },
+    "assert cycpattern_check('thovadcj', 'vad') == True": {
+      "result": true,
+      "time": 0.030144453048706055,
+      "error": null
+    },
+    "assert cycpattern_check('avyont', '') == True": {
+      "result": true,
+      "time": 0.032480716705322266,
+      "error": null
+    },
+    "assert cycpattern_check('ywtsaspv', 'spvy') == False": {
+      "result": true,
+      "time": 0.029710054397583008,
+      "error": null
+    },
+    "assert cycpattern_check('nvtcb', 'wpcw') == False": {
+      "result": true,
+      "time": 0.029495716094970703,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

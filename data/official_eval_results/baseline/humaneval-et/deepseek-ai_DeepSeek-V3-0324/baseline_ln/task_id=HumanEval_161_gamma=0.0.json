@@ -1,0 +1,649 @@
+{
+  "code": "def solve(s):\n    has_letters = any(c.isalpha() for c in s)\n    if not has_letters:\n        return s[::-1]\n    result = []\n    for char in s:\n        if char.isalpha():\n            if char.islower():\n                result.append(char.upper())\n            else:\n                result.append(char.lower())\n        else:\n            result.append(char)\n    return ''.join(result)",
+  "results": {
+    "assert solve(\"#ryv@$l*\") == '#RYV@$L*'": {
+      "result": true,
+      "time": 0.031546592712402344,
+      "error": null
+    },
+    "assert solve(\"BjdhsNs\") == 'bJDHSnS'": {
+      "result": true,
+      "time": 0.03133988380432129,
+      "error": null
+    },
+    "assert solve(\"$883%3/\") == '/3%388$'": {
+      "result": true,
+      "time": 0.03424382209777832,
+      "error": null
+    },
+    "assert solve(\"QnNQfv\") == 'qNnqFV'": {
+      "result": true,
+      "time": 0.0327908992767334,
+      "error": null
+    },
+    "assert solve(\"o3LWaIl4\") == 'O3lwAiL4'": {
+      "result": true,
+      "time": 0.032132625579833984,
+      "error": null
+    },
+    "assert solve(\"zt*#m&v\") == 'ZT*#M&V'": {
+      "result": true,
+      "time": 0.031677961349487305,
+      "error": null
+    },
+    "assert solve(\"wDgT\") == 'WdGt'": {
+      "result": true,
+      "time": 0.03565812110900879,
+      "error": null
+    },
+    "assert solve(\"ab\") == \"AB\"": {
+      "result": true,
+      "time": 0.035169124603271484,
+      "error": null
+    },
+    "assert solve(\"=E!NyLi\") == '=e!nYlI'": {
+      "result": true,
+      "time": 0.033028602600097656,
+      "error": null
+    },
+    "assert solve(\"jZVuQ\") == 'JzvUq'": {
+      "result": true,
+      "time": 0.032616615295410156,
+      "error": null
+    },
+    "assert solve(\"UKg@xpM~G\") == 'ukG@XPm~g'": {
+      "result": true,
+      "time": 0.03179740905761719,
+      "error": null
+    },
+    "assert solve(\"%cCcq#\") == '%CcCQ#'": {
+      "result": true,
+      "time": 0.03432774543762207,
+      "error": null
+    },
+    "assert solve(\"++A^/?xV\") == '++a^/?Xv'": {
+      "result": true,
+      "time": 0.03438115119934082,
+      "error": null
+    },
+    "assert solve(\"7_%\") == '%_7'": {
+      "result": true,
+      "time": 0.03222966194152832,
+      "error": null
+    },
+    "assert solve(\"qon\") == 'QON'": {
+      "result": true,
+      "time": 0.0312652587890625,
+      "error": null
+    },
+    "assert solve(\"giiqdy\") == 'GIIQDY'": {
+      "result": true,
+      "time": 0.031402587890625,
+      "error": null
+    },
+    "assert solve(\"~@8%\") == '%8@~'": {
+      "result": true,
+      "time": 0.02819657325744629,
+      "error": null
+    },
+    "assert solve(\"^@B\") == '^@b'": {
+      "result": true,
+      "time": 0.02931499481201172,
+      "error": null
+    },
+    "assert solve(\"?UGciW\") == '?ugCIw'": {
+      "result": true,
+      "time": 0.038123369216918945,
+      "error": null
+    },
+    "assert solve(\"17000556\") == '65500071'": {
+      "result": true,
+      "time": 0.03141021728515625,
+      "error": null
+    },
+    "assert solve(\"nfl*&=+$@\") == 'NFL*&=+$@'": {
+      "result": true,
+      "time": 0.03190207481384277,
+      "error": null
+    },
+    "assert solve(\"wSdcA\") == 'WsDCa'": {
+      "result": true,
+      "time": 0.028582096099853516,
+      "error": null
+    },
+    "assert solve(\"luG9*?%\") == 'LUg9*?%'": {
+      "result": true,
+      "time": 0.034227848052978516,
+      "error": null
+    },
+    "assert solve(\"5$0!@\") == '@!0$5'": {
+      "result": true,
+      "time": 0.033658504486083984,
+      "error": null
+    },
+    "assert solve(\"sxFaMa\") == 'SXfAmA'": {
+      "result": true,
+      "time": 0.0278322696685791,
+      "error": null
+    },
+    "assert solve(\"?ao\") == '?AO'": {
+      "result": true,
+      "time": 0.03402447700500488,
+      "error": null
+    },
+    "assert solve(\"k&!_\") == 'K&!_'": {
+      "result": true,
+      "time": 0.03139543533325195,
+      "error": null
+    },
+    "assert solve(\"-|MSfK\") == '-|msFk'": {
+      "result": true,
+      "time": 0.032282114028930664,
+      "error": null
+    },
+    "assert solve(\"5%@\") == '@%5'": {
+      "result": true,
+      "time": 0.03417181968688965,
+      "error": null
+    },
+    "assert solve(\"=epet*orq\") == '=EPET*ORQ'": {
+      "result": true,
+      "time": 0.0326390266418457,
+      "error": null
+    },
+    "assert solve(\"^dHUM-y\") == '^Dhum-Y'": {
+      "result": true,
+      "time": 0.035330772399902344,
+      "error": null
+    },
+    "assert solve(\"npKwSAD\") == 'NPkWsad'": {
+      "result": true,
+      "time": 0.034332275390625,
+      "error": null
+    },
+    "assert solve(\"55=9/9\") == '9/9=55'": {
+      "result": true,
+      "time": 0.029376983642578125,
+      "error": null
+    },
+    "assert solve(\"#ccc\") == \"#CCC\"\n\n    # Don't remove this line:": {
+      "result": true,
+      "time": 0.030690908432006836,
+      "error": null
+    },
+    "assert solve(\"*^JOyeSI\") == '*^joYEsi'": {
+      "result": true,
+      "time": 0.032471418380737305,
+      "error": null
+    },
+    "assert solve(\"yzzdc\") == 'YZZDC'": {
+      "result": true,
+      "time": 0.02908611297607422,
+      "error": null
+    },
+    "assert solve(\"i!X&/T\") == 'I!x&/t'": {
+      "result": true,
+      "time": 0.03865981101989746,
+      "error": null
+    },
+    "assert solve(\"mlB-*F\") == 'MLb-*f'": {
+      "result": true,
+      "time": 0.030912160873413086,
+      "error": null
+    },
+    "assert solve(\"856\") == '658'": {
+      "result": true,
+      "time": 0.029478788375854492,
+      "error": null
+    },
+    "assert solve(\"ifafP-OoTK%\") == 'IFAFp-oOtk%'": {
+      "result": true,
+      "time": 0.030907869338989258,
+      "error": null
+    },
+    "assert solve(\"Xug\") == 'xUG'": {
+      "result": true,
+      "time": 0.03144574165344238,
+      "error": null
+    },
+    "assert solve(\"~2~@0\") == '0@~2~'": {
+      "result": true,
+      "time": 0.03198671340942383,
+      "error": null
+    },
+    "assert solve(\"UMm:m\") == 'umM:M'": {
+      "result": true,
+      "time": 0.03191232681274414,
+      "error": null
+    },
+    "assert solve(\"6812832\") == '2382186'": {
+      "result": true,
+      "time": 0.03180527687072754,
+      "error": null
+    },
+    "assert solve(\"QDF:CXB\") == 'qdf:cxb'": {
+      "result": true,
+      "time": 0.029923677444458008,
+      "error": null
+    },
+    "assert solve(\"5-=@&*\") == '*&@=-5'": {
+      "result": true,
+      "time": 0.035033226013183594,
+      "error": null
+    },
+    "assert solve(\"761~^_%~4\") == '4~%_^~167'": {
+      "result": true,
+      "time": 0.03800487518310547,
+      "error": null
+    },
+    "assert solve(\"#$a^D\") == \"#$A^d\"": {
+      "result": true,
+      "time": 0.0315852165222168,
+      "error": null
+    },
+    "assert solve(\"4hzTAP_e\") == '4HZtap_E'": {
+      "result": true,
+      "time": 0.030012130737304688,
+      "error": null
+    },
+    "assert solve(\"2058786\") == '6878502'": {
+      "result": true,
+      "time": 0.030545949935913086,
+      "error": null
+    },
+    "assert solve(\"yErHfPuhE\") == 'YeRhFpUHe'": {
+      "result": true,
+      "time": 0.034690141677856445,
+      "error": null
+    },
+    "assert solve(\"*u~\") == '*U~'": {
+      "result": true,
+      "time": 0.032895565032958984,
+      "error": null
+    },
+    "assert solve(\"g*chm\") == 'G*CHM'": {
+      "result": true,
+      "time": 0.02805924415588379,
+      "error": null
+    },
+    "assert solve(\"enxhq\") == 'ENXHQ'": {
+      "result": true,
+      "time": 0.0356295108795166,
+      "error": null
+    },
+    "assert solve(\"ctpx\") == 'CTPX'": {
+      "result": true,
+      "time": 0.032854557037353516,
+      "error": null
+    },
+    "assert solve(\"j$&Wd\") == 'J$&wD'": {
+      "result": true,
+      "time": 0.03248453140258789,
+      "error": null
+    },
+    "assert solve(\"ji$rpiwCJ\") == 'JI$RPIWcj'": {
+      "result": true,
+      "time": 0.030279874801635742,
+      "error": null
+    },
+    "assert solve(\"cjG~zXx\") == 'CJg~ZxX'": {
+      "result": true,
+      "time": 0.033417701721191406,
+      "error": null
+    },
+    "assert solve(\"dgksb\") == 'DGKSB'": {
+      "result": true,
+      "time": 0.030637502670288086,
+      "error": null
+    },
+    "assert solve(\"827_~+=6:\") == ':6=+~_728'": {
+      "result": true,
+      "time": 0.028357505798339844,
+      "error": null
+    },
+    "assert solve(\"vr_d$kBQ\") == 'VR_D$Kbq'": {
+      "result": true,
+      "time": 0.03146982192993164,
+      "error": null
+    },
+    "assert solve(\"389627754\") == '457726983'": {
+      "result": true,
+      "time": 0.03023052215576172,
+      "error": null
+    },
+    "assert solve(\"+:#\") == '#:+'": {
+      "result": true,
+      "time": 0.02952408790588379,
+      "error": null
+    },
+    "assert solve(\"prytYOIw\") == 'PRYTyoiW'": {
+      "result": true,
+      "time": 0.03109002113342285,
+      "error": null
+    },
+    "assert solve(\"+1/05*!?+\") == '+?!*50/1+'": {
+      "result": true,
+      "time": 0.03075861930847168,
+      "error": null
+    },
+    "assert solve(\"$u%lZTsz\") == '$U%LztSZ'": {
+      "result": true,
+      "time": 0.03508901596069336,
+      "error": null
+    },
+    "assert solve(\"qyAKc\") == 'QYakC'": {
+      "result": true,
+      "time": 0.03295564651489258,
+      "error": null
+    },
+    "assert solve(\"/@-\") == '-@/'": {
+      "result": true,
+      "time": 0.03333330154418945,
+      "error": null
+    },
+    "assert solve(\"iiyw\") == 'IIYW'": {
+      "result": true,
+      "time": 0.03515195846557617,
+      "error": null
+    },
+    "assert solve(\"#a@C\") == \"#A@c\"": {
+      "result": true,
+      "time": 0.03245210647583008,
+      "error": null
+    },
+    "assert solve(\"49623838\") == '83832694'": {
+      "result": true,
+      "time": 0.02982473373413086,
+      "error": null
+    },
+    "assert solve(\"u:kx!*\") == 'U:KX!*'": {
+      "result": true,
+      "time": 0.030057430267333984,
+      "error": null
+    },
+    "assert solve(\"gsl\") == 'GSL'": {
+      "result": true,
+      "time": 0.03315997123718262,
+      "error": null
+    },
+    "assert solve(\"jlycko\") == 'JLYCKO'": {
+      "result": true,
+      "time": 0.033873796463012695,
+      "error": null
+    },
+    "assert solve(\"MUSKIE\") == 'muskie'": {
+      "result": true,
+      "time": 0.030951738357543945,
+      "error": null
+    },
+    "assert solve(\":TDr\") == ':tdR'": {
+      "result": true,
+      "time": 0.03207516670227051,
+      "error": null
+    },
+    "assert solve(\"bkd\") == 'BKD'": {
+      "result": true,
+      "time": 0.03352499008178711,
+      "error": null
+    },
+    "assert solve(\"DNOZ2XKDMJZSwC$\") == 'dnoz2xkdmjzsWc$'": {
+      "result": true,
+      "time": 0.03573727607727051,
+      "error": null
+    },
+    "assert solve(\"#6@2\") == \"2@6#\"\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.03254818916320801,
+      "error": null
+    },
+    "assert solve(\"n$tkw\") == 'N$TKW'": {
+      "result": true,
+      "time": 0.031450510025024414,
+      "error": null
+    },
+    "assert solve(\"48954\") == '45984'": {
+      "result": true,
+      "time": 0.029036998748779297,
+      "error": null
+    },
+    "assert solve(\"LlWj5FD\") == 'lLwJ5fd'": {
+      "result": true,
+      "time": 0.02723383903503418,
+      "error": null
+    },
+    "assert solve(\"AsDf\") == \"aSdF\"": {
+      "result": true,
+      "time": 0.02880120277404785,
+      "error": null
+    },
+    "assert solve(\"@!93/5**@\") == '@**5/39!@'": {
+      "result": true,
+      "time": 0.03314924240112305,
+      "error": null
+    },
+    "assert solve(\"VmVDPkI\") == 'vMvdpKi'": {
+      "result": true,
+      "time": 0.03266096115112305,
+      "error": null
+    },
+    "assert solve(\"mOn\") == 'MoN'": {
+      "result": true,
+      "time": 0.0341944694519043,
+      "error": null
+    },
+    "assert solve(\"059646105\") == '501646950'": {
+      "result": true,
+      "time": 0.03205704689025879,
+      "error": null
+    },
+    "assert solve(\"huo^\") == 'HUO^'": {
+      "result": true,
+      "time": 0.034117937088012695,
+      "error": null
+    },
+    "assert solve(\"ghgnw\") == 'GHGNW'": {
+      "result": true,
+      "time": 0.03131413459777832,
+      "error": null
+    },
+    "assert solve(\"gne\") == 'GNE'": {
+      "result": true,
+      "time": 0.0331418514251709,
+      "error": null
+    },
+    "assert solve(\"~~%==41\") == '14==%~~'": {
+      "result": true,
+      "time": 0.03514719009399414,
+      "error": null
+    },
+    "assert solve(\"%_uoz/#?L\") == '%_UOZ/#?l'": {
+      "result": true,
+      "time": 0.029618024826049805,
+      "error": null
+    },
+    "assert solve(\"w@l+zd\") == 'W@L+ZD'": {
+      "result": true,
+      "time": 0.031093120574951172,
+      "error": null
+    },
+    "assert solve(\"1234\") == \"4321\"": {
+      "result": true,
+      "time": 0.030912160873413086,
+      "error": null
+    },
+    "assert solve(\"EsvNrg\") == 'eSVnRG'": {
+      "result": true,
+      "time": 0.03165245056152344,
+      "error": null
+    },
+    "assert solve(\"pstVx\") == 'PSTvX'": {
+      "result": true,
+      "time": 0.0324101448059082,
+      "error": null
+    },
+    "assert solve(\"kLA#y:NC\") == 'Kla#Y:nc'": {
+      "result": true,
+      "time": 0.033168792724609375,
+      "error": null
+    },
+    "assert solve(\"ePOjFeuu\") == 'EpoJfEUU'": {
+      "result": true,
+      "time": 0.03584718704223633,
+      "error": null
+    },
+    "assert solve(\"GPJae+?*a\") == 'gpjAE+?*A'": {
+      "result": true,
+      "time": 0.028391599655151367,
+      "error": null
+    },
+    "assert solve(\"Uc$$xCSQ0cN~\") == 'uC$$Xcsq0Cn~'": {
+      "result": true,
+      "time": 0.03115677833557129,
+      "error": null
+    },
+    "assert solve(\"gtvtsr\") == 'GTVTSR'": {
+      "result": true,
+      "time": 0.029521942138671875,
+      "error": null
+    },
+    "assert solve(\"#AsdfW^45\") == \"#aSDFw^45\"": {
+      "result": true,
+      "time": 0.030830860137939453,
+      "error": null
+    },
+    "assert solve(\"6971168\") == '8611796'": {
+      "result": true,
+      "time": 0.032543182373046875,
+      "error": null
+    },
+    "assert solve(\"??rwE\") == '??RWe'": {
+      "result": true,
+      "time": 0.0351412296295166,
+      "error": null
+    },
+    "assert solve(\"HMYxK\") == 'hmyXk'": {
+      "result": true,
+      "time": 0.03103160858154297,
+      "error": null
+    },
+    "assert solve(\"gcflna\") == 'GCFLNA'": {
+      "result": true,
+      "time": 0.03140687942504883,
+      "error": null
+    },
+    "assert solve(\"~+/#\") == '#/+~'": {
+      "result": true,
+      "time": 0.033683061599731445,
+      "error": null
+    },
+    "assert solve(\"glgh\") == 'GLGH'": {
+      "result": true,
+      "time": 0.028476953506469727,
+      "error": null
+    },
+    "assert solve(\"?gn~\") == '?GN~'": {
+      "result": true,
+      "time": 0.028975725173950195,
+      "error": null
+    },
+    "assert solve(\"73713138\") == '83131737'": {
+      "result": true,
+      "time": 0.03344917297363281,
+      "error": null
+    },
+    "assert solve(\"54138\") == '83145'": {
+      "result": true,
+      "time": 0.02949237823486328,
+      "error": null
+    },
+    "assert solve(\"oGzZO!NOb@Lty\") == 'OgZzo!noB@lTY'": {
+      "result": true,
+      "time": 0.031242847442626953,
+      "error": null
+    },
+    "assert solve(\"Q&LKD*BmV\") == 'q&lkd*bMv'": {
+      "result": true,
+      "time": 0.030379533767700195,
+      "error": null
+    },
+    "assert solve(\"13431299\") == '99213431'": {
+      "result": true,
+      "time": 0.031714677810668945,
+      "error": null
+    },
+    "assert solve(\"~/uc/@p^h\") == '~/UC/@P^H'": {
+      "result": true,
+      "time": 0.0350644588470459,
+      "error": null
+    },
+    "assert solve(\"4kqV&&/6+Lc\") == '4KQv&&/6+lC'": {
+      "result": true,
+      "time": 0.03249859809875488,
+      "error": null
+    },
+    "assert solve(\"fqY\") == 'FQy'": {
+      "result": true,
+      "time": 0.029700040817260742,
+      "error": null
+    },
+    "assert solve(\"|n*e~bx-\") == '|N*E~BX-'": {
+      "result": true,
+      "time": 0.03201413154602051,
+      "error": null
+    },
+    "assert solve(\"Pj+3w:31N!s6\") == 'pJ+3W:31n!S6'": {
+      "result": true,
+      "time": 0.03298020362854004,
+      "error": null
+    },
+    "assert solve(\"++skzZ\") == '++SKZz'": {
+      "result": true,
+      "time": 0.03483176231384277,
+      "error": null
+    },
+    "assert solve(\"%kmlC*s\") == '%KMLc*S'": {
+      "result": true,
+      "time": 0.03624248504638672,
+      "error": null
+    },
+    "assert solve(\"232948\") == '849232'": {
+      "result": true,
+      "time": 0.02864527702331543,
+      "error": null
+    },
+    "assert solve(\"613\") == '316'": {
+      "result": true,
+      "time": 0.027805328369140625,
+      "error": null
+    },
+    "assert solve(\"!tmFhu\") == '!TMfHU'": {
+      "result": true,
+      "time": 0.03227710723876953,
+      "error": null
+    },
+    "assert solve(\"+fDs:f\") == '+FdS:F'": {
+      "result": true,
+      "time": 0.02975940704345703,
+      "error": null
+    },
+    "assert solve(\"XAdrNtUNr\") == 'xaDRnTunR'": {
+      "result": true,
+      "time": 0.027550935745239258,
+      "error": null
+    },
+    "assert solve(\"cqiau\") == 'CQIAU'": {
+      "result": true,
+      "time": 0.0276334285736084,
+      "error": null
+    },
+    "assert solve(\"340988\") == '889043'": {
+      "result": true,
+      "time": 0.033310890197753906,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

@@ -1,0 +1,629 @@
+{
+  "code": "def largest_smallest_integers(lst):\n    negatives = [x for x in lst if x < 0]\n    positives = [x for x in lst if x > 0]\n    a = max(negatives, default=None)\n    b = min(positives, default=None)\n    return (a, b)",
+  "results": {
+    "assert largest_smallest_integers([2, 2, 6, 8, 14, 7, 8, -13]) == (-13, 2)": {
+      "result": true,
+      "time": 0.028117656707763672,
+      "error": null
+    },
+    "assert largest_smallest_integers([-7, -3, 1, 0, 5]) == (-3, 1)": {
+      "result": true,
+      "time": 0.02927112579345703,
+      "error": null
+    },
+    "assert largest_smallest_integers([-2, -4, 0, -5, -103, 1]) == (-2, 1)": {
+      "result": true,
+      "time": 0.029431819915771484,
+      "error": null
+    },
+    "assert largest_smallest_integers([2, 5, 6, 1, 7, 2, -7]) == (-7, 1)": {
+      "result": true,
+      "time": 0.02986621856689453,
+      "error": null
+    },
+    "assert largest_smallest_integers([-3, -5, -4, -11]) == (-3, None)": {
+      "result": true,
+      "time": 0.027529478073120117,
+      "error": null
+    },
+    "assert largest_smallest_integers([2, 9, 5, 3, 9, 4, 2]) == (None, 2)": {
+      "result": true,
+      "time": 0.033818721771240234,
+      "error": null
+    },
+    "assert largest_smallest_integers([3, 1, 4, 6, 3, 6]) == (None, 1)": {
+      "result": true,
+      "time": 0.028478384017944336,
+      "error": null
+    },
+    "assert largest_smallest_integers([-4, -1, -6, -3]) == (-1, None)": {
+      "result": true,
+      "time": 0.028779268264770508,
+      "error": null
+    },
+    "assert largest_smallest_integers([6, 9, 1, 4, 5, 11]) == (None, 1)": {
+      "result": true,
+      "time": 0.029857397079467773,
+      "error": null
+    },
+    "assert largest_smallest_integers([-1, -5, -9, -10]) == (-1, None)": {
+      "result": true,
+      "time": 0.024814367294311523,
+      "error": null
+    },
+    "assert largest_smallest_integers([-1, -7, -3, -3, 4]) == (-1, 4)": {
+      "result": true,
+      "time": 0.03294062614440918,
+      "error": null
+    },
+    "assert largest_smallest_integers([2, 2, -1, -4]) == (-1, 2)": {
+      "result": true,
+      "time": 0.029963970184326172,
+      "error": null
+    },
+    "assert largest_smallest_integers([2, 9, 3, 2, 3, 3]) == (None, 2)": {
+      "result": true,
+      "time": 0.0276186466217041,
+      "error": null
+    },
+    "assert largest_smallest_integers([2]) == (None, 2)": {
+      "result": true,
+      "time": 0.02993297576904297,
+      "error": null
+    },
+    "assert largest_smallest_integers([-3, 0, -2, -1, -102, 6]) == (-1, 6)": {
+      "result": true,
+      "time": 0.031121492385864258,
+      "error": null
+    },
+    "assert largest_smallest_integers([5, 3, 1, 8, 7, 9, 0]) == (None, 1)": {
+      "result": true,
+      "time": 0.03107905387878418,
+      "error": null
+    },
+    "assert largest_smallest_integers([-11, -7, -1, -3, 6]) == (-1, 6)": {
+      "result": true,
+      "time": 0.030347108840942383,
+      "error": null
+    },
+    "assert largest_smallest_integers([5, 3, 6, 9, 4, 7, -5]) == (-5, 3)": {
+      "result": true,
+      "time": 0.02882981300354004,
+      "error": null
+    },
+    "assert largest_smallest_integers([9, 7, 1, 2, 5, 11, -3]) == (-3, 1)": {
+      "result": true,
+      "time": 0.03437328338623047,
+      "error": null
+    },
+    "assert largest_smallest_integers([5]) == (None, 5)": {
+      "result": true,
+      "time": 0.02440190315246582,
+      "error": null
+    },
+    "assert largest_smallest_integers([-2, -7, -4, -3, -102, 6]) == (-2, 6)": {
+      "result": true,
+      "time": 0.029978275299072266,
+      "error": null
+    },
+    "assert largest_smallest_integers([-1, -3, -5, -6, 0]) == (-1, None)": {
+      "result": true,
+      "time": 0.029964923858642578,
+      "error": null
+    },
+    "assert largest_smallest_integers([5, 7, 12, 9, 11, 6, 6, -4]) == (-4, 5)": {
+      "result": true,
+      "time": 0.02551579475402832,
+      "error": null
+    },
+    "assert largest_smallest_integers([-8, -8, -3, -2, 5]) == (-2, 5)": {
+      "result": true,
+      "time": 0.027749300003051758,
+      "error": null
+    },
+    "assert largest_smallest_integers([8, 4, 3, 8, 6, 1, 10, -8]) == (-8, 1)": {
+      "result": true,
+      "time": 0.029233694076538086,
+      "error": null
+    },
+    "assert largest_smallest_integers([5, 5, 3, 3, 3, 4]) == (None, 3)": {
+      "result": true,
+      "time": 0.02858901023864746,
+      "error": null
+    },
+    "assert largest_smallest_integers([4, 5, 6, 5, 8, 7, 1, -9]) == (-9, 1)": {
+      "result": true,
+      "time": 0.027475357055664062,
+      "error": null
+    },
+    "assert largest_smallest_integers([6, 3, 1, 6, 8, 4, 4]) == (None, 1)": {
+      "result": true,
+      "time": 0.03031611442565918,
+      "error": null
+    },
+    "assert largest_smallest_integers([7, 2, 4, 1, 4, 11, -6]) == (-6, 1)": {
+      "result": true,
+      "time": 0.02778935432434082,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, 3, 2, 4, 5, 6, -2]) == (-2, 1)": {
+      "result": true,
+      "time": 0.032137155532836914,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, 3, 5, 4, 1, 10]) == (None, 1)": {
+      "result": true,
+      "time": 0.027559280395507812,
+      "error": null
+    },
+    "assert largest_smallest_integers([11, 6, 7, 3, 6, 6, 5, -14]) == (-14, 3)": {
+      "result": true,
+      "time": 0.025960445404052734,
+      "error": null
+    },
+    "assert largest_smallest_integers([-6, -6, -6, -2, 2]) == (-2, 2)": {
+      "result": true,
+      "time": 0.030405044555664062,
+      "error": null
+    },
+    "assert largest_smallest_integers([8, 2, 3, 11, 6, 5, -11]) == (-11, 2)": {
+      "result": true,
+      "time": 0.028875112533569336,
+      "error": null
+    },
+    "assert largest_smallest_integers([6, 2, 3, 5, 5, 8, -2]) == (-2, 2)": {
+      "result": true,
+      "time": 0.02978658676147461,
+      "error": null
+    },
+    "assert largest_smallest_integers([9, 8, 8, 1, 3, 3, -8]) == (-8, 1)": {
+      "result": true,
+      "time": 0.028849124908447266,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, 7, 1, 5, 3, 12, 2]) == (None, 1)": {
+      "result": true,
+      "time": 0.02782416343688965,
+      "error": null
+    },
+    "assert largest_smallest_integers([2, 4, 1, 3, 5, 7, 0]) == (None, 1)": {
+      "result": true,
+      "time": 0.027747392654418945,
+      "error": null
+    },
+    "assert largest_smallest_integers([4, 9, 1, 5, 5, 9]) == (None, 1)": {
+      "result": true,
+      "time": 0.028267621994018555,
+      "error": null
+    },
+    "assert largest_smallest_integers([-1, -7, -1, 1, -104, 1]) == (-1, 1)": {
+      "result": true,
+      "time": 0.028912782669067383,
+      "error": null
+    },
+    "assert largest_smallest_integers([-6, -1, -10, -11]) == (-1, None)": {
+      "result": true,
+      "time": 0.025842666625976562,
+      "error": null
+    },
+    "assert largest_smallest_integers([6, 1, 2, 3, 6, 2, 3]) == (None, 1)": {
+      "result": true,
+      "time": 0.028463363647460938,
+      "error": null
+    },
+    "assert largest_smallest_integers([0, -8, -7, -8]) == (-7, None)": {
+      "result": true,
+      "time": 0.027694225311279297,
+      "error": null
+    },
+    "assert largest_smallest_integers([4, 2, 5, 5, 9, 5, 2]) == (None, 2)": {
+      "result": true,
+      "time": 0.03278636932373047,
+      "error": null
+    },
+    "assert largest_smallest_integers([-3, -8, -7, 0, 1]) == (-3, 1)": {
+      "result": true,
+      "time": 0.024641036987304688,
+      "error": null
+    },
+    "assert largest_smallest_integers([7, 4, 2, 7, 7, 5, 2]) == (None, 2)": {
+      "result": true,
+      "time": 0.026972532272338867,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, 1, 1, 8, 4, 11]) == (None, 1)": {
+      "result": true,
+      "time": 0.027999162673950195,
+      "error": null
+    },
+    "assert largest_smallest_integers([3, 4, 1, 9, 5, 7, -12]) == (-12, 1)": {
+      "result": true,
+      "time": 0.030568361282348633,
+      "error": null
+    },
+    "assert largest_smallest_integers([9, 6, 5, 6, 3, 2, -11]) == (-11, 2)": {
+      "result": true,
+      "time": 0.027390241622924805,
+      "error": null
+    },
+    "assert largest_smallest_integers([6, 7, 5, 7, 2, 11, 4]) == (None, 2)": {
+      "result": true,
+      "time": 0.028574466705322266,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, 8, 1, 9, 3, 1, 3]) == (None, 1)": {
+      "result": true,
+      "time": 0.03157377243041992,
+      "error": null
+    },
+    "assert largest_smallest_integers([3, 6, 2, 6, 10, 9]) == (None, 2)": {
+      "result": true,
+      "time": 0.024015188217163086,
+      "error": null
+    },
+    "assert largest_smallest_integers([3, 3, 6, 1, 4, 8, -2]) == (-2, 1)": {
+      "result": true,
+      "time": 0.028419971466064453,
+      "error": null
+    },
+    "assert largest_smallest_integers([3, 4, 5, 6, 1, 9, -2]) == (-2, 1)": {
+      "result": true,
+      "time": 0.030290842056274414,
+      "error": null
+    },
+    "assert largest_smallest_integers([-6, -4, -4, -3, -100, 1]) == (-3, 1)\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.026121139526367188,
+      "error": null
+    },
+    "assert largest_smallest_integers([-5, -5, 1, 2, -95, 6]) == (-5, 1)": {
+      "result": true,
+      "time": 0.02689814567565918,
+      "error": null
+    },
+    "assert largest_smallest_integers([-4, -3, -1, -4, -102, 4]) == (-1, 4)": {
+      "result": true,
+      "time": 0.0295870304107666,
+      "error": null
+    },
+    "assert largest_smallest_integers([5, 2, 5, 1, 10, 7, 5]) == (None, 1)": {
+      "result": true,
+      "time": 0.028086185455322266,
+      "error": null
+    },
+    "assert largest_smallest_integers([1]) == (None, 1)": {
+      "result": true,
+      "time": 0.028940916061401367,
+      "error": null
+    },
+    "assert largest_smallest_integers([5, 3, 12, 7, 10, 6, 10, -12]) == (-12, 3)": {
+      "result": true,
+      "time": 0.031255483627319336,
+      "error": null
+    },
+    "assert largest_smallest_integers([-1, -3, -8, 2, -97, 3]) == (-1, 2)": {
+      "result": true,
+      "time": 0.03127121925354004,
+      "error": null
+    },
+    "assert largest_smallest_integers([-6, -4, -4, -3, 1]) == (-3, 1)": {
+      "result": true,
+      "time": 0.029511213302612305,
+      "error": null
+    },
+    "assert largest_smallest_integers([2, 4, 4, 5, 10, 12, 5]) == (None, 2)": {
+      "result": true,
+      "time": 0.03128695487976074,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, -7, -4, -11, 1]) == (-4, 1)": {
+      "result": true,
+      "time": 0.028877973556518555,
+      "error": null
+    },
+    "assert largest_smallest_integers([4, 7, 8, 9, 4, 5, -4]) == (-4, 4)": {
+      "result": true,
+      "time": 0.02971673011779785,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, 0, -8, -5]) == (-5, 1)": {
+      "result": true,
+      "time": 0.031752586364746094,
+      "error": null
+    },
+    "assert largest_smallest_integers([-4, -8, -7, -3, 5]) == (-3, 5)": {
+      "result": true,
+      "time": 0.030558347702026367,
+      "error": null
+    },
+    "assert largest_smallest_integers([-1, 1, -10, -6, 1]) == (-1, 1)": {
+      "result": true,
+      "time": 0.02657771110534668,
+      "error": null
+    },
+    "assert largest_smallest_integers([4, 5, 3, 6, 2, 7, -7]) == (-7, 2)": {
+      "result": true,
+      "time": 0.02802729606628418,
+      "error": null
+    },
+    "assert largest_smallest_integers([-10, -5, -8, 2, -100, 5]) == (-5, 2)": {
+      "result": true,
+      "time": 0.029813528060913086,
+      "error": null
+    },
+    "assert largest_smallest_integers([-6, -8, -7, -11, 5]) == (-6, 5)": {
+      "result": true,
+      "time": 0.029213905334472656,
+      "error": null
+    },
+    "assert largest_smallest_integers([]) == (None, None)": {
+      "result": true,
+      "time": 0.030565738677978516,
+      "error": null
+    },
+    "assert largest_smallest_integers([-1, -9, -1, -6, -100, 2]) == (-1, 2)": {
+      "result": true,
+      "time": 0.027945518493652344,
+      "error": null
+    },
+    "assert largest_smallest_integers([-9, -2, -7, -6, 4]) == (-2, 4)": {
+      "result": true,
+      "time": 0.03295016288757324,
+      "error": null
+    },
+    "assert largest_smallest_integers([5, 6, 3, 7, 9, 1, -6]) == (-6, 1)": {
+      "result": true,
+      "time": 0.031911611557006836,
+      "error": null
+    },
+    "assert largest_smallest_integers([-3, -1, -5, -3, -102, 3]) == (-1, 3)": {
+      "result": true,
+      "time": 0.02898573875427246,
+      "error": null
+    },
+    "assert largest_smallest_integers([4, -7, -4, -10, 1]) == (-4, 1)": {
+      "result": true,
+      "time": 0.02742767333984375,
+      "error": null
+    },
+    "assert largest_smallest_integers([-9, -4, -3, -8, 4]) == (-3, 4)": {
+      "result": true,
+      "time": 0.028815269470214844,
+      "error": null
+    },
+    "assert largest_smallest_integers([8, 1, 11, 9, 12, 7, 5, -11]) == (-11, 1)": {
+      "result": true,
+      "time": 0.027842283248901367,
+      "error": null
+    },
+    "assert largest_smallest_integers([7, 7, 7, 1, 5, 7, 5, -10]) == (-10, 1)": {
+      "result": true,
+      "time": 0.028853654861450195,
+      "error": null
+    },
+    "assert largest_smallest_integers([3]) == (None, 3)": {
+      "result": true,
+      "time": 0.03098273277282715,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, -1, -10, -8]) == (-1, 1)": {
+      "result": true,
+      "time": 0.0331730842590332,
+      "error": null
+    },
+    "assert largest_smallest_integers([0]) == (None, None)": {
+      "result": true,
+      "time": 0.030453920364379883,
+      "error": null
+    },
+    "assert largest_smallest_integers([3, -6, -3, -9]) == (-3, 3)": {
+      "result": true,
+      "time": 0.029743194580078125,
+      "error": null
+    },
+    "assert largest_smallest_integers([7, 3, 8, 4, 9, 2, 5, -9]) == (-9, 2)": {
+      "result": true,
+      "time": 0.031597137451171875,
+      "error": null
+    },
+    "assert largest_smallest_integers([9, 2, 4, 1, 6, 5, -4]) == (-4, 1)": {
+      "result": true,
+      "time": 0.028481483459472656,
+      "error": null
+    },
+    "assert largest_smallest_integers([-1, -3, -5, -6]) == (-1, None)": {
+      "result": true,
+      "time": 0.0284423828125,
+      "error": null
+    },
+    "assert largest_smallest_integers([9, 6, 4, 3, 7, 4, 4, -9]) == (-9, 3)": {
+      "result": true,
+      "time": 0.026414871215820312,
+      "error": null
+    },
+    "assert largest_smallest_integers([-4, -9, -8, 2, -100, 2]) == (-4, 2)": {
+      "result": true,
+      "time": 0.029483795166015625,
+      "error": null
+    },
+    "assert largest_smallest_integers([4]) == (None, 4)": {
+      "result": true,
+      "time": 0.029015302658081055,
+      "error": null
+    },
+    "assert largest_smallest_integers([-4, -8, 0, -8, 1]) == (-4, 1)": {
+      "result": true,
+      "time": 0.030106306076049805,
+      "error": null
+    },
+    "assert largest_smallest_integers([3, 4, 2, 7, 5, 3, 4]) == (None, 2)": {
+      "result": true,
+      "time": 0.026998281478881836,
+      "error": null
+    },
+    "assert largest_smallest_integers([5, 7, 3, 7, 7, 3, -1]) == (-1, 3)": {
+      "result": true,
+      "time": 0.02730846405029297,
+      "error": null
+    },
+    "assert largest_smallest_integers([-1, 2, -5, -2]) == (-1, 2)": {
+      "result": true,
+      "time": 0.027025222778320312,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, 6, 2, 5, 7, 3]) == (None, 1)": {
+      "result": true,
+      "time": 0.0306398868560791,
+      "error": null
+    },
+    "assert largest_smallest_integers([2, 4, 1, 3, 5, 7]) == (None, 1)": {
+      "result": true,
+      "time": 0.03029942512512207,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, 6, 1, 9, 5, 4, 0]) == (None, 1)": {
+      "result": true,
+      "time": 0.029421329498291016,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, -3, -3, -3, 1]) == (-3, 1)": {
+      "result": true,
+      "time": 0.0275881290435791,
+      "error": null
+    },
+    "assert largest_smallest_integers([-6, 1, -8, -3, 5]) == (-3, 1)": {
+      "result": true,
+      "time": 0.027313232421875,
+      "error": null
+    },
+    "assert largest_smallest_integers([-4, -6, 1, -8, 1]) == (-4, 1)": {
+      "result": true,
+      "time": 0.034600019454956055,
+      "error": null
+    },
+    "assert largest_smallest_integers([4, 4, 2, 5, 4, 10]) == (None, 2)": {
+      "result": true,
+      "time": 0.02987051010131836,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, 7, 4, 3, 5, 5, 0]) == (None, 1)": {
+      "result": true,
+      "time": 0.0287172794342041,
+      "error": null
+    },
+    "assert largest_smallest_integers([4, 4, 5, 5, 5, 6]) == (None, 4)": {
+      "result": true,
+      "time": 0.0292816162109375,
+      "error": null
+    },
+    "assert largest_smallest_integers([-7, -6, 0, -8, 1]) == (-6, 1)": {
+      "result": true,
+      "time": 0.031065940856933594,
+      "error": null
+    },
+    "assert largest_smallest_integers([5, 9, 6, 4, 3, 7]) == (None, 3)": {
+      "result": true,
+      "time": 0.030021190643310547,
+      "error": null
+    },
+    "assert largest_smallest_integers([1, 5, 8, 10, 1, 2, -3]) == (-3, 1)": {
+      "result": true,
+      "time": 0.02722477912902832,
+      "error": null
+    },
+    "assert largest_smallest_integers([-6, 0, -2, -4]) == (-2, None)": {
+      "result": true,
+      "time": 0.028522253036499023,
+      "error": null
+    },
+    "assert largest_smallest_integers([5, 3, 5, 1, 13, 4, 5, -4]) == (-4, 1)": {
+      "result": true,
+      "time": 0.030933141708374023,
+      "error": null
+    },
+    "assert largest_smallest_integers([-6, -8, 1, 0, -103, 5]) == (-6, 1)": {
+      "result": true,
+      "time": 0.028722286224365234,
+      "error": null
+    },
+    "assert largest_smallest_integers([-6, -1, -3, -1, 1]) == (-1, 1)": {
+      "result": true,
+      "time": 0.02733445167541504,
+      "error": null
+    },
+    "assert largest_smallest_integers([2, 8, 6, 7, 1, 10, -8]) == (-8, 1)": {
+      "result": true,
+      "time": 0.03303241729736328,
+      "error": null
+    },
+    "assert largest_smallest_integers([-3, -4, -3, -3, 5]) == (-3, 5)": {
+      "result": true,
+      "time": 0.028818607330322266,
+      "error": null
+    },
+    "assert largest_smallest_integers([2, 3, 5, 9, 5, 9, 3]) == (None, 2)": {
+      "result": true,
+      "time": 0.029764413833618164,
+      "error": null
+    },
+    "assert largest_smallest_integers([-3, 1, -9, -8, 2]) == (-3, 1)": {
+      "result": true,
+      "time": 0.029317617416381836,
+      "error": null
+    },
+    "assert largest_smallest_integers([-7, -4, -5, -6, 5]) == (-4, 5)": {
+      "result": true,
+      "time": 0.025595426559448242,
+      "error": null
+    },
+    "assert largest_smallest_integers([3, 8, 2, 5, 9, 1, 2]) == (None, 1)": {
+      "result": true,
+      "time": 0.02724170684814453,
+      "error": null
+    },
+    "assert largest_smallest_integers([-1, -7, -10, -1, 1]) == (-1, 1)": {
+      "result": true,
+      "time": 0.03016805648803711,
+      "error": null
+    },
+    "assert largest_smallest_integers([5, 7, 4, 3, 3, 11, 2]) == (None, 2)": {
+      "result": true,
+      "time": 0.027196168899536133,
+      "error": null
+    },
+    "assert largest_smallest_integers([2, 8, 13, 2, 11, 6, 10, -10]) == (-10, 2)": {
+      "result": true,
+      "time": 0.02725529670715332,
+      "error": null
+    },
+    "assert largest_smallest_integers([-7, -8, -7, -3, 3]) == (-3, 3)": {
+      "result": true,
+      "time": 0.028038501739501953,
+      "error": null
+    },
+    "assert largest_smallest_integers([7, 1, 4, 5, 9, 8, 3]) == (None, 1)": {
+      "result": true,
+      "time": 0.029945850372314453,
+      "error": null
+    },
+    "assert largest_smallest_integers([-2, -4, -10, -2]) == (-2, None)": {
+      "result": true,
+      "time": 0.033252716064453125,
+      "error": null
+    },
+    "assert largest_smallest_integers([7, 9, 1, 8, 10, 6, 3]) == (None, 1)": {
+      "result": true,
+      "time": 0.03052687644958496,
+      "error": null
+    },
+    "assert largest_smallest_integers([2, 1, 4, 9, 11, 7, 6, -7]) == (-7, 1)": {
+      "result": true,
+      "time": 0.031105995178222656,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

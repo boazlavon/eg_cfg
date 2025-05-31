@@ -1,0 +1,574 @@
+{
+  "code": "def sort_array(arr):\n    return sorted(arr, key=lambda x: (bin(x & 0xFFFFFFFF).count('1'), x))",
+  "results": {
+    "assert sort_array([4, 1, 45, 10, 30, 7]) == [1, 4, 10, 7, 30, 45]": {
+      "result": true,
+      "time": 0.033820390701293945,
+      "error": null
+    },
+    "assert sort_array([4, 2, 6, 15, 30]) == [2, 4, 6, 15, 30]": {
+      "result": true,
+      "time": 0.034679412841796875,
+      "error": null
+    },
+    "assert sort_array([4, 10, 1, 5, 2]) == [1, 2, 4, 5, 10]": {
+      "result": true,
+      "time": 0.03380894660949707,
+      "error": null
+    },
+    "assert sort_array([2, 3, 5, 5, 4]) == [2, 4, 3, 5, 5]": {
+      "result": true,
+      "time": 0.03064703941345215,
+      "error": null
+    },
+    "assert sort_array([4, 9, 13, 13, 27]) == [4, 9, 13, 13, 27]": {
+      "result": true,
+      "time": 0.03895068168640137,
+      "error": null
+    },
+    "assert sort_array([2, 3, 12, 20, 36]) == [2, 3, 12, 20, 36]": {
+      "result": true,
+      "time": 0.030138254165649414,
+      "error": null
+    },
+    "assert sort_array([3, 3, 5, 4, 8]) == [4, 8, 3, 3, 5]": {
+      "result": true,
+      "time": 0.03106093406677246,
+      "error": null
+    },
+    "assert sort_array([3, 10, 1, 4, 7]) == [1, 4, 3, 10, 7]": {
+      "result": true,
+      "time": 0.03327345848083496,
+      "error": null
+    },
+    "assert sort_array([1, 1, 47, 13, 30, 3]) == [1, 1, 3, 13, 30, 47]": {
+      "result": true,
+      "time": 0.03246665000915527,
+      "error": null
+    },
+    "assert sort_array([5, 7, 10, 21, 34]) == [5, 10, 34, 7, 21]": {
+      "result": true,
+      "time": 0.03265953063964844,
+      "error": null
+    },
+    "assert sort_array([-4, -7, 0, -9, -1]) == [0, -4, -1, -9, -7]": {
+      "result": false,
+      "time": 0.03419852256774902,
+      "error": null
+    },
+    "assert sort_array([7, 4, 46, 10, 29, 7]) == [4, 10, 7, 7, 29, 46]": {
+      "result": true,
+      "time": 0.031217336654663086,
+      "error": null
+    },
+    "assert sort_array([6, 7, 5, 6, 4]) == [4, 5, 6, 6, 7]": {
+      "result": true,
+      "time": 0.03223133087158203,
+      "error": null
+    },
+    "assert sort_array([6, 4, 13, 13, 29]) == [4, 6, 13, 13, 29]": {
+      "result": true,
+      "time": 0.035356760025024414,
+      "error": null
+    },
+    "assert sort_array([2, 6, 1, 5, 9]) == [1, 2, 5, 6, 9]": {
+      "result": true,
+      "time": 0.03497624397277832,
+      "error": null
+    },
+    "assert sort_array([2,5,77,4,5,3,5,7,2,3,4]) == [2, 2, 4, 4, 3, 3, 5, 5, 5, 7, 77]": {
+      "result": true,
+      "time": 0.03571200370788574,
+      "error": null
+    },
+    "assert sort_array([-6, -5, -5, -6, -6]) == [-6, -6, -6, -5, -5]": {
+      "result": true,
+      "time": 0.0310211181640625,
+      "error": null
+    },
+    "assert sort_array([4, 4, 7, 17, 31]) == [4, 4, 17, 7, 31]": {
+      "result": true,
+      "time": 0.02848362922668457,
+      "error": null
+    },
+    "assert sort_array([3, 4, 2, 1, 3]) == [1, 2, 4, 3, 3]": {
+      "result": true,
+      "time": 0.03444814682006836,
+      "error": null
+    },
+    "assert sort_array([2,4,8,16,32]) == [2, 4, 8, 16, 32]": {
+      "result": true,
+      "time": 0.03252267837524414,
+      "error": null
+    },
+    "assert sort_array([3, -4, -9, 0, -5]) == [0, -4, -9, -5, 3]": {
+      "result": false,
+      "time": 0.0335540771484375,
+      "error": null
+    },
+    "assert sort_array([4, 1, 46, 14, 34, 9]) == [1, 4, 9, 34, 14, 46]": {
+      "result": true,
+      "time": 0.02946639060974121,
+      "error": null
+    },
+    "assert sort_array([4, 8, 3, 21, 29]) == [4, 8, 3, 21, 29]": {
+      "result": true,
+      "time": 0.02987194061279297,
+      "error": null
+    },
+    "assert sort_array([6, 1, 4, 5, 4]) == [1, 4, 4, 5, 6]": {
+      "result": true,
+      "time": 0.03530693054199219,
+      "error": null
+    },
+    "assert sort_array([3, 7, 42, 9, 34, 5]) == [3, 5, 9, 34, 7, 42]": {
+      "result": true,
+      "time": 0.039781808853149414,
+      "error": null
+    },
+    "assert sort_array([2, 5, 80, 8, 2, 6, 6, 3, 2, 6, 3]) == [2, 2, 2, 8, 3, 3, 5, 6, 6, 6, 80]": {
+      "result": true,
+      "time": 0.03325700759887695,
+      "error": null
+    },
+    "assert sort_array([8, 4, 45, 11, 37, 8]) == [4, 8, 8, 11, 37, 45]": {
+      "result": true,
+      "time": 0.03761649131774902,
+      "error": null
+    },
+    "assert sort_array([5, 8, 46, 17, 28, 1]) == [1, 8, 5, 17, 28, 46]": {
+      "result": true,
+      "time": 0.03279924392700195,
+      "error": null
+    },
+    "assert sort_array([5, 5, 13, 20, 28]) == [5, 5, 20, 13, 28]": {
+      "result": true,
+      "time": 0.031792640686035156,
+      "error": null
+    },
+    "assert sort_array([2, 11, 41, 15, 37, 3]) == [2, 3, 11, 37, 41, 15]": {
+      "result": true,
+      "time": 0.03360605239868164,
+      "error": null
+    },
+    "assert sort_array([5, 3, 2, 3, 6]) == [2, 3, 3, 5, 6]": {
+      "result": true,
+      "time": 0.03673410415649414,
+      "error": null
+    },
+    "assert sort_array([0, -3, -9, -7, -6]) == [0, -9, -6, -3, -7]": {
+      "result": false,
+      "time": 0.02942490577697754,
+      "error": null
+    },
+    "assert sort_array([1, 5, 2, 2, 2]) == [1, 2, 2, 2, 5]": {
+      "result": true,
+      "time": 0.027926206588745117,
+      "error": null
+    },
+    "assert sort_array([3, 4, 5, 8, 2]) == [2, 4, 8, 3, 5]": {
+      "result": true,
+      "time": 0.0321502685546875,
+      "error": null
+    },
+    "assert sort_array([7, 7, 7, 17, 29]) == [17, 7, 7, 7, 29]": {
+      "result": true,
+      "time": 0.029803752899169922,
+      "error": null
+    },
+    "assert sort_array([7, 6, 41, 12, 37, 6]) == [6, 6, 12, 7, 37, 41]": {
+      "result": true,
+      "time": 0.032631635665893555,
+      "error": null
+    },
+    "assert sort_array([6, 9, 48, 12, 34, 4]) == [4, 6, 9, 12, 34, 48]": {
+      "result": true,
+      "time": 0.032445669174194336,
+      "error": null
+    },
+    "assert sort_array([5, 10, 6, 3, 9]) == [3, 5, 6, 9, 10]": {
+      "result": true,
+      "time": 0.04793429374694824,
+      "error": null
+    },
+    "assert sort_array([1,0,2,3,4]) == [0, 1, 2, 4, 3]": {
+      "result": true,
+      "time": 0.029561281204223633,
+      "error": null
+    },
+    "assert sort_array([3, 8, 74, 5, 8, 3, 8, 9, 2, 1, 5]) == [1, 2, 8, 8, 8, 3, 3, 5, 5, 9, 74]": {
+      "result": true,
+      "time": 0.037171363830566406,
+      "error": null
+    },
+    "assert sort_array([5, 9, 74, 7, 6, 7, 3, 2, 1, 5, 8]) == [1, 2, 8, 3, 5, 5, 6, 9, 7, 7, 74]": {
+      "result": true,
+      "time": 0.03328967094421387,
+      "error": null
+    },
+    "assert sort_array([-7, -3, -4, -10, -10]) == [-4, -10, -10, -3, -7]": {
+      "result": false,
+      "time": 0.03008270263671875,
+      "error": null
+    },
+    "assert sort_array([4, 2, 8, 14, 30]) == [2, 4, 8, 14, 30]": {
+      "result": true,
+      "time": 0.03186988830566406,
+      "error": null
+    },
+    "assert sort_array([-3, -5, -9, -7, -4]) == [-4, -9, -5, -3, -7]": {
+      "result": false,
+      "time": 0.033998966217041016,
+      "error": null
+    },
+    "assert sort_array([5, 2, 5, 4, 4]) == [2, 4, 4, 5, 5]": {
+      "result": true,
+      "time": 0.032926082611083984,
+      "error": null
+    },
+    "assert sort_array([3, 2, 4, 17, 35]) == [2, 4, 3, 17, 35]": {
+      "result": true,
+      "time": 0.030349254608154297,
+      "error": null
+    },
+    "assert sort_array([7, 5, 10, 21, 33]) == [5, 10, 33, 7, 21]": {
+      "result": true,
+      "time": 0.03920578956604004,
+      "error": null
+    },
+    "assert sort_array([1, 6, 81, 8, 8, 2, 7, 8, 7, 8, 7]) == [1, 2, 8, 8, 8, 8, 6, 7, 7, 7, 81]": {
+      "result": true,
+      "time": 0.03376650810241699,
+      "error": null
+    },
+    "assert sort_array([4, 10, 77, 3, 8, 2, 9, 3, 4, 8, 2]) == [2, 2, 4, 4, 8, 8, 3, 3, 9, 10, 77]": {
+      "result": true,
+      "time": 0.03373098373413086,
+      "error": null
+    },
+    "assert sort_array([6, 11, 43, 9, 29, 10]) == [6, 9, 10, 11, 29, 43]": {
+      "result": true,
+      "time": 0.030247211456298828,
+      "error": null
+    },
+    "assert sort_array([1, 5, 8, 16, 27]) == [1, 8, 16, 5, 27]": {
+      "result": true,
+      "time": 0.03361392021179199,
+      "error": null
+    },
+    "assert sort_array([1, 5, 75, 6, 4, 3, 7, 11, 7, 2, 4]) == [1, 2, 4, 4, 3, 5, 6, 7, 7, 11, 75]": {
+      "result": true,
+      "time": 0.03388357162475586,
+      "error": null
+    },
+    "assert sort_array([3, 5, 81, 6, 5, 6, 9, 5, 3, 3, 3]) == [3, 3, 3, 3, 5, 5, 5, 6, 6, 9, 81]": {
+      "result": true,
+      "time": 0.03149127960205078,
+      "error": null
+    },
+    "assert sort_array([6, 8, 5, 2, 3]) == [2, 8, 3, 5, 6]": {
+      "result": true,
+      "time": 0.03184700012207031,
+      "error": null
+    },
+    "assert sort_array([5, 9, 42, 8, 34, 10]) == [8, 5, 9, 10, 34, 42]": {
+      "result": true,
+      "time": 0.03808426856994629,
+      "error": null
+    },
+    "assert sort_array([2,4,8,16,32]) == [2, 4, 8, 16, 32]\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.03109455108642578,
+      "error": null
+    },
+    "assert sort_array([6, 7, 9, 21, 33]) == [6, 9, 33, 7, 21]": {
+      "result": true,
+      "time": 0.02976822853088379,
+      "error": null
+    },
+    "assert sort_array([1, 7, 11, 12, 32]) == [1, 32, 12, 7, 11]": {
+      "result": true,
+      "time": 0.03149724006652832,
+      "error": null
+    },
+    "assert sort_array([3,6,44,12,32,5]) == [32, 3, 5, 6, 12, 44]": {
+      "result": true,
+      "time": 0.03782296180725098,
+      "error": null
+    },
+    "assert sort_array([4, 1, 13, 12, 33]) == [1, 4, 12, 33, 13]": {
+      "result": true,
+      "time": 0.029086828231811523,
+      "error": null
+    },
+    "assert sort_array([3, 8, 78, 5, 10, 5, 9, 3, 4, 7, 1]) == [1, 4, 8, 3, 3, 5, 5, 9, 10, 7, 78]": {
+      "result": true,
+      "time": 0.030224323272705078,
+      "error": null
+    },
+    "assert sort_array([2, 6, 6, 1, 6]) == [1, 2, 6, 6, 6]": {
+      "result": true,
+      "time": 0.03477001190185547,
+      "error": null
+    },
+    "assert sort_array([4, 2, 3, 4, 9]) == [2, 4, 4, 3, 9]": {
+      "result": true,
+      "time": 0.03905653953552246,
+      "error": null
+    },
+    "assert sort_array([3, 2, 2, 8, 3]) == [2, 2, 8, 3, 3]": {
+      "result": true,
+      "time": 0.03375244140625,
+      "error": null
+    },
+    "assert sort_array([5, 2, 1, 6, 5]) == [1, 2, 5, 5, 6]": {
+      "result": true,
+      "time": 0.031423330307006836,
+      "error": null
+    },
+    "assert sort_array([4, 4, 9, 16, 32]) == [4, 4, 16, 32, 9]": {
+      "result": true,
+      "time": 0.027722835540771484,
+      "error": null
+    },
+    "assert sort_array([2, -5, -5, -6, -4]) == [-4, 2, -6, -5, -5]": {
+      "result": false,
+      "time": 0.029828786849975586,
+      "error": null
+    },
+    "assert sort_array([1, 3, 41, 16, 32, 3]) == [1, 16, 32, 3, 3, 41]": {
+      "result": true,
+      "time": 0.029391050338745117,
+      "error": null
+    },
+    "assert sort_array([3, -7, -9, -2, -9]) == [-2, -9, -9, 3, -7]": {
+      "result": false,
+      "time": 0.028746604919433594,
+      "error": null
+    },
+    "assert sort_array([-1, -6, 0, -2, -8]) == [0, -8, -2, -1, -6]": {
+      "result": false,
+      "time": 0.030585289001464844,
+      "error": null
+    },
+    "assert sort_array([6, 2, 6, 17, 33]) == [2, 6, 6, 17, 33]": {
+      "result": true,
+      "time": 0.031134366989135742,
+      "error": null
+    },
+    "assert sort_array([3, 1, 8, 19, 32]) == [1, 8, 32, 3, 19]": {
+      "result": true,
+      "time": 0.030447006225585938,
+      "error": null
+    },
+    "assert sort_array([5, 6, 10, 15, 31]) == [5, 6, 10, 15, 31]": {
+      "result": true,
+      "time": 0.03523087501525879,
+      "error": null
+    },
+    "assert sort_array([2, 0, -7, -5, -3]) == [0, 2, -5, -3, -7]": {
+      "result": false,
+      "time": 0.03319573402404785,
+      "error": null
+    },
+    "assert sort_array([3, 1, -6, -4, -3]) == [-4, 1, -6, -3, 3]": {
+      "result": false,
+      "time": 0.02948594093322754,
+      "error": null
+    },
+    "assert sort_array([2, 7, 11, 14, 37]) == [2, 7, 11, 14, 37]": {
+      "result": true,
+      "time": 0.02887272834777832,
+      "error": null
+    },
+    "assert sort_array([6, 7, 9, 15, 30]) == [6, 9, 7, 15, 30]": {
+      "result": true,
+      "time": 0.029994726181030273,
+      "error": null
+    },
+    "assert sort_array([4, 1, 75, 9, 7, 7, 4, 7, 4, 2, 5]) == [1, 2, 4, 4, 4, 5, 9, 7, 7, 7, 75]": {
+      "result": true,
+      "time": 0.027515888214111328,
+      "error": null
+    },
+    "assert sort_array([7, 7, 79, 4, 3, 2, 10, 2, 2, 8, 8]) == [2, 2, 2, 4, 8, 8, 3, 10, 7, 7, 79]": {
+      "result": true,
+      "time": 0.03013920783996582,
+      "error": null
+    },
+    "assert sort_array([-6, -5, -9, -4, -8]) == [-8, -4, -9, -6, -5]": {
+      "result": false,
+      "time": 0.030524253845214844,
+      "error": null
+    },
+    "assert sort_array([7, 7, 12, 15, 29]) == [12, 7, 7, 15, 29]": {
+      "result": true,
+      "time": 0.029931306838989258,
+      "error": null
+    },
+    "assert sort_array([3, 2, 76, 9, 5, 3, 4, 2, 3, 3, 5]) == [2, 2, 4, 3, 3, 3, 3, 5, 5, 9, 76]": {
+      "result": true,
+      "time": 0.026772499084472656,
+      "error": null
+    },
+    "assert sort_array([-2,-3,-4,-5,-6]) == [-4, -2, -6, -5, -3]": {
+      "result": false,
+      "time": 0.0302276611328125,
+      "error": null
+    },
+    "assert sort_array([1, 3, 9, 15, 27]) == [1, 3, 9, 15, 27]": {
+      "result": true,
+      "time": 0.028864145278930664,
+      "error": null
+    },
+    "assert sort_array([3, 5, 8, 17, 27]) == [8, 3, 5, 17, 27]": {
+      "result": true,
+      "time": 0.02958822250366211,
+      "error": null
+    },
+    "assert sort_array([1, 3, 5, 1, 2]) == [1, 1, 2, 3, 5]": {
+      "result": true,
+      "time": 0.03350496292114258,
+      "error": null
+    },
+    "assert sort_array([2, 2, 10, 13, 27]) == [2, 2, 10, 13, 27]": {
+      "result": true,
+      "time": 0.03058910369873047,
+      "error": null
+    },
+    "assert sort_array([5, 6, 4, 1, 2]) == [1, 2, 4, 5, 6]": {
+      "result": true,
+      "time": 0.02809453010559082,
+      "error": null
+    },
+    "assert sort_array([3, 2, 4, 2, 2]) == [2, 2, 2, 4, 3]": {
+      "result": true,
+      "time": 0.026886701583862305,
+      "error": null
+    },
+    "assert sort_array([5, 4, 75, 8, 6, 2, 10, 4, 4, 6, 1]) == [1, 2, 4, 4, 4, 8, 5, 6, 6, 10, 75]": {
+      "result": true,
+      "time": 0.029474258422851562,
+      "error": null
+    },
+    "assert sort_array([8, 9, 39, 9, 28, 3]) == [8, 3, 9, 9, 28, 39]": {
+      "result": true,
+      "time": 0.031233787536621094,
+      "error": null
+    },
+    "assert sort_array([6, 9, 13, 16, 37]) == [16, 6, 9, 13, 37]": {
+      "result": true,
+      "time": 0.03371453285217285,
+      "error": null
+    },
+    "assert sort_array([6, 9, 2, 6, 7]) == [2, 6, 6, 9, 7]": {
+      "result": true,
+      "time": 0.0313715934753418,
+      "error": null
+    },
+    "assert sort_array([5, 3, 12, 17, 37]) == [3, 5, 12, 17, 37]": {
+      "result": true,
+      "time": 0.028248071670532227,
+      "error": null
+    },
+    "assert sort_array([2, 9, 12, 15, 31]) == [2, 9, 12, 15, 31]": {
+      "result": true,
+      "time": 0.03112339973449707,
+      "error": null
+    },
+    "assert sort_array([3, 6, 72, 3, 7, 6, 7, 6, 3, 8, 3]) == [8, 3, 3, 3, 3, 6, 6, 6, 72, 7, 7]": {
+      "result": true,
+      "time": 0.028592824935913086,
+      "error": null
+    },
+    "assert sort_array([3, -3, -7, -6, -3]) == [-6, -3, -3, 3, -7]": {
+      "result": false,
+      "time": 0.02946019172668457,
+      "error": null
+    },
+    "assert sort_array([4, 3, 4, 4, 1]) == [1, 4, 4, 4, 3]": {
+      "result": true,
+      "time": 0.03265237808227539,
+      "error": null
+    },
+    "assert sort_array([-1, 1, -4, -6, -6]) == [-4, -1, 1, -6, -6]": {
+      "result": false,
+      "time": 0.03101825714111328,
+      "error": null
+    },
+    "assert sort_array([4, 1, 6, 16, 30]) == [1, 4, 16, 6, 30]": {
+      "result": true,
+      "time": 0.02882099151611328,
+      "error": null
+    },
+    "assert sort_array([2, 9, 1, 8, 8]) == [1, 2, 8, 8, 9]": {
+      "result": true,
+      "time": 0.034197092056274414,
+      "error": null
+    },
+    "assert sort_array([5, 3, 2, 1, 7]) == [1, 2, 3, 5, 7]": {
+      "result": true,
+      "time": 0.03443098068237305,
+      "error": null
+    },
+    "assert sort_array([3, 1, 6, 7, 7]) == [1, 3, 6, 7, 7]": {
+      "result": true,
+      "time": 0.034005165100097656,
+      "error": null
+    },
+    "assert sort_array([1, 5, 3, 5, 1]) == [1, 1, 3, 5, 5]": {
+      "result": true,
+      "time": 0.02747964859008789,
+      "error": null
+    },
+    "assert sort_array([1,5,2,3,4]) == [1, 2, 4, 3, 5]": {
+      "result": true,
+      "time": 0.029801130294799805,
+      "error": null
+    },
+    "assert sort_array([]) == []": {
+      "result": true,
+      "time": 0.032572269439697266,
+      "error": null
+    },
+    "assert sort_array([1, 10, 74, 7, 1, 2, 1, 2, 6, 6, 1]) == [1, 1, 1, 1, 2, 2, 6, 6, 10, 7, 74]": {
+      "result": true,
+      "time": 0.028847217559814453,
+      "error": null
+    },
+    "assert sort_array([4, 4, 5, 4, 1]) == [1, 4, 4, 4, 5]": {
+      "result": true,
+      "time": 0.03305983543395996,
+      "error": null
+    },
+    "assert sort_array([-4, 0, -1, -4, -7]) == [0, -4, -4, -1, -7]": {
+      "result": false,
+      "time": 0.03127741813659668,
+      "error": null
+    },
+    "assert sort_array([4, 11, 45, 13, 29, 8]) == [4, 8, 11, 13, 29, 45]": {
+      "result": true,
+      "time": 0.0328211784362793,
+      "error": null
+    },
+    "assert sort_array([3, 6, 3, 1, 7]) == [1, 3, 3, 6, 7]": {
+      "result": true,
+      "time": 0.03126358985900879,
+      "error": null
+    },
+    "assert sort_array([2, 8, 76, 4, 7, 6, 6, 8, 6, 2, 8]) == [2, 2, 4, 8, 8, 8, 6, 6, 6, 7, 76]": {
+      "result": true,
+      "time": 0.03239846229553223,
+      "error": null
+    },
+    "assert sort_array([1, 8, 7, 2, 3]) == [1, 2, 8, 3, 7]": {
+      "result": true,
+      "time": 0.0340731143951416,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8672566371681416,
+  "general_error": "",
+  "has_testcase_error": false
+}

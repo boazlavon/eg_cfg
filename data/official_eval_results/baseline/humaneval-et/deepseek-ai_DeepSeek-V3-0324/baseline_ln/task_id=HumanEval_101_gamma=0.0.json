@@ -1,0 +1,634 @@
+{
+  "code": "import re\ndef words_string(s):\n    return re.split(r'[,\\s]+', s.strip())",
+  "results": {
+    "assert words_string(\"kvrvqAfyGQii,LRqxgnsSKZuCPlRVdLSSoPL\") == ['kvrvqAfyGQii', 'LRqxgnsSKZuCPlRVdLSSoPL']": {
+      "result": true,
+      "time": 0.2805039882659912,
+      "error": null
+    },
+    "assert words_string(\"cw\") == ['cw']": {
+      "result": true,
+      "time": 0.17359685897827148,
+      "error": null
+    },
+    "assert words_string(\"zhEMApF ZweLYvTJzJyCSIyeSRwcLhh\") == ['zhEMApF', 'ZweLYvTJzJyCSIyeSRwcLhh']": {
+      "result": true,
+      "time": 0.22551250457763672,
+      "error": null
+    },
+    "assert words_string(\"DTxPnHGKBttNX\") == ['DTxPnHGKBttNX']": {
+      "result": true,
+      "time": 0.15771889686584473,
+      "error": null
+    },
+    "assert words_string(\"epb\") == ['epb']": {
+      "result": true,
+      "time": 0.2797586917877197,
+      "error": null
+    },
+    "assert words_string(\"ibK I, bkGB,bjbOTKWfyjRDbQeWgqbBC\") == ['ibK', 'I', 'bkGB', 'bjbOTKWfyjRDbQeWgqbBC']": {
+      "result": true,
+      "time": 0.25087928771972656,
+      "error": null
+    },
+    "assert words_string(\"uTivmZXAK\") == ['uTivmZXAK']": {
+      "result": true,
+      "time": 0.30347204208374023,
+      "error": null
+    },
+    "assert words_string(\"MsArpfwKikWOX EkQCvGey\") == ['MsArpfwKikWOX', 'EkQCvGey']": {
+      "result": true,
+      "time": 0.2912559509277344,
+      "error": null
+    },
+    "assert words_string(\"wp\") == ['wp']": {
+      "result": true,
+      "time": 0.2069258689880371,
+      "error": null
+    },
+    "assert words_string(\"DyVi WoWpxT\") == ['DyVi', 'WoWpxT']": {
+      "result": true,
+      "time": 0.22157526016235352,
+      "error": null
+    },
+    "assert words_string(\"mcCcfVi\") == ['mcCcfVi']": {
+      "result": true,
+      "time": 0.10438776016235352,
+      "error": null
+    },
+    "assert words_string(\"blOXrKZ,qOqLgDcLBIoNmtEMKbLwAXlbRm\") == ['blOXrKZ', 'qOqLgDcLBIoNmtEMKbLwAXlbRm']": {
+      "result": true,
+      "time": 0.16063809394836426,
+      "error": null
+    },
+    "assert words_string(\"gSucSDyVhoD\") == ['gSucSDyVhoD']": {
+      "result": true,
+      "time": 0.2533576488494873,
+      "error": null
+    },
+    "assert words_string(\"HVFsXkNi\") == ['HVFsXkNi']": {
+      "result": true,
+      "time": 0.12492084503173828,
+      "error": null
+    },
+    "assert words_string(\"kurydrzteZjGjVb\") == ['kurydrzteZjGjVb']": {
+      "result": true,
+      "time": 0.2565648555755615,
+      "error": null
+    },
+    "assert words_string(\"xRkNssRLsifBpmfRABRk,UjYxpSgeBhCPv\") == ['xRkNssRLsifBpmfRABRk', 'UjYxpSgeBhCPv']": {
+      "result": true,
+      "time": 0.15558385848999023,
+      "error": null
+    },
+    "assert words_string(\"OTDpNx,FwFRdmtkrDjQy\") == ['OTDpNx', 'FwFRdmtkrDjQy']": {
+      "result": true,
+      "time": 0.27137255668640137,
+      "error": null
+    },
+    "assert words_string(\"pBjJg vABqOhYXfSbFKLecWG,xNzVVrhsfh\") == ['pBjJg', 'vABqOhYXfSbFKLecWG', 'xNzVVrhsfh']": {
+      "result": true,
+      "time": 0.2660670280456543,
+      "error": null
+    },
+    "assert words_string(\"stb\") == ['stb']": {
+      "result": true,
+      "time": 0.20608925819396973,
+      "error": null
+    },
+    "assert words_string(\"uaQiIFqLrxeNXvrHuobWBve\") == ['uaQiIFqLrxeNXvrHuobWBve']": {
+      "result": true,
+      "time": 0.21486210823059082,
+      "error": null
+    },
+    "assert words_string(\"sl,ofctrbjdchqv\") == ['sl', 'ofctrbjdchqv']": {
+      "result": true,
+      "time": 0.20084834098815918,
+      "error": null
+    },
+    "assert words_string(\"ahsXZqEouQtXINycLOKbGOuGcwphxqrRqvBZt\") == ['ahsXZqEouQtXINycLOKbGOuGcwphxqrRqvBZt']": {
+      "result": true,
+      "time": 0.20707011222839355,
+      "error": null
+    },
+    "assert words_string(\"UexJfvVLheQPeDpDfHvbdRRDtKKbN\") == ['UexJfvVLheQPeDpDfHvbdRRDtKKbN']": {
+      "result": true,
+      "time": 0.1778554916381836,
+      "error": null
+    },
+    "assert words_string(\"sdzr,lexdbcesu\") == ['sdzr', 'lexdbcesu']": {
+      "result": true,
+      "time": 0.18898415565490723,
+      "error": null
+    },
+    "assert words_string(\"Hi, my name\") == [\"Hi\", \"my\", \"name\"]": {
+      "result": true,
+      "time": 0.31070518493652344,
+      "error": null
+    },
+    "assert words_string(\" hwquelxbzzoe\") == ['hwquelxbzzoe']": {
+      "result": true,
+      "time": 0.23028039932250977,
+      "error": null
+    },
+    "assert words_string(\"UYttolHhOXzUbBiaVzfhkRW,BFWdArkBi\") == ['UYttolHhOXzUbBiaVzfhkRW', 'BFWdArkBi']": {
+      "result": true,
+      "time": 0.26460814476013184,
+      "error": null
+    },
+    "assert words_string(\"gvebQcmBsFwozD,oRQaAaIGGsafxNdm\") == ['gvebQcmBsFwozD', 'oRQaAaIGGsafxNdm']": {
+      "result": true,
+      "time": 0.15354394912719727,
+      "error": null
+    },
+    "assert words_string(\" infhpodtvqrszuo\") == ['infhpodtvqrszuo']": {
+      "result": true,
+      "time": 0.17106103897094727,
+      "error": null
+    },
+    "assert words_string(\"TTuFfwkGwCmFdTlbC\") == ['TTuFfwkGwCmFdTlbC']": {
+      "result": true,
+      "time": 0.2064683437347412,
+      "error": null
+    },
+    "assert words_string(\"qnyc bwziheuwny\") == ['qnyc', 'bwziheuwny']": {
+      "result": true,
+      "time": 0.15944504737854004,
+      "error": null
+    },
+    "assert words_string(\"xys,jxkxw ,tuoehpjer\") == ['xys', 'jxkxw', 'tuoehpjer']": {
+      "result": true,
+      "time": 0.17537236213684082,
+      "error": null
+    },
+    "assert words_string(\"cQDiHWkehrOfupG\") == ['cQDiHWkehrOfupG']": {
+      "result": true,
+      "time": 0.2460494041442871,
+      "error": null
+    },
+    "assert words_string(\"fvh\") == ['fvh']": {
+      "result": true,
+      "time": 0.2670285701751709,
+      "error": null
+    },
+    "assert words_string(\"OoOrgcyESQK FlPUvBbNPdqpgWwJvBi\") == ['OoOrgcyESQK', 'FlPUvBbNPdqpgWwJvBi']": {
+      "result": true,
+      "time": 0.12472200393676758,
+      "error": null
+    },
+    "assert words_string(\"uEhummpbtTkgORcaLbXcJVGfvJsmz\") == ['uEhummpbtTkgORcaLbXcJVGfvJsmz']": {
+      "result": true,
+      "time": 0.13047289848327637,
+      "error": null
+    },
+    "assert words_string(\"VygouQdfHOtVolHJlKVLMqqEmwzHabijOymo\") == ['VygouQdfHOtVolHJlKVLMqqEmwzHabijOymo']": {
+      "result": true,
+      "time": 0.08959269523620605,
+      "error": null
+    },
+    "assert words_string(\"bte\") == ['bte']": {
+      "result": true,
+      "time": 0.06394410133361816,
+      "error": null
+    },
+    "assert words_string(\"hym\") == ['hym']": {
+      "result": true,
+      "time": 0.09402251243591309,
+      "error": null
+    },
+    "assert words_string(\"oLJLCcDoACDxL\") == ['oLJLCcDoACDxL']": {
+      "result": true,
+      "time": 0.06433701515197754,
+      "error": null
+    },
+    "assert words_string(\"naUjUlpJaMOOof\") == ['naUjUlpJaMOOof']": {
+      "result": true,
+      "time": 0.0730276107788086,
+      "error": null
+    },
+    "assert words_string(\"mevgcg,wvgt,\") == ['mevgcg', 'wvgt']": {
+      "result": false,
+      "time": 0.09750175476074219,
+      "error": null
+    },
+    "assert words_string(\"FgejvV,\") == ['FgejvV']": {
+      "result": false,
+      "time": 0.08982348442077637,
+      "error": null
+    },
+    "assert words_string(\"GsjyQgOavmhBupf\") == ['GsjyQgOavmhBupf']": {
+      "result": true,
+      "time": 0.08585929870605469,
+      "error": null
+    },
+    "assert words_string(\"bBWYyFOJXxQcsnfEsQk,ZeoBjA,jk\") == ['bBWYyFOJXxQcsnfEsQk', 'ZeoBjA', 'jk']": {
+      "result": true,
+      "time": 0.11499524116516113,
+      "error": null
+    },
+    "assert words_string(\"pugjwcoritrfumvzsd\") == ['pugjwcoritrfumvzsd']": {
+      "result": true,
+      "time": 0.09339165687561035,
+      "error": null
+    },
+    "assert words_string(\"gfWpHipxkdkzAOwTs c,a \") == ['gfWpHipxkdkzAOwTs', 'c', 'a']": {
+      "result": true,
+      "time": 0.09039044380187988,
+      "error": null
+    },
+    "assert words_string(\"zhosdwvtflvydiauoba\") == ['zhosdwvtflvydiauoba']": {
+      "result": true,
+      "time": 0.09275078773498535,
+      "error": null
+    },
+    "assert words_string(\"qMXAauHwjKptfaZTyGPsLhvoGDWzqncRTM\") == ['qMXAauHwjKptfaZTyGPsLhvoGDWzqncRTM']": {
+      "result": true,
+      "time": 0.07298851013183594,
+      "error": null
+    },
+    "assert words_string(\"tk\") == ['tk']": {
+      "result": true,
+      "time": 0.08979034423828125,
+      "error": null
+    },
+    "assert words_string(\"b\") == ['b']": {
+      "result": true,
+      "time": 0.08234739303588867,
+      "error": null
+    },
+    "assert words_string(\"dhvYVGkVVyznhoKsnLVdRwx\") == ['dhvYVGkVVyznhoKsnLVdRwx']": {
+      "result": true,
+      "time": 0.08625125885009766,
+      "error": null
+    },
+    "assert words_string(\"so ttkzweq swrqcdtbaz\") == ['so', 'ttkzweq', 'swrqcdtbaz']": {
+      "result": true,
+      "time": 0.13995003700256348,
+      "error": null
+    },
+    "assert words_string(\"wv\") == ['wv']": {
+      "result": true,
+      "time": 0.08845734596252441,
+      "error": null
+    },
+    "assert words_string(\"sov\") == ['sov']": {
+      "result": true,
+      "time": 0.0862576961517334,
+      "error": null
+    },
+    "assert words_string(\"eXNTVyasv dSIyLCMOvbWmNhvLNOxyOup,y\") == ['eXNTVyasv', 'dSIyLCMOvbWmNhvLNOxyOup', 'y']": {
+      "result": true,
+      "time": 0.08333373069763184,
+      "error": null
+    },
+    "assert words_string(\"themh,ymgzbtho\") == ['themh', 'ymgzbtho']": {
+      "result": true,
+      "time": 0.09014129638671875,
+      "error": null
+    },
+    "assert words_string(\"sfvgqmtflnbda\") == ['sfvgqmtflnbda']": {
+      "result": true,
+      "time": 0.10920333862304688,
+      "error": null
+    },
+    "assert words_string(\"va\") == ['va']": {
+      "result": true,
+      "time": 0.08675980567932129,
+      "error": null
+    },
+    "assert words_string(\"ZlSBYyUCTAnKCmw\") == ['ZlSBYyUCTAnKCmw']": {
+      "result": true,
+      "time": 0.10229134559631348,
+      "error": null
+    },
+    "assert words_string(\"gYeyPwGHDIZRlz\") == ['gYeyPwGHDIZRlz']": {
+      "result": true,
+      "time": 0.06552839279174805,
+      "error": null
+    },
+    "assert words_string(\"yKwlUpa\") == ['yKwlUpa']": {
+      "result": true,
+      "time": 0.09998941421508789,
+      "error": null
+    },
+    "assert words_string(\"SRcWhegcy U\") == ['SRcWhegcy', 'U']": {
+      "result": true,
+      "time": 0.0863039493560791,
+      "error": null
+    },
+    "assert words_string(\"ddGcSinGJPgxVVVteggdQU,\") == ['ddGcSinGJPgxVVVteggdQU']": {
+      "result": false,
+      "time": 0.08979535102844238,
+      "error": null
+    },
+    "assert words_string(\"bkzihehhs,ceabnwya\") == ['bkzihehhs', 'ceabnwya']": {
+      "result": true,
+      "time": 0.10490560531616211,
+      "error": null
+    },
+    "assert words_string(\"rz\") == ['rz']": {
+      "result": true,
+      "time": 0.09888291358947754,
+      "error": null
+    },
+    "assert words_string(\"IzeHVkGFOidcsptUUXRxusgNq sm iAtJd \") == ['IzeHVkGFOidcsptUUXRxusgNq', 'sm', 'iAtJd']": {
+      "result": true,
+      "time": 0.07199311256408691,
+      "error": null
+    },
+    "assert words_string(\"t\") == ['t']": {
+      "result": true,
+      "time": 0.10338330268859863,
+      "error": null
+    },
+    "assert words_string(\"l ldd,yz acrnudynbq r\") == ['l', 'ldd', 'yz', 'acrnudynbq', 'r']": {
+      "result": true,
+      "time": 0.09608078002929688,
+      "error": null
+    },
+    "assert words_string(\"Lsy,NFEbGfZechwIHnqpidqsbOGNkgzbCBO\") == ['Lsy', 'NFEbGfZechwIHnqpidqsbOGNkgzbCBO']": {
+      "result": true,
+      "time": 0.08286023139953613,
+      "error": null
+    },
+    "assert words_string(\"EMJ mpDTiunggTKAzXplshTbiFiGA NFNb,C\") == ['EMJ', 'mpDTiunggTKAzXplshTbiFiGA', 'NFNb', 'C']": {
+      "result": true,
+      "time": 0.09018325805664062,
+      "error": null
+    },
+    "assert words_string(\"g\") == ['g']": {
+      "result": true,
+      "time": 0.08348560333251953,
+      "error": null
+    },
+    "assert words_string(\"LURNOizrjMckoEKIzFTuyRTR jSKHkrZtLTYx\") == ['LURNOizrjMckoEKIzFTuyRTR', 'jSKHkrZtLTYx']": {
+      "result": true,
+      "time": 0.12326788902282715,
+      "error": null
+    },
+    "assert words_string(\"WgDd scUKSF\") == ['WgDd', 'scUKSF']": {
+      "result": true,
+      "time": 0.11658906936645508,
+      "error": null
+    },
+    "assert words_string(\"xWzaUixFW\") == ['xWzaUixFW']": {
+      "result": true,
+      "time": 0.08999943733215332,
+      "error": null
+    },
+    "assert words_string(\"noshyiofr gli\") == ['noshyiofr', 'gli']": {
+      "result": true,
+      "time": 0.08688831329345703,
+      "error": null
+    },
+    "assert words_string(\"ihUWzcgFsQ lzJliFKk\") == ['ihUWzcgFsQ', 'lzJliFKk']": {
+      "result": true,
+      "time": 0.11469197273254395,
+      "error": null
+    },
+    "assert words_string(\"gLpHulEPVziizSczNccUgDLHoBTnFrn\") == ['gLpHulEPVziizSczNccUgDLHoBTnFrn']": {
+      "result": true,
+      "time": 0.10714530944824219,
+      "error": null
+    },
+    "assert words_string(\"JC,gCMCtZrAwEFcYjC,RWXgMXixfBWI\") == ['JC', 'gCMCtZrAwEFcYjC', 'RWXgMXixfBWI']": {
+      "result": true,
+      "time": 0.10810565948486328,
+      "error": null
+    },
+    "assert words_string(\"yELtMNRoKeFaNNWQS\") == ['yELtMNRoKeFaNNWQS']": {
+      "result": true,
+      "time": 0.11079525947570801,
+      "error": null
+    },
+    "assert words_string(\"bkfyLMuKdOsEVsV\") == ['bkfyLMuKdOsEVsV']": {
+      "result": true,
+      "time": 0.14774250984191895,
+      "error": null
+    },
+    "assert words_string(\"judm ulimqrmvmaz\") == ['judm', 'ulimqrmvmaz']": {
+      "result": true,
+      "time": 0.11705422401428223,
+      "error": null
+    },
+    "assert words_string(\"TKEzFSnzlpthExzMWvTNBJOctWaefVxDHhP\") == ['TKEzFSnzlpthExzMWvTNBJOctWaefVxDHhP']": {
+      "result": true,
+      "time": 0.10379600524902344,
+      "error": null
+    },
+    "assert words_string(\"MBiLLSWSRZGfoIsDQdEDimbvfJnyd\") == ['MBiLLSWSRZGfoIsDQdEDimbvfJnyd']": {
+      "result": true,
+      "time": 0.09410214424133301,
+      "error": null
+    },
+    "assert words_string(\"CAWUQQFzesyEaUEDQzlrOnwMJ SLIzU SUAUiY\") == ['CAWUQQFzesyEaUEDQzlrOnwMJ', 'SLIzU', 'SUAUiY']": {
+      "result": true,
+      "time": 0.10371637344360352,
+      "error": null
+    },
+    "assert words_string(\"imdljccdkztanux\") == ['imdljccdkztanux']": {
+      "result": true,
+      "time": 0.14902997016906738,
+      "error": null
+    },
+    "assert words_string(\"MtvYkACzuMJOTZIiXgraJDRCqpmfK,me\") == ['MtvYkACzuMJOTZIiXgraJDRCqpmfK', 'me']": {
+      "result": true,
+      "time": 0.15498876571655273,
+      "error": null
+    },
+    "assert words_string(\"RRfAjhePwiRmMhWdKnjIYPzzLYrPHJubkNAF\") == ['RRfAjhePwiRmMhWdKnjIYPzzLYrPHJubkNAF']": {
+      "result": true,
+      "time": 0.1758265495300293,
+      "error": null
+    },
+    "assert words_string(\"cnfzRFFNFwfXPSqXjqUElvUsZggNF \") == ['cnfzRFFNFwfXPSqXjqUElvUsZggNF']": {
+      "result": true,
+      "time": 0.10757684707641602,
+      "error": null
+    },
+    "assert words_string(\"SGtwBteVrtCvkSJA\") == ['SGtwBteVrtCvkSJA']": {
+      "result": true,
+      "time": 0.12793183326721191,
+      "error": null
+    },
+    "assert words_string(\"r\") == ['r']": {
+      "result": true,
+      "time": 0.1005408763885498,
+      "error": null
+    },
+    "assert words_string(\"eiDbEdQNTFsstgXJXOWTBSSpUKqmpp U\") == ['eiDbEdQNTFsstgXJXOWTBSSpUKqmpp', 'U']": {
+      "result": true,
+      "time": 0.07960271835327148,
+      "error": null
+    },
+    "assert words_string(\"VlLJgpwhOBzVLcbhqkmQmzeWXlHSccuyrpHH\") == ['VlLJgpwhOBzVLcbhqkmQmzeWXlHSccuyrpHH']": {
+      "result": true,
+      "time": 0.10814213752746582,
+      "error": null
+    },
+    "assert words_string(\"KPkJArYQ\") == ['KPkJArYQ']": {
+      "result": true,
+      "time": 0.15834379196166992,
+      "error": null
+    },
+    "assert words_string(\"h\") == ['h']": {
+      "result": true,
+      "time": 0.06562972068786621,
+      "error": null
+    },
+    "assert words_string(\"Hi, my name is John\") == [\"Hi\", \"my\", \"name\", \"is\", \"John\"]": {
+      "result": true,
+      "time": 0.1229705810546875,
+      "error": null
+    },
+    "assert words_string(\"IETXcW,sm,bpYf\") == ['IETXcW', 'sm', 'bpYf']": {
+      "result": true,
+      "time": 0.15827608108520508,
+      "error": null
+    },
+    "assert words_string(\"ArkAaiedRkLQtjmpSQ,iR,RclZFvQYpyYZR\") == ['ArkAaiedRkLQtjmpSQ', 'iR', 'RclZFvQYpyYZR']": {
+      "result": true,
+      "time": 0.19115090370178223,
+      "error": null
+    },
+    "assert words_string(\"GWcJmjkQKIx\") == ['GWcJmjkQKIx']": {
+      "result": true,
+      "time": 0.15053272247314453,
+      "error": null
+    },
+    "assert words_string(\"ecTCx vezfoWOrvTTOcGRTMFEEOaohYR\") == ['ecTCx', 'vezfoWOrvTTOcGRTMFEEOaohYR']": {
+      "result": true,
+      "time": 0.16540813446044922,
+      "error": null
+    },
+    "assert words_string(\"ahmed     , gamal\") == [\"ahmed\", \"gamal\"]": {
+      "result": true,
+      "time": 0.14441800117492676,
+      "error": null
+    },
+    "assert words_string(\"DrpROLcKKuGcer,bWorhjxCeSeaq\") == ['DrpROLcKKuGcer', 'bWorhjxCeSeaq']": {
+      "result": true,
+      "time": 0.06443667411804199,
+      "error": null
+    },
+    "assert words_string(\"qhggiasekci,ysdfjlhy\") == ['qhggiasekci', 'ysdfjlhy']": {
+      "result": true,
+      "time": 0.13597536087036133,
+      "error": null
+    },
+    "assert words_string(\" leZBbO qQuGjnhqkIdNGdRvkeadXMFT\") == ['leZBbO', 'qQuGjnhqkIdNGdRvkeadXMFT']": {
+      "result": true,
+      "time": 0.16306018829345703,
+      "error": null
+    },
+    "assert words_string(\"dvDbFjMvIs,yPOhhjSDw\") == ['dvDbFjMvIs', 'yPOhhjSDw']": {
+      "result": true,
+      "time": 0.10485720634460449,
+      "error": null
+    },
+    "assert words_string(\"WlM oCXmJWnF\") == ['WlM', 'oCXmJWnF']": {
+      "result": true,
+      "time": 0.12395071983337402,
+      "error": null
+    },
+    "assert words_string(\"u\") == ['u']": {
+      "result": true,
+      "time": 0.19801759719848633,
+      "error": null
+    },
+    "assert words_string(\"KPJacYGjuUmCWvwKJAveSFo\") == ['KPJacYGjuUmCWvwKJAveSFo']": {
+      "result": true,
+      "time": 0.19295978546142578,
+      "error": null
+    },
+    "assert words_string(\"\") == []": {
+      "result": false,
+      "time": 0.17349028587341309,
+      "error": null
+    },
+    "assert words_string(\"f oxbpoemunlpv\") == ['f', 'oxbpoemunlpv']": {
+      "result": true,
+      "time": 0.1532125473022461,
+      "error": null
+    },
+    "assert words_string(\"essJbwCw,kDukNqtdENjUIrEDxBpP\") == ['essJbwCw', 'kDukNqtdENjUIrEDxBpP']": {
+      "result": true,
+      "time": 0.08993363380432129,
+      "error": null
+    },
+    "assert words_string(\"bkrUEEtoxSAaMATeSrJijoej\") == ['bkrUEEtoxSAaMATeSrJijoej']": {
+      "result": true,
+      "time": 0.14443397521972656,
+      "error": null
+    },
+    "assert words_string(\"One, two, three, four, five, six\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]": {
+      "result": true,
+      "time": 0.13196301460266113,
+      "error": null
+    },
+    "assert words_string(\"le\") == ['le']": {
+      "result": true,
+      "time": 0.0861978530883789,
+      "error": null
+    },
+    "assert words_string(\" iLJsRzuIwY,hOcg\") == ['iLJsRzuIwY', 'hOcg']": {
+      "result": true,
+      "time": 0.11453771591186523,
+      "error": null
+    },
+    "assert words_string(\"IJvqozJwqj,OzRPOWZG\") == ['IJvqozJwqj', 'OzRPOWZG']": {
+      "result": true,
+      "time": 0.14246702194213867,
+      "error": null
+    },
+    "assert words_string(\"JJpldjNpRPXfWVUqZdqmtPFdqTSVDs\") == ['JJpldjNpRPXfWVUqZdqmtPFdqTSVDs']": {
+      "result": true,
+      "time": 0.0878610610961914,
+      "error": null
+    },
+    "assert words_string(\"YaF,F kRmeIGcYbSeYjQomoLcgsDxbtIUl\") == ['YaF', 'F', 'kRmeIGcYbSeYjQomoLcgsDxbtIUl']": {
+      "result": true,
+      "time": 0.10608530044555664,
+      "error": null
+    },
+    "assert words_string(\"CJnDHVRfDmGmkBDsLuZFv,SmQuqePvghf\") == ['CJnDHVRfDmGmkBDsLuZFv', 'SmQuqePvghf']": {
+      "result": true,
+      "time": 0.0672769546508789,
+      "error": null
+    },
+    "assert words_string(\"kqntl,i ,wktrx eextto\") == ['kqntl', 'i', 'wktrx', 'eextto']": {
+      "result": true,
+      "time": 0.07759499549865723,
+      "error": null
+    },
+    "assert words_string(\"lapaLhIeTOzXNKe,hnBK\") == ['lapaLhIeTOzXNKe', 'hnBK']": {
+      "result": true,
+      "time": 0.0879669189453125,
+      "error": null
+    },
+    "assert words_string(\"WHyIHiunVGo,dDdturk,DICJf,jTtBF IR\") == ['WHyIHiunVGo', 'dDdturk', 'DICJf', 'jTtBF', 'IR']": {
+      "result": true,
+      "time": 0.0650782585144043,
+      "error": null
+    },
+    "assert words_string(\"One,, two, three, four, five, six,\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": false,
+      "time": 0.09992170333862305,
+      "error": null
+    },
+    "assert words_string(\"VRg eCKTNreW\") == ['VRg', 'eCKTNreW']": {
+      "result": true,
+      "time": 0.07304239273071289,
+      "error": null
+    },
+    "assert words_string(\"MviVJBmw,ncuWatloKvGCSUIpiXDYjA,ztGeFQ\") == ['MviVJBmw', 'ncuWatloKvGCSUIpiXDYjA', 'ztGeFQ']": {
+      "result": true,
+      "time": 0.08138275146484375,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.96,
+  "general_error": "",
+  "has_testcase_error": false
+}

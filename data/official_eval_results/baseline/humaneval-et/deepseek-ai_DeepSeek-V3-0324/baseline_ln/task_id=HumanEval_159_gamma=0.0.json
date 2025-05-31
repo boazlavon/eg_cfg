@@ -1,0 +1,624 @@
+{
+  "code": "def eat(number, need, remaining):\n    total_eaten = number + min(need, remaining)\n    carrots_left = max(remaining - need, 0)\n    return [total_eaten, carrots_left]",
+  "results": {
+    "assert eat(5, 11, 12) == [16, 1]": {
+      "result": true,
+      "time": 0.028886795043945312,
+      "error": null
+    },
+    "assert eat(5, 6, 5) == [10, 0]": {
+      "result": true,
+      "time": 0.040380001068115234,
+      "error": null
+    },
+    "assert eat(5, 10, 5) == [10, 0]": {
+      "result": true,
+      "time": 0.029097557067871094,
+      "error": null
+    },
+    "assert eat(7, 15, 3) == [10, 0]": {
+      "result": true,
+      "time": 0.03177976608276367,
+      "error": null
+    },
+    "assert eat(4, 5, 11) == [9, 6]": {
+      "result": true,
+      "time": 0.030652999877929688,
+      "error": null
+    },
+    "assert eat(9, 6, 9) == [15, 3]": {
+      "result": true,
+      "time": 0.027705907821655273,
+      "error": null
+    },
+    "assert eat(1, 16, 6) == [7, 0]": {
+      "result": true,
+      "time": 0.026848554611206055,
+      "error": null
+    },
+    "assert eat(9, 1, 6) == [10, 5]": {
+      "result": true,
+      "time": 0.029758214950561523,
+      "error": null
+    },
+    "assert eat(5, 6, 10) == [11, 4], \"Error\"": {
+      "result": true,
+      "time": 0.02478480339050293,
+      "error": null
+    },
+    "assert eat(8, 1, 9) == [9, 8]": {
+      "result": true,
+      "time": 0.0324704647064209,
+      "error": null
+    },
+    "assert eat(4, 9, 9) == [13, 0]": {
+      "result": true,
+      "time": 0.029867172241210938,
+      "error": null
+    },
+    "assert eat(1, 1, 10) == [2, 9]": {
+      "result": true,
+      "time": 0.029291868209838867,
+      "error": null
+    },
+    "assert eat(1, 9, 6) == [7, 0]": {
+      "result": true,
+      "time": 0.028499364852905273,
+      "error": null
+    },
+    "assert eat(1, 6, 4) == [5, 0]": {
+      "result": true,
+      "time": 0.031706809997558594,
+      "error": null
+    },
+    "assert eat(10, 9, 12) == [19, 3]": {
+      "result": true,
+      "time": 0.026183605194091797,
+      "error": null
+    },
+    "assert eat(8, 13, 9) == [17, 0]": {
+      "result": true,
+      "time": 0.028923511505126953,
+      "error": null
+    },
+    "assert eat(4, 10, 8) == [12, 0]": {
+      "result": true,
+      "time": 0.02861499786376953,
+      "error": null
+    },
+    "assert eat(5, 5, 11) == [10, 6]": {
+      "result": true,
+      "time": 0.02811884880065918,
+      "error": null
+    },
+    "assert eat(4, 13, 10) == [14, 0]": {
+      "result": true,
+      "time": 0.028701305389404297,
+      "error": null
+    },
+    "assert eat(6, 14, 10) == [16, 0]": {
+      "result": true,
+      "time": 0.029358863830566406,
+      "error": null
+    },
+    "assert eat(4, 8, 10) == [12, 2]": {
+      "result": true,
+      "time": 0.029108762741088867,
+      "error": null
+    },
+    "assert eat(2, 3, 9) == [5, 6]": {
+      "result": true,
+      "time": 0.03117084503173828,
+      "error": null
+    },
+    "assert eat(1, 13, 7) == [8, 0]": {
+      "result": true,
+      "time": 0.03069019317626953,
+      "error": null
+    },
+    "assert eat(4, 3, 6) == [7, 3]": {
+      "result": true,
+      "time": 0.02637171745300293,
+      "error": null
+    },
+    "assert eat(3, 9, 5) == [8, 0]": {
+      "result": true,
+      "time": 0.02911210060119629,
+      "error": null
+    },
+    "assert eat(3, 9, 7) == [10, 0]": {
+      "result": true,
+      "time": 0.030017375946044922,
+      "error": null
+    },
+    "assert eat(7, 2, 6) == [9, 4]": {
+      "result": true,
+      "time": 0.027378082275390625,
+      "error": null
+    },
+    "assert eat(5, 12, 10) == [15, 0]": {
+      "result": true,
+      "time": 0.028764963150024414,
+      "error": null
+    },
+    "assert eat(7, 4, 9) == [11, 5]": {
+      "result": true,
+      "time": 0.030805349349975586,
+      "error": null
+    },
+    "assert eat(4, 4, 13) == [8, 9]": {
+      "result": true,
+      "time": 0.028519392013549805,
+      "error": null
+    },
+    "assert eat(7, 10, 3) == [10, 0]": {
+      "result": true,
+      "time": 0.02681565284729004,
+      "error": null
+    },
+    "assert eat(2, 3, 13) == [5, 10]": {
+      "result": true,
+      "time": 0.027059078216552734,
+      "error": null
+    },
+    "assert eat(6, 11, 11) == [17, 0]": {
+      "result": true,
+      "time": 0.02599620819091797,
+      "error": null
+    },
+    "assert eat(2, 8, 6) == [8, 0]": {
+      "result": true,
+      "time": 0.02881312370300293,
+      "error": null
+    },
+    "assert eat(1, 9, 2) == [3, 0]": {
+      "result": true,
+      "time": 0.02892756462097168,
+      "error": null
+    },
+    "assert eat(7, 16, 7) == [14, 0]": {
+      "result": true,
+      "time": 0.02683877944946289,
+      "error": null
+    },
+    "assert eat(3, 7, 8) == [10, 1]": {
+      "result": true,
+      "time": 0.02498793601989746,
+      "error": null
+    },
+    "assert eat(3, 8, 6) == [9, 0]": {
+      "result": true,
+      "time": 0.029303312301635742,
+      "error": null
+    },
+    "assert eat(1, 6, 5) == [6, 0]": {
+      "result": true,
+      "time": 0.030338287353515625,
+      "error": null
+    },
+    "assert eat(4, 14, 13) == [17, 0]": {
+      "result": true,
+      "time": 0.028386354446411133,
+      "error": null
+    },
+    "assert eat(3, 12, 5) == [8, 0]": {
+      "result": true,
+      "time": 0.030228614807128906,
+      "error": null
+    },
+    "assert eat(8, 2, 12) == [10, 10]": {
+      "result": true,
+      "time": 0.03376340866088867,
+      "error": null
+    },
+    "assert eat(5, 5, 3) == [8, 0]": {
+      "result": true,
+      "time": 0.030667781829833984,
+      "error": null
+    },
+    "assert eat(5, 9, 11) == [14, 2]": {
+      "result": true,
+      "time": 0.025815248489379883,
+      "error": null
+    },
+    "assert eat(1, 7, 7) == [8, 0]": {
+      "result": true,
+      "time": 0.02847743034362793,
+      "error": null
+    },
+    "assert eat(1, 15, 8) == [9, 0]": {
+      "result": true,
+      "time": 0.030440807342529297,
+      "error": null
+    },
+    "assert eat(9, 8, 8) == [17, 0]": {
+      "result": true,
+      "time": 0.030156850814819336,
+      "error": null
+    },
+    "assert eat(8, 4, 1) == [9, 0]": {
+      "result": true,
+      "time": 0.027328968048095703,
+      "error": null
+    },
+    "assert eat(2, 11, 9) == [11, 0]": {
+      "result": true,
+      "time": 0.028000354766845703,
+      "error": null
+    },
+    "assert eat(3, 13, 4) == [7, 0]": {
+      "result": true,
+      "time": 0.02983260154724121,
+      "error": null
+    },
+    "assert eat(8, 1, 12) == [9, 11]": {
+      "result": true,
+      "time": 0.03075265884399414,
+      "error": null
+    },
+    "assert eat(5, 8, 9) == [13, 1]": {
+      "result": true,
+      "time": 0.03024148941040039,
+      "error": null
+    },
+    "assert eat(4, 6, 6) == [10, 0]": {
+      "result": true,
+      "time": 0.027666330337524414,
+      "error": null
+    },
+    "assert eat(8, 12, 13) == [20, 1]": {
+      "result": true,
+      "time": 0.02774357795715332,
+      "error": null
+    },
+    "assert eat(4, 8, 8) == [12, 0]": {
+      "result": true,
+      "time": 0.03234577178955078,
+      "error": null
+    },
+    "assert eat(10, 6, 7) == [16, 1]": {
+      "result": true,
+      "time": 0.027666091918945312,
+      "error": null
+    },
+    "assert eat(5, 3, 2) == [7, 0]": {
+      "result": true,
+      "time": 0.03107738494873047,
+      "error": null
+    },
+    "assert eat(2, 4, 6) == [6, 2]": {
+      "result": true,
+      "time": 0.03186225891113281,
+      "error": null
+    },
+    "assert eat(6, 9, 9) == [15, 0]": {
+      "result": true,
+      "time": 0.028409719467163086,
+      "error": null
+    },
+    "assert eat(4, 7, 3) == [7, 0]": {
+      "result": true,
+      "time": 0.028177261352539062,
+      "error": null
+    },
+    "assert eat(6, 9, 6) == [12, 0]": {
+      "result": true,
+      "time": 0.02639603614807129,
+      "error": null
+    },
+    "assert eat(9, 4, 10) == [13, 6]": {
+      "result": true,
+      "time": 0.026955842971801758,
+      "error": null
+    },
+    "assert eat(8, 9, 5) == [13, 0]": {
+      "result": true,
+      "time": 0.027171611785888672,
+      "error": null
+    },
+    "assert eat(4, 5, 1) == [5, 0], \"Error\"": {
+      "result": true,
+      "time": 0.03014206886291504,
+      "error": null
+    },
+    "assert eat(9, 11, 10) == [19, 0]": {
+      "result": true,
+      "time": 0.030965328216552734,
+      "error": null
+    },
+    "assert eat(6, 7, 15) == [13, 8]": {
+      "result": true,
+      "time": 0.027008771896362305,
+      "error": null
+    },
+    "assert eat(5, 7, 6) == [11, 0]": {
+      "result": true,
+      "time": 0.02899765968322754,
+      "error": null
+    },
+    "assert eat(1, 4, 6) == [5, 2]": {
+      "result": true,
+      "time": 0.030357837677001953,
+      "error": null
+    },
+    "assert eat(2, 2, 10) == [4, 8]": {
+      "result": true,
+      "time": 0.0331268310546875,
+      "error": null
+    },
+    "assert eat(1, 14, 1) == [2, 0]": {
+      "result": true,
+      "time": 0.027339696884155273,
+      "error": null
+    },
+    "assert eat(3, 11, 9) == [12, 0]": {
+      "result": true,
+      "time": 0.028223752975463867,
+      "error": null
+    },
+    "assert eat(2, 5, 11) == [7, 6]": {
+      "result": true,
+      "time": 0.025711774826049805,
+      "error": null
+    },
+    "assert eat(6, 6, 3) == [9, 0]": {
+      "result": true,
+      "time": 0.030164241790771484,
+      "error": null
+    },
+    "assert eat(1, 4, 2) == [3, 0]": {
+      "result": true,
+      "time": 0.027926921844482422,
+      "error": null
+    },
+    "assert eat(3, 6, 7) == [9, 1]": {
+      "result": true,
+      "time": 0.03119659423828125,
+      "error": null
+    },
+    "assert eat(3, 16, 6) == [9, 0]": {
+      "result": true,
+      "time": 0.029668807983398438,
+      "error": null
+    },
+    "assert eat(4, 3, 5) == [7, 2]": {
+      "result": true,
+      "time": 0.030218124389648438,
+      "error": null
+    },
+    "assert eat(2, 2, 2) == [4, 0]": {
+      "result": true,
+      "time": 0.029451370239257812,
+      "error": null
+    },
+    "assert eat(8, 3, 6) == [11, 3]": {
+      "result": true,
+      "time": 0.02876591682434082,
+      "error": null
+    },
+    "assert eat(4, 5, 7) == [9, 2], \"Error\"": {
+      "result": true,
+      "time": 0.029780864715576172,
+      "error": null
+    },
+    "assert eat(7, 12, 14) == [19, 2]": {
+      "result": true,
+      "time": 0.027951717376708984,
+      "error": null
+    },
+    "assert eat(5, 10, 8) == [13, 0]": {
+      "result": true,
+      "time": 0.026355266571044922,
+      "error": null
+    },
+    "assert eat(7, 10, 7) == [14, 0]": {
+      "result": true,
+      "time": 0.029392242431640625,
+      "error": null
+    },
+    "assert eat(3, 6, 8) == [9, 2]": {
+      "result": true,
+      "time": 0.027207612991333008,
+      "error": null
+    },
+    "assert eat(1, 3, 11) == [4, 8]": {
+      "result": true,
+      "time": 0.024585723876953125,
+      "error": null
+    },
+    "assert eat(3, 9, 2) == [5, 0]": {
+      "result": true,
+      "time": 0.026993513107299805,
+      "error": null
+    },
+    "assert eat(2, 8, 11) == [10, 3]": {
+      "result": true,
+      "time": 0.034421682357788086,
+      "error": null
+    },
+    "assert eat(7, 7, 9) == [14, 2]": {
+      "result": true,
+      "time": 0.036380767822265625,
+      "error": null
+    },
+    "assert eat(6, 9, 14) == [15, 5]": {
+      "result": true,
+      "time": 0.02927088737487793,
+      "error": null
+    },
+    "assert eat(8, 5, 7) == [13, 2]": {
+      "result": true,
+      "time": 0.02681589126586914,
+      "error": null
+    },
+    "assert eat(5, 3, 3) == [8, 0]": {
+      "result": true,
+      "time": 0.02622532844543457,
+      "error": null
+    },
+    "assert eat(2, 16, 9) == [11, 0]": {
+      "result": true,
+      "time": 0.027518033981323242,
+      "error": null
+    },
+    "assert eat(1, 3, 7) == [4, 4]": {
+      "result": true,
+      "time": 0.027516603469848633,
+      "error": null
+    },
+    "assert eat(7, 6, 14) == [13, 8]": {
+      "result": true,
+      "time": 0.025201082229614258,
+      "error": null
+    },
+    "assert eat(3, 3, 13) == [6, 10]": {
+      "result": true,
+      "time": 0.031897783279418945,
+      "error": null
+    },
+    "assert eat(4, 11, 9) == [13, 0]": {
+      "result": true,
+      "time": 0.027948379516601562,
+      "error": null
+    },
+    "assert eat(4, 8, 9) == [12, 1], \"Error\"": {
+      "result": true,
+      "time": 0.029593229293823242,
+      "error": null
+    },
+    "assert eat(6, 7, 5) == [11, 0]": {
+      "result": true,
+      "time": 0.028081417083740234,
+      "error": null
+    },
+    "assert eat(6, 12, 12) == [18, 0]": {
+      "result": true,
+      "time": 0.03070545196533203,
+      "error": null
+    },
+    "assert eat(4, 12, 6) == [10, 0]": {
+      "result": true,
+      "time": 0.026707172393798828,
+      "error": null
+    },
+    "assert eat(9, 6, 3) == [12, 0]": {
+      "result": true,
+      "time": 0.02963709831237793,
+      "error": null
+    },
+    "assert eat(7, 7, 12) == [14, 5]": {
+      "result": true,
+      "time": 0.03171658515930176,
+      "error": null
+    },
+    "assert eat(6, 7, 6) == [12, 0]": {
+      "result": true,
+      "time": 0.029880762100219727,
+      "error": null
+    },
+    "assert eat(3, 2, 6) == [5, 4]": {
+      "result": true,
+      "time": 0.02982616424560547,
+      "error": null
+    },
+    "assert eat(6, 10, 14) == [16, 4]": {
+      "result": true,
+      "time": 0.027843475341796875,
+      "error": null
+    },
+    "assert eat(8, 6, 13) == [14, 7]": {
+      "result": true,
+      "time": 0.03096318244934082,
+      "error": null
+    },
+    "assert eat(7, 3, 14) == [10, 11]": {
+      "result": true,
+      "time": 0.02838897705078125,
+      "error": null
+    },
+    "assert eat(2, 11, 5) == [7, 0], \"Error\"\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.027737855911254883,
+      "error": null
+    },
+    "assert eat(2, 10, 14) == [12, 4]": {
+      "result": true,
+      "time": 0.02832770347595215,
+      "error": null
+    },
+    "assert eat(1, 4, 13) == [5, 9]": {
+      "result": true,
+      "time": 0.02552628517150879,
+      "error": null
+    },
+    "assert eat(4, 11, 14) == [15, 3]": {
+      "result": true,
+      "time": 0.026518821716308594,
+      "error": null
+    },
+    "assert eat(7, 6, 11) == [13, 5]": {
+      "result": true,
+      "time": 0.02690267562866211,
+      "error": null
+    },
+    "assert eat(5, 12, 6) == [11, 0]": {
+      "result": true,
+      "time": 0.03248143196105957,
+      "error": null
+    },
+    "assert eat(3, 9, 12) == [12, 3]": {
+      "result": true,
+      "time": 0.026947736740112305,
+      "error": null
+    },
+    "assert eat(3, 8, 14) == [11, 6]": {
+      "result": true,
+      "time": 0.02574610710144043,
+      "error": null
+    },
+    "assert eat(2, 13, 3) == [5, 0]": {
+      "result": true,
+      "time": 0.027582883834838867,
+      "error": null
+    },
+    "assert eat(6, 4, 9) == [10, 5]": {
+      "result": true,
+      "time": 0.025915861129760742,
+      "error": null
+    },
+    "assert eat(6, 5, 12) == [11, 7]": {
+      "result": true,
+      "time": 0.030376672744750977,
+      "error": null
+    },
+    "assert eat(1, 10, 10) == [11, 0], \"Error\"": {
+      "result": true,
+      "time": 0.025870323181152344,
+      "error": null
+    },
+    "assert eat(6, 6, 14) == [12, 8]": {
+      "result": true,
+      "time": 0.03009200096130371,
+      "error": null
+    },
+    "assert eat(5, 6, 2) == [7, 0]": {
+      "result": true,
+      "time": 0.027230024337768555,
+      "error": null
+    },
+    "assert eat(5, 10, 12) == [15, 2]": {
+      "result": true,
+      "time": 0.02792644500732422,
+      "error": null
+    },
+    "assert eat(1, 9, 12) == [10, 3]": {
+      "result": true,
+      "time": 0.026409387588500977,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

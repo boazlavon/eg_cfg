@@ -1,0 +1,499 @@
+{
+  "code": "def get_max_triples(n):\n    a = [i * i - i + 1 for i in range(1, n + 1)]\n    count = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            for k in range(j + 1, n):\n                if (a[i] + a[j] + a[k]) % 3 == 0:\n                    count += 1\n    return count",
+  "results": {
+    "assert get_max_triples(148) == 175273": {
+      "result": true,
+      "time": 0.0988917350769043,
+      "error": null
+    },
+    "assert get_max_triples(84) == 30996": {
+      "result": true,
+      "time": 0.06586289405822754,
+      "error": null
+    },
+    "assert get_max_triples(74) == 20724": {
+      "result": true,
+      "time": 0.03791666030883789,
+      "error": null
+    },
+    "assert get_max_triples(126) == 106764": {
+      "result": true,
+      "time": 0.07631778717041016,
+      "error": null
+    },
+    "assert get_max_triples(166) == 248050": {
+      "result": true,
+      "time": 0.12961530685424805,
+      "error": null
+    },
+    "assert get_max_triples(58) == 10108": {
+      "result": true,
+      "time": 0.03653693199157715,
+      "error": null
+    },
+    "assert get_max_triples(5) == 1": {
+      "result": true,
+      "time": 0.029650449752807617,
+      "error": null
+    },
+    "assert get_max_triples(29) == 1089": {
+      "result": true,
+      "time": 0.028706789016723633,
+      "error": null
+    },
+    "assert get_max_triples(43) == 4018": {
+      "result": true,
+      "time": 0.03032374382019043,
+      "error": null
+    },
+    "assert get_max_triples(169) == 261856": {
+      "result": true,
+      "time": 0.13736724853515625,
+      "error": null
+    },
+    "assert get_max_triples(136) == 135675": {
+      "result": true,
+      "time": 0.0827639102935791,
+      "error": null
+    },
+    "assert get_max_triples(19) == 306": {
+      "result": true,
+      "time": 0.029933691024780273,
+      "error": null
+    },
+    "assert get_max_triples(39) == 2886": {
+      "result": true,
+      "time": 0.0301055908203125,
+      "error": null
+    },
+    "assert get_max_triples(178) == 306328": {
+      "result": true,
+      "time": 0.14818334579467773,
+      "error": null
+    },
+    "assert get_max_triples(75) == 21900": {
+      "result": true,
+      "time": 0.03792905807495117,
+      "error": null
+    },
+    "assert get_max_triples(46) == 4950": {
+      "result": true,
+      "time": 0.02990412712097168,
+      "error": null
+    },
+    "assert get_max_triples(187) == 355570": {
+      "result": true,
+      "time": 0.16551637649536133,
+      "error": null
+    },
+    "assert get_max_triples(98) == 49136": {
+      "result": true,
+      "time": 0.04629039764404297,
+      "error": null
+    },
+    "assert get_max_triples(173) == 277761": {
+      "result": true,
+      "time": 0.1467742919921875,
+      "error": null
+    },
+    "assert get_max_triples(108) == 66780": {
+      "result": true,
+      "time": 0.05542707443237305,
+      "error": null
+    },
+    "assert get_max_triples(153) == 192525": {
+      "result": true,
+      "time": 0.11087512969970703,
+      "error": null
+    },
+    "assert get_max_triples(134) == 127754": {
+      "result": true,
+      "time": 0.08879613876342773,
+      "error": null
+    },
+    "assert get_max_triples(48) == 5520": {
+      "result": true,
+      "time": 0.028272151947021484,
+      "error": null
+    },
+    "assert get_max_triples(38) == 2586": {
+      "result": true,
+      "time": 0.028940677642822266,
+      "error": null
+    },
+    "assert get_max_triples(124) == 102541": {
+      "result": true,
+      "time": 0.06841850280761719,
+      "error": null
+    },
+    "assert get_max_triples(17) == 185": {
+      "result": true,
+      "time": 0.03257107734680176,
+      "error": null
+    },
+    "assert get_max_triples(93) == 42315": {
+      "result": true,
+      "time": 0.04915952682495117,
+      "error": null
+    },
+    "assert get_max_triples(18) == 240": {
+      "result": true,
+      "time": 0.029625654220581055,
+      "error": null
+    },
+    "assert get_max_triples(41) == 3289": {
+      "result": true,
+      "time": 0.030170202255249023,
+      "error": null
+    },
+    "assert get_max_triples(51) == 6664": {
+      "result": true,
+      "time": 0.027513504028320312,
+      "error": null
+    },
+    "assert get_max_triples(135) == 131670": {
+      "result": true,
+      "time": 0.08764266967773438,
+      "error": null
+    },
+    "assert get_max_triples(177) == 299425": {
+      "result": true,
+      "time": 0.1396503448486328,
+      "error": null
+    },
+    "assert get_max_triples(186) == 347944": {
+      "result": true,
+      "time": 0.1678309440612793,
+      "error": null
+    },
+    "assert get_max_triples(16) == 175": {
+      "result": true,
+      "time": 0.029483318328857422,
+      "error": null
+    },
+    "assert get_max_triples(185) == 340441": {
+      "result": true,
+      "time": 0.16166448593139648,
+      "error": null
+    },
+    "assert get_max_triples(61) == 11800": {
+      "result": true,
+      "time": 0.042728424072265625,
+      "error": null
+    },
+    "assert get_max_triples(13) == 88": {
+      "result": true,
+      "time": 0.035808563232421875,
+      "error": null
+    },
+    "assert get_max_triples(30) == 1260": {
+      "result": true,
+      "time": 0.029524803161621094,
+      "error": null
+    },
+    "assert get_max_triples(130) == 118336": {
+      "result": true,
+      "time": 0.08291244506835938,
+      "error": null
+    },
+    "assert get_max_triples(9) == 21": {
+      "result": true,
+      "time": 0.030015230178833008,
+      "error": null
+    },
+    "assert get_max_triples(82) == 29160": {
+      "result": true,
+      "time": 0.042411088943481445,
+      "error": null
+    },
+    "assert get_max_triples(164) == 236169": {
+      "result": true,
+      "time": 0.12298917770385742,
+      "error": null
+    },
+    "assert get_max_triples(158) == 210886": {
+      "result": true,
+      "time": 0.10938429832458496,
+      "error": null
+    },
+    "assert get_max_triples(21) == 399": {
+      "result": true,
+      "time": 0.02982783317565918,
+      "error": null
+    },
+    "assert get_max_triples(12) == 60": {
+      "result": true,
+      "time": 0.02927541732788086,
+      "error": null
+    },
+    "assert get_max_triples(91) == 40050": {
+      "result": true,
+      "time": 0.04630851745605469,
+      "error": null
+    },
+    "assert get_max_triples(40) == 3211": {
+      "result": true,
+      "time": 0.030118465423583984,
+      "error": null
+    },
+    "assert get_max_triples(142) == 154630": {
+      "result": true,
+      "time": 0.09255266189575195,
+      "error": null
+    },
+    "assert get_max_triples(190) == 373086": {
+      "result": true,
+      "time": 0.17696499824523926,
+      "error": null
+    },
+    "assert get_max_triples(167) == 249535": {
+      "result": true,
+      "time": 0.12599468231201172,
+      "error": null
+    },
+    "assert get_max_triples(168) == 255640": {
+      "result": true,
+      "time": 0.13280653953552246,
+      "error": null
+    },
+    "assert get_max_triples(34) == 1936": {
+      "result": true,
+      "time": 0.0296933650970459,
+      "error": null
+    },
+    "assert get_max_triples(50) == 6136": {
+      "result": true,
+      "time": 0.03125405311584473,
+      "error": null
+    },
+    "assert get_max_triples(171) == 269724": {
+      "result": true,
+      "time": 0.1367180347442627,
+      "error": null
+    },
+    "assert get_max_triples(188) == 357461": {
+      "result": true,
+      "time": 0.17805171012878418,
+      "error": null
+    },
+    "assert get_max_triples(60) == 11020": {
+      "result": true,
+      "time": 0.0344388484954834,
+      "error": null
+    },
+    "assert get_max_triples(80) == 26351": {
+      "result": true,
+      "time": 0.04519248008728027,
+      "error": null
+    },
+    "assert get_max_triples(112) == 75295": {
+      "result": true,
+      "time": 0.05980968475341797,
+      "error": null
+    },
+    "assert get_max_triples(195) == 401440": {
+      "result": true,
+      "time": 0.19573140144348145,
+      "error": null
+    },
+    "assert get_max_triples(64) == 13671": {
+      "result": true,
+      "time": 0.03635811805725098,
+      "error": null
+    },
+    "assert get_max_triples(200) == 431211": {
+      "result": true,
+      "time": 0.20043587684631348,
+      "error": null
+    },
+    "assert get_max_triples(191) == 375039": {
+      "result": true,
+      "time": 0.17365670204162598,
+      "error": null
+    },
+    "assert get_max_triples(102) == 56100": {
+      "result": true,
+      "time": 0.05294966697692871,
+      "error": null
+    },
+    "assert get_max_triples(79) == 26026": {
+      "result": true,
+      "time": 0.0487971305847168,
+      "error": null
+    },
+    "assert get_max_triples(27) == 900": {
+      "result": true,
+      "time": 0.02706766128540039,
+      "error": null
+    },
+    "assert get_max_triples(176) == 292639": {
+      "result": true,
+      "time": 0.1501767635345459,
+      "error": null
+    },
+    "assert get_max_triples(76) == 23125": {
+      "result": true,
+      "time": 0.050782203674316406,
+      "error": null
+    },
+    "assert get_max_triples(63) == 12810": {
+      "result": true,
+      "time": 0.0380558967590332,
+      "error": null
+    },
+    "assert get_max_triples(97) == 48640": {
+      "result": true,
+      "time": 0.05334067344665527,
+      "error": null
+    },
+    "assert get_max_triples(71) == 18239": {
+      "result": true,
+      "time": 0.03984427452087402,
+      "error": null
+    },
+    "assert get_max_triples(196) == 409825": {
+      "result": true,
+      "time": 0.19855284690856934,
+      "error": null
+    },
+    "assert get_max_triples(26) == 764": {
+      "result": true,
+      "time": 0.028637409210205078,
+      "error": null
+    },
+    "assert get_max_triples(192) == 383040": {
+      "result": true,
+      "time": 0.17812228202819824,
+      "error": null
+    },
+    "assert get_max_triples(15) == 130": {
+      "result": true,
+      "time": 0.030701398849487305,
+      "error": null
+    },
+    "assert get_max_triples(42) == 3640": {
+      "result": true,
+      "time": 0.02865314483642578,
+      "error": null
+    },
+    "assert get_max_triples(96) == 46624": {
+      "result": true,
+      "time": 0.04764413833618164,
+      "error": null
+    },
+    "assert get_max_triples(62) == 11990": {
+      "result": true,
+      "time": 0.03464865684509277,
+      "error": null
+    },
+    "assert get_max_triples(137) == 136665": {
+      "result": true,
+      "time": 0.08627557754516602,
+      "error": null
+    },
+    "assert get_max_triples(106) == 63700": {
+      "result": true,
+      "time": 0.05582451820373535,
+      "error": null
+    },
+    "assert get_max_triples(127) == 110250": {
+      "result": true,
+      "time": 0.08256006240844727,
+      "error": null
+    },
+    "assert get_max_triples(54) == 7956": {
+      "result": true,
+      "time": 0.0294034481048584,
+      "error": null
+    },
+    "assert get_max_triples(109) == 69336": {
+      "result": true,
+      "time": 0.058501482009887695,
+      "error": null
+    },
+    "assert get_max_triples(6) == 4": {
+      "result": true,
+      "time": 0.028834819793701172,
+      "error": null
+    },
+    "assert get_max_triples(47) == 5055": {
+      "result": true,
+      "time": 0.029473304748535156,
+      "error": null
+    },
+    "assert get_max_triples(149) == 176449": {
+      "result": true,
+      "time": 0.1108255386352539,
+      "error": null
+    },
+    "assert get_max_triples(150) == 181300": {
+      "result": true,
+      "time": 0.10731077194213867,
+      "error": null
+    },
+    "assert get_max_triples(67) == 15730": {
+      "result": true,
+      "time": 0.0387723445892334,
+      "error": null
+    },
+    "assert get_max_triples(2) == 0": {
+      "result": true,
+      "time": 0.032743215560913086,
+      "error": null
+    },
+    "assert get_max_triples(129) == 114681": {
+      "result": true,
+      "time": 0.09601616859436035,
+      "error": null
+    },
+    "assert get_max_triples(189) == 365211": {
+      "result": true,
+      "time": 0.17250514030456543,
+      "error": null
+    },
+    "assert get_max_triples(114) == 78736": {
+      "result": true,
+      "time": 0.06764531135559082,
+      "error": null
+    },
+    "assert get_max_triples(181) == 322200": {
+      "result": true,
+      "time": 0.15744423866271973,
+      "error": null
+    },
+    "assert get_max_triples(155) == 198951": {
+      "result": true,
+      "time": 0.11978268623352051,
+      "error": null
+    },
+    "assert get_max_triples(36) == 2244": {
+      "result": true,
+      "time": 0.030347585678100586,
+      "error": null
+    },
+    "assert get_max_triples(53) == 7361": {
+      "result": true,
+      "time": 0.03448605537414551,
+      "error": null
+    },
+    "assert get_max_triples(107) == 64295": {
+      "result": true,
+      "time": 0.06093955039978027,
+      "error": null
+    },
+    "assert get_max_triples(10) == 36": {
+      "result": true,
+      "time": 0.030757904052734375,
+      "error": null
+    },
+    "assert get_max_triples(100) == 53361": {
+      "result": true,
+      "time": 0.05428624153137207,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

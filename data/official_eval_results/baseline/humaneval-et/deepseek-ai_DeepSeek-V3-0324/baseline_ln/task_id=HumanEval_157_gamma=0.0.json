@@ -1,0 +1,679 @@
+{
+  "code": "def right_angle_triangle(a, b, c):\n    sides = sorted([a, b, c])\n    return sides[0]**2 + sides[1]**2 == sides[2]**2",
+  "results": {
+    "assert right_angle_triangle(273, 936, 975) == True": {
+      "result": true,
+      "time": 0.027443885803222656,
+      "error": null
+    },
+    "assert right_angle_triangle(285, 380, 475) == True": {
+      "result": true,
+      "time": 0.029154300689697266,
+      "error": null
+    },
+    "assert right_angle_triangle(705, 376, 799) == True": {
+      "result": true,
+      "time": 0.029909849166870117,
+      "error": null
+    },
+    "assert right_angle_triangle(870, 464, 986) == True": {
+      "result": true,
+      "time": 0.029397964477539062,
+      "error": null
+    },
+    "assert right_angle_triangle(3504, 4015, 5329) == True": {
+      "result": true,
+      "time": 0.027563095092773438,
+      "error": null
+    },
+    "assert right_angle_triangle(525, 280, 595) == True": {
+      "result": true,
+      "time": 0.026955366134643555,
+      "error": null
+    },
+    "assert right_angle_triangle(1536, 1760, 2336) == True": {
+      "result": true,
+      "time": 0.029631853103637695,
+      "error": null
+    },
+    "assert right_angle_triangle(175, 600, 625) == True": {
+      "result": true,
+      "time": 0.027120351791381836,
+      "error": null
+    },
+    "assert right_angle_triangle(455, 1560, 1625) == True": {
+      "result": true,
+      "time": 0.026970386505126953,
+      "error": null
+    },
+    "assert right_angle_triangle(48, 55, 73) == True\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.02548503875732422,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 2, 5) == False": {
+      "result": true,
+      "time": 0.028387784957885742,
+      "error": null
+    },
+    "assert right_angle_triangle(259, 888, 925) == True": {
+      "result": true,
+      "time": 0.027049541473388672,
+      "error": null
+    },
+    "assert right_angle_triangle(490, 1680, 1750) == True": {
+      "result": true,
+      "time": 0.028935670852661133,
+      "error": null
+    },
+    "assert right_angle_triangle(1185, 632, 1343) == True": {
+      "result": true,
+      "time": 0.025433778762817383,
+      "error": null
+    },
+    "assert right_angle_triangle(6, 1, 9) == False": {
+      "result": true,
+      "time": 0.029592037200927734,
+      "error": null
+    },
+    "assert right_angle_triangle(2256, 2585, 3431) == True": {
+      "result": true,
+      "time": 0.028970003128051758,
+      "error": null
+    },
+    "assert right_angle_triangle(1155, 616, 1309) == True": {
+      "result": true,
+      "time": 0.02886199951171875,
+      "error": null
+    },
+    "assert right_angle_triangle(4, 5, 5) == False": {
+      "result": true,
+      "time": 0.026140451431274414,
+      "error": null
+    },
+    "assert right_angle_triangle(5, 7, 1) == False": {
+      "result": true,
+      "time": 0.02751922607421875,
+      "error": null
+    },
+    "assert right_angle_triangle(5, 1, 2) == False": {
+      "result": true,
+      "time": 0.028556346893310547,
+      "error": null
+    },
+    "assert right_angle_triangle(54, 72, 90) == True": {
+      "result": true,
+      "time": 0.028122901916503906,
+      "error": null
+    },
+    "assert right_angle_triangle(20, 12, 16) == True": {
+      "result": true,
+      "time": 0.029539108276367188,
+      "error": null
+    },
+    "assert right_angle_triangle(5, 5, 2) == False": {
+      "result": true,
+      "time": 0.03185701370239258,
+      "error": null
+    },
+    "assert right_angle_triangle(2736, 3135, 4161) == True": {
+      "result": true,
+      "time": 0.030607938766479492,
+      "error": null
+    },
+    "assert right_angle_triangle(518, 1776, 1850) == True": {
+      "result": true,
+      "time": 0.032445669174194336,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 6, 11) == False": {
+      "result": true,
+      "time": 0.02810502052307129,
+      "error": null
+    },
+    "assert right_angle_triangle(7, 7, 5) == False": {
+      "result": true,
+      "time": 0.02926921844482422,
+      "error": null
+    },
+    "assert right_angle_triangle(15, 2, 10) == False": {
+      "result": true,
+      "time": 0.026426076889038086,
+      "error": null
+    },
+    "assert right_angle_triangle(10, 6, 8) == True": {
+      "result": true,
+      "time": 0.026951313018798828,
+      "error": null
+    },
+    "assert right_angle_triangle(15, 5, 11) == False": {
+      "result": true,
+      "time": 0.029230594635009766,
+      "error": null
+    },
+    "assert right_angle_triangle(1, 1, 2) == False": {
+      "result": true,
+      "time": 0.028081655502319336,
+      "error": null
+    },
+    "assert right_angle_triangle(1, 3, 15) == False": {
+      "result": true,
+      "time": 0.03025507926940918,
+      "error": null
+    },
+    "assert right_angle_triangle(280, 960, 1000) == True": {
+      "result": true,
+      "time": 0.026342153549194336,
+      "error": null
+    },
+    "assert right_angle_triangle(6, 1, 7) == False": {
+      "result": true,
+      "time": 0.029506206512451172,
+      "error": null
+    },
+    "assert right_angle_triangle(10, 9, 3) == False": {
+      "result": true,
+      "time": 0.030536651611328125,
+      "error": null
+    },
+    "assert right_angle_triangle(2, 7, 6) == False": {
+      "result": true,
+      "time": 0.028883934020996094,
+      "error": null
+    },
+    "assert right_angle_triangle(1, 7, 4) == False": {
+      "result": true,
+      "time": 0.030202388763427734,
+      "error": null
+    },
+    "assert right_angle_triangle(765, 408, 867) == True": {
+      "result": true,
+      "time": 0.02861952781677246,
+      "error": null
+    },
+    "assert right_angle_triangle(69, 92, 115) == True": {
+      "result": true,
+      "time": 0.02581048011779785,
+      "error": null
+    },
+    "assert right_angle_triangle(140, 336, 364) == True": {
+      "result": true,
+      "time": 0.02499866485595703,
+      "error": null
+    },
+    "assert right_angle_triangle(240, 144, 192) == True": {
+      "result": true,
+      "time": 0.029027462005615234,
+      "error": null
+    },
+    "assert right_angle_triangle(2, 4, 6) == False": {
+      "result": true,
+      "time": 0.0269010066986084,
+      "error": null
+    },
+    "assert right_angle_triangle(780, 468, 624) == True": {
+      "result": true,
+      "time": 0.030138254165649414,
+      "error": null
+    },
+    "assert right_angle_triangle(6, 7, 6) == False": {
+      "result": true,
+      "time": 0.030133724212646484,
+      "error": null
+    },
+    "assert right_angle_triangle(3888, 4455, 5913) == True": {
+      "result": true,
+      "time": 0.03046584129333496,
+      "error": null
+    },
+    "assert right_angle_triangle(6, 7, 7) == False": {
+      "result": true,
+      "time": 0.027239084243774414,
+      "error": null
+    },
+    "assert right_angle_triangle(2, 2, 2) == False": {
+      "result": true,
+      "time": 0.032164812088012695,
+      "error": null
+    },
+    "assert right_angle_triangle(14, 8, 10) == False": {
+      "result": true,
+      "time": 0.02800917625427246,
+      "error": null
+    },
+    "assert right_angle_triangle(204, 272, 340) == True": {
+      "result": true,
+      "time": 0.026759624481201172,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 7, 2) == False": {
+      "result": true,
+      "time": 0.029288291931152344,
+      "error": null
+    },
+    "assert right_angle_triangle(1035, 552, 1173) == True": {
+      "result": true,
+      "time": 0.026658058166503906,
+      "error": null
+    },
+    "assert right_angle_triangle(243, 324, 405) == True": {
+      "result": true,
+      "time": 0.029887914657592773,
+      "error": null
+    },
+    "assert right_angle_triangle(581, 1992, 2075) == True": {
+      "result": true,
+      "time": 0.02879476547241211,
+      "error": null
+    },
+    "assert right_angle_triangle(11, 5, 8) == False": {
+      "result": true,
+      "time": 0.030777454376220703,
+      "error": null
+    },
+    "assert right_angle_triangle(820, 492, 656) == True": {
+      "result": true,
+      "time": 0.025573015213012695,
+      "error": null
+    },
+    "assert right_angle_triangle(5, 4, 4) == False": {
+      "result": true,
+      "time": 0.026834964752197266,
+      "error": null
+    },
+    "assert right_angle_triangle(4, 4, 4) == False": {
+      "result": true,
+      "time": 0.026370763778686523,
+      "error": null
+    },
+    "assert right_angle_triangle(4, 5, 4) == False": {
+      "result": true,
+      "time": 0.030475616455078125,
+      "error": null
+    },
+    "assert right_angle_triangle(12, 1, 2) == False": {
+      "result": true,
+      "time": 0.030931949615478516,
+      "error": null
+    },
+    "assert right_angle_triangle(900, 480, 1020) == True": {
+      "result": true,
+      "time": 0.029265165328979492,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 3, 4) == False": {
+      "result": true,
+      "time": 0.030455589294433594,
+      "error": null
+    },
+    "assert right_angle_triangle(360, 864, 936) == True": {
+      "result": true,
+      "time": 0.027616024017333984,
+      "error": null
+    },
+    "assert right_angle_triangle(7, 1, 6) == False": {
+      "result": true,
+      "time": 0.029515981674194336,
+      "error": null
+    },
+    "assert right_angle_triangle(5, 3, 2) == False": {
+      "result": true,
+      "time": 0.02454853057861328,
+      "error": null
+    },
+    "assert right_angle_triangle(210, 112, 238) == True": {
+      "result": true,
+      "time": 0.027156352996826172,
+      "error": null
+    },
+    "assert right_angle_triangle(1000, 600, 800) == True": {
+      "result": true,
+      "time": 0.02966618537902832,
+      "error": null
+    },
+    "assert right_angle_triangle(285, 684, 741) == True": {
+      "result": true,
+      "time": 0.03144693374633789,
+      "error": null
+    },
+    "assert right_angle_triangle(65, 156, 169) == True": {
+      "result": true,
+      "time": 0.028896331787109375,
+      "error": null
+    },
+    "assert right_angle_triangle(960, 576, 768) == True": {
+      "result": true,
+      "time": 0.02883291244506836,
+      "error": null
+    },
+    "assert right_angle_triangle(3792, 4345, 5767) == True": {
+      "result": true,
+      "time": 0.0289456844329834,
+      "error": null
+    },
+    "assert right_angle_triangle(5, 5, 6) == False": {
+      "result": true,
+      "time": 0.03038191795349121,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 3, 3) == False": {
+      "result": true,
+      "time": 0.028312206268310547,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 2, 3) == False": {
+      "result": true,
+      "time": 0.028180360794067383,
+      "error": null
+    },
+    "assert right_angle_triangle(1, 2, 1) == False": {
+      "result": true,
+      "time": 0.03164935111999512,
+      "error": null
+    },
+    "assert right_angle_triangle(12, 4, 2) == False": {
+      "result": true,
+      "time": 0.03135371208190918,
+      "error": null
+    },
+    "assert right_angle_triangle(6, 4, 1) == False": {
+      "result": true,
+      "time": 0.03023505210876465,
+      "error": null
+    },
+    "assert right_angle_triangle(5, 12, 13) == True": {
+      "result": true,
+      "time": 0.02839970588684082,
+      "error": null
+    },
+    "assert right_angle_triangle(2, 6, 9) == False": {
+      "result": true,
+      "time": 0.027208566665649414,
+      "error": null
+    },
+    "assert right_angle_triangle(160, 384, 416) == True": {
+      "result": true,
+      "time": 0.028906822204589844,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 6, 3) == False": {
+      "result": true,
+      "time": 0.02719283103942871,
+      "error": null
+    },
+    "assert right_angle_triangle(2, 4, 11) == False": {
+      "result": true,
+      "time": 0.029810667037963867,
+      "error": null
+    },
+    "assert right_angle_triangle(2880, 3300, 4380) == True": {
+      "result": true,
+      "time": 0.02829599380493164,
+      "error": null
+    },
+    "assert right_angle_triangle(10, 5, 7) == False": {
+      "result": true,
+      "time": 0.0263216495513916,
+      "error": null
+    },
+    "assert right_angle_triangle(7, 24, 25) == True": {
+      "result": true,
+      "time": 0.02775263786315918,
+      "error": null
+    },
+    "assert right_angle_triangle(15, 8, 17) == True": {
+      "result": true,
+      "time": 0.028491973876953125,
+      "error": null
+    },
+    "assert right_angle_triangle(4752, 5445, 7227) == True": {
+      "result": true,
+      "time": 0.029974937438964844,
+      "error": null
+    },
+    "assert right_angle_triangle(4656, 5335, 7081) == True": {
+      "result": true,
+      "time": 0.027446985244750977,
+      "error": null
+    },
+    "assert right_angle_triangle(380, 912, 988) == True": {
+      "result": true,
+      "time": 0.033325910568237305,
+      "error": null
+    },
+    "assert right_angle_triangle(350, 840, 910) == True": {
+      "result": true,
+      "time": 0.03143811225891113,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 4, 5) == True": {
+      "result": true,
+      "time": 0.027982473373413086,
+      "error": null
+    },
+    "assert right_angle_triangle(2, 4, 8) == False": {
+      "result": true,
+      "time": 0.029378890991210938,
+      "error": null
+    },
+    "assert right_angle_triangle(1, 4, 4) == False": {
+      "result": true,
+      "time": 0.027933597564697266,
+      "error": null
+    },
+    "assert right_angle_triangle(70, 42, 56) == True": {
+      "result": true,
+      "time": 0.028972864151000977,
+      "error": null
+    },
+    "assert right_angle_triangle(15, 9, 11) == False": {
+      "result": true,
+      "time": 0.030946969985961914,
+      "error": null
+    },
+    "assert right_angle_triangle(201, 268, 335) == True": {
+      "result": true,
+      "time": 0.0288238525390625,
+      "error": null
+    },
+    "assert right_angle_triangle(170, 408, 442) == True": {
+      "result": true,
+      "time": 0.028641223907470703,
+      "error": null
+    },
+    "assert right_angle_triangle(12, 16, 20) == True": {
+      "result": true,
+      "time": 0.029865264892578125,
+      "error": null
+    },
+    "assert right_angle_triangle(305, 732, 793) == True": {
+      "result": true,
+      "time": 0.029456138610839844,
+      "error": null
+    },
+    "assert right_angle_triangle(2, 2, 10) == False": {
+      "result": true,
+      "time": 0.026350975036621094,
+      "error": null
+    },
+    "assert right_angle_triangle(1, 3, 4) == False": {
+      "result": true,
+      "time": 0.030290603637695312,
+      "error": null
+    },
+    "assert right_angle_triangle(230, 552, 598) == True": {
+      "result": true,
+      "time": 0.029471158981323242,
+      "error": null
+    },
+    "assert right_angle_triangle(1, 1, 1) == False": {
+      "result": true,
+      "time": 0.029941558837890625,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 3, 9) == False": {
+      "result": true,
+      "time": 0.02815985679626465,
+      "error": null
+    },
+    "assert right_angle_triangle(6, 5, 3) == False": {
+      "result": true,
+      "time": 0.03146982192993164,
+      "error": null
+    },
+    "assert right_angle_triangle(235, 564, 611) == True": {
+      "result": true,
+      "time": 0.02798318862915039,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 1, 4) == False": {
+      "result": true,
+      "time": 0.030022621154785156,
+      "error": null
+    },
+    "assert right_angle_triangle(81, 108, 135) == True": {
+      "result": true,
+      "time": 0.028498411178588867,
+      "error": null
+    },
+    "assert right_angle_triangle(1, 2, 3) == False": {
+      "result": true,
+      "time": 0.026601791381835938,
+      "error": null
+    },
+    "assert right_angle_triangle(5, 5, 4) == False": {
+      "result": true,
+      "time": 0.027711153030395508,
+      "error": null
+    },
+    "assert right_angle_triangle(21, 28, 35) == True": {
+      "result": true,
+      "time": 0.026920318603515625,
+      "error": null
+    },
+    "assert right_angle_triangle(234, 312, 390) == True": {
+      "result": true,
+      "time": 0.027971982955932617,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 1, 7) == False": {
+      "result": true,
+      "time": 0.03295445442199707,
+      "error": null
+    },
+    "assert right_angle_triangle(230, 138, 184) == True": {
+      "result": true,
+      "time": 0.03070664405822754,
+      "error": null
+    },
+    "assert right_angle_triangle(168, 576, 600) == True": {
+      "result": true,
+      "time": 0.029278993606567383,
+      "error": null
+    },
+    "assert right_angle_triangle(1095, 584, 1241) == True": {
+      "result": true,
+      "time": 0.02937936782836914,
+      "error": null
+    },
+    "assert right_angle_triangle(320, 192, 256) == True": {
+      "result": true,
+      "time": 0.027393341064453125,
+      "error": null
+    },
+    "assert right_angle_triangle(8, 5, 6) == False": {
+      "result": true,
+      "time": 0.02785015106201172,
+      "error": null
+    },
+    "assert right_angle_triangle(5, 2, 4) == False": {
+      "result": true,
+      "time": 0.02940082550048828,
+      "error": null
+    },
+    "assert right_angle_triangle(6, 4, 4) == False": {
+      "result": true,
+      "time": 0.030106306076049805,
+      "error": null
+    },
+    "assert right_angle_triangle(4, 1, 4) == False": {
+      "result": true,
+      "time": 0.030136585235595703,
+      "error": null
+    },
+    "assert right_angle_triangle(528, 605, 803) == True": {
+      "result": true,
+      "time": 0.02755141258239746,
+      "error": null
+    },
+    "assert right_angle_triangle(5, 4, 10) == False": {
+      "result": true,
+      "time": 0.026485681533813477,
+      "error": null
+    },
+    "assert right_angle_triangle(15, 8, 3) == False": {
+      "result": true,
+      "time": 0.02698516845703125,
+      "error": null
+    },
+    "assert right_angle_triangle(1455, 776, 1649) == True": {
+      "result": true,
+      "time": 0.02793288230895996,
+      "error": null
+    },
+    "assert right_angle_triangle(21, 72, 75) == True": {
+      "result": true,
+      "time": 0.028441190719604492,
+      "error": null
+    },
+    "assert right_angle_triangle(2544, 2915, 3869) == True": {
+      "result": true,
+      "time": 0.02795243263244629,
+      "error": null
+    },
+    "assert right_angle_triangle(610, 366, 488) == True": {
+      "result": true,
+      "time": 0.026703596115112305,
+      "error": null
+    },
+    "assert right_angle_triangle(8, 10, 10) == False": {
+      "result": true,
+      "time": 0.027970075607299805,
+      "error": null
+    },
+    "assert right_angle_triangle(2, 4, 5) == False": {
+      "result": true,
+      "time": 0.029643774032592773,
+      "error": null
+    },
+    "assert right_angle_triangle(2, 3, 1) == False": {
+      "result": true,
+      "time": 0.027711153030395508,
+      "error": null
+    },
+    "assert right_angle_triangle(3, 3, 1) == False": {
+      "result": true,
+      "time": 0.028182506561279297,
+      "error": null
+    },
+    "assert right_angle_triangle(219, 292, 365) == True": {
+      "result": true,
+      "time": 0.03148365020751953,
+      "error": null
+    },
+    "assert right_angle_triangle(1, 5, 5) == False": {
+      "result": true,
+      "time": 0.03178572654724121,
+      "error": null
+    },
+    "assert right_angle_triangle(192, 220, 292) == True": {
+      "result": true,
+      "time": 0.030517578125,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

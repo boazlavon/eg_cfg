@@ -1,0 +1,659 @@
+{
+  "code": "def get_closest_vowel(word):\n    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}\n    word_len = len(word)\n    if word_len < 3:\n        return \"\"\n    \n    for i in range(word_len - 2, 0, -1):\n        current_char = word[i]\n        prev_char = word[i - 1]\n        next_char = word[i + 1]\n        if current_char in vowels and prev_char not in vowels and next_char not in vowels:\n            return current_char\n    return \"\"",
+  "results": {
+    "assert get_closest_vowel(\"tGFYIJD\") == 'I'": {
+      "result": true,
+      "time": 0.03195762634277344,
+      "error": null
+    },
+    "assert get_closest_vowel(\"trngs\") == ''": {
+      "result": true,
+      "time": 0.02909374237060547,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ypwdlj\") == ''": {
+      "result": true,
+      "time": 0.031117916107177734,
+      "error": null
+    },
+    "assert get_closest_vowel(\"cpizmgbr\") == 'i'": {
+      "result": true,
+      "time": 0.03152608871459961,
+      "error": null
+    },
+    "assert get_closest_vowel(\"arvowxo\") == 'o'": {
+      "result": true,
+      "time": 0.03755378723144531,
+      "error": null
+    },
+    "assert get_closest_vowel(\"fvoq\") == 'o'": {
+      "result": true,
+      "time": 0.04760622978210449,
+      "error": null
+    },
+    "assert get_closest_vowel(\"BBZVid\") == 'i'": {
+      "result": true,
+      "time": 0.0322115421295166,
+      "error": null
+    },
+    "assert get_closest_vowel(\"rfsnzbkwn\") == ''": {
+      "result": true,
+      "time": 0.03246903419494629,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ahfahd\") == 'a'": {
+      "result": true,
+      "time": 0.03217935562133789,
+      "error": null
+    },
+    "assert get_closest_vowel(\"vqjo\") == ''": {
+      "result": true,
+      "time": 0.03303670883178711,
+      "error": null
+    },
+    "assert get_closest_vowel(\"fJBfZSo\") == ''": {
+      "result": true,
+      "time": 0.029981613159179688,
+      "error": null
+    },
+    "assert get_closest_vowel(\"RGdufA\") == 'u'": {
+      "result": true,
+      "time": 0.030953407287597656,
+      "error": null
+    },
+    "assert get_closest_vowel(\"rebqcy\") == 'e'": {
+      "result": true,
+      "time": 0.030143022537231445,
+      "error": null
+    },
+    "assert get_closest_vowel(\"asl\") == ''": {
+      "result": true,
+      "time": 0.034925222396850586,
+      "error": null
+    },
+    "assert get_closest_vowel(\"hxzbb\") == ''": {
+      "result": true,
+      "time": 0.026636838912963867,
+      "error": null
+    },
+    "assert get_closest_vowel(\"akfpd\") == ''": {
+      "result": true,
+      "time": 0.031558990478515625,
+      "error": null
+    },
+    "assert get_closest_vowel(\"tujwth\") == 'u'": {
+      "result": true,
+      "time": 0.03310680389404297,
+      "error": null
+    },
+    "assert get_closest_vowel(\"zbakq\") == 'a'": {
+      "result": true,
+      "time": 0.03474688529968262,
+      "error": null
+    },
+    "assert get_closest_vowel(\"avhsz\") == ''": {
+      "result": true,
+      "time": 0.02945709228515625,
+      "error": null
+    },
+    "assert get_closest_vowel(\"slvlbltbj\") == ''": {
+      "result": true,
+      "time": 0.03556108474731445,
+      "error": null
+    },
+    "assert get_closest_vowel(\"zlptf\") == ''": {
+      "result": true,
+      "time": 0.031580209732055664,
+      "error": null
+    },
+    "assert get_closest_vowel(\"bijAZ\") == 'A'": {
+      "result": true,
+      "time": 0.02824878692626953,
+      "error": null
+    },
+    "assert get_closest_vowel(\"YsSJU\") == ''": {
+      "result": true,
+      "time": 0.031554460525512695,
+      "error": null
+    },
+    "assert get_closest_vowel(\"QtM\") == ''": {
+      "result": true,
+      "time": 0.032793283462524414,
+      "error": null
+    },
+    "assert get_closest_vowel(\"kgobnd\") == 'o'": {
+      "result": true,
+      "time": 0.03187060356140137,
+      "error": null
+    },
+    "assert get_closest_vowel(\"yfin\") == 'i'": {
+      "result": true,
+      "time": 0.028393983840942383,
+      "error": null
+    },
+    "assert get_closest_vowel(\"NDZBuU\") == ''": {
+      "result": true,
+      "time": 0.034181833267211914,
+      "error": null
+    },
+    "assert get_closest_vowel(\"IBDJnJR\") == ''": {
+      "result": true,
+      "time": 0.029013633728027344,
+      "error": null
+    },
+    "assert get_closest_vowel(\"qloyeb\") == 'e'": {
+      "result": true,
+      "time": 0.0334782600402832,
+      "error": null
+    },
+    "assert get_closest_vowel(\"vaylznipp\") == 'i'": {
+      "result": true,
+      "time": 0.029792070388793945,
+      "error": null
+    },
+    "assert get_closest_vowel(\"kobcedy\") == 'e'": {
+      "result": true,
+      "time": 0.03115677833557129,
+      "error": null
+    },
+    "assert get_closest_vowel(\"nohi\") == 'o'": {
+      "result": true,
+      "time": 0.028840303421020508,
+      "error": null
+    },
+    "assert get_closest_vowel(\"bqvhubae\") == 'u'": {
+      "result": true,
+      "time": 0.03215217590332031,
+      "error": null
+    },
+    "assert get_closest_vowel(\"fvpsdx\") == ''": {
+      "result": true,
+      "time": 0.029356956481933594,
+      "error": null
+    },
+    "assert get_closest_vowel(\"xarlcy\") == 'a'": {
+      "result": true,
+      "time": 0.0353391170501709,
+      "error": null
+    },
+    "assert get_closest_vowel(\"qhceuv\") == ''": {
+      "result": true,
+      "time": 0.02872323989868164,
+      "error": null
+    },
+    "assert get_closest_vowel(\"anime\") == \"i\"": {
+      "result": true,
+      "time": 0.032341718673706055,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ewatt\") == 'a'": {
+      "result": true,
+      "time": 0.028986692428588867,
+      "error": null
+    },
+    "assert get_closest_vowel(\"bad\") == \"a\"": {
+      "result": true,
+      "time": 0.030841588973999023,
+      "error": null
+    },
+    "assert get_closest_vowel(\"hqwgwnkhe\") == ''": {
+      "result": true,
+      "time": 0.03289675712585449,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ohueb\") == ''": {
+      "result": true,
+      "time": 0.03059077262878418,
+      "error": null
+    },
+    "assert get_closest_vowel(\"euy\") == ''": {
+      "result": true,
+      "time": 0.03429436683654785,
+      "error": null
+    },
+    "assert get_closest_vowel(\"xuyq\") == 'u'": {
+      "result": true,
+      "time": 0.03139472007751465,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ngvqt\") == ''": {
+      "result": true,
+      "time": 0.03260159492492676,
+      "error": null
+    },
+    "assert get_closest_vowel(\"zDdxS\") == ''": {
+      "result": true,
+      "time": 0.02781367301940918,
+      "error": null
+    },
+    "assert get_closest_vowel(\"yqd\") == ''": {
+      "result": true,
+      "time": 0.03122425079345703,
+      "error": null
+    },
+    "assert get_closest_vowel(\"nzxphpwl\") == ''": {
+      "result": true,
+      "time": 0.03339076042175293,
+      "error": null
+    },
+    "assert get_closest_vowel(\"iyjwtc\") == ''": {
+      "result": true,
+      "time": 0.0369420051574707,
+      "error": null
+    },
+    "assert get_closest_vowel(\"yogurt\") == \"u\"": {
+      "result": true,
+      "time": 0.03139352798461914,
+      "error": null
+    },
+    "assert get_closest_vowel(\"tltqbsfli\") == ''": {
+      "result": true,
+      "time": 0.033107757568359375,
+      "error": null
+    },
+    "assert get_closest_vowel(\"itkzagrua\") == 'a'": {
+      "result": true,
+      "time": 0.032585859298706055,
+      "error": null
+    },
+    "assert get_closest_vowel(\"oaznwzxb\") == ''": {
+      "result": true,
+      "time": 0.03363466262817383,
+      "error": null
+    },
+    "assert get_closest_vowel(\"rvkg\") == ''": {
+      "result": true,
+      "time": 0.033829689025878906,
+      "error": null
+    },
+    "assert get_closest_vowel(\"izhnynh\") == ''": {
+      "result": true,
+      "time": 0.031236648559570312,
+      "error": null
+    },
+    "assert get_closest_vowel(\"gwtghbzzs\") == ''": {
+      "result": true,
+      "time": 0.0399782657623291,
+      "error": null
+    },
+    "assert get_closest_vowel(\"easy\") == \"\"": {
+      "result": true,
+      "time": 0.03405404090881348,
+      "error": null
+    },
+    "assert get_closest_vowel(\"nMzDyoquX\") == 'u'": {
+      "result": true,
+      "time": 0.030631542205810547,
+      "error": null
+    },
+    "assert get_closest_vowel(\"jwr\") == ''": {
+      "result": true,
+      "time": 0.031937360763549805,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ewmwa\") == ''": {
+      "result": true,
+      "time": 0.03157353401184082,
+      "error": null
+    },
+    "assert get_closest_vowel(\"fqE\") == ''": {
+      "result": true,
+      "time": 0.032885074615478516,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ogzv\") == ''": {
+      "result": true,
+      "time": 0.03573179244995117,
+      "error": null
+    },
+    "assert get_closest_vowel(\"tngyskv\") == ''": {
+      "result": true,
+      "time": 0.027574777603149414,
+      "error": null
+    },
+    "assert get_closest_vowel(\"tcjfrktu\") == ''": {
+      "result": true,
+      "time": 0.03966212272644043,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ijhvpy\") == ''": {
+      "result": true,
+      "time": 0.02765965461730957,
+      "error": null
+    },
+    "assert get_closest_vowel(\"EpyvaZNy\") == 'a'": {
+      "result": true,
+      "time": 0.030902624130249023,
+      "error": null
+    },
+    "assert get_closest_vowel(\"jlqd\") == ''": {
+      "result": true,
+      "time": 0.03290867805480957,
+      "error": null
+    },
+    "assert get_closest_vowel(\"taQosTDF\") == 'o'": {
+      "result": true,
+      "time": 0.032691240310668945,
+      "error": null
+    },
+    "assert get_closest_vowel(\"hxzrg\") == ''": {
+      "result": true,
+      "time": 0.030359983444213867,
+      "error": null
+    },
+    "assert get_closest_vowel(\"mjha\") == ''": {
+      "result": true,
+      "time": 0.04086613655090332,
+      "error": null
+    },
+    "assert get_closest_vowel(\"Asia\") == \"\"": {
+      "result": true,
+      "time": 0.030725955963134766,
+      "error": null
+    },
+    "assert get_closest_vowel(\"wBPWktE\") == ''": {
+      "result": true,
+      "time": 0.04309368133544922,
+      "error": null
+    },
+    "assert get_closest_vowel(\"Above\") == \"o\"\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.02992415428161621,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ali\") == \"\"": {
+      "result": true,
+      "time": 0.03239631652832031,
+      "error": null
+    },
+    "assert get_closest_vowel(\"jjdw\") == ''": {
+      "result": true,
+      "time": 0.03128981590270996,
+      "error": null
+    },
+    "assert get_closest_vowel(\"WRVxzZb\") == ''": {
+      "result": true,
+      "time": 0.030524253845214844,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ycr\") == ''": {
+      "result": true,
+      "time": 0.029102802276611328,
+      "error": null
+    },
+    "assert get_closest_vowel(\"sapndx\") == 'a'": {
+      "result": true,
+      "time": 0.04008889198303223,
+      "error": null
+    },
+    "assert get_closest_vowel(\"bqrdgn\") == ''": {
+      "result": true,
+      "time": 0.03309917449951172,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ljibidugfgah\") == 'a'": {
+      "result": true,
+      "time": 0.039543867111206055,
+      "error": null
+    },
+    "assert get_closest_vowel(\"full\") == \"u\"": {
+      "result": true,
+      "time": 0.025696277618408203,
+      "error": null
+    },
+    "assert get_closest_vowel(\"vzl\") == ''": {
+      "result": true,
+      "time": 0.03411507606506348,
+      "error": null
+    },
+    "assert get_closest_vowel(\"evw\") == ''": {
+      "result": true,
+      "time": 0.029944181442260742,
+      "error": null
+    },
+    "assert get_closest_vowel(\"dug\") == 'u'": {
+      "result": true,
+      "time": 0.03210115432739258,
+      "error": null
+    },
+    "assert get_closest_vowel(\"KxRfZv\") == ''": {
+      "result": true,
+      "time": 0.029276132583618164,
+      "error": null
+    },
+    "assert get_closest_vowel(\"leneu\") == 'e'": {
+      "result": true,
+      "time": 0.03163909912109375,
+      "error": null
+    },
+    "assert get_closest_vowel(\"hwqcb\") == ''": {
+      "result": true,
+      "time": 0.03308272361755371,
+      "error": null
+    },
+    "assert get_closest_vowel(\"nai\") == ''": {
+      "result": true,
+      "time": 0.036047935485839844,
+      "error": null
+    },
+    "assert get_closest_vowel(\"jebrugbg\") == 'u'": {
+      "result": true,
+      "time": 0.03059840202331543,
+      "error": null
+    },
+    "assert get_closest_vowel(\"gmfvvxa\") == ''": {
+      "result": true,
+      "time": 0.033333539962768555,
+      "error": null
+    },
+    "assert get_closest_vowel(\"xzyoqy\") == 'o'": {
+      "result": true,
+      "time": 0.028399944305419922,
+      "error": null
+    },
+    "assert get_closest_vowel(\"kijxmjxy\") == 'i'": {
+      "result": true,
+      "time": 0.030497312545776367,
+      "error": null
+    },
+    "assert get_closest_vowel(\"quick\") == \"\"": {
+      "result": true,
+      "time": 0.032510995864868164,
+      "error": null
+    },
+    "assert get_closest_vowel(\"noyfmt\") == 'o'": {
+      "result": true,
+      "time": 0.03357291221618652,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ffvtklifh\") == 'i'": {
+      "result": true,
+      "time": 0.028647184371948242,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ehumjln\") == 'u'": {
+      "result": true,
+      "time": 0.033936500549316406,
+      "error": null
+    },
+    "assert get_closest_vowel(\"skrikqwb\") == 'i'": {
+      "result": true,
+      "time": 0.03932905197143555,
+      "error": null
+    },
+    "assert get_closest_vowel(\"moh\") == 'o'": {
+      "result": true,
+      "time": 0.02845311164855957,
+      "error": null
+    },
+    "assert get_closest_vowel(\"cybl\") == ''": {
+      "result": true,
+      "time": 0.03110980987548828,
+      "error": null
+    },
+    "assert get_closest_vowel(\"lbvxaaupz\") == ''": {
+      "result": true,
+      "time": 0.032254934310913086,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ab\") == \"\"": {
+      "result": true,
+      "time": 0.03290414810180664,
+      "error": null
+    },
+    "assert get_closest_vowel(\"most\") == \"o\"": {
+      "result": true,
+      "time": 0.02462005615234375,
+      "error": null
+    },
+    "assert get_closest_vowel(\"wsqyq\") == ''": {
+      "result": true,
+      "time": 0.030934810638427734,
+      "error": null
+    },
+    "assert get_closest_vowel(\"rnrucalo\") == 'a'": {
+      "result": true,
+      "time": 0.032410621643066406,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ptbz\") == ''": {
+      "result": true,
+      "time": 0.028599023818969727,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ziTTVi\") == 'i'": {
+      "result": true,
+      "time": 0.02924036979675293,
+      "error": null
+    },
+    "assert get_closest_vowel(\"tkjdeq\") == 'e'": {
+      "result": true,
+      "time": 0.03259634971618652,
+      "error": null
+    },
+    "assert get_closest_vowel(\"hly\") == ''": {
+      "result": true,
+      "time": 0.031148433685302734,
+      "error": null
+    },
+    "assert get_closest_vowel(\"sunhxtb\") == 'u'": {
+      "result": true,
+      "time": 0.028167009353637695,
+      "error": null
+    },
+    "assert get_closest_vowel(\"btazqrg\") == 'a'": {
+      "result": true,
+      "time": 0.03094792366027832,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ocfsalgno\") == 'a'": {
+      "result": true,
+      "time": 0.02968454360961914,
+      "error": null
+    },
+    "assert get_closest_vowel(\"fttpojb\") == 'o'": {
+      "result": true,
+      "time": 0.028357744216918945,
+      "error": null
+    },
+    "assert get_closest_vowel(\"eAsy\") == \"\"": {
+      "result": true,
+      "time": 0.028301715850830078,
+      "error": null
+    },
+    "assert get_closest_vowel(\"miNITNc\") == 'I'": {
+      "result": true,
+      "time": 0.031151533126831055,
+      "error": null
+    },
+    "assert get_closest_vowel(\"DBpemZx\") == 'e'": {
+      "result": true,
+      "time": 0.028488874435424805,
+      "error": null
+    },
+    "assert get_closest_vowel(\"wmxdyhz\") == ''": {
+      "result": true,
+      "time": 0.03097391128540039,
+      "error": null
+    },
+    "assert get_closest_vowel(\"jHHWPTONQ\") == 'O'": {
+      "result": true,
+      "time": 0.03242373466491699,
+      "error": null
+    },
+    "assert get_closest_vowel(\"mGea\") == ''": {
+      "result": true,
+      "time": 0.029184341430664062,
+      "error": null
+    },
+    "assert get_closest_vowel(\"IzAIgi\") == ''": {
+      "result": true,
+      "time": 0.03021383285522461,
+      "error": null
+    },
+    "assert get_closest_vowel(\"usxeqslh\") == 'e'": {
+      "result": true,
+      "time": 0.029381275177001953,
+      "error": null
+    },
+    "assert get_closest_vowel(\"xsytk\") == ''": {
+      "result": true,
+      "time": 0.031105995178222656,
+      "error": null
+    },
+    "assert get_closest_vowel(\"vNdzcFb\") == ''": {
+      "result": true,
+      "time": 0.028264760971069336,
+      "error": null
+    },
+    "assert get_closest_vowel(\"lwwcnln\") == ''": {
+      "result": true,
+      "time": 0.02593827247619629,
+      "error": null
+    },
+    "assert get_closest_vowel(\"qqIV\") == 'I'": {
+      "result": true,
+      "time": 0.028925418853759766,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ba\") == \"\"": {
+      "result": true,
+      "time": 0.03069472312927246,
+      "error": null
+    },
+    "assert get_closest_vowel(\"fjbilzo\") == 'i'": {
+      "result": true,
+      "time": 0.028269052505493164,
+      "error": null
+    },
+    "assert get_closest_vowel(\"hphfdo\") == ''": {
+      "result": true,
+      "time": 0.02732372283935547,
+      "error": null
+    },
+    "assert get_closest_vowel(\"lsmrpkds\") == ''": {
+      "result": true,
+      "time": 0.02992844581604004,
+      "error": null
+    },
+    "assert get_closest_vowel(\"ufqt\") == ''": {
+      "result": true,
+      "time": 0.0288236141204834,
+      "error": null
+    },
+    "assert get_closest_vowel(\"FjDlDoF\") == 'o'": {
+      "result": true,
+      "time": 0.031212568283081055,
+      "error": null
+    },
+    "assert get_closest_vowel(\"KlVgMzEdK\") == 'E'": {
+      "result": true,
+      "time": 0.030907869338989258,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

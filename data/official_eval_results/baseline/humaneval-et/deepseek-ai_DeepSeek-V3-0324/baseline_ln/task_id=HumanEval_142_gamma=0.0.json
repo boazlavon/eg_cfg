@@ -1,0 +1,619 @@
+{
+  "code": "def sum_squares(lst):\n    total = 0\n    for index, num in enumerate(lst):\n        if index % 3 == 0:\n            total += num ** 2\n        elif index % 4 == 0 and index % 3 != 0:\n            total += num ** 3\n        else:\n            total += num\n    return total",
+  "results": {
+    "assert sum_squares([-3, 2, 1, 2, 3, 5, 3, 2, -2]) == 51": {
+      "result": true,
+      "time": 0.027166366577148438,
+      "error": null
+    },
+    "assert sum_squares([3, 4, 2]) == 15": {
+      "result": true,
+      "time": 0.02918553352355957,
+      "error": null
+    },
+    "assert sum_squares([3, 6, 6, 2, 3, 1, 3, 3, 2]) == 73": {
+      "result": true,
+      "time": 0.027966976165771484,
+      "error": null
+    },
+    "assert sum_squares([-56,-99,1,0,-2]) == 3030": {
+      "result": true,
+      "time": 0.02599358558654785,
+      "error": null
+    },
+    "assert sum_squares([-1, -5, 21, 2, -10, 9, -5, 12, -13, -7, -7, 14, -17, 2, 10, 10, 14, 16, 8, 11]) == 162": {
+      "result": true,
+      "time": 0.029464244842529297,
+      "error": null
+    },
+    "assert sum_squares([-54, -104, 5, 2, -5]) == 2696": {
+      "result": true,
+      "time": 0.03298139572143555,
+      "error": null
+    },
+    "assert sum_squares([2, 4, 6, 2, 1, 1, 1, 3, 4]) == 88": {
+      "result": true,
+      "time": 0.02754688262939453,
+      "error": null
+    },
+    "assert sum_squares([-1, 1, -1, -1, -3, 3, 1, -5, -1]) == -27": {
+      "result": true,
+      "time": 0.02807760238647461,
+      "error": null
+    },
+    "assert sum_squares([1, -1, 22, -5, -13, 12, -2, 17, -14, -11, -3, 13, -18, 11, 15, 9, 17, 15, 2, 12]) == 645": {
+      "result": true,
+      "time": 0.027886629104614258,
+      "error": null
+    },
+    "assert sum_squares([4, 6, 5]) == 27": {
+      "result": true,
+      "time": 0.03252148628234863,
+      "error": null
+    },
+    "assert sum_squares([-17, -10, 3, 36, 37, 23, -17, 27, -36, 22, 0, 8, -21, 33, 39]) == 6919": {
+      "result": true,
+      "time": 0.0297391414642334,
+      "error": null
+    },
+    "assert sum_squares([-6, -2, 15, 1, -15, 15, 2, 15, -10, -12, -8, 16, -9, 2, 18, 15, 14, 11, 4, 5]) == -1037": {
+      "result": true,
+      "time": 0.02702021598815918,
+      "error": null
+    },
+    "assert sum_squares([6, 1, 1]) == 38": {
+      "result": true,
+      "time": 0.028255701065063477,
+      "error": null
+    },
+    "assert sum_squares([-5, 4, -2, 4, 0, 2, 4, -1, 0]) == 60": {
+      "result": true,
+      "time": 0.029284000396728516,
+      "error": null
+    },
+    "assert sum_squares([-55, -98, 3, 4, -6]) == 2730": {
+      "result": true,
+      "time": 0.03220939636230469,
+      "error": null
+    },
+    "assert sum_squares([-5, 1, 13, 4, -19, 9, 0, 19, -16, -10, -7, 16, -14, 8, 15, 12, 11, 18, 1, 6]) == -9044": {
+      "result": true,
+      "time": 0.02993488311767578,
+      "error": null
+    },
+    "assert sum_squares([4, 0, 4, 4, -7]) == -307": {
+      "result": true,
+      "time": 0.027576446533203125,
+      "error": null
+    },
+    "assert sum_squares([1, 3, 2, 1, 4, 2, 1, 6, 1]) == 81": {
+      "result": true,
+      "time": 0.030340194702148438,
+      "error": null
+    },
+    "assert sum_squares([6, 7, 1]) == 44": {
+      "result": true,
+      "time": 0.030374526977539062,
+      "error": null
+    },
+    "assert sum_squares([-2, 5, 1, 4, 2, 1, 5, 2, 4]) == 126": {
+      "result": true,
+      "time": 0.029262781143188477,
+      "error": null
+    },
+    "assert sum_squares([2, 3, 3]) == 10": {
+      "result": true,
+      "time": 0.031085491180419922,
+      "error": null
+    },
+    "assert sum_squares([0, -6, 14, 4, -16, 14, 4, 11, -13, -9, -5, 15, -18, 10, 18, 7, 13, 14, 9, 9]) == -3435": {
+      "result": true,
+      "time": 0.028270483016967773,
+      "error": null
+    },
+    "assert sum_squares([5, 6, 4, 4, 4, 6, 6, 3, 2]) == 168": {
+      "result": true,
+      "time": 0.03496241569519043,
+      "error": null
+    },
+    "assert sum_squares([-56, -96, 1, 5, 0]) == 3066": {
+      "result": true,
+      "time": 0.02834153175354004,
+      "error": null
+    },
+    "assert sum_squares([-19, -8, 2, 33, 37, 31, -24, 29, -39, 22, -8, 17, -23, 34, 35]) == -5495": {
+      "result": true,
+      "time": 0.029667377471923828,
+      "error": null
+    },
+    "assert sum_squares([-1,-5,2,-1,-5]) == -126": {
+      "result": true,
+      "time": 0.02942657470703125,
+      "error": null
+    },
+    "assert sum_squares([3, 4, 3, 4, 3, 4, 1, 2, 4]) == 130": {
+      "result": true,
+      "time": 0.02825307846069336,
+      "error": null
+    },
+    "assert sum_squares([-3, -6, 0, 1, -2, 3, 4, 1, -4]) == -48": {
+      "result": true,
+      "time": 0.03103327751159668,
+      "error": null
+    },
+    "assert sum_squares([-59, -96, 3, 4, 1]) == 3405": {
+      "result": true,
+      "time": 0.0320584774017334,
+      "error": null
+    },
+    "assert sum_squares([-1, -6, -5, -3, -3, 4, -3, -6, -1]) == -22": {
+      "result": true,
+      "time": 0.03176760673522949,
+      "error": null
+    },
+    "assert sum_squares([-60, -95, 1, 5, -3]) == 3504": {
+      "result": true,
+      "time": 0.02783679962158203,
+      "error": null
+    },
+    "assert sum_squares([-1,0,0,0,0,0,0,0,-1]) == 0": {
+      "result": true,
+      "time": 0.029167890548706055,
+      "error": null
+    },
+    "assert sum_squares([3, 3, 7]) == 19": {
+      "result": true,
+      "time": 0.03195619583129883,
+      "error": null
+    },
+    "assert sum_squares([1,1,1,1,1,1,1,1,1]) == 9": {
+      "result": true,
+      "time": 0.030722618103027344,
+      "error": null
+    },
+    "assert sum_squares([3, -8, 6, -1, -10]) == -992": {
+      "result": true,
+      "time": 0.031615257263183594,
+      "error": null
+    },
+    "assert sum_squares([]) == 0": {
+      "result": true,
+      "time": 0.027810335159301758,
+      "error": null
+    },
+    "assert sum_squares([-1, 5, 3, 4, 1, 3, 2, 2, 1]) == 36": {
+      "result": true,
+      "time": 0.03039240837097168,
+      "error": null
+    },
+    "assert sum_squares([4, 1, 13]) == 30": {
+      "result": true,
+      "time": 0.03135800361633301,
+      "error": null
+    },
+    "assert sum_squares([4, 5, 4, 4, 4, 1, 2, 3, 3]) == 140": {
+      "result": true,
+      "time": 0.030148744583129883,
+      "error": null
+    },
+    "assert sum_squares([2, 0, 22, 0, -15, 15, -2, 13, -12, -14, -5, 13, -10, 2, 16, 11, 18, 15, 5, 8]) == 1278": {
+      "result": true,
+      "time": 0.032149314880371094,
+      "error": null
+    },
+    "assert sum_squares([3, 3, -4, 2, -2, -6, -2, -1, 3]) == 28": {
+      "result": true,
+      "time": 0.026506662368774414,
+      "error": null
+    },
+    "assert sum_squares([-18, -14, 0, 34, 33, 25, -21, 22, -39, 21, -5, 11, -28, 33, 34]) == -20130": {
+      "result": true,
+      "time": 0.028031110763549805,
+      "error": null
+    },
+    "assert sum_squares([0, -7, 4, -3, -1]) == 5": {
+      "result": true,
+      "time": 0.02658247947692871,
+      "error": null
+    },
+    "assert sum_squares([4, 3, 5]) == 24": {
+      "result": true,
+      "time": 0.02880406379699707,
+      "error": null
+    },
+    "assert sum_squares([-5, 5, 1, 3, 4, 4, 5, 3, 0]) == 136": {
+      "result": true,
+      "time": 0.031008243560791016,
+      "error": null
+    },
+    "assert sum_squares([0]) == 0": {
+      "result": true,
+      "time": 0.03244304656982422,
+      "error": null
+    },
+    "assert sum_squares([-16, -4, -7, 31, 33, 23, -23, 25, -38, 21, -8, 15, -25, 32, 39]) == -16008": {
+      "result": true,
+      "time": 0.03156614303588867,
+      "error": null
+    },
+    "assert sum_squares([3, 5, 10]) == 24": {
+      "result": true,
+      "time": 0.028005361557006836,
+      "error": null
+    },
+    "assert sum_squares([-4, 0, 3, 0, -2]) == 11": {
+      "result": true,
+      "time": 0.026034832000732422,
+      "error": null
+    },
+    "assert sum_squares([-4, -10, 6, -4, -7]) == -315": {
+      "result": true,
+      "time": 0.028973817825317383,
+      "error": null
+    },
+    "assert sum_squares([-1,-1,-1,-1,-1,-1,-1,-1,-1]) == -3": {
+      "result": true,
+      "time": 0.027882814407348633,
+      "error": null
+    },
+    "assert sum_squares([-11, -6, -7, 41, 36, 23, -18, 29, -39, 23, -5, 9, -31, 36, 36]) == -8932": {
+      "result": true,
+      "time": 0.0288698673248291,
+      "error": null
+    },
+    "assert sum_squares([4, -5, 22, 4, -14, 10, -4, 16, -12, -16, -2, 15, -17, 6, 17, 15, 14, 16, 3, 7]) == -799": {
+      "result": true,
+      "time": 0.028040409088134766,
+      "error": null
+    },
+    "assert sum_squares([2, 1, 1, 2, 5, 3, 2, 2, 3]) == 171": {
+      "result": true,
+      "time": 0.027075529098510742,
+      "error": null
+    },
+    "assert sum_squares([1, -4, -3, -5, 1, 3, -2, -1, -6]) == -190": {
+      "result": true,
+      "time": 0.025808095932006836,
+      "error": null
+    },
+    "assert sum_squares([-17, -13, -6, 33, 37, 23, -25, 26, -38, 25, -2, 16, -31, 38, 39]) == -509": {
+      "result": true,
+      "time": 0.027005672454833984,
+      "error": null
+    },
+    "assert sum_squares([-4, 5, 3, 3, 1, 4, 1, 5, -5]) == -81": {
+      "result": true,
+      "time": 0.029046297073364258,
+      "error": null
+    },
+    "assert sum_squares([1, 3, 2]) == 6": {
+      "result": true,
+      "time": 0.027012109756469727,
+      "error": null
+    },
+    "assert sum_squares([3, -1, 18, -1, -12, 11, 2, 17, -13, -9, -4, 19, -10, 8, 13, 9, 11, 16, 1, 9]) == -2211": {
+      "result": true,
+      "time": 0.029874801635742188,
+      "error": null
+    },
+    "assert sum_squares([-1, -5, 7, -3, -6]) == -204": {
+      "result": true,
+      "time": 0.0289003849029541,
+      "error": null
+    },
+    "assert sum_squares([-15, -8, -6, 37, 34, 31, -22, 27, -42, 16, -3, 16, -27, 30, 35]) == -31599": {
+      "result": true,
+      "time": 0.0311887264251709,
+      "error": null
+    },
+    "assert sum_squares([1, 0, -2, 3, -6, -2, -3, 4, 4]) == -133": {
+      "result": true,
+      "time": 0.029840707778930664,
+      "error": null
+    },
+    "assert sum_squares([2, -2, 1, 4, -10]) == -981": {
+      "result": true,
+      "time": 0.029621362686157227,
+      "error": null
+    },
+    "assert sum_squares([-3, -5, 3, -6, -6]) == -173": {
+      "result": true,
+      "time": 0.02972865104675293,
+      "error": null
+    },
+    "assert sum_squares([4, 4, 1, 5, 6, 3, 5, 6, 4]) == 360": {
+      "result": true,
+      "time": 0.029372215270996094,
+      "error": null
+    },
+    "assert sum_squares([4, 1, 5]) == 22": {
+      "result": true,
+      "time": 0.026339292526245117,
+      "error": null
+    },
+    "assert sum_squares([-6, 2, 5, 4, 2, 1, 3, 5, -5]) == -43": {
+      "result": true,
+      "time": 0.031974077224731445,
+      "error": null
+    },
+    "assert sum_squares([3, 0, 19, 0, -14, 16, -3, 19, -10, -16, -3, 15, -9, 2, 16, 12, 12, 12, 5, 15]) == -1381": {
+      "result": true,
+      "time": 0.03249096870422363,
+      "error": null
+    },
+    "assert sum_squares([-4, 2, 3, 2, 2, 4, 3, 5, 2]) == 59": {
+      "result": true,
+      "time": 0.03151249885559082,
+      "error": null
+    },
+    "assert sum_squares([5, 6, 8]) == 39": {
+      "result": true,
+      "time": 0.024371862411499023,
+      "error": null
+    },
+    "assert sum_squares([1, 4, 5, 5, 3, 2, 5, 3, 4]) == 156": {
+      "result": true,
+      "time": 0.02825784683227539,
+      "error": null
+    },
+    "assert sum_squares([4, 4, 5, 5, 2, 6, 1, 5, 1]) == 71": {
+      "result": true,
+      "time": 0.02942371368408203,
+      "error": null
+    },
+    "assert sum_squares([1,4,9]) == 14": {
+      "result": true,
+      "time": 0.030747175216674805,
+      "error": null
+    },
+    "assert sum_squares([1, 1, 5]) == 7": {
+      "result": true,
+      "time": 0.039420366287231445,
+      "error": null
+    },
+    "assert sum_squares([-51, -102, 5, 1, -5]) == 2380": {
+      "result": true,
+      "time": 0.03256487846374512,
+      "error": null
+    },
+    "assert sum_squares([5, 7, 14]) == 46": {
+      "result": true,
+      "time": 0.029415607452392578,
+      "error": null
+    },
+    "assert sum_squares([5, 9, 10]) == 44": {
+      "result": true,
+      "time": 0.030957460403442383,
+      "error": null
+    },
+    "assert sum_squares([-20, -9, -7, 38, 38, 28, -17, 23, -40, 17, -7, 7, -22, 34, 36]) == -6117": {
+      "result": true,
+      "time": 0.026680707931518555,
+      "error": null
+    },
+    "assert sum_squares([-17, -6, -1, 36, 37, 28, -16, 27, -43, 15, -6, 11, -29, 38, 39]) == -25817": {
+      "result": true,
+      "time": 0.028598308563232422,
+      "error": null
+    },
+    "assert sum_squares([-60, -104, 4, 3, 3]) == 3536": {
+      "result": true,
+      "time": 0.027462005615234375,
+      "error": null
+    },
+    "assert sum_squares([-58, -98, 6, 2, 3]) == 3303": {
+      "result": true,
+      "time": 0.0315709114074707,
+      "error": null
+    },
+    "assert sum_squares([0, 1, -1, 0, -6, -1, 4, 3, -1]) == -199": {
+      "result": true,
+      "time": 0.03143191337585449,
+      "error": null
+    },
+    "assert sum_squares([4]) == 16": {
+      "result": true,
+      "time": 0.029632091522216797,
+      "error": null
+    },
+    "assert sum_squares([-16, -9, -2, 36, 36, 26, -20, 25, -40, 20, -4, 12, -26, 35, 37]) == -14196": {
+      "result": true,
+      "time": 0.02865743637084961,
+      "error": null
+    },
+    "assert sum_squares([-11, -6, -4, 37, 32, 25, -23, 28, -35, 20, -3, 17, -22, 31, 40]) == -7076": {
+      "result": true,
+      "time": 0.02998971939086914,
+      "error": null
+    },
+    "assert sum_squares([1, 4, 1, 6, 3, 3, 4, 5, 4]) == 157": {
+      "result": true,
+      "time": 0.03133869171142578,
+      "error": null
+    },
+    "assert sum_squares([-5, 0, 7, -2, 0]) == 36": {
+      "result": true,
+      "time": 0.02838754653930664,
+      "error": null
+    },
+    "assert sum_squares([4, 6, 4, 5, 6, 1, 4, 3, 6]) == 503": {
+      "result": true,
+      "time": 0.02796792984008789,
+      "error": null
+    },
+    "assert sum_squares([3, 4, 6]) == 19": {
+      "result": true,
+      "time": 0.02769947052001953,
+      "error": null
+    },
+    "assert sum_squares([1,2,3]) == 6": {
+      "result": true,
+      "time": 0.030327558517456055,
+      "error": null
+    },
+    "assert sum_squares([2, 1, 4, 5, 3, 3, 5, 2, 1]) == 92": {
+      "result": true,
+      "time": 0.025984764099121094,
+      "error": null
+    },
+    "assert sum_squares([3, -7, 15, -2, -10, 18, 1, 18, -14, -10, 0, 19, -12, 1, 18, 9, 17, 13, 7, 9]) == 1661": {
+      "result": true,
+      "time": 0.033451080322265625,
+      "error": null
+    },
+    "assert sum_squares([5]) == 25": {
+      "result": true,
+      "time": 0.035360097885131836,
+      "error": null
+    },
+    "assert sum_squares([-4, -5, 2, 2, -2, -3, -5, -2, -5]) == -96": {
+      "result": true,
+      "time": 0.03229093551635742,
+      "error": null
+    },
+    "assert sum_squares([4, 3, 6, 5, 1, 4, 1, 4, 1]) == 61": {
+      "result": true,
+      "time": 0.03336310386657715,
+      "error": null
+    },
+    "assert sum_squares([2]) == 4": {
+      "result": true,
+      "time": 0.029568195343017578,
+      "error": null
+    },
+    "assert sum_squares([-56, -97, 4, 5, -7]) == 2725": {
+      "result": true,
+      "time": 0.025850296020507812,
+      "error": null
+    },
+    "assert sum_squares([6, 3, 4, 3, 4, 3, 2, 1, 1]) == 125": {
+      "result": true,
+      "time": 0.026318073272705078,
+      "error": null
+    },
+    "assert sum_squares([-5, -5, -3, -5, 4, 3, 3, 3, -1]) == 120": {
+      "result": true,
+      "time": 0.027434110641479492,
+      "error": null
+    },
+    "assert sum_squares([-2, 1, 2, 5, 4, 3, 2, 2, -4]) == 41": {
+      "result": true,
+      "time": 0.028470277786254883,
+      "error": null
+    },
+    "assert sum_squares([2, 1, 6]) == 11": {
+      "result": true,
+      "time": 0.028367042541503906,
+      "error": null
+    },
+    "assert sum_squares([-3, -9, 2, -5, -4]) == -37": {
+      "result": true,
+      "time": 0.028335094451904297,
+      "error": null
+    },
+    "assert sum_squares([5, 2, 5]) == 32": {
+      "result": true,
+      "time": 0.024425029754638672,
+      "error": null
+    },
+    "assert sum_squares([-53, -94, 3, 2, -1]) == 2721": {
+      "result": true,
+      "time": 0.029825448989868164,
+      "error": null
+    },
+    "assert sum_squares([5, 3, 9]) == 37": {
+      "result": true,
+      "time": 0.02649092674255371,
+      "error": null
+    },
+    "assert sum_squares([2, -2, 14, -6, -19, 13, -5, 12, -11, -13, -3, 11, -19, 1, 14, 9, 16, 18, 9, 5]) == -3254": {
+      "result": true,
+      "time": 0.030004262924194336,
+      "error": null
+    },
+    "assert sum_squares([-21, -6, -5, 40, 34, 21, -25, 23, -44, 16, -8, 13, -27, 33, 37]) == -42121": {
+      "result": true,
+      "time": 0.028080463409423828,
+      "error": null
+    },
+    "assert sum_squares([3, 5, 5]) == 19": {
+      "result": true,
+      "time": 0.03535652160644531,
+      "error": null
+    },
+    "assert sum_squares([3, 9, 13]) == 31": {
+      "result": true,
+      "time": 0.032602548599243164,
+      "error": null
+    },
+    "assert sum_squares([0, 0, 14, 3, -11, 8, -3, 11, -10, -13, -5, 18, -18, 7, 10, 9, 15, 20, 5, 8]) == 1752": {
+      "result": true,
+      "time": 0.03346133232116699,
+      "error": null
+    },
+    "assert sum_squares([1, 4, 1, -2, -4, 3, -1, -6, -6]) == -272": {
+      "result": true,
+      "time": 0.029444456100463867,
+      "error": null
+    },
+    "assert sum_squares([-5, -8, 6, -6, -6]) == -157": {
+      "result": true,
+      "time": 0.03144359588623047,
+      "error": null
+    },
+    "assert sum_squares([-12, -4, -2, 33, 37, 23, -20, 26, -39, 24, -6, 17, -24, 35, 37]) == -5755": {
+      "result": true,
+      "time": 0.03249478340148926,
+      "error": null
+    },
+    "assert sum_squares([-52, -101, 6, 1, -7]) == 2267": {
+      "result": true,
+      "time": 0.029548168182373047,
+      "error": null
+    },
+    "assert sum_squares([4, -3, 7, -3, -9]) == -700": {
+      "result": true,
+      "time": 0.02763676643371582,
+      "error": null
+    },
+    "assert sum_squares([-58, -103, 5, 3, 0]) == 3275": {
+      "result": true,
+      "time": 0.027144432067871094,
+      "error": null
+    },
+    "assert sum_squares([5, 7, 13]) == 45": {
+      "result": true,
+      "time": 0.0283200740814209,
+      "error": null
+    },
+    "assert sum_squares([5, 2, 1]) == 28": {
+      "result": true,
+      "time": 0.02654409408569336,
+      "error": null
+    },
+    "assert sum_squares([-1, -3, 17, -1, -15, 13, -1, 14, -14, -12, -5, 14, -14, 6, 13, 11, 16, 16, 4, 10]) == -1448\n    \n    \n    # Don't remove this line:": {
+      "result": true,
+      "time": 0.03014969825744629,
+      "error": null
+    },
+    "assert sum_squares([-1, 4, 4, 5, 2, 1, 3, 4, 3]) == 83": {
+      "result": true,
+      "time": 0.03187155723571777,
+      "error": null
+    },
+    "assert sum_squares([2, 3, -1, 1, 0, -5, 3, 4, 1]) == 16": {
+      "result": true,
+      "time": 0.03029942512512207,
+      "error": null
+    },
+    "assert sum_squares([3]) == 9": {
+      "result": true,
+      "time": 0.030109405517578125,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

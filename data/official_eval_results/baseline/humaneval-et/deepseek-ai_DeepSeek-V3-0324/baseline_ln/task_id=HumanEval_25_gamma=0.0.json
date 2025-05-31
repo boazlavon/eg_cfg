@@ -1,0 +1,384 @@
+{
+  "code": "import math\nfrom typing import List\n\ndef factorize(n: int) -> List[int]:\n    factors = []\n    if n <= 1:\n        return factors\n    # Handle 2 separately\n    while n % 2 == 0:\n        factors.append(2)\n        n = n // 2\n    # Check for odd divisors up to sqrt(n)\n    i = 3\n    max_factor = math.sqrt(n) + 1\n    while i <= max_factor:\n        while n % i == 0:\n            factors.append(i)\n            n = n // i\n            max_factor = math.sqrt(n) + 1\n        i += 2\n    if n > 1:\n        factors.append(n)\n    return factors",
+  "results": {
+    "assert factorize(3 * 19 * 19 * 19) == [3, 19, 19, 19]": {
+      "result": true,
+      "time": 0.3252737522125244,
+      "error": null
+    },
+    "assert factorize(3 * 19 * 3 * 19) == [3, 3, 19, 19]": {
+      "result": true,
+      "time": 0.3469810485839844,
+      "error": null
+    },
+    "assert factorize(185940) == [2, 2, 3, 3, 5, 1033]": {
+      "result": true,
+      "time": 0.29622912406921387,
+      "error": null
+    },
+    "assert factorize(2690) == [2, 5, 269]": {
+      "result": true,
+      "time": 0.33463382720947266,
+      "error": null
+    },
+    "assert factorize(184219) == [7, 26317]": {
+      "result": true,
+      "time": 0.3413960933685303,
+      "error": null
+    },
+    "assert factorize(184152) == [2, 2, 2, 3, 7673]": {
+      "result": true,
+      "time": 0.2832944393157959,
+      "error": null
+    },
+    "assert factorize(21091) == [7, 23, 131]": {
+      "result": true,
+      "time": 0.26425862312316895,
+      "error": null
+    },
+    "assert factorize(3 * 19 * 3 * 19 * 3 * 19) == [3, 3, 3, 19, 19, 19]": {
+      "result": true,
+      "time": 0.2700493335723877,
+      "error": null
+    },
+    "assert factorize(20270) == [2, 5, 2027]": {
+      "result": true,
+      "time": 0.19086575508117676,
+      "error": null
+    },
+    "assert factorize(21236) == [2, 2, 5309]": {
+      "result": true,
+      "time": 0.305880069732666,
+      "error": null
+    },
+    "assert factorize(19) == [19]": {
+      "result": true,
+      "time": 0.27531933784484863,
+      "error": null
+    },
+    "assert factorize(19825) == [5, 5, 13, 61]": {
+      "result": true,
+      "time": 0.22676801681518555,
+      "error": null
+    },
+    "assert factorize(15) == [3, 5]": {
+      "result": true,
+      "time": 0.24339795112609863,
+      "error": null
+    },
+    "assert factorize(62) == [2, 31]": {
+      "result": true,
+      "time": 0.24879121780395508,
+      "error": null
+    },
+    "assert factorize(2438) == [2, 23, 53]": {
+      "result": true,
+      "time": 0.2800626754760742,
+      "error": null
+    },
+    "assert factorize(2894) == [2, 1447]": {
+      "result": true,
+      "time": 0.2718479633331299,
+      "error": null
+    },
+    "assert factorize(3688) == [2, 2, 2, 461]": {
+      "result": true,
+      "time": 0.2648344039916992,
+      "error": null
+    },
+    "assert factorize(4019) == [4019]": {
+      "result": true,
+      "time": 0.3509092330932617,
+      "error": null
+    },
+    "assert factorize(21448) == [2, 2, 2, 7, 383]": {
+      "result": true,
+      "time": 0.28768324851989746,
+      "error": null
+    },
+    "assert factorize(20229) == [3, 11, 613]": {
+      "result": true,
+      "time": 0.28410983085632324,
+      "error": null
+    },
+    "assert factorize(2) == [2]": {
+      "result": true,
+      "time": 0.16227030754089355,
+      "error": null
+    },
+    "assert factorize(55) == [5, 11]": {
+      "result": true,
+      "time": 0.1731710433959961,
+      "error": null
+    },
+    "assert factorize(185555) == [5, 17, 37, 59]": {
+      "result": true,
+      "time": 0.24843406677246094,
+      "error": null
+    },
+    "assert factorize(13) == [13]": {
+      "result": true,
+      "time": 0.16909003257751465,
+      "error": null
+    },
+    "assert factorize(185970) == [2, 3, 5, 6199]": {
+      "result": true,
+      "time": 0.1601731777191162,
+      "error": null
+    },
+    "assert factorize(185618) == [2, 92809]": {
+      "result": true,
+      "time": 0.18543100357055664,
+      "error": null
+    },
+    "assert factorize(19605) == [3, 5, 1307]": {
+      "result": true,
+      "time": 0.18122482299804688,
+      "error": null
+    },
+    "assert factorize(1) == []": {
+      "result": true,
+      "time": 0.2751650810241699,
+      "error": null
+    },
+    "assert factorize(185727) == [3, 61909]": {
+      "result": true,
+      "time": 0.15173912048339844,
+      "error": null
+    },
+    "assert factorize(20475) == [3, 3, 5, 5, 7, 13]": {
+      "result": true,
+      "time": 0.23507404327392578,
+      "error": null
+    },
+    "assert factorize(2344) == [2, 2, 2, 293]": {
+      "result": true,
+      "time": 0.2647082805633545,
+      "error": null
+    },
+    "assert factorize(2979) == [3, 3, 331]": {
+      "result": true,
+      "time": 0.2027285099029541,
+      "error": null
+    },
+    "assert factorize(7) == [7]": {
+      "result": true,
+      "time": 0.18098163604736328,
+      "error": null
+    },
+    "assert factorize(184579) == [131, 1409]": {
+      "result": true,
+      "time": 0.2625706195831299,
+      "error": null
+    },
+    "assert factorize(20094) == [2, 3, 17, 197]": {
+      "result": true,
+      "time": 0.165604829788208,
+      "error": null
+    },
+    "assert factorize(20644) == [2, 2, 13, 397]": {
+      "result": true,
+      "time": 0.169325590133667,
+      "error": null
+    },
+    "assert factorize(20929) == [20929]": {
+      "result": true,
+      "time": 0.233473539352417,
+      "error": null
+    },
+    "assert factorize(61) == [61]": {
+      "result": true,
+      "time": 0.21169543266296387,
+      "error": null
+    },
+    "assert factorize(5) == [5]": {
+      "result": true,
+      "time": 0.29435300827026367,
+      "error": null
+    },
+    "assert factorize(3) == [3]": {
+      "result": true,
+      "time": 0.36402392387390137,
+      "error": null
+    },
+    "assert factorize(3307) == [3307]": {
+      "result": true,
+      "time": 0.13687896728515625,
+      "error": null
+    },
+    "assert factorize(19880) == [2, 2, 2, 5, 7, 71]": {
+      "result": true,
+      "time": 0.28664374351501465,
+      "error": null
+    },
+    "assert factorize(3 * 2 * 3) == [2, 3, 3]": {
+      "result": true,
+      "time": 0.1694958209991455,
+      "error": null
+    },
+    "assert factorize(4065) == [3, 5, 271]": {
+      "result": true,
+      "time": 0.2584037780761719,
+      "error": null
+    },
+    "assert factorize(3691) == [3691]": {
+      "result": true,
+      "time": 0.20303606986999512,
+      "error": null
+    },
+    "assert factorize(185592) == [2, 2, 2, 3, 11, 19, 37]": {
+      "result": true,
+      "time": 0.22159051895141602,
+      "error": null
+    },
+    "assert factorize(184432) == [2, 2, 2, 2, 11527]": {
+      "result": true,
+      "time": 0.18038320541381836,
+      "error": null
+    },
+    "assert factorize(9) == [3, 3]": {
+      "result": true,
+      "time": 0.24547314643859863,
+      "error": null
+    },
+    "assert factorize(54) == [2, 3, 3, 3]": {
+      "result": true,
+      "time": 0.25228238105773926,
+      "error": null
+    },
+    "assert factorize(2939) == [2939]": {
+      "result": true,
+      "time": 0.3001439571380615,
+      "error": null
+    },
+    "assert factorize(22) == [2, 11]": {
+      "result": true,
+      "time": 0.25538158416748047,
+      "error": null
+    },
+    "assert factorize(6) == [2, 3]": {
+      "result": true,
+      "time": 0.34542417526245117,
+      "error": null
+    },
+    "assert factorize(12) == [2, 2, 3]": {
+      "result": true,
+      "time": 0.2977478504180908,
+      "error": null
+    },
+    "assert factorize(58) == [2, 29]": {
+      "result": true,
+      "time": 0.30518126487731934,
+      "error": null
+    },
+    "assert factorize(3116) == [2, 2, 19, 41]": {
+      "result": true,
+      "time": 0.2639918327331543,
+      "error": null
+    },
+    "assert factorize(56) == [2, 2, 2, 7]": {
+      "result": true,
+      "time": 0.24609041213989258,
+      "error": null
+    },
+    "assert factorize(16) == [2, 2, 2, 2]": {
+      "result": true,
+      "time": 0.35994720458984375,
+      "error": null
+    },
+    "assert factorize(20902) == [2, 7, 1493]": {
+      "result": true,
+      "time": 0.26086878776550293,
+      "error": null
+    },
+    "assert factorize(8) == [2, 2, 2]": {
+      "result": true,
+      "time": 0.31429553031921387,
+      "error": null
+    },
+    "assert factorize(19879) == [103, 193]": {
+      "result": true,
+      "time": 0.19254159927368164,
+      "error": null
+    },
+    "assert factorize(23) == [23]": {
+      "result": true,
+      "time": 0.18672752380371094,
+      "error": null
+    },
+    "assert factorize(10) == [2, 5]": {
+      "result": true,
+      "time": 0.2387373447418213,
+      "error": null
+    },
+    "assert factorize(2373) == [3, 7, 113]": {
+      "result": true,
+      "time": 0.2123699188232422,
+      "error": null
+    },
+    "assert factorize(186028) == [2, 2, 46507]": {
+      "result": true,
+      "time": 0.22352313995361328,
+      "error": null
+    },
+    "assert factorize(185036) == [2, 2, 167, 277]": {
+      "result": true,
+      "time": 0.21006536483764648,
+      "error": null
+    },
+    "assert factorize(184240) == [2, 2, 2, 2, 5, 7, 7, 47]": {
+      "result": true,
+      "time": 0.2290494441986084,
+      "error": null
+    },
+    "assert factorize(20807) == [20807]": {
+      "result": true,
+      "time": 0.32479143142700195,
+      "error": null
+    },
+    "assert factorize(14) == [2, 7]": {
+      "result": true,
+      "time": 0.20946955680847168,
+      "error": null
+    },
+    "assert factorize(4) == [2, 2]": {
+      "result": true,
+      "time": 0.20720529556274414,
+      "error": null
+    },
+    "assert factorize(3 * 19) == [3, 19]": {
+      "result": true,
+      "time": 0.32620835304260254,
+      "error": null
+    },
+    "assert factorize(184984) == [2, 2, 2, 19, 1217]": {
+      "result": true,
+      "time": 0.24156522750854492,
+      "error": null
+    },
+    "assert factorize(185324) == [2, 2, 107, 433]": {
+      "result": true,
+      "time": 0.3444552421569824,
+      "error": null
+    },
+    "assert factorize(2719) == [2719]": {
+      "result": true,
+      "time": 0.2959330081939697,
+      "error": null
+    },
+    "assert factorize(3905) == [5, 11, 71]": {
+      "result": true,
+      "time": 0.2766263484954834,
+      "error": null
+    },
+    "assert factorize(52) == [2, 2, 13]": {
+      "result": true,
+      "time": 0.1761646270751953,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

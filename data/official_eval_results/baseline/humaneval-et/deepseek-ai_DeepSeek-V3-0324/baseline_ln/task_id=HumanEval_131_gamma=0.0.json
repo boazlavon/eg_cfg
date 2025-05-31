@@ -1,0 +1,519 @@
+{
+  "code": "def digits(n):\n    product = 1\n    has_odd = False\n    for digit in str(n):\n        num = int(digit)\n        if num % 2 != 0:\n            product *= num\n            has_odd = True\n    return product if has_odd else 0",
+  "results": {
+    "assert digits(98765) == 315": {
+      "result": true,
+      "time": 0.024920225143432617,
+      "error": null
+    },
+    "assert digits(98743) == 189": {
+      "result": true,
+      "time": 0.029347896575927734,
+      "error": null
+    },
+    "assert digits(57) == 35": {
+      "result": true,
+      "time": 0.02811288833618164,
+      "error": null
+    },
+    "assert digits(4223) == 3": {
+      "result": true,
+      "time": 0.027921199798583984,
+      "error": null
+    },
+    "assert digits(5576821) == 175": {
+      "result": true,
+      "time": 0.029270648956298828,
+      "error": null
+    },
+    "assert digits(2687) == 7": {
+      "result": true,
+      "time": 0.0286557674407959,
+      "error": null
+    },
+    "assert digits(5139) == 135": {
+      "result": true,
+      "time": 0.025862932205200195,
+      "error": null
+    },
+    "assert digits(125) == 5": {
+      "result": true,
+      "time": 0.02929520606994629,
+      "error": null
+    },
+    "assert digits(5576543) == 2625\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.02804422378540039,
+      "error": null
+    },
+    "assert digits(7) == 7": {
+      "result": true,
+      "time": 0.027368783950805664,
+      "error": null
+    },
+    "assert digits(54) == 5": {
+      "result": true,
+      "time": 0.027453184127807617,
+      "error": null
+    },
+    "assert digits(2621) == 1": {
+      "result": true,
+      "time": 0.024209976196289062,
+      "error": null
+    },
+    "assert digits(10) == 1": {
+      "result": true,
+      "time": 0.026633739471435547,
+      "error": null
+    },
+    "assert digits(3256) == 15": {
+      "result": true,
+      "time": 0.02975296974182129,
+      "error": null
+    },
+    "assert digits(99643) == 243": {
+      "result": true,
+      "time": 0.02873826026916504,
+      "error": null
+    },
+    "assert digits(99499) == 6561": {
+      "result": true,
+      "time": 0.027889251708984375,
+      "error": null
+    },
+    "assert digits(5575618) == 875": {
+      "result": true,
+      "time": 0.028464555740356445,
+      "error": null
+    },
+    "assert digits(5631) == 15": {
+      "result": true,
+      "time": 0.0270082950592041,
+      "error": null
+    },
+    "assert digits(5575999) == 637875": {
+      "result": true,
+      "time": 0.027796268463134766,
+      "error": null
+    },
+    "assert digits(5577171) == 8575": {
+      "result": true,
+      "time": 0.030260324478149414,
+      "error": null
+    },
+    "assert digits(3019) == 27": {
+      "result": true,
+      "time": 0.02925419807434082,
+      "error": null
+    },
+    "assert digits(4282) == 0": {
+      "result": true,
+      "time": 0.031531572341918945,
+      "error": null
+    },
+    "assert digits(55) == 25": {
+      "result": true,
+      "time": 0.030667543411254883,
+      "error": null
+    },
+    "assert digits(5576554) == 4375": {
+      "result": true,
+      "time": 0.027490854263305664,
+      "error": null
+    },
+    "assert digits(99250) == 405": {
+      "result": true,
+      "time": 0.025862455368041992,
+      "error": null
+    },
+    "assert digits(120) ==1": {
+      "result": true,
+      "time": 0.026172399520874023,
+      "error": null
+    },
+    "assert digits(2646) == 0": {
+      "result": true,
+      "time": 0.02343297004699707,
+      "error": null
+    },
+    "assert digits(4) == 0": {
+      "result": true,
+      "time": 0.03543663024902344,
+      "error": null
+    },
+    "assert digits(5576876) == 1225": {
+      "result": true,
+      "time": 0.030397653579711914,
+      "error": null
+    },
+    "assert digits(5) == 5": {
+      "result": true,
+      "time": 0.02778315544128418,
+      "error": null
+    },
+    "assert digits(5515) == 125": {
+      "result": true,
+      "time": 0.03137612342834473,
+      "error": null
+    },
+    "assert digits(98196) == 81": {
+      "result": true,
+      "time": 0.030033349990844727,
+      "error": null
+    },
+    "assert digits(1414) == 1": {
+      "result": true,
+      "time": 0.026757478713989258,
+      "error": null
+    },
+    "assert digits(4995) == 405": {
+      "result": true,
+      "time": 0.025548219680786133,
+      "error": null
+    },
+    "assert digits(2779) == 441": {
+      "result": true,
+      "time": 0.028378963470458984,
+      "error": null
+    },
+    "assert digits(6) == 0": {
+      "result": true,
+      "time": 0.027256250381469727,
+      "error": null
+    },
+    "assert digits(120) == 1": {
+      "result": true,
+      "time": 0.02898263931274414,
+      "error": null
+    },
+    "assert digits(5575549) == 39375": {
+      "result": true,
+      "time": 0.028896331787109375,
+      "error": null
+    },
+    "assert digits(2992) == 81": {
+      "result": true,
+      "time": 0.0309755802154541,
+      "error": null
+    },
+    "assert digits(98952) == 405": {
+      "result": true,
+      "time": 0.032433509826660156,
+      "error": null
+    },
+    "assert digits(99681) == 81": {
+      "result": true,
+      "time": 0.03157544136047363,
+      "error": null
+    },
+    "assert digits(5576828) == 175": {
+      "result": true,
+      "time": 0.028289794921875,
+      "error": null
+    },
+    "assert digits(4783) == 21": {
+      "result": true,
+      "time": 0.028350114822387695,
+      "error": null
+    },
+    "assert digits(4212) == 1": {
+      "result": true,
+      "time": 0.026340007781982422,
+      "error": null
+    },
+    "assert digits(5577451) == 6125": {
+      "result": true,
+      "time": 0.026486635208129883,
+      "error": null
+    },
+    "assert digits(98537) == 945": {
+      "result": true,
+      "time": 0.028879165649414062,
+      "error": null
+    },
+    "assert digits(5732) == 105": {
+      "result": true,
+      "time": 0.0295870304107666,
+      "error": null
+    },
+    "assert digits(58) == 5": {
+      "result": true,
+      "time": 0.026037931442260742,
+      "error": null
+    },
+    "assert digits(99366) == 243": {
+      "result": true,
+      "time": 0.027280569076538086,
+      "error": null
+    },
+    "assert digits(5576806) == 175": {
+      "result": true,
+      "time": 0.02656102180480957,
+      "error": null
+    },
+    "assert digits(5867) == 35": {
+      "result": true,
+      "time": 0.02921891212463379,
+      "error": null
+    },
+    "assert digits(5519) == 225": {
+      "result": true,
+      "time": 0.028084516525268555,
+      "error": null
+    },
+    "assert digits(4822) == 0": {
+      "result": true,
+      "time": 0.027094602584838867,
+      "error": null
+    },
+    "assert digits(121) == 1": {
+      "result": true,
+      "time": 0.028301715850830078,
+      "error": null
+    },
+    "assert digits(3059) == 135": {
+      "result": true,
+      "time": 0.027736663818359375,
+      "error": null
+    },
+    "assert digits(50) == 5": {
+      "result": true,
+      "time": 0.026804208755493164,
+      "error": null
+    },
+    "assert digits(1494) == 9": {
+      "result": true,
+      "time": 0.029607295989990234,
+      "error": null
+    },
+    "assert digits(118) == 1": {
+      "result": true,
+      "time": 0.024873018264770508,
+      "error": null
+    },
+    "assert digits(99476) == 567": {
+      "result": true,
+      "time": 0.02860236167907715,
+      "error": null
+    },
+    "assert digits(5576669) == 1575": {
+      "result": true,
+      "time": 0.028332948684692383,
+      "error": null
+    },
+    "assert digits(97733) == 3969": {
+      "result": true,
+      "time": 0.026337385177612305,
+      "error": null
+    },
+    "assert digits(56) == 5": {
+      "result": true,
+      "time": 0.027768850326538086,
+      "error": null
+    },
+    "assert digits(5960) == 45": {
+      "result": true,
+      "time": 0.02874612808227539,
+      "error": null
+    },
+    "assert digits(98656) == 45": {
+      "result": true,
+      "time": 0.028406858444213867,
+      "error": null
+    },
+    "assert digits(2654) == 5": {
+      "result": true,
+      "time": 0.030300378799438477,
+      "error": null
+    },
+    "assert digits(5576864) == 175": {
+      "result": true,
+      "time": 0.028020381927490234,
+      "error": null
+    },
+    "assert digits(99493) == 2187": {
+      "result": true,
+      "time": 0.0334477424621582,
+      "error": null
+    },
+    "assert digits(123) == 3": {
+      "result": true,
+      "time": 0.02815413475036621,
+      "error": null
+    },
+    "assert digits(4703) == 21": {
+      "result": true,
+      "time": 0.02895641326904297,
+      "error": null
+    },
+    "assert digits(99055) == 2025": {
+      "result": true,
+      "time": 0.03051590919494629,
+      "error": null
+    },
+    "assert digits(49) == 9": {
+      "result": true,
+      "time": 0.03155970573425293,
+      "error": null
+    },
+    "assert digits(59) == 45": {
+      "result": true,
+      "time": 0.0301511287689209,
+      "error": null
+    },
+    "assert digits(2222) == 0": {
+      "result": true,
+      "time": 0.029649734497070312,
+      "error": null
+    },
+    "assert digits(3) == 3": {
+      "result": true,
+      "time": 0.02865147590637207,
+      "error": null
+    },
+    "assert digits(115) == 5": {
+      "result": true,
+      "time": 0.027706146240234375,
+      "error": null
+    },
+    "assert digits(2195) == 45": {
+      "result": true,
+      "time": 0.03365278244018555,
+      "error": null
+    },
+    "assert digits(117) == 7": {
+      "result": true,
+      "time": 0.029141902923583984,
+      "error": null
+    },
+    "assert digits(5577115) == 6125": {
+      "result": true,
+      "time": 0.028934001922607422,
+      "error": null
+    },
+    "assert digits(122) == 1": {
+      "result": true,
+      "time": 0.02639007568359375,
+      "error": null
+    },
+    "assert digits(2255) == 25": {
+      "result": true,
+      "time": 0.03000617027282715,
+      "error": null
+    },
+    "assert digits(5576251) == 875": {
+      "result": true,
+      "time": 0.03301739692687988,
+      "error": null
+    },
+    "assert digits(5120) == 5": {
+      "result": true,
+      "time": 0.030643463134765625,
+      "error": null
+    },
+    "assert digits(5575856) == 4375": {
+      "result": true,
+      "time": 0.030796527862548828,
+      "error": null
+    },
+    "assert digits(9) == 9": {
+      "result": true,
+      "time": 0.0285642147064209,
+      "error": null
+    },
+    "assert digits(1950) == 45": {
+      "result": true,
+      "time": 0.02783966064453125,
+      "error": null
+    },
+    "assert digits(52) == 5": {
+      "result": true,
+      "time": 0.028827667236328125,
+      "error": null
+    },
+    "assert digits(3194) == 27": {
+      "result": true,
+      "time": 0.027544021606445312,
+      "error": null
+    },
+    "assert digits(5576832) == 525": {
+      "result": true,
+      "time": 0.023824453353881836,
+      "error": null
+    },
+    "assert digits(53) == 15": {
+      "result": true,
+      "time": 0.02958202362060547,
+      "error": null
+    },
+    "assert digits(99378) == 1701": {
+      "result": true,
+      "time": 0.03304576873779297,
+      "error": null
+    },
+    "assert digits(3097) == 189": {
+      "result": true,
+      "time": 0.030072689056396484,
+      "error": null
+    },
+    "assert digits(98819) == 81": {
+      "result": true,
+      "time": 0.03229260444641113,
+      "error": null
+    },
+    "assert digits(5575868) == 875": {
+      "result": true,
+      "time": 0.026717185974121094,
+      "error": null
+    },
+    "assert digits(2468) == 0": {
+      "result": true,
+      "time": 0.02799510955810547,
+      "error": null
+    },
+    "assert digits(99109) == 729": {
+      "result": true,
+      "time": 0.03289961814880371,
+      "error": null
+    },
+    "assert digits(5576507) == 6125": {
+      "result": true,
+      "time": 0.029248714447021484,
+      "error": null
+    },
+    "assert digits(4115) == 5": {
+      "result": true,
+      "time": 0.030329227447509766,
+      "error": null
+    },
+    "assert digits(5054) == 25": {
+      "result": true,
+      "time": 0.03265738487243652,
+      "error": null
+    },
+    "assert digits(98995) == 3645": {
+      "result": true,
+      "time": 0.02418994903564453,
+      "error": null
+    },
+    "assert digits(1583) == 15": {
+      "result": true,
+      "time": 0.03208327293395996,
+      "error": null
+    },
+    "assert digits(5014) == 5": {
+      "result": true,
+      "time": 0.03019881248474121,
+      "error": null
+    },
+    "assert digits(124) == 1": {
+      "result": true,
+      "time": 0.03058171272277832,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

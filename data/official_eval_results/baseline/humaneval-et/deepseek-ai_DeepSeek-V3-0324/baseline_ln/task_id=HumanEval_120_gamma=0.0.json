@@ -1,0 +1,719 @@
+{
+  "code": "def maximum(arr, k):\n    sorted_arr = sorted(arr)\n    max_k = sorted_arr[-k:]\n    return sorted(max_k)",
+  "results": {
+    "assert maximum([2, 1, 1], 1) == [2]": {
+      "result": true,
+      "time": 0.026961088180541992,
+      "error": null
+    },
+    "assert maximum([5, 5, 4, -12], 4) == [-12, 4, 5, 5]": {
+      "result": true,
+      "time": 0.028322219848632812,
+      "error": null
+    },
+    "assert maximum([4, 6, 5, -18, 248, -403, 5], 3) == [5, 6, 248]": {
+      "result": true,
+      "time": 0.026966094970703125,
+      "error": null
+    },
+    "assert maximum([2, 3, 5, 3, 1, -15], 3) == [3, 3, 5]": {
+      "result": true,
+      "time": 0.02914571762084961,
+      "error": null
+    },
+    "assert maximum([4, 5, 5, -22, 241, -401, 1], 1) == [241]": {
+      "result": true,
+      "time": 0.02532172203063965,
+      "error": null
+    },
+    "assert maximum([1, 12, 2, 1, -11, -4, 5], 5) == [1, 1, 2, 5, 12]": {
+      "result": true,
+      "time": 0.02903914451599121,
+      "error": null
+    },
+    "assert maximum([8, 13, 4, 2, -11, -4, 1], 11) == [-11, -4, 1, 2, 4, 8, 13]": {
+      "result": true,
+      "time": 0.030577421188354492,
+      "error": null
+    },
+    "assert maximum([3, -4, 7], 3) == [-4, 3, 7]": {
+      "result": true,
+      "time": 0.029474973678588867,
+      "error": null
+    },
+    "assert maximum([-123, 23, 1, 3, 3, 1], 9) == [-123, 1, 1, 3, 3, 23]": {
+      "result": true,
+      "time": 0.02573227882385254,
+      "error": null
+    },
+    "assert maximum([-10, 10], 2) == [-10, 10]\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.03086543083190918,
+      "error": null
+    },
+    "assert maximum([-9, 11], 3) == [-9, 11]": {
+      "result": true,
+      "time": 0.027285337448120117,
+      "error": null
+    },
+    "assert maximum([6, 6, 2, -24, 240, -402, 4], 1) == [240]": {
+      "result": true,
+      "time": 0.030071020126342773,
+      "error": null
+    },
+    "assert maximum([-11, 5], 4) == [-11, 5]": {
+      "result": true,
+      "time": 0.029211759567260742,
+      "error": null
+    },
+    "assert maximum([6, 1, 3, -26, 247, -400, 1], 1) == [247]": {
+      "result": true,
+      "time": 0.03070831298828125,
+      "error": null
+    },
+    "assert maximum([-119, 24, 5, 4, 1, -8], 9) == [-119, -8, 1, 4, 5, 24]": {
+      "result": true,
+      "time": 0.029685020446777344,
+      "error": null
+    },
+    "assert maximum([-123, 24, 3, 4, 2, -7], 6) == [-123, -7, 2, 3, 4, 24]": {
+      "result": true,
+      "time": 0.030521631240844727,
+      "error": null
+    },
+    "assert maximum([-3, -4, 5], 3) == [-4, -3, 5]": {
+      "result": true,
+      "time": 0.025196552276611328,
+      "error": null
+    },
+    "assert maximum([3, 3, 2, -27, 243, -396, 5], 3) == [3, 5, 243]": {
+      "result": true,
+      "time": 0.030963420867919922,
+      "error": null
+    },
+    "assert maximum([4, -4, 4], 2) == [4, 4]": {
+      "result": true,
+      "time": 0.028866291046142578,
+      "error": null
+    },
+    "assert maximum([4, 1, 9, -3], 3) == [1, 4, 9]": {
+      "result": true,
+      "time": 0.029853105545043945,
+      "error": null
+    },
+    "assert maximum([2, 5, 1, 2, -6, -2, 5], 6) == [-2, 1, 2, 2, 5, 5]": {
+      "result": true,
+      "time": 0.027313232421875,
+      "error": null
+    },
+    "assert maximum([0, 5, 2, 7, 2, -15], 3) == [2, 5, 7]": {
+      "result": true,
+      "time": 0.02534627914428711,
+      "error": null
+    },
+    "assert maximum([-1, 5, 3, 6, -2, -7, 6], 3) == [5, 6, 6]": {
+      "result": true,
+      "time": 0.02922224998474121,
+      "error": null
+    },
+    "assert maximum([5, 3, 7, -2], 3) == [3, 5, 7]": {
+      "result": true,
+      "time": 0.025504350662231445,
+      "error": null
+    },
+    "assert maximum([2, 1, 9], 1) == [9]": {
+      "result": true,
+      "time": 0.030043840408325195,
+      "error": null
+    },
+    "assert maximum([8, 15, 1, 4, -14, -5, 2], 6) == [-5, 1, 2, 4, 8, 15]": {
+      "result": true,
+      "time": 0.028661489486694336,
+      "error": null
+    },
+    "assert maximum([-3, 1, 7, 7, 4, -12], 7) == [-12, -3, 1, 4, 7, 7]": {
+      "result": true,
+      "time": 0.027848482131958008,
+      "error": null
+    },
+    "assert maximum([7, -2], 7) == [-2, 7]": {
+      "result": true,
+      "time": 0.029869794845581055,
+      "error": null
+    },
+    "assert maximum([6, -5], 2) == [-5, 6]": {
+      "result": true,
+      "time": 0.028888225555419922,
+      "error": null
+    },
+    "assert maximum([-8, 5], 6) == [-8, 5]": {
+      "result": true,
+      "time": 0.02484273910522461,
+      "error": null
+    },
+    "assert maximum([-126, 15, 4, 3, 4, -4], 3) == [4, 4, 15]": {
+      "result": true,
+      "time": 0.030085086822509766,
+      "error": null
+    },
+    "assert maximum([5, -2, 1], 6) == [-2, 1, 5]": {
+      "result": true,
+      "time": 0.02756023406982422,
+      "error": null
+    },
+    "assert maximum([10, 12, 1, 2, -11, -6, 2], 4) == [2, 2, 10, 12]": {
+      "result": true,
+      "time": 0.02982306480407715,
+      "error": null
+    },
+    "assert maximum([-2, 5, 5, 5, -1, 2, 3], 6) == [-1, 2, 3, 5, 5, 5]": {
+      "result": true,
+      "time": 0.029227495193481445,
+      "error": null
+    },
+    "assert maximum([-6, -2, 5], 2) == [-2, 5]": {
+      "result": true,
+      "time": 0.028025150299072266,
+      "error": null
+    },
+    "assert maximum([3, -9, 1], 4) == [-9, 1, 3]": {
+      "result": true,
+      "time": 0.028306245803833008,
+      "error": null
+    },
+    "assert maximum([119, -119, 21, 2, 4, 4, -3], 3) == [4, 21, 119]": {
+      "result": true,
+      "time": 0.02888035774230957,
+      "error": null
+    },
+    "assert maximum([2, 6, 6, 3, 4, 3, 1], 2) == [6, 6]": {
+      "result": true,
+      "time": 0.03239130973815918,
+      "error": null
+    },
+    "assert maximum([7, -9, 7], 7) == [-9, 7, 7]": {
+      "result": true,
+      "time": 0.0301666259765625,
+      "error": null
+    },
+    "assert maximum([118, -119, 17, 4, 1, 1, -7], 2) == [17, 118]": {
+      "result": true,
+      "time": 0.03114604949951172,
+      "error": null
+    },
+    "assert maximum([-1, -2, 3], 3) == [-2, -1, 3]": {
+      "result": true,
+      "time": 0.029134273529052734,
+      "error": null
+    },
+    "assert maximum([8, -2, 4], 3) == [-2, 4, 8]": {
+      "result": true,
+      "time": 0.025591611862182617,
+      "error": null
+    },
+    "assert maximum([-1, 3, 4, 7, 2, -3, 6], 1) == [7]": {
+      "result": true,
+      "time": 0.03239941596984863,
+      "error": null
+    },
+    "assert maximum([-14, 6], 4) == [-14, 6]": {
+      "result": true,
+      "time": 0.02945113182067871,
+      "error": null
+    },
+    "assert maximum([122, -124, 25, 1, 1, 1, -2], 2) == [25, 122]": {
+      "result": true,
+      "time": 0.0311892032623291,
+      "error": null
+    },
+    "assert maximum([1, 1, 2, -2], 2) == [1, 2]": {
+      "result": true,
+      "time": 0.02642989158630371,
+      "error": null
+    },
+    "assert maximum([3, 15, 5, 4, -16, -10, 4], 11) == [-16, -10, 3, 4, 4, 5, 15]": {
+      "result": true,
+      "time": 0.029942035675048828,
+      "error": null
+    },
+    "assert maximum([8, -6], 7) == [-6, 8]": {
+      "result": true,
+      "time": 0.027529001235961914,
+      "error": null
+    },
+    "assert maximum([-12, 8], 2) == [-12, 8]": {
+      "result": true,
+      "time": 0.02883768081665039,
+      "error": null
+    },
+    "assert maximum([10, 16, 5, 2, -12, -3, 1], 7) == [-12, -3, 1, 2, 5, 10, 16]": {
+      "result": true,
+      "time": 0.029853343963623047,
+      "error": null
+    },
+    "assert maximum([-119, 16, 5, 2, 3, -6], 8) == [-119, -6, 2, 3, 5, 16]": {
+      "result": true,
+      "time": 0.02997875213623047,
+      "error": null
+    },
+    "assert maximum([5, 1, 4], 2) == [4, 5]": {
+      "result": true,
+      "time": 0.030861616134643555,
+      "error": null
+    },
+    "assert maximum([-1, 2, 1, 5, 6, -13], 2) == [5, 6]": {
+      "result": true,
+      "time": 0.02678680419921875,
+      "error": null
+    },
+    "assert maximum([-13, 13], 7) == [-13, 13]": {
+      "result": true,
+      "time": 0.030696630477905273,
+      "error": null
+    },
+    "assert maximum([-1, 0, 2, 5, 3, -10], 2) == [3, 5]": {
+      "result": true,
+      "time": 0.026366472244262695,
+      "error": null
+    },
+    "assert maximum([4, -6, 8], 4) == [-6, 4, 8]": {
+      "result": true,
+      "time": 0.026740312576293945,
+      "error": null
+    },
+    "assert maximum([-2, 1, 1], 1) == [1]": {
+      "result": true,
+      "time": 0.02735614776611328,
+      "error": null
+    },
+    "assert maximum([2, 1], 1) == [2]": {
+      "result": true,
+      "time": 0.02807307243347168,
+      "error": null
+    },
+    "assert maximum([128, -128, 22, 2, 3, 1, -5], 6) == [-5, 1, 2, 3, 22, 128]": {
+      "result": true,
+      "time": 0.025876760482788086,
+      "error": null
+    },
+    "assert maximum([-120, 20, 2, 5, 1, -6], 7) == [-120, -6, 1, 2, 5, 20]": {
+      "result": true,
+      "time": 0.030050039291381836,
+      "error": null
+    },
+    "assert maximum([-5, 10], 6) == [-5, 10]": {
+      "result": true,
+      "time": 0.02702951431274414,
+      "error": null
+    },
+    "assert maximum([-1, 4, 7, 3, 8, -9], 7) == [-9, -1, 3, 4, 7, 8]": {
+      "result": true,
+      "time": 0.0322568416595459,
+      "error": null
+    },
+    "assert maximum([4, 3, 4, -20, 247, -400, 4], 4) == [4, 4, 4, 247]": {
+      "result": true,
+      "time": 0.02712249755859375,
+      "error": null
+    },
+    "assert maximum([-3, 1, 2], 4) == [-3, 1, 2]": {
+      "result": true,
+      "time": 0.02960348129272461,
+      "error": null
+    },
+    "assert maximum([-1, 2, 1, 2, -5, -5, 2], 3) == [2, 2, 2]": {
+      "result": true,
+      "time": 0.02800130844116211,
+      "error": null
+    },
+    "assert maximum([2, 13, 4, 6, -17, -3, 1], 7) == [-17, -3, 1, 2, 4, 6, 13]": {
+      "result": true,
+      "time": 0.029339075088500977,
+      "error": null
+    },
+    "assert maximum([-5, -6, 10], 1) == [10]": {
+      "result": true,
+      "time": 0.030785799026489258,
+      "error": null
+    },
+    "assert maximum([10, 12, 2, 1, -17, -3, 5], 4) == [2, 5, 10, 12]": {
+      "result": true,
+      "time": 0.033617258071899414,
+      "error": null
+    },
+    "assert maximum([119, -118, 15, 3, 3, 3, -8], 1) == [119]": {
+      "result": true,
+      "time": 0.03062129020690918,
+      "error": null
+    },
+    "assert maximum([2, -9], 4) == [-9, 2]": {
+      "result": true,
+      "time": 0.02850627899169922,
+      "error": null
+    },
+    "assert maximum([-9, 13], 3) == [-9, 13]": {
+      "result": true,
+      "time": 0.03059864044189453,
+      "error": null
+    },
+    "assert maximum([6, 0, 5], 4) == [0, 5, 6]": {
+      "result": true,
+      "time": 0.0328214168548584,
+      "error": null
+    },
+    "assert maximum([123, -128, 20, 4, 3, 2, 1], 6) == [1, 2, 3, 4, 20, 123]": {
+      "result": true,
+      "time": 0.029164552688598633,
+      "error": null
+    },
+    "assert maximum([5, 3, 2, -9], 5) == [-9, 2, 3, 5]": {
+      "result": true,
+      "time": 0.030965805053710938,
+      "error": null
+    },
+    "assert maximum([4, -9], 4) == [-9, 4]": {
+      "result": true,
+      "time": 0.027945756912231445,
+      "error": null
+    },
+    "assert maximum([1, 2, 3, -23, 243, -400, 0], 0) == []": {
+      "result": false,
+      "time": 0.026887178421020508,
+      "error": null
+    },
+    "assert maximum([4, -4], 2) == [-4, 4]": {
+      "result": true,
+      "time": 0.025824308395385742,
+      "error": null
+    },
+    "assert maximum([3, 2, 1, -9], 6) == [-9, 1, 2, 3]": {
+      "result": true,
+      "time": 0.02906203269958496,
+      "error": null
+    },
+    "assert maximum([1, 0, 5, -7], 1) == [5]": {
+      "result": true,
+      "time": 0.02610182762145996,
+      "error": null
+    },
+    "assert maximum([6, 0, 8], 2) == [6, 8]": {
+      "result": true,
+      "time": 0.029174327850341797,
+      "error": null
+    },
+    "assert maximum([0, -5, 10], 1) == [10]": {
+      "result": true,
+      "time": 0.02806377410888672,
+      "error": null
+    },
+    "assert maximum([-5, 3, 2, 8, 3, -10], 1) == [8]": {
+      "result": true,
+      "time": 0.03308892250061035,
+      "error": null
+    },
+    "assert maximum([6, 1, 3, -4], 6) == [-4, 1, 3, 6]": {
+      "result": true,
+      "time": 0.026891231536865234,
+      "error": null
+    },
+    "assert maximum([119, -119, 24, 5, 5, 7, -4], 6) == [-4, 5, 5, 7, 24, 119]": {
+      "result": true,
+      "time": 0.02966928482055664,
+      "error": null
+    },
+    "assert maximum([6, 5, 2, -10], 5) == [-10, 2, 5, 6]": {
+      "result": true,
+      "time": 0.02738666534423828,
+      "error": null
+    },
+    "assert maximum([3, 13, 3, 4, -9, -11, 3], 2) == [4, 13]": {
+      "result": true,
+      "time": 0.02790355682373047,
+      "error": null
+    },
+    "assert maximum([1, 1], 4) == [1, 1]": {
+      "result": true,
+      "time": 0.027977466583251953,
+      "error": null
+    },
+    "assert maximum([8, -4], 7) == [-4, 8]": {
+      "result": true,
+      "time": 0.026976585388183594,
+      "error": null
+    },
+    "assert maximum([9, -9], 1) == [9]": {
+      "result": true,
+      "time": 0.030324459075927734,
+      "error": null
+    },
+    "assert maximum([0, 3, 6, 2, -1, 3, 4], 4) == [3, 3, 4, 6]": {
+      "result": true,
+      "time": 0.030328035354614258,
+      "error": null
+    },
+    "assert maximum([8, 1, 2], 4) == [1, 2, 8]": {
+      "result": true,
+      "time": 0.0307157039642334,
+      "error": null
+    },
+    "assert maximum([-2, 2, 5, 2, 0, 2, 2], 4) == [2, 2, 2, 5]": {
+      "result": true,
+      "time": 0.03311491012573242,
+      "error": null
+    },
+    "assert maximum([6, -1], 5) == [-1, 6]": {
+      "result": true,
+      "time": 0.02597951889038086,
+      "error": null
+    },
+    "assert maximum([2, 2, 10, -3], 1) == [10]": {
+      "result": true,
+      "time": 0.027294397354125977,
+      "error": null
+    },
+    "assert maximum([3, 19, 4, 5, -13, -8, 5], 4) == [4, 5, 5, 19]": {
+      "result": true,
+      "time": 0.026677846908569336,
+      "error": null
+    },
+    "assert maximum([-4, 6, 4, 2, 4, -6, 5], 4) == [4, 4, 5, 6]": {
+      "result": true,
+      "time": 0.028462886810302734,
+      "error": null
+    },
+    "assert maximum([6, 5, 1, -19, 242, -403, 5], 3) == [5, 6, 242]": {
+      "result": true,
+      "time": 0.03400754928588867,
+      "error": null
+    },
+    "assert maximum([-3, 6, 3, 1, 0, -4, 6], 5) == [0, 1, 3, 6, 6]": {
+      "result": true,
+      "time": 0.029508352279663086,
+      "error": null
+    },
+    "assert maximum([1, 3, 3, 2, -2, -5, 5], 2) == [3, 5]": {
+      "result": true,
+      "time": 0.030688047409057617,
+      "error": null
+    },
+    "assert maximum([127, -124, 16, 1, 5, 7, -6], 7) == [-124, -6, 1, 5, 7, 16, 127]": {
+      "result": true,
+      "time": 0.03355240821838379,
+      "error": null
+    },
+    "assert maximum([-7, 10], 7) == [-7, 10]": {
+      "result": true,
+      "time": 0.029098033905029297,
+      "error": null
+    },
+    "assert maximum([7, 12, 4, 4, -16, -7, 3], 10) == [-16, -7, 3, 4, 4, 7, 12]": {
+      "result": true,
+      "time": 0.02837228775024414,
+      "error": null
+    },
+    "assert maximum([5, 2, 5, -11], 5) == [-11, 2, 5, 5]": {
+      "result": true,
+      "time": 0.029340744018554688,
+      "error": null
+    },
+    "assert maximum([-123, 20, 0 , 1, 2, -3], 4) == [0, 1, 2, 20]": {
+      "result": true,
+      "time": 0.02749037742614746,
+      "error": null
+    },
+    "assert maximum([6, 7, 8, -20, 243, -398, 5], 3) == [7, 8, 243]": {
+      "result": true,
+      "time": 0.02829718589782715,
+      "error": null
+    },
+    "assert maximum([-10, 10], 3) == [-10, 10]": {
+      "result": true,
+      "time": 0.030205249786376953,
+      "error": null
+    },
+    "assert maximum([4, 5, 8, -28, 245, -402, 2], 4) == [4, 5, 8, 245]": {
+      "result": true,
+      "time": 0.029415369033813477,
+      "error": null
+    },
+    "assert maximum([125, -119, 24, 2, 3, 4, -4], 6) == [-4, 2, 3, 4, 24, 125]": {
+      "result": true,
+      "time": 0.032799482345581055,
+      "error": null
+    },
+    "assert maximum([1, -6], 1) == [1]": {
+      "result": true,
+      "time": 0.02779412269592285,
+      "error": null
+    },
+    "assert maximum([3, 1, 1, -19, 248, -404, 5], 1) == [248]": {
+      "result": true,
+      "time": 0.034294843673706055,
+      "error": null
+    },
+    "assert maximum([1, 4, 4, -9], 3) == [1, 4, 4]": {
+      "result": true,
+      "time": 0.027994871139526367,
+      "error": null
+    },
+    "assert maximum([-122, 16, 1, 4, 2, 1], 6) == [-122, 1, 1, 2, 4, 16]": {
+      "result": true,
+      "time": 0.026637792587280273,
+      "error": null
+    },
+    "assert maximum([0, 1, 2, 5, 1, -9], 2) == [2, 5]": {
+      "result": true,
+      "time": 0.028049945831298828,
+      "error": null
+    },
+    "assert maximum([3, 6, 2, -19, 243, -396, 4], 1) == [243]": {
+      "result": true,
+      "time": 0.02877068519592285,
+      "error": null
+    },
+    "assert maximum([-1, 0, 2], 1) == [2]": {
+      "result": true,
+      "time": 0.030545711517333984,
+      "error": null
+    },
+    "assert maximum([-120, 25, 1, 5, 6, -3], 7) == [-120, -3, 1, 5, 6, 25]": {
+      "result": true,
+      "time": 0.031273603439331055,
+      "error": null
+    },
+    "assert maximum([-126, 22, 2, 2, 5, -3], 3) == [2, 5, 22]": {
+      "result": true,
+      "time": 0.027684450149536133,
+      "error": null
+    },
+    "assert maximum([1, -4, 2], 7) == [-4, 1, 2]": {
+      "result": true,
+      "time": 0.02605295181274414,
+      "error": null
+    },
+    "assert maximum([3, 1, 2, 7, 8, -11], 5) == [1, 2, 3, 7, 8]": {
+      "result": true,
+      "time": 0.028264999389648438,
+      "error": null
+    },
+    "assert maximum([-6, 7], 2) == [-6, 7]": {
+      "result": true,
+      "time": 0.02696990966796875,
+      "error": null
+    },
+    "assert maximum([3, 6, 4, -26, 246, -403, 5], 5) == [3, 4, 5, 6, 246]": {
+      "result": true,
+      "time": 0.030655860900878906,
+      "error": null
+    },
+    "assert maximum([-2, -7, 4], 4) == [-7, -2, 4]": {
+      "result": true,
+      "time": 0.029973268508911133,
+      "error": null
+    },
+    "assert maximum([4, 3, 4, 5, 1, -10], 1) == [5]": {
+      "result": true,
+      "time": 0.030142545700073242,
+      "error": null
+    },
+    "assert maximum([128, -127, 25, 1, 3, 2, -8], 5) == [1, 2, 3, 25, 128]": {
+      "result": true,
+      "time": 0.02915024757385254,
+      "error": null
+    },
+    "assert maximum([127, -127, 21, 5, 3, 3, -2], 8) == [-127, -2, 3, 3, 5, 21, 127]": {
+      "result": true,
+      "time": 0.02629399299621582,
+      "error": null
+    },
+    "assert maximum([123, -123, 20, 0 , 1, 2, -3], 3) == [2, 20, 123]": {
+      "result": true,
+      "time": 0.028798818588256836,
+      "error": null
+    },
+    "assert maximum([-7, 1, 4], 5) == [-7, 1, 4]": {
+      "result": true,
+      "time": 0.027851343154907227,
+      "error": null
+    },
+    "assert maximum([-7, -8, 6], 1) == [6]": {
+      "result": true,
+      "time": 0.02792978286743164,
+      "error": null
+    },
+    "assert maximum([7, 20, 1, 4, -9, -13, 1], 4) == [1, 4, 7, 20]": {
+      "result": true,
+      "time": 0.027233362197875977,
+      "error": null
+    },
+    "assert maximum([123, -121, 22, 4, 2, 2, -6], 1) == [123]": {
+      "result": true,
+      "time": 0.025211095809936523,
+      "error": null
+    },
+    "assert maximum([5, 3, 5, -6], 3) == [3, 5, 5]": {
+      "result": true,
+      "time": 0.03091883659362793,
+      "error": null
+    },
+    "assert maximum([-121, 15, 3, 4, 7, -5], 3) == [4, 7, 15]": {
+      "result": true,
+      "time": 0.03354358673095703,
+      "error": null
+    },
+    "assert maximum([-13, 11], 2) == [-13, 11]": {
+      "result": true,
+      "time": 0.03476381301879883,
+      "error": null
+    },
+    "assert maximum([-125, 18, 3, 1, 5, -1], 1) == [18]": {
+      "result": true,
+      "time": 0.03447365760803223,
+      "error": null
+    },
+    "assert maximum([9, -3, 1], 3) == [-3, 1, 9]": {
+      "result": true,
+      "time": 0.025153398513793945,
+      "error": null
+    },
+    "assert maximum([-3, 2, 1, 2, -1, -2, 1], 1) == [2]": {
+      "result": true,
+      "time": 0.03157448768615723,
+      "error": null
+    },
+    "assert maximum([-1, 2, 1, 1, 1, -5], 1) == [2]": {
+      "result": true,
+      "time": 0.028980255126953125,
+      "error": null
+    },
+    "assert maximum([5, 15, 0, 3, -13, -8, 0], 7) == [-13, -8, 0, 0, 3, 5, 15]": {
+      "result": true,
+      "time": 0.029541730880737305,
+      "error": null
+    },
+    "assert maximum([-2, 7, 4, 5, 0, 0, 4], 3) == [4, 5, 7]": {
+      "result": true,
+      "time": 0.02847433090209961,
+      "error": null
+    },
+    "assert maximum([-4, 4, 2, 10, 2, -5], 5) == [-4, 2, 2, 4, 10]": {
+      "result": true,
+      "time": 0.029533863067626953,
+      "error": null
+    },
+    "assert maximum([1, 4, 4, 1, 2, -14], 5) == [1, 1, 2, 4, 4]": {
+      "result": true,
+      "time": 0.027043819427490234,
+      "error": null
+    },
+    "assert maximum([-123, 19, 4, 5, 6, -2], 3) == [5, 6, 19]": {
+      "result": true,
+      "time": 0.030534029006958008,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9929577464788732,
+  "general_error": "",
+  "has_testcase_error": false
+}

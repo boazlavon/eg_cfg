@@ -1,0 +1,564 @@
+{
+  "code": "def median(l: list):\n    sorted_l = sorted(l)\n    n = len(sorted_l)\n    if n % 2 == 1:\n        return sorted_l[n//2]\n    else:\n        return (sorted_l[n//2 - 1] + sorted_l[n//2]) / 2",
+  "results": {
+    "assert median([-6, 3, 8, 1002, 14, 16]) == 11.0": {
+      "result": true,
+      "time": 0.030354976654052734,
+      "error": null
+    },
+    "assert median([2, 10]) == 6.0": {
+      "result": true,
+      "time": 0.027010440826416016,
+      "error": null
+    },
+    "assert median([12, 3, 5, 11, 7, 4, 5]) == 5": {
+      "result": true,
+      "time": 0.029071807861328125,
+      "error": null
+    },
+    "assert median([-15, 4, 5, 1001, 15, 23]) == 10.0": {
+      "result": true,
+      "time": 0.03049182891845703,
+      "error": null
+    },
+    "assert median([-15, 3, 4, 1000, 13, 23]) == 8.5": {
+      "result": true,
+      "time": 0.02757740020751953,
+      "error": null
+    },
+    "assert median([-5, 9, 2, 996, 15, 22]) == 12.0": {
+      "result": true,
+      "time": 0.03171992301940918,
+      "error": null
+    },
+    "assert median([6, 2, 1, 8, 1]) == 2": {
+      "result": true,
+      "time": 0.030713558197021484,
+      "error": null
+    },
+    "assert median([7, 7]) == 7.0": {
+      "result": true,
+      "time": 0.02849888801574707,
+      "error": null
+    },
+    "assert median([4, 2, 2, 12, 10, 4, 10]) == 4": {
+      "result": true,
+      "time": 0.026896238327026367,
+      "error": null
+    },
+    "assert median([-12, 8, 9, 997, 14, 17]) == 11.5": {
+      "result": true,
+      "time": 0.032062530517578125,
+      "error": null
+    },
+    "assert median([1, 1, 3, 1, 10]) == 1": {
+      "result": true,
+      "time": 0.029169797897338867,
+      "error": null
+    },
+    "assert median([-8, 4, 8, 997, 15, 20]) == 11.5": {
+      "result": true,
+      "time": 0.029083967208862305,
+      "error": null
+    },
+    "assert median([8]) == 8": {
+      "result": true,
+      "time": 0.031287193298339844,
+      "error": null
+    },
+    "assert median([5]) == 5": {
+      "result": true,
+      "time": 0.029289960861206055,
+      "error": null
+    },
+    "assert median([8, 3, 2, 9, 6, 5, 2]) == 5": {
+      "result": true,
+      "time": 0.0296478271484375,
+      "error": null
+    },
+    "assert median([-15, 8, 4, 997, 7, 19]) == 7.5": {
+      "result": true,
+      "time": 0.031243324279785156,
+      "error": null
+    },
+    "assert median([-7, 4, 10, 998, 10, 22]) == 10.0": {
+      "result": true,
+      "time": 0.03441309928894043,
+      "error": null
+    },
+    "assert median([10]) == 10": {
+      "result": true,
+      "time": 0.028212547302246094,
+      "error": null
+    },
+    "assert median([5, 4]) == 4.5": {
+      "result": true,
+      "time": 0.028147220611572266,
+      "error": null
+    },
+    "assert median([3, 6, 6, 2, 6]) == 6": {
+      "result": true,
+      "time": 0.0300295352935791,
+      "error": null
+    },
+    "assert median([1, 8]) == 4.5": {
+      "result": true,
+      "time": 0.028685808181762695,
+      "error": null
+    },
+    "assert median([12, 1, 6, 11, 13, 6, 6]) == 6": {
+      "result": true,
+      "time": 0.032620906829833984,
+      "error": null
+    },
+    "assert median([8, 5, 7, 6, 3]) == 6": {
+      "result": true,
+      "time": 0.034665822982788086,
+      "error": null
+    },
+    "assert median([6, 2, 7, 8, 8, 5, 4]) == 6": {
+      "result": true,
+      "time": 0.030918598175048828,
+      "error": null
+    },
+    "assert median([7, 4]) == 5.5": {
+      "result": true,
+      "time": 0.029636621475219727,
+      "error": null
+    },
+    "assert median([-7, 6, 6, 996, 6, 15]) == 6.0": {
+      "result": true,
+      "time": 0.02812647819519043,
+      "error": null
+    },
+    "assert median([-15, 8, 1, 1004, 6, 19]) == 7.0": {
+      "result": true,
+      "time": 0.026570796966552734,
+      "error": null
+    },
+    "assert median([5, 5, 5, 7, 3]) == 5": {
+      "result": true,
+      "time": 0.024243593215942383,
+      "error": null
+    },
+    "assert median([6, 6, 2, 7, 6]) == 6": {
+      "result": true,
+      "time": 0.028357505798339844,
+      "error": null
+    },
+    "assert median([-10, 4, 6, 1000, 10, 20]) == 8.0": {
+      "result": true,
+      "time": 0.028641223907470703,
+      "error": null
+    },
+    "assert median([4]) == 4": {
+      "result": true,
+      "time": 0.032074928283691406,
+      "error": null
+    },
+    "assert median([11, 2]) == 6.5": {
+      "result": true,
+      "time": 0.029974937438964844,
+      "error": null
+    },
+    "assert median([1, 3, 6, 4, 10]) == 4": {
+      "result": true,
+      "time": 0.03233695030212402,
+      "error": null
+    },
+    "assert median([-5, 9, 10, 1000, 12, 18]) == 11.0": {
+      "result": true,
+      "time": 0.030768156051635742,
+      "error": null
+    },
+    "assert median([10, 6, 4, 8, 4, 3, 11]) == 6": {
+      "result": true,
+      "time": 0.02756476402282715,
+      "error": null
+    },
+    "assert median([6, 5]) == 5.5": {
+      "result": true,
+      "time": 0.028145790100097656,
+      "error": null
+    },
+    "assert median([6, 6, 6, 9, 7, 4, 10]) == 6": {
+      "result": true,
+      "time": 0.03083348274230957,
+      "error": null
+    },
+    "assert median([6, 5, 5, 7, 10, 6, 8]) == 6": {
+      "result": true,
+      "time": 0.02828359603881836,
+      "error": null
+    },
+    "assert median([7, 4, 7, 1, 7]) == 7": {
+      "result": true,
+      "time": 0.029734373092651367,
+      "error": null
+    },
+    "assert median([-6, 9, 6, 997, 14, 25]) == 11.5": {
+      "result": true,
+      "time": 0.027713298797607422,
+      "error": null
+    },
+    "assert median([7, 8]) == 7.5": {
+      "result": true,
+      "time": 0.028701305389404297,
+      "error": null
+    },
+    "assert median([3, 1, 2, 4, 5]) == 3": {
+      "result": true,
+      "time": 0.02758479118347168,
+      "error": null
+    },
+    "assert median([-11, 3, 10, 1005, 10, 22]) == 10.0": {
+      "result": true,
+      "time": 0.02877950668334961,
+      "error": null
+    },
+    "assert median([6, 9]) == 7.5": {
+      "result": true,
+      "time": 0.03004002571105957,
+      "error": null
+    },
+    "assert median([11, 3, 6, 13, 6, 4, 9]) == 6": {
+      "result": true,
+      "time": 0.03012251853942871,
+      "error": null
+    },
+    "assert median([-10, 3, 3, 997, 15, 22]) == 9.0": {
+      "result": true,
+      "time": 0.02874469757080078,
+      "error": null
+    },
+    "assert median([-8, 5, 4, 1001, 14, 22]) == 9.5": {
+      "result": true,
+      "time": 0.027150392532348633,
+      "error": null
+    },
+    "assert median([11, 3, 1, 8, 5, 1, 8]) == 5": {
+      "result": true,
+      "time": 0.027805328369140625,
+      "error": null
+    },
+    "assert median([-15, 3, 2, 1002, 8, 22]) == 5.5": {
+      "result": true,
+      "time": 0.028316020965576172,
+      "error": null
+    },
+    "assert median([8, 5, 3, 2, 10]) == 5": {
+      "result": true,
+      "time": 0.028008460998535156,
+      "error": null
+    },
+    "assert median([11, 1, 3, 8, 13, 2, 7]) == 7": {
+      "result": true,
+      "time": 0.026627540588378906,
+      "error": null
+    },
+    "assert median([3, 6, 1, 4, 3]) == 3": {
+      "result": true,
+      "time": 0.031690359115600586,
+      "error": null
+    },
+    "assert median([10, 10]) == 10.0": {
+      "result": true,
+      "time": 0.02878546714782715,
+      "error": null
+    },
+    "assert median([1]) == 1": {
+      "result": true,
+      "time": 0.027691364288330078,
+      "error": null
+    },
+    "assert median([11, 6, 7, 6, 6, 1, 12]) == 6": {
+      "result": true,
+      "time": 0.027567386627197266,
+      "error": null
+    },
+    "assert median([1, 5, 6, 6, 3]) == 5": {
+      "result": true,
+      "time": 0.029555797576904297,
+      "error": null
+    },
+    "assert median([2, 6, 6, 7, 3]) == 6": {
+      "result": true,
+      "time": 0.02672743797302246,
+      "error": null
+    },
+    "assert median([3, 10]) == 6.5": {
+      "result": true,
+      "time": 0.0267026424407959,
+      "error": null
+    },
+    "assert median([-11, 5, 11, 1002, 10, 20]) == 10.5": {
+      "result": true,
+      "time": 0.02899312973022461,
+      "error": null
+    },
+    "assert median([6, 6, 6, 7, 10]) == 6": {
+      "result": true,
+      "time": 0.02558422088623047,
+      "error": null
+    },
+    "assert median([3, 5, 7, 4, 8]) == 5": {
+      "result": true,
+      "time": 0.02868032455444336,
+      "error": null
+    },
+    "assert median([13, 5, 6, 7, 14, 7, 9]) == 7": {
+      "result": true,
+      "time": 0.026554584503173828,
+      "error": null
+    },
+    "assert median([6, 4, 4, 11, 11, 2, 2]) == 4": {
+      "result": true,
+      "time": 0.03047776222229004,
+      "error": null
+    },
+    "assert median([12, 2, 2, 11, 11, 4, 2]) == 4": {
+      "result": true,
+      "time": 0.03212714195251465,
+      "error": null
+    },
+    "assert median([3, 9]) == 6.0": {
+      "result": true,
+      "time": 0.027714967727661133,
+      "error": null
+    },
+    "assert median([5, 6, 6, 7, 5, 2, 9]) == 6": {
+      "result": true,
+      "time": 0.030208349227905273,
+      "error": null
+    },
+    "assert median([4, 6]) == 5.0": {
+      "result": true,
+      "time": 0.02715587615966797,
+      "error": null
+    },
+    "assert median([1, 2]) == 1.5": {
+      "result": true,
+      "time": 0.025005340576171875,
+      "error": null
+    },
+    "assert median([3, 4, 5, 9, 7, 2, 3]) == 4": {
+      "result": true,
+      "time": 0.027030229568481445,
+      "error": null
+    },
+    "assert median([10, 4, 7, 11, 11, 3, 3]) == 7": {
+      "result": true,
+      "time": 0.027875423431396484,
+      "error": null
+    },
+    "assert median([6, 10]) == 8.0": {
+      "result": true,
+      "time": 0.029989242553710938,
+      "error": null
+    },
+    "assert median([-6, 6, 9, 1005, 8, 25]) == 8.5": {
+      "result": true,
+      "time": 0.025676250457763672,
+      "error": null
+    },
+    "assert median([8, 5, 5, 7, 10]) == 7": {
+      "result": true,
+      "time": 0.029880046844482422,
+      "error": null
+    },
+    "assert median([-13, 8, 6, 998, 13, 19]) == 10.5": {
+      "result": true,
+      "time": 0.028612375259399414,
+      "error": null
+    },
+    "assert median([7, 2, 7, 6, 6]) == 6": {
+      "result": true,
+      "time": 0.030481576919555664,
+      "error": null
+    },
+    "assert median([9]) == 9": {
+      "result": true,
+      "time": 0.029103994369506836,
+      "error": null
+    },
+    "assert median([7]) == 7": {
+      "result": true,
+      "time": 0.03069782257080078,
+      "error": null
+    },
+    "assert median([8, 1, 3, 9, 3]) == 3": {
+      "result": true,
+      "time": 0.029606103897094727,
+      "error": null
+    },
+    "assert median([8, 1, 3, 9, 9, 2, 7]) == 7": {
+      "result": true,
+      "time": 0.02959275245666504,
+      "error": null
+    },
+    "assert median([-9, 4, 2, 1002, 6, 23]) == 5.0": {
+      "result": true,
+      "time": 0.028275251388549805,
+      "error": null
+    },
+    "assert median([8, 2, 7, 6, 7]) == 7": {
+      "result": true,
+      "time": 0.0286862850189209,
+      "error": null
+    },
+    "assert median([1, 6, 7, 5, 4]) == 5": {
+      "result": true,
+      "time": 0.03104376792907715,
+      "error": null
+    },
+    "assert median([2, 2]) == 2.0": {
+      "result": true,
+      "time": 0.029034137725830078,
+      "error": null
+    },
+    "assert median([6]) == 6": {
+      "result": true,
+      "time": 0.03141355514526367,
+      "error": null
+    },
+    "assert median([-7, 7, 8, 1000, 13, 25]) == 10.5": {
+      "result": true,
+      "time": 0.029067516326904297,
+      "error": null
+    },
+    "assert median([-5, 1, 10, 1003, 10, 25]) == 10.0": {
+      "result": true,
+      "time": 0.030745983123779297,
+      "error": null
+    },
+    "assert median([9, 2]) == 5.5": {
+      "result": true,
+      "time": 0.029419422149658203,
+      "error": null
+    },
+    "assert median([3]) == 3": {
+      "result": true,
+      "time": 0.029016733169555664,
+      "error": null
+    },
+    "assert median([6, 1, 5, 7, 11, 6, 5]) == 6": {
+      "result": true,
+      "time": 0.026386737823486328,
+      "error": null
+    },
+    "assert median([7, 3, 6, 5, 2]) == 5": {
+      "result": true,
+      "time": 0.029139995574951172,
+      "error": null
+    },
+    "assert median([-11, 3, 3, 998, 15, 15]) == 9.0": {
+      "result": true,
+      "time": 0.027764081954956055,
+      "error": null
+    },
+    "assert median([5, 5]) == 5.0": {
+      "result": true,
+      "time": 0.03271675109863281,
+      "error": null
+    },
+    "assert median([9, 5, 2, 6, 13, 7, 2]) == 6": {
+      "result": true,
+      "time": 0.02958369255065918,
+      "error": null
+    },
+    "assert median([8, 6, 3, 5, 12, 5, 5]) == 5": {
+      "result": true,
+      "time": 0.026037216186523438,
+      "error": null
+    },
+    "assert median([11, 3]) == 7.0": {
+      "result": true,
+      "time": 0.03281998634338379,
+      "error": null
+    },
+    "assert median([3, 6, 5, 11, 5, 4, 6]) == 5": {
+      "result": true,
+      "time": 0.0279996395111084,
+      "error": null
+    },
+    "assert median([5, 1]) == 3.0": {
+      "result": true,
+      "time": 0.03288745880126953,
+      "error": null
+    },
+    "assert median([8, 8]) == 8.0": {
+      "result": true,
+      "time": 0.03061223030090332,
+      "error": null
+    },
+    "assert median([7, 2, 7, 1, 4]) == 4": {
+      "result": true,
+      "time": 0.029288768768310547,
+      "error": null
+    },
+    "assert median([9, 9]) == 9.0": {
+      "result": true,
+      "time": 0.029193639755249023,
+      "error": null
+    },
+    "assert median([3, 6, 2, 6, 9]) == 6": {
+      "result": true,
+      "time": 0.02861762046813965,
+      "error": null
+    },
+    "assert median([-11, 1, 3, 1004, 12, 17]) == 7.5": {
+      "result": true,
+      "time": 0.029599905014038086,
+      "error": null
+    },
+    "assert median([5, 2, 3, 9, 5, 7, 7]) == 5": {
+      "result": true,
+      "time": 0.028589248657226562,
+      "error": null
+    },
+    "assert median([6, 2, 4, 2, 6]) == 4": {
+      "result": true,
+      "time": 0.027660608291625977,
+      "error": null
+    },
+    "assert median([3, 1, 7, 4, 3]) == 3": {
+      "result": true,
+      "time": 0.028836965560913086,
+      "error": null
+    },
+    "assert median([5, 2, 2, 5, 6, 1, 3]) == 3": {
+      "result": true,
+      "time": 0.033350467681884766,
+      "error": null
+    },
+    "assert median([-15, 8, 4, 1000, 6, 16]) == 7.0": {
+      "result": true,
+      "time": 0.02953362464904785,
+      "error": null
+    },
+    "assert median([1, 6]) == 3.5": {
+      "result": true,
+      "time": 0.026943445205688477,
+      "error": null
+    },
+    "assert median([3, 2, 7, 8, 11, 5, 12]) == 7": {
+      "result": true,
+      "time": 0.02634739875793457,
+      "error": null
+    },
+    "assert median([8, 3, 5, 9, 10]) == 8": {
+      "result": true,
+      "time": 0.024251461029052734,
+      "error": null
+    },
+    "assert median([2, 9]) == 5.5": {
+      "result": true,
+      "time": 0.031153440475463867,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

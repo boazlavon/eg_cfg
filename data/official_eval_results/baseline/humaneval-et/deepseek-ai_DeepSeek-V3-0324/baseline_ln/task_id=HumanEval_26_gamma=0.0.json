@@ -1,0 +1,444 @@
+{
+  "code": "from typing import List\n\ndef remove_duplicates(numbers: List[int]) -> List[int]:\n    count = {}\n    for num in numbers:\n        count[num] = count.get(num, 0) + 1\n    return [num for num in numbers if count[num] == 1]",
+  "results": {
+    "assert remove_duplicates([3, 2, 5, 4]) == [3, 2, 5, 4]": {
+      "result": true,
+      "time": 0.19445586204528809,
+      "error": null
+    },
+    "assert remove_duplicates([1, 2, 3, 2, 4, 3, 5]) == [1, 4, 5]": {
+      "result": true,
+      "time": 0.20081830024719238,
+      "error": null
+    },
+    "assert remove_duplicates([4, 4, 2, 1, 9, 6, 4]) == [2, 1, 9, 6]": {
+      "result": true,
+      "time": 0.1466531753540039,
+      "error": null
+    },
+    "assert remove_duplicates([3, 3, 6, 1, 4, 4, 9]) == [6, 1, 9]": {
+      "result": true,
+      "time": 0.12687444686889648,
+      "error": null
+    },
+    "assert remove_duplicates([3, 7, 4, 3]) == [7, 4]": {
+      "result": true,
+      "time": 0.08853888511657715,
+      "error": null
+    },
+    "assert remove_duplicates([2, 1, 2, 4]) == [1, 4]": {
+      "result": true,
+      "time": 0.21368646621704102,
+      "error": null
+    },
+    "assert remove_duplicates([1, 2, 3, 4]) == [1, 2, 3, 4]": {
+      "result": true,
+      "time": 0.16414809226989746,
+      "error": null
+    },
+    "assert remove_duplicates([5, 2, 7, 2, 1, 3, 1]) == [5, 7, 3]": {
+      "result": true,
+      "time": 0.11327052116394043,
+      "error": null
+    },
+    "assert remove_duplicates([4, 6, 8, 3, 1, 8, 3]) == [4, 6, 1]": {
+      "result": true,
+      "time": 0.19823527336120605,
+      "error": null
+    },
+    "assert remove_duplicates([6, 7, 6, 4, 2, 1, 7]) == [4, 2, 1]": {
+      "result": true,
+      "time": 0.09378576278686523,
+      "error": null
+    },
+    "assert remove_duplicates([5, 2, 1, 4, 6, 4, 8]) == [5, 2, 1, 6, 8]": {
+      "result": true,
+      "time": 0.15050530433654785,
+      "error": null
+    },
+    "assert remove_duplicates([3, 2, 8, 2]) == [3, 8]": {
+      "result": true,
+      "time": 0.08919835090637207,
+      "error": null
+    },
+    "assert remove_duplicates([6, 7, 3, 6]) == [7, 3]": {
+      "result": true,
+      "time": 0.08606243133544922,
+      "error": null
+    },
+    "assert remove_duplicates([5, 7, 4, 6]) == [5, 7, 4, 6]": {
+      "result": true,
+      "time": 0.1478269100189209,
+      "error": null
+    },
+    "assert remove_duplicates([4, 6, 3, 4, 2, 6, 5]) == [3, 2, 5]": {
+      "result": true,
+      "time": 0.10188007354736328,
+      "error": null
+    },
+    "assert remove_duplicates([5, 2, 6, 7, 4, 1, 3]) == [5, 2, 6, 7, 4, 1, 3]": {
+      "result": true,
+      "time": 0.123809814453125,
+      "error": null
+    },
+    "assert remove_duplicates([4, 7, 7, 8]) == [4, 8]": {
+      "result": true,
+      "time": 0.18586158752441406,
+      "error": null
+    },
+    "assert remove_duplicates([4, 4, 1, 5]) == [1, 5]": {
+      "result": true,
+      "time": 0.21184039115905762,
+      "error": null
+    },
+    "assert remove_duplicates([6, 7, 2, 7, 7, 5, 9]) == [6, 2, 5, 9]": {
+      "result": true,
+      "time": 0.08741283416748047,
+      "error": null
+    },
+    "assert remove_duplicates([6, 1, 8, 6]) == [1, 8]": {
+      "result": true,
+      "time": 0.11871170997619629,
+      "error": null
+    },
+    "assert remove_duplicates([5, 1, 1, 6, 8, 7, 3]) == [5, 6, 8, 7, 3]": {
+      "result": true,
+      "time": 0.0947866439819336,
+      "error": null
+    },
+    "assert remove_duplicates([1, 2, 1, 7, 6, 6, 10]) == [2, 7, 10]": {
+      "result": true,
+      "time": 0.15891027450561523,
+      "error": null
+    },
+    "assert remove_duplicates([1, 2, 7, 4]) == [1, 2, 7, 4]": {
+      "result": true,
+      "time": 0.17398309707641602,
+      "error": null
+    },
+    "assert remove_duplicates([1, 7, 2, 6]) == [1, 7, 2, 6]": {
+      "result": true,
+      "time": 0.202681303024292,
+      "error": null
+    },
+    "assert remove_duplicates([1, 3, 8, 9]) == [1, 3, 8, 9]": {
+      "result": true,
+      "time": 0.1299605369567871,
+      "error": null
+    },
+    "assert remove_duplicates([2, 5, 6, 4, 8, 6, 6]) == [2, 5, 4, 8]": {
+      "result": true,
+      "time": 0.08985376358032227,
+      "error": null
+    },
+    "assert remove_duplicates([4, 2, 5, 2]) == [4, 5]": {
+      "result": true,
+      "time": 0.10841250419616699,
+      "error": null
+    },
+    "assert remove_duplicates([2, 6, 2, 7, 4, 2, 1]) == [6, 7, 4, 1]": {
+      "result": true,
+      "time": 0.11997509002685547,
+      "error": null
+    },
+    "assert remove_duplicates([5, 2, 8, 3]) == [5, 2, 8, 3]": {
+      "result": true,
+      "time": 0.09098172187805176,
+      "error": null
+    },
+    "assert remove_duplicates([5, 5, 5, 5, 5, 2, 2]) == []": {
+      "result": true,
+      "time": 0.09201192855834961,
+      "error": null
+    },
+    "assert remove_duplicates([3, 7, 3, 7, 5, 2, 4]) == [5, 2, 4]": {
+      "result": true,
+      "time": 0.1260814666748047,
+      "error": null
+    },
+    "assert remove_duplicates([5, 3, 7, 2, 3, 1, 5]) == [7, 2, 1]": {
+      "result": true,
+      "time": 0.0932760238647461,
+      "error": null
+    },
+    "assert remove_duplicates([4, 1, 1, 3, 1, 6, 8]) == [4, 3, 6, 8]": {
+      "result": true,
+      "time": 0.14553165435791016,
+      "error": null
+    },
+    "assert remove_duplicates([1, 7, 2, 4, 2, 4, 8]) == [1, 7, 8]": {
+      "result": true,
+      "time": 0.10569643974304199,
+      "error": null
+    },
+    "assert remove_duplicates([5, 3, 6, 1, 5, 5, 3]) == [6, 1]": {
+      "result": true,
+      "time": 0.09003138542175293,
+      "error": null
+    },
+    "assert remove_duplicates([4, 7, 5, 5]) == [4, 7]": {
+      "result": true,
+      "time": 0.12490248680114746,
+      "error": null
+    },
+    "assert remove_duplicates([1, 2, 2, 8]) == [1, 8]": {
+      "result": true,
+      "time": 0.16076922416687012,
+      "error": null
+    },
+    "assert remove_duplicates([1, 2, 4, 4, 3, 1, 6]) == [2, 3, 6]": {
+      "result": true,
+      "time": 0.19504785537719727,
+      "error": null
+    },
+    "assert remove_duplicates([2, 7, 3, 2]) == [7, 3]": {
+      "result": true,
+      "time": 0.16410160064697266,
+      "error": null
+    },
+    "assert remove_duplicates([1, 3, 4, 2]) == [1, 3, 4, 2]": {
+      "result": true,
+      "time": 0.08579540252685547,
+      "error": null
+    },
+    "assert remove_duplicates([4, 2, 5, 8]) == [4, 2, 5, 8]": {
+      "result": true,
+      "time": 0.10911130905151367,
+      "error": null
+    },
+    "assert remove_duplicates([4, 4, 5, 4, 3, 8, 9]) == [5, 3, 8, 9]": {
+      "result": true,
+      "time": 0.23212695121765137,
+      "error": null
+    },
+    "assert remove_duplicates([3, 1, 8, 7]) == [3, 1, 8, 7]": {
+      "result": true,
+      "time": 0.17301511764526367,
+      "error": null
+    },
+    "assert remove_duplicates([3, 5, 6, 6]) == [3, 5]": {
+      "result": true,
+      "time": 0.09253787994384766,
+      "error": null
+    },
+    "assert remove_duplicates([6, 1, 1, 4, 3, 6, 3]) == [4]": {
+      "result": true,
+      "time": 0.09563302993774414,
+      "error": null
+    },
+    "assert remove_duplicates([1, 1, 6, 6]) == []": {
+      "result": true,
+      "time": 0.1441025733947754,
+      "error": null
+    },
+    "assert remove_duplicates([4, 3, 1, 5, 9, 7, 6]) == [4, 3, 1, 5, 9, 7, 6]": {
+      "result": true,
+      "time": 0.18492913246154785,
+      "error": null
+    },
+    "assert remove_duplicates([3, 2, 2, 3]) == []": {
+      "result": true,
+      "time": 0.16311931610107422,
+      "error": null
+    },
+    "assert remove_duplicates([6, 2, 7, 1, 2, 1, 2]) == [6, 7]": {
+      "result": true,
+      "time": 0.13382482528686523,
+      "error": null
+    },
+    "assert remove_duplicates([2, 6, 7, 9]) == [2, 6, 7, 9]": {
+      "result": true,
+      "time": 0.0882112979888916,
+      "error": null
+    },
+    "assert remove_duplicates([4, 3, 8, 2]) == [4, 3, 8, 2]": {
+      "result": true,
+      "time": 0.1618208885192871,
+      "error": null
+    },
+    "assert remove_duplicates([4, 6, 4, 3, 4, 3, 2]) == [6, 2]": {
+      "result": true,
+      "time": 0.17932605743408203,
+      "error": null
+    },
+    "assert remove_duplicates([1, 1, 5, 2, 2, 6, 7]) == [5, 6, 7]": {
+      "result": true,
+      "time": 0.1112666130065918,
+      "error": null
+    },
+    "assert remove_duplicates([4, 6, 7, 6, 8, 1, 9]) == [4, 7, 8, 1, 9]": {
+      "result": true,
+      "time": 0.19481110572814941,
+      "error": null
+    },
+    "assert remove_duplicates([1, 2, 8, 9]) == [1, 2, 8, 9]": {
+      "result": true,
+      "time": 0.15104103088378906,
+      "error": null
+    },
+    "assert remove_duplicates([1, 6, 8, 1, 7, 5, 8]) == [6, 7, 5]": {
+      "result": true,
+      "time": 0.22354841232299805,
+      "error": null
+    },
+    "assert remove_duplicates([3, 6, 2, 2, 6, 3, 7]) == [7]": {
+      "result": true,
+      "time": 0.2939739227294922,
+      "error": null
+    },
+    "assert remove_duplicates([5, 7, 1, 1, 4, 3, 7]) == [5, 4, 3]": {
+      "result": true,
+      "time": 0.31777071952819824,
+      "error": null
+    },
+    "assert remove_duplicates([2, 6, 3, 7]) == [2, 6, 3, 7]": {
+      "result": true,
+      "time": 0.34099292755126953,
+      "error": null
+    },
+    "assert remove_duplicates([6, 2, 1, 3, 2, 5, 2]) == [6, 1, 3, 5]": {
+      "result": true,
+      "time": 0.2219245433807373,
+      "error": null
+    },
+    "assert remove_duplicates([5, 3, 2, 1]) == [5, 3, 2, 1]": {
+      "result": true,
+      "time": 0.24625730514526367,
+      "error": null
+    },
+    "assert remove_duplicates([6, 6, 3, 4, 3, 1, 3]) == [4, 1]": {
+      "result": true,
+      "time": 0.1247103214263916,
+      "error": null
+    },
+    "assert remove_duplicates([6, 6, 1, 5, 4, 1, 10]) == [5, 4, 10]": {
+      "result": true,
+      "time": 0.2794504165649414,
+      "error": null
+    },
+    "assert remove_duplicates([2, 2, 4, 5]) == [4, 5]": {
+      "result": true,
+      "time": 0.17424631118774414,
+      "error": null
+    },
+    "assert remove_duplicates([3, 7, 3, 3, 5, 4, 4]) == [7, 5]": {
+      "result": true,
+      "time": 0.32235240936279297,
+      "error": null
+    },
+    "assert remove_duplicates([3, 6, 8, 6]) == [3, 8]": {
+      "result": true,
+      "time": 0.18660449981689453,
+      "error": null
+    },
+    "assert remove_duplicates([1, 3, 4, 8]) == [1, 3, 4, 8]": {
+      "result": true,
+      "time": 0.24891376495361328,
+      "error": null
+    },
+    "assert remove_duplicates([6, 6, 6, 5]) == [5]": {
+      "result": true,
+      "time": 0.2992544174194336,
+      "error": null
+    },
+    "assert remove_duplicates([2, 4, 6, 1, 1, 1, 2]) == [4, 6]": {
+      "result": true,
+      "time": 0.27813220024108887,
+      "error": null
+    },
+    "assert remove_duplicates([6, 7, 6, 2]) == [7, 2]": {
+      "result": true,
+      "time": 0.22695708274841309,
+      "error": null
+    },
+    "assert remove_duplicates([6, 1, 2, 4, 2, 4, 8]) == [6, 1, 8]": {
+      "result": true,
+      "time": 0.33638453483581543,
+      "error": null
+    },
+    "assert remove_duplicates([2, 1, 1, 2]) == []": {
+      "result": true,
+      "time": 0.22927594184875488,
+      "error": null
+    },
+    "assert remove_duplicates([3, 1, 2, 3]) == [1, 2]": {
+      "result": true,
+      "time": 0.19014239311218262,
+      "error": null
+    },
+    "assert remove_duplicates([]) == []": {
+      "result": true,
+      "time": 0.2667045593261719,
+      "error": null
+    },
+    "assert remove_duplicates([6, 2, 7, 2]) == [6, 7]": {
+      "result": true,
+      "time": 0.22243905067443848,
+      "error": null
+    },
+    "assert remove_duplicates([2, 6, 8, 6]) == [2, 8]": {
+      "result": true,
+      "time": 0.2364487648010254,
+      "error": null
+    },
+    "assert remove_duplicates([6, 7, 7, 3, 9, 2, 8]) == [6, 3, 9, 2, 8]": {
+      "result": true,
+      "time": 0.19692707061767578,
+      "error": null
+    },
+    "assert remove_duplicates([5, 4, 5, 8]) == [4, 8]": {
+      "result": true,
+      "time": 0.2123415470123291,
+      "error": null
+    },
+    "assert remove_duplicates([5, 5, 2, 3]) == [2, 3]": {
+      "result": true,
+      "time": 0.3192892074584961,
+      "error": null
+    },
+    "assert remove_duplicates([4, 2, 2, 6]) == [4, 6]": {
+      "result": true,
+      "time": 0.24226140975952148,
+      "error": null
+    },
+    "assert remove_duplicates([2, 5, 1, 2, 3, 8, 6]) == [5, 1, 3, 8, 6]": {
+      "result": true,
+      "time": 0.2992360591888428,
+      "error": null
+    },
+    "assert remove_duplicates([3, 3, 7, 5]) == [7, 5]": {
+      "result": true,
+      "time": 0.33743882179260254,
+      "error": null
+    },
+    "assert remove_duplicates([6, 1, 7, 5, 4, 3, 9]) == [6, 1, 7, 5, 4, 3, 9]": {
+      "result": true,
+      "time": 0.28241491317749023,
+      "error": null
+    },
+    "assert remove_duplicates([2, 2, 2, 4, 5, 7, 4]) == [5, 7]": {
+      "result": true,
+      "time": 0.2540421485900879,
+      "error": null
+    },
+    "assert remove_duplicates([5, 3, 1, 2]) == [5, 3, 1, 2]": {
+      "result": true,
+      "time": 0.2715005874633789,
+      "error": null
+    },
+    "assert remove_duplicates([4, 1, 2, 6, 7, 5, 3]) == [4, 1, 2, 6, 7, 5, 3]": {
+      "result": true,
+      "time": 0.2807016372680664,
+      "error": null
+    },
+    "assert remove_duplicates([5, 4, 3, 6, 2, 8, 2]) == [5, 4, 3, 6, 8]": {
+      "result": true,
+      "time": 0.29042720794677734,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

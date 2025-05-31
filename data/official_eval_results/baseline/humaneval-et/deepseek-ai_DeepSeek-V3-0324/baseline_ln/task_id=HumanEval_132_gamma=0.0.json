@@ -1,0 +1,649 @@
+{
+  "code": "def is_nested(string):\n    stack = []\n    has_nested = False\n    for char in string:\n        if char == '[':\n            stack.append(char)\n        else:\n            if stack:\n                if stack[-1] == '[':\n                    stack.pop()\n                    if stack and stack[-1] == '[':\n                        has_nested = True\n    return has_nested",
+  "results": {
+    "assert is_nested('[[]') == False": {
+      "result": false,
+      "time": 0.028048038482666016,
+      "error": null
+    },
+    "assert is_nested(\"[]]]][[]\") == False": {
+      "result": false,
+      "time": 0.028339862823486328,
+      "error": null
+    },
+    "assert is_nested('[]]]]]]][[[[[]') == False": {
+      "result": false,
+      "time": 0.031090736389160156,
+      "error": null
+    },
+    "assert is_nested(\"][[[[]]\") == True": {
+      "result": true,
+      "time": 0.029637813568115234,
+      "error": null
+    },
+    "assert is_nested(\"[][[][][\") == True": {
+      "result": true,
+      "time": 0.028894662857055664,
+      "error": null
+    },
+    "assert is_nested(('[]')) == False": {
+      "result": true,
+      "time": 0.030405044555664062,
+      "error": null
+    },
+    "assert is_nested(\"[][][[[[[]]\") == True": {
+      "result": true,
+      "time": 0.029736042022705078,
+      "error": null
+    },
+    "assert is_nested('[[]][[') == True": {
+      "result": true,
+      "time": 0.0281369686126709,
+      "error": null
+    },
+    "assert is_nested(\"][][[\") == False": {
+      "result": true,
+      "time": 0.03147625923156738,
+      "error": null
+    },
+    "assert is_nested('') == False": {
+      "result": true,
+      "time": 0.03021073341369629,
+      "error": null
+    },
+    "assert is_nested(\"[]][\") == False": {
+      "result": true,
+      "time": 0.03300881385803223,
+      "error": null
+    },
+    "assert is_nested(\"][][][]]]\") == True": {
+      "result": false,
+      "time": 0.02964329719543457,
+      "error": null
+    },
+    "assert is_nested(\"]][[[[][][]\") == True": {
+      "result": true,
+      "time": 0.031975507736206055,
+      "error": null
+    },
+    "assert is_nested(\"[[[]][][[\") == True": {
+      "result": true,
+      "time": 0.03123950958251953,
+      "error": null
+    },
+    "assert is_nested(\"b\") == False": {
+      "result": true,
+      "time": 0.031035661697387695,
+      "error": null
+    },
+    "assert is_nested(\"][][][]\") == True": {
+      "result": false,
+      "time": 0.030397415161132812,
+      "error": null
+    },
+    "assert is_nested(\"[[[][]]][\") == True": {
+      "result": true,
+      "time": 0.03023529052734375,
+      "error": null
+    },
+    "assert is_nested(\"][]]]]]]]\") == False": {
+      "result": true,
+      "time": 0.030987024307250977,
+      "error": null
+    },
+    "assert is_nested(\"[][[[]\") == False": {
+      "result": false,
+      "time": 0.02692246437072754,
+      "error": null
+    },
+    "assert is_nested(\"]][][]]\") == True": {
+      "result": false,
+      "time": 0.03252124786376953,
+      "error": null
+    },
+    "assert is_nested('[][][[]]') == True": {
+      "result": true,
+      "time": 0.03014659881591797,
+      "error": null
+    },
+    "assert is_nested(\"[]]][[[\") == False": {
+      "result": true,
+      "time": 0.033420562744140625,
+      "error": null
+    },
+    "assert is_nested(\"[]][[[[]]\") == True": {
+      "result": true,
+      "time": 0.028946876525878906,
+      "error": null
+    },
+    "assert is_nested(\"][][[][]\") == True": {
+      "result": true,
+      "time": 0.02829456329345703,
+      "error": null
+    },
+    "assert is_nested(\"[][[]\") == False": {
+      "result": false,
+      "time": 0.02870798110961914,
+      "error": null
+    },
+    "assert is_nested('[[[[[[[[') == False": {
+      "result": true,
+      "time": 0.027044296264648438,
+      "error": null
+    },
+    "assert is_nested(\"]]]]][][]][[[]\") == True": {
+      "result": true,
+      "time": 0.029601335525512695,
+      "error": null
+    },
+    "assert is_nested(\"][[]]\") == True": {
+      "result": true,
+      "time": 0.030516862869262695,
+      "error": null
+    },
+    "assert is_nested(\"][]]][][[][]\") == True": {
+      "result": true,
+      "time": 0.03111410140991211,
+      "error": null
+    },
+    "assert is_nested(\"]]]][[]][\") == True": {
+      "result": true,
+      "time": 0.03239178657531738,
+      "error": null
+    },
+    "assert is_nested(\"][[][]\") == True": {
+      "result": true,
+      "time": 0.02785968780517578,
+      "error": null
+    },
+    "assert is_nested('[[]]') == True": {
+      "result": true,
+      "time": 0.03117513656616211,
+      "error": null
+    },
+    "assert is_nested(\"[]]]][\") == False": {
+      "result": true,
+      "time": 0.024111509323120117,
+      "error": null
+    },
+    "assert is_nested(\"gv\") == False": {
+      "result": true,
+      "time": 0.02599334716796875,
+      "error": null
+    },
+    "assert is_nested(\"[[[[][[[\") == False": {
+      "result": false,
+      "time": 0.02913975715637207,
+      "error": null
+    },
+    "assert is_nested(\"]][][][]]\") == True": {
+      "result": false,
+      "time": 0.03196454048156738,
+      "error": null
+    },
+    "assert is_nested(\"]]]][][]]]]\") == True": {
+      "result": false,
+      "time": 0.03044724464416504,
+      "error": null
+    },
+    "assert is_nested(\"][]]]][[]]\") == True": {
+      "result": true,
+      "time": 0.025937795639038086,
+      "error": null
+    },
+    "assert is_nested(\"][[[\") == False": {
+      "result": true,
+      "time": 0.029995441436767578,
+      "error": null
+    },
+    "assert is_nested(\"][[[]]]\") == True": {
+      "result": true,
+      "time": 0.026862382888793945,
+      "error": null
+    },
+    "assert is_nested(\"[[][]\") == True": {
+      "result": true,
+      "time": 0.027896881103515625,
+      "error": null
+    },
+    "assert is_nested(\"][[[]\") == False": {
+      "result": false,
+      "time": 0.030142784118652344,
+      "error": null
+    },
+    "assert is_nested(\"][]][]\") == False": {
+      "result": true,
+      "time": 0.031818389892578125,
+      "error": null
+    },
+    "assert is_nested(\"]]][\") == False": {
+      "result": true,
+      "time": 0.03674149513244629,
+      "error": null
+    },
+    "assert is_nested(\"[[[[]]][[[[]\") == True": {
+      "result": true,
+      "time": 0.030963897705078125,
+      "error": null
+    },
+    "assert is_nested(\"ol\") == False": {
+      "result": true,
+      "time": 0.029768943786621094,
+      "error": null
+    },
+    "assert is_nested(\"][[][][[\") == True": {
+      "result": true,
+      "time": 0.026998519897460938,
+      "error": null
+    },
+    "assert is_nested(\"][[]]]\") == True": {
+      "result": true,
+      "time": 0.027519941329956055,
+      "error": null
+    },
+    "assert is_nested(\"]][[\") == False": {
+      "result": true,
+      "time": 0.031083345413208008,
+      "error": null
+    },
+    "assert is_nested(\"][]]\") == False": {
+      "result": true,
+      "time": 0.027520418167114258,
+      "error": null
+    },
+    "assert is_nested(\"][][]][[[\") == True": {
+      "result": false,
+      "time": 0.025322675704956055,
+      "error": null
+    },
+    "assert is_nested(\"ljv\") == False": {
+      "result": true,
+      "time": 0.028995275497436523,
+      "error": null
+    },
+    "assert is_nested('[[[[]]]]') == True": {
+      "result": true,
+      "time": 0.027184724807739258,
+      "error": null
+    },
+    "assert is_nested(\"]]][[\") == False": {
+      "result": true,
+      "time": 0.025989770889282227,
+      "error": null
+    },
+    "assert is_nested(\"[]]]]\") == False": {
+      "result": true,
+      "time": 0.025541305541992188,
+      "error": null
+    },
+    "assert is_nested(\"][[]\") == False": {
+      "result": false,
+      "time": 0.02995443344116211,
+      "error": null
+    },
+    "assert is_nested(\"][]]]]\") == False": {
+      "result": true,
+      "time": 0.02798295021057129,
+      "error": null
+    },
+    "assert is_nested(\"]][[]]]][[][\") == True": {
+      "result": true,
+      "time": 0.030627012252807617,
+      "error": null
+    },
+    "assert is_nested(\"][[][[]\") == True": {
+      "result": true,
+      "time": 0.027821063995361328,
+      "error": null
+    },
+    "assert is_nested(\"[[[[[][][[\") == True": {
+      "result": true,
+      "time": 0.025015592575073242,
+      "error": null
+    },
+    "assert is_nested(\"][]][][\") == False": {
+      "result": true,
+      "time": 0.028054475784301758,
+      "error": null
+    },
+    "assert is_nested(\"adx\") == False": {
+      "result": true,
+      "time": 0.02829456329345703,
+      "error": null
+    },
+    "assert is_nested(\"][]][\") == False": {
+      "result": true,
+      "time": 0.028644800186157227,
+      "error": null
+    },
+    "assert is_nested(\"[[]][][]]\") == True": {
+      "result": true,
+      "time": 0.02780437469482422,
+      "error": null
+    },
+    "assert is_nested(\"[][[[]][]]]\") == True": {
+      "result": true,
+      "time": 0.02771139144897461,
+      "error": null
+    },
+    "assert is_nested(\"][[[]][\") == True": {
+      "result": true,
+      "time": 0.027421236038208008,
+      "error": null
+    },
+    "assert is_nested(\"]]]\") == False": {
+      "result": true,
+      "time": 0.02736067771911621,
+      "error": null
+    },
+    "assert is_nested(\"][[]]][][]][\") == True": {
+      "result": true,
+      "time": 0.03024744987487793,
+      "error": null
+    },
+    "assert is_nested(\"[[]]]\") == True": {
+      "result": true,
+      "time": 0.028265953063964844,
+      "error": null
+    },
+    "assert is_nested(\"uh\") == False": {
+      "result": true,
+      "time": 0.02675008773803711,
+      "error": null
+    },
+    "assert is_nested(\"]][]][[][\") == False": {
+      "result": false,
+      "time": 0.02771162986755371,
+      "error": null
+    },
+    "assert is_nested(\"]]]]]][]\") == False": {
+      "result": true,
+      "time": 0.027932167053222656,
+      "error": null
+    },
+    "assert is_nested(\"]]]]]\") == False": {
+      "result": true,
+      "time": 0.027349233627319336,
+      "error": null
+    },
+    "assert is_nested(']]]]]]]]') == False": {
+      "result": true,
+      "time": 0.027185440063476562,
+      "error": null
+    },
+    "assert is_nested(\"[]]][[]][\") == True": {
+      "result": true,
+      "time": 0.027309417724609375,
+      "error": null
+    },
+    "assert is_nested(\"[[][]]]]\") == True": {
+      "result": true,
+      "time": 0.02519059181213379,
+      "error": null
+    },
+    "assert is_nested(\"[]][][[]]\") == True": {
+      "result": true,
+      "time": 0.02533888816833496,
+      "error": null
+    },
+    "assert is_nested(\"][]]][][]]\") == True": {
+      "result": false,
+      "time": 0.02854013442993164,
+      "error": null
+    },
+    "assert is_nested(\"[]]][[[[[]\") == False": {
+      "result": false,
+      "time": 0.02825450897216797,
+      "error": null
+    },
+    "assert is_nested(\"]]]]]][[[\") == False": {
+      "result": true,
+      "time": 0.031424760818481445,
+      "error": null
+    },
+    "assert is_nested(\"]]][[][[[\") == False": {
+      "result": false,
+      "time": 0.02831435203552246,
+      "error": null
+    },
+    "assert is_nested(\"]]][]]]]][[[][[\") == False": {
+      "result": false,
+      "time": 0.026917695999145508,
+      "error": null
+    },
+    "assert is_nested(\"[[[[][\") == False": {
+      "result": false,
+      "time": 0.028448820114135742,
+      "error": null
+    },
+    "assert is_nested(\"[][]][[[]][[[][\") == True": {
+      "result": true,
+      "time": 0.02716541290283203,
+      "error": null
+    },
+    "assert is_nested(\"[[[]]]\") == True": {
+      "result": true,
+      "time": 0.028638362884521484,
+      "error": null
+    },
+    "assert is_nested(\"]][]][]]][\") == True": {
+      "result": false,
+      "time": 0.02729201316833496,
+      "error": null
+    },
+    "assert is_nested(\"[[][][]\") == True": {
+      "result": true,
+      "time": 0.02687358856201172,
+      "error": null
+    },
+    "assert is_nested('[][]') == False": {
+      "result": true,
+      "time": 0.027872800827026367,
+      "error": null
+    },
+    "assert is_nested(\"]][\") == False": {
+      "result": true,
+      "time": 0.027179241180419922,
+      "error": null
+    },
+    "assert is_nested(\"[]][[]]]\") == True": {
+      "result": true,
+      "time": 0.02675461769104004,
+      "error": null
+    },
+    "assert is_nested(\"[][]]\") == True": {
+      "result": false,
+      "time": 0.026888608932495117,
+      "error": null
+    },
+    "assert is_nested(\"][[\") == False": {
+      "result": true,
+      "time": 0.02621293067932129,
+      "error": null
+    },
+    "assert is_nested(\"]][][[\") == False": {
+      "result": true,
+      "time": 0.026044368743896484,
+      "error": null
+    },
+    "assert is_nested(\"]]][[]][][]][[][]]\") == True": {
+      "result": true,
+      "time": 0.026571989059448242,
+      "error": null
+    },
+    "assert is_nested(\"]][[[[\") == False": {
+      "result": true,
+      "time": 0.03014373779296875,
+      "error": null
+    },
+    "assert is_nested(\"]]][][[[[][]]\") == True": {
+      "result": true,
+      "time": 0.03236579895019531,
+      "error": null
+    },
+    "assert is_nested(\"][[]][[[[\") == True": {
+      "result": true,
+      "time": 0.024704694747924805,
+      "error": null
+    },
+    "assert is_nested(\"c\") == False": {
+      "result": true,
+      "time": 0.02685403823852539,
+      "error": null
+    },
+    "assert is_nested(\"]][[]]\") == True": {
+      "result": true,
+      "time": 0.028489351272583008,
+      "error": null
+    },
+    "assert is_nested(\"[]][][][]\") == True": {
+      "result": false,
+      "time": 0.027697086334228516,
+      "error": null
+    },
+    "assert is_nested(\"][]][[[\") == False": {
+      "result": true,
+      "time": 0.030555248260498047,
+      "error": null
+    },
+    "assert is_nested(\"[]]]][[]]][][]\") == True": {
+      "result": true,
+      "time": 0.026311874389648438,
+      "error": null
+    },
+    "assert is_nested(\"]]]][[[[\") == False": {
+      "result": true,
+      "time": 0.028097152709960938,
+      "error": null
+    },
+    "assert is_nested(\"[[[[[[[[][]]\") == True": {
+      "result": true,
+      "time": 0.024306774139404297,
+      "error": null
+    },
+    "assert is_nested(\"[][][[\") == False": {
+      "result": true,
+      "time": 0.029207706451416016,
+      "error": null
+    },
+    "assert is_nested(\"][[][[[[\") == False": {
+      "result": false,
+      "time": 0.026581287384033203,
+      "error": null
+    },
+    "assert is_nested(\"]]]][]\") == False": {
+      "result": true,
+      "time": 0.026730060577392578,
+      "error": null
+    },
+    "assert is_nested(\"]][[[][][[[\") == True": {
+      "result": true,
+      "time": 0.026314258575439453,
+      "error": null
+    },
+    "assert is_nested(\"[[[[[[\") == False": {
+      "result": true,
+      "time": 0.028665542602539062,
+      "error": null
+    },
+    "assert is_nested(\"[][[\") == False": {
+      "result": true,
+      "time": 0.02698493003845215,
+      "error": null
+    },
+    "assert is_nested('[]]]]]]]]]]') == False": {
+      "result": true,
+      "time": 0.02608346939086914,
+      "error": null
+    },
+    "assert is_nested('[[][]]') == True\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.025314807891845703,
+      "error": null
+    },
+    "assert is_nested(\"[][[][]]]]\") == True": {
+      "result": true,
+      "time": 0.02702617645263672,
+      "error": null
+    },
+    "assert is_nested('[]]') == False": {
+      "result": true,
+      "time": 0.025958776473999023,
+      "error": null
+    },
+    "assert is_nested(\"][]]][[\") == False": {
+      "result": true,
+      "time": 0.02565741539001465,
+      "error": null
+    },
+    "assert is_nested(\"[][[][[][\") == True": {
+      "result": true,
+      "time": 0.025659799575805664,
+      "error": null
+    },
+    "assert is_nested(\"[]][[\") == False": {
+      "result": true,
+      "time": 0.02624988555908203,
+      "error": null
+    },
+    "assert is_nested(\"[][]][]][\") == True": {
+      "result": false,
+      "time": 0.02628779411315918,
+      "error": null
+    },
+    "assert is_nested(\"[[]][[\") == True": {
+      "result": true,
+      "time": 0.025684118270874023,
+      "error": null
+    },
+    "assert is_nested(\"[[[[]]][[[[[\") == True": {
+      "result": true,
+      "time": 0.025907278060913086,
+      "error": null
+    },
+    "assert is_nested(\"uz\") == False": {
+      "result": true,
+      "time": 0.027653932571411133,
+      "error": null
+    },
+    "assert is_nested(\"]][]]]]\") == False": {
+      "result": true,
+      "time": 0.023986101150512695,
+      "error": null
+    },
+    "assert is_nested(\"[[[]][][][]\") == True": {
+      "result": true,
+      "time": 0.02866506576538086,
+      "error": null
+    },
+    "assert is_nested(\"]]][[]][[\") == True": {
+      "result": true,
+      "time": 0.032666683197021484,
+      "error": null
+    },
+    "assert is_nested(\"[]][]\") == False": {
+      "result": true,
+      "time": 0.027880430221557617,
+      "error": null
+    },
+    "assert is_nested(\"[][][[[[[][\") == True": {
+      "result": true,
+      "time": 0.030265092849731445,
+      "error": null
+    },
+    "assert is_nested(\"h\") == False": {
+      "result": true,
+      "time": 0.02728438377380371,
+      "error": null
+    },
+    "assert is_nested(\"[]]]]][[]\") == False": {
+      "result": false,
+      "time": 0.026883363723754883,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.796875,
+  "general_error": "",
+  "has_testcase_error": false
+}

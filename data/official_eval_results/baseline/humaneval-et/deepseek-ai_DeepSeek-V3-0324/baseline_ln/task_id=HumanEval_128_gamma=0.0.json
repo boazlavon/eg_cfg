@@ -1,0 +1,559 @@
+{
+  "code": "def prod_signs(arr):\n    if not arr:\n        return None\n    magnitude_sum = sum(abs(num) for num in arr)\n    product_sign = 1\n    for num in arr:\n        if num > 0:\n            product_sign *= 1\n        elif num < 0:\n            product_sign *= -1\n        else:\n            product_sign *= 0\n    return magnitude_sum * product_sign",
+  "results": {
+    "assert prod_signs([4, 1, -3, 4]) == -12": {
+      "result": true,
+      "time": 0.029158830642700195,
+      "error": null
+    },
+    "assert prod_signs([3, 1, 6, 0]) == 0": {
+      "result": true,
+      "time": 0.030884981155395508,
+      "error": null
+    },
+    "assert prod_signs([4, 6, 1, 4]) == 15": {
+      "result": true,
+      "time": 0.026492834091186523,
+      "error": null
+    },
+    "assert prod_signs([-1, 1, 1, 0]) == 0\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.029187679290771484,
+      "error": null
+    },
+    "assert prod_signs([6, 9, 3, 2, 0, 0, 6]) == 0": {
+      "result": true,
+      "time": 0.03681445121765137,
+      "error": null
+    },
+    "assert prod_signs([6, 5, 1, 2, 1, 1, 11]) == 27": {
+      "result": true,
+      "time": 0.02538013458251953,
+      "error": null
+    },
+    "assert prod_signs([4, 6]) == 10": {
+      "result": true,
+      "time": 0.031415462493896484,
+      "error": null
+    },
+    "assert prod_signs([0, 1, 2, 3]) == 0": {
+      "result": true,
+      "time": 0.031386375427246094,
+      "error": null
+    },
+    "assert prod_signs([1, 1, 1, 2, 3, -1, 1]) == -10": {
+      "result": true,
+      "time": 0.033118247985839844,
+      "error": null
+    },
+    "assert prod_signs([4, 7, 1, 3, 0, -6, 6]) == 0": {
+      "result": true,
+      "time": 0.030523061752319336,
+      "error": null
+    },
+    "assert prod_signs([5, 2]) == 7": {
+      "result": true,
+      "time": 0.03466486930847168,
+      "error": null
+    },
+    "assert prod_signs([1, 2, 5, 6]) == 14": {
+      "result": true,
+      "time": 0.025999069213867188,
+      "error": null
+    },
+    "assert prod_signs([4, 1, 5, 5]) == 15": {
+      "result": true,
+      "time": 0.02635979652404785,
+      "error": null
+    },
+    "assert prod_signs([-4, 2, -3, 3]) == 12": {
+      "result": true,
+      "time": 0.030188322067260742,
+      "error": null
+    },
+    "assert prod_signs([7, 4, 3, 4, 1, -1, 12]) == -32": {
+      "result": true,
+      "time": 0.030937910079956055,
+      "error": null
+    },
+    "assert prod_signs([3, 5, 5, 5]) == 18": {
+      "result": true,
+      "time": 0.02894306182861328,
+      "error": null
+    },
+    "assert prod_signs([4, 1, 2, 5, 5, -6, 5]) == -28": {
+      "result": true,
+      "time": 0.026038169860839844,
+      "error": null
+    },
+    "assert prod_signs([-6, 6, -5, 2]) == 19": {
+      "result": true,
+      "time": 0.031076431274414062,
+      "error": null
+    },
+    "assert prod_signs([1, 4, 2, 3]) == 10": {
+      "result": true,
+      "time": 0.024871826171875,
+      "error": null
+    },
+    "assert prod_signs([5, 5, 5, 3, 5, -4, 4]) == -31": {
+      "result": true,
+      "time": 0.028197050094604492,
+      "error": null
+    },
+    "assert prod_signs([6, 3, 2, -9]) == -20": {
+      "result": true,
+      "time": 0.034754037857055664,
+      "error": null
+    },
+    "assert prod_signs([-2, 1, 4, 3]) == -10": {
+      "result": true,
+      "time": 0.02958512306213379,
+      "error": null
+    },
+    "assert prod_signs([5, 3, 2, -4]) == -14": {
+      "result": true,
+      "time": 0.02847433090209961,
+      "error": null
+    },
+    "assert prod_signs([2, 4, 3, 6, 7, -4, 2]) == -28": {
+      "result": true,
+      "time": 0.028966665267944336,
+      "error": null
+    },
+    "assert prod_signs([2, 8, 2, 7, 3, 2, 11]) == 35": {
+      "result": true,
+      "time": 0.030800819396972656,
+      "error": null
+    },
+    "assert prod_signs([-3, 4, 4, 4]) == -15": {
+      "result": true,
+      "time": 0.028841495513916016,
+      "error": null
+    },
+    "assert prod_signs([-1, 1, 1, 1]) == -4": {
+      "result": true,
+      "time": 0.030393600463867188,
+      "error": null
+    },
+    "assert prod_signs([3, 2]) == 5": {
+      "result": true,
+      "time": 0.03261756896972656,
+      "error": null
+    },
+    "assert prod_signs([-2, 5, -6, 1]) == 14": {
+      "result": true,
+      "time": 0.03419232368469238,
+      "error": null
+    },
+    "assert prod_signs([5, 6, 1, 3, 5, -3, 3]) == -26": {
+      "result": true,
+      "time": 0.026312828063964844,
+      "error": null
+    },
+    "assert prod_signs([4, 3, 5, -4]) == -16": {
+      "result": true,
+      "time": 0.028654098510742188,
+      "error": null
+    },
+    "assert prod_signs([3, 3, 2, 4]) == 12": {
+      "result": true,
+      "time": 0.027998685836791992,
+      "error": null
+    },
+    "assert prod_signs([4, 1]) == 5": {
+      "result": true,
+      "time": 0.031670331954956055,
+      "error": null
+    },
+    "assert prod_signs([5, 9, 6, 1, 0, -4, 13]) == 0": {
+      "result": true,
+      "time": 0.029160022735595703,
+      "error": null
+    },
+    "assert prod_signs([1, 5, 4, 5, 3, 4, 2]) == 24": {
+      "result": true,
+      "time": 0.02956104278564453,
+      "error": null
+    },
+    "assert prod_signs([5, 3, 4, 1, 1, 1, 9]) == 24": {
+      "result": true,
+      "time": 0.030770301818847656,
+      "error": null
+    },
+    "assert prod_signs([2, 4, 2, 1, 7, 1, 4]) == 21": {
+      "result": true,
+      "time": 0.02587723731994629,
+      "error": null
+    },
+    "assert prod_signs([-1, 6, 1, 2]) == -10": {
+      "result": true,
+      "time": 0.029834508895874023,
+      "error": null
+    },
+    "assert prod_signs([0, 5, 4, 4]) == 0": {
+      "result": true,
+      "time": 0.028517484664916992,
+      "error": null
+    },
+    "assert prod_signs([7, 6, 1, 4, -5, 0, 5]) == 0": {
+      "result": true,
+      "time": 0.03906083106994629,
+      "error": null
+    },
+    "assert prod_signs([3, 3, 4, 3]) == 13": {
+      "result": true,
+      "time": 0.028576374053955078,
+      "error": null
+    },
+    "assert prod_signs([3, 1, 3, 5, -6, 3, 10]) == -31": {
+      "result": true,
+      "time": 0.0293428897857666,
+      "error": null
+    },
+    "assert prod_signs([2, 4,1, 2, -1, -1, 9]) == 20": {
+      "result": true,
+      "time": 0.03204774856567383,
+      "error": null
+    },
+    "assert prod_signs([1, 2, 6, 3]) == 12": {
+      "result": true,
+      "time": 0.029441356658935547,
+      "error": null
+    },
+    "assert prod_signs([1, 2, 2, 6]) == 11": {
+      "result": true,
+      "time": 0.029512405395507812,
+      "error": null
+    },
+    "assert prod_signs([6, 6, 3, 6, 0, 3, 8]) == 0": {
+      "result": true,
+      "time": 0.030080080032348633,
+      "error": null
+    },
+    "assert prod_signs([3, 2, -3, 1]) == -9": {
+      "result": true,
+      "time": 0.028301239013671875,
+      "error": null
+    },
+    "assert prod_signs([-4, 6, 6, 3]) == -19": {
+      "result": true,
+      "time": 0.029583454132080078,
+      "error": null
+    },
+    "assert prod_signs([1, 3, 2, -7]) == -13": {
+      "result": true,
+      "time": 0.026942729949951172,
+      "error": null
+    },
+    "assert prod_signs([2, 4]) == 6": {
+      "result": true,
+      "time": 0.03340411186218262,
+      "error": null
+    },
+    "assert prod_signs([3, 6, 4, 1, 5, -6, 2]) == -27": {
+      "result": true,
+      "time": 0.0304720401763916,
+      "error": null
+    },
+    "assert prod_signs([-5, 5, 2, 5]) == -17": {
+      "result": true,
+      "time": 0.03169822692871094,
+      "error": null
+    },
+    "assert prod_signs([-6, 2, 1, 2]) == -11": {
+      "result": true,
+      "time": 0.034247398376464844,
+      "error": null
+    },
+    "assert prod_signs([-6, 2, 6, 4]) == -18": {
+      "result": true,
+      "time": 0.0292356014251709,
+      "error": null
+    },
+    "assert prod_signs([-1, 1, 6, 1]) == -9": {
+      "result": true,
+      "time": 0.03485608100891113,
+      "error": null
+    },
+    "assert prod_signs([3, 5]) == 8": {
+      "result": true,
+      "time": 0.02866196632385254,
+      "error": null
+    },
+    "assert prod_signs([0, 5, 2, 1]) == 0": {
+      "result": true,
+      "time": 0.028821229934692383,
+      "error": null
+    },
+    "assert prod_signs([0, 1, 5, 3]) == 0": {
+      "result": true,
+      "time": 0.029042959213256836,
+      "error": null
+    },
+    "assert prod_signs([1, 4, 2, 5]) == 12": {
+      "result": true,
+      "time": 0.03322410583496094,
+      "error": null
+    },
+    "assert prod_signs([6, 4, 2, 3, 7, -1, 1]) == -24": {
+      "result": true,
+      "time": 0.028115272521972656,
+      "error": null
+    },
+    "assert prod_signs([1, 5]) == 6": {
+      "result": true,
+      "time": 0.028479814529418945,
+      "error": null
+    },
+    "assert prod_signs([4, 3, 3, 2, 7, -5, 2]) == -26": {
+      "result": true,
+      "time": 0.02925252914428711,
+      "error": null
+    },
+    "assert prod_signs([-2, 1, 1, 3]) == -7": {
+      "result": true,
+      "time": 0.03036212921142578,
+      "error": null
+    },
+    "assert prod_signs([-6, 2, 2, 4]) == -14": {
+      "result": true,
+      "time": 0.02671217918395996,
+      "error": null
+    },
+    "assert prod_signs([1, 7, 5, 5, 2, 0, 6]) == 0": {
+      "result": true,
+      "time": 0.028393030166625977,
+      "error": null
+    },
+    "assert prod_signs([1, 4, 6, -2]) == -13": {
+      "result": true,
+      "time": 0.0326082706451416,
+      "error": null
+    },
+    "assert prod_signs([2, 6, 2, 2, 0, 4, 5]) == 0": {
+      "result": true,
+      "time": 0.027765989303588867,
+      "error": null
+    },
+    "assert prod_signs([1, 2, 2, -4]) == -9": {
+      "result": true,
+      "time": 0.02778792381286621,
+      "error": null
+    },
+    "assert prod_signs([0, 4, 4, 4]) == 0": {
+      "result": true,
+      "time": 0.029080867767333984,
+      "error": null
+    },
+    "assert prod_signs([2, 4, 3, 1, 6, -4, 1]) == -21": {
+      "result": true,
+      "time": 0.03100728988647461,
+      "error": null
+    },
+    "assert prod_signs([6, 5, 5, -5]) == -21": {
+      "result": true,
+      "time": 0.03789258003234863,
+      "error": null
+    },
+    "assert prod_signs([4, 2, 3, 2]) == 11": {
+      "result": true,
+      "time": 0.025370121002197266,
+      "error": null
+    },
+    "assert prod_signs([4, 5]) == 9": {
+      "result": true,
+      "time": 0.027663469314575195,
+      "error": null
+    },
+    "assert prod_signs([-4, 2, 6, 3]) == -15": {
+      "result": true,
+      "time": 0.029432058334350586,
+      "error": null
+    },
+    "assert prod_signs([3, 1]) == 4": {
+      "result": true,
+      "time": 0.035012006759643555,
+      "error": null
+    },
+    "assert prod_signs([-4, 5, 3, 5]) == -17": {
+      "result": true,
+      "time": 0.025763273239135742,
+      "error": null
+    },
+    "assert prod_signs([0, 1]) == 0": {
+      "result": true,
+      "time": 0.02956414222717285,
+      "error": null
+    },
+    "assert prod_signs([6, 4, 7, -3]) == -20": {
+      "result": true,
+      "time": 0.02681708335876465,
+      "error": null
+    },
+    "assert prod_signs([1, 1, 1, 5, 4, -1, 5]) == -18": {
+      "result": true,
+      "time": 0.0332338809967041,
+      "error": null
+    },
+    "assert prod_signs([3, 8, 5, 2, 4, -4, 10]) == -36": {
+      "result": true,
+      "time": 0.03254413604736328,
+      "error": null
+    },
+    "assert prod_signs([-4, 2, 2, 3]) == -11": {
+      "result": true,
+      "time": 0.027484655380249023,
+      "error": null
+    },
+    "assert prod_signs([]) == None": {
+      "result": true,
+      "time": 0.030104637145996094,
+      "error": null
+    },
+    "assert prod_signs([6, 7, 6, -1]) == -20": {
+      "result": true,
+      "time": 0.026969194412231445,
+      "error": null
+    },
+    "assert prod_signs([3, 6, 1, 4, 7, -4, 1]) == -26": {
+      "result": true,
+      "time": 0.031066417694091797,
+      "error": null
+    },
+    "assert prod_signs([3, 1, -3, 1]) == -8": {
+      "result": true,
+      "time": 0.027340173721313477,
+      "error": null
+    },
+    "assert prod_signs([-5, 2, 3, 3]) == -13": {
+      "result": true,
+      "time": 0.02949976921081543,
+      "error": null
+    },
+    "assert prod_signs([3, 1, 2, 5]) == 11": {
+      "result": true,
+      "time": 0.02947258949279785,
+      "error": null
+    },
+    "assert prod_signs([5, 3, 5, 2, 6, 4, 2]) == 27": {
+      "result": true,
+      "time": 0.030823469161987305,
+      "error": null
+    },
+    "assert prod_signs([2, 2, 4, 5]) == 13": {
+      "result": true,
+      "time": 0.0294039249420166,
+      "error": null
+    },
+    "assert prod_signs([5, 5, 6, 1, 7, 0, 3]) == 0": {
+      "result": true,
+      "time": 0.02835869789123535,
+      "error": null
+    },
+    "assert prod_signs([0, 4, 4, 5]) == 0": {
+      "result": true,
+      "time": 0.031223535537719727,
+      "error": null
+    },
+    "assert prod_signs([1, 1]) == 2": {
+      "result": true,
+      "time": 0.030022621154785156,
+      "error": null
+    },
+    "assert prod_signs([-6, 6, 5, 3]) == -20": {
+      "result": true,
+      "time": 0.030730009078979492,
+      "error": null
+    },
+    "assert prod_signs([6, 6, 4, -4]) == -20": {
+      "result": true,
+      "time": 0.02929067611694336,
+      "error": null
+    },
+    "assert prod_signs([3, 5, 4, -5]) == -17": {
+      "result": true,
+      "time": 0.03224492073059082,
+      "error": null
+    },
+    "assert prod_signs([4, 6, 4, 4, 2, -5, 3]) == -28": {
+      "result": true,
+      "time": 0.027754783630371094,
+      "error": null
+    },
+    "assert prod_signs([5, 6]) == 11": {
+      "result": true,
+      "time": 0.028055429458618164,
+      "error": null
+    },
+    "assert prod_signs([6, 2, 6, -7]) == -21": {
+      "result": true,
+      "time": 0.030778169631958008,
+      "error": null
+    },
+    "assert prod_signs([6, 7, 1, -9]) == -23": {
+      "result": true,
+      "time": 0.032027482986450195,
+      "error": null
+    },
+    "assert prod_signs([3, 4, -2, 5]) == -14": {
+      "result": true,
+      "time": 0.029289960861206055,
+      "error": null
+    },
+    "assert prod_signs([4, 2, 1, 6]) == 13": {
+      "result": true,
+      "time": 0.03105640411376953,
+      "error": null
+    },
+    "assert prod_signs([4, 2, 5, -7]) == -18": {
+      "result": true,
+      "time": 0.029814958572387695,
+      "error": null
+    },
+    "assert prod_signs([7, 5, 3, 3, -4, -3, 8]) == 33": {
+      "result": true,
+      "time": 0.029985904693603516,
+      "error": null
+    },
+    "assert prod_signs([2, 2]) == 4": {
+      "result": true,
+      "time": 0.030220508575439453,
+      "error": null
+    },
+    "assert prod_signs([7, 1, 4, 2, 0, 3, 6]) == 0": {
+      "result": true,
+      "time": 0.029604673385620117,
+      "error": null
+    },
+    "assert prod_signs([3, 3, 5, -9]) == -20": {
+      "result": true,
+      "time": 0.029431581497192383,
+      "error": null
+    },
+    "assert prod_signs([-1, 6, 1, 4]) == -12": {
+      "result": true,
+      "time": 0.030806303024291992,
+      "error": null
+    },
+    "assert prod_signs([-1, 1, -1, 1]) == 4": {
+      "result": true,
+      "time": 0.03071880340576172,
+      "error": null
+    },
+    "assert prod_signs([-4, 4, 2, 6]) == -16": {
+      "result": true,
+      "time": 0.032853126525878906,
+      "error": null
+    },
+    "assert prod_signs([-5, 1, 4, 2]) == -12": {
+      "result": true,
+      "time": 0.028113365173339844,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

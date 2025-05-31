@@ -1,0 +1,674 @@
+{
+  "code": "def select_words(s, n):\n    if not s.strip():\n        return []\n    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}\n    words = s.split()\n    result = []\n    for word in words:\n        consonant_count = 0\n        for char in word:\n            if char.isalpha() and char not in vowels:\n                consonant_count += 1\n        if consonant_count == n:\n            result.append(word)\n    return result",
+  "results": {
+    "assert select_words('eg aqk', 2) == ['aqk']": {
+      "result": true,
+      "time": 0.02954721450805664,
+      "error": null
+    },
+    "assert select_words('eoDDPoNuKJnQIcLHcFK', 14) == ['eoDDPoNuKJnQIcLHcFK']": {
+      "result": true,
+      "time": 0.03092479705810547,
+      "error": null
+    },
+    "assert select_words('syk', 6) == []": {
+      "result": true,
+      "time": 0.03579831123352051,
+      "error": null
+    },
+    "assert select_words('gw', 9) == []": {
+      "result": true,
+      "time": 0.035567522048950195,
+      "error": null
+    },
+    "assert select_words('ZpJhNYG', 7) == ['ZpJhNYG']": {
+      "result": true,
+      "time": 0.030211210250854492,
+      "error": null
+    },
+    "assert select_words(\"Mary had a little lamb\", 4) == [\"little\"], \"First test error: \" + str(select_words(\"Mary had a little lamb\", 4))": {
+      "result": true,
+      "time": 0.029022932052612305,
+      "error": null
+    },
+    "assert select_words('ILkvuFIrW jXOOGXgdSWtd', 10) == ['jXOOGXgdSWtd']": {
+      "result": true,
+      "time": 0.03229880332946777,
+      "error": null
+    },
+    "assert select_words('uwnynnkeh', 7) == ['uwnynnkeh']": {
+      "result": true,
+      "time": 0.02675461769104004,
+      "error": null
+    },
+    "assert select_words('zGMhBC', 6) == ['zGMhBC']": {
+      "result": true,
+      "time": 0.02877521514892578,
+      "error": null
+    },
+    "assert select_words('kfohjsjunakqmmsx', 1) == []": {
+      "result": true,
+      "time": 0.0335848331451416,
+      "error": null
+    },
+    "assert select_words('KbpFfWgXZoVjXV', 1) == []": {
+      "result": true,
+      "time": 0.033473968505859375,
+      "error": null
+    },
+    "assert select_words('GeLxcZJyRwUsQKBQkanf', 2) == []": {
+      "result": true,
+      "time": 0.040825843811035156,
+      "error": null
+    },
+    "assert select_words('kg', 1) == []": {
+      "result": true,
+      "time": 0.0339350700378418,
+      "error": null
+    },
+    "assert select_words(\"simple white space\", 2) == [], \"Third test error: \" + str(select_words(\"simple white space\", 2))": {
+      "result": true,
+      "time": 0.029812097549438477,
+      "error": null
+    },
+    "assert select_words('xrbpxpncgqufqkq', 6) == []": {
+      "result": true,
+      "time": 0.029152870178222656,
+      "error": null
+    },
+    "assert select_words('sqgikswgssxsbwkl', 7) == []": {
+      "result": true,
+      "time": 0.03736281394958496,
+      "error": null
+    },
+    "assert select_words('kumJjGm AFFO', 6) == ['kumJjGm']": {
+      "result": true,
+      "time": 0.03133344650268555,
+      "error": null
+    },
+    "assert select_words('iJxMQLiIZ', 6) == ['iJxMQLiIZ']": {
+      "result": true,
+      "time": 0.031321048736572266,
+      "error": null
+    },
+    "assert select_words('uwebicR RgZrAiEnPkq', 4) == ['uwebicR']": {
+      "result": true,
+      "time": 0.030454158782958984,
+      "error": null
+    },
+    "assert select_words('bnXA AjPVh', 5) == []": {
+      "result": true,
+      "time": 0.030725955963134766,
+      "error": null
+    },
+    "assert select_words('omnivbqgmavyqdgqssas', 6) == []": {
+      "result": true,
+      "time": 0.027340412139892578,
+      "error": null
+    },
+    "assert select_words('fmjizkhknnihqioic', 4) == []": {
+      "result": true,
+      "time": 0.027714252471923828,
+      "error": null
+    },
+    "assert select_words('lINKPOlFIImtg', 3) == []": {
+      "result": true,
+      "time": 0.032097816467285156,
+      "error": null
+    },
+    "assert select_words('nPxmyTd', 7) == ['nPxmyTd']": {
+      "result": true,
+      "time": 0.03286099433898926,
+      "error": null
+    },
+    "assert select_words('yCRgLVwagpjADSN MUkt', 3) == ['MUkt']": {
+      "result": true,
+      "time": 0.03078317642211914,
+      "error": null
+    },
+    "assert select_words('mehochzpausf', 2) == []": {
+      "result": true,
+      "time": 0.02983689308166504,
+      "error": null
+    },
+    "assert select_words('TcXKTNbOnjCJLzWhlNELbGPc', 22) == ['TcXKTNbOnjCJLzWhlNELbGPc']": {
+      "result": true,
+      "time": 0.029294252395629883,
+      "error": null
+    },
+    "assert select_words('EGiDfM', 1) == []": {
+      "result": true,
+      "time": 0.03094172477722168,
+      "error": null
+    },
+    "assert select_words('mc', 7) == []": {
+      "result": true,
+      "time": 0.0279996395111084,
+      "error": null
+    },
+    "assert select_words('wzx', 5) == []": {
+      "result": true,
+      "time": 0.029343366622924805,
+      "error": null
+    },
+    "assert select_words('hgwhtsvqihhm', 11) == ['hgwhtsvqihhm']": {
+      "result": true,
+      "time": 0.02940201759338379,
+      "error": null
+    },
+    "assert select_words('xwkxcjffocow', 5) == []": {
+      "result": true,
+      "time": 0.027779102325439453,
+      "error": null
+    },
+    "assert select_words('dl', 5) == []": {
+      "result": true,
+      "time": 0.03185272216796875,
+      "error": null
+    },
+    "assert select_words('UIOcsXneOjxMkRLvRLSDTV', 4) == []": {
+      "result": true,
+      "time": 0.029245853424072266,
+      "error": null
+    },
+    "assert select_words('ABIStgq', 5) == ['ABIStgq']": {
+      "result": true,
+      "time": 0.026816368103027344,
+      "error": null
+    },
+    "assert select_words('nb', 2) == ['nb']": {
+      "result": true,
+      "time": 0.02893233299255371,
+      "error": null
+    },
+    "assert select_words('ny', 2) == ['ny']": {
+      "result": true,
+      "time": 0.028937339782714844,
+      "error": null
+    },
+    "assert select_words('HWCLBC', 6) == ['HWCLBC']": {
+      "result": true,
+      "time": 0.031009674072265625,
+      "error": null
+    },
+    "assert select_words('uuh', 6) == []": {
+      "result": true,
+      "time": 0.02591109275817871,
+      "error": null
+    },
+    "assert select_words('uoubngttn', 3) == []": {
+      "result": true,
+      "time": 0.02772378921508789,
+      "error": null
+    },
+    "assert select_words('g', 5) == []": {
+      "result": true,
+      "time": 0.03101205825805664,
+      "error": null
+    },
+    "assert select_words('ffqkhIIChADuzMQIrcFek', 15) == ['ffqkhIIChADuzMQIrcFek']": {
+      "result": true,
+      "time": 0.027595043182373047,
+      "error": null
+    },
+    "assert select_words('CbxmADxVZtHArXzwNxnuvda', 19) == ['CbxmADxVZtHArXzwNxnuvda']": {
+      "result": true,
+      "time": 0.027697086334228516,
+      "error": null
+    },
+    "assert select_words('aztxoxesjkzqebhrfzw', 3) == []": {
+      "result": true,
+      "time": 0.029648303985595703,
+      "error": null
+    },
+    "assert select_words('sqdcPgSPeHfNdISspJa', 16) == ['sqdcPgSPeHfNdISspJa']": {
+      "result": true,
+      "time": 0.029048919677734375,
+      "error": null
+    },
+    "assert select_words('zdXc AqKVMGYLrZMPSz', 4) == ['zdXc']": {
+      "result": true,
+      "time": 0.028206348419189453,
+      "error": null
+    },
+    "assert select_words('tJzO PnCT', 3) == ['tJzO']": {
+      "result": true,
+      "time": 0.027562618255615234,
+      "error": null
+    },
+    "assert select_words('jizrraatfiyetneqergnnbfn', 3) == []": {
+      "result": true,
+      "time": 0.025385141372680664,
+      "error": null
+    },
+    "assert select_words('qhwubvrfmwy', 2) == []": {
+      "result": true,
+      "time": 0.030239105224609375,
+      "error": null
+    },
+    "assert select_words('dzrmzilzoxn l', 9) == ['dzrmzilzoxn']": {
+      "result": true,
+      "time": 0.029278039932250977,
+      "error": null
+    },
+    "assert select_words('ZZcAZzrjekxbP tPNuYXLnOLVv', 10) == ['tPNuYXLnOLVv']": {
+      "result": true,
+      "time": 0.028103113174438477,
+      "error": null
+    },
+    "assert select_words('JtsHoq wxvsLQqBXkNpmCTzBWTX', 1) == []": {
+      "result": true,
+      "time": 0.02928924560546875,
+      "error": null
+    },
+    "assert select_words('aecdOIhfIbEBTOfoKnT', 1) == []": {
+      "result": true,
+      "time": 0.028728008270263672,
+      "error": null
+    },
+    "assert select_words('gLFCSPHHP', 9) == ['gLFCSPHHP']": {
+      "result": true,
+      "time": 0.03131365776062012,
+      "error": null
+    },
+    "assert select_words('r s rhhipmt', 6) == ['rhhipmt']": {
+      "result": true,
+      "time": 0.027870655059814453,
+      "error": null
+    },
+    "assert select_words('aDqyhePv', 6) == ['aDqyhePv']": {
+      "result": true,
+      "time": 0.024486541748046875,
+      "error": null
+    },
+    "assert select_words('tTxmhPuW', 7) == ['tTxmhPuW']": {
+      "result": true,
+      "time": 0.031345367431640625,
+      "error": null
+    },
+    "assert select_words('gkaioVYtEtMLxrVq JIIwPCZW', 6) == ['JIIwPCZW']": {
+      "result": true,
+      "time": 0.02837085723876953,
+      "error": null
+    },
+    "assert select_words('aru', 5) == []": {
+      "result": true,
+      "time": 0.02772665023803711,
+      "error": null
+    },
+    "assert select_words('ySRkkHkfcvgHqOGVfaDTTRf', 1) == []": {
+      "result": true,
+      "time": 0.030322551727294922,
+      "error": null
+    },
+    "assert select_words('SNeiILCez', 4) == []": {
+      "result": true,
+      "time": 0.030184507369995117,
+      "error": null
+    },
+    "assert select_words('xzzxdz lkmvrvizpz z', 6) == ['xzzxdz']": {
+      "result": true,
+      "time": 0.03463459014892578,
+      "error": null
+    },
+    "assert select_words('ySmjGAg', 6) == ['ySmjGAg']": {
+      "result": true,
+      "time": 0.03032374382019043,
+      "error": null
+    },
+    "assert select_words('bRJRZC', 3) == []": {
+      "result": true,
+      "time": 0.030462265014648438,
+      "error": null
+    },
+    "assert select_words('u', 1) == []": {
+      "result": true,
+      "time": 0.030699968338012695,
+      "error": null
+    },
+    "assert select_words('djucfuuizrjfvuzzo', 4) == []": {
+      "result": true,
+      "time": 0.028726577758789062,
+      "error": null
+    },
+    "assert select_words('dvYLMt', 6) == ['dvYLMt']": {
+      "result": true,
+      "time": 0.03460574150085449,
+      "error": null
+    },
+    "assert select_words('xqvooek icmfdiysshehnyqx', 7) == []": {
+      "result": true,
+      "time": 0.026862382888793945,
+      "error": null
+    },
+    "assert select_words('zIdcqeCrTYiDGGjYFC', 15) == ['zIdcqeCrTYiDGGjYFC']": {
+      "result": true,
+      "time": 0.030215024948120117,
+      "error": null
+    },
+    "assert select_words('yp', 6) == []": {
+      "result": true,
+      "time": 0.02984142303466797,
+      "error": null
+    },
+    "assert select_words('v', 4) == []": {
+      "result": true,
+      "time": 0.029477357864379883,
+      "error": null
+    },
+    "assert select_words(\"a b c d e f\", 1) == [\"b\", \"c\", \"d\", \"f\"], \"2nd edge test error: \" + str(select_words(\"a b c d e f\", 1))": {
+      "result": true,
+      "time": 0.02727341651916504,
+      "error": null
+    },
+    "assert select_words('afrrguc', 5) == ['afrrguc']": {
+      "result": true,
+      "time": 0.02884364128112793,
+      "error": null
+    },
+    "assert select_words('KBDaAtwgkSQhbMcvLn', 16) == ['KBDaAtwgkSQhbMcvLn']": {
+      "result": true,
+      "time": 0.027434587478637695,
+      "error": null
+    },
+    "assert select_words('WvvnDCbdBejJOXxALMQUP', 17) == ['WvvnDCbdBejJOXxALMQUP']": {
+      "result": true,
+      "time": 0.028530120849609375,
+      "error": null
+    },
+    "assert select_words('IXWOrAdrmmcWXqngDkiVFKXaAWf', 4) == []": {
+      "result": true,
+      "time": 0.03350090980529785,
+      "error": null
+    },
+    "assert select_words('nh vu lcakrb', 1) == ['vu']": {
+      "result": true,
+      "time": 0.027235031127929688,
+      "error": null
+    },
+    "assert select_words('QOBKeojoDQGT jIZmKXyPl', 8) == ['QOBKeojoDQGT', 'jIZmKXyPl']": {
+      "result": true,
+      "time": 0.034287214279174805,
+      "error": null
+    },
+    "assert select_words(\"Uncle sam\", 3) == [\"Uncle\"], \"Fifth test error: \" + str(select_words(\"Uncle sam\", 3))\n\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.02690887451171875,
+      "error": null
+    },
+    "assert select_words('zE sivlrNrHFgwiokUjTMdndl', 5) == []": {
+      "result": true,
+      "time": 0.029462814331054688,
+      "error": null
+    },
+    "assert select_words('svMzfBuoveQXEPPIVV', 13) == ['svMzfBuoveQXEPPIVV']": {
+      "result": true,
+      "time": 0.03203868865966797,
+      "error": null
+    },
+    "assert select_words('MjRnAErHPguQC', 1) == []": {
+      "result": true,
+      "time": 0.028427839279174805,
+      "error": null
+    },
+    "assert select_words('tmchxmttrgfdanq', 3) == []": {
+      "result": true,
+      "time": 0.028880834579467773,
+      "error": null
+    },
+    "assert select_words('jezkeorvxnruwhhwzxm', 7) == []": {
+      "result": true,
+      "time": 0.029735803604125977,
+      "error": null
+    },
+    "assert select_words('caurfxlpkygqxoknil', 4) == []": {
+      "result": true,
+      "time": 0.02735424041748047,
+      "error": null
+    },
+    "assert select_words('RBAY  hmsXCkloLHYheRDQL', 3) == ['RBAY']": {
+      "result": true,
+      "time": 0.03258109092712402,
+      "error": null
+    },
+    "assert select_words('prFfoYsafgMfGYYGjsiqTXwL', 21) == ['prFfoYsafgMfGYYGjsiqTXwL']": {
+      "result": true,
+      "time": 0.028984785079956055,
+      "error": null
+    },
+    "assert select_words('NSjIbZV', 2) == []": {
+      "result": true,
+      "time": 0.027474641799926758,
+      "error": null
+    },
+    "assert select_words('rPKhzIot', 6) == ['rPKhzIot']": {
+      "result": true,
+      "time": 0.029430866241455078,
+      "error": null
+    },
+    "assert select_words('ASDVzOVVDEdj J', 1) == ['J']": {
+      "result": true,
+      "time": 0.028863906860351562,
+      "error": null
+    },
+    "assert select_words('oKNamFuRSJcV', 9) == ['oKNamFuRSJcV']": {
+      "result": true,
+      "time": 0.02818465232849121,
+      "error": null
+    },
+    "assert select_words(' siweqafqot', 5) == []": {
+      "result": true,
+      "time": 0.029997587203979492,
+      "error": null
+    },
+    "assert select_words('xdQgsAHI', 5) == []": {
+      "result": true,
+      "time": 0.028537511825561523,
+      "error": null
+    },
+    "assert select_words('epzbicjvjcbxmxgfityzzv', 5) == []": {
+      "result": true,
+      "time": 0.02987813949584961,
+      "error": null
+    },
+    "assert select_words('GFNxLvGHJnNx', 12) == ['GFNxLvGHJnNx']": {
+      "result": true,
+      "time": 0.02968883514404297,
+      "error": null
+    },
+    "assert select_words('hguHoJGaaNwX', 3) == []": {
+      "result": true,
+      "time": 0.029066085815429688,
+      "error": null
+    },
+    "assert select_words('cnxdrucrydrcyol', 13) == ['cnxdrucrydrcyol']": {
+      "result": true,
+      "time": 0.028521060943603516,
+      "error": null
+    },
+    "assert select_words('choounwx', 5) == ['choounwx']": {
+      "result": true,
+      "time": 0.03636002540588379,
+      "error": null
+    },
+    "assert select_words('yue', 2) == []": {
+      "result": true,
+      "time": 0.034682512283325195,
+      "error": null
+    },
+    "assert select_words('DDdrgPy', 4) == []": {
+      "result": true,
+      "time": 0.02898406982421875,
+      "error": null
+    },
+    "assert select_words('c zsYpMPdmr', 9) == ['zsYpMPdmr']": {
+      "result": true,
+      "time": 0.030048370361328125,
+      "error": null
+    },
+    "assert select_words(\"\", 4) == [], \"1st edge test error: \" + str(select_words(\"\", 4))": {
+      "result": true,
+      "time": 0.03185415267944336,
+      "error": null
+    },
+    "assert select_words('pzBxlNfcXEsOQzL', 13) == ['pzBxlNfcXEsOQzL']": {
+      "result": true,
+      "time": 0.027274131774902344,
+      "error": null
+    },
+    "assert select_words('pWqNDaO zJwlHsqqEYCdDEZtNiL', 3) == []": {
+      "result": true,
+      "time": 0.03226494789123535,
+      "error": null
+    },
+    "assert select_words(\"Mary had a little lamb\", 3) == [\"Mary\", \"lamb\"], \"Second test error: \" + str(select_words(\"Mary had a little lamb\", 3))": {
+      "result": true,
+      "time": 0.029608964920043945,
+      "error": null
+    },
+    "assert select_words('Reg MuZcF', 4) == ['MuZcF']": {
+      "result": true,
+      "time": 0.029700517654418945,
+      "error": null
+    },
+    "assert select_words('lxQnxHVtrUGfoufkLPXu', 16) == ['lxQnxHVtrUGfoufkLPXu']": {
+      "result": true,
+      "time": 0.030472278594970703,
+      "error": null
+    },
+    "assert select_words('sl', 6) == []": {
+      "result": true,
+      "time": 0.027594327926635742,
+      "error": null
+    },
+    "assert select_words('IFKqNq ', 5) == ['IFKqNq']": {
+      "result": true,
+      "time": 0.03383302688598633,
+      "error": null
+    },
+    "assert select_words('lfspeijyudniowk', 1) == []": {
+      "result": true,
+      "time": 0.02941584587097168,
+      "error": null
+    },
+    "assert select_words('kogmgdnk', 7) == ['kogmgdnk']": {
+      "result": true,
+      "time": 0.0267179012298584,
+      "error": null
+    },
+    "assert select_words('nnchatjackywoavfwfps', 5) == []": {
+      "result": true,
+      "time": 0.029276132583618164,
+      "error": null
+    },
+    "assert select_words('d', 2) == []": {
+      "result": true,
+      "time": 0.028837203979492188,
+      "error": null
+    },
+    "assert select_words('fjnjvfo aqgasitdiyalwv', 1) == []": {
+      "result": true,
+      "time": 0.029857158660888672,
+      "error": null
+    },
+    "assert select_words('IGEmiHg ne YIhrNkjpGfOObqJ', 1) == ['ne']": {
+      "result": true,
+      "time": 0.03055286407470703,
+      "error": null
+    },
+    "assert select_words(\"Hello world\", 4) == [\"world\"], \"Fourth test error: \" + str(select_words(\"Hello world\", 4))": {
+      "result": true,
+      "time": 0.03268599510192871,
+      "error": null
+    },
+    "assert select_words('jopfxbbvlslmluypcdt', 3) == []": {
+      "result": true,
+      "time": 0.026215791702270508,
+      "error": null
+    },
+    "assert select_words('AWrNREXAqD WePeTbIPTS', 4) == []": {
+      "result": true,
+      "time": 0.02836775779724121,
+      "error": null
+    },
+    "assert select_words('OWzTDtbfTAEOBLuZPqFdnmnSG', 5) == []": {
+      "result": true,
+      "time": 0.02932429313659668,
+      "error": null
+    },
+    "assert select_words('TQzrMVZMngInaglSfwvrbAh', 20) == ['TQzrMVZMngInaglSfwvrbAh']": {
+      "result": true,
+      "time": 0.026665687561035156,
+      "error": null
+    },
+    "assert select_words('etdrxwybqi', 1) == []": {
+      "result": true,
+      "time": 0.03187370300292969,
+      "error": null
+    },
+    "assert select_words('aVCSziOkLCLGizHcmC', 2) == []": {
+      "result": true,
+      "time": 0.025705814361572266,
+      "error": null
+    },
+    "assert select_words('sYlP HUxjpHVfeWBNAvXo', 4) == ['sYlP']": {
+      "result": true,
+      "time": 0.03024744987487793,
+      "error": null
+    },
+    "assert select_words('txXxge', 4) == []": {
+      "result": true,
+      "time": 0.03126883506774902,
+      "error": null
+    },
+    "assert select_words('kcpieuVjAOaxdpB', 4) == []": {
+      "result": true,
+      "time": 0.029104232788085938,
+      "error": null
+    },
+    "assert select_words('oh', 8) == []": {
+      "result": true,
+      "time": 0.03077387809753418,
+      "error": null
+    },
+    "assert select_words('bgosvLxdWAWUtCxHgfPugDKQfel', 5) == []": {
+      "result": true,
+      "time": 0.03391838073730469,
+      "error": null
+    },
+    "assert select_words('fT LxYLtzO', 6) == ['LxYLtzO']": {
+      "result": true,
+      "time": 0.02607107162475586,
+      "error": null
+    },
+    "assert select_words('eywh qxreeexrrhyovpwl', 7) == []": {
+      "result": true,
+      "time": 0.033243656158447266,
+      "error": null
+    },
+    "assert select_words('JfStfbdqmygzcqzJvvbivZfDbwg', 26) == ['JfStfbdqmygzcqzJvvbivZfDbwg']": {
+      "result": true,
+      "time": 0.03129935264587402,
+      "error": null
+    },
+    "assert select_words('asfwxvbzdfsrymc', 3) == []": {
+      "result": true,
+      "time": 0.03164529800415039,
+      "error": null
+    },
+    "assert select_words('nBmjWxiPV', 3) == []": {
+      "result": true,
+      "time": 0.03183102607727051,
+      "error": null
+    },
+    "assert select_words('lDqgwtu rM tfTmeKEd', 2) == ['rM']": {
+      "result": true,
+      "time": 0.029927730560302734,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

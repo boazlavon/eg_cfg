@@ -1,0 +1,554 @@
+{
+  "code": "def generate_integers(a, b):\n    start = min(a, b)\n    end = max(a, b)\n    result = []\n    for num in range(start, end + 1):\n        if num % 2 == 0:\n            result.append(num)\n    return result",
+  "results": {
+    "assert generate_integers(5, 9) == [6, 8]": {
+      "result": true,
+      "time": 0.031537771224975586,
+      "error": null
+    },
+    "assert generate_integers(16, 88) == []": {
+      "result": false,
+      "time": 0.02774357795715332,
+      "error": null
+    },
+    "assert generate_integers(8, 5) == [6, 8]": {
+      "result": true,
+      "time": 0.027804851531982422,
+      "error": null
+    },
+    "assert generate_integers(16, 84) == []": {
+      "result": false,
+      "time": 0.027786731719970703,
+      "error": null
+    },
+    "assert generate_integers(9, 5) == [6, 8]": {
+      "result": true,
+      "time": 0.03048086166381836,
+      "error": null
+    },
+    "assert generate_integers(5, 5) == []": {
+      "result": true,
+      "time": 0.031369924545288086,
+      "error": null
+    },
+    "assert generate_integers(130, 1) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.029065370559692383,
+      "error": null
+    },
+    "assert generate_integers(9, 4) == [4, 6, 8]": {
+      "result": true,
+      "time": 0.03102707862854004,
+      "error": null
+    },
+    "assert generate_integers(17,89) == [], \"Test 4\"\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": false,
+      "time": 0.029332876205444336,
+      "error": null
+    },
+    "assert generate_integers(11, 5) == [6, 8]": {
+      "result": false,
+      "time": 0.02613687515258789,
+      "error": null
+    },
+    "assert generate_integers(127, 7) == [8]": {
+      "result": false,
+      "time": 0.03042888641357422,
+      "error": null
+    },
+    "assert generate_integers(4, 15) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.02744317054748535,
+      "error": null
+    },
+    "assert generate_integers(6, 9) == [6, 8]": {
+      "result": true,
+      "time": 0.034571170806884766,
+      "error": null
+    },
+    "assert generate_integers(131, 3) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.030933618545532227,
+      "error": null
+    },
+    "assert generate_integers(135, 4) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.025902271270751953,
+      "error": null
+    },
+    "assert generate_integers(19, 93) == []": {
+      "result": false,
+      "time": 0.028425931930541992,
+      "error": null
+    },
+    "assert generate_integers(9, 6) == [6, 8]": {
+      "result": true,
+      "time": 0.0297396183013916,
+      "error": null
+    },
+    "assert generate_integers(15, 86) == []": {
+      "result": false,
+      "time": 0.03279447555541992,
+      "error": null
+    },
+    "assert generate_integers(13, 86) == []": {
+      "result": false,
+      "time": 0.02796316146850586,
+      "error": null
+    },
+    "assert generate_integers(5, 4) == [4]": {
+      "result": true,
+      "time": 0.02693462371826172,
+      "error": null
+    },
+    "assert generate_integers(3, 12) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.03160285949707031,
+      "error": null
+    },
+    "assert generate_integers(135, 5) == [6, 8]": {
+      "result": false,
+      "time": 0.029656648635864258,
+      "error": null
+    },
+    "assert generate_integers(22, 91) == []": {
+      "result": false,
+      "time": 0.02887701988220215,
+      "error": null
+    },
+    "assert generate_integers(3, 14) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.03294253349304199,
+      "error": null
+    },
+    "assert generate_integers(15, 92) == []": {
+      "result": false,
+      "time": 0.02714848518371582,
+      "error": null
+    },
+    "assert generate_integers(7, 7) == []": {
+      "result": true,
+      "time": 0.029595136642456055,
+      "error": null
+    },
+    "assert generate_integers(13, 90) == []": {
+      "result": false,
+      "time": 0.02960824966430664,
+      "error": null
+    },
+    "assert generate_integers(5, 15) == [6, 8]": {
+      "result": false,
+      "time": 0.026747465133666992,
+      "error": null
+    },
+    "assert generate_integers(133, 3) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.029535531997680664,
+      "error": null
+    },
+    "assert generate_integers(4, 13) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.025079727172851562,
+      "error": null
+    },
+    "assert generate_integers(6, 3) == [4, 6]": {
+      "result": true,
+      "time": 0.02892923355102539,
+      "error": null
+    },
+    "assert generate_integers(128, 3) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.02912116050720215,
+      "error": null
+    },
+    "assert generate_integers(2, 15) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.02927708625793457,
+      "error": null
+    },
+    "assert generate_integers(7, 15) == [8]": {
+      "result": false,
+      "time": 0.03246784210205078,
+      "error": null
+    },
+    "assert generate_integers(17, 86) == []": {
+      "result": false,
+      "time": 0.030616283416748047,
+      "error": null
+    },
+    "assert generate_integers(14, 85) == []": {
+      "result": false,
+      "time": 0.028736352920532227,
+      "error": null
+    },
+    "assert generate_integers(5, 6) == [6]": {
+      "result": true,
+      "time": 0.029073715209960938,
+      "error": null
+    },
+    "assert generate_integers(16, 92) == []": {
+      "result": false,
+      "time": 0.028844594955444336,
+      "error": null
+    },
+    "assert generate_integers(11, 4) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.03450489044189453,
+      "error": null
+    },
+    "assert generate_integers(1, 15) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.028462886810302734,
+      "error": null
+    },
+    "assert generate_integers(130, 3) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.029889583587646484,
+      "error": null
+    },
+    "assert generate_integers(12, 89) == []": {
+      "result": false,
+      "time": 0.030069589614868164,
+      "error": null
+    },
+    "assert generate_integers(21, 92) == []": {
+      "result": false,
+      "time": 0.03196835517883301,
+      "error": null
+    },
+    "assert generate_integers(131, 1) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.03151535987854004,
+      "error": null
+    },
+    "assert generate_integers(19, 89) == []": {
+      "result": false,
+      "time": 0.03264284133911133,
+      "error": null
+    },
+    "assert generate_integers(10, 4) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.02931690216064453,
+      "error": null
+    },
+    "assert generate_integers(3, 13) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.03335738182067871,
+      "error": null
+    },
+    "assert generate_integers(1, 14) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.027184247970581055,
+      "error": null
+    },
+    "assert generate_integers(10, 2) == [2, 4, 6, 8], \"Test 2\"": {
+      "result": false,
+      "time": 0.032277584075927734,
+      "error": null
+    },
+    "assert generate_integers(15, 91) == []": {
+      "result": false,
+      "time": 0.02540445327758789,
+      "error": null
+    },
+    "assert generate_integers(135, 3) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.03175973892211914,
+      "error": null
+    },
+    "assert generate_integers(6, 7) == [6]": {
+      "result": true,
+      "time": 0.028327465057373047,
+      "error": null
+    },
+    "assert generate_integers(16, 89) == []": {
+      "result": false,
+      "time": 0.03141927719116211,
+      "error": null
+    },
+    "assert generate_integers(6, 12) == [6, 8]": {
+      "result": false,
+      "time": 0.027411699295043945,
+      "error": null
+    },
+    "assert generate_integers(7, 1) == [2, 4, 6]": {
+      "result": true,
+      "time": 0.028740406036376953,
+      "error": null
+    },
+    "assert generate_integers(12, 88) == []": {
+      "result": false,
+      "time": 0.030892372131347656,
+      "error": null
+    },
+    "assert generate_integers(6, 6) == [6]": {
+      "result": true,
+      "time": 0.02840399742126465,
+      "error": null
+    },
+    "assert generate_integers(16, 86) == []": {
+      "result": false,
+      "time": 0.027740478515625,
+      "error": null
+    },
+    "assert generate_integers(14, 4) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.029874563217163086,
+      "error": null
+    },
+    "assert generate_integers(12, 91) == []": {
+      "result": false,
+      "time": 0.029395580291748047,
+      "error": null
+    },
+    "assert generate_integers(3, 7) == [4, 6]": {
+      "result": true,
+      "time": 0.029753923416137695,
+      "error": null
+    },
+    "assert generate_integers(134, 7) == [8]": {
+      "result": false,
+      "time": 0.02778148651123047,
+      "error": null
+    },
+    "assert generate_integers(20, 93) == []": {
+      "result": false,
+      "time": 0.027924537658691406,
+      "error": null
+    },
+    "assert generate_integers(11, 7) == [8]": {
+      "result": false,
+      "time": 0.02795886993408203,
+      "error": null
+    },
+    "assert generate_integers(18, 92) == []": {
+      "result": false,
+      "time": 0.02704596519470215,
+      "error": null
+    },
+    "assert generate_integers(6, 15) == [6, 8]": {
+      "result": false,
+      "time": 0.03056621551513672,
+      "error": null
+    },
+    "assert generate_integers(132, 2) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.0351102352142334,
+      "error": null
+    },
+    "assert generate_integers(10, 6) == [6, 8]": {
+      "result": false,
+      "time": 0.02821803092956543,
+      "error": null
+    },
+    "assert generate_integers(137, 6) == [6, 8]": {
+      "result": false,
+      "time": 0.028119802474975586,
+      "error": null
+    },
+    "assert generate_integers(128, 7) == [8]": {
+      "result": false,
+      "time": 0.03313803672790527,
+      "error": null
+    },
+    "assert generate_integers(14, 92) == []": {
+      "result": false,
+      "time": 0.0308687686920166,
+      "error": null
+    },
+    "assert generate_integers(133, 1) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.033121347427368164,
+      "error": null
+    },
+    "assert generate_integers(14, 89) == []": {
+      "result": false,
+      "time": 0.02825140953063965,
+      "error": null
+    },
+    "assert generate_integers(4, 12) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.028278827667236328,
+      "error": null
+    },
+    "assert generate_integers(13, 2) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.032071828842163086,
+      "error": null
+    },
+    "assert generate_integers(133, 2) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.02778935432434082,
+      "error": null
+    },
+    "assert generate_integers(136, 3) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.030251026153564453,
+      "error": null
+    },
+    "assert generate_integers(17, 93) == []": {
+      "result": false,
+      "time": 0.03582954406738281,
+      "error": null
+    },
+    "assert generate_integers(132, 2) == [2, 4, 6, 8], \"Test 3\"": {
+      "result": false,
+      "time": 0.03280925750732422,
+      "error": null
+    },
+    "assert generate_integers(129, 7) == [8]": {
+      "result": false,
+      "time": 0.0284273624420166,
+      "error": null
+    },
+    "assert generate_integers(7, 6) == [6]": {
+      "result": true,
+      "time": 0.028093814849853516,
+      "error": null
+    },
+    "assert generate_integers(22, 92) == []": {
+      "result": false,
+      "time": 0.030824661254882812,
+      "error": null
+    },
+    "assert generate_integers(132, 3) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.03346109390258789,
+      "error": null
+    },
+    "assert generate_integers(5, 8) == [6, 8]": {
+      "result": true,
+      "time": 0.030972003936767578,
+      "error": null
+    },
+    "assert generate_integers(14, 6) == [6, 8]": {
+      "result": false,
+      "time": 0.028473615646362305,
+      "error": null
+    },
+    "assert generate_integers(132, 4) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.03149580955505371,
+      "error": null
+    },
+    "assert generate_integers(2, 10) == [2, 4, 6, 8], \"Test 1\"": {
+      "result": false,
+      "time": 0.030493497848510742,
+      "error": null
+    },
+    "assert generate_integers(133, 5) == [6, 8]": {
+      "result": false,
+      "time": 0.028130054473876953,
+      "error": null
+    },
+    "assert generate_integers(15, 4) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.03772687911987305,
+      "error": null
+    },
+    "assert generate_integers(127, 2) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.024992942810058594,
+      "error": null
+    },
+    "assert generate_integers(134, 5) == [6, 8]": {
+      "result": false,
+      "time": 0.028509855270385742,
+      "error": null
+    },
+    "assert generate_integers(137, 5) == [6, 8]": {
+      "result": false,
+      "time": 0.03287076950073242,
+      "error": null
+    },
+    "assert generate_integers(136, 2) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.030909061431884766,
+      "error": null
+    },
+    "assert generate_integers(8, 2) == [2, 4, 6, 8]": {
+      "result": true,
+      "time": 0.03063201904296875,
+      "error": null
+    },
+    "assert generate_integers(134, 1) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.030971288681030273,
+      "error": null
+    },
+    "assert generate_integers(1, 13) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.032267093658447266,
+      "error": null
+    },
+    "assert generate_integers(129, 4) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.02465677261352539,
+      "error": null
+    },
+    "assert generate_integers(22, 86) == []": {
+      "result": false,
+      "time": 0.03332018852233887,
+      "error": null
+    },
+    "assert generate_integers(11, 2) == [2, 4, 6, 8]": {
+      "result": false,
+      "time": 0.029794931411743164,
+      "error": null
+    },
+    "assert generate_integers(137, 7) == [8]": {
+      "result": false,
+      "time": 0.025388479232788086,
+      "error": null
+    },
+    "assert generate_integers(15, 7) == [8]": {
+      "result": false,
+      "time": 0.028560161590576172,
+      "error": null
+    },
+    "assert generate_integers(6, 11) == [6, 8]": {
+      "result": false,
+      "time": 0.025784730911254883,
+      "error": null
+    },
+    "assert generate_integers(4, 8) == [4, 6, 8]": {
+      "result": true,
+      "time": 0.031180858612060547,
+      "error": null
+    },
+    "assert generate_integers(12, 6) == [6, 8]": {
+      "result": false,
+      "time": 0.03267836570739746,
+      "error": null
+    },
+    "assert generate_integers(130, 7) == [8]": {
+      "result": false,
+      "time": 0.03301072120666504,
+      "error": null
+    },
+    "assert generate_integers(4, 11) == [4, 6, 8]": {
+      "result": false,
+      "time": 0.029730796813964844,
+      "error": null
+    },
+    "assert generate_integers(6, 5) == [6]": {
+      "result": true,
+      "time": 0.02685260772705078,
+      "error": null
+    },
+    "assert generate_integers(8, 7) == [8]": {
+      "result": true,
+      "time": 0.03029155731201172,
+      "error": null
+    },
+    "assert generate_integers(21, 85) == []": {
+      "result": false,
+      "time": 0.028774738311767578,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.1926605504587156,
+  "general_error": "",
+  "has_testcase_error": false
+}

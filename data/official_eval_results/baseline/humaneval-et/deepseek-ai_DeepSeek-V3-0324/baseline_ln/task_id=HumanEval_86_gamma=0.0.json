@@ -1,0 +1,584 @@
+{
+  "code": "def anti_shuffle(s):\n    words = s.split(' ')\n    ordered_words = []\n    for word in words:\n        ordered_word = ''.join(sorted(word, key=lambda x: ord(x)))\n        ordered_words.append(ordered_word)\n    return ' '.join(ordered_words)",
+  "results": {
+    "assert anti_shuffle(\"mik\") == 'ikm'": {
+      "result": true,
+      "time": 0.027590274810791016,
+      "error": null
+    },
+    "assert anti_shuffle(\"zpvls\") == 'lpsvz'": {
+      "result": true,
+      "time": 0.028063297271728516,
+      "error": null
+    },
+    "assert anti_shuffle(\"+*ppiETg/Q/eT@S\") == '*+//@EQSTTegipp'": {
+      "result": true,
+      "time": 0.029616355895996094,
+      "error": null
+    },
+    "assert anti_shuffle(\"nnlqs\") == 'lnnqs'": {
+      "result": true,
+      "time": 0.026427268981933594,
+      "error": null
+    },
+    "assert anti_shuffle(\"*Q*J@CV#c \") == '#**@CJQVc '": {
+      "result": true,
+      "time": 0.02895379066467285,
+      "error": null
+    },
+    "assert anti_shuffle(\"Vhp\") == 'Vhp'": {
+      "result": true,
+      "time": 0.02829766273498535,
+      "error": null
+    },
+    "assert anti_shuffle(\"lJtH\") == 'HJlt'": {
+      "result": true,
+      "time": 0.029330730438232422,
+      "error": null
+    },
+    "assert anti_shuffle(\"ffe\") == 'eff'": {
+      "result": true,
+      "time": 0.027066469192504883,
+      "error": null
+    },
+    "assert anti_shuffle(\"mdnilma\") == 'adilmmn'": {
+      "result": true,
+      "time": 0.027411222457885742,
+      "error": null
+    },
+    "assert anti_shuffle(\"|hYh/gEdoS|YIN|qp|\") == '/EINSYYdghhopq||||'": {
+      "result": true,
+      "time": 0.024193763732910156,
+      "error": null
+    },
+    "assert anti_shuffle(\"ihnrb\") == 'bhinr'": {
+      "result": true,
+      "time": 0.02637648582458496,
+      "error": null
+    },
+    "assert anti_shuffle(\"iqi\") == 'iiq'": {
+      "result": true,
+      "time": 0.026045560836791992,
+      "error": null
+    },
+    "assert anti_shuffle('hello') == 'ehllo'": {
+      "result": true,
+      "time": 0.029280662536621094,
+      "error": null
+    },
+    "assert anti_shuffle(\"q|GJBtlum__|oHCjO\") == 'BCGHJO__jlmoqtu||'": {
+      "result": true,
+      "time": 0.02959156036376953,
+      "error": null
+    },
+    "assert anti_shuffle(\"$m@#cT-luArr+fG+\") == '#$++-@AGTcflmrru'": {
+      "result": true,
+      "time": 0.031205177307128906,
+      "error": null
+    },
+    "assert anti_shuffle('Hi') == 'Hi'": {
+      "result": true,
+      "time": 0.0282590389251709,
+      "error": null
+    },
+    "assert anti_shuffle(\"femlxfmmd\") == 'defflmmmx'": {
+      "result": true,
+      "time": 0.030326366424560547,
+      "error": null
+    },
+    "assert anti_shuffle(\"mNXEj\") == 'ENXjm'": {
+      "result": true,
+      "time": 0.03213000297546387,
+      "error": null
+    },
+    "assert anti_shuffle('abcd') == 'abcd'": {
+      "result": true,
+      "time": 0.025789260864257812,
+      "error": null
+    },
+    "assert anti_shuffle(\"npcpS\") == 'Scnpp'": {
+      "result": true,
+      "time": 0.033898115158081055,
+      "error": null
+    },
+    "assert anti_shuffle(\"duiofqtyq\") == 'dfioqqtuy'": {
+      "result": true,
+      "time": 0.025563716888427734,
+      "error": null
+    },
+    "assert anti_shuffle(\"orpb\") == 'bopr'": {
+      "result": true,
+      "time": 0.03057861328125,
+      "error": null
+    },
+    "assert anti_shuffle(\"xenh\") == 'ehnx'": {
+      "result": true,
+      "time": 0.02711319923400879,
+      "error": null
+    },
+    "assert anti_shuffle(\"kcivkln\") == 'cikklnv'": {
+      "result": true,
+      "time": 0.028157472610473633,
+      "error": null
+    },
+    "assert anti_shuffle(\"p\") == 'p'": {
+      "result": true,
+      "time": 0.02511739730834961,
+      "error": null
+    },
+    "assert anti_shuffle(\"zraxgcjms\") == 'acgjmrsxz'": {
+      "result": true,
+      "time": 0.030462980270385742,
+      "error": null
+    },
+    "assert anti_shuffle(\"eGCr\") == 'CGer'": {
+      "result": true,
+      "time": 0.02685832977294922,
+      "error": null
+    },
+    "assert anti_shuffle(\"byg\") == 'bgy'": {
+      "result": true,
+      "time": 0.03205060958862305,
+      "error": null
+    },
+    "assert anti_shuffle(\"iabx$?GN%vn-TuM~v \") == '$%-?GMNTabinuvvx~ '": {
+      "result": true,
+      "time": 0.028380155563354492,
+      "error": null
+    },
+    "assert anti_shuffle(\"GuRhW\") == 'GRWhu'": {
+      "result": true,
+      "time": 0.027108192443847656,
+      "error": null
+    },
+    "assert anti_shuffle(\"jnvizowzn\") == 'ijnnovwzz'": {
+      "result": true,
+      "time": 0.03003835678100586,
+      "error": null
+    },
+    "assert anti_shuffle(\"SXZKbBnNGkoJ\") == 'BGJKNSXZbkno'": {
+      "result": true,
+      "time": 0.026760339736938477,
+      "error": null
+    },
+    "assert anti_shuffle(\"cMwLojCFt UZ!Ounjg\") == 'CFLMcjotw !OUZgjnu'": {
+      "result": true,
+      "time": 0.02637004852294922,
+      "error": null
+    },
+    "assert anti_shuffle(\"ouf\") == 'fou'": {
+      "result": true,
+      "time": 0.02808666229248047,
+      "error": null
+    },
+    "assert anti_shuffle(\"ckUS\") == 'SUck'": {
+      "result": true,
+      "time": 0.027092695236206055,
+      "error": null
+    },
+    "assert anti_shuffle(\"dqsix\") == 'diqsx'": {
+      "result": true,
+      "time": 0.030880451202392578,
+      "error": null
+    },
+    "assert anti_shuffle(\"g\") == 'g'": {
+      "result": true,
+      "time": 0.02763962745666504,
+      "error": null
+    },
+    "assert anti_shuffle(\"tyvbaqgq\") == 'abgqqtvy'": {
+      "result": true,
+      "time": 0.02738499641418457,
+      "error": null
+    },
+    "assert anti_shuffle(\"faefoaekmj\") == 'aaeeffjkmo'": {
+      "result": true,
+      "time": 0.028756380081176758,
+      "error": null
+    },
+    "assert anti_shuffle(\"bdbqgf\") == 'bbdfgq'": {
+      "result": true,
+      "time": 0.029004812240600586,
+      "error": null
+    },
+    "assert anti_shuffle(\"zpdggq\") == 'dggpqz'": {
+      "result": true,
+      "time": 0.026082992553710938,
+      "error": null
+    },
+    "assert anti_shuffle(\"jzmfq\") == 'fjmqz'": {
+      "result": true,
+      "time": 0.027326583862304688,
+      "error": null
+    },
+    "assert anti_shuffle(\"noefzjcyz\") == 'cefjnoyzz'": {
+      "result": true,
+      "time": 0.025297880172729492,
+      "error": null
+    },
+    "assert anti_shuffle(\"nkeipi\") == 'eiiknp'": {
+      "result": true,
+      "time": 0.02719283103942871,
+      "error": null
+    },
+    "assert anti_shuffle(\"veftsplp\") == 'eflppstv'": {
+      "result": true,
+      "time": 0.02714371681213379,
+      "error": null
+    },
+    "assert anti_shuffle('Hello World!!!') == 'Hello !!!Wdlor'": {
+      "result": true,
+      "time": 0.026593685150146484,
+      "error": null
+    },
+    "assert anti_shuffle(\"+@^^iM%^Bi\") == '%+@BM^^^ii'": {
+      "result": true,
+      "time": 0.027828693389892578,
+      "error": null
+    },
+    "assert anti_shuffle(\"q\") == 'q'": {
+      "result": true,
+      "time": 0.027759790420532227,
+      "error": null
+    },
+    "assert anti_shuffle(\"wxmksuy\") == 'kmsuwxy'": {
+      "result": true,
+      "time": 0.031672000885009766,
+      "error": null
+    },
+    "assert anti_shuffle(\"eyotuudlk\") == 'deklotuuy'": {
+      "result": true,
+      "time": 0.02775120735168457,
+      "error": null
+    },
+    "assert anti_shuffle(\"PLl\") == 'LPl'": {
+      "result": true,
+      "time": 0.030147552490234375,
+      "error": null
+    },
+    "assert anti_shuffle(\"rmkoahewjtxh\") == 'aehhjkmortwx'": {
+      "result": true,
+      "time": 0.026473522186279297,
+      "error": null
+    },
+    "assert anti_shuffle(\"mugrj\") == 'gjmru'": {
+      "result": true,
+      "time": 0.029143333435058594,
+      "error": null
+    },
+    "assert anti_shuffle('number') == 'bemnru'": {
+      "result": true,
+      "time": 0.03125429153442383,
+      "error": null
+    },
+    "assert anti_shuffle(\"pgj\") == 'gjp'": {
+      "result": true,
+      "time": 0.030150890350341797,
+      "error": null
+    },
+    "assert anti_shuffle(\"%aTGjg|^!Wsm/B\") == '!%/BGTW^agjms|'": {
+      "result": true,
+      "time": 0.03185749053955078,
+      "error": null
+    },
+    "assert anti_shuffle(\"zyptehc\") == 'cehptyz'": {
+      "result": true,
+      "time": 0.02876591682434082,
+      "error": null
+    },
+    "assert anti_shuffle(\"SATigd\") == 'ASTdgi'": {
+      "result": true,
+      "time": 0.026421070098876953,
+      "error": null
+    },
+    "assert anti_shuffle(\"geu\") == 'egu'": {
+      "result": true,
+      "time": 0.03146982192993164,
+      "error": null
+    },
+    "assert anti_shuffle(\"D%kt +F_hYz\") == '%Dkt +FY_hz'": {
+      "result": true,
+      "time": 0.030062437057495117,
+      "error": null
+    },
+    "assert anti_shuffle(\"AtD\") == 'ADt'": {
+      "result": true,
+      "time": 0.03306007385253906,
+      "error": null
+    },
+    "assert anti_shuffle(\"ivwo\") == 'iovw'": {
+      "result": true,
+      "time": 0.032613277435302734,
+      "error": null
+    },
+    "assert anti_shuffle(\"?a~s$ J+rMt!MzNQ~J\") == '$?as~ !+JJMMNQrtz~'": {
+      "result": true,
+      "time": 0.03163862228393555,
+      "error": null
+    },
+    "assert anti_shuffle(\"uh\") == 'hu'": {
+      "result": true,
+      "time": 0.026997804641723633,
+      "error": null
+    },
+    "assert anti_shuffle(\"gyvvyfnxeabw\") == 'abefgnvvwxyy'": {
+      "result": true,
+      "time": 0.028501033782958984,
+      "error": null
+    },
+    "assert anti_shuffle(\"^F|FQbJWYLysYdQj\") == 'FFJLQQWYY^bdjsy|'": {
+      "result": true,
+      "time": 0.028522729873657227,
+      "error": null
+    },
+    "assert anti_shuffle(\"ffi\") == 'ffi'": {
+      "result": true,
+      "time": 0.02931952476501465,
+      "error": null
+    },
+    "assert anti_shuffle(\"bogba\") == 'abbgo'": {
+      "result": true,
+      "time": 0.028737783432006836,
+      "error": null
+    },
+    "assert anti_shuffle(\"jylaidovu\") == 'adijlouvy'": {
+      "result": true,
+      "time": 0.02925252914428711,
+      "error": null
+    },
+    "assert anti_shuffle(\"pyqinvmjl\") == 'ijlmnpqvy'": {
+      "result": true,
+      "time": 0.02977275848388672,
+      "error": null
+    },
+    "assert anti_shuffle(\"hjg\") == 'ghj'": {
+      "result": true,
+      "time": 0.03105473518371582,
+      "error": null
+    },
+    "assert anti_shuffle(\"oosnf\") == 'fnoos'": {
+      "result": true,
+      "time": 0.03183436393737793,
+      "error": null
+    },
+    "assert anti_shuffle(\"wfnhodec\") == 'cdefhnow'": {
+      "result": true,
+      "time": 0.02722764015197754,
+      "error": null
+    },
+    "assert anti_shuffle(\"per\") == 'epr'": {
+      "result": true,
+      "time": 0.029725313186645508,
+      "error": null
+    },
+    "assert anti_shuffle('Hi. My name is Mister Robot. How are you?') == '.Hi My aemn is Meirst .Rboot How aer ?ouy'\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.02789306640625,
+      "error": null
+    },
+    "assert anti_shuffle(\"t\") == 't'": {
+      "result": true,
+      "time": 0.03275442123413086,
+      "error": null
+    },
+    "assert anti_shuffle(\"n\") == 'n'": {
+      "result": true,
+      "time": 0.030879974365234375,
+      "error": null
+    },
+    "assert anti_shuffle(\"xscw\") == 'cswx'": {
+      "result": true,
+      "time": 0.03683042526245117,
+      "error": null
+    },
+    "assert anti_shuffle(\"yU!G+xMXm?\") == '!+?GMUXmxy'": {
+      "result": true,
+      "time": 0.030766010284423828,
+      "error": null
+    },
+    "assert anti_shuffle(\"NeETP\") == 'ENPTe'": {
+      "result": true,
+      "time": 0.0311126708984375,
+      "error": null
+    },
+    "assert anti_shuffle(\"dbrynL\") == 'Lbdnry'": {
+      "result": true,
+      "time": 0.028641939163208008,
+      "error": null
+    },
+    "assert anti_shuffle(\"ntcnv\") == 'cnntv'": {
+      "result": true,
+      "time": 0.03122735023498535,
+      "error": null
+    },
+    "assert anti_shuffle(\"dsh\") == 'dhs'": {
+      "result": true,
+      "time": 0.03099679946899414,
+      "error": null
+    },
+    "assert anti_shuffle(\"k\") == 'k'": {
+      "result": true,
+      "time": 0.031056642532348633,
+      "error": null
+    },
+    "assert anti_shuffle(\"vubglcl\") == 'bcglluv'": {
+      "result": true,
+      "time": 0.030257463455200195,
+      "error": null
+    },
+    "assert anti_shuffle(\"wvF\") == 'Fvw'": {
+      "result": true,
+      "time": 0.025748491287231445,
+      "error": null
+    },
+    "assert anti_shuffle(\"vHZc:ls!!|/+p/t\") == '!!+//:HZclpstv|'": {
+      "result": true,
+      "time": 0.03359031677246094,
+      "error": null
+    },
+    "assert anti_shuffle(\"ubd\") == 'bdu'": {
+      "result": true,
+      "time": 0.02993178367614746,
+      "error": null
+    },
+    "assert anti_shuffle(\"bi\") == 'bi'": {
+      "result": true,
+      "time": 0.028779983520507812,
+      "error": null
+    },
+    "assert anti_shuffle(\"ej\") == 'ej'": {
+      "result": true,
+      "time": 0.031604766845703125,
+      "error": null
+    },
+    "assert anti_shuffle(\"ao\") == 'ao'": {
+      "result": true,
+      "time": 0.029823780059814453,
+      "error": null
+    },
+    "assert anti_shuffle(\"tfc\") == 'cft'": {
+      "result": true,
+      "time": 0.028306007385253906,
+      "error": null
+    },
+    "assert anti_shuffle(\"a\") == 'a'": {
+      "result": true,
+      "time": 0.030359268188476562,
+      "error": null
+    },
+    "assert anti_shuffle(\"biiohmoi\") == 'bhiiimoo'": {
+      "result": true,
+      "time": 0.03439068794250488,
+      "error": null
+    },
+    "assert anti_shuffle(\"vywlbywvzgq\") == 'bglqvvwwyyz'": {
+      "result": true,
+      "time": 0.0275876522064209,
+      "error": null
+    },
+    "assert anti_shuffle(\"d_^BpZ!S:J#\") == '!#:BJSZ^_dp'": {
+      "result": true,
+      "time": 0.0305483341217041,
+      "error": null
+    },
+    "assert anti_shuffle(\"dbevtyqlk\") == 'bdeklqtvy'": {
+      "result": true,
+      "time": 0.031717538833618164,
+      "error": null
+    },
+    "assert anti_shuffle('') == ''": {
+      "result": true,
+      "time": 0.028928041458129883,
+      "error": null
+    },
+    "assert anti_shuffle(\"hnbO\") == 'Obhn'": {
+      "result": true,
+      "time": 0.02915334701538086,
+      "error": null
+    },
+    "assert anti_shuffle(\"dj\") == 'dj'": {
+      "result": true,
+      "time": 0.02906513214111328,
+      "error": null
+    },
+    "assert anti_shuffle(\"rpapvxs\") == 'apprsvx'": {
+      "result": true,
+      "time": 0.0339813232421875,
+      "error": null
+    },
+    "assert anti_shuffle(\"iuvjpx\") == 'ijpuvx'": {
+      "result": true,
+      "time": 0.032351016998291016,
+      "error": null
+    },
+    "assert anti_shuffle(\"bnsvtwdz\") == 'bdnstvwz'": {
+      "result": true,
+      "time": 0.029597997665405273,
+      "error": null
+    },
+    "assert anti_shuffle(\"ZUvIbBJNtqA~\") == 'ABIJNUZbqtv~'": {
+      "result": true,
+      "time": 0.03198385238647461,
+      "error": null
+    },
+    "assert anti_shuffle(\"tJ%sMi-jRu\") == '%-JMRijstu'": {
+      "result": true,
+      "time": 0.02833104133605957,
+      "error": null
+    },
+    "assert anti_shuffle(\"bzri\") == 'birz'": {
+      "result": true,
+      "time": 0.028222322463989258,
+      "error": null
+    },
+    "assert anti_shuffle(\"jva\") == 'ajv'": {
+      "result": true,
+      "time": 0.031053543090820312,
+      "error": null
+    },
+    "assert anti_shuffle(\"oo\") == 'oo'": {
+      "result": true,
+      "time": 0.032898902893066406,
+      "error": null
+    },
+    "assert anti_shuffle(\"celklujiw\") == 'ceijklluw'": {
+      "result": true,
+      "time": 0.02480459213256836,
+      "error": null
+    },
+    "assert anti_shuffle(\"vfvqwbwo\") == 'bfoqvvww'": {
+      "result": true,
+      "time": 0.03113698959350586,
+      "error": null
+    },
+    "assert anti_shuffle(\"iKQEO\") == 'EKOQi'": {
+      "result": true,
+      "time": 0.030414581298828125,
+      "error": null
+    },
+    "assert anti_shuffle(\"CRkYEb\") == 'CERYbk'": {
+      "result": true,
+      "time": 0.030301570892333984,
+      "error": null
+    },
+    "assert anti_shuffle(\"ylyd\") == 'dlyy'": {
+      "result": true,
+      "time": 0.031558990478515625,
+      "error": null
+    },
+    "assert anti_shuffle(\"OhAOix\") == 'AOOhix'": {
+      "result": true,
+      "time": 0.02922797203063965,
+      "error": null
+    },
+    "assert anti_shuffle(\"zhjdgioa\") == 'adghijoz'": {
+      "result": true,
+      "time": 0.03143477439880371,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

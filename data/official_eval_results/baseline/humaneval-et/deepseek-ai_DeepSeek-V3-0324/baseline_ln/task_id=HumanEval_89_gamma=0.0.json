@@ -1,0 +1,574 @@
+{
+  "code": "def encrypt(s):\n    result = []\n    for char in s:\n        if 'a' <= char <= 'z':\n            shifted_char = chr(((ord(char) - ord('a') + 4) % 26) + ord('a'))\n            result.append(shifted_char)\n        elif 'A' <= char <= 'Z':\n            shifted_char = chr(((ord(char) - ord('A') + 4) % 26) + ord('A'))\n            result.append(shifted_char)\n        else:\n            result.append(char)\n    return ''.join(result)",
+  "results": {
+    "assert encrypt(\"icep\") == 'mgit'": {
+      "result": true,
+      "time": 0.03320574760437012,
+      "error": null
+    },
+    "assert encrypt(\"rshsbzuwunhkyfla\") == 'vwlwfdyayrlocjpe'": {
+      "result": true,
+      "time": 0.03038311004638672,
+      "error": null
+    },
+    "assert encrypt(\"xefukaqfllnckjbsshsuruxojimpploykicgbijpgfenkvyku\") == 'bijyoeujpprgonfwwlwyvybsnmqttpscomgkfmntkjirozcoy'": {
+      "result": true,
+      "time": 0.029824495315551758,
+      "error": null
+    },
+    "assert encrypt(\"eoieom\") == 'ismisq'": {
+      "result": true,
+      "time": 0.030941009521484375,
+      "error": null
+    },
+    "assert encrypt(\"jyacovitrlbvmooowiredgrqaeoufrzjqvrvmbbfqifg\") == 'ncegszmxvpfzqsssamvihkvueisyjvdnuzvzqffjumjk'": {
+      "result": true,
+      "time": 0.033440589904785156,
+      "error": null
+    },
+    "assert encrypt(\"btijac\") == 'fxmneg'": {
+      "result": true,
+      "time": 0.028146743774414062,
+      "error": null
+    },
+    "assert encrypt(\"xhkwgznkc\") == 'bloakdrog'": {
+      "result": true,
+      "time": 0.027420520782470703,
+      "error": null
+    },
+    "assert encrypt(\"mlcf\") == 'qpgj'": {
+      "result": true,
+      "time": 0.028075695037841797,
+      "error": null
+    },
+    "assert encrypt(\"vjld\") == 'znph'": {
+      "result": true,
+      "time": 0.026874065399169922,
+      "error": null
+    },
+    "assert encrypt(\"edos\") == 'ihsw'": {
+      "result": true,
+      "time": 0.030010700225830078,
+      "error": null
+    },
+    "assert encrypt(\"ecvxboifogyvhhndxqmrwzrycvvzumjrmpuokojfhoyjrrsvqys\") == 'igzbfsmjskczllrhbuqvadvcgzzdyqnvqtysosnjlscnvvwzucw'": {
+      "result": true,
+      "time": 0.0326845645904541,
+      "error": null
+    },
+    "assert encrypt(\"xnspkq\") == 'brwtou'": {
+      "result": true,
+      "time": 0.029941082000732422,
+      "error": null
+    },
+    "assert encrypt(\"kemsjc\") == 'oiqwng'": {
+      "result": true,
+      "time": 0.029832839965820312,
+      "error": null
+    },
+    "assert encrypt(\"hqc\") == 'lug'": {
+      "result": true,
+      "time": 0.03092360496520996,
+      "error": null
+    },
+    "assert encrypt(\"iucuekiixpeocogw\") == 'mygyiommbtisgska'": {
+      "result": true,
+      "time": 0.027889013290405273,
+      "error": null
+    },
+    "assert encrypt(\"iweg\") == 'maik'": {
+      "result": true,
+      "time": 0.03054952621459961,
+      "error": null
+    },
+    "assert encrypt(\"wryepbt\") == 'avcitfx'": {
+      "result": true,
+      "time": 0.028113126754760742,
+      "error": null
+    },
+    "assert encrypt(\"oqzpfpvmstecwor\") == 'sudtjtzqwxigasv'": {
+      "result": true,
+      "time": 0.029131650924682617,
+      "error": null
+    },
+    "assert encrypt(\"zvnrqh\") == 'dzrvul'": {
+      "result": true,
+      "time": 0.030503273010253906,
+      "error": null
+    },
+    "assert encrypt(\"khdzqn\") == 'olhdur'": {
+      "result": true,
+      "time": 0.031694889068603516,
+      "error": null
+    },
+    "assert encrypt(\"okcgikrnpkwhdxjjt\") == 'sogkmovrtoalhbnnx'": {
+      "result": true,
+      "time": 0.028490543365478516,
+      "error": null
+    },
+    "assert encrypt(\"dfkku\") == 'hjooy'": {
+      "result": true,
+      "time": 0.032507896423339844,
+      "error": null
+    },
+    "assert encrypt(\"cbu\") == 'gfy'": {
+      "result": true,
+      "time": 0.02823948860168457,
+      "error": null
+    },
+    "assert encrypt(\"ydbsopfos\") == 'chfwstjsw'": {
+      "result": true,
+      "time": 0.032037973403930664,
+      "error": null
+    },
+    "assert encrypt(\"apemxwhfoivo\") == 'etiqbaljsmzs'": {
+      "result": true,
+      "time": 0.03255438804626465,
+      "error": null
+    },
+    "assert encrypt(\"dvprq\") == 'hztvu'": {
+      "result": true,
+      "time": 0.030002117156982422,
+      "error": null
+    },
+    "assert encrypt('et') == 'ix'": {
+      "result": true,
+      "time": 0.032915353775024414,
+      "error": null
+    },
+    "assert encrypt(\"pdkwkxl\") == 'thoaobp'": {
+      "result": true,
+      "time": 0.03297829627990723,
+      "error": null
+    },
+    "assert encrypt(\"zuxjxvgmbe\") == 'dybnbzkqfi'": {
+      "result": true,
+      "time": 0.030624866485595703,
+      "error": null
+    },
+    "assert encrypt(\"qufnwybuudtnstebb\") == 'uyjracfyyhxrwxiff'": {
+      "result": true,
+      "time": 0.03050541877746582,
+      "error": null
+    },
+    "assert encrypt(\"cbnkip\") == 'gfromt'": {
+      "result": true,
+      "time": 0.030369281768798828,
+      "error": null
+    },
+    "assert encrypt(\"dhvb\") == 'hlzf'": {
+      "result": true,
+      "time": 0.030415058135986328,
+      "error": null
+    },
+    "assert encrypt(\"xcegcyrndybwwdnis\") == 'bgikgcvrhcfaahrmw'": {
+      "result": true,
+      "time": 0.0361177921295166,
+      "error": null
+    },
+    "assert encrypt(\"vpf\") == 'ztj'": {
+      "result": true,
+      "time": 0.02930450439453125,
+      "error": null
+    },
+    "assert encrypt(\"ylyahikkdltvcwhmgf\") == 'cpcelmoohpxzgalqkj'": {
+      "result": true,
+      "time": 0.03544902801513672,
+      "error": null
+    },
+    "assert encrypt(\"fwycjuyymmhkzehzifkxyxpshiakkthethvnlkcjufunkag\") == 'jacgnyccqqlodildmjobcbtwlmeooxlixlzrpognyjyroek'": {
+      "result": true,
+      "time": 0.026175975799560547,
+      "error": null
+    },
+    "assert encrypt(\"snrp\") == 'wrvt'": {
+      "result": true,
+      "time": 0.028734683990478516,
+      "error": null
+    },
+    "assert encrypt(\"gjv\") == 'knz'": {
+      "result": true,
+      "time": 0.03377842903137207,
+      "error": null
+    },
+    "assert encrypt(\"scckvgqaqvgtrpjxscrttodtfddygbogmsejojgqpolqitdupu\") == 'wggozkueuzkxvtnbwgvxxshxjhhckfskqwinsnkutspumxhyty'": {
+      "result": true,
+      "time": 0.026387453079223633,
+      "error": null
+    },
+    "assert encrypt(\"jigty\") == 'nmkxc'": {
+      "result": true,
+      "time": 0.031269073486328125,
+      "error": null
+    },
+    "assert encrypt(\"ltoqiorhbefpupjriabdqcsogcuerqihuxqbrbkgrdtmasa\") == 'pxsumsvlfijtytnvmefhugwskgyivumlybufvfokvhxqewe'": {
+      "result": true,
+      "time": 0.028089046478271484,
+      "error": null
+    },
+    "assert encrypt(\"omqyojvvdgdtzoweweuxguoewqemqvzjrgxpxfvcysiibrsb\") == 'squcsnzzhkhxdsaiaiybkysiauiquzdnvkbtbjzgcwmmfvwf'": {
+      "result": true,
+      "time": 0.03001713752746582,
+      "error": null
+    },
+    "assert encrypt(\"jigeiwr\") == 'nmkimav'": {
+      "result": true,
+      "time": 0.030747175216674805,
+      "error": null
+    },
+    "assert encrypt(\"vndetsxgjgjyo\") == 'zrhixwbknkncs'": {
+      "result": true,
+      "time": 0.027372121810913086,
+      "error": null
+    },
+    "assert encrypt(\"kljfcu\") == 'opnjgy'": {
+      "result": true,
+      "time": 0.029072999954223633,
+      "error": null
+    },
+    "assert encrypt(\"bcdyegdqur\") == 'fghcikhuyv'": {
+      "result": true,
+      "time": 0.02935171127319336,
+      "error": null
+    },
+    "assert encrypt(\"inqgyxjjbxjivfaumwuwlaictecgedssmtfxyreihxoftc\") == 'mrukcbnnfbnmzjeyqayapemgxigkihwwqxjbcvimlbsjxg'": {
+      "result": true,
+      "time": 0.032328128814697266,
+      "error": null
+    },
+    "assert encrypt(\"hiozaupjaxn\") == 'lmsdeytnebr'": {
+      "result": true,
+      "time": 0.032172203063964844,
+      "error": null
+    },
+    "assert encrypt(\"zkeab\") == 'doief'": {
+      "result": true,
+      "time": 0.029189109802246094,
+      "error": null
+    },
+    "assert encrypt(\"pincbgwsxcgd\") == 'tmrgfkawbgkh'": {
+      "result": true,
+      "time": 0.03225994110107422,
+      "error": null
+    },
+    "assert encrypt(\"ootuhtsyoclpfz\") == 'ssxylxwcsgptjd'": {
+      "result": true,
+      "time": 0.034247636795043945,
+      "error": null
+    },
+    "assert encrypt(\"fthxiuur\") == 'jxlbmyyv'": {
+      "result": true,
+      "time": 0.03148770332336426,
+      "error": null
+    },
+    "assert encrypt(\"ppnfsbzpkrlgc\") == 'ttrjwfdtovpkg'": {
+      "result": true,
+      "time": 0.03174853324890137,
+      "error": null
+    },
+    "assert encrypt(\"jmfqkenawveukey\") == 'nqjuoireaziyoic'": {
+      "result": true,
+      "time": 0.031693220138549805,
+      "error": null
+    },
+    "assert encrypt(\"eamlxvxtmyq\") == 'ieqpbzbxqcu'": {
+      "result": true,
+      "time": 0.030009031295776367,
+      "error": null
+    },
+    "assert encrypt(\"lovcfz\") == 'pszgjd'": {
+      "result": true,
+      "time": 0.02963542938232422,
+      "error": null
+    },
+    "assert encrypt(\"qug\") == 'uyk'": {
+      "result": true,
+      "time": 0.03073906898498535,
+      "error": null
+    },
+    "assert encrypt(\"qlwbifaxvfpbtigmd\") == 'upafmjebzjtfxmkqh'": {
+      "result": true,
+      "time": 0.034590959548950195,
+      "error": null
+    },
+    "assert encrypt(\"jdtgdqerkvdjo\") == 'nhxkhuivozhns'": {
+      "result": true,
+      "time": 0.02890777587890625,
+      "error": null
+    },
+    "assert encrypt('faewfawefaewg')=='jeiajeaijeiak'": {
+      "result": true,
+      "time": 0.03032064437866211,
+      "error": null
+    },
+    "assert encrypt(\"jesneksjqo\") == 'niwriownus'": {
+      "result": true,
+      "time": 0.031219959259033203,
+      "error": null
+    },
+    "assert encrypt(\"dwjksymbefjbdttbozxljxnivsdygyektzoevzcludwmzzv\") == 'hanowcqfijnfhxxfsdbpnbrmzwhckcioxdsizdgpyhaqddz'": {
+      "result": true,
+      "time": 0.03268146514892578,
+      "error": null
+    },
+    "assert encrypt(\"kejihadgwjawxllizcdymgesbstydszfsvisnfoprrmh\") == 'oinmlehkaneabppmdghcqkiwfwxchwdjwzmwrjstvvql'": {
+      "result": true,
+      "time": 0.05351710319519043,
+      "error": null
+    },
+    "assert encrypt(\"qxy\") == 'ubc'": {
+      "result": true,
+      "time": 0.029982328414916992,
+      "error": null
+    },
+    "assert encrypt(\"wbqrfuufjolm\") == 'afuvjyyjnspq'": {
+      "result": true,
+      "time": 0.029711246490478516,
+      "error": null
+    },
+    "assert encrypt(\"igd\") == 'mkh'": {
+      "result": true,
+      "time": 0.031160831451416016,
+      "error": null
+    },
+    "assert encrypt(\"bacpsnyuqihtc\") == 'fegtwrcyumlxg'": {
+      "result": true,
+      "time": 0.029847383499145508,
+      "error": null
+    },
+    "assert encrypt(\"iyhglogovmaivb\") == 'mclkpskszqemzf'": {
+      "result": true,
+      "time": 0.028760194778442383,
+      "error": null
+    },
+    "assert encrypt('a')=='e'": {
+      "result": true,
+      "time": 0.028984785079956055,
+      "error": null
+    },
+    "assert encrypt(\"xtkq\") == 'bxou'": {
+      "result": true,
+      "time": 0.03358912467956543,
+      "error": null
+    },
+    "assert encrypt(\"hzwcknqyfdy\") == 'ldagorucjhc'": {
+      "result": true,
+      "time": 0.0317997932434082,
+      "error": null
+    },
+    "assert encrypt(\"qxnl\") == 'ubrp'": {
+      "result": true,
+      "time": 0.029972553253173828,
+      "error": null
+    },
+    "assert encrypt(\"ghpevdaov\") == 'kltizhesz'": {
+      "result": true,
+      "time": 0.03169417381286621,
+      "error": null
+    },
+    "assert encrypt(\"tgwoggktxwxlkcutrmpoegpnwryeegqtunvtchgdlstw\") == 'xkaskkoxbabpogyxvqtsiktravciikuxyrzxglkhpwxa'": {
+      "result": true,
+      "time": 0.03153181076049805,
+      "error": null
+    },
+    "assert encrypt(\"osr\") == 'swv'": {
+      "result": true,
+      "time": 0.03021097183227539,
+      "error": null
+    },
+    "assert encrypt('asdfghjkl') == 'ewhjklnop'": {
+      "result": true,
+      "time": 0.03516030311584473,
+      "error": null
+    },
+    "assert encrypt(\"nqb\") == 'ruf'": {
+      "result": true,
+      "time": 0.026447296142578125,
+      "error": null
+    },
+    "assert encrypt(\"qzoowqmdpgs\") == 'udssauqhtkw'": {
+      "result": true,
+      "time": 0.03247427940368652,
+      "error": null
+    },
+    "assert encrypt(\"uldvv\") == 'yphzz'": {
+      "result": true,
+      "time": 0.0304415225982666,
+      "error": null
+    },
+    "assert encrypt(\"hssxlrbvcza\") == 'lwwbpvfzgde'": {
+      "result": true,
+      "time": 0.03207683563232422,
+      "error": null
+    },
+    "assert encrypt(\"eszlshy\") == 'iwdpwlc'": {
+      "result": true,
+      "time": 0.027109861373901367,
+      "error": null
+    },
+    "assert encrypt(\"gryaomsjpheksgfl\") == 'kvcesqwntliowkjp'": {
+      "result": true,
+      "time": 0.032418251037597656,
+      "error": null
+    },
+    "assert encrypt('gf') == 'kj'": {
+      "result": true,
+      "time": 0.029925107955932617,
+      "error": null
+    },
+    "assert encrypt(\"wahnwedqvdrhzkoczaqgfulcpkdwxlxfutmwoxfxhtihx\") == 'aelraihuzhvldosgdeukjypgtohabpbjyxqasbjblxmlb'": {
+      "result": true,
+      "time": 0.03249788284301758,
+      "error": null
+    },
+    "assert encrypt(\"qydzk\") == 'uchdo'": {
+      "result": true,
+      "time": 0.03149724006652832,
+      "error": null
+    },
+    "assert encrypt(\"qodfsxptaswjxea\") == 'ushjwbtxewanbie'": {
+      "result": true,
+      "time": 0.03174948692321777,
+      "error": null
+    },
+    "assert encrypt(\"pfafbn\") == 'tjejfr'": {
+      "result": true,
+      "time": 0.03563094139099121,
+      "error": null
+    },
+    "assert encrypt('dxzdlmnilfuhmilufhlihufnmlimnufhlimnufhfucufh')=='hbdhpqrmpjylqmpyjlpmlyjrqpmqryjlpmqryjljygyjl'": {
+      "result": true,
+      "time": 0.03133726119995117,
+      "error": null
+    },
+    "assert encrypt(\"uiccmyfyikhtpneemoiglrphjsfyudawcethrgeewwg\") == 'ymggqcjcmolxtriiqsmkpvtlnwjcyheagixlvkiiaak'": {
+      "result": true,
+      "time": 0.03199338912963867,
+      "error": null
+    },
+    "assert encrypt(\"iaaqxr\") == 'meeubv'": {
+      "result": true,
+      "time": 0.031354665756225586,
+      "error": null
+    },
+    "assert encrypt(\"cxjqzxyj\") == 'gbnudbcn'": {
+      "result": true,
+      "time": 0.03453969955444336,
+      "error": null
+    },
+    "assert encrypt(\"yfmlxmzfjwpagz\") == 'cjqpbqdjnatekd'": {
+      "result": true,
+      "time": 0.0340275764465332,
+      "error": null
+    },
+    "assert encrypt(\"tcgkwaoxisclqjuhcg\") == 'xgkoaesbmwgpunylgk'": {
+      "result": true,
+      "time": 0.031218528747558594,
+      "error": null
+    },
+    "assert encrypt(\"pxuqg\") == 'tbyuk'": {
+      "result": true,
+      "time": 0.030868053436279297,
+      "error": null
+    },
+    "assert encrypt(\"srzakihijmoxy\") == 'wvdeomlmnqsbc'": {
+      "result": true,
+      "time": 0.029643535614013672,
+      "error": null
+    },
+    "assert encrypt('hellomyfriend')=='lippsqcjvmirh'": {
+      "result": true,
+      "time": 0.0283355712890625,
+      "error": null
+    },
+    "assert encrypt(\"srsba\") == 'wvwfe'": {
+      "result": true,
+      "time": 0.0354156494140625,
+      "error": null
+    },
+    "assert encrypt('hi') == 'lm'": {
+      "result": true,
+      "time": 0.027565479278564453,
+      "error": null
+    },
+    "assert encrypt(\"gudkyx\") == 'kyhocb'": {
+      "result": true,
+      "time": 0.030576229095458984,
+      "error": null
+    },
+    "assert encrypt(\"hqmdzalclkbjfknjkiesfhckhkffveoykjypxavcroiyrawesb\") == 'luqhdepgpofnjornomiwjlgolojjzisconctbezgvsmcveaiwf'": {
+      "result": true,
+      "time": 0.03247261047363281,
+      "error": null
+    },
+    "assert encrypt(\"wxssoiwft\") == 'abwwsmajx'": {
+      "result": true,
+      "time": 0.029755592346191406,
+      "error": null
+    },
+    "assert encrypt(\"mghcjd\") == 'qklgnh'": {
+      "result": true,
+      "time": 0.027311086654663086,
+      "error": null
+    },
+    "assert encrypt(\"bjhpaepqdvdxe\") == 'fnlteituhzhbi'": {
+      "result": true,
+      "time": 0.0329742431640625,
+      "error": null
+    },
+    "assert encrypt(\"vcjcpaipaotbrhwzwkzqvdnotysiqjquxjfcyfxdsnycowlxw\") == 'zgngtemtesxfvladaoduzhrsxcwmunuybnjgcjbhwrcgsapba'": {
+      "result": true,
+      "time": 0.03181147575378418,
+      "error": null
+    },
+    "assert encrypt(\"dkbwxzxweek\") == 'hofabdbaiio'": {
+      "result": true,
+      "time": 0.030192852020263672,
+      "error": null
+    },
+    "assert encrypt(\"apycxz\") == 'etcgbd'": {
+      "result": true,
+      "time": 0.03029179573059082,
+      "error": null
+    },
+    "assert encrypt(\"orwoj\") == 'svasn'": {
+      "result": true,
+      "time": 0.029904603958129883,
+      "error": null
+    },
+    "assert encrypt(\"rbonb\") == 'vfsrf'": {
+      "result": true,
+      "time": 0.03094339370727539,
+      "error": null
+    },
+    "assert encrypt(\"zzeb\") == 'ddif'": {
+      "result": true,
+      "time": 0.028933048248291016,
+      "error": null
+    },
+    "assert encrypt(\"sxzd\") == 'wbdh'": {
+      "result": true,
+      "time": 0.026999950408935547,
+      "error": null
+    },
+    "assert encrypt(\"dodbzraky\") == 'hshfdveoc'": {
+      "result": true,
+      "time": 0.02855205535888672,
+      "error": null
+    },
+    "assert encrypt(\"yvjmva\") == 'cznqze'": {
+      "result": true,
+      "time": 0.03219866752624512,
+      "error": null
+    },
+    "assert encrypt(\"myqyqo\") == 'qcucus'": {
+      "result": true,
+      "time": 0.028449058532714844,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

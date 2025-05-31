@@ -1,0 +1,604 @@
+{
+  "code": "def minSubArraySum(nums):\n    min_sum = float('inf')\n    current_sum = 0\n    for num in nums:\n        current_sum += num\n        if current_sum < min_sum:\n            min_sum = current_sum\n        if current_sum > 0:\n            current_sum = 0\n    return min_sum",
+  "results": {
+    "assert minSubArraySum([105, -5, -2, 0, 10, -8]) == -8": {
+      "result": true,
+      "time": 0.029920339584350586,
+      "error": null
+    },
+    "assert minSubArraySum([-3, -7, -4, 2, -6]) == -18": {
+      "result": true,
+      "time": 0.029176950454711914,
+      "error": null
+    },
+    "assert minSubArraySum([-10000000000000001]) == -10000000000000001": {
+      "result": true,
+      "time": 0.030678749084472656,
+      "error": null
+    },
+    "assert minSubArraySum([0, -3, 1]) == -3": {
+      "result": true,
+      "time": 0.028272628784179688,
+      "error": null
+    },
+    "assert minSubArraySum([-9999999999999995]) == -9999999999999995": {
+      "result": true,
+      "time": 0.029324054718017578,
+      "error": null
+    },
+    "assert minSubArraySum([5, -6]) == -6": {
+      "result": true,
+      "time": 0.028824806213378906,
+      "error": null
+    },
+    "assert minSubArraySum([1, -3]) == -3": {
+      "result": true,
+      "time": 0.029111623764038086,
+      "error": null
+    },
+    "assert minSubArraySum([5, -5]) == -5": {
+      "result": true,
+      "time": 0.02778482437133789,
+      "error": null
+    },
+    "assert minSubArraySum([-11]) == -11": {
+      "result": true,
+      "time": 0.03018474578857422,
+      "error": null
+    },
+    "assert minSubArraySum([102, -29, 30, -6, 2, -5]) == -29": {
+      "result": true,
+      "time": 0.03075242042541504,
+      "error": null
+    },
+    "assert minSubArraySum([3, -6, -3, 15, -2]) == -9": {
+      "result": true,
+      "time": 0.028506040573120117,
+      "error": null
+    },
+    "assert minSubArraySum([2, 3, 9, 2, 2, 6]) == 2": {
+      "result": true,
+      "time": 0.03341197967529297,
+      "error": null
+    },
+    "assert minSubArraySum([4, 4, 2, 3, 2, 1]) == 1": {
+      "result": true,
+      "time": 0.028563499450683594,
+      "error": null
+    },
+    "assert minSubArraySum([101, -6, -1, -3, 5, -9]) == -14": {
+      "result": true,
+      "time": 0.026172399520874023,
+      "error": null
+    },
+    "assert minSubArraySum([2, -6]) == -6": {
+      "result": true,
+      "time": 0.027626752853393555,
+      "error": null
+    },
+    "assert minSubArraySum([4, 7, 25, 1000789]) == 4": {
+      "result": true,
+      "time": 0.027646303176879883,
+      "error": null
+    },
+    "assert minSubArraySum([98, -30, 31, 3, 2, -4]) == -30": {
+      "result": true,
+      "time": 0.027968883514404297,
+      "error": null
+    },
+    "assert minSubArraySum([14, 11, 14, 7, 6, 5]) == 5": {
+      "result": true,
+      "time": 0.02889394760131836,
+      "error": null
+    },
+    "assert minSubArraySum([100, 3, -2, 2, 6, -8]) == -8": {
+      "result": true,
+      "time": 0.025983810424804688,
+      "error": null
+    },
+    "assert minSubArraySum([0, -5, 0, 1, -15]) == -19": {
+      "result": true,
+      "time": 0.027636051177978516,
+      "error": null
+    },
+    "assert minSubArraySum([-9999999999999997]) == -9999999999999997": {
+      "result": true,
+      "time": 0.030281543731689453,
+      "error": null
+    },
+    "assert minSubArraySum([7]) == 7": {
+      "result": true,
+      "time": 0.027428627014160156,
+      "error": null
+    },
+    "assert minSubArraySum([4, -2, -8, 2, -11]) == -19": {
+      "result": true,
+      "time": 0.029486417770385742,
+      "error": null
+    },
+    "assert minSubArraySum([2, 3, 4, 1, 2, 4]) == 1": {
+      "result": true,
+      "time": 0.027735471725463867,
+      "error": null
+    },
+    "assert minSubArraySum([-6, 3, -6]) == -9": {
+      "result": true,
+      "time": 0.026892900466918945,
+      "error": null
+    },
+    "assert minSubArraySum([3, 6, 22, 999684]) == 3": {
+      "result": true,
+      "time": 0.026985883712768555,
+      "error": null
+    },
+    "assert minSubArraySum([-4, -3, -5, 5, -12]) == -19": {
+      "result": true,
+      "time": 0.027610301971435547,
+      "error": null
+    },
+    "assert minSubArraySum([3, -5, -2, 5, -8]) == -10": {
+      "result": true,
+      "time": 0.02769327163696289,
+      "error": null
+    },
+    "assert minSubArraySum([5, 6, 8, 3, 1, 9]) == 1": {
+      "result": true,
+      "time": 0.02889871597290039,
+      "error": null
+    },
+    "assert minSubArraySum([6, 4, 6, 2, 5, 1]) == 1": {
+      "result": true,
+      "time": 0.026947975158691406,
+      "error": null
+    },
+    "assert minSubArraySum([15, 12, 10, 3, 4, 7]) == 3": {
+      "result": true,
+      "time": 0.02685070037841797,
+      "error": null
+    },
+    "assert minSubArraySum([95, -29, 34, 4, 5, -3]) == -29": {
+      "result": true,
+      "time": 0.02723526954650879,
+      "error": null
+    },
+    "assert minSubArraySum([-1, -6, -1, 6, -9]) == -11": {
+      "result": true,
+      "time": 0.02748394012451172,
+      "error": null
+    },
+    "assert minSubArraySum([98, -36, 34, 0, 2, 0]) == -36": {
+      "result": true,
+      "time": 0.025548934936523438,
+      "error": null
+    },
+    "assert minSubArraySum([11]) == 11": {
+      "result": true,
+      "time": 0.02908182144165039,
+      "error": null
+    },
+    "assert minSubArraySum([1, 1, 0, 2, -12]) == -12": {
+      "result": true,
+      "time": 0.02998828887939453,
+      "error": null
+    },
+    "assert minSubArraySum([1, -1]) == -1": {
+      "result": true,
+      "time": 0.027842998504638672,
+      "error": null
+    },
+    "assert minSubArraySum([1, 12, 21, 999192]) == 1": {
+      "result": true,
+      "time": 0.028600454330444336,
+      "error": null
+    },
+    "assert minSubArraySum([99, -36, 35, -1, 1, -4]) == -36": {
+      "result": true,
+      "time": 0.0282442569732666,
+      "error": null
+    },
+    "assert minSubArraySum([3, 4, 5, 6, 2, 7]) == 2": {
+      "result": true,
+      "time": 0.026799678802490234,
+      "error": null
+    },
+    "assert minSubArraySum([-1, 2, -3, 3, -11]) == -11": {
+      "result": true,
+      "time": 0.028625011444091797,
+      "error": null
+    },
+    "assert minSubArraySum([4, 6, 18, 1000090]) == 4": {
+      "result": true,
+      "time": 0.030445337295532227,
+      "error": null
+    },
+    "assert minSubArraySum([10, 11, 13, 8, 3, 4]) == 3": {
+      "result": true,
+      "time": 0.02843165397644043,
+      "error": null
+    },
+    "assert minSubArraySum([3, 4]) == 3": {
+      "result": true,
+      "time": 0.027616500854492188,
+      "error": null
+    },
+    "assert minSubArraySum([100, -33, 32, -1, 0, -2]) == -33\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.027884244918823242,
+      "error": null
+    },
+    "assert minSubArraySum([-6, 3, -7]) == -10": {
+      "result": true,
+      "time": 0.02420663833618164,
+      "error": null
+    },
+    "assert minSubArraySum([4, -3, -7]) == -10": {
+      "result": true,
+      "time": 0.028919696807861328,
+      "error": null
+    },
+    "assert minSubArraySum([3, 12, 18, 1000591]) == 3": {
+      "result": true,
+      "time": 0.02719402313232422,
+      "error": null
+    },
+    "assert minSubArraySum([6]) == 6": {
+      "result": true,
+      "time": 0.03209042549133301,
+      "error": null
+    },
+    "assert minSubArraySum([-4, 2, 0]) == -4": {
+      "result": true,
+      "time": 0.0248868465423584,
+      "error": null
+    },
+    "assert minSubArraySum([-1, -7, -1, 12, -1]) == -9": {
+      "result": true,
+      "time": 0.02487325668334961,
+      "error": null
+    },
+    "assert minSubArraySum([104, 1, -3, -1, 6, -10]) == -10": {
+      "result": true,
+      "time": 0.02594733238220215,
+      "error": null
+    },
+    "assert minSubArraySum([3, 15, 23, 1000022]) == 3": {
+      "result": true,
+      "time": 0.026655912399291992,
+      "error": null
+    },
+    "assert minSubArraySum([3, 9, 15, 1000630]) == 3": {
+      "result": true,
+      "time": 0.029730558395385742,
+      "error": null
+    },
+    "assert minSubArraySum([6, 2, 1, 2, 3, 1]) == 1": {
+      "result": true,
+      "time": 0.030546188354492188,
+      "error": null
+    },
+    "assert minSubArraySum([3, -6]) == -6": {
+      "result": true,
+      "time": 0.027091264724731445,
+      "error": null
+    },
+    "assert minSubArraySum([3, 7, 9, 6, 5, 7]) == 3": {
+      "result": true,
+      "time": 0.027216434478759766,
+      "error": null
+    },
+    "assert minSubArraySum([-5, 3, -2, 8, -5]) == -5": {
+      "result": true,
+      "time": 0.028772592544555664,
+      "error": null
+    },
+    "assert minSubArraySum([12]) == 12": {
+      "result": true,
+      "time": 0.028628826141357422,
+      "error": null
+    },
+    "assert minSubArraySum([5, 3, 5, 2, 2, 4]) == 2": {
+      "result": true,
+      "time": 0.02591109275817871,
+      "error": null
+    },
+    "assert minSubArraySum([11, 13, 17, 9, 5, 2]) == 2": {
+      "result": true,
+      "time": 0.026654481887817383,
+      "error": null
+    },
+    "assert minSubArraySum([14, 15, 17, 11, 8, 1]) == 1": {
+      "result": true,
+      "time": 0.027670860290527344,
+      "error": null
+    },
+    "assert minSubArraySum([4, -7, -1, 6, -6]) == -8": {
+      "result": true,
+      "time": 0.026251792907714844,
+      "error": null
+    },
+    "assert minSubArraySum([-10000000000000000]) == -10000000000000000": {
+      "result": true,
+      "time": 0.028393030166625977,
+      "error": null
+    },
+    "assert minSubArraySum([-10000000000000004]) == -10000000000000004": {
+      "result": true,
+      "time": 0.03246879577636719,
+      "error": null
+    },
+    "assert minSubArraySum([101, 0, 2, 1, 14, -3]) == -3": {
+      "result": true,
+      "time": 0.028045654296875,
+      "error": null
+    },
+    "assert minSubArraySum([-9999999999999999]) == -9999999999999999": {
+      "result": true,
+      "time": 0.03005814552307129,
+      "error": null
+    },
+    "assert minSubArraySum([5, 8, 12, 12, 4, 8]) == 4": {
+      "result": true,
+      "time": 0.028303146362304688,
+      "error": null
+    },
+    "assert minSubArraySum([103, -38, 35, 4, 5, -4]) == -38": {
+      "result": true,
+      "time": 0.027902603149414062,
+      "error": null
+    },
+    "assert minSubArraySum([4, 15, 24, 999923]) == 4": {
+      "result": true,
+      "time": 0.029266357421875,
+      "error": null
+    },
+    "assert minSubArraySum([4, -3, -7, 12, -2]) == -10": {
+      "result": true,
+      "time": 0.03188490867614746,
+      "error": null
+    },
+    "assert minSubArraySum([-2, -6, -7, 3, -8]) == -20": {
+      "result": true,
+      "time": 0.02711343765258789,
+      "error": null
+    },
+    "assert minSubArraySum([101, 1, -7, -5, 9, -1]) == -12": {
+      "result": true,
+      "time": 0.02913188934326172,
+      "error": null
+    },
+    "assert minSubArraySum([8]) == 8": {
+      "result": true,
+      "time": 0.02639484405517578,
+      "error": null
+    },
+    "assert minSubArraySum([100, 1, -2, 0, 8, -9]) == -9": {
+      "result": true,
+      "time": 0.028697967529296875,
+      "error": null
+    },
+    "assert minSubArraySum([100, -1, -2, -3, 10, -5]) == -6": {
+      "result": true,
+      "time": 0.028110742568969727,
+      "error": null
+    },
+    "assert minSubArraySum([6, 2]) == 2": {
+      "result": true,
+      "time": 0.029072046279907227,
+      "error": null
+    },
+    "assert minSubArraySum([2, 10, 21, 1000935]) == 2": {
+      "result": true,
+      "time": 0.027338504791259766,
+      "error": null
+    },
+    "assert minSubArraySum([-1, -2, -3, 10, -5]) == -6": {
+      "result": true,
+      "time": 0.027864933013916016,
+      "error": null
+    },
+    "assert minSubArraySum([9, 12, 12, 9, 5, 1]) == 1": {
+      "result": true,
+      "time": 0.027522563934326172,
+      "error": null
+    },
+    "assert minSubArraySum([95, -37, 29, 0, 1, -5]) == -37": {
+      "result": true,
+      "time": 0.025707483291625977,
+      "error": null
+    },
+    "assert minSubArraySum([3, 1, -3]) == -3": {
+      "result": true,
+      "time": 0.02643728256225586,
+      "error": null
+    },
+    "assert minSubArraySum([-9]) == -9": {
+      "result": true,
+      "time": 0.025847673416137695,
+      "error": null
+    },
+    "assert minSubArraySum([-2, -4, 1]) == -6": {
+      "result": true,
+      "time": 0.025783777236938477,
+      "error": null
+    },
+    "assert minSubArraySum([12, 11, 17, 12, 7, 2]) == 2": {
+      "result": true,
+      "time": 0.02522110939025879,
+      "error": null
+    },
+    "assert minSubArraySum([3]) == 3": {
+      "result": true,
+      "time": 0.029801130294799805,
+      "error": null
+    },
+    "assert minSubArraySum([5, -4]) == -4": {
+      "result": true,
+      "time": 0.02907419204711914,
+      "error": null
+    },
+    "assert minSubArraySum([97, -35, 33, -1, 3, -4]) == -35": {
+      "result": true,
+      "time": 0.027744293212890625,
+      "error": null
+    },
+    "assert minSubArraySum([96, -28, 37, 2, 5, 0]) == -28": {
+      "result": true,
+      "time": 0.02736663818359375,
+      "error": null
+    },
+    "assert minSubArraySum([-6, 3, -4]) == -7": {
+      "result": true,
+      "time": 0.026032447814941406,
+      "error": null
+    },
+    "assert minSubArraySum([-6]) == -6": {
+      "result": true,
+      "time": 0.030368804931640625,
+      "error": null
+    },
+    "assert minSubArraySum([-12]) == -12": {
+      "result": true,
+      "time": 0.03068065643310547,
+      "error": null
+    },
+    "assert minSubArraySum([-3, 0, 2]) == -3": {
+      "result": true,
+      "time": 0.029753923416137695,
+      "error": null
+    },
+    "assert minSubArraySum([9]) == 9": {
+      "result": true,
+      "time": 0.028170108795166016,
+      "error": null
+    },
+    "assert minSubArraySum([-5, -4, -3, 15, -6]) == -12": {
+      "result": true,
+      "time": 0.02558755874633789,
+      "error": null
+    },
+    "assert minSubArraySum([-9999999999999998]) == -9999999999999998": {
+      "result": true,
+      "time": 0.025293827056884766,
+      "error": null
+    },
+    "assert minSubArraySum([-10]) == -10": {
+      "result": true,
+      "time": 0.023984193801879883,
+      "error": null
+    },
+    "assert minSubArraySum([1, 0, -2]) == -2": {
+      "result": true,
+      "time": 0.024724721908569336,
+      "error": null
+    },
+    "assert minSubArraySum([7, 13, 10, 6, 3, 6]) == 3": {
+      "result": true,
+      "time": 0.028461933135986328,
+      "error": null
+    },
+    "assert minSubArraySum([-1, -2, -3]) == -6": {
+      "result": true,
+      "time": 0.031313419342041016,
+      "error": null
+    },
+    "assert minSubArraySum([4, 8, 3, 2, 5, 6]) == 2": {
+      "result": true,
+      "time": 0.027598857879638672,
+      "error": null
+    },
+    "assert minSubArraySum([4, -1]) == -1": {
+      "result": true,
+      "time": 0.026799678802490234,
+      "error": null
+    },
+    "assert minSubArraySum([15, 11, 16, 12, 3, 2]) == 2": {
+      "result": true,
+      "time": 0.027567148208618164,
+      "error": null
+    },
+    "assert minSubArraySum([1, -7, 0, 9, -1]) == -7": {
+      "result": true,
+      "time": 0.029755353927612305,
+      "error": null
+    },
+    "assert minSubArraySum([1, 1, -7, 11, -8]) == -8": {
+      "result": true,
+      "time": 0.028657913208007812,
+      "error": null
+    },
+    "assert minSubArraySum([100, -30, 30, 2, 4, -7]) == -30": {
+      "result": true,
+      "time": 0.028568267822265625,
+      "error": null
+    },
+    "assert minSubArraySum([97, -6, 0, 1, 5, -6]) == -6": {
+      "result": true,
+      "time": 0.02909994125366211,
+      "error": null
+    },
+    "assert minSubArraySum([8, 8, 9, 5, 6, 5]) == 5": {
+      "result": true,
+      "time": 0.029170989990234375,
+      "error": null
+    },
+    "assert minSubArraySum([4, 0, -4, 5, -8]) == -8": {
+      "result": true,
+      "time": 0.027336835861206055,
+      "error": null
+    },
+    "assert minSubArraySum([100, 0, -1, -7, 10, -9]) == -9": {
+      "result": true,
+      "time": 0.02729940414428711,
+      "error": null
+    },
+    "assert minSubArraySum([-1, -2, -3, 2, -10]) == -14": {
+      "result": true,
+      "time": 0.028318405151367188,
+      "error": null
+    },
+    "assert minSubArraySum([0, 10, 20, 1000000]) == 0": {
+      "result": true,
+      "time": 0.026617765426635742,
+      "error": null
+    },
+    "assert minSubArraySum([96, 1, 1, -7, 14, -5]) == -7": {
+      "result": true,
+      "time": 0.026271581649780273,
+      "error": null
+    },
+    "assert minSubArraySum([-1, 3, 1, 13, -6]) == -6": {
+      "result": true,
+      "time": 0.0251615047454834,
+      "error": null
+    },
+    "assert minSubArraySum([2]) == 2": {
+      "result": true,
+      "time": 0.026463985443115234,
+      "error": null
+    },
+    "assert minSubArraySum([1, 9, 16, 999736]) == 1": {
+      "result": true,
+      "time": 0.026968717575073242,
+      "error": null
+    },
+    "assert minSubArraySum([5, 1, 9, 1, 1, 5]) == 1": {
+      "result": true,
+      "time": 0.024321794509887695,
+      "error": null
+    },
+    "assert minSubArraySum([-15]) == -15": {
+      "result": true,
+      "time": 0.027131319046020508,
+      "error": null
+    },
+    "assert minSubArraySum([0, -7, -3, 1, -12]) == -21": {
+      "result": true,
+      "time": 0.025425195693969727,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

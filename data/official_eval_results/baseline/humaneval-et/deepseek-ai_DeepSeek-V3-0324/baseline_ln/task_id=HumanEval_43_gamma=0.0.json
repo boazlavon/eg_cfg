@@ -1,0 +1,639 @@
+{
+  "code": "def pairs_sum_to_zero(l):\n    seen = set()\n    for num in l:\n        if -num in seen and num != 0:\n            return True\n        seen.add(num)\n    return False",
+  "results": {
+    "assert pairs_sum_to_zero([1, 11, -3, 6, 7, 30]) == False": {
+      "result": true,
+      "time": 0.02974224090576172,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([3, 7, -4, 1, 1, 11]) == False": {
+      "result": true,
+      "time": 0.027387142181396484,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-8, 11, 0, 3, 6, 26]) == False": {
+      "result": true,
+      "time": 0.028871774673461914,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 14, 0, 5, 2, 34]) == False": {
+      "result": true,
+      "time": 0.02715778350830078,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 2, 3, 7]) == False": {
+      "result": true,
+      "time": 0.028758525848388672,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([4, 2, 9, 3]) == False": {
+      "result": true,
+      "time": 0.0332181453704834,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-3, 9, -1, 4, 2, 31]) == False": {
+      "result": true,
+      "time": 0.02907276153564453,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([3]) == False": {
+      "result": true,
+      "time": 0.03097224235534668,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-1, 14, 1, 8, 6, 36]) == True": {
+      "result": true,
+      "time": 0.0278472900390625,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([3, 9, 0, 8, 5, 9]) == False": {
+      "result": true,
+      "time": 0.02768540382385254,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 4, -6, 7, 1, 32]) == False": {
+      "result": true,
+      "time": 0.027636289596557617,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 8, -2, 3]) == True": {
+      "result": true,
+      "time": 0.027768611907958984,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-2, 10, 0, 6, 5, 30]) == False": {
+      "result": true,
+      "time": 0.028696537017822266,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([3, 1, -2, 2]) == True": {
+      "result": true,
+      "time": 0.02698516845703125,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([3, 2, -1, 2]) == False": {
+      "result": true,
+      "time": 0.026905059814453125,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-1, 4, -2, 5, 5, 27]) == False": {
+      "result": true,
+      "time": 0.0280301570892334,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1]) == False": {
+      "result": true,
+      "time": 0.02646923065185547,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([6, 5, -3, 3]) == True": {
+      "result": true,
+      "time": 0.025742292404174805,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([4, 3, -4, 5]) == True": {
+      "result": true,
+      "time": 0.02734518051147461,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-2, 4, -5, 4, 1, 25]) == False": {
+      "result": true,
+      "time": 0.028867721557617188,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 6, -4, 5]) == False": {
+      "result": true,
+      "time": 0.024812698364257812,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-7, 5, 2, 4, 1, 26]) == False": {
+      "result": true,
+      "time": 0.027567386627197266,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-8, 14, 0, 1, 7, 30]) == False": {
+      "result": true,
+      "time": 0.028765439987182617,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 8, -5, 3, 7, 35]) == False": {
+      "result": true,
+      "time": 0.03398251533508301,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([6, 9, -9, 2, 7, 11]) == True": {
+      "result": true,
+      "time": 0.02871227264404297,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-8, 7, -1, 2, 1, 28]) == True": {
+      "result": true,
+      "time": 0.028063297271728516,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-3, 9, -1, 3, 2, 31]) == True": {
+      "result": true,
+      "time": 0.030566692352294922,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([6, 6, -7, 6]) == False": {
+      "result": true,
+      "time": 0.027841567993164062,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-4, 9, 2, 3, 4, 30]) == True": {
+      "result": true,
+      "time": 0.026436805725097656,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 6, 1, 2]) == False": {
+      "result": true,
+      "time": 0.02527308464050293,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([5, 1, 3, 5]) == False": {
+      "result": true,
+      "time": 0.02681732177734375,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([4, 5, 8, 3]) == False": {
+      "result": true,
+      "time": 0.02745532989501953,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([6, 7, 2, 5]) == False": {
+      "result": true,
+      "time": 0.03811454772949219,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 8, 10, 3]) == False": {
+      "result": true,
+      "time": 0.028794288635253906,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 13, -5, 7, 7, 27]) == False": {
+      "result": true,
+      "time": 0.0278775691986084,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([4, 5, -10, 2, 10, 9]) == True": {
+      "result": true,
+      "time": 0.030245304107666016,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 3, 1, 8]) == False": {
+      "result": true,
+      "time": 0.027863740921020508,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 7, 4, 6]) == False": {
+      "result": true,
+      "time": 0.028669357299804688,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 9, -5, 4, 6, 30]) == False": {
+      "result": true,
+      "time": 0.02724313735961914,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([4, 6, 2, 4]) == False": {
+      "result": true,
+      "time": 0.027035951614379883,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([5, 2, 1, 11]) == False": {
+      "result": true,
+      "time": 0.027210235595703125,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([5, 2, 7, 3]) == False": {
+      "result": true,
+      "time": 0.02896595001220703,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([5, 5, 2, 2]) == False": {
+      "result": true,
+      "time": 0.027843236923217773,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-8, 14, -2, 8, 2, 35]) == True": {
+      "result": true,
+      "time": 0.026857614517211914,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 3, 5, 0]) == False": {
+      "result": true,
+      "time": 0.028061866760253906,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-1, 8, 4, 3, 7, 29]) == False": {
+      "result": true,
+      "time": 0.027114152908325195,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 12, 1, 9, 6, 33]) == False": {
+      "result": true,
+      "time": 0.028075695037841797,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-4, 11, 1, 6, 6, 28]) == False": {
+      "result": true,
+      "time": 0.028734207153320312,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([0, 11, -3, 8, 7, 26]) == False": {
+      "result": true,
+      "time": 0.031391143798828125,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-8, 10, -4, 8, 6, 26]) == True": {
+      "result": true,
+      "time": 0.029041290283203125,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2]) == False": {
+      "result": true,
+      "time": 0.023998737335205078,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 3, 7, 1]) == False": {
+      "result": true,
+      "time": 0.03289389610290527,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([6, 1, -4, 6]) == False": {
+      "result": true,
+      "time": 0.029851198196411133,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-2, 12, -4, 7, 1, 36]) == False": {
+      "result": true,
+      "time": 0.02938389778137207,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 12, 1, 6, 7, 25]) == False": {
+      "result": true,
+      "time": 0.025748729705810547,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-4, 11, -3, 6, 2, 27]) == False": {
+      "result": true,
+      "time": 0.031026601791381836,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([0, 13, -2, 7, 3, 31]) == False": {
+      "result": true,
+      "time": 0.02509927749633789,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 4, -10, 5, 10, 9]) == True": {
+      "result": true,
+      "time": 0.025456905364990234,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([4, 1, 3, 7]) == False": {
+      "result": true,
+      "time": 0.0301973819732666,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([6, 8, 2, 5]) == False": {
+      "result": true,
+      "time": 0.027428150177001953,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-7, 14, 2, 4, 6, 30]) == False": {
+      "result": true,
+      "time": 0.030264616012573242,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 5, 1, 12]) == False": {
+      "result": true,
+      "time": 0.027589082717895508,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-3, 9, -1, 3, 2, 30]) == True": {
+      "result": true,
+      "time": 0.02701544761657715,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-1, 5, -6, 8, 1, 33]) == True": {
+      "result": true,
+      "time": 0.027547597885131836,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 3, 7, 4]) == False": {
+      "result": true,
+      "time": 0.028961896896362305,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([0, 14, -6, 5, 1, 35]) == False": {
+      "result": true,
+      "time": 0.03104877471923828,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([5, 4, -1, 5, 10, 6]) == False": {
+      "result": true,
+      "time": 0.027774810791015625,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([0, 13, -2, 4, 4, 28]) == False": {
+      "result": true,
+      "time": 0.028877735137939453,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 2, 6, 4]) == False": {
+      "result": true,
+      "time": 0.029032230377197266,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([0, 4, -1, 5, 3, 33]) == False": {
+      "result": true,
+      "time": 0.02920055389404297,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([3, 3, 1, 4]) == False": {
+      "result": true,
+      "time": 0.02915024757385254,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([7, 5, -1, 1, 8, 10]) == True": {
+      "result": true,
+      "time": 0.027840375900268555,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 3, 4, 3]) == False": {
+      "result": true,
+      "time": 0.025937557220458984,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([5, 7, 3, 4]) == False": {
+      "result": true,
+      "time": 0.026050806045532227,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-7, 12, -3, 2, 6, 29]) == False": {
+      "result": true,
+      "time": 0.028382539749145508,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-4, 9, -3, 6, 7, 31]) == False": {
+      "result": true,
+      "time": 0.03193807601928711,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([4, 7, -9, 5, 4, 6]) == False": {
+      "result": true,
+      "time": 0.02991485595703125,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-4, 6, 0, 6, 3, 26]) == False": {
+      "result": true,
+      "time": 0.03020310401916504,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([4]) == False": {
+      "result": true,
+      "time": 0.028527021408081055,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 7, 8, 5]) == False": {
+      "result": true,
+      "time": 0.028064489364624023,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 4, -5, 3, 5, 7]) == True": {
+      "result": true,
+      "time": 0.02929210662841797,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 4, -1, 8, 8, 12]) == True": {
+      "result": true,
+      "time": 0.026946306228637695,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-3, 8, 1, 1, 6, 31]) == False": {
+      "result": true,
+      "time": 0.029209375381469727,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-6, 14, 1, 8, 2, 28]) == False": {
+      "result": true,
+      "time": 0.029895305633544922,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-3, 6, -5, 7, 7, 30]) == False": {
+      "result": true,
+      "time": 0.03176093101501465,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([3, 4, -7, 1, 2, 3]) == False": {
+      "result": true,
+      "time": 0.027129650115966797,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-8, 11, -6, 5, 7, 36]) == False": {
+      "result": true,
+      "time": 0.028482913970947266,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-7, 14, 0, 5, 1, 28]) == False": {
+      "result": true,
+      "time": 0.0315248966217041,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-5, 9, -1, 7, 4, 34]) == False": {
+      "result": true,
+      "time": 0.030586719512939453,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 3, 3, 5]) == False": {
+      "result": true,
+      "time": 0.026825428009033203,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-5, 10, 2, 9, 3, 33]) == False": {
+      "result": true,
+      "time": 0.027462482452392578,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 4, 1, 2]) == False": {
+      "result": true,
+      "time": 0.02601790428161621,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-3, 9, -1, 4, 2, 30]) == False": {
+      "result": true,
+      "time": 0.02711176872253418,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 3, -2, 1]) == False": {
+      "result": true,
+      "time": 0.029253244400024414,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 10, -2, 2, 4, 33]) == True": {
+      "result": true,
+      "time": 0.030009984970092773,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([3, 9, -8, 6, 2, 5]) == False": {
+      "result": true,
+      "time": 0.028414249420166016,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-6, 7, -4, 4, 2, 32]) == True": {
+      "result": true,
+      "time": 0.027072429656982422,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([3, 4, 10, 1]) == False": {
+      "result": true,
+      "time": 0.028917789459228516,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([7, 8, -10, 7, 2, 4]) == False": {
+      "result": true,
+      "time": 0.02704453468322754,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-6, 8, 0, 4, 5, 27]) == False": {
+      "result": true,
+      "time": 0.02804088592529297,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-6, 14, -4, 5, 6, 32]) == True": {
+      "result": true,
+      "time": 0.02661275863647461,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-5, 12, 1, 8, 6, 31]) == False": {
+      "result": true,
+      "time": 0.029462575912475586,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-3, 12, -6, 6, 7, 29]) == True": {
+      "result": true,
+      "time": 0.031466007232666016,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 5, 1, 3]) == False": {
+      "result": true,
+      "time": 0.029858112335205078,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([5, 8, -4, 5]) == False": {
+      "result": true,
+      "time": 0.02651381492614746,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([3, 2, 1, 6]) == False": {
+      "result": true,
+      "time": 0.02515101432800293,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-5, 4, 3, 6, 2, 27]) == False": {
+      "result": true,
+      "time": 0.027514934539794922,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-1, 11, -4, 3, 5, 28]) == False": {
+      "result": true,
+      "time": 0.027040481567382812,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-7, 9, 2, 1, 6, 34]) == False": {
+      "result": true,
+      "time": 0.02636885643005371,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-1, 13, -4, 6, 3, 28]) == False": {
+      "result": true,
+      "time": 0.0262148380279541,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([6, 1, 0, 3]) == False": {
+      "result": true,
+      "time": 0.03019237518310547,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-5, 5, -2, 3, 1, 32]) == True": {
+      "result": true,
+      "time": 0.027353286743164062,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 5, -1, 8, 8, 4]) == True": {
+      "result": true,
+      "time": 0.028407573699951172,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([1, 2, 2, 2]) == False": {
+      "result": true,
+      "time": 0.02746105194091797,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([6]) == False": {
+      "result": true,
+      "time": 0.0279848575592041,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 8, 1, 4]) == False": {
+      "result": true,
+      "time": 0.027245759963989258,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 6, 2, 5]) == False": {
+      "result": true,
+      "time": 0.029327869415283203,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([2, 14, 3, 6, 2, 29]) == False": {
+      "result": true,
+      "time": 0.0268402099609375,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-5, 13, -2, 8, 7, 35]) == False": {
+      "result": true,
+      "time": 0.03105330467224121,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([6, 1, 3, 2]) == False": {
+      "result": true,
+      "time": 0.03250861167907715,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([5]) == False": {
+      "result": true,
+      "time": 0.02757406234741211,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-4, 8, -1, 7, 6, 26]) == False": {
+      "result": true,
+      "time": 0.028040409088134766,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-4, 12, 0, 1, 7, 28]) == False": {
+      "result": true,
+      "time": 0.026148080825805664,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([5, 3, 6, 7]) == False": {
+      "result": true,
+      "time": 0.028987884521484375,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([4, 6, -8, 1, 2, 8]) == True": {
+      "result": true,
+      "time": 0.028818368911743164,
+      "error": null
+    },
+    "assert pairs_sum_to_zero([-4, 8, -3, 9, 5, 29]) == False": {
+      "result": true,
+      "time": 0.02442622184753418,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

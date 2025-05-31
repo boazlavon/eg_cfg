@@ -1,0 +1,614 @@
+{
+  "code": "def sort_numbers(numbers: str) -> str:\n    word_to_num = {\n        'zero': 0,\n        'one': 1,\n        'two': 2,\n        'three': 3,\n        'four': 4,\n        'five': 5,\n        'six': 6,\n        'seven': 7,\n        'eight': 8,\n        'nine': 9\n    }\n    num_list = numbers.split()\n    sorted_list = sorted(num_list, key=lambda x: word_to_num[x])\n    return ' '.join(sorted_list)",
+  "results": {
+    "assert sort_numbers(\"one six one six six seven\") == 'one one six six six seven'": {
+      "result": true,
+      "time": 0.02903151512145996,
+      "error": null
+    },
+    "assert sort_numbers(\"one nine one six six\") == 'one one six six nine'": {
+      "result": true,
+      "time": 0.02757549285888672,
+      "error": null
+    },
+    "assert sort_numbers(\"one\") == 'one'": {
+      "result": true,
+      "time": 0.029958724975585938,
+      "error": null
+    },
+    "assert sort_numbers(\"five six eight six two three nine eight nine\") == 'two three five six six eight eight nine nine'": {
+      "result": true,
+      "time": 0.03157448768615723,
+      "error": null
+    },
+    "assert sort_numbers(\"six zero three eight five one two two seven\") == 'zero one two two three five six seven eight'": {
+      "result": true,
+      "time": 0.03272724151611328,
+      "error": null
+    },
+    "assert sort_numbers(\"eight five one eight five one\") == 'one one five five eight eight'": {
+      "result": true,
+      "time": 0.03135108947753906,
+      "error": null
+    },
+    "assert sort_numbers(\"seven one one four seven seven\") == 'one one four seven seven seven'": {
+      "result": true,
+      "time": 0.03477191925048828,
+      "error": null
+    },
+    "assert sort_numbers(\"two three four five eight nine\") == 'two three four five eight nine'": {
+      "result": true,
+      "time": 0.033208370208740234,
+      "error": null
+    },
+    "assert sort_numbers(\"four four three six\") == 'three four four six'": {
+      "result": true,
+      "time": 0.030954837799072266,
+      "error": null
+    },
+    "assert sort_numbers(\"three six four three zero\") == 'zero three three four six'": {
+      "result": true,
+      "time": 0.029104948043823242,
+      "error": null
+    },
+    "assert sort_numbers(\"nine one six four\") == 'one four six nine'": {
+      "result": true,
+      "time": 0.03764510154724121,
+      "error": null
+    },
+    "assert sort_numbers(\"seven one zero nine eight\") == 'zero one seven eight nine'": {
+      "result": true,
+      "time": 0.02943253517150879,
+      "error": null
+    },
+    "assert sort_numbers(\"three eight one one zero\") == 'zero one one three eight'": {
+      "result": true,
+      "time": 0.03229570388793945,
+      "error": null
+    },
+    "assert sort_numbers(\"five four five two six two zero\") == 'zero two two four five five six'": {
+      "result": true,
+      "time": 0.03220844268798828,
+      "error": null
+    },
+    "assert sort_numbers(\"eight zero zero six\") == 'zero zero six eight'": {
+      "result": true,
+      "time": 0.03483748435974121,
+      "error": null
+    },
+    "assert sort_numbers(\"two three six seven nine four zero\") == 'zero two three four six seven nine'": {
+      "result": true,
+      "time": 0.027277469635009766,
+      "error": null
+    },
+    "assert sort_numbers(\"five zero five three four nine\") == 'zero three four five five nine'": {
+      "result": true,
+      "time": 0.034857988357543945,
+      "error": null
+    },
+    "assert sort_numbers(\"six eight eight two six zero\") == 'zero two six six eight eight'": {
+      "result": true,
+      "time": 0.02955770492553711,
+      "error": null
+    },
+    "assert sort_numbers(\"five eight three nine\") == 'three five eight nine'": {
+      "result": true,
+      "time": 0.03594827651977539,
+      "error": null
+    },
+    "assert sort_numbers(\"one two\") == 'one two'": {
+      "result": true,
+      "time": 0.031656503677368164,
+      "error": null
+    },
+    "assert sort_numbers(\"two eight eight zero seven seven one four\") == 'zero one two four seven seven eight eight'": {
+      "result": true,
+      "time": 0.03155064582824707,
+      "error": null
+    },
+    "assert sort_numbers(\"five nine two four eight\") == 'two four five eight nine'": {
+      "result": true,
+      "time": 0.028624773025512695,
+      "error": null
+    },
+    "assert sort_numbers(\"four five five one one\") == 'one one four five five'": {
+      "result": true,
+      "time": 0.030977249145507812,
+      "error": null
+    },
+    "assert sort_numbers(\"six seven one three two eight\") == 'one two three six seven eight'": {
+      "result": true,
+      "time": 0.02801346778869629,
+      "error": null
+    },
+    "assert sort_numbers(\"four eight four nine three four three five eight\") == 'three three four four four five eight eight nine'": {
+      "result": true,
+      "time": 0.030642271041870117,
+      "error": null
+    },
+    "assert sort_numbers(\"seven two six nine two zero zero\") == 'zero zero two two six seven nine'": {
+      "result": true,
+      "time": 0.0279695987701416,
+      "error": null
+    },
+    "assert sort_numbers(\"seven two one four one nine five five\") == 'one one two four five five seven nine'": {
+      "result": true,
+      "time": 0.032837629318237305,
+      "error": null
+    },
+    "assert sort_numbers(\"four zero two five\") == 'zero two four five'": {
+      "result": true,
+      "time": 0.03222513198852539,
+      "error": null
+    },
+    "assert sort_numbers(\"eight\") == 'eight'": {
+      "result": true,
+      "time": 0.030748844146728516,
+      "error": null
+    },
+    "assert sort_numbers(\"five three nine four one\") == 'one three four five nine'": {
+      "result": true,
+      "time": 0.03300762176513672,
+      "error": null
+    },
+    "assert sort_numbers(\"eight eight zero two two nine four zero\") == 'zero zero two two four eight eight nine'": {
+      "result": true,
+      "time": 0.03467249870300293,
+      "error": null
+    },
+    "assert sort_numbers(\"three five three nine zero\") == 'zero three three five nine'": {
+      "result": true,
+      "time": 0.03246331214904785,
+      "error": null
+    },
+    "assert sort_numbers(\"five zero one zero four eight\") == 'zero zero one four five eight'": {
+      "result": true,
+      "time": 0.03196120262145996,
+      "error": null
+    },
+    "assert sort_numbers(\"six three\") == 'three six'": {
+      "result": true,
+      "time": 0.03454160690307617,
+      "error": null
+    },
+    "assert sort_numbers(\"seven zero\") == 'zero seven'": {
+      "result": true,
+      "time": 0.029423952102661133,
+      "error": null
+    },
+    "assert sort_numbers(\"seven zero three four four\") == 'zero three four four seven'": {
+      "result": true,
+      "time": 0.031456708908081055,
+      "error": null
+    },
+    "assert sort_numbers(\"six one seven two nine six two zero seven\") == 'zero one two two six six seven seven nine'": {
+      "result": true,
+      "time": 0.03369545936584473,
+      "error": null
+    },
+    "assert sort_numbers(\"four three zero\") == 'zero three four'": {
+      "result": true,
+      "time": 0.029272079467773438,
+      "error": null
+    },
+    "assert sort_numbers(\"five six nine nine nine eight\") == 'five six eight nine nine nine'": {
+      "result": true,
+      "time": 0.03165769577026367,
+      "error": null
+    },
+    "assert sort_numbers(\"seven\") == 'seven'": {
+      "result": true,
+      "time": 0.03593301773071289,
+      "error": null
+    },
+    "assert sort_numbers(\"eight one five five six one\") == 'one one five five six eight'": {
+      "result": true,
+      "time": 0.031571388244628906,
+      "error": null
+    },
+    "assert sort_numbers(\"three two four two eight five\") == 'two two three four five eight'": {
+      "result": true,
+      "time": 0.02915048599243164,
+      "error": null
+    },
+    "assert sort_numbers(\"two one two nine eight seven eight\") == 'one two two seven eight eight nine'": {
+      "result": true,
+      "time": 0.03062891960144043,
+      "error": null
+    },
+    "assert sort_numbers(\"five nine eight zero zero four five\") == 'zero zero four five five eight nine'": {
+      "result": true,
+      "time": 0.031323909759521484,
+      "error": null
+    },
+    "assert sort_numbers(\"six nine three\") == 'three six nine'": {
+      "result": true,
+      "time": 0.03148770332336426,
+      "error": null
+    },
+    "assert sort_numbers(\"seven six four five six eight four\") == 'four four five six six seven eight'": {
+      "result": true,
+      "time": 0.03272390365600586,
+      "error": null
+    },
+    "assert sort_numbers(\"two seven zero nine three one eight\") == 'zero one two three seven eight nine'": {
+      "result": true,
+      "time": 0.028929471969604492,
+      "error": null
+    },
+    "assert sort_numbers(\"four one nine three\") == 'one three four nine'": {
+      "result": true,
+      "time": 0.03409123420715332,
+      "error": null
+    },
+    "assert sort_numbers(\"zero two two eight three nine four four four\") == 'zero two two three four four four eight nine'": {
+      "result": true,
+      "time": 0.029102563858032227,
+      "error": null
+    },
+    "assert sort_numbers('three five nine') == 'three five nine'": {
+      "result": true,
+      "time": 0.026889562606811523,
+      "error": null
+    },
+    "assert sort_numbers(\"zero three\") == 'zero three'": {
+      "result": true,
+      "time": 0.032236337661743164,
+      "error": null
+    },
+    "assert sort_numbers(\"three zero one nine nine three\") == 'zero one three three nine nine'": {
+      "result": true,
+      "time": 0.03322458267211914,
+      "error": null
+    },
+    "assert sort_numbers(\"two one eight zero zero nine\") == 'zero zero one two eight nine'": {
+      "result": true,
+      "time": 0.03094029426574707,
+      "error": null
+    },
+    "assert sort_numbers(\"nine three three four nine five five\") == 'three three four five five nine nine'": {
+      "result": true,
+      "time": 0.03154397010803223,
+      "error": null
+    },
+    "assert sort_numbers(\"five five three nine three zero zero zero eight\") == 'zero zero zero three three five five eight nine'": {
+      "result": true,
+      "time": 0.02987217903137207,
+      "error": null
+    },
+    "assert sort_numbers(\"four one seven\") == 'one four seven'": {
+      "result": true,
+      "time": 0.03042435646057129,
+      "error": null
+    },
+    "assert sort_numbers(\"seven six\") == 'six seven'": {
+      "result": true,
+      "time": 0.03322267532348633,
+      "error": null
+    },
+    "assert sort_numbers(\"four two seven\") == 'two four seven'": {
+      "result": true,
+      "time": 0.0299985408782959,
+      "error": null
+    },
+    "assert sort_numbers(\"two five five one nine one two zero six\") == 'zero one one two two five five six nine'": {
+      "result": true,
+      "time": 0.03128504753112793,
+      "error": null
+    },
+    "assert sort_numbers(\"eight three nine three one seven eight nine two\") == 'one two three three seven eight eight nine nine'": {
+      "result": true,
+      "time": 0.029432058334350586,
+      "error": null
+    },
+    "assert sort_numbers(\"nine one three zero nine\") == 'zero one three nine nine'": {
+      "result": true,
+      "time": 0.029567956924438477,
+      "error": null
+    },
+    "assert sort_numbers(\"nine three four five\") == 'three four five nine'": {
+      "result": true,
+      "time": 0.02800130844116211,
+      "error": null
+    },
+    "assert sort_numbers(\"one nine seven eight two nine three two\") == 'one two two three seven eight nine nine'": {
+      "result": true,
+      "time": 0.02957916259765625,
+      "error": null
+    },
+    "assert sort_numbers(\"eight three zero one five one nine\") == 'zero one one three five eight nine'": {
+      "result": true,
+      "time": 0.02613997459411621,
+      "error": null
+    },
+    "assert sort_numbers(\"one five six eight five seven five six four\") == 'one four five five five six six seven eight'": {
+      "result": true,
+      "time": 0.027754783630371094,
+      "error": null
+    },
+    "assert sort_numbers(\"two five four zero\") == 'zero two four five'": {
+      "result": true,
+      "time": 0.028457164764404297,
+      "error": null
+    },
+    "assert sort_numbers(\"six four five one four six eight zero five\") == 'zero one four four five five six six eight'": {
+      "result": true,
+      "time": 0.029027223587036133,
+      "error": null
+    },
+    "assert sort_numbers(\"zero one seven eight three\") == 'zero one three seven eight'": {
+      "result": true,
+      "time": 0.031171798706054688,
+      "error": null
+    },
+    "assert sort_numbers(\"three seven two\") == 'two three seven'": {
+      "result": true,
+      "time": 0.030424833297729492,
+      "error": null
+    },
+    "assert sort_numbers(\"zero three four five eight seven two eight\") == 'zero two three four five seven eight eight'": {
+      "result": true,
+      "time": 0.03082418441772461,
+      "error": null
+    },
+    "assert sort_numbers(\"zero five six five eight zero three three six\") == 'zero zero three three five five six six eight'": {
+      "result": true,
+      "time": 0.029603958129882812,
+      "error": null
+    },
+    "assert sort_numbers(\"nine six two three four one zero two seven\") == 'zero one two two three four six seven nine'": {
+      "result": true,
+      "time": 0.02539205551147461,
+      "error": null
+    },
+    "assert sort_numbers(\"four four six four one\") == 'one four four four six'": {
+      "result": true,
+      "time": 0.02705669403076172,
+      "error": null
+    },
+    "assert sort_numbers(\"eight six three\") == 'three six eight'": {
+      "result": true,
+      "time": 0.030664682388305664,
+      "error": null
+    },
+    "assert sort_numbers(\"five three five\") == 'three five five'": {
+      "result": true,
+      "time": 0.03233623504638672,
+      "error": null
+    },
+    "assert sort_numbers(\"seven one five five zero six four four zero\") == 'zero zero one four four five five six seven'": {
+      "result": true,
+      "time": 0.030369997024536133,
+      "error": null
+    },
+    "assert sort_numbers(\"three two three four one eight five nine one\") == 'one one two three three four five eight nine'": {
+      "result": true,
+      "time": 0.031087398529052734,
+      "error": null
+    },
+    "assert sort_numbers(\"eight eight seven seven two three nine two seven\") == 'two two three seven seven seven eight eight nine'": {
+      "result": true,
+      "time": 0.03446173667907715,
+      "error": null
+    },
+    "assert sort_numbers(\"four\") == 'four'": {
+      "result": true,
+      "time": 0.029262065887451172,
+      "error": null
+    },
+    "assert sort_numbers(\"nine two three two eight six four six\") == 'two two three four six six eight nine'": {
+      "result": true,
+      "time": 0.027357816696166992,
+      "error": null
+    },
+    "assert sort_numbers(\"six zero four one\") == 'zero one four six'": {
+      "result": true,
+      "time": 0.027890682220458984,
+      "error": null
+    },
+    "assert sort_numbers(\"two zero four six zero five\") == 'zero zero two four five six'": {
+      "result": true,
+      "time": 0.030163288116455078,
+      "error": null
+    },
+    "assert sort_numbers(\"three six two five three six\") == 'two three three five six six'": {
+      "result": true,
+      "time": 0.03428840637207031,
+      "error": null
+    },
+    "assert sort_numbers(\"nine\") == 'nine'": {
+      "result": true,
+      "time": 0.0316009521484375,
+      "error": null
+    },
+    "assert sort_numbers(\"two seven eight seven four seven\") == 'two four seven seven seven eight'": {
+      "result": true,
+      "time": 0.028702259063720703,
+      "error": null
+    },
+    "assert sort_numbers(\"one four eight one eight zero\") == 'zero one one four eight eight'": {
+      "result": true,
+      "time": 0.033666372299194336,
+      "error": null
+    },
+    "assert sort_numbers(\"six zero one eight one four two three\") == 'zero one one two three four six eight'": {
+      "result": true,
+      "time": 0.027660369873046875,
+      "error": null
+    },
+    "assert sort_numbers(\"one nine zero one nine three nine\") == 'zero one one three nine nine nine'": {
+      "result": true,
+      "time": 0.028523921966552734,
+      "error": null
+    },
+    "assert sort_numbers(\"three\") == 'three'": {
+      "result": true,
+      "time": 0.029265165328979492,
+      "error": null
+    },
+    "assert sort_numbers(\"three four zero\") == 'zero three four'": {
+      "result": true,
+      "time": 0.032660722732543945,
+      "error": null
+    },
+    "assert sort_numbers(\"six two two seven one\") == 'one two two six seven'": {
+      "result": true,
+      "time": 0.02910304069519043,
+      "error": null
+    },
+    "assert sort_numbers(\"seven three two four zero five three one\") == 'zero one two three three four five seven'": {
+      "result": true,
+      "time": 0.02931356430053711,
+      "error": null
+    },
+    "assert sort_numbers(\"zero seven four seven six seven seven\") == 'zero four six seven seven seven seven'": {
+      "result": true,
+      "time": 0.027491331100463867,
+      "error": null
+    },
+    "assert sort_numbers(\"five six four seven seven\") == 'four five six seven seven'": {
+      "result": true,
+      "time": 0.030255556106567383,
+      "error": null
+    },
+    "assert sort_numbers(\"three two four seven one nine eight four\") == 'one two three four four seven eight nine'": {
+      "result": true,
+      "time": 0.024563074111938477,
+      "error": null
+    },
+    "assert sort_numbers(\"seven five one three seven one five\") == 'one one three five five seven seven'": {
+      "result": true,
+      "time": 0.032672882080078125,
+      "error": null
+    },
+    "assert sort_numbers(\"eight nine one one seven\") == 'one one seven eight nine'": {
+      "result": true,
+      "time": 0.03598928451538086,
+      "error": null
+    },
+    "assert sort_numbers(\"one two four four three seven\") == 'one two three four four seven'": {
+      "result": true,
+      "time": 0.029027223587036133,
+      "error": null
+    },
+    "assert sort_numbers(\"five\") == 'five'": {
+      "result": true,
+      "time": 0.030849456787109375,
+      "error": null
+    },
+    "assert sort_numbers(\"three nine nine eight\") == 'three eight nine nine'": {
+      "result": true,
+      "time": 0.0336458683013916,
+      "error": null
+    },
+    "assert sort_numbers(\"seven zero seven seven two five nine six\") == 'zero two five six seven seven seven nine'": {
+      "result": true,
+      "time": 0.032283782958984375,
+      "error": null
+    },
+    "assert sort_numbers('three') == 'three'": {
+      "result": true,
+      "time": 0.034010887145996094,
+      "error": null
+    },
+    "assert sort_numbers('five zero four seven nine eight') == 'zero four five seven eight nine'": {
+      "result": true,
+      "time": 0.030530691146850586,
+      "error": null
+    },
+    "assert sort_numbers(\"six\") == 'six'": {
+      "result": true,
+      "time": 0.0297548770904541,
+      "error": null
+    },
+    "assert sort_numbers('six five four three two one zero') == 'zero one two three four five six'": {
+      "result": true,
+      "time": 0.03269815444946289,
+      "error": null
+    },
+    "assert sort_numbers(\"eight five\") == 'five eight'": {
+      "result": true,
+      "time": 0.03225827217102051,
+      "error": null
+    },
+    "assert sort_numbers('') == ''": {
+      "result": true,
+      "time": 0.028956890106201172,
+      "error": null
+    },
+    "assert sort_numbers(\"zero seven zero three two nine\") == 'zero zero two three seven nine'": {
+      "result": true,
+      "time": 0.032160043716430664,
+      "error": null
+    },
+    "assert sort_numbers(\"seven two one four two eight\") == 'one two two four seven eight'": {
+      "result": true,
+      "time": 0.03329730033874512,
+      "error": null
+    },
+    "assert sort_numbers(\"eight zero seven\") == 'zero seven eight'": {
+      "result": true,
+      "time": 0.027960538864135742,
+      "error": null
+    },
+    "assert sort_numbers(\"five zero one one two two three\") == 'zero one one two two three five'": {
+      "result": true,
+      "time": 0.02665257453918457,
+      "error": null
+    },
+    "assert sort_numbers(\"nine nine five\") == 'five nine nine'": {
+      "result": true,
+      "time": 0.027270078659057617,
+      "error": null
+    },
+    "assert sort_numbers(\"four eight four two eight zero four seven\") == 'zero two four four four seven eight eight'": {
+      "result": true,
+      "time": 0.03067946434020996,
+      "error": null
+    },
+    "assert sort_numbers(\"seven three\") == 'three seven'": {
+      "result": true,
+      "time": 0.03246665000915527,
+      "error": null
+    },
+    "assert sort_numbers(\"seven six six seven seven two\") == 'two six six seven seven seven'": {
+      "result": true,
+      "time": 0.028523683547973633,
+      "error": null
+    },
+    "assert sort_numbers(\"six five five five two one nine\") == 'one two five five five six nine'": {
+      "result": true,
+      "time": 0.03068232536315918,
+      "error": null
+    },
+    "assert sort_numbers(\"six zero nine six four zero six six\") == 'zero zero four six six six six nine'": {
+      "result": true,
+      "time": 0.026950836181640625,
+      "error": null
+    },
+    "assert sort_numbers(\"zero\") == 'zero'": {
+      "result": true,
+      "time": 0.029102325439453125,
+      "error": null
+    },
+    "assert sort_numbers(\"nine zero\") == 'zero nine'": {
+      "result": true,
+      "time": 0.028516769409179688,
+      "error": null
+    },
+    "assert sort_numbers(\"one eight five eight zero three five\") == 'zero one three five five eight eight'": {
+      "result": true,
+      "time": 0.029639482498168945,
+      "error": null
+    },
+    "assert sort_numbers(\"one six two seven\") == 'one two six seven'": {
+      "result": true,
+      "time": 0.029245376586914062,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

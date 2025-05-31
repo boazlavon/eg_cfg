@@ -1,0 +1,674 @@
+{
+  "code": "def solution(lst):\n    return sum(num for i, num in enumerate(lst) if i % 2 == 0 and num % 2 != 0)",
+  "results": {
+    "assert solution([29, 9, 22, 322]) == 29": {
+      "result": true,
+      "time": 0.027173280715942383,
+      "error": null
+    },
+    "assert solution([8, 6, 12, 5]) == 0": {
+      "result": true,
+      "time": 0.02786993980407715,
+      "error": null
+    },
+    "assert solution([7, 11, 6, 4]) == 7": {
+      "result": true,
+      "time": 0.026553869247436523,
+      "error": null
+    },
+    "assert solution([6, 7]) == 0": {
+      "result": true,
+      "time": 0.02887701988220215,
+      "error": null
+    },
+    "assert solution([2, 10, 7, 6]) == 7": {
+      "result": true,
+      "time": 0.02927541732788086,
+      "error": null
+    },
+    "assert solution([9, 14]) == 9": {
+      "result": true,
+      "time": 0.029613733291625977,
+      "error": null
+    },
+    "assert solution([4, 8, 13]) == 13": {
+      "result": true,
+      "time": 0.026878833770751953,
+      "error": null
+    },
+    "assert solution([5, 8, 12]) == 5": {
+      "result": true,
+      "time": 0.02874469757080078,
+      "error": null
+    },
+    "assert solution([35, 14, 19, 323]) == 54": {
+      "result": true,
+      "time": 0.030209064483642578,
+      "error": null
+    },
+    "assert solution([5, 3, 8, 1, 6]) == 5": {
+      "result": true,
+      "time": 0.030688047409057617,
+      "error": null
+    },
+    "assert solution([33, 16, 28, 27]) == 33": {
+      "result": true,
+      "time": 0.02894878387451172,
+      "error": null
+    },
+    "assert solution([29, 16, 21, 325]) == 50": {
+      "result": true,
+      "time": 0.027274370193481445,
+      "error": null
+    },
+    "assert solution([1, 13, 9, 4]) == 10": {
+      "result": true,
+      "time": 0.02940511703491211,
+      "error": null
+    },
+    "assert solution([9, 5]) == 9": {
+      "result": true,
+      "time": 0.026856660842895508,
+      "error": null
+    },
+    "assert solution([25, 17, 22, 29]) == 25": {
+      "result": true,
+      "time": 0.03030252456665039,
+      "error": null
+    },
+    "assert solution([29, 17, 25, 34]) == 54": {
+      "result": true,
+      "time": 0.028090238571166992,
+      "error": null
+    },
+    "assert solution([30, 14, 27, 319]) == 27": {
+      "result": true,
+      "time": 0.030756711959838867,
+      "error": null
+    },
+    "assert solution([6, 3, 1, 1, 7]) == 8": {
+      "result": true,
+      "time": 0.02901625633239746,
+      "error": null
+    },
+    "assert solution([10, 7]) == 0": {
+      "result": true,
+      "time": 0.02812957763671875,
+      "error": null
+    },
+    "assert solution([8, 13, 10, 1]) == 0": {
+      "result": true,
+      "time": 0.029053688049316406,
+      "error": null
+    },
+    "assert solution([10, 5]) == 0": {
+      "result": true,
+      "time": 0.028944015502929688,
+      "error": null
+    },
+    "assert solution([31, 13, 20, 323]) == 31": {
+      "result": true,
+      "time": 0.02965998649597168,
+      "error": null
+    },
+    "assert solution([6, 2, 13]) == 13": {
+      "result": true,
+      "time": 0.0269925594329834,
+      "error": null
+    },
+    "assert solution([8, 8]) == 0": {
+      "result": true,
+      "time": 0.030176401138305664,
+      "error": null
+    },
+    "assert solution([1, 3, 3, 6]) == 4": {
+      "result": true,
+      "time": 0.03714108467102051,
+      "error": null
+    },
+    "assert solution([3, 6]) == 3": {
+      "result": true,
+      "time": 0.0279843807220459,
+      "error": null
+    },
+    "assert solution([7, 3, 6, 8, 4]) == 7": {
+      "result": true,
+      "time": 0.029234886169433594,
+      "error": null
+    },
+    "assert solution([26, 11, 29, 325]) == 29": {
+      "result": true,
+      "time": 0.028272151947021484,
+      "error": null
+    },
+    "assert solution([3, 13, 2, 9]) == 3\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.030077457427978516,
+      "error": null
+    },
+    "assert solution([7, 9, 7, 11]) == 14": {
+      "result": true,
+      "time": 0.028859615325927734,
+      "error": null
+    },
+    "assert solution([31, 11, 21, 27]) == 52": {
+      "result": true,
+      "time": 0.03270363807678223,
+      "error": null
+    },
+    "assert solution([7, 17, 1, 4]) == 8": {
+      "result": true,
+      "time": 0.031639814376831055,
+      "error": null
+    },
+    "assert solution([4, 3, 5, 6, 4]) == 5": {
+      "result": true,
+      "time": 0.02888202667236328,
+      "error": null
+    },
+    "assert solution([3, 3, 2, 1, 3]) == 6": {
+      "result": true,
+      "time": 0.030982255935668945,
+      "error": null
+    },
+    "assert solution([7, 3, 2, 4]) == 7": {
+      "result": true,
+      "time": 0.038660287857055664,
+      "error": null
+    },
+    "assert solution([1, 2, 4, 1, 8]) == 1": {
+      "result": true,
+      "time": 0.02714395523071289,
+      "error": null
+    },
+    "assert solution([3, 12, 7, 14]) == 10": {
+      "result": true,
+      "time": 0.02809739112854004,
+      "error": null
+    },
+    "assert solution([5, 16, 3, 12]) == 8": {
+      "result": true,
+      "time": 0.027837276458740234,
+      "error": null
+    },
+    "assert solution([7, 4, 5]) == 12": {
+      "result": true,
+      "time": 0.029169082641601562,
+      "error": null
+    },
+    "assert solution([4, 4, 8, 2]) == 0": {
+      "result": true,
+      "time": 0.02936577796936035,
+      "error": null
+    },
+    "assert solution([7, 6, 5, 5]) == 12": {
+      "result": true,
+      "time": 0.03520488739013672,
+      "error": null
+    },
+    "assert solution([26, 14, 28, 324]) == 0": {
+      "result": true,
+      "time": 0.030455589294433594,
+      "error": null
+    },
+    "assert solution([34, 13, 23, 36]) == 23": {
+      "result": true,
+      "time": 0.030610322952270508,
+      "error": null
+    },
+    "assert solution([29, 17, 18, 34]) == 29": {
+      "result": true,
+      "time": 0.030075788497924805,
+      "error": null
+    },
+    "assert solution([31, 17, 28, 318]) == 31": {
+      "result": true,
+      "time": 0.027496814727783203,
+      "error": null
+    },
+    "assert solution([7, 16, 7, 9]) == 14": {
+      "result": true,
+      "time": 0.03121781349182129,
+      "error": null
+    },
+    "assert solution([30, 12, 18, 27]) == 0": {
+      "result": true,
+      "time": 0.030343294143676758,
+      "error": null
+    },
+    "assert solution([3, 3, 3, 3, 3]) == 9": {
+      "result": true,
+      "time": 0.026636600494384766,
+      "error": null
+    },
+    "assert solution([4, 15, 5, 9]) == 5": {
+      "result": true,
+      "time": 0.029944658279418945,
+      "error": null
+    },
+    "assert solution([8, 4, 8, 2, 1]) == 1": {
+      "result": true,
+      "time": 0.028847694396972656,
+      "error": null
+    },
+    "assert solution([35, 16, 28, 30]) == 35": {
+      "result": true,
+      "time": 0.028468608856201172,
+      "error": null
+    },
+    "assert solution([4, 7]) == 0": {
+      "result": true,
+      "time": 0.03180956840515137,
+      "error": null
+    },
+    "assert solution([27, 18, 21, 32]) == 48": {
+      "result": true,
+      "time": 0.029844045639038086,
+      "error": null
+    },
+    "assert solution([6, 10]) == 0": {
+      "result": true,
+      "time": 0.029306650161743164,
+      "error": null
+    },
+    "assert solution([10, 7, 6, 4]) == 0": {
+      "result": true,
+      "time": 0.03124833106994629,
+      "error": null
+    },
+    "assert solution([10, 12, 4, 1]) == 0": {
+      "result": true,
+      "time": 0.028214693069458008,
+      "error": null
+    },
+    "assert solution([6, 6, 3, 7, 3]) == 6": {
+      "result": true,
+      "time": 0.03618335723876953,
+      "error": null
+    },
+    "assert solution([27, 14, 21, 29]) == 48": {
+      "result": true,
+      "time": 0.026654720306396484,
+      "error": null
+    },
+    "assert solution([7, 15, 1, 10]) == 8": {
+      "result": true,
+      "time": 0.030620574951171875,
+      "error": null
+    },
+    "assert solution([30, 8, 26, 325]) == 0": {
+      "result": true,
+      "time": 0.02952885627746582,
+      "error": null
+    },
+    "assert solution([1, 8, 8, 1, 1]) == 2": {
+      "result": true,
+      "time": 0.03161311149597168,
+      "error": null
+    },
+    "assert solution([7, 4, 12]) == 7": {
+      "result": true,
+      "time": 0.028380393981933594,
+      "error": null
+    },
+    "assert solution([32, 17, 22, 31]) == 0": {
+      "result": true,
+      "time": 0.029373884201049805,
+      "error": null
+    },
+    "assert solution([2, 12, 4, 7]) == 0": {
+      "result": true,
+      "time": 0.032376766204833984,
+      "error": null
+    },
+    "assert solution([2, 12, 7, 9]) == 7": {
+      "result": true,
+      "time": 0.02553272247314453,
+      "error": null
+    },
+    "assert solution([29, 10, 28, 37]) == 29": {
+      "result": true,
+      "time": 0.028321504592895508,
+      "error": null
+    },
+    "assert solution([6, 4, 4]) == 0": {
+      "result": true,
+      "time": 0.025656938552856445,
+      "error": null
+    },
+    "assert solution([5, 4, 3, 1, 7]) == 15": {
+      "result": true,
+      "time": 0.025502920150756836,
+      "error": null
+    },
+    "assert solution([32, 17, 27, 321]) == 27": {
+      "result": true,
+      "time": 0.029852628707885742,
+      "error": null
+    },
+    "assert solution([29, 8, 29, 319]) == 58": {
+      "result": true,
+      "time": 0.02917790412902832,
+      "error": null
+    },
+    "assert solution([4, 2, 4, 1, 6]) == 0": {
+      "result": true,
+      "time": 0.032385826110839844,
+      "error": null
+    },
+    "assert solution([7, 5, 9]) == 16": {
+      "result": true,
+      "time": 0.02834796905517578,
+      "error": null
+    },
+    "assert solution([3, 9, 4, 7]) == 3": {
+      "result": true,
+      "time": 0.02904820442199707,
+      "error": null
+    },
+    "assert solution([3, 8, 10, 5]) == 3": {
+      "result": true,
+      "time": 0.028301000595092773,
+      "error": null
+    },
+    "assert solution([7, 2, 13]) == 20": {
+      "result": true,
+      "time": 0.02992868423461914,
+      "error": null
+    },
+    "assert solution([7, 6, 13]) == 20": {
+      "result": true,
+      "time": 0.03622293472290039,
+      "error": null
+    },
+    "assert solution([31, 8, 26, 34]) == 31": {
+      "result": true,
+      "time": 0.028005361557006836,
+      "error": null
+    },
+    "assert solution([1, 5]) == 1": {
+      "result": true,
+      "time": 0.028708696365356445,
+      "error": null
+    },
+    "assert solution([9, 9, 9, 2]) == 18": {
+      "result": true,
+      "time": 0.026758193969726562,
+      "error": null
+    },
+    "assert solution([2, 4, 13]) == 13": {
+      "result": true,
+      "time": 0.028712034225463867,
+      "error": null
+    },
+    "assert solution([1, 10]) == 1": {
+      "result": true,
+      "time": 0.028864145278930664,
+      "error": null
+    },
+    "assert solution([8, 9, 3, 8]) == 3": {
+      "result": true,
+      "time": 0.028138160705566406,
+      "error": null
+    },
+    "assert solution([4, 4, 6]) == 0": {
+      "result": true,
+      "time": 0.03283524513244629,
+      "error": null
+    },
+    "assert solution([3, 5]) == 3": {
+      "result": true,
+      "time": 0.029023408889770508,
+      "error": null
+    },
+    "assert solution([1, 9]) == 1": {
+      "result": true,
+      "time": 0.0289456844329834,
+      "error": null
+    },
+    "assert solution([5, 9]) == 5": {
+      "result": true,
+      "time": 0.0284116268157959,
+      "error": null
+    },
+    "assert solution([2, 2, 4, 2, 7]) == 7": {
+      "result": true,
+      "time": 0.03510713577270508,
+      "error": null
+    },
+    "assert solution([4, 3, 11]) == 11": {
+      "result": true,
+      "time": 0.026324033737182617,
+      "error": null
+    },
+    "assert solution([5, 12, 6, 1]) == 5": {
+      "result": true,
+      "time": 0.0247955322265625,
+      "error": null
+    },
+    "assert solution([5, 6, 7, 1]) == 12": {
+      "result": true,
+      "time": 0.029021739959716797,
+      "error": null
+    },
+    "assert solution([4, 8, 11]) == 11": {
+      "result": true,
+      "time": 0.027704954147338867,
+      "error": null
+    },
+    "assert solution([1, 16, 4, 8]) == 1": {
+      "result": true,
+      "time": 0.02830958366394043,
+      "error": null
+    },
+    "assert solution([7, 7, 3]) == 10": {
+      "result": true,
+      "time": 0.027341604232788086,
+      "error": null
+    },
+    "assert solution([1, 7, 9]) == 10": {
+      "result": true,
+      "time": 0.030847549438476562,
+      "error": null
+    },
+    "assert solution([32, 13, 28, 325]) == 0": {
+      "result": true,
+      "time": 0.03376913070678711,
+      "error": null
+    },
+    "assert solution([3, 13, 6, 7]) == 3": {
+      "result": true,
+      "time": 0.025945663452148438,
+      "error": null
+    },
+    "assert solution([8, 4, 5, 6, 4]) == 5": {
+      "result": true,
+      "time": 0.0322268009185791,
+      "error": null
+    },
+    "assert solution([6, 6]) == 0": {
+      "result": true,
+      "time": 0.026719093322753906,
+      "error": null
+    },
+    "assert solution([5, 3, 10]) == 5": {
+      "result": true,
+      "time": 0.028835296630859375,
+      "error": null
+    },
+    "assert solution([5, 8, 7, 1])    == 12": {
+      "result": true,
+      "time": 0.027402162551879883,
+      "error": null
+    },
+    "assert solution([30, 13, 23, 32]) == 23": {
+      "result": true,
+      "time": 0.03197073936462402,
+      "error": null
+    },
+    "assert solution([26, 12, 18, 31]) == 0": {
+      "result": true,
+      "time": 0.030961275100708008,
+      "error": null
+    },
+    "assert solution([1, 4]) == 1": {
+      "result": true,
+      "time": 0.033164024353027344,
+      "error": null
+    },
+    "assert solution([10, 9]) == 0": {
+      "result": true,
+      "time": 0.03212141990661621,
+      "error": null
+    },
+    "assert solution([7, 1, 7, 1, 4]) == 14": {
+      "result": true,
+      "time": 0.02859210968017578,
+      "error": null
+    },
+    "assert solution([29, 11, 18, 30]) == 29": {
+      "result": true,
+      "time": 0.02999567985534668,
+      "error": null
+    },
+    "assert solution([4, 8]) == 0": {
+      "result": true,
+      "time": 0.0272066593170166,
+      "error": null
+    },
+    "assert solution([29, 18, 20, 323]) == 29": {
+      "result": true,
+      "time": 0.027929306030273438,
+      "error": null
+    },
+    "assert solution([5, 12, 3, 11]) == 8": {
+      "result": true,
+      "time": 0.028633832931518555,
+      "error": null
+    },
+    "assert solution([29, 10, 27, 323]) == 56": {
+      "result": true,
+      "time": 0.030120849609375,
+      "error": null
+    },
+    "assert solution([26, 11, 23, 319]) == 23": {
+      "result": true,
+      "time": 0.03194427490234375,
+      "error": null
+    },
+    "assert solution([6, 3, 3, 3, 7]) == 10": {
+      "result": true,
+      "time": 0.028476715087890625,
+      "error": null
+    },
+    "assert solution([6, 11, 4, 9]) == 0": {
+      "result": true,
+      "time": 0.030333518981933594,
+      "error": null
+    },
+    "assert solution([1, 11]) == 1": {
+      "result": true,
+      "time": 0.031500816345214844,
+      "error": null
+    },
+    "assert solution([34, 16, 24, 326]) == 0": {
+      "result": true,
+      "time": 0.026130199432373047,
+      "error": null
+    },
+    "assert solution([35, 18, 24, 318]) == 35": {
+      "result": true,
+      "time": 0.03034663200378418,
+      "error": null
+    },
+    "assert solution([5, 3, 1, 1, 6]) == 6": {
+      "result": true,
+      "time": 0.026301860809326172,
+      "error": null
+    },
+    "assert solution([6, 13, 11, 6]) == 11": {
+      "result": true,
+      "time": 0.02938055992126465,
+      "error": null
+    },
+    "assert solution([2, 9, 10]) == 0": {
+      "result": true,
+      "time": 0.02640080451965332,
+      "error": null
+    },
+    "assert solution([33, 10, 20, 37]) == 33": {
+      "result": true,
+      "time": 0.030301809310913086,
+      "error": null
+    },
+    "assert solution([8, 7, 7, 7, 2]) == 7": {
+      "result": true,
+      "time": 0.03051137924194336,
+      "error": null
+    },
+    "assert solution([30, 13, 24, 321]) == 0": {
+      "result": true,
+      "time": 0.02868032455444336,
+      "error": null
+    },
+    "assert solution([7, 9, 4]) == 7": {
+      "result": true,
+      "time": 0.026523828506469727,
+      "error": null
+    },
+    "assert solution([2, 4, 8]) == 0": {
+      "result": true,
+      "time": 0.03000164031982422,
+      "error": null
+    },
+    "assert solution([5, 13, 3, 9]) == 8": {
+      "result": true,
+      "time": 0.030354976654052734,
+      "error": null
+    },
+    "assert solution([34, 16, 22, 323]) == 0": {
+      "result": true,
+      "time": 0.02843308448791504,
+      "error": null
+    },
+    "assert solution([3, 10, 12, 2]) == 3": {
+      "result": true,
+      "time": 0.028013944625854492,
+      "error": null
+    },
+    "assert solution([2, 15, 5, 9]) == 5": {
+      "result": true,
+      "time": 0.026832103729248047,
+      "error": null
+    },
+    "assert solution([1, 3, 2, 3, 8]) == 1": {
+      "result": true,
+      "time": 0.031018733978271484,
+      "error": null
+    },
+    "assert solution([9, 4, 8, 3]) == 9": {
+      "result": true,
+      "time": 0.030696868896484375,
+      "error": null
+    },
+    "assert solution([32, 14, 20, 35]) == 0": {
+      "result": true,
+      "time": 0.0299072265625,
+      "error": null
+    },
+    "assert solution([27, 13, 24, 35]) == 27": {
+      "result": true,
+      "time": 0.0328669548034668,
+      "error": null
+    },
+    "assert solution([1, 7, 3, 6]) == 4": {
+      "result": true,
+      "time": 0.03184819221496582,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

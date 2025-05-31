@@ -1,0 +1,624 @@
+{
+  "code": "def add_elements(arr, k):\n    first_k_elements = arr[:k]\n    filtered_elements = [x for x in first_k_elements if 0 <= x <= 99]\n    return sum(filtered_elements)",
+  "results": {
+    "assert add_elements([16, 26, 4, 94, 5, 10, 5, 12, 5], 5) == 145": {
+      "result": true,
+      "time": 0.031360626220703125,
+      "error": null
+    },
+    "assert add_elements([115, 17, 2, 4311, 1, 9, 5, 9, 14], 3) == 19": {
+      "result": true,
+      "time": 0.030622005462646484,
+      "error": null
+    },
+    "assert add_elements([113, 23, 5, 3725, 1, 1, 2, 9, 6], 8) == 41": {
+      "result": true,
+      "time": 0.034143686294555664,
+      "error": null
+    },
+    "assert add_elements([15, 19, 6, 90, 6, 2, 7, 13, 10], 9) == 168": {
+      "result": true,
+      "time": 0.032640933990478516,
+      "error": null
+    },
+    "assert add_elements([5, 0, -6, 40, 55, 72, 87, 92, 95], 7) == 253": {
+      "result": false,
+      "time": 0.02880382537841797,
+      "error": null
+    },
+    "assert add_elements([3], 4) == 3": {
+      "result": true,
+      "time": 0.028993844985961914,
+      "error": null
+    },
+    "assert add_elements([111, 118, 3, 3448, 7, 8], 1) == 0": {
+      "result": true,
+      "time": 0.028640270233154297,
+      "error": null
+    },
+    "assert add_elements([8, 21, 1, 91, 5, 10, 9, 10, 6], 7) == 145": {
+      "result": true,
+      "time": 0.026479005813598633,
+      "error": null
+    },
+    "assert add_elements([13, 18, 4, 92, 8, 2, 8, 6, 5], 5) == 135": {
+      "result": true,
+      "time": 0.029177188873291016,
+      "error": null
+    },
+    "assert add_elements([1], 3) == 1": {
+      "result": true,
+      "time": 0.031212329864501953,
+      "error": null
+    },
+    "assert add_elements([5], 1) == 5": {
+      "result": true,
+      "time": 0.03360414505004883,
+      "error": null
+    },
+    "assert add_elements([15, 20, 8, 91, 6, 2, 6, 11, 10], 8) == 159": {
+      "result": true,
+      "time": 0.03023052215576172,
+      "error": null
+    },
+    "assert add_elements([107, 120, 6, 4699, 7, 11], 4) == 6": {
+      "result": true,
+      "time": 0.030489683151245117,
+      "error": null
+    },
+    "assert add_elements([5, 1, -8, 40, 58, 73, 84, 86, 96], 8) == 339": {
+      "result": false,
+      "time": 0.029698610305786133,
+      "error": null
+    },
+    "assert add_elements([4], 3) == 4": {
+      "result": true,
+      "time": 0.03161883354187012,
+      "error": null
+    },
+    "assert add_elements([115, 18, 4, 3479, 9, 9, 11, 10, 5], 6) == 40": {
+      "result": true,
+      "time": 0.032006025314331055,
+      "error": null
+    },
+    "assert add_elements([16, 22, 1, 86, 10, 8, 7, 4, 10], 4) == 125": {
+      "result": true,
+      "time": 0.031751394271850586,
+      "error": null
+    },
+    "assert add_elements([2], 6) == 2": {
+      "result": true,
+      "time": 0.033365488052368164,
+      "error": null
+    },
+    "assert add_elements([6, 1, -3, 44, 59, 74, 86, 84, 95], 1) == 6": {
+      "result": true,
+      "time": 0.034813642501831055,
+      "error": null
+    },
+    "assert add_elements([113, 122, 2, 4948, 10, 3], 4) == 2": {
+      "result": true,
+      "time": 0.03347182273864746,
+      "error": null
+    },
+    "assert add_elements([6, 19, 8, 95, 7, 3, 6, 10, 14], 9) == 168": {
+      "result": true,
+      "time": 0.0328974723815918,
+      "error": null
+    },
+    "assert add_elements([115, 24, 6, 3856, 5, 1, 4, 12, 14], 9) == 66": {
+      "result": true,
+      "time": 0.034526824951171875,
+      "error": null
+    },
+    "assert add_elements([110, 16, 5, 4445, 7, 4, 6, 9, 12], 8) == 47": {
+      "result": true,
+      "time": 0.03142571449279785,
+      "error": null
+    },
+    "assert add_elements([14, 20, 7, 93, 5, 7, 11, 11, 6], 6) == 146": {
+      "result": true,
+      "time": 0.03116774559020996,
+      "error": null
+    },
+    "assert add_elements([10, 23, 2, 94, 5, 3, 11, 8, 8], 6) == 137": {
+      "result": true,
+      "time": 0.03695821762084961,
+      "error": null
+    },
+    "assert add_elements([116, 26, 8, 3200, 10, 9, 2, 10, 7], 2) == 26": {
+      "result": true,
+      "time": 0.030267000198364258,
+      "error": null
+    },
+    "assert add_elements([3, -5, -6, 37, 61, 74, 82, 87, 102], 4) == 29": {
+      "result": false,
+      "time": 0.033226966857910156,
+      "error": null
+    },
+    "assert add_elements([5, -3, -8, 43, 56, 73, 91, 83, 97], 2) == 2": {
+      "result": false,
+      "time": 0.03213810920715332,
+      "error": null
+    },
+    "assert add_elements([1, -6, -3, 38, 55, 73, 85, 86, 100], 7) == 243": {
+      "result": false,
+      "time": 0.03261542320251465,
+      "error": null
+    },
+    "assert add_elements([109, 16, 3, 4057, 7, 2, 9, 4, 9], 3) == 19": {
+      "result": true,
+      "time": 0.03171396255493164,
+      "error": null
+    },
+    "assert add_elements([4, 2, 2, 42, 57, 81, 86, 91, 94], 4) == 50": {
+      "result": true,
+      "time": 0.030797481536865234,
+      "error": null
+    },
+    "assert add_elements([4, 1, -8, 37, 55, 76, 83, 84, 99], 3) == -3": {
+      "result": false,
+      "time": 0.031363487243652344,
+      "error": null
+    },
+    "assert add_elements([3, -5, -6, 44, 58, 72, 90, 85, 102], 7) == 256": {
+      "result": false,
+      "time": 0.0274655818939209,
+      "error": null
+    },
+    "assert add_elements([116, 19, 2, 3934, 3, 5, 6, 13, 14], 6) == 29": {
+      "result": true,
+      "time": 0.03578329086303711,
+      "error": null
+    },
+    "assert add_elements([11, 24, 1, 92, 1, 4, 8, 13, 12], 1) == 11": {
+      "result": true,
+      "time": 0.030616283416748047,
+      "error": null
+    },
+    "assert add_elements([6, -6, -6, 41, 56, 73, 83, 83, 94], 1) == 6": {
+      "result": true,
+      "time": 0.031061410903930664,
+      "error": null
+    },
+    "assert add_elements([109, 117, 7, 3709, 10, 3], 3) == 7": {
+      "result": true,
+      "time": 0.03334212303161621,
+      "error": null
+    },
+    "assert add_elements([115, 122, 6, 4698, 10, 7], 5) == 16": {
+      "result": true,
+      "time": 0.03181099891662598,
+      "error": null
+    },
+    "assert add_elements([107, 124, 8, 4426, 5, 9], 6) == 22": {
+      "result": true,
+      "time": 0.026857376098632812,
+      "error": null
+    },
+    "assert add_elements([11, 19, 8, 92, 9, 8, 3, 3, 9], 5) == 139": {
+      "result": true,
+      "time": 0.03231000900268555,
+      "error": null
+    },
+    "assert add_elements([3, -2, -8, 39, 56, 76, 84, 85, 101], 5) == 88": {
+      "result": false,
+      "time": 0.034713029861450195,
+      "error": null
+    },
+    "assert add_elements([16, 22, 4, 91, 8, 7, 4, 11, 11], 2) == 38": {
+      "result": true,
+      "time": 0.02981281280517578,
+      "error": null
+    },
+    "assert add_elements([116, 18, 5, 3825, 7, 4, 5, 3, 12], 8) == 42": {
+      "result": true,
+      "time": 0.03132224082946777,
+      "error": null
+    },
+    "assert add_elements([4, 1, -5, 40, 61, 78, 82, 87, 101], 7) == 261": {
+      "result": false,
+      "time": 0.03139638900756836,
+      "error": null
+    },
+    "assert add_elements([15, 19, 3, 94, 9, 11, 4, 11, 11], 9) == 177": {
+      "result": true,
+      "time": 0.033803462982177734,
+      "error": null
+    },
+    "assert add_elements([110, 125, 4, 3428, 1, 4], 7) == 9": {
+      "result": true,
+      "time": 0.03032827377319336,
+      "error": null
+    },
+    "assert add_elements([107, 22, 1, 3540, 4, 1, 5, 7, 14], 7) == 33": {
+      "result": true,
+      "time": 0.033014535903930664,
+      "error": null
+    },
+    "assert add_elements([10, 19, 7, 91, 5, 8, 4, 7, 11], 8) == 151": {
+      "result": true,
+      "time": 0.028799057006835938,
+      "error": null
+    },
+    "assert add_elements([5], 3) == 5": {
+      "result": true,
+      "time": 0.031281232833862305,
+      "error": null
+    },
+    "assert add_elements([2, -1, -4, 44, 60, 74, 91, 89, 101], 3) == -3": {
+      "result": false,
+      "time": 0.0281524658203125,
+      "error": null
+    },
+    "assert add_elements([114, 124, 1, 3460, 8, 3], 2) == 0": {
+      "result": true,
+      "time": 0.03413558006286621,
+      "error": null
+    },
+    "assert add_elements([113, 126, 2, 4104, 10, 5], 2) == 0": {
+      "result": true,
+      "time": 0.049024105072021484,
+      "error": null
+    },
+    "assert add_elements([111, 116, 5, 4847, 10, 5], 6) == 20": {
+      "result": true,
+      "time": 0.03173494338989258,
+      "error": null
+    },
+    "assert add_elements([107, 121, 4, 3034, 8, 2], 5) == 12": {
+      "result": true,
+      "time": 0.031728506088256836,
+      "error": null
+    },
+    "assert add_elements([1], 1) == 1": {
+      "result": true,
+      "time": 0.02786707878112793,
+      "error": null
+    },
+    "assert add_elements([4], 2) == 4": {
+      "result": true,
+      "time": 0.03178143501281738,
+      "error": null
+    },
+    "assert add_elements([107, 17, 7, 3610, 4, 1, 10, 5, 12], 1) == 0": {
+      "result": true,
+      "time": 0.02982783317565918,
+      "error": null
+    },
+    "assert add_elements([106, 17, 3, 3544, 9, 1, 6, 3, 10], 7) == 36": {
+      "result": true,
+      "time": 0.030780553817749023,
+      "error": null
+    },
+    "assert add_elements([110, 20, 3, 4098, 10, 6, 6, 11, 8], 5) == 33": {
+      "result": true,
+      "time": 0.03224372863769531,
+      "error": null
+    },
+    "assert add_elements([14, 25, 2, 87, 7, 3, 5, 3, 4], 1) == 14": {
+      "result": true,
+      "time": 0.028516769409179688,
+      "error": null
+    },
+    "assert add_elements([14, 26, 5, 88, 8, 7, 6, 6, 4], 4) == 133": {
+      "result": true,
+      "time": 0.03388810157775879,
+      "error": null
+    },
+    "assert add_elements([10, 19, 5, 94, 4, 5, 9, 4, 6], 7) == 146": {
+      "result": true,
+      "time": 0.02656269073486328,
+      "error": null
+    },
+    "assert add_elements([106, 117, 3, 3468, 10, 3], 6) == 16": {
+      "result": true,
+      "time": 0.02954268455505371,
+      "error": null
+    },
+    "assert add_elements([3, -7, -7, 38, 61, 80, 92, 86, 95], 2) == -4": {
+      "result": false,
+      "time": 0.029298782348632812,
+      "error": null
+    },
+    "assert add_elements([13, 18, 4, 85, 9, 1, 9, 8, 5], 7) == 139": {
+      "result": true,
+      "time": 0.029542922973632812,
+      "error": null
+    },
+    "assert add_elements([6], 5) == 6": {
+      "result": true,
+      "time": 0.029155492782592773,
+      "error": null
+    },
+    "assert add_elements([114, 118, 1, 4249, 5, 5], 5) == 6": {
+      "result": true,
+      "time": 0.027964353561401367,
+      "error": null
+    },
+    "assert add_elements([2, -5, -3, 37, 59, 74, 87, 83, 97], 1) == 2": {
+      "result": true,
+      "time": 0.031205177307128906,
+      "error": null
+    },
+    "assert add_elements([2, -1, -3, 37, 62, 77, 91, 89, 103], 7) == 265": {
+      "result": false,
+      "time": 0.03312277793884277,
+      "error": null
+    },
+    "assert add_elements([5], 4) == 5": {
+      "result": true,
+      "time": 0.02971673011779785,
+      "error": null
+    },
+    "assert add_elements([1, 3, -4, 37, 59, 75, 92, 92, 102], 2) == 4": {
+      "result": true,
+      "time": 0.029558897018432617,
+      "error": null
+    },
+    "assert add_elements([3], 5) == 3": {
+      "result": true,
+      "time": 0.028862714767456055,
+      "error": null
+    },
+    "assert add_elements([11, 21, 8, 95, 3, 1, 6, 11, 13], 4) == 135": {
+      "result": true,
+      "time": 0.029147863388061523,
+      "error": null
+    },
+    "assert add_elements([15, 19, 1, 85, 5, 1, 10, 5, 12], 7) == 136": {
+      "result": true,
+      "time": 0.03187990188598633,
+      "error": null
+    },
+    "assert add_elements([114, 16, 3, 4584, 10, 10, 2, 6, 12], 2) == 16": {
+      "result": true,
+      "time": 0.029747724533081055,
+      "error": null
+    },
+    "assert add_elements([1, -3, -6, 43, 62, 76, 92, 89, 94], 6) == 173": {
+      "result": false,
+      "time": 0.030792236328125,
+      "error": null
+    },
+    "assert add_elements([111, 119, 8, 3568, 6, 8], 5) == 14": {
+      "result": true,
+      "time": 0.03032231330871582,
+      "error": null
+    },
+    "assert add_elements([1], 2) == 1": {
+      "result": true,
+      "time": 0.02905416488647461,
+      "error": null
+    },
+    "assert add_elements([111, 21, 6, 3469, 8, 7, 8, 10, 13], 2) == 21": {
+      "result": true,
+      "time": 0.02888321876525879,
+      "error": null
+    },
+    "assert add_elements([10, 20, 5, 91, 1, 11, 3, 4, 11], 9) == 156": {
+      "result": true,
+      "time": 0.027147769927978516,
+      "error": null
+    },
+    "assert add_elements([9, 19, 2, 92, 8, 9, 8, 4, 10], 8) == 151": {
+      "result": true,
+      "time": 0.027695178985595703,
+      "error": null
+    },
+    "assert add_elements([107, 116, 1, 4894, 9, 7], 5) == 10": {
+      "result": true,
+      "time": 0.02646780014038086,
+      "error": null
+    },
+    "assert add_elements([113, 121, 5, 3008, 8, 7], 6) == 20": {
+      "result": true,
+      "time": 0.029923200607299805,
+      "error": null
+    },
+    "assert add_elements([114, 25, 5, 4395, 10, 6, 3, 9, 5], 9) == 63": {
+      "result": true,
+      "time": 0.029731273651123047,
+      "error": null
+    },
+    "assert add_elements([1], 6) == 1": {
+      "result": true,
+      "time": 0.030936241149902344,
+      "error": null
+    },
+    "assert add_elements([111, 26, 3, 3885, 5, 2, 2, 12, 13], 1) == 0": {
+      "result": true,
+      "time": 0.029977798461914062,
+      "error": null
+    },
+    "assert add_elements([2, -3, -1, 42, 53, 74, 89, 83, 97], 5) == 93": {
+      "result": false,
+      "time": 0.028969526290893555,
+      "error": null
+    },
+    "assert add_elements([2, -1, 2, 40, 57, 73, 91, 83, 97], 5) == 100": {
+      "result": false,
+      "time": 0.0294344425201416,
+      "error": null
+    },
+    "assert add_elements([114, 125, 6, 3912, 6, 9], 6) == 21": {
+      "result": true,
+      "time": 0.029934167861938477,
+      "error": null
+    },
+    "assert add_elements([116, 23, 3, 4041, 5, 7, 2, 12, 8], 8) == 52": {
+      "result": true,
+      "time": 0.025673866271972656,
+      "error": null
+    },
+    "assert add_elements([112, 24, 8, 3223, 5, 4, 12, 11, 8], 6) == 41": {
+      "result": true,
+      "time": 0.031074047088623047,
+      "error": null
+    },
+    "assert add_elements([113, 18, 2, 4442, 9, 9, 7, 8, 7], 9) == 60": {
+      "result": true,
+      "time": 0.03251242637634277,
+      "error": null
+    },
+    "assert add_elements([5], 6) == 5": {
+      "result": true,
+      "time": 0.03183412551879883,
+      "error": null
+    },
+    "assert add_elements([3], 6) == 3": {
+      "result": true,
+      "time": 0.031258344650268555,
+      "error": null
+    },
+    "assert add_elements([108, 125, 1, 4105, 6, 6], 5) == 7": {
+      "result": true,
+      "time": 0.03309226036071777,
+      "error": null
+    },
+    "assert add_elements([111,21,3,4000,5,6,7,8,9], 4) == 24": {
+      "result": true,
+      "time": 0.029996395111083984,
+      "error": null
+    },
+    "assert add_elements([6, 26, 5, 91, 6, 6, 9, 4, 4], 1) == 6": {
+      "result": true,
+      "time": 0.03100895881652832,
+      "error": null
+    },
+    "assert add_elements([3], 1) == 3": {
+      "result": true,
+      "time": 0.030282258987426758,
+      "error": null
+    },
+    "assert add_elements([111,121,3,4000,5,6], 2) == 0": {
+      "result": true,
+      "time": 0.0289914608001709,
+      "error": null
+    },
+    "assert add_elements([6, 1, -1, 46, 60, 80, 92, 85, 100], 6) == 192": {
+      "result": false,
+      "time": 0.031943321228027344,
+      "error": null
+    },
+    "assert add_elements([106, 125, 5, 3265, 3, 9], 7) == 17": {
+      "result": true,
+      "time": 0.030541419982910156,
+      "error": null
+    },
+    "assert add_elements([106, 16, 4, 3953, 2, 2, 11, 3, 14], 7) == 35": {
+      "result": true,
+      "time": 0.03260350227355957,
+      "error": null
+    },
+    "assert add_elements([8, 26, 8, 93, 2, 2, 3, 11, 9], 1) == 8": {
+      "result": true,
+      "time": 0.030061006546020508,
+      "error": null
+    },
+    "assert add_elements([107, 118, 5, 4283, 10, 8], 4) == 5": {
+      "result": true,
+      "time": 0.030218124389648438,
+      "error": null
+    },
+    "assert add_elements([115, 126, 8, 3915, 4, 3], 3) == 8": {
+      "result": true,
+      "time": 0.030670881271362305,
+      "error": null
+    },
+    "assert add_elements([116, 122, 7, 3025, 1, 2], 5) == 8": {
+      "result": true,
+      "time": 0.026862382888793945,
+      "error": null
+    },
+    "assert add_elements([4, -1, 0, 45, 56, 74, 82, 83, 101], 7) == 260": {
+      "result": false,
+      "time": 0.027974367141723633,
+      "error": null
+    },
+    "assert add_elements([113, 20, 1, 3134, 4, 5, 10, 10, 14], 4) == 21": {
+      "result": true,
+      "time": 0.02687978744506836,
+      "error": null
+    },
+    "assert add_elements([115, 19, 2, 3182, 9, 3, 8, 7, 10], 6) == 33": {
+      "result": true,
+      "time": 0.030394554138183594,
+      "error": null
+    },
+    "assert add_elements([6, -3, 2, 45, 57, 76, 84, 90, 97], 3) == 5": {
+      "result": false,
+      "time": 0.030301332473754883,
+      "error": null
+    },
+    "assert add_elements([5, 1, -8, 41, 61, 73, 86, 93, 99], 1) == 5": {
+      "result": true,
+      "time": 0.029165267944335938,
+      "error": null
+    },
+    "assert add_elements([15, 19, 5, 91, 6, 2, 3, 4, 13], 9) == 158": {
+      "result": true,
+      "time": 0.03050541877746582,
+      "error": null
+    },
+    "assert add_elements([111, 23, 1, 3668, 1, 9, 4, 7, 6], 9) == 51": {
+      "result": true,
+      "time": 0.027924299240112305,
+      "error": null
+    },
+    "assert add_elements([6], 2) == 6": {
+      "result": true,
+      "time": 0.03148198127746582,
+      "error": null
+    },
+    "assert add_elements([11,21,3,90,5,6,7,8,9], 4) == 125": {
+      "result": true,
+      "time": 0.029022693634033203,
+      "error": null
+    },
+    "assert add_elements([106, 121, 3, 3648, 8, 3], 2) == 0": {
+      "result": true,
+      "time": 0.03198552131652832,
+      "error": null
+    },
+    "assert add_elements([114, 17, 2, 4324, 9, 9, 8, 7, 10], 4) == 19": {
+      "result": true,
+      "time": 0.02654242515563965,
+      "error": null
+    },
+    "assert add_elements([111, 118, 7, 3502, 6, 4], 4) == 7": {
+      "result": true,
+      "time": 0.02897787094116211,
+      "error": null
+    },
+    "assert add_elements([2], 1) == 2": {
+      "result": true,
+      "time": 0.026549100875854492,
+      "error": null
+    },
+    "assert add_elements([114, 117, 6, 3409, 7, 9], 2) == 0": {
+      "result": true,
+      "time": 0.025472402572631836,
+      "error": null
+    },
+    "assert add_elements([6], 4) == 6": {
+      "result": true,
+      "time": 0.028898954391479492,
+      "error": null
+    },
+    "assert add_elements([1,-2,-3,41,57,76,87,88,99], 3) == -4": {
+      "result": false,
+      "time": 0.027487516403198242,
+      "error": null
+    },
+    "assert add_elements([6, 3, -2, 39, 58, 77, 87, 89, 94], 6) == 181": {
+      "result": false,
+      "time": 0.02960205078125,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.8373983739837398,
+  "general_error": "",
+  "has_testcase_error": false
+}

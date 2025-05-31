@@ -1,0 +1,524 @@
+{
+  "code": "from typing import List, Optional\n\ndef longest(strings: List[str]) -> Optional[str]:\n    if not strings:\n        return None\n    longest_str = strings[0]\n    for s in strings[1:]:\n        if len(s) > len(longest_str):\n            longest_str = s\n    return longest_str",
+  "results": {
+    "assert longest(['i', 'u', 'r']) == 'i'": {
+      "result": true,
+      "time": 0.28146934509277344,
+      "error": null
+    },
+    "assert longest(['c', 'logvehhem', 'umvs', 'gkw', 'rhr', 'vyexmzch']) == 'logvehhem'": {
+      "result": true,
+      "time": 0.2565140724182129,
+      "error": null
+    },
+    "assert longest(['n', 'v', 'x']) == 'n'": {
+      "result": true,
+      "time": 0.2546961307525635,
+      "error": null
+    },
+    "assert longest(['s', 'e', 'q']) == 's'": {
+      "result": true,
+      "time": 0.3239929676055908,
+      "error": null
+    },
+    "assert longest(['t', 'b', 'h']) == 't'": {
+      "result": true,
+      "time": 0.22673678398132324,
+      "error": null
+    },
+    "assert longest(['v', 'zhkmizr', 'wyex', 'wjqo', 'ciap', 'ioj']) == 'zhkmizr'": {
+      "result": true,
+      "time": 0.32878923416137695,
+      "error": null
+    },
+    "assert longest(['m', 'hjystvsai', 'tumnp', 'uxv', 'vkl', 'iktqzxrv']) == 'hjystvsai'": {
+      "result": true,
+      "time": 0.2731616497039795,
+      "error": null
+    },
+    "assert longest(['t', 'b', 'w']) == 't'": {
+      "result": true,
+      "time": 0.3089592456817627,
+      "error": null
+    },
+    "assert longest(['v', 'odkvmah', 'fmh', 'psjdqunt', 'syrh', 'qwvghqcr']) == 'psjdqunt'": {
+      "result": true,
+      "time": 0.31086039543151855,
+      "error": null
+    },
+    "assert longest(['b', 'wiefonpj', 'qpvsakyqh', 'ooirzmqh', 'cyh', 'nfvkjv']) == 'qpvsakyqh'": {
+      "result": true,
+      "time": 0.2211904525756836,
+      "error": null
+    },
+    "assert longest(['v', 'a', 'm']) == 'v'": {
+      "result": true,
+      "time": 0.29776644706726074,
+      "error": null
+    },
+    "assert longest(['g', 'ygydv', 'zsohbakc', 'fjpxwgsr', 'otodxbga', 'pmlltonga']) == 'pmlltonga'": {
+      "result": true,
+      "time": 0.3299994468688965,
+      "error": null
+    },
+    "assert longest(['s', 'z', 'g']) == 's'": {
+      "result": true,
+      "time": 0.30453944206237793,
+      "error": null
+    },
+    "assert longest(['s', 't', 'o']) == 's'": {
+      "result": true,
+      "time": 0.2647078037261963,
+      "error": null
+    },
+    "assert longest(['e', 'jvupklf', 'imnpycfx', 'bzcduj', 'eqixkmbiy', 'tskez']) == 'eqixkmbiy'": {
+      "result": true,
+      "time": 0.3320796489715576,
+      "error": null
+    },
+    "assert longest(['x', 's', 'b']) == 'x'": {
+      "result": true,
+      "time": 0.28329992294311523,
+      "error": null
+    },
+    "assert longest(['t', 'ixesuuqxb', 'akvmz', 'wzwldgjz', 'mcfvjotnm', 'xori']) == 'ixesuuqxb'": {
+      "result": true,
+      "time": 0.2443222999572754,
+      "error": null
+    },
+    "assert longest(['v', 'y', 'z']) == 'v'": {
+      "result": true,
+      "time": 0.21878314018249512,
+      "error": null
+    },
+    "assert longest(['b', 'kza', 'uik', 'uijh', 'eqzejftbl', 'fac']) == 'eqzejftbl'": {
+      "result": true,
+      "time": 0.21651935577392578,
+      "error": null
+    },
+    "assert longest(['c', 'rbk', 'nyyhugpej', 'cfxjw', 'tndvwxsa', 'efzkgbudi']) == 'nyyhugpej'": {
+      "result": true,
+      "time": 0.34093594551086426,
+      "error": null
+    },
+    "assert longest(['b', 'o', 'm']) == 'b'": {
+      "result": true,
+      "time": 0.26980018615722656,
+      "error": null
+    },
+    "assert longest(['l', 'rppneqm', 'mqvd', 'yonee', 'ugldkkj', 'njbgjoop']) == 'njbgjoop'": {
+      "result": true,
+      "time": 0.24786972999572754,
+      "error": null
+    },
+    "assert longest(['h', 's', 'd']) == 'h'": {
+      "result": true,
+      "time": 0.2551558017730713,
+      "error": null
+    },
+    "assert longest(['l', 'dfbhyd', 'fxcinkrx', 'yissagos', 'uwnqyhxy', 'iztgjfudg']) == 'iztgjfudg'": {
+      "result": true,
+      "time": 0.30177998542785645,
+      "error": null
+    },
+    "assert longest(['c', 'm', 'a']) == 'c'": {
+      "result": true,
+      "time": 0.20816659927368164,
+      "error": null
+    },
+    "assert longest(['a', 'gnnseltot', 'akwpqkli', 'bpbgx', 'ydrrdwy', 'nidw']) == 'gnnseltot'": {
+      "result": true,
+      "time": 0.23847031593322754,
+      "error": null
+    },
+    "assert longest(['g', 'vxlrwchn', 'rgoghdbv', 'kcjju', 'ijksqerp', 'jcrkjni']) == 'vxlrwchn'": {
+      "result": true,
+      "time": 0.22545886039733887,
+      "error": null
+    },
+    "assert longest(['x', 'g', 'n']) == 'x'": {
+      "result": true,
+      "time": 0.14066720008850098,
+      "error": null
+    },
+    "assert longest(['j', 'x', 'z']) == 'j'": {
+      "result": true,
+      "time": 0.32303428649902344,
+      "error": null
+    },
+    "assert longest(['u', 'y', 'j']) == 'u'": {
+      "result": true,
+      "time": 0.2952239513397217,
+      "error": null
+    },
+    "assert longest(['v', 'z', 'l']) == 'v'": {
+      "result": true,
+      "time": 0.28619885444641113,
+      "error": null
+    },
+    "assert longest(['e', 'l', 'i']) == 'e'": {
+      "result": true,
+      "time": 0.23598027229309082,
+      "error": null
+    },
+    "assert longest(['d', 'fru', 'wjalnezcn', 'msdx', 'risayuo', 'rooknfpse']) == 'wjalnezcn'": {
+      "result": true,
+      "time": 0.20122456550598145,
+      "error": null
+    },
+    "assert longest(['x', 'y', 'z']) == 'x'": {
+      "result": true,
+      "time": 0.18139052391052246,
+      "error": null
+    },
+    "assert longest(['e', 'j', 'c']) == 'e'": {
+      "result": true,
+      "time": 0.25324201583862305,
+      "error": null
+    },
+    "assert longest(['e', 'e', 't']) == 'e'": {
+      "result": true,
+      "time": 0.28606557846069336,
+      "error": null
+    },
+    "assert longest(['r', 'h', 'x']) == 'r'": {
+      "result": true,
+      "time": 0.33096742630004883,
+      "error": null
+    },
+    "assert longest(['b', 'm', 'g']) == 'b'": {
+      "result": true,
+      "time": 0.11117243766784668,
+      "error": null
+    },
+    "assert longest(['w', 'tamgxrvr', 'rwyxsc', 'lswpd', 'qke', 'ljtkwujes']) == 'ljtkwujes'": {
+      "result": true,
+      "time": 0.20281314849853516,
+      "error": null
+    },
+    "assert longest(['u', 'ocmwx', 'gocns', 'gvbfdww', 'ssfzubi', 'yfdgv']) == 'gvbfdww'": {
+      "result": true,
+      "time": 0.1422417163848877,
+      "error": null
+    },
+    "assert longest(['p', 'd', 'a']) == 'p'": {
+      "result": true,
+      "time": 0.11536979675292969,
+      "error": null
+    },
+    "assert longest(['f', 'z', 'm']) == 'f'": {
+      "result": true,
+      "time": 0.14354729652404785,
+      "error": null
+    },
+    "assert longest(['x', 'rqpngsn', 'fxo', 'ayd', 'bldjie', 'yiiftuwkc']) == 'yiiftuwkc'": {
+      "result": true,
+      "time": 0.08500385284423828,
+      "error": null
+    },
+    "assert longest(['q', 'uupsqrag', 'vwcr', 'vlpgkmf', 'ebb', 'hhngqm']) == 'uupsqrag'": {
+      "result": true,
+      "time": 0.09326744079589844,
+      "error": null
+    },
+    "assert longest(['x', 'r', 'u']) == 'x'": {
+      "result": true,
+      "time": 0.19816184043884277,
+      "error": null
+    },
+    "assert longest(['s', 'njgj', 'dejwtok', 'mkskddbcp', 'oxemwayvo', 'ubcjouypj']) == 'mkskddbcp'": {
+      "result": true,
+      "time": 0.2080221176147461,
+      "error": null
+    },
+    "assert longest(['x', 'v', 'w']) == 'x'": {
+      "result": true,
+      "time": 0.1213388442993164,
+      "error": null
+    },
+    "assert longest(['c', 'z', 't']) == 'c'": {
+      "result": true,
+      "time": 0.12804794311523438,
+      "error": null
+    },
+    "assert longest(['t', 'wnvjdthhs', 'kbm', 'prlvh', 'ojtpp', 'tvrwuok']) == 'wnvjdthhs'": {
+      "result": true,
+      "time": 0.15781593322753906,
+      "error": null
+    },
+    "assert longest(['y', 'ruasz', 'vnzy', 'cktbfgp', 'wij', 'oskvo']) == 'cktbfgp'": {
+      "result": true,
+      "time": 0.16598749160766602,
+      "error": null
+    },
+    "assert longest(['a', 'yixbzyk', 'dfmcyo', 'kmwvx', 'styeg', 'fhei']) == 'yixbzyk'": {
+      "result": true,
+      "time": 0.143463134765625,
+      "error": null
+    },
+    "assert longest(['z', 'b', 'f']) == 'z'": {
+      "result": true,
+      "time": 0.14179420471191406,
+      "error": null
+    },
+    "assert longest(['z', 'y', 'k']) == 'z'": {
+      "result": true,
+      "time": 0.17762160301208496,
+      "error": null
+    },
+    "assert longest(['j', 'a', 'p']) == 'j'": {
+      "result": true,
+      "time": 0.12191033363342285,
+      "error": null
+    },
+    "assert longest(['o', 'xyq', 'ntgn', 'pvtqwc', 'bbxty', 'mlzcy']) == 'pvtqwc'": {
+      "result": true,
+      "time": 0.15628600120544434,
+      "error": null
+    },
+    "assert longest([]) == None": {
+      "result": true,
+      "time": 0.1828899383544922,
+      "error": null
+    },
+    "assert longest(['q', 'lxamh', 'voicvblnb', 'bvytmisp', 'yivfwv', 'fmgncj']) == 'voicvblnb'": {
+      "result": true,
+      "time": 0.1253986358642578,
+      "error": null
+    },
+    "assert longest(['k', 'v', 's']) == 'k'": {
+      "result": true,
+      "time": 0.15737080574035645,
+      "error": null
+    },
+    "assert longest(['f', 'o', 'u']) == 'f'": {
+      "result": true,
+      "time": 0.1723017692565918,
+      "error": null
+    },
+    "assert longest(['a', 'r', 'h']) == 'a'": {
+      "result": true,
+      "time": 0.15075063705444336,
+      "error": null
+    },
+    "assert longest(['d', 'zcozusald', 'hvce', 'wzf', 'zdykqd', 'obak']) == 'zcozusald'": {
+      "result": true,
+      "time": 0.0862269401550293,
+      "error": null
+    },
+    "assert longest(['r', 'p', 'h']) == 'r'": {
+      "result": true,
+      "time": 0.08901500701904297,
+      "error": null
+    },
+    "assert longest(['q', 'v', 'u']) == 'q'": {
+      "result": true,
+      "time": 0.15004801750183105,
+      "error": null
+    },
+    "assert longest(['p', 'vzss', 'iqnejr', 'qsvuiv', 'xqvcqh', 'pevcja']) == 'iqnejr'": {
+      "result": true,
+      "time": 0.13309907913208008,
+      "error": null
+    },
+    "assert longest(['v', 'ahlx', 'kycdr', 'uve', 'onyzz', 'ebjp']) == 'kycdr'": {
+      "result": true,
+      "time": 0.12919902801513672,
+      "error": null
+    },
+    "assert longest(['t', 'n', 'e']) == 't'": {
+      "result": true,
+      "time": 0.17415118217468262,
+      "error": null
+    },
+    "assert longest(['n', 'yqzn', 'bbzdfhted', 'iia', 'juygeahsf', 'zrfxgf']) == 'bbzdfhted'": {
+      "result": true,
+      "time": 0.14044618606567383,
+      "error": null
+    },
+    "assert longest(['l', 'q', 'x']) == 'l'": {
+      "result": true,
+      "time": 0.16474080085754395,
+      "error": null
+    },
+    "assert longest(['z', 'w', 'o']) == 'z'": {
+      "result": true,
+      "time": 0.12806463241577148,
+      "error": null
+    },
+    "assert longest(['o', 'ajmdqe', 'pzpdkn', 'xfnrkwwl', 'apoqrezod', 'qhw']) == 'apoqrezod'": {
+      "result": true,
+      "time": 0.14796161651611328,
+      "error": null
+    },
+    "assert longest(['i', 'tujc', 'jyi', 'hwywam', 'bvfwnbqdv', 'dsc']) == 'bvfwnbqdv'": {
+      "result": true,
+      "time": 0.13814187049865723,
+      "error": null
+    },
+    "assert longest(['y', 'l', 'k']) == 'y'": {
+      "result": true,
+      "time": 0.21895623207092285,
+      "error": null
+    },
+    "assert longest(['s', 's', 'y']) == 's'": {
+      "result": true,
+      "time": 0.1506669521331787,
+      "error": null
+    },
+    "assert longest(['q', 'w', 'g']) == 'q'": {
+      "result": true,
+      "time": 0.25159502029418945,
+      "error": null
+    },
+    "assert longest(['x', 'cwnjhznrf', 'qazkxd', 'ifuvq', 'cueni', 'fzp']) == 'cwnjhznrf'": {
+      "result": true,
+      "time": 0.09456491470336914,
+      "error": null
+    },
+    "assert longest(['o', 'fwatymi', 'litvopt', 'ibcda', 'ulfgf', 'xpkezldlr']) == 'xpkezldlr'": {
+      "result": true,
+      "time": 0.16447210311889648,
+      "error": null
+    },
+    "assert longest(['u', 'lhmq', 'pshemmm', 'zmjyho', 'ajeobmwyv', 'ifan']) == 'ajeobmwyv'": {
+      "result": true,
+      "time": 0.17977213859558105,
+      "error": null
+    },
+    "assert longest(['a', 'cxpnpgrwe', 'ezda', 'fiym', 'xlw', 'hdhqvijm']) == 'cxpnpgrwe'": {
+      "result": true,
+      "time": 0.20093178749084473,
+      "error": null
+    },
+    "assert longest(['k', 'ohuuogxw', 'mds', 'qwmcwb', 'ktcgj', 'xmbaf']) == 'ohuuogxw'": {
+      "result": true,
+      "time": 0.2411479949951172,
+      "error": null
+    },
+    "assert longest(['e', 'sdv', 'jpmyt', 'lvw', 'swi', 'eot']) == 'jpmyt'": {
+      "result": true,
+      "time": 0.14611077308654785,
+      "error": null
+    },
+    "assert longest(['d', 'csil', 'qef', 'oktirf', 'gvumcc', 'kzhp']) == 'oktirf'": {
+      "result": true,
+      "time": 0.1786055564880371,
+      "error": null
+    },
+    "assert longest(['c', 'uztuk', 'vqav', 'qleqveztm', 'prew', 'lvxbqomwx']) == 'qleqveztm'": {
+      "result": true,
+      "time": 0.1907825469970703,
+      "error": null
+    },
+    "assert longest(['y', 'brouq', 'fiwx', 'ayrhzx', 'zjndmn', 'qudi']) == 'ayrhzx'": {
+      "result": true,
+      "time": 0.1827983856201172,
+      "error": null
+    },
+    "assert longest(['g', 'qztp', 'wocmcj', 'tyufmnqjw', 'gxzjdox', 'neacacmg']) == 'tyufmnqjw'": {
+      "result": true,
+      "time": 0.1625967025756836,
+      "error": null
+    },
+    "assert longest(['w', 'kshl', 'fekjnsrpe', 'odglxszx', 'cfvq', 'rjjnlsz']) == 'fekjnsrpe'": {
+      "result": true,
+      "time": 0.13450002670288086,
+      "error": null
+    },
+    "assert longest(['d', 'x', 'x']) == 'd'": {
+      "result": true,
+      "time": 0.14647626876831055,
+      "error": null
+    },
+    "assert longest(['a', 'vssugkg', 'wmniwmxwd', 'ktlfux', 'yrceq', 'dna']) == 'wmniwmxwd'": {
+      "result": true,
+      "time": 0.11737966537475586,
+      "error": null
+    },
+    "assert longest(['s', 'llv', 'fwn', 'zffgx', 'gyfro', 'qiwnqagxo']) == 'qiwnqagxo'": {
+      "result": true,
+      "time": 0.08565616607666016,
+      "error": null
+    },
+    "assert longest(['a', 'h', 'h']) == 'a'": {
+      "result": true,
+      "time": 0.1346752643585205,
+      "error": null
+    },
+    "assert longest(['d', 'lrkwoosb', 'dmbcgm', 'nusekhwj', 'waet', 'uelugt']) == 'lrkwoosb'": {
+      "result": true,
+      "time": 0.2124922275543213,
+      "error": null
+    },
+    "assert longest(['l', 'l', 'v']) == 'l'": {
+      "result": true,
+      "time": 0.20967960357666016,
+      "error": null
+    },
+    "assert longest(['u', 'qfdbi', 'jwxymwin', 'xilo', 'afwytgdm', 'ihzwvkp']) == 'jwxymwin'": {
+      "result": true,
+      "time": 0.20183491706848145,
+      "error": null
+    },
+    "assert longest(['t', 'rntpbpgzc', 'cdep', 'gskjgrzwo', 'vwu', 'dnlzycpa']) == 'rntpbpgzc'": {
+      "result": true,
+      "time": 0.12288522720336914,
+      "error": null
+    },
+    "assert longest(['f', 'l', 'c']) == 'f'": {
+      "result": true,
+      "time": 0.20668959617614746,
+      "error": null
+    },
+    "assert longest(['r', 'j', 'b']) == 'r'": {
+      "result": true,
+      "time": 0.16304302215576172,
+      "error": null
+    },
+    "assert longest(['w', 'igbqgwe', 'aqvihwzlv', 'caue', 'hybtb', 'idvykeyhs']) == 'aqvihwzlv'": {
+      "result": true,
+      "time": 0.18192243576049805,
+      "error": null
+    },
+    "assert longest(['e', 'ztvpfcf', 'qszifchgt', 'hqxcd', 'rebrhhsj', 'jppauc']) == 'qszifchgt'": {
+      "result": true,
+      "time": 0.20764589309692383,
+      "error": null
+    },
+    "assert longest(['y', 'x', 'c']) == 'y'": {
+      "result": true,
+      "time": 0.14053058624267578,
+      "error": null
+    },
+    "assert longest(['h', 's', 'g']) == 'h'": {
+      "result": true,
+      "time": 0.162642240524292,
+      "error": null
+    },
+    "assert longest(['j', 'epkxrclw', 'axa', 'gba', 'tahjiywx', 'xhudcfasm']) == 'xhudcfasm'": {
+      "result": true,
+      "time": 0.2193922996520996,
+      "error": null
+    },
+    "assert longest(['n', 'p', 'e']) == 'n'": {
+      "result": true,
+      "time": 0.10464859008789062,
+      "error": null
+    },
+    "assert longest(['s', 't', 'c']) == 's'": {
+      "result": true,
+      "time": 0.15474390983581543,
+      "error": null
+    },
+    "assert longest(['x', 'yyy', 'zzzz', 'www', 'kkkk', 'abc']) == 'zzzz'": {
+      "result": true,
+      "time": 0.1103813648223877,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

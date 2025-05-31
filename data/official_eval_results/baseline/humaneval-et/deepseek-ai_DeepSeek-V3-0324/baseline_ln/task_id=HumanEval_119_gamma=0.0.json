@@ -1,0 +1,469 @@
+{
+  "code": "def match_parens(lst):\n    s1, s2 = lst\n    def is_balanced(s):\n        balance = 0\n        for char in s:\n            if char == '(':\n                balance += 1\n            else:\n                balance -= 1\n            if balance < 0:\n                return False\n        return balance == 0\n    \n    if is_balanced(s1 + s2):\n        return 'Yes'\n    if is_balanced(s2 + s1):\n        return 'Yes'\n    return 'No'",
+  "results": {
+    "assert match_parens((')())', '(()()(')) == 'Yes'": {
+      "result": true,
+      "time": 0.030482053756713867,
+      "error": null
+    },
+    "assert match_parens(('((((', ')')) == 'No'": {
+      "result": true,
+      "time": 0.028491735458374023,
+      "error": null
+    },
+    "assert match_parens(('()(', '())')) == 'Yes'": {
+      "result": true,
+      "time": 0.02895188331604004,
+      "error": null
+    },
+    "assert match_parens(('())', '((((')) == 'No'": {
+      "result": true,
+      "time": 0.03151059150695801,
+      "error": null
+    },
+    "assert match_parens(('(()(', '()(')) == 'No'": {
+      "result": true,
+      "time": 0.027336597442626953,
+      "error": null
+    },
+    "assert match_parens(('())', '(()()(')) == 'No'": {
+      "result": true,
+      "time": 0.026810407638549805,
+      "error": null
+    },
+    "assert match_parens([')', ')']) == 'No'": {
+      "result": true,
+      "time": 0.029383420944213867,
+      "error": null
+    },
+    "assert match_parens(('()(', ')')) == 'Yes'": {
+      "result": true,
+      "time": 0.030387401580810547,
+      "error": null
+    },
+    "assert match_parens(('(()(())', '()(')) == 'No'": {
+      "result": true,
+      "time": 0.02723073959350586,
+      "error": null
+    },
+    "assert match_parens(('(()()(', '())())')) == 'Yes'": {
+      "result": true,
+      "time": 0.032526493072509766,
+      "error": null
+    },
+    "assert match_parens(('())', ')())')) == 'No'": {
+      "result": true,
+      "time": 0.02777886390686035,
+      "error": null
+    },
+    "assert match_parens(('((((', '((((')) == 'No'": {
+      "result": true,
+      "time": 0.031203508377075195,
+      "error": null
+    },
+    "assert match_parens((')(', '(()()(')) == 'No'": {
+      "result": true,
+      "time": 0.029134750366210938,
+      "error": null
+    },
+    "assert match_parens((')())', ')())')) == 'No'": {
+      "result": true,
+      "time": 0.028314828872680664,
+      "error": null
+    },
+    "assert match_parens((')())', '((())')) == 'No'": {
+      "result": true,
+      "time": 0.028819799423217773,
+      "error": null
+    },
+    "assert match_parens(('()', '()(')) == 'No'": {
+      "result": true,
+      "time": 0.02689361572265625,
+      "error": null
+    },
+    "assert match_parens(('(()(())', '())())')) == 'No'": {
+      "result": true,
+      "time": 0.0310361385345459,
+      "error": null
+    },
+    "assert match_parens(('(', ')')) == 'Yes'": {
+      "result": true,
+      "time": 0.029628276824951172,
+      "error": null
+    },
+    "assert match_parens(('(())))', '()(')) == 'No'": {
+      "result": true,
+      "time": 0.03168797492980957,
+      "error": null
+    },
+    "assert match_parens(('()', '(()())((')) == 'No'": {
+      "result": true,
+      "time": 0.03566694259643555,
+      "error": null
+    },
+    "assert match_parens(('())())', '()(')) == 'No'": {
+      "result": true,
+      "time": 0.030053138732910156,
+      "error": null
+    },
+    "assert match_parens(('())())', '(()()(')) == 'Yes'": {
+      "result": true,
+      "time": 0.029510021209716797,
+      "error": null
+    },
+    "assert match_parens(('()(', '())())')) == 'No'": {
+      "result": true,
+      "time": 0.02968311309814453,
+      "error": null
+    },
+    "assert match_parens(('()))()', '())')) == 'No'": {
+      "result": true,
+      "time": 0.030393600463867188,
+      "error": null
+    },
+    "assert match_parens(('(())))', '((())')) == 'No'": {
+      "result": true,
+      "time": 0.03251767158508301,
+      "error": null
+    },
+    "assert match_parens(['()', '())']) == 'No'": {
+      "result": true,
+      "time": 0.033730506896972656,
+      "error": null
+    },
+    "assert match_parens(['(())))', '(()())((']) == 'Yes'": {
+      "result": true,
+      "time": 0.024576425552368164,
+      "error": null
+    },
+    "assert match_parens((')', '(())))')) == 'No'": {
+      "result": true,
+      "time": 0.03472709655761719,
+      "error": null
+    },
+    "assert match_parens([')())', '(()()(']) == 'Yes'": {
+      "result": true,
+      "time": 0.02872300148010254,
+      "error": null
+    },
+    "assert match_parens(('(()()(', '(()()(')) == 'No'": {
+      "result": true,
+      "time": 0.030475378036499023,
+      "error": null
+    },
+    "assert match_parens((')', '(()(())')) == 'Yes'": {
+      "result": true,
+      "time": 0.0283658504486084,
+      "error": null
+    },
+    "assert match_parens([')(()', '(()(']) == 'No'": {
+      "result": true,
+      "time": 0.027123212814331055,
+      "error": null
+    },
+    "assert match_parens(('(()(())', ')')) == 'Yes'": {
+      "result": true,
+      "time": 0.0356748104095459,
+      "error": null
+    },
+    "assert match_parens((')(', '()(')) == 'No'": {
+      "result": true,
+      "time": 0.026240825653076172,
+      "error": null
+    },
+    "assert match_parens(('(()()(', ')(()')) == 'No'": {
+      "result": true,
+      "time": 0.028919219970703125,
+      "error": null
+    },
+    "assert match_parens(('()(', '(()(())')) == 'No'": {
+      "result": true,
+      "time": 0.033983707427978516,
+      "error": null
+    },
+    "assert match_parens((')', '()(')) == 'Yes'": {
+      "result": true,
+      "time": 0.031929969787597656,
+      "error": null
+    },
+    "assert match_parens(('())', ')')) == 'No'": {
+      "result": true,
+      "time": 0.02738475799560547,
+      "error": null
+    },
+    "assert match_parens(('(()())((', '(()(())')) == 'No'": {
+      "result": true,
+      "time": 0.029596328735351562,
+      "error": null
+    },
+    "assert match_parens(('(()(', ')(()')) == 'No'": {
+      "result": true,
+      "time": 0.03084254264831543,
+      "error": null
+    },
+    "assert match_parens(('())())', ')())')) == 'No'": {
+      "result": true,
+      "time": 0.027791500091552734,
+      "error": null
+    },
+    "assert match_parens(('())', ')(')) == 'No'": {
+      "result": true,
+      "time": 0.03020334243774414,
+      "error": null
+    },
+    "assert match_parens(('(()(())', ')(')) == 'No'": {
+      "result": true,
+      "time": 0.029065608978271484,
+      "error": null
+    },
+    "assert match_parens(('()', '())')) == 'No'": {
+      "result": true,
+      "time": 0.029066085815429688,
+      "error": null
+    },
+    "assert match_parens((')())', '()(')) == 'No'": {
+      "result": true,
+      "time": 0.02912592887878418,
+      "error": null
+    },
+    "assert match_parens([')(', ')(']) == 'No'\n    \n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.02747631072998047,
+      "error": null
+    },
+    "assert match_parens(('(()(', '(()())((')) == 'No'": {
+      "result": true,
+      "time": 0.030192852020263672,
+      "error": null
+    },
+    "assert match_parens((')', '(()()(')) == 'No'": {
+      "result": true,
+      "time": 0.028482437133789062,
+      "error": null
+    },
+    "assert match_parens(('()(', '(()())((')) == 'No'": {
+      "result": true,
+      "time": 0.030099153518676758,
+      "error": null
+    },
+    "assert match_parens(('((())', '(()(')) == 'No'": {
+      "result": true,
+      "time": 0.02916884422302246,
+      "error": null
+    },
+    "assert match_parens((')', '())())')) == 'No'": {
+      "result": true,
+      "time": 0.03657650947570801,
+      "error": null
+    },
+    "assert match_parens(('()(', '()(')) == 'No'": {
+      "result": true,
+      "time": 0.031213998794555664,
+      "error": null
+    },
+    "assert match_parens(['()(', ')']) == 'Yes'": {
+      "result": true,
+      "time": 0.030588388442993164,
+      "error": null
+    },
+    "assert match_parens(('(()()(', '(()(())')) == 'No'": {
+      "result": true,
+      "time": 0.030130624771118164,
+      "error": null
+    },
+    "assert match_parens(('())())', '()')) == 'No'": {
+      "result": true,
+      "time": 0.02928781509399414,
+      "error": null
+    },
+    "assert match_parens(('(()(())', '())')) == 'Yes'": {
+      "result": true,
+      "time": 0.02956700325012207,
+      "error": null
+    },
+    "assert match_parens(['(()(', '()))()']) == 'Yes'": {
+      "result": true,
+      "time": 0.029626846313476562,
+      "error": null
+    },
+    "assert match_parens(('(()(', '(()(')) == 'No'": {
+      "result": true,
+      "time": 0.03217363357543945,
+      "error": null
+    },
+    "assert match_parens(('(())))', '(())))')) == 'No'": {
+      "result": true,
+      "time": 0.03262138366699219,
+      "error": null
+    },
+    "assert match_parens(('()(', '(()(')) == 'No'": {
+      "result": true,
+      "time": 0.02640390396118164,
+      "error": null
+    },
+    "assert match_parens(('(', '(()())((')) == 'No'": {
+      "result": true,
+      "time": 0.0297548770904541,
+      "error": null
+    },
+    "assert match_parens(['(', ')']) == 'Yes'": {
+      "result": true,
+      "time": 0.029442787170410156,
+      "error": null
+    },
+    "assert match_parens(['((((', '((())']) == 'No'": {
+      "result": true,
+      "time": 0.030050039291381836,
+      "error": null
+    },
+    "assert match_parens(('())())', '(()(())')) == 'No'": {
+      "result": true,
+      "time": 0.027968406677246094,
+      "error": null
+    },
+    "assert match_parens(('())', '()')) == 'No'": {
+      "result": true,
+      "time": 0.028156518936157227,
+      "error": null
+    },
+    "assert match_parens(('(', '()))()')) == 'No'": {
+      "result": true,
+      "time": 0.02919316291809082,
+      "error": null
+    },
+    "assert match_parens(('())())', '(()(')) == 'Yes'": {
+      "result": true,
+      "time": 0.02966594696044922,
+      "error": null
+    },
+    "assert match_parens(('(()(())', ')())')) == 'No'": {
+      "result": true,
+      "time": 0.028731346130371094,
+      "error": null
+    },
+    "assert match_parens(('((((', '()')) == 'No'": {
+      "result": true,
+      "time": 0.02855992317199707,
+      "error": null
+    },
+    "assert match_parens((')())', '(())))')) == 'No'": {
+      "result": true,
+      "time": 0.029137849807739258,
+      "error": null
+    },
+    "assert match_parens(('(()())((', ')')) == 'No'": {
+      "result": true,
+      "time": 0.03153705596923828,
+      "error": null
+    },
+    "assert match_parens(('()(', ')())')) == 'No'": {
+      "result": true,
+      "time": 0.027510881423950195,
+      "error": null
+    },
+    "assert match_parens(('())', '()(')) == 'Yes'": {
+      "result": true,
+      "time": 0.030143022537231445,
+      "error": null
+    },
+    "assert match_parens(('()', '(()(())')) == 'No'": {
+      "result": true,
+      "time": 0.03441882133483887,
+      "error": null
+    },
+    "assert match_parens((')(()', '(())))')) == 'No'": {
+      "result": true,
+      "time": 0.02756190299987793,
+      "error": null
+    },
+    "assert match_parens(('(()()(', '()(')) == 'No'": {
+      "result": true,
+      "time": 0.027598857879638672,
+      "error": null
+    },
+    "assert match_parens(('())())', ')')) == 'No'": {
+      "result": true,
+      "time": 0.030686616897583008,
+      "error": null
+    },
+    "assert match_parens(['(()(())', '())())']) == 'No'": {
+      "result": true,
+      "time": 0.029865026473999023,
+      "error": null
+    },
+    "assert match_parens((')', ')')) == 'No'": {
+      "result": true,
+      "time": 0.029579877853393555,
+      "error": null
+    },
+    "assert match_parens(('())())', ')(()')) == 'No'": {
+      "result": true,
+      "time": 0.03004598617553711,
+      "error": null
+    },
+    "assert match_parens(('()))()', '(()(')) == 'Yes'": {
+      "result": true,
+      "time": 0.03125786781311035,
+      "error": null
+    },
+    "assert match_parens((')())', '((((')) == 'No'": {
+      "result": true,
+      "time": 0.032499074935913086,
+      "error": null
+    },
+    "assert match_parens(('(()(())', '(()()(')) == 'No'": {
+      "result": true,
+      "time": 0.031815290451049805,
+      "error": null
+    },
+    "assert match_parens(('()', ')())')) == 'No'": {
+      "result": true,
+      "time": 0.029990673065185547,
+      "error": null
+    },
+    "assert match_parens(('(())))', '(()()(')) == 'Yes'": {
+      "result": true,
+      "time": 0.03290271759033203,
+      "error": null
+    },
+    "assert match_parens((')(', ')(()')) == 'No'": {
+      "result": true,
+      "time": 0.028949975967407227,
+      "error": null
+    },
+    "assert match_parens(('(()()(', '(())))')) == 'Yes'": {
+      "result": true,
+      "time": 0.03172707557678223,
+      "error": null
+    },
+    "assert match_parens(('(())))', '(()(())')) == 'No'": {
+      "result": true,
+      "time": 0.030076026916503906,
+      "error": null
+    },
+    "assert match_parens(('((((', '(()(')) == 'No'": {
+      "result": true,
+      "time": 0.029865026473999023,
+      "error": null
+    },
+    "assert match_parens([')', '(']) == 'Yes'": {
+      "result": true,
+      "time": 0.031853675842285156,
+      "error": null
+    },
+    "assert match_parens((')(()', '())')) == 'No'": {
+      "result": true,
+      "time": 0.027348041534423828,
+      "error": null
+    },
+    "assert match_parens((')())', '())())')) == 'No'": {
+      "result": true,
+      "time": 0.02628946304321289,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

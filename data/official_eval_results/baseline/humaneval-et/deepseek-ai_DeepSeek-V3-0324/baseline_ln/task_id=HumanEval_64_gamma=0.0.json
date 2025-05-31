@@ -1,0 +1,584 @@
+{
+  "code": "def vowels_count(s):\n    vowels = {'a', 'e', 'i', 'o', 'u'}\n    count = 0\n    s_lower = s.lower()\n    for i, char in enumerate(s_lower):\n        if char in vowels:\n            count += 1\n        elif char == 'y' and i == len(s_lower) - 1:\n            count += 1\n    return count",
+  "results": {
+    "assert vowels_count(\"WLKSXobNl\") == 1": {
+      "result": true,
+      "time": 0.02813863754272461,
+      "error": null
+    },
+    "assert vowels_count(\"dpC\") == 0": {
+      "result": true,
+      "time": 0.031197547912597656,
+      "error": null
+    },
+    "assert vowels_count(\"orafghw\") == 2": {
+      "result": true,
+      "time": 0.025950908660888672,
+      "error": null
+    },
+    "assert vowels_count(\"SvTf\") == 0": {
+      "result": true,
+      "time": 0.029485225677490234,
+      "error": null
+    },
+    "assert vowels_count(\"Rcr\") == 0": {
+      "result": true,
+      "time": 0.02869725227355957,
+      "error": null
+    },
+    "assert vowels_count(\"wtkaaiog\") == 4": {
+      "result": true,
+      "time": 0.027577638626098633,
+      "error": null
+    },
+    "assert vowels_count(\"jOGDc\") == 1": {
+      "result": true,
+      "time": 0.02767658233642578,
+      "error": null
+    },
+    "assert vowels_count(\"wAI\") == 2": {
+      "result": true,
+      "time": 0.02801990509033203,
+      "error": null
+    },
+    "assert vowels_count(\"zxey\") == 2": {
+      "result": true,
+      "time": 0.024326801300048828,
+      "error": null
+    },
+    "assert vowels_count(\"ACEDY\") == 3, \"Test 7\"\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.028006315231323242,
+      "error": null
+    },
+    "assert vowels_count(\"sxi\") == 1": {
+      "result": true,
+      "time": 0.025007247924804688,
+      "error": null
+    },
+    "assert vowels_count(\"IpxQpEdED\") == 3": {
+      "result": true,
+      "time": 0.03518557548522949,
+      "error": null
+    },
+    "assert vowels_count(\"chwi\") == 1": {
+      "result": true,
+      "time": 0.029299020767211914,
+      "error": null
+    },
+    "assert vowels_count(\"uisRpsKyZ\") == 2": {
+      "result": true,
+      "time": 0.027332067489624023,
+      "error": null
+    },
+    "assert vowels_count(\"YLisRX\") == 1": {
+      "result": true,
+      "time": 0.030779361724853516,
+      "error": null
+    },
+    "assert vowels_count(\"HksjnLrww\") == 0": {
+      "result": true,
+      "time": 0.030314207077026367,
+      "error": null
+    },
+    "assert vowels_count(\"iMmdG\") == 1": {
+      "result": true,
+      "time": 0.028250694274902344,
+      "error": null
+    },
+    "assert vowels_count(\"nVTx\") == 0": {
+      "result": true,
+      "time": 0.0275726318359375,
+      "error": null
+    },
+    "assert vowels_count(\"bzdyyst\") == 0": {
+      "result": true,
+      "time": 0.02662181854248047,
+      "error": null
+    },
+    "assert vowels_count(\"jcabto\") == 2": {
+      "result": true,
+      "time": 0.027442216873168945,
+      "error": null
+    },
+    "assert vowels_count(\"ezAsFRyO\") == 3": {
+      "result": true,
+      "time": 0.02673172950744629,
+      "error": null
+    },
+    "assert vowels_count(\"bye\") == 1, \"Test 4\"": {
+      "result": true,
+      "time": 0.03204154968261719,
+      "error": null
+    },
+    "assert vowels_count(\"qagoecrk\") == 3": {
+      "result": true,
+      "time": 0.02971196174621582,
+      "error": null
+    },
+    "assert vowels_count(\"htffm\") == 0": {
+      "result": true,
+      "time": 0.029726028442382812,
+      "error": null
+    },
+    "assert vowels_count(\"lUjeam\") == 3": {
+      "result": true,
+      "time": 0.027338743209838867,
+      "error": null
+    },
+    "assert vowels_count(\"dfe\") == 1": {
+      "result": true,
+      "time": 0.027629852294921875,
+      "error": null
+    },
+    "assert vowels_count(\"uraZwroZg\") == 3": {
+      "result": true,
+      "time": 0.025676488876342773,
+      "error": null
+    },
+    "assert vowels_count(\"bcrxedi\") == 2": {
+      "result": true,
+      "time": 0.029465913772583008,
+      "error": null
+    },
+    "assert vowels_count(\"fuoa\") == 3": {
+      "result": true,
+      "time": 0.02653193473815918,
+      "error": null
+    },
+    "assert vowels_count(\"vsup\") == 1": {
+      "result": true,
+      "time": 0.0276641845703125,
+      "error": null
+    },
+    "assert vowels_count(\"pkmive\") == 2": {
+      "result": true,
+      "time": 0.026257753372192383,
+      "error": null
+    },
+    "assert vowels_count(\"keY\") == 2, \"Test 5\"": {
+      "result": true,
+      "time": 0.028574705123901367,
+      "error": null
+    },
+    "assert vowels_count(\"LvVQtCdIS\") == 1": {
+      "result": true,
+      "time": 0.030857086181640625,
+      "error": null
+    },
+    "assert vowels_count(\"wzlmdYJFQ\") == 0": {
+      "result": true,
+      "time": 0.026430606842041016,
+      "error": null
+    },
+    "assert vowels_count(\"RdpTSCBxO\") == 1": {
+      "result": true,
+      "time": 0.02704906463623047,
+      "error": null
+    },
+    "assert vowels_count(\"bajxqza\") == 2": {
+      "result": true,
+      "time": 0.028206825256347656,
+      "error": null
+    },
+    "assert vowels_count(\"YUrSQAWp\") == 2": {
+      "result": true,
+      "time": 0.02792954444885254,
+      "error": null
+    },
+    "assert vowels_count(\"xenm\") == 1": {
+      "result": true,
+      "time": 0.026009321212768555,
+      "error": null
+    },
+    "assert vowels_count(\"Gsrlcd\") == 0": {
+      "result": true,
+      "time": 0.02728891372680664,
+      "error": null
+    },
+    "assert vowels_count(\"wplrjvkt\") == 0": {
+      "result": true,
+      "time": 0.029070138931274414,
+      "error": null
+    },
+    "assert vowels_count(\"yHLp\") == 0": {
+      "result": true,
+      "time": 0.027612924575805664,
+      "error": null
+    },
+    "assert vowels_count(\"PqT\") == 0": {
+      "result": true,
+      "time": 0.026938199996948242,
+      "error": null
+    },
+    "assert vowels_count(\"HsHUjl\") == 1": {
+      "result": true,
+      "time": 0.02551865577697754,
+      "error": null
+    },
+    "assert vowels_count(\"fzsen\") == 1": {
+      "result": true,
+      "time": 0.02695155143737793,
+      "error": null
+    },
+    "assert vowels_count(\"abcde\") == 2, \"Test 1\"": {
+      "result": true,
+      "time": 0.026398420333862305,
+      "error": null
+    },
+    "assert vowels_count(\"axf\") == 1": {
+      "result": true,
+      "time": 0.02628636360168457,
+      "error": null
+    },
+    "assert vowels_count(\"wvdvd\") == 0": {
+      "result": true,
+      "time": 0.025367021560668945,
+      "error": null
+    },
+    "assert vowels_count(\"EftkljPHH\") == 1": {
+      "result": true,
+      "time": 0.026848793029785156,
+      "error": null
+    },
+    "assert vowels_count(\"UeGm\") == 2": {
+      "result": true,
+      "time": 0.02950572967529297,
+      "error": null
+    },
+    "assert vowels_count(\"Cnd\") == 0": {
+      "result": true,
+      "time": 0.026934385299682617,
+      "error": null
+    },
+    "assert vowels_count(\"largjSFz\") == 1": {
+      "result": true,
+      "time": 0.029471874237060547,
+      "error": null
+    },
+    "assert vowels_count(\"Alone\") == 3, \"Test 2\"": {
+      "result": true,
+      "time": 0.02855825424194336,
+      "error": null
+    },
+    "assert vowels_count(\"opbbocbx\") == 2": {
+      "result": true,
+      "time": 0.029405593872070312,
+      "error": null
+    },
+    "assert vowels_count(\"qkbZfvFfG\") == 0": {
+      "result": true,
+      "time": 0.027982711791992188,
+      "error": null
+    },
+    "assert vowels_count(\"xgyeq\") == 1": {
+      "result": true,
+      "time": 0.028398513793945312,
+      "error": null
+    },
+    "assert vowels_count(\"Dlll\") == 0": {
+      "result": true,
+      "time": 0.027994632720947266,
+      "error": null
+    },
+    "assert vowels_count(\"yxdkra\") == 1": {
+      "result": true,
+      "time": 0.028446674346923828,
+      "error": null
+    },
+    "assert vowels_count(\"ThZJJ\") == 0": {
+      "result": true,
+      "time": 0.02781534194946289,
+      "error": null
+    },
+    "assert vowels_count(\"wftbmsp\") == 0": {
+      "result": true,
+      "time": 0.028178691864013672,
+      "error": null
+    },
+    "assert vowels_count(\"qtqu\") == 1": {
+      "result": true,
+      "time": 0.027988433837890625,
+      "error": null
+    },
+    "assert vowels_count(\"nnq\") == 0": {
+      "result": true,
+      "time": 0.025406599044799805,
+      "error": null
+    },
+    "assert vowels_count(\"SFLHyx\") == 0": {
+      "result": true,
+      "time": 0.02762889862060547,
+      "error": null
+    },
+    "assert vowels_count(\"eqvenle\") == 3": {
+      "result": true,
+      "time": 0.029384613037109375,
+      "error": null
+    },
+    "assert vowels_count(\"pfbuf\") == 1": {
+      "result": true,
+      "time": 0.02713632583618164,
+      "error": null
+    },
+    "assert vowels_count(\"nouzf\") == 2": {
+      "result": true,
+      "time": 0.02608036994934082,
+      "error": null
+    },
+    "assert vowels_count(\"qvt\") == 0": {
+      "result": true,
+      "time": 0.026044845581054688,
+      "error": null
+    },
+    "assert vowels_count(\"JRteFuBsm\") == 2": {
+      "result": true,
+      "time": 0.027388811111450195,
+      "error": null
+    },
+    "assert vowels_count(\"JdT\") == 0": {
+      "result": true,
+      "time": 0.0287933349609375,
+      "error": null
+    },
+    "assert vowels_count(\"iraTR\") == 2": {
+      "result": true,
+      "time": 0.02878093719482422,
+      "error": null
+    },
+    "assert vowels_count(\"xCpqwzZNO\") == 1": {
+      "result": true,
+      "time": 0.03043985366821289,
+      "error": null
+    },
+    "assert vowels_count(\"ZZpBY\") == 1": {
+      "result": true,
+      "time": 0.028861522674560547,
+      "error": null
+    },
+    "assert vowels_count(\"bYe\") == 1, \"Test 6\"": {
+      "result": true,
+      "time": 0.028119802474975586,
+      "error": null
+    },
+    "assert vowels_count(\"bprwrlz\") == 0": {
+      "result": true,
+      "time": 0.030358076095581055,
+      "error": null
+    },
+    "assert vowels_count(\"srezvdbi\") == 2": {
+      "result": true,
+      "time": 0.029073715209960938,
+      "error": null
+    },
+    "assert vowels_count(\"xmzjzfsd\") == 0": {
+      "result": true,
+      "time": 0.027136802673339844,
+      "error": null
+    },
+    "assert vowels_count(\"jder\") == 1": {
+      "result": true,
+      "time": 0.02836894989013672,
+      "error": null
+    },
+    "assert vowels_count(\"pFGheLS\") == 1": {
+      "result": true,
+      "time": 0.028693437576293945,
+      "error": null
+    },
+    "assert vowels_count(\"wkKhkykC\") == 0": {
+      "result": true,
+      "time": 0.028202295303344727,
+      "error": null
+    },
+    "assert vowels_count(\"pttuuh\") == 2": {
+      "result": true,
+      "time": 0.03323173522949219,
+      "error": null
+    },
+    "assert vowels_count(\"lknisac\") == 2": {
+      "result": true,
+      "time": 0.03264284133911133,
+      "error": null
+    },
+    "assert vowels_count(\"cukdnxkxw\") == 1": {
+      "result": true,
+      "time": 0.026651859283447266,
+      "error": null
+    },
+    "assert vowels_count(\"key\") == 2, \"Test 3\"": {
+      "result": true,
+      "time": 0.028420448303222656,
+      "error": null
+    },
+    "assert vowels_count(\"DgxnzsbRN\") == 0": {
+      "result": true,
+      "time": 0.026607751846313477,
+      "error": null
+    },
+    "assert vowels_count(\"VVdjTksh\") == 0": {
+      "result": true,
+      "time": 0.027223825454711914,
+      "error": null
+    },
+    "assert vowels_count(\"mgmstfzm\") == 0": {
+      "result": true,
+      "time": 0.028846025466918945,
+      "error": null
+    },
+    "assert vowels_count(\"fivkg\") == 1": {
+      "result": true,
+      "time": 0.02626657485961914,
+      "error": null
+    },
+    "assert vowels_count(\"aprpbhbva\") == 2": {
+      "result": true,
+      "time": 0.026355504989624023,
+      "error": null
+    },
+    "assert vowels_count(\"LBRPmeox\") == 2": {
+      "result": true,
+      "time": 0.026293516159057617,
+      "error": null
+    },
+    "assert vowels_count(\"aAboay\") == 5": {
+      "result": true,
+      "time": 0.028095722198486328,
+      "error": null
+    },
+    "assert vowels_count(\"gTfkWkL\") == 0": {
+      "result": true,
+      "time": 0.029987573623657227,
+      "error": null
+    },
+    "assert vowels_count(\"yxnk\") == 0": {
+      "result": true,
+      "time": 0.025967121124267578,
+      "error": null
+    },
+    "assert vowels_count(\"bajvbd\") == 1": {
+      "result": true,
+      "time": 0.029822587966918945,
+      "error": null
+    },
+    "assert vowels_count(\"czkp\") == 0": {
+      "result": true,
+      "time": 0.02847433090209961,
+      "error": null
+    },
+    "assert vowels_count(\"qSbxpNy\") == 1": {
+      "result": true,
+      "time": 0.02581024169921875,
+      "error": null
+    },
+    "assert vowels_count(\"dcsjaykkn\") == 1": {
+      "result": true,
+      "time": 0.02902507781982422,
+      "error": null
+    },
+    "assert vowels_count(\"xyichsbq\") == 1": {
+      "result": true,
+      "time": 0.027184486389160156,
+      "error": null
+    },
+    "assert vowels_count(\"jxglz\") == 0": {
+      "result": true,
+      "time": 0.02816176414489746,
+      "error": null
+    },
+    "assert vowels_count(\"hwlT\") == 0": {
+      "result": true,
+      "time": 0.02766275405883789,
+      "error": null
+    },
+    "assert vowels_count(\"kue\") == 2": {
+      "result": true,
+      "time": 0.02888178825378418,
+      "error": null
+    },
+    "assert vowels_count(\"Jxfs\") == 0": {
+      "result": true,
+      "time": 0.02678227424621582,
+      "error": null
+    },
+    "assert vowels_count(\"frw\") == 0": {
+      "result": true,
+      "time": 0.028165340423583984,
+      "error": null
+    },
+    "assert vowels_count(\"ofxgqm\") == 1": {
+      "result": true,
+      "time": 0.026211977005004883,
+      "error": null
+    },
+    "assert vowels_count(\"gqAOEgKW\") == 3": {
+      "result": true,
+      "time": 0.025877714157104492,
+      "error": null
+    },
+    "assert vowels_count(\"qwpllpe\") == 1": {
+      "result": true,
+      "time": 0.026263952255249023,
+      "error": null
+    },
+    "assert vowels_count(\"TtGtnDI\") == 1": {
+      "result": true,
+      "time": 0.02640390396118164,
+      "error": null
+    },
+    "assert vowels_count(\"knkdhm\") == 0": {
+      "result": true,
+      "time": 0.02660369873046875,
+      "error": null
+    },
+    "assert vowels_count(\"lNjkjaQ\") == 1": {
+      "result": true,
+      "time": 0.028587818145751953,
+      "error": null
+    },
+    "assert vowels_count(\"rBKaNrSZf\") == 1": {
+      "result": true,
+      "time": 0.027935028076171875,
+      "error": null
+    },
+    "assert vowels_count(\"ryll\") == 0": {
+      "result": true,
+      "time": 0.0258786678314209,
+      "error": null
+    },
+    "assert vowels_count(\"uiaTUA\") == 5": {
+      "result": true,
+      "time": 0.030146360397338867,
+      "error": null
+    },
+    "assert vowels_count(\"hlkaasqi\") == 3": {
+      "result": true,
+      "time": 0.030212879180908203,
+      "error": null
+    },
+    "assert vowels_count(\"bctkur\") == 1": {
+      "result": true,
+      "time": 0.02808213233947754,
+      "error": null
+    },
+    "assert vowels_count(\"QuzI\") == 2": {
+      "result": true,
+      "time": 0.0280306339263916,
+      "error": null
+    },
+    "assert vowels_count(\"EVsqd\") == 1": {
+      "result": true,
+      "time": 0.03115367889404297,
+      "error": null
+    },
+    "assert vowels_count(\"cmmacbu\") == 2": {
+      "result": true,
+      "time": 0.02812933921813965,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

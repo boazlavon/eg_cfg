@@ -1,0 +1,659 @@
+{
+  "code": "def simplify(x, n):\n    # Parse x into numerator and denominator\n    x_num, x_den = map(int, x.split('/'))\n    # Parse n into numerator and denominator\n    n_num, n_den = map(int, n.split('/'))\n    # Multiply the fractions\n    product_num = x_num * n_num\n    product_den = x_den * n_den\n    # Check if the product is a whole number\n    return product_num % product_den == 0",
+  "results": {
+    "assert simplify('250/9', '307/3') == False": {
+      "result": true,
+      "time": 0.02696704864501953,
+      "error": null
+    },
+    "assert simplify(\"1/5\", \"1/5\") == False, 'test13'": {
+      "result": true,
+      "time": 0.02638411521911621,
+      "error": null
+    },
+    "assert simplify('307/2', '244/4') == False": {
+      "result": true,
+      "time": 0.026076555252075195,
+      "error": null
+    },
+    "assert simplify('948/4', '43/4') == False": {
+      "result": true,
+      "time": 0.030130863189697266,
+      "error": null
+    },
+    "assert simplify('398/6', '443/4') == False": {
+      "result": true,
+      "time": 0.02922797203063965,
+      "error": null
+    },
+    "assert simplify('598/2', '681/10') == False": {
+      "result": true,
+      "time": 0.029222488403320312,
+      "error": null
+    },
+    "assert simplify('190/9', '368/2') == False": {
+      "result": true,
+      "time": 0.02562236785888672,
+      "error": null
+    },
+    "assert simplify('822/2', '228/2') == True": {
+      "result": true,
+      "time": 0.030618667602539062,
+      "error": null
+    },
+    "assert simplify('325/1', '782/4') == False": {
+      "result": true,
+      "time": 0.02467489242553711,
+      "error": null
+    },
+    "assert simplify('544/8', '302/3') == False": {
+      "result": true,
+      "time": 0.028936147689819336,
+      "error": null
+    },
+    "assert simplify('213/4', '974/8') == False": {
+      "result": true,
+      "time": 0.026520490646362305,
+      "error": null
+    },
+    "assert simplify('522/9', '306/9') == True": {
+      "result": true,
+      "time": 0.02707815170288086,
+      "error": null
+    },
+    "assert simplify('489/4', '71/6') == False": {
+      "result": true,
+      "time": 0.02749180793762207,
+      "error": null
+    },
+    "assert simplify(\"7/10\", \"10/2\") == False, 'test4'": {
+      "result": true,
+      "time": 0.026070594787597656,
+      "error": null
+    },
+    "assert simplify('248/7', '197/5') == False": {
+      "result": true,
+      "time": 0.02706289291381836,
+      "error": null
+    },
+    "assert simplify('258/6', '455/4') == False": {
+      "result": true,
+      "time": 0.02683258056640625,
+      "error": null
+    },
+    "assert simplify('645/10', '426/10') == False": {
+      "result": true,
+      "time": 0.02584218978881836,
+      "error": null
+    },
+    "assert simplify('263/7', '695/7') == False": {
+      "result": true,
+      "time": 0.026285171508789062,
+      "error": null
+    },
+    "assert simplify('434/9', '995/3') == False": {
+      "result": true,
+      "time": 0.029438018798828125,
+      "error": null
+    },
+    "assert simplify('204/9', '139/4') == False": {
+      "result": true,
+      "time": 0.02686905860900879,
+      "error": null
+    },
+    "assert simplify('702/2', '739/7') == False": {
+      "result": true,
+      "time": 0.02797675132751465,
+      "error": null
+    },
+    "assert simplify('71/2', '243/4') == False": {
+      "result": true,
+      "time": 0.02490520477294922,
+      "error": null
+    },
+    "assert simplify('645/5', '557/10') == False": {
+      "result": true,
+      "time": 0.026740550994873047,
+      "error": null
+    },
+    "assert simplify('387/3', '474/9') == True": {
+      "result": true,
+      "time": 0.02723073959350586,
+      "error": null
+    },
+    "assert simplify(\"5/1\", \"3/1\") == True, 'test3'": {
+      "result": true,
+      "time": 0.028600692749023438,
+      "error": null
+    },
+    "assert simplify('173/8', '723/9') == False": {
+      "result": true,
+      "time": 0.029877185821533203,
+      "error": null
+    },
+    "assert simplify('1000/2', '693/9') == True": {
+      "result": true,
+      "time": 0.027408599853515625,
+      "error": null
+    },
+    "assert simplify('870/4', '140/9') == False": {
+      "result": true,
+      "time": 0.028585433959960938,
+      "error": null
+    },
+    "assert simplify(\"1/5\", \"5/1\") == True, 'test12'": {
+      "result": true,
+      "time": 0.026958227157592773,
+      "error": null
+    },
+    "assert simplify('865/9', '529/2') == False": {
+      "result": true,
+      "time": 0.028805017471313477,
+      "error": null
+    },
+    "assert simplify('926/3', '493/3') == False": {
+      "result": true,
+      "time": 0.024913787841796875,
+      "error": null
+    },
+    "assert simplify('310/9', '742/8') == False": {
+      "result": true,
+      "time": 0.027549266815185547,
+      "error": null
+    },
+    "assert simplify('737/9', '21/6') == False": {
+      "result": true,
+      "time": 0.026590347290039062,
+      "error": null
+    },
+    "assert simplify('828/1', '844/1') == True": {
+      "result": true,
+      "time": 0.027529478073120117,
+      "error": null
+    },
+    "assert simplify('483/5', '39/2') == False": {
+      "result": true,
+      "time": 0.026936769485473633,
+      "error": null
+    },
+    "assert simplify('673/2', '76/6') == False": {
+      "result": true,
+      "time": 0.026381969451904297,
+      "error": null
+    },
+    "assert simplify('539/3', '30/3') == False": {
+      "result": true,
+      "time": 0.025484800338745117,
+      "error": null
+    },
+    "assert simplify('50/8', '572/5') == True": {
+      "result": true,
+      "time": 0.025481462478637695,
+      "error": null
+    },
+    "assert simplify('439/8', '584/7') == False": {
+      "result": true,
+      "time": 0.025893449783325195,
+      "error": null
+    },
+    "assert simplify('488/9', '680/2') == False": {
+      "result": true,
+      "time": 0.02723836898803711,
+      "error": null
+    },
+    "assert simplify('740/5', '932/7') == False": {
+      "result": true,
+      "time": 0.024649381637573242,
+      "error": null
+    },
+    "assert simplify(\"5/2\", \"3/5\") == False, 'test9'": {
+      "result": true,
+      "time": 0.026803016662597656,
+      "error": null
+    },
+    "assert simplify('974/5', '871/5') == False": {
+      "result": true,
+      "time": 0.027161359786987305,
+      "error": null
+    },
+    "assert simplify('561/6', '333/5') == False": {
+      "result": true,
+      "time": 0.024431467056274414,
+      "error": null
+    },
+    "assert simplify(\"2/4\", \"4/2\") == True, 'test11'": {
+      "result": true,
+      "time": 0.02611231803894043,
+      "error": null
+    },
+    "assert simplify('93/9', '337/10') == False": {
+      "result": true,
+      "time": 0.02625584602355957,
+      "error": null
+    },
+    "assert simplify('803/6', '38/7') == False": {
+      "result": true,
+      "time": 0.030252456665039062,
+      "error": null
+    },
+    "assert simplify('882/1', '804/6') == True": {
+      "result": true,
+      "time": 0.028761625289916992,
+      "error": null
+    },
+    "assert simplify('632/7', '874/3') == False": {
+      "result": true,
+      "time": 0.027111530303955078,
+      "error": null
+    },
+    "assert simplify('141/8', '896/6') == True": {
+      "result": true,
+      "time": 0.034348487854003906,
+      "error": null
+    },
+    "assert simplify('87/8', '635/9') == False": {
+      "result": true,
+      "time": 0.030225276947021484,
+      "error": null
+    },
+    "assert simplify('649/10', '575/9') == False": {
+      "result": true,
+      "time": 0.02640557289123535,
+      "error": null
+    },
+    "assert simplify('154/10', '911/4') == False": {
+      "result": true,
+      "time": 0.02489471435546875,
+      "error": null
+    },
+    "assert simplify('792/8', '310/7') == False": {
+      "result": true,
+      "time": 0.026793956756591797,
+      "error": null
+    },
+    "assert simplify('706/10', '573/4') == False": {
+      "result": true,
+      "time": 0.029367685317993164,
+      "error": null
+    },
+    "assert simplify('665/6', '877/7') == False": {
+      "result": true,
+      "time": 0.02685379981994629,
+      "error": null
+    },
+    "assert simplify('483/3', '753/2') == False": {
+      "result": true,
+      "time": 0.024786949157714844,
+      "error": null
+    },
+    "assert simplify('534/9', '319/3') == False": {
+      "result": true,
+      "time": 0.026474714279174805,
+      "error": null
+    },
+    "assert simplify('133/6', '760/2') == False": {
+      "result": true,
+      "time": 0.027276992797851562,
+      "error": null
+    },
+    "assert simplify('740/2', '295/8') == False": {
+      "result": true,
+      "time": 0.02715778350830078,
+      "error": null
+    },
+    "assert simplify('749/10', '943/1') == False": {
+      "result": true,
+      "time": 0.02643585205078125,
+      "error": null
+    },
+    "assert simplify('456/3', '948/7') == False": {
+      "result": true,
+      "time": 0.025992631912231445,
+      "error": null
+    },
+    "assert simplify('359/7', '668/10') == False": {
+      "result": true,
+      "time": 0.025972843170166016,
+      "error": null
+    },
+    "assert simplify('375/10', '255/6') == False": {
+      "result": true,
+      "time": 0.025778532028198242,
+      "error": null
+    },
+    "assert simplify('52/9', '669/3') == False": {
+      "result": true,
+      "time": 0.025108814239501953,
+      "error": null
+    },
+    "assert simplify('120/2', '508/8') == True": {
+      "result": true,
+      "time": 0.0292813777923584,
+      "error": null
+    },
+    "assert simplify('148/3', '587/8') == False": {
+      "result": true,
+      "time": 0.030138731002807617,
+      "error": null
+    },
+    "assert simplify('672/4', '313/4') == True": {
+      "result": true,
+      "time": 0.029587745666503906,
+      "error": null
+    },
+    "assert simplify('72/7', '863/9') == False": {
+      "result": true,
+      "time": 0.0288851261138916,
+      "error": null
+    },
+    "assert simplify('502/5', '889/6') == False": {
+      "result": true,
+      "time": 0.02657485008239746,
+      "error": null
+    },
+    "assert simplify('353/10', '302/7') == False": {
+      "result": true,
+      "time": 0.03057694435119629,
+      "error": null
+    },
+    "assert simplify('726/1', '616/10') == False": {
+      "result": true,
+      "time": 0.026333093643188477,
+      "error": null
+    },
+    "assert simplify('994/10', '447/9') == False": {
+      "result": true,
+      "time": 0.02726149559020996,
+      "error": null
+    },
+    "assert simplify('791/9', '52/1') == False": {
+      "result": true,
+      "time": 0.02419757843017578,
+      "error": null
+    },
+    "assert simplify('527/9', '12/10') == False": {
+      "result": true,
+      "time": 0.02886819839477539,
+      "error": null
+    },
+    "assert simplify('943/5', '868/4') == False": {
+      "result": true,
+      "time": 0.027746915817260742,
+      "error": null
+    },
+    "assert simplify('277/9', '136/4') == False": {
+      "result": true,
+      "time": 0.025758743286132812,
+      "error": null
+    },
+    "assert simplify('359/3', '457/8') == False": {
+      "result": true,
+      "time": 0.026474714279174805,
+      "error": null
+    },
+    "assert simplify('384/3', '969/2') == True": {
+      "result": true,
+      "time": 0.028417348861694336,
+      "error": null
+    },
+    "assert simplify('784/6', '756/7') == True": {
+      "result": true,
+      "time": 0.027482986450195312,
+      "error": null
+    },
+    "assert simplify(\"2/4\", \"8/4\") == True, 'test10'\n\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.025368213653564453,
+      "error": null
+    },
+    "assert simplify('346/8', '69/10') == False": {
+      "result": true,
+      "time": 0.027615070343017578,
+      "error": null
+    },
+    "assert simplify('539/8', '738/8') == False": {
+      "result": true,
+      "time": 0.027574777603149414,
+      "error": null
+    },
+    "assert simplify('648/8', '107/3') == True": {
+      "result": true,
+      "time": 0.024769306182861328,
+      "error": null
+    },
+    "assert simplify('597/2', '79/3') == False": {
+      "result": true,
+      "time": 0.02539682388305664,
+      "error": null
+    },
+    "assert simplify('821/1', '778/4') == False": {
+      "result": true,
+      "time": 0.02711963653564453,
+      "error": null
+    },
+    "assert simplify('788/3', '905/7') == False": {
+      "result": true,
+      "time": 0.028952836990356445,
+      "error": null
+    },
+    "assert simplify('688/1', '227/6') == False": {
+      "result": true,
+      "time": 0.027229785919189453,
+      "error": null
+    },
+    "assert simplify('676/8', '147/9') == False": {
+      "result": true,
+      "time": 0.02691507339477539,
+      "error": null
+    },
+    "assert simplify('486/8', '960/9') == True": {
+      "result": true,
+      "time": 0.033013105392456055,
+      "error": null
+    },
+    "assert simplify('407/3', '387/1') == True": {
+      "result": true,
+      "time": 0.030106782913208008,
+      "error": null
+    },
+    "assert simplify('691/8', '819/8') == False": {
+      "result": true,
+      "time": 0.02680063247680664,
+      "error": null
+    },
+    "assert simplify(\"1/6\", \"2/1\") == False, 'test2'": {
+      "result": true,
+      "time": 0.02559185028076172,
+      "error": null
+    },
+    "assert simplify('562/9', '39/10') == False": {
+      "result": true,
+      "time": 0.028769969940185547,
+      "error": null
+    },
+    "assert simplify(\"2/3\", \"5/2\") == False, 'test8'": {
+      "result": true,
+      "time": 0.025599956512451172,
+      "error": null
+    },
+    "assert simplify('654/10', '819/2') == False": {
+      "result": true,
+      "time": 0.02787327766418457,
+      "error": null
+    },
+    "assert simplify('827/9', '360/5') == True": {
+      "result": true,
+      "time": 0.027068614959716797,
+      "error": null
+    },
+    "assert simplify('997/5', '546/9') == False": {
+      "result": true,
+      "time": 0.029536008834838867,
+      "error": null
+    },
+    "assert simplify('782/6', '824/5') == False": {
+      "result": true,
+      "time": 0.026764392852783203,
+      "error": null
+    },
+    "assert simplify('118/7', '979/2') == False": {
+      "result": true,
+      "time": 0.028944015502929688,
+      "error": null
+    },
+    "assert simplify('869/7', '731/5') == False": {
+      "result": true,
+      "time": 0.029112815856933594,
+      "error": null
+    },
+    "assert simplify(\"11/6\", \"6/1\") == True, 'test7'": {
+      "result": true,
+      "time": 0.030725955963134766,
+      "error": null
+    },
+    "assert simplify('188/3', '736/3') == False": {
+      "result": true,
+      "time": 0.02631998062133789,
+      "error": null
+    },
+    "assert simplify(\"1/5\", \"5/1\") == True, 'test1'": {
+      "result": true,
+      "time": 0.025184154510498047,
+      "error": null
+    },
+    "assert simplify('665/4', '308/2') == False": {
+      "result": true,
+      "time": 0.02889084815979004,
+      "error": null
+    },
+    "assert simplify('295/9', '167/4') == False": {
+      "result": true,
+      "time": 0.028990745544433594,
+      "error": null
+    },
+    "assert simplify('909/4', '154/4') == False": {
+      "result": true,
+      "time": 0.027940988540649414,
+      "error": null
+    },
+    "assert simplify('717/9', '683/10') == False": {
+      "result": true,
+      "time": 0.028870344161987305,
+      "error": null
+    },
+    "assert simplify('436/5', '911/9') == False": {
+      "result": true,
+      "time": 0.02634739875793457,
+      "error": null
+    },
+    "assert simplify('68/2', '491/5') == False": {
+      "result": true,
+      "time": 0.02862071990966797,
+      "error": null
+    },
+    "assert simplify('770/10', '214/3') == False": {
+      "result": true,
+      "time": 0.026338577270507812,
+      "error": null
+    },
+    "assert simplify('4/10', '651/7') == False": {
+      "result": true,
+      "time": 0.026566743850708008,
+      "error": null
+    },
+    "assert simplify('606/4', '98/6') == False": {
+      "result": true,
+      "time": 0.02659130096435547,
+      "error": null
+    },
+    "assert simplify('112/3', '388/10') == False": {
+      "result": true,
+      "time": 0.026842355728149414,
+      "error": null
+    },
+    "assert simplify('21/8', '930/10') == False": {
+      "result": true,
+      "time": 0.025002717971801758,
+      "error": null
+    },
+    "assert simplify('588/9', '345/7') == True": {
+      "result": true,
+      "time": 0.02898263931274414,
+      "error": null
+    },
+    "assert simplify('925/5', '513/8') == False": {
+      "result": true,
+      "time": 0.026230335235595703,
+      "error": null
+    },
+    "assert simplify(\"7/2\", \"4/2\") == True, 'test6'": {
+      "result": true,
+      "time": 0.02616739273071289,
+      "error": null
+    },
+    "assert simplify('24/2', '61/2') == True": {
+      "result": true,
+      "time": 0.025855541229248047,
+      "error": null
+    },
+    "assert simplify('239/7', '30/6') == False": {
+      "result": true,
+      "time": 0.026470184326171875,
+      "error": null
+    },
+    "assert simplify('927/3', '488/5') == False": {
+      "result": true,
+      "time": 0.027335166931152344,
+      "error": null
+    },
+    "assert simplify('190/9', '850/5') == False": {
+      "result": true,
+      "time": 0.024998903274536133,
+      "error": null
+    },
+    "assert simplify(\"2/10\", \"50/10\") == True, 'test5'": {
+      "result": true,
+      "time": 0.029628753662109375,
+      "error": null
+    },
+    "assert simplify('234/7', '89/3') == False": {
+      "result": true,
+      "time": 0.026887178421020508,
+      "error": null
+    },
+    "assert simplify('532/9', '353/4') == False": {
+      "result": true,
+      "time": 0.027902841567993164,
+      "error": null
+    },
+    "assert simplify('987/4', '273/4') == False": {
+      "result": true,
+      "time": 0.029565811157226562,
+      "error": null
+    },
+    "assert simplify('281/8', '869/6') == False": {
+      "result": true,
+      "time": 0.027638673782348633,
+      "error": null
+    },
+    "assert simplify('933/1', '852/8') == False": {
+      "result": true,
+      "time": 0.02816319465637207,
+      "error": null
+    },
+    "assert simplify('472/8', '768/4') == True": {
+      "result": true,
+      "time": 0.02692556381225586,
+      "error": null
+    },
+    "assert simplify('942/8', '116/10') == False": {
+      "result": true,
+      "time": 0.030731678009033203,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

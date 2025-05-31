@@ -1,0 +1,544 @@
+{
+  "code": "def is_sorted(lst):\n    if len(lst) <= 1:\n        return True\n    has_duplicate = any(lst.count(x) > 2 for x in lst)\n    if has_duplicate:\n        return False\n    for i in range(len(lst) - 1):\n        if lst[i] > lst[i + 1]:\n            return False\n    return True",
+  "results": {
+    "assert is_sorted([1, 1, 3, 6, 7, 8]) == True": {
+      "result": true,
+      "time": 0.03034806251525879,
+      "error": null
+    },
+    "assert is_sorted([6, 2, 2, 3, 10, 4, 6]) == False": {
+      "result": true,
+      "time": 0.028714656829833984,
+      "error": null
+    },
+    "assert is_sorted([2, 3, 3, 5]) == True": {
+      "result": true,
+      "time": 0.028275728225708008,
+      "error": null
+    },
+    "assert is_sorted([1, 4, 4, 5, 6, 6, 10]) == True": {
+      "result": true,
+      "time": 0.028092384338378906,
+      "error": null
+    },
+    "assert is_sorted([3, 7, 5]) == False": {
+      "result": true,
+      "time": 0.028023958206176758,
+      "error": null
+    },
+    "assert is_sorted([1, 1, 3, 5, 6, 6]) == True": {
+      "result": true,
+      "time": 0.028351306915283203,
+      "error": null
+    },
+    "assert is_sorted([5, 6, 3]) == False": {
+      "result": true,
+      "time": 0.02983260154724121,
+      "error": null
+    },
+    "assert is_sorted([3, 4, 4, 4, 4, 7]) == False": {
+      "result": true,
+      "time": 0.029807090759277344,
+      "error": null
+    },
+    "assert is_sorted([1, 5, 7, 4, 4, 2]) == False": {
+      "result": true,
+      "time": 0.030740737915039062,
+      "error": null
+    },
+    "assert is_sorted([2, 2, 6, 8]) == True": {
+      "result": true,
+      "time": 0.03026723861694336,
+      "error": null
+    },
+    "assert is_sorted([3, 4, 6, 7, 7]) == True": {
+      "result": true,
+      "time": 0.034453630447387695,
+      "error": null
+    },
+    "assert is_sorted([3, 3, 5, 7, 1, 5]) == False": {
+      "result": true,
+      "time": 0.03443479537963867,
+      "error": null
+    },
+    "assert is_sorted([2, 4, 8, 9]) == True": {
+      "result": true,
+      "time": 0.03098464012145996,
+      "error": null
+    },
+    "assert is_sorted([6, 4, 4]) == False": {
+      "result": true,
+      "time": 0.0315093994140625,
+      "error": null
+    },
+    "assert is_sorted([8, 1, 2]) == False": {
+      "result": true,
+      "time": 0.030826568603515625,
+      "error": null
+    },
+    "assert is_sorted([1, 3, 4, 5]) == True": {
+      "result": true,
+      "time": 0.029330730438232422,
+      "error": null
+    },
+    "assert is_sorted([3, 6, 3, 9, 10, 4, 10]) == False": {
+      "result": true,
+      "time": 0.03327059745788574,
+      "error": null
+    },
+    "assert is_sorted([1, 3, 2, 4, 5]) == False": {
+      "result": true,
+      "time": 0.029864788055419922,
+      "error": null
+    },
+    "assert is_sorted([1]) == True": {
+      "result": true,
+      "time": 0.031239032745361328,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 3, 3, 4, 5, 8]) == True": {
+      "result": true,
+      "time": 0.029843807220458984,
+      "error": null
+    },
+    "assert is_sorted([3, 2, 1]) == False": {
+      "result": true,
+      "time": 0.03012537956237793,
+      "error": null
+    },
+    "assert is_sorted([1, 1, 3, 5]) == True": {
+      "result": true,
+      "time": 0.034110069274902344,
+      "error": null
+    },
+    "assert is_sorted([4, 3, 5, 6, 5, 3]) == False": {
+      "result": true,
+      "time": 0.031760215759277344,
+      "error": null
+    },
+    "assert is_sorted([1, 3, 5, 5, 7]) == True": {
+      "result": true,
+      "time": 0.031859397888183594,
+      "error": null
+    },
+    "assert is_sorted([5, 4, 6, 7, 1, 5]) == False": {
+      "result": true,
+      "time": 0.02836441993713379,
+      "error": null
+    },
+    "assert is_sorted([4, 5, 8, 4, 2, 7]) == False": {
+      "result": true,
+      "time": 0.030767440795898438,
+      "error": null
+    },
+    "assert is_sorted([2, 5, 4, 1, 1, 8, 9]) == False": {
+      "result": true,
+      "time": 0.03542900085449219,
+      "error": null
+    },
+    "assert is_sorted([5, 5, 2, 3, 3, 4]) == False": {
+      "result": true,
+      "time": 0.0347137451171875,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 2, 2, 3, 4]) == False": {
+      "result": true,
+      "time": 0.03175663948059082,
+      "error": null
+    },
+    "assert is_sorted([6, 1, 3, 6, 3, 7]) == False": {
+      "result": true,
+      "time": 0.02981114387512207,
+      "error": null
+    },
+    "assert is_sorted([1, 1, 1, 2, 5, 8]) == False": {
+      "result": true,
+      "time": 0.03555727005004883,
+      "error": null
+    },
+    "assert is_sorted([2, 4, 6, 4, 3, 6, 4]) == False": {
+      "result": true,
+      "time": 0.031149864196777344,
+      "error": null
+    },
+    "assert is_sorted([3, 7, 7, 6, 6, 7]) == False": {
+      "result": true,
+      "time": 0.03516268730163574,
+      "error": null
+    },
+    "assert is_sorted([10]) == True": {
+      "result": true,
+      "time": 0.0392603874206543,
+      "error": null
+    },
+    "assert is_sorted([3, 3, 4, 6, 7, 8]) == True": {
+      "result": true,
+      "time": 0.044112205505371094,
+      "error": null
+    },
+    "assert is_sorted([2, 2, 2, 5, 8, 11]) == False": {
+      "result": true,
+      "time": 0.033783674240112305,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 3, 3, 7, 9]) == True": {
+      "result": true,
+      "time": 0.0352170467376709,
+      "error": null
+    },
+    "assert is_sorted([2, 4, 2, 9, 10]) == False": {
+      "result": true,
+      "time": 0.03058171272277832,
+      "error": null
+    },
+    "assert is_sorted([3, 4, 6, 7]) == True": {
+      "result": true,
+      "time": 0.029207229614257812,
+      "error": null
+    },
+    "assert is_sorted([4, 3, 6, 6, 4, 1, 9]) == False": {
+      "result": true,
+      "time": 0.03467154502868652,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 3, 5, 5, 8]) == True": {
+      "result": true,
+      "time": 0.030577898025512695,
+      "error": null
+    },
+    "assert is_sorted([6, 1, 2, 3, 3, 3]) == False": {
+      "result": true,
+      "time": 0.029048919677734375,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 2, 4, 4, 6, 8]) == True": {
+      "result": true,
+      "time": 0.03155398368835449,
+      "error": null
+    },
+    "assert is_sorted([1, 3, 3, 4, 5]) == True": {
+      "result": true,
+      "time": 0.033006906509399414,
+      "error": null
+    },
+    "assert is_sorted([1, 4, 4, 4, 5]) == False": {
+      "result": true,
+      "time": 0.028223037719726562,
+      "error": null
+    },
+    "assert is_sorted([3, 2, 2, 2, 3]) == False": {
+      "result": true,
+      "time": 0.03240227699279785,
+      "error": null
+    },
+    "assert is_sorted([3, 5, 5, 6, 7, 8, 10]) == True": {
+      "result": true,
+      "time": 0.03214073181152344,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 3, 4, 5]) == True": {
+      "result": true,
+      "time": 0.0318303108215332,
+      "error": null
+    },
+    "assert is_sorted([4]) == True": {
+      "result": true,
+      "time": 0.030853748321533203,
+      "error": null
+    },
+    "assert is_sorted([5, 7, 4, 2, 2, 4]) == False": {
+      "result": true,
+      "time": 0.03276205062866211,
+      "error": null
+    },
+    "assert is_sorted([6]) == True": {
+      "result": true,
+      "time": 0.03148841857910156,
+      "error": null
+    },
+    "assert is_sorted([3, 7, 4, 8, 1, 4]) == False": {
+      "result": true,
+      "time": 0.03426313400268555,
+      "error": null
+    },
+    "assert is_sorted([1, 6, 3]) == False": {
+      "result": true,
+      "time": 0.03156590461730957,
+      "error": null
+    },
+    "assert is_sorted([1, 3, 2, 4, 5, 6, 7]) == False": {
+      "result": true,
+      "time": 0.03405618667602539,
+      "error": null
+    },
+    "assert is_sorted([6, 2, 3, 5, 2, 7]) == False": {
+      "result": true,
+      "time": 0.029021263122558594,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 4, 4, 6, 7, 10]) == True": {
+      "result": true,
+      "time": 0.03193402290344238,
+      "error": null
+    },
+    "assert is_sorted([1, 5, 5, 6, 6, 9]) == True": {
+      "result": true,
+      "time": 0.030748605728149414,
+      "error": null
+    },
+    "assert is_sorted([2, 3, 4, 4, 8, 10]) == True": {
+      "result": true,
+      "time": 0.03221464157104492,
+      "error": null
+    },
+    "assert is_sorted([1, 5, 5, 6, 9]) == True": {
+      "result": true,
+      "time": 0.03479623794555664,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 3, 4]) == True": {
+      "result": true,
+      "time": 0.03522682189941406,
+      "error": null
+    },
+    "assert is_sorted([2, 4, 5]) == True": {
+      "result": true,
+      "time": 0.03042149543762207,
+      "error": null
+    },
+    "assert is_sorted([7]) == True": {
+      "result": true,
+      "time": 0.03218889236450195,
+      "error": null
+    },
+    "assert is_sorted([2, 2, 3, 3, 6, 7]) == True": {
+      "result": true,
+      "time": 0.032138824462890625,
+      "error": null
+    },
+    "assert is_sorted([3, 3, 6, 9, 9]) == True": {
+      "result": true,
+      "time": 0.032117605209350586,
+      "error": null
+    },
+    "assert is_sorted([1, 5, 6, 7, 9, 10, 10]) == True": {
+      "result": true,
+      "time": 0.028880834579467773,
+      "error": null
+    },
+    "assert is_sorted([5, 3, 3, 3, 10]) == False": {
+      "result": true,
+      "time": 0.02909564971923828,
+      "error": null
+    },
+    "assert is_sorted([1, 5, 3, 4, 3]) == False": {
+      "result": true,
+      "time": 0.03453564643859863,
+      "error": null
+    },
+    "assert is_sorted([2, 4, 4]) == True": {
+      "result": true,
+      "time": 0.030265092849731445,
+      "error": null
+    },
+    "assert is_sorted([1, 1, 2, 4, 5, 5]) == True": {
+      "result": true,
+      "time": 0.031456708908081055,
+      "error": null
+    },
+    "assert is_sorted([2, 5, 4]) == False": {
+      "result": true,
+      "time": 0.031188488006591797,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 2, 3, 3, 4]) == True": {
+      "result": true,
+      "time": 0.031494140625,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 3, 4, 5, 6, 7]) == True": {
+      "result": true,
+      "time": 0.03172802925109863,
+      "error": null
+    },
+    "assert is_sorted([6, 3, 7, 3, 5, 6, 6]) == False": {
+      "result": true,
+      "time": 0.03283381462097168,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 3, 3, 3, 4]) == False": {
+      "result": true,
+      "time": 0.037409305572509766,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 2, 7, 8]) == True": {
+      "result": true,
+      "time": 0.03301811218261719,
+      "error": null
+    },
+    "assert is_sorted([2, 1, 1, 7, 8, 9, 3]) == False": {
+      "result": true,
+      "time": 0.031032800674438477,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 3, 4, 5, 6]) == True": {
+      "result": true,
+      "time": 0.03136730194091797,
+      "error": null
+    },
+    "assert is_sorted([1, 1, 1, 7, 3, 8]) == False": {
+      "result": true,
+      "time": 0.030574321746826172,
+      "error": null
+    },
+    "assert is_sorted([3, 8, 4, 4, 10]) == False": {
+      "result": true,
+      "time": 0.027498483657836914,
+      "error": null
+    },
+    "assert is_sorted([]) == True": {
+      "result": true,
+      "time": 0.03348255157470703,
+      "error": null
+    },
+    "assert is_sorted([1, 2, 3, 3, 5, 7, 9]) == True": {
+      "result": true,
+      "time": 0.031975746154785156,
+      "error": null
+    },
+    "assert is_sorted([2, 6, 1, 4, 5, 4, 2]) == False": {
+      "result": true,
+      "time": 0.03589749336242676,
+      "error": null
+    },
+    "assert is_sorted([2, 5, 6, 8]) == True": {
+      "result": true,
+      "time": 0.033402442932128906,
+      "error": null
+    },
+    "assert is_sorted([4, 5, 7, 8]) == True": {
+      "result": true,
+      "time": 0.03247976303100586,
+      "error": null
+    },
+    "assert is_sorted([3, 4, 4, 4, 6, 7, 8]) == False": {
+      "result": true,
+      "time": 0.035474538803100586,
+      "error": null
+    },
+    "assert is_sorted([3]) == True": {
+      "result": true,
+      "time": 0.035672903060913086,
+      "error": null
+    },
+    "assert is_sorted([3, 3, 3, 3, 5, 6]) == False": {
+      "result": true,
+      "time": 0.030997514724731445,
+      "error": null
+    },
+    "assert is_sorted([3, 6, 3]) == False": {
+      "result": true,
+      "time": 0.029758214950561523,
+      "error": null
+    },
+    "assert is_sorted([1, 3, 4, 4, 5, 5]) == True": {
+      "result": true,
+      "time": 0.034058332443237305,
+      "error": null
+    },
+    "assert is_sorted([3, 1, 8, 4, 7, 4]) == False": {
+      "result": true,
+      "time": 0.03406691551208496,
+      "error": null
+    },
+    "assert is_sorted([5, 7, 5, 7, 10, 6, 8]) == False": {
+      "result": true,
+      "time": 0.03158378601074219,
+      "error": null
+    },
+    "assert is_sorted([1, 4, 5, 5, 7, 8]) == True": {
+      "result": true,
+      "time": 0.031540632247924805,
+      "error": null
+    },
+    "assert is_sorted([1, 4, 6, 1, 6, 7]) == False": {
+      "result": true,
+      "time": 0.0317075252532959,
+      "error": null
+    },
+    "assert is_sorted([2, 3, 6, 7, 7]) == True": {
+      "result": true,
+      "time": 0.03577685356140137,
+      "error": null
+    },
+    "assert is_sorted([5]) == True": {
+      "result": true,
+      "time": 0.035228729248046875,
+      "error": null
+    },
+    "assert is_sorted([3, 2, 6, 3, 6, 4]) == False": {
+      "result": true,
+      "time": 0.0347139835357666,
+      "error": null
+    },
+    "assert is_sorted([2, 5, 2, 2, 2, 7]) == False": {
+      "result": true,
+      "time": 0.03125190734863281,
+      "error": null
+    },
+    "assert is_sorted([2, 6, 3, 9, 1]) == False": {
+      "result": true,
+      "time": 0.03280353546142578,
+      "error": null
+    },
+    "assert is_sorted([1, 1, 1, 3, 4]) == False": {
+      "result": true,
+      "time": 0.0358119010925293,
+      "error": null
+    },
+    "assert is_sorted([8]) == True": {
+      "result": true,
+      "time": 0.037577152252197266,
+      "error": null
+    },
+    "assert is_sorted([2, 3, 3, 5, 5, 6, 7]) == True": {
+      "result": true,
+      "time": 0.027448177337646484,
+      "error": null
+    },
+    "assert is_sorted([2, 4, 5, 7]) == True": {
+      "result": true,
+      "time": 0.031355857849121094,
+      "error": null
+    },
+    "assert is_sorted([3, 1, 3, 2, 1]) == False": {
+      "result": true,
+      "time": 0.0317232608795166,
+      "error": null
+    },
+    "assert is_sorted([3, 3, 4, 7, 8, 9]) == True": {
+      "result": true,
+      "time": 0.029834747314453125,
+      "error": null
+    },
+    "assert is_sorted([1, 5, 6, 6, 7, 7]) == True": {
+      "result": true,
+      "time": 0.031205415725708008,
+      "error": null
+    },
+    "assert is_sorted([6, 7, 3, 4, 8, 6]) == False": {
+      "result": true,
+      "time": 0.03267097473144531,
+      "error": null
+    },
+    "assert is_sorted([1, 8, 6, 7, 8]) == False": {
+      "result": true,
+      "time": 0.029943227767944336,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

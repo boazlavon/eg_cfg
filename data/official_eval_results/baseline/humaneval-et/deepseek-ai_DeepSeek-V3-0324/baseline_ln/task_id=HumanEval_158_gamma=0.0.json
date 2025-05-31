@@ -1,0 +1,694 @@
+{
+  "code": "def find_max(words):\n    max_unique = -1\n    result = \"\"\n    for word in words:\n        unique_chars = len(set(word))\n        if unique_chars > max_unique:\n            max_unique = unique_chars\n            result = word\n        elif unique_chars == max_unique:\n            if word < result:\n                result = word\n    return result",
+  "results": {
+    "assert find_max(['twtilt', 'cre', 'g', 'mbbwmpdm']) == 'mbbwmpdm'": {
+      "result": true,
+      "time": 0.03782963752746582,
+      "error": null
+    },
+    "assert find_max(['fhhnk', 'aaqhutjni']) == 'aaqhutjni'": {
+      "result": true,
+      "time": 0.029523372650146484,
+      "error": null
+    },
+    "assert find_max(['jjp', 'wsyz']) == 'wsyz'": {
+      "result": true,
+      "time": 0.027654170989990234,
+      "error": null
+    },
+    "assert find_max(['cajfyrft', 'fpuq']) == 'cajfyrft'": {
+      "result": true,
+      "time": 0.028969526290893555,
+      "error": null
+    },
+    "assert find_max(['hxzj', 'yudn']) == 'hxzj'": {
+      "result": true,
+      "time": 0.03201103210449219,
+      "error": null
+    },
+    "assert find_max(['vhvzkhnkx', 'andas', 'brewb', 'vcqze', 'ytfsxjrjyd']) == 'ytfsxjrjyd'": {
+      "result": true,
+      "time": 0.033710479736328125,
+      "error": null
+    },
+    "assert find_max(['zspzvw', 'oklgrvr', 'bixsdp']) == 'bixsdp'": {
+      "result": true,
+      "time": 0.03336334228515625,
+      "error": null
+    },
+    "assert find_max(['agcme', 'eitvog', 'pvd', 'gady']) == 'eitvog'": {
+      "result": true,
+      "time": 0.028992176055908203,
+      "error": null
+    },
+    "assert find_max(['hoxb', 'wlhqvdsa']) == 'wlhqvdsa'": {
+      "result": true,
+      "time": 0.030291318893432617,
+      "error": null
+    },
+    "assert find_max(['foweyb', 'qnwpbur']) == 'qnwpbur'": {
+      "result": true,
+      "time": 0.02969813346862793,
+      "error": null
+    },
+    "assert find_max(['wwmewokey', 'zkjbxg', 'bmh', 'vjfrx', 'swojawequr']) == 'swojawequr'": {
+      "result": true,
+      "time": 0.029779672622680664,
+      "error": null
+    },
+    "assert find_max(['rls', 'bfbsyy', 'mibyf']) == 'mibyf'": {
+      "result": true,
+      "time": 0.03102278709411621,
+      "error": null
+    },
+    "assert find_max(['ttdf', 'caf', 'yahmbad']) == 'yahmbad'": {
+      "result": true,
+      "time": 0.030652284622192383,
+      "error": null
+    },
+    "assert find_max(['nghmnegzm', 'qjtd']) == 'nghmnegzm'": {
+      "result": true,
+      "time": 0.03222203254699707,
+      "error": null
+    },
+    "assert find_max(['chbndu', 'lughoi', 'pwblcar']) == 'pwblcar'": {
+      "result": true,
+      "time": 0.0317072868347168,
+      "error": null
+    },
+    "assert find_max(['wpxvgoxv', 'vbltiy', 'htwzhsablna']) == 'htwzhsablna'": {
+      "result": true,
+      "time": 0.034143924713134766,
+      "error": null
+    },
+    "assert find_max(['ildvzfb', 'cgdb', 'nmxj']) == 'ildvzfb'": {
+      "result": true,
+      "time": 0.033539772033691406,
+      "error": null
+    },
+    "assert (find_max([\"aaaaaaa\", \"bb\", \"cc\"]) == \"aaaaaaa\"), 't3'": {
+      "result": true,
+      "time": 0.032806396484375,
+      "error": null
+    },
+    "assert find_max(['atijo', 'jiedpr', 'd', 'mpglwxazx']) == 'mpglwxazx'": {
+      "result": true,
+      "time": 0.0324091911315918,
+      "error": null
+    },
+    "assert find_max(['hknt', 'svavejfe', 'y', 'hhyfarttj', 'ddwufuzq']) == 'hhyfarttj'": {
+      "result": true,
+      "time": 0.028713464736938477,
+      "error": null
+    },
+    "assert find_max(['shnmd', 'jukow', 'hcwu', 'xcm', 'gti']) == 'jukow'": {
+      "result": true,
+      "time": 0.032395362854003906,
+      "error": null
+    },
+    "assert find_max(['e']) == 'e'": {
+      "result": true,
+      "time": 0.02906203269958496,
+      "error": null
+    },
+    "assert find_max(['qheozz', 'amx', 'uoddm', 'jsuisd']) == 'jsuisd'": {
+      "result": true,
+      "time": 0.03007960319519043,
+      "error": null
+    },
+    "assert (find_max([\"abc\", \"cba\"]) == \"abc\"), 't4'": {
+      "result": true,
+      "time": 0.031061410903930664,
+      "error": null
+    },
+    "assert find_max(['ecqhphdt', 'sjhu', 'w', 'iouhtz']) == 'ecqhphdt'": {
+      "result": true,
+      "time": 0.029534339904785156,
+      "error": null
+    },
+    "assert find_max(['eyjy', 'eautt', 'crehuz']) == 'crehuz'": {
+      "result": true,
+      "time": 0.02997112274169922,
+      "error": null
+    },
+    "assert find_max(['bflb', 'skdyz']) == 'skdyz'": {
+      "result": true,
+      "time": 0.029111623764038086,
+      "error": null
+    },
+    "assert find_max(['mkolxv', 'pufd', 'o', 'nhc', 'jqphqdjtxfje']) == 'jqphqdjtxfje'": {
+      "result": true,
+      "time": 0.03475594520568848,
+      "error": null
+    },
+    "assert find_max(['b']) == 'b'": {
+      "result": true,
+      "time": 0.029751062393188477,
+      "error": null
+    },
+    "assert find_max(['svrgwe', 'pclxe', 'o', 'bubmvpvny', 'kfjzzyyn']) == 'bubmvpvny'": {
+      "result": true,
+      "time": 0.03126692771911621,
+      "error": null
+    },
+    "assert find_max(['k']) == 'k'": {
+      "result": true,
+      "time": 0.029863595962524414,
+      "error": null
+    },
+    "assert find_max(['hqvdkpsi', 'fmsr', 't', 'ifopzrwcm']) == 'ifopzrwcm'": {
+      "result": true,
+      "time": 0.03232073783874512,
+      "error": null
+    },
+    "assert find_max(['vabfs', 'vqk', 'cdl']) == 'vabfs'": {
+      "result": true,
+      "time": 0.028522491455078125,
+      "error": null
+    },
+    "assert find_max(['bpp', 'pyf', 'kqnqisnok']) == 'kqnqisnok'": {
+      "result": true,
+      "time": 0.029430389404296875,
+      "error": null
+    },
+    "assert find_max(['unkndf', 'lawny', 't', 'clb', 'feeyavjwcs']) == 'feeyavjwcs'": {
+      "result": true,
+      "time": 0.030515432357788086,
+      "error": null
+    },
+    "assert find_max(['sye', 'sizxd', 'qfumheq']) == 'qfumheq'": {
+      "result": true,
+      "time": 0.028801679611206055,
+      "error": null
+    },
+    "assert (find_max([\"b\"]) == \"b\"), 't9'": {
+      "result": true,
+      "time": 0.031487464904785156,
+      "error": null
+    },
+    "assert find_max(['prscjydsx', 'qqfg', 'rdbgt']) == 'prscjydsx'": {
+      "result": true,
+      "time": 0.030653715133666992,
+      "error": null
+    },
+    "assert find_max(['hqv', 'wweg', 'wgbua']) == 'wgbua'": {
+      "result": true,
+      "time": 0.03132820129394531,
+      "error": null
+    },
+    "assert find_max(['doim', 'mywv', 'h', 'bsp', 'oxqiutxywfda']) == 'oxqiutxywfda'": {
+      "result": true,
+      "time": 0.0340728759765625,
+      "error": null
+    },
+    "assert find_max(['stjuaxoh', 'vjd', 'vhnm']) == 'stjuaxoh'": {
+      "result": true,
+      "time": 0.0305325984954834,
+      "error": null
+    },
+    "assert find_max(['ezwzjo', 'utlogea', 'omuanig']) == 'omuanig'": {
+      "result": true,
+      "time": 0.032767295837402344,
+      "error": null
+    },
+    "assert find_max(['pzynm', 'awivkzkma', 'eomxzgl']) == 'awivkzkma'": {
+      "result": true,
+      "time": 0.03301692008972168,
+      "error": null
+    },
+    "assert find_max(['cby', 'uellzcfz', 'qsxyplgl', 'mdn']) == 'qsxyplgl'": {
+      "result": true,
+      "time": 0.02916550636291504,
+      "error": null
+    },
+    "assert find_max(['ysddpvcn', 'klvxhuet', 'xegww']) == 'klvxhuet'": {
+      "result": true,
+      "time": 0.03396797180175781,
+      "error": null
+    },
+    "assert find_max(['xwz', 'hkww', 'dibbumenspuo']) == 'dibbumenspuo'": {
+      "result": true,
+      "time": 0.0347750186920166,
+      "error": null
+    },
+    "assert find_max(['hnmacvfj', 'ifibac', 'fttxfeevftc']) == 'hnmacvfj'": {
+      "result": true,
+      "time": 0.02888655662536621,
+      "error": null
+    },
+    "assert find_max(['wfpboof', 'yizi', 'swrj']) == 'wfpboof'": {
+      "result": true,
+      "time": 0.0290682315826416,
+      "error": null
+    },
+    "assert find_max(['xadczr', 'vizw', 'znkjpl', 'gac', 'hoew']) == 'xadczr'": {
+      "result": true,
+      "time": 0.0346524715423584,
+      "error": null
+    },
+    "assert find_max(['iqia', 'kejd', 'och']) == 'kejd'": {
+      "result": true,
+      "time": 0.030560016632080078,
+      "error": null
+    },
+    "assert find_max(['xgms', 'bmrxvv', 'hdte']) == 'bmrxvv'": {
+      "result": true,
+      "time": 0.02877068519592285,
+      "error": null
+    },
+    "assert find_max(['agva', 'dtoz', 'mlxgr', 'qcg']) == 'mlxgr'": {
+      "result": true,
+      "time": 0.0302736759185791,
+      "error": null
+    },
+    "assert find_max(['tagcc', 'wcwlgenfr', 'ljjgieud', 'vveiet']) == 'wcwlgenfr'": {
+      "result": true,
+      "time": 0.026990413665771484,
+      "error": null
+    },
+    "assert find_max(['iuairmyk', 'ocv', 'cbtwodz']) == 'cbtwodz'": {
+      "result": true,
+      "time": 0.02633523941040039,
+      "error": null
+    },
+    "assert find_max(['cod', 'xdxyu']) == 'xdxyu'": {
+      "result": true,
+      "time": 0.02835679054260254,
+      "error": null
+    },
+    "assert find_max(['o']) == 'o'": {
+      "result": true,
+      "time": 0.03293585777282715,
+      "error": null
+    },
+    "assert find_max(['hrgjujdqf', 'jnih', 'xhmkzl']) == 'hrgjujdqf'": {
+      "result": true,
+      "time": 0.030556678771972656,
+      "error": null
+    },
+    "assert (find_max([\"we\", \"are\", \"a\", \"mad\", \"nation\"]) == \"nation\"), 't7'": {
+      "result": true,
+      "time": 0.028937578201293945,
+      "error": null
+    },
+    "assert (find_max([\"name\", \"of\", \"string\"]) == \"string\"), \"t1\"": {
+      "result": true,
+      "time": 0.027251482009887695,
+      "error": null
+    },
+    "assert find_max(['grsjo', 'hedw', 'b', 'zuh', 'xhdxt']) == 'grsjo'": {
+      "result": true,
+      "time": 0.032000064849853516,
+      "error": null
+    },
+    "assert find_max(['ngll', 'tyzfvsc', 'u', 'yqiqmswme', 'kxxyysm']) == 'tyzfvsc'": {
+      "result": true,
+      "time": 0.027512311935424805,
+      "error": null
+    },
+    "assert find_max(['gixp', 'qvbokh', 'ormvgppue', 'arg']) == 'ormvgppue'": {
+      "result": true,
+      "time": 0.03720664978027344,
+      "error": null
+    },
+    "assert find_max(['htwmc', 'bzx', 'b', 'zeg', 'qfyz']) == 'htwmc'": {
+      "result": true,
+      "time": 0.0307769775390625,
+      "error": null
+    },
+    "assert find_max(['rmbt', 'gdwtshzt', 'gsb', 'fur']) == 'gdwtshzt'": {
+      "result": true,
+      "time": 0.02933192253112793,
+      "error": null
+    },
+    "assert find_max(['h']) == 'h'": {
+      "result": true,
+      "time": 0.03303074836730957,
+      "error": null
+    },
+    "assert find_max(['fuperq', 'nvrgcl', 'iho']) == 'fuperq'": {
+      "result": true,
+      "time": 0.031441450119018555,
+      "error": null
+    },
+    "assert find_max(['cfoiof', 'vzjbcwv', 'qffzxxku']) == 'qffzxxku'": {
+      "result": true,
+      "time": 0.030907154083251953,
+      "error": null
+    },
+    "assert find_max(['vqxy', 'yet', 'i', 'mtvoymnzx', 'fmwrbov']) == 'mtvoymnzx'": {
+      "result": true,
+      "time": 0.02845144271850586,
+      "error": null
+    },
+    "assert find_max(['flid', 'eqcx', 'puzsezkhz']) == 'puzsezkhz'": {
+      "result": true,
+      "time": 0.028843164443969727,
+      "error": null
+    },
+    "assert find_max(['t']) == 't'": {
+      "result": true,
+      "time": 0.029742717742919922,
+      "error": null
+    },
+    "assert find_max(['gmnyxopyi', 'fuqnnv', 'dvbc']) == 'gmnyxopyi'": {
+      "result": true,
+      "time": 0.030476093292236328,
+      "error": null
+    },
+    "assert find_max(['rha', 'asn', 'tship', 'ess']) == 'tship'": {
+      "result": true,
+      "time": 0.028659582138061523,
+      "error": null
+    },
+    "assert find_max(['jlrgosrn', 'mrbq', 's', 'cidcaga']) == 'jlrgosrn'": {
+      "result": true,
+      "time": 0.02666497230529785,
+      "error": null
+    },
+    "assert find_max(['kvlbflrpx', 'dyculpfjz', 'tiotdbz']) == 'dyculpfjz'": {
+      "result": true,
+      "time": 0.028806209564208984,
+      "error": null
+    },
+    "assert (find_max([\"play\", \"this\", \"game\", \"of\",\"footbott\"]) == \"footbott\"), 't5'": {
+      "result": true,
+      "time": 0.0293731689453125,
+      "error": null
+    },
+    "assert find_max(['jdzgkxhr', 'cen', 'mlklue']) == 'jdzgkxhr'": {
+      "result": true,
+      "time": 0.027179956436157227,
+      "error": null
+    },
+    "assert find_max(['wzyych', 'wwmq', 'h', 'tcst']) == 'wzyych'": {
+      "result": true,
+      "time": 0.028751373291015625,
+      "error": null
+    },
+    "assert find_max(['wjgtpe', 'dacsvcks', 'rtpik']) == 'dacsvcks'": {
+      "result": true,
+      "time": 0.029802799224853516,
+      "error": null
+    },
+    "assert find_max(['s']) == 's'": {
+      "result": true,
+      "time": 0.0310513973236084,
+      "error": null
+    },
+    "assert find_max(['tyuzaf', 'tcnntubob', 'yjssws']) == 'tcnntubob'": {
+      "result": true,
+      "time": 0.03176259994506836,
+      "error": null
+    },
+    "assert find_max(['uhmryc', 'bjvyicmj', 'jawmlrcn', 'vww', 'rntn']) == 'jawmlrcn'": {
+      "result": true,
+      "time": 0.026674985885620117,
+      "error": null
+    },
+    "assert find_max(['bkl', 'qny', 'wgit']) == 'wgit'": {
+      "result": true,
+      "time": 0.02845478057861328,
+      "error": null
+    },
+    "assert find_max(['pet', 'kmqoxbt', 'nuquyr', 'amgjxtzjy']) == 'amgjxtzjy'": {
+      "result": true,
+      "time": 0.03121185302734375,
+      "error": null
+    },
+    "assert (find_max([\"name\", \"enam\", \"game\"]) == \"enam\"), 't2'": {
+      "result": true,
+      "time": 0.029568910598754883,
+      "error": null
+    },
+    "assert find_max(['lzognlo', 'jinmd']) == 'jinmd'": {
+      "result": true,
+      "time": 0.028553485870361328,
+      "error": null
+    },
+    "assert find_max(['dak', 'ttceml', 'j', 'swaqrrlcg', 'ful']) == 'swaqrrlcg'": {
+      "result": true,
+      "time": 0.031426191329956055,
+      "error": null
+    },
+    "assert find_max(['qbhptf', 'ampkzd', 'jepbdkosv', 'zgtdft']) == 'jepbdkosv'": {
+      "result": true,
+      "time": 0.03181028366088867,
+      "error": null
+    },
+    "assert find_max(['dskhghnb', 'mmhaa']) == 'dskhghnb'": {
+      "result": true,
+      "time": 0.02806878089904785,
+      "error": null
+    },
+    "assert find_max(['exj', 'xpdcmkvsw', 'iwf']) == 'xpdcmkvsw'": {
+      "result": true,
+      "time": 0.02840399742126465,
+      "error": null
+    },
+    "assert find_max(['apgpgvy', 'bnpgp', 'ijpf']) == 'apgpgvy'": {
+      "result": true,
+      "time": 0.028474092483520508,
+      "error": null
+    },
+    "assert find_max(['ljyn', 'onwka', 'w', 'bimmc']) == 'onwka'": {
+      "result": true,
+      "time": 0.030632495880126953,
+      "error": null
+    },
+    "assert find_max(['pztyt', 'fwethq', 'y', 'tmmlhlqjf']) == 'tmmlhlqjf'": {
+      "result": true,
+      "time": 0.03323245048522949,
+      "error": null
+    },
+    "assert find_max(['w']) == 'w'": {
+      "result": true,
+      "time": 0.028760671615600586,
+      "error": null
+    },
+    "assert find_max(['iugyijgyt', 'yjxdcfi', 'mgmo', 'dwmazr', 'oxcqkzjcww']) == 'oxcqkzjcww'": {
+      "result": true,
+      "time": 0.02513909339904785,
+      "error": null
+    },
+    "assert find_max(['tsldb', 'gjcio', 'kvnnond', 'vzu', 'vzik']) == 'gjcio'": {
+      "result": true,
+      "time": 0.033391714096069336,
+      "error": null
+    },
+    "assert find_max(['aueuor', 'fmxkc', 'b', 'ciye', 'rlwasxtas']) == 'rlwasxtas'": {
+      "result": true,
+      "time": 0.02460765838623047,
+      "error": null
+    },
+    "assert find_max(['ufzbuoz', 'dbaz', 'kopun']) == 'kopun'": {
+      "result": true,
+      "time": 0.030194997787475586,
+      "error": null
+    },
+    "assert find_max(['g']) == 'g'": {
+      "result": true,
+      "time": 0.029233217239379883,
+      "error": null
+    },
+    "assert find_max(['qmvmzph', 'pzkmmibi', 'aavpu']) == 'pzkmmibi'": {
+      "result": true,
+      "time": 0.0279695987701416,
+      "error": null
+    },
+    "assert find_max(['wxhqf', 'jhpsj', 'amlkaehne', 'hke', 'jkktbvujm']) == 'amlkaehne'": {
+      "result": true,
+      "time": 0.03037261962890625,
+      "error": null
+    },
+    "assert find_max(['upes', 'kvdqns', 'sfpiaoww', 'jfewgsyzo']) == 'jfewgsyzo'": {
+      "result": true,
+      "time": 0.03016352653503418,
+      "error": null
+    },
+    "assert (find_max([\"this\", \"is\", \"a\", \"prrk\"]) == \"this\"), 't8'\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.030304908752441406,
+      "error": null
+    },
+    "assert find_max(['shmvzae', 'qeflck', 'r', 'tnndxpmlf']) == 'tnndxpmlf'": {
+      "result": true,
+      "time": 0.03094935417175293,
+      "error": null
+    },
+    "assert find_max(['qqygli', 'ualw', 'avnhbvyf', 'kjizcn', 'ybdkgdlrxlf']) == 'ybdkgdlrxlf'": {
+      "result": true,
+      "time": 0.03146505355834961,
+      "error": null
+    },
+    "assert find_max(['tegsx', 'ddg', 'acai']) == 'tegsx'": {
+      "result": true,
+      "time": 0.03328704833984375,
+      "error": null
+    },
+    "assert find_max(['lfspzmg', 'puaqq', 'kbmp', 'pvfy', 'mkvpcxj']) == 'lfspzmg'": {
+      "result": true,
+      "time": 0.04173851013183594,
+      "error": null
+    },
+    "assert find_max(['dbxsfams', 'mkwrsdpxf', 'mzu']) == 'mkwrsdpxf'": {
+      "result": true,
+      "time": 0.031080007553100586,
+      "error": null
+    },
+    "assert find_max(['lijjqy', 'rwqmew']) == 'lijjqy'": {
+      "result": true,
+      "time": 0.03228187561035156,
+      "error": null
+    },
+    "assert find_max(['kmv', 'xrcodpr', 'wchmmzp']) == 'wchmmzp'": {
+      "result": true,
+      "time": 0.03026103973388672,
+      "error": null
+    },
+    "assert find_max(['uxxaq', 'ngsr', 'eawspmuzb', 'xazcphs']) == 'eawspmuzb'": {
+      "result": true,
+      "time": 0.026310443878173828,
+      "error": null
+    },
+    "assert find_max(['jwcwigmna', 'ekww', 'irsuzq']) == 'jwcwigmna'": {
+      "result": true,
+      "time": 0.028817415237426758,
+      "error": null
+    },
+    "assert find_max(['pljzl', 'dythcav']) == 'dythcav'": {
+      "result": true,
+      "time": 0.03384113311767578,
+      "error": null
+    },
+    "assert find_max(['qok', 'somrrtogu', 'dakp']) == 'somrrtogu'": {
+      "result": true,
+      "time": 0.028015613555908203,
+      "error": null
+    },
+    "assert find_max(['prsle', 'bxe', 'qqv', 'lyx', 'zhihdorqor']) == 'zhihdorqor'": {
+      "result": true,
+      "time": 0.03232574462890625,
+      "error": null
+    },
+    "assert find_max(['zeskya', 'evvd', 'azjfjahr', 'yxqjr', 'zjonzrxgphju']) == 'zjonzrxgphju'": {
+      "result": true,
+      "time": 0.031076908111572266,
+      "error": null
+    },
+    "assert find_max(['nquk', 'dmucv', 'jlw', 'ytvtnusv']) == 'ytvtnusv'": {
+      "result": true,
+      "time": 0.028989791870117188,
+      "error": null
+    },
+    "assert find_max(['alwsufrg', 'zpa', 'hyvic']) == 'alwsufrg'": {
+      "result": true,
+      "time": 0.02734684944152832,
+      "error": null
+    },
+    "assert find_max(['nqqok', 'bet', 'sjx']) == 'nqqok'": {
+      "result": true,
+      "time": 0.03073406219482422,
+      "error": null
+    },
+    "assert find_max(['kxn', 'nxm', 'f', 'cnowck', 'jmqqxtl']) == 'jmqqxtl'": {
+      "result": true,
+      "time": 0.030144691467285156,
+      "error": null
+    },
+    "assert find_max(['ddgazwvd', 'tmf', 'i', 'wpjua']) == 'ddgazwvd'": {
+      "result": true,
+      "time": 0.029807567596435547,
+      "error": null
+    },
+    "assert (find_max([\"we\", \"are\", \"gonna\", \"rock\"]) == \"gonna\"), 't6'": {
+      "result": true,
+      "time": 0.028998851776123047,
+      "error": null
+    },
+    "assert find_max(['abddvgqkk', 'kqedcc', 'osa']) == 'abddvgqkk'": {
+      "result": true,
+      "time": 0.034420013427734375,
+      "error": null
+    },
+    "assert find_max(['jmyvisjti', 'ssym', 'uzjqxeg']) == 'jmyvisjti'": {
+      "result": true,
+      "time": 0.0318751335144043,
+      "error": null
+    },
+    "assert find_max(['krjkhpm', 'ubmvvw', 'xlsxoh']) == 'krjkhpm'": {
+      "result": true,
+      "time": 0.030620336532592773,
+      "error": null
+    },
+    "assert find_max(['fnz', 'fpzovx', 'a', 'zuaz', 'arzlzo']) == 'fpzovx'": {
+      "result": true,
+      "time": 0.02709794044494629,
+      "error": null
+    },
+    "assert find_max(['cwcghsru', 'nzihzu', 'f', 'luzyj']) == 'cwcghsru'": {
+      "result": true,
+      "time": 0.032183170318603516,
+      "error": null
+    },
+    "assert find_max(['rwwrcef', 'qebufez', 'cfmn']) == 'qebufez'": {
+      "result": true,
+      "time": 0.02737879753112793,
+      "error": null
+    },
+    "assert find_max(['uubvnz', 'pnj', 'zedmelziy']) == 'zedmelziy'": {
+      "result": true,
+      "time": 0.0309450626373291,
+      "error": null
+    },
+    "assert find_max(['ims', 'obb', 'eytgbk']) == 'eytgbk'": {
+      "result": true,
+      "time": 0.0303804874420166,
+      "error": null
+    },
+    "assert find_max(['lya', 'thducp', 'w', 'prcgphbs']) == 'prcgphbs'": {
+      "result": true,
+      "time": 0.029742002487182617,
+      "error": null
+    },
+    "assert find_max(['vhkyv', 'fzzgzqyzo', 'amyce']) == 'fzzgzqyzo'": {
+      "result": true,
+      "time": 0.03172159194946289,
+      "error": null
+    },
+    "assert find_max(['dvjmsd', 'vaj', 'lyom', 'gmuiw', 'easxkrjddr']) == 'easxkrjddr'": {
+      "result": true,
+      "time": 0.031682491302490234,
+      "error": null
+    },
+    "assert (find_max([\"play\", \"play\", \"play\"]) == \"play\"), 't10'": {
+      "result": true,
+      "time": 0.03337597846984863,
+      "error": null
+    },
+    "assert find_max(['hdruovosng', 'esspiz', 'ztc']) == 'hdruovosng'": {
+      "result": true,
+      "time": 0.030916690826416016,
+      "error": null
+    },
+    "assert find_max(['l']) == 'l'": {
+      "result": true,
+      "time": 0.030610322952270508,
+      "error": null
+    },
+    "assert find_max(['crwip', 'wtaxe', 'm', 'emqsmkwj']) == 'emqsmkwj'": {
+      "result": true,
+      "time": 0.034595489501953125,
+      "error": null
+    },
+    "assert find_max(['ntffz', 'wjjpao', 'uljddczgx']) == 'uljddczgx'": {
+      "result": true,
+      "time": 0.03180050849914551,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

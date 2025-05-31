@@ -1,0 +1,504 @@
+{
+  "code": "def rolling_max(numbers):\n    if not numbers:\n        return []\n    rolling_max_list = []\n    current_max = numbers[0]\n    for num in numbers:\n        if num > current_max:\n            current_max = num\n        rolling_max_list.append(current_max)\n    return rolling_max_list",
+  "results": {
+    "assert rolling_max([1, 6, 7, 2]) == [1, 6, 7, 7]": {
+      "result": true,
+      "time": 0.03029942512512207,
+      "error": null
+    },
+    "assert rolling_max([2, 7, 1, 1]) == [2, 7, 7, 7]": {
+      "result": true,
+      "time": 0.028783321380615234,
+      "error": null
+    },
+    "assert rolling_max([2, 1, 2, 3]) == [2, 2, 2, 3]": {
+      "result": true,
+      "time": 0.032222747802734375,
+      "error": null
+    },
+    "assert rolling_max([3, 2, 7, 4]) == [3, 3, 7, 7]": {
+      "result": true,
+      "time": 0.03309011459350586,
+      "error": null
+    },
+    "assert rolling_max([1, 6, 3, 105, 7]) == [1, 6, 6, 105, 105]": {
+      "result": true,
+      "time": 0.0319821834564209,
+      "error": null
+    },
+    "assert rolling_max([4, 4, 3, 103, 2]) == [4, 4, 4, 103, 103]": {
+      "result": true,
+      "time": 0.03421640396118164,
+      "error": null
+    },
+    "assert rolling_max([5, 1, 4, 2]) == [5, 5, 5, 5]": {
+      "result": true,
+      "time": 0.03539919853210449,
+      "error": null
+    },
+    "assert rolling_max([1, 6, 8, 5]) == [1, 6, 8, 8]": {
+      "result": true,
+      "time": 0.032991647720336914,
+      "error": null
+    },
+    "assert rolling_max([8, 1, 4, 1]) == [8, 8, 8, 8]": {
+      "result": true,
+      "time": 0.032027482986450195,
+      "error": null
+    },
+    "assert rolling_max([4, 7, 7, 5]) == [4, 7, 7, 7]": {
+      "result": true,
+      "time": 0.0295107364654541,
+      "error": null
+    },
+    "assert rolling_max([3, 7, 7, 2]) == [3, 7, 7, 7]": {
+      "result": true,
+      "time": 0.0328221321105957,
+      "error": null
+    },
+    "assert rolling_max([8, 2, 4, 100, 7]) == [8, 8, 8, 100, 100]": {
+      "result": true,
+      "time": 0.03101038932800293,
+      "error": null
+    },
+    "assert rolling_max([2, 2, 5, 105, 2]) == [2, 2, 5, 105, 105]": {
+      "result": true,
+      "time": 0.03267192840576172,
+      "error": null
+    },
+    "assert rolling_max([4, 1, 7, 101, 4]) == [4, 4, 7, 101, 101]": {
+      "result": true,
+      "time": 0.034584760665893555,
+      "error": null
+    },
+    "assert rolling_max([6, 5, 4, 2]) == [6, 6, 6, 6]": {
+      "result": true,
+      "time": 0.03485679626464844,
+      "error": null
+    },
+    "assert rolling_max([8, 5, 3, 95, 2]) == [8, 8, 8, 95, 95]": {
+      "result": true,
+      "time": 0.028064727783203125,
+      "error": null
+    },
+    "assert rolling_max([3, 6, 2, 3]) == [3, 6, 6, 6]": {
+      "result": true,
+      "time": 0.034423112869262695,
+      "error": null
+    },
+    "assert rolling_max([7, 4, 2, 103, 2]) == [7, 7, 7, 103, 103]": {
+      "result": true,
+      "time": 0.0325169563293457,
+      "error": null
+    },
+    "assert rolling_max([1, 1, 1, 98, 4]) == [1, 1, 1, 98, 98]": {
+      "result": true,
+      "time": 0.03602719306945801,
+      "error": null
+    },
+    "assert rolling_max([7, 7, 1, 105, 6]) == [7, 7, 7, 105, 105]": {
+      "result": true,
+      "time": 0.030765056610107422,
+      "error": null
+    },
+    "assert rolling_max([4, 5, 7, 3]) == [4, 5, 7, 7]": {
+      "result": true,
+      "time": 0.02638864517211914,
+      "error": null
+    },
+    "assert rolling_max([2, 2, 7, 5]) == [2, 2, 7, 7]": {
+      "result": true,
+      "time": 0.03126096725463867,
+      "error": null
+    },
+    "assert rolling_max([5, 3, 2, 5]) == [5, 5, 5, 5]": {
+      "result": true,
+      "time": 0.035891056060791016,
+      "error": null
+    },
+    "assert rolling_max([2, 4, 3, 102, 6]) == [2, 4, 4, 102, 102]": {
+      "result": true,
+      "time": 0.03191256523132324,
+      "error": null
+    },
+    "assert rolling_max([5, 4, 5, 98, 2]) == [5, 5, 5, 98, 98]": {
+      "result": true,
+      "time": 0.031742095947265625,
+      "error": null
+    },
+    "assert rolling_max([3, 2, 3, 1]) == [3, 3, 3, 3]": {
+      "result": true,
+      "time": 0.03068089485168457,
+      "error": null
+    },
+    "assert rolling_max([7, 3, 6, 96, 1]) == [7, 7, 7, 96, 96]": {
+      "result": true,
+      "time": 0.034148216247558594,
+      "error": null
+    },
+    "assert rolling_max([2, 7, 3, 7]) == [2, 7, 7, 7]": {
+      "result": true,
+      "time": 0.03536057472229004,
+      "error": null
+    },
+    "assert rolling_max([7, 2, 2, 105, 8]) == [7, 7, 7, 105, 105]": {
+      "result": true,
+      "time": 0.029276609420776367,
+      "error": null
+    },
+    "assert rolling_max([1, 4, 8, 100, 8]) == [1, 4, 8, 100, 100]": {
+      "result": true,
+      "time": 0.03356623649597168,
+      "error": null
+    },
+    "assert rolling_max([9, 8, 4, 6]) == [9, 9, 9, 9]": {
+      "result": true,
+      "time": 0.028415441513061523,
+      "error": null
+    },
+    "assert rolling_max([8, 6, 5, 6]) == [8, 8, 8, 8]": {
+      "result": true,
+      "time": 0.029263734817504883,
+      "error": null
+    },
+    "assert rolling_max([3, 2, 7, 97, 6]) == [3, 3, 7, 97, 97]": {
+      "result": true,
+      "time": 0.043386220932006836,
+      "error": null
+    },
+    "assert rolling_max([6, 2, 3, 101, 7]) == [6, 6, 6, 101, 101]": {
+      "result": true,
+      "time": 0.03198552131652832,
+      "error": null
+    },
+    "assert rolling_max([7, 4, 3, 3]) == [7, 7, 7, 7]": {
+      "result": true,
+      "time": 0.032715797424316406,
+      "error": null
+    },
+    "assert rolling_max([5, 5, 2, 7]) == [5, 5, 5, 7]": {
+      "result": true,
+      "time": 0.03226065635681152,
+      "error": null
+    },
+    "assert rolling_max([7, 7, 7, 100, 4]) == [7, 7, 7, 100, 100]": {
+      "result": true,
+      "time": 0.03348398208618164,
+      "error": null
+    },
+    "assert rolling_max([1, 8, 4, 6]) == [1, 8, 8, 8]": {
+      "result": true,
+      "time": 0.033765316009521484,
+      "error": null
+    },
+    "assert rolling_max([2, 6, 8, 9]) == [2, 6, 8, 9]": {
+      "result": true,
+      "time": 0.027213573455810547,
+      "error": null
+    },
+    "assert rolling_max([5, 5, 6, 6]) == [5, 5, 6, 6]": {
+      "result": true,
+      "time": 0.03499460220336914,
+      "error": null
+    },
+    "assert rolling_max([6, 6, 4, 2]) == [6, 6, 6, 6]": {
+      "result": true,
+      "time": 0.03693985939025879,
+      "error": null
+    },
+    "assert rolling_max([7, 4, 2, 1]) == [7, 7, 7, 7]": {
+      "result": true,
+      "time": 0.037631988525390625,
+      "error": null
+    },
+    "assert rolling_max([5, 2, 5, 6]) == [5, 5, 5, 6]": {
+      "result": true,
+      "time": 0.03406381607055664,
+      "error": null
+    },
+    "assert rolling_max([1, 3, 5, 2]) == [1, 3, 5, 5]": {
+      "result": true,
+      "time": 0.03207254409790039,
+      "error": null
+    },
+    "assert rolling_max([2, 1, 6, 8]) == [2, 2, 6, 8]": {
+      "result": true,
+      "time": 0.03012251853942871,
+      "error": null
+    },
+    "assert rolling_max([4, 1, 4, 7]) == [4, 4, 4, 7]": {
+      "result": true,
+      "time": 0.0296328067779541,
+      "error": null
+    },
+    "assert rolling_max([3, 1, 2, 5]) == [3, 3, 3, 5]": {
+      "result": true,
+      "time": 0.027894258499145508,
+      "error": null
+    },
+    "assert rolling_max([2, 5, 5, 100, 1]) == [2, 5, 5, 100, 100]": {
+      "result": true,
+      "time": 0.0314023494720459,
+      "error": null
+    },
+    "assert rolling_max([1, 5, 6, 6]) == [1, 5, 6, 6]": {
+      "result": true,
+      "time": 0.030844449996948242,
+      "error": null
+    },
+    "assert rolling_max([1, 5, 2, 9]) == [1, 5, 5, 9]": {
+      "result": true,
+      "time": 0.026935577392578125,
+      "error": null
+    },
+    "assert rolling_max([9, 3, 7, 6]) == [9, 9, 9, 9]": {
+      "result": true,
+      "time": 0.0312349796295166,
+      "error": null
+    },
+    "assert rolling_max([4, 3, 2, 1]) == [4, 4, 4, 4]": {
+      "result": true,
+      "time": 0.030597925186157227,
+      "error": null
+    },
+    "assert rolling_max([1, 2, 1, 5]) == [1, 2, 2, 5]": {
+      "result": true,
+      "time": 0.03236556053161621,
+      "error": null
+    },
+    "assert rolling_max([1, 3, 2, 3]) == [1, 3, 3, 3]": {
+      "result": true,
+      "time": 0.03139138221740723,
+      "error": null
+    },
+    "assert rolling_max([6, 7, 3, 3]) == [6, 7, 7, 7]": {
+      "result": true,
+      "time": 0.04976177215576172,
+      "error": null
+    },
+    "assert rolling_max([3, 5, 8, 102, 8]) == [3, 5, 8, 102, 102]": {
+      "result": true,
+      "time": 0.031601667404174805,
+      "error": null
+    },
+    "assert rolling_max([6, 1, 4, 3]) == [6, 6, 6, 6]": {
+      "result": true,
+      "time": 0.039640188217163086,
+      "error": null
+    },
+    "assert rolling_max([9, 7, 3, 5]) == [9, 9, 9, 9]": {
+      "result": true,
+      "time": 0.028925418853759766,
+      "error": null
+    },
+    "assert rolling_max([7, 5, 8, 103, 6]) == [7, 7, 8, 103, 103]": {
+      "result": true,
+      "time": 0.03398561477661133,
+      "error": null
+    },
+    "assert rolling_max([3, 1, 5, 1]) == [3, 3, 5, 5]": {
+      "result": true,
+      "time": 0.028873920440673828,
+      "error": null
+    },
+    "assert rolling_max([6, 8, 3, 1]) == [6, 8, 8, 8]": {
+      "result": true,
+      "time": 0.04015159606933594,
+      "error": null
+    },
+    "assert rolling_max([9, 4, 6, 6]) == [9, 9, 9, 9]": {
+      "result": true,
+      "time": 0.030905723571777344,
+      "error": null
+    },
+    "assert rolling_max([3, 1, 2, 4]) == [3, 3, 3, 4]": {
+      "result": true,
+      "time": 0.034105777740478516,
+      "error": null
+    },
+    "assert rolling_max([7, 3, 6, 96, 2]) == [7, 7, 7, 96, 96]": {
+      "result": true,
+      "time": 0.035529375076293945,
+      "error": null
+    },
+    "assert rolling_max([1, 4, 2, 99, 4]) == [1, 4, 4, 99, 99]": {
+      "result": true,
+      "time": 0.03202939033508301,
+      "error": null
+    },
+    "assert rolling_max([7, 1, 6, 6]) == [7, 7, 7, 7]": {
+      "result": true,
+      "time": 0.03145313262939453,
+      "error": null
+    },
+    "assert rolling_max([1, 2, 3, 4]) == [1, 2, 3, 4]": {
+      "result": true,
+      "time": 0.031339406967163086,
+      "error": null
+    },
+    "assert rolling_max([1, 1, 6, 2]) == [1, 1, 6, 6]": {
+      "result": true,
+      "time": 0.03756070137023926,
+      "error": null
+    },
+    "assert rolling_max([2, 2, 1, 5]) == [2, 2, 2, 5]": {
+      "result": true,
+      "time": 0.0339968204498291,
+      "error": null
+    },
+    "assert rolling_max([6, 3, 7, 99, 5]) == [6, 6, 7, 99, 99]": {
+      "result": true,
+      "time": 0.031621694564819336,
+      "error": null
+    },
+    "assert rolling_max([1, 4, 6, 7]) == [1, 4, 6, 7]": {
+      "result": true,
+      "time": 0.031265974044799805,
+      "error": null
+    },
+    "assert rolling_max([]) == []": {
+      "result": true,
+      "time": 0.033887386322021484,
+      "error": null
+    },
+    "assert rolling_max([5, 6, 1, 4]) == [5, 6, 6, 6]": {
+      "result": true,
+      "time": 0.03534197807312012,
+      "error": null
+    },
+    "assert rolling_max([3, 8, 2, 3]) == [3, 8, 8, 8]": {
+      "result": true,
+      "time": 0.030590295791625977,
+      "error": null
+    },
+    "assert rolling_max([2, 4, 7, 96, 6]) == [2, 4, 7, 96, 96]": {
+      "result": true,
+      "time": 0.031790733337402344,
+      "error": null
+    },
+    "assert rolling_max([5, 6, 5, 2]) == [5, 6, 6, 6]": {
+      "result": true,
+      "time": 0.03760886192321777,
+      "error": null
+    },
+    "assert rolling_max([1, 3, 5, 97, 1]) == [1, 3, 5, 97, 97]": {
+      "result": true,
+      "time": 0.03700709342956543,
+      "error": null
+    },
+    "assert rolling_max([3, 1, 5, 4]) == [3, 3, 5, 5]": {
+      "result": true,
+      "time": 0.02750420570373535,
+      "error": null
+    },
+    "assert rolling_max([3, 6, 3, 9]) == [3, 6, 6, 9]": {
+      "result": true,
+      "time": 0.03170132637023926,
+      "error": null
+    },
+    "assert rolling_max([2, 3, 4, 6]) == [2, 3, 4, 6]": {
+      "result": true,
+      "time": 0.028952836990356445,
+      "error": null
+    },
+    "assert rolling_max([3, 2, 3, 100, 3]) == [3, 3, 3, 100, 100]": {
+      "result": true,
+      "time": 0.03060746192932129,
+      "error": null
+    },
+    "assert rolling_max([8, 7, 2, 105, 1]) == [8, 8, 8, 105, 105]": {
+      "result": true,
+      "time": 0.02995920181274414,
+      "error": null
+    },
+    "assert rolling_max([3, 4, 5, 4]) == [3, 4, 5, 5]": {
+      "result": true,
+      "time": 0.030017375946044922,
+      "error": null
+    },
+    "assert rolling_max([7, 6, 6, 99, 2]) == [7, 7, 7, 99, 99]": {
+      "result": true,
+      "time": 0.028736591339111328,
+      "error": null
+    },
+    "assert rolling_max([4, 1, 5, 5]) == [4, 4, 5, 5]": {
+      "result": true,
+      "time": 0.028708219528198242,
+      "error": null
+    },
+    "assert rolling_max([3, 4, 3, 4]) == [3, 4, 4, 4]": {
+      "result": true,
+      "time": 0.029888391494750977,
+      "error": null
+    },
+    "assert rolling_max([3, 6, 6, 104, 5]) == [3, 6, 6, 104, 104]": {
+      "result": true,
+      "time": 0.030595779418945312,
+      "error": null
+    },
+    "assert rolling_max([6, 4, 8, 6]) == [6, 6, 8, 8]": {
+      "result": true,
+      "time": 0.03010272979736328,
+      "error": null
+    },
+    "assert rolling_max([3, 7, 2, 100, 4]) == [3, 7, 7, 100, 100]": {
+      "result": true,
+      "time": 0.030109167098999023,
+      "error": null
+    },
+    "assert rolling_max([6, 5, 2, 5]) == [6, 6, 6, 6]": {
+      "result": true,
+      "time": 0.027167320251464844,
+      "error": null
+    },
+    "assert rolling_max([9, 7, 1, 5]) == [9, 9, 9, 9]": {
+      "result": true,
+      "time": 0.030950546264648438,
+      "error": null
+    },
+    "assert rolling_max([3, 7, 1, 4]) == [3, 7, 7, 7]": {
+      "result": true,
+      "time": 0.03368520736694336,
+      "error": null
+    },
+    "assert rolling_max([1, 7, 2, 1]) == [1, 7, 7, 7]": {
+      "result": true,
+      "time": 0.02998971939086914,
+      "error": null
+    },
+    "assert rolling_max([4, 4, 7, 5]) == [4, 4, 7, 7]": {
+      "result": true,
+      "time": 0.028333663940429688,
+      "error": null
+    },
+    "assert rolling_max([6, 1, 5, 8]) == [6, 6, 6, 8]": {
+      "result": true,
+      "time": 0.027022600173950195,
+      "error": null
+    },
+    "assert rolling_max([5, 7, 6, 9]) == [5, 7, 7, 9]": {
+      "result": true,
+      "time": 0.02839827537536621,
+      "error": null
+    },
+    "assert rolling_max([4, 2, 1, 105, 8]) == [4, 4, 4, 105, 105]": {
+      "result": true,
+      "time": 0.029999971389770508,
+      "error": null
+    },
+    "assert rolling_max([8, 6, 4, 95, 4]) == [8, 8, 8, 95, 95]": {
+      "result": true,
+      "time": 0.026742219924926758,
+      "error": null
+    },
+    "assert rolling_max([5, 7, 4, 96, 4]) == [5, 7, 7, 96, 96]": {
+      "result": true,
+      "time": 0.03443264961242676,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

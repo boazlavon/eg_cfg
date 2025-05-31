@@ -1,0 +1,364 @@
+{
+  "code": "def get_odd_collatz(n):\n    collatz_sequence = [n]\n    while n != 1:\n        if n % 2 == 0:\n            n = n // 2\n        else:\n            n = 3 * n + 1\n        collatz_sequence.append(n)\n    odd_numbers = sorted([x for x in collatz_sequence if x % 2 != 0])\n    return odd_numbers",
+  "results": {
+    "assert get_odd_collatz(57) == [1, 5, 7, 11, 13, 17, 37, 43, 49, 57, 65]": {
+      "result": true,
+      "time": 0.026007652282714844,
+      "error": null
+    },
+    "assert get_odd_collatz(12) == [1, 3, 5]": {
+      "result": true,
+      "time": 0.033222198486328125,
+      "error": null
+    },
+    "assert get_odd_collatz(20) == [1, 5]": {
+      "result": true,
+      "time": 0.028515338897705078,
+      "error": null
+    },
+    "assert get_odd_collatz(58) == [1, 5, 11, 13, 17, 29]": {
+      "result": true,
+      "time": 0.02669525146484375,
+      "error": null
+    },
+    "assert get_odd_collatz(29) == [1, 5, 11, 13, 17, 29]": {
+      "result": true,
+      "time": 0.02852773666381836,
+      "error": null
+    },
+    "assert get_odd_collatz(68) == [1, 5, 13, 17]": {
+      "result": true,
+      "time": 0.03118300437927246,
+      "error": null
+    },
+    "assert get_odd_collatz(30) == [1, 5, 15, 23, 35, 53]": {
+      "result": true,
+      "time": 0.028064727783203125,
+      "error": null
+    },
+    "assert get_odd_collatz(16) == [1]": {
+      "result": true,
+      "time": 0.02945852279663086,
+      "error": null
+    },
+    "assert get_odd_collatz(31) == [1, 5, 23, 31, 35, 47, 53, 61, 71, 91, 103, 107, 121, 137, 155, 161, 167, 175, 233, 251, 263, 283, 319, 325, 377, 395, 425, 433, 445, 479, 577, 593, 719, 911, 1079, 1367, 1619, 2051, 2429, 3077]": {
+      "result": true,
+      "time": 0.028787612915039062,
+      "error": null
+    },
+    "assert get_odd_collatz(66) == [1, 5, 11, 13, 17, 19, 25, 29, 33]": {
+      "result": true,
+      "time": 0.029271841049194336,
+      "error": null
+    },
+    "assert get_odd_collatz(17) == [1, 5, 13, 17]": {
+      "result": true,
+      "time": 0.028854846954345703,
+      "error": null
+    },
+    "assert get_odd_collatz(84) == [1, 21]": {
+      "result": true,
+      "time": 0.02913212776184082,
+      "error": null
+    },
+    "assert get_odd_collatz(62) == [1, 5, 23, 31, 35, 47, 53, 61, 71, 91, 103, 107, 121, 137, 155, 161, 167, 175, 233, 251, 263, 283, 319, 325, 377, 395, 425, 433, 445, 479, 577, 593, 719, 911, 1079, 1367, 1619, 2051, 2429, 3077]": {
+      "result": true,
+      "time": 0.02577352523803711,
+      "error": null
+    },
+    "assert get_odd_collatz(92) == [1, 5, 23, 35, 53]": {
+      "result": true,
+      "time": 0.03528857231140137,
+      "error": null
+    },
+    "assert get_odd_collatz(75) == [1, 75, 85, 113]": {
+      "result": true,
+      "time": 0.02604961395263672,
+      "error": null
+    },
+    "assert get_odd_collatz(44) == [1, 5, 11, 13, 17]": {
+      "result": true,
+      "time": 0.026327133178710938,
+      "error": null
+    },
+    "assert get_odd_collatz(81) == [1, 5, 23, 35, 53, 61, 81]": {
+      "result": true,
+      "time": 0.02514171600341797,
+      "error": null
+    },
+    "assert get_odd_collatz(35) == [1, 5, 35, 53]": {
+      "result": true,
+      "time": 0.029719114303588867,
+      "error": null
+    },
+    "assert get_odd_collatz(3) == [1, 3, 5]": {
+      "result": true,
+      "time": 0.02862381935119629,
+      "error": null
+    },
+    "assert get_odd_collatz(8) == [1]": {
+      "result": true,
+      "time": 0.029271841049194336,
+      "error": null
+    },
+    "assert get_odd_collatz(63) == [1, 5, 23, 35, 53, 61, 63, 91, 95, 103, 137, 143, 155, 167, 175, 215, 233, 251, 263, 283, 319, 323, 325, 377, 395, 425, 433, 445, 479, 485, 577, 593, 719, 911, 1079, 1367, 1619, 2051, 2429, 3077]": {
+      "result": true,
+      "time": 0.025591611862182617,
+      "error": null
+    },
+    "assert get_odd_collatz(23) == [1, 5, 23, 35, 53]": {
+      "result": true,
+      "time": 0.03154349327087402,
+      "error": null
+    },
+    "assert get_odd_collatz(1) == [1]": {
+      "result": true,
+      "time": 0.027897119522094727,
+      "error": null
+    },
+    "assert get_odd_collatz(52) == [1, 5, 13]": {
+      "result": true,
+      "time": 0.023494958877563477,
+      "error": null
+    },
+    "assert get_odd_collatz(89) == [1, 5, 11, 13, 17, 19, 29, 67, 89, 101]": {
+      "result": true,
+      "time": 0.028997421264648438,
+      "error": null
+    },
+    "assert get_odd_collatz(100) == [1, 5, 11, 13, 17, 19, 25, 29]": {
+      "result": true,
+      "time": 0.032672882080078125,
+      "error": null
+    },
+    "assert get_odd_collatz(4) == [1]": {
+      "result": true,
+      "time": 0.02600717544555664,
+      "error": null
+    },
+    "assert get_odd_collatz(56) == [1, 5, 7, 11, 13, 17]": {
+      "result": true,
+      "time": 0.02834939956665039,
+      "error": null
+    },
+    "assert get_odd_collatz(18) == [1, 5, 7, 9, 11, 13, 17]": {
+      "result": true,
+      "time": 0.03049945831298828,
+      "error": null
+    },
+    "assert get_odd_collatz(60) == [1, 5, 15, 23, 35, 53]": {
+      "result": true,
+      "time": 0.03045797348022461,
+      "error": null
+    },
+    "assert get_odd_collatz(43) == [1, 5, 7, 11, 13, 17, 37, 43, 49, 65]": {
+      "result": true,
+      "time": 0.027420520782470703,
+      "error": null
+    },
+    "assert get_odd_collatz(38) == [1, 5, 11, 13, 17, 19, 29]": {
+      "result": true,
+      "time": 0.024942874908447266,
+      "error": null
+    },
+    "assert get_odd_collatz(46) == [1, 5, 23, 35, 53]": {
+      "result": true,
+      "time": 0.026082754135131836,
+      "error": null
+    },
+    "assert get_odd_collatz(37) == [1, 5, 7, 11, 13, 17, 37]": {
+      "result": true,
+      "time": 0.02696061134338379,
+      "error": null
+    },
+    "assert get_odd_collatz(11) == [1, 5, 11, 13, 17]": {
+      "result": true,
+      "time": 0.028194189071655273,
+      "error": null
+    },
+    "assert get_odd_collatz(25) == [1, 5, 11, 13, 17, 19, 25, 29]": {
+      "result": true,
+      "time": 0.030189990997314453,
+      "error": null
+    },
+    "assert get_odd_collatz(70) == [1, 5, 35, 53]": {
+      "result": true,
+      "time": 0.029809236526489258,
+      "error": null
+    },
+    "assert get_odd_collatz(59) == [1, 5, 11, 13, 17, 19, 29, 59, 67, 89, 101]": {
+      "result": true,
+      "time": 0.029141902923583984,
+      "error": null
+    },
+    "assert get_odd_collatz(79) == [1, 5, 11, 13, 17, 19, 29, 79, 101, 119, 179, 269]": {
+      "result": true,
+      "time": 0.028322696685791016,
+      "error": null
+    },
+    "assert get_odd_collatz(40) == [1, 5]": {
+      "result": true,
+      "time": 0.02861166000366211,
+      "error": null
+    },
+    "assert get_odd_collatz(61) == [1, 5, 23, 35, 53, 61]": {
+      "result": true,
+      "time": 0.02914738655090332,
+      "error": null
+    },
+    "assert get_odd_collatz(88) == [1, 5, 11, 13, 17]": {
+      "result": true,
+      "time": 0.026735305786132812,
+      "error": null
+    },
+    "assert get_odd_collatz(77) == [1, 5, 11, 13, 17, 29, 77]": {
+      "result": true,
+      "time": 0.030619382858276367,
+      "error": null
+    },
+    "assert get_odd_collatz(67) == [1, 5, 11, 13, 17, 19, 29, 67, 101]": {
+      "result": true,
+      "time": 0.028174161911010742,
+      "error": null
+    },
+    "assert get_odd_collatz(80) == [1, 5]": {
+      "result": true,
+      "time": 0.026589393615722656,
+      "error": null
+    },
+    "assert get_odd_collatz(96) == [1, 3, 5]": {
+      "result": true,
+      "time": 0.02543330192565918,
+      "error": null
+    },
+    "assert get_odd_collatz(51) == [1, 5, 11, 13, 17, 29, 51, 77]": {
+      "result": true,
+      "time": 0.027103424072265625,
+      "error": null
+    },
+    "assert get_odd_collatz(73) == [1, 5, 23, 35, 47, 53, 55, 61, 71, 73, 83, 91, 103, 107, 121, 125, 137, 155, 161, 167, 175, 233, 251, 263, 283, 319, 325, 377, 395, 425, 433, 445, 479, 577, 593, 719, 911, 1079, 1367, 1619, 2051, 2429, 3077]": {
+      "result": true,
+      "time": 0.02703380584716797,
+      "error": null
+    },
+    "assert get_odd_collatz(69) == [1, 5, 13, 69]": {
+      "result": true,
+      "time": 0.028784751892089844,
+      "error": null
+    },
+    "assert get_odd_collatz(72) == [1, 5, 7, 9, 11, 13, 17]": {
+      "result": true,
+      "time": 0.029424428939819336,
+      "error": null
+    },
+    "assert get_odd_collatz(22) == [1, 5, 11, 13, 17]": {
+      "result": true,
+      "time": 0.027975797653198242,
+      "error": null
+    },
+    "assert get_odd_collatz(94) == [1, 5, 23, 35, 47, 53, 61, 71, 91, 103, 107, 121, 137, 155, 161, 167, 175, 233, 251, 263, 283, 319, 325, 377, 395, 425, 433, 445, 479, 577, 593, 719, 911, 1079, 1367, 1619, 2051, 2429, 3077]": {
+      "result": true,
+      "time": 0.025622129440307617,
+      "error": null
+    },
+    "assert get_odd_collatz(28) == [1, 5, 7, 11, 13, 17]": {
+      "result": true,
+      "time": 0.02746272087097168,
+      "error": null
+    },
+    "assert get_odd_collatz(95) == [1, 5, 23, 35, 53, 61, 91, 95, 103, 137, 143, 155, 167, 175, 215, 233, 251, 263, 283, 319, 323, 325, 377, 395, 425, 433, 445, 479, 485, 577, 593, 719, 911, 1079, 1367, 1619, 2051, 2429, 3077]": {
+      "result": true,
+      "time": 0.027929067611694336,
+      "error": null
+    },
+    "assert get_odd_collatz(36) == [1, 5, 7, 9, 11, 13, 17]": {
+      "result": true,
+      "time": 0.028474807739257812,
+      "error": null
+    },
+    "assert get_odd_collatz(5) == [1, 5]": {
+      "result": true,
+      "time": 0.028342723846435547,
+      "error": null
+    },
+    "assert get_odd_collatz(82) == [1, 5, 23, 31, 35, 41, 47, 53, 61, 71, 91, 103, 107, 121, 137, 155, 161, 167, 175, 233, 251, 263, 283, 319, 325, 377, 395, 425, 433, 445, 479, 577, 593, 719, 911, 1079, 1367, 1619, 2051, 2429, 3077]": {
+      "result": true,
+      "time": 0.028558015823364258,
+      "error": null
+    },
+    "assert get_odd_collatz(49) == [1, 5, 7, 11, 13, 17, 37, 49]": {
+      "result": true,
+      "time": 0.02886176109313965,
+      "error": null
+    },
+    "assert get_odd_collatz(87) == [1, 5, 7, 11, 13, 17, 37, 87, 131, 197]": {
+      "result": true,
+      "time": 0.026796817779541016,
+      "error": null
+    },
+    "assert get_odd_collatz(21) == [1, 21]": {
+      "result": true,
+      "time": 0.028227567672729492,
+      "error": null
+    },
+    "assert get_odd_collatz(10) == [1, 5]": {
+      "result": true,
+      "time": 0.02578115463256836,
+      "error": null
+    },
+    "assert get_odd_collatz(19) == [1, 5, 11, 13, 17, 19, 29]": {
+      "result": true,
+      "time": 0.02883768081665039,
+      "error": null
+    },
+    "assert get_odd_collatz(93) == [1, 5, 35, 53, 93]": {
+      "result": true,
+      "time": 0.026770591735839844,
+      "error": null
+    },
+    "assert get_odd_collatz(34) == [1, 5, 13, 17]": {
+      "result": true,
+      "time": 0.027617931365966797,
+      "error": null
+    },
+    "assert get_odd_collatz(32) == [1]": {
+      "result": true,
+      "time": 0.025875091552734375,
+      "error": null
+    },
+    "assert get_odd_collatz(53) == [1, 5, 53]": {
+      "result": true,
+      "time": 0.02679276466369629,
+      "error": null
+    },
+    "assert get_odd_collatz(78) == [1, 5, 11, 13, 17, 19, 29, 39, 59, 67, 89, 101]": {
+      "result": true,
+      "time": 0.02710437774658203,
+      "error": null
+    },
+    "assert get_odd_collatz(24) == [1, 3, 5]": {
+      "result": true,
+      "time": 0.025464534759521484,
+      "error": null
+    },
+    "assert get_odd_collatz(33) == [1, 5, 11, 13, 17, 19, 25, 29, 33]": {
+      "result": true,
+      "time": 0.02677464485168457,
+      "error": null
+    },
+    "assert get_odd_collatz(15) == [1, 5, 15, 23, 35, 53]": {
+      "result": true,
+      "time": 0.02717280387878418,
+      "error": null
+    },
+    "assert get_odd_collatz(14) == [1, 5, 7, 11, 13, 17]": {
+      "result": true,
+      "time": 0.027364253997802734,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

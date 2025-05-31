@@ -1,0 +1,519 @@
+{
+  "code": "def bf(planet1, planet2):\n    planets = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"]\n    if planet1 not in planets or planet2 not in planets:\n        return ()\n    index1 = planets.index(planet1)\n    index2 = planets.index(planet2)\n    start = min(index1, index2) + 1\n    end = max(index1, index2)\n    if start > end:\n        return ()\n    return tuple(planets[start:end])",
+  "results": {
+    "assert bf('Mercury', 'Uranus') == ('Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn')": {
+      "result": true,
+      "time": 0.02836012840270996,
+      "error": null
+    },
+    "assert bf('Earth', 'Neptune') == ('Mars', 'Jupiter', 'Saturn', 'Uranus')": {
+      "result": true,
+      "time": 0.032395362854003906,
+      "error": null
+    },
+    "assert bf('Uranus', 'Neptune') == ()": {
+      "result": true,
+      "time": 0.03577923774719238,
+      "error": null
+    },
+    "assert bf('BmIfOHfuO', 'wRdUevYZI') == ()": {
+      "result": true,
+      "time": 0.0297091007232666,
+      "error": null
+    },
+    "assert bf('hSLEjoINv', 'YYAhwA') == ()": {
+      "result": true,
+      "time": 0.029224395751953125,
+      "error": null
+    },
+    "assert bf('buNtf', 'scfbWIUY') == ()": {
+      "result": true,
+      "time": 0.03226017951965332,
+      "error": null
+    },
+    "assert bf('XSuDrOCZ', 'rIuxDaB') == ()": {
+      "result": true,
+      "time": 0.033115386962890625,
+      "error": null
+    },
+    "assert bf(\"Mars\", \"Earth\") == ()": {
+      "result": true,
+      "time": 0.0339055061340332,
+      "error": null
+    },
+    "assert bf('UWohXWxaLKC', 'wxWzdfKzvTwn') == ()": {
+      "result": true,
+      "time": 0.033471107482910156,
+      "error": null
+    },
+    "assert bf('proqRzxn', 'cLxtIMtgR') == ()": {
+      "result": true,
+      "time": 0.03137326240539551,
+      "error": null
+    },
+    "assert bf('hayLKiu', 'PNqJKHp') == ()": {
+      "result": true,
+      "time": 0.031011104583740234,
+      "error": null
+    },
+    "assert bf('mKeLE', 'wUFkoci') == ()": {
+      "result": true,
+      "time": 0.0292208194732666,
+      "error": null
+    },
+    "assert bf('Earth', 'Earth') == ()": {
+      "result": true,
+      "time": 0.036351919174194336,
+      "error": null
+    },
+    "assert bf('DbZtRXht', 'IFhEw') == ()": {
+      "result": true,
+      "time": 0.029156923294067383,
+      "error": null
+    },
+    "assert bf('DmfS', 'jlIbIoY') == ()": {
+      "result": true,
+      "time": 0.029811382293701172,
+      "error": null
+    },
+    "assert bf('Mercury', 'Jupiter') == ('Venus', 'Earth', 'Mars')": {
+      "result": true,
+      "time": 0.030751705169677734,
+      "error": null
+    },
+    "assert bf('ffrUoKQx', 'SNZLGhr') == ()": {
+      "result": true,
+      "time": 0.031024456024169922,
+      "error": null
+    },
+    "assert bf('Venus', 'Mercury') == ()": {
+      "result": true,
+      "time": 0.03228950500488281,
+      "error": null
+    },
+    "assert bf('NLDe', 'rzLkDX') == ()": {
+      "result": true,
+      "time": 0.033066511154174805,
+      "error": null
+    },
+    "assert bf('qDuD', 'wdbCsSfpyJ') == ()": {
+      "result": true,
+      "time": 0.030890703201293945,
+      "error": null
+    },
+    "assert bf('eAuZ', 'CDjFvr') == ()": {
+      "result": true,
+      "time": 0.03070521354675293,
+      "error": null
+    },
+    "assert bf('uSALSr', 'hpkswMWd') == ()": {
+      "result": true,
+      "time": 0.0348663330078125,
+      "error": null
+    },
+    "assert bf('JTFhqMWoE', 'vshaCvtG') == ()": {
+      "result": true,
+      "time": 0.028827190399169922,
+      "error": null
+    },
+    "assert bf('Jupiter', 'Neptune') == ('Saturn', 'Uranus')": {
+      "result": true,
+      "time": 0.029363155364990234,
+      "error": null
+    },
+    "assert bf('xgGOVPmL', 'QcnfLMd') == ()": {
+      "result": true,
+      "time": 0.03323030471801758,
+      "error": null
+    },
+    "assert bf('Venus', 'Mars') == ('Earth',)": {
+      "result": true,
+      "time": 0.03609156608581543,
+      "error": null
+    },
+    "assert bf('VLDLDEO', 'Kemt') == ()": {
+      "result": true,
+      "time": 0.031975746154785156,
+      "error": null
+    },
+    "assert bf('Uranus', 'Saturn') == ()": {
+      "result": true,
+      "time": 0.033614397048950195,
+      "error": null
+    },
+    "assert bf('Earth', 'Jupiter') == ('Mars',)": {
+      "result": true,
+      "time": 0.03316307067871094,
+      "error": null
+    },
+    "assert bf('WxA', 'JRQl') == ()": {
+      "result": true,
+      "time": 0.034099578857421875,
+      "error": null
+    },
+    "assert bf('CvjBqYn', 'JphCPo') == ()": {
+      "result": true,
+      "time": 0.03458261489868164,
+      "error": null
+    },
+    "assert bf('JpxsgCfeGpVA', 'HUujAsabnZ') == ()": {
+      "result": true,
+      "time": 0.034383535385131836,
+      "error": null
+    },
+    "assert bf('Neptune', 'Saturn') == ('Uranus',)": {
+      "result": true,
+      "time": 0.037804603576660156,
+      "error": null
+    },
+    "assert bf('Uranus', 'Venus') == ('Earth', 'Mars', 'Jupiter', 'Saturn')": {
+      "result": true,
+      "time": 0.029450654983520508,
+      "error": null
+    },
+    "assert bf('Uranus', 'Earth') == ('Mars', 'Jupiter', 'Saturn')": {
+      "result": true,
+      "time": 0.03255486488342285,
+      "error": null
+    },
+    "assert bf('jxc', 'QmQxf') == ()": {
+      "result": true,
+      "time": 0.030170679092407227,
+      "error": null
+    },
+    "assert bf('GJTKYgzMd', 'gWi') == ()": {
+      "result": true,
+      "time": 0.03521227836608887,
+      "error": null
+    },
+    "assert bf('Jupiter', 'Earth') == ('Mars',)": {
+      "result": true,
+      "time": 0.03557014465332031,
+      "error": null
+    },
+    "assert bf('Earth', 'Mars') == ()": {
+      "result": true,
+      "time": 0.03234529495239258,
+      "error": null
+    },
+    "assert bf('fifVrBwCb', 'WwPWORetZ') == ()": {
+      "result": true,
+      "time": 0.033911705017089844,
+      "error": null
+    },
+    "assert bf('Saturn', 'Mercury') == ('Venus', 'Earth', 'Mars', 'Jupiter')": {
+      "result": true,
+      "time": 0.03147411346435547,
+      "error": null
+    },
+    "assert bf('Saturn', 'Earth') == ('Mars', 'Jupiter')": {
+      "result": true,
+      "time": 0.028278112411499023,
+      "error": null
+    },
+    "assert bf('Neptune', 'Jupiter') == ('Saturn', 'Uranus')": {
+      "result": true,
+      "time": 0.034296274185180664,
+      "error": null
+    },
+    "assert bf('Mercury', 'Neptune') == ('Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus')": {
+      "result": true,
+      "time": 0.02972722053527832,
+      "error": null
+    },
+    "assert bf(\"Earth\", \"Earth\") == ()": {
+      "result": true,
+      "time": 0.03531670570373535,
+      "error": null
+    },
+    "assert bf('RucLkBzqBlnI', 'xstFZL') == ()": {
+      "result": true,
+      "time": 0.03105020523071289,
+      "error": null
+    },
+    "assert bf('Jupiter', 'Uranus') == ('Saturn',)": {
+      "result": true,
+      "time": 0.031384944915771484,
+      "error": null
+    },
+    "assert bf('lyfEeBXn', 'uzRssTA') == ()": {
+      "result": true,
+      "time": 0.03174114227294922,
+      "error": null
+    },
+    "assert bf('Jupiter', 'Saturn') == ()": {
+      "result": true,
+      "time": 0.03461456298828125,
+      "error": null
+    },
+    "assert bf(\"Jupiter\", \"Makemake\") == ()": {
+      "result": true,
+      "time": 0.032303810119628906,
+      "error": null
+    },
+    "assert bf('Uranus', 'Uranus') == ()": {
+      "result": true,
+      "time": 0.027368783950805664,
+      "error": null
+    },
+    "assert bf('Venus', 'Earth') == ()": {
+      "result": true,
+      "time": 0.03012561798095703,
+      "error": null
+    },
+    "assert bf(\"Jupiter\", \"Neptune\") == (\"Saturn\", \"Uranus\"), \"First test error: \" + str(len(bf(\"Jupiter\", \"Neptune\")))": {
+      "result": true,
+      "time": 0.02997136116027832,
+      "error": null
+    },
+    "assert bf('Neptune', 'Neptune') == ()": {
+      "result": true,
+      "time": 0.027142763137817383,
+      "error": null
+    },
+    "assert bf('xJrSGV', 'zdwOxdVzN') == ()": {
+      "result": true,
+      "time": 0.03267788887023926,
+      "error": null
+    },
+    "assert bf('gyUn', 'vMujG') == ()": {
+      "result": true,
+      "time": 0.032538652420043945,
+      "error": null
+    },
+    "assert bf('Venus', 'Saturn') == ('Earth', 'Mars', 'Jupiter')": {
+      "result": true,
+      "time": 0.03506827354431152,
+      "error": null
+    },
+    "assert bf('FoICpuSx', 'DLeFV') == ()": {
+      "result": true,
+      "time": 0.033753156661987305,
+      "error": null
+    },
+    "assert bf('tnrxRqi', 'AWplLV') == ()": {
+      "result": true,
+      "time": 0.03660845756530762,
+      "error": null
+    },
+    "assert bf('pHPJQTV', 'dWIDiZP') == ()": {
+      "result": true,
+      "time": 0.028635025024414062,
+      "error": null
+    },
+    "assert bf('smEXloM', 'jZBLGc') == ()": {
+      "result": true,
+      "time": 0.029640674591064453,
+      "error": null
+    },
+    "assert bf('Mars', 'Neptune') == ('Jupiter', 'Saturn', 'Uranus')": {
+      "result": true,
+      "time": 0.03058028221130371,
+      "error": null
+    },
+    "assert bf('Uranus', 'Mercury') == ('Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn')": {
+      "result": true,
+      "time": 0.030959367752075195,
+      "error": null
+    },
+    "assert bf('tmaUgxPoC', 'YmJrbcSj') == ()": {
+      "result": true,
+      "time": 0.02673649787902832,
+      "error": null
+    },
+    "assert bf('GzPVDzR', 'zGQ') == ()": {
+      "result": true,
+      "time": 0.034250497817993164,
+      "error": null
+    },
+    "assert bf('DHKmwLimf', 'hejG') == ()": {
+      "result": true,
+      "time": 0.03281998634338379,
+      "error": null
+    },
+    "assert bf('IvccNilTV', 'PzX') == ()": {
+      "result": true,
+      "time": 0.032779693603515625,
+      "error": null
+    },
+    "assert bf('HCGq', 'yVCoay') == ()": {
+      "result": true,
+      "time": 0.029094219207763672,
+      "error": null
+    },
+    "assert bf('wdEgmW', 'dEgw') == ()": {
+      "result": true,
+      "time": 0.04780864715576172,
+      "error": null
+    },
+    "assert bf('Venus', 'Neptune') == ('Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus')": {
+      "result": true,
+      "time": 0.03428220748901367,
+      "error": null
+    },
+    "assert bf('UEmf', 'orUuN') == ()": {
+      "result": true,
+      "time": 0.032939910888671875,
+      "error": null
+    },
+    "assert bf('KQcimuFmov', 'dxFbURLcq') == ()": {
+      "result": true,
+      "time": 0.030934810638427734,
+      "error": null
+    },
+    "assert bf('JKjmqhz', 'vlVlQIlPkV') == ()": {
+      "result": true,
+      "time": 0.033014535903930664,
+      "error": null
+    },
+    "assert bf('Mercury', 'Earth') == ('Venus',)": {
+      "result": true,
+      "time": 0.03010416030883789,
+      "error": null
+    },
+    "assert bf('lXjRDOc', 'fXKFCManbjQ') == ()": {
+      "result": true,
+      "time": 0.026218891143798828,
+      "error": null
+    },
+    "assert bf('uKpmBiu', 'wLhUekd') == ()": {
+      "result": true,
+      "time": 0.030129671096801758,
+      "error": null
+    },
+    "assert bf('sKlHVKBU', 'Nxb') == ()": {
+      "result": true,
+      "time": 0.03114485740661621,
+      "error": null
+    },
+    "assert bf(\"Neptune\", \"Venus\") == (\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\"), \"Fourth test error: \" + str(bf(\"Neptune\", \"Venus\"))  \n\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.028365612030029297,
+      "error": null
+    },
+    "assert bf('Saturn', 'Jupiter') == ()": {
+      "result": true,
+      "time": 0.03629302978515625,
+      "error": null
+    },
+    "assert bf('Earth', 'Saturn') == ('Mars', 'Jupiter')": {
+      "result": true,
+      "time": 0.03455638885498047,
+      "error": null
+    },
+    "assert bf('KHB', 'OoZXdElWw') == ()": {
+      "result": true,
+      "time": 0.03409743309020996,
+      "error": null
+    },
+    "assert bf('wBIcna', 'iQRGuAv') == ()": {
+      "result": true,
+      "time": 0.03589630126953125,
+      "error": null
+    },
+    "assert bf('Earth', 'Venus') == ()": {
+      "result": true,
+      "time": 0.02998828887939453,
+      "error": null
+    },
+    "assert bf('Neptune', 'Mars') == ('Jupiter', 'Saturn', 'Uranus')": {
+      "result": true,
+      "time": 0.032965660095214844,
+      "error": null
+    },
+    "assert bf('Uranus', 'Mars') == ('Jupiter', 'Saturn')": {
+      "result": true,
+      "time": 0.03338932991027832,
+      "error": null
+    },
+    "assert bf('zYEZNC', 'yuHunvTb') == ()": {
+      "result": true,
+      "time": 0.03122258186340332,
+      "error": null
+    },
+    "assert bf(\"Earth\", \"Mercury\") == (\"Venus\",), \"Second test error: \" + str(bf(\"Earth\", \"Mercury\"))": {
+      "result": true,
+      "time": 0.030391454696655273,
+      "error": null
+    },
+    "assert bf('Saturn', 'Uranus') == ()": {
+      "result": true,
+      "time": 0.02974843978881836,
+      "error": null
+    },
+    "assert bf('NnRASam', 'kLreZ') == ()": {
+      "result": true,
+      "time": 0.0293886661529541,
+      "error": null
+    },
+    "assert bf('cmy', 'MPBqlP') == ()": {
+      "result": true,
+      "time": 0.030050992965698242,
+      "error": null
+    },
+    "assert bf('Mercury', 'Mercury') == ()": {
+      "result": true,
+      "time": 0.033495187759399414,
+      "error": null
+    },
+    "assert bf('Mars', 'Mercury') == ('Venus', 'Earth')": {
+      "result": true,
+      "time": 0.03141307830810547,
+      "error": null
+    },
+    "assert bf('tHQBLXkkh', 'XiMEyBQ') == ()": {
+      "result": true,
+      "time": 0.035762786865234375,
+      "error": null
+    },
+    "assert bf('Jupiter', 'Mars') == ()": {
+      "result": true,
+      "time": 0.030642032623291016,
+      "error": null
+    },
+    "assert bf('grjW', 'UOtjR') == ()": {
+      "result": true,
+      "time": 0.03200483322143555,
+      "error": null
+    },
+    "assert bf('MbdIWyQKKQv', 'ErIHtYqB') == ()": {
+      "result": true,
+      "time": 0.03531026840209961,
+      "error": null
+    },
+    "assert bf('NLnoeB', 'caeAE') == ()": {
+      "result": true,
+      "time": 0.032011985778808594,
+      "error": null
+    },
+    "assert bf('ufKZhFD', 'yyASc') == ()": {
+      "result": true,
+      "time": 0.028336763381958008,
+      "error": null
+    },
+    "assert bf('Mars', 'Mars') == ()": {
+      "result": true,
+      "time": 0.03343820571899414,
+      "error": null
+    },
+    "assert bf('Mars', 'Uranus') == ('Jupiter', 'Saturn')": {
+      "result": true,
+      "time": 0.030503273010253906,
+      "error": null
+    },
+    "assert bf(\"Mercury\", \"Uranus\") == (\"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"), \"Third test error: \" + str(bf(\"Mercury\", \"Uranus\"))": {
+      "result": true,
+      "time": 0.03089761734008789,
+      "error": null
+    },
+    "assert bf('Mercury', 'Mars') == ('Venus', 'Earth')": {
+      "result": true,
+      "time": 0.029173851013183594,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

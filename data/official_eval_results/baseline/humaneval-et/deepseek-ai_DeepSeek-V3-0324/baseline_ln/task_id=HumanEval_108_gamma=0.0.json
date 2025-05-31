@@ -1,0 +1,489 @@
+{
+  "code": "def count_nums(arr):\n    count = 0\n    for num in arr:\n        if num == 0:\n            continue\n        sum_digits = 0\n        s = str(num)\n        for i, c in enumerate(s):\n            if i == 0 and c == '-':\n                continue\n            if i == 1 and s[0] == '-':\n                sum_digits -= int(c)\n            else:\n                sum_digits += int(c)\n        if sum_digits > 0:\n            count += 1\n    return count",
+  "results": {
+    "assert count_nums([5, 2]) == 2": {
+      "result": true,
+      "time": 0.028540849685668945,
+      "error": null
+    },
+    "assert count_nums([-2, -5, 1]) == 1": {
+      "result": true,
+      "time": 0.027897119522094727,
+      "error": null
+    },
+    "assert count_nums([5, 4, 2, 0, 7, 2, 5]) == 6": {
+      "result": true,
+      "time": 0.02766871452331543,
+      "error": null
+    },
+    "assert count_nums([1, 102, 101, -3, 2, -5]) == 4": {
+      "result": true,
+      "time": 0.025571584701538086,
+      "error": null
+    },
+    "assert count_nums([7, 24, 39, -48, -54, 3]) == 5": {
+      "result": true,
+      "time": 0.029277324676513672,
+      "error": null
+    },
+    "assert count_nums([3, 3, 14, -4, 2, 4, 10]) == 6": {
+      "result": true,
+      "time": 0.029964447021484375,
+      "error": null
+    },
+    "assert count_nums([1, 1, 10, -9, 1, 1, 9]) == 6": {
+      "result": true,
+      "time": 0.03103470802307129,
+      "error": null
+    },
+    "assert count_nums([5, 99, 93, -9, 3, -4]) == 4": {
+      "result": true,
+      "time": 0.03677725791931152,
+      "error": null
+    },
+    "assert count_nums([5, 7, 13, -10, 1, 2, 1]) == 6": {
+      "result": true,
+      "time": 0.028442859649658203,
+      "error": null
+    },
+    "assert count_nums([3, 5, 3, -4, 5, 7, 2]) == 6": {
+      "result": true,
+      "time": 0.030902624130249023,
+      "error": null
+    },
+    "assert count_nums([]) == 0": {
+      "result": true,
+      "time": 0.02883458137512207,
+      "error": null
+    },
+    "assert count_nums([5, 4, 5, -8, 1, 3, 2]) == 6": {
+      "result": true,
+      "time": 0.03021097183227539,
+      "error": null
+    },
+    "assert count_nums([6, 103, 99, -8, 4, -1]) == 4": {
+      "result": true,
+      "time": 0.026747703552246094,
+      "error": null
+    },
+    "assert count_nums([-4, 3, 1]) == 2": {
+      "result": true,
+      "time": 0.028704404830932617,
+      "error": null
+    },
+    "assert count_nums([4, 1, 1]) == 3": {
+      "result": true,
+      "time": 0.028093576431274414,
+      "error": null
+    },
+    "assert count_nums([2, 97, 101, -8, 5, 3]) == 5": {
+      "result": true,
+      "time": 0.030630826950073242,
+      "error": null
+    },
+    "assert count_nums([1]) == 1\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.02896857261657715,
+      "error": null
+    },
+    "assert count_nums([1, 101, 102, -3, 2, -3]) == 4": {
+      "result": true,
+      "time": 0.02876591682434082,
+      "error": null
+    },
+    "assert count_nums([13, 26, 39, -42, -59, 4]) == 5": {
+      "result": true,
+      "time": 0.026000022888183594,
+      "error": null
+    },
+    "assert count_nums([3, 2, 6, -1, 5, 2, 3]) == 6": {
+      "result": true,
+      "time": 0.02986741065979004,
+      "error": null
+    },
+    "assert count_nums([5, 2, 8, -1, 5, 4, 1]) == 6": {
+      "result": true,
+      "time": 0.033446550369262695,
+      "error": null
+    },
+    "assert count_nums([8, 19, 38, -42, -61, 1]) == 4": {
+      "result": true,
+      "time": 0.0318453311920166,
+      "error": null
+    },
+    "assert count_nums([-2, -7, 1]) == 1": {
+      "result": true,
+      "time": 0.02956247329711914,
+      "error": null
+    },
+    "assert count_nums([5, 4, 5, 3, 5, 4, 8]) == 7": {
+      "result": true,
+      "time": 0.028830766677856445,
+      "error": null
+    },
+    "assert count_nums([2, 1, 4, -5, 5, 2, 9]) == 6": {
+      "result": true,
+      "time": 0.026645421981811523,
+      "error": null
+    },
+    "assert count_nums([4, -1, 1]) == 2": {
+      "result": true,
+      "time": 0.02757549285888672,
+      "error": null
+    },
+    "assert count_nums([2, 4, 4, 2, 1, 2, 3]) == 7": {
+      "result": true,
+      "time": 0.03055596351623535,
+      "error": null
+    },
+    "assert count_nums([2]) == 1": {
+      "result": true,
+      "time": 0.030269384384155273,
+      "error": null
+    },
+    "assert count_nums([1, 5, 1, -6, 6, 1, 1]) == 6": {
+      "result": true,
+      "time": 0.029500484466552734,
+      "error": null
+    },
+    "assert count_nums([3, 95, 96, -10, 5, -1]) == 4": {
+      "result": true,
+      "time": 0.028528928756713867,
+      "error": null
+    },
+    "assert count_nums([-4, -3, 3]) == 1": {
+      "result": true,
+      "time": 0.030042171478271484,
+      "error": null
+    },
+    "assert count_nums([2, 2]) == 2": {
+      "result": true,
+      "time": 0.030770540237426758,
+      "error": null
+    },
+    "assert count_nums([1]) == 1": {
+      "result": true,
+      "time": 0.0305788516998291,
+      "error": null
+    },
+    "assert count_nums([17, 21, 29, -42, -52, 3]) == 4": {
+      "result": true,
+      "time": 0.03211665153503418,
+      "error": null
+    },
+    "assert count_nums([6, 4, 1, -5, 3, 3, 10]) == 6": {
+      "result": true,
+      "time": 0.027859210968017578,
+      "error": null
+    },
+    "assert count_nums([-6, -7, 2]) == 1": {
+      "result": true,
+      "time": 0.027750253677368164,
+      "error": null
+    },
+    "assert count_nums([5, 3]) == 2": {
+      "result": true,
+      "time": 0.03016376495361328,
+      "error": null
+    },
+    "assert count_nums([2, -7, 4]) == 2": {
+      "result": true,
+      "time": 0.029086589813232422,
+      "error": null
+    },
+    "assert count_nums([11, 18, 38, -48, -59, 1]) == 6": {
+      "result": true,
+      "time": 0.027846097946166992,
+      "error": null
+    },
+    "assert count_nums([1, 100, 94, -4, 2, 2]) == 5": {
+      "result": true,
+      "time": 0.029094934463500977,
+      "error": null
+    },
+    "assert count_nums([-5, 1, 4]) == 2": {
+      "result": true,
+      "time": 0.0316162109375,
+      "error": null
+    },
+    "assert count_nums([2, 6, 6, -4, 1, 9, 8]) == 6": {
+      "result": true,
+      "time": 0.031080007553100586,
+      "error": null
+    },
+    "assert count_nums([-1, -2, 0]) == 0": {
+      "result": true,
+      "time": 0.030810832977294922,
+      "error": null
+    },
+    "assert count_nums([2, 2, 7, -3, 6, 2, 5]) == 6": {
+      "result": true,
+      "time": 0.027909040451049805,
+      "error": null
+    },
+    "assert count_nums([10, 26, 34, -49, -60, 1]) == 5": {
+      "result": true,
+      "time": 0.030052661895751953,
+      "error": null
+    },
+    "assert count_nums([1, 2]) == 2": {
+      "result": true,
+      "time": 0.02836298942565918,
+      "error": null
+    },
+    "assert count_nums([12, 21, 31, -45, -52, 2]) == 5": {
+      "result": true,
+      "time": 0.026703834533691406,
+      "error": null
+    },
+    "assert count_nums([14, 18, 34, -45, -51, 1]) == 5": {
+      "result": true,
+      "time": 0.026871204376220703,
+      "error": null
+    },
+    "assert count_nums([4, 1, 2]) == 3": {
+      "result": true,
+      "time": 0.02892923355102539,
+      "error": null
+    },
+    "assert count_nums([4, -1, 2]) == 2": {
+      "result": true,
+      "time": 0.02855372428894043,
+      "error": null
+    },
+    "assert count_nums([3, 3, 1, -5, 4, 1, 5]) == 6": {
+      "result": true,
+      "time": 0.035387277603149414,
+      "error": null
+    },
+    "assert count_nums([1, 6, 9, -6, 0, 1, 5]) == 5": {
+      "result": true,
+      "time": 0.02887725830078125,
+      "error": null
+    },
+    "assert count_nums([4, 1, 3, -2, 5, 6, 3]) == 6": {
+      "result": true,
+      "time": 0.02834343910217285,
+      "error": null
+    },
+    "assert count_nums([3, 3]) == 2": {
+      "result": true,
+      "time": 0.030243873596191406,
+      "error": null
+    },
+    "assert count_nums([8, 22, 32, -44, -59, 1]) == 5": {
+      "result": true,
+      "time": 0.028687000274658203,
+      "error": null
+    },
+    "assert count_nums([4]) == 1": {
+      "result": true,
+      "time": 0.02803945541381836,
+      "error": null
+    },
+    "assert count_nums([3, 3, 4, -3, 2, 8, 7]) == 6": {
+      "result": true,
+      "time": 0.032248735427856445,
+      "error": null
+    },
+    "assert count_nums([14, 23, 37, -48, -53, 1]) == 5": {
+      "result": true,
+      "time": 0.02916121482849121,
+      "error": null
+    },
+    "assert count_nums([17, 26, 31, -40, -61, 4]) == 4": {
+      "result": true,
+      "time": 0.02637505531311035,
+      "error": null
+    },
+    "assert count_nums([5, 2, 1, -1, 1, 8, 3]) == 6": {
+      "result": true,
+      "time": 0.029006004333496094,
+      "error": null
+    },
+    "assert count_nums([6, 1, 7, -1, 4, 4, 10]) == 6": {
+      "result": true,
+      "time": 0.028294086456298828,
+      "error": null
+    },
+    "assert count_nums([-3, -6, 5]) == 1": {
+      "result": true,
+      "time": 0.031094074249267578,
+      "error": null
+    },
+    "assert count_nums([1, 1, 6, -8, 2, 3, 9]) == 6": {
+      "result": true,
+      "time": 0.031348466873168945,
+      "error": null
+    },
+    "assert count_nums([2, 5, 3, -2, 2, 6, 10]) == 6": {
+      "result": true,
+      "time": 0.03322458267211914,
+      "error": null
+    },
+    "assert count_nums([1, 100, 98, -7, 1, -1]) == 4": {
+      "result": true,
+      "time": 0.031970977783203125,
+      "error": null
+    },
+    "assert count_nums([5, 5]) == 2": {
+      "result": true,
+      "time": 0.030645370483398438,
+      "error": null
+    },
+    "assert count_nums([6, 105, 98, -6, 4, -2]) == 4": {
+      "result": true,
+      "time": 0.0335993766784668,
+      "error": null
+    },
+    "assert count_nums([7, 23, 37, -42, -53, 1]) == 4": {
+      "result": true,
+      "time": 0.026648521423339844,
+      "error": null
+    },
+    "assert count_nums([5, 5, 10, -1, 1, 1, 10]) == 6": {
+      "result": true,
+      "time": 0.02625298500061035,
+      "error": null
+    },
+    "assert count_nums([-0, 1**0]) == 1": {
+      "result": true,
+      "time": 0.03199958801269531,
+      "error": null
+    },
+    "assert count_nums([1, 1, 2, -2, 3, 4, 5]) == 6": {
+      "result": true,
+      "time": 0.02949237823486328,
+      "error": null
+    },
+    "assert count_nums([2, 3, 5]) == 3": {
+      "result": true,
+      "time": 0.03151106834411621,
+      "error": null
+    },
+    "assert count_nums([6, 96, 102, -11, 4, 1]) == 5": {
+      "result": true,
+      "time": 0.03085613250732422,
+      "error": null
+    },
+    "assert count_nums([4, 96, 97, -7, 2, -5]) == 4": {
+      "result": true,
+      "time": 0.030766963958740234,
+      "error": null
+    },
+    "assert count_nums([4, 2, 10, -3, 4, 2, 4]) == 6": {
+      "result": true,
+      "time": 0.0310366153717041,
+      "error": null
+    },
+    "assert count_nums([1, 4]) == 2": {
+      "result": true,
+      "time": 0.026223421096801758,
+      "error": null
+    },
+    "assert count_nums([3]) == 1": {
+      "result": true,
+      "time": 0.027867794036865234,
+      "error": null
+    },
+    "assert count_nums([12, 25, 32, -41, -60, 2]) == 4": {
+      "result": true,
+      "time": 0.02527165412902832,
+      "error": null
+    },
+    "assert count_nums([3, 0, 4]) == 2": {
+      "result": true,
+      "time": 0.0282747745513916,
+      "error": null
+    },
+    "assert count_nums([2, 105, 99, -12, 2, 0]) == 5": {
+      "result": true,
+      "time": 0.03332877159118652,
+      "error": null
+    },
+    "assert count_nums([4, 101, 103, -11, 3, -6]) == 4": {
+      "result": true,
+      "time": 0.026057958602905273,
+      "error": null
+    },
+    "assert count_nums([4, 8, 13, -4, 2, 6, 8]) == 6": {
+      "result": true,
+      "time": 0.026772260665893555,
+      "error": null
+    },
+    "assert count_nums([2, 105, 100, -9, 5, -4]) == 4": {
+      "result": true,
+      "time": 0.02781200408935547,
+      "error": null
+    },
+    "assert count_nums([5, 6, 3, -4, 4, 8, 3]) == 6": {
+      "result": true,
+      "time": 0.0311734676361084,
+      "error": null
+    },
+    "assert count_nums([9, 26, 29, -42, -61, 1]) == 4": {
+      "result": true,
+      "time": 0.035501718521118164,
+      "error": null
+    },
+    "assert count_nums([5]) == 1": {
+      "result": true,
+      "time": 0.03272747993469238,
+      "error": null
+    },
+    "assert count_nums([-1, 1, 3]) == 2": {
+      "result": true,
+      "time": 0.029952287673950195,
+      "error": null
+    },
+    "assert count_nums([15, 20, 39, -43, -54, 3]) == 4": {
+      "result": true,
+      "time": 0.029759645462036133,
+      "error": null
+    },
+    "assert count_nums([4, 4, 14, -10, 3, 6, 10]) == 6": {
+      "result": true,
+      "time": 0.030252456665039062,
+      "error": null
+    },
+    "assert count_nums([5, 2, 14, -10, 3, 1, 1]) == 6": {
+      "result": true,
+      "time": 0.03491353988647461,
+      "error": null
+    },
+    "assert count_nums([2, 11, 7, -1, 2, 6, 5]) == 6": {
+      "result": true,
+      "time": 0.029536008834838867,
+      "error": null
+    },
+    "assert count_nums([3, 11, 6, -7, 5, 5, 5]) == 6": {
+      "result": true,
+      "time": 0.030570507049560547,
+      "error": null
+    },
+    "assert count_nums([5, 105, 93, -7, 6, -6]) == 4": {
+      "result": true,
+      "time": 0.03077220916748047,
+      "error": null
+    },
+    "assert count_nums([12, 23, 34, -45, -56, 0]) == 5": {
+      "result": true,
+      "time": 0.028860807418823242,
+      "error": null
+    },
+    "assert count_nums([1, 97, 95, -8, 6, -4]) == 4": {
+      "result": true,
+      "time": 0.03249764442443848,
+      "error": null
+    },
+    "assert count_nums([5, 6]) == 2": {
+      "result": true,
+      "time": 0.029516935348510742,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

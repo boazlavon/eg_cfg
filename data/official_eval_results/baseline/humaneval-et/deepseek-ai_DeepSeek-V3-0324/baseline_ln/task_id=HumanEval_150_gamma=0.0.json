@@ -1,0 +1,694 @@
+{
+  "code": "import math\n\ndef x_or_y(n, x, y):\n    if n <= 1:\n        return y\n    for i in range(2, int(math.sqrt(n)) + 1):\n        if n % i == 0:\n            return y\n    return x",
+  "results": {
+    "assert x_or_y(6, 34, 1234) == 1234\n    \n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.04849362373352051,
+      "error": null
+    },
+    "assert x_or_y(2, 6, 3) == 6": {
+      "result": true,
+      "time": 0.04830050468444824,
+      "error": null
+    },
+    "assert x_or_y(8402, -3, 10) == 10": {
+      "result": true,
+      "time": 0.0524294376373291,
+      "error": null
+    },
+    "assert x_or_y(8, 32, 4783) == 4783": {
+      "result": true,
+      "time": 0.053572893142700195,
+      "error": null
+    },
+    "assert x_or_y(7192, 0, 8) == 8": {
+      "result": true,
+      "time": 0.05265474319458008,
+      "error": null
+    },
+    "assert x_or_y(7919, -1, 12) == -1": {
+      "result": true,
+      "time": 0.05657672882080078,
+      "error": null
+    },
+    "assert x_or_y(11, 35, 8) == 35": {
+      "result": true,
+      "time": 0.05082368850708008,
+      "error": null
+    },
+    "assert x_or_y(91, 59, 127) == 127": {
+      "result": true,
+      "time": 0.05840182304382324,
+      "error": null
+    },
+    "assert x_or_y(4, 39, 16) == 16": {
+      "result": true,
+      "time": 0.049457550048828125,
+      "error": null
+    },
+    "assert x_or_y(6, 7, 4) == 4": {
+      "result": true,
+      "time": 0.04892706871032715,
+      "error": null
+    },
+    "assert x_or_y(3706, 658, 579) == 579": {
+      "result": true,
+      "time": 0.055635690689086914,
+      "error": null
+    },
+    "assert x_or_y(6, 29, 12) == 12": {
+      "result": true,
+      "time": 0.0507962703704834,
+      "error": null
+    },
+    "assert x_or_y(858, 8, 56) == 56": {
+      "result": true,
+      "time": 0.050412654876708984,
+      "error": null
+    },
+    "assert x_or_y(90, 51, 134) == 134": {
+      "result": true,
+      "time": 0.05701756477355957,
+      "error": null
+    },
+    "assert x_or_y(6, 35, 1233) == 1233": {
+      "result": true,
+      "time": 0.051357269287109375,
+      "error": null
+    },
+    "assert x_or_y(2, 31, 1449) == 31": {
+      "result": true,
+      "time": 0.05285811424255371,
+      "error": null
+    },
+    "assert x_or_y(3, 1, 4) == 1": {
+      "result": true,
+      "time": 0.050035953521728516,
+      "error": null
+    },
+    "assert x_or_y(8032, 1, 8) == 8": {
+      "result": true,
+      "time": 0.05309486389160156,
+      "error": null
+    },
+    "assert x_or_y(88, 56, 125) == 125": {
+      "result": true,
+      "time": 0.05745363235473633,
+      "error": null
+    },
+    "assert x_or_y(702, 1, 55) == 55": {
+      "result": true,
+      "time": 0.05032038688659668,
+      "error": null
+    },
+    "assert x_or_y(6929, -3, 15) == 15": {
+      "result": true,
+      "time": 0.04759716987609863,
+      "error": null
+    },
+    "assert x_or_y(3577, 1382, 583) == 583": {
+      "result": true,
+      "time": 0.053524017333984375,
+      "error": null
+    },
+    "assert x_or_y(8842, -4, 17) == 17": {
+      "result": true,
+      "time": 0.05267977714538574,
+      "error": null
+    },
+    "assert x_or_y(20, 5, 6) == 6": {
+      "result": true,
+      "time": 0.047269344329833984,
+      "error": null
+    },
+    "assert x_or_y(2, 30, 5677) == 30": {
+      "result": true,
+      "time": 0.05283784866333008,
+      "error": null
+    },
+    "assert x_or_y(1848, 8, 51) == 51": {
+      "result": true,
+      "time": 0.05651402473449707,
+      "error": null
+    },
+    "assert x_or_y(89, 59, 134) == 59": {
+      "result": true,
+      "time": 0.05671572685241699,
+      "error": null
+    },
+    "assert x_or_y(933, 1, 55) == 55": {
+      "result": true,
+      "time": 0.05028414726257324,
+      "error": null
+    },
+    "assert x_or_y(8, 37, 781) == 781": {
+      "result": true,
+      "time": 0.04654741287231445,
+      "error": null
+    },
+    "assert x_or_y(7, 1, 3) == 1": {
+      "result": true,
+      "time": 0.04998302459716797,
+      "error": null
+    },
+    "assert x_or_y(9, 36, 8) == 8": {
+      "result": true,
+      "time": 0.04909515380859375,
+      "error": null
+    },
+    "assert x_or_y(6, 2, 3) == 3": {
+      "result": true,
+      "time": 0.054505348205566406,
+      "error": null
+    },
+    "assert x_or_y(13, 7, 7) == 7": {
+      "result": true,
+      "time": 0.05000042915344238,
+      "error": null
+    },
+    "assert x_or_y(3, 33, 5212) == 33": {
+      "result": true,
+      "time": 0.05523347854614258,
+      "error": null
+    },
+    "assert x_or_y(1, 35, 5018) == 5018": {
+      "result": true,
+      "time": 0.0491795539855957,
+      "error": null
+    },
+    "assert x_or_y(5, 1, 3) == 1": {
+      "result": true,
+      "time": 0.05354452133178711,
+      "error": null
+    },
+    "assert x_or_y(91, 56, 129) == 129": {
+      "result": true,
+      "time": 0.04962730407714844,
+      "error": null
+    },
+    "assert x_or_y(15, 12, 5) == 5": {
+      "result": true,
+      "time": 0.055393218994140625,
+      "error": null
+    },
+    "assert x_or_y(2, 33, 7) == 33": {
+      "result": true,
+      "time": 0.05011105537414551,
+      "error": null
+    },
+    "assert x_or_y(1, 7, 4) == 4": {
+      "result": true,
+      "time": 0.05556154251098633,
+      "error": null
+    },
+    "assert x_or_y(4, 6, 4) == 4": {
+      "result": true,
+      "time": 0.04861307144165039,
+      "error": null
+    },
+    "assert x_or_y(5, 3, 3) == 3": {
+      "result": true,
+      "time": 0.052083730697631836,
+      "error": null
+    },
+    "assert x_or_y(2, 3, 2) == 3": {
+      "result": true,
+      "time": 0.052557945251464844,
+      "error": null
+    },
+    "assert x_or_y(3560, 1543, 584) == 584": {
+      "result": true,
+      "time": 0.050617218017578125,
+      "error": null
+    },
+    "assert x_or_y(5, 1, 1) == 1": {
+      "result": true,
+      "time": 0.050547122955322266,
+      "error": null
+    },
+    "assert x_or_y(13, 5, 6) == 5": {
+      "result": true,
+      "time": 0.05075550079345703,
+      "error": null
+    },
+    "assert x_or_y(4, 3, 5) == 5": {
+      "result": true,
+      "time": 0.05186653137207031,
+      "error": null
+    },
+    "assert x_or_y(3003, 1679, 588) == 588": {
+      "result": true,
+      "time": 0.057193756103515625,
+      "error": null
+    },
+    "assert x_or_y(4, 7, 3) == 3": {
+      "result": true,
+      "time": 0.049074411392211914,
+      "error": null
+    },
+    "assert x_or_y(3, 5, 5) == 5": {
+      "result": true,
+      "time": 0.052976369857788086,
+      "error": null
+    },
+    "assert x_or_y(2, 2, 0) == 2": {
+      "result": true,
+      "time": 0.05464982986450195,
+      "error": null
+    },
+    "assert x_or_y(2, 4, 2) == 4": {
+      "result": true,
+      "time": 0.05205202102661133,
+      "error": null
+    },
+    "assert x_or_y(8, 33, 5730) == 5730": {
+      "result": true,
+      "time": 0.05276131629943848,
+      "error": null
+    },
+    "assert x_or_y(8682, 0, 10) == 10": {
+      "result": true,
+      "time": 0.04808235168457031,
+      "error": null
+    },
+    "assert x_or_y(3, 33, 9) == 33": {
+      "result": true,
+      "time": 0.05884861946105957,
+      "error": null
+    },
+    "assert x_or_y(8, 35, 5383) == 5383": {
+      "result": true,
+      "time": 0.05217099189758301,
+      "error": null
+    },
+    "assert x_or_y(88, 60, 127) == 127": {
+      "result": true,
+      "time": 0.055455923080444336,
+      "error": null
+    },
+    "assert x_or_y(4, 5, 4) == 4": {
+      "result": true,
+      "time": 0.05147290229797363,
+      "error": null
+    },
+    "assert x_or_y(17, 11, 9) == 11": {
+      "result": true,
+      "time": 0.04709315299987793,
+      "error": null
+    },
+    "assert x_or_y(6942, 2, 14) == 14": {
+      "result": true,
+      "time": 0.04929518699645996,
+      "error": null
+    },
+    "assert x_or_y(5, 34, 4936) == 34": {
+      "result": true,
+      "time": 0.0597531795501709,
+      "error": null
+    },
+    "assert x_or_y(1, 35, 574) == 574": {
+      "result": true,
+      "time": 0.04771924018859863,
+      "error": null
+    },
+    "assert x_or_y(4384, 1808, 580) == 580": {
+      "result": true,
+      "time": 0.0523686408996582,
+      "error": null
+    },
+    "assert x_or_y(4, 4, 4) == 4": {
+      "result": true,
+      "time": 0.05525040626525879,
+      "error": null
+    },
+    "assert x_or_y(89, 59, 124) == 59": {
+      "result": true,
+      "time": 0.04504704475402832,
+      "error": null
+    },
+    "assert x_or_y(11, 32, 1982) == 32": {
+      "result": true,
+      "time": 0.04956865310668945,
+      "error": null
+    },
+    "assert x_or_y(4, 7, 1) == 1": {
+      "result": true,
+      "time": 0.050899505615234375,
+      "error": null
+    },
+    "assert x_or_y(5, 28, 6163) == 28": {
+      "result": true,
+      "time": 0.05281949043273926,
+      "error": null
+    },
+    "assert x_or_y(3, 1, 3) == 1": {
+      "result": true,
+      "time": 0.05219602584838867,
+      "error": null
+    },
+    "assert x_or_y(5, 34, 14) == 34": {
+      "result": true,
+      "time": 0.04950237274169922,
+      "error": null
+    },
+    "assert x_or_y(6, 2, 5) == 5": {
+      "result": true,
+      "time": 0.0505671501159668,
+      "error": null
+    },
+    "assert x_or_y(3, 32, 4854) == 32": {
+      "result": true,
+      "time": 0.050867319107055664,
+      "error": null
+    },
+    "assert x_or_y(7727, -4, 16) == -4": {
+      "result": true,
+      "time": 0.05364537239074707,
+      "error": null
+    },
+    "assert x_or_y(6, 32, 5433) == 5433": {
+      "result": true,
+      "time": 0.05014920234680176,
+      "error": null
+    },
+    "assert x_or_y(6981, -2, 13) == 13": {
+      "result": true,
+      "time": 0.05270552635192871,
+      "error": null
+    },
+    "assert x_or_y(95, 53, 126) == 126": {
+      "result": true,
+      "time": 0.05582070350646973,
+      "error": null
+    },
+    "assert x_or_y(3068, 961, 580) == 580": {
+      "result": true,
+      "time": 0.04725813865661621,
+      "error": null
+    },
+    "assert x_or_y(11, 9, 8) == 9": {
+      "result": true,
+      "time": 0.05373382568359375,
+      "error": null
+    },
+    "assert x_or_y(15, 6, 2) == 2": {
+      "result": true,
+      "time": 0.04999828338623047,
+      "error": null
+    },
+    "assert x_or_y(90, 59, 130) == 130": {
+      "result": true,
+      "time": 0.04933977127075195,
+      "error": null
+    },
+    "assert x_or_y(1, 6, 5) == 5": {
+      "result": true,
+      "time": 0.05313467979431152,
+      "error": null
+    },
+    "assert x_or_y(9, 34, 9) == 9": {
+      "result": true,
+      "time": 0.05299973487854004,
+      "error": null
+    },
+    "assert x_or_y(17, 3, 7) == 3": {
+      "result": true,
+      "time": 0.046090126037597656,
+      "error": null
+    },
+    "assert x_or_y(88, 52, 132) == 132": {
+      "result": true,
+      "time": 0.05505633354187012,
+      "error": null
+    },
+    "assert x_or_y(96, 54, 128) == 128": {
+      "result": true,
+      "time": 0.048006534576416016,
+      "error": null
+    },
+    "assert x_or_y(87, 51, 130) == 130": {
+      "result": true,
+      "time": 0.05481266975402832,
+      "error": null
+    },
+    "assert x_or_y(17, 7, 7) == 7": {
+      "result": true,
+      "time": 0.050893306732177734,
+      "error": null
+    },
+    "assert x_or_y(2103, 2, 47) == 47": {
+      "result": true,
+      "time": 0.05592703819274902,
+      "error": null
+    },
+    "assert x_or_y(19, 8, 3) == 8": {
+      "result": true,
+      "time": 0.04485797882080078,
+      "error": null
+    },
+    "assert x_or_y(1259, 3, 52) == 3": {
+      "result": true,
+      "time": 0.05372262001037598,
+      "error": null
+    },
+    "assert x_or_y(7401, -3, 8) == 8": {
+      "result": true,
+      "time": 0.05419802665710449,
+      "error": null
+    },
+    "assert x_or_y(11, 33, 8) == 33": {
+      "result": true,
+      "time": 0.05179476737976074,
+      "error": null
+    },
+    "assert x_or_y(878, 3, 51) == 51": {
+      "result": true,
+      "time": 0.06036043167114258,
+      "error": null
+    },
+    "assert x_or_y(8676, 0, 12) == 12": {
+      "result": true,
+      "time": 0.058008432388305664,
+      "error": null
+    },
+    "assert x_or_y(9, 30, 315) == 315": {
+      "result": true,
+      "time": 0.04488873481750488,
+      "error": null
+    },
+    "assert x_or_y(4372, 724, 579) == 579": {
+      "result": true,
+      "time": 0.05101132392883301,
+      "error": null
+    },
+    "assert x_or_y(4027, 435, 578) == 435": {
+      "result": true,
+      "time": 0.05270552635192871,
+      "error": null
+    },
+    "assert x_or_y(20, 5, 3) == 3": {
+      "result": true,
+      "time": 0.04843640327453613,
+      "error": null
+    },
+    "assert x_or_y(2712, 1697, 583) == 583": {
+      "result": true,
+      "time": 0.050431251525878906,
+      "error": null
+    },
+    "assert x_or_y(3, 38, 586) == 38": {
+      "result": true,
+      "time": 0.053914546966552734,
+      "error": null
+    },
+    "assert x_or_y(10, 35, 12) == 12": {
+      "result": true,
+      "time": 0.05444025993347168,
+      "error": null
+    },
+    "assert x_or_y(88, 56, 130) == 130": {
+      "result": true,
+      "time": 0.046086788177490234,
+      "error": null
+    },
+    "assert x_or_y(5, 32, 5380) == 32": {
+      "result": true,
+      "time": 0.04901432991027832,
+      "error": null
+    },
+    "assert x_or_y(3, 30, 4585) == 30": {
+      "result": true,
+      "time": 0.051084041595458984,
+      "error": null
+    },
+    "assert x_or_y(7, 33, 446) == 33": {
+      "result": true,
+      "time": 0.0473942756652832,
+      "error": null
+    },
+    "assert x_or_y(7, 34, 12) == 34": {
+      "result": true,
+      "time": 0.05376458168029785,
+      "error": null
+    },
+    "assert x_or_y(8237, -3, 10) == -3": {
+      "result": true,
+      "time": 0.04689311981201172,
+      "error": null
+    },
+    "assert x_or_y(3609, 1245, 583) == 583": {
+      "result": true,
+      "time": 0.048033714294433594,
+      "error": null
+    },
+    "assert x_or_y(431, 5, 53) == 5": {
+      "result": true,
+      "time": 0.053658485412597656,
+      "error": null
+    },
+    "assert x_or_y(743, 7, 54) == 7": {
+      "result": true,
+      "time": 0.048279523849487305,
+      "error": null
+    },
+    "assert x_or_y(1605, 5, 48) == 48": {
+      "result": true,
+      "time": 0.05513167381286621,
+      "error": null
+    },
+    "assert x_or_y(94, 59, 132) == 132": {
+      "result": true,
+      "time": 0.053849220275878906,
+      "error": null
+    },
+    "assert x_or_y(2115, 6, 57) == 57": {
+      "result": true,
+      "time": 0.0483701229095459,
+      "error": null
+    },
+    "assert x_or_y(9, 36, 12) == 12": {
+      "result": true,
+      "time": 0.04981398582458496,
+      "error": null
+    },
+    "assert x_or_y(2094, 7, 54) == 54": {
+      "result": true,
+      "time": 0.0534358024597168,
+      "error": null
+    },
+    "assert x_or_y(4, 32, 11) == 11": {
+      "result": true,
+      "time": 0.04696083068847656,
+      "error": null
+    },
+    "assert x_or_y(9, 34, 1851) == 1851": {
+      "result": true,
+      "time": 0.049919843673706055,
+      "error": null
+    },
+    "assert x_or_y(8561, 3, 9) == 9": {
+      "result": true,
+      "time": 0.0517733097076416,
+      "error": null
+    },
+    "assert x_or_y(9, 36, 7) == 7": {
+      "result": true,
+      "time": 0.05382990837097168,
+      "error": null
+    },
+    "assert x_or_y(4196, 479, 582) == 582": {
+      "result": true,
+      "time": 0.05267834663391113,
+      "error": null
+    },
+    "assert x_or_y(6, 4, 5) == 5": {
+      "result": true,
+      "time": 0.04642844200134277,
+      "error": null
+    },
+    "assert x_or_y(2, 4, 1) == 4": {
+      "result": true,
+      "time": 0.051249027252197266,
+      "error": null
+    },
+    "assert x_or_y(15, 8, 5) == 5": {
+      "result": true,
+      "time": 0.04900527000427246,
+      "error": null
+    },
+    "assert x_or_y(2, 30, 780) == 30": {
+      "result": true,
+      "time": 0.0539548397064209,
+      "error": null
+    },
+    "assert x_or_y(7, 36, 423) == 36": {
+      "result": true,
+      "time": 0.048723697662353516,
+      "error": null
+    },
+    "assert x_or_y(1, 37, 1396) == 1396": {
+      "result": true,
+      "time": 0.052231550216674805,
+      "error": null
+    },
+    "assert x_or_y(3, 34, 1328) == 34": {
+      "result": true,
+      "time": 0.0531923770904541,
+      "error": null
+    },
+    "assert x_or_y(3337, 759, 585) == 585": {
+      "result": true,
+      "time": 0.0504603385925293,
+      "error": null
+    },
+    "assert x_or_y(8, 32, 4792) == 4792": {
+      "result": true,
+      "time": 0.05322742462158203,
+      "error": null
+    },
+    "assert x_or_y(4410, 431, 587) == 587": {
+      "result": true,
+      "time": 0.051859140396118164,
+      "error": null
+    },
+    "assert x_or_y(8, 35, 5150) == 5150": {
+      "result": true,
+      "time": 0.05191302299499512,
+      "error": null
+    },
+    "assert x_or_y(3639, 1196, 583) == 583": {
+      "result": true,
+      "time": 0.04837822914123535,
+      "error": null
+    },
+    "assert x_or_y(1527, 6, 50) == 50": {
+      "result": true,
+      "time": 0.05437016487121582,
+      "error": null
+    },
+    "assert x_or_y(1936, 6, 53) == 53": {
+      "result": true,
+      "time": 0.0555119514465332,
+      "error": null
+    },
+    "assert x_or_y(11, 3, 7) == 3": {
+      "result": true,
+      "time": 0.05222654342651367,
+      "error": null
+    },
+    "assert x_or_y(1, 2, 0) == 0": {
+      "result": true,
+      "time": 0.051687002182006836,
+      "error": null
+    },
+    "assert x_or_y(20, 8, 10) == 10": {
+      "result": true,
+      "time": 0.04854273796081543,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

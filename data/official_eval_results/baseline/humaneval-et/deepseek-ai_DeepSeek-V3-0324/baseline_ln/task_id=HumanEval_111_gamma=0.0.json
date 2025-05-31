@@ -1,0 +1,629 @@
+{
+  "code": "def histogram(test):\n    if not test.strip():\n        return {}\n    letters = test.split()\n    freq = {}\n    for letter in letters:\n        freq[letter] = freq.get(letter, 0) + 1\n    if not freq:\n        return {}\n    max_count = max(freq.values())\n    result = {k: v for k, v in freq.items() if v == max_count}\n    return result",
+  "results": {
+    "assert histogram(\"hqfrif u\") == {'hqfrif': 1, 'u': 1}": {
+      "result": true,
+      "time": 0.026208162307739258,
+      "error": null
+    },
+    "assert histogram(\"szngkijtjvzd\") == {'szngkijtjvzd': 1}": {
+      "result": true,
+      "time": 0.03300809860229492,
+      "error": null
+    },
+    "assert histogram(\"pkldcnocs cees\") == {'pkldcnocs': 1, 'cees': 1}": {
+      "result": true,
+      "time": 0.028643369674682617,
+      "error": null
+    },
+    "assert histogram(\"y\") == {'y': 1}": {
+      "result": true,
+      "time": 0.030730485916137695,
+      "error": null
+    },
+    "assert histogram(\"np\") == {'np': 1}": {
+      "result": true,
+      "time": 0.03352928161621094,
+      "error": null
+    },
+    "assert histogram(\"ipnqcovwflclbgf\") == {'ipnqcovwflclbgf': 1}": {
+      "result": true,
+      "time": 0.03034520149230957,
+      "error": null
+    },
+    "assert histogram(\"ssgeefwsznskwds\") == {'ssgeefwsznskwds': 1}": {
+      "result": true,
+      "time": 0.032767534255981445,
+      "error": null
+    },
+    "assert histogram(\"relsa\") == {'relsa': 1}": {
+      "result": true,
+      "time": 0.02931070327758789,
+      "error": null
+    },
+    "assert histogram(\"xnrwz\") == {'xnrwz': 1}": {
+      "result": true,
+      "time": 0.03127336502075195,
+      "error": null
+    },
+    "assert histogram(\"ebpzk\") == {'ebpzk': 1}": {
+      "result": true,
+      "time": 0.028758764266967773,
+      "error": null
+    },
+    "assert histogram(\"ucgouvpafay\") == {'ucgouvpafay': 1}": {
+      "result": true,
+      "time": 0.029873371124267578,
+      "error": null
+    },
+    "assert histogram(\"n rivtvpbjz\") == {'n': 1, 'rivtvpbjz': 1}": {
+      "result": true,
+      "time": 0.029276132583618164,
+      "error": null
+    },
+    "assert histogram('a b b a') == {'a':2,'b': 2}": {
+      "result": true,
+      "time": 0.028223276138305664,
+      "error": null
+    },
+    "assert histogram(\"giu fdd qvgg\") == {'giu': 1, 'fdd': 1, 'qvgg': 1}": {
+      "result": true,
+      "time": 0.038401126861572266,
+      "error": null
+    },
+    "assert histogram(\"bpsdtkh\") == {'bpsdtkh': 1}": {
+      "result": true,
+      "time": 0.0288083553314209,
+      "error": null
+    },
+    "assert histogram(\"jmy\") == {'jmy': 1}": {
+      "result": true,
+      "time": 0.03104710578918457,
+      "error": null
+    },
+    "assert histogram(\"r\") == {'r': 1}": {
+      "result": true,
+      "time": 0.029551267623901367,
+      "error": null
+    },
+    "assert histogram('a b c a b') == {'a': 2, 'b': 2}": {
+      "result": true,
+      "time": 0.03037285804748535,
+      "error": null
+    },
+    "assert histogram(\"ynszuyybemnm\") == {'ynszuyybemnm': 1}": {
+      "result": true,
+      "time": 0.031645774841308594,
+      "error": null
+    },
+    "assert histogram(\"qgbazuh\") == {'qgbazuh': 1}": {
+      "result": true,
+      "time": 0.031049013137817383,
+      "error": null
+    },
+    "assert histogram(\" hgtjtrox\") == {'': 1, 'hgtjtrox': 1}": {
+      "result": false,
+      "time": 0.02934575080871582,
+      "error": null
+    },
+    "assert histogram(\"zjtokgrtx\") == {'zjtokgrtx': 1}": {
+      "result": true,
+      "time": 0.03136014938354492,
+      "error": null
+    },
+    "assert histogram(\"zncaaa\") == {'zncaaa': 1}": {
+      "result": true,
+      "time": 0.02935051918029785,
+      "error": null
+    },
+    "assert histogram(\"ofiqwtkvu\") == {'ofiqwtkvu': 1}": {
+      "result": true,
+      "time": 0.03347611427307129,
+      "error": null
+    },
+    "assert histogram(\"opy\") == {'opy': 1}": {
+      "result": true,
+      "time": 0.02765679359436035,
+      "error": null
+    },
+    "assert histogram(\"gu awuras nre\") == {'gu': 1, 'awuras': 1, 'nre': 1}": {
+      "result": true,
+      "time": 0.03197121620178223,
+      "error": null
+    },
+    "assert histogram(\"tibecrsz\") == {'tibecrsz': 1}": {
+      "result": true,
+      "time": 0.03133058547973633,
+      "error": null
+    },
+    "assert histogram(\"u\") == {'u': 1}": {
+      "result": true,
+      "time": 0.033972740173339844,
+      "error": null
+    },
+    "assert histogram(\"ukqdacqw\") == {'ukqdacqw': 1}": {
+      "result": true,
+      "time": 0.03150224685668945,
+      "error": null
+    },
+    "assert histogram(\"eorw\") == {'eorw': 1}": {
+      "result": true,
+      "time": 0.03105950355529785,
+      "error": null
+    },
+    "assert histogram(\"extoxsm\") == {'extoxsm': 1}": {
+      "result": true,
+      "time": 0.030976295471191406,
+      "error": null
+    },
+    "assert histogram(\"c\") == {'c': 1}": {
+      "result": true,
+      "time": 0.029723405838012695,
+      "error": null
+    },
+    "assert histogram(\"xpi\") == {'xpi': 1}": {
+      "result": true,
+      "time": 0.029424428939819336,
+      "error": null
+    },
+    "assert histogram(\"tqi\") == {'tqi': 1}": {
+      "result": true,
+      "time": 0.02823162078857422,
+      "error": null
+    },
+    "assert histogram(\"hflhqahunywguz\") == {'hflhqahunywguz': 1}": {
+      "result": true,
+      "time": 0.02934575080871582,
+      "error": null
+    },
+    "assert histogram(\"uxsylkbyigbm\") == {'uxsylkbyigbm': 1}": {
+      "result": true,
+      "time": 0.028658390045166016,
+      "error": null
+    },
+    "assert histogram(\"rs\") == {'rs': 1}": {
+      "result": true,
+      "time": 0.02887892723083496,
+      "error": null
+    },
+    "assert histogram(\"mfq\") == {'mfq': 1}": {
+      "result": true,
+      "time": 0.03135490417480469,
+      "error": null
+    },
+    "assert histogram(\"nppv\") == {'nppv': 1}": {
+      "result": true,
+      "time": 0.028219938278198242,
+      "error": null
+    },
+    "assert histogram(\"kjdvicwm\") == {'kjdvicwm': 1}": {
+      "result": true,
+      "time": 0.029467344284057617,
+      "error": null
+    },
+    "assert histogram(\"ajmwtkiery\") == {'ajmwtkiery': 1}": {
+      "result": true,
+      "time": 0.030882835388183594,
+      "error": null
+    },
+    "assert histogram(\"o\") == {'o': 1}": {
+      "result": true,
+      "time": 0.03614473342895508,
+      "error": null
+    },
+    "assert histogram(\"qrwnx\") == {'qrwnx': 1}": {
+      "result": true,
+      "time": 0.028995513916015625,
+      "error": null
+    },
+    "assert histogram(\"x\") == {'x': 1}": {
+      "result": true,
+      "time": 0.029171228408813477,
+      "error": null
+    },
+    "assert histogram(\"l\") == {'l': 1}": {
+      "result": true,
+      "time": 0.030501127243041992,
+      "error": null
+    },
+    "assert histogram(\"zgwj ti\") == {'zgwj': 1, 'ti': 1}": {
+      "result": true,
+      "time": 0.029565095901489258,
+      "error": null
+    },
+    "assert histogram('a b c d g') == {'a': 1, 'b': 1, 'c': 1, 'd': 1, 'g': 1}": {
+      "result": true,
+      "time": 0.03272366523742676,
+      "error": null
+    },
+    "assert histogram(\"ebrlpsfs\") == {'ebrlpsfs': 1}": {
+      "result": true,
+      "time": 0.032489776611328125,
+      "error": null
+    },
+    "assert histogram(\"rg\") == {'rg': 1}": {
+      "result": true,
+      "time": 0.025139331817626953,
+      "error": null
+    },
+    "assert histogram(\"j\") == {'j': 1}": {
+      "result": true,
+      "time": 0.02818131446838379,
+      "error": null
+    },
+    "assert histogram(\"bfkxmcb\") == {'bfkxmcb': 1}": {
+      "result": true,
+      "time": 0.027660846710205078,
+      "error": null
+    },
+    "assert histogram(\"b\") == {'b': 1}": {
+      "result": true,
+      "time": 0.02826523780822754,
+      "error": null
+    },
+    "assert histogram(\"ovcbmobr\") == {'ovcbmobr': 1}": {
+      "result": true,
+      "time": 0.030834674835205078,
+      "error": null
+    },
+    "assert histogram(\"gerqufkk\") == {'gerqufkk': 1}": {
+      "result": true,
+      "time": 0.0287020206451416,
+      "error": null
+    },
+    "assert histogram(\"yidenuxbk pgr\") == {'yidenuxbk': 1, 'pgr': 1}": {
+      "result": true,
+      "time": 0.03084588050842285,
+      "error": null
+    },
+    "assert histogram(\"k\") == {'k': 1}": {
+      "result": true,
+      "time": 0.034066200256347656,
+      "error": null
+    },
+    "assert histogram(\"ksqehkbwj\") == {'ksqehkbwj': 1}": {
+      "result": true,
+      "time": 0.032224416732788086,
+      "error": null
+    },
+    "assert histogram(\"gfqwzilfe\") == {'gfqwzilfe': 1}": {
+      "result": true,
+      "time": 0.031456947326660156,
+      "error": null
+    },
+    "assert histogram(\"puacbltqysqo\") == {'puacbltqysqo': 1}": {
+      "result": true,
+      "time": 0.032624006271362305,
+      "error": null
+    },
+    "assert histogram(\"dedfr\") == {'dedfr': 1}": {
+      "result": true,
+      "time": 0.030818700790405273,
+      "error": null
+    },
+    "assert histogram(\"ixldvyly ejnz\") == {'ixldvyly': 1, 'ejnz': 1}": {
+      "result": true,
+      "time": 0.030150651931762695,
+      "error": null
+    },
+    "assert histogram(\"pwjum ocmuglne\") == {'pwjum': 1, 'ocmuglne': 1}": {
+      "result": true,
+      "time": 0.029434680938720703,
+      "error": null
+    },
+    "assert histogram(\"iagusf\") == {'iagusf': 1}": {
+      "result": true,
+      "time": 0.028128862380981445,
+      "error": null
+    },
+    "assert histogram(\"mfus\") == {'mfus': 1}": {
+      "result": true,
+      "time": 0.02750539779663086,
+      "error": null
+    },
+    "assert histogram(\"merfpzcloas\") == {'merfpzcloas': 1}": {
+      "result": true,
+      "time": 0.02878856658935547,
+      "error": null
+    },
+    "assert histogram(\"hrrbvgkbalkra\") == {'hrrbvgkbalkra': 1}": {
+      "result": true,
+      "time": 0.02847146987915039,
+      "error": null
+    },
+    "assert histogram('a') == {'a': 1}": {
+      "result": true,
+      "time": 0.028891801834106445,
+      "error": null
+    },
+    "assert histogram(\"nopvee\") == {'nopvee': 1}": {
+      "result": true,
+      "time": 0.028563976287841797,
+      "error": null
+    },
+    "assert histogram(\"w\") == {'w': 1}": {
+      "result": true,
+      "time": 0.031097412109375,
+      "error": null
+    },
+    "assert histogram(\"e\") == {'e': 1}": {
+      "result": true,
+      "time": 0.034532785415649414,
+      "error": null
+    },
+    "assert histogram(\"nd\") == {'nd': 1}": {
+      "result": true,
+      "time": 0.027774333953857422,
+      "error": null
+    },
+    "assert histogram(\"suh\") == {'suh': 1}": {
+      "result": true,
+      "time": 0.02547621726989746,
+      "error": null
+    },
+    "assert histogram(\"qwo vt\") == {'qwo': 1, 'vt': 1}": {
+      "result": true,
+      "time": 0.0289614200592041,
+      "error": null
+    },
+    "assert histogram(\"bofyxoswpalc\") == {'bofyxoswpalc': 1}": {
+      "result": true,
+      "time": 0.03127288818359375,
+      "error": null
+    },
+    "assert histogram(\"fxuesfdgjk \") == {'fxuesfdgjk': 1, '': 1}": {
+      "result": false,
+      "time": 0.027171611785888672,
+      "error": null
+    },
+    "assert histogram(\" clsersklwqd\") == {'': 1, 'clsersklwqd': 1}": {
+      "result": false,
+      "time": 0.027701854705810547,
+      "error": null
+    },
+    "assert histogram(\"qnvcehs\") == {'qnvcehs': 1}": {
+      "result": true,
+      "time": 0.027190446853637695,
+      "error": null
+    },
+    "assert histogram(\"oooudqv eywbx\") == {'oooudqv': 1, 'eywbx': 1}": {
+      "result": true,
+      "time": 0.0275571346282959,
+      "error": null
+    },
+    "assert histogram(\"dytvbkddxbb\") == {'dytvbkddxbb': 1}": {
+      "result": true,
+      "time": 0.030122041702270508,
+      "error": null
+    },
+    "assert histogram(\"vpthunm\") == {'vpthunm': 1}": {
+      "result": true,
+      "time": 0.031140565872192383,
+      "error": null
+    },
+    "assert histogram(\"oyrtsdmdudtafd\") == {'oyrtsdmdudtafd': 1}": {
+      "result": true,
+      "time": 0.031210899353027344,
+      "error": null
+    },
+    "assert histogram(\"waxgtdtlce\") == {'waxgtdtlce': 1}": {
+      "result": true,
+      "time": 0.024598360061645508,
+      "error": null
+    },
+    "assert histogram(\"kzn ouqqfz\") == {'kzn': 1, 'ouqqfz': 1}": {
+      "result": true,
+      "time": 0.032993316650390625,
+      "error": null
+    },
+    "assert histogram(\"ffs\") == {'ffs': 1}": {
+      "result": true,
+      "time": 0.028203964233398438,
+      "error": null
+    },
+    "assert histogram(\"ofk\") == {'ofk': 1}": {
+      "result": true,
+      "time": 0.031540632247924805,
+      "error": null
+    },
+    "assert histogram(\"rpzvizkuym\") == {'rpzvizkuym': 1}": {
+      "result": true,
+      "time": 0.029679536819458008,
+      "error": null
+    },
+    "assert histogram(\"jjmjpltkmmqa\") == {'jjmjpltkmmqa': 1}": {
+      "result": true,
+      "time": 0.03290748596191406,
+      "error": null
+    },
+    "assert histogram('') == {}": {
+      "result": true,
+      "time": 0.028341293334960938,
+      "error": null
+    },
+    "assert histogram(\"kiyizlhs\") == {'kiyizlhs': 1}": {
+      "result": true,
+      "time": 0.027014732360839844,
+      "error": null
+    },
+    "assert histogram(\"uskutc\") == {'uskutc': 1}": {
+      "result": true,
+      "time": 0.03374028205871582,
+      "error": null
+    },
+    "assert histogram(\"alxzshsygrw\") == {'alxzshsygrw': 1}": {
+      "result": true,
+      "time": 0.02748417854309082,
+      "error": null
+    },
+    "assert histogram(\"tqlzsnbemvaudbs\") == {'tqlzsnbemvaudbs': 1}": {
+      "result": true,
+      "time": 0.02837371826171875,
+      "error": null
+    },
+    "assert histogram(\"zqmwhabyrgjygt\") == {'zqmwhabyrgjygt': 1}": {
+      "result": true,
+      "time": 0.029486656188964844,
+      "error": null
+    },
+    "assert histogram(\"t\") == {'t': 1}": {
+      "result": true,
+      "time": 0.03035449981689453,
+      "error": null
+    },
+    "assert histogram(\"uacomzq\") == {'uacomzq': 1}": {
+      "result": true,
+      "time": 0.030894041061401367,
+      "error": null
+    },
+    "assert histogram(\"pic\") == {'pic': 1}": {
+      "result": true,
+      "time": 0.028829097747802734,
+      "error": null
+    },
+    "assert histogram(\"xteoyzd\") == {'xteoyzd': 1}": {
+      "result": true,
+      "time": 0.027859926223754883,
+      "error": null
+    },
+    "assert histogram(\"vaagpoufagwwr\") == {'vaagpoufagwwr': 1}": {
+      "result": true,
+      "time": 0.027147293090820312,
+      "error": null
+    },
+    "assert histogram(\"ote\") == {'ote': 1}": {
+      "result": true,
+      "time": 0.02840137481689453,
+      "error": null
+    },
+    "assert histogram(\"fqrscrtr\") == {'fqrscrtr': 1}": {
+      "result": true,
+      "time": 0.02768993377685547,
+      "error": null
+    },
+    "assert histogram(\"a\") == {'a': 1}": {
+      "result": true,
+      "time": 0.027936458587646484,
+      "error": null
+    },
+    "assert histogram(\"n\") == {'n': 1}": {
+      "result": true,
+      "time": 0.028927087783813477,
+      "error": null
+    },
+    "assert histogram(\"q\") == {'q': 1}": {
+      "result": true,
+      "time": 0.028333425521850586,
+      "error": null
+    },
+    "assert histogram(\"qvarxoa\") == {'qvarxoa': 1}": {
+      "result": true,
+      "time": 0.02708601951599121,
+      "error": null
+    },
+    "assert histogram(\"lrmn\") == {'lrmn': 1}": {
+      "result": true,
+      "time": 0.029733657836914062,
+      "error": null
+    },
+    "assert histogram(\"jqqvzhh\") == {'jqqvzhh': 1}": {
+      "result": true,
+      "time": 0.029042482376098633,
+      "error": null
+    },
+    "assert histogram(\"nsg\") == {'nsg': 1}": {
+      "result": true,
+      "time": 0.03425240516662598,
+      "error": null
+    },
+    "assert histogram(\"mugytibcb\") == {'mugytibcb': 1}": {
+      "result": true,
+      "time": 0.026761531829833984,
+      "error": null
+    },
+    "assert histogram(\"comfnjz\") == {'comfnjz': 1}": {
+      "result": true,
+      "time": 0.028815507888793945,
+      "error": null
+    },
+    "assert histogram(\"pidc gx\") == {'pidc': 1, 'gx': 1}": {
+      "result": true,
+      "time": 0.028777122497558594,
+      "error": null
+    },
+    "assert histogram('b b b b a') == {'b': 4}": {
+      "result": true,
+      "time": 0.028953075408935547,
+      "error": null
+    },
+    "assert histogram(\"vflxpn \") == {'vflxpn': 1, '': 1}": {
+      "result": false,
+      "time": 0.030752182006835938,
+      "error": null
+    },
+    "assert histogram(\"vixitrb\") == {'vixitrb': 1}": {
+      "result": true,
+      "time": 0.03416180610656738,
+      "error": null
+    },
+    "assert histogram('r t g') == {'r': 1,'t': 1,'g': 1}": {
+      "result": true,
+      "time": 0.031402587890625,
+      "error": null
+    },
+    "assert histogram(\"akzmxaten\") == {'akzmxaten': 1}": {
+      "result": true,
+      "time": 0.031165361404418945,
+      "error": null
+    },
+    "assert histogram(\"un pjkbvq\") == {'un': 1, 'pjkbvq': 1}": {
+      "result": true,
+      "time": 0.02815556526184082,
+      "error": null
+    },
+    "assert histogram(\"nbw\") == {'nbw': 1}": {
+      "result": true,
+      "time": 0.02738213539123535,
+      "error": null
+    },
+    "assert histogram(\"zuqsdgrzu\") == {'zuqsdgrzu': 1}": {
+      "result": true,
+      "time": 0.029102563858032227,
+      "error": null
+    },
+    "assert histogram(\"xhsfxgka \") == {'xhsfxgka': 1, '': 1}": {
+      "result": false,
+      "time": 0.028234243392944336,
+      "error": null
+    },
+    "assert histogram(\"ylpfxjytjxdubkk\") == {'ylpfxjytjxdubkk': 1}": {
+      "result": true,
+      "time": 0.029157400131225586,
+      "error": null
+    },
+    "assert histogram(\"mlclpljwxvnxv\") == {'mlclpljwxvnxv': 1}": {
+      "result": true,
+      "time": 0.027647972106933594,
+      "error": null
+    },
+    "assert histogram(\"pyjsqkszs\") == {'pyjsqkszs': 1}": {
+      "result": true,
+      "time": 0.029175281524658203,
+      "error": null
+    },
+    "assert histogram(\"s\") == {'s': 1}": {
+      "result": true,
+      "time": 0.03241372108459473,
+      "error": null
+    },
+    "assert histogram(\"sxaor\") == {'sxaor': 1}": {
+      "result": true,
+      "time": 0.03179430961608887,
+      "error": null
+    }
+  },
+  "passed": false,
+  "accuracy": 0.9596774193548387,
+  "general_error": "",
+  "has_testcase_error": false
+}

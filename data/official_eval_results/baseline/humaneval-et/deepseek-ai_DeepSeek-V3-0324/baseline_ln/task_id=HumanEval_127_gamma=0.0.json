@@ -1,0 +1,644 @@
+{
+  "code": "def intersection(interval1, interval2):\n    def is_prime(n):\n        if n <= 1:\n            return False\n        if n == 2:\n            return True\n        if n % 2 == 0:\n            return False\n        for i in range(3, int(n**0.5) + 1, 2):\n            if n % i == 0:\n                return False\n        return True\n\n    start1, end1 = interval1\n    start2, end2 = interval2\n\n    # Calculate intersection\n    intersection_start = max(start1, start2)\n    intersection_end = min(end1, end2)\n\n    if intersection_start > intersection_end:\n        return \"NO\"\n\n    length = intersection_end - intersection_start\n    if is_prime(length):\n        return \"YES\"\n    else:\n        return \"NO\"",
+  "results": {
+    "assert intersection((-1, 1), (0, 4)) == \"NO\"": {
+      "result": true,
+      "time": 0.02745509147644043,
+      "error": null
+    },
+    "assert intersection((-1, 6), (2, 5)) == 'YES'": {
+      "result": true,
+      "time": 0.025727272033691406,
+      "error": null
+    },
+    "assert intersection((4, 3), (3, 6)) == 'NO'": {
+      "result": true,
+      "time": 0.028087139129638672,
+      "error": null
+    },
+    "assert intersection((-2, 2), (-10, 8)) == 'NO'": {
+      "result": true,
+      "time": 0.02721881866455078,
+      "error": null
+    },
+    "assert intersection((-9, 5), (-2, -3)) == 'NO'": {
+      "result": true,
+      "time": 0.028131484985351562,
+      "error": null
+    },
+    "assert intersection((-2, -1), (-4, 4)) == 'NO'": {
+      "result": true,
+      "time": 0.027507781982421875,
+      "error": null
+    },
+    "assert intersection((5, 7), (6, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.031383514404296875,
+      "error": null
+    },
+    "assert intersection((1, 5), (7, 6)) == 'NO'": {
+      "result": true,
+      "time": 0.0264585018157959,
+      "error": null
+    },
+    "assert intersection((6, 2), (3, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.027730226516723633,
+      "error": null
+    },
+    "assert intersection((-7, -6), (0, -3)) == 'NO'": {
+      "result": true,
+      "time": 0.029411792755126953,
+      "error": null
+    },
+    "assert intersection((-12, 1), (-4, -5)) == 'NO'": {
+      "result": true,
+      "time": 0.030869007110595703,
+      "error": null
+    },
+    "assert intersection((-8, 2), (-4, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.0257871150970459,
+      "error": null
+    },
+    "assert intersection((-7, 1), (-4, 2)) == 'YES'": {
+      "result": true,
+      "time": 0.030007600784301758,
+      "error": null
+    },
+    "assert intersection((-1, 6), (-9, 4)) == 'YES'": {
+      "result": true,
+      "time": 0.027103662490844727,
+      "error": null
+    },
+    "assert intersection((1, 6), (8, 7)) == 'NO'": {
+      "result": true,
+      "time": 0.026668310165405273,
+      "error": null
+    },
+    "assert intersection((6, 4), (3, 6)) == 'NO'": {
+      "result": true,
+      "time": 0.028372526168823242,
+      "error": null
+    },
+    "assert intersection((5, 1), (1, 9)) == 'NO'": {
+      "result": true,
+      "time": 0.026996135711669922,
+      "error": null
+    },
+    "assert intersection((0, 1), (-2, -3)) == 'NO'": {
+      "result": true,
+      "time": 0.025881528854370117,
+      "error": null
+    },
+    "assert intersection((-6, 4), (-7, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.02778935432434082,
+      "error": null
+    },
+    "assert intersection((5, 4), (4, 7)) == 'NO'": {
+      "result": true,
+      "time": 0.02576613426208496,
+      "error": null
+    },
+    "assert intersection((-6, 4), (0, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.0281217098236084,
+      "error": null
+    },
+    "assert intersection((-2, -2), (-3, -2)) == \"NO\"": {
+      "result": true,
+      "time": 0.029505014419555664,
+      "error": null
+    },
+    "assert intersection((-3, -3), (-2, 9)) == 'NO'": {
+      "result": true,
+      "time": 0.027123689651489258,
+      "error": null
+    },
+    "assert intersection((6, 2), (7, 8)) == 'NO'": {
+      "result": true,
+      "time": 0.033675432205200195,
+      "error": null
+    },
+    "assert intersection((2, 3), (6, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.03462791442871094,
+      "error": null
+    },
+    "assert intersection((1, 6), (0, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.028866052627563477,
+      "error": null
+    },
+    "assert intersection((-11, 2), (-1, -1)) == \"NO\"": {
+      "result": true,
+      "time": 0.02716350555419922,
+      "error": null
+    },
+    "assert intersection((-3, 5), (-5, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.02809309959411621,
+      "error": null
+    },
+    "assert intersection((-6, -2), (-7, -5)) == 'NO'": {
+      "result": true,
+      "time": 0.03274083137512207,
+      "error": null
+    },
+    "assert intersection((3, 5), (8, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.028624296188354492,
+      "error": null
+    },
+    "assert intersection((-6, -3), (-7, 8)) == 'YES'": {
+      "result": true,
+      "time": 0.02734994888305664,
+      "error": null
+    },
+    "assert intersection((1, 7), (4, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.027632474899291992,
+      "error": null
+    },
+    "assert intersection((4, 1), (2, 5)) == 'NO'": {
+      "result": true,
+      "time": 0.02705693244934082,
+      "error": null
+    },
+    "assert intersection((6, 7), (4, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.02825617790222168,
+      "error": null
+    },
+    "assert intersection((3, 6), (2, 6)) == 'YES'": {
+      "result": true,
+      "time": 0.029179096221923828,
+      "error": null
+    },
+    "assert intersection((6, 7), (2, 6)) == 'NO'": {
+      "result": true,
+      "time": 0.02610492706298828,
+      "error": null
+    },
+    "assert intersection((-5, 6), (4, 9)) == 'YES'": {
+      "result": true,
+      "time": 0.029413700103759766,
+      "error": null
+    },
+    "assert intersection((1, 2), (3, 5)) == \"NO\"": {
+      "result": true,
+      "time": 0.029147863388061523,
+      "error": null
+    },
+    "assert intersection((-15, 4), (-3, -1)) == 'YES'": {
+      "result": true,
+      "time": 0.0283203125,
+      "error": null
+    },
+    "assert intersection((4, 5), (6, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.02831411361694336,
+      "error": null
+    },
+    "assert intersection((4, 2), (2, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.028652191162109375,
+      "error": null
+    },
+    "assert intersection((-3, 0), (-7, 2)) == 'YES'": {
+      "result": true,
+      "time": 0.030524015426635742,
+      "error": null
+    },
+    "assert intersection((-2, 1), (1, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.030667781829833984,
+      "error": null
+    },
+    "assert intersection((3, 1), (4, 5)) == 'NO'": {
+      "result": true,
+      "time": 0.0272371768951416,
+      "error": null
+    },
+    "assert intersection((-2, 5), (5, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.027635574340820312,
+      "error": null
+    },
+    "assert intersection((6, 3), (7, 4)) == 'NO'": {
+      "result": true,
+      "time": 0.0280454158782959,
+      "error": null
+    },
+    "assert intersection((5, 7), (5, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.025968551635742188,
+      "error": null
+    },
+    "assert intersection((0, -2), (-8, 7)) == 'NO'": {
+      "result": true,
+      "time": 0.027035236358642578,
+      "error": null
+    },
+    "assert intersection((-3, 5), (1, 4)) == 'YES'": {
+      "result": true,
+      "time": 0.026018857955932617,
+      "error": null
+    },
+    "assert intersection((-6, 1), (4, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.03224897384643555,
+      "error": null
+    },
+    "assert intersection((2, 3), (4, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.0294344425201416,
+      "error": null
+    },
+    "assert intersection((4, 6), (4, 8)) == 'YES'": {
+      "result": true,
+      "time": 0.03083515167236328,
+      "error": null
+    },
+    "assert intersection((-7, 5), (-6, 4)) == 'NO'": {
+      "result": true,
+      "time": 0.02363896369934082,
+      "error": null
+    },
+    "assert intersection((5, 6), (6, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.025783061981201172,
+      "error": null
+    },
+    "assert intersection((5, 5), (3, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.027283906936645508,
+      "error": null
+    },
+    "assert intersection((3, 1), (3, 9)) == 'NO'": {
+      "result": true,
+      "time": 0.02651071548461914,
+      "error": null
+    },
+    "assert intersection((4, 7), (4, 4)) == 'NO'": {
+      "result": true,
+      "time": 0.030175447463989258,
+      "error": null
+    },
+    "assert intersection((-9, 3), (4, -4)) == 'NO'": {
+      "result": true,
+      "time": 0.028376340866088867,
+      "error": null
+    },
+    "assert intersection((-16, 6), (-6, -4)) == 'YES'": {
+      "result": true,
+      "time": 0.0276792049407959,
+      "error": null
+    },
+    "assert intersection((2, 3), (8, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.026374101638793945,
+      "error": null
+    },
+    "assert intersection((3, 4), (5, 7)) == 'NO'": {
+      "result": true,
+      "time": 0.02866339683532715,
+      "error": null
+    },
+    "assert intersection((5, 7), (5, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.03447723388671875,
+      "error": null
+    },
+    "assert intersection((-3, -6), (-9, 8)) == 'NO'": {
+      "result": true,
+      "time": 0.027537107467651367,
+      "error": null
+    },
+    "assert intersection((-6, 1), (-3, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.02762889862060547,
+      "error": null
+    },
+    "assert intersection((-8, 4), (-3, -3)) == 'NO'": {
+      "result": true,
+      "time": 0.028702497482299805,
+      "error": null
+    },
+    "assert intersection((-14, 6), (-1, -6)) == 'NO'": {
+      "result": true,
+      "time": 0.02781963348388672,
+      "error": null
+    },
+    "assert intersection((-2, 1), (-9, 5)) == 'YES'": {
+      "result": true,
+      "time": 0.02874755859375,
+      "error": null
+    },
+    "assert intersection((-15, 1), (2, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.028331995010375977,
+      "error": null
+    },
+    "assert intersection((-1, -1), (-2, -3)) == 'NO'": {
+      "result": true,
+      "time": 0.028371810913085938,
+      "error": null
+    },
+    "assert intersection((-6, 3), (-6, 1)) == 'YES'": {
+      "result": true,
+      "time": 0.027490615844726562,
+      "error": null
+    },
+    "assert intersection((-1, 0), (-5, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.026680469512939453,
+      "error": null
+    },
+    "assert intersection((1, 6), (4, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.02863478660583496,
+      "error": null
+    },
+    "assert intersection((-1, 2), (-8, 10)) == 'YES'": {
+      "result": true,
+      "time": 0.031243324279785156,
+      "error": null
+    },
+    "assert intersection((1, -7), (-2, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.02476954460144043,
+      "error": null
+    },
+    "assert intersection((1, 1), (1, 9)) == 'NO'": {
+      "result": true,
+      "time": 0.026983022689819336,
+      "error": null
+    },
+    "assert intersection((-6, 7), (-2, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.03136134147644043,
+      "error": null
+    },
+    "assert intersection((1, 4), (2, 6)) == 'YES'": {
+      "result": true,
+      "time": 0.02946305274963379,
+      "error": null
+    },
+    "assert intersection((5, 7), (2, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.032419443130493164,
+      "error": null
+    },
+    "assert intersection((1, 1), (5, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.02795863151550293,
+      "error": null
+    },
+    "assert intersection((-4, -1), (0, -3)) == 'NO'": {
+      "result": true,
+      "time": 0.027518272399902344,
+      "error": null
+    },
+    "assert intersection((1, 2), (2, 3)) == \"NO\"": {
+      "result": true,
+      "time": 0.025787830352783203,
+      "error": null
+    },
+    "assert intersection((0, 5), (2, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.030942440032958984,
+      "error": null
+    },
+    "assert intersection((5, 4), (8, 8)) == 'NO'": {
+      "result": true,
+      "time": 0.03149986267089844,
+      "error": null
+    },
+    "assert intersection((1, 2), (1, 2)) == \"NO\"": {
+      "result": true,
+      "time": 0.030483484268188477,
+      "error": null
+    },
+    "assert intersection((2, 2), (8, 8)) == 'NO'": {
+      "result": true,
+      "time": 0.02933788299560547,
+      "error": null
+    },
+    "assert intersection((0, 5), (3, 8)) == 'YES'": {
+      "result": true,
+      "time": 0.027345657348632812,
+      "error": null
+    },
+    "assert intersection((-8, 2), (-3, -5)) == 'NO'": {
+      "result": true,
+      "time": 0.026874542236328125,
+      "error": null
+    },
+    "assert intersection((2, -4), (-4, 1)) == 'NO'": {
+      "result": true,
+      "time": 0.0251314640045166,
+      "error": null
+    },
+    "assert intersection((1, 5), (3, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.02747321128845215,
+      "error": null
+    },
+    "assert intersection((5, 3), (7, 8)) == 'NO'": {
+      "result": true,
+      "time": 0.025482892990112305,
+      "error": null
+    },
+    "assert intersection((2, 1), (4, 6)) == 'NO'": {
+      "result": true,
+      "time": 0.030843257904052734,
+      "error": null
+    },
+    "assert intersection((3, 6), (1, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.03155946731567383,
+      "error": null
+    },
+    "assert intersection((0, 2), (-10, 10)) == 'YES'": {
+      "result": true,
+      "time": 0.02921438217163086,
+      "error": null
+    },
+    "assert intersection((-3, -1), (-5, 5)) == \"YES\"": {
+      "result": true,
+      "time": 0.027530193328857422,
+      "error": null
+    },
+    "assert intersection((-5, 5), (3, 9)) == 'YES'": {
+      "result": true,
+      "time": 0.02770066261291504,
+      "error": null
+    },
+    "assert intersection((1, 2), (2, 10)) == 'NO'": {
+      "result": true,
+      "time": 0.026181936264038086,
+      "error": null
+    },
+    "assert intersection((-12, 2), (1, -6)) == 'NO'": {
+      "result": true,
+      "time": 0.025328874588012695,
+      "error": null
+    },
+    "assert intersection((5, 6), (6, 4)) == 'NO'": {
+      "result": true,
+      "time": 0.029298782348632812,
+      "error": null
+    },
+    "assert intersection((-4, -4), (-2, 4)) == 'NO'": {
+      "result": true,
+      "time": 0.030927419662475586,
+      "error": null
+    },
+    "assert intersection((0, 6), (-2, 2)) == 'YES'": {
+      "result": true,
+      "time": 0.02774977684020996,
+      "error": null
+    },
+    "assert intersection((-12, 4), (-2, 4)) == 'NO'": {
+      "result": true,
+      "time": 0.028081893920898438,
+      "error": null
+    },
+    "assert intersection((2, 6), (4, 6)) == 'YES'": {
+      "result": true,
+      "time": 0.028326988220214844,
+      "error": null
+    },
+    "assert intersection((2, 1), (5, 4)) == 'NO'": {
+      "result": true,
+      "time": 0.02783799171447754,
+      "error": null
+    },
+    "assert intersection((2, 4), (1, 5)) == 'YES'": {
+      "result": true,
+      "time": 0.028035640716552734,
+      "error": null
+    },
+    "assert intersection((0, -1), (-2, -7)) == 'NO'": {
+      "result": true,
+      "time": 0.02987051010131836,
+      "error": null
+    },
+    "assert intersection((4, 2), (4, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.030357837677001953,
+      "error": null
+    },
+    "assert intersection((2, 5), (0, 5)) == 'YES'": {
+      "result": true,
+      "time": 0.027487516403198242,
+      "error": null
+    },
+    "assert intersection((2, 3), (-1, 4)) == 'NO'": {
+      "result": true,
+      "time": 0.029826641082763672,
+      "error": null
+    },
+    "assert intersection((-6, 0), (-7, 0)) == 'NO'": {
+      "result": true,
+      "time": 0.028024911880493164,
+      "error": null
+    },
+    "assert intersection((3, 2), (1, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.027216196060180664,
+      "error": null
+    },
+    "assert intersection((-5, 2), (1, 4)) == 'NO'": {
+      "result": true,
+      "time": 0.024567604064941406,
+      "error": null
+    },
+    "assert intersection((-3, 4), (-1, 8)) == 'YES'": {
+      "result": true,
+      "time": 0.02975916862487793,
+      "error": null
+    },
+    "assert intersection((0, 2), (-8, 7)) == 'YES'": {
+      "result": true,
+      "time": 0.026853084564208984,
+      "error": null
+    },
+    "assert intersection((-1, 1), (-2, 3)) == 'YES'": {
+      "result": true,
+      "time": 0.028209447860717773,
+      "error": null
+    },
+    "assert intersection((-4, 7), (1, 5)) == 'NO'": {
+      "result": true,
+      "time": 0.02682185173034668,
+      "error": null
+    },
+    "assert intersection((5, 7), (3, 4)) == 'NO'": {
+      "result": true,
+      "time": 0.030167102813720703,
+      "error": null
+    },
+    "assert intersection((5, 7), (4, 5)) == 'NO'": {
+      "result": true,
+      "time": 0.028424739837646484,
+      "error": null
+    },
+    "assert intersection((3, 3), (-3, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.02443695068359375,
+      "error": null
+    },
+    "assert intersection((-2, -7), (-5, -4)) == 'NO'": {
+      "result": true,
+      "time": 0.03388667106628418,
+      "error": null
+    },
+    "assert intersection((-3, 2), (-5, -1)) == 'YES'": {
+      "result": true,
+      "time": 0.02785205841064453,
+      "error": null
+    },
+    "assert intersection((5, 3), (6, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.02662968635559082,
+      "error": null
+    },
+    "assert intersection((-16, 3), (-4, 2)) == 'NO'": {
+      "result": true,
+      "time": 0.02737712860107422,
+      "error": null
+    },
+    "assert intersection((-4, 3), (0, -3)) == 'NO'": {
+      "result": true,
+      "time": 0.030237197875976562,
+      "error": null
+    },
+    "assert intersection((-2, 2), (-4, 0)) == \"YES\"\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.026824951171875,
+      "error": null
+    },
+    "assert intersection((-3, -1), (-2, 5)) == 'NO'": {
+      "result": true,
+      "time": 0.02821493148803711,
+      "error": null
+    },
+    "assert intersection((1, 2), (4, 7)) == 'NO'": {
+      "result": true,
+      "time": 0.02915358543395996,
+      "error": null
+    },
+    "assert intersection((6, 3), (3, 3)) == 'NO'": {
+      "result": true,
+      "time": 0.029247045516967773,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

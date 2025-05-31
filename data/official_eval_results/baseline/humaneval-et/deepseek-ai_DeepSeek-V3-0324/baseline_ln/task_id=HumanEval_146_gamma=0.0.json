@@ -1,0 +1,519 @@
+{
+  "code": "def specialFilter(nums):\n    count = 0\n    for num in nums:\n        if num > 10:\n            num_str = str(abs(num))\n            first_digit = int(num_str[0])\n            last_digit = int(num_str[-1])\n            if first_digit % 2 != 0 and last_digit % 2 != 0:\n                count += 1\n    return count",
+  "results": {
+    "assert specialFilter([10, -5, 6, -5]) == 0": {
+      "result": true,
+      "time": 0.031984567642211914,
+      "error": null
+    },
+    "assert specialFilter([66, -6, -30, 73, 16, 21]) == 1": {
+      "result": true,
+      "time": 0.02831554412841797,
+      "error": null
+    },
+    "assert specialFilter([35, -3, -4, 45, 16, 104]) == 1": {
+      "result": true,
+      "time": 0.0307161808013916,
+      "error": null
+    },
+    "assert specialFilter([15, -75, 14, -17]) == 1": {
+      "result": true,
+      "time": 0.032276153564453125,
+      "error": null
+    },
+    "assert specialFilter([48, -12, 97, 129, 117, 107]) == 4": {
+      "result": true,
+      "time": 0.02879619598388672,
+      "error": null
+    },
+    "assert specialFilter([70, 2, -34, 78, 25, 23]) == 0": {
+      "result": true,
+      "time": 0.02791428565979004,
+      "error": null
+    },
+    "assert specialFilter([36, -6, 2, 49, 22, 111]) == 1": {
+      "result": true,
+      "time": 0.03269171714782715,
+      "error": null
+    },
+    "assert specialFilter([11, -78, 9, -19]) == 1": {
+      "result": true,
+      "time": 0.03197121620178223,
+      "error": null
+    },
+    "assert specialFilter([70, -3, -34, 78, 21, 21]) == 0": {
+      "result": true,
+      "time": 0.031284332275390625,
+      "error": null
+    },
+    "assert specialFilter([34, -2, -2, 44, 18, 105]) == 1": {
+      "result": true,
+      "time": 0.030730247497558594,
+      "error": null
+    },
+    "assert specialFilter([12, -78, 18, -19]) == 0": {
+      "result": true,
+      "time": 0.032393455505371094,
+      "error": null
+    },
+    "assert specialFilter([66, 2, -29, 71, 19, 15]) == 3": {
+      "result": true,
+      "time": 0.029742717742919922,
+      "error": null
+    },
+    "assert specialFilter([6]) == 0": {
+      "result": true,
+      "time": 0.0280914306640625,
+      "error": null
+    },
+    "assert specialFilter([7, -5, 3, -2]) == 0": {
+      "result": true,
+      "time": 0.03008103370666504,
+      "error": null
+    },
+    "assert specialFilter([32, 3, -6, 45, 16, 108]) == 0": {
+      "result": true,
+      "time": 0.029751062393188477,
+      "error": null
+    },
+    "assert specialFilter([14, -74, 18, -20]) == 0": {
+      "result": true,
+      "time": 0.03009963035583496,
+      "error": null
+    },
+    "assert specialFilter([]) == 0": {
+      "result": true,
+      "time": 0.029118061065673828,
+      "error": null
+    },
+    "assert specialFilter([3, -7, 5, -5]) == 0": {
+      "result": true,
+      "time": 0.030001401901245117,
+      "error": null
+    },
+    "assert specialFilter([17, -71, 11, -14]) == 2": {
+      "result": true,
+      "time": 0.02725386619567871,
+      "error": null
+    },
+    "assert specialFilter([35, 1, 1, 49, 16, 114]) == 1": {
+      "result": true,
+      "time": 0.031032800674438477,
+      "error": null
+    },
+    "assert specialFilter([69, -5, -33, 80, 16, 17]) == 1": {
+      "result": true,
+      "time": 0.02951979637145996,
+      "error": null
+    },
+    "assert specialFilter([7, -4, 3, -2]) == 0": {
+      "result": true,
+      "time": 0.034363508224487305,
+      "error": null
+    },
+    "assert specialFilter([4, 1, 6, -2]) == 0": {
+      "result": true,
+      "time": 0.03015303611755371,
+      "error": null
+    },
+    "assert specialFilter([43, -12, 96, 128, 120, 104]) == 0": {
+      "result": true,
+      "time": 0.026795625686645508,
+      "error": null
+    },
+    "assert specialFilter([12, -73, 19, -10]) == 1": {
+      "result": true,
+      "time": 0.030927181243896484,
+      "error": null
+    },
+    "assert specialFilter([37, 3, 1, 45, 22, 113]) == 2": {
+      "result": true,
+      "time": 0.029072284698486328,
+      "error": null
+    },
+    "assert specialFilter([10, 2, 2, -5]) == 0": {
+      "result": true,
+      "time": 0.029282808303833008,
+      "error": null
+    },
+    "assert specialFilter([18, -71, 10, -15]) == 0": {
+      "result": true,
+      "time": 0.03464531898498535,
+      "error": null
+    },
+    "assert specialFilter([31, -7, -4, 48, 20, 108]) == 1": {
+      "result": true,
+      "time": 0.02817678451538086,
+      "error": null
+    },
+    "assert specialFilter([40, -10, 88, 126, 117, 112]) == 1": {
+      "result": true,
+      "time": 0.02924036979675293,
+      "error": null
+    },
+    "assert specialFilter([33, -2, -3, 45, 21, 109]) == 2": {
+      "result": true,
+      "time": 0.028661012649536133,
+      "error": null
+    },
+    "assert specialFilter([48, -15, 88, 128, 122, 112]) == 0": {
+      "result": true,
+      "time": 0.03215503692626953,
+      "error": null
+    },
+    "assert specialFilter([16, -74, 18, -13]) == 0": {
+      "result": true,
+      "time": 0.02865433692932129,
+      "error": null
+    },
+    "assert specialFilter([76, 1, -31, 70, 17, 18]) == 1": {
+      "result": true,
+      "time": 0.029087305068969727,
+      "error": null
+    },
+    "assert specialFilter([73, 2, -31, 70, 25, 18]) == 1": {
+      "result": true,
+      "time": 0.03222155570983887,
+      "error": null
+    },
+    "assert specialFilter([45, -7, 91, 125, 122, 106]) == 2": {
+      "result": true,
+      "time": 0.02992105484008789,
+      "error": null
+    },
+    "assert specialFilter([71, -2, -33, 75, 21, 19]) == 3\n\n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.026959657669067383,
+      "error": null
+    },
+    "assert specialFilter([47, -9, 90, 130, 121, 109]) == 2": {
+      "result": true,
+      "time": 0.02919483184814453,
+      "error": null
+    },
+    "assert specialFilter([15, -73, 17, -15]) == 2": {
+      "result": true,
+      "time": 0.02901482582092285,
+      "error": null
+    },
+    "assert specialFilter([71, -5, -36, 75, 21, 23]) == 2": {
+      "result": true,
+      "time": 0.028368711471557617,
+      "error": null
+    },
+    "assert specialFilter([47, -17, 95, 124, 122, 113]) == 2": {
+      "result": true,
+      "time": 0.028877735137939453,
+      "error": null
+    },
+    "assert specialFilter([74, -7, -29, 80, 22, 18]) == 0": {
+      "result": true,
+      "time": 0.028225183486938477,
+      "error": null
+    },
+    "assert specialFilter([33, -2, -7, 40, 21, 105]) == 2": {
+      "result": true,
+      "time": 0.031056642532348633,
+      "error": null
+    },
+    "assert specialFilter([18, -73, 11, -11]) == 1": {
+      "result": true,
+      "time": 0.029659748077392578,
+      "error": null
+    },
+    "assert specialFilter([43, -12, 93, 125, 121, 109]) == 4": {
+      "result": true,
+      "time": 0.0322270393371582,
+      "error": null
+    },
+    "assert specialFilter([3, 2, 6, -6]) == 0": {
+      "result": true,
+      "time": 0.02744269371032715,
+      "error": null
+    },
+    "assert specialFilter([2]) == 0": {
+      "result": true,
+      "time": 0.030573606491088867,
+      "error": null
+    },
+    "assert specialFilter([1, -7, 2, -10]) == 0": {
+      "result": true,
+      "time": 0.02779865264892578,
+      "error": null
+    },
+    "assert specialFilter([31, 1, 1, 50, 26, 114]) == 1": {
+      "result": true,
+      "time": 0.0298004150390625,
+      "error": null
+    },
+    "assert specialFilter([1, -7, 1, -9]) == 0": {
+      "result": true,
+      "time": 0.02677750587463379,
+      "error": null
+    },
+    "assert specialFilter([40, -12, 94, 130, 117, 110]) == 1": {
+      "result": true,
+      "time": 0.029867887496948242,
+      "error": null
+    },
+    "assert specialFilter([20, -78, 16, -20]) == 0": {
+      "result": true,
+      "time": 0.03192257881164551,
+      "error": null
+    },
+    "assert specialFilter([28, -3, -5, 41, 19, 110]) == 1": {
+      "result": true,
+      "time": 0.02792978286743164,
+      "error": null
+    },
+    "assert specialFilter([12, -73, 13, -15]) == 1": {
+      "result": true,
+      "time": 0.02878093719482422,
+      "error": null
+    },
+    "assert specialFilter([73, 1, -28, 75, 22, 14]) == 2": {
+      "result": true,
+      "time": 0.030365943908691406,
+      "error": null
+    },
+    "assert specialFilter([67, -5, -32, 74, 24, 19]) == 1": {
+      "result": true,
+      "time": 0.030119895935058594,
+      "error": null
+    },
+    "assert specialFilter([5, -2, 1, -5]) == 0": {
+      "result": true,
+      "time": 0.02330780029296875,
+      "error": null
+    },
+    "assert specialFilter([13, -71, 10, -20]) == 1": {
+      "result": true,
+      "time": 0.032563209533691406,
+      "error": null
+    },
+    "assert specialFilter([43, -7, 94, 120, 122, 114]) == 0": {
+      "result": true,
+      "time": 0.027546405792236328,
+      "error": null
+    },
+    "assert specialFilter([72, 1, -30, 80, 21, 24]) == 0": {
+      "result": true,
+      "time": 0.028148174285888672,
+      "error": null
+    },
+    "assert specialFilter([31, -2, 0, 48, 26, 112]) == 1": {
+      "result": true,
+      "time": 0.02987980842590332,
+      "error": null
+    },
+    "assert specialFilter([8, -2, 3, -1]) == 0": {
+      "result": true,
+      "time": 0.0308687686920166,
+      "error": null
+    },
+    "assert specialFilter([19, -74, 19, -12]) == 2": {
+      "result": true,
+      "time": 0.026644468307495117,
+      "error": null
+    },
+    "assert specialFilter([39, -11, 91, 125, 117, 107]) == 5": {
+      "result": true,
+      "time": 0.027957916259765625,
+      "error": null
+    },
+    "assert specialFilter([75, 1, -36, 70, 21, 21]) == 1": {
+      "result": true,
+      "time": 0.031603336334228516,
+      "error": null
+    },
+    "assert specialFilter([1, -5, 5, -5]) == 0": {
+      "result": true,
+      "time": 0.029915809631347656,
+      "error": null
+    },
+    "assert specialFilter([68, -1, -28, 73, 24, 15]) == 2": {
+      "result": true,
+      "time": 0.025862932205200195,
+      "error": null
+    },
+    "assert specialFilter([41, -12, 98, 128, 121, 104]) == 1": {
+      "result": true,
+      "time": 0.02676701545715332,
+      "error": null
+    },
+    "assert specialFilter([30, -4, -8, 42, 23, 112]) == 0": {
+      "result": true,
+      "time": 0.02713799476623535,
+      "error": null
+    },
+    "assert specialFilter([13, -70, 16, -15]) == 1": {
+      "result": true,
+      "time": 0.030772924423217773,
+      "error": null
+    },
+    "assert specialFilter([11, -70, 16, -15]) == 1": {
+      "result": true,
+      "time": 0.030225515365600586,
+      "error": null
+    },
+    "assert specialFilter([1, 0, 6, -7]) == 0": {
+      "result": true,
+      "time": 0.028578758239746094,
+      "error": null
+    },
+    "assert specialFilter([28, 2, 0, 49, 26, 107]) == 1": {
+      "result": true,
+      "time": 0.02993178367614746,
+      "error": null
+    },
+    "assert specialFilter([73, 2, -32, 71, 18, 19]) == 3": {
+      "result": true,
+      "time": 0.03000473976135254,
+      "error": null
+    },
+    "assert specialFilter([5]) == 0": {
+      "result": true,
+      "time": 0.0287322998046875,
+      "error": null
+    },
+    "assert specialFilter([1]) == 0": {
+      "result": true,
+      "time": 0.029015779495239258,
+      "error": null
+    },
+    "assert specialFilter([6, -4, 1, -10]) == 0": {
+      "result": true,
+      "time": 0.025099992752075195,
+      "error": null
+    },
+    "assert specialFilter([8, -2, 4, -7]) == 0": {
+      "result": true,
+      "time": 0.02521681785583496,
+      "error": null
+    },
+    "assert specialFilter([4]) == 0": {
+      "result": true,
+      "time": 0.03170180320739746,
+      "error": null
+    },
+    "assert specialFilter([33, 1, -3, 41, 21, 107]) == 2": {
+      "result": true,
+      "time": 0.02764129638671875,
+      "error": null
+    },
+    "assert specialFilter([74, 1, -31, 79, 16, 17]) == 2": {
+      "result": true,
+      "time": 0.02778315544128418,
+      "error": null
+    },
+    "assert specialFilter([3, -2, 4, -3]) == 0": {
+      "result": true,
+      "time": 0.029830217361450195,
+      "error": null
+    },
+    "assert specialFilter([1, 1, 5, -5]) == 0": {
+      "result": true,
+      "time": 0.03079509735107422,
+      "error": null
+    },
+    "assert specialFilter([41, -8, 96, 130, 118, 109]) == 1": {
+      "result": true,
+      "time": 0.031684160232543945,
+      "error": null
+    },
+    "assert specialFilter([38, -3, 0, 49, 24, 110]) == 0": {
+      "result": true,
+      "time": 0.02736830711364746,
+      "error": null
+    },
+    "assert specialFilter([12, -73, 14, -15]) == 0": {
+      "result": true,
+      "time": 0.028255462646484375,
+      "error": null
+    },
+    "assert specialFilter([16, -72, 9, -20]) == 0": {
+      "result": true,
+      "time": 0.030259370803833008,
+      "error": null
+    },
+    "assert specialFilter([5, 3, 1, -7]) == 0": {
+      "result": true,
+      "time": 0.02590155601501465,
+      "error": null
+    },
+    "assert specialFilter([3]) == 0": {
+      "result": true,
+      "time": 0.02840590476989746,
+      "error": null
+    },
+    "assert specialFilter([38, -6, 2, 43, 21, 105]) == 1": {
+      "result": true,
+      "time": 0.028910398483276367,
+      "error": null
+    },
+    "assert specialFilter([32, 2, -1, 45, 16, 107]) == 1": {
+      "result": true,
+      "time": 0.027800321578979492,
+      "error": null
+    },
+    "assert specialFilter([39, -11, 96, 126, 125, 111]) == 3": {
+      "result": true,
+      "time": 0.02660822868347168,
+      "error": null
+    },
+    "assert specialFilter([31, 1, -3, 41, 16, 110]) == 1": {
+      "result": true,
+      "time": 0.02863144874572754,
+      "error": null
+    },
+    "assert specialFilter([46, -12, 92, 122, 123, 108]) == 1": {
+      "result": true,
+      "time": 0.02951812744140625,
+      "error": null
+    },
+    "assert specialFilter([44, -7, 97, 126, 116, 106]) == 1": {
+      "result": true,
+      "time": 0.028888940811157227,
+      "error": null
+    },
+    "assert specialFilter([39, -15, 91, 120, 121, 107]) == 4": {
+      "result": true,
+      "time": 0.027533769607543945,
+      "error": null
+    },
+    "assert specialFilter([4, 2, 3, -6]) == 0": {
+      "result": true,
+      "time": 0.02708745002746582,
+      "error": null
+    },
+    "assert specialFilter([15, -73, 14, -15]) == 1": {
+      "result": true,
+      "time": 0.02848029136657715,
+      "error": null
+    },
+    "assert specialFilter([74, 0, -35, 74, 19, 16]) == 1": {
+      "result": true,
+      "time": 0.027118921279907227,
+      "error": null
+    },
+    "assert specialFilter([46, -7, 89, 129, 121, 109]) == 3": {
+      "result": true,
+      "time": 0.03169655799865723,
+      "error": null
+    },
+    "assert specialFilter([66, 3, -33, 78, 18, 21]) == 0": {
+      "result": true,
+      "time": 0.033566951751708984,
+      "error": null
+    },
+    "assert specialFilter([47, -9, 97, 128, 118, 111]) == 2": {
+      "result": true,
+      "time": 0.028394699096679688,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}

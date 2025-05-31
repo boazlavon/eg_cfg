@@ -1,0 +1,659 @@
+{
+  "code": "def file_name_check(file_name):\n    # Check for exactly one dot\n    if file_name.count('.') != 1:\n        return 'No'\n    \n    parts = file_name.split('.')\n    before_dot = parts[0]\n    after_dot = parts[1]\n    \n    # Check if before_dot is empty or does not start with a letter\n    if not before_dot or not before_dot[0].isalpha():\n        return 'No'\n    \n    # Check if after_dot is one of the allowed extensions\n    if after_dot not in ['txt', 'exe', 'dll']:\n        return 'No'\n    \n    # Check if there are more than three digits in the file_name\n    digit_count = sum(1 for c in file_name if c.isdigit())\n    if digit_count > 3:\n        return 'No'\n    \n    return 'Yes'",
+  "results": {
+    "assert file_name_check(\"zmz1h1ZW5.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.029188156127929688,
+      "error": null
+    },
+    "assert file_name_check(\"|ypo/e+~=yxqk@l:=n-|_w/.exe\") == 'No'": {
+      "result": true,
+      "time": 0.03210783004760742,
+      "error": null
+    },
+    "assert file_name_check(\"T|x@:8vC6.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.03971290588378906,
+      "error": null
+    },
+    "assert file_name_check(\"p90hm2.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.03200984001159668,
+      "error": null
+    },
+    "assert file_name_check(\"@_HqUwn.taP9n@IeU.dll\") == 'No'": {
+      "result": true,
+      "time": 0.027214527130126953,
+      "error": null
+    },
+    "assert file_name_check(\"AwtZe!.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.02999138832092285,
+      "error": null
+    },
+    "assert file_name_check('this_is_valid.txt') == 'Yes'": {
+      "result": true,
+      "time": 0.02993488311767578,
+      "error": null
+    },
+    "assert file_name_check(\"pps:pq00f&=-e@p4oe^u1so3^8.exe\") == 'No'": {
+      "result": true,
+      "time": 0.032186269760131836,
+      "error": null
+    },
+    "assert file_name_check('@this1_is6_valid.exe') == 'No'": {
+      "result": true,
+      "time": 0.026430130004882812,
+      "error": null
+    },
+    "assert file_name_check(\"svIkpyQe7pYHiedh.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.028282642364501953,
+      "error": null
+    },
+    "assert file_name_check(\"e$r=krxi#o=yevwd**z.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.02768731117248535,
+      "error": null
+    },
+    "assert file_name_check(\".tt.txt\") == 'No'": {
+      "result": true,
+      "time": 0.026494741439819336,
+      "error": null
+    },
+    "assert file_name_check('Is3youfault.txt') == 'Yes'": {
+      "result": true,
+      "time": 0.0357973575592041,
+      "error": null
+    },
+    "assert file_name_check(\"on&z+t~=su$k.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.02857208251953125,
+      "error": null
+    },
+    "assert file_name_check(\"#gk_nfFgjJg:.dll\") == 'No'": {
+      "result": true,
+      "time": 0.026783227920532227,
+      "error": null
+    },
+    "assert file_name_check(\"hpuf2oz.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.028465747833251953,
+      "error": null
+    },
+    "assert file_name_check(\"pteiqqcwqbu.w.j.txt\") == 'No'": {
+      "result": true,
+      "time": 0.02923583984375,
+      "error": null
+    },
+    "assert file_name_check(\"ncStUyBIegxXn6HC.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.028377056121826172,
+      "error": null
+    },
+    "assert file_name_check(\"qtf&js*:$a.vk+e.txt\") == 'No'": {
+      "result": true,
+      "time": 0.030625581741333008,
+      "error": null
+    },
+    "assert file_name_check('final..txt') == 'No'": {
+      "result": true,
+      "time": 0.031594038009643555,
+      "error": null
+    },
+    "assert file_name_check(\"eOky5qsos.kg.txt\") == 'No'": {
+      "result": true,
+      "time": 0.02729511260986328,
+      "error": null
+    },
+    "assert file_name_check(\"h*ujtt.~j*/l%|*i$e.dll\") == 'No'": {
+      "result": true,
+      "time": 0.02845168113708496,
+      "error": null
+    },
+    "assert file_name_check('final132') == 'No'": {
+      "result": true,
+      "time": 0.02814626693725586,
+      "error": null
+    },
+    "assert file_name_check('/this_is_valid.dll') == 'No'": {
+      "result": true,
+      "time": 0.028557300567626953,
+      "error": null
+    },
+    "assert file_name_check(\"zpbyutvvgq0mpoaxu.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.025078773498535156,
+      "error": null
+    },
+    "assert file_name_check(\"^/je*z?-@ylp^ai.s.txt\") == 'No'": {
+      "result": true,
+      "time": 0.029785871505737305,
+      "error": null
+    },
+    "assert file_name_check(\".pszd.dll\") == 'No'": {
+      "result": true,
+      "time": 0.028574705123901367,
+      "error": null
+    },
+    "assert file_name_check(\"vgjgf.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.0271148681640625,
+      "error": null
+    },
+    "assert file_name_check(\"hl3tarbv4uwywwr.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.03261923789978027,
+      "error": null
+    },
+    "assert file_name_check('I563_Yes3.txtt') == 'No'": {
+      "result": true,
+      "time": 0.028318405151367188,
+      "error": null
+    },
+    "assert file_name_check(\"uw26lmhi4y0af.txt\") == 'No'": {
+      "result": true,
+      "time": 0.031531572341918945,
+      "error": null
+    },
+    "assert file_name_check(\"~%/-qvn&_:g|rcs&g-ky#.txt\") == 'No'": {
+      "result": true,
+      "time": 0.03495335578918457,
+      "error": null
+    },
+    "assert file_name_check('s1sdf3.asd') == 'No'": {
+      "result": true,
+      "time": 0.027654409408569336,
+      "error": null
+    },
+    "assert file_name_check('His12FILE94.exe') == 'No'": {
+      "result": true,
+      "time": 0.03157806396484375,
+      "error": null
+    },
+    "assert file_name_check(\"0i7q0uqdv.txt\") == 'No'": {
+      "result": true,
+      "time": 0.026425600051879883,
+      "error": null
+    },
+    "assert file_name_check(\"dzs.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.032158851623535156,
+      "error": null
+    },
+    "assert file_name_check(\"UIlYE5DRb2SV.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.031107425689697266,
+      "error": null
+    },
+    "assert file_name_check(\"IrXV.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.030046701431274414,
+      "error": null
+    },
+    "assert file_name_check(\"^m^p:n|?#h@*ci*^=k--v.dll\") == 'No'": {
+      "result": true,
+      "time": 0.03189492225646973,
+      "error": null
+    },
+    "assert file_name_check(\"i66yaotkz.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.033464908599853516,
+      "error": null
+    },
+    "assert file_name_check(\"vnlxospuliq.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.027092933654785156,
+      "error": null
+    },
+    "assert file_name_check('this_is_valid.txtexe') == 'No'": {
+      "result": true,
+      "time": 0.027063846588134766,
+      "error": null
+    },
+    "assert file_name_check(\"o2+fqga~_h.@k1d0:o$_$.0.txt\") == 'No'": {
+      "result": true,
+      "time": 0.027414321899414062,
+      "error": null
+    },
+    "assert file_name_check(\"jYQ!%7Oadf=HxM.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.027952909469604492,
+      "error": null
+    },
+    "assert file_name_check(\"y=rdUuG1Okf=F.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.02765679359436035,
+      "error": null
+    },
+    "assert file_name_check(\"oopglo.tf.dll\") == 'No'": {
+      "result": true,
+      "time": 0.027334213256835938,
+      "error": null
+    },
+    "assert file_name_check(\"LMao0wz.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.03023076057434082,
+      "error": null
+    },
+    "assert file_name_check(\"^-O?gGH.dll\") == 'No'": {
+      "result": true,
+      "time": 0.030946731567382812,
+      "error": null
+    },
+    "assert file_name_check(\".$_1vhnquh6s=!6r_!~j1~.exe\") == 'No'": {
+      "result": true,
+      "time": 0.030910491943359375,
+      "error": null
+    },
+    "assert file_name_check(\"qnt.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.025883197784423828,
+      "error": null
+    },
+    "assert file_name_check(\"+52?m&^_!c-q0r?pe.dll\") == 'No'": {
+      "result": true,
+      "time": 0.02889847755432129,
+      "error": null
+    },
+    "assert file_name_check(\"gnz+zb@^cy+|gqi*h?l=s.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.029950857162475586,
+      "error": null
+    },
+    "assert file_name_check(\"6cqsqta.txt\") == 'No'": {
+      "result": true,
+      "time": 0.02918553352355957,
+      "error": null
+    },
+    "assert file_name_check(\"$ca@u.s@@-yx#a/.exe\") == 'No'": {
+      "result": true,
+      "time": 0.030840396881103516,
+      "error": null
+    },
+    "assert file_name_check(\"yvfznekitgek.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.027353525161743164,
+      "error": null
+    },
+    "assert file_name_check(\"n-+g?&+g=x~s&~.-&fk%.exe\") == 'No'": {
+      "result": true,
+      "time": 0.032964229583740234,
+      "error": null
+    },
+    "assert file_name_check(\"Ww~vDBe_.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.030674219131469727,
+      "error": null
+    },
+    "assert file_name_check(\"i%$mq/p!_w&@eu@c/gvxajql.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.02834033966064453,
+      "error": null
+    },
+    "assert file_name_check(\"E1Lnmck&QIbVV01.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.03259634971618652,
+      "error": null
+    },
+    "assert file_name_check('no_one#knows.dll') == 'Yes'": {
+      "result": true,
+      "time": 0.031232118606567383,
+      "error": null
+    },
+    "assert file_name_check(\"c+91:8=_*&=z#s&3h7#/.exe\") == 'No'": {
+      "result": true,
+      "time": 0.03320598602294922,
+      "error": null
+    },
+    "assert file_name_check('this_is_12valid.6exe4.txt') == 'No'": {
+      "result": true,
+      "time": 0.03180360794067383,
+      "error": null
+    },
+    "assert file_name_check(\"*w_brros!kq@iaoq.dll\") == 'No'": {
+      "result": true,
+      "time": 0.03330492973327637,
+      "error": null
+    },
+    "assert file_name_check(\"kbpmh.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.030805110931396484,
+      "error": null
+    },
+    "assert file_name_check(\"0Y=Mm+Oe~.dll\") == 'No'": {
+      "result": true,
+      "time": 0.0261533260345459,
+      "error": null
+    },
+    "assert file_name_check(\"rvwndksjhoo.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.03513050079345703,
+      "error": null
+    },
+    "assert file_name_check(\"botehqmlxp.olr.dll\") == 'No'": {
+      "result": true,
+      "time": 0.03474092483520508,
+      "error": null
+    },
+    "assert file_name_check(\"+lq_?kE-o!gd|&X.dll\") == 'No'": {
+      "result": true,
+      "time": 0.029433012008666992,
+      "error": null
+    },
+    "assert file_name_check(\"qqsy..egxjde.txt\") == 'No'": {
+      "result": true,
+      "time": 0.027862071990966797,
+      "error": null
+    },
+    "assert file_name_check(\":#lg=cp&ur#+d5d^li-b8.dll\") == 'No'": {
+      "result": true,
+      "time": 0.027886629104614258,
+      "error": null
+    },
+    "assert file_name_check('.txt') == 'No'": {
+      "result": true,
+      "time": 0.029591798782348633,
+      "error": null
+    },
+    "assert file_name_check(\"dfedi.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.028673171997070312,
+      "error": null
+    },
+    "assert file_name_check(\"qp|%#&xu|y~$jx.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.029348134994506836,
+      "error": null
+    },
+    "assert file_name_check(\"laj@e.luof@!n.exe\") == 'No'": {
+      "result": true,
+      "time": 0.028932571411132812,
+      "error": null
+    },
+    "assert file_name_check(\"l.igcr.exe\") == 'No'": {
+      "result": true,
+      "time": 0.028998136520385742,
+      "error": null
+    },
+    "assert file_name_check(\"iEVAdcwQQCoiO0jM.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.03165745735168457,
+      "error": null
+    },
+    "assert file_name_check('#this2_i4s_5valid.ten') == 'No'": {
+      "result": true,
+      "time": 0.031053781509399414,
+      "error": null
+    },
+    "assert file_name_check('_Y.txt') == 'No'": {
+      "result": true,
+      "time": 0.029659748077392578,
+      "error": null
+    },
+    "assert file_name_check(\"j*90pb:3mwpch1%e$fc.dll\") == 'No'": {
+      "result": true,
+      "time": 0.03110647201538086,
+      "error": null
+    },
+    "assert file_name_check('all.exe.txt') == 'No'": {
+      "result": true,
+      "time": 0.028955698013305664,
+      "error": null
+    },
+    "assert file_name_check(\"lzi-@=?!c@%s&p$si.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.029330015182495117,
+      "error": null
+    },
+    "assert file_name_check(\"1$q&45N3=lRzm.dll\") == 'No'": {
+      "result": true,
+      "time": 0.03781557083129883,
+      "error": null
+    },
+    "assert file_name_check('_f4indsartal132.') == 'No'\n    \n        \n\n    # Check some edge cases that are easy to work out by hand.": {
+      "result": true,
+      "time": 0.025992870330810547,
+      "error": null
+    },
+    "assert file_name_check(\"fEev.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.028733015060424805,
+      "error": null
+    },
+    "assert file_name_check(\"$:ZRFZ04!1-n.dll\") == 'No'": {
+      "result": true,
+      "time": 0.029753446578979492,
+      "error": null
+    },
+    "assert file_name_check(\"i.yshapqayncaj.exe\") == 'No'": {
+      "result": true,
+      "time": 0.02889871597290039,
+      "error": null
+    },
+    "assert file_name_check(\"izanbyqrv3b.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.028734207153320312,
+      "error": null
+    },
+    "assert file_name_check(\"ktqDzjP.og69Y3=.dll\") == 'No'": {
+      "result": true,
+      "time": 0.027945756912231445,
+      "error": null
+    },
+    "assert file_name_check(\"m8frtq@xt:#z:.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.03250551223754883,
+      "error": null
+    },
+    "assert file_name_check(\"bPw.jjsT1YCelZBQO.exe\") == 'No'": {
+      "result": true,
+      "time": 0.029499292373657227,
+      "error": null
+    },
+    "assert file_name_check(\"9KWOUbCL3Q0QR1p.txt\") == 'No'": {
+      "result": true,
+      "time": 0.029527664184570312,
+      "error": null
+    },
+    "assert file_name_check(\"+BN=.exe\") == 'No'": {
+      "result": true,
+      "time": 0.029076576232910156,
+      "error": null
+    },
+    "assert file_name_check(\"annATke..ej.cVxK6vuE.dll\") == 'No'": {
+      "result": true,
+      "time": 0.02748703956604004,
+      "error": null
+    },
+    "assert file_name_check(\"*b0#ln!9vf#%oa|17ie/$-.dll\") == 'No'": {
+      "result": true,
+      "time": 0.03134775161743164,
+      "error": null
+    },
+    "assert file_name_check(\"17E9anu32jG:EP~54.exe\") == 'No'": {
+      "result": true,
+      "time": 0.02660202980041504,
+      "error": null
+    },
+    "assert file_name_check(\"PfqMHW.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.029562950134277344,
+      "error": null
+    },
+    "assert file_name_check(\"&z|i!-+@&l~#g%|%who.txt\") == 'No'": {
+      "result": true,
+      "time": 0.02862548828125,
+      "error": null
+    },
+    "assert file_name_check(\"@Fmt~B-_BW.dll\") == 'No'": {
+      "result": true,
+      "time": 0.02569890022277832,
+      "error": null
+    },
+    "assert file_name_check(\"tiscsoskzlipxld.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.02942943572998047,
+      "error": null
+    },
+    "assert file_name_check(\"t+yx?e%/sk?*vecv/t.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.027379989624023438,
+      "error": null
+    },
+    "assert file_name_check(\"sdsojhwcc.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.02961254119873047,
+      "error": null
+    },
+    "assert file_name_check(\":11j%:n5/$jp^ruab|.exe\") == 'No'": {
+      "result": true,
+      "time": 0.028853178024291992,
+      "error": null
+    },
+    "assert file_name_check(\"icXCNbcPz.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.028728723526000977,
+      "error": null
+    },
+    "assert file_name_check(\"wSvddcj3BdEgxA18Ne.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.0262298583984375,
+      "error": null
+    },
+    "assert file_name_check(\"6kk^:!&tl0zk&hrz*y~mu3.dll\") == 'No'": {
+      "result": true,
+      "time": 0.029264450073242188,
+      "error": null
+    },
+    "assert file_name_check(\"0g4zwy.dll\") == 'No'": {
+      "result": true,
+      "time": 0.0284426212310791,
+      "error": null
+    },
+    "assert file_name_check('I563_No.exe') == 'Yes'": {
+      "result": true,
+      "time": 0.028493404388427734,
+      "error": null
+    },
+    "assert file_name_check(\"oe~$&$@g~u&@@z:xj!lm@!.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.028264760971069336,
+      "error": null
+    },
+    "assert file_name_check(\"s+b.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.028764963150024414,
+      "error": null
+    },
+    "assert file_name_check(\"OMEihb9WMxRG82MZLPx.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.028543949127197266,
+      "error": null
+    },
+    "assert file_name_check(\"~nfkmjqc_$cor%/?ykj%%x%^o9^.dll\") == 'No'": {
+      "result": true,
+      "time": 0.030158281326293945,
+      "error": null
+    },
+    "assert file_name_check(\"r5q-#nhxw3:4b9d5z*xai.txt\") == 'No'": {
+      "result": true,
+      "time": 0.027580976486206055,
+      "error": null
+    },
+    "assert file_name_check('s.') == 'No'": {
+      "result": true,
+      "time": 0.029989004135131836,
+      "error": null
+    },
+    "assert file_name_check(\"VQtimZLsgjDfOBejmciF.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.02968621253967285,
+      "error": null
+    },
+    "assert file_name_check('MY16FILE3.exe') == 'Yes'": {
+      "result": true,
+      "time": 0.029832839965820312,
+      "error": null
+    },
+    "assert file_name_check(\"xj82uvv3djfudzwer.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.03011798858642578,
+      "error": null
+    },
+    "assert file_name_check('1I563_Yes3.exe') == 'No'": {
+      "result": true,
+      "time": 0.027777671813964844,
+      "error": null
+    },
+    "assert file_name_check('K.dll') == 'Yes'": {
+      "result": true,
+      "time": 0.027739524841308594,
+      "error": null
+    },
+    "assert file_name_check('this_is_valid.wow') == 'No'": {
+      "result": true,
+      "time": 0.029819488525390625,
+      "error": null
+    },
+    "assert file_name_check(\"cf612q:n?o1m8b0!+v43-wh.exe\") == 'No'": {
+      "result": true,
+      "time": 0.03476738929748535,
+      "error": null
+    },
+    "assert file_name_check(\"_:a:46!8yq_#06bxji8rf!2nt1!lsc.exe\") == 'No'": {
+      "result": true,
+      "time": 0.026870012283325195,
+      "error": null
+    },
+    "assert file_name_check(\"s&c1x*o/er*4$^rpw1uzbcb.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.026092052459716797,
+      "error": null
+    },
+    "assert file_name_check(\"ssgbu.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.029263734817504883,
+      "error": null
+    },
+    "assert file_name_check(\"example.txt\") == 'Yes'": {
+      "result": true,
+      "time": 0.029285192489624023,
+      "error": null
+    },
+    "assert file_name_check(\"l$!dvdd+dg!/:fz$_^.dll\") == 'Yes'": {
+      "result": true,
+      "time": 0.029001712799072266,
+      "error": null
+    },
+    "assert file_name_check(\"nzigdcskiz.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.026519060134887695,
+      "error": null
+    },
+    "assert file_name_check(\"sIR6wneLqFNKwY.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.031160593032836914,
+      "error": null
+    },
+    "assert file_name_check('?aREYA.exe') == 'No'": {
+      "result": true,
+      "time": 0.030437946319580078,
+      "error": null
+    },
+    "assert file_name_check(\"vmuccyt.exe\") == 'Yes'": {
+      "result": true,
+      "time": 0.024897336959838867,
+      "error": null
+    },
+    "assert file_name_check(\"1example.dll\") == 'No'": {
+      "result": true,
+      "time": 0.03324437141418457,
+      "error": null
+    }
+  },
+  "passed": true,
+  "accuracy": 1.0,
+  "general_error": "",
+  "has_testcase_error": false
+}
