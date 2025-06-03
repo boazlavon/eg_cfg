@@ -105,7 +105,7 @@ DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION = """
 {test_cases}
 """
 
-DEEPSEEK_INSTRUCT_TEMPLATE =  """\
+DEEPSEEK_INSTRUCT_TEMPLATE = """\
 You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer
 ### Instruction:
 Please refer the given examples and generate a python function for my problem.
@@ -298,7 +298,7 @@ def format_simple_mbpp_prompt(problem, function_signature):
 
 
 def format_custom_mbpp_prompt(problem):
-    test_cases = '\n'.join(problem["test_list"])
+    test_cases = "\n".join(problem["test_list"])
     prompt_template = CUSTOM_INSTRUCTION_TEXT
     if test_cases:
         prompt = prompt_template.format(
@@ -306,27 +306,31 @@ def format_custom_mbpp_prompt(problem):
             test_cases=test_cases,
         )
     else:
-        prompt_template = prompt_template.replace(TEST_CASES_INSTRUCTION, '') 
+        prompt_template = prompt_template.replace(TEST_CASES_INSTRUCTION, "")
         prompt = prompt_template.format(
             problem_text=problem["text"],
         )
     return prompt
 
+
 def format_deepseek_instruct_mbpp_prompt(problem):
-    test_cases = '\n'.join(problem["test_list"])
+    test_cases = "\n".join(problem["test_list"])
     prompt_template = DEEPSEEK_INSTRUCT_TEMPLATE
     if test_cases:
         prompt = prompt_template.format(
             problem_text=problem["text"],
             test_cases=test_cases,
         )
-        prompt = prompt.replace('>>>>', '>>>')
+        prompt = prompt.replace(">>>>", ">>>")
     else:
-        prompt_template = prompt_template.replace(DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION_TMP, '') 
+        prompt_template = prompt_template.replace(
+            DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION_TMP, ""
+        )
         prompt = prompt_template.format(
             problem_text=problem["text"],
         )
     return prompt
+
 
 def format_mbpp_prompt(problem, deepseek_instruct=False):
     function_signature = None
@@ -398,13 +402,13 @@ def load_humaneval_problems():
             test_case_to_assert(invocation, expected)
             for (invocation, expected) in example["test_list"]
         ]
-        function_name = example['entry_point']
+        function_name = example["entry_point"]
         eval_tests = []
         for eval_test in eval_test_list:
-            eval_test = eval_test.replace('candidate', function_name)
+            eval_test = eval_test.replace("candidate", function_name)
             eval_tests.append(eval_test)
-            
-        raw_test = example['test']
+
+        raw_test = example["test"]
         raw_test = f"{raw_test}\ncheck({function_name})"
         raw_test = [raw_test]
 

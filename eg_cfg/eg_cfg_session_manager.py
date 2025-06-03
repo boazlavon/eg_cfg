@@ -215,8 +215,11 @@ class EgCfgSessionManager:
                 )
         if self.session_config.dataset == DATASET__HUMANEVAL:
             official_passed_task_ids = []
-        
-        if not official_passed_task_ids and (self.session_config.model_name not in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)):
+
+        if not official_passed_task_ids and (
+            self.session_config.model_name
+            not in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
+        ):
             return
         if self.session_config.is_prod:
             random.shuffle(official_passed_task_ids)
@@ -318,7 +321,9 @@ class EgCfgSessionManager:
                     == PROMPT_TYPE__DEEPSEEK_BASE
                 ):
                     prompts_path = os.path.join(
-                        MAIN_DATA_DIR, DEEPSEEK_PROMPT_DIRNAME, MBPP_BASE_PROMPT_FILENAME
+                        MAIN_DATA_DIR,
+                        DEEPSEEK_PROMPT_DIRNAME,
+                        MBPP_BASE_PROMPT_FILENAME,
                     )
                     end_string = DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_END
                 if (
@@ -376,6 +381,10 @@ class EgCfgSessionManager:
                 "use_local_hf_model": self.use_local_hf_model,
                 "use_inference_endpoint": self.use_inference_endpoint,
                 "model_name": self.session_config.model_name,
+                "task_id": (
+                    problem["task_id"] if self.session_config.use_global_cache else None
+                ),
+                "solved_tasks_cache_dir": self.inference_session.solved_tasks_cache_dir,
                 # "debug_mode": self.session_config.debug_mode,
             }
 
@@ -384,8 +393,8 @@ class EgCfgSessionManager:
                 initial_prompt_input_ids_len = calculate_tokens_length(
                     self.tokenizer, prompt
                 )
-                if problem.get('entry_point'):
-                    function_name = problem.get('entry_point')
+                if problem.get("entry_point"):
+                    function_name = problem.get("entry_point")
                 else:
                     function_name, _, _ = parse_mbpp_assert_statement(
                         test_cases_to_prompt[0]
@@ -468,7 +477,7 @@ class EgCfgSessionManager:
                     self.session_config.model_name,
                     eg_cfg_injection_manager,
                     function_signature,
-                    function_name=problem.get('entry_point')
+                    function_name=problem.get("entry_point"),
                 )
             else:  # gamma == 0
                 # We resolve all gamma == 0.0. BUT it can be here in case we disable
@@ -484,7 +493,7 @@ class EgCfgSessionManager:
                     temperture=eg_cfg_injection_manager.adapter.temperature,
                     max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
                     verbose=True,
-                    function_name=problem.get('entry_point')
+                    function_name=problem.get("entry_point"),
                 )
                 if self.stats_manager is not None:
                     self.stats_manager.increate_counter(
@@ -716,8 +725,6 @@ class EgCfgSessionManager:
             )
             self.resolve_baseline_solved_entries()
         for _, problem in self.problems:
-            # if problem['task_id'] not in UNSOLVED_HUMANEVAL_TASKS[self.session_config.model_name]:
-            #     continue
             for inference_session_config in self.inference_sessions_configs:
                 self.setup_inference_session(
                     inference_session_config,
