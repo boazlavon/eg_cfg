@@ -1,3 +1,4 @@
+import os
 import torch
 from collections import OrderedDict
 from model_utils import extract_new_tokens, calculate_tokens_length
@@ -9,6 +10,10 @@ from code_generation_utils import (
 )
 from inference_endpoint_utils import inference_endpoint_utils__sample_code_beam_search
 from consts import *
+
+
+class EarlyTerminationExceptin(Exception):
+    pass
 
 
 class CodeGenerationAdapter:
@@ -31,6 +36,8 @@ class CodeGenerationAdapter:
         execution_manager=None,
         stats_manager=None,
         model_name=None,
+        task_id=None,
+        solved_tasks_cache_dir=None,
     ):
         assert (
             use_local_hf_model ^ use_inference_endpoint
@@ -74,6 +81,8 @@ class CodeGenerationAdapter:
         self.detector = None
         self.stats_manager = stats_manager
         self.model_name = model_name
+        self.task_id = task_id
+        self.solved_tasks_cache_dir = solved_tasks_cache_dir
 
         self.early_stop_detected = False
         self.early_stop_detected_program = None
@@ -134,8 +143,8 @@ class CodeGenerationAdapter:
                 self.current_debug_data[dynamic_signal_type],
             )
 
-        if self.generate_new_signal:
-            print("Generate New Signal!")
+        print("Generate New Signal!")
+        self.check_early_termination()
         if self.detector.function_start_idx is None:
             self.current_dynamic_signal[dynamic_signal_type] = ""
             self.current_debug_data[dynamic_signal_type] = ()
@@ -581,3 +590,15 @@ class CodeGenerationAdapter:
             pass
 
         return executable_partial_program_code
+
+    def check_early_termination(self):
+        if self.task_id is None:
+            return
+        global_cache_solved_task_id_path = os.path.join(
+            self.solved_tasks_cache_dir, f"{self.task_id}"
+        )
+        if os.path.exists(global_cache_solved_task_id_path):
+            print(f"Task {self.task_id} already solved, early termination requested")
+            raise EarlyTerminationExceptin(
+                f"Task {self.task_id} already solved, early termination requested"
+            )
