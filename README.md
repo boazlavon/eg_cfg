@@ -225,7 +225,7 @@ These fields are used for filtering and reporting.
 
 Some core functionality in EG-CFG relies on **custom extensions of external libraries**, which are included as Git submodules and redirected into the conda environment via symlinks.
 
-### 🛠️ Modified `transformers/` Library
+### 🛠️ Modified `transformers` Library
 
 In local inference mode, we extend the internal decoding loop of the HuggingFace `transformers` library to support execution-aware generation.
 Specifically, our modifications in `transformers/generation/utils.py` enable token-level integration of runtime feedback, allowing the model to dynamically condition on execution traces as described in Section 3 of the paper.
