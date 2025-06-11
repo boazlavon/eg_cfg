@@ -10,6 +10,7 @@ EG-CFG is a decoding-time algorithm for code generation that incorporates real-t
 - **MBPP**: 96.6%
 - **MBPP-ET**: 73.0%
 - **HumanEval-ET**: 87.19%
+- **CodeContests**: 58.18%
 
 ✅ All achieved using **open-source models** only (DeepSeek-V3-0324)
 
@@ -56,6 +57,20 @@ EG-CFG supports any causal language model that provides token-level log probabil
 | DeepSeek-V3-0324 | MGDebugger        | 87.20         | 81.09            | 25.39     | 9.44        |
 | DeepSeek-V3-0324 | LPW               | 95.12         | 84.74            | 68.02     | 26.89       |
 | GPT-4o           | LPW               | 98.2          | 84.8             | N/A       | N/A         |
+
+### CodeContests
+| Model            | Method           | Accuracy (%) | RSR (%)  |
+|------------------|------------------|--------------|----------|
+| DeepSeek-V3-0324 | Baseline LLM     | 41.81        | 0.00     |
+| DeepSeek-V3-0324 | **EG-CFG (Ours)**| **58.18**    | **28.13**|
+| DeepSeek-V3-0324 | MapCoder         | 50.30        | 14.59    |
+| GPT-4o           | LPW              | 34.7         | N/A      |
+| GPT-4o           | LDB              | 29.3         | N/A      |
+| GPT-4            | CodeSim          | 29.1         | N/A      |
+| GPT-4            | MapCoder         | 28.5         | N/A      |
+| GPT-3.5 Turbo    | CodeSim          | 16.4         | N/A      |
+| GPT-3.5 Turbo    | MapCoder         | 12.7         | N/A      |
+| MoTCoder-15B     | MoTCoder         | 26.34        | N/A      |
 
 > RSR: Relative Success Rate = Accuracy gain over baseline normalized to full success (see paper Sec. 4.1)
 > See full tables and ablations in the [paper](link).
