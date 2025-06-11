@@ -274,6 +274,10 @@ The HumanEval benchmark [Chen et al., 2021] consists of 164 hand-written Python 
 
 We also evaluate on MBPP-ET and HumanEval-ET, extended test suites proposed in CodeScore [Dong et al., 2025]. These enhancements add more challenging edge cases and improve coverage, offering better estimates of real-world generalization.
 
+🔹 CodeContests
+
+The CodeContests benchmark [Li et al., 2022] is a suite of competitive programming problems designed to evaluate advanced algorithmic reasoning and problem-solving skills. Each task includes a problem description and multiple hidden test cases. Solutions are evaluated using the [ExecEval framework](https://github.com/ntunlp/ExecEval) [Khan et al., 2024]. Performance on CodeContests reflects a model’s robustness and problem-solving depth under competitive constraints.
+
 ### 🧾 Prompt Format
 
 We use two prompt types to ensure broad and reproducible evaluation:
@@ -341,6 +345,22 @@ We gratefully acknowledge the authors of the following works for their implement
   number={3},
   pages={1--22},
   year={2025}
+}
+@article{li2022alphacode,
+  title={Competition-level code generation with AlphaCode},
+  author={Li, Yujia and Choi, David and Chung, Junyoung and Kushman, Nate and Schrittwieser, Julian and others},
+  journal={Science},
+  volume={378},
+  number={6624},
+  pages={1092--1097},
+  year={2022}
+}
+@inproceedings{khan2024xcodeeval,
+  title={XCodeEval: An Execution-Based Large Scale Multilingual Multitask Benchmark for Code Understanding, Generation, Translation and Retrieval},
+  author={Khan, Mohammad Abdullah Matin and Bari, M Saiful and Long, Do and Wang, Weishi and Parvez, Md Rizwan and Joty, Shafiq},
+  booktitle={Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={6766--6805},
+  year={2024}
 }
 ```
 ---
