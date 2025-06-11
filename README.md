@@ -1,22 +1,22 @@
 # EG-CFG: Execution-Guided Line-by-Line Code Generation 
 
-EG-CFG is a decoding-time algorithm for code generation that incorporates real-time **execution feedback** into LLM inference. By injecting dynamic signals during generation, EG-CFG guides the model toward correct and executable solutions — achieving state-of-the-art performance on the MBPP benchmark using open-source models only.
+**EG-CFG** is a decoding-time algorithm for code generation that integrates real-time *execution feedback* directly into LLM inference. By injecting dynamic signals during generation, EG-CFG guides the model toward correct and executable solutions. It achieves **state-of-the-art performance across a range of benchmarks** - from foundational tasks (*MBPP*, *HumanEval*) to extended evaluations (*MBPP-ET*, *HumanEval-ET*) and challenging competitive programming problems (*CodeContests*) - all using open-source models only.
 
 ---
 
 ## 🚀 Highlights
 
-📈 **New state-of-the-art (SOTA)** results:
+📈 **New state-of-the-art (SOTA) results**:
+
 - **MBPP**: 96.6%
 - **MBPP-ET**: 73.0%
 - **HumanEval-ET**: 87.19%
 - **CodeContests**: 58.18%
 
-✅ All achieved using **open-source models** only (DeepSeek-V3-0324)
-
-⚡ Real-time execution feedback integrated during decoding  
-🛠️ Fully configurable pipeline: local or endpoint inference  
-🔁 Reproducible and extensible for code generation research  
+✅ Achieved using **open-source models only** (DeepSeek-V3-0324)<br>
+⚡ Real-time execution feedback integrated during decoding<br>
+🛠️ Fully configurable pipeline — supports both local and endpoint inference<br>
+🔁 Reproducible and extensible framework for code generation research<br>
 
 ---
 ## 🧠 Models
@@ -274,6 +274,10 @@ The HumanEval benchmark [Chen et al., 2021] consists of 164 hand-written Python 
 
 We also evaluate on MBPP-ET and HumanEval-ET, extended test suites proposed in CodeScore [Dong et al., 2025]. These enhancements add more challenging edge cases and improve coverage, offering better estimates of real-world generalization.
 
+🔹 CodeContests
+
+The CodeContests benchmark [Li et al., 2022] is a suite of competitive programming problems designed to evaluate advanced algorithmic reasoning and problem-solving skills. Each task includes a problem description and multiple hidden test cases. Solutions are evaluated using the [ExecEval framework](https://github.com/ntunlp/ExecEval) [Khan et al., 2024]. Performance on CodeContests reflects a model’s robustness and problem-solving depth under competitive constraints.
+
 ### 🧾 Prompt Format
 
 We use two prompt types to ensure broad and reproducible evaluation:
@@ -341,6 +345,22 @@ We gratefully acknowledge the authors of the following works for their implement
   number={3},
   pages={1--22},
   year={2025}
+}
+@article{li2022alphacode,
+  title={Competition-level code generation with AlphaCode},
+  author={Li, Yujia and Choi, David and Chung, Junyoung and Kushman, Nate and Schrittwieser, Julian and others},
+  journal={Science},
+  volume={378},
+  number={6624},
+  pages={1092--1097},
+  year={2022}
+}
+@inproceedings{khan2024xcodeeval,
+  title={XCodeEval: An Execution-Based Large Scale Multilingual Multitask Benchmark for Code Understanding, Generation, Translation and Retrieval},
+  author={Khan, Mohammad Abdullah Matin and Bari, M Saiful and Long, Do and Wang, Weishi and Parvez, Md Rizwan and Joty, Shafiq},
+  booktitle={Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={6766--6805},
+  year={2024}
 }
 ```
 ---
