@@ -13,10 +13,10 @@ EG-CFG is a decoding-time algorithm for code generation that incorporates real-t
 - **HumanEval-ET**: 87.19%
 - **CodeContests**: 58.18%
 
-✅ Achieved using **open-source models only** (DeepSeek-V3-0324)
-⚡ Real-time execution feedback integrated during decoding
-🛠️ Fully configurable pipeline — supports both local and endpoint inference
-🔁 Reproducible and extensible framework for code generation research
+✅ Achieved using **open-source models only** (DeepSeek-V3-0324)<br>
+⚡ Real-time execution feedback integrated during decoding<br>
+🛠️ Fully configurable pipeline — supports both local and endpoint inference<br>
+🔁 Reproducible and extensible framework for code generation research<br>
 
 ---
 ## 🧠 Models
