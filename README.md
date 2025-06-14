@@ -31,7 +31,6 @@ EG-CFG supports any causal language model that provides token-level log probabil
 ### 🔹 [DeepSeek-V3-0324](https://huggingface.co/deepseek-ai/DeepSeek-V3-0324)
 - Large-scale foundation model
 - Used via inference endpoint
-- Achieves 96.6% on MBPP with EG-CFG, setting a new state-of-the-art
 
 ---
 ## 📊 Benchmark Results
