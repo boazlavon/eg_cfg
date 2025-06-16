@@ -21,6 +21,7 @@
 ## 📚 Resources
 📄 [arXiv Paper](https://arxiv.org/abs/2506.10948)  
 🎥 [Video Overview](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
+📊 [Papers with Code](https://paperswithcode.com/paper/execution-guided-line-by-line-code-generation) 
 
 ---
 ## 🧠 Models
