@@ -18,6 +18,10 @@
 🛠️ Fully configurable pipeline — supports both local and endpoint inference<br>
 🔁 Reproducible and extensible framework for code generation research<br>
 
+### 📚 Resources
+📄 [arXiv Paper](https://arxiv.org/abs/2506.10948)  
+🎥 [Video Overview](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
+
 ---
 ## 🧠 Models
 
@@ -72,7 +76,7 @@ EG-CFG supports any causal language model that provides token-level log probabil
 | MoTCoder-15B     | MoTCoder         | 26.34        | N/A      |
 
 > RSR: Relative Success Rate = Accuracy gain over baseline normalized to full success (see paper Sec. 4.1)
-> See full tables and ablations in the [paper](link).
+> See full tables and ablations in the [paper](https://arxiv.org/abs/2506.10948).
 
 ### Evaluation Limitations
 
