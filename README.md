@@ -1,6 +1,7 @@
 # EG-CFG: Execution-Guided Line-by-Line Code Generation 
 
-**EG-CFG** is a decoding-time algorithm for code generation that integrates real-time *execution feedback* directly into LLM inference. By injecting dynamic signals during generation, EG-CFG guides the model toward correct and executable solutions. It achieves **state-of-the-art performance across a range of benchmarks** - from foundational tasks (*MBPP*, *HumanEval*) to extended evaluations (*MBPP-ET*, *HumanEval-ET*) and challenging competitive programming problems (*CodeContests*) - all using open-source models only.
+**EG-CFG** is an inference-time algorithm for code generation that injects real-time execution feedback directly into the model’s decoding loop. By incorporating dynamic runtime signals during generation, it steers the model toward solutions that are not only syntactically valid, but also functionally correct and executable.
+It achieves **state-of-the-art performance across a range of benchmarks** - from foundational tasks (*MBPP*, *HumanEval*) to extended evaluations (*MBPP-ET*, *HumanEval-ET*) and challenging competitive programming problems (*CodeContests*) - all using open-source models only.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2506.10948-b31b1b)](https://arxiv.org/abs/2506.10948)
 [![Video](https://img.shields.io/badge/YouTube-Video-red)](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
