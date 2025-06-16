@@ -18,7 +18,7 @@
 🛠️ Fully configurable pipeline — supports both local and endpoint inference<br>
 🔁 Reproducible and extensible framework for code generation research<br>
 
-### 📚 Resources
+## 📚 Resources
 📄 [arXiv Paper](https://arxiv.org/abs/2506.10948)  
 🎥 [Video Overview](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
 
