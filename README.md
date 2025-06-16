@@ -19,9 +19,9 @@
 🔁 Reproducible and extensible framework for code generation research<br>
 
 ## 📚 Resources
-📄 [arXiv Paper](https://arxiv.org/abs/2506.10948)  
-🎥 [Video Overview](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
-📊 [Papers with Code](https://paperswithcode.com/paper/execution-guided-line-by-line-code-generation) 
+[![arXiv](https://img.shields.io/badge/arXiv-2506.10948-b31b1b)](https://arxiv.org/abs/2506.10948)
+[![Video](https://img.shields.io/badge/YouTube-Video-red)](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
+[![Papers with Code](https://img.shields.io/badge/Papers%20with%20Code-View-blue)](https://paperswithcode.com/paper/execution-guided-line-by-line-code-generation)
 
 ---
 ## 🧠 Models
