@@ -24,9 +24,6 @@
 🛠️ Fully configurable pipeline — supports both local and endpoint inference<br>
 🔁 Reproducible and extensible framework for code generation research<br>
 
-## 📚 Resources
-
----
 ## 🧠 Models
 
 EG-CFG supports any causal language model that provides token-level log probabilities. In our experiments, we use two models from the **DeepSeek** family:
