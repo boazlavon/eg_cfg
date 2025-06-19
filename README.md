@@ -315,11 +315,6 @@ No local GPU is required—all inference runs remotely on Fireworks infrastructu
 
 If you use EG-CFG or find our work helpful, please consider citing:
 
-Lavon, Boaz; Katz, Shahar; Wolf, Lior.  
-**Execution Guided Line-by-Line Code Generation.**  
-*arXiv preprint arXiv:2506.10948, 2025.*  
-👉 [arXiv:2506.10948](https://arxiv.org/abs/2506.10948)
-
 ```bibtex
 @article{lavon2025execution,
   title={Execution Guided Line-by-Line Code Generation},
