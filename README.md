@@ -327,9 +327,6 @@ Lavon, Boaz; Katz, Shahar; Wolf, Lior.
   journal={arXiv preprint arXiv:2506.10948},
   year={2025}
 }
-rust
-Copy
-Edit
 ```
 ---
 
