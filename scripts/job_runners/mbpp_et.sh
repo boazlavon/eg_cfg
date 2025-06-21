@@ -13,6 +13,7 @@ export CPUS_COUNT=1
 export INPUT_DIR="$1"
 export OUTPUT_DIR="$2"
 export NUM_WORKERS="$3"
+export DATASET="$4"
 
 # Validate input directory exists
 if [ ! -d "$INPUT_DIR" ]; then
@@ -39,9 +40,9 @@ sbatch \
 --partition=$PARTITION \
 --output $OUTPUT_FILE_PATH \
 --job-name=$RUN \
---export=ALL,INPUT_DIR=$INPUT_DIR,OUTPUT_DIR=$OUTPUT_DIR,NUM_WORKERS=$NUM_WORKERS \
+--export=ALL,INPUT_DIR=$INPUT_DIR,OUTPUT_DIR=$OUTPUT_DIR,NUM_WORKERS=$NUM_WORKERS,DATASET=$DATASET \
 scripts/job_runners/slurms/mbpp_et.slurm
 
-if [ "${4:-}" = "watch" ]; then
+if [ "${5:-}" = "watch" ]; then
     watch tail -n50 "$OUTPUT_FILE_PATH"
 fi

@@ -233,6 +233,7 @@ def raw_outputs_to_new_code(
             output_text, output_tokens = extract_new_tokens(
                 tokenizer, output, initial_prompt_input_ids_len
             )
+
             if stats_manager is not None:
                 stats_manager.increate_counter("output_tokens", output_tokens.shape[1])
             if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
@@ -243,6 +244,10 @@ def raw_outputs_to_new_code(
                 PROMPT_TYPE__DEEPSEEK_INSTRUCT,
                 PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
             ):
+                if is_valid_python(output_text):
+                    new_codes.append(output_text)
+                    continue
+
                 extracted_code = extract_python_code(output_text)
                 if not extracted_code:
                     extracted_code = output_text.split(
@@ -252,9 +257,6 @@ def raw_outputs_to_new_code(
                         extracted_code = extracted_code.split("```")[0]
             if validate:
                 assert is_valid_python(extracted_code)
-                # new_code = black.format_str(
-                #     new_code, mode=black.FileMode(line_length=1024)
-                # )
         except:
             continue
         new_codes.append(extracted_code)

@@ -1,4 +1,5 @@
 import torch
+from datetime import datetime, timedelta
 from collections import OrderedDict
 from model_utils import extract_new_tokens, calculate_tokens_length
 from mbpp_utils import parse_mbpp_assert_statement
@@ -9,6 +10,10 @@ from code_generation_utils import (
 )
 from inference_endpoint_utils import inference_endpoint_utils__sample_code_beam_search
 from consts import *
+
+
+class CodeGenTimeout(Exception):
+    pass
 
 
 class CodeGenerationAdapter:
@@ -25,12 +30,14 @@ class CodeGenerationAdapter:
         use_local_hf_model,
         use_inference_endpoint,
         bs_candidates_count=None,
+        bs_new_signal_threshold=None,
         temperature=None,
         bs_completion_horizon=None,
         guidance_strategy=None,
         execution_manager=None,
         stats_manager=None,
         model_name=None,
+        execute_io=None,
     ):
         assert (
             use_local_hf_model ^ use_inference_endpoint
@@ -55,11 +62,12 @@ class CodeGenerationAdapter:
         self.program_executions = OrderedDict()
         self.execution_manager = execution_manager
         self.bs_candidates_count = bs_candidates_count
+        self.bs_new_signal_threshold = bs_new_signal_threshold
         self.temperature = temperature
         self.bs_completion_horizon = bs_completion_horizon
         self.guidance_strategy = guidance_strategy
         self.lines_count = 0
-        self.current_bs_candidates_count = []
+        self.current_bs_candidates = []
         self.current_dynamic_signal = {}
         self.current_debug_data = {}
 
@@ -74,6 +82,7 @@ class CodeGenerationAdapter:
         self.detector = None
         self.stats_manager = stats_manager
         self.model_name = model_name
+        self.execute_io = execute_io
 
         self.early_stop_detected = False
         self.early_stop_detected_program = None
@@ -86,6 +95,8 @@ class CodeGenerationAdapter:
         self.dynamic_early_stop_counter = 0
         self.dynamic_early_stop_threshold = EARLY_STOP_THRESHOLD
         self.perform_dynamic_early_stop = False
+
+        self.start_time = datetime.now()
 
     @staticmethod
     def dynamic_signal_handlers():
@@ -134,8 +145,7 @@ class CodeGenerationAdapter:
                 self.current_debug_data[dynamic_signal_type],
             )
 
-        if self.generate_new_signal:
-            print("Generate New Signal!")
+        print("Generate New Signal!")
         if self.detector.function_start_idx is None:
             self.current_dynamic_signal[dynamic_signal_type] = ""
             self.current_debug_data[dynamic_signal_type] = ()
@@ -144,7 +154,10 @@ class CodeGenerationAdapter:
                 self.current_debug_data[dynamic_signal_type],
             )
 
-        function_name, args_str, _ = parse_mbpp_assert_statement(self.test_cases[0])
+        if self.execute_io:
+            function_name, args_str = "solve", "()"
+        else:
+            function_name, args_str, _ = parse_mbpp_assert_statement(self.test_cases[0])
         if self.use_local_hf_model:
             attention_mask = (input_ids != 0).long()
             inputs = {
@@ -207,7 +220,7 @@ class CodeGenerationAdapter:
 
         # print(f"Executable Programs: {len(executable_partial_programs)}")
         if executable_partial_programs:
-            self.current_bs_candidates_count = executable_partial_programs
+            self.current_bs_candidates = executable_partial_programs
 
         for idx, executable_partial_program_code in enumerate(
             executable_partial_programs
@@ -216,7 +229,9 @@ class CodeGenerationAdapter:
             if executable_partial_program_code not in self.program_executions:
                 self.program_executions[executable_partial_program_code] = (
                     self.execution_manager.execute_test_cases(
-                        executable_partial_program_code, self.test_cases
+                        executable_partial_program_code,
+                        self.test_cases,
+                        execute_io=self.execute_io,
                     )
                 )
 
@@ -267,8 +282,20 @@ class CodeGenerationAdapter:
                 executable_partial_program_code
             ].items():
                 trace = program_execution
-                function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
+                if program_execution is None:
+                    if self.stats_manager is not None:
+                        continue
+
+                if self.execute_io:
+                    function_name, args_str = "solve", "()"
+                else:
+                    function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
                 innvocation = f"{function_name}{args_str}"
+                if self.execute_io:
+                    innvocation += "\nstdin: {expected_stdin!r}\nexpected stdout: {expected_stdout}\n".format(
+                        expected_stdin=self.test_cases[0][0],
+                        expected_stdout=self.test_cases[0][1],
+                    )
                 dynamic_signal = MULTIPLE_CANDIDATES_DYNAMIC_SIGNAL_PATTERN.format(
                     function_code=executable_partial_program_code,
                     test_case=innvocation,
@@ -276,6 +303,8 @@ class CodeGenerationAdapter:
                 )
                 dynamic_signals.append(dynamic_signal)
 
+        if not dynamic_signals:
+            print("No dynamic signals found for executable partial programs")
         dynamic_signal_text = ""
         if dynamic_signals:
             dynamic_signals = "\n".join(dynamic_signals)
@@ -283,8 +312,9 @@ class CodeGenerationAdapter:
                 dynamic_signals=dynamic_signals
             )
 
-        # if the last line ends with : add a pass
         self.current_dynamic_signal[dynamic_signal_type] = dynamic_signal_text
+
+        # Debug purposes only
         executable_partial_program_code = self._extract_partial_executions(new_code)
         self.current_debug_data[dynamic_signal_type] = (
             executable_partial_program_code,
@@ -318,23 +348,30 @@ class CodeGenerationAdapter:
             guidance_strategy = GUIDANCE_STRATEGY__LINE_GUIDANCE
 
         generate_new_signal = False
+        lines_count = 0
         if guidance_strategy == GUIDANCE_STRATEGY__TOKEN_GUIDANCE:
             generate_new_signal = True
         if guidance_strategy == GUIDANCE_STRATEGY__LINE_GUIDANCE:
             lines_count = new_code.count("\n")
             if lines_count > self.lines_count:
                 self.lines_count = lines_count
-                generate_new_signal = True
+                print("Lines Count:", self.lines_count)
+                if self.lines_count % self.bs_new_signal_threshold == 0:
+                    generate_new_signal = True
+                    delta = datetime.now() - self.start_time
+                    if delta > timedelta(minutes=TIMEOUT_DELTA_MIN):
+                        raise CodeGenTimeout(
+                            f"More than {TIMEOUT_DELTA_MIN} minutes have passed"
+                        )
+
         if guidance_strategy == GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE:
             assert (
                 dynamic_signal_type == DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
             ), f"Unsupported Signal Type: {dynamic_signal_type}"
             # iterate over the new codes that were generated and check if new code is a prefix
-            if not self.current_bs_candidates_count:
+            if not self.current_bs_candidates:
                 generate_new_signal = True
-            for idx, current_new_code_sample in enumerate(
-                self.current_bs_candidates_count
-            ):
+            for idx, current_new_code_sample in enumerate(self.current_bs_candidates):
                 if not current_new_code_sample.startswith(new_code):
                     # print(f"New Code:\n{new_code}")
                     # print()
@@ -368,8 +405,20 @@ class CodeGenerationAdapter:
                 executable_partial_program_code
             ].items():
                 trace = program_execution
-                function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
+                if self.execute_io:
+                    function_name, args_str = "solve", "()"
+                else:
+                    function_name, args_str, _ = parse_mbpp_assert_statement(
+                        self.test_cases[0]
+                    )
                 innvocation = f"{function_name}{args_str}"
+                if self.execute_io:
+                    innvocation += (
+                        "stdin: {expected_stdin!r}\nstdout: {expected_stdout}\n".format(
+                            expected_stdin=self.test_cases[0][0],
+                            expected_stdout=self.test_cases[0][1],
+                        )
+                    )
                 dynamic_signal = SINGLE_DYNAMIC_SIGNAL_PATTERN.format(
                     test_case=innvocation, trace=trace
                 )
@@ -494,7 +543,7 @@ class CodeGenerationAdapter:
 
         # print(f"Executable Programs: {len(executable_partial_programs)}")
         if executable_partial_programs:
-            self.current_bs_candidates_count = executable_partial_programs
+            self.current_bs_candidates = executable_partial_programs
 
         if self.dynamic_early_stop_detected and len(executable_partial_programs) != 1:
             print(
@@ -573,7 +622,9 @@ class CodeGenerationAdapter:
                 print(f"Executing:\n {executable_partial_program_code}\n")
                 self.program_executions[executable_partial_program_code] = (
                     self.execution_manager.execute_test_cases(
-                        executable_partial_program_code, self.test_cases
+                        executable_partial_program_code,
+                        self.test_cases,
+                        self.execute_io,
                     )
                 )
         except ValueError:

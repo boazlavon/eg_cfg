@@ -3,220 +3,108 @@ import json
 import subprocess
 import tempfile
 import time
-import black
 import traceback
 from datasets import load_dataset
 from collections import OrderedDict
+import json
+import traceback
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from consts import *
 
-TEST_CASES_INSTRUCTION = """
-Write a Python function that satisfies the following test cases:
->>> Test Cases:
-{test_cases}
-"""
 
-CUSTOM_INSTRUCTION_TEXT = """\
-You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer
-### Instruction:
-{problem_text}
-
-Write a Python function that satisfies the following test cases:
->>> Test Cases:
-{test_cases}
-
-Your solution should be written in as many lines as possible.
-This ensures that prefixes of your function remain valid Python programs.
-Allowing **incremental execution and debugging**.
-
-Write the function **step by step**, progressively introducing variables and logic.
-Avoid using list comprehensions, lambda functions, or overly compact one-liners.
-Instead, follow these guidelines:**
-
-Avoid list comprehensions, use loops instead:
-Incorrect:
-```python
-def square_numbers(lst):
-    return [x ** 2 for x in lst]
-```
-
-Correct:
-```python
-def square_numbers(lst):
-    squares = []
-    for num in lst:
-        squared_value = num ** 2
-        squares.append(squared_value)
-    return squares
-```
-
-Avoid inline expressions, use variables instead
-Incorrect:
-```python
-def calculate_area(length, width):
-    return (length * width) / 2
-```
-
-Correct:
-```python
-def calculate_area(length, width):
-    product = length * width
-    area = product / 2
-    return area
-```
-
-Incorrect:
-```python
-result.append(x + y)
-```
-
-Correct:
-```python
-z = x + y
-result.append(z)
-```
-
-Incorrect:
-```python
-def compute_value(a, b, c):
-    return (a + b) * (c / (a - b) + (a * c) / (b + c))
-```
-
-Correct:
-```python
-def compute_value(a, b, c):
-    term1 = a + b 
-    term2 = a - b 
-    term3 = c / term2 
-    term4 = a * c / (b + c)
-    result = term1 * (term3 + term4)
-    return result
-```
-
-### Response:
-"""
-
-DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION_TMP = """
->>>> Test Cases:
-{test_cases}
-"""
-
-DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION = """
->>> Test Cases:
-{test_cases}
-"""
-
-DEEPSEEK_INSTRUCT_TEMPLATE =  """\
-You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer
-### Instruction:
-Please refer the given examples and generate a python function for my problem.
-Examples are listed as follows:
-
-- Example 1:
->>> Problem:
-Write a function to find the similar elements from the given two tuple lists.
->>> Test Cases:
-assert similar_elements((3, 4, 5, 6),(5, 7, 4, 10)) == (4, 5)
-assert similar_elements((1, 2, 3, 4),(5, 4, 3, 7)) == (3, 4)
-assert similar_elements((11, 12, 14, 13),(17, 15, 14, 13)) == (13, 14)
-
->>> Code:
-```python
-def similar_elements(test_tup1, test_tup2):
-  res = tuple(set(test_tup1) & set(test_tup2))
-  return (res)
-```
-
-- Example 2:
->>> Problem:
-Write a python function to identify non-prime numbers.
->>> Test Cases:
-assert is_not_prime(2) == False
-assert is_not_prime(10) == True
-assert is_not_prime(35) == True
-
->>> Code:
-```python
-import math
-def is_not_prime(n):
-    result = False
-    for i in range(2,int(math.sqrt(n)) + 1):
-        if n % i == 0:
-            result = True
-    return result
-```
-
-- Example 3:
->>> Problem:
-Write a function to find the largest integers from a given list of numbers using heap queue algorithm.
->>> Test Cases:
-assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],3)==[85, 75, 65]
-assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],2)==[85, 75]
-assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],5)==[85, 75, 65, 58, 35]
-
->>> Code:
-```python
-import heapq as hq
-def heap_queue_largest(nums,n):
-  largest_nums = hq.nlargest(n, nums)
-  return largest_nums
-```
-
-Here is my problem:
->>> Problem:
-{problem_text}
->>>> Test Cases:
-{test_cases}
-
-### Response:
-"""
-
-
-TASK_HEADER = "### Task"
-GOAL_INSTRUCTION = (
-    "### Your goal is to write a Python function that solves the problem above."
-)
-EXAMPLES_HEADER = "### Here are some examples:"
-
-PROMPT_TEMPLATE = """{task_header}
-{text}
-
-{goal_instruction}
-{examples_block}
-
-{function_signature}
-"""
-
-
-def run_tests(solution, test_cases):
+def run_tests(solution, test_cases, io_flag=False, max_workers=8):
     results = {}
-    for test_case in test_cases:
-        if solution is None:
-            results[test_case] = {
+
+    if solution is None:
+        for test_case in test_cases:
+            test_case_key = json.dumps(test_case) if io_flag else test_case
+            results[test_case_key] = {
                 "result": False,
                 "time": -1,
                 "error": "GenerationError",
             }
-            continue
+        return results
 
+    def run_single_test(test_case):
+        test_case_key = json.dumps(test_case) if io_flag else test_case
         try:
-            results[test_case] = evaluate_solution(solution, test_case)
+            if io_flag:
+                eval_result = evaluate_solution_io(solution, test_case, timeout=10)
+            else:
+                eval_result = evaluate_solution(solution, test_case)
+            return test_case_key, eval_result
         except Exception as e:
             tb = traceback.format_exc()
-            results[test_case] = {
+            print(f"Problem executing test case: {test_case}")
+            return test_case_key, {
                 "result": False,
                 "time": -1,
                 "error": str(type(e)),
                 "tb": tb,
             }
-            print(f"Problem executing test case: {test_case}")
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_case = {executor.submit(run_single_test, tc): tc for tc in test_cases}
+        for future in as_completed(future_to_case):
+            test_case_key, result = future.result()
+            results[test_case_key] = result
+
     return results
+
+
+def evaluate_solution_io(code, test_case, timeout=15):
+    test_passed = False
+    error = None
+    expected_stdin, expecte_stdout = test_case
+    with tempfile.NamedTemporaryFile(mode="w+", delete=False) as raw_stdout_file:
+        raw_stdout_path = raw_stdout_file.name
+    invocation = "solve()"
+    injected_prefix = INJECT_IO_EVAL.format(
+        expected_stdin=expected_stdin, stdout_path=raw_stdout_path
+    )
+    test_code = f"{injected_prefix}\n{code}"
+    if not code.strip().endswith(invocation):
+        test_code = f"{test_code}\n{invocation}"
+
+    with tempfile.NamedTemporaryFile(suffix=".py", mode="w") as temp_file:
+        temp_file.write(test_code)
+        temp_file.flush()
+
+        start_time = time.time()
+        try:
+            result = subprocess.run(
+                ["python", temp_file.name],
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+            )
+
+            test_passed = False
+            if result.returncode == 0 and not "Traceback" in result.stderr:
+                # test_passed = True
+                with open(raw_stdout_path, "r") as raw_stdout_content_f:
+                    stdout_content = raw_stdout_content_f.read()
+                if stdout_content == expecte_stdout:
+                    test_passed = True
+
+        except subprocess.TimeoutExpired:
+            error = "Timeout"
+            pass
+        except Exception as e:
+            error = "Exception"
+            pass
+        finally:
+            end_time = time.time()
+            delta_time = end_time - start_time
+
+    result_entry = {"result": test_passed, "time": delta_time, "error": error}
+    return result_entry
 
 
 def evaluate_solution(code, test_case, timeout=10):
     test_passed = False
     error = None
     test_code = f"{code}\n{test_case}"
-    # test_code = black.format_str(test_code, mode=black.FileMode(line_length=1024))
 
     with tempfile.NamedTemporaryFile(suffix=".py", mode="w") as temp_file:
         temp_file.write(test_code)
@@ -297,47 +185,64 @@ def format_simple_mbpp_prompt(problem, function_signature):
     ).strip()
 
 
-def format_custom_mbpp_prompt(problem):
-    test_cases = '\n'.join(problem["test_list"])
-    prompt_template = CUSTOM_INSTRUCTION_TEXT
+def format_test_cases_io(test_cases):
+    formatted = [
+        "Here are example test cases using standard input and standard output:"
+    ]
+    for i, (inp, out) in enumerate(test_cases, 1):
+        formatted.append(f"\nTest Case {i}:")
+        formatted.append(f"Input (stdin): {inp!r}")
+        formatted.append(f"Expected Output (stdout): {out!r}")
+    return "\n".join(formatted)
+
+
+def format_long_code_prompt(problem):
+    if type(problem["test_list"][0]) == str:
+        test_cases = "\n".join(problem["test_list"])
+    if type(problem["test_list"][0]) == tuple:
+        test_cases = format_test_cases_io(problem["test_list"])
+    prompt_template = LONG_CODE_INSTRUCTION_TEXT
     if test_cases:
         prompt = prompt_template.format(
             problem_text=problem["text"],
             test_cases=test_cases,
         )
     else:
-        prompt_template = prompt_template.replace(TEST_CASES_INSTRUCTION, '') 
+        prompt_template = prompt_template.replace(TEST_CASES_INSTRUCTION, "")
         prompt = prompt_template.format(
             problem_text=problem["text"],
         )
     return prompt
 
+
 def format_deepseek_instruct_mbpp_prompt(problem):
-    test_cases = '\n'.join(problem["test_list"])
+    if type(problem["test_list"][0]) == str:
+        test_cases = "\n".join(problem["test_list"])
+    if type(problem["test_list"][0]) == tuple:
+        test_cases = format_test_cases_io(problem["test_list"])
     prompt_template = DEEPSEEK_INSTRUCT_TEMPLATE
     if test_cases:
         prompt = prompt_template.format(
             problem_text=problem["text"],
             test_cases=test_cases,
         )
-        prompt = prompt.replace('>>>>', '>>>')
+        prompt = prompt.replace(">>>>", ">>>")
     else:
-        prompt_template = prompt_template.replace(DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION_TMP, '') 
+        prompt_template = prompt_template.replace(
+            DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION_TMP, ""
+        )
         prompt = prompt_template.format(
             problem_text=problem["text"],
         )
     return prompt
 
-def format_mbpp_prompt(problem, deepseek_instruct=False):
+
+def format_task_prompt(problem, deepseek_instruct=False):
     function_signature = None
-    if deepseek_instruct:
+    if deepseek_instruct:  # deepseek instruct prompt
         prompt = format_deepseek_instruct_mbpp_prompt(problem)
-    # if simple_prompt:
-    #     function_signature = extract_function_signature(problem["code"])
-    #     assert function_signature, "Function signature could not be extracted."
-    #     prompt = format_simple_mbpp_prompt(problem, function_signature)
-    else:
-        prompt = format_custom_mbpp_prompt(problem)
+    else:  # long-code prompt
+        prompt = format_long_code_prompt(problem)
     return (prompt, function_signature)
 
 
@@ -372,12 +277,6 @@ def extract_asserts_for_candidate_function(test_string: str) -> list[str]:
     return assert_statements
 
 
-HUMANEVAL_INSTRUCTION_TEMPLATE = """
-Write a function that performs the following task: {instruction}
-It should have the following function signature: {function_signature}
-"""
-
-
 def test_case_to_assert(invocation: str, expected: str) -> str:
     """Convert a (input, expected_output) pair to a Python assert statement."""
     return f"assert {invocation} == {expected}"
@@ -398,13 +297,13 @@ def load_humaneval_problems():
             test_case_to_assert(invocation, expected)
             for (invocation, expected) in example["test_list"]
         ]
-        function_name = example['entry_point']
+        function_name = example["entry_point"]
         eval_tests = []
         for eval_test in eval_test_list:
-            eval_test = eval_test.replace('candidate', function_name)
+            eval_test = eval_test.replace("candidate", function_name)
             eval_tests.append(eval_test)
-            
-        raw_test = example['test']
+
+        raw_test = example["test"]
         raw_test = f"{raw_test}\ncheck({function_name})"
         raw_test = [raw_test]
 
@@ -414,12 +313,64 @@ def load_humaneval_problems():
             "code": example["code"],
             "test_list": test_cases,
             "eval_test_list": raw_test,
-            # "eval_test_list": eval_tests,
             "entry_point": function_name,
         }
         problems[task_id] = new_example
 
     return problems
+
+
+def load_codecontests_problems():
+    test_ds = load_dataset("deepmind/code_contests", split="test")
+    dataset = OrderedDict()
+    for example in test_ds:
+        task_id = example["name"]
+        task_id = task_id.split(" ")[0].rstrip(".")
+        print(task_id)
+        assert len(example["public_tests"]["input"]) == len(
+            example["public_tests"]["output"]
+        )
+
+        eval_test_cases = []
+        test_cases = []
+
+        for in_sample, out_sample in zip(
+            example["public_tests"]["input"], example["public_tests"]["output"]
+        ):
+            test_cases.append((in_sample, out_sample))
+        test_cases = test_cases[:TESTS_COUNT_THRESHOLD]
+        for in_sample, out_sample in zip(
+            example["private_tests"]["input"], example["private_tests"]["output"]
+        ):
+            eval_test_cases.append((in_sample, out_sample))
+
+        for in_sample, out_sample in zip(
+            example["generated_tests"]["input"],
+            example["generated_tests"]["output"],
+        ):
+            eval_test_cases.append((in_sample, out_sample))
+
+        # # In case there are no private tests, use public tests as eval tests
+        if not eval_test_cases:
+            eval_test_cases = test_cases
+
+        function_structure_comment = SOLUTION_FUNCTION_STRUCTURE_INSTRUCTION
+        function_name = "solve"
+        instruction = example["description"]
+        instruction = f"{instruction}\n{function_structure_comment}"
+        code = EXAMPLE_CODE
+
+        new_example = {
+            "task_id": task_id,
+            "text": instruction,
+            "code": code,
+            "test_list": test_cases,
+            "eval_test_list": eval_test_cases,
+            "entry_point": function_name,
+            "difficulty": example["difficulty"],
+        }
+        dataset[task_id] = new_example
+    return dataset
 
 
 def load_jsonl(file_path):

@@ -35,7 +35,10 @@ def get_dynamic_signals_str(inference_session_config):
         t = inference_session_config[
             DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
         ].temperature
-        dynamic_signals_str.append(f"ns{s}t{t}d{d_arg}")
+        k = inference_session_config[
+            DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
+        ].bs_new_signal_threshold
+        dynamic_signals_str.append(f"ns{s}t{t}d{d_arg}k{k}")
     dynamic_signals_str = "".join(dynamic_signals_str)
 
     if (
@@ -123,6 +126,7 @@ def build_inference_session_config(args):
             temperature=args["t"] if args["n"] else None,
             bs_candidates_count=args["s"] if args["n"] else None,
             bs_completion_horizon=args["d"] if args["n"] else None,
+            bs_new_signal_threshold=args["k"] if args["n"] else None,
         ),
         DYNAMIC_SIGNAL__PARTIAL_EXECUTION: Namespace(
             is_enabled=args["p"],
@@ -207,6 +211,12 @@ def get_cmdline_args():
         type=float,
         default=0.1,
         help="Multiple Candidates Beam-Search Sampling - Temperature",
+    )
+    parser.add_argument(
+        "--k",
+        type=int,
+        default=1,
+        help="New Signal Threshold for Multiple Candidates Beam-Search Sampling",
     )
     parser.add_argument(
         "--d",
@@ -310,12 +320,12 @@ def generate_grid_configs(inference_session_grid_json, session_config_json):
     ]
 
     partial_execution_session_grid_args = {
-        'n': [False], 
-        'p': [True], 
-        'g': ['line_guidance'],
-        'd': [None],
-        'prompt_type': ['deepseek_instruct', 'long_code'], 
-    } 
+        "n": [False],
+        "p": [True],
+        "g": ["line_guidance"],
+        "d": [None],
+        "prompt_type": ["deepseek_instruct", "long_code"],
+    }
     partial_sessions_configs = [
         build_inference_session_config(inference_args)
         for inference_args in ParameterGrid(partial_execution_session_grid_args)
