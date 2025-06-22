@@ -104,7 +104,7 @@ environment.yml   # Conda environment definition
 ## ⚡ Quickstart
 
 ```bash
-git clone --recurse-submodules git@github.com:OUR_REPO/eg_cfg.git
+git clone --recurse-submodules https://github.com/boazlavon/eg_cfg.git
 cd eg_cfg
 conda env create -f environment.yml -n eg-cfg-env
 conda activate eg-cfg-env
