@@ -129,7 +129,6 @@ def reasoning_tokens_query(
             completion_tokens = 0
         else:
             data = response.json()
-            # import ipdb; ipdb.set_trace()
             raw_text = data["choices"][0]["text"]
             completion_tokens = data["usage"]["completion_tokens"]
         total_completion_tokens += completion_tokens
@@ -467,11 +466,6 @@ def inference_endpoint_utils__sample_code_beam_search(
         batch_size=batch_size,
         prompt_with_cot=prompt_with_cot,
     )
-    if stats_manager is not None:
-        stats_manager.increate_counter("beam_search_input_tokens", input_ids.shape[1])
-        stats_manager.increate_counter(
-            "beam_search_output_tokens", total_completion_tokens
-        )
     return unique_codes
 
 
@@ -518,10 +512,6 @@ def inference_endpoint_eg_cfg_gamma_1_optimization(
 
     inputs = tokenizer(prompt, return_tensors="pt")
     input_ids = inputs["input_ids"]
-    if stats_manager is not None:
-        stats_manager.increate_counter("guidance_input_tokens", input_ids.shape[1])
-        stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
-
     prompt += answer_start_until_code
     eg_cfg_injection_manager.adapter.prompt_with_cot = prompt
 
@@ -658,10 +648,6 @@ def inference_endpoint_eg_cfg(
 
     inputs = tokenizer(prompt, return_tensors="pt")
     input_ids = inputs["input_ids"]
-    if stats_manager is not None:
-        stats_manager.increate_counter("guidance_input_tokens", input_ids.shape[1])
-        stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
-
     prompt += answer_start_until_code
     eg_cfg_injection_manager.adapter.prompt_with_cot = prompt
 
@@ -837,8 +823,4 @@ def inference_endpoint_utils__get_next_token_prob_dist(
         tokenizer, next_token_logprob_dist_dict
     )
     next_token_prob_dist = next_token_prob_dist.unsqueeze(0)
-
-    if stats_manager is not None:
-        stats_manager.increate_counter("guidance_input_tokens", input_ids.shape[1])
-        stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
     return next_token_prob_dist

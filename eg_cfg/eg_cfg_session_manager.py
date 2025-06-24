@@ -475,6 +475,10 @@ class EgCfgSessionManager:
                     )
                     break
 
+            max_tokens = MAX_NEW_TOKENS
+            if self.session_config.dataset == DATASET__CODECONTESTS:
+                max_tokens *= 3
+
             if gamma > 0.0:
                 if (
                     gamma == 1.001
@@ -487,6 +491,7 @@ class EgCfgSessionManager:
                             eg_cfg_injection_manager,
                             function_signature,
                             function_name=problem.get("entry_point"),
+                            max_tokens=max_tokens,
                         )
                     )
                 else:
@@ -498,6 +503,7 @@ class EgCfgSessionManager:
                             eg_cfg_injection_manager,
                             function_signature,
                             function_name=problem.get("entry_point"),
+                            max_tokens=max_tokens,
                         )
                     )
                 if inference_initial_prompt_input_ids_len is not None:
@@ -517,13 +523,6 @@ class EgCfgSessionManager:
                     verbose=True,
                     function_name=problem.get("entry_point"),
                 )
-                if self.stats_manager is not None:
-                    self.stats_manager.increate_counter(
-                        "guidance_input_tokens", prompt_input_ids.shape[1]
-                    )
-                    self.stats_manager.increate_counter(
-                        "guidance_output_tokens", completion_tokens
-                    )
                 assert solution
                 return solution
             if early_stop:
@@ -665,7 +664,7 @@ class EgCfgSessionManager:
         print()
 
         global_cache_solved_task_id_path = os.path.join(
-            self.inference_session.solved_tasks_cache_dir, f"{task_id}"
+            self.inference_session.solved_tasks_cache_dir, f"{task_id}.json"
         )
         for gamma in self.session_config.gammas:
             print(f"task_id={task_id}, gamma={gamma}")
@@ -711,8 +710,8 @@ class EgCfgSessionManager:
                                 and not "global_cached" in solution_entry_dump
                             ):
                                 print(f"Added new global cache entry: {task_id}")
-                                with open(global_cache_solved_task_id_path, "w") as f:
-                                    f.write(solution_entry_path)
+                                with open(global_cache_solved_task_id_path, "w") as f2:
+                                    json.dump(solution_entry, f2, indent=2)
                             break
                         elif solution_entry and not solution_entry["passed"]:
                             print(
@@ -756,8 +755,8 @@ class EgCfgSessionManager:
                 ):
                     with open(global_cache_solved_task_id_path, "a"):
                         pass
-                    with open(global_cache_solved_task_id_path, "w") as f:
-                        f.write(solution_entry_path)
+                    with open(global_cache_solved_task_id_path, "w") as f2:
+                        json.dump(solution_entry, f2, indent=2)
                 break
             else:
                 print(f"Failed Solving Problem task_id={task_id} (gamma={gamma})")

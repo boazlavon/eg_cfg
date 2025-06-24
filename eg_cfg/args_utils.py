@@ -76,7 +76,7 @@ def dynamis_sigansl_str_to_cmdline_args(dynamic_signals_str):
         "d": None,
         "s": None,
         "t": None,
-        "b": False,
+        "k": None,
     }
 
     if dynamic_signals_str.endswith("_tok"):
@@ -100,17 +100,16 @@ def dynamis_sigansl_str_to_cmdline_args(dynamic_signals_str):
     if base.startswith("p"):
         args["p"] = True
         base = base.replace("p", "")
-    if "b" in base:
-        args["b"] = True
-        base = base.replace("b", "")
-
-    match = re.search(r"ns(\d+)t([\d.]+)d(\w+)", base)
+    # match = re.search(r"ns(\d+)t([\d.]+)d(\w+)", base)
+    match = re.search(r"ns(\d+)t([\d.]+)d(\w+)k(\d+)", base)
     if match:
         args["n"] = True
         args["s"] = int(match.group(1))
         args["t"] = float(match.group(2))
         d_raw = match.group(3)
         args["d"] = d_raw if d_raw == "inf" else int(d_raw)
+        if match.group(4) is not None:
+            args["k"] = int(match.group(4))
 
     return args
 
