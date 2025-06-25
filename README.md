@@ -15,19 +15,14 @@
 📈 **New state-of-the-art (SOTA) results**:
 
 - **MBPP**: 96.6% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-mbpp)](https://paperswithcode.com/sota/code-generation-on-mbpp?p=execution-guided-line-by-line-code-generation)
-- **MBPP-ET**: 73.0%
-- **HumanEval-ET**: 87.19%
-- **CodeContests**: 58.18%
+- **MBPP-ET**: 73.0% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-mbpp-et)](https://paperswithcode.com/sota/code-generation-on-mbpp-et?p=execution-guided-line-by-line-code-generation)
+- **HumanEval-ET**: 87.19% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-humaneval-et)](https://paperswithcode.com/sota/code-generation-on-humaneval-et?p=execution-guided-line-by-line-code-generation)
+- **CodeContests**: 58.18% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-codecontests)](https://paperswithcode.com/sota/code-generation-on-codecontests?p=execution-guided-line-by-line-code-generation) 
 
 ✅ Achieved using **open-source models only** (DeepSeek-V3-0324)<br>
 ⚡ Real-time execution feedback integrated during decoding<br>
 🛠️ Fully configurable pipeline — supports both local and endpoint inference<br>
 🔁 Reproducible and extensible framework for code generation research<br>
-
- \\
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-mbpp-et)](https://paperswithcode.com/sota/code-generation-on-mbpp-et?p=execution-guided-line-by-line-code-generation) \\
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-humaneval-et)](https://paperswithcode.com/sota/code-generation-on-humaneval-et?p=execution-guided-line-by-line-code-generation) \\
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-codecontests)](https://paperswithcode.com/sota/code-generation-on-codecontests?p=execution-guided-line-by-line-code-generation) \\
 
 ## 🧠 Models
 
