@@ -9,7 +9,7 @@ sys.path.insert(0, parent_dir)
 
 from traces_dumper.program_execution import ProgramExecution
 from code_generation_utils import remove_comments_and_docstrings, is_valid_python
-from mbpp_utils import parse_assert_statement
+from datasets_utils import parse_assert_statement
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from consts import *

@@ -2,7 +2,7 @@ import torch
 from datetime import datetime, timedelta
 from collections import OrderedDict
 from model_utils import extract_new_tokens, calculate_tokens_length
-from mbpp_utils import parse_assert_statement
+from datasets_utils import parse_assert_statement
 from code_generation_utils import (
     generate_code_solutions,
     raw_outputs_to_new_code,

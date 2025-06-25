@@ -8,19 +8,18 @@ import os
 import json
 import traceback
 import random
-from mbpp_utils import (
+from datasets_utils import (
     format_task_prompt,
     load_mbpp_problems,
     load_humaneval_problems,
     load_codecontests_problems,
-    run_tests,
     extract_function_signature,
 )
 from eval_utils import (
     run_tests,
 )
 from model_utils import calculate_tokens_length
-from mbpp_utils import parse_assert_statement, load_official_results
+from datasets_utils import parse_assert_statement, load_official_results
 from code_generation_utils import (
     generate_code_solutions,
     raw_outputs_to_new_code,
