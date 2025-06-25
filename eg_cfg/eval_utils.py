@@ -9,7 +9,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from consts import *
 
 
-def run_tests(solution, test_cases, io_flag=False, max_workers=8):
+def run_tests(solution, test_cases, io_flag=False, max_workers=DEFAULT_MAX_WORKERS):
     results = {}
 
     if solution is None:
@@ -49,7 +49,7 @@ def run_tests(solution, test_cases, io_flag=False, max_workers=8):
     return results
 
 
-def evaluate_solution_io(code, test_case, timeout=15):
+def evaluate_solution_io(code, test_case, timeout=EVALUATE_SOLUTION_IO_TIMEOUT_SEC):
     test_passed = False
     error = None
     expected_stdin, expecte_stdout = test_case
@@ -98,7 +98,7 @@ def evaluate_solution_io(code, test_case, timeout=15):
     return result_entry
 
 
-def evaluate_solution(code, test_case, timeout=10):
+def evaluate_solution(code, test_case, timeout=EVALUATE_SOLUTION_TIMEOUT_SEC):
     test_passed = False
     error = None
     test_code = f"{code}\n{test_case}"

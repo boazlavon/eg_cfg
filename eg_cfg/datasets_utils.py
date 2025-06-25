@@ -116,8 +116,26 @@ def format_task_prompt(problem, deepseek_instruct=False):
     return (prompt, function_signature)
 
 
+def load_mbpp_et_problems():
+    test_ds = load_dataset(DATASET__MBPP_ET_HF_PATH, split="train")
+    problems = OrderedDict((example["task_id"], example) for example in test_ds)
+    return problems
+
+
+def load_humaneval_et_problems():
+    test_ds = load_dataset(DATASET__HUMANEVAL_ET_HF_PATH, split="train")
+    problems = OrderedDict()
+    for example in test_ds:
+        task_id = example["task_id"]
+        problems[task_id] = {
+            "test_list": example["test_case_list"],  # list of assert statements
+            "entry_point": example["entry_point"],  # function name to check
+        }
+    return problems
+
+
 def load_mbpp_problems():
-    test_ds = load_dataset("google-research-datasets/mbpp", "full", split="test")
+    test_ds = load_dataset(DATASET__MBPP__HF_PATH, "full", split="test")
     problems = OrderedDict((example["task_id"], example) for example in test_ds)
     return problems
 
@@ -191,7 +209,7 @@ def load_humaneval_problems():
 
 
 def load_codecontests_problems():
-    test_ds = load_dataset("deepmind/code_contests", split="test")
+    test_ds = load_dataset(DATASET__CODECONTESTS__HF_PATH, split="test")
     dataset = OrderedDict()
     for example in test_ds:
         task_id = example["name"]
@@ -286,3 +304,12 @@ def load_official_results(model_name):
         official_results = {}
     official_passed_task_ids = list(official_passed_task_ids)
     return official_passed_task_ids, official_results
+
+
+LOAD_DATASET_HANDLER = {
+    DATASET__MBPP: load_mbpp_problems,
+    DATASET__HUMANEVAL: load_humaneval_problems,
+    DATASET__CODECONTESTS: load_codecontests_problems,
+    DATASET__MBPP_ET: load_mbpp_et_problems,
+    DATASET__HUMANEVAL_ET: load_humaneval_et_problems,
+}
