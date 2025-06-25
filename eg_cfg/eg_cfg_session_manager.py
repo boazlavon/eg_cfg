@@ -18,6 +18,7 @@ from datasets_utils import (
 from eval_utils import (
     run_tests,
 )
+from exec_eval_utils import exec_eval__run_tests, ExecEval__Session
 from model_utils import calculate_tokens_length
 from datasets_utils import parse_assert_statement, load_official_results
 from code_generation_utils import (
@@ -38,6 +39,8 @@ from inference_endpoint_utils import (
 )
 from consts import *
 from datetime import datetime
+
+EXEC_EVAL_SESSION = None
 
 
 def format_results(solution, results, general_error, tb=None):
@@ -165,12 +168,22 @@ class EgCfgSessionManager:
                 os.getcwd(), self.session_config.results_dir
             )
             os.makedirs(self.session_config.results_dir, exist_ok=True)
+        if self.session_config.exec_eval:
+            global EXEC_EVAL_SESSION
+            if EXEC_EVAL_SESSION is None:
+                EXEC_EVAL_SESSION = ExecEval__Session(
+                    self.session_config.exec_eval_host_ip,
+                    self.session_config.exec_eval_host_port,
+                )
 
     def create_results_dir(self, session_config, inference_session_config):
         dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
+        dataset_name = self.session_config.dataset
+        if self.session_config.exec_eval:
+            dataset_name = f"{dataset_name}__ExecEval"
         results_dir = os.path.join(
             self.session_config.results_dir,
-            self.session_config.dataset,
+            dataset_name,
             session_config.model_name.replace("/", "_"),
             dynamic_signals_str,
         )
@@ -181,9 +194,12 @@ class EgCfgSessionManager:
             self.session_config, inference_session_config
         )
         os.makedirs(results_dir, exist_ok=True)
+        dataset_name = self.session_config.dataset
+        if self.session_config.exec_eval:
+            dataset_name = f"{dataset_name}__ExecEval"
         solved_tasks_cache_dir = os.path.join(
             self.session_config.results_dir,
-            self.session_config.dataset,
+            dataset_name,
             self.session_config.model_name.replace("/", "_"),
             SOLVED_TASKS_CACHE_DIRNAME,
         )
@@ -628,10 +644,16 @@ class EgCfgSessionManager:
                 self.stats_manager.set_value("tests_start_time", tests_start_time_str)
 
             io_flag = self.session_config.dataset == DATASET__CODECONTESTS
-            solution_results = run_tests(solution, test_cases_to_eval, io_flag)
-            solution_entry = format_results(
-                solution, solution_results, general_error, tb
-            )
+            if self.session_config.exec_eval:
+                global EXEC_EVAL_SESSION
+                solution_entry = exec_eval__run_tests(
+                    solution, test_cases_to_eval, EXEC_EVAL_SESSION
+                )
+            else:
+                solution_results = run_tests(solution, test_cases_to_eval, io_flag)
+                solution_entry = format_results(
+                    solution, solution_results, general_error, tb
+                )
 
             tests_end_time = datetime.now()
             tests_end_time_str = tests_end_time.strftime("%Y-%m-%d %H:%M:%S")

@@ -102,13 +102,17 @@ def dynamis_sigansl_str_to_cmdline_args(dynamic_signals_str):
         base = base.replace("p", "")
     # match = re.search(r"ns(\d+)t([\d.]+)d(\w+)", base)
     match = re.search(r"ns(\d+)t([\d.]+)d(\w+)k(\d+)", base)
+    if not match:
+        args["k"] = 1
+        match = re.search(r"ns(\d+)t([\d.]+)d(\w+)", base)
+
     if match:
         args["n"] = True
         args["s"] = int(match.group(1))
         args["t"] = float(match.group(2))
         d_raw = match.group(3)
         args["d"] = d_raw if d_raw == "inf" else int(d_raw)
-        if match.group(4) is not None:
+        if args["k"] is None and match.group(4) is not None:
             args["k"] = int(match.group(4))
 
     return args
@@ -156,6 +160,13 @@ def build_session_config(args):
         ),
         "minimal_trace": args.get(
             "minimal_trace", SESSION_CONFIGS_DEFAULT_VALUES["minimal_trace"]
+        ),
+        "exec_eval": args.get("exec_eval", SESSION_CONFIGS_DEFAULT_VALUES["exec_eval"]),
+        "exec_eval_host_ip": args.get(
+            "exec_eval_host_ip", SESSION_CONFIGS_DEFAULT_VALUES["exec_eval_host_ip"]
+        ),
+        "exec_eval_host_port": args.get(
+            "exec_eval_host_port", SESSION_CONFIGS_DEFAULT_VALUES["exec_eval_host_port"]
         ),
         "top_probs": args.get("top_probs", SESSION_CONFIGS_DEFAULT_VALUES["top_probs"]),
         "debug_mode": args.get(
@@ -231,6 +242,19 @@ def get_cmdline_args():
         help="Guidance strategy to use. Options: %(choices)s (default: %(default)s)",
     )
     parser.add_argument("--minimal-trace", action="store_true")
+    parser.add_argument("--exec-eval", action="store_true")
+    parser.add_argument(
+        "--exec-eval-host-ip",
+        type=str,
+        default=None,
+        help="IP address for execution evaluation host",
+    )
+    parser.add_argument(
+        "--exec-eval-host-port",
+        type=int,
+        default=EXEC_EVAL_DEFAULT_HOST_PORT,
+        help="Port for execution evaluation host",
+    )
     parser.add_argument("--global-cache", action="store_true")
     parser.add_argument("--debug-mode", action="store_true")
     parser.add_argument("--top-probs", type=int, default=0, help="top probs")

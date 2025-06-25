@@ -115,6 +115,7 @@ def reasoning_tokens_query(
     total_completion_tokens = 0
     answer_start_until_code = None
     for match_retry in range(total_match_retries):
+        temperture *= 0.9**match_retry
         print(f"Match Retry #{match_retry + 1}/{total_match_retries}")
         response = inference_endpoint_utils__post_request_retries(
             inference_endpoint_url,

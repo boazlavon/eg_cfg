@@ -27,10 +27,21 @@ class ExecEval__ExecOutcome(Enum):
 # ExecEval/eval_scripts/api_comm.py
 class ExecEval__Session:
     def __init__(self, exec_eval_host_ip, exec_eval_host_port):
+        assert exec_eval_host_ip is not None, "ExecEval host IP must be specified"
+        assert exec_eval_host_port is not None, "ExecEval host port must be specified"
         self.session = requests.Session()
         self.execute_code_url = EXEC_EVAL__EXECUTE_CODE_URL_TEMPLATE.format(
             exec_eval_host_ip=exec_eval_host_ip, exec_eval_host_port=exec_eval_host_port
         )
+        self.test_connection()
+
+    def test_connection(self):
+        source_code = "def solve():\n    pass\nsolve()"
+        unittests = [{"input": "", "output": [""]}]
+        results = self.execute_tests(source_code, unittests)
+        assert (
+            results[0].get("exec_outcome") == ExecEval__ExecOutcome.PASSED.value
+        ), "ExecEval session initialization failed, expected PASSED outcome, got: "
 
     def __enter__(self):
         return self
