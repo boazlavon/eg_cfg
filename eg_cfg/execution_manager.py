@@ -9,7 +9,7 @@ sys.path.insert(0, parent_dir)
 
 from traces_dumper.program_execution import ProgramExecution
 from code_generation_utils import remove_comments_and_docstrings, is_valid_python
-from mbpp_utils import parse_mbpp_assert_statement
+from mbpp_utils import parse_assert_statement
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from consts import *
@@ -69,9 +69,7 @@ class ExecutionManager:
                 else:
                     invocation = test_case
                     if not use_assert:
-                        function_name, args_str, _ = parse_mbpp_assert_statement(
-                            test_case
-                        )
+                        function_name, args_str, _ = parse_assert_statement(test_case)
                         invocation = f"{function_name}{args_str}"
                     test_case_code = f"{executable_code}\n{invocation}"
                 assert is_valid_python(

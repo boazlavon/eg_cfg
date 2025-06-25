@@ -16,8 +16,11 @@ from mbpp_utils import (
     run_tests,
     extract_function_signature,
 )
+from eval_utils import (
+    run_tests,
+)
 from model_utils import calculate_tokens_length
-from mbpp_utils import parse_mbpp_assert_statement, load_official_results
+from mbpp_utils import parse_assert_statement, load_official_results
 from code_generation_utils import (
     generate_code_solutions,
     raw_outputs_to_new_code,
@@ -401,7 +404,7 @@ class EgCfgSessionManager:
                 if problem.get("entry_point"):
                     function_name = problem.get("entry_point")
                 else:
-                    function_name, _, _ = parse_mbpp_assert_statement(
+                    function_name, _, _ = parse_assert_statement(
                         test_cases_to_prompt[0]
                     )
                 detector_kwargs = {

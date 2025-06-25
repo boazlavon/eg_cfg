@@ -2,7 +2,7 @@ import torch
 from datetime import datetime, timedelta
 from collections import OrderedDict
 from model_utils import extract_new_tokens, calculate_tokens_length
-from mbpp_utils import parse_mbpp_assert_statement
+from mbpp_utils import parse_assert_statement
 from code_generation_utils import (
     generate_code_solutions,
     raw_outputs_to_new_code,
@@ -157,7 +157,7 @@ class CodeGenerationAdapter:
         if self.execute_io:
             function_name, args_str = "solve", "()"
         else:
-            function_name, args_str, _ = parse_mbpp_assert_statement(self.test_cases[0])
+            function_name, args_str, _ = parse_assert_statement(self.test_cases[0])
         if self.use_local_hf_model:
             attention_mask = (input_ids != 0).long()
             inputs = {
@@ -289,7 +289,7 @@ class CodeGenerationAdapter:
                 if self.execute_io:
                     function_name, args_str = "solve", "()"
                 else:
-                    function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
+                    function_name, args_str, _ = parse_assert_statement(test_case)
                 innvocation = f"{function_name}{args_str}"
                 if self.execute_io:
                     innvocation += "\nstdin: {expected_stdin!r}\nexpected stdout: {expected_stdout}\n".format(
@@ -408,7 +408,7 @@ class CodeGenerationAdapter:
                 if self.execute_io:
                     function_name, args_str = "solve", "()"
                 else:
-                    function_name, args_str, _ = parse_mbpp_assert_statement(
+                    function_name, args_str, _ = parse_assert_statement(
                         self.test_cases[0]
                     )
                 innvocation = f"{function_name}{args_str}"
