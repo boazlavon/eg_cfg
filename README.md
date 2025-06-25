@@ -8,11 +8,6 @@
 [![Video](https://img.shields.io/badge/YouTube-Video-red)](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
 [![Papers with Code](https://img.shields.io/badge/Papers%20with%20Code-View-blue)](https://paperswithcode.com/paper/execution-guided-line-by-line-code-generation)
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-mbpp)](https://paperswithcode.com/sota/code-generation-on-mbpp?p=execution-guided-line-by-line-code-generation)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-mbpp-et)](https://paperswithcode.com/sota/code-generation-on-mbpp-et?p=execution-guided-line-by-line-code-generation)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-humaneval-et)](https://paperswithcode.com/sota/code-generation-on-humaneval-et?p=execution-guided-line-by-line-code-generation)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-codecontests)](https://paperswithcode.com/sota/code-generation-on-codecontests?p=execution-guided-line-by-line-code-generation)
-
 ---
 
 ## 🚀 Highlights
@@ -28,6 +23,11 @@
 ⚡ Real-time execution feedback integrated during decoding<br>
 🛠️ Fully configurable pipeline — supports both local and endpoint inference<br>
 🔁 Reproducible and extensible framework for code generation research<br>
+
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-mbpp)](https://paperswithcode.com/sota/code-generation-on-mbpp?p=execution-guided-line-by-line-code-generation)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-mbpp-et)](https://paperswithcode.com/sota/code-generation-on-mbpp-et?p=execution-guided-line-by-line-code-generation)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-humaneval-et)](https://paperswithcode.com/sota/code-generation-on-humaneval-et?p=execution-guided-line-by-line-code-generation)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-codecontests)](https://paperswithcode.com/sota/code-generation-on-codecontests?p=execution-guided-line-by-line-code-generation)
 
 ## 🧠 Models
 
