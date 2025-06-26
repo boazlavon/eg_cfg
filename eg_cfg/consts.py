@@ -56,6 +56,8 @@ sys.stdin = io.StringIO(s)
 sys.stdout = open("{stdout_path}", "w")
 """
 
+GAMMA_1_OPTIMIZATION_VALUE = 1.001
+
 # We cannot override sys.stdin in anyway because the debugger and
 # the program share thesame stdin so it overrides the debugger stdin as well
 # in this way we cannot execute the debugger commands in "traces_dumper/runner.py"

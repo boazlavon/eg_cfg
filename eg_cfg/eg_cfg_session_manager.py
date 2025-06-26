@@ -499,7 +499,7 @@ class EgCfgSessionManager:
 
             if gamma > 0.0:
                 if (
-                    gamma == 1.001
+                    gamma == GAMMA_1_OPTIMIZATION_VALUE
                 ):  # gamma == 1.0001 is a special case for optimization for gamma=1
                     outputs, early_stop, inference_initial_prompt_input_ids_len = (
                         inference_endpoint_eg_cfg_gamma_1_optimization(
@@ -791,4 +791,7 @@ class EgCfgSessionManager:
                 self.setup_inference_session(
                     inference_session_config,
                 )
+                if problem["task_id"] not in TMP_TO_SOLVE_IDS:
+                    print(f"Problem task_id={problem['task_id']} - skipping")
+                    continue
                 self.solve_single_problem(problem)
