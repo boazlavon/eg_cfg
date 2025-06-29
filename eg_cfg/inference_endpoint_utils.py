@@ -1,4 +1,5 @@
 import os
+import traceback
 import requests
 import re
 from collections import defaultdict
@@ -95,6 +96,7 @@ def reasoning_tokens_query(
     verbose=False,
     stop_condition=COMPLEX_QUERY_STOP_CONDITION,
     function_name=None,
+    return_raw=False,
 ):
     inference_endpoint_api_key = os.environ.get("FW_KEY")
     inference_endpoint_url = os.environ.get("FW_ENDPOINT_URL")
@@ -116,22 +118,37 @@ def reasoning_tokens_query(
     answer_start_until_code = None
     for match_retry in range(total_match_retries):
         temperture *= 0.9**match_retry
-        print(f"Match Retry #{match_retry + 1}/{total_match_retries}")
-        response = inference_endpoint_utils__post_request_retries(
-            inference_endpoint_url,
-            headers,
-            json.dumps(payload),
-            timeout=QWEN_REQUEST_TIMEOUT_SEC,
-            post_requests_retries=post_requests_retries,
-            verbose=verbose,
-        )
-        if type(response) == type(""):
-            raw_text = response
-            completion_tokens = 0
-        else:
-            data = response.json()
-            raw_text = data["choices"][0]["text"]
-            completion_tokens = data["usage"]["completion_tokens"]
+        try:
+            print(f"Match Retry #{match_retry + 1}/{total_match_retries}")
+            response = inference_endpoint_utils__post_request_retries(
+                inference_endpoint_url,
+                headers,
+                json.dumps(payload),
+                timeout=QWEN_REQUEST_TIMEOUT_SEC,
+                post_requests_retries=post_requests_retries,
+                verbose=verbose,
+            )
+            if type(response) == type(""):
+                raw_text = response
+                completion_tokens = 0
+            else:
+                data = response.json()
+                raw_text = data["choices"][0]["text"]
+                assert data.get("usage", None), f"Invalid response: {data}"
+                completion_tokens = data["usage"]["completion_tokens"]
+        except Exception as e:
+            general_error = str(type(e))
+            tb = traceback.format_exc()
+            print(f"Error: {general_error}")
+            print(tb)
+            print()
+            continue
+
+        if return_raw:
+            answer_start_until_code = ""
+            last_block = raw_text
+            return answer_start_until_code, last_block, completion_tokens
+
         total_completion_tokens += completion_tokens
         raw_text = raw_text.replace(
             "<python>", INSTRUCT_MODEL_PYTHON_CODE_START_TOK
@@ -196,6 +213,7 @@ def simple_query(
         verbose=verbose,
     )
     data = response.json()
+    assert data.get("usage", None), f"Invalid response: {data}"
     completion_tokens = data["usage"]["completion_tokens"]
     raw_text = data["choices"][0]["text"]
     if add_stop_condition:
@@ -259,6 +277,7 @@ def beam_search_batch(
             verbose=True,
         )
         data = response.json()
+        assert data.get("usage", None), f"Invalid response: {data}"
         completion_tokens = data["usage"]["completion_tokens"]
         total_completion_tokens += completion_tokens
         only_answer = prompt[len(prompt_with_cot) :]
@@ -387,6 +406,9 @@ def inference_endpoint_utils__post_request_retries(
                     f"[ERROR] Exception on request #{retry_idx + 1}: Code: {response.status_code}"
                 )
                 continue
+
+            respones_data = response.json()
+            assert respones_data["usage"], f"Invalid response: {respones_data}"
             break
         except Exception as e:
             err = e
@@ -427,6 +449,7 @@ def inference_endpoint_utils__get_next_token_top_logprob_dist(
     )
     data = response.json()
     try:
+        assert data.get("usage", None), f"Invalid response: {data}"
         completion_tokens = data["usage"]["completion_tokens"]
         assert completion_tokens == max_tokens
     except:
@@ -467,6 +490,11 @@ def inference_endpoint_utils__sample_code_beam_search(
         batch_size=batch_size,
         prompt_with_cot=prompt_with_cot,
     )
+    if stats_manager is not None:
+        stats_manager.increate_counter("beam_search_input_tokens", input_ids.shape[1])
+        stats_manager.increate_counter(
+            "beam_search_output_tokens", total_completion_tokens
+        )
     return unique_codes
 
 
@@ -513,6 +541,10 @@ def inference_endpoint_eg_cfg_gamma_1_optimization(
 
     inputs = tokenizer(prompt, return_tensors="pt")
     input_ids = inputs["input_ids"]
+    if stats_manager is not None:
+        stats_manager.increate_counter("guidance_input_tokens", input_ids.shape[1])
+        stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
+
     prompt += answer_start_until_code
     eg_cfg_injection_manager.adapter.prompt_with_cot = prompt
 
@@ -649,6 +681,9 @@ def inference_endpoint_eg_cfg(
 
     inputs = tokenizer(prompt, return_tensors="pt")
     input_ids = inputs["input_ids"]
+    if stats_manager is not None:
+        stats_manager.increate_counter("guidance_input_tokens", input_ids.shape[1])
+        stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
     prompt += answer_start_until_code
     eg_cfg_injection_manager.adapter.prompt_with_cot = prompt
 
@@ -795,6 +830,7 @@ def inference_endpoint_utils__get_next_line(
         verbose=False,
     )
     data = response.json()
+    assert data.get("usage", None), f"Invalid response: {data}"
     completion_tokens = data["usage"]["completion_tokens"]
     raw_text = data["choices"][0]["text"]
     output = raw_text
@@ -824,4 +860,7 @@ def inference_endpoint_utils__get_next_token_prob_dist(
         tokenizer, next_token_logprob_dist_dict
     )
     next_token_prob_dist = next_token_prob_dist.unsqueeze(0)
+    if stats_manager is not None:
+        stats_manager.increate_counter("guidance_input_tokens", input_ids.shape[1])
+        stats_manager.increate_counter("guidance_output_tokens", completion_tokens)
     return next_token_prob_dist

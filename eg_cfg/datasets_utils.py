@@ -195,6 +195,7 @@ def load_humaneval_problems():
         raw_test = f"{raw_test}\ncheck({function_name})"
         raw_test = [raw_test]
 
+        task_id = task_id.replace("/", "_")
         new_example = {
             "task_id": task_id,
             "text": instruction_text,

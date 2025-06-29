@@ -46,6 +46,11 @@ def run_tests(solution, test_cases, io_flag=False, max_workers=DEFAULT_MAX_WORKE
             test_case_key, result = future.result()
             results[test_case_key] = result
 
+    ## FOR DEBUGGING
+    # for test_case in test_cases:
+    #     test_case_key, result = run_single_test(test_case)
+    #     results[test_case_key] = result
+
     return results
 
 

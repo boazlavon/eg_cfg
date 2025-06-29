@@ -324,7 +324,10 @@ class EgCfgSessionManager:
         test_cases_to_prompt = problem["test_list"]
         use_eg_cfg = True
         use_detector = True
-        if (
+        if gamma == 0 and self.session_config.dataset == DATASET__HUMANEVAL:
+            prompt = problem["prompt"]
+            end_string = CODE_BORDER_TOKEN
+        elif (
             self.inference_session.inference_session_config["prompt_type"]
             == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT
         ):
@@ -540,7 +543,17 @@ class EgCfgSessionManager:
                     max_tokens=REASONING_TOKENS_QUERY_MAX_TOKENS,
                     verbose=True,
                     function_name=problem.get("entry_point"),
+                    return_raw=(self.session_config.dataset == DATASET__HUMANEVAL),
                 )
+                if self.session_config.dataset == DATASET__HUMANEVAL:
+                    solution = f"{prompt}\n{solution}"
+                if self.stats_manager is not None:
+                    self.stats_manager.increate_counter(
+                        "guidance_input_tokens", prompt_input_ids.shape[1]
+                    )
+                    self.stats_manager.increate_counter(
+                        "guidance_output_tokens", completion_tokens
+                    )
                 assert solution
                 return solution
             if early_stop:
@@ -787,6 +800,8 @@ class EgCfgSessionManager:
 
     def solve(self):
         for _, problem in self.problems:
+            if "163" not in problem["task_id"]:
+                continue
             for inference_session_config in self.inference_sessions_configs:
                 self.setup_inference_session(
                     inference_session_config,
