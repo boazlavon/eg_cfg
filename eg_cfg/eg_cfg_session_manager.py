@@ -791,7 +791,4 @@ class EgCfgSessionManager:
                 self.setup_inference_session(
                     inference_session_config,
                 )
-                if problem["task_id"] not in TMP_TO_SOLVE_IDS:
-                    print(f"Problem task_id={problem['task_id']} - skipping")
-                    continue
                 self.solve_single_problem(problem)
