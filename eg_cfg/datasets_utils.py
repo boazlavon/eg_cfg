@@ -203,6 +203,7 @@ def load_humaneval_problems():
             "test_list": test_cases,
             "eval_test_list": raw_test,
             "entry_point": function_name,
+            "prompt": example["prompt"],
         }
         problems[task_id] = new_example
 

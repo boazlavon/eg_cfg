@@ -800,8 +800,6 @@ class EgCfgSessionManager:
 
     def solve(self):
         for _, problem in self.problems:
-            if "163" not in problem["task_id"]:
-                continue
             for inference_session_config in self.inference_sessions_configs:
                 self.setup_inference_session(
                     inference_session_config,
