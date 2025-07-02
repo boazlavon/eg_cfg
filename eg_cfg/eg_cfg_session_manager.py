@@ -18,9 +18,9 @@ from datasets_utils import (
 from eval_utils import (
     run_tests,
 )
-from exec_eval_utils import exec_eval__run_tests, ExecEval__Session
+from exec_eval_utils import exec_eval__run_tests, ExecEval__APICommunication
 from model_utils import calculate_tokens_length
-from datasets_utils import parse_assert_statement, load_official_results
+from datasets_utils import parse_assert_statement
 from code_generation_utils import (
     generate_code_solutions,
     raw_outputs_to_new_code,
@@ -40,7 +40,7 @@ from inference_endpoint_utils import (
 from consts import *
 from datetime import datetime
 
-EXEC_EVAL_SESSION = None
+EXEC_EVAL_API_COMM = None
 
 
 def format_results(solution, results, general_error, tb=None):
@@ -169,9 +169,9 @@ class EgCfgSessionManager:
             )
             os.makedirs(self.session_config.results_dir, exist_ok=True)
         if self.session_config.exec_eval:
-            global EXEC_EVAL_SESSION
-            if EXEC_EVAL_SESSION is None:
-                EXEC_EVAL_SESSION = ExecEval__Session(
+            global EXEC_EVAL_API_COMM
+            if EXEC_EVAL_API_COMM is None:
+                EXEC_EVAL_API_COMM = ExecEval__APICommunication(
                     self.session_config.exec_eval_host_ip,
                     self.session_config.exec_eval_host_port,
                 )
@@ -220,103 +220,6 @@ class EgCfgSessionManager:
             task_id = task_id.replace("/", "_")
         filename = FILENAME_TEMPLATE.format(task_id=task_id, gamma=gamma)
         return os.path.join(results_dir, filename)
-
-    def resolve_baseline_solved_entries(self):
-        gamma = 0.0
-        if self.session_config.dataset == DATASET__MBPP:
-            if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
-                official_passed_task_ids = DEEPSEEK_V3_0324_SOLVED_TASK_IDS
-            elif self.session_config.model_name == QWEN3_253B_MODEL_NAME_HF:
-                official_passed_task_ids = QWEN3_SOLVED_TASK_IDS
-            else:
-                official_passed_task_ids, official_results = load_official_results(
-                    self.session_config.model_name
-                )
-        if self.session_config.dataset == DATASET__HUMANEVAL:
-            official_passed_task_ids = []
-
-        if not official_passed_task_ids and (
-            self.session_config.model_name
-            not in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
-        ):
-            return
-        if self.session_config.is_prod:
-            random.shuffle(official_passed_task_ids)
-        for _, problem in self.problems:
-            task_id = problem["task_id"]
-            if (
-                not self.session_config.model_name
-                in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
-            ) and (not task_id in official_passed_task_ids):
-                continue
-            solution_entry_path = self.get_solution_filepath(
-                self.inference_session.results_dir, task_id, gamma
-            )
-            if os.path.exists(solution_entry_path):
-                continue
-
-            with open(solution_entry_path, "a"):
-                pass
-            print(f"task_id: {task_id}")
-            # pprint.pprint(problem)
-            solution = None
-            general_error = None
-            tb = None
-            solution_entry = None
-
-            if self.session_config.model_name in (
-                DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
-                DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME,
-            ):
-                eval_problem = self.eval_dataset[task_id]
-                if self.session_config.dataset in (DATASET__MBPP,):
-                    test_cases_to_eval = eval_problem["test_list"]
-                if self.session_config.dataset in (
-                    DATASET__HUMANEVAL,
-                    DATASET__CODECONTESTS,
-                ):
-                    test_cases_to_eval = eval_problem["eval_test_list"]
-
-                solution = official_results[task_id]["generation"]
-                solution_results = run_tests(solution, test_cases_to_eval)
-                solution_entry = format_results(
-                    solution, solution_results, general_error, tb
-                )
-                solution_entry["stats"] = {}
-                solution_entry["retry"] = -1
-                solution_entry["random_seed"] = -1
-                self.solutions[(task_id, gamma)] = solution_entry
-
-                print(solution_entry_path)
-                with open(solution_entry_path, "w") as f:
-                    json.dump(solution_entry, f, indent=2)
-
-            elif self.session_config.model_name in (
-                DEEPSEEK_V3_0324_MODEL_NAME_HF,
-                QWEN3_253B_MODEL_NAME_HF,
-            ):
-                baseline_trial_base = BASELINE_TRIALS_BASE[
-                    (self.session_config.model_name, self.session_config.dataset)
-                ]
-                for baseline_dir in BASELINE_DIRS:
-                    results_dir = os.path.join(baseline_trial_base, baseline_dir)
-                    bs_solution_entry_path = self.get_solution_filepath(
-                        results_dir,
-                        task_id,
-                        gamma=0.0,
-                    )
-                    if not os.path.exists(bs_solution_entry_path):
-                        continue
-                    with open(bs_solution_entry_path) as f:
-                        bs_solution_entry = json.load(f)
-                    for gamma in (0, 0.0):
-                        solution_entry_path = self.get_solution_filepath(
-                            self.inference_session.results_dir, task_id, gamma
-                        )
-                        with open(solution_entry_path, "w") as f:
-                            json.dump(bs_solution_entry, f, indent=2)
-                    if bs_solution_entry["passed"]:
-                        break
 
     def build_eg_cfg_injection_manager_and_prompt(
         self, problem, gamma, function_signature=None
@@ -658,9 +561,9 @@ class EgCfgSessionManager:
 
             io_flag = self.session_config.dataset == DATASET__CODECONTESTS
             if self.session_config.exec_eval:
-                global EXEC_EVAL_SESSION
+                global EXEC_EVAL_API_COMM
                 solution_entry = exec_eval__run_tests(
-                    solution, test_cases_to_eval, EXEC_EVAL_SESSION
+                    solution, test_cases_to_eval, EXEC_EVAL_API_COMM
                 )
             else:
                 solution_results = run_tests(solution, test_cases_to_eval, io_flag)

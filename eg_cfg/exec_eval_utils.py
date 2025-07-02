@@ -3,6 +3,10 @@ import requests
 import json
 from consts import *
 
+###############################################################
+### ExecEval Repository: https://github.com/ntunlp/ExecEval ###
+###############################################################
+
 
 # ExecEval/eval_scripts/exec_outcome.py
 class ExecEval__ExecOutcome(Enum):
@@ -25,7 +29,7 @@ class ExecEval__ExecOutcome(Enum):
 
 
 # ExecEval/eval_scripts/api_comm.py
-class ExecEval__Session:
+class ExecEval__APICommunication:
     def __init__(self, exec_eval_host_ip, exec_eval_host_port):
         assert exec_eval_host_ip is not None, "ExecEval host IP must be specified"
         assert exec_eval_host_port is not None, "ExecEval host port must be specified"

@@ -12,6 +12,7 @@ from eg_cfg.eval_utils import run_tests
 from eg_cfg.eg_cfg_session_manager import format_results
 
 
+HUMANEVAL_JSON_PATH = "data/humaneval/humaneval.json"
 HUMANEVAL_HF_PATH = "openai/openai_humaneval"
 FW_URL = "https://api.fireworks.ai/inference/v1/chat/completions"
 API_KEY = os.environ.get("FIREWORKS_API_KEY")
@@ -385,14 +386,14 @@ def validate_tests(dataset):
 def main():
     dataset = None
     try:
-        with open("humaneval.json", "r") as f:
+        with open(HUMANEVAL_JSON_PATH, "r") as f:
             dataset = json.load(f)
     except:
         pass
 
     if not dataset:
         dataset = build_dataset_with_tests_cases()
-        with open("humaneval.json", "w") as f:
+        with open(HUMANEVAL_JSON_PATH, "w") as f:
             json.dump(dataset, f, indent=2)
 
     validate_tests(dataset)

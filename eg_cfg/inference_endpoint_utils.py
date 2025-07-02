@@ -105,19 +105,19 @@ def reasoning_tokens_query(
         "Content-Type": "application/json",
         "Authorization": f"Bearer {inference_endpoint_api_key}",
     }
-    payload = {
-        "model": HF_MODEL_TO_FW_MODEL[model_name],
-        "prompt": prompt,
-        "max_tokens": max_tokens,
-        "temperature": temperture,
-        "top_p": top_p,
-        "stop": stop_condition,
-    }
     total_match_retries = MATCH_RETRIES_COUNT
     total_completion_tokens = 0
     answer_start_until_code = None
     for match_retry in range(total_match_retries):
-        temperture *= 0.9**match_retry
+        temperture = temperture * (0.9**match_retry)
+        payload = {
+            "model": HF_MODEL_TO_FW_MODEL[model_name],
+            "prompt": prompt,
+            "max_tokens": max_tokens,
+            "temperature": temperture,
+            "top_p": top_p,
+            "stop": stop_condition,
+        }
         try:
             print(f"Match Retry #{match_retry + 1}/{total_match_retries}")
             response = inference_endpoint_utils__post_request_retries(

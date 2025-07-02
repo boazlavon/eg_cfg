@@ -11,7 +11,7 @@ from datasets_utils import LOAD_DATASET_HANDLER
 from eval_utils import run_tests
 from exec_eval_utils import exec_eval__run_tests
 from eg_cfg_session_manager import format_results
-from exec_eval_utils import ExecEval__Session
+from exec_eval_utils import ExecEval__APICommunication
 from consts import *
 
 
@@ -29,7 +29,6 @@ def process_file(
     output_file = output_dir / filename
 
     if output_file.exists():
-        # print(f"Skipping (exists): {output_file}")
         return
 
     try:
@@ -37,7 +36,6 @@ def process_file(
             data = json.load(f)
             code = data.get("code")
             if not code:
-                # print(f"No code in {filename}")
                 return
 
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -50,7 +48,7 @@ def process_file(
         solution_entry = None
         try:
             if eval_type == EVAL_TYPE__EG_CFG:
-                solution_results = run_tests(code, test_cases, inputs, io_flag=io_flag)
+                solution_results = run_tests(code, test_cases, io_flag=io_flag)
                 solution_entry = format_results(
                     code, solution_results, general_error, tb
                 )
@@ -58,7 +56,6 @@ def process_file(
                 solution_entry = exec_eval__run_tests(
                     code, test_cases, exec_eval_session
                 )
-                # solution_entry['test_list'] = dict_test_cases
         except Exception as e:
             general_error = str(e)
             tb = traceback.format_exc()
@@ -195,7 +192,9 @@ def main(
 
     exec_eval_session = None
     if eval_type == EVAL_TYPE__EXEC_EVAL:
-        exec_eval_session = ExecEval__Session(exec_eval_host_ip, exec_eval_host_port)
+        exec_eval_session = ExecEval__APICommunication(
+            exec_eval_host_ip, exec_eval_host_port
+        )
 
     for trial_dir in trial_dirs:
         eval_trial(
