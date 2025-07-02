@@ -314,6 +314,10 @@ class EgCfgSessionManager:
                 "use_inference_endpoint": self.use_inference_endpoint,
                 "model_name": self.session_config.model_name,
                 "execute_io": self.session_config.dataset == DATASET__CODECONTESTS,
+                "task_id": (
+                    problem["task_id"] if self.session_config.use_global_cache else None
+                ),
+                "solved_tasks_cache_dir": self.inference_session.solved_tasks_cache_dir,
                 # "debug_mode": self.session_config.debug_mode,
             }
 
@@ -703,8 +707,6 @@ class EgCfgSessionManager:
 
     def solve(self):
         for _, problem in self.problems:
-            # if problem['task_id'] not in UNSOLVED_HUMANEVAL_TASKS[self.session_config.model_name]:
-            #     continue
             for inference_session_config in self.inference_sessions_configs:
                 self.setup_inference_session(
                     inference_session_config,

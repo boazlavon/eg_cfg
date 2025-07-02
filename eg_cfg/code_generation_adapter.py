@@ -1,3 +1,4 @@
+import os
 import torch
 from datetime import datetime, timedelta
 from collections import OrderedDict
@@ -13,6 +14,10 @@ from consts import *
 
 
 class CodeGenTimeout(Exception):
+    pass
+
+
+class EarlyTerminationExceptin(Exception):
     pass
 
 
@@ -37,6 +42,8 @@ class CodeGenerationAdapter:
         execution_manager=None,
         stats_manager=None,
         model_name=None,
+        task_id=None,
+        solved_tasks_cache_dir=None,
         execute_io=None,
     ):
         assert (
@@ -83,6 +90,8 @@ class CodeGenerationAdapter:
         self.stats_manager = stats_manager
         self.model_name = model_name
         self.execute_io = execute_io
+        self.task_id = task_id
+        self.solved_tasks_cache_dir = solved_tasks_cache_dir
 
         self.early_stop_detected = False
         self.early_stop_detected_program = None
@@ -146,6 +155,7 @@ class CodeGenerationAdapter:
             )
 
         print("Generate New Signal!")
+        self.check_early_termination()
         if self.detector.function_start_idx is None:
             self.current_dynamic_signal[dynamic_signal_type] = ""
             self.current_debug_data[dynamic_signal_type] = ()
@@ -632,3 +642,15 @@ class CodeGenerationAdapter:
             pass
 
         return executable_partial_program_code
+
+    def check_early_termination(self):
+        if self.task_id is None:
+            return
+        global_cache_solved_task_id_path = os.path.join(
+            self.solved_tasks_cache_dir, f"{self.task_id}"
+        )
+        if os.path.exists(global_cache_solved_task_id_path):
+            print(f"Task {self.task_id} already solved, early termination requested")
+            raise EarlyTerminationExceptin(
+                f"Task {self.task_id} already solved, early termination requested"
+            )

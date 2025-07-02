@@ -1,23 +1,29 @@
 # EG-CFG: Execution-Guided Line-by-Line Code Generation 
 
-EG-CFG is a decoding-time algorithm for code generation that incorporates real-time **execution feedback** into LLM inference. By injecting dynamic signals during generation, EG-CFG guides the model toward correct and executable solutions — achieving state-of-the-art performance on the MBPP benchmark using open-source models only.
+**EG-CFG** is an inference-time algorithm for code generation that injects real-time execution feedback directly into the model’s decoding loop. By incorporating dynamic runtime signals during generation, it steers the model toward solutions that are not only syntactically valid, but also functionally correct and executable.
+
+**SOTA performance on top code generation benchmarks**: from foundational tasks (*MBPP*, *HumanEval*) to extended evaluations (*MBPP-ET*, *HumanEval-ET*) and challenging competitive programming problems (*CodeContests*) - all using open-source models only.
+
+[![arXiv](https://img.shields.io/badge/arXiv-2506.10948-b31b1b)](https://arxiv.org/abs/2506.10948)
+[![Video](https://img.shields.io/badge/YouTube-Video-red)](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
+[![Papers with Code](https://img.shields.io/badge/Papers%20with%20Code-View-blue)](https://paperswithcode.com/paper/execution-guided-line-by-line-code-generation)
 
 ---
 
 ## 🚀 Highlights
 
-📈 **New state-of-the-art (SOTA)** results:
-- **MBPP**: 96.6%
-- **MBPP-ET**: 73.0%
-- **HumanEval-ET**: 87.19%
+📈 **New state-of-the-art (SOTA) results**:
 
-✅ All achieved using **open-source models** only (DeepSeek-V3-0324)
+- **MBPP**: 96.6% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-mbpp)](https://paperswithcode.com/sota/code-generation-on-mbpp?p=execution-guided-line-by-line-code-generation)
+- **MBPP-ET**: 73.0% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-mbpp-et)](https://paperswithcode.com/sota/code-generation-on-mbpp-et?p=execution-guided-line-by-line-code-generation)
+- **HumanEval-ET**: 87.19% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-humaneval-et)](https://paperswithcode.com/sota/code-generation-on-humaneval-et?p=execution-guided-line-by-line-code-generation)
+- **CodeContests**: 58.18% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-codecontests)](https://paperswithcode.com/sota/code-generation-on-codecontests?p=execution-guided-line-by-line-code-generation) 
 
-⚡ Real-time execution feedback integrated during decoding  
-🛠️ Fully configurable pipeline: local or endpoint inference  
-🔁 Reproducible and extensible for code generation research  
+✅ Achieved using **open-source models only** (DeepSeek-V3-0324)<br>
+⚡ Real-time execution feedback integrated during decoding<br>
+🛠️ Fully configurable pipeline — supports both local and endpoint inference<br>
+🔁 Reproducible and extensible framework for code generation research<br>
 
----
 ## 🧠 Models
 
 EG-CFG supports any causal language model that provides token-level log probabilities. In our experiments, we use two models from the **DeepSeek** family:
@@ -30,7 +36,6 @@ EG-CFG supports any causal language model that provides token-level log probabil
 ### 🔹 [DeepSeek-V3-0324](https://huggingface.co/deepseek-ai/DeepSeek-V3-0324)
 - Large-scale foundation model
 - Used via inference endpoint
-- Achieves 96.6% on MBPP with EG-CFG, setting a new state-of-the-art
 
 ---
 ## 📊 Benchmark Results
@@ -56,6 +61,20 @@ EG-CFG supports any causal language model that provides token-level log probabil
 | DeepSeek-V3-0324 | MGDebugger        | 87.20         | 81.09            | 25.39     | 9.44        |
 | DeepSeek-V3-0324 | LPW               | 95.12         | 84.74            | 68.02     | 26.89       |
 | GPT-4o           | LPW               | 98.2          | 84.8             | N/A       | N/A         |
+
+### CodeContests
+| Model            | Method           | Accuracy (%) | RSR (%)  |
+|------------------|------------------|--------------|----------|
+| DeepSeek-V3-0324 | Baseline LLM     | 41.81        | 0.00     |
+| DeepSeek-V3-0324 | **EG-CFG (Ours)**| **58.18**    | **28.13**|
+| DeepSeek-V3-0324 | MapCoder         | 50.30        | 14.59    |
+| GPT-4o           | LPW              | 34.7         | N/A      |
+| GPT-4o           | LDB              | 29.3         | N/A      |
+| GPT-4            | CodeSim          | 29.1         | N/A      |
+| GPT-4            | MapCoder         | 28.5         | N/A      |
+| GPT-3.5 Turbo    | CodeSim          | 16.4         | N/A      |
+| GPT-3.5 Turbo    | MapCoder         | 12.7         | N/A      |
+| MoTCoder-15B     | MoTCoder         | 26.34        | N/A      |
 
 > RSR: Relative Success Rate = Accuracy gain over baseline normalized to full success (see paper Sec. 4.1)
 > See full tables and ablations in the [paper](https://arxiv.org/abs/2506.10948).
@@ -85,7 +104,7 @@ environment.yml   # Conda environment definition
 ## ⚡ Quickstart
 
 ```bash
-git clone --recurse-submodules git@github.com:OUR_REPO/eg_cfg.git
+git clone --recurse-submodules https://github.com/boazlavon/eg_cfg.git
 cd eg_cfg
 conda env create -f environment.yml -n eg-cfg-env
 conda activate eg-cfg-env
@@ -225,7 +244,7 @@ These fields are used for filtering and reporting.
 
 Some core functionality in EG-CFG relies on **custom extensions of external libraries**, which are included as Git submodules and redirected into the conda environment via symlinks.
 
-### 🛠️ Modified `transformers/` Library
+### 🛠️ Modified `transformers` Library
 
 In local inference mode, we extend the internal decoding loop of the HuggingFace `transformers` library to support execution-aware generation.
 Specifically, our modifications in `transformers/generation/utils.py` enable token-level integration of runtime feedback, allowing the model to dynamically condition on execution traces as described in Section 3 of the paper.
@@ -259,6 +278,10 @@ The HumanEval benchmark [Chen et al., 2021] consists of 164 hand-written Python 
 
 We also evaluate on MBPP-ET and HumanEval-ET, extended test suites proposed in CodeScore [Dong et al., 2025]. These enhancements add more challenging edge cases and improve coverage, offering better estimates of real-world generalization.
 
+🔹 CodeContests
+
+The CodeContests benchmark [Li et al., 2022] is a suite of competitive programming problems designed to evaluate advanced algorithmic reasoning and problem-solving skills. Each task includes a problem description and multiple hidden test cases. Solutions are evaluated using the [ExecEval framework](https://github.com/ntunlp/ExecEval) [Khan et al., 2024]. Performance on CodeContests reflects a model’s robustness and problem-solving depth under competitive constraints.
+
 ### 🧾 Prompt Format
 
 We use two prompt types to ensure broad and reproducible evaluation:
@@ -287,6 +310,19 @@ No local GPU is required—all inference runs remotely on Fireworks infrastructu
 
 > Endpoint access is configured via `session_config.inference_endpoint.json` using your Fireworks API key and endpoint URL.
 
+---
+## 📖 Citation
+
+If you use EG-CFG or find our work helpful, please consider citing:
+
+```bibtex
+@article{lavon2025execution,
+  title={Execution Guided Line-by-Line Code Generation},
+  author={Lavon, Boaz and Katz, Shahar and Wolf, Lior},
+  journal={arXiv preprint arXiv:2506.10948},
+  year={2025}
+}
+```
 ---
 
 ## 📚 Related Work Citations
@@ -326,6 +362,22 @@ We gratefully acknowledge the authors of the following works for their implement
   number={3},
   pages={1--22},
   year={2025}
+}
+@article{li2022alphacode,
+  title={Competition-level code generation with AlphaCode},
+  author={Li, Yujia and Choi, David and Chung, Junyoung and Kushman, Nate and Schrittwieser, Julian and others},
+  journal={Science},
+  volume={378},
+  number={6624},
+  pages={1092--1097},
+  year={2022}
+}
+@inproceedings{khan2024xcodeeval,
+  title={XCodeEval: An Execution-Based Large Scale Multilingual Multitask Benchmark for Code Understanding, Generation, Translation and Retrieval},
+  author={Khan, Mohammad Abdullah Matin and Bari, M Saiful and Long, Do and Wang, Weishi and Parvez, Md Rizwan and Joty, Shafiq},
+  booktitle={Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={6766--6805},
+  year={2024}
 }
 ```
 ---
