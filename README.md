@@ -158,12 +158,12 @@ Defines the parameters used to generate dynamic execution signals.
 
 Defines runtime setup per session:
 
-| Field                      | Description                                                  |
-|----------------------------|--------------------------------------------------------------|
+| Field                      | Description                                                 |
+|----------------------------|-------------------------------------------------------------|
 | `model_name`              | Model to use (local path or HuggingFace hub name)            |
 | `gammas`                  | CFG guidance strengths                                       |
 | `deployment_type`         | `"local"` or `"inference_endpoint"`                          |
-| `dataset`                 | `"mbpp"` or `"humaneval"`                                    |
+| `dataset`                 | `"mbpp"` or `"humaneval"` or `"CodeContests"`                | 
 | `results_dir`             | Root directory for saving results                            |
 | `inference_endpoint_url`  | (if endpoint) API URL for inference                          |
 | `inference_endpoint_api_key` | (if endpoint) API key for Fireworks                       |
