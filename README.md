@@ -38,11 +38,11 @@ EG-CFG supports any causal language model that provides token-level log probabil
 | Claude-Sonnet-3.5    | QualityFlow   | 94.2         | –       |
 | GPT-4                | MetaGPT       | 87.7         | –       |
 
-> See full tables and ablations in the [paper](link).
+> See full tables and ablations in the [paper](https://arxiv.org/abs/2506.10948).
 
 ### Evaluation Limitations
 
-We manually reviewed all 17 MBPP tasks that were not solved by DeepSeek-V3-0324 and found that 9 contain invalid unit tests, with some also having incorrect reference solutions. In these cases, the model-generated code is correct but marked as failed due to flawed benchmark tests.  Full details are available in the [`mbpp_analysis/`](./mbpp_analysis/) directory.
+We manually reviewed all 17 MBPP tasks that were not solved by DeepSeek-V3-0324 and found that 9 contain invalid unit tests, with some also having incorrect reference solutions. In these cases, the model-generated code is correct but marked as failed due to flawed benchmark tests.  Full details are available in the [`analysis/mbpp_analysis/`](./mbpp_analysis/) directory.
 
 ---
 
