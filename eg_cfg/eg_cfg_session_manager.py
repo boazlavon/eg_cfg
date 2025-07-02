@@ -703,6 +703,8 @@ class EgCfgSessionManager:
 
     def solve(self):
         for _, problem in self.problems:
+            # if problem['task_id'] not in UNSOLVED_HUMANEVAL_TASKS[self.session_config.model_name]:
+            #     continue
             for inference_session_config in self.inference_sessions_configs:
                 self.setup_inference_session(
                     inference_session_config,

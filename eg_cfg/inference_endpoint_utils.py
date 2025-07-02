@@ -395,15 +395,14 @@ def inference_endpoint_utils__post_request_retries(
                 print(
                     f"[INFO] Sending request #{retry_idx + 1}/{post_requests_retries} (timeout={timeout}sec)"
                 )
-            response = requests.post(
-                url,
-                headers=headers,
-                data=data,
-                timeout=timeout,
-            )
-            if response.status_code != HTTP_SUCCESS_CODE:
-                print(
-                    f"[ERROR] Exception on request #{retry_idx + 1}: Code: {response.status_code}"
+            FW_API = True
+            TOGETHER_API = False
+            if FW_API:
+                response = requests.post(
+                    url,
+                    headers=headers,
+                    data=data,
+                    timeout=timeout,
                 )
                 continue
 
