@@ -100,7 +100,6 @@ def dynamis_sigansl_str_to_cmdline_args(dynamic_signals_str):
     if base.startswith("p"):
         args["p"] = True
         base = base.replace("p", "")
-    # match = re.search(r"ns(\d+)t([\d.]+)d(\w+)", base)
     match = re.search(r"ns(\d+)t([\d.]+)d(\w+)k(\d+)", base)
     if not match:
         args["k"] = 1
@@ -353,6 +352,7 @@ def generate_grid_configs(inference_session_grid_json, session_config_json):
         build_inference_session_config(inference_args)
         for inference_args in ParameterGrid(partial_execution_session_grid_args)
     ]
+    # Uncomment if you want to use partial execution signal (like d=0)
     # inference_sessions_configs = inference_sessions_configs + partial_sessions_configs
     session_config = Namespace(**session_config)
     return session_config, inference_sessions_configs
