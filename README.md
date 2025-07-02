@@ -146,9 +146,10 @@ python eg_cfg/eg_cfg_monitor.py \
 Defines the parameters used to generate dynamic execution signals.
 ```json
 {
-  "t": [0.7, 0.75],         # Sampling temperatures
-  "s": [3],                 # Number of candidates (beam size)
-  "d": [2, 3],              # Completion horizon (lines)
+  "t": [0.7, 0.75],         # Sampling Temperatures
+  "s": [3],                 # Number of Candidates (Beam Size)
+  "d": [2, 3],              # Completion Horizon (lines)
+  "k": [1],                 # New Dynamic Signal Frequency (lines)
   "prompt_type": ["deepseek_instruct", "long_code"]
 }
 ```
