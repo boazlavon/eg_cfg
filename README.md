@@ -2,7 +2,7 @@
 
 **EG-CFG** is an inference-time algorithm for code generation that injects real-time execution feedback directly into the model’s decoding loop. By incorporating dynamic runtime signals during generation, it steers the model toward solutions that are not only syntactically valid, but also functionally correct and executable.
 
-**SOTA performance on top code generation benchmarks**: from foundational tasks (*MBPP*, *HumanEval*) to extended evaluations (*MBPP-ET*, *HumanEval-ET*) and challenging competitive programming problems (*CodeContests*) - all using open-source models only.
+**SOTA performance on top code generation benchmarks**: from foundational tasks (*MBPP*, *HumanEval*) to extended evaluations (*MBPP-ET*, *HumanEval-ET*) and challenging competitive programming problems (*CodeContests*) - all using open models only.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2506.10948-b31b1b)](https://arxiv.org/abs/2506.10948)
 [![Video](https://img.shields.io/badge/YouTube-Video-red)](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
@@ -19,7 +19,7 @@
 - **HumanEval-ET**: 87.19% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-humaneval-et)](https://paperswithcode.com/sota/code-generation-on-humaneval-et?p=execution-guided-line-by-line-code-generation)
 - **CodeContests**: 58.18% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-codecontests)](https://paperswithcode.com/sota/code-generation-on-codecontests?p=execution-guided-line-by-line-code-generation) 
 
-✅ Achieved using **open-source models only** (DeepSeek-V3-0324)<br>
+✅ Achieved using **open models only** (DeepSeek-V3-0324)<br>
 ⚡ Real-time execution feedback integrated during decoding<br>
 🛠️ Fully configurable pipeline — supports both local and endpoint inference<br>
 🔁 Reproducible and extensible framework for code generation research<br>
