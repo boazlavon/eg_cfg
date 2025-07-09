@@ -113,37 +113,20 @@ python scripts/redirect_env_to_submodules.py $PWD/submodules/
 
 ---
 
-## 🚀 Launch Inference Jobs
-To maximize throughput, we encourage launching this script **multiple times—once per available node**. The pipeline supports full synchronization across jobs, so no manual coordination is needed. Just launch as many instances as you have nodes, and they’ll run in parallel seamlessly.
-```bash
-./scripts/job_runners/inference_sbatch.local.sh
-# Or monitor in watch mode
-./scripts/job_runners/inference_sbatch.local.sh watch
-```
+## 🤖 Multi-Agent Launch Options
+EG-CFG supports two ways to define and launch multiple agents:
 
----
+### 🛠️ Option 1: Launch from Parameter Combinations
 
-## 📈 Monitor and Aggregate Results
+Use `dynamic_signals_params.json` to define a **set of decoding parameter values**, and automatically launch all combinations.
 
 ```bash
-# DeepSeek-Coder-1.3B (local)
-python eg_cfg/eg_cfg_monitor.py \
-  --aggregate-dir trials/local_results/mbpp/deepseek-ai_deepseek-coder-1.3b-instruct/ \
-  --model "deepseek-ai/deepseek-coder-1.3b-instruct" --gammas 0.0 0.5 1.0 3.0
-
-# DeepSeek-V3-0324 (inference endpoint)
-python eg_cfg/eg_cfg_monitor.py \
-  --aggregate-dir trials/inference_endpoint_results/mbpp/deepseek-ai_DeepSeek-V3-0324/ \
-  --model "deepseek-ai/DeepSeek-V3-0324" --gammas 0.0 0.5 1.0 3.0
+python eg_cfg/eg_cfg_grid.py \
+  --dynamic-signals-params configs/dynamic_signals_params.json \
+  --session-config-json configs/session_config.local.json
 ```
 
----
-
-## 📘 Configuration Guide
-
-### 🔧 dynamic_signals_params.json
-
-Defines the parameters used to generate dynamic execution signals.
+Example `dynamic_signals_params.json`:
 ```json
 {
   "t": [0.7, 0.75],         # Sampling Temperatures
@@ -154,16 +137,47 @@ Defines the parameters used to generate dynamic execution signals.
 }
 ```
 
-### 🔧 session_config.local.json / session_config.inference_endpoint.json
+This launches one agent for each combination of the above parameters (e.g., 2 × 1 × 2 × 1 × 2 = 8 combinations).  
+All agents run in parallel with full synchronization support.
 
-Defines runtime setup per session:
+### 🛠️ Option 2: Launch from Config Strings
+
+Use `dynamic_signals_configs.json` to define a **list of specific config strings**, each representing a complete decoding configuration.
+
+
+```bash
+python eg_cfg/eg_cfg_trails.py \
+  --trials-json configs/dynamic_signals_configs.json \
+  --session-config-json configs/session_config.local.json
+```
+
+Example `dynamic_signals_configs.json`:
+```json
+[
+  "ns3t0.75d5k1_lci_ln",
+  "ns2t0.9d3k1_lci_ln",
+  "ns3t1.2d5k3_ln"
+]
+```
+Each string is automatically parsed into a full configuration. The format includes:
+- ns3 → 3 candidates (beam size)
+- t0.75 → sampling temperature = 0.75
+- d5 → completion horizon = 5 lines
+- k1 → signal update frequency = every 1 line
+- _lci_ln → prompt type = long-code prompt
+
+This method is best when you want to **explicitly control and review** the exact configs.
+
+### 🔧 Session Configuration File
+
+Defines the runtime setup for each session as specified in `session_config.local.json` or `session_config.inference_endpoint.json`:
 
 | Field                      | Description                                                 |
 |----------------------------|-------------------------------------------------------------|
 | `model_name`              | Model to use (local path or HuggingFace hub name)            |
-| `gammas`                  | CFG guidance strengths                                       |
+| `gammas`                  | CFG guidance strengths (e.g., `[0.0, 0.5, 1.0, 3.0]`)        |
 | `deployment_type`         | `"local"` or `"inference_endpoint"`                          |
-| `dataset`                 | `"mbpp"` or `"humaneval"` or `"CodeContests"`                | 
+| `dataset`                 | Target dataset: `"mbpp"`, `"humaneval"`, or `"CodeContests"` |
 | `results_dir`             | Root directory for saving results                            |
 | `inference_endpoint_url`  | (if endpoint) API URL for inference                          |
 | `inference_endpoint_api_key` | (if endpoint) API key for Fireworks                       |
@@ -171,7 +185,21 @@ Defines runtime setup per session:
 | `debug_mode`              | Enable logging/debug information                             |
 | `is_prod`                 | Run in production mode (disable debug/test toggles)          |
 | `minimal_trace`           | Use final-state-only traces instead of full step-by-step traces |
+| `exec_eval`               | Use the ExecEval evaluation for CodeContests dataset         |
+| `exec_eval_host_ip`       | IP address of the ExecEval server (used only if `exec_eval` is `true`)  |
+| `exec_eval_host_port`     | Port of the ExecEval server (used only if `exec_eval` is `true`)        |
 
+
+## 🚀 SLURM Integration for Parallel Inference 
+To maximize throughput, launch the following script **multiple times—once per available node**.  
+The pipeline supports full synchronization across jobs, so no manual coordination is needed.  
+Agents will automatically run in parallel.
+
+```bash
+./scripts/job_runners/inference_sbatch.local.sh
+# Or monitor in watch mode
+./scripts/job_runners/inference_sbatch.local.sh watch
+```
 
 ---
 
@@ -238,6 +266,19 @@ A successful solution is:
 - `accuracy = 1.0`
 
 These fields are used for filtering and reporting.
+
+---
+
+## 📈 Monitor Results
+
+Solved task outputs are stored under the `solved_tasks/` directory within each trial.
+
+For example:  
+`trials/local_results/mbpp/deepseek-ai_deepseek-coder-1.3b-instruct/solved_tasks/`
+
+Each JSON file in this directory corresponds to a task that was successfully solved (`"passed": true`) and includes the final code and execution metadata.
+
+You can iterate over this folder to analyze solved tasks.
 
 ---
 
