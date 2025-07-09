@@ -32,11 +32,15 @@ def extract_function_name(signature_line):
 
 
 def extract_matching_blocks(text, verbose=False):
-    pattern = r"```python\n(.*?)```"
-    matches = list(re.finditer(pattern, text, re.DOTALL))
+    for _ in range(2):
+        pattern = r"```python\n(.*?)```"
+        matches = list(re.finditer(pattern, text, re.DOTALL))
+        if matches:
+            break
+        text += "\n```"
     if verbose:
         print(f"Found {len(matches)} code blocks.\n")
-    return matches
+    return matches, text
 
 
 def extract_matching_blocks_with_def_index(matches, target_func_name, verbose=False):
@@ -52,15 +56,9 @@ def extract_matching_blocks_with_def_index(matches, target_func_name, verbose=Fa
         for rel_line_idx, line in enumerate(lines):
             print(f"{i}:{rel_line_idx}: {line}")
             line_stripped = line.strip()
-            if (
-                not line_stripped
-                or line_stripped.startswith("#")
-                or line_stripped.startswith("import")
-                or line_stripped.startswith("from")
-            ):
+            if "def" not in line_stripped:
                 idx_sum += len(line + "\n")
                 continue
-
             if re.match(rf"^def\s+{target_func_name}\s*\(", line_stripped):
                 def_index = block_start_in_text + idx_sum
                 block_cleaned = block.strip()
@@ -97,6 +95,7 @@ def reasoning_tokens_query(
     stop_condition=COMPLEX_QUERY_STOP_CONDITION,
     function_name=None,
     return_raw=False,
+    return_answer_start_until_code=True,
 ):
     inference_endpoint_api_key = os.environ.get("FW_KEY")
     inference_endpoint_url = os.environ.get("FW_ENDPOINT_URL")
@@ -155,25 +154,34 @@ def reasoning_tokens_query(
         ).replace("</python>", CODE_BORDER_TOKEN)
         if function_name is None:
             function_name = extract_function_name(function_signature)
-        matches = extract_matching_blocks(raw_text, verbose=True)
+        matches, raw_text = extract_matching_blocks(raw_text, verbose=True)
         if not matches:
             continue
 
-        answer_start_idx, last_block = extract_matching_blocks_with_def_index(
-            matches, function_name, verbose=True
-        )
-        if not answer_start_idx:
-            continue
-        answer_start_until_code = (
-            raw_text[:answer_start_idx] if answer_start_idx is not None else None
-        )
-        if not answer_start_until_code:
-            continue
-        # print("\n=== Answer Until Code ===")
-        # print(answer_start_until_code)
+        if return_answer_start_until_code:
+            answer_start_idx, last_block = extract_matching_blocks_with_def_index(
+                matches, function_name, verbose=True
+            )
+            if not answer_start_idx:
+                continue
+            answer_start_until_code = raw_text[:answer_start_idx]
+            if not answer_start_until_code:
+                continue
+            # print("\n=== Answer Until Code ===")
+            # print(answer_start_until_code)
+        else:
+            answer_start_until_code = None
+            last_block = matches[-1][1]
+            function_signature_pattern = f"^def\s+{function_name}\s*\("
+            if not bool(
+                re.search(function_signature_pattern, last_block, flags=re.MULTILINE)
+            ):
+                continue
         break
 
-    assert answer_start_until_code
+    if return_answer_start_until_code:
+        assert answer_start_until_code
+    assert last_block, "No valid code block found in the response."
     return answer_start_until_code, last_block, total_completion_tokens
 
 
@@ -510,6 +518,7 @@ def extract_eg_cfg_start_prefix(
         max_tokens=REASONING_TOKENS_QUERY_MAX_TOKENS,
         verbose=True,
         function_name=function_name,
+        return_answer_start_until_code=True,
     )
     return answer_start_until_code, completion_tokens
 
@@ -774,10 +783,6 @@ def inference_endpoint_eg_cfg(
         # print(next_token_text)
         # print(next_token, [next_token_text], code_borders_tokens_count)
 
-        if CODE_BORDER_TOKEN in next_token_text:
-            code_borders_tokens_count += 1
-        if code_borders_tokens_count >= 2:
-            break
         if next_token.item() == end_of_sentence_token_id:
             break
         if "<｜end▁of▁sentence｜>" in next_token_text:
@@ -797,6 +802,11 @@ def inference_endpoint_eg_cfg(
                 )
             early_stop = True
             return solution_code, early_stop
+
+        if CODE_BORDER_TOKEN in next_token_text:
+            code_borders_tokens_count += 1
+        if code_borders_tokens_count >= 2:
+            break
 
     inference_initial_prompt_input_ids_len = None
     return input_ids, early_stop, inference_initial_prompt_input_ids_len

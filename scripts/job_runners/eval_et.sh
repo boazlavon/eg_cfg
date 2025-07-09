@@ -4,11 +4,11 @@
 # Usage examples:
 #
 # Basic:
-# ./scripts/job_runners/eval_et.sh trials/mbpp_eg_cfg/mbpp trials/mbpp_eg_cfg/mbpp-et mbpp
-# ./scripts/job_runners/eval_et.sh trials/humaneval_eg_cfg/humaneval trials/humaneval_eg_cfg/humaneval-et humaneval
+# ./scripts/job_runners/eval_et.sh trials/mbpp_eg_cfg/mbpp/deepseek-ai_DeepSeek-V3-0324 trials/mbpp_eg_cfg/mbpp-et/deepseek-ai_DeepSeek-V3-0324 mbpp
+# ./scripts/job_runners/eval_et.sh trials/humaneval_eg_cfg/humaneval/deepseek-ai_DeepSeek-V3-0324 trials/humaneval_eg_cfg/humaneval-et/deepseek-ai_DeepSeek-V3-0324 humaneval
 #
 # With exec host IP/port (for CodeContests + ExecEval only):
-# ./scripts/job_runners/eval_et.sh trials/CodeContests_cfg/CodeContests trials/CodeContests_cfg/CodeContests__ExecEval CodeContests ExecEval 127.0.0.1 5000
+# ./scripts/job_runners/eval_et.sh trials/CodeContests_cfg/CodeContests/deepseek-ai_DeepSeek-V3-0324 trials/CodeContests_cfg/CodeContests__ExecEval/deepseek-ai_DeepSeek-V3-0324 CodeContests ExecEval 127.0.0.1 5000
 # ------------------------------------------------------------------------------
 
 export PARTITION=cpu-killable

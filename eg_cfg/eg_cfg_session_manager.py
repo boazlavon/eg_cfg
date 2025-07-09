@@ -8,6 +8,7 @@ import os
 import json
 import traceback
 import random
+from code_generation_utils import is_valid_python
 from datasets_utils import (
     format_task_prompt,
     load_mbpp_problems,
@@ -44,10 +45,10 @@ EXEC_EVAL_API_COMM = None
 
 
 def format_results(solution, results, general_error, tb=None):
-    passed = all(r["result"] for r in results.values())
     correct = sum(int(r["result"]) for r in results.values())
     total = len(results)
     accuracy = correct / total if total else 0.0
+    passed = 1.0 == accuracy
     has_testcase_error = all([bool(result["error"]) for result in results.values()])
     entry = {
         "code": solution,
@@ -141,6 +142,7 @@ class EgCfgSessionManager:
             debug=self.session_config.debug_mode,
         )
         self.stats_manager = StatisticsManager()
+        print("Loading problems for dataset: {}".format(self.session_config.dataset))
         assert self.session_config.dataset in AVAILABLE_DATASETS
         if self.session_config.dataset == DATASET__MBPP:
             self.problems = load_mbpp_problems()  # uses test_list
@@ -161,6 +163,12 @@ class EgCfgSessionManager:
             self.problems = self.problems[
                 self.session_config.start_idx : self.session_config.end_idx
             ]
+
+        print(
+            "Finished loading problems for dataset: {}".format(
+                self.session_config.dataset
+            )
+        )
         if self.session_config.is_prod:
             random.shuffle(self.problems)
         if self.session_config.results_dir:
@@ -410,7 +418,7 @@ class EgCfgSessionManager:
             if gamma > 0.0:
                 if (
                     gamma == GAMMA_1_OPTIMIZATION_VALUE
-                ):  # gamma == 1.0001 is a special case for optimization for gamma=1
+                ):  # special case for optimization for gamma=1
                     outputs, early_stop, inference_initial_prompt_input_ids_len = (
                         inference_endpoint_eg_cfg_gamma_1_optimization(
                             prompt,
@@ -451,6 +459,7 @@ class EgCfgSessionManager:
                     verbose=True,
                     function_name=problem.get("entry_point"),
                     return_raw=(self.session_config.dataset == DATASET__HUMANEVAL),
+                    return_answer_start_until_code=False,
                 )
                 if self.session_config.dataset == DATASET__HUMANEVAL:
                     solution = f"{prompt}\n{solution}"
@@ -461,7 +470,9 @@ class EgCfgSessionManager:
                     self.stats_manager.increate_counter(
                         "guidance_output_tokens", completion_tokens
                     )
-                assert solution
+                assert is_valid_python(
+                    solution
+                ), f"Invalid Python code generated: {solution}"
                 return solution
             if early_stop:
                 print("Early Stop detected!")
@@ -533,6 +544,7 @@ class EgCfgSessionManager:
             except KeyboardInterrupt:
                 exit(1)
             except PostRequestTimeoutError as e:
+                solution = None
                 general_error = str(type(e))
                 tb = traceback.format_exc()
                 print(tb)
@@ -565,10 +577,13 @@ class EgCfgSessionManager:
 
             io_flag = self.session_config.dataset == DATASET__CODECONTESTS
             if self.session_config.exec_eval:
-                global EXEC_EVAL_API_COMM
-                solution_entry = exec_eval__run_tests(
-                    solution, test_cases_to_eval, EXEC_EVAL_API_COMM
-                )
+                if solution is None:
+                    solution_entry = format_results(solution, {}, general_error, tb)
+                else:
+                    global EXEC_EVAL_API_COMM
+                    solution_entry = exec_eval__run_tests(
+                        solution, test_cases_to_eval, EXEC_EVAL_API_COMM
+                    )
             else:
                 solution_results = run_tests(solution, test_cases_to_eval, io_flag)
                 solution_entry = format_results(
@@ -592,7 +607,10 @@ class EgCfgSessionManager:
             solution_entry["stats"] = dict(
                 self.stats_manager.statistics[(task_id, gamma)]
             )
-            print(solution_entry["stats"])
+            solution_entry__print = solution_entry.copy()
+            del solution_entry__print["results"]
+            print("task_id:", task_id, "gamma:", gamma)
+            pprint.pprint(solution_entry__print)
             solution_entry["retry"] = retry_idx
             solution_entry["random_seed"] = random_seed
             if solution_entry["passed"]:

@@ -5,7 +5,7 @@ import tokenize
 from io import StringIO
 from transformers import StoppingCriteria
 from transformers import StoppingCriteriaList
-from inference_endpoint_utils import extract_python_code
+from inference_endpoint_utils import extract_matching_blocks
 from model_utils import extract_new_tokens
 from consts import *
 
@@ -248,13 +248,11 @@ def raw_outputs_to_new_code(
                     new_codes.append(output_text)
                     continue
 
-                extracted_code = extract_python_code(output_text)
-                if not extracted_code:
-                    extracted_code = output_text.split(
-                        INSTRUCT_MODEL_PYTHON_CODE_START, 1
-                    )[1].rstrip()
-                    if "```" in extracted_code:
-                        extracted_code = extracted_code.split("```")[0]
+                matches, output_text = extract_matching_blocks(output_text)
+                extracted_code = None
+                if matches:
+                    extracted_code = matches[-1].group(1).strip()
+                assert extracted_code, f"Could not extract code from: {output_text}"
             if validate:
                 assert is_valid_python(extracted_code)
         except:

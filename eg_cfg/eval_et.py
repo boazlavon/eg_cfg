@@ -10,13 +10,16 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datasets_utils import LOAD_DATASET_HANDLER
 from eval_utils import run_tests
 from exec_eval_utils import exec_eval__run_tests
+from code_generation_utils import is_valid_python
 from eg_cfg_session_manager import format_results
 from exec_eval_utils import ExecEval__APICommunication
 from consts import *
 
 
 def process_file(
+    task_id,
     trial_path,
+    output_base,
     output_dir,
     filename,
     test_cases,
@@ -27,15 +30,51 @@ def process_file(
 ):
     input_file = trial_path / filename
     output_file = output_dir / filename
+    cache_filename = f"{task_id}.json"
+    solved_dir = output_base / SOLVED_TASKS_CACHE_DIRNAME
+
+    if not solved_dir.exists():
+        print(f"Creating directory for solved tasks: {solved_dir}")
+        os.makedirs(solved_dir.mkdir(parents=True, exist_ok=True))
+
+    cache_file = solved_dir / cache_filename
+    if cache_file.exists():
+        print(f"Cache hit for {filename}, using cached results from {cache_file}")
+        return
 
     if output_file.exists():
-        return
+        is_passed = False
+        try:
+            with open(output_file, "r") as f:
+                solution_entry = json.load(f)
+            assert solution_entry is not None, "Solution entry must not be None"
+            assert is_valid_python(solution_entry["code"])
+            is_passed = solution_entry.get("passed", False)
+        except Exception as e:
+            print(f"Error reading output file {output_file}: {e}")
+            traceback.print_exc()
+            is_passed = False
+            output_file.unlink()  # Remove corrupted file
+            print(f"Removed corrupted output file: {output_file}")
+
+        try:
+            if is_passed and solution_entry is not None:
+                with open(cache_file, "w") as f:
+                    json.dump(solution_entry, f, indent=2)
+                print(f"Cache hit for {filename}, saved to {cache_file}")
+                return
+        except:
+            print("Could not save cache file, skipping")
 
     try:
         with open(input_file, "r") as f:
-            data = json.load(f)
-            code = data.get("code")
-            if not code:
+            input_solution_entry = json.load(f)
+            code = input_solution_entry.get("code")
+            if code is None:
+                print(f"Empty Python code in {filename}, skipping")
+                return
+            if not is_valid_python(code):
+                print(f"Invalid Python code in {filename}, skipping")
                 return
 
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -64,12 +103,19 @@ def process_file(
             solution_entry["general_error"] = general_error
             solution_entry["tb"] = tb
 
+        assert solution_entry is not None, "Solution entry must not be None"
         with open(output_file, "w") as f:
             json.dump(solution_entry, f, indent=2)
+
         print(f"Saved: {output_file}")
+        if solution_entry["passed"] == True:
+            with open(cache_file, "w") as f:
+                json.dump(solution_entry, f, indent=2)
+        print(f"Saved: {cache_file}")
 
     except Exception as e:
         print(f"Failed to process {filename}: {e}")
+        traceback.print_exc()
 
 
 def extract_task_id(filename, dataset):
@@ -80,6 +126,8 @@ def extract_task_id(filename, dataset):
             task_id = int(match.group(1)) if match else None
         elif dataset in (DATASET__CODECONTESTS,):
             match = re.search(r"task_id=([0-9]+_[A-Z])", filename)
+            if not match:
+                match = re.search(r"([0-9]+_[A-Z])", filename)
             task_id = match.group(1) if match else None
         elif dataset in (DATASET__HUMANEVAL_ET,):
             match = re.search(r"task_id=HumanEval_(\d+)", filename)
@@ -100,6 +148,10 @@ def eval_trial(
     exec_eval_session=None,
     trial_workers=EVAL_DEFAULT_WORKERS,
 ):
+    done_file = output_base / trial_dir / "done.txt"
+    if done_file.exists():
+        print(f"Skipping {trial_dir}: Already processed")
+        return
     assert problems, "Problems must be provided for evaluation"
     if eval_type == EVAL_TYPE__EXEC_EVAL:
         assert (
@@ -115,7 +167,6 @@ def eval_trial(
     output_dir = output_base / trial_dir
     results_filenames = [f for f in os.listdir(trial_path) if f.endswith(".json")]
     jobs = []
-
     for result_filename in results_filenames:
         task_id = extract_task_id(result_filename, dataset)
         if task_id is None:
@@ -132,7 +183,9 @@ def eval_trial(
         inputs = None
         jobs.append(
             (
+                task_id,
                 trial_path,
+                output_base,
                 output_dir,
                 result_filename,
                 eval_test_cases,
@@ -147,13 +200,20 @@ def eval_trial(
     print(
         f"Trial {trial_dir}: Dispatching {len(jobs)} evaluations with {trial_workers} threads"
     )
+    if not output_dir.exists():
+        print(f"Creating output directory: {output_dir}")
+        output_dir.mkdir(parents=True, exist_ok=True)
     with ThreadPoolExecutor(max_workers=trial_workers) as executor:
         futures = [executor.submit(process_file, *job) for job in jobs]
         for f in as_completed(futures):
             f.result()  # raise exceptions if any
+
     # FOR DEBUGGING
     # for job in jobs:
     #     process_file(*job)
+
+    with open(done_file, "w") as f:
+        f.write(f"done")
 
 
 def main(
@@ -197,6 +257,8 @@ def main(
         )
 
     for trial_dir in trial_dirs:
+        if trial_dir == SOLVED_TASKS_CACHE_DIRNAME:
+            continue
         eval_trial(
             trial_dir,
             source_dir,

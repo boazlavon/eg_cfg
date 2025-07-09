@@ -33,6 +33,11 @@ class ExecEval__APICommunication:
     def __init__(self, exec_eval_host_ip, exec_eval_host_port):
         assert exec_eval_host_ip is not None, "ExecEval host IP must be specified"
         assert exec_eval_host_port is not None, "ExecEval host port must be specified"
+        print(
+            "Connecting to ExecEval at {}:{}".format(
+                exec_eval_host_ip, exec_eval_host_port
+            )
+        )
         self.session = requests.Session()
         self.execute_code_url = EXEC_EVAL__EXECUTE_CODE_URL_TEMPLATE.format(
             exec_eval_host_ip=exec_eval_host_ip, exec_eval_host_port=exec_eval_host_port
@@ -80,6 +85,7 @@ class ExecEval__APICommunication:
             self.execute_code_url,
             json=request_body,
             headers=EXEC_EVAL__REQUEST_HEADERS,
+            timeout=EXEC_EVAL__TIMEOUT_SEC,  # Adjust timeout as needed
         )
         json_response = response.json()
         response_data = json_response.get("data")

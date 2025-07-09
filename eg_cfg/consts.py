@@ -14,6 +14,7 @@ EVALUATE_SOLUTION_TIMEOUT_SEC = 10
 DEFAULT_MAX_WORKERS = 8
 
 EXEC_EVAL_DEFAULT_HOST_PORT = 5000
+EXEC_EVAL__TIMEOUT_SEC = 120
 EVAL_TYPE__EG_CFG = "eval-eg-cfg"
 EVAL_TYPE__EXEC_EVAL = "ExecEval"
 AVAILABLE_EVAL_TYPES = (EVAL_TYPE__EG_CFG, EVAL_TYPE__EXEC_EVAL)
@@ -37,7 +38,7 @@ ALL_DATASETS = (
     DATASET__HUMANEVAL_ET,
 )
 
-EVAL_DEFAULT_WORKERS = 30  # Default number of workers per trial
+EVAL_DEFAULT_WORKERS = 12  # Default number of workers per trial
 EXEC_EVAL__LANGUAGE__PYTHON3 = "Python 3"
 EXEC_EVAL__LANGUAGE__PYTHON3__LIMITS = {"nofile": 4}
 EXEC_EVAL__EXECUTE_CODE_URL_TEMPLATE = (
@@ -56,7 +57,7 @@ sys.stdin = io.StringIO(s)
 sys.stdout = open("{stdout_path}", "w")
 """
 
-GAMMA_1_OPTIMIZATION_VALUE = 1.001
+GAMMA_1_OPTIMIZATION_VALUE = 1
 
 # We cannot override sys.stdin in anyway because the debugger and
 # the program share thesame stdin so it overrides the debugger stdin as well

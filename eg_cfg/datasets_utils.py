@@ -216,7 +216,6 @@ def load_codecontests_problems():
     for example in test_ds:
         task_id = example["name"]
         task_id = task_id.split(" ")[0].rstrip(".")
-        print(task_id)
         assert len(example["public_tests"]["input"]) == len(
             example["public_tests"]["output"]
         )
