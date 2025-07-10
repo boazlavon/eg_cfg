@@ -3443,6 +3443,18 @@
       [
         "order_by_points([])",
         "[]"
+      ],
+      [
+        "order_by_points([5, 14, 23, 32])",
+        "[5, 14, 23, 32]"
+      ],
+      [
+        "order_by_points([0, 1000, 91])",
+        "[0, 1000, 91]"
+      ],
+      [
+        "order_by_points([99, 88, 77, 66])",
+        "[66, 77, 88, 99]"
       ]
     ],
     "code": "\ndef order_by_points(nums):\n    \"\"\"\n    Write a function which sorts the given list of integers\n    in ascending order according to the sum of their digits.\n    Note: if there are several items with similar sum of their digits,\n    order them based on their index in original list.\n\n    For example:\n    >>> order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]\n    >>> order_by_points([]) == []\n    \"\"\"\n    def digits_sum(n):\n        neg = 1\n        if n < 0: n, neg = -1 * n, -1 \n        n = [int(i) for i in str(n)]\n        n[0] = n[0] * neg\n        return sum(n)\n    return sorted(nums, key=digits_sum)\n"
