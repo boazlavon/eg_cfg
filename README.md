@@ -164,7 +164,7 @@ Each string is automatically parsed into a full configuration. The format includ
 - t0.75 → sampling temperature = 0.75
 - d5 → completion horizon = 5 lines
 - k1 → signal update frequency = every 1 line
-- _lci_ln → prompt type = long-code prompt
+- `_ln` or `_lci_ln` suffix → prompt type (`deepseek_instruct` or `long_code`)
 
 This method is best when you want to **explicitly control and review** the exact configs.
 
