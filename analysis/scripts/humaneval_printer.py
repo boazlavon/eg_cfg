@@ -1,3 +1,4 @@
+import argparse
 import json
 
 
@@ -7,24 +8,32 @@ def extract_solution_and_tests(json_path, task_id):
 
     task = data.get(task_id)
     if task is None:
-        print(f"❌ Task ID '{task_id}' not found.")
+        print(f"[ERROR] Task ID '{task_id}' not found in '{json_path}'.")
         return
 
-    solution = task["prompt"] + task["canonical_solution"]
-    print("=== Prompt ===")
-    print(solution)
-    test = task["test"]
-    print("=== RawTest ===")
-    print(test)
-    exec(solution, globals())
-    exec(task["test"], globals())
+    solution_code = task["prompt"] + task["canonical_solution"]
+    test_code = task["test"]
+
+    print("=== Prompt and Solution ===")
+    print(solution_code)
+    print("\n=== Raw Test ===")
+    print(test_code)
+
+    print("\n=== Executing Solution and Test ===")
+    exec(solution_code, globals())
+    exec(test_code, globals())
 
 
-# Example usage:
-import sys
+def main():
+    parser = argparse.ArgumentParser(
+        description="Extract and execute a HumanEval solution and its test case."
+    )
+    parser.add_argument("task_id", help="HumanEval Task ID (HumanEval/TASK_ID)")
+    parser.add_argument("json_path", help="Path to the HumanEval JSON file")
 
-task_id = sys.argv[1]
-extract_solution_and_tests(
-    "/a/home/cc/students/cs/boazlavon/code/web/clean4/eg_cfg/data/humaneval/humaneval.json",
-    f"HumanEval/{task_id}",
-)
+    args = parser.parse_args()
+    extract_solution_and_tests(args.json_path, args.task_id)
+
+
+if __name__ == "__main__":
+    main()
