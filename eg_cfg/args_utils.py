@@ -35,7 +35,10 @@ def get_dynamic_signals_str(inference_session_config):
         t = inference_session_config[
             DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
         ].temperature
-        dynamic_signals_str.append(f"ns{s}t{t}d{d_arg}")
+        k = inference_session_config[
+            DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
+        ].bs_new_signal_threshold
+        dynamic_signals_str.append(f"ns{s}t{t}d{d_arg}k{k}")
     dynamic_signals_str = "".join(dynamic_signals_str)
 
     if (
@@ -73,7 +76,7 @@ def dynamis_sigansl_str_to_cmdline_args(dynamic_signals_str):
         "d": None,
         "s": None,
         "t": None,
-        "b": False,
+        "k": None,
     }
 
     if dynamic_signals_str.endswith("_tok"):
@@ -97,17 +100,19 @@ def dynamis_sigansl_str_to_cmdline_args(dynamic_signals_str):
     if base.startswith("p"):
         args["p"] = True
         base = base.replace("p", "")
-    if "b" in base:
-        args["b"] = True
-        base = base.replace("b", "")
+    match = re.search(r"ns(\d+)t([\d.]+)d(\w+)k(\d+)", base)
+    if not match:
+        args["k"] = 1
+        match = re.search(r"ns(\d+)t([\d.]+)d(\w+)", base)
 
-    match = re.search(r"ns(\d+)t([\d.]+)d(\w+)", base)
     if match:
         args["n"] = True
         args["s"] = int(match.group(1))
         args["t"] = float(match.group(2))
         d_raw = match.group(3)
         args["d"] = d_raw if d_raw == "inf" else int(d_raw)
+        if args["k"] is None and match.group(4) is not None:
+            args["k"] = int(match.group(4))
 
     return args
 
@@ -123,6 +128,7 @@ def build_inference_session_config(args):
             temperature=args["t"] if args["n"] else None,
             bs_candidates_count=args["s"] if args["n"] else None,
             bs_completion_horizon=args["d"] if args["n"] else None,
+            bs_new_signal_threshold=args["k"] if args["n"] else None,
         ),
         DYNAMIC_SIGNAL__PARTIAL_EXECUTION: Namespace(
             is_enabled=args["p"],
@@ -153,6 +159,13 @@ def build_session_config(args):
         ),
         "minimal_trace": args.get(
             "minimal_trace", SESSION_CONFIGS_DEFAULT_VALUES["minimal_trace"]
+        ),
+        "exec_eval": args.get("exec_eval", SESSION_CONFIGS_DEFAULT_VALUES["exec_eval"]),
+        "exec_eval_host_ip": args.get(
+            "exec_eval_host_ip", SESSION_CONFIGS_DEFAULT_VALUES["exec_eval_host_ip"]
+        ),
+        "exec_eval_host_port": args.get(
+            "exec_eval_host_port", SESSION_CONFIGS_DEFAULT_VALUES["exec_eval_host_port"]
         ),
         "top_probs": args.get("top_probs", SESSION_CONFIGS_DEFAULT_VALUES["top_probs"]),
         "debug_mode": args.get(
@@ -209,6 +222,12 @@ def get_cmdline_args():
         help="Multiple Candidates Beam-Search Sampling - Temperature",
     )
     parser.add_argument(
+        "--k",
+        type=int,
+        default=1,
+        help="New Signal Threshold for Multiple Candidates Beam-Search Sampling",
+    )
+    parser.add_argument(
         "--d",
         type=int,
         default=None,
@@ -222,6 +241,19 @@ def get_cmdline_args():
         help="Guidance strategy to use. Options: %(choices)s (default: %(default)s)",
     )
     parser.add_argument("--minimal-trace", action="store_true")
+    parser.add_argument("--exec-eval", action="store_true")
+    parser.add_argument(
+        "--exec-eval-host-ip",
+        type=str,
+        default=None,
+        help="IP address for execution evaluation host",
+    )
+    parser.add_argument(
+        "--exec-eval-host-port",
+        type=int,
+        default=EXEC_EVAL_DEFAULT_HOST_PORT,
+        help="Port for execution evaluation host",
+    )
     parser.add_argument("--global-cache", action="store_true")
     parser.add_argument("--debug-mode", action="store_true")
     parser.add_argument("--top-probs", type=int, default=0, help="top probs")
@@ -320,6 +352,7 @@ def generate_grid_configs(inference_session_grid_json, session_config_json):
         build_inference_session_config(inference_args)
         for inference_args in ParameterGrid(partial_execution_session_grid_args)
     ]
+    # Uncomment if you want to use partial execution signal (like d=0)
     # inference_sessions_configs = inference_sessions_configs + partial_sessions_configs
     session_config = Namespace(**session_config)
     return session_config, inference_sessions_configs

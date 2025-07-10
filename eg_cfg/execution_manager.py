@@ -9,7 +9,7 @@ sys.path.insert(0, parent_dir)
 
 from traces_dumper.program_execution import ProgramExecution
 from code_generation_utils import remove_comments_and_docstrings, is_valid_python
-from mbpp_utils import parse_mbpp_assert_statement
+from datasets_utils import parse_assert_statement
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from consts import *
@@ -25,52 +25,134 @@ class ExecutionManager:
         self.minimal_trace = minimal_trace
         self.debug = debug
 
-    def execute_test_cases(self, executable_code, test_cases, use_assert=False):
+    def execute_test_cases(
+        self, executable_code, test_cases, use_assert=False, execute_io=False
+    ):
         executions = {}
         futures = {}
 
-        def run_test_case(test_case):
+        def run_test_case(test_case, executable_code, execute_io):
+            stdout_file = None
+            stdout_path = None
+            stdout_content = None
             try:
-                invocation = test_case
-                if not use_assert:
-                    function_name, args_str, _ = parse_mbpp_assert_statement(test_case)
-                    invocation = f"{function_name}{args_str}"
-                test_case_code = f"{executable_code}\n{invocation}"
+                if execute_io:
+                    stdout_file = tempfile.NamedTemporaryFile(mode="w+", delete=False)
+                    stdout_path = stdout_file.name
+                    expected_stdin, _ = test_case
+                    injected_prefix = INJECT_IO_INSIDE_DEBUGGER.format(
+                        expected_stdin=expected_stdin, stdout_path=stdout_path
+                    )
+                    # THIS REPLACES ARE CRITICAL
+                    invocation = "solve()"
+                    executable_code = executable_code.replace(
+                        "sys.stdin.readlines", "readlines__custom"
+                    )
+                    executable_code = executable_code.replace(
+                        "sys.stdin.readline", "readline__custom"
+                    )
+                    if not "input = sys.stdin.read" in executable_code:
+                        executable_code = executable_code.replace(
+                            "input(", "input__custom("
+                        )
+                    executable_code = executable_code.replace(
+                        "sys.stdin.read", "read__custom"
+                    )
+                    executable_code = executable_code.replace(
+                        "print(", "print__custom("
+                    )
+
+                    executable_code += "\n    print(locals())"
+                    test_case_code = (
+                        f"{injected_prefix}\n{executable_code}\n{invocation}"
+                    )
+                else:
+                    invocation = test_case
+                    if not use_assert:
+                        function_name, args_str, _ = parse_assert_statement(test_case)
+                        invocation = f"{function_name}{args_str}"
+                    test_case_code = f"{executable_code}\n{invocation}"
                 assert is_valid_python(
                     test_case_code
                 ), f"Invalid Test Case: {test_case}"
                 program_execution = self.execute(test_case_code)
-                return test_case, program_execution
+                stdout_content = None
+                if stdout_file is not None and stdout_path is not None:
+                    try:
+                        stdout_file.close()
+                        with open(stdout_path, "r") as f:
+                            stdout_content = f.read()
+                    except:
+                        pass
+
+                    try:
+                        os.remove(stdout_path)
+                    except:
+                        pass
+
+                return test_case, program_execution, stdout_content
             except subprocess.TimeoutExpired:
                 self.timeouts += 1
                 traceback.print_exc()
                 print(f"Timeout Error in test case: {test_case}")
-                return test_case, None
+                return test_case, None, None
             except Exception as e:
                 traceback.print_exc()
                 print(f"Error in test case: {test_case}")
-                return test_case, None
+                return test_case, None, None
 
         # Parallel execution using ThreadPoolExecutor
         original_cwd = os.getcwd()
         traces_dumper_dir = os.path.join(original_cwd, "traces_dumper")
         os.chdir(traces_dumper_dir)
 
-        with ThreadPoolExecutor(max_workers=min(8, len(test_cases))) as executor:
+        with ThreadPoolExecutor(max_workers=min(8, len(test_cases) + 1)) as executor:
             for test_case in test_cases:
-                futures[executor.submit(run_test_case, test_case)] = test_case
+                futures[
+                    executor.submit(
+                        run_test_case, test_case, executable_code, execute_io
+                    )
+                ] = test_case
 
             for future in as_completed(futures):
-                test_case, program_execution = future.result()
+                test_case, program_execution, stdout_content = future.result()
                 if program_execution is not None:
-                    executions[test_case] = program_execution.to_compact_json(
+                    trace = program_execution.to_compact_json(
                         minimal_trace=self.minimal_trace
                     )
+                    if stdout_content is not None:
+                        trace += "\n# Stdout: {stdout_content!r}".format(
+                            stdout_content=stdout_content
+                        )
+
+                    executions[test_case] = trace
                     if self.debug:
                         print(executable_code)
                         print(test_case)
                         print()
                         print(executions[test_case])
+
+        # Uncomment the following lines for debugging purposes
+        ### FOR DEBUGGING PURPOSES
+        # for test_case in test_cases:
+        #     test_case, program_execution, stdout_content = run_test_case(
+        #         test_case, executable_code, execute_io
+        #     )
+        #     if program_execution is not None:
+        #         trace = program_execution.to_compact_json(
+        #             minimal_trace=self.minimal_trace
+        #         )
+        #         if stdout_content is not None:
+        #             trace += "\n# Stdout: {stdout_content!r}".format(
+        #                 stdout_content=stdout_content
+        #             )
+
+        #         executions[test_case] = trace
+        #         if self.debug:
+        #             print(executable_code)
+        #             print(test_case)
+        #             print()
+        #             print(executions[test_case])
 
         os.chdir(original_cwd)
         return executions

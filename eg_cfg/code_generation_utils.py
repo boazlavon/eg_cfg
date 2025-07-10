@@ -5,7 +5,7 @@ import tokenize
 from io import StringIO
 from transformers import StoppingCriteria
 from transformers import StoppingCriteriaList
-from inference_endpoint_utils import extract_python_code
+from inference_endpoint_utils import extract_matching_blocks
 from model_utils import extract_new_tokens
 from consts import *
 
@@ -235,6 +235,7 @@ def raw_outputs_to_new_code(
             )
             if stats_manager is not None:
                 stats_manager.increate_counter("output_tokens", output_tokens.shape[1])
+
             if prompt_type == PROMPT_TYPE__DEEPSEEK_BASE:
                 output_text = output_text.replace(
                     DYNAMIC_SIGNAL_PROMPT_REPLACE_STRING_BASE_END, ""
@@ -243,22 +244,21 @@ def raw_outputs_to_new_code(
                 PROMPT_TYPE__DEEPSEEK_INSTRUCT,
                 PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT,
             ):
-                extracted_code = extract_python_code(output_text)
-                if not extracted_code:
-                    extracted_code = output_text.split(
-                        INSTRUCT_MODEL_PYTHON_CODE_START, 1
-                    )[1].rstrip()
-                    if "```" in extracted_code:
-                        extracted_code = extracted_code.split("```")[0]
+                if is_valid_python(output_text):
+                    new_codes.append(output_text)
+                    continue
+
+                matches, output_text = extract_matching_blocks(output_text)
+                extracted_code = None
+                if matches:
+                    extracted_code = matches[-1].group(1).strip()
+                assert extracted_code, f"Could not extract code from: {output_text}"
             if validate:
                 assert is_valid_python(extracted_code)
-                # new_code = black.format_str(
-                #     new_code, mode=black.FileMode(line_length=1024)
-                # )
         except:
             continue
         new_codes.append(extracted_code)
-    assert new_codes
+    assert new_codes, f"Could not extract code from: {output_text}"
     return new_codes
 
 

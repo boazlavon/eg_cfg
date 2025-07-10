@@ -8,15 +8,20 @@ import os
 import json
 import traceback
 import random
-from mbpp_utils import (
-    format_mbpp_prompt,
+from code_generation_utils import is_valid_python
+from datasets_utils import (
+    format_task_prompt,
     load_mbpp_problems,
     load_humaneval_problems,
-    run_tests,
+    load_codecontests_problems,
     extract_function_signature,
 )
+from eval_utils import (
+    run_tests,
+)
+from exec_eval_utils import exec_eval__run_tests, ExecEval__APICommunication
 from model_utils import calculate_tokens_length
-from mbpp_utils import parse_mbpp_assert_statement, load_official_results
+from datasets_utils import parse_assert_statement
 from code_generation_utils import (
     generate_code_solutions,
     raw_outputs_to_new_code,
@@ -29,18 +34,21 @@ from probs_utils import stable_hash
 from collections import defaultdict
 from inference_endpoint_utils import (
     inference_endpoint_eg_cfg,
+    inference_endpoint_eg_cfg_gamma_1_optimization,
     PostRequestTimeoutError,
-    complex_qwen_query,
+    reasoning_tokens_query,
 )
 from consts import *
 from datetime import datetime
 
+EXEC_EVAL_API_COMM = None
+
 
 def format_results(solution, results, general_error, tb=None):
-    passed = all(r["result"] for r in results.values())
     correct = sum(int(r["result"]) for r in results.values())
     total = len(results)
     accuracy = correct / total if total else 0.0
+    passed = 1.0 == accuracy
     has_testcase_error = all([bool(result["error"]) for result in results.values()])
     entry = {
         "code": solution,
@@ -134,11 +142,8 @@ class EgCfgSessionManager:
             debug=self.session_config.debug_mode,
         )
         self.stats_manager = StatisticsManager()
+        print("Loading problems for dataset: {}".format(self.session_config.dataset))
         assert self.session_config.dataset in AVAILABLE_DATASETS
-        assert self.session_config.dataset in (
-            DATASET__MBPP,
-            DATASET__HUMANEVAL,
-        )
         if self.session_config.dataset == DATASET__MBPP:
             self.problems = load_mbpp_problems()  # uses test_list
             self.eval_dataset = (
@@ -149,12 +154,21 @@ class EgCfgSessionManager:
             self.eval_dataset = (
                 self.problems
             )  # uses eval_test_list in humaneval, test_list in mbpp
+        if self.session_config.dataset == DATASET__CODECONTESTS:
+            self.problems = load_codecontests_problems()
+            self.eval_dataset = self.problems
 
         self.problems = list(self.problems.items())
         if self.session_config.start_idx and self.session_config.end_idx:
             self.problems = self.problems[
                 self.session_config.start_idx : self.session_config.end_idx
             ]
+
+        print(
+            "Finished loading problems for dataset: {}".format(
+                self.session_config.dataset
+            )
+        )
         if self.session_config.is_prod:
             random.shuffle(self.problems)
         if self.session_config.results_dir:
@@ -162,12 +176,22 @@ class EgCfgSessionManager:
                 os.getcwd(), self.session_config.results_dir
             )
             os.makedirs(self.session_config.results_dir, exist_ok=True)
+        if self.session_config.exec_eval:
+            global EXEC_EVAL_API_COMM
+            if EXEC_EVAL_API_COMM is None:
+                EXEC_EVAL_API_COMM = ExecEval__APICommunication(
+                    self.session_config.exec_eval_host_ip,
+                    self.session_config.exec_eval_host_port,
+                )
 
     def create_results_dir(self, session_config, inference_session_config):
         dynamic_signals_str = get_dynamic_signals_str(inference_session_config)
+        dataset_name = self.session_config.dataset
+        if self.session_config.exec_eval:
+            dataset_name = f"{dataset_name}__ExecEval"
         results_dir = os.path.join(
             self.session_config.results_dir,
-            self.session_config.dataset,
+            dataset_name,
             session_config.model_name.replace("/", "_"),
             dynamic_signals_str,
         )
@@ -178,9 +202,12 @@ class EgCfgSessionManager:
             self.session_config, inference_session_config
         )
         os.makedirs(results_dir, exist_ok=True)
+        dataset_name = self.session_config.dataset
+        if self.session_config.exec_eval:
+            dataset_name = f"{dataset_name}__ExecEval"
         solved_tasks_cache_dir = os.path.join(
             self.session_config.results_dir,
-            self.session_config.dataset,
+            dataset_name,
             self.session_config.model_name.replace("/", "_"),
             SOLVED_TASKS_CACHE_DIRNAME,
         )
@@ -202,113 +229,20 @@ class EgCfgSessionManager:
         filename = FILENAME_TEMPLATE.format(task_id=task_id, gamma=gamma)
         return os.path.join(results_dir, filename)
 
-    def resolve_baseline_solved_entries(self):
-        gamma = 0.0
-        if self.session_config.dataset == DATASET__MBPP:
-            if self.session_config.model_name == DEEPSEEK_V3_0324_MODEL_NAME_HF:
-                official_passed_task_ids = DEEPSEEK_V3_0324_SOLVED_TASK_IDS
-            elif self.session_config.model_name == QWEN3_253B_MODEL_NAME_HF:
-                official_passed_task_ids = QWEN3_SOLVED_TASK_IDS
-            else:
-                official_passed_task_ids, official_results = load_official_results(
-                    self.session_config.model_name
-                )
-        if self.session_config.dataset == DATASET__HUMANEVAL:
-            official_passed_task_ids = []
-
-        if not official_passed_task_ids and (
-            self.session_config.model_name
-            not in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
-        ):
-            return
-        if self.session_config.is_prod:
-            random.shuffle(official_passed_task_ids)
-        for _, problem in self.problems:
-            task_id = problem["task_id"]
-            if (
-                not self.session_config.model_name
-                in (DEEPSEEK_V3_0324_MODEL_NAME_HF, QWEN3_253B_MODEL_NAME_HF)
-            ) and (not task_id in official_passed_task_ids):
-                continue
-            solution_entry_path = self.get_solution_filepath(
-                self.inference_session.results_dir, task_id, gamma
-            )
-            if os.path.exists(solution_entry_path):
-                continue
-
-            with open(solution_entry_path, "a"):
-                pass
-            print(f"task_id: {task_id}")
-            pprint.pprint(problem)
-            solution = None
-            general_error = None
-            tb = None
-            solution_entry = None
-
-            if self.session_config.model_name in (
-                DEEPSEEK_13B_INSTRUCT_MODEL_NAME,
-                DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME,
-            ):
-                eval_problem = self.eval_dataset[task_id]
-                if self.session_config.dataset in (DATASET__MBPP,):
-                    test_cases_to_eval = eval_problem["test_list"]
-                if self.session_config.dataset in (DATASET__HUMANEVAL,):
-                    test_cases_to_eval = eval_problem["eval_test_list"]
-
-                solution = official_results[task_id]["generation"]
-                solution_results = run_tests(solution, test_cases_to_eval)
-                solution_entry = format_results(
-                    solution, solution_results, general_error, tb
-                )
-                solution_entry["stats"] = {}
-                solution_entry["retry"] = -1
-                solution_entry["random_seed"] = -1
-                self.solutions[(task_id, gamma)] = solution_entry
-
-                print(solution_entry_path)
-                with open(solution_entry_path, "w") as f:
-                    json.dump(solution_entry, f, indent=2)
-
-            elif self.session_config.model_name in (
-                DEEPSEEK_V3_0324_MODEL_NAME_HF,
-                QWEN3_253B_MODEL_NAME_HF,
-            ):
-                # if task_id not in UNSOLVED_HUMANEVAL_TASKS[self.session_config.model_name]:
-                #     continue
-                baseline_trial_base = BASELINE_TRIALS_BASE[
-                    (self.session_config.model_name, self.session_config.dataset)
-                ]
-                for baseline_dir in BASELINE_DIRS:
-                    results_dir = os.path.join(baseline_trial_base, baseline_dir)
-                    bs_solution_entry_path = self.get_solution_filepath(
-                        results_dir,
-                        task_id,
-                        gamma=0.0,
-                    )
-                    if not os.path.exists(bs_solution_entry_path):
-                        continue
-                    with open(bs_solution_entry_path) as f:
-                        bs_solution_entry = json.load(f)
-                    for gamma in (0, 0.0):
-                        solution_entry_path = self.get_solution_filepath(
-                            self.inference_session.results_dir, task_id, gamma
-                        )
-                        with open(solution_entry_path, "w") as f:
-                            json.dump(bs_solution_entry, f, indent=2)
-                    if bs_solution_entry["passed"]:
-                        break
-
     def build_eg_cfg_injection_manager_and_prompt(
         self, problem, gamma, function_signature=None
     ):
         test_cases_to_prompt = problem["test_list"]
         use_eg_cfg = True
         use_detector = True
-        if (
+        if gamma == 0 and self.session_config.dataset == DATASET__HUMANEVAL:
+            prompt = problem["prompt"]
+            end_string = CODE_BORDER_TOKEN
+        elif (
             self.inference_session.inference_session_config["prompt_type"]
             == PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT
         ):
-            prompt, _ = format_mbpp_prompt(problem, False)
+            prompt, _ = format_task_prompt(problem, False)
             end_string = CODE_BORDER_TOKEN
 
         elif self.inference_session.inference_session_config["prompt_type"] in (
@@ -339,8 +273,11 @@ class EgCfgSessionManager:
                 with open(prompts_path, "r") as f:
                     prompts = json.load(f)
                     prompt = prompts[str(problem["task_id"])]
-            elif self.session_config.dataset == DATASET__HUMANEVAL:
-                prompt, _ = format_mbpp_prompt(problem, True)
+            elif self.session_config.dataset in (
+                DATASET__HUMANEVAL,
+                DATASET__CODECONTESTS,
+            ):
+                prompt, _ = format_task_prompt(problem, True)
                 end_string = CODE_BORDER_TOKEN
 
         print(self.inference_session.inference_session_config)
@@ -364,6 +301,9 @@ class EgCfgSessionManager:
                 "bs_candidates_count": self.inference_session.inference_session_config[
                     DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
                 ].bs_candidates_count,
+                "bs_new_signal_threshold": self.inference_session.inference_session_config[
+                    DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
+                ].bs_new_signal_threshold,
                 "temperature": self.inference_session.inference_session_config[
                     DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION
                 ].temperature,
@@ -381,6 +321,7 @@ class EgCfgSessionManager:
                 "use_local_hf_model": self.use_local_hf_model,
                 "use_inference_endpoint": self.use_inference_endpoint,
                 "model_name": self.session_config.model_name,
+                "execute_io": self.session_config.dataset == DATASET__CODECONTESTS,
                 "task_id": (
                     problem["task_id"] if self.session_config.use_global_cache else None
                 ),
@@ -396,7 +337,7 @@ class EgCfgSessionManager:
                 if problem.get("entry_point"):
                     function_name = problem.get("entry_point")
                 else:
-                    function_name, _, _ = parse_mbpp_assert_statement(
+                    function_name, _, _ = parse_assert_statement(
                         test_cases_to_prompt[0]
                     )
                 detector_kwargs = {
@@ -470,31 +411,58 @@ class EgCfgSessionManager:
                     )
                     break
 
+            max_tokens = MAX_NEW_TOKENS
+            if self.session_config.dataset == DATASET__CODECONTESTS:
+                max_tokens *= 3
+
             if gamma > 0.0:
-                outputs, early_stop = inference_endpoint_eg_cfg(
-                    prompt,
-                    self.tokenizer,
-                    self.session_config.model_name,
-                    eg_cfg_injection_manager,
-                    function_signature,
-                    function_name=problem.get("entry_point"),
-                )
+                if (
+                    gamma == GAMMA_1_OPTIMIZATION_VALUE
+                ):  # special case for optimization for gamma=1
+                    outputs, early_stop, inference_initial_prompt_input_ids_len = (
+                        inference_endpoint_eg_cfg_gamma_1_optimization(
+                            prompt,
+                            self.tokenizer,
+                            self.session_config.model_name,
+                            eg_cfg_injection_manager,
+                            function_signature,
+                            function_name=problem.get("entry_point"),
+                            max_tokens=max_tokens,
+                        )
+                    )
+                else:
+                    outputs, early_stop, inference_initial_prompt_input_ids_len = (
+                        inference_endpoint_eg_cfg(
+                            prompt,
+                            self.tokenizer,
+                            self.session_config.model_name,
+                            eg_cfg_injection_manager,
+                            function_signature,
+                            function_name=problem.get("entry_point"),
+                            max_tokens=max_tokens,
+                        )
+                    )
+                if inference_initial_prompt_input_ids_len is not None:
+                    initial_prompt_input_ids_len = (
+                        inference_initial_prompt_input_ids_len
+                    )
             else:  # gamma == 0
-                # We resolve all gamma == 0.0. BUT it can be here in case we disable
-                # resolve all gamma = 0.0 forehead
-                # for some reason
                 prompt_input_ids = self.tokenizer(prompt, return_tensors="pt")[
                     "input_ids"
                 ]
-                _, solution, completion_tokens = complex_qwen_query(
+                _, solution, completion_tokens = reasoning_tokens_query(
                     prompt,
                     function_signature,
                     self.session_config.model_name,
                     temperture=eg_cfg_injection_manager.adapter.temperature,
-                    max_tokens=COMPLEX_QWEN_QUERY_MAX_TOKENS,
+                    max_tokens=REASONING_TOKENS_QUERY_MAX_TOKENS,
                     verbose=True,
                     function_name=problem.get("entry_point"),
+                    return_raw=(self.session_config.dataset == DATASET__HUMANEVAL),
+                    return_answer_start_until_code=False,
                 )
+                if self.session_config.dataset == DATASET__HUMANEVAL:
+                    solution = f"{prompt}\n{solution}"
                 if self.stats_manager is not None:
                     self.stats_manager.increate_counter(
                         "guidance_input_tokens", prompt_input_ids.shape[1]
@@ -502,7 +470,9 @@ class EgCfgSessionManager:
                     self.stats_manager.increate_counter(
                         "guidance_output_tokens", completion_tokens
                     )
-                assert solution
+                assert is_valid_python(
+                    solution
+                ), f"Invalid Python code generated: {solution}"
                 return solution
             if early_stop:
                 print("Early Stop detected!")
@@ -523,7 +493,7 @@ class EgCfgSessionManager:
         eval_problem = self.eval_dataset[task_id]
         if self.session_config.dataset in (DATASET__MBPP,):
             test_cases_to_eval = eval_problem["test_list"]
-        if self.session_config.dataset in (DATASET__HUMANEVAL,):
+        if self.session_config.dataset in (DATASET__HUMANEVAL, DATASET__CODECONTESTS):
             test_cases_to_eval = eval_problem["eval_test_list"]
         self.stats_manager.set_current_key((task_id, gamma))
         start_time = datetime.now()
@@ -574,6 +544,7 @@ class EgCfgSessionManager:
             except KeyboardInterrupt:
                 exit(1)
             except PostRequestTimeoutError as e:
+                solution = None
                 general_error = str(type(e))
                 tb = traceback.format_exc()
                 print(tb)
@@ -597,23 +568,49 @@ class EgCfgSessionManager:
                 if not self.session_config.is_prod:
                     raise e
 
-            solution_results = run_tests(solution, test_cases_to_eval)
-            solution_entry = format_results(
-                solution, solution_results, general_error, tb
-            )
-
             end_time = datetime.now()
+
+            tests_start_time = datetime.now()
+            tests_start_time_str = tests_start_time.strftime("%Y-%m-%d %H:%M:%S")
+            if self.stats_manager is not None:
+                self.stats_manager.set_value("tests_start_time", tests_start_time_str)
+
+            io_flag = self.session_config.dataset == DATASET__CODECONTESTS
+            if self.session_config.exec_eval:
+                if solution is None:
+                    solution_entry = format_results(solution, {}, general_error, tb)
+                else:
+                    global EXEC_EVAL_API_COMM
+                    solution_entry = exec_eval__run_tests(
+                        solution, test_cases_to_eval, EXEC_EVAL_API_COMM
+                    )
+            else:
+                solution_results = run_tests(solution, test_cases_to_eval, io_flag)
+                solution_entry = format_results(
+                    solution, solution_results, general_error, tb
+                )
+
+            tests_end_time = datetime.now()
+            tests_end_time_str = tests_end_time.strftime("%Y-%m-%d %H:%M:%S")
+            if self.stats_manager is not None:
+                self.stats_manager.set_value("tests_end_time", tests_end_time_str)
+
             duration = end_time - start_time
+            tests_duration = tests_end_time - tests_start_time
             end_time_str = end_time.strftime("%Y-%m-%d %H:%M:%S")
             if self.stats_manager is not None:
                 self.stats_manager.set_value("end_time", end_time_str)
                 self.stats_manager.set_value("duration", str(duration))
+                self.stats_manager.set_value("tests_duration", str(tests_duration))
             print(f"[END] {end_time_str}")
             print(f"[DURATION] {duration}")
             solution_entry["stats"] = dict(
                 self.stats_manager.statistics[(task_id, gamma)]
             )
-            print(solution_entry["stats"])
+            solution_entry__print = solution_entry.copy()
+            del solution_entry__print["results"]
+            print("task_id:", task_id, "gamma:", gamma)
+            pprint.pprint(solution_entry__print)
             solution_entry["retry"] = retry_idx
             solution_entry["random_seed"] = random_seed
             if solution_entry["passed"]:
@@ -625,11 +622,11 @@ class EgCfgSessionManager:
     def solve_single_problem(self, problem):
         task_id = problem["task_id"]
         print(f"task_id: {task_id}")
-        pprint.pprint(problem)
+        # pprint.pprint(problem)
         print()
 
         global_cache_solved_task_id_path = os.path.join(
-            self.inference_session.solved_tasks_cache_dir, f"{task_id}"
+            self.inference_session.solved_tasks_cache_dir, f"{task_id}.json"
         )
         for gamma in self.session_config.gammas:
             print(f"task_id={task_id}, gamma={gamma}")
@@ -637,8 +634,10 @@ class EgCfgSessionManager:
                 self.inference_session.results_dir, task_id, gamma
             )
 
-            if self.session_config.use_global_cache and os.path.exists(
-                global_cache_solved_task_id_path
+            if (
+                self.session_config.use_global_cache
+                and os.path.exists(global_cache_solved_task_id_path)
+                and not os.path.exists(solution_entry_path)
             ):
                 print("Problem is solved: Gloabl cache")
                 with open(solution_entry_path, "a"):
@@ -665,6 +664,16 @@ class EgCfgSessionManager:
                             print(
                                 f"Problem task_id={task_id} is solved (gamma={gamma})"
                             )
+                            solution_entry_dump = json.dumps(solution_entry)
+                            if (
+                                self.session_config.use_global_cache
+                                and not os.path.exists(global_cache_solved_task_id_path)
+                                and not solution_entry.get("global_cached")
+                                and not "global_cached" in solution_entry_dump
+                            ):
+                                print(f"Added new global cache entry: {task_id}")
+                                with open(global_cache_solved_task_id_path, "w") as f2:
+                                    json.dump(solution_entry, f2, indent=2)
                             break
                         elif solution_entry and not solution_entry["passed"]:
                             print(
@@ -708,22 +717,13 @@ class EgCfgSessionManager:
                 ):
                     with open(global_cache_solved_task_id_path, "a"):
                         pass
-                    with open(global_cache_solved_task_id_path, "w") as f:
-                        entry = {
-                            "gamma": gamma,
-                            "random_seed": self.session_config.random_seed,
-                        }
-                        f.write(json.dumps(entry))
+                    with open(global_cache_solved_task_id_path, "w") as f2:
+                        json.dump(solution_entry, f2, indent=2)
                 break
             else:
                 print(f"Failed Solving Problem task_id={task_id} (gamma={gamma})")
 
     def solve(self):
-        for inference_session_config in self.inference_sessions_configs:
-            self.setup_inference_session(
-                inference_session_config,
-            )
-            self.resolve_baseline_solved_entries()
         for _, problem in self.problems:
             for inference_session_config in self.inference_sessions_configs:
                 self.setup_inference_session(

@@ -3,6 +3,109 @@ MAX_NEW_TOKENS = 512
 PROMPT_TYPE__DEEPSEEK_BASE = "deepseek_base"
 PROMPT_TYPE__DEEPSEEK_INSTRUCT = "deepseek_instruct"
 PROMPT_TYPE__INSTRUCT_LONG_CODE_PROMPT = "long_code"
+BASELINE_LLM_SAMPLING_TEMPERATURE = 0.7
+DATASET__CODECONTESTS__HF_PATH = "deepmind/code_contests"
+DATASET__MBPP__HF_PATH = "google-research-datasets/mbpp"
+DATASET__MBPP_ET_HF_PATH = "dz1/CodeScore-MBPP-ET"
+DATASET__HUMANEVAL_ET_HF_PATH = "dz1/CodeScore-HumanEval-ET"
+
+EVALUATE_SOLUTION_IO_TIMEOUT_SEC = 15
+EVALUATE_SOLUTION_TIMEOUT_SEC = 10
+DEFAULT_MAX_WORKERS = 8
+
+EXEC_EVAL_DEFAULT_HOST_PORT = 5000
+EXEC_EVAL__TIMEOUT_SEC = 120
+EVAL_TYPE__EG_CFG = "eval-eg-cfg"
+EVAL_TYPE__EXEC_EVAL = "ExecEval"
+AVAILABLE_EVAL_TYPES = (EVAL_TYPE__EG_CFG, EVAL_TYPE__EXEC_EVAL)
+
+DATASET__MBPP = "mbpp"
+DATASET__MBPP_ET = "mbpp-et"
+DATASET__HUMANEVAL = "humaneval"
+DATASET__HUMANEVAL_ET = "humaneval-et"
+DATASET__CODECONTESTS = "CodeContests"
+AVAILABLE_DATASETS = (DATASET__MBPP, DATASET__HUMANEVAL, DATASET__CODECONTESTS)
+AVAILABLE_EVAL_DATASETS = (
+    DATASET__MBPP_ET,
+    DATASET__HUMANEVAL_ET,
+    DATASET__CODECONTESTS,
+)
+ALL_DATASETS = (
+    DATASET__MBPP,
+    DATASET__HUMANEVAL,
+    DATASET__CODECONTESTS,
+    DATASET__MBPP_ET,
+    DATASET__HUMANEVAL_ET,
+)
+
+EVAL_DEFAULT_WORKERS = 12  # Default number of workers per trial
+EXEC_EVAL__LANGUAGE__PYTHON3 = "Python 3"
+EXEC_EVAL__LANGUAGE__PYTHON3__LIMITS = {"nofile": 4}
+EXEC_EVAL__EXECUTE_CODE_URL_TEMPLATE = (
+    "http://{exec_eval_host_ip}:{exec_eval_host_port}/api/execute_code"
+)
+EXEC_EVAL__REQUEST_HEADERS = {"Content-Type": "application/json"}
+
+CODE_CONTESTS__INVOCATION = "solve()"
+
+# When just executed without any debugger (like in eval time)
+# its ok to just override stdin and stdout
+INJECT_IO_EVAL = """
+import sys, io
+s = {expected_stdin!r}
+sys.stdin = io.StringIO(s)
+sys.stdout = open("{stdout_path}", "w")
+"""
+
+GAMMA_1_OPTIMIZATION_VALUE = 1
+
+# We cannot override sys.stdin in anyway because the debugger and
+# the program share thesame stdin so it overrides the debugger stdin as well
+# in this way we cannot execute the debugger commands in "traces_dumper/runner.py"
+INJECT_IO_INSIDE_DEBUGGER = """
+import sys, io
+
+def input__custom(prompt=None):
+    if prompt:
+        print(prompt, end='', flush=True)
+
+    if not hasattr(input__custom, "_gen"):
+        input_string = {expected_stdin!r}  # Injected input string
+        input__custom._gen = (line for line in input_string.splitlines())
+
+    try:
+        return next(input__custom._gen)
+    except StopIteration:
+        raise EOFError
+
+def read__custom():
+    return {expected_stdin!r}
+
+def readline__custom():
+    return input__custom() + '\\n'
+
+def readlines__custom():
+    return [line + '\\n' for line in {expected_stdin!r}.splitlines()]
+
+def print__custom(*args, **kwargs):
+    with open({stdout_path!r}, 'a') as f:
+        kwargs_copy = kwargs.copy()
+        sep = kwargs_copy.pop('sep', ' ')
+        end = kwargs_copy.pop('end', '\\n')
+        text = sep.join(str(arg) for arg in args) + end
+        f.write(text)
+"""
+
+TESTS_COUNT_THRESHOLD = 3
+EXAMPLE_CODE = """""
+def solve():
+    print('Hello')
+"""
+
+HUMANEVAL_INSTRUCTION_TEMPLATE = """
+Write a function that performs the following task: {instruction}
+It should have the following function signature: {function_signature}
+"""
 
 VALID_PROMPT_TYPES = [
     PROMPT_TYPE__DEEPSEEK_INSTRUCT,
@@ -78,7 +181,7 @@ SUPPORTED_DYNAMIC_SIGNALS = (
     DYNAMIC_SIGNAL__MULTIPLE_CANDIDATES_EXECUTION,
 )
 
-CMDLINE_ARGS_ONLY_GAMMAS = [0.0, 0.5, 0.75, 1, 3]
+CMDLINE_ARGS_ONLY_GAMMAS = [0.0, 0.5, 1, 3]
 FILENAME_TEMPLATE = "task_id={task_id}_gamma={gamma}.json"
 
 TASK__CODE_GENERATION = "CodeGeneration"
@@ -87,39 +190,16 @@ MBPP_INSTRUCT_PROMPT_FILENAME = "mbpp_instruct_prompts.json"
 MBPP_BASE_PROMPT_FILENAME = "mbpp_base_prompts.json"
 MAIN_DATA_DIR = "data"
 DEEPSEEK_PROMPT_DIRNAME = "deepseek_mbpp_prompts"
-DEEPSEEK_13B_INSTRUCT_BASELINE_PASSED_PATH = (
-    "data/official_eval_results/deepseek-ai_deepseek-coder-1.3b-instruct.task_ids.json"
-)
-DEEPSEEK_13B_INSTRUCT_BASELINE_RESULTS_PATH = (
-    "data/official_eval_results/deepseek-ai_deepseek-coder-1.3b-instruct.json"
-)
-DEEPSEEK_V3_0324_INSTRUCT_BASELINE_PASSED_PATH = (
-    "data/official_eval_results/deepseek-ai_DeepSeek-V3-0324.task_ids.json"
-)
 DEEPSEEK_13B_INSTRUCT_MODEL_NAME = "deepseek-ai/deepseek-coder-1.3b-instruct"
 
 DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME = (
     "deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct"
 )
-DEEPSEEK_CODER_V2_LITE_INSTRUCT_BASELINE_PASSED_PATH = "data/official_eval_results/deepseek-ai_DeepSeek-Coder-V2-Lite-Instruct.task_ids.json"
-DEEPSEEK_CODER_V2_LITE_INSTRUCT_BASELINE_RESULTS_PATH = (
-    "data/official_eval_results/deepseek-ai_DeepSeek-Coder-V2-Lite-Instruct.json"
-)
-DEEPSEEK_V3_0324_INSTRUCT_BASELINE_RESULTS_PATH = (
-    "data/official_eval_results/deepseek-ai_DeepSeek-V3-0324.json"
-)
 
-EXECUTION_TIMEOUT_SEC = 20
+EXECUTION_TIMEOUT_SEC = 40
 MBPP_SIZE = 500
 
-DATASET__MBPP = "mbpp"
-DATASET__HUMANEVAL = "humaneval"
-AVAILABLE_DATASETS = (
-    DATASET__MBPP,
-    DATASET__HUMANEVAL,
-)
-
-SOLVED_TASKS_CACHE_DIRNAME = ".solved_tasks_cache"
+SOLVED_TASKS_CACHE_DIRNAME = "solved_tasks"
 
 GUIDANCE_STRATEGY__TOKEN_GUIDANCE = "token_guidance"
 GUIDANCE_STRATEGY__PERSISTENT_PREFIX_GUIDANCE = "persistent_prefix_guidance"
@@ -136,6 +216,7 @@ LOGPROBS_COUNT = 5
 HTTP_REQUEST_TO_LLM_RETRIES_COUNT = 5
 REQUEST_TIMEOUT_SEC = 30
 QWEN_REQUEST_TIMEOUT_SEC = REQUEST_TIMEOUT_SEC * 3
+MATCH_RETRIES_COUNT = 10
 
 DEEPSEEK_V3_0324_MODEL_NAME_HF = "deepseek-ai/DeepSeek-V3-0324"
 DEEPSEEK_V3_0324_MODEL_NAME_FW = "accounts/fireworks/models/deepseek-v3-0324"
@@ -143,7 +224,7 @@ QWEN3_253B_MODEL_NAME_HF = "Qwen/Qwen3-235B-A22B"
 QWEN3_253B_MODEL_NAME_FW = "accounts/fireworks/models/qwen3-235b-a22b"
 
 PSEUDO_BEAM_SEARCH_MAX_TOKENS = MAX_NEW_TOKENS
-COMPLEX_QWEN_QUERY_MAX_TOKENS = 2048
+REASONING_TOKENS_QUERY_MAX_TOKENS = 2048
 
 PSEUDO_BEAM_SEARCH_MAX_TOTAL_REQUESTS = 2
 HF_MODEL_TO_FW_MODEL = {
@@ -164,16 +245,37 @@ PYTHON_CODE_TAGS_USAGE_INSTRUCTION_DS = (
     "It must be immediately followed by the <__end_of_sentence__> token."
 )
 
-OFFICIAL_PASSED_TASK_IDS_PATH = {
-    DEEPSEEK_13B_INSTRUCT_MODEL_NAME: DEEPSEEK_13B_INSTRUCT_BASELINE_PASSED_PATH,
-    DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME: DEEPSEEK_CODER_V2_LITE_INSTRUCT_BASELINE_PASSED_PATH,
-    DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_V3_0324_INSTRUCT_BASELINE_PASSED_PATH,
-}
-OFFICIAL_RESULT_PATH = {
-    DEEPSEEK_13B_INSTRUCT_MODEL_NAME: DEEPSEEK_13B_INSTRUCT_BASELINE_RESULTS_PATH,
-    DEEPSEEK_CODER_V2_LITE_INSTRUCT_MODEL_NAME: DEEPSEEK_CODER_V2_LITE_INSTRUCT_BASELINE_RESULTS_PATH,
-    DEEPSEEK_V3_0324_MODEL_NAME_HF: DEEPSEEK_V3_0324_INSTRUCT_BASELINE_RESULTS_PATH,
-}
+SOLUTION_FUNCTION_STRUCTURE_INSTRUCTION = """
+Implement your entire solution inside a function named `solve()`.
+
+Strict requirements:
+- Define the function exactly like this:
+
+  def solve():
+
+- The `solve()` function must NOT take any arguments or return anything.
+- Use `input()` or `sys.stdin` to read input.
+- Use `print()` to produce output.
+- Do NOT include any code outside the `solve()` function.
+- Do NOT call `solve()` yourself.
+
+Example:
+```python
+def solve():
+    name = input()
+    print("Hello", name)
+```
+
+Additional implementation constraints:
+
+- Do not define another function named solve inside the outer solve() function.
+- Do not define solve() with any parameters (e.g., def solve(_, __): is invalid).
+- Avoid wrapping the entire logic inside an inner solve() or another local function.
+- Your entire solution must be implemented directly inside a single solve() function body.
+- Avoid "flattening" patterns where you define internal functions that shadow or re-declare solve()—these will be rejected.
+
+Violating this rule will result in rejection of the solution.
+"""
 
 DEPLOYMENT_TYPE__INFERENCE_ENDPOINT = "inference_endpoint"
 DEPLOYMENT_TYPE__LOCAL_HF_MODEL = "local"
@@ -189,33 +291,13 @@ SUPPORTED_MODELS_ON_DEPLOYMENTS = {
     DEPLOYMENT_TYPE__LOCAL_HF_MODEL: (DEEPSEEK_13B_INSTRUCT_MODEL_NAME,),
 }
 
-BASELINE_DIR_QWEN3_HUMANEVAL = (
-    "data/official_eval_results/baseline/humaneval/Qwen_Qwen3-235B-A22B"
-)
-BASELINE_DIR_DEEPSEEK_V3_0324_HUMANEVAL = (
-    "data/official_eval_results/baseline/humaneval/deepseek-ai_DeepSeek-V3-0324"
-)
-BASELINE_DIR_DEEPSEEK_V3_0324 = (
-    "data/official_eval_results/baseline/mbpp/deepseek-ai_DeepSeek-V3-0324"
-)
-BASELINE_DIR_QWEN3_253B = (
-    "data/official_eval_results/baseline/mbpp/Qwen_Qwen3-235B-A22B"
-)
-BASELINE_TRIALS_BASE = {
-    (DEEPSEEK_V3_0324_MODEL_NAME_HF, DATASET__MBPP): BASELINE_DIR_DEEPSEEK_V3_0324,
-    (QWEN3_253B_MODEL_NAME_HF, DATASET__MBPP): BASELINE_DIR_QWEN3_253B,
-    (
-        DEEPSEEK_V3_0324_MODEL_NAME_HF,
-        DATASET__HUMANEVAL,
-    ): BASELINE_DIR_DEEPSEEK_V3_0324_HUMANEVAL,
-    (QWEN3_253B_MODEL_NAME_HF, DATASET__HUMANEVAL): BASELINE_DIR_QWEN3_HUMANEVAL,
-}
-BASELINE_DIRS = ("baseline_ln",)
-
 SESSION_CONFIGS_DEFAULT_VALUES = {
     "retries_count": 1,
     "use_global_cache": False,
     "minimal_trace": False,
+    "exec_eval": False,
+    "exec_eval_host_ip": None,
+    "exec_eval_host_port": None,
     "top_probs": 0,
     "debug_mode": False,
     "start_idx": None,
@@ -225,1109 +307,181 @@ SESSION_CONFIGS_DEFAULT_VALUES = {
     "inference_endpoint_url": None,
 }
 
-DEEPSEEK_13_SOLVED_TASK_IDS = [
-    12,
-    14,
-    17,
-    18,
-    19,
-    22,
-    24,
-    25,
-    27,
-    28,
-    29,
-    30,
-    32,
-    37,
-    40,
-    41,
-    43,
-    44,
-    45,
-    46,
-    49,
-    50,
-    51,
-    52,
-    53,
-    54,
-    57,
-    58,
-    62,
-    64,
-    65,
-    66,
-    67,
-    68,
-    70,
-    71,
-    79,
-    80,
-    82,
-    85,
-    88,
-    90,
-    91,
-    93,
-    94,
-    95,
-    96,
-    97,
-    98,
-    99,
-    102,
-    104,
-    105,
-    106,
-    107,
-    108,
-    109,
-    111,
-    113,
-    116,
-    118,
-    120,
-    124,
-    127,
-    128,
-    129,
-    130,
-    131,
-    132,
-    133,
-    135,
-    151,
-    152,
-    154,
-    157,
-    161,
-    162,
-    163,
-    164,
-    168,
-    169,
-    170,
-    171,
-    172,
-    173,
-    174,
-    175,
-    176,
-    178,
-    184,
-    186,
-    187,
-    189,
-    191,
-    192,
-    193,
-    194,
-    195,
-    196,
-    197,
-    200,
-    201,
-    203,
-    204,
-    206,
-    208,
-    210,
-    212,
-    213,
-    214,
-    217,
-    221,
-    222,
-    223,
-    224,
-    226,
-    227,
-    230,
-    231,
-    232,
-    234,
-    237,
-    238,
-    241,
-    242,
-    246,
-    247,
-    249,
-    250,
-    253,
-    256,
-    257,
-    258,
-    259,
-    261,
-    262,
-    263,
-    267,
-    269,
-    270,
-    271,
-    272,
-    273,
-    277,
-    280,
-    281,
-    282,
-    283,
-    284,
-    287,
-    290,
-    293,
-    296,
-    297,
-    299,
-    309,
-    315,
-    319,
-    322,
-    325,
-    326,
-    329,
-    332,
-    333,
-    334,
-    338,
-    341,
-    349,
-    351,
-    352,
-    353,
-    356,
-    357,
-    358,
-    361,
-    362,
-    364,
-    365,
-    366,
-    368,
-    372,
-    373,
-    377,
-    378,
-    379,
-    380,
-    381,
-    384,
-    387,
-    390,
-    391,
-    392,
-    394,
-    395,
-    397,
-    399,
-    403,
-    404,
-    405,
-    406,
-    409,
-    411,
-    412,
-    413,
-    418,
-    419,
-    420,
-    421,
-    424,
-    425,
-    426,
-    428,
-    429,
-    434,
-    435,
-    439,
-    441,
-    446,
-    447,
-    451,
-    453,
-    454,
-    455,
-    456,
-    457,
-    458,
-    459,
-    460,
-    463,
-    464,
-    465,
-    470,
-    472,
-    474,
-    476,
-    477,
-    478,
-    479,
-    480,
-    481,
-    482,
-    484,
-    485,
-    486,
-    487,
-    489,
-    492,
-    494,
-    495,
-    496,
-    498,
-    499,
-    500,
-    502,
-    504,
-    505,
-    507,
-]
-DEEPSEEK_V3_0324_SOLVED_TASK_IDS = [
-    11,
-    12,
-    14,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
-    26,
-    27,
-    28,
-    29,
-    30,
-    32,
-    33,
-    34,
-    35,
-    36,
-    37,
-    38,
-    39,
-    40,
-    41,
-    42,
-    43,
-    44,
-    45,
-    46,
-    47,
-    48,
-    49,
-    50,
-    51,
-    52,
-    53,
-    54,
-    56,
-    57,
-    58,
-    59,
-    61,
-    62,
-    63,
-    64,
-    65,
-    66,
-    67,
-    68,
-    69,
-    70,
-    71,
-    72,
-    73,
-    74,
-    75,
-    76,
-    78,
-    79,
-    80,
-    81,
-    82,
-    84,
-    85,
-    86,
-    87,
-    88,
-    89,
-    90,
-    91,
-    92,
-    93,
-    94,
-    95,
-    96,
-    97,
-    98,
-    99,
-    100,
-    102,
-    103,
-    104,
-    105,
-    106,
-    107,
-    109,
-    112,
-    113,
-    114,
-    115,
-    116,
-    117,
-    118,
-    119,
-    120,
-    121,
-    123,
-    124,
-    125,
-    126,
-    127,
-    128,
-    129,
-    130,
-    131,
-    132,
-    133,
-    135,
-    137,
-    139,
-    140,
-    141,
-    142,
-    144,
-    145,
-    146,
-    147,
-    149,
-    150,
-    151,
-    152,
-    153,
-    154,
-    155,
-    156,
-    157,
-    158,
-    159,
-    160,
-    161,
-    162,
-    163,
-    165,
-    166,
-    167,
-    168,
-    169,
-    170,
-    171,
-    172,
-    173,
-    174,
-    175,
-    176,
-    178,
-    179,
-    181,
-    182,
-    183,
-    184,
-    185,
-    186,
-    187,
-    189,
-    191,
-    192,
-    193,
-    194,
-    195,
-    196,
-    197,
-    199,
-    200,
-    201,
-    202,
-    203,
-    204,
-    205,
-    206,
-    207,
-    208,
-    210,
-    212,
-    213,
-    215,
-    216,
-    217,
-    220,
-    221,
-    222,
-    223,
-    224,
-    225,
-    226,
-    227,
-    228,
-    230,
-    231,
-    232,
-    233,
-    234,
-    237,
-    238,
-    239,
-    240,
-    241,
-    242,
-    243,
-    244,
-    245,
-    246,
-    247,
-    249,
-    250,
-    251,
-    252,
-    253,
-    255,
-    256,
-    257,
-    258,
-    259,
-    260,
-    261,
-    262,
-    263,
-    265,
-    266,
-    267,
-    268,
-    269,
-    270,
-    271,
-    272,
-    273,
-    274,
-    277,
-    278,
-    279,
-    280,
-    281,
-    282,
-    283,
-    284,
-    285,
-    286,
-    287,
-    288,
-    290,
-    291,
-    292,
-    293,
-    294,
-    295,
-    296,
-    297,
-    298,
-    299,
-    300,
-    301,
-    302,
-    305,
-    306,
-    307,
-    308,
-    309,
-    311,
-    315,
-    316,
-    317,
-    318,
-    319,
-    320,
-    321,
-    322,
-    323,
-    325,
-    326,
-    327,
-    329,
-    330,
-    331,
-    332,
-    333,
-    334,
-    335,
-    336,
-    337,
-    338,
-    339,
-    340,
-    341,
-    342,
-    343,
-    344,
-    345,
-    346,
-    347,
-    348,
-    349,
-    351,
-    352,
-    353,
-    355,
-    356,
-    357,
-    358,
-    359,
-    360,
-    361,
-    362,
-    363,
-    364,
-    365,
-    366,
-    368,
-    369,
-    370,
-    371,
-    372,
-    373,
-    376,
-    377,
-    378,
-    379,
-    380,
-    381,
-    382,
-    384,
-    385,
-    386,
-    387,
-    388,
-    389,
-    390,
-    391,
-    392,
-    393,
-    394,
-    395,
-    396,
-    397,
-    398,
-    399,
-    400,
-    401,
-    402,
-    403,
-    404,
-    405,
-    406,
-    407,
-    408,
-    409,
-    410,
-    411,
-    412,
-    413,
-    414,
-    416,
-    417,
-    418,
-    419,
-    420,
-    421,
-    422,
-    423,
-    424,
-    425,
-    426,
-    427,
-    428,
-    429,
-    431,
-    432,
-    433,
-    434,
-    435,
-    437,
-    439,
-    440,
-    441,
-    442,
-    444,
-    445,
-    446,
-    447,
-    448,
-    449,
-    450,
-    451,
-    453,
-    454,
-    455,
-    456,
-    457,
-    458,
-    459,
-    460,
-    463,
-    464,
-    465,
-    466,
-    467,
-    468,
-    469,
-    470,
-    471,
-    472,
-    473,
-    474,
-    475,
-    476,
-    477,
-    478,
-    479,
-    480,
-    481,
-    482,
-    484,
-    485,
-    486,
-    487,
-    488,
-    489,
-    491,
-    492,
-    494,
-    495,
-    496,
-    498,
-    499,
-    500,
-    501,
-    502,
-    503,
-    504,
-    505,
-    506,
-    507,
-    508,
-    509,
-    510,
-]
+TIMEOUT_DELTA_MIN = 40
 
-QWEN3_SOLVED_TASK_IDS = [
-    11,
-    12,
-    14,
-    16,
-    17,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
-    26,
-    27,
-    28,
-    29,
-    32,
-    33,
-    35,
-    36,
-    37,
-    38,
-    39,
-    40,
-    41,
-    43,
-    44,
-    46,
-    47,
-    49,
-    50,
-    51,
-    52,
-    53,
-    54,
-    55,
-    57,
-    58,
-    59,
-    61,
-    62,
-    63,
-    64,
-    65,
-    66,
-    67,
-    68,
-    69,
-    71,
-    73,
-    74,
-    75,
-    76,
-    78,
-    79,
-    80,
-    82,
-    84,
-    85,
-    86,
-    88,
-    89,
-    90,
-    91,
-    92,
-    93,
-    94,
-    95,
-    96,
-    97,
-    98,
-    99,
-    100,
-    102,
-    104,
-    105,
-    106,
-    107,
-    109,
-    112,
-    113,
-    114,
-    115,
-    116,
-    117,
-    118,
-    119,
-    120,
-    122,
-    123,
-    125,
-    126,
-    127,
-    128,
-    129,
-    130,
-    131,
-    132,
-    133,
-    135,
-    141,
-    142,
-    144,
-    145,
-    146,
-    147,
-    149,
-    150,
-    153,
-    154,
-    156,
-    157,
-    159,
-    160,
-    161,
-    162,
-    163,
-    165,
-    166,
-    167,
-    168,
-    169,
-    170,
-    171,
-    172,
-    173,
-    174,
-    175,
-    176,
-    178,
-    179,
-    182,
-    184,
-    185,
-    186,
-    187,
-    188,
-    189,
-    190,
-    191,
-    192,
-    194,
-    195,
-    196,
-    197,
-    199,
-    200,
-    201,
-    202,
-    203,
-    204,
-    206,
-    207,
-    208,
-    210,
-    212,
-    213,
-    214,
-    215,
-    216,
-    217,
-    219,
-    220,
-    221,
-    222,
-    223,
-    224,
-    225,
-    226,
-    227,
-    230,
-    231,
-    232,
-    233,
-    234,
-    235,
-    237,
-    238,
-    239,
-    240,
-    241,
-    242,
-    243,
-    244,
-    245,
-    246,
-    247,
-    249,
-    250,
-    251,
-    252,
-    253,
-    255,
-    256,
-    257,
-    258,
-    259,
-    260,
-    261,
-    262,
-    263,
-    264,
-    265,
-    266,
-    267,
-    268,
-    269,
-    270,
-    271,
-    272,
-    273,
-    274,
-    277,
-    278,
-    279,
-    280,
-    281,
-    282,
-    283,
-    284,
-    285,
-    286,
-    287,
-    288,
-    289,
-    290,
-    291,
-    292,
-    293,
-    294,
-    296,
-    297,
-    298,
-    299,
-    300,
-    301,
-    302,
-    305,
-    307,
-    308,
-    309,
-    314,
-    315,
-    316,
-    317,
-    318,
-    319,
-    320,
-    321,
-    322,
-    325,
-    326,
-    327,
-    329,
-    330,
-    331,
-    332,
-    333,
-    334,
-    335,
-    336,
-    337,
-    340,
-    341,
-    343,
-    344,
-    345,
-    347,
-    349,
-    351,
-    352,
-    353,
-    354,
-    356,
-    357,
-    358,
-    359,
-    360,
-    361,
-    363,
-    365,
-    366,
-    368,
-    369,
-    370,
-    371,
-    372,
-    373,
-    376,
-    377,
-    378,
-    379,
-    380,
-    381,
-    382,
-    383,
-    384,
-    385,
-    387,
-    388,
-    390,
-    391,
-    392,
-    393,
-    394,
-    395,
-    397,
-    398,
-    399,
-    400,
-    401,
-    403,
-    404,
-    405,
-    406,
-    407,
-    408,
-    409,
-    410,
-    412,
-    413,
-    414,
-    415,
-    416,
-    417,
-    418,
-    419,
-    420,
-    421,
-    422,
-    423,
-    424,
-    425,
-    426,
-    427,
-    428,
-    429,
-    431,
-    432,
-    433,
-    434,
-    435,
-    437,
-    439,
-    440,
-    441,
-    442,
-    443,
-    444,
-    445,
-    446,
-    447,
-    448,
-    449,
-    450,
-    451,
-    453,
-    454,
-    455,
-    456,
-    457,
-    458,
-    459,
-    460,
-    463,
-    464,
-    465,
-    467,
-    469,
-    470,
-    471,
-    472,
-    473,
-    474,
-    475,
-    476,
-    477,
-    478,
-    479,
-    480,
-    481,
-    482,
-    484,
-    485,
-    487,
-    488,
-    489,
-    490,
-    491,
-    492,
-    494,
-    495,
-    496,
-    497,
-    498,
-    499,
-    500,
-    502,
-    503,
-    504,
-    505,
-    506,
-    507,
-    508,
-    509,
-]
+TEST_CASES_INSTRUCTION = """
+Write a Python function that satisfies the following test cases:
+>>> Test Cases:
+{test_cases}
+"""
+
+LONG_CODE_INSTRUCTION_TEXT = """\
+You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer
+### Instruction:
+{problem_text}
+
+Write a Python function that satisfies the following test cases:
+>>> Test Cases:
+{test_cases}
+
+Your solution should be written in as many lines as possible.
+This ensures that prefixes of your function remain valid Python programs.
+Allowing **incremental execution and debugging**.
+
+Write the function **step by step**, progressively introducing variables and logic.
+Avoid using list comprehensions, lambda functions, or overly compact one-liners.
+Instead, follow these guidelines:**
+
+Avoid list comprehensions, use loops instead:
+Incorrect:
+```python
+def square_numbers(lst):
+    return [x ** 2 for x in lst]
+```
+
+Correct:
+```python
+def square_numbers(lst):
+    squares = []
+    for num in lst:
+        squared_value = num ** 2
+        squares.append(squared_value)
+    return squares
+```
+
+Avoid inline expressions, use variables instead
+Incorrect:
+```python
+def calculate_area(length, width):
+    return (length * width) / 2
+```
+
+Correct:
+```python
+def calculate_area(length, width):
+    product = length * width
+    area = product / 2
+    return area
+```
+
+Incorrect:
+```python
+result.append(x + y)
+```
+
+Correct:
+```python
+z = x + y
+result.append(z)
+```
+
+Incorrect:
+```python
+def compute_value(a, b, c):
+    return (a + b) * (c / (a - b) + (a * c) / (b + c))
+```
+
+Correct:
+```python
+def compute_value(a, b, c):
+    term1 = a + b 
+    term2 = a - b 
+    term3 = c / term2 
+    term4 = a * c / (b + c)
+    result = term1 * (term3 + term4)
+    return result
+```
+
+### Response:
+"""
+
+DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION_TMP = """
+>>>> Test Cases:
+{test_cases}
+"""
+
+DEEPSEEK_INSTRUCT_TESTCASES_INSTRUCTION = """
+>>> Test Cases:
+{test_cases}
+"""
+
+DEEPSEEK_INSTRUCT_TEMPLATE = """\
+You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer
+### Instruction:
+Please refer the given examples and generate a python function for my problem.
+Examples are listed as follows:
+
+- Example 1:
+>>> Problem:
+Write a function to find the similar elements from the given two tuple lists.
+>>> Test Cases:
+assert similar_elements((3, 4, 5, 6),(5, 7, 4, 10)) == (4, 5)
+assert similar_elements((1, 2, 3, 4),(5, 4, 3, 7)) == (3, 4)
+assert similar_elements((11, 12, 14, 13),(17, 15, 14, 13)) == (13, 14)
+
+>>> Code:
+```python
+def similar_elements(test_tup1, test_tup2):
+  res = tuple(set(test_tup1) & set(test_tup2))
+  return (res)
+```
+
+- Example 2:
+>>> Problem:
+Write a python function to identify non-prime numbers.
+>>> Test Cases:
+assert is_not_prime(2) == False
+assert is_not_prime(10) == True
+assert is_not_prime(35) == True
+
+>>> Code:
+```python
+import math
+def is_not_prime(n):
+    result = False
+    for i in range(2,int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            result = True
+    return result
+```
+
+- Example 3:
+>>> Problem:
+Write a function to find the largest integers from a given list of numbers using heap queue algorithm.
+>>> Test Cases:
+assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],3)==[85, 75, 65]
+assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],2)==[85, 75]
+assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],5)==[85, 75, 65, 58, 35]
+
+>>> Code:
+```python
+import heapq as hq
+def heap_queue_largest(nums,n):
+  largest_nums = hq.nlargest(n, nums)
+  return largest_nums
+```
+
+Here is my problem:
+>>> Problem:
+{problem_text}
+>>>> Test Cases:
+{test_cases}
+
+### Response:
+"""
+
+
+TASK_HEADER = "### Task"
+GOAL_INSTRUCTION = (
+    "### Your goal is to write a Python function that solves the problem above."
+)
+EXAMPLES_HEADER = "### Here are some examples:"
+
+PROMPT_TEMPLATE = """{task_header}
+{text}
+
+{goal_instruction}
+{examples_block}
+
+{function_signature}
+"""
