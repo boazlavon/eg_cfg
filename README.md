@@ -24,7 +24,7 @@ Using the open-source **DeepSeek-V3** model, our experiments demonstrate that **
 - **HumanEval-ET**: 89.02%
 - **DS-1000**: 69.9% 
 - **CodeContests**: 60.6% 
-- 
+
 ✅ Achieved using **open models only** (DeepSeek-V3-0324)<br>
 ⚡ Real-time execution feedback integrated during decoding<br>
 🛠️ Fully configurable pipeline — supports both local and endpoint inference<br>
