@@ -4,11 +4,11 @@
 
 **SOTA performance on top code generation benchmarks**: from foundational tasks (*MBPP*, *HumanEval*) to extended evaluations (*MBPP-ET*, *HumanEval-ET*) and challenging competitive programming problems (*CodeContests*) - all using open models only.
 
+🎉 Our paper got accepted in [NeurIPS 2025](https://neurips.cc/virtual/2025/poster/115138)
+
 [![NeurIPS 2025](https://img.shields.io/badge/NeurIPS%202025-Accepted-blue)](https://neurips.cc/Conferences/2025)
 [![arXiv](https://img.shields.io/badge/arXiv-2506.10948-b31b1b)](https://arxiv.org/abs/2506.10948)
-...
 [![Video](https://img.shields.io/badge/YouTube-Video-red)](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
-[![Papers with Code](https://img.shields.io/badge/Papers%20with%20Code-View-blue)](https://paperswithcode.com/paper/execution-guided-line-by-line-code-generation)
 
 ---
 
