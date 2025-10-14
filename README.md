@@ -4,7 +4,7 @@ Our paper presents a **fundamentally new approach** to code generation.
 
 **EG-CFG** is an inference-time algorithm for code generation that injects real-time execution feedback directly into the model’s decoding loop. By incorporating dynamic runtime signals during generation, it steers the model toward solutions that are not only syntactically valid, but also functionally correct and executable.
 
-**SOTA performance on top code generation benchmarks**: from foundational tasks (*MBPP*, *HumanEval*) to extended evaluations (*MBPP-ET*, *HumanEval-ET*) and challenging competitive programming problems (*CodeContests*) - all using open models only.
+Using the open-source **DeepSeek-V3** model, our experiments demonstrate that **EG-CFG** significantly improves code generation performance, achieving **state-of-the-art (SOTA)** results across various levels of complexity. This includes foundational problems like `MBPP` (96.6%) and `HumanEval` (99.4%), challenging data science tasks on `DS-1000` (69.9%), and competitive programming problems on `CodeContests` (60.6%). Furthermore, EG-CFG establishes new SOTA results on the more rigorous variants, `MBPP-ET` (73.0%) and `HumanEval-ET` (89.02%), highlighting the method's robustness and ability to generalize to complex coding challenges.
 
 🎉 Our paper got accepted to [NeurIPS 2025](https://neurips.cc/virtual/2025/poster/115138)
 
