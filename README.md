@@ -1,10 +1,12 @@
 # EG-CFG: Execution-Guided Line-by-Line Code Generation 
 
+Our paper presents a **fundamentally new approach** to code generation.
+
 **EG-CFG** is an inference-time algorithm for code generation that injects real-time execution feedback directly into the model’s decoding loop. By incorporating dynamic runtime signals during generation, it steers the model toward solutions that are not only syntactically valid, but also functionally correct and executable.
 
 **SOTA performance on top code generation benchmarks**: from foundational tasks (*MBPP*, *HumanEval*) to extended evaluations (*MBPP-ET*, *HumanEval-ET*) and challenging competitive programming problems (*CodeContests*) - all using open models only.
 
-🎉 Our paper got accepted in [NeurIPS 2025](https://neurips.cc/virtual/2025/poster/115138)
+🎉 Our paper got accepted to [NeurIPS 2025](https://neurips.cc/virtual/2025/poster/115138)
 
 [![NeurIPS 2025](https://img.shields.io/badge/NeurIPS%202025-Accepted-blue)](https://neurips.cc/Conferences/2025)
 [![arXiv](https://img.shields.io/badge/arXiv-2506.10948-b31b1b)](https://arxiv.org/abs/2506.10948)
