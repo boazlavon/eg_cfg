@@ -11,6 +11,7 @@ Using the open-source **DeepSeek-V3** model, our experiments demonstrate that **
 [![NeurIPS 2025](https://img.shields.io/badge/NeurIPS%202025-Accepted-blue)](https://neurips.cc/Conferences/2025)
 [![arXiv](https://img.shields.io/badge/arXiv-2506.10948-b31b1b)](https://arxiv.org/abs/2506.10948)
 [![Video](https://img.shields.io/badge/YouTube-Video-red)](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
+[![Patent](https://img.shields.io/badge/Patent-Protected-green)](https://ramot.org/technologies/execution-guided-line-by-line-code-generation/)
 
 ---
 
@@ -453,4 +454,5 @@ We gratefully acknowledge the authors of the following works for their implement
 ## 🧾 License
 This repository is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
 This software is provided for non-commercial use only.
-For commercial use, you must obtain a commercial license by contacting Ramot - Technology Transfer Company of Tel Aviv University (yair.eran@ramot.org).
+For commercial use, you must obtain a commercial license by contacting Ramot - Technology Transfer Company of Tel Aviv University (yair.eran@ramot.org). The underlying technology is patented. For more information on commercial licensing, please visit the [official technology page at Ramot](https://ramot.org/technologies/execution-guided-line-by-line-code-generation/).
+
