@@ -1,23 +1,29 @@
-# EG-CFG: Execution-Guided Line-by-Line Code Generation 
+# Execution-Guided Line-by-Line Code Generation 
+
+Our paper presents a **fundamentally new approach** to code generation.
 
 **EG-CFG** is an inference-time algorithm for code generation that injects real-time execution feedback directly into the model’s decoding loop. By incorporating dynamic runtime signals during generation, it steers the model toward solutions that are not only syntactically valid, but also functionally correct and executable.
 
-**SOTA performance on top code generation benchmarks**: from foundational tasks (*MBPP*, *HumanEval*) to extended evaluations (*MBPP-ET*, *HumanEval-ET*) and challenging competitive programming problems (*CodeContests*) - all using open models only.
+Using the open-source **DeepSeek-V3** model, our experiments demonstrate that **EG-CFG** significantly improves code generation performance, achieving **state-of-the-art (SOTA)** results across various levels of complexity. This includes foundational problems like `MBPP` (96.6%) and `HumanEval` (99.4%), challenging data science tasks on `DS-1000` (69.9%), and competitive programming problems on `CodeContests` (60.6%). Furthermore, EG-CFG establishes new SOTA results on the more rigorous variants, `MBPP-ET` (73.0%) and `HumanEval-ET` (89.02%), highlighting the method's robustness and ability to generalize to complex coding challenges.
 
+🎉 Our paper got accepted to [NeurIPS 2025](https://neurips.cc/virtual/2025/poster/115138)
+
+[![NeurIPS 2025](https://img.shields.io/badge/NeurIPS%202025-Accepted-blue)](https://neurips.cc/Conferences/2025)
 [![arXiv](https://img.shields.io/badge/arXiv-2506.10948-b31b1b)](https://arxiv.org/abs/2506.10948)
 [![Video](https://img.shields.io/badge/YouTube-Video-red)](https://youtu.be/YgBcDUQg7As?si=SYyKIyPTdKPNDmO4)
-[![Papers with Code](https://img.shields.io/badge/Papers%20with%20Code-View-blue)](https://paperswithcode.com/paper/execution-guided-line-by-line-code-generation)
 
 ---
 
 ## 🚀 Highlights
 
-📈 **New state-of-the-art (SOTA) results**:
+📈 **State-of-the-art (SOTA) results**:
 
-- **MBPP**: 96.6% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-mbpp)](https://paperswithcode.com/sota/code-generation-on-mbpp?p=execution-guided-line-by-line-code-generation)
-- **MBPP-ET**: 73.0% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-mbpp-et)](https://paperswithcode.com/sota/code-generation-on-mbpp-et?p=execution-guided-line-by-line-code-generation)
-- **HumanEval-ET**: 87.19% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-humaneval-et)](https://paperswithcode.com/sota/code-generation-on-humaneval-et?p=execution-guided-line-by-line-code-generation)
-- **CodeContests**: 58.18% [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/execution-guided-line-by-line-code-generation/code-generation-on-codecontests)](https://paperswithcode.com/sota/code-generation-on-codecontests?p=execution-guided-line-by-line-code-generation) 
+- **MBPP**: 96.6%
+- **MBPP-ET**: 73.0% 
+- **HumanEval**: 99.4%
+- **HumanEval-ET**: 89.02%
+- **DS-1000**: 69.9% 
+- **CodeContests**: 60.6% 
 
 ✅ Achieved using **open models only** (DeepSeek-V3-0324)<br>
 ⚡ Real-time execution feedback integrated during decoding<br>
@@ -56,7 +62,7 @@ EG-CFG supports any causal language model that provides token-level log probabil
 | Model            | Method            | HumanEval (%) | HumanEval-ET (%) | RSR (HE)  | RSR (HE-ET) |
 | ---------------- | ----------------- | ------------- | ---------------- | --------- | ----------- |
 | DeepSeek-V3-0324 | Baseline LLM      | 82.92         | 79.20            | 0.0       | 0.0         |
-| DeepSeek-V3-0324 | **EG-CFG (Ours)** | **96.95**     | **87.19**        | **78.54** | **38.56**   |
+| DeepSeek-V3-0324 | **EG-CFG (Ours)** | **99.4**      | **89.02**        | **94.04** | **47.21**   |
 | DeepSeek-V3-0324 | MapCoder          | 96.95         | 81.70            | 81.88     | 12.02       |
 | DeepSeek-V3-0324 | MGDebugger        | 87.20         | 81.09            | 25.39     | 9.44        |
 | DeepSeek-V3-0324 | LPW               | 95.12         | 84.74            | 68.02     | 26.89       |
@@ -66,7 +72,7 @@ EG-CFG supports any causal language model that provides token-level log probabil
 | Model            | Method           | Accuracy (%) | RSR (%)  |
 |------------------|------------------|--------------|----------|
 | DeepSeek-V3-0324 | Baseline LLM     | 41.81        | 0.00     |
-| DeepSeek-V3-0324 | **EG-CFG (Ours)**| **58.18**    | **28.13**|
+| DeepSeek-V3-0324 | **EG-CFG (Ours)**| **60.6**     | **32.29**|
 | DeepSeek-V3-0324 | MapCoder         | 50.30        | 14.59    |
 | GPT-4o           | LPW              | 34.7         | N/A      |
 | GPT-4o           | LDB              | 29.3         | N/A      |
@@ -76,7 +82,16 @@ EG-CFG supports any causal language model that provides token-level log probabil
 | GPT-3.5 Turbo    | MapCoder         | 12.7         | N/A      |
 | MoTCoder-15B     | MoTCoder         | 26.34        | N/A      |
 
-> RSR: Relative Success Rate = Accuracy gain over baseline normalized to full success (see paper Sec. 4.1)
+### DS-1000
+| Model            | Method            | Accuracy (%) | RSR (%) |
+|------------------|-------------------|--------------|---------|
+| DeepSeek-V3-0324 | **EG-CFG (Ours)** | **69.9** | **50.73** |
+| DeepSeek-V3-0324 | Baseline LLM      | 38.9         | 0.00    |
+| GPT-4            | CONLINE           | 68.0         | N/A     |
+| GPT-4            | Baseline LLM      | 60.2         | N/A     |
+| GPT-3.5 Turbo    | SelfEvolve        | 57.1         | N/A     |
+
+> RSR: Relative Success Rate = Accuracy gain over baseline normalized to full success.
 > See full tables and ablations in the [paper](https://arxiv.org/abs/2506.10948).
 
 ### Evaluation Limitations
@@ -324,6 +339,10 @@ We also evaluate on MBPP-ET and HumanEval-ET, extended test suites proposed in C
 
 The CodeContests benchmark [Li et al., 2022] is a suite of competitive programming problems designed to evaluate advanced algorithmic reasoning and problem-solving skills. Each task includes a problem description and multiple hidden test cases. Solutions are evaluated using the [ExecEval framework](https://github.com/ntunlp/ExecEval) [Khan et al., 2024]. Performance on CodeContests reflects a model’s robustness and problem-solving depth under competitive constraints.
 
+🔹 DS-1000
+
+The DS-1000 benchmark [Lai et al., 2022] is a collection of 1000 data science problems designed to test code generation capabilities on popular libraries like Pandas and NumPy. It provides a challenging evaluation of practical, domain-specific programming skills.
+
 ### 🧾 Prompt Format
 
 We use two prompt types to ensure broad and reproducible evaluation:
@@ -355,13 +374,13 @@ No local GPU is required—all inference runs remotely on Fireworks infrastructu
 ---
 ## 📖 Citation
 
-If you use EG-CFG or find our work helpful, please consider citing:
+If you find our work helpful, please consider citing:
 
 ```bibtex
-@article{lavon2025execution,
+@inproceedings{lavon2025execution,
   title={Execution Guided Line-by-Line Code Generation},
   author={Lavon, Boaz and Katz, Shahar and Wolf, Lior},
-  journal={arXiv preprint arXiv:2506.10948},
+  booktitle={Advances in Neural Information Processing Systems},
   year={2025}
 }
 ```
@@ -378,7 +397,7 @@ We gratefully acknowledge the authors of the following works for their implement
   journal={arXiv preprint arXiv:2401.14196},
   year={2024}
 }
-@article{liu2024deepseekv3,
+@article{liu2024deepseek,
   title={DeepSeek-V3 Technical Report},
   author={Liu, Aixin and Feng, Bei and Xue, Bing and Wang, Bingxuan and others},
   journal={arXiv preprint arXiv:2412.19437},
