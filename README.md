@@ -397,7 +397,7 @@ We gratefully acknowledge the authors of the following works for their implement
   journal={arXiv preprint arXiv:2401.14196},
   year={2024}
 }
-@article{liu2024deepseekv3,
+@article{liu2024deepseek,
   title={DeepSeek-V3 Technical Report},
   author={Liu, Aixin and Feng, Bei and Xue, Bing and Wang, Bingxuan and others},
   journal={arXiv preprint arXiv:2412.19437},
