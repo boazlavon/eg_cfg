@@ -1,4 +1,4 @@
-# EG-CFG: Execution-Guided Line-by-Line Code Generation 
+# Execution-Guided Line-by-Line Code Generation 
 
 Our paper presents a **fundamentally new approach** to code generation.
 
