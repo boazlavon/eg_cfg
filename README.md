@@ -35,14 +35,14 @@ Using the open-source **DeepSeek-V3** model, our experiments demonstrate that **
 
 EG-CFG supports any causal language model that provides token-level log probabilities. In our experiments, we use two models from the **DeepSeek** family:
 
+### 🔹 [DeepSeek-V3-0324](https://huggingface.co/deepseek-ai/DeepSeek-V3-0324)
+- Large-scale foundation model
+- Used via inference endpoint
+
 ### 🔹 [DeepSeek-Coder-1.3B-Instruct](https://huggingface.co/deepseek-ai/deepseek-coder-1.3b-instruct)
 - 1.3B parameter instruction-tuned model
 - Suitable for local inference
 - Efficient yet surprisingly strong for Python code generation
-
-### 🔹 [DeepSeek-V3-0324](https://huggingface.co/deepseek-ai/DeepSeek-V3-0324)
-- Large-scale foundation model
-- Used via inference endpoint
 
 ---
 ## 📊 Benchmark Results
